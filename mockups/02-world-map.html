@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>World Map Hub — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .mapwrap{position:relative}
+  .dot{position:absolute;width:30px;height:30px;margin:-15px 0 0 -15px;background:transparent;border:0;border-radius:50%;cursor:pointer;padding:0}
+  .dot:focus-visible{outline:3px solid #fff}
+  .dot.sel{outline:3px dashed #fff;outline-offset:-2px}
+  .rlabel{position:absolute;font-family:var(--pix);font-size:clamp(6px,0.75vw,9px);color:#fff;white-space:nowrap;pointer-events:none;
+    background:#22202ecc;padding:3px 5px;border-radius:3px;transform:translate(-50%,0)}
+  .rlabel.locked{color:#b9b5dc}
+  .below{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);border-top:4px solid #000;background:#1a1830}
+  .card{margin:12px;font-size:15px;line-height:1.45;outline:none}
+  .card .ep{font-family:var(--pix);font-size:11px;color:#7a3b12;line-height:1.6}
+  .card h3{margin:2px 0 4px;font-size:19px}
+  .card .place{color:#555;margin-bottom:8px}
+  .card .line{margin:4px 0}
+  .card .mchip{display:inline-block;padding:1px 8px;border-radius:12px;border:2px solid #22202e;margin:2px 3px 2px 0;font-size:13.5px;background:#fff}
+  .card .status{margin-top:8px;font-weight:700}
+  .card .status.done{color:#1f7a3a}.card .status.open{color:#1f6fb4}.card .status.locked{color:#8e2a20}
+  .card .pbtn{margin-top:10px}
+  .bag{display:flex;align-content:center;align-items:flex-start;gap:8px;flex-wrap:wrap;padding:12px}
+  .bag .pix{width:100%}
+  .bag .pix{font-size:9px;color:var(--gold);margin-right:6px}
+  .slot{display:flex;flex-direction:column;align-items:center;gap:3px;width:72px;font-size:11.5px;color:var(--muted);text-align:center;line-height:1.2}
+  .slot canvas{width:40px;height:40px;image-rendering:pixelated;background:#29264a;border:3px solid #000;border-radius:3px}
+  .slot.have{color:#fff}
+  .slot.miss canvas{background:#15131f}
+  .key{display:flex;gap:14px;flex-wrap:wrap;font-size:13px;color:var(--muted);margin-top:10px}
+  .key span{display:inline-flex;align-items:center;gap:6px}
+  .key i{display:inline-block;width:14px;height:14px;border:2px solid #000;border-radius:50%}
+  @media (max-width:700px){
+    .below{grid-template-columns:1fr}
+    .rlabel{display:none}
+    .dot{width:24px;height:24px;margin:-12px 0 0 -12px}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 2 of 10</span>
+  <h1>World map (the hub)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <div class="mapwrap" id="mapwrap">
+        <canvas id="cv" aria-label="Pixel world map with eight realms and 24 episode dots"></canvas>
+      </div>
+      <div class="below">
+        <div class="box card" id="card" aria-live="polite"></div>
+        <div class="bag" id="bag"><span class="pix">BAG · ONE ITEM PER REALM</span></div>
+      </div>
+    </div>
+    <div class="key">
+      <span><i style="background:#f2c14e"></i>Done (gold stamp)</span>
+      <span><i style="background:#ffffff"></i>Open — blinking one is next</span>
+      <span><i style="background:#3a3550"></i>Locked (shows the item you need)</span>
+      <span>Purple fog = places the Smudge still hides</span>
+    </div>
+    <p class="under">Click any dot to see its episode card. This student is mid-year: Units 1–2 done, Unit 3 open.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>The whole world as one pixel map, split into 8 realms (one per unit). Each realm has 3 dots, one per episode, so 24 in all. Gold stamps show finished pages of the atlas. Realms still under purple fog are places the Smudge has blurred.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>Where each world region sits compared with the others</li>
+      <li>How the year's units fit together as one trip</li>
+      <li>Which of the five themes each episode builds</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p><b>Zelda-style gates:</b> each realm needs the item from the realm before it. The Canoe from the Americas opens Europe; the Rail Pass from Unit 3 opens Africa, and so on. A teacher code can open any realm for a student who joins late.</p>
+    <p><b>Link to Canvas:</b> each dot matches one Canvas module item. The same map is in every episode file. Pressing "Start episode" on a dot that belongs to a different file says "Open it from your Canvas module" (or opens that Canvas page in a new tab), so Canvas stays the place where work is turned in.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.1 map skills</span><span class="chip">WG.2 regions</span>
+    <h2>BUILT WITH</h2>
+    <p>The map is 24 × 13 tiles typed as text. The item icons are tiny drawings in code. The student's progress (stamps, items) comes from their save row in the Google Sheet or the browser save.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="01-title.html">◀ 1 Title</a><a href="index.html">ALL MOCKUPS</a><a href="03-overworld.html">3 Overworld ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+/* ---------- world map ---------- */
+const MAP = [
+  '==nnnnnnn==nnnnnnnnnnnn=',
+  '=.TTTTT.=nn=.TTTTTTTTT.=',
+  '==.TTT..==n=..TTTTTTTT.=',
+  '==..M...===.T.ssMM.....=',
+  '===.M..====ssssss...M.=.',
+  '=====M.===sssss=.T=TT===',
+  '======.====.TT.==..=T.==',
+  '======TTT==.TTT.===.=.=.',
+  '=======TT..=.T.====.=.=.',
+  '=======..===..s====sss==',
+  '=======.====.=====.ss.==',
+  '=======.============.===',
+  'nnnnnnnnnnnnnnnnnnnnnnnn'
+];
+MAP.forEach((r, i) => { if (r.length !== 24) console.error('row', i, r.length); });
+// Mapmaker's Valley: a small home island in the Atlantic
+const rows = MAP.map(r => r.split(''));
+rows[4][8] = ','; rows[4][9] = 'C'; rows[5][8] = 'T';
+const WORLD = rows.map(r => r.join(''));
+
+const s = WW.stage('#cv', 24, 13);
+
+/* ---------- item icons (10 x 10, drawn in code) ---------- */
+const IP = { k: '#22202e', y: '#f2c14e', w: '#ffffff', r: '#e04848', n: '#3c7fd8', b: '#8b5a2b', B: '#5f3d1d', o: '#e08a3c', g: '#9aa0aa' };
+const ICON = {
+  compass: ['..kkkkkk..', '.kyyyyyyk.', 'kywwrrwwyk', 'kywwrrwwyk', 'kywwkkwwyk', 'kywwnnwwyk', 'kywwnnwwyk', '.kyyyyyyk.', '..kkkkkk..', '..........'],
+  canoe:   ['..........', '....k.....', '....k.....', '....k.....', 'k...k....k', 'kbbbbbbbbk', '.kbBBBBbk.', '..kkkkkk..', '..........', '..........'],
+  rail:    ['..........', 'kkkkkkkkkk', 'kwwwwwwwwk', 'krrrrrrrrk', 'kwwkkwwwwk', 'kwwwwkkwwk', 'krrrrrrrrk', 'kwwwwwwwwk', 'kkkkkkkkkk', '..........'],
+  gourd:   ['....kk....', '...kbbk...', '....kk....', '...kook...', '..kooook..', '.kooooook.', '.koowoook.', '.kooooook.', '..kooook..', '...kkkk...'],
+  key:     ['..kkk.....', '.knnnk....', '.kn.nk....', '.knnnk....', '..knk.....', '..knk.....', '..knkk....', '..knnk....', '..knk.....', '..kk......'],
+  cloak:   ['....kk....', '...knnk...', '..knnnnk..', '..knwwnk..', '.knnnnnnk.', '.knnnnnnk.', 'knnnnnnnnk', 'knnnnnnnnk', 'kkkkkkkkkk', '.n..n..n..'],
+  seal:    ['..kkkkkk..', '.krrrrrrk.', 'krrwwwwrrk', 'krwrrrrwrk', 'krwrwwrwrk', 'krwrwwrwrk', 'krwrrrrwrk', 'krrwwwwrrk', '.krrrrrrk.', '..kkkkkk..'],
+  sail:    ['....k.....', '....kw....', '....kww...', '....kwww..', '....kwwww.', '....kwwwww', '....k.....', 'kbbbbbbbbk', '.kbbbbbbk.', '..kkkkkk..'],
+  lock:    ['...kkkk...', '..kg..gk..', '..kg..gk..', '.kkkkkkkk.', '.kyyyyyyk.', '.kyyykyyk.', '.kyyykyyk.', '.kyyyyyyk.', '.kkkkkkkk.', '..........']
+};
+function icon(c, name, x, y, sc = 1, grey = false) {
+  const rows = ICON[name];
+  rows.forEach((row, r) => [...row.padEnd(10, '.').slice(0, 10)].forEach((ch, k) => {
+    if (ch === '.') return;
+    c.fillStyle = grey && ch !== 'k' ? '#5d5a78' : IP[ch];
+    c.fillRect(x + k * sc, y + r * sc, sc, sc);
+  }));
+}
+
+/* ---------- realms + episodes ---------- */
+const ITEMS = [
+  { k: 'compass', en: 'Compass Rose' }, { k: 'canoe', en: 'Canoe' }, { k: 'rail', en: 'Rail Pass' }, { k: 'gourd', en: 'Water Gourd' },
+  { k: 'key', en: 'Water Key' }, { k: 'cloak', en: 'Monsoon Cloak' }, { k: 'seal', en: 'Trade Seal' }, { k: 'sail', en: 'Sail' }
+];
+const REALMS = [
+  { n: 1, name: "Mapmaker's Valley", x: 8.9, y: 4.4, lx: 9.3, ly: 2.75 },
+  { n: 2, name: 'The Americas', x: 4.6, y: 2.7, lx: 4.5, ly: 6.4 },
+  { n: 3, name: 'Europe, Russia & Central Asia', x: 14.6, y: 1.8, lx: 16.5, ly: 0.35 },
+  { n: 4, name: 'Sub-Saharan Africa', x: 13.0, y: 7.4, lx: 13.0, ly: 8.6 },
+  { n: 5, name: 'N. Africa & SW Asia', x: 13.4, y: 4.6, lx: 13.4, ly: 5.35 },
+  { n: 6, name: 'South & Southeast Asia', x: 18.6, y: 6.2, lx: 19.0, ly: 7.15 },
+  { n: 7, name: 'East Asia', x: 20.0, y: 3.6, lx: 21.0, ly: 4.75 },
+  { n: 8, name: 'Australia & Pacific', x: 20.5, y: 9.6, lx: 19.8, ly: 10.85 }
+];
+const EPS = {
+  '1.1': ['Intro to Maps', "Cartographer's Village", ['loc', 'pla']],
+  '1.2': ['Regional Tour', 'Three kinds of regions', ['reg', 'pla']],
+  '1.3': ['Resources & Work', 'The quarry and the mill', ['hei', 'mov']],
+  '2.1': ['US & Canada', 'Great Lakes and the St. Lawrence', ['loc', 'mov']],
+  '2.2': ['Latin America & Caribbean', 'Coffee in the mountains', ['pla', 'hei']],
+  '2.3': ['Migration in the Americas', 'The push-and-pull road', ['mov', 'reg']],
+  '3.1': ['Europe', 'Peninsulas and ports', ['loc', 'pla']],
+  '3.2': ['Russia & Central Asia', 'The long cold railway', ['pla', 'hei']],
+  '3.3': ['Regional Connections', 'The Silk Road', ['mov', 'reg']],
+  '4.1': ['Land & Climate', 'The Sahel (Nigeria) and Kenya', ['pla', 'hei']],
+  '4.2': ['People & Cities', 'DR Congo and Ethiopia', ['mov', 'reg']],
+  '4.3': ['Resources & Trade', 'South Africa', ['hei', 'mov']],
+  '5.1': ['Land, Water & Oil', 'Saudi Arabia and Türkiye', ['hei', 'loc']],
+  '5.2': ['Culture & Diffusion', 'Iran and the UAE', ['mov', 'pla']],
+  '5.3': ['Borders & Water', 'The Levant', ['reg', 'hei']],
+  '6.1': ['South Asia', 'The monsoon', ['pla', 'hei']],
+  '6.2': ['Southeast Asia', 'The Ring of Fire', ['loc', 'pla']],
+  '6.3': ['Population & Development', 'Reading the numbers', ['reg', 'mov']],
+  '7.1': ['China & Japan', 'Where the flat land is', ['pla', 'loc']],
+  '7.2': ['Site & Situation', 'Found a city', ['loc', 'hei']],
+  '7.3': ['Supply Chains', 'The long trip of a phone', ['mov', 'reg']],
+  '8.1': ['Australia & the Pacific', 'Islands and distance', ['loc', 'pla']],
+  '8.2': ['Global Trade', 'The narrow places', ['mov', 'loc']],
+  '8.3': ['Borders, Conflict & Cooperation', 'The Atlas Council', ['reg', 'mov']]
+};
+const THEME = Object.fromEntries(WW.THEMES.map(t => [t.k, t]));
+// mid-year student: Units 1-2 done, 3.1 next, 3.2-3.3 after 3.1, Units 4-8 gated
+function stateOf(id) {
+  const u = +id[0], e = +id[2];
+  if (u <= 2) return 'done';
+  if (u === 3) return e === 1 ? 'open' : 'wait';
+  return 'locked';
+}
+const DOTS = [];
+REALMS.forEach(r => [-1, 0, 1].forEach((o, i) => {
+  const id = r.n + '.' + (i + 1);
+  DOTS.push({ id, realm: r, px: (r.x + o * 0.95) * 16, py: r.y * 16 + (i === 1 ? -5 : 0) });
+}));
+
+/* ---------- HTML: dots, labels, card, bag ---------- */
+const wrap = document.getElementById('mapwrap');
+const W = 24 * 16, H = 13 * 16;
+let sel = '3.1';
+DOTS.forEach(d => {
+  const b = document.createElement('button');
+  b.className = 'dot'; b.style.left = (d.px / W * 100) + '%'; b.style.top = (d.py / H * 100) + '%';
+  const st = stateOf(d.id);
+  b.setAttribute('aria-label', `Episode ${d.id} ${EPS[d.id][0]}: ${st === 'done' ? 'done' : st === 'open' ? 'open' : 'locked'}`);
+  b.onclick = () => { sel = d.id; showCard(); };
+  d.el = b; wrap.appendChild(b);
+});
+REALMS.forEach(r => {
+  const l = document.createElement('div');
+  l.className = 'rlabel' + (r.n >= 4 ? ' locked' : '');
+  l.style.left = (r.lx * 16 / W * 100) + '%'; l.style.top = (r.ly * 16 / H * 100) + '%';
+  l.textContent = r.n + ' · ' + r.name; wrap.appendChild(l);
+});
+function showCard() {
+  DOTS.forEach(d => d.el.classList.toggle('sel', d.id === sel));
+  const [title, place, meters] = EPS[sel];
+  const u = +sel[0], st = stateOf(sel), item = ITEMS[u - 1];
+  const need = u > 1 ? ITEMS[u - 2] : null;
+  const chips = meters.map(k => `<span class="mchip" style="border-color:${THEME[k].col}">${THEME[k].icon} ${THEME[k].en}</span>`).join('');
+  let status, btn;
+  if (st === 'done') { status = '<div class="status done">✓ Done — atlas page won back</div>'; btn = '<button class="pbtn">PLAY AGAIN (+COINS)</button>'; }
+  else if (st === 'open') { status = '<div class="status open">● Open — this is your next episode</div>'; btn = '<button class="pbtn gold">START EPISODE ▶</button>'; }
+  else if (st === 'wait') { status = '<div class="status locked">🔒 Finish 3.1 first</div>'; btn = ''; }
+  else { status = `<div class="status locked">🔒 Locked — needs the <b>${need.en}</b> from Unit ${u - 1}</div>`; btn = ''; }
+  document.getElementById('card').innerHTML =
+    `<div class="ep">EPISODE ${sel} · REALM ${u}</div><h3>${title}</h3><div class="place">${place}</div>` +
+    `<div class="line">Fills: ${chips}</div>` +
+    `<div class="line">Realm item: <b>${item.en}</b> (earned in ${u}.3)</div>` + status + btn;
+}
+showCard();
+const bag = document.getElementById('bag');
+ITEMS.forEach((it, i) => {
+  const have = i < 2;
+  const sl = document.createElement('div'); sl.className = 'slot ' + (have ? 'have' : 'miss');
+  const cv = document.createElement('canvas'); cv.width = 12; cv.height = 12;
+  icon(cv.getContext('2d'), have ? it.k : it.k, 1, 1, 1, !have);
+  sl.appendChild(cv); sl.appendChild(document.createTextNode(have ? it.en : '???'));
+  sl.title = have ? it.en : 'Not found yet'; bag.appendChild(sl);
+});
+
+WW.hud(document.getElementById('hud'), { hearts: 5, max: 5, coins: 148, label: 'WORLD MAP · 6 OF 24 PAGES', stats: { loc: 4, pla: 4, hei: 2, mov: 3, reg: 3 } });
+
+/* ---------- draw loop ---------- */
+WW.loop(t => {
+  const c = s.ctx, R = WW.R;
+  WW.drawMap(c, WORLD, { t });
+  // purple fog over realms the Smudge still hides (4-8)
+  REALMS.filter(r => r.n >= 4).forEach((r, i) => {
+    for (let k = 0; k < 6; k++) {
+      const fx = r.x * 16 - 22 + ((WW.hash(r.n, k) * 34) | 0) + Math.round(Math.sin(t / 900 + k + i) * 3);
+      const fy = r.y * 16 - 14 + ((WW.hash(r.n, k + 9) * 18) | 0);
+      c.fillStyle = 'rgba(75,63,99,0.42)'; c.fillRect(fx, fy, 18, 10); c.fillRect(fx + 3, fy - 3, 12, 16);
+    }
+  });
+  // routes between realms (dotted gold line along the trip)
+  const order = [1, 2, 3, 5, 4, 6, 7, 8];
+  for (let i = 0; i < order.length - 1; i++) {
+    const a = REALMS[order[i] - 1], b = REALMS[order[i + 1] - 1];
+    const steps = 18;
+    for (let k = 0; k < steps; k++) if (k % 2 === 0) {
+      const x = (a.x + (b.x - a.x) * k / steps) * 16, y = (a.y + (b.y - a.y) * k / steps) * 16 + 6;
+      R(c, x | 0, y | 0, 2, 2, i < 2 ? '#f2c14e' : 'rgba(255,255,255,0.35)');
+    }
+  }
+  // dots
+  DOTS.forEach(d => {
+    const st = stateOf(d.id), x = d.px | 0, y = d.py | 0;
+    R(c, x - 5, y - 4, 10, 8, '#22202e'); R(c, x - 4, y - 5, 8, 10, '#22202e');
+    if (st === 'done') {
+      R(c, x - 4, y - 3, 8, 6, '#f2c14e'); R(c, x - 3, y - 4, 6, 8, '#f2c14e');
+      R(c, x - 2, y, 1, 1, '#7a3b12'); R(c, x - 1, y + 1, 1, 1, '#7a3b12'); R(c, x, y, 1, 1, '#7a3b12'); R(c, x + 1, y - 1, 1, 1, '#7a3b12'); R(c, x + 2, y - 2, 1, 1, '#7a3b12');
+    } else if (st === 'open') {
+      const on = Math.floor(t / 400) % 2 === 0;
+      R(c, x - 4, y - 3, 8, 6, on ? '#ffffff' : '#2aa198'); R(c, x - 3, y - 4, 6, 8, on ? '#ffffff' : '#2aa198');
+      if (on) { R(c, x - 7, y - 7, 3, 1, '#fff'); R(c, x + 5, y - 7, 3, 1, '#fff'); R(c, x - 7, y + 7, 3, 1, '#fff'); R(c, x + 5, y + 7, 3, 1, '#fff'); }
+    } else {
+      R(c, x - 4, y - 3, 8, 6, '#3a3550'); R(c, x - 3, y - 4, 6, 8, '#3a3550');
+      R(c, x - 1, y - 2, 2, 1, '#9aa0aa'); R(c, x - 2, y - 1, 4, 3, '#9aa0aa');
+    }
+  });
+  // item needed, shown above each locked realm
+  REALMS.filter(r => r.n >= 4).forEach(r => {
+    const x = (r.x * 16 - 5) | 0, y = (r.y * 16 - 20) | 0;
+    R(c, x - 2, y - 2, 14, 14, '#22202e'); R(c, x - 1, y - 1, 12, 12, '#fffbe8');
+    icon(c, ITEMS[r.n - 2].k, x, y, 1);
+  });
+  // the hero, standing at Europe, plus Pip
+  WW.sprite(c, 'hero', 12.0 * 16 | 0, 1.4 * 16 | 0, {});
+  WW.sprite(c, 'pip', 10.9 * 16 | 0, 1.0 * 16 | 0, { bob: true, t });
+});
+</script>
+</body>
+</html>

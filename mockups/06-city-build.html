@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Found a City — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .field{position:relative}
+  .site{position:absolute;transform:translate(-50%,-100%);font-family:var(--pix);font-size:clamp(7px,.85vw,10px);background:#fffbe8;color:#22202e;border:2px solid #22202e;border-radius:3px;padding:3px 6px;white-space:nowrap;line-height:1.5}
+  .site.sel{background:#f2c14e}
+  .cmd{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:stretch;background:#2b2236;border-top:4px solid #000;padding:10px;color:#fff}
+  .cmd .well{background:#151221;border:3px solid #5a4a3a;outline:2px solid #000;border-radius:3px;padding:8px}
+  .portrait{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:96px}
+  .portrait canvas{width:64px;height:64px;image-rendering:pixelated;background:#cfe8ff;border:3px solid #000}
+  .portrait .nm{font-family:var(--pix);font-size:9px;color:#f2c14e;text-align:center;line-height:1.6}
+  .portrait .hp{width:64px;height:8px;background:#2a2840;border:2px solid #000}.portrait .hp b{display:block;height:100%;width:80%;background:#3fa34d}
+  .mid{display:flex;flex-direction:column;gap:8px}
+  .res{display:flex;gap:14px;flex-wrap:wrap;font-family:var(--pix);font-size:10px}
+  .res span{white-space:nowrap}
+  .btns{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+  .btns button{font-family:var(--pix);font-size:9px;line-height:1.6;padding:8px 4px;background:#4a3b2a;color:#fff;border:3px solid #000;outline:2px solid #8b6a3e;border-radius:2px;cursor:pointer}
+  .btns button.go{background:#f2c14e;color:#22202e}
+  .btns button u{text-decoration:underline}
+  .mm{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .mm canvas{width:130px;height:78px;image-rendering:pixelated;border:3px solid #000;background:#000}
+  .mm small{font-family:var(--pix);font-size:8px;color:#b9b5dc}
+  .report{margin-top:16px}
+  .report h3{font-family:var(--pix);font-size:11px;margin:0 0 10px;line-height:1.6;color:#7a3b12}
+  .report table{width:100%;border-collapse:collapse;font-size:15px}
+  .report th,.report td{border:2px solid #22202e;padding:7px 8px;text-align:left;vertical-align:top}
+  .report thead th{background:#f2c14e;font-family:var(--pix);font-size:9px;line-height:1.6}
+  .report tbody th{background:#efe2bf;width:22%}
+  .report tbody th small{display:block;font-weight:400;font-size:12.5px}
+  .tablewrap{overflow-x:auto}
+  .langrow{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+  @media (max-width:700px){
+    .cmd{grid-template-columns:1fr;}
+    .portrait{flex-direction:row;justify-content:flex-start;min-width:0}
+    .mm{flex-direction:row}
+    .report table{font-size:13.5px}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 6 of 10</span>
+  <h1>Found a city (Episode 7.2)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <div class="field">
+        <canvas id="cv" aria-label="A wide map of East Asian land with mountains and a pass in the west, a hill in the middle, rice paddies, and a river reaching the sea in the east. Three glowing circles mark possible city sites. Small workers carry food, wood and stone."></canvas>
+        <div class="site" style="left:73.4%;top:72%">A · RIVER MOUTH</div>
+        <div class="site sel" style="left:73.4%;top:20%">B · HILLTOP</div>
+        <div class="site" style="left:3%;top:20%;transform:translate(0,-100%)">C · MOUNTAIN PASS</div>
+      </div>
+      <div class="cmd">
+        <div class="well portrait">
+          <canvas id="face" width="16" height="16"></canvas>
+          <div><div class="nm">WORKER<br>MEI</div><div class="hp"><b></b></div></div>
+        </div>
+        <div class="well mid">
+          <div class="res"><span>🍚 FOOD 40</span><span>💧 WATER 25</span><span>🪵 WOOD 18</span><span>🚢 TRADE 5</span></div>
+          <div class="btns">
+            <button><u>G</u>ATHER</button>
+            <button><u>B</u>UILD</button>
+            <button class="go"><u>S</u>URVEY SITE</button>
+          </div>
+          <div style="font-size:14px;color:#d8d4f5">Mei is carrying rice to the town hall. Next: survey <b style="color:#f2c14e">B · Hilltop</b>.</div>
+        </div>
+        <div class="well mm"><canvas id="mini" width="20" height="12"></canvas><small>MINIMAP</small></div>
+      </div>
+    </div>
+
+    <div class="box report">
+      <div class="langrow"><h3>SURVEY REPORT · WHERE SHOULD THE CITY GO?</h3><div class="langs"><button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button></div></div>
+      <div class="tablewrap">
+      <table>
+        <thead><tr><th></th><th>A · RIVER MOUTH</th><th>B · HILLTOP</th><th>C · MOUNTAIN PASS</th></tr></thead>
+        <tbody>
+          <tr>
+            <th><span data-en="SITE" data-es="SITIO" data-fa="محل"></span><small data-en="the land itself" data-es="la tierra misma" data-fa="خودِ زمین"></small></th>
+            <td data-en="Flat, rich soil. Fresh water. Floods in the rainy season." data-es="Plana, suelo fértil. Agua dulce. Se inunda en la temporada de lluvias." data-fa="هموار، خاک حاصلخیز. آب شیرین. در فصل باران سیل می‌آید."></td>
+            <td data-en="High and dry. Safe from floods. Water must be carried up." data-es="Alto y seco. A salvo de inundaciones. Hay que subir el agua." data-fa="بلند و خشک. از سیل در امان است. آب را باید بالا برد."></td>
+            <td data-en="Narrow, rocky, cold. Very little farmland." data-es="Estrecho, rocoso, frío. Muy poca tierra para cultivar." data-fa="تنگ، سنگلاخ، سرد. زمین زراعتی خیلی کم."></td>
+          </tr>
+          <tr>
+            <th><span data-en="SITUATION" data-es="SITUACIÓN" data-fa="موقعیت"></span><small data-en="what is around it" data-es="lo que la rodea" data-fa="آنچه دور و بر آن است"></small></th>
+            <td data-en="Where the river meets the sea. Boats can reach other ports and towns up the river." data-es="Donde el río llega al mar. Los barcos llegan a otros puertos y a pueblos río arriba." data-fa="جایی که دریا و رود به هم می‌رسند. کشتی‌ها به بندرها و شهرهای بالای رود می‌رسند."></td>
+            <td data-en="Looks over the farms on the plain. Far from the sea and the river." data-es="Mira sobre las granjas de la llanura. Lejos del mar y del río." data-fa="بر مزرعه‌های دشت دید دارد. از دریا و رود دور است."></td>
+            <td data-en="Controls the only road between two valleys. Every trader must pass through." data-es="Controla el único camino entre dos valles. Todo comerciante debe pasar por aquí." data-fa="تنها راه بین دو دره را در دست دارد. هر تاجر باید از اینجا بگذرد."></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+    </div>
+    <p class="under">Click a worker, then click a field, forest or rock to gather. Click <b>Survey site</b> and walk onto a glowing circle to fill in its column of the report. Build the town hall on the site you can defend best with the report.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>A wide map seen from above, like the first Warcraft games. The map scrolls when you move the mouse to the edge. A brown command panel at the bottom shows the chosen worker, resources, three big buttons and a minimap.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li><b>Site</b> = the land itself (flat, high, wet, rocky)</li>
+      <li><b>Situation</b> = what is around it and how it connects (sea, river, roads, neighbors)</li>
+      <li>Why so many big East Asian cities sit on river plains near the sea</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>Workers gather food, water and wood. Surveying all three circles fills the report. There is no single "right" circle: the student picks one and must explain the choice with one site reason and one situation reason. Then the town grows over a few turns, and a flood or a trade boat shows what the choice meant. This fills <b>📍 Where</b> and <b>🚚 On the move</b>.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.10 East Asia</span><span class="chip">WG.15 cities, site and situation</span>
+    <h2>BUILT WITH</h2>
+    <p>The map is wider than one screen (20 × 12 tiles here, bigger in the real game). The minimap is the same map drawn one pixel per tile. Workers are the shared person sprite in new colors.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="05-farm.html">◀ 5 Mountain farm</a><a href="index.html">ALL MOCKUPS</a><a href="07-dungeon.html">7 River temple ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const P = WW.P, R = WW.R, T = 16;
+const MAP = [
+  'AAMMMAMM..TTT.......',
+  'AMM:MMM...TTTT......',
+  'MM::MM~~..TT..KKK...',
+  'M::.M..~~....KKKKK..',
+  '::.....,.~~...KrK...',
+  '.......qqq~~.......=',
+  'TT....qqqqq~~~....==',
+  'TTT...qqqqqq.~~..===',
+  'TT.....qqq....~~====',
+  'T...ww........s~====',
+  '...www....,..sss====',
+  '..........ssssss===='
+];
+MAP.forEach((r, i) => { if (r.length !== 20) console.error('row ' + i + ' is ' + r.length); });
+const s = WW.stage('#cv', 20, 12);
+WW.hud(document.getElementById('hud'), { hearts: 5, max: 5, coins: 64, label: 'U7.2 · THE CITY ON THE RIVER', stats: { loc: 6, pla: 5, hei: 4, mov: 5, reg: 5 } });
+
+WW.tiles.K = (c, x, y, gx, gy) => { // rolling hill
+  WW.tiles['.'](c, x, y, gx, gy);
+  R(c, x + 1, y + 6, 14, 9, '#3f8a2e'); R(c, x + 3, y + 3, 10, 12, '#3f8a2e');
+  R(c, x + 4, y + 4, 6, 3, '#7cc451'); R(c, x + 2, y + 7, 3, 2, '#7cc451');
+  R(c, x + 1, y + 14, 14, 1, '#2e6b22');
+};
+WW.SPR.npcWalk = WW.SPR.npc.slice(0, 14).concat(['...kppk..kBBk...', '...kBBk.........']);
+const SITES = [{ x: 14, y: 9, sel: false }, { x: 14, y: 3, sel: true }, { x: 2, y: 3, sel: false }];
+const WORKERS = [
+  { a: [10, 9], b: [7, 7], pal: { h: '#1b1b1b', s: '#e8b98e', c: '#c0392b', C: '#8e2a20', p: '#2f3a5a' }, load: 'rice', sp: 1 },
+  { a: [10, 9], b: [2, 7], pal: { h: '#3a2414', s: '#8d5a3b', c: '#2f7fd1', C: '#1d5aa8', p: '#3a3a3a' }, load: 'wood', sp: .8 },
+  { a: [10, 9], b: [13, 4], pal: { h: '#111', s: '#f0c8a0', c: '#7a4bd1', C: '#5a33a5', p: '#4a3b2a' }, load: 'stone', sp: .7 }
+];
+
+function hall(c, x, y) { // a small camp / town hall
+  R(c, x + 1, y + 6, 14, 10, P.k); R(c, x + 2, y + 7, 12, 8, P.wall);
+  R(c, x, y + 2, 16, 6, P.k); R(c, x + 1, y + 3, 14, 4, '#3c6fb4'); R(c, x + 3, y, 10, 3, '#2c568f');
+  R(c, x + 6, y + 10, 4, 5, P.wood); R(c, x + 3, y + 9, 2, 2, '#9fd3ff'); R(c, x + 11, y + 9, 2, 2, '#9fd3ff');
+}
+function glow(c, x, y, t, sel) {
+  const r = 9 + Math.sin(t / 250) * 1.5;
+  c.save();
+  c.globalAlpha = .35 + Math.sin(t / 250) * .1;
+  c.fillStyle = sel ? '#ffe36e' : '#ffffff';
+  c.beginPath(); c.ellipse(x * T + 8, y * T + 10, r + 3, (r + 3) * .55, 0, 0, Math.PI * 2); c.fill();
+  c.globalAlpha = 1; c.strokeStyle = sel ? '#f2c14e' : '#ffffff'; c.lineWidth = 2;
+  c.beginPath(); c.ellipse(x * T + 8, y * T + 10, r, r * .55, 0, 0, Math.PI * 2); c.stroke();
+  c.restore();
+}
+function carry(c, kind, x, y) {
+  if (kind === 'rice') { R(c, x, y, 6, 5, '#f3e3b5'); R(c, x, y, 6, 1, '#c9b064'); }
+  if (kind === 'wood') { R(c, x, y + 1, 8, 2, P.wood); R(c, x, y + 3, 8, 2, P.woodD); }
+  if (kind === 'stone') { R(c, x, y, 6, 5, P.stone); R(c, x + 1, y + 1, 2, 1, P.stoneL); }
+}
+
+WW.loop(t => {
+  const c = s.ctx;
+  WW.drawMap(c, MAP, { t, base: MAP.map(r => '') });
+  SITES.forEach(st => glow(c, st.x, st.y, t, st.sel));
+  hall(c, 10 * T, 9 * T);
+  // little flag on the hall
+  R(c, 10 * T + 8, 9 * T - 6, 1, 7, P.k); R(c, 10 * T + 9, 9 * T - 6, 5, 3, P.red);
+  WORKERS.forEach((w, i) => {
+    const ph = ((t / 4000) * w.sp + i * .33) % 1;
+    const k = ph < .5 ? ph * 2 : 2 - ph * 2; // 0..1..0
+    const x = (w.a[0] + (w.b[0] - w.a[0]) * k) * T, y = (w.a[1] + (w.b[1] - w.a[1]) * k) * T;
+    const back = ph >= .5;
+    WW.sprite(c, Math.floor(t / 200 + i) % 2 ? 'npcWalk' : 'npc', x | 0, (y | 0) - 2, { pal: w.pal });
+    if (back) carry(c, w.load, (x | 0) + 5, (y | 0) - 5);
+  });
+  // selection box around Mei
+  const ph = ((t / 4000) + 0) % 1, k = ph < .5 ? ph * 2 : 2 - ph * 2;
+  const mx = (10 + (7 - 10) * k) * T, my = (9 + (7 - 9) * k) * T;
+  c.strokeStyle = '#3fe060'; c.lineWidth = 1; c.strokeRect((mx | 0) + 1.5, (my | 0) - 1.5, 13, 18);
+  WW.sprite(c, 'pip', 12 * T, 4 * T - 4, { bob: true, t, phase: 1 });
+});
+
+// portrait
+WW.sprite(document.getElementById('face').getContext('2d'), 'npc', 0, 0, { pal: WORKERS[0].pal });
+
+// minimap: one pixel per tile
+const MC = { 'K': '#3f8a2e', '~': '#2f7fd1', '=': '#1d5aa8', 'M': '#8a8f98', 'A': '#f4f8fb', 'T': '#2e7d32', 'r': '#8a8f98', 'q': '#4f9fc9', 'w': '#d9b44a', 's': '#e8d18a', ':': '#c79a5b' };
+const mc = document.getElementById('mini').getContext('2d');
+MAP.forEach((row, y) => [...row].forEach((ch, x) => { mc.fillStyle = MC[ch] || '#5aa83b'; mc.fillRect(x, y, 1, 1); }));
+mc.fillStyle = '#f2c14e'; SITES.forEach(st => mc.fillRect(st.x, st.y, 1, 1));
+mc.fillStyle = '#c0392b'; mc.fillRect(10, 9, 1, 1);
+mc.strokeStyle = '#ffffff'; mc.lineWidth = .5; mc.strokeRect(6.25, 1.25, 10, 7);
+
+WW.langToggle();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worldwalker Mockups</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .intro{max-width:1240px;margin:0 auto;padding:22px 16px 6px}
+  .intro h2{font-family:var(--pix);font-size:18px;color:var(--gold);margin:0 0 4px;line-height:1.5}
+  .intro .sub{font-family:var(--pix);font-size:11px;color:var(--muted);margin:0 0 14px}
+  .intro p{max-width:760px;color:var(--text)}
+  .grid{max-width:1240px;margin:0 auto;padding:12px 16px 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
+  .card{display:block;text-decoration:none;color:var(--text);background:var(--panel);border:2px solid var(--line);border-radius:8px;overflow:hidden}
+  .card:hover,.card:focus-visible{border-color:var(--gold)}
+  .card .img{aspect-ratio:16/12;background:#000 center top/cover no-repeat;image-rendering:pixelated;border-bottom:2px solid var(--line)}
+  .card .t{padding:12px 14px}
+  .card .n{font-family:var(--pix);font-size:10px;color:var(--gold)}
+  .card h3{font-family:var(--pix);font-size:12px;margin:6px 0;line-height:1.6}
+  .card p{margin:0;font-size:15px;color:var(--muted)}
+  .plan{display:inline-block;margin-top:6px}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">10 MOCKUPS</span>
+  <h1>The Torn Atlas · screen mockups</h1>
+</header>
+<section class="intro">
+  <h2>WORLDWALKER</h2>
+  <p class="sub">THE TORN ATLAS · APA WORLD GEOGRAPHY</p>
+  <p>The Smudge tore the Great Atlas into 24 pages. Each episode (one per Canvas subunit) wins one page back. These ten screens show how the game looks and plays: exploring like the first Zelda, farming like Stardew Valley, building like the first Warcraft, and saving to a class Google Sheet so the hero carries from one Canvas page to the next.</p>
+  <a class="plan pbtn gold" href="https://github.com/gabrielelias22307/worldwalker/blob/main/PLAN.md">READ THE PLAN</a>
+</section>
+<main class="grid" id="grid"></main>
+<script>
+const M = [
+  ['01-title', 'Title and sign-in', 'Pick a look, sign in with class code, first name and a secret number.'],
+  ['02-world-map', 'World map (the hub)', '8 realms, 24 episode dots, tools that open new places.'],
+  ['03-overworld', 'Exploring a region', 'Episode 1.1: one screen at a time, find the map pages.'],
+  ['04-talk-and-read', 'Talk and read', 'Episode 4.1, the Sahel: EN / ES / دری, yellow words, make it easier.'],
+  ['05-farm', 'Mountain farm', 'Episode 2.2: coffee grows best in the mild middle of the mountain.'],
+  ['06-city-build', 'Found a city', 'Episode 7.2: compare three sites by site and situation.'],
+  ['07-dungeon', 'River temple', 'Episode 5.1: open the dam so all three farms get water.'],
+  ['08-boss-trial', 'Boss trial', 'Episode 6.1: answer to crack the Storm Smudge’s cloud shield.'],
+  ['09-passport', 'Passport', 'Five geography powers, the bag, 24 stamps, the save code.'],
+  ['10-save-and-turn-in', 'Save and turn in', 'Atlas page restored, save to the Sheet, turn in, the Canvas page.']
+];
+document.getElementById('grid').innerHTML = M.map(([f, t, d], i) => `
+  <a class="card" href="${f}.html">
+    <div class="img" style="background-image:url(thumbs/${f.slice(0, 2)}.webp)" role="img" aria-label="${t} screen"></div>
+    <div class="t"><div class="n">MOCKUP ${i + 1}</div><h3>${t}</h3><p>${d}</p></div>
+  </a>`).join('');
+</script>
+</body>
+</html>

@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>River Temple — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .field{position:relative}
+  .field canvas{cursor:pointer}
+  .dbar{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#15121f;border-bottom:3px solid #000;padding:6px 10px;font-family:var(--pix);font-size:10px;color:#b9b5dc}
+  .item{display:flex;align-items:center;gap:8px}
+  .item canvas{width:32px;height:32px;image-rendering:pixelated;background:#29264a;border:3px solid #f2c14e}
+  .item b{color:#f2c14e;font-weight:400}
+  .room{color:#fff;text-align:center;line-height:1.6}
+  .mini{display:grid;grid-template-columns:repeat(4,14px);grid-template-rows:repeat(3,10px);gap:3px}
+  .mini i{display:block;background:#2b2740;border:1px solid #47416a}
+  .mini i.seen{background:#5b5479}
+  .mini i.here{background:#f2c14e;border-color:#fff;animation:blink 1s steps(2) infinite}
+  .mini i.goal{background:#3a3550;border-color:#e04848;position:relative}
+  .mini i.goal::after{content:'★';position:absolute;inset:-3px 0 0;font-size:9px;color:#e04848;text-align:center;font-style:normal}
+  .lbl{position:absolute;font-family:var(--pix);font-size:clamp(6px,.8vw,9px);line-height:1.5;padding:2px 5px;border:2px solid #000;border-radius:2px;background:#fffbe8;color:#22202e;white-space:nowrap}
+  .ctrls{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+  .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .pill{font-size:14px;padding:4px 10px;border:2px solid #22202e;border-radius:20px;background:#f4d7d0}
+  .pill.ok{background:#cdeec4}
+  .win{display:none;margin-top:10px;padding:8px 12px;background:#f2c14e;border:3px solid #22202e;border-radius:4px;font-weight:700}
+  .win.show{display:block}
+  .hint .langs{float:right;margin:0 0 6px 10px}
+  @media (max-width:600px){.dbar{font-size:8px}.room{display:none}.hint .langs{float:none;margin:0 0 8px}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 7 of 10</span>
+  <h1>River temple (Episode 5.1)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <div class="dbar">
+        <div class="item"><canvas id="key" width="16" height="16"></canvas><div>ITEM<br><b>WATER KEY</b></div></div>
+        <div class="room">TEMPLE OF THE TWIN RIVERS<br>ROOM 3 · THE DAM HALL</div>
+        <div class="mini" aria-label="Dungeon map: 12 rooms, you are in room 3">
+          <i class="seen"></i><i class="seen"></i><i class="here"></i><i></i>
+          <i></i><i class="seen"></i><i></i><i></i>
+          <i></i><i></i><i></i><i class="goal"></i>
+        </div>
+      </div>
+      <div class="field">
+        <canvas id="cv" aria-label="A stone temple room. A river enters at the top and is held by a dam gate. Channels lead to three farm plots: upstream at the top left, middle on the right, downstream along the bottom. Two floor switches control the dam and the middle canal."></canvas>
+        <div class="lbl" style="left:6.5%;top:1.5%">UPSTREAM · TÜRKIYE</div>
+        <div class="lbl" style="left:69%;top:28%">MIDDLE · SYRIA</div>
+        <div class="lbl" style="left:7%;top:75%">DOWNSTREAM · IRAQ</div>
+      </div>
+    </div>
+
+    <div class="box hint">
+      <div class="langs"><button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button></div>
+      <div data-en="<b>Pip:</b> The Euphrates River starts in the mountains of Türkiye, then flows through Syria and Iraq. Whoever is upstream decides how much water goes down. Set the dam and the canal so <b>all three farms</b> get water."
+           data-es="<b>Pip:</b> El río Éufrates nace en las montañas de Turquía y luego pasa por Siria e Irak. Quien está río arriba decide cuánta agua baja. Ajusta la presa y el canal para que <b>las tres granjas</b> reciban agua."
+           data-fa="<b>پیپ:</b> رود فرات از کوه‌های ترکیه شروع می‌شود و بعد از سوریه و عراق می‌گذرد. کسی که بالای رود است تصمیم می‌گیرد چقدر آب پایین برود. بند و کانال را طوری تنظیم کن که <b>هر سه مزرعه</b> آب بگیرند."></div>
+      <div class="ctrls">
+        <button class="pbtn" id="bDam"></button>
+        <button class="pbtn" id="bMid"></button>
+        <button class="pbtn" id="bReset">↺ RESET</button>
+      </div>
+      <div class="pills" id="pills" aria-live="polite"></div>
+      <div class="win" id="win" aria-live="polite"></div>
+    </div>
+    <p class="under">In the game the student steps on the glowing floor switches to move the gates. In this mockup you can click a switch on the map or use the buttons.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>One room of a temple dungeon, like the first Zelda. A river pours in from the top. Stone channels carry the water to three farm plots. The top strip shows the item just earned (the <b>Water Key</b>) and a map of the temple's rooms.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>Shared rivers cross borders: the Tigris and Euphrates start in Türkiye and flow into Syria and Iraq</li>
+      <li>Whoever controls water upstream (dams) affects everyone downstream</li>
+      <li>Sharing water is a reason countries argue and a reason they work together</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>Two floor switches move the gates. Hold the dam shut and only the upstream farm grows. Open it halfway and there is only enough water for one more farm. The puzzle is solved only when every farm gets some water. Solving it fills <b>🌱 People &amp; land</b> and <b>🧩 Regions</b> and opens the door to the next room. Later rooms add oil wells and desert springs.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.8 North Africa &amp; Southwest Asia</span><span class="chip">WG.17 cooperation and conflict</span>
+    <h2>BUILT WITH</h2>
+    <p>The room is redrawn from three numbers (dam setting, canal gate, which farms are wet), so a puzzle like this is a few lines of data per room.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="06-city-build.html">◀ 6 Found a city</a><a href="index.html">ALL MOCKUPS</a><a href="08-boss-trial.html">8 Boss trial ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const P = WW.P, R = WW.R, T = 16;
+
+// ----- extra tiles for the temple -----
+WW.tiles.y = (c, x, y, gx, gy) => { // dry channel
+  R(c, x, y, T, T, '#6b4f3a'); R(c, x, y, T, 1, '#4a3626');
+  R(c, x + 3, y + 4, 5, 1, '#4a3626'); R(c, x + 7, y + 5, 1, 4, '#4a3626'); R(c, x + 8, y + 9, 5, 1, '#4a3626'); R(c, x + 2, y + 11, 1, 3, '#4a3626');
+};
+WW.tiles.X = (c, x, y, gx, gy) => { // dry, cracked farm plot
+  R(c, x, y, T, T, '#a07a4a');
+  R(c, x + 2, y + 3, 6, 1, '#6e5030'); R(c, x + 8, y + 3, 1, 5, '#6e5030'); R(c, x + 9, y + 8, 5, 1, '#6e5030'); R(c, x + 4, y + 10, 1, 4, '#6e5030');
+  if (WW.hash(gx, gy) > .4) { R(c, x + 11, y + 2, 1, 5, '#b49a3a'); R(c, x + 12, y + 2, 2, 1, '#b49a3a'); }
+};
+WW.tiles.S = (c, x, y, gx, gy, t) => { // floor switch (glows)
+  WW.tiles.f(c, x, y, gx, gy);
+  R(c, x + 2, y + 2, 12, 12, '#22202e');
+  const on = Math.floor((t || 0) / 500) % 2;
+  R(c, x + 3, y + 3, 10, 10, on ? '#5fb0ee' : '#2f7fd1'); R(c, x + 5, y + 5, 6, 6, on ? '#d8f0ff' : '#5fb0ee');
+};
+function gateTile(c, x, y, level, wetBehind) { // level 0 closed, 1 half, 2 open
+  if (wetBehind) WW.tiles['~'](c, x, y, 0, 0, 0); else WW.tiles.y(c, x, y, 0, 0);
+  R(c, x, y, 3, T, P.dWall); R(c, x + 13, y, 3, T, P.dWall); R(c, x, y, T, 3, P.dWallD);
+  const h = level === 0 ? 13 : level === 1 ? 7 : 2;
+  for (let i = 0; i < 4; i++) R(c, x + 4 + i * 3, y + 3, 1, h, '#c9c9d6');
+  R(c, x + 3, y + 2 + h, 10, 2, '#8a8f98');
+}
+
+// ----- puzzle state -----
+const ST = { dam: 0, mid: true }; // dam: 0 closed, 1 half, 2 open
+const flow = () => {
+  const midWet = ST.dam > 0 && ST.mid;
+  const downWet = ST.dam === 2 || (ST.dam === 1 && !ST.mid);
+  return { upper: ST.dam > 0, midWet, downWet };
+};
+
+function buildMap() {
+  const f = flow();
+  const g = Array.from({ length: 11 }, (_, y) => Array.from({ length: 16 }, (_, x) => (y === 0 || y === 10 || x === 0 || x === 15) ? 'D' : 'f'));
+  // river enters and fills the reservoir
+  for (let y = 0; y <= 2; y++) { g[y][7] = '~'; g[y][8] = '~'; }
+  g[1][6] = '~'; g[1][9] = '~'; g[2][6] = '~'; g[2][9] = '~';
+  g[2][5] = '~'; // feeder to the upstream farm
+  for (let y = 1; y <= 3; y++) for (let x = 1; x <= 4; x++) g[y][x] = '2';
+  g[3][7] = 'G'; g[3][8] = 'G';
+  for (let y = 4; y <= 5; y++) { g[y][7] = f.upper ? '~' : 'y'; g[y][8] = f.upper ? '~' : 'y'; }
+  g[5][9] = 'g';
+  for (let x = 10; x <= 11; x++) g[5][x] = f.midWet ? '~' : 'y';
+  for (let y = 4; y <= 6; y++) for (let x = 12; x <= 14; x++) g[y][x] = f.midWet ? '2' : 'X';
+  for (let y = 6; y <= 8; y++) { g[y][7] = f.downWet ? '~' : 'y'; g[y][8] = f.downWet ? '~' : 'y'; }
+  for (let x = 1; x <= 14; x++) g[9][x] = f.downWet ? '2' : 'X';
+  g[4][5] = 'S'; g[7][10] = 'S';
+  return g.map(r => r.join(''));
+}
+
+const s = WW.stage('#cv', 16, 11);
+WW.hud(document.getElementById('hud'), { hearts: 3, max: 5, coins: 51, label: 'U5.1 · TEMPLE OF THE TWIN RIVERS', stats: { loc: 5, pla: 5, hei: 5, mov: 4, reg: 4 } });
+
+WW.loop(t => {
+  const c = s.ctx, m = buildMap(), f = flow();
+  WW.drawMap(c, m.map(r => r.replace(/[Gg]/g, 'f')), { t });
+  gateTile(c, 7 * T, 3 * T, ST.dam, true); gateTile(c, 8 * T, 3 * T, ST.dam, true);
+  gateTile(c, 9 * T, 5 * T, ST.mid ? 2 : 0, f.upper);
+  // torches on the top wall
+  [3, 12].forEach(tx => {
+    R(c, tx * T + 6, 6, 4, 8, P.woodD);
+    const fl = Math.floor(t / 120) % 3;
+    R(c, tx * T + 5, 1 + (fl === 1 ? 1 : 0), 6, 5, '#ff7a2a'); R(c, tx * T + 6, 2 + fl % 2, 4, 3, '#ffe36e');
+  });
+  // which plot is dry gets a little warning mark
+  const walk = Math.floor(t / 260) % 2;
+  WW.sprite(c, walk ? 'heroWalk' : 'hero', 4 * T, 5 * T - 2, { pal: { s: '#8d5a3b', h: '#1b1b1b' } });
+  WW.sprite(c, 'pip', 3 * T, 6 * T, { bob: true, t, phase: 1 });
+  // a farmer waiting at the downstream plot
+  WW.sprite(c, 'npc', 11 * T, 8 * T, { pal: { h: '#2b2b2b', s: '#c68b59', c: '#e0e0e0', C: '#b5b5b5', p: '#e0e0e0', B: '#6d4c2f' } });
+});
+
+// ----- buttons, labels, language -----
+let lang = 'en';
+const TXT = {
+  dam: [['DAM: CLOSED', 'PRESA: CERRADA', 'بند: بسته'], ['DAM: HALF OPEN', 'PRESA: MEDIO ABIERTA', 'بند: نیمه باز'], ['DAM: OPEN', 'PRESA: ABIERTA', 'بند: باز']],
+  mid: [['MIDDLE CANAL: CLOSED', 'CANAL DEL MEDIO: CERRADO', 'کانال میانی: بسته'], ['MIDDLE CANAL: OPEN', 'CANAL DEL MEDIO: ABIERTO', 'کانال میانی: باز']],
+  farms: [['Upstream farm', 'Granja de arriba', 'مزرعهٔ بالای رود'], ['Middle farm', 'Granja del medio', 'مزرعهٔ میانی'], ['Downstream farm', 'Granja de abajo', 'مزرعهٔ پایین رود']],
+  wet: ['has water', 'tiene agua', 'آب دارد'], dry: ['is dry', 'está seca', 'خشک است'],
+  win: ['All three farms have water! The door opens and an atlas page glows in the next room.', '¡Las tres granjas tienen agua! La puerta se abre y una página del atlas brilla en la sala siguiente.', 'هر سه مزرعه آب دارند! در باز می‌شود و یک صفحهٔ اطلس در اتاق بعدی می‌درخشد.']
+};
+const L = () => ({ en: 0, es: 1, fa: 2 })[lang];
+function render() {
+  const f = flow(), i = L();
+  const dir = lang === 'fa' ? 'rtl' : 'ltr';
+  const bDam = document.getElementById('bDam'), bMid = document.getElementById('bMid');
+  bDam.textContent = TXT.dam[ST.dam][i]; bMid.textContent = TXT.mid[ST.mid ? 1 : 0][i];
+  bDam.dir = bMid.dir = dir;
+  const wet = [true, f.midWet, f.downWet];
+  document.getElementById('pills').innerHTML = wet.map((w, k) => `<span class="pill ${w ? 'ok' : ''}" dir="${dir}">${w ? '💧' : '🏜️'} ${TXT.farms[k][i]} ${w ? TXT.wet[i] : TXT.dry[i]}</span>`).join('');
+  const win = document.getElementById('win');
+  win.classList.toggle('show', wet.every(Boolean)); win.textContent = '★ ' + TXT.win[i]; win.dir = dir;
+}
+document.getElementById('bDam').onclick = () => { ST.dam = (ST.dam + 1) % 3; render(); };
+document.getElementById('bMid').onclick = () => { ST.mid = !ST.mid; render(); };
+document.getElementById('bReset').onclick = () => { ST.dam = 0; ST.mid = true; render(); };
+document.getElementById('cv').addEventListener('click', e => {
+  const r = e.target.getBoundingClientRect();
+  const gx = Math.floor((e.clientX - r.left) / r.width * 16), gy = Math.floor((e.clientY - r.top) / r.height * 11);
+  if (gx === 5 && gy === 4) { ST.dam = (ST.dam + 1) % 3; render(); }
+  if (gx === 10 && gy === 7) { ST.mid = !ST.mid; render(); }
+});
+document.querySelectorAll('[data-lang-btn]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.langBtn; render(); }));
+
+// item: the water key, drawn in code
+const kc = document.getElementById('key').getContext('2d');
+R(kc, 2, 3, 7, 7, '#22202e'); R(kc, 3, 4, 5, 5, '#5fb0ee'); R(kc, 4, 5, 3, 3, '#22202e'); R(kc, 5, 6, 1, 1, '#d8f0ff');
+R(kc, 8, 6, 7, 2, '#5fb0ee'); R(kc, 12, 8, 2, 3, '#5fb0ee'); R(kc, 9, 8, 2, 2, '#5fb0ee');
+
+WW.langToggle();
+render();
+</script>
+</body>
+</html>

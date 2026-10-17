@@ -1,0 +1,60 @@
+/* WORLDWALKER mockup pages */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+
+:root{
+  --bg:#141322; --panel:#1f1d33; --panel2:#29264a; --line:#3b3866;
+  --text:#f3f1ff; --muted:#b9b5dc; --gold:#f2c14e; --teal:#2aa198; --red:#e04848;
+  --pix:'Press Start 2P', ui-monospace, monospace;
+  --read:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
+a{color:var(--gold)}
+.top{display:flex;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 20px;border-bottom:2px solid var(--line);background:#0f0e1b}
+.top .logo{font-family:var(--pix);font-size:13px;color:var(--gold);letter-spacing:1px;text-decoration:none}
+.top .tag{font-family:var(--pix);font-size:10px;color:var(--muted);padding:6px 8px;border:2px solid var(--line);border-radius:4px}
+.top h1{font-family:var(--pix);font-size:14px;margin:0;line-height:1.6}
+.wrap{max-width:1240px;margin:0 auto;padding:18px 16px 40px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:22px;align-items:start}
+@media (max-width:980px){.wrap{grid-template-columns:1fr}}
+
+/* the game screen */
+.screen{position:relative;background:#000;border:4px solid #000;outline:4px solid var(--line);border-radius:6px;overflow:hidden;user-select:none}
+.screen canvas{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#0b0a14;padding:8px 10px;font-family:var(--pix);font-size:11px;border-bottom:3px solid #000}
+.hud-left,.hud-right{display:flex;align-items:center;gap:6px}
+.hrt{color:var(--red);font-size:16px;line-height:1}
+.hrt.empty{color:#4a2630}
+.hud-coin{color:var(--gold);margin-left:8px}
+.hud-mid{color:var(--muted);font-size:10px}
+.meter{display:inline-flex;align-items:center;gap:3px}
+.meter i{font-style:normal;font-size:13px}
+.track{display:block;width:44px;height:10px;background:#2a2840;border:2px solid #000}
+.track b{display:block;height:100%}
+@media (max-width:600px){.track{width:26px}.hud{font-size:9px}}
+
+/* overlays inside the screen */
+.ov{position:absolute;left:0;right:0}
+.talk{position:absolute;left:3%;right:3%;bottom:4%;background:#fffbe8;color:#22202e;border:4px solid #22202e;outline:3px solid #fffbe8;border-radius:4px;padding:12px 16px 12px 88px;min-height:96px;font-size:clamp(14px,1.7vw,18px)}
+.talk .face{position:absolute;left:12px;top:12px;width:62px;height:62px;border:3px solid #22202e;background:#cfe8ff;image-rendering:pixelated}
+.talk .who{font-family:var(--pix);font-size:10px;color:#7a3b12;margin-bottom:4px}
+.talk .more{position:absolute;right:12px;bottom:8px;font-family:var(--pix);font-size:10px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.word{background:#ffe36e;border-bottom:2px dotted #7a3b12;padding:0 2px;cursor:help}
+.langs{display:flex;gap:6px}
+.langs button,.pbtn{font-family:var(--pix);font-size:10px;padding:8px 10px;background:#29264a;color:#fff;border:3px solid #000;border-radius:3px;cursor:pointer}
+.langs button.on{background:var(--gold);color:#22202e}
+.pbtn.gold{background:var(--gold);color:#22202e}
+.pbtn.teal{background:var(--teal)}
+.box{background:#fffbe8;color:#22202e;border:4px solid #22202e;outline:3px solid #fffbe8;border-radius:4px;padding:14px 16px}
+.pix{font-family:var(--pix);line-height:1.7}
+
+/* notes panel */
+.notes{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:16px 18px}
+.notes h2{font-family:var(--pix);font-size:11px;color:var(--gold);margin:14px 0 6px;line-height:1.6}
+.notes h2:first-child{margin-top:0}
+.notes p,.notes li{color:var(--text);font-size:15.5px}
+.notes ul{padding-left:18px;margin:4px 0}
+.notes .chip{display:inline-block;font-size:12px;padding:2px 8px;border-radius:20px;background:var(--panel2);border:1px solid var(--line);margin:2px 2px 2px 0;color:var(--muted)}
+.under{margin-top:14px;color:var(--muted);font-size:14.5px}
+.nav{max-width:1240px;margin:0 auto;padding:0 16px 40px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.nav a{font-family:var(--pix);font-size:10px;text-decoration:none;padding:10px 12px;border:2px solid var(--line);border-radius:4px;background:var(--panel)}

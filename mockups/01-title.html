@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Title and Sign-in — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .logo-ov{position:absolute;top:5%;left:0;right:0;text-align:center;pointer-events:none}
+  .logo-big{font-family:var(--pix);font-size:clamp(18px,4.4vw,46px);color:var(--gold);letter-spacing:2px;line-height:1.2;
+    text-shadow:3px 0 #22202e,-3px 0 #22202e,0 3px #22202e,0 -3px #22202e,3px 3px #22202e,-3px 3px #22202e,3px -3px #22202e,-3px -3px #22202e,0 7px #7a3b12}
+  .logo-sub{font-family:var(--pix);font-size:clamp(9px,1.4vw,14px);color:#fff;margin-top:12px;letter-spacing:2px;
+    text-shadow:2px 0 #22202e,-2px 0 #22202e,0 2px #22202e,0 -2px #22202e}
+  .canvas-wrap{position:relative}
+  [lang=fa]{font-family:var(--read)!important;letter-spacing:0!important}
+  .logo-sub[lang=fa]{font-size:clamp(14px,2vw,22px);font-weight:700}
+  .form h3[lang=fa],.pbtn[lang=fa]{font-size:15px;font-weight:700}
+  .look .pix[lang=fa],.look .lbl[lang=fa]{font-size:13px!important}
+  .signin{display:grid;grid-template-columns:200px minmax(0,1fr);gap:18px;background:#1a1830;padding:16px;border-top:4px solid #000}
+  .look{background:#29264a;border:3px solid #000;border-radius:4px;padding:10px;text-align:center}
+  .look canvas{width:96px;height:96px;image-rendering:pixelated;background:#cfe8ff;border:3px solid #000;display:block;margin:4px auto 8px}
+  .look .lbl{font-family:var(--pix);font-size:9px;color:var(--muted);margin:8px 0 4px;text-align:left}
+  .sw{display:flex;gap:5px;flex-wrap:wrap}
+  .sw button{width:24px;height:24px;border:3px solid #000;border-radius:3px;cursor:pointer;padding:0}
+  .sw button.on{outline:3px solid var(--gold);outline-offset:1px}
+  .form h3{font-family:var(--pix);font-size:11px;color:var(--gold);margin:0 0 10px;line-height:1.6}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .fields{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+  .fields label{display:block;font-size:14px;color:var(--muted)}
+  .fields input{width:100%;margin-top:4px;font:inherit;font-size:17px;padding:8px 10px;border:3px solid #000;border-radius:3px;background:#fffbe8;color:#22202e}
+  .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+  .linkbtn{background:none;border:none;color:var(--gold);text-decoration:underline;font:inherit;font-size:15px;cursor:pointer;padding:4px}
+  #msg{margin-top:12px;min-height:24px;font-size:15.5px;color:#fff}
+  #msg .ok{color:#8fe39b}
+  #msg .warn{color:#ffb4a8}
+  @media (max-width:700px){
+    .signin{grid-template-columns:1fr}
+    .fields{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 1 of 10</span>
+  <h1>Title and sign-in</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="canvas-wrap">
+        <canvas id="cv" aria-label="Sunset title scene: the hero and Pip the compass stand on a hill while torn atlas pages drift across the sky and the Smudge hides in a bush"></canvas>
+        <div class="logo-ov">
+          <div class="logo-big">WORLDWALKER</div>
+          <div class="logo-sub" data-en="THE TORN ATLAS" data-es="EL ATLAS ROTO" data-fa="اطلس پاره‌شده"></div>
+        </div>
+      </div>
+
+      <div class="signin">
+        <div class="look">
+          <div class="pix" style="font-size:9px;color:#fff" data-en="PICK YOUR LOOK" data-es="ELIGE TU ASPECTO" data-fa="شکل خود را انتخاب کن"></div>
+          <canvas id="pv" width="16" height="16" aria-label="Your hero"></canvas>
+          <div class="lbl" data-en="SKIN" data-es="PIEL" data-fa="رنگ پوست"></div>
+          <div class="sw" id="sw-s"></div>
+          <div class="lbl" data-en="HAIR" data-es="PELO" data-fa="مو"></div>
+          <div class="sw" id="sw-h"></div>
+          <div class="lbl" data-en="HAT" data-es="SOMBRERO" data-fa="کلاه"></div>
+          <div class="sw" id="sw-H"></div>
+        </div>
+
+        <div class="form">
+          <div class="row">
+            <h3 data-en="SIGN IN TO SAVE YOUR TRIP" data-es="ENTRA PARA GUARDAR TU VIAJE" data-fa="برای ذخیره سفر خود وارد شو"></h3>
+            <div class="langs">
+              <button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button>
+            </div>
+          </div>
+          <div class="fields">
+            <label><span data-en="Class code" data-es="Código de la clase" data-fa="کود صنف"></span>
+              <input id="f-class" value="GEO-3B" autocomplete="off"></label>
+            <label><span data-en="First name only" data-es="Solo tu primer nombre" data-fa="فقط نام اول"></span>
+              <input id="f-name" value="Ana" autocomplete="off"></label>
+            <label><span data-en="Secret number (4 digits)" data-es="Número secreto (4 dígitos)" data-fa="رمز (۴ رقم)"></span>
+              <input id="f-pin" value="4821" inputmode="numeric" maxlength="4" type="password" autocomplete="off"></label>
+          </div>
+          <div class="btns">
+            <button class="pbtn gold" id="b-cont" data-en="CONTINUE ▶" data-es="CONTINUAR ▶" data-fa="ادامه ▶"></button>
+            <button class="pbtn teal" id="b-new" data-en="NEW GAME" data-es="JUEGO NUEVO" data-fa="بازی نو"></button>
+            <button class="linkbtn" id="b-off" data-en="Play without saving online" data-es="Jugar sin guardar en línea" data-fa="بازی بدون ذخیره آنلاین"></button>
+          </div>
+          <div id="msg" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+    <p class="under">The title scene moves on its own. Try the look picker, the language buttons and the three buttons under the sign-in boxes.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>A short moving title scene: their hero and Pip on a hill, torn atlas pages blowing across the sky, and the Smudge hiding in a bush. Under it: pick a look, sign in, press Continue.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>The story: the Smudge tore the Great Atlas into 24 pages. Each episode wins one page back.</li>
+      <li>Their hero is theirs: skin, hair and hat colors carry into every episode.</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p><b>Sign-in is three things:</b> class code, first name, and a 4-digit secret number. No last name, no email, no student ID. The Google Sheet only ever holds "GEO-3B · Ana · ####", so a stranger who saw it could not tell who anyone is. The class code tells you which class period the row belongs to.</p>
+    <p><b>Offline or Google blocked?</b> "Play without saving online" still works. The game saves in the browser on that Chromebook, and the end screen gives a Passport Code (like <b>WW-7K3Q-M2XA-9PDE</b>) to paste into Canvas. Next time, they paste the code back in and keep going.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">No standard on this screen</span><span class="chip">Privacy: first name only</span>
+    <h2>BUILT WITH</h2>
+    <p>The scene, hero and Pip are drawn in code. The look picker just swaps colors on the same hero drawing, so it costs almost nothing in file size.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="index.html">◀ ALL MOCKUPS</a><a href="02-world-map.html">2 World map ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const SKINS = ['#f6d2b0', '#e5b48c', '#c68a5e', '#8d5a3b', '#5e3b26'];
+const HAIRS = ['#1e1612', '#5a3a1c', '#a8682e', '#e0c070', '#7a2f2f'];
+const HATS  = ['#d98e2b', '#2aa198', '#c0392b', '#3b6fd6', '#8e5bd6'];
+const look = { s: SKINS[1], h: HAIRS[0], H: HATS[0] };
+function darker(hex, f = 0.6) {
+  const n = parseInt(hex.slice(1), 16);
+  const r = ((n >> 16) & 255) * f | 0, g = ((n >> 8) & 255) * f | 0, b = (n & 255) * f | 0;
+  return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
+}
+function heroPal() { return { s: look.s, h: look.h, H: look.H, b: darker(look.H) }; }
+
+function makeSwatches(id, list, key) {
+  const box = document.getElementById(id);
+  list.forEach((col, i) => {
+    const b = document.createElement('button');
+    b.style.background = col;
+    b.setAttribute('aria-label', key + ' color ' + (i + 1));
+    if (look[key] === col) b.classList.add('on');
+    b.onclick = () => { look[key] = col; box.querySelectorAll('button').forEach(x => x.classList.remove('on')); b.classList.add('on'); drawPreview(); };
+    box.appendChild(b);
+  });
+}
+makeSwatches('sw-s', SKINS, 's'); makeSwatches('sw-h', HAIRS, 'h'); makeSwatches('sw-H', HATS, 'H');
+const pv = document.getElementById('pv').getContext('2d');
+function drawPreview() { pv.clearRect(0, 0, 16, 16); WW.sprite(pv, 'hero', 0, 0, { pal: heroPal() }); }
+drawPreview();
+
+/* ---- title scene ---- */
+const s = WW.stage('#cv', 16, 11);
+const SKY = ['#1c1240', '#2a1a55', '#3d2268', '#5a2b74', '#7a3478', '#9c4277', '#c25670', '#e06f66', '#f2895c', '#ff9f5a', '#ffb867'];
+const STARS = Array.from({ length: 22 }, (_, i) => [(WW.hash(i, 1) * 256) | 0, (WW.hash(i, 2) * 40) | 0]);
+function hillY(x) { return 116 + Math.round(((x - 80) * (x - 80)) / 380); }
+function farY(x) { return 92 + Math.round(Math.sin(x / 23) * 6 + Math.sin(x / 9) * 3); }
+function midY(x) { return 104 + Math.round(Math.sin(x / 31 + 2) * 6); }
+WW.loop(t => {
+  const c = s.ctx, R = WW.R;
+  // sky bands
+  for (let i = 0; i < SKY.length; i++) R(c, 0, i * 11, 256, 11, SKY[i]);
+  R(c, 0, 121, 256, 60, '#ffb867');
+  STARS.forEach(([x, y], i) => { if ((Math.floor(t / 500) + i) % 5) R(c, x, y, 1, 1, '#fff6d8'); });
+  // sun
+  for (let dy = -18; dy <= 0; dy++) { const w = Math.round(Math.sqrt(18 * 18 - dy * dy)); R(c, 196 - w, 104 + dy, w * 2, 1, dy > -6 ? '#ffd56b' : '#ffe39a'); }
+  // clouds
+  const cx = (t / 90) % 320 - 60;
+  [[cx, 30], [cx + 150, 48]].forEach(([x, y]) => { R(c, x, y, 34, 5, '#f6a3a0'); R(c, x + 6, y - 4, 20, 4, '#f6a3a0'); R(c, x + 4, y + 5, 28, 2, '#d77c88'); });
+  // far mountains + mid hills
+  for (let x = 0; x < 256; x++) { const y = farY(x); R(c, x, y, 1, 176 - y, '#5a3d7a'); }
+  for (let x = 0; x < 256; x++) { const y = midY(x); R(c, x, y, 1, 176 - y, '#3d2d63'); }
+  // foreground hill
+  for (let x = 0; x < 256; x++) {
+    const y = hillY(x); if (y > 176) continue;
+    R(c, x, y, 1, 176 - y, '#4f9a36'); R(c, x, y, 1, 2, '#7cc451');
+    if (WW.hash(x, 7) > .8) R(c, x, y + 4 + ((WW.hash(x, 3) * 30) | 0), 1, 2, '#3f8a2e');
+  }
+  // little pine silhouettes on the mid hills
+  [[20, 0], [36, 1], [118, 0], [232, 1]].forEach(([x, k]) => {
+    const y = midY(x) - 10; for (let r = 0; r < 12; r++) R(c, x - (r >> 1), y + r, (r >> 1) * 2 + 1, 1, '#2b2150');
+  });
+  // drifting atlas pages
+  for (let i = 0; i < 4; i++) {
+    const x = ((t / (38 + i * 7)) + i * 85) % 300 - 24;
+    const y = 52 + i * 11 + Math.round(Math.sin(t / 500 + i * 2) * 6);
+    WW.sprite(c, 'page', Math.round(x), y, {});
+  }
+  // the Smudge hiding in a bush (bottom right)
+  const by = hillY(206) - 2;
+  const peek = Math.round((Math.sin(t / 900) + 1) * 3);
+  WW.sprite(c, 'smudge', 198, by - 6 - peek, { pal: Math.floor(t / 2600) % 4 === 0 && (t % 2600) < 160 ? { w: '#6d5f8c' } : {} });
+  for (let r = 0; r < 18; r++) { const w = Math.round(Math.sqrt(Math.max(0, 1 - Math.pow((r - 9) / 10, 2))) * 17); R(c, 207 - w, by - 2 + r, w * 2, 1, r > 13 ? '#1b5e20' : '#2e7d32'); }
+  R(c, 196, by + 1, 6, 2, '#43a047'); R(c, 212, by + 4, 5, 2, '#43a047'); R(c, 203, by + 8, 3, 2, '#43a047');
+  // hero + Pip on the hill top
+  WW.sprite(c, 'hero', 72, hillY(80) - 16, { pal: heroPal() });
+  WW.sprite(c, 'pip', 89, hillY(96) - 26, { bob: true, t });
+});
+
+/* ---- sign-in demo ---- */
+WW.langToggle();
+const lang = () => (document.querySelector('[data-lang-btn].on') || {}).dataset?.langBtn || 'en';
+let last = null;
+const M = {
+  cont: n => ({ en: `<span class="ok">Welcome back, ${n}!</span> Your save: 6 of 24 atlas pages. Next stop: <b>3.1 Europe</b>.`,
+                es: `<span class="ok">¡Bienvenida de nuevo, ${n}!</span> Tu partida: 6 de 24 páginas del atlas. Próxima parada: <b>3.1 Europa</b>.`,
+                fa: `<span class="ok">${n}، دوباره خوش آمدی!</span> ذخیره تو: ۶ از ۲۴ صفحه اطلس. ایستگاه بعدی: <b>۳.۱ اروپا</b>.` }),
+  neu: n => ({ en: `<span class="ok">A new Worldwalker!</span> Pick your look, ${n}, then the story starts in the Mapmaker's Valley.`,
+               es: `<span class="ok">¡Un nuevo Worldwalker!</span> Elige tu aspecto, ${n}, y la historia empieza en el Valle del Cartógrafo.`,
+               fa: `<span class="ok">یک Worldwalker تازه!</span> ${n}، شکل خود را انتخاب کن. داستان در دره نقشه‌کش شروع می‌شود.` }),
+  off: () => ({ en: `You can play right now. Your trip saves <b>on this computer only</b>. At the end you get a Passport Code like <b>WW-7K3Q-M2XA-9PDE</b>. Paste it into Canvas so your teacher can see it, and paste it back in next time.`,
+                es: `Puedes jugar ahora mismo. Tu viaje se guarda <b>solo en esta computadora</b>. Al final recibes un Código de Pasaporte como <b>WW-7K3Q-M2XA-9PDE</b>. Pégalo en Canvas para que tu maestro lo vea, y vuelve a pegarlo la próxima vez.`,
+                fa: `همین حالا می‌توانی بازی کنی. سفر تو <b>فقط در همین کمپیوتر</b> ذخیره می‌شود. در آخر یک کود پاسپورت مثل <b dir="ltr">WW-7K3Q-M2XA-9PDE</b> می‌گیری. آن را در Canvas بگذار تا معلم ببیند، و دفعه بعد دوباره واردش کن.` }),
+  pin: () => ({ en: `<span class="warn">The secret number needs exactly 4 digits.</span>`,
+                es: `<span class="warn">El número secreto necesita exactamente 4 dígitos.</span>`,
+                fa: `<span class="warn">رمز باید دقیقاً ۴ رقم باشد.</span>` }),
+  name: () => ({ en: `<span class="warn">Type your first name (letters only).</span>`,
+                 es: `<span class="warn">Escribe tu primer nombre (solo letras).</span>`,
+                 fa: `<span class="warn">نام اول خود را بنویس (فقط حروف).</span>` })
+};
+function show() {
+  const m = document.getElementById('msg');
+  if (!last) { m.innerHTML = ''; return; }
+  const l = lang(); m.innerHTML = last[l]; m.dir = l === 'fa' ? 'rtl' : 'ltr';
+}
+function check() {
+  const n = document.getElementById('f-name').value.trim();
+  const p = document.getElementById('f-pin').value.trim();
+  if (!/^[\p{L}' -]{1,20}$/u.test(n)) { last = M.name(); return null; }
+  if (!/^\d{4}$/.test(p)) { last = M.pin(); return null; }
+  return n;
+}
+document.getElementById('b-cont').onclick = () => { const n = check(); if (n) last = M.cont(n); show(); };
+document.getElementById('b-new').onclick = () => { const n = check(); if (n) last = M.neu(n); show(); };
+document.getElementById('b-off').onclick = () => { last = M.off(); show(); };
+document.querySelectorAll('[data-lang-btn]').forEach(b => b.addEventListener('click', show));
+</script>
+</body>
+</html>

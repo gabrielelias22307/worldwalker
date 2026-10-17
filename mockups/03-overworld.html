@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Overworld — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 3 of 10</span>
+  <h1>Exploring a region (Episode 1.1)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <canvas id="cv" aria-label="Top-down village with a river, a bridge, houses, the hero, Pip the compass, and a Smudge creature"></canvas>
+      <div class="talk" style="padding-left:16px;min-height:0;bottom:3%;left:auto;right:3%;width:auto;max-width:56%">
+        <div class="who">QUEST</div>
+        Find <b>3 map pages</b> the Smudge blew away. Use the <b>compass rose</b> on the sign: the first page is <b>north</b> of the bridge.
+      </div>
+    </div>
+    <p class="under">Arrow keys or WASD to walk (a touch pad shows up on Chromebooks with touch screens). Walk into the sign to read it. Walk into a person to talk.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>One screen of the map at a time, like the first Zelda. Walk off the edge and the next screen slides in. The top bar shows hearts, coins and the five geography meters.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>Cardinal directions and the compass rose</li>
+      <li>Reading a map key (the sign is the key)</li>
+      <li>Absolute vs. relative location ("north of the bridge")</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>Each map page is hidden by a clue that uses a map skill. Picking up a page fills the <b>📍 Where</b> meter. The Smudge chases you; touch it and you lose a heart, answer its question and it melts.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.1 map skills</span><span class="chip">WG.2 regions</span>
+    <h2>BUILT WITH</h2>
+    <p>Tiles and characters are drawn in code (no picture files), so a whole screen costs a few hundred bytes of text.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="02-world-map.html">◀ 2 World map</a><a href="index.html">ALL MOCKUPS</a><a href="04-talk-and-read.html">4 Talk and read ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const MAP = [
+  'TTTTTT~~TTTTTTTT',
+  'T..,..~~...,...T',
+  'T.RRR.~~.RRRR..T',
+  'T.hdh.~~.hhdh..T',
+  'T..:..~~...:...T',
+  '...::::bb:::::..',
+  'T..:..~~....:..T',
+  'T,.:..~~.FFFF:.T',
+  'T.x:..~~.o12o:.T',
+  'T..:,.~~.o3oo:.T',
+  'TTT:TT~~TTTTT:TT'
+];
+const s = WW.stage('#cv', 16, 11);
+WW.hud(document.getElementById('hud'), { hearts: 3, max: 5, coins: 12, label: 'U1.1 · CARTOGRAPHER’S VILLAGE', stats: { loc: 3, pla: 1, hei: 0, mov: 1, reg: 0 } });
+WW.loop(t => {
+  const c = s.ctx;
+  WW.drawMap(c, MAP, { t });
+  WW.sprite(c, 'page', 8 * 16, 1 * 16, { bob: true, t });
+  WW.sprite(c, 'npc', 11 * 16, 4 * 16, { pal: { h: '#222', c: '#c0392b', C: '#8e2a20', s: '#b07a52' } });
+  const walk = Math.floor(t / 220) % 2;
+  WW.sprite(c, walk ? 'heroWalk' : 'hero', 4 * 16, 5 * 16 - 2, {});
+  WW.sprite(c, 'pip', 5 * 16 + 4, 4 * 16 - 4, { bob: true, t, phase: 1 });
+  WW.sprite(c, 'smudge', 13 * 16 + Math.round(Math.sin(t / 600) * 6), 6 * 16, { bob: true, t, phase: 2 });
+  WW.coin(c, 2 * 16, 6 * 16, t);
+});
+</script>
+</body>
+</html>

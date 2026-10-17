@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mountain Farm — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .field{position:relative}
+  .band{position:absolute;left:1.2%;font-size:clamp(9px,1.25vw,13px);background:rgba(15,14,27,.82);color:#fff;border:2px solid #000;border-left-width:6px;border-radius:3px;padding:3px 7px;line-height:1.3;max-width:34%}
+  .band b{font-family:var(--read);font-weight:700;letter-spacing:.5px;font-size:clamp(10px,1.2vw,13px);display:block}
+  .band span{display:block}
+  .band.hel{top:1.5%;border-left-color:#c9dbe8}
+  .band.fri{top:26.5%;border-left-color:#7cc451}
+  .band.tem{top:51.5%;border-left-color:#d1263a}
+  .band.cal{top:76.5%;border-left-color:#f2c14e}
+  .bandline{position:absolute;left:0;right:0;height:0;border-top:2px dashed rgba(255,255,255,.55)}
+  .clock{position:absolute;right:1.5%;top:2%;background:#fffbe8;color:#22202e;border:3px solid #22202e;border-radius:4px;padding:5px 9px;font-family:var(--pix);font-size:clamp(7px,.9vw,10px);line-height:1.8;text-align:right}
+  .clock .sun{font-size:clamp(12px,1.6vw,18px)}
+  .bubble{position:absolute;left:46%;top:77%;width:40%;background:#fffbe8;color:#22202e;border:3px solid #22202e;border-radius:6px;padding:7px 10px;font-size:clamp(11px,1.35vw,15px);line-height:1.35}
+  .bubble::after{content:'';position:absolute;left:-15px;top:14px;border:6px solid transparent;border-right-color:#22202e}
+  .bar{background:#3b2a1a;border-top:3px solid #000;padding:8px 8px 10px}
+  .slots{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+  .slot{position:relative;width:46px;height:46px;background:#c8a26b;border:3px solid #5f3d1d;border-radius:3px;display:flex;align-items:center;justify-content:center}
+  .slot canvas{width:32px;height:32px;image-rendering:pixelated}
+  .slot.on{border-color:#f2c14e;background:#e4c48c;outline:2px solid #000}
+  .slot i{position:absolute;right:2px;bottom:0;font-style:normal;font-family:var(--pix);font-size:8px;color:#22202e}
+  .slot em{position:absolute;left:2px;top:1px;font-style:normal;font-family:var(--pix);font-size:7px;color:#5f3d1d}
+  .tip{text-align:center;color:#fffbe8;margin-top:6px;font-size:14px}
+  .tip b{color:#f2c14e}
+  .barrow{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:6px}
+  @media (max-width:600px){.slots{gap:3px}.slot{width:28px;height:28px;border-width:2px}.slot canvas{width:20px;height:20px}.slot em{display:none}.band{max-width:44%;padding:2px 4px}.band span{display:none}.bubble{left:44%;width:54%;top:70%}}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 5 of 10</span>
+  <h1>Mountain farm (Episode 2.2)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <div class="field">
+        <canvas id="cv" aria-label="A mountainside farm split into four elevation bands, from snowy peaks at the top to a hot lowland with palms and bananas at the bottom. Coffee bushes grow in the middle band. One coffee plant in the hot band is wilting."></canvas>
+        <div class="bandline" style="top:25%"></div><div class="bandline" style="top:50%"></div><div class="bandline" style="top:75%"></div>
+        <div class="band hel"><b>TIERRA HELADA</b><span data-en="frozen land · 3,600 m +" data-es="tierra helada · más de 3,600 m" data-fa="زمین یخ‌زده · بالای ۳٬۶۰۰ متر"></span></div>
+        <div class="band fri"><b>TIERRA FRÍA</b><span data-en="cool land · potatoes, wheat" data-es="tierra fría · papas, trigo" data-fa="زمین سرد · کچالو، گندم"></span></div>
+        <div class="band tem"><b>TIERRA TEMPLADA</b><span data-en="mild land · coffee grows best" data-es="tierra templada · aquí crece mejor el café" data-fa="زمین معتدل · قهوه اینجا بهتر می‌روید"></span></div>
+        <div class="band cal"><b>TIERRA CALIENTE</b><span data-en="hot land · bananas, sugarcane" data-es="tierra caliente · plátanos, caña de azúcar" data-fa="زمین گرم · کیله، نیشکر"></span></div>
+        <div class="clock"><span class="sun">☀️</span> DAY 3<br>DRY SEASON<br>6:40 AM</div>
+        <div class="bubble" data-en="<b>Too hot down here!</b> Coffee likes mild mountain air. Try planting it higher up." data-es="<b>¡Aquí abajo hace demasiado calor!</b> Al café le gusta el aire templado de la montaña. Siémbralo más arriba." data-fa="<b>این پایین خیلی گرم است!</b> قهوه هوای معتدل کوهستان را دوست دارد. آن را بالاتر بکار."></div>
+      </div>
+      <div class="bar">
+        <div class="slots" id="slots"></div>
+        <div class="tip" id="tip" data-en="<b>Coffee seedling.</b> Plant it in the <b>tierra templada</b>, the mild middle of the mountain." data-es="<b>Plántula de café.</b> Siémbrala en la <b>tierra templada</b>, la parte media y templada de la montaña." data-fa="<b>نهال قهوه.</b> آن را در <b>تیرا تمپلادا</b>، بخش میانی و معتدل کوه، بکار."></div>
+        <div class="barrow"><span></span><div class="langs"><button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button></div></div>
+      </div>
+    </div>
+    <p class="under">Pick a seed in the bottom bar, then walk to a patch of soil and press Space to plant. Each band of the mountain has its own weather, so a crop that grows well in one band may dry up or freeze in another.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>A farm on the side of a mountain in the highlands of Colombia or Guatemala, like Stardew Valley. The mountain is cut into four bands. It gets colder the higher you climb. A clock shows the day and the season.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>The four elevation zones of Latin America: <i>tierra caliente, templada, fría, helada</i></li>
+      <li>Why coffee grows in the mountains and not on the hot coast</li>
+      <li>How people match crops to the land (bananas low, potatoes high)</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>Plant each seed and watch it grow over a few game days. A plant in the wrong band wilts and Pip explains why. A full harvest in every band fills <b>🏞️ What it is like</b> and <b>🌱 People &amp; land</b>, and the last coffee sack hides the atlas page.</p>
+    <p>Ties to the reading the class already has: <i>Why Coffee Grows in the Mountains</i> (Quick Read 2.2).</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.4 Latin America</span><span class="chip">WG.2 physical traits</span>
+    <h2>BUILT WITH</h2>
+    <p>Crops are code-drawn tiles that swap as they grow (seedling → bush → ripe red cherries). The bottom bar uses the same tiles shrunk down, so no extra pictures are needed.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="04-talk-and-read.html">◀ 4 Talk and read</a><a href="index.html">ALL MOCKUPS</a><a href="06-city-build.html">6 Found a city ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const P = WW.P, R = WW.R, T = 16;
+// extra crop tiles for this screen
+WW.tiles.v = (c, x, y, gx, gy) => { // potato plants
+  WW.tiles.o(c, x, y, gx, gy);
+  [[3, 4], [10, 5], [5, 10], [11, 11]].forEach(([a, b]) => { R(c, x + a, y + b, 4, 3, P.leaf); R(c, x + a + 1, y + b - 1, 2, 1, P.leafL); });
+};
+WW.tiles.y = (c, x, y, gx, gy) => { // banana plant
+  WW.tiles['.'](c, x, y, gx, gy);
+  R(c, x + 7, y + 7, 2, 8, '#6b8e23');
+  R(c, x + 1, y + 2, 7, 3, P.leafL); R(c, x + 8, y + 1, 7, 3, P.leaf); R(c, x + 2, y + 6, 5, 2, P.leaf); R(c, x + 9, y + 5, 6, 2, P.leafL);
+  R(c, x + 9, y + 8, 3, 4, '#f5d33b'); R(c, x + 10, y + 12, 1, 1, '#6b8e23');
+};
+WW.tiles.z = (c, x, y, gx, gy) => { // sugarcane
+  WW.tiles['.'](c, x, y, gx, gy);
+  for (let i = 0; i < 4; i++) {
+    const sx = x + 2 + i * 4;
+    R(c, sx, y + 2, 2, 14, '#9acd52');
+    for (let k = 0; k < 4; k++) R(c, sx, y + 4 + k * 3, 2, 1, '#6e9a35');
+    R(c, sx - 1, y + 1, 3, 2, P.leaf);
+  }
+};
+WW.tiles.X = (c, x, y, gx, gy) => { // wilting coffee
+  WW.tiles.o(c, x, y, gx, gy);
+  R(c, x + 7, y + 6, 2, 9, '#7a5a2a');
+  R(c, x + 3, y + 8, 4, 2, '#b49a3a'); R(c, x + 2, y + 10, 2, 3, '#9c7a2a');
+  R(c, x + 9, y + 9, 4, 2, '#b49a3a'); R(c, x + 12, y + 11, 2, 3, '#9c7a2a');
+  R(c, x + 6, y + 4, 4, 2, '#a88c3a');
+};
+
+const MAP = [
+  'AAMAAAAMAAAAAMAA',
+  'nnAnnnAnnnnAnnAn',
+  'nnnPnnnnnnPnnnPn',
+  'PP.wwwww..vvvv.P',
+  'P..wwwww..vvvv..',
+  '..::::::::::::..',
+  'T.o333o..o323o.T',
+  '..o232o..o333o..',
+  '.,o112o..::::::.',
+  'yy.::::.zzzz..yy',
+  'yyy.oXo.zzzz.ppy',
+  'ss~~~~~~~sssspss'
+];
+const BASE = MAP.map((r, i) => i < 3 ? 'n'.repeat(16) : '');
+const s = WW.stage('#cv', 16, 12);
+WW.hud(document.getElementById('hud'), { hearts: 4, max: 5, coins: 37, label: 'U2.2 · THE COFFEE MOUNTAIN', stats: { loc: 4, pla: 5, hei: 4, mov: 2, reg: 3 } });
+
+WW.loop(t => {
+  const c = s.ctx;
+  WW.drawMap(c, MAP, { t, base: BASE });
+  // farmer friend in the coffee band
+  WW.sprite(c, 'npc', 7 * 16, 6 * 16, { pal: { h: '#1d1a17', s: '#a8744a', c: '#e07b39', C: '#b85d26', p: '#3a3a3a' } });
+  // hero standing beside the wilting plant
+  const walk = Math.floor(t / 260) % 2;
+  WW.sprite(c, walk ? 'heroWalk' : 'hero', 6 * 16, 10 * 16 - 3, { pal: { s: '#c68b59' } });
+  WW.sprite(c, 'pip', 3 * 16 + 4, 9 * 16 - 6, { bob: true, t, phase: 1 });
+  // little sweat drops over the wilting coffee
+  if (Math.floor(t / 400) % 2) { R(c, 5 * 16 + 11, 10 * 16 - 2, 2, 3, '#9fd3ff'); R(c, 5 * 16 + 3, 10 * 16 - 4, 2, 3, '#9fd3ff'); }
+  // falling snowflakes up top
+  for (let i = 0; i < 10; i++) {
+    const fx = (i * 37 + t / 40) % 256, fy = (i * 23 + t / 25) % 44;
+    R(c, fx | 0, fy | 0, 1, 1, '#ffffff');
+  }
+});
+
+// hotbar: each slot draws a real tile, shrunk
+const SLOTS = [
+  { k: '3', on: true, n: 12 }, { k: 'y', n: 6 }, { k: 'z', n: 8 }, { k: 'v', n: 10 }, { k: 'w', n: 9 },
+  { draw: 'can' }, { draw: 'hoe' }, { draw: 'compass' }, { draw: 'canoe' }, { draw: 'page' }
+];
+const holder = document.getElementById('slots');
+SLOTS.forEach((sl, i) => {
+  const d = document.createElement('div'); d.className = 'slot' + (sl.on ? ' on' : '');
+  const cv = document.createElement('canvas'); cv.width = 16; cv.height = 16;
+  const c = cv.getContext('2d');
+  if (sl.k) WW.tiles[sl.k](c, 0, 0, i, 99, 0);
+  else if (sl.draw === 'page') WW.sprite(c, 'page', 1, 2);
+  else if (sl.draw === 'can') { R(c, 3, 6, 9, 7, '#7d8a99'); R(c, 4, 7, 7, 5, '#9fb0c2'); R(c, 12, 5, 3, 2, '#7d8a99'); R(c, 5, 4, 5, 2, '#5e6b78'); }
+  else if (sl.draw === 'hoe') { for (let k = 0; k < 11; k++) R(c, 3 + k, 13 - k, 2, 2, P.wood); R(c, 11, 1, 4, 3, '#7d8a99'); }
+  else if (sl.draw === 'compass') { R(c, 2, 2, 12, 12, P.gold); R(c, 3, 3, 10, 10, '#fffbe8'); R(c, 7, 4, 2, 4, P.red); R(c, 7, 8, 2, 4, '#2f6fd6'); }
+  else if (sl.draw === 'canoe') { R(c, 1, 8, 14, 3, P.wood); R(c, 2, 11, 12, 2, P.woodD); R(c, 0, 7, 2, 2, P.wood); R(c, 14, 7, 2, 2, P.wood); R(c, 7, 3, 1, 6, P.woodD); }
+  d.appendChild(cv);
+  const num = document.createElement('em'); num.textContent = (i + 1) % 10; d.appendChild(num);
+  if (sl.n) { const n = document.createElement('i'); n.textContent = sl.n; d.appendChild(n); }
+  holder.appendChild(d);
+});
+WW.langToggle();
+</script>
+</body>
+</html>

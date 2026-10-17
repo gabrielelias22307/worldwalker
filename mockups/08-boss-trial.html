@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Boss Trial — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .bossbar{position:absolute;top:6px;left:3%;right:3%;display:flex;align-items:center;gap:10px;font-family:var(--pix);font-size:10px;color:#fff;background:rgba(11,10,20,.82);border:3px solid #000;padding:6px 10px;border-radius:3px}
+  .bossbar .name{color:#c9b8ff;white-space:nowrap}
+  .shield{display:flex;gap:4px;flex:1}
+  .shield i{flex:1;height:12px;background:#9fd3ff;border:2px solid #000;display:block}
+  .shield i.cracked{background:#2a2840}
+  .qpanel{background:#141322;border-top:3px solid #000;padding:14px 16px 16px}
+  .qhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .qhead .pix{font-size:10px;color:var(--gold)}
+  .qtext{font-size:clamp(16px,2vw,20px);margin:0 0 12px;color:#fff}
+  .answers{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  @media (max-width:600px){.answers{grid-template-columns:1fr}}
+  .ans{font-family:var(--read);font-size:17px;text-align:start;padding:12px 14px;background:#fffbe8;color:#22202e;border:3px solid #000;border-radius:3px;cursor:pointer}
+  .ans b{font-family:var(--pix);font-size:10px;margin-right:8px;color:#7a3b12}
+  .ans.right{background:#b8f0b0}
+  .ans.wrong{background:#ffc2c2}
+  .ans[disabled]{cursor:default}
+  .fb{margin-top:12px;padding:12px 14px;border:3px solid #000;border-radius:3px;display:none;font-size:16px}
+  .fb.show{display:block}
+  .fb.good{background:#173d1f;color:#d7ffd0}
+  .fb.bad{background:#40161c;color:#ffd6d6}
+  .fb .pix{font-size:10px;display:block;margin-bottom:6px}
+  .shake{animation:shake .35s}
+  @keyframes shake{20%{transform:translateX(-6px)}40%{transform:translateX(6px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+  .again{margin-top:10px}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 8 of 10</span>
+  <h1>Boss trial (end of Episode 6.1)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen" id="screen">
+      <div class="hud" id="hud"></div>
+      <div style="position:relative">
+      <canvas id="cv" aria-label="Pixel map of South Asia with the Himalaya along the top. Arrows show summer monsoon winds blowing from the ocean in the southwest toward the land. A huge storm cloud creature, the Storm Smudge, hovers over the sea."></canvas>
+      <div class="bossbar"><span class="name">STORM SMUDGE</span><span class="shield" id="shield"><i></i><i></i><i></i></span><span id="shieldTxt">3/3</span></div>
+      </div>
+      <div class="qpanel">
+        <div class="qhead">
+          <span class="pix">QUESTION 1 OF 3 · CRACK THE CLOUD SHIELD</span>
+          <span class="langs"><button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button></span>
+        </div>
+        <p class="qtext" id="q"
+          data-en="In summer, the monsoon wind blows from the <b>___</b> toward the land. What does it bring?"
+          data-es="En verano, el viento del monzón sopla desde <b>___</b> hacia la tierra. ¿Qué trae?"
+          data-fa="در تابستان، باد موسمی از <b>___</b> به سوی خشکی می‌وزد. با خود چه می‌آورد؟"></p>
+        <div class="answers" id="answers">
+          <button class="ans" data-ok="1" data-en="<b>A</b> ocean — it brings heavy rain" data-es="<b>A</b> el océano — trae lluvias fuertes" data-fa="<b>A</b> اقیانوس — باران زیاد می‌آورد"></button>
+          <button class="ans" data-why="mtn" data-en="<b>B</b> mountains — it brings snow" data-es="<b>B</b> las montañas — trae nieve" data-fa="<b>B</b> کوه‌ها — برف می‌آورد"></button>
+          <button class="ans" data-why="desert" data-en="<b>C</b> desert — it brings dust" data-es="<b>C</b> el desierto — trae polvo" data-fa="<b>C</b> صحرا — گرد و خاک می‌آورد"></button>
+          <button class="ans" data-why="ice" data-en="<b>D</b> North Pole — it brings cold air" data-es="<b>D</b> el Polo Norte — trae aire frío" data-fa="<b>D</b> قطب شمال — هوای سرد می‌آورد"></button>
+        </div>
+        <div class="fb" id="fb"><span class="pix" id="fbHead"></span><span id="fbText"></span></div>
+        <button class="pbtn again" id="again" hidden>TRY THE SCREEN AGAIN</button>
+      </div>
+    </div>
+    <p class="under">Click an answer. A right answer cracks one piece of the cloud shield. A wrong answer costs one heart and shows why, and that question comes back later in the episode.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>The Storm Smudge rises over South Asia at the end of Episode 6.1, riding the summer rains. Its cloud shield has 3 pieces. Each right answer cracks one piece. When the shield breaks, the atlas page for South Asia drops.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>Summer monsoon winds blow from the ocean to the land and bring rain</li>
+      <li>Reading wind arrows on a map</li>
+      <li>Why farmers in South Asia depend on the rainy season</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>The boss is a mastery check in disguise. Its questions come from the unit's mastery-check question bank, so practice in the game matches the real check. Every wrong answer shows the reason and goes back into the pile. Missed questions come back before the episode ends, so students see them twice.</p>
+    <p>Run out of hearts? Pip pulls you back to the last village with full hearts. Nobody gets stuck.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.9 South Asia</span><span class="chip">WG.1 reading maps</span>
+    <h2>BUILT WITH</h2>
+    <p>The boss is the small Smudge drawn three times bigger, plus code-drawn clouds and rain. The questions are plain HTML, so the language buttons and screen readers work on them.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="07-dungeon.html">◀ 7 River temple</a><a href="index.html">ALL MOCKUPS</a><a href="09-passport.html">9 Passport ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const MAP = [
+  'AAAAAAAAAAAAAAAA',
+  '.MMAAAAAAAAAAMM.',
+  '....C......C....',
+  '~~.......C...~~~',
+  '~~~...........~~',
+  '~~~~C........~~~',
+  '~~~~~.....C~~~~~',
+  '~~~~~~....~~~~~~',
+  '~~~~~~~..~~~~~~~',
+  '~~~~~~~~~~..~~~~',
+  '================'
+];
+const s = WW.stage('#cv', 16, 11);
+const state = { hearts: 4, cracked: 0, hit: 0, flash: 0 };
+function drawHud() {
+  WW.hud(document.getElementById('hud'), { hearts: state.hearts, max: 5, coins: 88, label: 'U6.1 · SOUTH ASIA · BOSS', stats: { loc: 6, pla: 7, hei: 6, mov: 5, reg: 5 } });
+}
+drawHud();
+
+// clouds and rain drawn in code
+function cloud(c, x, y, col, colD) {
+  WW.R(c, x + 6, y + 4, 22, 10, col); WW.R(c, x + 2, y + 8, 30, 8, col);
+  WW.R(c, x + 10, y, 12, 6, col); WW.R(c, x + 4, y + 14, 26, 2, colD);
+}
+function arrow(c, x, y, len, col) { // diagonal arrow pointing up-right (from southwest)
+  for (let i = 0; i < len; i++) WW.R(c, x + i, y - i, 2, 2, col);
+  const hx = x + len, hy = y - len;
+  WW.R(c, hx - 4, hy, 6, 2, col); WW.R(c, hx, hy, 2, 6, col);
+}
+
+WW.loop(t => {
+  const c = s.ctx;
+  WW.drawMap(c, MAP, { t });
+  // monsoon wind arrows sliding from the sea toward the land
+  const off = (t / 40) % 24;
+  [[8, 150], [40, 158], [20, 128], [118, 168]].forEach(([x, y], i) => {
+    const d = (off + i * 6) % 24;
+    arrow(c, x + d, y - d, 18, i % 2 ? '#ffffff' : '#ffe36e');
+  });
+  // rain falling on the land under the boss
+  for (let i = 0; i < 26; i++) {
+    const rx = 60 + ((i * 37) % 150), ry = ((t / 6) + i * 23) % 120 + 40;
+    WW.R(c, rx, ry, 1, 4, '#bfe6ff');
+  }
+  // the Storm Smudge: big smudge + storm clouds
+  const bx = 150 + Math.round(Math.sin(t / 700) * 8), by = 34 + Math.round(Math.sin(t / 400) * 3);
+  cloud(c, bx - 18, by + 2, '#8e8aa8', '#5e5a78');
+  cloud(c, bx + 34, by + 4, '#8e8aa8', '#5e5a78');
+  const hurt = state.flash > 0 && Math.floor(t / 80) % 2;
+  WW.sprite(c, 'smudge', bx, by, { scale: 3, pal: hurt ? { g: '#ffffff', G: '#ffd6d6', k: '#ffffff' } : { g: '#5d6a8f', G: '#3c4566' } });
+  cloud(c, bx - 6, by + 34, '#b7b3cf', '#7c7898');
+  // lightning flicker
+  if (Math.floor(t / 1700) % 3 === 0 && (t % 1700) < 120) {
+    const lx = bx + 20; for (let i = 0; i < 6; i++) WW.R(c, lx + (i % 2 ? 3 : 0), by + 52 + i * 5, 2, 6, '#fff59a');
+  }
+  // cracks on boss when shield broken
+  for (let k = 0; k < state.cracked; k++) WW.R(c, bx + 8 + k * 12, by + 6, 2, 10, '#ffffff');
+  if (state.flash > 0) state.flash--;
+  // Pip and the hero on the coast
+  WW.sprite(c, 'hero', 5 * 16, 7 * 16 - 4, {});
+  WW.sprite(c, 'pip', 6 * 16 + 2, 6 * 16 - 6, { bob: true, t });
+});
+
+WW.langToggle();
+let lang = 'en';
+document.querySelectorAll('[data-lang-btn]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.langBtn; }));
+
+const WHY = {
+  mtn: {
+    en: 'Not quite. The Himalaya are to the <b>north</b>. They block the wind and push it up, so rain falls — but the wind starts over the <b>ocean</b>.',
+    es: 'Casi. El Himalaya está al <b>norte</b>. Las montañas bloquean el viento y lo empujan hacia arriba, y por eso llueve. Pero el viento empieza sobre el <b>océano</b>.',
+    fa: 'نه کاملاً. کوه‌های هیمالیا در <b>شمال</b> هستند. آن‌ها جلوی باد را می‌گیرند و باران می‌بارد — اما باد از روی <b>اقیانوس</b> شروع می‌شود.'
+  },
+  desert: {
+    en: 'Not quite. Dry desert air does not carry rain. The summer monsoon picks up water over the warm <b>ocean</b>.',
+    es: 'Casi. El aire seco del desierto no trae lluvia. El monzón de verano recoge agua sobre el <b>océano</b> cálido.',
+    fa: 'نه کاملاً. هوای خشک صحرا باران ندارد. باد موسمی تابستان از روی <b>اقیانوس</b> گرم آب برمی‌دارد.'
+  },
+  ice: {
+    en: 'Not quite. Cold air from the north comes in the <b>winter</b> monsoon, and it is dry. Summer wind comes from the <b>ocean</b>.',
+    es: 'Casi. El aire frío del norte llega con el monzón de <b>invierno</b>, y es seco. El viento de verano viene del <b>océano</b>.',
+    fa: 'نه کاملاً. هوای سرد شمال در باد موسمی <b>زمستان</b> می‌آید و خشک است. باد تابستان از <b>اقیانوس</b> می‌آید.'
+  }
+};
+const GOOD = {
+  en: 'Right! Wet ocean air blows onto the land, hits the mountains, and drops heavy rain. Farmers plant rice when it comes.',
+  es: '¡Correcto! El aire húmedo del océano llega a la tierra, choca con las montañas y deja lluvias fuertes. Los agricultores siembran arroz cuando llega.',
+  fa: 'درست است! هوای مرطوب اقیانوس به خشکی می‌رسد، به کوه‌ها می‌خورد و باران زیادی می‌بارد. کشاورزان در این زمان برنج می‌کارند.'
+};
+const fb = document.getElementById('fb'), fbHead = document.getElementById('fbHead'), fbText = document.getElementById('fbText');
+function show(kind, msg) {
+  fb.className = 'fb show ' + kind;
+  fbHead.textContent = kind === 'good' ? 'CRACK! ONE SHIELD PIECE BROKEN' : 'OUCH! −1 HEART';
+  fbText.setAttribute('data-en', msg.en); fbText.setAttribute('data-es', msg.es); fbText.setAttribute('data-fa', msg.fa);
+  fbText.innerHTML = msg[lang]; fbText.dir = lang === 'fa' ? 'rtl' : 'ltr';
+}
+document.querySelectorAll('.ans').forEach(btn => btn.addEventListener('click', () => {
+  if (btn.disabled) return;
+  if (btn.dataset.ok) {
+    btn.classList.add('right');
+    state.cracked = 1; state.flash = 40;
+    document.querySelectorAll('#shield i')[0].classList.add('cracked');
+    document.getElementById('shieldTxt').textContent = '2/3';
+    document.querySelectorAll('.ans').forEach(b => b.disabled = true);
+    show('good', GOOD);
+    document.getElementById('again').hidden = false;
+  } else {
+    btn.classList.add('wrong'); btn.disabled = true;
+    state.hearts = Math.max(0, state.hearts - 1); drawHud();
+    const sc = document.getElementById('screen'); sc.classList.remove('shake'); void sc.offsetWidth; sc.classList.add('shake');
+    show('bad', WHY[btn.dataset.why]);
+  }
+}));
+document.getElementById('again').addEventListener('click', () => location.reload());
+</script>
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Passport — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .book{background:#3b2a1d;padding:14px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:10px}
+  @media (max-width:700px){.book{grid-template-columns:1fr;padding:8px}}
+  .pg{background:#f3e3b5;color:#22202e;border:3px solid #22202e;border-radius:4px;padding:14px}
+  .pg h3{font-family:var(--pix);font-size:10px;color:#7a3b12;margin:0 0 10px;line-height:1.6}
+  .portrait{display:flex;align-items:flex-end;gap:6px;justify-content:center;background:#cfe8ff;border:3px solid #22202e;padding:10px 6px 0;margin-bottom:10px}
+  .portrait canvas{image-rendering:pixelated;display:block}
+  .pname{font-family:var(--pix);font-size:12px;text-align:center;margin:6px 0 2px;line-height:1.6}
+  .prank{text-align:center;font-size:14px;color:#5c3a20;margin-bottom:10px}
+  .facts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+  .fact{background:#fffbe8;border:2px solid #22202e;padding:6px 8px;font-size:14px}
+  .fact b{display:block;font-family:var(--pix);font-size:12px;margin-top:2px}
+  .stat{display:grid;grid-template-columns:28px 1fr 36px;align-items:center;gap:8px;margin-bottom:10px}
+  .stat .ic{font-size:20px;text-align:center}
+  .stat .nm{font-weight:700;font-size:15px}
+  .stat .nm small{display:block;font-weight:400;font-size:13.5px;color:#5c3a20;line-height:1.35}
+  .stat .bar{display:block;height:12px;background:#d8c693;border:2px solid #22202e;margin-top:4px}
+  .stat .bar b{display:block;height:100%}
+  .stat .num{font-family:var(--pix);font-size:11px;text-align:right}
+  .bag{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+  @media (max-width:700px){.bag{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .slot{background:#fffbe8;border:2px solid #22202e;text-align:center;padding:6px 2px 4px;font-size:12px;line-height:1.25}
+  .slot canvas{width:100%;max-width:48px;image-rendering:pixelated;display:block;margin:0 auto 4px}
+  .slot.locked{background:#d8c693;color:#6b5a3a}
+  .stamps{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:6px}
+  @media (max-width:700px){.stamps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .unit{border:2px dashed #b59a62;padding:4px;text-align:center}
+  .unit .u{font-family:var(--pix);font-size:8px;color:#7a3b12;margin-bottom:4px;line-height:1.5}
+  .st{display:flex;align-items:center;justify-content:center;width:100%;aspect-ratio:1;max-width:40px;margin:3px auto;border-radius:50%;border:2px dashed #b59a62;font-family:var(--pix);font-size:8px;color:#b59a62}
+  .st.on{border:3px solid #22202e;color:#fff;transform:rotate(-8deg)}
+  .codebox{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:6px}
+  .code{font-family:var(--pix);font-size:13px;background:#22202e;color:var(--gold);padding:10px 12px;border-radius:3px;letter-spacing:1px}
+  .copied{font-size:14px;color:#1f7a3a;font-weight:700}
+  .wide{grid-column:1/-1}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 9 of 10</span>
+  <h1>Passport (character sheet)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen">
+      <div class="hud" id="hud"></div>
+      <div class="book">
+        <div class="pg">
+          <h3>WORLDWALKER PASSPORT</h3>
+          <div class="portrait"><canvas id="hero" width="16" height="16" style="width:96px;height:96px" aria-label="The student's hero"></canvas><canvas id="pip" width="16" height="16" style="width:48px;height:48px;margin-bottom:6px" aria-label="Pip the compass"></canvas></div>
+          <div class="pname">APPRENTICE AMIRA</div>
+          <div class="prank">Worldwalker Apprentice · Rank 2 · Period 3</div>
+          <div class="facts">
+            <div class="fact">Atlas pages<b>6 / 24</b></div>
+            <div class="fact">Coins<b>● 64</b></div>
+            <div class="fact">Hearts<b style="color:#e04848">♥♥♥♥ <span style="color:#a8977a">♥</span></b></div>
+            <div class="fact">Realms visited<b>2 / 8</b></div>
+          </div>
+        </div>
+        <div class="pg">
+          <h3>MY FIVE GEOGRAPHY POWERS</h3>
+          <div id="stats"></div>
+        </div>
+        <div class="pg wide">
+          <h3>MY BAG · ONE TOOL FROM EACH REALM</h3>
+          <div class="bag" id="bag"></div>
+        </div>
+        <div class="pg wide">
+          <h3>STAMPS · ONE FOR EVERY EPISODE</h3>
+          <div class="stamps" id="stamps"></div>
+        </div>
+        <div class="pg wide">
+          <h3>MY PASSPORT CODE</h3>
+          <p style="margin:0 0 6px;font-size:15px">This code holds everything on this page. If the class sheet will not load, paste it at the start of the next episode and keep going.</p>
+          <div class="codebox"><span class="code" id="code">WW-7K3Q-M2XA-9PDE</span><button class="pbtn gold" id="copy">COPY CODE</button><span class="copied" id="copied" hidden>Copied ✓</span></div>
+        </div>
+      </div>
+    </div>
+    <p class="under">Students open the Passport any time with the P key or the 📘 button. It is the same in every episode, so progress always looks the same to them.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>A passport that grows across the whole course: their hero, the five geography powers, one tool from each realm, and a stamp for every episode they finish.</p>
+    <h2>WHAT EACH POWER TRACKS</h2>
+    <ul>
+      <li><b>📍 Where</b> (Location) — map skills, latitude and longitude, finding places</li>
+      <li><b>🏞️ What it is like</b> (Place) — land, climate, plants and people of a place</li>
+      <li><b>🌱 People & land</b> (Human–Environment Interaction) — how people change land and land changes people</li>
+      <li><b>🚚 On the move</b> (Movement) — trade, migration, ideas spreading</li>
+      <li><b>🧩 Regions</b> (Region) — sorting places that share traits</li>
+    </ul>
+    <p>Each right answer, quest and challenge adds to one power. A low power tells the student (and you) what to practice.</p>
+    <h2>HOW IT CARRIES OVER</h2>
+    <p>The class Google Sheet is the main save. If it is down or blocked, the Passport Code holds the same facts in 12 letters and numbers. The browser also keeps its own copy. Three saves, so nobody loses their hero.</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">The five themes of geography</span><span class="chip">WG.1–WG.17</span>
+    <h2>BUILT WITH</h2>
+    <p>Mostly plain HTML. The hero, Pip and the tools are small code drawings. The bag tools are what unlock new paths in later episodes (the Canoe crosses rivers, the Sail crosses ocean).</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="08-boss-trial.html">◀ 8 Boss trial</a><a href="index.html">ALL MOCKUPS</a><a href="10-save-and-turn-in.html">10 Save and turn in ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+WW.hud(document.getElementById('hud'), { hearts: 4, max: 5, coins: 64, label: 'PASSPORT', stats: { loc: 7, pla: 5, hei: 4, mov: 6, reg: 3 } });
+const STATS = { loc: 7, pla: 5, hei: 4, mov: 6, reg: 3 };
+const MEAN = {
+  loc: 'Finding places and reading maps',
+  pla: 'Telling what a place is like',
+  hei: 'How people and land change each other',
+  mov: 'How people, goods and ideas travel',
+  reg: 'Grouping places that are alike'
+};
+document.getElementById('stats').innerHTML = WW.THEMES.map(th =>
+  `<div class="stat"><span class="ic">${th.icon}</span><span class="nm">${th.en}<small>${MEAN[th.k]}</small><span class="bar"><b style="width:${STATS[th.k] * 10}%;background:${th.col}"></b></span></span><span class="num">${STATS[th.k]}/10</span></div>`
+).join('');
+
+// portraits
+function pix(id, name, scale) { const c = document.getElementById(id).getContext('2d'); WW.sprite(c, name, 0, 0, {}); }
+pix('hero', 'hero'); pix('pip', 'pip');
+
+// tools (drawn in code). dark=true draws a locked silhouette
+const R = WW.R, P = WW.P;
+const TOOLS = [
+  { n: 'Compass Rose', u: 1, got: true, d: (c, k) => { R(c, 3, 3, 10, 10, k(P.goldD)); R(c, 4, 4, 8, 8, k('#fffbe8')); R(c, 7, 1, 2, 7, k(P.red)); R(c, 7, 8, 2, 7, k('#5e636b')); R(c, 1, 7, 14, 2, k('#2f6fd6')); R(c, 7, 7, 2, 2, k(P.gold)); } },
+  { n: 'Canoe', u: 2, got: true, d: (c, k) => { R(c, 10, 1, 1, 9, k(P.woodD)); R(c, 9, 1, 3, 3, k(P.wood)); R(c, 0, 8, 2, 2, k(P.wood)); R(c, 14, 8, 2, 2, k(P.wood)); R(c, 1, 9, 14, 3, k(P.wood)); R(c, 2, 12, 12, 1, k(P.woodD)); R(c, 0, 13, 16, 2, k(P.water)); } },
+  { n: 'Rail Pass', u: 3, d: (c, k) => { R(c, 2, 4, 12, 9, k('#e9d8b4')); R(c, 2, 4, 12, 2, k(P.red)); R(c, 4, 8, 8, 3, k('#3c6fb4')); R(c, 5, 11, 2, 1, k(P.k)); R(c, 9, 11, 2, 1, k(P.k)); } },
+  { n: 'Water Gourd', u: 4, d: (c, k) => { R(c, 6, 2, 4, 4, k(P.goldD)); R(c, 4, 6, 8, 8, k(P.gold)); R(c, 3, 8, 10, 4, k(P.gold)); R(c, 7, 1, 2, 1, k(P.woodD)); } },
+  { n: 'Water Key', u: 5, d: (c, k) => { R(c, 2, 3, 6, 6, k(P.waterL)); R(c, 4, 5, 2, 2, k(P.k)); R(c, 8, 5, 6, 2, k(P.waterL)); R(c, 11, 7, 2, 3, k(P.waterL)); } },
+  { n: 'Monsoon Cloak', u: 6, d: (c, k) => { R(c, 6, 2, 4, 3, k('#2aa198')); R(c, 4, 5, 8, 4, k('#2aa198')); R(c, 3, 9, 10, 5, k('#1f7a73')); } },
+  { n: 'Trade Seal', u: 7, d: (c, k) => { R(c, 3, 3, 10, 10, k('#c0392b')); R(c, 2, 5, 12, 6, k('#c0392b')); R(c, 6, 6, 4, 4, k(P.gold)); } },
+  { n: 'Sail', u: 8, d: (c, k) => { R(c, 8, 1, 1, 13, k(P.woodD)); for (let i = 0; i < 10; i++) R(c, 9, 2 + i, 1 + Math.floor(i * 0.6), 1, k('#fffbe8')); R(c, 3, 13, 11, 2, k(P.wood)); } }
+];
+const bag = document.getElementById('bag');
+TOOLS.forEach(tl => {
+  const el = document.createElement('div'); el.className = 'slot' + (tl.got ? '' : ' locked');
+  const cv = document.createElement('canvas'); cv.width = 16; cv.height = 16;
+  cv.setAttribute('aria-label', tl.got ? tl.n : 'Locked tool from Unit ' + tl.u);
+  const c = cv.getContext('2d');
+  tl.d(c, col => tl.got ? col : '#6b5a3a');
+  el.appendChild(cv);
+  el.insertAdjacentHTML('beforeend', tl.got ? `<b>${tl.n}</b>` : `Unit ${tl.u}`);
+  bag.appendChild(el);
+});
+
+// stamps: 8 units x 3 episodes, first 6 earned
+const UNITCOL = ['#e04848', '#2f7fd1', '#3fa34d', '#d98e2b', '#8e5bd6', '#2aa198', '#c0392b', '#1d5aa8'];
+const st = document.getElementById('stamps');
+for (let u = 1; u <= 8; u++) {
+  let h = `<div class="unit"><div class="u">UNIT ${u}</div>`;
+  for (let e = 1; e <= 3; e++) {
+    const on = u <= 2;
+    h += `<span class="st ${on ? 'on' : ''}" style="${on ? 'background:' + UNITCOL[u - 1] : ''}" title="Episode ${u}.${e}">${u}.${e}</span>`;
+  }
+  st.insertAdjacentHTML('beforeend', h + '</div>');
+}
+
+// copy code
+document.getElementById('copy').addEventListener('click', async () => {
+  const txt = document.getElementById('code').textContent;
+  try { await navigator.clipboard.writeText(txt); }
+  catch (e) {
+    const ta = document.createElement('textarea'); ta.value = txt; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); } catch (_) {} ta.remove();
+  }
+  const ok = document.getElementById('copied'); ok.hidden = false; setTimeout(() => ok.hidden = true, 2000);
+});
+</script>
+</body>
+</html>

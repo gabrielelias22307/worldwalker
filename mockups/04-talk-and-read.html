@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Talk and Read — Worldwalker</title>
+<link rel="stylesheet" href="kit.css">
+<style>
+  .talk{min-height:0;padding-top:14px}
+  .talk .face{width:64px;height:64px}
+  .talk-top{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+  .talk .langs button{padding:6px 8px;font-size:9px}
+  #say{font-size:clamp(15px,1.6vw,18px);line-height:1.5}
+  #say[dir=rtl]{font-size:clamp(16px,1.8vw,20px)}
+  .acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+  .acts .pbtn{font-size:9px;padding:7px 9px}
+  .defpop{position:absolute;z-index:5;max-width:300px;background:#22202e;color:#fff;border:3px solid #ffe36e;border-radius:4px;padding:8px 12px;font-size:15px;line-height:1.4;display:none}
+  .defpop b{color:#ffe36e}
+  .choices{display:grid;gap:7px;margin-top:8px}
+  .choices button{text-align:left;font:inherit;font-size:clamp(14px,1.5vw,16.5px);padding:8px 12px;background:#fff;border:3px solid #22202e;border-radius:4px;cursor:pointer;color:#22202e}
+  .choices button[dir=rtl]{text-align:right}
+  .choices button.right{background:#d9f5dd;border-color:#1f7a3a}
+  .choices button.wrong{background:#fde2de;border-color:#b0392b}
+  #fb{margin-top:8px;font-weight:700;min-height:1em}
+  #fb.right{color:#1f7a3a}#fb.wrong{color:#b0392b}
+  .talk [lang=fa]{font-family:var(--read)!important;letter-spacing:0!important}
+  .talk .who[lang=fa],.acts .pbtn[lang=fa]{font-size:14px;font-weight:700}
+  .toast{position:absolute;right:3%;top:16%;background:#3fa34d;color:#fff;font-family:var(--pix);font-size:11px;padding:10px 12px;border:3px solid #000;border-radius:4px;display:none}
+  @media (max-width:700px){
+    .talk{position:relative;left:auto;right:auto;bottom:auto;margin:0;border-radius:0;outline:none;padding-left:84px}
+    .defpop{left:8px!important;right:8px;max-width:none}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="logo" href="index.html">WORLDWALKER</a>
+  <span class="tag">MOCKUP 4 of 10</span>
+  <h1>Talk and read (Episode 4.1)</h1>
+</header>
+
+<main class="wrap">
+  <section>
+    <div class="screen" id="screen">
+      <div class="hud" id="hud"></div>
+      <canvas id="cv" aria-label="The Sahel in northern Nigeria: sand dunes to the north, dry grass, acacia trees, a well, cattle, and Aisha the farmer talking to the hero"></canvas>
+      <div class="toast" id="toast">+1 🌱 PEOPLE &amp; LAND</div>
+      <div class="talk" id="talk">
+        <canvas class="face" id="face" width="64" height="64" aria-hidden="true"></canvas>
+        <div class="talk-top">
+          <div class="who" data-en="AISHA · FARMER NEAR KANO" data-es="AISHA · AGRICULTORA CERCA DE KANO" data-fa="عایشه · دهقان نزدیک کانو"></div>
+          <div class="langs"><button data-lang-btn="en">EN</button><button data-lang-btn="es">ES</button><button data-lang-btn="fa">دری</button></div>
+        </div>
+        <div id="step1">
+          <div id="say"></div>
+          <div class="acts">
+            <button class="pbtn" id="easy"></button>
+            <button class="pbtn gold" id="next"></button>
+          </div>
+        </div>
+        <div id="step2" hidden>
+          <div id="q" class="pix" style="font-family:var(--read);font-weight:700"></div>
+          <div class="choices" id="choices"></div>
+          <div id="fb" aria-live="polite"></div>
+        </div>
+      </div>
+      <div class="defpop" id="defpop" role="tooltip"></div>
+    </div>
+    <p class="under">Tap a yellow word to see what it means. Try the language buttons, "Make it easier", then answer Aisha.</p>
+  </section>
+
+  <aside class="notes">
+    <h2>WHAT THE STUDENT SEES</h2>
+    <p>A real place drawn as a game screen: dunes of the Sahara at the top, dry Sahel grass in the middle, greener savanna at the bottom. Walking into Aisha opens her talk box with her face, her words, and language buttons.</p>
+    <h2>WHAT THEY LEARN HERE</h2>
+    <ul>
+      <li>The Sahel sits between the Sahara and the savanna</li>
+      <li>Dry years + too many animals eating grass = desertification</li>
+      <li>Key words: Sahel, savanna, desertification</li>
+    </ul>
+    <h2>HOW IT PLAYS</h2>
+    <p>Every talk is short and at about a <b>grade 5 reading level</b>. Yellow words open a one-line meaning. <b>EN / ES / دری</b> swaps the whole talk box, including the meanings and the answers; Dari reads right to left. "Make it easier" gives a shorter version with the same idea.</p>
+    <p>Then the student answers in their own voice. Every choice gets a reason, right or wrong. A right answer fills the <b>🌱 People &amp; land</b> meter by one; a wrong one just lets them try again (no hearts lost while reading).</p>
+    <h2>STANDARDS</h2>
+    <span class="chip">WG.7 Sub-Saharan Africa</span><span class="chip">WG.2 regions</span>
+    <h2>BUILT WITH</h2>
+    <p>Aisha, the cattle, the well and the acacia trees are drawn in code. All three languages live in the episode's text file, next to each other, so a teacher can fix a word without touching the game.</p>
+  </aside>
+</main>
+
+<nav class="nav"><a href="03-overworld.html">◀ 3 Overworld</a><a href="index.html">ALL MOCKUPS</a><a href="05-farm.html">5 Farm ▶</a></nav>
+
+<script src="kit.js"></script>
+<script>
+const R = WW.R, P = WW.P;
+/* ---- Sahel tiles ---- */
+function dry(c, x, y, gx, gy) {
+  R(c, x, y, 16, 16, '#d2b36a');
+  for (let i = 0; i < 5; i++) {
+    const a = WW.hash(gx, gy, i), b = WW.hash(gx, gy, i + 9);
+    R(c, x + ((a * 14) | 0), y + ((b * 13) | 0), 1, 3, i % 2 ? '#a9893f' : '#e6cf8c');
+  }
+}
+WW.tiles.d = dry;
+WW.tiles.a = (c, x, y, gx, gy) => { // acacia: flat umbrella top
+  dry(c, x, y, gx, gy);
+  R(c, x + 3, y + 13, 10, 2, 'rgba(0,0,0,.18)');
+  R(c, x + 7, y + 7, 2, 7, '#5a3a22'); R(c, x + 5, y + 6, 2, 2, '#5a3a22'); R(c, x + 9, y + 6, 2, 2, '#5a3a22');
+  R(c, x, y + 3, 16, 3, '#4f7a2a'); R(c, x + 2, y + 2, 12, 1, '#4f7a2a'); R(c, x + 3, y + 1, 9, 1, '#6a9a38');
+  R(c, x + 1, y + 6, 14, 1, '#3c5e1f');
+};
+WW.tiles.O = (c, x, y, gx, gy) => { // well
+  dry(c, x, y, gx, gy);
+  R(c, x + 2, y + 6, 12, 9, P.stoneD); R(c, x + 3, y + 7, 10, 7, P.stone); R(c, x + 5, y + 9, 6, 3, '#1d3b5a');
+  R(c, x + 2, y + 1, 1, 7, P.woodD); R(c, x + 13, y + 1, 1, 7, P.woodD); R(c, x + 2, y + 1, 12, 2, P.wood);
+  R(c, x + 8, y + 3, 1, 5, '#e8e1d0'); R(c, x + 7, y + 7, 3, 2, P.wood);
+};
+const norm = rows => rows.map(r => r.padEnd(16, '.').slice(0, 16));
+WW.SPR.cow = norm([
+  '................', '................', '................', '................',
+  '..k..k..........', '..kwwk.kkkkkk...', '.kwewkkwwwwwwk..', '.kwwwkwwwbbwwwk.',
+  '..kmk.kwwbbwwwwk', '...k..kwwwwwwwwk', '......kwwwwwwwk.', '......kwk..kwk..',
+  '......kwk..kwk..', '......kkk..kkk..', '................', '................']);
+const COW = { w: '#efe6d6', b: '#8a5a3a', e: '#22202e', m: '#d9998a' };
+const AISHA = { h: '#2a8c6e', s: '#7a4a2c', c: '#e07b39', C: '#b55e26', p: '#e07b39', B: '#3a2a1a', m: '#a8453c' };
+
+const MAP = [
+  'uuuuuuuuuuuuuuuu',
+  'uuusuuuusuuuuuss',
+  'ssssdsssasssdsss',
+  'sdddddddd:dOddad',
+  'dddaddddd:dddddd',
+  'ddddddddd:dddadd',
+  'd.ddddddd:ddddd.',
+  '..d.ddd..:..d.".',
+  '."......T:....T.',
+  '...".....:..".,.',
+  'T..T.....:..T..T'
+];
+const s = WW.stage('#cv', 16, 11);
+let stats = { loc: 5, pla: 5, hei: 2, mov: 4, reg: 5 };
+const drawHud = () => WW.hud(document.getElementById('hud'), { hearts: 4, max: 5, coins: 63, label: 'U4.1 · THE SAHEL, NIGERIA', stats });
+drawHud();
+
+WW.loop(t => {
+  const c = s.ctx;
+  WW.drawMap(c, MAP, { t });
+  // the Smudge peeking over a dune
+  const pk = Math.round((Math.sin(t / 1100) + 1) * 2);
+  WW.sprite(c, 'smudge', 13 * 16, -6 + pk, {});
+  R(c, 13 * 16, 10, 16, 6, '#e9b86a'); R(c, 13 * 16, 13, 16, 3, '#c98f45');
+  // cattle
+  WW.sprite(c, 'cow', 3 * 16 + Math.round(Math.sin(t / 1500) * 3), 4 * 16 + 4, { pal: COW });
+  WW.sprite(c, 'cow', 5 * 16 + 6, 5 * 16 + 6, { pal: COW, flip: true });
+  WW.sprite(c, 'cow', 2 * 16, 6 * 16, { pal: Object.assign({}, COW, { w: '#b9835a', b: '#efe6d6' }) });
+  // Aisha, hero, Pip
+  WW.sprite(c, 'npc', 10 * 16, 3 * 16 - 4, { pal: AISHA });
+  WW.sprite(c, 'heroUp', 10 * 16, 4 * 16 + 2, {});
+  WW.sprite(c, 'pip', 11 * 16 + 2, 4 * 16 - 2, { bob: true, t });
+});
+
+// Aisha's face, zoomed in
+const fc = document.getElementById('face').getContext('2d');
+fc.fillStyle = '#f6dfa8'; fc.fillRect(0, 0, 64, 64);
+WW.sprite(fc, 'npc', -16, -10, { pal: AISHA, scale: 6 });
+
+/* ---- words ---- */
+const W = (k, txt) => `<span class="word" data-def="${k}" tabindex="0" role="button">${txt}</span>`;
+const TXT = {
+  full: {
+    en: `Welcome to the ${W('sahel', 'Sahel')}! The Sahel is a long strip of land. It sits between the Sahara Desert to the north and the ${W('savanna', 'savanna')} to the south. Rain comes only a few months each year. When dry years come and too many animals eat the grass, the soil blows away. The desert grows. We call this ${W('desert', 'desertification')}.`,
+    es: `¡Bienvenido al ${W('sahel', 'Sahel')}! El Sahel es una franja larga de tierra. Está entre el desierto del Sahara, al norte, y la ${W('savanna', 'sabana')}, al sur. Solo llueve unos pocos meses cada año. Cuando hay años secos y demasiados animales comen la hierba, el viento se lleva la tierra. El desierto crece. Esto se llama ${W('desert', 'desertificación')}.`,
+    fa: `به ${W('sahel', 'ساحل')} خوش آمدی! ساحل یک نوار دراز از زمین است. بین صحرای بزرگ آفریقا در شمال و ${W('savanna', 'علفزار')} در جنوب قرار دارد. باران فقط چند ماه در سال می‌بارد. وقتی سال‌های خشک می‌آید و حیوانات زیاد علف را می‌خورند، باد خاک را می‌برد. صحرا بزرگ‌تر می‌شود. به این ${W('desert', 'بیابان‌زایی')} می‌گوییم.`
+  },
+  easy: {
+    en: `The ${W('sahel', 'Sahel')} is between the desert and the ${W('savanna', 'savanna')}. Little rain + too many animals eating grass = the desert grows. This is ${W('desert', 'desertification')}.`,
+    es: `El ${W('sahel', 'Sahel')} está entre el desierto y la ${W('savanna', 'sabana')}. Poca lluvia + demasiados animales comiendo hierba = el desierto crece. Esto es la ${W('desert', 'desertificación')}.`,
+    fa: `${W('sahel', 'ساحل')} بین صحرا و ${W('savanna', 'علفزار')} است. باران کم + حیوانات زیاد که علف می‌خورند = صحرا بزرگ می‌شود. این ${W('desert', 'بیابان‌زایی')} است.`
+  }
+};
+const DEFS = {
+  sahel: { en: '<b>Sahel:</b> the dry strip of land just south of the Sahara Desert.', es: '<b>Sahel:</b> la franja seca de tierra justo al sur del desierto del Sahara.', fa: '<b>ساحل:</b> نوار خشک زمین، درست در جنوب صحرای بزرگ آفریقا.' },
+  savanna: { en: '<b>Savanna:</b> a grassland with a few trees. It has a wet season and a dry season.', es: '<b>Sabana:</b> un pastizal con pocos árboles. Tiene una temporada de lluvias y una temporada seca.', fa: '<b>علفزار (ساوانا):</b> زمین پر از علف با چند درخت. یک فصل بارانی و یک فصل خشک دارد.' },
+  desert: { en: '<b>Desertification:</b> when good land slowly turns into desert.', es: '<b>Desertificación:</b> cuando la tierra buena poco a poco se convierte en desierto.', fa: '<b>بیابان‌زایی:</b> وقتی زمین خوب کم‌کم به صحرا تبدیل می‌شود.' }
+};
+const UI = {
+  easy: { en: 'MAKE IT EASIER', es: 'HAZLO MÁS FÁCIL', fa: 'آسان‌ترش کن' },
+  full: { en: 'SHOW FULL TEXT', es: 'VER TEXTO COMPLETO', fa: 'متن کامل' },
+  next: { en: 'ANSWER AISHA ▶', es: 'RESPONDER A AISHA ▶', fa: 'به عایشه جواب بده ▶' },
+  q: { en: 'Aisha asks: What makes the desert spread in the Sahel?', es: 'Aisha pregunta: ¿Qué hace que el desierto crezca en el Sahel?', fa: 'عایشه می‌پرسد: چه چیزی باعث می‌شود صحرا در ساحل بزرگ شود؟' }
+};
+const CHOICES = [
+  { ok: true,
+    t: { en: 'Dry years and too many animals eating the grass.', es: 'Años secos y demasiados animales comiendo la hierba.', fa: 'سال‌های خشک و حیوانات زیادی که علف را می‌خورند.' },
+    f: { en: 'Yes! Less rain and too much grazing leave bare soil. The wind blows it away. +1 🌱 People & land', es: '¡Sí! Poca lluvia y demasiado pastoreo dejan la tierra sin plantas. El viento se la lleva. +1 🌱 Personas y tierra', fa: 'بله! باران کم و چَرای زیاد، خاک را بی‌گیاه می‌گذارد. باد آن را می‌برد. ‎+1 🌱 مردم و زمین' } },
+  { ok: false,
+    t: { en: 'Ocean water moves onto the land.', es: 'El agua del océano entra en la tierra.', fa: 'آب بحر به داخل زمین می‌آید.' },
+    f: { en: 'Not this time. The Sahel is far from the ocean. Think about rain and grass.', es: 'Esta vez no. El Sahel está lejos del océano. Piensa en la lluvia y la hierba.', fa: 'این بار نه. ساحل از بحر دور است. به باران و علف فکر کن.' } },
+  { ok: false,
+    t: { en: 'Too many trees grow and block the sun.', es: 'Crecen demasiados árboles y tapan el sol.', fa: 'درختان زیاد می‌رویند و جلوی آفتاب را می‌گیرند.' },
+    f: { en: 'Not quite. Trees and grass hold the soil in place. Losing them is the problem.', es: 'No exactamente. Los árboles y la hierba sujetan la tierra. El problema es perderlos.', fa: 'نه کاملاً. درختان و علف خاک را نگه می‌دارند. از دست دادن آن‌ها مشکل است.' } }
+];
+
+let lang = 'en', easy = false, picked = null, got = false;
+const $ = id => document.getElementById(id);
+function dirOf(el) { el.dir = lang === 'fa' ? 'rtl' : 'ltr'; el.lang = lang; }
+function render() {
+  $('say').innerHTML = TXT[easy ? 'easy' : 'full'][lang]; dirOf($('say'));
+  $('easy').textContent = UI[easy ? 'full' : 'easy'][lang];
+  $('next').textContent = UI.next[lang];
+  dirOf($('easy')); dirOf($('next'));
+  $('q').textContent = UI.q[lang]; dirOf($('q'));
+  const box = $('choices'); box.innerHTML = '';
+  CHOICES.forEach((ch, i) => {
+    const b = document.createElement('button');
+    b.textContent = String.fromCharCode(65 + i) + ') ' + ch.t[lang]; dirOf(b);
+    if (picked === i) b.className = ch.ok ? 'right' : 'wrong';
+    b.onclick = () => pick(i);
+    box.appendChild(b);
+  });
+  const fb = $('fb');
+  if (picked === null) { fb.textContent = ''; fb.className = ''; }
+  else { fb.textContent = CHOICES[picked].f[lang]; fb.className = CHOICES[picked].ok ? 'right' : 'wrong'; dirOf(fb); }
+  hidePop();
+}
+function pick(i) {
+  picked = i;
+  if (CHOICES[i].ok && !got) {
+    got = true; stats = Object.assign({}, stats, { hei: stats.hei + 1 }); drawHud();
+    const tt = $('toast'); tt.style.display = 'block'; setTimeout(() => tt.style.display = 'none', 1800);
+  }
+  render();
+}
+// kit's language buttons (+ the speaker name, which uses data-en/es/fa)
+WW.langToggle();
+document.querySelectorAll('[data-lang-btn]').forEach(b => b.addEventListener('click', () => { lang = b.dataset.langBtn; render(); }));
+$('easy').onclick = () => { easy = !easy; render(); };
+$('next').onclick = () => { $('step1').hidden = true; $('step2').hidden = false; };
+
+/* ---- tap-to-define popup ---- */
+const pop = $('defpop');
+function hidePop() { pop.style.display = 'none'; }
+function showPop(el) {
+  pop.innerHTML = DEFS[el.dataset.def][lang]; dirOf(pop);
+  const sr = $('screen').getBoundingClientRect(), r = el.getBoundingClientRect();
+  pop.style.display = 'block';
+  const ph = pop.offsetHeight;
+  let left = r.left - sr.left; left = Math.max(8, Math.min(left, sr.width - pop.offsetWidth - 8));
+  pop.style.left = left + 'px';
+  pop.style.top = Math.max(4, r.top - sr.top - ph - 8) + 'px';
+}
+document.addEventListener('click', e => {
+  const w = e.target.closest('.word');
+  if (w) { showPop(w); e.stopPropagation(); } else if (!e.target.closest('#defpop')) hidePop();
+});
+document.addEventListener('keydown', e => { const w = e.target.closest && e.target.closest('.word'); if (w && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); showPop(w); } if (e.key === 'Escape') hidePop(); });
+render();
+</script>
+</body>
+</html>
