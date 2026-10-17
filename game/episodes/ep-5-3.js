@@ -1,0 +1,251 @@
+/* WORLDWALKER · Episode 5.3 · Borders, Resources and Cooperation — the Levant (WG.8)
+   The Jordan River runs from the snowy mountain in the north, through a lake, past green farms,
+   and down to the shrinking Dead Sea in the south. The Yarmouk River joins it from the dry east.
+   A desalination plant sits on the Mediterranean coast in the west. Solving the water council earns the Water Key. */
+window.EPISODE = {
+  id: '5.3',
+  realm: 5,
+  sol: 'WG.8',
+  title: { en: 'Borders, Resources and Cooperation', es: 'Fronteras, recursos y cooperación', fa: 'سرحدها، منابع و همکاری' },
+  place: { en: 'The Jordan River', es: 'El río Jordán', fa: 'دریای اردن' },
+  intro: [
+    { en: 'Pip: "The Drought Smudge is drinking up the Jordan River! It wants the neighbors to fight over every drop. Talk to the engineer, the water planner and the farmer. Then lead the water council at the compass stone."',
+      es: 'Pip: "¡El Borrón Sequía se está bebiendo el río Jordán! Quiere que los vecinos peleen por cada gota. Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua en la piedra de la brújula."',
+      fa: 'پیپ: «لکهٔ خشکسالی آب دریای اردن را می‌نوشد! می‌خواهد همسایه‌ها بر سر هر قطره دعوا کنند. با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را کنار سنگ قطب‌نما رهبری کن.»' }
+  ],
+
+  /* 32 x 22 = 2 x 2 screens.
+     West edge: the Mediterranean Sea (= ~) and a desalination plant (X).
+     The Jordan River (~, cols 9-10) starts in the snowy mountain (A), fills a lake, runs south past farms
+     and ends in the Dead Sea (=), ringed by a dry old shore (r, u). The Yarmouk River (row 7) joins from the east.
+     East side: dry grass (g), hills (K), a town (J) with a well (O) where the water council meets. */
+  map: [
+    '=~MMMMMAA~~AAMMMMMMMMMMMMMMMMMMM',
+    '=~s..T.nA~~AnM..ggggrgggggJJJggM',
+    '=~s..,.~~~~~~...gggggggg:gJJJggM',
+    '=~s.T.~~~~~~~...ggrgggg:::::ggaM',
+    '=~sX..~~~~~~,x..gg:::::::gOggggM',
+    '=~sXs.."~~"..,..gg:gggrgggggg"gM',
+    '=kkss.o1o~~o1o..gg:ggggggrgggggM',
+    '=~ss.o1o.~~~~~~~~~B~~~~~~~~~B~~~',
+    '=~s.,o1o.~~.o1o.gg:ggggggggggaMM',
+    '=~ss.o2o.~~.o2o.gg:ggrgggggggggM',
+    '=~s..o1o.bb.o1o.gg:ggggggggggaMM',
+    '=~s..o1o.~~.o1o.gg:gggggggggrggM',
+    '=~ss.oo2.~~.2oo.gg:::::::::ggggM',
+    '=~s.w.ww.~~.www.ggrgggJJJJ:gggaM',
+    '=~ss.www.bb.ww..gggggg:::::ggggM',
+    '=~ss.....~~.....sggggggg:O:ggrgM',
+    '=~sss.ssu~~ussxssssgggggg:gggggM',
+    '=~ssu.sr~~~~rssssssssuugggggaggM',
+    '=~su.rs======rsssssusssgggrggggM',
+    '=~ssrs=======ss.ssssssuusggggaaM',
+    '=~ssusr=====rsussssssusssssuuggM',
+    'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM'
+  ],
+  start: [14, 2],
+
+  words: {
+    scarce: { en: 'hard to find because there is only a little of it', es: 'difícil de encontrar porque hay muy poco', fa: 'چیزی که کم است و به سختی پیدا می‌شود' },
+    transboundary: { en: 'crossing from one country into another, like a shared river', es: 'que cruza de un país a otro, como un río compartido', fa: 'چیزی که از یک کشور به کشور دیگر می‌گذرد، مثل یک دریای مشترک' },
+    'border dispute': { en: 'an argument between neighbors over exactly where a border line should be', es: 'una discusión entre vecinos sobre dónde debe estar exactamente una frontera', fa: 'اختلاف میان همسایه‌ها بر سر این‌که خط سرحد دقیقاً کجا باشد' },
+    treaty: { en: 'a written agreement between countries with clear rules', es: 'un acuerdo escrito entre países con reglas claras', fa: 'یک توافق نوشته‌شده میان کشورها با قاعده‌های روشن' },
+    desalination: { en: 'taking the salt out of seawater to make fresh water', es: 'quitarle la sal al agua de mar para hacer agua dulce', fa: 'گرفتن نمک از آب بحر تا آب شیرین ساخته شود' },
+    'drip irrigation': { en: 'watering crops with thin tubes that drip water right at each plant\'s roots', es: 'regar cultivos con tubos delgados que dejan caer gotas justo en las raíces de cada planta', fa: 'آبیاری کشت با نل‌های باریک که آب را قطره‌قطره به ریشهٔ هر بوته می‌رساند' },
+    cooperation: { en: 'working together to reach a goal', es: 'trabajar juntos para lograr una meta', fa: 'با هم کار کردن برای رسیدن به یک هدف' }
+  },
+
+  npcs: [
+    {
+      x: 4, y: 4,
+      name: { en: 'Maya', es: 'Maya', fa: 'مایا' },
+      role: { en: 'Engineer at the desalination plant', es: 'Ingeniera de la planta desalinizadora', fa: 'انجنیر در فابریکهٔ آب‌شیرین‌کن' },
+      look: { skin: 2, hair: '#4a2a18', shirt: '#e0a020', pants: '#2c3e5a' },
+      lines: [
+        { en: 'Welcome to the Levant, at the east end of the Mediterranean Sea. Look around. Rain falls only in winter, and summers are long and dry. Fresh water here is [[scarce|scarce]].',
+          es: 'Bienvenido al Levante, en el extremo este del mar Mediterráneo. Mira a tu alrededor. Solo llueve en invierno y los veranos son largos y secos. Aquí el agua dulce es [[scarce|escasa]].',
+          fa: 'به شام (لِوانت) در شرق بحیرهٔ مدیترانه خوش آمدی. به اطراف نگاه کن. باران فقط در زمستان می‌بارد و تابستان‌ها دراز و خشک هستند. آب شیرین این‌جا [[scarce|کمیاب]] است.',
+          easy: { en: 'This land is dry. Rain falls only in winter. Fresh water is [[scarce|scarce]].', es: 'Esta tierra es seca. Solo llueve en invierno. El agua dulce es [[scarce|escasa]].', fa: 'این زمین خشک است. باران فقط در زمستان می‌بارد. آب شیرین [[scarce|کمیاب]] است.' } },
+        { en: 'But the sea never runs dry! My plant does [[desalination|desalination]]. It takes the salt out of seawater to make fresh water. The hard part: it needs lots of energy, and it leaves very salty water behind.',
+          es: '¡Pero el mar nunca se seca! Mi planta hace [[desalination|desalinización]]. Le quita la sal al agua de mar para hacer agua dulce. Lo difícil: necesita mucha energía y deja atrás agua muy salada.',
+          fa: 'اما بحر هرگز خشک نمی‌شود! فابریکهٔ من [[desalination|آب بحر را شیرین می‌کند]]. نمک را از آب بحر می‌گیرد تا آب شیرین بسازد. مشکل این است: انرژی زیاد لازم دارد و آب بسیار شور از آن باقی می‌ماند.',
+          easy: { en: '[[desalination|Desalination]] takes salt out of seawater. It makes fresh water, but it uses lots of energy.', es: 'La [[desalination|desalinización]] le quita la sal al agua de mar. Hace agua dulce, pero usa mucha energía.', fa: '[[desalination|شیرین کردن آب بحر]] نمک را از آب بحر می‌گیرد. آب شیرین می‌سازد، اما انرژی زیاد مصرف می‌کند.' } }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'Why is fresh water so precious in the Levant?', es: '¿Por qué el agua dulce es tan valiosa en el Levante?', fa: 'چرا آب شیرین در شام این‌قدر قیمتی است؟' },
+        choices: [
+          { ok: true, t: { en: 'Little rain falls, so fresh water is scarce', es: 'Llueve poco, así que el agua dulce es escasa', fa: 'باران کم می‌بارد، پس آب شیرین کمیاب است' },
+            why: { en: 'Yes. Rain comes only in winter, and summers are long and dry.', es: 'Sí. Solo llueve en invierno y los veranos son largos y secos.', fa: 'بلی. باران فقط در زمستان می‌آید و تابستان‌ها دراز و خشک هستند.' } },
+          { t: { en: 'It rains every day, so water is everywhere', es: 'Llueve todos los días, así que hay agua por todas partes', fa: 'هر روز باران می‌بارد، پس آب همه جا است' },
+            why: { en: 'The Levant is dry. Rain falls only in winter.', es: 'El Levante es seco. Solo llueve en invierno.', fa: 'شام خشک است. باران فقط در زمستان می‌بارد.' } },
+          { t: { en: 'The sea is made of fresh water', es: 'El mar es de agua dulce', fa: 'آب بحر شیرین است' },
+            why: { en: 'Seawater is salty. That is why it needs desalination.', es: 'El agua de mar es salada. Por eso necesita desalinización.', fa: 'آب بحر شور است. به همین خاطر باید شیرین شود.' } }
+        ]
+      }
+    },
+    {
+      x: 25, y: 4,
+      name: { en: 'Lina', es: 'Lina', fa: 'لینا' },
+      role: { en: 'Water planner', es: 'Planificadora del agua', fa: 'برنامه‌ریز آب' },
+      look: { skin: 3, hair: '#2a1a12', shirt: '#2a7fa8', pants: '#3a2f45', robe: true },
+      lines: [
+        { en: 'Rivers do not stop at borders. The Jordan River and its branches touch several neighbors: Lebanon, Syria, Jordan, Israel and the Palestinians. A resource that crosses borders is [[transboundary|transboundary]].',
+          es: 'Los ríos no se detienen en las fronteras. El río Jordán y sus ramas tocan a varios vecinos: Líbano, Siria, Jordania, Israel y los palestinos. Un recurso que cruza fronteras es [[transboundary|transfronterizo]].',
+          fa: 'دریاها در سرحد نمی‌ایستند. دریای اردن و شاخه‌هایش به چند همسایه می‌رسند: لبنان، سوریه، اردن، اسرائیل و فلسطینی‌ها. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.',
+          easy: { en: 'One river, many neighbors. A resource that crosses borders is [[transboundary|transboundary]].', es: 'Un río, muchos vecinos. Un recurso que cruza fronteras es [[transboundary|transfronterizo]].', fa: 'یک دریا، چند همسایه. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.' } },
+        { en: 'Neighbors who share a river can argue, or they can work together. A [[border dispute|border dispute]] is an argument over where a line should be. But neighbors can also sign a [[treaty|treaty]]: a written agreement with clear rules.',
+          es: 'Los vecinos que comparten un río pueden discutir o pueden trabajar juntos. Una [[border dispute|disputa fronteriza]] es una discusión sobre dónde debe estar una línea. Pero los vecinos también pueden firmar un [[treaty|tratado]]: un acuerdo escrito con reglas claras.',
+          fa: 'همسایه‌هایی که یک دریا را شریک دارند می‌توانند دعوا کنند یا با هم کار کنند. [[border dispute|اختلاف سرحدی]] دعوا بر سر جای یک خط است. اما همسایه‌ها می‌توانند یک [[treaty|معاهده]] هم امضا کنند: یک توافق نوشته‌شده با قاعده‌های روشن.',
+          easy: { en: 'Neighbors can fight over a river, or sign a [[treaty|treaty]] with clear rules for sharing.', es: 'Los vecinos pueden pelear por un río o firmar un [[treaty|tratado]] con reglas claras para compartir.', fa: 'همسایه‌ها می‌توانند بر سر دریا دعوا کنند، یا یک [[treaty|معاهده]] با قاعده‌های روشن برای شریک شدن امضا کنند.' } },
+        { en: 'In 1994, Jordan and Israel signed a peace treaty. Part of it set rules for sharing water from the Jordan and Yarmouk rivers. Scientists can also share weather data and river reports. Sharing takes trust, and trust takes work.',
+          es: 'En 1994, Jordania e Israel firmaron un tratado de paz. Una parte puso reglas para compartir el agua de los ríos Jordán y Yarmuk. Los científicos también pueden compartir datos del clima e informes del río. Compartir necesita confianza, y la confianza cuesta trabajo.',
+          fa: 'در سال ۱۹۹۴، اردن و اسرائیل یک معاهدهٔ صلح امضا کردند. بخشی از آن قاعده‌هایی برای شریک شدن آب دریای اردن و دریای یرموک گذاشت. دانشمندان هم می‌توانند معلومات هوا و گزارش‌های دریا را شریک کنند. شریک شدن اعتماد می‌خواهد و اعتماد زحمت می‌خواهد.',
+          easy: { en: 'In 1994, Jordan and Israel signed a treaty with rules for sharing river water. Sharing takes trust.', es: 'En 1994, Jordania e Israel firmaron un tratado con reglas para compartir el agua del río. Compartir necesita confianza.', fa: 'در سال ۱۹۹۴، اردن و اسرائیل معاهده‌ای با قاعده‌های شریک شدن آب دریا امضا کردند. شریک شدن اعتماد می‌خواهد.' } }
+      ],
+      ask: {
+        stat: 'reg',
+        q: { en: 'Which one is a transboundary resource?', es: '¿Cuál es un recurso transfronterizo?', fa: 'کدام یک منبع فراسرحدی است؟' },
+        choices: [
+          { ok: true, t: { en: 'A river that flows through two or more countries', es: 'Un río que pasa por dos o más países', fa: 'دریایی که از دو یا چند کشور می‌گذرد' },
+            why: { en: 'Right. The river crosses borders, so its water is a shared problem.', es: 'Correcto. El río cruza fronteras, así que su agua es un problema compartido.', fa: 'درست است. دریا از سرحدها می‌گذرد، پس آبش یک مسئلهٔ مشترک است.' } },
+          { t: { en: 'A well in one family\'s yard', es: 'Un pozo en el patio de una familia', fa: 'یک چاه در حویلی یک خانواده' },
+            why: { en: 'That well stays inside one place. It does not cross a border.', es: 'Ese pozo está en un solo lugar. No cruza una frontera.', fa: 'آن چاه در یک جا می‌ماند. از سرحد نمی‌گذرد.' } },
+          { t: { en: 'A tree in a city park', es: 'Un árbol en un parque de la ciudad', fa: 'یک درخت در پارک شهر' },
+            why: { en: 'A tree stays in one spot inside one country.', es: 'Un árbol se queda en un lugar dentro de un país.', fa: 'درخت در یک جا داخل یک کشور می‌ماند.' } }
+        ]
+      }
+    },
+    {
+      x: 11, y: 12,
+      name: { en: 'Yousef', es: 'Yousef', fa: 'یوسف' },
+      role: { en: 'Farmer in the Jordan Valley', es: 'Agricultor del valle del Jordán', fa: 'دهقان درهٔ اردن' },
+      look: { skin: 3, hair: '#3a2a20', shirt: '#b5523a', pants: '#4a3a2a' },
+      lines: [
+        { en: 'My family grows tomatoes and dates here in the Jordan Valley. The river flows south, down to the Dead Sea. It is the lowest place on land on Earth.',
+          es: 'Mi familia cultiva tomates y dátiles aquí en el valle del Jordán. El río corre hacia el sur, hasta el mar Muerto. Es el lugar más bajo en tierra firme del planeta.',
+          fa: 'خانوادهٔ من این‌جا در درهٔ اردن بادنجان رومی و خرما کشت می‌کند. دریا به طرف جنوب تا بحیرهٔ مرده می‌رود. آن‌جا پایین‌ترین جای خشکهٔ زمین است.',
+          easy: { en: 'I grow tomatoes and dates. The river flows south into the Dead Sea.', es: 'Yo cultivo tomates y dátiles. El río corre al sur hasta el mar Muerto.', fa: 'من بادنجان رومی و خرما کشت می‌کنم. دریا به طرف جنوب به بحیرهٔ مرده می‌ریزد.' } },
+        { en: 'So many farms and cities take water from the river that only a little reaches the end. The Dead Sea is shrinking every year. You can see its old shore far from the water now.',
+          es: 'Tantas granjas y ciudades sacan agua del río que solo un poco llega al final. El mar Muerto se encoge cada año. Ahora puedes ver su orilla vieja lejos del agua.',
+          fa: 'این‌قدر کشتزارها و شهرها از دریا آب می‌گیرند که فقط کمی به آخر آن می‌رسد. بحیرهٔ مرده هر سال کوچک‌تر می‌شود. حالا ساحل کهنه‌اش را دور از آب می‌بینی.',
+          easy: { en: 'People take lots of river water. Only a little reaches the Dead Sea, so it is shrinking.', es: 'La gente saca mucha agua del río. Solo un poco llega al mar Muerto, así que se encoge.', fa: 'مردم آب زیادی از دریا می‌گیرند. فقط کمی به بحیرهٔ مرده می‌رسد، پس کوچک می‌شود.' } },
+        { en: 'I use [[drip irrigation|drip irrigation]]. Thin tubes drip water right at each plant\'s roots. Less water is lost to the hot sun, so more can stay in the river.',
+          es: 'Yo uso [[drip irrigation|riego por goteo]]. Unos tubos delgados dejan caer gotas justo en las raíces de cada planta. Se pierde menos agua con el sol caliente, así que más puede quedarse en el río.',
+          fa: 'من از [[drip irrigation|آبیاری قطره‌ای]] استفاده می‌کنم. نل‌های باریک آب را قطره‌قطره به ریشهٔ هر بوته می‌رسانند. آب کمتری زیر آفتاب گرم از بین می‌رود، پس آب بیشتری در دریا می‌ماند.',
+          easy: { en: '[[drip irrigation|Drip irrigation]] puts water right at the roots. It saves water.', es: 'El [[drip irrigation|riego por goteo]] pone el agua justo en las raíces. Ahorra agua.', fa: '[[drip irrigation|آبیاری قطره‌ای]] آب را درست به ریشه می‌رساند. آب را صرفه می‌کند.' } }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Where does the Jordan River end?', es: '¿Dónde termina el río Jordán?', fa: 'دریای اردن در کجا تمام می‌شود؟' },
+        choices: [
+          { ok: true, t: { en: 'In the Dead Sea', es: 'En el mar Muerto', fa: 'در بحیرهٔ مرده' },
+            why: { en: 'Yes. The river flows south and ends in the Dead Sea.', es: 'Sí. El río corre al sur y termina en el mar Muerto.', fa: 'بلی. دریا به طرف جنوب می‌رود و در بحیرهٔ مرده تمام می‌شود.' } },
+          { t: { en: 'In the Mediterranean Sea', es: 'En el mar Mediterráneo', fa: 'در بحیرهٔ مدیترانه' },
+            why: { en: 'The Mediterranean is to the west. The Jordan flows south to the Dead Sea.', es: 'El Mediterráneo está al oeste. El Jordán corre al sur hasta el mar Muerto.', fa: 'مدیترانه در غرب است. دریای اردن به طرف جنوب تا بحیرهٔ مرده می‌رود.' } },
+          { t: { en: 'In the Nile River', es: 'En el río Nilo', fa: 'در دریای نیل' },
+            why: { en: 'The Nile is in Africa. It does not meet the Jordan.', es: 'El Nilo está en África. No se une al Jordán.', fa: 'نیل در افریقا است. به دریای اردن نمی‌رسد.' } }
+        ]
+      }
+    }
+  ],
+
+  signs: [
+    { x: 13, y: 4, text: { en: 'THE LAKE · Sea of Galilee (Lake Tiberias). A freshwater lake. The Jordan River flows in from the snowy mountains in the north and flows out to the south.',
+      es: 'EL LAGO · Mar de Galilea (lago Tiberíades). Un lago de agua dulce. El río Jordán entra desde las montañas nevadas del norte y sale hacia el sur.',
+      fa: 'جهیل · جهیل طبریه (جلیل). یک جهیل آب شیرین. دریای اردن از کوه‌های برفی شمال به آن می‌ریزد و به طرف جنوب بیرون می‌رود.' } },
+    { x: 14, y: 16, text: { en: 'OLD SHORE · Long ago, the Dead Sea came up to this sign. Now the water is far away. Less river water arrives every year.',
+      es: 'ORILLA VIEJA · Hace mucho tiempo, el mar Muerto llegaba hasta este letrero. Ahora el agua está lejos. Cada año llega menos agua del río.',
+      fa: 'ساحل کهنه · مدت‌ها پیش، بحیرهٔ مرده تا این تابلو می‌رسید. حالا آب دور است. هر سال آب کمتری از دریا می‌رسد.' } }
+  ],
+
+  scraps: [[2, 1], [30, 1], [3, 20]],
+  smudges: [[20, 10], [5, 16]],
+
+  challenge: {
+    at: [23, 14],
+    type: 'claim',
+    stat: 'hei',
+    title: { en: 'The water council', es: 'El consejo del agua', fa: 'شورای آب' },
+    intro: { en: 'The neighbors meet at the old well. They ask you to choose a plan for the river. Pick one plan. Then back it up with one reason that is fair to people and one reason that is good for the land and water.',
+      es: 'Los vecinos se reúnen en el pozo viejo. Te piden que elijas un plan para el río. Elige un plan. Luego apóyalo con una razón que sea justa para la gente y una razón que sea buena para la tierra y el agua.',
+      fa: 'همسایه‌ها کنار چاه کهنه جمع شده‌اند. از تو می‌خواهند برای دریا یک نقشه انتخاب کنی. یک نقشه را انتخاب کن. بعد یک دلیل که برای مردم عادلانه است و یک دلیل که برای زمین و آب خوب است بیاور.' },
+    options: [
+      { icon: '🧱', name: { en: 'A: Every country builds its own big dam', es: 'A: Cada país construye su propia gran represa', fa: 'الف: هر کشور بند بزرگ خودش را می‌سازد' },
+        desc: { en: 'Each neighbor holds back as much river water as it can.', es: 'Cada vecino retiene toda el agua del río que puede.', fa: 'هر همسایه تا جایی که می‌تواند آب دریا را نگه می‌دارد.' },
+        result: { en: 'The dams up the river hold the water back. Farms down the river and the Dead Sea get even less, and the neighbors argue more.', es: 'Las represas río arriba retienen el agua. Las granjas río abajo y el mar Muerto reciben aún menos, y los vecinos discuten más.', fa: 'بندهای بالای دریا آب را نگه می‌دارند. کشتزارهای پایین دریا و بحیرهٔ مرده آب کمتری می‌گیرند و همسایه‌ها بیشتر دعوا می‌کنند.' } },
+      { icon: '🤝', name: { en: 'B: Share the river and build a desalination plant', es: 'B: Compartir el río y construir una planta desalinizadora', fa: 'ب: دریا را شریک شوند و فابریکهٔ آب‌شیرین‌کن بسازند' },
+        desc: { en: 'Each neighbor takes an agreed amount. New fresh water comes from the sea, and farms use drip irrigation.', es: 'Cada vecino toma una cantidad acordada. Llega agua dulce nueva del mar y las granjas usan riego por goteo.', fa: 'هر همسایه یک مقدار توافق‌شده می‌گیرد. آب شیرین تازه از بحر می‌آید و کشتزارها آبیاری قطره‌ای می‌کنند.' },
+        result: { en: 'Every neighbor knows its fair share. The plant makes new fresh water, so less is pumped from the river. More water flows on to the Dead Sea.', es: 'Cada vecino conoce su parte justa. La planta hace agua dulce nueva, así que se bombea menos del río. Más agua sigue hasta el mar Muerto.', fa: 'هر همسایه سهم عادلانهٔ خود را می‌داند. فابریکه آب شیرین تازه می‌سازد، پس آب کمتری از دریا کشیده می‌شود. آب بیشتری تا بحیرهٔ مرده می‌رسد.' } },
+      { icon: '🤷', name: { en: 'C: Do nothing', es: 'C: No hacer nada', fa: 'ج: هیچ کاری نکنند' },
+        desc: { en: 'Everyone keeps pumping as much as they want.', es: 'Todos siguen bombeando cuanto quieran.', fa: 'هر کس هر قدر بخواهد آب می‌کشد.' },
+        result: { en: 'The river keeps shrinking. Wells dry up, and the Dead Sea keeps falling year after year.', es: 'El río sigue encogiéndose. Los pozos se secan y el mar Muerto sigue bajando año tras año.', fa: 'دریا کوچک‌تر و کوچک‌تر می‌شود. چاه‌ها خشک می‌شوند و آب بحیرهٔ مرده سال به سال پایین‌تر می‌رود.' } }
+    ],
+    kinds: [
+      { id: 'people', label: { en: 'Fair to people', es: 'Justa para la gente', fa: 'برای مردم عادلانه' } },
+      { id: 'land', label: { en: 'Good for the land and water', es: 'Buena para la tierra y el agua', fa: 'برای زمین و آب خوب' } }
+    ],
+    reasons: [
+      { kind: 'people', fits: [1], t: { en: 'Every neighbor gets a share it can count on, written in a treaty.', es: 'Cada vecino recibe una parte con la que puede contar, escrita en un tratado.', fa: 'هر همسایه سهمی می‌گیرد که می‌تواند به آن اطمینان کند و در یک معاهده نوشته شده است.' },
+        why: { en: 'An agreed share means no family is left dry by surprise.', es: 'Una parte acordada significa que ninguna familia se queda sin agua por sorpresa.', fa: 'سهم توافق‌شده یعنی هیچ خانواده‌ای ناگهان بی‌آب نمی‌ماند.' } },
+      { kind: 'people', fits: [0], t: { en: 'Each country controls its own water and does not need to trust anyone.', es: 'Cada país controla su propia agua y no necesita confiar en nadie.', fa: 'هر کشور آب خود را کنترول می‌کند و لازم نیست به کسی اعتماد کند.' },
+        why: { en: 'That is true for plan A. But is plan A good for the land and the river down below?', es: 'Eso es cierto para el plan A. Pero ¿el plan A es bueno para la tierra y el río más abajo?', fa: 'این برای نقشهٔ الف درست است. اما آیا نقشهٔ الف برای زمین و پایین دریا خوب است؟' } },
+      { kind: 'people', fits: [], t: { en: 'Whoever pumps the fastest should get the most water.', es: 'Quien bombee más rápido debería recibir más agua.', fa: 'هر کس زودتر آب بکشد باید آب بیشتری بگیرد.' },
+        why: { en: 'That is not fair. The richest or strongest would win, and others would go dry.', es: 'Eso no es justo. Los más ricos o fuertes ganarían y los demás se quedarían sin agua.', fa: 'این عادلانه نیست. پولدارترین یا قوی‌ترین برنده می‌شود و دیگران بی‌آب می‌مانند.' } },
+      { kind: 'land', fits: [1], t: { en: 'The plant makes new fresh water from the sea, so less is pumped from the river.', es: 'La planta hace agua dulce nueva con agua del mar, así que se bombea menos del río.', fa: 'فابریکه از آب بحر آب شیرین تازه می‌سازد، پس آب کمتری از دریا کشیده می‌شود.' },
+        why: { en: 'New water from the sea takes pressure off the river.', es: 'El agua nueva del mar le quita presión al río.', fa: 'آب تازه از بحر فشار را از روی دریا کم می‌کند.' } },
+      { kind: 'land', fits: [1], t: { en: 'Drip irrigation saves water, so more flows on to the Dead Sea.', es: 'El riego por goteo ahorra agua, así que más agua sigue hasta el mar Muerto.', fa: 'آبیاری قطره‌ای آب را صرفه می‌کند، پس آب بیشتری تا بحیرهٔ مرده می‌رود.' },
+        why: { en: 'Less water is wasted on farms, so the river can keep flowing.', es: 'Se desperdicia menos agua en las granjas, así que el río puede seguir corriendo.', fa: 'آب کمتری در کشتزارها ضایع می‌شود، پس دریا می‌تواند جاری بماند.' } },
+      { kind: 'land', fits: [], t: { en: 'A dry river is fine because lots of rain will fill it again next week.', es: 'Un río seco está bien porque mucha lluvia lo llenará otra vez la próxima semana.', fa: 'دریای خشک مشکلی ندارد چون هفتهٔ آینده باران زیاد دوباره آن را پر می‌کند.' },
+        why: { en: 'Rain is scarce here. A drained river does not fill up again quickly.', es: 'Aquí la lluvia es escasa. Un río vacío no se vuelve a llenar rápido.', fa: 'باران این‌جا کم است. دریای خالی زود دوباره پر نمی‌شود.' } }
+    ],
+    mismatch: { en: 'That reason does not back up the plan you picked. Choose reasons that are true for your plan.', es: 'Esa razón no apoya el plan que elegiste. Elige razones que sean ciertas para tu plan.', fa: 'این دلیل از نقشه‌ای که انتخاب کردی پشتیبانی نمی‌کند. دلیل‌هایی انتخاب کن که برای نقشهٔ تو درست باشند.' },
+    success: { en: 'The council agrees! Water flows down the Jordan again, and the neighbors shake hands.', es: '¡El consejo está de acuerdo! El agua vuelve a correr por el Jordán y los vecinos se dan la mano.', fa: 'شورا موافقت کرد! آب دوباره در دریای اردن جاری است و همسایه‌ها با هم دست می‌دهند.' }
+  },
+
+  boss: {
+    at: [14, 19],
+    stat: 'mov',
+    need: 3,
+    name: { en: 'The Drought Smudge', es: 'El Borrón Sequía', fa: 'لکهٔ خشکسالی' },
+    appear: { en: 'The Drought Smudge is sitting on the old shore of the Dead Sea!', es: '¡El Borrón Sequía está sentado en la orilla vieja del mar Muerto!', fa: 'لکهٔ خشکسالی روی ساحل کهنهٔ بحیرهٔ مرده نشسته است!' },
+    taunt: { en: 'Slurp! Every drop is mine. Let the neighbors fight while I drink!', es: '¡Slurp! Cada gota es mía. ¡Que los vecinos peleen mientras yo bebo!', fa: 'هورت! هر قطره مال من است. بگذار همسایه‌ها دعوا کنند تا من بنوشم!' },
+    win: { en: 'The Smudge dries up and blows away. Atlas page 5.3 floats down, and the Water Key glows in your hand!', es: 'El Borrón se seca y se lo lleva el viento. Cae la página 5.3 del atlas, ¡y la Llave del agua brilla en tu mano!', fa: 'لکه خشک می‌شود و باد آن را می‌برد. صفحهٔ ۵.۳ اطلس پایین می‌آید و کلید آب در دستت می‌درخشد!' },
+    questions: [
+      { q: { en: 'What does transboundary mean?', es: '¿Qué significa transfronterizo?', fa: 'فراسرحدی یعنی چه؟' },
+        choices: [{ en: 'Crossing from one country into another', es: 'Que cruza de un país a otro', fa: 'از یک کشور به کشور دیگر گذشتن' }, { en: 'Staying inside one city', es: 'Que se queda dentro de una ciudad', fa: 'داخل یک شهر ماندن' }, { en: 'Found only under the sea', es: 'Que solo está bajo el mar', fa: 'فقط زیر بحر پیدا شدن' }, { en: 'Owned by one family', es: 'Que es de una sola familia', fa: 'مال یک خانواده بودن' }], answer: 0,
+        why: { en: 'A [[transboundary|transboundary]] resource, like a river, crosses borders.', es: 'Un recurso [[transboundary|transfronterizo]], como un río, cruza fronteras.', fa: 'یک منبع [[transboundary|فراسرحدی]]، مثل دریا، از سرحدها می‌گذرد.' } },
+      { q: { en: 'Ethiopia built a huge dam on the Blue Nile. Why does Egypt worry?', es: 'Etiopía construyó una gran represa en el Nilo Azul. ¿Por qué se preocupa Egipto?', fa: 'ایتوپیا یک بند بزرگ روی نیل آبی ساخت. چرا مصر نگران است؟' },
+        choices: [{ en: 'Egypt gets most of its fresh water from the Nile', es: 'Egipto recibe la mayor parte de su agua dulce del Nilo', fa: 'مصر بیشتر آب شیرین خود را از نیل می‌گیرد' }, { en: 'Egypt has too much rain', es: 'Egipto tiene demasiada lluvia', fa: 'مصر باران بسیار زیاد دارد' }, { en: 'The dam is in Egypt', es: 'La represa está en Egipto', fa: 'بند در مصر است' }, { en: 'Egypt sells the dam\'s electricity', es: 'Egipto vende la electricidad de la represa', fa: 'مصر برق بند را می‌فروشد' }], answer: 0,
+        why: { en: 'Egypt depends on the Nile. It fears the dam will slow the water that reaches it.', es: 'Egipto depende del Nilo. Teme que la represa reduzca el agua que le llega.', fa: 'مصر به نیل وابسته است. می‌ترسد بند آبی را که به آن می‌رسد کم کند.' } },
+      { q: { en: 'What is OPEC?', es: '¿Qué es la OPEP?', fa: 'اوپک چیست؟' },
+        choices: [{ en: 'A group of oil-exporting countries that meet about how much oil to sell', es: 'Un grupo de países que exportan petróleo y se reúnen para decidir cuánto vender', fa: 'گروهی از کشورهای صادرکنندهٔ تیل که دربارهٔ مقدار فروش تیل جلسه می‌کنند' }, { en: 'A river in Iraq', es: 'Un río de Irak', fa: 'یک دریا در عراق' }, { en: 'A desalination plant', es: 'Una planta desalinizadora', fa: 'یک فابریکهٔ آب‌شیرین‌کن' }, { en: 'A border wall', es: 'Un muro fronterizo', fa: 'یک دیوار سرحدی' }], answer: 0,
+        why: { en: 'OPEC members, like Saudi Arabia, Iraq and Kuwait, meet to decide how much oil to sell.', es: 'Los miembros de la OPEP, como Arabia Saudita, Irak y Kuwait, se reúnen para decidir cuánto petróleo vender.', fa: 'عضوهای اوپک، مثل عربستان سعودی، عراق و کویت، جلسه می‌کنند تا مقدار فروش تیل را تعیین کنند.' } },
+      { q: { en: 'What is a border dispute?', es: '¿Qué es una disputa fronteriza?', fa: 'اختلاف سرحدی چیست؟' },
+        choices: [{ en: 'An argument over exactly where a border line should be', es: 'Una discusión sobre dónde debe estar exactamente una frontera', fa: 'دعوا بر سر این‌که خط سرحد دقیقاً کجا باشد' }, { en: 'A party at the border', es: 'Una fiesta en la frontera', fa: 'یک جشن در سرحد' }, { en: 'A map with no borders', es: 'Un mapa sin fronteras', fa: 'نقشه‌ای بدون سرحد' }, { en: 'A river that changes color', es: 'Un río que cambia de color', fa: 'دریایی که رنگش تغییر می‌کند' }], answer: 0,
+        why: { en: 'A [[border dispute|border dispute]] can be about land, water or oil under the ground.', es: 'Una [[border dispute|disputa fronteriza]] puede ser por tierra, agua o petróleo bajo el suelo.', fa: '[[border dispute|اختلاف سرحدی]] می‌تواند دربارهٔ زمین، آب یا تیل زیر زمین باشد.' } },
+      { q: { en: 'Why is the Dead Sea shrinking?', es: '¿Por qué se encoge el mar Muerto?', fa: 'چرا بحیرهٔ مرده کوچک می‌شود؟' },
+        choices: [{ en: 'People take so much river water that little reaches it', es: 'La gente saca tanta agua del río que poca llega hasta él', fa: 'مردم این‌قدر آب از دریا می‌گیرند که کمی به آن می‌رسد' }, { en: 'Too much rain falls on it', es: 'Le cae demasiada lluvia', fa: 'باران زیاد روی آن می‌بارد' }, { en: 'Fish drink the water', es: 'Los peces se beben el agua', fa: 'ماهی‌ها آب را می‌نوشند' }, { en: 'It is moving to another country', es: 'Se está mudando a otro país', fa: 'به کشور دیگری می‌رود' }], answer: 0,
+        why: { en: 'Farms and cities use most of the Jordan River\'s water before it reaches the Dead Sea.', es: 'Las granjas y ciudades usan la mayor parte del agua del Jordán antes de que llegue al mar Muerto.', fa: 'کشتزارها و شهرها بیشتر آب دریای اردن را پیش از رسیدن به بحیرهٔ مرده مصرف می‌کنند.' } },
+      { q: { en: 'What does a desalination plant do?', es: '¿Qué hace una planta desalinizadora?', fa: 'فابریکهٔ آب‌شیرین‌کن چه کار می‌کند؟' },
+        choices: [{ en: 'Takes salt out of seawater to make fresh water', es: 'Le quita la sal al agua de mar para hacer agua dulce', fa: 'نمک را از آب بحر می‌گیرد تا آب شیرین بسازد' }, { en: 'Adds salt to rivers', es: 'Le pone sal a los ríos', fa: 'به دریاها نمک اضافه می‌کند' }, { en: 'Pumps oil from the ground', es: 'Saca petróleo de la tierra', fa: 'از زمین تیل می‌کشد' }, { en: 'Makes rain fall', es: 'Hace que llueva', fa: 'باران می‌باراند' }], answer: 0,
+        why: { en: '[[desalination|Desalination]] turns salty seawater into fresh water. It uses a lot of energy.', es: 'La [[desalination|desalinización]] convierte el agua salada del mar en agua dulce. Usa mucha energía.', fa: '[[desalination|شیرین کردن آب بحر]] آب شور را به آب شیرین تبدیل می‌کند. انرژی زیاد مصرف می‌کند.' } },
+      { q: { en: 'Which one shows neighbors working together on water?', es: '¿Cuál muestra a vecinos trabajando juntos por el agua?', fa: 'کدام یک همکاری همسایه‌ها را بر سر آب نشان می‌دهد؟' },
+        choices: [{ en: 'They sign a treaty and share river reports', es: 'Firman un tratado y comparten informes del río', fa: 'معاهده امضا می‌کنند و گزارش‌های دریا را شریک می‌کنند' }, { en: 'Each one pumps as fast as it can', es: 'Cada uno bombea lo más rápido que puede', fa: 'هر کدام هر قدر زود که بتواند آب می‌کشد' }, { en: 'They stop talking to each other', es: 'Dejan de hablarse', fa: 'با هم گپ نمی‌زنند' }, { en: 'They hide their water numbers', es: 'Esconden sus datos del agua', fa: 'عددهای آب خود را پنهان می‌کنند' }], answer: 0,
+        why: { en: 'A [[treaty|treaty]] sets clear rules, and shared reports build trust. That is [[cooperation|cooperation]].', es: 'Un [[treaty|tratado]] pone reglas claras y los informes compartidos crean confianza. Eso es [[cooperation|cooperación]].', fa: '[[treaty|معاهده]] قاعده‌های روشن می‌گذارد و گزارش‌های مشترک اعتماد می‌سازد. این [[cooperation|همکاری]] است.' } },
+      { q: { en: 'Why does drip irrigation save water?', es: '¿Por qué el riego por goteo ahorra agua?', fa: 'چرا آبیاری قطره‌ای آب را صرفه می‌کند؟' },
+        choices: [{ en: 'It puts water right at the plant\'s roots', es: 'Pone el agua justo en las raíces de la planta', fa: 'آب را درست به ریشهٔ بوته می‌رساند' }, { en: 'It floods the whole field', es: 'Inunda todo el campo', fa: 'تمام کشتزار را زیر آب می‌کند' }, { en: 'It only works at night in the rain', es: 'Solo funciona de noche bajo la lluvia', fa: 'فقط شب و زیر باران کار می‌کند' }, { en: 'It uses seawater', es: 'Usa agua de mar', fa: 'از آب بحر استفاده می‌کند' }], answer: 0,
+        why: { en: 'Water goes straight to the roots, so less is lost to the hot sun.', es: 'El agua va directo a las raíces, así que se pierde menos con el sol caliente.', fa: 'آب مستقیم به ریشه می‌رود، پس کمتر زیر آفتاب گرم از بین می‌رود.' } }
+    ]
+  },
+
+  learned: [
+    { en: 'Fresh water is [[scarce|scarce]] in the Levant. The Jordan River is a [[transboundary|transboundary]] resource shared by several neighbors.', es: 'El agua dulce es [[scarce|escasa]] en el Levante. El río Jordán es un recurso [[transboundary|transfronterizo]] que comparten varios vecinos.', fa: 'آب شیرین در شام [[scarce|کمیاب]] است. دریای اردن یک منبع [[transboundary|فراسرحدی]] است که چند همسایه آن را شریک دارند.' },
+    { en: 'Neighbors can argue over borders and water, or they can cooperate with a [[treaty|treaty]], shared reports and fair shares.', es: 'Los vecinos pueden discutir por fronteras y agua, o pueden cooperar con un [[treaty|tratado]], informes compartidos y partes justas.', fa: 'همسایه‌ها می‌توانند بر سر سرحد و آب دعوا کنند، یا با [[treaty|معاهده]]، گزارش‌های مشترک و سهم‌های عادلانه همکاری کنند.' },
+    { en: '[[desalination|Desalination]] makes new fresh water and [[drip irrigation|drip irrigation]] saves it, so more water can stay in the river.', es: 'La [[desalination|desalinización]] crea agua dulce nueva y el [[drip irrigation|riego por goteo]] la ahorra, así que más agua puede quedarse en el río.', fa: '[[desalination|شیرین کردن آب بحر]] آب شیرین تازه می‌سازد و [[drip irrigation|آبیاری قطره‌ای]] آن را صرفه می‌کند، پس آب بیشتری در دریا می‌ماند.' }
+  ],
+  reflect: {
+    q: { en: 'Think of something you share with other people, like a room, a phone or a soccer field. What rule makes the sharing fair?', es: 'Piensa en algo que compartes con otras personas, como un cuarto, un teléfono o una cancha de fútbol. ¿Qué regla hace que compartir sea justo?', fa: 'به چیزی فکر کن که با دیگران شریک داری، مثل یک اتاق، یک تیلفون یا یک میدان فوتبال. کدام قاعده شریک شدن را عادلانه می‌کند؟' },
+    starter: { en: 'Something I share with other people is', es: 'Algo que comparto con otras personas es', fa: 'چیزی که با دیگران شریک دارم' }
+  }
+};
