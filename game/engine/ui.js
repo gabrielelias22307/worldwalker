@@ -1,0 +1,445 @@
+/* WORLDWALKER engine · everything with words: top bar, talk boxes, passport, start and finish screens */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  WW.esc = esc;
+
+  /* [[key|shown words]] -> yellow tap-to-define word */
+  WW.rich = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (m, k, w) => `<span class="word" data-k="${esc(k.trim().toLowerCase())}" tabindex="0">${w}</span>`)
+    .replace(/\[\[([^\]]+)\]\]/g, (m, w) => `<span class="word" data-k="${esc(w.trim().toLowerCase())}" tabindex="0">${w}</span>`);
+  WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[([^\]]+)\]\]/g, '$1').replace(/<[^>]+>/g, '');
+
+  const $ = id => document.getElementById(id);
+  const ui = WW.ui = { stack: [] };
+
+  /* ---------------- overlay ---------------- */
+  ui.open = (opts) => {
+    const ov = $('ww-ov');
+    const h = { opts, close() { ui.close(h); }, render() { draw(); } };
+    function draw() {
+      ov.className = 'ov' + (opts.cls ? ' ' + opts.cls : '');
+      ov.setAttribute('dir', WW.dir());
+      ov.innerHTML = '';
+      const box = document.createElement('div');
+      box.className = 'ov-box';
+      ov.appendChild(box);
+      opts.render(box, h);
+      ov.scrollTop = 0;
+    }
+    ui.stack.push(h);
+    $('ww-screen').classList.add('ovopen');
+    draw();
+    WW.paused = true;
+    return h;
+  };
+  ui.close = (h) => {
+    ui.stack = ui.stack.filter(x => x !== h);
+    const top = ui.stack[ui.stack.length - 1];
+    if (top) top.render();
+    else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); WW.paused = false; hidePop(); }
+    if (h.opts.onClose) h.opts.onClose();
+  };
+  ui.top = () => ui.stack[ui.stack.length - 1];
+  WW.onLang(() => { const t = ui.top(); if (t) t.render(); ui.hud(); ui.quest(); });
+
+  /* definition pop-up for yellow words */
+  let pop;
+  function hidePop() { if (pop) pop.style.display = 'none'; }
+  document.addEventListener('click', e => {
+    const w = e.target.closest && e.target.closest('.word');
+    if (!w) { hidePop(); return; }
+    const words = (WW.ep && WW.ep.words) || {};
+    const d = words[w.dataset.k];
+    if (!d) return;
+    if (!pop) { pop = document.createElement('div'); pop.className = 'defpop'; $('ww-screen').appendChild(pop); }
+    pop.setAttribute('dir', WW.dir());
+    pop.innerHTML = `<b>${esc(w.textContent)}</b> — ${esc(L(d))}`;
+    pop.style.display = 'block';
+    const sr = $('ww-screen').getBoundingClientRect(), r = w.getBoundingClientRect();
+    pop.style.left = Math.max(6, Math.min(sr.width - 300, r.left - sr.left)) + 'px';
+    pop.style.top = (r.bottom - sr.top + 6) + 'px';
+    WW.sfx('blip');
+  });
+
+  /* ---------------- toast ---------------- */
+  let toastT;
+  WW.toast = (html, col) => {
+    const el = $('ww-toast'); if (!el) return;
+    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.style.display = 'block';
+    el.setAttribute('dir', WW.dir());
+    clearTimeout(toastT); toastT = setTimeout(() => (el.style.display = 'none'), 2600);
+  };
+
+  /* ---------------- top bar ---------------- */
+  ui.hud = () => {
+    const el = $('ww-hud'); if (!el || !WW.ep) return;
+    const run = WW.run || {}, max = WW.heartsMax();
+    let h = '<div class="hud-left">';
+    for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
+    h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+    h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
+    h += '<div class="hud-right">';
+    WW.THEMES.forEach(th => {
+      const v = WW.save.stats[th.k] || 0;
+      h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+    });
+    h += '</div>';
+    el.innerHTML = h;
+    const bar = $('ww-bar');
+    if (bar) {
+      bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
+      $('ww-b-pass').textContent = '📘 ' + T('passport');
+      const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
+      $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
+      $('ww-b-full').textContent = '⛶ ' + T('full');
+      $('ww-foot').textContent = T('controls');
+    }
+  };
+  ui.quest = () => {
+    const el = $('ww-quest'); if (!el || !WW.run) return;
+    const r = WW.run, ep = WW.ep;
+    const need = ep.npcs.length, got = r.talked.size;
+    const steps = [
+      [T('talkTo') + ` (${got}/${need})`, got >= need],
+      [L(ep.challenge.title) || T('solve'), r.challengeDone],
+      [T('face'), r.bossDone]];
+    let h = `<b>${esc(T('quest'))}:</b> `;
+    h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
+    h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
+    el.innerHTML = h; el.setAttribute('dir', WW.dir());
+  };
+
+  /* small canvas with a sprite drawn big */
+  WW.spriteCanvas = (name, pal, scale = 4, crop = 16) => {
+    const c = document.createElement('canvas'); c.width = 16 * scale; c.height = crop * scale;
+    const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
+    WW.sprite(x, name, 0, 0, { pal, scale });
+    return c;
+  };
+
+  /* ---------------- talking to a person ---------------- */
+  ui.talk = (npc, onDone) => {
+    let page = 0, easy = false, stage = 'read', picked = null;
+    const lines = npc.lines || [];
+    WW.sfx('blip');
+    ui.open({
+      cls: 'talkov',
+      render(box, h) {
+        const face = WW.spriteCanvas('npc', WW.lookPal(npc.look), 4, 11);
+        face.className = 'face';
+        const head = document.createElement('div'); head.className = 'talk-head';
+        head.appendChild(face);
+        head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
+        box.appendChild(head);
+        const body = document.createElement('div'); body.className = 'talk-body';
+        box.appendChild(body);
+        if (stage === 'read') {
+          const ln = lines[page] || {};
+          const txt = easy && ln.easy ? ln.easy : ln;
+          body.innerHTML = `<p class="say">${WW.rich(txt)}</p><p class="hint">${page === 0 && /\[\[/.test(L(ln)) ? esc(T('tapWord')) : ''}</p>`;
+          const acts = document.createElement('div'); acts.className = 'acts';
+          if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
+          if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
+          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : T('close')), 'gold', () => {
+            WW.sfx('blip');
+            if (page < lines.length - 1) { page++; h.render(); }
+            else if (npc.ask) { stage = 'ask'; h.render(); }
+            else { h.close(); onDone && onDone(true); }
+          }));
+          body.appendChild(acts);
+        } else {
+          const a = npc.ask;
+          body.innerHTML = `<p class="say q">${WW.rich(a.q)}</p>`;
+          const list = document.createElement('div'); list.className = 'choices';
+          WW.shuffle(a.choices.map((_, i) => i), (npc.x || 1) * 7 + (npc.y || 1)).forEach(i => {
+            const ch = a.choices[i];
+            const b = document.createElement('button'); b.dataset.i = i;
+            b.innerHTML = WW.rich(ch.t || ch);
+            if (picked != null && i === picked) b.className = ch.ok ? 'right' : 'wrong';
+            b.onclick = () => {
+              picked = i;
+              if (ch.ok) {
+                WW.sfx('good');
+                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
+              } else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+              h.render();
+            };
+            list.appendChild(b);
+          });
+          body.appendChild(list);
+          if (picked != null) {
+            const ch = a.choices[picked];
+            const fb = document.createElement('div'); fb.className = 'fb ' + (ch.ok ? 'right' : 'wrong');
+            fb.innerHTML = `<b>${esc(ch.ok ? T('right') : T('wrong'))}</b> ${WW.rich(ch.why || '')}`;
+            body.appendChild(fb);
+            const acts = document.createElement('div'); acts.className = 'acts';
+            if (ch.ok) acts.appendChild(btn(T('cont') + ' ▶', 'gold', () => { h.close(); onDone && onDone(true); }));
+            else acts.appendChild(btn(T('tryAgain'), 'ghost', () => { picked = null; h.render(); }));
+            body.appendChild(acts);
+          }
+        }
+      }
+    });
+  };
+  function btn(label, kind, fn) {
+    const b = document.createElement('button');
+    b.className = 'pbtn ' + (kind || ''); b.innerHTML = label; b.onclick = fn; return b;
+  }
+  WW.btn = btn;
+
+  /* a sign or a simple message */
+  ui.message = (title, text, onDone) => {
+    ui.open({
+      cls: 'msgov',
+      render(box, h) {
+        box.innerHTML = `${title ? `<h3>${esc(title)}</h3>` : ''}<p class="say">${WW.rich(text)}</p>`;
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn(T('close'), 'gold', () => { h.close(); onDone && onDone(); }));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  /* ---------------- look picker + hero preview ---------------- */
+  function lookPicker(box, h) {
+    const wrap = document.createElement('div'); wrap.className = 'looks';
+    const prev = WW.spriteCanvas('hero', WW.heroPal(), 6); prev.className = 'heroprev';
+    wrap.appendChild(prev);
+    const rows = document.createElement('div');
+    ['skin', 'hair', 'hat'].forEach(k => {
+      const r = document.createElement('div'); r.className = 'lrow';
+      r.innerHTML = `<span>${esc(T(k))}</span>`;
+      WW.LOOK[k].forEach((col, i) => {
+        const b = document.createElement('button'); b.className = 'sw' + ((WW.save.look[k] ?? (k === 'skin' ? 1 : 0)) === i ? ' on' : '');
+        b.style.background = col; b.setAttribute('aria-label', T(k) + ' ' + (i + 1));
+        b.onclick = () => { WW.save.look[k] = i; WW.store(); h.render(); };
+        r.appendChild(b);
+      });
+      rows.appendChild(r);
+    });
+    wrap.appendChild(rows);
+    box.appendChild(wrap);
+  }
+
+  /* ---------------- start screen ---------------- */
+  ui.start = (onGo) => {
+    let msg = '', newHero = !WW.save.name;
+    ui.open({
+      cls: 'startov',
+      render(box, h) {
+        const ep = WW.ep;
+        box.innerHTML = `<div class="logo">WORLDWALKER</div><div class="sublogo">THE TORN ATLAS</div>
+          <div class="epcard"><div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(WW.REALMS[ep.realm]))}</div>
+          <h2>${esc(L(ep.title))}</h2><div class="place">${esc(L(ep.place))}</div></div>
+          <div class="langrow">${['en', 'es', 'fa'].map(l => `<button class="pbtn ${WW.lang === l ? 'gold' : ''}" data-l="${l}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('')}</div>`;
+        box.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.l)));
+        if (!newHero) {
+          const s = WW.save;
+          box.insertAdjacentHTML('beforeend', `<p class="wb">${esc(T('welcomeBack'))}, <b>${esc(s.name)}</b>! ${s.cls ? '· ' + esc(s.cls) : ''}</p>`);
+          const acts = document.createElement('div'); acts.className = 'acts center';
+          acts.appendChild(btn(T('cont') + ' ▶', 'gold big', () => go()));
+          box.appendChild(acts);
+          const nb = document.createElement('p'); nb.className = 'small';
+          const a = document.createElement('a'); a.href = '#'; a.textContent = T('notYou');
+          a.onclick = e => { e.preventDefault(); WW.resetHero(); newHero = true; h.render(); };
+          nb.appendChild(a); box.appendChild(nb);
+          return;
+        }
+        const s = WW.save;
+        const form = document.createElement('div'); form.className = 'signin';
+        form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
+          <label>${esc(T('firstName'))}<input id="si-name" maxlength="24" autocomplete="off" value="${esc(s.name || '')}"></label>
+          <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
+          <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
+        box.appendChild(form);
+        const lk = document.createElement('div'); lk.className = 'lookbox';
+        lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
+        lookPicker(lk, h);
+        box.appendChild(lk);
+        const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
+        form.querySelectorAll('input').forEach(i => (i.oninput = keep));
+        const acts = document.createElement('div'); acts.className = 'acts center';
+        acts.appendChild(btn(T('play') + ' ▶', 'gold big', () => {
+          keep();
+          if (!s.name) { msg = T('needName'); return h.render(); }
+          if (s.pin && !/^\d{4}$/.test(s.pin)) { msg = T('needPin'); return h.render(); }
+          go();
+        }));
+        box.appendChild(acts);
+        if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+        const pc = document.createElement('div'); pc.className = 'codein';
+        pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
+        pc.appendChild(btn(T('useCode'), 'ghost', () => {
+          const d = WW.readCode($('si-code').value);
+          if (!d) { msg = T('badCode'); return h.render(); }
+          keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+        }));
+        box.appendChild(pc);
+      }
+    });
+    async function go() {
+      WW.audioInit();
+      const h = ui.top();
+      if (WW.sheetOn()) { await WW.sheetLoad(); }
+      h.close(); onGo();
+    }
+  };
+
+  /* episode opening card */
+  ui.intro = (onGo) => {
+    ui.open({
+      cls: 'introov',
+      render(box, h) {
+        const ep = WW.ep;
+        const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
+        box.appendChild(pip);
+        box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
+          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
+          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
+          <p class="small">${esc(T('controls'))}</p>`);
+        const acts = document.createElement('div'); acts.className = 'acts center';
+        acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  /* ---------------- passport ---------------- */
+  ui.passport = () => {
+    let msg = '';
+    ui.open({
+      cls: 'passov',
+      render(box, h) {
+        const s = WW.save;
+        const top = document.createElement('div'); top.className = 'pp-top';
+        const hero = WW.spriteCanvas('hero', WW.heroPal(), 5); hero.className = 'pp-hero';
+        top.appendChild(hero);
+        top.insertAdjacentHTML('beforeend', `<div><div class="pp-name">${esc(s.name || '—')}</div><div class="small">${esc(s.cls || '')}</div>
+          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / 24</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
+        box.appendChild(top);
+        let pw = `<h3>${esc(T('powers'))}</h3><div class="powers">`;
+        WW.THEMES.forEach(th => {
+          const v = s.stats[th.k] || 0;
+          pw += `<div class="pw"><span class="pwi">${th.icon}</span><div><b>${esc(L(th.name))}</b> <span class="small">(${esc(L(th.full))})</span>
+            <div class="bar"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></div></div><span class="pwn">${v}</span></div>`;
+        });
+        pw += '</div>';
+        box.insertAdjacentHTML('beforeend', pw);
+        let bag = `<h3>${esc(T('bag'))}</h3><div class="bag">`;
+        WW.TOOLS.forEach((t, i) => {
+          const has = WW.hasTool(t.id);
+          bag += `<div class="slot ${has ? 'has' : ''}"><span class="ti">${has ? t.icon : '?'}</span><span>${has ? esc(L(t.name)) : esc(T('realm')) + ' ' + (i + 1)}</span></div>`;
+        });
+        bag += '</div>';
+        box.insertAdjacentHTML('beforeend', bag);
+        let st = `<h3>${esc(T('stamps'))}</h3><div class="stamps">`;
+        for (let r = 1; r <= 8; r++) {
+          st += '<div class="scol">';
+          WW.EPISODES.filter(e => e.realm === r).forEach(e => {
+            const d = s.episodes[e.id];
+            st += `<span class="stamp ${d && d.done ? 'on r' + r : ''}" title="${e.id}">${e.id}${d && d.stars ? '<i>' + '★'.repeat(d.stars) + '</i>' : ''}</span>`;
+          });
+          st += '</div>';
+        }
+        st += '</div>';
+        box.insertAdjacentHTML('beforeend', st);
+        const code = WW.passportCode();
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('yourCode'))}</h3><p class="small">${esc(T('codeHelp'))}</p>
+          <div class="coderow"><code class="pcode">${code}</code></div>`);
+        const cr = box.querySelector('.coderow');
+        cr.appendChild(btn(T('copyCode'), 'gold', () => WW.copy(code).then(() => { msg = '✓'; h.render(); })));
+        if (msg) cr.insertAdjacentHTML('beforeend', `<span class="ok">${msg}</span>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn(T('close'), 'ghost', () => h.close()));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  WW.copy = (text) => {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(() => fallback());
+    return Promise.resolve(fallback());
+    function fallback() {
+      const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) { } ta.remove();
+    }
+  };
+  WW.download = (name, text) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
+    a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  };
+
+  /* ---------------- finish: page restored, reflect, save, turn in ---------------- */
+  ui.finish = () => {
+    const r = WW.run, ep = WW.ep;
+    let sheet = WW.sheetOn() ? 'saving' : 'off', note = '';
+    ui.open({
+      cls: 'finov',
+      render(box, h) {
+        const st = r.stars;
+        box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
+          <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
+        const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
+        if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
+          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+        const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
+        starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
+        box.appendChild(starter);
+        const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
+        ta.oninput = () => { r.reflection = ta.value; };
+        box.appendChild(ta);
+        const sv = document.createElement('div'); sv.className = 'savebox';
+        sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+          (sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+          `<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+        box.appendChild(sv);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
+        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`Worldwalker ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
+        box.appendChild(acts);
+        box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
+        const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
+        const nav = document.createElement('div'); nav.className = 'acts';
+        if (WW.CONFIG.MODE === 'pages') {
+          nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => (location.href = 'index.html')));
+          if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (location.href = WW.epFile(nx.id))));
+        } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
+        nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
+        box.appendChild(nav);
+      }
+    });
+    if (sheet === 'saving') {
+      WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
+    }
+  };
+  function logEntry() {
+    const r = WW.run;
+    return { episode: WW.ep.id, stars: r.stars, heartsLost: r.heartsLost, minutes: Math.round((Date.now() - r.t0) / 60000), missed: r.missed.map(i => 'Q' + (i + 1)), reflection: r.reflection || '' };
+  }
+  function workText() {
+    const r = WW.run, ep = WW.ep, s = WW.save;
+    const en = t => (t && t.en) || WW.plain(t);
+    const lines = [];
+    lines.push(`WORLDWALKER — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
+    lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
+    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
+    lines.push('');
+    lines.push('TALKS (question — my answer — tries)');
+    r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
+    lines.push('');
+    lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
+    lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
+    lines.push('');
+    lines.push('REFLECTION');
+    lines.push('Q: ' + WW.plain(ep.reflect.q));
+    lines.push('A: ' + (r.reflection || '(blank)'));
+    lines.push('');
+    lines.push('POWERS: ' + WW.THEMES.map(t => `${WW.plain(t.full)} ${s.stats[t.k] || 0}`).join(' · '));
+    lines.push('PASSPORT CODE: ' + WW.passportCode());
+    return lines.join('\n');
+  }
+  WW.workText = workText;
+})();
