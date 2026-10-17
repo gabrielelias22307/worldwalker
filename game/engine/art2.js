@@ -4,15 +4,19 @@
   const T = 16;
 
   /* ground under trees / mountains: look at the 4 neighbours and copy the most common ground */
-  const GROUNDS = { n: 'n', s: 's', u: 's', g: 'g', z: 'z', f: 'f', '.': '.', ',': '.', '"': '.' };
+  const GROUNDS = { n: 'n', s: 's', u: 's', g: 'g', z: 'z', f: 'f', l: 'l', '.': '.', ',': '.', '"': '.', ':': ':', i: 'n', k: 's' };
+  const RING1 = [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1], [1, -1], [-1, 1]];
+  const RING2 = [[0, -2], [0, 2], [-2, 0], [2, 0], [-2, -2], [2, 2], [2, -2], [-2, 2], [-1, -2], [1, 2], [2, -1], [-2, 1]];
   function groundAt(m, gx, gy) {
     if (!m) return '.';
     const count = {};
-    [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1]].forEach(([dx, dy]) => {
+    const look = ring => ring.forEach(([dx, dy]) => {
       const ch = (m[gy + dy] || '')[gx + dx];
       const g = GROUNDS[ch];
-      if (g) count[g] = (count[g] || 0) + 1;
+      if (g) count[g] = (count[g] || 0) + (g === ':' ? 0.6 : 1); // paths count a little less than real ground
     });
+    look(RING1);
+    if (!Object.keys(count).length) look(RING2); // deep in a forest or mountain range: look one step further
     let best = '.', n = 0;
     for (const k in count) if (count[k] > n) { n = count[k]; best = k; }
     return best;
@@ -159,6 +163,13 @@
   tiles.t = (c, x, y, gx, gy) => { // tea / terrace rows on a hillside
     R(c, x, y, T, T, '#4f9a3a');
     for (let r = 0; r < 4; r++) { R(c, x, y + r * 4, T, 3, '#3f8a2e'); R(c, x, y + r * 4 + 3, T, 1, '#7a5a2a'); }
+  };
+
+  tiles.l = (c, x, y, gx, gy) => { // light paving: city streets, plazas, factory yards (outdoors)
+    R(c, x, y, T, T, '#c9c3b6');
+    R(c, x, y + 7, T, 1, '#b2ab9c'); R(c, x, y + 15, T, 1, '#b2ab9c');
+    R(c, x + ((gy % 2) ? 4 : 11), y, 1, 7, '#b2ab9c'); R(c, x + ((gy % 2) ? 11 : 4), y + 8, 1, 7, '#b2ab9c');
+    if (hash(gx, gy) > .8) R(c, x + 6, y + 3, 2, 1, '#d9d4c8');
   };
 
   /* ---------- side-facing hero ---------- */

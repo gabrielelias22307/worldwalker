@@ -241,6 +241,21 @@ window.WW_CATALOG = [
   "sol": "WG.9"
  },
  {
+  "id": "6.2",
+  "realm": 6,
+  "title": {
+   "en": "Southeast Asia: Islands and the Ring of Fire",
+   "es": "Sudeste asiático: islas y el Cinturón de Fuego",
+   "fa": "جنوب شرق آسیا: جزیره‌ها و حلقهٔ آتش"
+  },
+  "place": {
+   "en": "The Mekong and the Islands",
+   "es": "El Mekong y las islas",
+   "fa": "میکانگ و جزیره‌ها"
+  },
+  "sol": "WG.9"
+ },
+ {
   "id": "6.3",
   "realm": 6,
   "title": {

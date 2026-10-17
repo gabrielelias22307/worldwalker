@@ -1,20 +1,50 @@
 # WORLDWALKER — The Torn Atlas
 
-A top-down geography RPG for **APA World Geography** (Alexandria City High School), in the spirit of the first Zelda, Stardew Valley and the first Warcraft. One episode per Canvas subunit (24 in all). The hero's progress saves to a class Google Sheet and carries from one Canvas page to the next.
+A top-down geography RPG for **APA World Geography** (Alexandria City High School), built from the systems of the first Zelda, Stardew Valley and the first Warcraft. **24 playable episodes**, one per Canvas subunit (1.1 – 8.3), in **English, Español and دری**.
 
-- **[PLAN.md](PLAN.md)** — the full plan: story, the Five Themes stats, all 24 episodes, how it is built, how it saves, how it sits in Canvas, build phases, decisions still open.
-- **[mockups/](mockups/index.html)** — ten screen mockups (open `mockups/index.html` in a browser, or the GitHub Pages link for this repo).
-- **[apps-script/Code.gs](apps-script/Code.gs)** — draft of the Google Sheet save script (not yet tested in a real Sheet).
+**▶ Play:** https://gabrielelias22307.github.io/worldwalker/ (after GitHub Pages is turned on: Settings → Pages → Branch `main`, folder `/ (root)`)
 
-| | | |
+The Smudge tore the Great Atlas into 24 pages. In each episode the student walks a map of that region, talks to the people who live there (short grade-5 readings with tap-to-define words and a "Make it easier" button), solves the compass stone, beats the Smudge in a question trial drawn from the subunit's mastery-check bank, writes one reflection and turns in their work. The hero, five geography powers (the Five Themes), tools and stamps carry from episode to episode.
+
+## What is in this repo
+
+| Path | What it is |
+|---|---|
+| [`TEACHER-GUIDE.md`](TEACHER-GUIDE.md) | How to put episodes in Canvas, what you get back, the Passport Code, turning on the Google Sheet, the teacher code |
+| [`PLAN.md`](PLAN.md) | The design plan the game was built from |
+| `game/index.html` | The world map: progress, Passport Code, every episode |
+| `game/ep-1-1.html` … `ep-8-3.html` | The 24 episodes (GitHub Pages versions) |
+| `game/episodes/` | One data file per episode: map, people, words in 3 languages, challenge, questions |
+| `game/engine/` | The game engine (drawing, walking, talks, challenges, boss trial, saving) |
+| `game/config.js` | Google Sheet address and teacher code |
+| `dist/canvas/` | One-file versions of every episode for uploading to Canvas Files (160–185 KB each, under the 450 KB limit, no internet needed) |
+| `dist/canvas-blocks/` | Paste-ready Canvas page blocks: the game in the page + a full-screen button + turn-in steps |
+| `apps-script/Code.gs` | The Google Sheet save script |
+| `docs/EPISODE-FORMAT.md` | How an episode file works, map letters, challenge types |
+| `mockups/` | The ten design mockups the game started from |
+| `tools/`, `tests/` | Checker, builder, and the automatic play-tests |
+
+## The 24 episodes
+
+| | Realm | Challenge |
 |---|---|---|
-| ![Title](mockups/thumbs/01.webp) **1 Title and sign-in** | ![World map](mockups/thumbs/02.webp) **2 World map** | ![Overworld](mockups/thumbs/03.webp) **3 Exploring** |
-| ![Talk](mockups/thumbs/04.webp) **4 Talk and read** | ![Farm](mockups/thumbs/05.webp) **5 Mountain farm** | ![City](mockups/thumbs/06.webp) **6 Found a city** |
-| ![Temple](mockups/thumbs/07.webp) **7 River temple** | ![Boss](mockups/thumbs/08.webp) **8 Boss trial** | ![Passport](mockups/thumbs/09.webp) **9 Passport** |
-| ![Save](mockups/thumbs/10.webp) **10 Save and turn in** | | |
+| 1.1 Intro to Maps · 1.2 Regional Tour · 1.3 Resources & Work | Mapmaker's Valley | sort · sort · sort |
+| 2.1 US & Canada · 2.2 Latin America & Caribbean · 2.3 Migration | The Americas | claim · land bands · sort |
+| 3.1 Europe · 3.2 Russia & Central Asia · 3.3 Regional Connections | Europe, Russia & Central Asia | table · order · sort |
+| 4.1 Land & Climate · 4.2 People & Cities · 4.3 Resources & Trade | Sub-Saharan Africa | land bands · table · order |
+| 5.1 Land, Water & Oil · 5.2 Cultural Diffusion · 5.3 Borders & Water | N. Africa & SW Asia | switches · sort · claim |
+| 6.1 South Asia (monsoon) · 6.2 Southeast Asia · 6.3 Population | South & Southeast Asia | land bands · land bands · table |
+| 7.1 China & Japan · 7.2 Site & Situation · 7.3 Supply Chains | East Asia | sort · claim · order |
+| 8.1 Australia & the Pacific · 8.2 Global Trade · 8.3 Borders & Cooperation (finale) | Australia, the Pacific & the World | table · switches · claim |
 
-All characters and tiles are drawn in code; there are no picture files in the game itself.
+## Working on it
 
-### Tools in this repo
-- `node shot.js mockups/*.html` — screenshots every mockup (desktop and phone width) into `shots/` and reports errors.
-- `node thumbs.js` — remakes the gallery pictures (saves PNG; they were then shrunk to WebP).
+```
+node tools/check.js          # every episode: map, places you can reach, 3 languages, questions
+node tools/build.js          # builds the Pages files, the Canvas files and the Canvas blocks
+node tests/play.js           # plays all 24 episodes start to finish in a real browser
+node tests/walk.js           # real keyboard walking, screen scrolling, Smudge hits, phone arrows
+node tests/maps.js           # draws every whole map to shots/maps/
+```
+
+All characters and tiles are drawn in code; the game uses no picture or sound files.

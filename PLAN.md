@@ -3,6 +3,8 @@
 
 *Draft 1 · 16 October 2026 · Gabriel Elias, Alexandria City High School*
 
+> **Status, 17 October 2026: built.** All 24 episodes, the engine, the world map, the save system (browser + Passport Code + Google Sheet script) and the Canvas files are done and play-tested. See [README.md](README.md) and [TEACHER-GUIDE.md](TEACHER-GUIDE.md). Built differences from this plan: the Passport Code is 15 characters; the tools are earned at the end of each realm (1.3, 2.3, 3.3, 4.3, 5.3, 6.3, 7.3, 8.2); a few challenges changed type (see the README table).
+
 The ten screen mockups are in [`mockups/`](mockups/index.html). This file explains how the whole game fits together, how it saves, and how it lives in Canvas.
 
 ---

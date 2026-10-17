@@ -588,15 +588,19 @@ window.WW_CONFIG.MODE = 'canvas';
   const T = 16;
 
   /* ground under trees / mountains: look at the 4 neighbours and copy the most common ground */
-  const GROUNDS = { n: 'n', s: 's', u: 's', g: 'g', z: 'z', f: 'f', '.': '.', ',': '.', '"': '.' };
+  const GROUNDS = { n: 'n', s: 's', u: 's', g: 'g', z: 'z', f: 'f', l: 'l', '.': '.', ',': '.', '"': '.', ':': ':', i: 'n', k: 's' };
+  const RING1 = [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1], [1, -1], [-1, 1]];
+  const RING2 = [[0, -2], [0, 2], [-2, 0], [2, 0], [-2, -2], [2, 2], [2, -2], [-2, 2], [-1, -2], [1, 2], [2, -1], [-2, 1]];
   function groundAt(m, gx, gy) {
     if (!m) return '.';
     const count = {};
-    [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1]].forEach(([dx, dy]) => {
+    const look = ring => ring.forEach(([dx, dy]) => {
       const ch = (m[gy + dy] || '')[gx + dx];
       const g = GROUNDS[ch];
-      if (g) count[g] = (count[g] || 0) + 1;
+      if (g) count[g] = (count[g] || 0) + (g === ':' ? 0.6 : 1); // paths count a little less than real ground
     });
+    look(RING1);
+    if (!Object.keys(count).length) look(RING2); // deep in a forest or mountain range: look one step further
     let best = '.', n = 0;
     for (const k in count) if (count[k] > n) { n = count[k]; best = k; }
     return best;
@@ -743,6 +747,13 @@ window.WW_CONFIG.MODE = 'canvas';
   tiles.t = (c, x, y, gx, gy) => { // tea / terrace rows on a hillside
     R(c, x, y, T, T, '#4f9a3a');
     for (let r = 0; r < 4; r++) { R(c, x, y + r * 4, T, 3, '#3f8a2e'); R(c, x, y + r * 4 + 3, T, 1, '#7a5a2a'); }
+  };
+
+  tiles.l = (c, x, y, gx, gy) => { // light paving: city streets, plazas, factory yards (outdoors)
+    R(c, x, y, T, T, '#c9c3b6');
+    R(c, x, y + 7, T, 1, '#b2ab9c'); R(c, x, y + 15, T, 1, '#b2ab9c');
+    R(c, x + ((gy % 2) ? 4 : 11), y, 1, 7, '#b2ab9c'); R(c, x + ((gy % 2) ? 11 : 4), y + 8, 1, 7, '#b2ab9c');
+    if (hash(gx, gy) > .8) R(c, x + 6, y + 3, 2, 1, '#d9d4c8');
   };
 
   /* ---------- side-facing hero ---------- */
@@ -2349,7 +2360,7 @@ window.EPISODE = {
       lines: [
         { en: 'Salaam! I fish in the Bay of Bengal, where the Ganges reaches the sea. The river drops soil here and builds a huge, flat [[delta|delta]]. Dhaka, the capital of Bangladesh, sits on this delta.',
           es: '¡Salam! Pesco en el golfo de Bengala, donde el Ganges llega al mar. El río deja tierra aquí y forma un [[delta|delta]] enorme y plano. Daca, la capital de Bangladés, está en este delta.',
-          fa: 'سلام! من در خلیج بنگال ماهی می‌گیرم، جایی که گنگا به بحر می‌رسد. دریا این‌جا خاک می‌گذارد و یک [[delta|دلتا]]ی بزرگ و هموار می‌سازد. داکه، پایتخت بنگله‌دیش، روی همین دلتا است.',
+          fa: 'سلام! من در خلیج بنگال ماهی می‌گیرم، جایی که گنگا به بحر می‌رسد. دریا این‌جا خاک می‌گذارد و یک [[delta|دلتای]] بزرگ و هموار می‌سازد. داکه، پایتخت بنگله‌دیش، روی همین دلتا است.',
           easy: { en: 'The Ganges drops soil by the sea. It makes flat land called a [[delta|delta]].', es: 'El Ganges deja tierra junto al mar. Forma tierra plana llamada [[delta|delta]].', fa: 'گنگا کنار بحر خاک می‌گذارد. زمین هموار به نام [[delta|دلتا]] می‌سازد.' } },
         { en: 'In summer, the land heats up faster than the ocean. So wet wind blows in from the ocean, from the southwest. It brings months of heavy rain.',
           es: 'En verano, la tierra se calienta más rápido que el océano. Por eso un viento húmedo sopla desde el océano, desde el suroeste. Trae meses de lluvia fuerte.',
@@ -2453,7 +2464,7 @@ window.EPISODE = {
   learned: [
     { en: 'A [[monsoon|monsoon]] is a wind that changes direction with the season: wet from the ocean in summer, dry from the land in winter.', es: 'Un [[monsoon|monzón]] es un viento que cambia de dirección con la estación: húmedo desde el océano en verano, seco desde la tierra en invierno.', fa: '[[monsoon|باد موسمی]] بادی است که با فصل جهتش را تغییر می‌دهد: در تابستان از اقیانوس و مرطوب، در زمستان از خشکه و خشک.' },
     { en: 'Most of the year\'s rain falls in a few months. Farmers plant rice with the rain. Too little rain brings [[drought|drought]]; too much brings floods.', es: 'Casi toda la lluvia del año cae en unos meses. Los agricultores siembran arroz con la lluvia. Muy poca lluvia trae [[drought|sequía]]; demasiada trae inundaciones.', fa: 'بیشتر باران سال در چند ماه می‌بارد. دهقانان با باران برنج می‌کارند. باران کم [[drought|خشکسالی]] می‌آورد و باران زیاد سیلاب.' },
-    { en: 'South Asia is a [[subcontinent|subcontinent]]. The [[himalaya|Himalaya]] rose as the Indian Plate pushed into Asia, and the Ganges carries their melted ice to a huge [[delta|delta]].', es: 'Asia del Sur es un [[subcontinent|subcontinente]]. El [[himalaya|Himalaya]] se levantó cuando la placa india empujó contra Asia, y el Ganges lleva su hielo derretido hasta un enorme [[delta|delta]].', fa: 'جنوب آسیا یک [[subcontinent|نیم‌قاره]] است. [[himalaya|هیمالیا]] وقتی بلند شد که صفحهٔ هند به آسیا فشار آورد، و گنگا یخ آب‌شدهٔ آن را تا یک [[delta|دلتا]]ی بزرگ می‌برد.' }
+    { en: 'South Asia is a [[subcontinent|subcontinent]]. The [[himalaya|Himalaya]] rose as the Indian Plate pushed into Asia, and the Ganges carries their melted ice to a huge [[delta|delta]].', es: 'Asia del Sur es un [[subcontinent|subcontinente]]. El [[himalaya|Himalaya]] se levantó cuando la placa india empujó contra Asia, y el Ganges lleva su hielo derretido hasta un enorme [[delta|delta]].', fa: 'جنوب آسیا یک [[subcontinent|نیم‌قاره]] است. [[himalaya|هیمالیا]] وقتی بلند شد که صفحهٔ هند به آسیا فشار آورد، و گنگا یخ آب‌شدهٔ آن را تا یک [[delta|دلتای]] بزرگ می‌برد.' }
   ],
   reflect: {
     q: { en: 'The monsoon decides when farmers plant. What season or weather changes your plans where you live now, or where you lived before?', es: 'El monzón decide cuándo siembran los agricultores. ¿Qué estación o clima cambia tus planes donde vives ahora, o donde vivías antes?', fa: 'باد موسمی تعیین می‌کند دهقانان چه وقت بکارند. کدام فصل یا هوا برنامه‌های تو را در جایی که حالا زندگی می‌کنی، یا پیش‌تر زندگی می‌کردی، تغییر می‌دهد؟' },

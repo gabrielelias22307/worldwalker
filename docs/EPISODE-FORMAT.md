@@ -93,11 +93,11 @@ Walkable ground:
 |---|---|---|---|
 | `.` grass | `,` flowers | `"` tall grass | `:` dirt path |
 | `s` sand | `u` dunes | `g` dry grass (Sahel, steppe) | `z` tundra |
-| `n` snow | `i` ice | `f` stone floor (temples, indoors) | `o` farm soil |
+| `n` snow | `i` ice | `f` dark stone floor (temples, indoors) | `o` farm soil |
 | `1` sprout | `2` young plant | `3` coffee bush | `w` wheat |
 | `q` rice paddy | `v` potatoes | `y` banana | `e` sugarcane |
 | `t` tea terraces | `b` bridge (east–west) | `B` bridge (north–south) | `k` wooden dock |
-| `-` railway (east–west) | `\|` railway (north–south) | `d` door | |
+| `-` railway (east–west) | `\|` railway (north–south) | `d` door | `l` light paving (streets, plazas) |
 
 Solid (cannot walk through):
 
