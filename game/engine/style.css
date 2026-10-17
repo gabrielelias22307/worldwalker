@@ -226,3 +226,16 @@ button{font-family:inherit}
 .stamp{font-family:var(--read)}
 
 .touch .dpad{display:grid}
+
+/* ---------- effects ---------- */
+.screen canvas#ww-cv{animation:fadein .7s ease-out}
+@keyframes fadein{from{opacity:0;filter:brightness(2)}to{opacity:1;filter:none}}
+.ov-box{animation:pop .22s ease-out}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+.bossface.crack{animation:flash .45s}
+@keyframes flash{0%,60%{filter:brightness(2.4) saturate(.3)}30%{transform:scale(.9) rotate(-4deg)}100%{filter:none;transform:none}}
+.shield span.cracked{animation:crack .6s ease-out;position:relative}
+@keyframes crack{0%{background:#ffffff;transform:scale(1.25)}40%{background:#8fc3ff;transform:scale(1.1) rotate(6deg)}100%{background:#ddd;transform:none}}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:7}
+.confetti i{position:absolute;top:-12px;width:7px;height:10px;border-radius:1px;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r));opacity:.9}}

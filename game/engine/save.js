@@ -68,6 +68,7 @@
     passport: { en: 'Passport', es: 'Pasaporte', fa: 'پاسپورت' },
     map: { en: 'World map', es: 'Mapa del mundo', fa: 'نقشهٔ جهان' },
     sound: { en: 'Sound', es: 'Sonido', fa: 'صدا' },
+    music: { en: 'Music', es: 'Música', fa: 'موسیقی' },
     full: { en: 'Full screen', es: 'Pantalla completa', fa: 'تمام صفحه' },
     firstName: { en: 'First name only', es: 'Solo tu primer nombre', fa: 'فقط نام اول' },
     classCode: { en: 'Class code', es: 'Código de la clase', fa: 'کد صنف' },
@@ -140,7 +141,7 @@
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;

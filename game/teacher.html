@@ -90,6 +90,7 @@
 <script src="config.js"></script>
 <script src="engine/art.js"></script>
 <script src="engine/art2.js"></script>
+<script src="engine/art3.js"></script>
 <script src="engine/save.js"></script>
 <script src="episodes/catalog.js"></script>
 <script>
@@ -268,6 +269,7 @@
     const m = ep.map, cv = $('map'), S = 16;
     cv.width = m[0].length * S; cv.height = m.length * S;
     const x = cv.getContext('2d'); x.imageSmoothingEnabled = false;
+    WW.style.realm = ep.realm || +ep.id[0];
     WW.drawMap(x, m, { t: 0 });
     (ep.scraps || []).forEach(s => WW.sprite(x, 'page', s[0] * S + 1, s[1] * S + 2, {}));
     (ep.smudges || []).forEach(s => WW.sprite(x, 'smudge', s[0] * S, s[1] * S, {}));
@@ -275,7 +277,7 @@
     x.globalAlpha = .75; WW.sprite(x, 'smudge', ep.boss.at[0] * S - 8, ep.boss.at[1] * S - 16, { scale: 2 }); x.globalAlpha = 1;
     WW.sprite(x, 'hero', ep.start[0] * S, ep.start[1] * S - 3, { pal: WW.heroPal() });
     ep.npcs.forEach((n, i) => {
-      WW.sprite(x, 'npc', n.x * S, n.y * S - 2, { pal: WW.lookPal(n.look) });
+      WW.drawPerson(x, n, n.x * S, n.y * S - 2, 0);
       x.fillStyle = '#f2c14e'; x.strokeStyle = '#000'; x.lineWidth = 1.5;
       x.beginPath(); x.arc(n.x * S + 14, n.y * S - 4, 6, 0, 7); x.fill(); x.stroke();
       x.fillStyle = '#22202e'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(i + 1), n.x * S + 14, n.y * S - 3.5);

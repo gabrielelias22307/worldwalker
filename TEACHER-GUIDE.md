@@ -13,6 +13,8 @@
 
 Nobody gets stuck: running out of hearts just sends the student back with full hearts.
 
+**Music and sound:** every realm has its own song, and the Smudge trial has its own. The **Music** and **Sound** buttons above the game turn each one off; the choice is remembered on that computer. Headphones are a good idea in class.
+
 ## Putting an episode in Canvas
 
 Every episode already has a paste-ready Canvas block in `dist/canvas-blocks/`. Open the file, copy everything, and paste it into the HTML editor (`</>`) of a Canvas assignment set to **text entry + file upload**. The block shows the game inside the page, a **full-screen** button, and the turn-in steps in English, Spanish and Dari.

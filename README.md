@@ -16,7 +16,7 @@ The Smudge tore the Great Atlas into 24 pages. In each episode the student walks
 | `game/teacher.html` | Teacher console: every episode's map, talks, answer keys, and jump-to-any-part previews |
 | `game/ep-1-1.html` … `ep-8-3.html` | The 24 episodes (GitHub Pages versions) |
 | `game/episodes/` | One data file per episode: map, people, words in 3 languages, challenge, questions |
-| `game/engine/` | The game engine (drawing, walking, talks, challenges, boss trial, saving) |
+| `game/engine/` | The game engine (drawing, walking, talks, challenges, boss trial, saving). `art3.js` = richer tiles, regional buildings and people; `fx.js` = weather, time of day, animals and sparkles; `music.js` = the songs |
 | `game/config.js` | Google Sheet address and teacher code |
 | `dist/canvas/` | One-file versions of every episode for uploading to Canvas Files (160–185 KB each, under the 450 KB limit, no internet needed) |
 | `dist/canvas-blocks/` | Paste-ready Canvas page blocks: the game in the page + a full-screen button + turn-in steps |
@@ -47,6 +47,12 @@ node tests/play.js           # plays all 24 episodes start to finish in a real b
 node tests/walk.js           # real keyboard walking, screen scrolling, Smudge hits, phone arrows
 node tests/maps.js           # draws every whole map to shots/maps/
 node tests/teacher.js        # the teacher console, its answer keys and the jump-to-part previews
+node tests/music.js          # renders every song to shots/music/ (sampler.wav is not made here)
+node tests/look.js 6.1 7.3   # screenshots episodes after a few seconds: weather, light, animals
 ```
 
-All characters and tiles are drawn in code; the game uses no picture or sound files.
+All characters and tiles are drawn in code, and the music is played by code too: the game uses no picture or sound files.
+
+**Music:** each realm has its own retro song, the Smudge trial has a fast song and winning a page plays a short jingle. Students can turn it off with the **Music** button (sound effects have their own **Sound** button).
+
+**Weather and time of day** are set per episode in `game/engine/fx.js` (`SKY`): monsoon rain in 6.1, snow in Siberia (3.2), heat and blowing sand in the deserts, cherry petals in 7.1, autumn leaves in 2.1, sunsets, and a night city with lit windows in 7.3. An episode file can override it with `weather: { sky: 'rain', time: 'sunset' }`. Students who turn on "reduce motion" on their device get a still world.

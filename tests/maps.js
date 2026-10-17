@@ -6,11 +6,11 @@ const eps = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep
   const b = await chromium.launch(); const p = await b.newPage();
   for (const f of eps) {
     const html = `<html><body style="margin:0;background:#000"><canvas id=c></canvas>
-<script src="${path.join(ROOT, 'game/engine/art.js')}"></script><script src="${path.join(ROOT, 'game/engine/art2.js')}"></script>
+<script src="${path.join(ROOT, 'game/engine/art.js')}"></script><script src="${path.join(ROOT, 'game/engine/art2.js')}"></script><script src="${path.join(ROOT, 'game/engine/art3.js')}"></script>
 <script src="${path.join(ROOT, 'game/episodes', f)}"></script>
-<script>const ep=window.EPISODE,m=ep.map,c=document.getElementById('c');c.width=m[0].length*16;c.height=m.length*16;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
+<script>const ep=window.EPISODE;WW.style.realm=ep.realm||+ep.id[0];const m=ep.map,c=document.getElementById('c');c.width=m[0].length*16;c.height=m.length*16;const x=c.getContext('2d');x.imageSmoothingEnabled=false;
 WW.drawMap(x,m,{t:0});
-ep.npcs.forEach(n=>WW.sprite(x,'npc',n.x*16,n.y*16-2,{pal:WW.lookPal(n.look)}));
+ep.npcs.forEach(n=>WW.drawPerson(x,n,n.x*16,n.y*16-2,0));
 ep.scraps.forEach(s=>WW.sprite(x,'page',s[0]*16+1,s[1]*16+2,{}));
 (ep.smudges||[]).forEach(s=>WW.sprite(x,'smudge',s[0]*16,s[1]*16,{}));
 WW.sprite(x,'stone',ep.challenge.at[0]*16,ep.challenge.at[1]*16,{pal:{W:'#9aa3ad',G:'#5e636b',y:'#f2c14e',r:'#e04848',n:'#2f6fd6'}});

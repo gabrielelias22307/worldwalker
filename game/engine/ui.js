@@ -91,6 +91,7 @@
       $('ww-b-pass').textContent = '📘 ' + T('passport');
       const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
       $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
+      $('ww-b-mus').textContent = (WW.save.music ? '🎵 ' : '🚫 ') + T('music');
       $('ww-b-full').textContent = '⛶ ' + T('full');
       $('ww-foot').textContent = T('controls');
     }
@@ -371,8 +372,23 @@
   };
 
   /* ---------------- finish: page restored, reflect, save, turn in ---------------- */
+  // paper confetti over the game screen
+  WW.confetti = () => {
+    if (WW.calm) return;
+    const box = document.createElement('div'); box.className = 'confetti';
+    const cols = ['#f2c14e', '#e04848', '#2aa198', '#2f7fd1', '#8e5bd6', '#7cc451', '#fffbe8'];
+    for (let i = 0; i < 70; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + '%'; p.style.background = cols[i % cols.length];
+      p.style.animationDelay = (Math.random() * 0.8) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.6) + 's';
+      p.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px'); p.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(p);
+    }
+    $('ww-screen').appendChild(box); setTimeout(() => box.remove(), 4200);
+  };
   ui.finish = () => {
     const r = WW.run, ep = WW.ep;
+    WW.confetti();
     let sheet = WW.sheetOn() ? 'saving' : 'off', note = '';
     ui.open({
       cls: 'finov',

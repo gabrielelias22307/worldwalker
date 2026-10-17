@@ -52,6 +52,8 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 | `boss` | `{ at, stat, need: 3, name, appear, taunt, win, questions: [ { q, choices: [4 options], answer: 0, why } ] }` — 8 questions. Choices are shuffled on screen, so the right one can be listed first |
 | `learned` | 3 lines |
 | `reflect` | `{ q, starter }` — an open question that connects the place to the student's own life |
+| `weather` | optional: `{ sky, time }` to change the episode's weather and light. `sky`: `clear`, `rain`, `drizzle`, `snow`, `petals`, `leaves`, `dust`, `heat`. `time`: `day`, `sunset`, `night`. Without it the episode uses its line in `SKY` in `game/engine/fx.js` |
+| `look.style` / `look.hat` | optional on a person: `'short'`, `'long'` or `'bun'` hair (otherwise picked from the name); `hat: '#hex'` gives them a hat |
 
 `stat` is one of the five powers: `loc` Where (Location) · `pla` What it is like (Place) · `hei` People & land (Human–Environment Interaction) · `mov` On the move (Movement) · `reg` Regions (Region).
 

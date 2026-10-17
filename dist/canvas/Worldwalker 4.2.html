@@ -234,6 +234,19 @@ button{font-family:inherit}
 
 .touch .dpad{display:grid}
 
+/* ---------- effects ---------- */
+.screen canvas#ww-cv{animation:fadein .7s ease-out}
+@keyframes fadein{from{opacity:0;filter:brightness(2)}to{opacity:1;filter:none}}
+.ov-box{animation:pop .22s ease-out}
+@keyframes pop{from{transform:scale(.94);opacity:0}to{transform:none;opacity:1}}
+.bossface.crack{animation:flash .45s}
+@keyframes flash{0%,60%{filter:brightness(2.4) saturate(.3)}30%{transform:scale(.9) rotate(-4deg)}100%{filter:none;transform:none}}
+.shield span.cracked{animation:crack .6s ease-out;position:relative}
+@keyframes crack{0%{background:#ffffff;transform:scale(1.25)}40%{background:#8fc3ff;transform:scale(1.1) rotate(6deg)}100%{background:#ddd;transform:none}}
+.confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:7}
+.confetti i{position:absolute;top:-12px;width:7px;height:10px;border-radius:1px;animation:fall 2.4s linear forwards}
+@keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r));opacity:.9}}
+
 </style>
 </head>
 <body>
@@ -792,6 +805,341 @@ window.WW_CONFIG.MODE = 'canvas';
   WW.groundAt = groundAt;
 })();
 
+/* art3.js */
+/* WORLDWALKER engine · richer art: soft edges between grounds, shaded trees, rocks and mountains that sway or
+   sparkle, roofs and walls in the style of each realm, and people with different hair, hats, blinking and shadows.
+   It builds on art.js and art2.js and replaces some of their tiles. */
+(function () {
+  const { tiles, P, R, hash, SPR } = WW;
+  const T = 16;
+  const calm = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
+  WW.calm = calm;
+  // realm = which building style to use; night = lit windows. The game sets these when an episode starts.
+  WW.style = WW.style || { realm: 1, night: false };
+  const sway = (t, gx, gy, amp = 1) => (calm ? 0 : Math.round(Math.sin((t || 0) / 900 + gx * 0.9 + gy * 0.4) * amp));
+  const at = (m, gx, gy) => (m ? (m[gy] || '')[gx] : undefined);
+  const groundOf = (m, gx, gy) => (WW.groundAt ? WW.groundAt(m, gx, gy) : '.');
+  const under = (c, x, y, gx, gy, m) => tiles[groundOf(m, gx, gy)](c, x, y, gx, gy); // ground under a thing (no soft edges)
+  const shadow = (c, x, y, w) => { R(c, x + 8 - w / 2, y, w, 2, 'rgba(0,0,0,.2)'); R(c, x + 8 - w / 2 + 2, y + 2, w - 4, 1, 'rgba(0,0,0,.1)'); };
+
+  /* ---------------- grounds ---------------- */
+  tiles['.'] = (c, x, y, gx, gy) => {
+    R(c, x, y, T, T, P.grass);
+    for (let i = 0; i < 6; i++) {
+      const px = x + ((hash(gx, gy, i) * 13) | 0), py = y + ((hash(gx, gy, i + 9) * 13) | 0);
+      if (i % 3 === 0) { R(c, px, py + 1, 1, 2, P.grassD); R(c, px + 2, py + 1, 1, 2, P.grassD); R(c, px + 1, py, 1, 2, P.grassL); }
+      else R(c, px, py, 1, 2, i % 2 ? P.grassD : P.grassL);
+    }
+    if (hash(gx, gy, 40) > 0.93) { const px = x + 3 + ((hash(gx, gy, 41) * 9) | 0), py = y + 3 + ((hash(gx, gy, 42) * 9) | 0); R(c, px, py, 3, 2, '#9aa0a8'); R(c, px, py, 2, 1, '#c3c8ce'); }
+  };
+  const oldFlowers = tiles[','];
+  tiles[','] = (c, x, y, gx, gy, t) => {
+    tiles['.'](c, x, y, gx, gy);
+    const cols = ['#ffe36e', '#ff8fb1', '#ffffff', '#b89cff'];
+    for (let i = 0; i < 3; i++) {
+      const fx = x + 2 + ((hash(gx, gy, i + 3) * 11) | 0), fy = y + 2 + ((hash(gx, gy, i + 7) * 11) | 0);
+      const s = sway(t, gx + i, gy, 1) > 0 ? 1 : 0;
+      R(c, fx, fy + 2, 1, 2, P.grassD);
+      R(c, fx - 1 + s, fy, 3, 2, cols[(hash(gx, gy, i) * 4) | 0]); R(c, fx + s, fy + 1, 1, 1, '#f2a33a');
+    }
+  };
+  void oldFlowers;
+  tiles['"'] = (c, x, y, gx, gy, t) => { // tall grass that sways
+    tiles['.'](c, x, y, gx, gy);
+    for (let i = 0; i < 4; i++) {
+      const fx = x + 1 + i * 4, s = sway(t, gx * 4 + i, gy, 1);
+      R(c, fx, y + 8, 1, 6, P.grassD); R(c, fx + s, y + 5, 1, 3, P.grassD);
+      R(c, fx + 1, y + 7, 1, 7, P.leafL); R(c, fx + 1 + s, y + 3, 1, 4, P.leafL);
+      R(c, fx + 2, y + 9, 1, 5, P.grassD); R(c, fx + 2 + s, y + 7, 1, 2, P.grassD);
+    }
+  };
+  const oldSand = tiles.s;
+  tiles.s = (c, x, y, gx, gy) => {
+    oldSand(c, x, y, gx, gy);
+    if (hash(gx, gy, 20) > 0.6) { const yy = y + 4 + ((hash(gx, gy, 21) * 8) | 0); R(c, x + 2, yy, 5, 1, '#f3e1a6'); R(c, x + 7, yy + 1, 4, 1, '#f3e1a6'); }
+  };
+  // a dune is a mound on sand: it only fills the tile edge when the next tile is a dune too
+  tiles.u = (c, x, y, gx, gy, t, m) => {
+    oldSand(c, x, y, gx, gy);
+    const L = !m || at(m, gx - 1, gy) === 'u', Rr = !m || at(m, gx + 1, gy) === 'u';
+    const o = (hash(gx, gy) * 6) | 0;
+    for (let i = 0; i < 16; i++) {
+      let top = 6 + Math.round(Math.sin((i + o) / 2.6) * 2);
+      if (!L && i < 4) top += (4 - i) * 2;
+      if (!Rr && i > 11) top += (i - 11) * 2;
+      if (top > 15) continue;
+      R(c, x + i, y + top, 1, 15 - top, P.dune);
+      R(c, x + i, y + top, 1, 1, '#f4cc85');
+      if (i > 7) R(c, x + i, y + top + 2, 1, Math.max(0, 13 - top), P.duneD);
+    }
+    R(c, x + 2, y + 15, 12, 1, 'rgba(0,0,0,.08)');
+  };
+
+  /* soft, ragged edges where one kind of ground meets another (grass grows over paths, snow over grass, ...) */
+  const RANK = { '.': 5, ',': 5, '"': 5, n: 6, z: 4, g: 4, s: 3, u: 3, ':': 2, o: 1, l: 1, f: 0 };
+  const FAM = { '.': '.', ',': '.', '"': '.', n: 'n', z: 'z', g: 'g', s: 's', u: 's', ':': ':', o: 'o', l: 'l', f: 'f' };
+  const EDGE = { '.': ['#5aa83b', '#3f8a2e'], n: ['#f4f8fb', '#c9dbe8'], z: ['#e7eef2', '#c4ced3'], g: ['#d2b36a', '#a9893f'], s: ['#e8d18a', '#c9b064'] };
+  function fringe(c, x, y, gx, gy, m, own) {
+    const r0 = RANK[own];
+    for (const [dx, dy] of [[0, -1], [0, 1], [-1, 0], [1, 0]]) {
+      const nb = at(m, gx + dx, gy + dy);
+      if (nb == null || !(RANK[nb] > r0) || FAM[nb] === FAM[own]) continue;
+      const col = EDGE[FAM[nb]]; if (!col) continue;
+      for (let i = 0; i < 16; i += 2) {
+        // the same edge gets the same raggedness from both sides
+        const d = 1 + ((hash(dx ? gx * 2 + dx : gx * 32 + i, dy ? gy * 2 + dy : gy * 32 + i, 7) * 3) | 0);
+        if (dy === -1) { R(c, x + i, y, 2, d, col[0]); R(c, x + i, y + d, 2, 1, col[1]); }
+        if (dy === 1) { R(c, x + i, y + 16 - d, 2, d, col[0]); R(c, x + i, y + 15 - d, 2, 1, col[1]); }
+        if (dx === -1) { R(c, x, y + i, d, 2, col[0]); R(c, x + d, y + i, 1, 2, col[1]); }
+        if (dx === 1) { R(c, x + 16 - d, y + i, d, 2, col[0]); R(c, x + 15 - d, y + i, 1, 2, col[1]); }
+      }
+    }
+  }
+  Object.keys(RANK).forEach(k => {
+    const f = tiles[k]; if (!f) return;
+    tiles[k] = (c, x, y, gx, gy, t, m, base) => { f(c, x, y, gx, gy, t, m, base); if (m) fringe(c, x, y, gx, gy, m, k); };
+  });
+
+  /* ---------------- water: moving foam and a few sparkles ---------------- */
+  const wet = ch => ch === undefined || '~=bBqk'.includes(ch);
+  function water(c, x, y, gx, gy, t, m, col, deep) {
+    R(c, x, y, T, T, col);
+    t = calm ? 0 : t || 0;
+    const ph = t / 450 + hash(gx, gy) * 6;
+    for (let i = 0; i < 2; i++) {
+      const wx = x + ((hash(gx, gy, i) * 10) | 0) + Math.round(Math.sin(ph + i) * 2);
+      R(c, wx, y + 3 + i * 7, 4, 1, deep ? '#3f78c8' : P.waterL);
+    }
+    if (((t / 140 + hash(gx, gy, 3) * 40) | 0) % 40 === 0) R(c, x + ((hash(gx, gy, 4) * 13) | 0), y + ((hash(gx, gy, 5) * 13) | 0), 1, 1, '#ffffff');
+    if (!m) return;
+    const off = (t / 220) | 0;
+    const side = (dx, dy) => !wet(at(m, gx + dx, gy + dy));
+    const foam = (fx, fy, w, h, horiz) => {
+      R(c, fx, fy, w, h, P.foam);
+      for (let i = 0; i < 16; i += 4) { const k = (i + off) % 16; if (horiz) R(c, fx + k, fy + h, 2, 1, 'rgba(216,240,255,.6)'); else R(c, fx + w, fy + k, 1, 2, 'rgba(216,240,255,.6)'); }
+    };
+    if (side(0, -1)) foam(x, y, T, 1, true);
+    if (side(0, 1)) { R(c, x, y + 14, T, 2, 'rgba(0,0,0,.12)'); R(c, x, y + 15, T, 1, P.foam); }
+    if (side(-1, 0)) foam(x, y, 1, T, false);
+    if (side(1, 0)) { R(c, x + 15, y, 1, T, P.foam); R(c, x + 14, y, 1, T, 'rgba(216,240,255,.5)'); }
+  }
+  tiles['~'] = (c, x, y, gx, gy, t, m) => water(c, x, y, gx, gy, t, m, P.water);
+  tiles['='] = (c, x, y, gx, gy, t, m) => water(c, x, y, gx, gy, t, m, P.waterD, true);
+
+  /* ---------------- trees and plants ---------------- */
+  function roundTree(c, x, y, gx, gy, t) {
+    const s = sway(t, gx, gy);
+    shadow(c, x, y + 13, 12);
+    R(c, x + 7, y + 10, 2, 5, P.trunk); R(c, x + 8, y + 10, 1, 5, '#563a22');
+    const W = [6, 10, 12, 14, 14, 14, 14, 14, 12, 10, 6], OUT = '#1a4a1e';
+    W.forEach((w, r) => {
+      const ox = x + 8 - w / 2 + (r < 5 ? s : 0), oy = y + r;
+      R(c, ox, oy, w, 1, OUT);
+      if (r > 0 && r < W.length - 1) {
+        R(c, ox + 1, oy, w - 2, 1, P.leaf);
+        if (r >= 6) R(c, ox + w / 2, oy, w / 2 - 1, 1, P.leafD);
+      }
+    });
+    R(c, x + 4 + s, y + 2, 4, 3, P.leafL); R(c, x + 3 + s, y + 4, 2, 2, P.leafL); R(c, x + 9 + s, y + 3, 2, 1, '#66bb6a');
+    R(c, x + 6, y + 6, 2, 1, P.leafL); R(c, x + 10, y + 5, 2, 1, '#256b29'); R(c, x + 4, y + 8, 3, 1, '#256b29');
+  }
+  tiles.T = (c, x, y, gx, gy, t, m) => { under(c, x, y, gx, gy, m); roundTree(c, x, y, gx, gy, t); };
+  tiles.P = (c, x, y, gx, gy, t, m) => { // pine
+    const snowy = groundOf(m, gx, gy) === 'n' || groundOf(m, gx, gy) === 'z';
+    (snowy ? tiles.n : tiles['.'])(c, x, y, gx, gy);
+    shadow(c, x, y + 13, 10);
+    R(c, x + 7, y + 12, 2, 4, P.trunk);
+    const s = sway(t, gx, gy);
+    [[1, 3, 3], [3, 5, 4], [6, 7, 4], [9, 8, 3]].forEach(([top, half, h], k) => {
+      const o = k < 2 ? s : 0;
+      for (let r = 0; r < h; r++) {
+        const w = Math.max(1, Math.round(half * (r + 1) / h));
+        R(c, x + 8 - w - 1 + o, y + top + r, w * 2 + 2, 1, '#123f22');
+        R(c, x + 8 - w + o, y + top + r, w, 1, '#2f7a45'); R(c, x + 8 + o, y + top + r, w, 1, '#1f5a33');
+      }
+      if (snowy) R(c, x + 8 - Math.round(half / 2) + o, y + top, Math.round(half / 2) + 1, 1, P.snow);
+    });
+  };
+  const oldPalm = tiles.p;
+  tiles.p = (c, x, y, gx, gy, t, m) => { // palm with moving fronds
+    if (calm) return oldPalm(c, x, y, gx, gy, t, m);
+    tiles.s(c, x, y, gx, gy);
+    shadow(c, x, y + 14, 8);
+    for (let i = 0; i < 10; i++) R(c, x + 7 + Math.round(Math.sin(i / 4) * 2), y + 5 + i, 2, 1, i % 3 ? P.trunk : '#563a22');
+    const s = sway(t, gx, gy);
+    R(c, x + 2 + s, y + 3, 12, 2, P.leaf); R(c, x + 1 + s, y + 5, 3, 2, P.leaf); R(c, x + 12 + s, y + 5, 3, 2, P.leaf);
+    R(c, x + 5 + s, y + 1, 6, 2, P.leafL); R(c, x + 2 + s, y + 3, 4, 1, P.leafL); R(c, x + 7, y + 5, 2, 2, '#7a4b1e');
+  };
+  tiles.a = (c, x, y, gx, gy, t, m) => { // acacia
+    under(c, x, y, gx, gy, m);
+    shadow(c, x, y + 13, 14);
+    R(c, x + 7, y + 7, 2, 7, '#5a3a22'); R(c, x + 5, y + 6, 2, 2, '#5a3a22'); R(c, x + 9, y + 6, 2, 2, '#5a3a22');
+    const s = sway(t, gx, gy);
+    R(c, x - 1 + s, y + 2, 18, 5, '#2f4d1a');
+    R(c, x + s, y + 3, 16, 3, '#4f7a2a'); R(c, x + 2 + s, y + 1, 12, 2, '#2f4d1a'); R(c, x + 3 + s, y + 2, 10, 1, '#6a9a38');
+    R(c, x + 1 + s, y + 5, 14, 1, '#3c5e1f');
+  };
+  const oldJungle = tiles.j;
+  tiles.j = (c, x, y, gx, gy, t) => {
+    oldJungle(c, x, y, gx, gy);
+    const s = sway(t, gx, gy);
+    R(c, x + 3 + s, y + 2, 2, 1, '#5aa84a'); R(c, x + 10 + s, y + 6, 2, 1, '#5aa84a');
+    if (hash(gx, gy, 9) > 0.7) { R(c, x + 4, y + 8, 2, 2, '#e8506a'); R(c, x + 5, y + 8, 1, 1, '#ffe36e'); }
+  };
+
+  /* ---------------- stone ---------------- */
+  function mountain(c, x, y, gx, gy, m, snowy) {
+    const g = groundOf(m, gx, gy);
+    tiles[g === 'n' || g === 's' || g === 'g' || g === 'z' ? g : '.'](c, x, y, gx, gy);
+    const OUT = '#3b3f47';
+    for (let r = 0; r < 15; r++) {
+      const half = Math.min(8, Math.round((r + 1.5) * 0.56));
+      R(c, x + 8 - half - 0, y + 1 + r, half * 2, 1, OUT);
+      if (half > 1) { R(c, x + 9 - half, y + 1 + r, half - 1, 1, P.stone); R(c, x + 8, y + 1 + r, half - 1, 1, P.stoneD); }
+    }
+    R(c, x + 6, y + 6, 2, 1, P.stoneL); R(c, x + 5, y + 9, 2, 1, P.stoneL); R(c, x + 4, y + 12, 2, 1, P.stoneL);
+    R(c, x + 9, y + 8, 1, 3, '#4f535b'); R(c, x + 11, y + 12, 1, 2, '#4f535b');
+    if (snowy) {
+      R(c, x + 7, y + 1, 2, 1, P.snow); R(c, x + 6, y + 2, 4, 2, P.snow); R(c, x + 5, y + 4, 6, 1, P.snow);
+      R(c, x + 5, y + 5, 2, 1, P.snow); R(c, x + 8, y + 5, 2, 1, P.snowD); R(c, x + 9, y + 3, 1, 2, P.snowD);
+    }
+  }
+  tiles.M = (c, x, y, gx, gy, t, m) => mountain(c, x, y, gx, gy, m, false);
+  tiles.A = (c, x, y, gx, gy, t, m) => mountain(c, x, y, gx, gy, m, true);
+  tiles.r = (c, x, y, gx, gy, t, m) => {
+    under(c, x, y, gx, gy, m);
+    shadow(c, x, y + 13, 12);
+    const W = [6, 10, 12, 14, 14, 14, 12, 10, 6], o = (hash(gx, gy, 2) * 3) | 0;
+    W.forEach((w, r) => {
+      const ox = x + 8 - w / 2, oy = y + 4 + r;
+      R(c, ox, oy, w, 1, '#3b3f47');
+      if (r > 0 && r < W.length - 1) { R(c, ox + 1, oy, w - 2, 1, P.stone); R(c, ox + w / 2 + 1, oy, w / 2 - 2, 1, P.stoneD); }
+    });
+    R(c, x + 5, y + 5, 3, 2, P.stoneL); R(c, x + 4, y + 7, 1, 2, P.stoneL);
+    R(c, x + 9 + o, y + 7, 1, 3, '#4f535b'); R(c, x + 10 + o, y + 10, 1, 1, '#4f535b');
+  };
+
+  /* ---------------- buildings in the style of each realm ---------------- */
+  const isRoof = ch => ch === 'R' || ch === 'Q';
+  WW.hasChimney = (m, gx, gy) => isRoof(at(m, gx, gy)) && !isRoof(at(m, gx, gy - 1)) && isRoof(at(m, gx - 1, gy)) && hash(gx, gy, 5) > 0.55 && ![4, 7].includes(WW.style.realm);
+  function roof(c, x, y, gx, gy, t, m, blue) {
+    const realm = WW.style.realm;
+    const top = m ? !isRoof(at(m, gx, gy - 1)) : true, bot = m ? !isRoof(at(m, gx, gy + 1)) : true;
+    const lft = m ? !isRoof(at(m, gx - 1, gy)) : true, rgt = m ? !isRoof(at(m, gx + 1, gy)) : true;
+    let base, line, light;
+    if (realm === 4 && !blue) { // thatch
+      base = '#c9a24a'; line = '#9a772c'; light = '#e3c47a';
+      R(c, x, y, T, T, base);
+      for (let i = 0; i < 16; i += 2) { const h = (hash(gx * 16 + i, gy, 3) * 4) | 0; R(c, x + i, y + 2 + h, 1, 5, line); R(c, x + i + 1, y + 8 + h, 1, 5, light); }
+      if (bot) for (let i = 0; i < 16; i += 2) R(c, x + i, y + 14 + (i % 4 ? 1 : 0), 2, 2 - (i % 4 ? 1 : 0), line);
+    } else if (realm === 7) { // dark tiled roof with ribs and curled corners
+      base = blue ? '#3d5468' : '#4f4a52'; line = blue ? '#2a3a4a' : '#353139'; light = blue ? '#5a7590' : '#6d6874';
+      R(c, x, y, T, T, base);
+      for (let i = 1; i < 16; i += 3) R(c, x + i, y, 1, T, line);
+      R(c, x, y + 1, T, 1, light);
+    } else if (realm === 6 && !blue) { // terracotta waves
+      base = '#c8643a'; line = '#9a4526'; light = '#e08a5a';
+      R(c, x, y, T, T, base);
+      for (let r = 0; r < 4; r++) for (let i = 0; i < 16; i += 4) { R(c, x + i, y + r * 4 + 3, 3, 1, line); R(c, x + i + 1, y + r * 4 + 1, 2, 1, light); }
+    } else {
+      base = blue ? '#3c6fb4' : P.roof; line = blue ? '#2a4f84' : P.roofD; light = blue ? '#5b8fd0' : '#d9574a';
+      R(c, x, y, T, T, base);
+      for (let r = 0; r < 4; r++) R(c, x, y + r * 4 + 3, T, 1, line);
+      for (let r = 0; r < 4; r++) R(c, x + (r % 2 ? 4 : 10), y + r * 4, 1, 3, line);
+      for (let r = 0; r < 4; r++) R(c, x, y + r * 4, T, 1, light);
+    }
+    if (top) R(c, x, y, T, 2, line);
+    if (bot) { R(c, x, y + 14, T, 1, line); R(c, x, y + 15, T, 1, '#22202e'); }
+    if (lft) R(c, x, y, 1, T, line);
+    if (rgt) R(c, x + 15, y, 1, T, line);
+    if (realm === 7 && bot) { if (lft) R(c, x, y + 12, 2, 2, '#22202e'); if (rgt) R(c, x + 14, y + 12, 2, 2, '#22202e'); }
+    if (realm === 7 && top) { if (lft) R(c, x + 1, y + 2, 2, 1, '#22202e'); if (rgt) R(c, x + 13, y + 2, 2, 1, '#22202e'); }
+    if (m && WW.hasChimney(m, gx, gy)) { R(c, x + 9, y, 4, 7, '#22202e'); R(c, x + 10, y, 2, 6, '#8a5a3a'); R(c, x + 9, y, 4, 1, '#5e636b'); }
+  }
+  tiles.R = (c, x, y, gx, gy, t, m) => roof(c, x, y, gx, gy, t, m, false);
+  tiles.Q = (c, x, y, gx, gy, t, m) => roof(c, x, y, gx, gy, t, m, true);
+
+  function wallLook() {
+    const realm = WW.style.realm;
+    if (realm === 3) return { wall: '#efe3c8', dark: '#cbb790', beam: '#5a3d24' };
+    if (realm === 4) return { wall: '#c9925a', dark: '#a8743f', beam: null, mud: true };
+    if (realm === 7) return { wall: '#efe6cf', dark: '#c9bd9c', beam: '#7a4a2a', paper: true };
+    if (realm === 5) return { wall: '#ead2a0', dark: '#cbb07a', beam: null };
+    return { wall: P.wall, dark: P.wallD, beam: null };
+  }
+  function windowAt(c, x, y, look) {
+    const lit = WW.style.night;
+    if (look.mud) { R(c, x + 5, y + 4, 6, 6, '#3a2416'); if (lit) R(c, x + 6, y + 5, 4, 4, '#ffcf5a'); return; }
+    R(c, x + 4, y + 4, 8, 7, '#22202e');
+    R(c, x + 5, y + 5, 6, 5, lit ? '#ffd76a' : look.paper ? '#f6efda' : '#9fd3ff');
+    if (!lit && !look.paper) R(c, x + 5, y + 5, 2, 1, '#e3f4ff');
+    R(c, x + 7, y + 5, 1, 5, '#22202e'); R(c, x + 5, y + 7, 6, 1, '#22202e');
+    if (look.paper) { R(c, x + 9, y + 5, 1, 5, '#22202e'); }
+    if (WW.style.realm === 6 || WW.style.realm === 2) { R(c, x + 2, y + 4, 2, 7, '#2a8a6a'); R(c, x + 12, y + 4, 2, 7, '#2a8a6a'); }
+  }
+  tiles.h = (c, x, y, gx, gy, t, m) => {
+    const L = wallLook();
+    R(c, x, y, T, T, L.wall); R(c, x, y + 13, T, 3, L.dark); R(c, x, y + 15, T, 1, 'rgba(0,0,0,.2)');
+    if (L.beam) { R(c, x, y, T, 1, L.beam); R(c, x, y, 1, 13, L.beam); R(c, x + 15, y, 1, 13, L.beam); if (WW.style.realm === 3) { R(c, x + 1, y + 12, 3, 1, L.beam); R(c, x + 12, y + 12, 3, 1, L.beam); } }
+    R(c, x, y, T, 1, 'rgba(0,0,0,.25)'); // the roof's shadow
+    windowAt(c, x, y, L);
+  };
+  tiles.d = (c, x, y, gx, gy) => {
+    const L = wallLook();
+    R(c, x, y, T, T, L.wall); R(c, x, y + 13, T, 3, L.dark);
+    if (L.beam) { R(c, x, y, T, 1, L.beam); R(c, x, y, 1, 13, L.beam); R(c, x + 15, y, 1, 13, L.beam); }
+    R(c, x, y, T, 1, 'rgba(0,0,0,.25)');
+    R(c, x + 3, y + 2, 10, 14, '#22202e');
+    R(c, x + 4, y + 3, 8, 13, L.mud ? '#6d3f22' : L.paper ? '#a0643a' : P.wood);
+    R(c, x + 7, y + 3, 1, 13, P.woodD); R(c, x + 4, y + 3, 8, 1, 'rgba(255,255,255,.15)');
+    R(c, x + 10, y + 9, 1, 2, P.gold);
+    R(c, x + 2, y + 15, 12, 1, '#a89a80');
+  };
+  const oldJ = tiles.J;
+  tiles.J = (c, x, y, gx, gy, t, m) => {
+    oldJ(c, x, y, gx, gy, t, m);
+    R(c, x, y + 15, T, 1, 'rgba(0,0,0,.2)');
+    if (WW.style.night) R(c, x + 10, y + 5, 3, 3, '#ffd76a');
+  };
+  const oldU = tiles.U;
+  tiles.U = (c, x, y, gx, gy, t, m) => {
+    oldU(c, x, y, gx, gy, t, m);
+    R(c, x, y, 1, T, '#4f5d70'); R(c, x + 15, y, 1, T, '#4f5d70');
+    if (m && at(m, gx, gy - 1) !== 'U') { R(c, x, y, T, 2, '#4f5d70'); R(c, x + 6, y - 0, 1, 2, '#e04848'); }
+    if (WW.style.night) for (let r = 0; r < 5; r++) for (let k = 0; k < 3; k++) if (hash(gx + k, r + gy * 7) > 0.45) R(c, x + 3 + k * 4, y + 2 + r * 3, 2, 2, '#ffd76a');
+  };
+
+  /* ---------------- people ---------------- */
+  // hair styles made from the base person: change a few pixels
+  const edit = (rows, list) => { const out = rows.map(r => r.split('')); list.forEach(([r, k, ch]) => (out[r][k] = ch)); return out.map(r => r.join('')); };
+  SPR.npcLong = edit(SPR.npc, [
+    [6, 2, 'k'], [6, 3, 'h'], [6, 12, 'h'], [6, 13, 'k'], [7, 2, 'k'], [7, 3, 'h'], [7, 12, 'h'], [7, 13, 'k'],
+    [8, 2, 'k'], [8, 3, 'h'], [8, 4, 'h'], [8, 11, 'h'], [8, 12, 'h'], [8, 13, 'k'], [9, 2, 'k'], [9, 3, 'h'], [9, 12, 'h'], [9, 13, 'k']]);
+  SPR.npcBun = edit(SPR.npc, [[0, 6, 'k'], [0, 7, 'k'], [0, 8, 'k'], [0, 9, 'k'], [1, 5, 'k'], [1, 6, 'h'], [1, 7, 'h'], [1, 8, 'h'], [1, 9, 'h'], [1, 10, 'k']]);
+  SPR.npcHat = edit(SPR.npc, [
+    [1, 5, 'k'], [1, 6, 'k'], [1, 7, 'k'], [1, 8, 'k'], [1, 9, 'k'], [1, 10, 'k'],
+    [2, 4, 'k'], [2, 5, 'H'], [2, 6, 'H'], [2, 7, 'H'], [2, 8, 'H'], [2, 9, 'H'], [2, 10, 'H'], [2, 11, 'k'],
+    [3, 4, 'k'], [3, 5, 'H'], [3, 6, 'b'], [3, 7, 'b'], [3, 8, 'b'], [3, 9, 'b'], [3, 10, 'H'], [3, 11, 'k'],
+    [4, 1, 'k'], [4, 2, 'k'], [4, 3, 'k'], [4, 4, 'k'], [4, 5, 'k'], [4, 6, 'k'], [4, 7, 'k'], [4, 8, 'k'], [4, 9, 'k'], [4, 10, 'k'], [4, 11, 'k'], [4, 12, 'k'], [4, 13, 'k'], [4, 14, 'k']]);
+  const STYLES = ['npc', 'npcLong', 'npcBun', 'npc', 'npcLong'];
+  WW.personSprite = p => {
+    const look = p.look || {};
+    if (look.hat) return 'npcHat';
+    if (look.style) return { short: 'npc', long: 'npcLong', bun: 'npcBun' }[look.style] || 'npc';
+    const name = (p.name && (p.name.en || p.name)) || '';
+    let h = 0; for (const ch of String(name)) h = (h * 31 + ch.charCodeAt(0)) >>> 0;
+    return STYLES[h % STYLES.length];
+  };
+  // a person standing on the map: shadow, hair style, and a blink every few seconds
+  WW.drawPerson = (c, p, x, y, t, phase = 0) => {
+    shadow(c, x, y + 15, 10);
+    const pal = WW.lookPal(p.look);
+    if (!calm && (((t || 0) + phase * 977) % 3700) < 130) pal.e = pal.s;
+    WW.sprite(c, WW.personSprite(p), x, y, { pal });
+  };
+  WW.shadow = shadow;
+})();
+
 /* save.js */
 /* WORLDWALKER engine · languages, the saved hero, Passport Code, class Google Sheet */
 (function () {
@@ -863,6 +1211,7 @@ window.WW_CONFIG.MODE = 'canvas';
     passport: { en: 'Passport', es: 'Pasaporte', fa: 'پاسپورت' },
     map: { en: 'World map', es: 'Mapa del mundo', fa: 'نقشهٔ جهان' },
     sound: { en: 'Sound', es: 'Sonido', fa: 'صدا' },
+    music: { en: 'Music', es: 'Música', fa: 'موسیقی' },
     full: { en: 'Full screen', es: 'Pantalla completa', fa: 'تمام صفحه' },
     firstName: { en: 'First name only', es: 'Solo tu primer nombre', fa: 'فقط نام اول' },
     classCode: { en: 'Class code', es: 'Código de la clase', fa: 'کد صنف' },
@@ -935,7 +1284,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -1136,6 +1485,7 @@ window.WW_CONFIG.MODE = 'canvas';
       $('ww-b-pass').textContent = '📘 ' + T('passport');
       const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
       $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
+      $('ww-b-mus').textContent = (WW.save.music ? '🎵 ' : '🚫 ') + T('music');
       $('ww-b-full').textContent = '⛶ ' + T('full');
       $('ww-foot').textContent = T('controls');
     }
@@ -1416,8 +1766,23 @@ window.WW_CONFIG.MODE = 'canvas';
   };
 
   /* ---------------- finish: page restored, reflect, save, turn in ---------------- */
+  // paper confetti over the game screen
+  WW.confetti = () => {
+    if (WW.calm) return;
+    const box = document.createElement('div'); box.className = 'confetti';
+    const cols = ['#f2c14e', '#e04848', '#2aa198', '#2f7fd1', '#8e5bd6', '#7cc451', '#fffbe8'];
+    for (let i = 0; i < 70; i++) {
+      const p = document.createElement('i');
+      p.style.left = Math.random() * 100 + '%'; p.style.background = cols[i % cols.length];
+      p.style.animationDelay = (Math.random() * 0.8) + 's'; p.style.animationDuration = (1.8 + Math.random() * 1.6) + 's';
+      p.style.setProperty('--dx', (Math.random() * 120 - 60) + 'px'); p.style.setProperty('--r', (Math.random() * 720 - 360) + 'deg');
+      box.appendChild(p);
+    }
+    $('ww-screen').appendChild(box); setTimeout(() => box.remove(), 4200);
+  };
   ui.finish = () => {
     const r = WW.run, ep = WW.ep;
+    WW.confetti();
     let sheet = WW.sheetOn() ? 'saving' : 'off', note = '';
     ui.open({
       cls: 'finov',
@@ -1802,15 +2167,16 @@ window.WW_CONFIG.MODE = 'canvas';
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
     let broken = 0, picked = null, last = null;
+    WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
-        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : '');
+        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
         WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5 });
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
-        for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}"></span>`;
+        for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
         shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
         top.insertAdjacentHTML('beforeend', shield);
         box.appendChild(top);
@@ -1856,6 +2222,457 @@ window.WW_CONFIG.MODE = 'canvas';
   };
 })();
 
+/* music.js */
+/* WORLDWALKER engine · music: retro chip songs made in code (no sound files)
+   One song for each realm, a song for the Smudge trial and a short win jingle.
+   A song is a few channels of notes. Each word is one step (an eighth note):
+   'E5' plays a note, '-' holds the note before it, '.' is quiet, '|' is only a bar line for reading.
+   Drum words: k kick, s snare, h hi-hat, c clave; they can be joined, like 'kh'. Each channel loops on its own length. */
+(function () {
+  const SONGS = {
+    // 1 Mapmaker's Valley: cheerful march in C major
+    realm1: {
+      bpm: 112, lead: 'square',
+      melody: `E5 - G5 - C6 - B5 A5 | G5 - - - E5 - . . | F5 - A5 - D6 - C6 B5 | C6 - - - . . G5 - |
+               A5 - G5 - F5 - E5 F5 | G5 - E5 - C5 - . . | D5 - E5 - F5 - A5 G5 | C5 - - - . . . .`,
+      bass: `C3 . G3 . C3 . G3 . | C3 . G3 . E3 . G3 . | F3 . C4 . F3 . C4 . | G3 . D4 . G3 . B3 . |
+             F3 . C4 . F3 . A3 . | C3 . G3 . E3 . C3 . | D3 . A3 . G3 . B3 . | C3 . G3 . C3 . . .`,
+      drums: 'k . h . s . h . | k . h k s . h h'
+    },
+    // 2 The Americas: flute tune over a clave rhythm, G major
+    realm2: {
+      bpm: 124, lead: 'tri',
+      melody: `G5 . B5 D6 - B5 . G5 | A5 - - . F#5 . D5 . | E5 . G5 B5 - A5 . G5 | F#5 - - - . . D5 . |
+               G5 . B5 D6 - E6 . D6 | C6 - B5 . A5 . G5 . | A5 . B5 C6 - B5 . A5 | G5 - - - . . . .`,
+      bass: `G2 . . G3 . . D3 . | D3 . . D3 . . A2 . | E3 . . E3 . . B2 . | D3 . . D3 . . F#3 . |
+             G2 . . G3 . . D3 . | C3 . . C3 . . G2 . | D3 . . D3 . . F#3 . | G2 . . D3 . . G2 .`,
+      drums: 'kc . h c s h c h | k . c h sc . h .'
+    },
+    // 3 Europe, Russia & Central Asia: a waltz in D minor (6 steps a bar)
+    realm3: {
+      bpm: 150, lead: 'square',
+      melody: `D5 - - - F5 - | A5 - - - G5 F5 | E5 - - - G5 - | A5 - - - - - |
+               Bb5 - - - A5 G5 | F5 - - - E5 D5 | C#5 - - - E5 - | D5 - - - - -`,
+      bass: `D3 - A3 - A3 - | D3 - A3 - A3 - | A2 - E3 - E3 - | D3 - F3 - A3 - |
+             Bb2 - F3 - F3 - | D3 - A3 - A3 - | A2 - E3 - G3 - | D3 - A3 - D3 -`,
+      drums: 'k . h . h .'
+    },
+    // 4 Sub-Saharan Africa: marimba-like pentatonic over busy drums
+    realm4: {
+      bpm: 116, lead: 'pluck',
+      melody: `A4 C5 E5 . D5 C5 A4 . | G4 . A4 C5 . A4 G4 . | A4 C5 E5 . G5 E5 D5 . | E5 . D5 C5 . A4 . . |
+               C5 D5 E5 . E5 G5 E5 . | D5 . C5 D5 . E5 . . | A5 G5 E5 . D5 C5 D5 . | A4 . . . E4 G4 A4 .`,
+      bass: 'A2 . . A2 . . E3 . | G2 . . G2 . . D3 . | A2 . . A2 . . E3 . | C3 . . C3 . . G2 .',
+      drums: 'kh h sh h k kh sh h'
+    },
+    // 5 North Africa & Southwest Asia: a slow tune on a drone, with a raised third (D E♭ F# G A B♭ C)
+    realm5: {
+      bpm: 96, lead: 'square',
+      melody: `D5 - Eb5 F#5 G5 - F#5 Eb5 | D5 - - - . . A4 - | Bb4 - A4 G4 A4 - Bb4 C5 | D5 - - - . . . . |
+               G5 - F#5 G5 A5 - G5 F#5 | Eb5 - F#5 - D5 - . . | C5 - Bb4 A4 Bb4 - A4 G4 | F#4 G4 A4 - D4 - - .`,
+      bass: 'D3 - - - A2 - - - | D3 - - - D3 - A2 -',
+      drums: 'k . h k s . h .'
+    },
+    // 6 South & Southeast Asia: plucked strings over a drone
+    realm6: {
+      bpm: 100, lead: 'pluck',
+      melody: `D5 E5 F#5 - A5 - F#5 E5 | D5 - - . B4 - A4 . | D5 F#5 A5 - B5 A5 F#5 A5 | E5 - - - . . . . |
+               A5 B5 D6 - B5 A5 F#5 - | A5 - F#5 E5 D5 - . . | E5 F#5 A5 - F#5 E5 D5 B4 | D5 - - - . . . .`,
+      bass: 'D3 - A3 - D4 - A3 -',
+      drums: 'k . h k s h . h'
+    },
+    // 7 East Asia: gentle five-note tune, like a plucked koto
+    realm7: {
+      bpm: 92, lead: 'pluck',
+      melody: `E5 . D5 . B4 - A4 . | B4 - D5 - E5 - - . | G5 . E5 . D5 - B4 . | D5 - - - - . . . |
+               E5 . G5 . A5 - G5 E5 | D5 - E5 - B4 - - . | A4 . B4 . D5 - E5 D5 | B4 - A4 - G4 - - .`,
+      bass: 'G2 - D3 - G3 - D3 - | E2 - B2 - E3 - B2 -',
+      drums: 'k . . . h . . . | k . h . h . . .'
+    },
+    // 8 Australia, the Pacific & the World: bright island song in F major
+    realm8: {
+      bpm: 128, lead: 'tri',
+      melody: `C5 - F5 - A5 - G5 F5 | G5 - - - . . C5 - | D5 - G5 - Bb5 - A5 G5 | A5 - - - . . F5 G5 |
+               A5 - C6 - A5 - F5 - | G5 - Bb5 - G5 - E5 - | F5 - A5 - G5 - E5 - | F5 - - - . . . .`,
+      bass: `F2 . C3 . F3 . C3 . | F2 . C3 . A2 . C3 . | G2 . D3 . G3 . D3 . | C3 . G2 . C3 . E3 . |
+             F2 . C3 . F3 . C3 . | C3 . G2 . C3 . G2 . | Bb2 . F3 . C3 . G2 . | F2 . C3 . F2 . . .`,
+      drums: 'k h s h k k s h'
+    },
+    // the Smudge trial: fast and tense, A minor
+    boss: {
+      bpm: 150, lead: 'square',
+      melody: `A5 . A5 C6 B5 . G#5 . | A5 . E5 . . . . . | F5 . F5 A5 G5 . E5 . | D5 . E5 . . . . . |
+               A5 . A5 C6 B5 . G#5 . | A5 . E6 . D6 . C6 . | B5 . C6 . B5 . A5 . | G#5 - - - E5 - - -`,
+      bass: `A2 A3 A2 A3 A2 A3 A2 A3 | A2 A3 A2 A3 A2 A3 A2 A3 | F2 F3 F2 F3 F2 F3 F2 F3 | D2 D3 D2 D3 D2 D3 D2 D3 |
+             A2 A3 A2 A3 A2 A3 A2 A3 | F2 F3 F2 F3 F2 F3 F2 F3 | E2 E3 E2 E3 E2 E3 E2 E3 | E2 E3 E2 E3 E2 E3 E2 E3`,
+      drums: 'k h s h k k s h'
+    },
+    // the page is won (plays once)
+    win: {
+      bpm: 170, lead: 'square', once: true,
+      melody: 'C5 E5 G5 C6 - - G5 C6 - - - - - - - .',
+      bass: 'C3 . G3 . C4 - - . G3 . C3 - - - - .',
+      drums: 'k . . . s . . . k . s . k s k .'
+    }
+  };
+
+  const NOTE = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+  function freq(tok) {
+    const m = /^([A-G])([#b]?)(\d)$/.exec(tok); if (!m) return 0;
+    const n = NOTE[m[1]] + (m[2] === '#' ? 1 : m[2] === 'b' ? -1 : 0) + (+m[3] + 1) * 12;
+    return 440 * Math.pow(2, (n - 69) / 12);
+  }
+  const parse = s => (s || '').split(/\s+/).filter(w => w && w !== '|');
+  for (const k in SONGS) { const s = SONGS[k]; s.ch = { melody: parse(s.melody), bass: parse(s.bass), drums: parse(s.drums) }; s.len = Math.max(s.ch.melody.length, s.ch.bass.length, s.ch.drums.length); }
+
+  let ac = null, out = null, noise = null, song = null, songName = '', step = 0, nextT = 0, timer = null;
+
+  function setup() {
+    ac = WW.ac; if (!ac || out) return !!ac;
+    out = ac.createGain(); out.gain.value = 0.9; out.connect(ac.destination);
+    noise = ac.createBuffer(1, ac.sampleRate * 0.5, ac.sampleRate);
+    const d = noise.getChannelData(0); for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+    return true;
+  }
+  function env(g, t, peak, dur, hold) {
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(peak, t + 0.01);
+    if (hold) { g.gain.setValueAtTime(peak * 0.75, t + Math.max(0.02, dur * 0.7)); g.gain.exponentialRampToValueAtTime(0.0001, t + dur); }
+    else g.gain.exponentialRampToValueAtTime(0.0001, t + Math.min(dur, 0.45));
+  }
+  function tone(type, f, t, dur, peak, hold, vib) {
+    const o = ac.createOscillator(), g = ac.createGain();
+    o.type = type; o.frequency.setValueAtTime(f, t);
+    if (vib && dur > 0.35) { // a little wobble on long notes
+      const l = ac.createOscillator(), lg = ac.createGain(); l.frequency.value = 5.5; lg.gain.value = f * 0.006;
+      l.connect(lg); lg.connect(o.frequency); l.start(t + 0.15); l.stop(t + dur);
+    }
+    env(g, t, peak, dur, hold);
+    o.connect(g); g.connect(out); o.start(t); o.stop(t + dur + 0.05);
+  }
+  function hit(kind, t) {
+    if (kind === 'k') {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.frequency.setValueAtTime(150, t); o.frequency.exponentialRampToValueAtTime(42, t + 0.12);
+      g.gain.setValueAtTime(0.22, t); g.gain.exponentialRampToValueAtTime(0.0001, t + 0.14);
+      o.connect(g); g.connect(out); o.start(t); o.stop(t + 0.16);
+    } else if (kind === 'c') {
+      tone('square', 2400, t, 0.03, 0.025, false);
+    } else {
+      const src = ac.createBufferSource(), f = ac.createBiquadFilter(), g = ac.createGain();
+      src.buffer = noise; f.type = 'highpass'; f.frequency.value = kind === 's' ? 1200 : 6500;
+      const d = kind === 's' ? 0.12 : 0.035, v = kind === 's' ? 0.07 : 0.03;
+      g.gain.setValueAtTime(v, t); g.gain.exponentialRampToValueAtTime(0.0001, t + d);
+      src.connect(f); f.connect(g); g.connect(out); src.start(t, Math.random() * 0.3); src.stop(t + d + 0.02);
+    }
+  }
+  // how many steps a note lasts: itself plus the '-' words after it
+  function length(arr, i) { let n = 1; while (arr[(i + n) % arr.length] === '-' && n < arr.length) n++; return n; }
+
+  function schedule(s, i, t, sd) {
+    const m = s.ch.melody, b = s.ch.bass, d = s.ch.drums;
+    if (m.length && (!s.once || i < m.length)) {
+      const w = m[i % m.length], f = freq(w);
+      if (f) {
+        const dur = length(m, i % m.length) * sd;
+        if (s.lead === 'pluck') { tone('triangle', f, t, dur, 0.13, false); tone('square', f * 2, t, Math.min(dur, 0.12), 0.012, false); }
+        else if (s.lead === 'tri') tone('triangle', f, t, dur * 0.95, 0.12, true, true);
+        else tone('square', f, t, dur * 0.95, 0.035, true, true);
+      }
+    }
+    if (b.length && (!s.once || i < b.length)) { const w = b[i % b.length], f = freq(w); if (f) tone('triangle', f, t, length(b, i % b.length) * sd * 0.9, 0.11, true); }
+    if (d.length && (!s.once || i < d.length)) { const w = d[i % d.length]; if (w !== '.' && w !== '-') for (const k of w) hit(k, t); }
+  }
+  function tick() {
+    if (!song || !ac) return;
+    const sd = 60 / song.bpm / 2;
+    while (nextT < ac.currentTime + 0.15) {
+      if (song.once && step >= song.len) { const after = song.after; stop(); if (after) play(after); return; }
+      schedule(song, step, nextT, sd);
+      nextT += sd; step++;
+    }
+  }
+  function stop() { if (timer) clearInterval(timer); timer = null; song = null; songName = ''; }
+  function start() {
+    if (!WW.save.music || !wanted || !setup()) return;
+    if (ac.state === 'suspended') ac.resume();
+    song = Object.assign({}, SONGS[wanted]); songName = wanted; step = 0; nextT = ac.currentTime + 0.08;
+    if (song.once) song.after = wantedAfter;
+    if (timer) clearInterval(timer);
+    timer = setInterval(tick, 30); tick();
+  }
+  let wanted = '', wantedAfter = '';
+  // play a song by name ('realm4', 'boss', 'win'); 'then' = the song to go back to after a one-time jingle
+  function play(name, then) {
+    wanted = name; wantedAfter = then || '';
+    if (songName === name && timer) return;
+    stop(); start();
+  }
+  document.addEventListener('visibilitychange', () => { if (!ac) return; if (document.hidden) ac.suspend(); else ac.resume(); });
+
+  WW.music = {
+    SONGS, play,
+    stop() { wanted = ''; stop(); },
+    wake() { if (wanted && !timer) start(); },          // call after the first tap/click, when sound is allowed
+    toggle() { WW.save.music = !WW.save.music; WW.store(); if (WW.save.music) start(); else stop(); },
+    get playing() { return songName; },
+    // for tests/music.js: write a whole song into an OfflineAudioContext
+    renderInto(ctx, name, loops = 1) {
+      const keep = [ac, out, noise]; ac = ctx; out = null; WW.ac = ctx; setup();
+      const s = SONGS[name], sd = 60 / s.bpm / 2;
+      for (let i = 0; i < s.len * loops; i++) schedule(s, i, 0.05 + i * sd, sd);
+      [ac, out, noise] = keep; WW.ac = ac;
+    }
+  };
+})();
+
+/* fx.js */
+/* WORLDWALKER engine · the living world: butterflies, birds, fish, chimney smoke, cloud shadows,
+   weather and time of day for each episode, and little bursts of sparkle and dust.
+   Everything is drawn on top of the map canvas each frame. */
+(function () {
+  const TS = 16, SW = 16, SH = 11, VW = SW * TS, VH = SH * TS;
+  const { hash } = WW;
+  const calm = () => WW.calm;
+
+  /* weather and time of day for each episode (an episode file can also set its own: weather: { sky, time }) */
+  const SKY = {
+    '1.1': { life: 1 }, '1.2': { life: 1 }, '1.3': { life: 1 },
+    '2.1': { sky: 'leaves' }, '2.2': { sky: 'drizzle' }, '2.3': { time: 'sunset' },
+    '3.1': { sky: 'drizzle' }, '3.2': { sky: 'snow' }, '3.3': { time: 'sunset', sky: 'dust' },
+    '4.1': { sky: 'heat' }, '4.2': { time: 'sunset' }, '4.3': { life: 1 },
+    '5.1': { sky: 'heat' }, '5.2': { time: 'sunset' }, '5.3': { sky: 'heat' },
+    '6.1': { sky: 'rain' }, '6.2': { sky: 'drizzle' }, '6.3': { life: 1 },
+    '7.1': { sky: 'petals' }, '7.2': { life: 1 }, '7.3': { time: 'night' },
+    '8.1': { sky: 'heat' }, '8.2': { life: 1 }, '8.3': { time: 'sunset' }
+  };
+  let sky = {}, map = null, parts = [], drops = [], amb = [], cur = '', clouds = [], dark = null, wind = 0.3;
+
+  const rnd = Math.random;
+  const tileAt = (x, y) => (map[y] || '')[x];
+
+  function setup(ep) {
+    sky = Object.assign({ sky: 'clear', time: 'day' }, SKY[ep.id] || {}, ep.weather || {});
+    map = ep.map; parts = []; amb = []; cur = '';
+    WW.style.realm = ep.realm || +ep.id[0];
+    WW.style.night = sky.time === 'night';
+    wind = sky.sky === 'snow' ? 0.25 : sky.sky === 'dust' || sky.sky === 'heat' ? 0.9 : 0.35;
+    drops = [];
+    const n = { rain: 90, drizzle: 40, snow: 70, petals: 18, leaves: 14, dust: 26, heat: 14 }[sky.sky] || 0;
+    for (let i = 0; i < n; i++) drops.push(newDrop(true));
+    clouds = [];
+    if (sky.time === 'day' && (sky.sky === 'clear' || sky.sky === 'heat' || sky.sky === 'leaves' || sky.sky === 'petals'))
+      for (let i = 0; i < 2; i++) clouds.push({ x: rnd() * VW * 2 - VW / 2, y: rnd() * VH, r: 40 + rnd() * 30, v: 0.006 + rnd() * 0.004 });
+  }
+  function newDrop(anywhere) {
+    return { x: rnd() * (VW + 40) - 20, y: anywhere ? rnd() * VH : -8 - rnd() * 20, s: 0.6 + rnd() * 0.8, ph: rnd() * 6, c: (rnd() * 4) | 0 };
+  }
+
+  /* things that live on one screen: made fresh each time the hero walks onto a new screen */
+  function enterScreen(sx, sy) {
+    const key = sx + ',' + sy; if (key === cur) return; cur = key;
+    amb = [];
+    const grass = [], water = [], chim = [];
+    for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
+      const gx = sx * SW + x, gy = sy * SH + y, ch = tileAt(gx, gy);
+      if ('.,"'.includes(ch)) grass.push([gx, gy]);
+      if (ch === '~' || ch === '=') water.push([gx, gy]);
+      if (WW.hasChimney && WW.hasChimney(map, gx, gy)) chim.push([gx, gy]);
+    }
+    const ox = sx * VW, oy = sy * VH;
+    const clear = !['rain', 'drizzle', 'snow'].includes(sky.sky);
+    if (sky.time === 'night') {
+      grass.length > 20 && [0, 1, 2, 3, 4].forEach(i => { const g = grass[(hash(sx, sy, i) * grass.length) | 0]; amb.push({ k: 'fly', x: g[0] * TS + 8, y: g[1] * TS + 8, ph: i * 1.7 }); });
+    } else if (clear && grass.length > 30) {
+      [0, 1].forEach(i => { const g = grass[(hash(sx, sy, i + 3) * grass.length) | 0]; amb.push({ k: 'butterfly', x: g[0] * TS + 8, y: g[1] * TS + 8, tx: 0, ty: 0, c: ['#ffe36e', '#ff8fb1', '#ffffff', '#8fc3ff'][(i + sx + sy) % 4], ph: i * 2 }); });
+    }
+    if (water.length > 12) amb.push({ k: 'fishspot', spots: water, next: 0 });
+    if (clear && sky.time !== 'night') amb.push({ k: 'birds', next: 2000 + rnd() * 4000, ox, oy });
+    chim.forEach(([gx, gy]) => amb.push({ k: 'chimney', x: gx * TS + 11, y: gy * TS, next: 0 }));
+  }
+
+  /* bursts: sparkles, dust, smoke */
+  function burst(gx, gy, kind) {
+    if (calm() && kind !== 'gold') return;
+    const x = gx * TS + 8, y = gy * TS + 8;
+    const n = { gold: 16, purple: 22, dust: 4, snow: 4, splash: 6, poof: 30 }[kind] || 8;
+    for (let i = 0; i < n; i++) {
+      const a = rnd() * Math.PI * 2, sp = kind === 'dust' || kind === 'snow' ? 0.15 + rnd() * 0.2 : kind === 'splash' ? 0.4 + rnd() * 0.3 : 0.5 + rnd() * 1.1;
+      parts.push({
+        x: kind === 'dust' || kind === 'snow' ? x + (rnd() - 0.5) * 8 : x, y: kind === 'dust' || kind === 'snow' ? y + 6 : y,
+        vx: Math.cos(a) * sp, vy: kind === 'dust' || kind === 'snow' ? -0.1 - rnd() * 0.15 : kind === 'splash' ? -0.8 - rnd() * 0.6 : Math.sin(a) * sp,
+        g: kind === 'splash' ? 0.06 : kind === 'gold' ? 0.02 : 0, life: kind === 'poof' ? 70 : kind === 'dust' || kind === 'snow' ? 26 : 45, age: 0, kind,
+        size: kind === 'poof' ? 2 + ((rnd() * 3) | 0) : kind === 'dust' || kind === 'snow' ? 2 : 1 + ((rnd() * 2) | 0)
+      });
+    }
+  }
+  // a little dust when you walk on dry ground or snow
+  function step(gx, gy) {
+    const ch = tileAt(gx, gy);
+    if ('su:g'.includes(ch)) burst(gx, gy, 'dust');
+    else if ('nzi'.includes(ch)) burst(gx, gy, 'snow');
+  }
+
+  const PCOL = { gold: ['#fff3b0', '#f2c14e', '#ffffff'], purple: ['#a08cc8', '#6d5f8c', '#4b3f63'], poof: ['#a08cc8', '#6d5f8c', '#d8d0ec'], dust: ['rgba(201,176,100,.7)'], snow: ['rgba(255,255,255,.85)'], splash: ['#d8f0ff', '#ffffff'] };
+
+  /* ---------------- drawing ---------------- */
+  // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
+  function draw(c, sx, sy, hero, t, dt) {
+    enterScreen(sx, sy);
+    const ox = sx * VW, oy = sy * VH, k = Math.min(3, dt / 16.7);
+    if (!calm()) {
+      // cloud shadows drift over the whole world
+      clouds.forEach(cl => {
+        cl.x += cl.v * dt; if (cl.x - cl.r > VW * 2) cl.x = -cl.r * 2;
+        c.fillStyle = 'rgba(30,50,60,.06)';
+        c.beginPath(); c.ellipse(cl.x - VW / 2, cl.y, cl.r, cl.r * 0.55, 0, 0, 7); c.fill();
+        c.beginPath(); c.ellipse(cl.x - VW / 2 + cl.r * 0.6, cl.y + cl.r * 0.15, cl.r * 0.7, cl.r * 0.4, 0, 0, 7); c.fill();
+      });
+      amb.forEach(a => ambient(c, a, ox, oy, t, dt, k));
+    }
+    // bursts
+    parts = parts.filter(p => p.age < p.life);
+    parts.forEach(p => {
+      p.age += k; p.x += p.vx * k; p.y += p.vy * k; p.vy += p.g * k;
+      if (p.kind === 'gold' || p.kind === 'purple' || p.kind === 'poof') { p.vx *= 0.96; p.vy *= 0.96; }
+      const cols = PCOL[p.kind] || PCOL.gold, col = cols[(p.age / 6 | 0) % cols.length];
+      const fade = 1 - p.age / p.life;
+      if (p.kind === 'smoke') { // smoke puffs grow as they rise
+        c.fillStyle = `rgba(230,230,235,${0.55 * fade})`;
+        c.beginPath(); c.arc(p.x - ox, p.y - oy, 1.5 + p.age / 22, 0, 7); c.fill();
+        return;
+      }
+      c.globalAlpha = Math.max(0, Math.min(1, fade * 1.5));
+      c.fillStyle = col;
+      const px = Math.round(p.x - ox), py = Math.round(p.y - oy);
+      if (p.kind === 'gold' && p.size > 1) { c.fillRect(px - 1, py, 3, 1); c.fillRect(px, py - 1, 1, 3); }
+      else c.fillRect(px, py, p.size, p.size);
+      c.globalAlpha = 1;
+    });
+    weather(c, t, dt, k);
+    light(c, sx, sy, hero, t);
+  }
+
+  function ambient(c, a, ox, oy, t, dt, k) {
+    if (a.k === 'butterfly') {
+      if (!a.tx || Math.hypot(a.tx - a.x, a.ty - a.y) < 3) { a.tx = ox + 16 + rnd() * (VW - 32); a.ty = oy + 16 + rnd() * (VH - 32); }
+      a.x += Math.sign(a.tx - a.x) * 0.25 * k; a.y += Math.sign(a.ty - a.y) * 0.18 * k + Math.sin(t / 200 + a.ph) * 0.2;
+      const x = Math.round(a.x - ox), y = Math.round(a.y - oy), open = Math.floor(t / 120 + a.ph) % 2;
+      c.fillStyle = a.c; if (open) { c.fillRect(x - 2, y - 1, 2, 2); c.fillRect(x + 1, y - 1, 2, 2); } else { c.fillRect(x - 1, y - 2, 1, 2); c.fillRect(x + 1, y - 2, 1, 2); }
+      c.fillStyle = '#22202e'; c.fillRect(x, y - 1, 1, 2);
+    } else if (a.k === 'fly') {
+      const x = Math.round(a.x - ox + Math.sin(t / 900 + a.ph) * 14), y = Math.round(a.y - oy + Math.cos(t / 700 + a.ph) * 9);
+      const on = (Math.sin(t / 300 + a.ph * 3) + 1) / 2;
+      c.fillStyle = `rgba(230,255,140,${0.25 + on * 0.75})`; c.fillRect(x, y, 1, 1);
+      c.fillStyle = `rgba(230,255,140,${on * 0.25})`; c.fillRect(x - 1, y - 1, 3, 3);
+    } else if (a.k === 'birds') {
+      if (!a.fly) { a.next -= dt; if (a.next < 0) a.fly = { x: -10, y: 10 + rnd() * 40, v: 0.6 + rnd() * 0.3, n: 2 + ((rnd() * 2) | 0) }; return; }
+      const f = a.fly; f.x += f.v * k;
+      for (let i = 0; i < f.n; i++) {
+        const x = Math.round(f.x - i * 9), y = Math.round(f.y + i * 5 + Math.sin(t / 300 + i) * 2), up = Math.floor(t / 150 + i) % 2;
+        c.fillStyle = '#2b2b3a';
+        c.fillRect(x, y, 1, 1); c.fillRect(x - 2, y - (up ? 1 : -1), 2, 1); c.fillRect(x + 1, y - (up ? 1 : -1), 2, 1);
+      }
+      if (f.x > VW + 40) { a.fly = null; a.next = 6000 + rnd() * 8000; }
+    } else if (a.k === 'fishspot') {
+      a.next -= dt;
+      if (a.next < 0 && !a.jump) {
+        const s = a.spots[(rnd() * a.spots.length) | 0];
+        a.jump = { x: s[0] * TS + 8, y: s[1] * TS + 10, age: 0 }; a.next = 2500 + rnd() * 4000;
+      }
+      if (a.jump) {
+        const j = a.jump; j.age += k;
+        const p = j.age / 40, x = Math.round(j.x - ox + p * 10 - 5), y = Math.round(j.y - oy - Math.sin(p * Math.PI) * 10);
+        if (p < 1) { c.fillStyle = '#e0e8f0'; c.fillRect(x, y, 3, 2); c.fillStyle = '#9fb4c8'; c.fillRect(x - 1, y + (p < .5 ? 1 : -1), 1, 1); }
+        if (j.age === k || (p >= 1 && !j.splashed)) { burst((j.x + (p >= 1 ? 5 : -5)) / TS - 0.5, j.y / TS - 0.5, 'splash'); if (p >= 1) j.splashed = true; }
+        if (p > 1.4) a.jump = null;
+      }
+    } else if (a.k === 'chimney') {
+      a.next -= dt;
+      if (a.next < 0) { a.next = 450 + rnd() * 250; parts.push({ x: a.x, y: a.y, vx: wind * 0.25, vy: -0.25, g: 0, life: 90, age: 0, kind: 'smoke', size: 2 }); }
+    }
+  }
+
+  function weather(c, t, dt, k) {
+    const s = sky.sky;
+    if (!drops.length || calm()) { if (s === 'rain' || s === 'drizzle') { c.fillStyle = 'rgba(30,45,70,.14)'; c.fillRect(0, 0, VW, VH); } return; }
+    if (s === 'rain' || s === 'drizzle') {
+      c.fillStyle = s === 'rain' ? 'rgba(30,45,70,.16)' : 'rgba(40,55,80,.08)'; c.fillRect(0, 0, VW, VH);
+      c.fillStyle = s === 'rain' ? 'rgba(210,228,255,.7)' : 'rgba(215,230,255,.55)';
+      drops.forEach(d => {
+        d.y += (s === 'rain' ? 5 : 3.2) * d.s * k; d.x -= (s === 'rain' ? 1.4 : 0.8) * k;
+        c.fillRect(Math.round(d.x), Math.round(d.y), 1, s === 'rain' ? 5 : 3);
+        if (d.y > VH || d.x < -10) {
+          if (rnd() < 0.5) { c.fillStyle = 'rgba(220,235,255,.6)'; c.fillRect(Math.round(d.x) - 1, VH - 2 - ((rnd() * VH * 0.9) | 0), 3, 1); c.fillStyle = s === 'rain' ? 'rgba(200,220,255,.55)' : 'rgba(210,225,255,.45)'; }
+          Object.assign(d, newDrop(false));
+        }
+      });
+      // splashes on the ground
+      for (let i = 0; i < (s === 'rain' ? 4 : 2); i++) { const x = (hash(i, (t / 120) | 0, 1) * VW) | 0, y = (hash(i, (t / 120) | 0, 2) * VH) | 0; c.fillStyle = 'rgba(220,235,255,.5)'; c.fillRect(x - 1, y, 3, 1); c.fillRect(x, y - 1, 1, 1); }
+    } else if (s === 'snow') {
+      drops.forEach(d => {
+        d.y += 0.45 * d.s * k; d.x += (Math.sin(t / 800 + d.ph) * 0.3 + wind * 0.3) * k;
+        c.fillStyle = 'rgba(255,255,255,.9)'; c.fillRect(Math.round(d.x), Math.round(d.y), d.s > 1 ? 2 : 1, d.s > 1 ? 2 : 1);
+        if (d.y > VH || d.x > VW + 10) Object.assign(d, newDrop(false), { x: rnd() * VW - 20 });
+      });
+    } else if (s === 'petals' || s === 'leaves') {
+      const cols = s === 'petals' ? ['#ffc4d6', '#ffb0c8', '#ffe0ea', '#ff9ab8'] : ['#d9822b', '#c0392b', '#e0b030', '#a85a2a'];
+      drops.forEach(d => {
+        d.y += 0.35 * d.s * k; d.x += (Math.sin(t / 600 + d.ph) * 0.5 + 0.25) * k;
+        const flip = Math.sin(t / 250 + d.ph) > 0;
+        c.fillStyle = cols[d.c]; c.fillRect(Math.round(d.x), Math.round(d.y), flip ? 2 : 1, flip ? 1 : 2);
+        if (s === 'leaves') c.fillRect(Math.round(d.x) + 1, Math.round(d.y) + 1, 1, 1);
+        if (d.y > VH || d.x > VW + 10) Object.assign(d, newDrop(false), { x: rnd() * VW - 30 });
+      });
+    } else if (s === 'heat' || s === 'dust') {
+      // shimmer: faint wavy light bands, plus sand blowing past
+      for (let i = 0; i < 4; i++) {
+        const y = ((t / 40 + i * 47) % (VH + 20)) - 10;
+        c.fillStyle = 'rgba(255,240,200,.06)';
+        for (let x = 0; x < VW; x += 8) c.fillRect(x, Math.round(y + Math.sin(x / 20 + t / 300) * 2), 8, 2);
+      }
+      drops.forEach(d => {
+        d.x += (1.2 + d.s) * wind * k; d.y += Math.sin(t / 300 + d.ph) * 0.15 * k;
+        c.fillStyle = s === 'dust' ? 'rgba(214,180,110,.55)' : 'rgba(232,209,138,.45)'; c.fillRect(Math.round(d.x), Math.round(d.y), 2, 1);
+        if (d.x > VW + 4) { d.x = -4 - rnd() * 30; d.y = rnd() * VH; }
+      });
+      if (s === 'heat') { c.fillStyle = 'rgba(255,200,90,.05)'; c.fillRect(0, 0, VW, VH); }
+    }
+  }
+
+  // sunset glow, dusk, or night with lit windows and a small light around the hero
+  function light(c, sx, sy, hero, t) {
+    const tm = sky.time;
+    if (tm === 'sunset') {
+      const g = c.createLinearGradient(0, 0, 0, VH);
+      g.addColorStop(0, 'rgba(255,110,50,.30)'); g.addColorStop(0.6, 'rgba(255,150,70,.16)'); g.addColorStop(1, 'rgba(120,60,140,.14)');
+      c.fillStyle = g; c.fillRect(0, 0, VW, VH);
+    } else if (tm === 'night') {
+      if (!dark) { dark = document.createElement('canvas'); dark.width = VW; dark.height = VH; }
+      const d = dark.getContext('2d');
+      d.globalCompositeOperation = 'source-over'; d.clearRect(0, 0, VW, VH);
+      d.fillStyle = 'rgba(12,18,52,.5)'; d.fillRect(0, 0, VW, VH);
+      d.globalCompositeOperation = 'destination-out';
+      const hole = (x, y, r, a) => { const g = d.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, `rgba(0,0,0,${a})`); g.addColorStop(1, 'rgba(0,0,0,0)'); d.fillStyle = g; d.fillRect(x - r, y - r, r * 2, r * 2); };
+      if (hero) hole(hero.x + 8, hero.y + 6, 44, 0.85);
+      for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
+        const ch = tileAt(sx * SW + x, sy * SH + y);
+        if (ch === 'h' || ch === 'U' || ch === 'J' || ch === 'X' || ch === 'm') hole(x * TS + 8, y * TS + 8, 22, 0.7);
+      }
+      c.drawImage(dark, 0, 0);
+      // warm glow on the lit windows
+      c.globalCompositeOperation = 'lighter';
+      for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
+        const ch = tileAt(sx * SW + x, sy * SH + y);
+        if (ch === 'h' || ch === 'U') { const g = c.createRadialGradient(x * TS + 8, y * TS + 8, 0, x * TS + 8, y * TS + 8, 14); g.addColorStop(0, 'rgba(255,200,90,.22)'); g.addColorStop(1, 'rgba(255,200,90,0)'); c.fillStyle = g; c.fillRect(x * TS - 6, y * TS - 6, 28, 28); }
+      }
+      c.globalCompositeOperation = 'source-over';
+    }
+  }
+
+  WW.fx = { setup, draw, burst, step, get sky() { return sky; }, SKY };
+})();
+
 /* game.js */
 /* WORLDWALKER engine · the game itself: map, walking, screens, people, Smudges, flow */
 (function () {
@@ -1865,7 +2682,11 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- sound (made in code, no files) ---------------- */
   let ac = null;
-  WW.audioInit = () => { if (!ac) try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { } };
+  WW.audioInit = () => {
+    if (!ac) try { ac = WW.ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { }
+    if (ac && ac.state === 'suspended') ac.resume();
+    if (WW.music) WW.music.wake();
+  };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
     hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
@@ -1888,7 +2709,7 @@ window.WW_CONFIG.MODE = 'canvas';
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest"></div>
@@ -1910,6 +2731,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
     $('ww-b-pad').onclick = () => root.classList.toggle('touch');
     $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };
+    $('ww-b-mus').onclick = () => { WW.audioInit(); WW.music.toggle(); WW.ui.hud(); };
     $('ww-b-full').onclick = () => {
       const el = root.querySelector('.ww-frame');
       if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().catch(() => window.open(location.href, '_blank'));
@@ -1919,7 +2741,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- run state ---------------- */
   const G = WW.game = {};
-  let map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+  let lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
   WW.gain = (stat, n, coins) => {
     WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -1959,6 +2781,7 @@ window.WW_CONFIG.MODE = 'canvas';
     ep.npcs = ep.npcs || []; ep.scraps = ep.scraps || []; ep.smudges = ep.smudges || []; ep.signs = ep.signs || [];
     ep.realm = ep.realm || +ep.id[0];
     map = ep.map; H = map.length; W = map[0].length;
+    WW.fx.setup(ep);
     const root = typeof rootSel === 'string' ? document.querySelector(rootSel) : (rootSel || document.getElementById('ww'));
     buildDom(root);
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
@@ -1982,7 +2805,8 @@ window.WW_CONFIG.MODE = 'canvas';
     bindInput();
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
-    WW.ui.start(() => WW.ui.intro(() => { $('ww-screen').focus(); }));
+    WW.music.play('realm' + ep.realm);
+    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); }));
   };
 
   function previewJump(where) {
@@ -1990,7 +2814,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { $('ww-screen').focus(); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
     r.challengeDone = true; G.onChallengeDone();
@@ -2001,6 +2825,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
+    WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
     setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
@@ -2016,6 +2841,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if (toolBefore) r.newTool = toolBefore;
     WW.gain(ep.boss.stat || 'reg', 2, 15);
     WW.store();
+    WW.music.play('win', 'realm' + ep.realm);
     WW.ui.quest();
     WW.ui.finish();
   }
@@ -2033,13 +2859,13 @@ window.WW_CONFIG.MODE = 'canvas';
       if (r.talked.size < need && !r.challengeDone) WW.ui.message('', T('talkFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; finishEpisode(); });
+      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
     }
   }
   function pickup() {
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
-      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin');
+      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
@@ -2048,7 +2874,7 @@ window.WW_CONFIG.MODE = 'canvas';
   }
   function touchSmudge(sm) {
     if (performance.now() < inv) return;
-    inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false);
+    inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple');
     // push the smudge away one tile
     const opts = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2, sm.y + dy * 2]).filter(([x, y]) => walkable(x, y) && screenOf(x, y)[0] === sm.home[0] && screenOf(x, y)[1] === sm.home[1]);
     if (opts.length) [sm.x, sm.y] = opts[0];
@@ -2082,6 +2908,7 @@ window.WW_CONFIG.MODE = 'canvas';
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
       if (e.key === 'Escape') { const t = WW.ui.top(); if (t && (t.opts.cls === 'passov' || t.opts.cls === 'msgov')) t.close(); return; }
+      WW.audioInit();
       if (WW.paused) return;
       if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
@@ -2157,13 +2984,13 @@ window.WW_CONFIG.MODE = 'canvas';
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'npc') {
-        WW.sprite(c, 'npc', px(e), py(e) - 2, { pal: WW.lookPal(e.ref.look), bob: false });
+        WW.drawPerson(c, e.ref, px(e), py(e) - 2, t, e.phase);
         if (!WW.run.talked.has(e.ref.id)) { // speech bubble
           const b = Math.round(Math.sin(t / 250 + e.phase) * 1.5);
           c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
         }
       }
-      if (e.kind === 'smudge') WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase });
+      if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
         c.fillStyle = `rgba(109,95,140,${.25 + a * .3})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 12 + a * 3, 0, 7); c.fill();
@@ -2177,7 +3004,8 @@ window.WW_CONFIG.MODE = 'canvas';
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
     // movement timing
-    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; pickup(); }
+    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+    const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
       if (held) tryStep(held, now);
       else if (clickTarget) {
@@ -2212,13 +3040,16 @@ window.WW_CONFIG.MODE = 'canvas';
       drawScreen(c, trans.to[0], trans.to[1], offX + dx * SW * TS, offY + dy * SH * TS, now);
       const hx = (fx - trans.from[0] * SW) * TS + offX, hy = (fy - trans.from[1] * SH) * TS + offY;
       drawHero(c, hx, hy, now);
+      WW.fx.draw(c, trans.to[0], trans.to[1], null, now, dt);
       if (p >= 1) trans = null;
     } else {
       drawScreen(c, sx, sy, 0, 0, now);
       // pip
       const [psx, psy] = screenOf(pip.x, pip.y);
+      if (psx === sx && psy === sy) WW.shadow(c, (pip.x - sx * SW) * TS, (pip.y - sy * SH) * TS + 13, 6);
       if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
+      WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
     }
     c.restore();
   }
@@ -2227,6 +3058,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const walk = player.moving && Math.floor(now / 75) % 2;
     const d = player.dir;
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
+    WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
     WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 

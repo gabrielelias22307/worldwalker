@@ -310,15 +310,16 @@
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
     let broken = 0, picked = null, last = null;
+    WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
-        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : '');
+        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
         WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5 });
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
-        for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}"></span>`;
+        for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
         shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
         top.insertAdjacentHTML('beforeend', shield);
         box.appendChild(top);

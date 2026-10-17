@@ -6,7 +6,11 @@
 
   /* ---------------- sound (made in code, no files) ---------------- */
   let ac = null;
-  WW.audioInit = () => { if (!ac) try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { } };
+  WW.audioInit = () => {
+    if (!ac) try { ac = WW.ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { }
+    if (ac && ac.state === 'suspended') ac.resume();
+    if (WW.music) WW.music.wake();
+  };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
     hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
@@ -29,7 +33,7 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest"></div>
@@ -51,6 +55,7 @@
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
     $('ww-b-pad').onclick = () => root.classList.toggle('touch');
     $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };
+    $('ww-b-mus').onclick = () => { WW.audioInit(); WW.music.toggle(); WW.ui.hud(); };
     $('ww-b-full').onclick = () => {
       const el = root.querySelector('.ww-frame');
       if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().catch(() => window.open(location.href, '_blank'));
@@ -60,7 +65,7 @@
 
   /* ---------------- run state ---------------- */
   const G = WW.game = {};
-  let map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+  let lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
   WW.gain = (stat, n, coins) => {
     WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -100,6 +105,7 @@
     ep.npcs = ep.npcs || []; ep.scraps = ep.scraps || []; ep.smudges = ep.smudges || []; ep.signs = ep.signs || [];
     ep.realm = ep.realm || +ep.id[0];
     map = ep.map; H = map.length; W = map[0].length;
+    WW.fx.setup(ep);
     const root = typeof rootSel === 'string' ? document.querySelector(rootSel) : (rootSel || document.getElementById('ww'));
     buildDom(root);
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
@@ -123,7 +129,8 @@
     bindInput();
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
-    WW.ui.start(() => WW.ui.intro(() => { $('ww-screen').focus(); }));
+    WW.music.play('realm' + ep.realm);
+    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); }));
   };
 
   function previewJump(where) {
@@ -131,7 +138,7 @@
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { $('ww-screen').focus(); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
     r.challengeDone = true; G.onChallengeDone();
@@ -142,6 +149,7 @@
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
+    WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
     setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
@@ -157,6 +165,7 @@
     if (toolBefore) r.newTool = toolBefore;
     WW.gain(ep.boss.stat || 'reg', 2, 15);
     WW.store();
+    WW.music.play('win', 'realm' + ep.realm);
     WW.ui.quest();
     WW.ui.finish();
   }
@@ -174,13 +183,13 @@
       if (r.talked.size < need && !r.challengeDone) WW.ui.message('', T('talkFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; finishEpisode(); });
+      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
     }
   }
   function pickup() {
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
-      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin');
+      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
@@ -189,7 +198,7 @@
   }
   function touchSmudge(sm) {
     if (performance.now() < inv) return;
-    inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false);
+    inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple');
     // push the smudge away one tile
     const opts = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2, sm.y + dy * 2]).filter(([x, y]) => walkable(x, y) && screenOf(x, y)[0] === sm.home[0] && screenOf(x, y)[1] === sm.home[1]);
     if (opts.length) [sm.x, sm.y] = opts[0];
@@ -223,6 +232,7 @@
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
       if (e.key === 'Escape') { const t = WW.ui.top(); if (t && (t.opts.cls === 'passov' || t.opts.cls === 'msgov')) t.close(); return; }
+      WW.audioInit();
       if (WW.paused) return;
       if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
@@ -298,13 +308,13 @@
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'npc') {
-        WW.sprite(c, 'npc', px(e), py(e) - 2, { pal: WW.lookPal(e.ref.look), bob: false });
+        WW.drawPerson(c, e.ref, px(e), py(e) - 2, t, e.phase);
         if (!WW.run.talked.has(e.ref.id)) { // speech bubble
           const b = Math.round(Math.sin(t / 250 + e.phase) * 1.5);
           c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
         }
       }
-      if (e.kind === 'smudge') WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase });
+      if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
         c.fillStyle = `rgba(109,95,140,${.25 + a * .3})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 12 + a * 3, 0, 7); c.fill();
@@ -318,7 +328,8 @@
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
     // movement timing
-    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; pickup(); }
+    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+    const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
       if (held) tryStep(held, now);
       else if (clickTarget) {
@@ -353,13 +364,16 @@
       drawScreen(c, trans.to[0], trans.to[1], offX + dx * SW * TS, offY + dy * SH * TS, now);
       const hx = (fx - trans.from[0] * SW) * TS + offX, hy = (fy - trans.from[1] * SH) * TS + offY;
       drawHero(c, hx, hy, now);
+      WW.fx.draw(c, trans.to[0], trans.to[1], null, now, dt);
       if (p >= 1) trans = null;
     } else {
       drawScreen(c, sx, sy, 0, 0, now);
       // pip
       const [psx, psy] = screenOf(pip.x, pip.y);
+      if (psx === sx && psy === sy) WW.shadow(c, (pip.x - sx * SW) * TS, (pip.y - sy * SH) * TS + 13, 6);
       if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
+      WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
     }
     c.restore();
   }
@@ -368,6 +382,7 @@
     const walk = player.moving && Math.floor(now / 75) % 2;
     const d = player.dir;
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
+    WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
     WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 
