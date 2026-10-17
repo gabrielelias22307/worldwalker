@@ -1,0 +1,2470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worldwalker 5.1</title>
+<style>
+/* WORLDWALKER engine · page and game styles */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Atkinson+Hyperlegible:wght@400;700&display=swap');
+:root{
+  --bg:#141322; --panel:#1f1d33; --panel2:#29264a; --line:#3b3866; --text:#f3f1ff; --muted:#b9b5dc;
+  --gold:#f2c14e; --teal:#2aa198; --red:#e04848; --paper:#fffbe8; --ink:#22202e;
+  --pix:'Press Start 2P', ui-monospace, monospace;
+  --read:'Atkinson Hyperlegible', system-ui, -apple-system, 'Segoe UI', Tahoma, sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
+button{font-family:inherit}
+.ww-frame{max-width:960px;margin:0 auto;padding:10px 12px 24px;background:var(--bg)}
+.ww-frame:fullscreen{max-width:none;height:100vh;overflow:auto;display:flex;flex-direction:column;justify-content:center}
+.ww-frame:fullscreen .screen{max-width:calc((100vh - 160px) * 16 / 11);margin:0 auto;width:100%}
+
+/* top bar */
+.ww-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ww-logo{font-family:var(--pix);font-size:12px;color:var(--gold);text-decoration:none;margin-right:auto}
+.ww-bar button{font-size:13px;padding:6px 9px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
+.ww-bar .langs button.on{background:var(--gold);color:var(--ink);font-weight:700}
+.ww-bar .langs,.ww-bar .tools{display:flex;gap:5px;flex-wrap:wrap}
+
+/* HUD */
+.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#0b0a14;padding:7px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
+.hud-left,.hud-right{display:flex;align-items:center;gap:6px}
+.hrt{color:var(--red);font-size:16px;line-height:1}
+.hrt.empty{color:#4a2630}
+.hud-coin{color:var(--gold);margin-left:6px}
+.hud-mid{color:var(--muted);font-family:var(--read);font-weight:700;font-size:13px}
+.meter{display:inline-flex;align-items:center;gap:2px}
+.meter i{font-style:normal;font-size:12px}
+.track{display:block;width:40px;height:9px;background:#2a2840;border:2px solid #000}
+.track b{display:block;height:100%}
+.quest{background:#0b0a14;border:3px solid #000;border-top:1px solid #2a2840;border-bottom:0;padding:5px 10px;font-size:14px;color:var(--muted)}
+.quest b{color:var(--gold)}
+.quest i{font-style:normal;color:#5a5680}
+.quest .qnow{color:#fff;font-weight:700}
+.quest .qdone{color:#7cc451}
+.quest .qscr{color:#c9b064}
+
+/* screen */
+.screen{position:relative;background:#000;border:3px solid #000;outline:3px solid var(--line);border-radius:0 0 6px 6px;overflow:hidden;user-select:none}
+.screen:focus{outline-color:var(--gold)}
+.screen canvas#ww-cv{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
+.screen.ovopen{min-height:min(560px,85vh)}
+.toast{position:absolute;right:10px;top:10px;z-index:6;color:#fff;font-weight:700;font-size:15px;padding:8px 12px;border:3px solid #000;border-radius:4px;display:none;max-width:70%}
+.defpop{position:absolute;z-index:9;max-width:300px;background:var(--ink);color:#fff;border:3px solid #ffe36e;border-radius:4px;padding:8px 12px;font-size:15px;line-height:1.4;display:none}
+.defpop b{color:#ffe36e}
+
+/* overlays */
+.ov{position:absolute;inset:0;z-index:5;overflow:auto;background:rgba(10,9,20,.55);padding:12px}
+.ov.hidden{display:none}
+.ov-box{background:var(--paper);color:var(--ink);border:4px solid var(--ink);outline:3px solid var(--paper);border-radius:4px;padding:14px 16px;max-width:760px;margin:0 auto}
+.ov[dir=rtl] .ov-box{text-align:right}
+.ov h2{margin:4px 0 6px;font-size:22px;line-height:1.25}
+.ov h3{margin:12px 0 6px;font-size:17px;color:#7a3b12}
+.ov h4{margin:10px 0 6px;font-size:15px;color:#5a4a7a}
+.say{font-size:clamp(15px,1.8vw,18px);margin:6px 0}
+.say.q{font-weight:700}
+.say.taunt{font-style:italic;color:#4b3f63}
+.hint,.small{font-size:13.5px;color:#5c5874;margin:4px 0}
+.ov .small a{color:#2f6fd6}
+.word{background:#ffe36e;border-bottom:2px dotted #7a3b12;padding:0 2px;cursor:help;border-radius:2px}
+.acts{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;align-items:center}
+.acts.center{justify-content:center}
+.pbtn{font-size:14px;font-weight:700;padding:9px 14px;background:#29264a;color:#fff;border:3px solid var(--ink);border-radius:4px;cursor:pointer;min-height:42px}
+.pbtn.gold{background:var(--gold);color:var(--ink)}
+.pbtn.teal{background:var(--teal);color:#fff}
+.pbtn.ghost{background:#fff;color:var(--ink)}
+.pbtn.big{font-size:17px;padding:11px 22px}
+.pbtn:disabled{opacity:.45;cursor:not-allowed}
+.pbtn:focus-visible,.choices button:focus-visible,.card:focus-visible{outline:3px solid #2f6fd6;outline-offset:2px}
+.choices{display:grid;gap:7px;margin-top:8px}
+.choices.two{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.choices.two{grid-template-columns:1fr}}
+.choices button{text-align:start;font-size:clamp(14px,1.6vw,16.5px);padding:9px 12px;background:#fff;border:3px solid var(--ink);border-radius:4px;cursor:pointer;color:var(--ink);min-height:44px}
+.choices button i{font-style:normal;font-weight:700;color:#7a3b12;margin-inline-end:6px}
+.choices button.right{background:#d9f5dd;border-color:#1f7a3a}
+.choices button.wrong{background:#fde2de;border-color:#b0392b}
+.choices button:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:10px;padding:9px 12px;border-radius:4px;border:2px solid}
+.fb.right{background:#e3f6e6;border-color:#1f7a3a;color:#174f27}
+.fb.wrong{background:#fdeae6;border-color:#b0392b;color:#7a2318}
+.err{color:#b0392b;font-weight:700;text-align:center}
+
+/* talk */
+.talk-head{display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.talk-head .face{width:64px;height:44px;border:3px solid var(--ink);background:#cfe8ff;image-rendering:pixelated;flex:0 0 auto}
+.who{font-weight:700;color:#7a3b12;font-size:16px}
+.role{font-size:13.5px;color:#5c5874}
+/* start */
+.startov .logo{font-family:var(--pix);color:#c08a1e;text-align:center;font-size:clamp(18px,4vw,30px);margin-top:4px}
+.startov .sublogo{font-family:var(--pix);text-align:center;font-size:10px;color:#5a4a7a;margin:6px 0 10px}
+.epcard{background:#f3e3b5;border:3px solid var(--ink);border-radius:4px;padding:8px 12px;text-align:center}
+.epcard h2{margin:2px 0}
+.epn{font-size:13px;font-weight:700;color:#5a4a7a}
+.place{color:#5c5874}
+.langrow{display:flex;gap:6px;justify-content:center;margin:10px 0}
+.langrow .pbtn{min-height:36px;padding:6px 12px}
+.wb{text-align:center;font-size:18px}
+.signin{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;align-items:end}
+.signin h3{grid-column:1/-1;margin-bottom:0}
+@media (max-width:640px){.signin{grid-template-columns:1fr}}
+.signin label,.codein label{display:flex;flex-direction:column;font-size:13.5px;font-weight:700;gap:3px}
+.ov input,.ov textarea{font:inherit;font-size:16px;padding:8px 10px;border:3px solid var(--ink);border-radius:4px;background:#fff;color:var(--ink);width:100%}
+.ov textarea{resize:vertical;min-height:80px;margin-top:6px}
+.looks{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.heroprev{border:3px solid var(--ink);background:#cfe8ff;image-rendering:pixelated;width:96px;height:96px}
+.lrow{display:flex;align-items:center;gap:5px;margin:3px 0}
+.lrow span{width:52px;font-size:13px;font-weight:700}
+.sw{width:28px;height:28px;border:3px solid #fff;outline:2px solid var(--ink);border-radius:3px;cursor:pointer;padding:0}
+.sw.on{border-color:#c08a1e;outline:3px solid #c08a1e}
+.codein{display:flex;gap:8px;align-items:end;margin-top:12px;flex-wrap:wrap}
+.codein label{flex:1;min-width:220px}
+.pipface{float:right;image-rendering:pixelated;width:64px;height:64px;margin-inline-start:10px}
+.ov[dir=rtl] .pipface{float:left}
+
+/* passport */
+.pp-top{display:flex;gap:14px;align-items:center}
+.pp-hero{border:3px solid var(--ink);background:#cfe8ff;image-rendering:pixelated;width:90px;height:90px}
+.pp-name{font-size:22px;font-weight:700}
+.pp-nums{display:flex;gap:14px;flex-wrap:wrap;font-size:15px}
+.powers{display:grid;gap:6px}
+.pw{display:grid;grid-template-columns:30px 1fr 34px;gap:8px;align-items:center}
+.pwi{font-size:20px}
+.pwn{font-weight:700;text-align:end}
+.bar{height:12px;border:2px solid var(--ink);background:#e9dfc0}
+.bar b{display:block;height:100%}
+.bag{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+@media (max-width:520px){.bag{grid-template-columns:repeat(2,1fr)}}
+.slot{border:3px solid #b7a77e;background:#e9dfc0;border-radius:4px;padding:6px;text-align:center;font-size:12.5px;color:#8a7c58}
+.slot.has{background:#fff;border-color:var(--ink);color:var(--ink);font-weight:700}
+.slot .ti{display:block;font-size:24px}
+.stamps{display:grid;grid-template-columns:repeat(8,1fr);gap:4px}
+@media (max-width:560px){.stamps{grid-template-columns:repeat(4,1fr)}}
+.scol{display:flex;flex-direction:column;gap:4px;align-items:center;border:2px dashed #b7a77e;border-radius:4px;padding:4px}
+.stamp{width:44px;height:44px;border-radius:50%;border:2px dashed #b7a77e;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:12px;color:#b7a77e;font-weight:700;line-height:1}
+.stamp i{font-style:normal;font-size:8px;color:#c08a1e}
+.stamp.on{border:3px solid var(--ink);color:#fff}
+.stamp.on i{color:#fff}
+.stamp.r1{background:#e04848}.stamp.r2{background:#2f7fd1}.stamp.r3{background:#8e5bd6}.stamp.r4{background:#d98e2b}
+.stamp.r5{background:#c9a227}.stamp.r6{background:#3fa34d}.stamp.r7{background:#c0392b}.stamp.r8{background:#2aa198}
+.coderow{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.pcode{font-family:var(--pix);font-size:12px;background:var(--ink);color:var(--gold);padding:8px 10px;border-radius:3px;letter-spacing:1px;direction:ltr;display:inline-block}
+.ok{color:#1f7a3a;font-weight:700}.bad{color:#b0392b;font-weight:700}.pending{color:#5a4a7a;font-weight:700}
+
+/* challenges */
+.ch-head{display:flex;gap:10px;align-items:flex-start}
+.chface{image-rendering:pixelated;width:48px;height:48px;flex:0 0 auto}
+.ch-head h3{margin-top:2px}
+.pool{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0;min-height:10px}
+.card{font-size:14.5px;padding:7px 10px;background:#fff;border:3px solid var(--ink);border-radius:4px;cursor:pointer;color:var(--ink);text-align:start;line-height:1.3}
+.card .ic{margin-inline-end:5px}
+.card.sel{background:#ffe36e;border-color:#c08a1e;outline:2px solid #c08a1e}
+.card.right{background:#d9f5dd;border-color:#1f7a3a}
+.card.wrong{background:#fde2de;border-color:#b0392b}
+.bins{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:8px}
+.bins.bands{grid-template-columns:1fr}
+.bin{border:3px dashed #8a7c58;border-radius:6px;padding:6px;background:#f6edd2;min-height:70px;cursor:pointer;overflow:hidden}
+.bin.target{border-color:#c08a1e;background:#fff3c4}
+.bins.bands .bin{min-height:54px;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;align-items:start}
+.bintile{grid-row:1/3;width:96px;height:32px;image-rendering:pixelated;border:2px solid var(--ink)}
+.binlabel{font-weight:700;font-size:14.5px}
+.binin{display:flex;flex-wrap:wrap;gap:5px;margin-top:4px}
+.seq{padding-inline-start:26px;margin:8px 0;display:grid;gap:5px}
+.seq li.card{cursor:default}
+.opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px}
+.opt{display:flex;flex-direction:column;gap:3px;text-align:start;padding:9px 11px;background:#fff;border:3px solid var(--ink);border-radius:4px;cursor:pointer;color:var(--ink);font-size:14.5px}
+.opt span{font-size:13.5px;color:#5c5874}
+.opt.sel{background:#ffe36e;border-color:#c08a1e}
+.kind,.sw-g{margin:8px 0;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.klabel{width:100%;font-weight:700;font-size:14px;color:#5a4a7a}
+.reason{font-size:14px;padding:7px 10px;background:#fff;border:3px solid var(--ink);border-radius:4px;cursor:pointer;color:var(--ink);text-align:start}
+.reason.sel{background:#ffe36e;border-color:#c08a1e}
+.reason.right{background:#d9f5dd;border-color:#1f7a3a}
+.reason.wrong{background:#fde2de;border-color:#b0392b}
+.outs{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.out{padding:5px 10px;border-radius:20px;border:2px solid;font-size:14px;font-weight:700}
+.out.good{background:#d9f5dd;border-color:#1f7a3a;color:#174f27}
+.out.badp{background:#fbe2c8;border-color:#b5651d;color:#7a3b12}
+.tblwrap{overflow-x:auto}
+.dtbl{border-collapse:collapse;width:100%;font-size:14.5px;margin:6px 0}
+.dtbl th,.dtbl td{border:2px solid var(--ink);padding:5px 8px;text-align:start}
+.dtbl th{background:#f3e3b5}
+
+/* boss */
+.bossov .ov-box{background:#f1ecff}
+.boss-top{display:flex;gap:14px;align-items:center}
+.bossface{image-rendering:pixelated;width:90px;height:90px;background:#2b2140;border:3px solid var(--ink);border-radius:6px}
+.bossface.hit{animation:shake .3s}
+@keyframes shake{25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.bname{font-weight:700;font-size:19px;color:#4b3f63}
+.shield{display:flex;gap:4px;margin:3px 0}
+.shield span{width:44px;height:14px;border:2px solid var(--ink);background:#ddd}
+.shield span.on{background:#8fc3ff}
+.hearts .hrt{font-size:18px}
+
+/* finish */
+.fin-head{display:flex;gap:14px;align-items:center}
+.pagebig canvas{image-rendering:pixelated;width:80px;height:80px;animation:glow 1.6s ease-in-out infinite;border-radius:6px}
+@keyframes glow{50%{filter:drop-shadow(0 0 10px #f2c14e)}}
+.stars{font-size:28px;color:#e0a81e;letter-spacing:3px}
+.stars .dim{color:#d8cfb0}
+.newtool{margin-top:8px;padding:8px 12px;background:#fff3c4;border:2px solid #c08a1e;border-radius:4px}
+.learned{margin:4px 0;padding-inline-start:22px}
+.starter{background:#ffe36e;border:2px solid #c08a1e;border-radius:4px;padding:5px 10px;font-size:14px;cursor:pointer;color:var(--ink)}
+.savebox{margin-top:10px;padding:8px 12px;background:#efe8d2;border:2px solid #b7a77e;border-radius:4px;display:grid;gap:4px}
+
+/* touch arrows */
+.dpad{display:none;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,56px);gap:6px;justify-content:center;margin:12px auto 0;touch-action:none}
+.dpad button{background:var(--panel2);color:#fff;border:3px solid #000;border-radius:8px;font-size:22px;cursor:pointer}
+.dpad [data-d=up]{grid-column:2;grid-row:1}.dpad [data-d=left]{grid-column:1;grid-row:2}.dpad .act{grid-column:2;grid-row:2;background:var(--gold);color:var(--ink)}
+.dpad [data-d=right]{grid-column:3;grid-row:2}.dpad [data-d=down]{grid-column:2;grid-row:3}
+@media (pointer:coarse){.dpad{display:grid}}
+.ww-foot{text-align:center;color:var(--muted);font-size:13.5px;margin-top:10px}
+@media (max-width:640px){
+  .track{width:22px}.hud{font-size:9px}.hud-mid{font-size:12px;order:3;width:100%}
+  .ov{padding:6px}.ov-box{padding:10px 12px}
+  .screen.ovopen{min-height:85vh}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+/* talk boxes sit at the bottom like a classic RPG; the map stays visible */
+.ov.talkov,.ov.msgov{background:rgba(10,9,20,.18);display:flex;flex-direction:column;justify-content:flex-end}
+.ov.talkov .ov-box,.ov.msgov .ov-box{width:100%;margin:0 auto}
+.stamp{font-family:var(--read)}
+
+.touch .dpad{display:grid}
+
+</style>
+</head>
+<body>
+<div id="ww"></div>
+<script>
+/* WORLDWALKER settings you can change
+   SHEET_URL     – paste your Google Apps Script web app URL here (see apps-script/Code.gs) to save to the class Sheet.
+                   Leave it '' and the game still saves in the browser and gives a Passport Code.
+   TEACHER_CODE  – type this on the world map to open every episode for a student. */
+window.WW_CONFIG = {
+  SHEET_URL: '',
+  TEACHER_CODE: 'ATLAS'
+};
+
+window.WW_CONFIG.MODE = 'canvas';
+</script>
+<script>
+/* art.js */
+/* WORLDWALKER engine · art (tiles + characters, all drawn in code)
+   (grew out of mockups/kit.js)
+   Everything here is drawn in code: no picture files.
+   World = <canvas> (pixel art). Words, buttons, HUD = HTML on top (easy to read,
+   easy to translate, Dari can run right-to-left).                              */
+(function () {
+  const T = 16; // one tile = 16 x 16 pixels
+
+  const P = {
+    k: '#22202e', // outline
+    grass: '#5aa83b', grassD: '#3f8a2e', grassL: '#7cc451',
+    water: '#2f7fd1', waterL: '#5fb0ee', waterD: '#1d5aa8', foam: '#d8f0ff',
+    sand: '#e8d18a', sandD: '#c9b064',
+    path: '#c79a5b', pathD: '#a87c45',
+    leaf: '#2e7d32', leafD: '#1b5e20', leafL: '#43a047', trunk: '#6d4c2f',
+    stone: '#8a8f98', stoneD: '#5e636b', stoneL: '#b5bac2',
+    snow: '#f4f8fb', snowD: '#c9dbe8',
+    roof: '#c0392b', roofD: '#8e2a20', wall: '#e9d8b4', wallD: '#c9b48c', wood: '#8b5a2b', woodD: '#5f3d1d',
+    soil: '#7a4e2d', soilD: '#5c3a20',
+    dFloor: '#3a3550', dFloorL: '#47416a', dWall: '#5b5479', dWallD: '#2b2740',
+    gold: '#f2c14e', goldD: '#c08a1e', red: '#e04848', white: '#ffffff', ink: '#2b2b3a',
+    dune: '#e9b86a', duneD: '#c98f45'
+  };
+
+  // stable "random" from tile position, so every redraw looks the same
+  function hash(x, y, s = 0) {
+    let h = (x * 374761393 + y * 668265263 + s * 2147483647) | 0;
+    h = (h ^ (h >>> 13)) * 1274126177;
+    return ((h ^ (h >>> 16)) >>> 0) / 4294967295;
+  }
+  const R = (c, x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
+
+  /* ---------- tiles ---------- */
+  function grassBase(c, x, y, gx, gy) {
+    R(c, x, y, T, T, P.grass);
+    for (let i = 0; i < 5; i++) {
+      const a = hash(gx, gy, i), b = hash(gx, gy, i + 9);
+      R(c, x + ((a * 14) | 0), y + ((b * 14) | 0), 1, 2, i % 2 ? P.grassD : P.grassL);
+    }
+  }
+  const tiles = {
+    '.': grassBase,
+    ',': (c, x, y, gx, gy) => { // flowers
+      grassBase(c, x, y, gx, gy);
+      const cols = ['#ffe36e', '#ff8fb1', '#ffffff', '#b89cff'];
+      for (let i = 0; i < 3; i++) {
+        const fx = x + 2 + ((hash(gx, gy, i + 3) * 11) | 0), fy = y + 2 + ((hash(gx, gy, i + 7) * 11) | 0);
+        R(c, fx, fy, 2, 2, cols[(hash(gx, gy, i) * 4) | 0]);
+      }
+    },
+    '"': (c, x, y, gx, gy) => { // tall grass
+      grassBase(c, x, y, gx, gy);
+      for (let i = 0; i < 4; i++) {
+        const fx = x + 1 + i * 4;
+        R(c, fx, y + 6, 1, 7, P.grassD); R(c, fx + 1, y + 4, 1, 9, P.leafL); R(c, fx + 2, y + 7, 1, 6, P.grassD);
+      }
+    },
+    '~': (c, x, y, gx, gy, t, m) => water(c, x, y, gx, gy, t, m, P.water),
+    '=': (c, x, y, gx, gy, t, m) => water(c, x, y, gx, gy, t, m, P.waterD),
+    's': (c, x, y, gx, gy) => {
+      R(c, x, y, T, T, P.sand);
+      for (let i = 0; i < 4; i++) R(c, x + ((hash(gx, gy, i) * 15) | 0), y + ((hash(gx, gy, i + 4) * 15) | 0), 1, 1, P.sandD);
+    },
+    'u': (c, x, y, gx, gy) => { // dune
+      R(c, x, y, T, T, P.dune);
+      const o = (hash(gx, gy) * 6) | 0;
+      for (let i = 0; i < 16; i++) { const yy = 9 + Math.round(Math.sin((i + o) / 2.6) * 3); R(c, x + i, y + yy, 1, 16 - yy, P.duneD); }
+    },
+    ':': (c, x, y, gx, gy) => {
+      R(c, x, y, T, T, P.path);
+      for (let i = 0; i < 5; i++) R(c, x + ((hash(gx, gy, i) * 14) | 0), y + ((hash(gx, gy, i + 5) * 14) | 0), 2, 1, P.pathD);
+    },
+    'T': (c, x, y, gx, gy) => { // round tree
+      grassBase(c, x, y, gx, gy);
+      R(c, x + 3, y + 14, 10, 2, 'rgba(0,0,0,.18)');
+      R(c, x + 7, y + 10, 2, 5, P.trunk);
+      R(c, x + 2, y + 3, 12, 8, P.leaf); R(c, x + 3, y + 1, 10, 11, P.leaf); R(c, x + 1, y + 5, 14, 5, P.leaf);
+      R(c, x + 4, y + 2, 4, 3, P.leafL); R(c, x + 3, y + 4, 2, 2, P.leafL);
+      R(c, x + 9, y + 8, 4, 2, P.leafD); R(c, x + 4, y + 10, 8, 1, P.leafD);
+    },
+    'P': (c, x, y, gx, gy, t, m, base) => { // pine
+      (base === 'n' ? tiles.n : grassBase)(c, x, y, gx, gy);
+      R(c, x + 7, y + 12, 2, 4, P.trunk);
+      for (let r = 0; r < 12; r++) { const w = 2 + ((r % 4) + (r >> 2)) * 1.6 | 0; R(c, x + 8 - w, y + 1 + r, w * 2, 1, r % 4 === 3 ? P.leafD : '#25693a'); }
+      if (base === 'n') { R(c, x + 6, y + 1, 4, 2, P.snow); R(c, x + 4, y + 5, 3, 1, P.snow); R(c, x + 9, y + 9, 4, 1, P.snow); }
+    },
+    'p': (c, x, y, gx, gy) => { // palm on sand
+      tiles.s(c, x, y, gx, gy);
+      for (let i = 0; i < 10; i++) R(c, x + 7 + Math.round(Math.sin(i / 4) * 2), y + 5 + i, 2, 1, P.trunk);
+      R(c, x + 2, y + 3, 12, 2, P.leaf); R(c, x + 1, y + 5, 3, 2, P.leaf); R(c, x + 12, y + 5, 3, 2, P.leaf);
+      R(c, x + 5, y + 1, 6, 2, P.leafL); R(c, x + 7, y + 5, 2, 2, '#7a4b1e');
+    },
+    'c': (c, x, y, gx, gy) => { // cactus
+      tiles.s(c, x, y, gx, gy);
+      R(c, x + 6, y + 2, 4, 13, '#3b8f4a'); R(c, x + 2, y + 6, 3, 5, '#3b8f4a'); R(c, x + 11, y + 4, 3, 5, '#3b8f4a');
+      R(c, x + 4, y + 9, 2, 2, '#3b8f4a'); R(c, x + 10, y + 7, 2, 2, '#3b8f4a'); R(c, x + 7, y + 3, 1, 11, '#5fb86c');
+    },
+    'M': (c, x, y, gx, gy, t, m, base) => mountain(c, x, y, gx, gy, false, base),
+    'A': (c, x, y, gx, gy, t, m, base) => mountain(c, x, y, gx, gy, true, base),
+    'r': (c, x, y, gx, gy) => {
+      grassBase(c, x, y, gx, gy);
+      R(c, x + 2, y + 5, 12, 9, P.stoneD); R(c, x + 3, y + 4, 10, 9, P.stone); R(c, x + 4, y + 5, 4, 2, P.stoneL);
+    },
+    'n': (c, x, y, gx, gy) => {
+      R(c, x, y, T, T, P.snow);
+      for (let i = 0; i < 3; i++) R(c, x + ((hash(gx, gy, i) * 13) | 0), y + ((hash(gx, gy, i + 3) * 14) | 0), 3, 1, P.snowD);
+    },
+    'i': (c, x, y, gx, gy) => { R(c, x, y, T, T, '#bfe6f5'); R(c, x + 2, y + 3, 6, 1, '#ffffff'); R(c, x + 9, y + 10, 4, 1, '#ffffff'); },
+    'W': (c, x, y, gx, gy) => { // stone wall
+      R(c, x, y, T, T, P.stoneD);
+      for (let r = 0; r < 4; r++) for (let k = 0; k < 2; k++) {
+        const o = r % 2 ? 4 : 0; R(c, x + ((k * 8 + o) % 16), y + r * 4, 7, 3, hash(gx * 3 + k, gy * 4 + r) > .5 ? P.stone : '#7d828b');
+      }
+    },
+    'D': (c, x, y, gx, gy) => { // dungeon wall
+      R(c, x, y, T, T, P.dWallD);
+      for (let r = 0; r < 4; r++) for (let k = 0; k < 2; k++) {
+        const o = r % 2 ? 4 : 0; R(c, x + ((k * 8 + o) % 16), y + r * 4, 7, 3, hash(gx * 3 + k, gy * 4 + r) > .5 ? P.dWall : '#4d476a');
+      }
+    },
+    'f': (c, x, y, gx, gy) => {
+      R(c, x, y, T, T, P.dFloor); R(c, x, y, T, 1, P.dFloorL); R(c, x, y, 1, T, P.dFloorL);
+      if (hash(gx, gy) > .7) R(c, x + 5, y + 6, 3, 1, P.dFloorL);
+    },
+    'R': (c, x, y, gx, gy) => { // roof
+      R(c, x, y, T, T, P.roof);
+      for (let r = 0; r < 4; r++) R(c, x, y + r * 4 + 3, T, 1, P.roofD);
+      for (let r = 0; r < 4; r++) R(c, x + (r % 2 ? 4 : 10), y + r * 4, 1, 3, P.roofD);
+    },
+    'h': (c, x, y, gx, gy) => { // house wall with window
+      R(c, x, y, T, T, P.wall); R(c, x, y + 14, T, 2, P.wallD);
+      R(c, x + 4, y + 4, 8, 6, P.k); R(c, x + 5, y + 5, 6, 4, '#9fd3ff'); R(c, x + 7, y + 5, 1, 4, P.k); R(c, x + 5, y + 7, 6, 1, P.k);
+    },
+    'd': (c, x, y, gx, gy) => { // door
+      R(c, x, y, T, T, P.wall); R(c, x, y + 14, T, 2, P.wallD);
+      R(c, x + 3, y + 2, 10, 14, P.k); R(c, x + 4, y + 3, 8, 13, P.wood); R(c, x + 7, y + 3, 1, 13, P.woodD); R(c, x + 10, y + 9, 1, 2, P.gold);
+    },
+    'b': (c, x, y, gx, gy, t, m) => { // bridge
+      water(c, x, y, gx, gy, t, m, P.water);
+      R(c, x, y + 2, T, 12, P.wood);
+      for (let i = 0; i < 4; i++) R(c, x + i * 4 + 3, y + 2, 1, 12, P.woodD);
+      R(c, x, y + 2, T, 1, P.woodD); R(c, x, y + 13, T, 1, P.woodD);
+    },
+    'B': (c, x, y, gx, gy, t, m) => { // bridge (up-down)
+      water(c, x, y, gx, gy, t, m, P.water);
+      R(c, x + 2, y, 12, T, P.wood);
+      for (let i = 0; i < 4; i++) R(c, x + 2, y + i * 4 + 3, 12, 1, P.woodD);
+      R(c, x + 2, y, 1, T, P.woodD); R(c, x + 13, y, 1, T, P.woodD);
+    },
+    'o': (c, x, y, gx, gy) => { // tilled soil
+      R(c, x, y, T, T, P.soil);
+      for (let r = 0; r < 4; r++) R(c, x + 1, y + r * 4 + 2, 14, 1, P.soilD);
+    },
+    '1': (c, x, y, gx, gy) => { tiles.o(c, x, y, gx, gy); R(c, x + 7, y + 8, 2, 4, P.leafL); R(c, x + 5, y + 7, 2, 2, P.leafL); },
+    '2': (c, x, y, gx, gy) => { tiles.o(c, x, y, gx, gy); R(c, x + 7, y + 4, 2, 9, P.leaf); R(c, x + 4, y + 5, 3, 3, P.leafL); R(c, x + 9, y + 7, 3, 3, P.leafL); },
+    '3': (c, x, y, gx, gy) => { // ripe coffee bush
+      tiles.o(c, x, y, gx, gy);
+      R(c, x + 3, y + 3, 10, 10, P.leaf); R(c, x + 2, y + 5, 12, 6, P.leaf); R(c, x + 4, y + 4, 3, 2, P.leafL);
+      [[5, 7], [9, 5], [10, 9], [6, 10], [8, 8]].forEach(([a, b]) => R(c, x + a, y + b, 2, 2, '#d1263a'));
+    },
+    'w': (c, x, y, gx, gy) => { // wheat
+      R(c, x, y, T, T, '#d9b44a');
+      for (let i = 0; i < 5; i++) { R(c, x + 1 + i * 3, y + 3, 1, 12, '#b98e2a'); R(c, x + i * 3, y + 2 + (i % 2) * 2, 2, 3, '#f0d27a'); }
+    },
+    'q': (c, x, y, gx, gy, t, m) => { // rice paddy
+      water(c, x, y, gx, gy, t, m, '#4f9fc9');
+      for (let r = 0; r < 3; r++) for (let k = 0; k < 4; k++) { R(c, x + 2 + k * 4, y + 2 + r * 5, 1, 4, '#7ccf5a'); R(c, x + 1 + k * 4, y + 3 + r * 5, 1, 2, '#58b247'); }
+    },
+    'F': (c, x, y, gx, gy) => { // fence
+      grassBase(c, x, y, gx, gy);
+      R(c, x, y + 6, T, 2, P.wood); R(c, x, y + 11, T, 2, P.wood);
+      R(c, x + 2, y + 4, 2, 11, P.woodD); R(c, x + 11, y + 4, 2, 11, P.woodD);
+    },
+    'x': (c, x, y, gx, gy) => { // sign post
+      grassBase(c, x, y, gx, gy);
+      R(c, x + 7, y + 9, 2, 6, P.woodD); R(c, x + 2, y + 2, 12, 8, P.k); R(c, x + 3, y + 3, 10, 6, P.wood);
+      R(c, x + 4, y + 5, 8, 1, P.woodD); R(c, x + 4, y + 7, 6, 1, P.woodD);
+    },
+    'C': (c, x, y, gx, gy) => { // little city (world map)
+      grassBase(c, x, y, gx, gy);
+      R(c, x + 1, y + 7, 5, 8, P.wall); R(c, x + 1, y + 5, 5, 2, P.roof);
+      R(c, x + 6, y + 3, 4, 12, P.stoneL); R(c, x + 6, y + 2, 4, 1, P.stoneD);
+      R(c, x + 10, y + 8, 5, 7, P.wall); R(c, x + 10, y + 6, 5, 2, '#3c6fb4');
+      for (let i = 0; i < 4; i++) R(c, x + 7, y + 5 + i * 3, 2, 1, '#ffe36e');
+    },
+    'L': (c, x, y, gx, gy) => { // lava / volcano glow
+      R(c, x, y, T, T, '#c4401d');
+      R(c, x + ((hash(gx, gy) * 10) | 0), y + 4, 5, 2, '#ffb13b'); R(c, x + 2, y + 11, 6, 2, '#ff7a2a');
+    },
+    ' ': (c, x, y) => R(c, x, y, T, T, '#000000')
+  };
+
+  function water(c, x, y, gx, gy, t, m, col) {
+    R(c, x, y, T, T, col);
+    const ph = ((t || 0) / 450 + hash(gx, gy) * 6);
+    for (let i = 0; i < 2; i++) {
+      const wx = x + ((hash(gx, gy, i) * 10) | 0) + Math.round(Math.sin(ph + i) * 2);
+      const wy = y + 3 + i * 7;
+      R(c, wx, wy, 4, 1, P.waterL);
+    }
+    if (m) { // foam where water meets land
+      const wet = ch => '~=bBq'.includes(ch);
+      const at = (dx, dy) => (m[gy + dy] || '')[gx + dx];
+      if (at(0, -1) !== undefined && !wet(at(0, -1))) R(c, x, y, T, 1, P.foam);
+      if (at(0, 1) !== undefined && !wet(at(0, 1))) R(c, x, y + 15, T, 1, P.foam);
+      if (at(-1, 0) !== undefined && !wet(at(-1, 0))) R(c, x, y, 1, T, P.foam);
+      if (at(1, 0) !== undefined && !wet(at(1, 0))) R(c, x + 15, y, 1, T, P.foam);
+    }
+  }
+
+  function mountain(c, x, y, gx, gy, snowy, base) {
+    (base === 'n' ? tiles.n : base === 's' ? tiles.s : grassBase)(c, x, y, gx, gy);
+    for (let r = 0; r < 15; r++) {
+      const half = Math.min(8, (r + 2) * 0.55) | 0;
+      R(c, x + 8 - half, y + 1 + r, half, 1, P.stone);
+      R(c, x + 8, y + 1 + r, half, 1, P.stoneD);
+    }
+    R(c, x + 5, y + 7, 2, 1, P.stoneL); R(c, x + 4, y + 10, 2, 1, P.stoneL);
+    if (snowy) { R(c, x + 6, y + 1, 4, 2, P.snow); R(c, x + 5, y + 3, 6, 2, P.snow); R(c, x + 4, y + 5, 2, 1, P.snow); R(c, x + 9, y + 5, 2, 1, P.snowD); }
+  }
+
+  /* ---------- sprites (16 x 16, one letter = one pixel) ---------- */
+  const SPR = {
+    hero: [
+      '................', '.....kkkkkk.....', '....kHHHHHHk....', '...kHHbbbbHHk...',
+      '..kkkkkkkkkkkk..', '...khhsssshhk...', '...khsesseshk...', '...kssssssssk...',
+      '....kssmmssk....', '...kccgccccck...', '..kscccgccccsk..', '..ksCcccgcccsk..',
+      '...kCCCCCCCCk...', '...kppppppppk...', '...kppk..kppk...', '...kBBk..kBBk...'],
+    heroWalk: [
+      '................', '.....kkkkkk.....', '....kHHHHHHk....', '...kHHbbbbHHk...',
+      '..kkkkkkkkkkkk..', '...khhsssshhk...', '...khsesseshk...', '...kssssssssk...',
+      '....kssmmssk....', '...kccgccccck...', '..kscccgccccsk..', '..ksCcccgcccsk..',
+      '...kCCCCCCCCk...', '...kppppppppk...', '...kppk..kBBk...', '...kBBk.........'],
+    heroUp: [
+      '................', '.....kkkkkk.....', '....kHHHHHHk....', '...kHHbbbbHHk...',
+      '..kkkkkkkkkkkk..', '...khhhhhhhhk...', '...khhhhhhhhk...', '...kkhhhhhhkk...',
+      '...kcggggggck...', '..kscggggggcsk..', '..kscgGGGGgcsk..', '..ksCggggggCsk..',
+      '...kCCCCCCCCk...', '...kppppppppk...', '...kppk..kppk...', '...kBBk..kBBk...'],
+    npc: [
+      '................', '................', '.....kkkkkk.....', '....khhhhhhk....',
+      '...khhhhhhhhk...', '...khhsssshhk...', '...khsesseshk...', '...kssssssssk...',
+      '....kssmmssk....', '...kcccccccck...', '..ksccccccccsk..', '..ksCccccccCsk..',
+      '...kCCCCCCCCk...', '...kppppppppk...', '...kppk..kppk...', '...kBBk..kBBk...'],
+    pip: [
+      '................', '......kkkk......', '....kkyyyykk....', '...kyywwwwyyk...',
+      '..kywwwrrwwwyk..', '..kywkwrrwkwyk..', '.kywwwwrrwwwwyk.', '.kywwwwnnwwwwyk.',
+      '.kywwmwnnwmwwyk.', '..kywwwnnwwwyk..', '..kyywwwwwwyyk..', '...kyyyyyyyyk...',
+      '....kkkkkkkk....', '................', '......zzzz......', '................'],
+    smudge: [
+      '................', '................', '................', '......kkkk......',
+      '....kkggggkk....', '...kggggggggk...', '..kgggggggggGk..', '..kgwwggggwwgk..',
+      '..kgwkggggwkgk..', '.kggggggggggggk.', '.kgggggrrrgggGk.', '.kggggggggggGGk.',
+      '..kgggGggGggGk..', '...kGk.kGk.kGk..', '....k...k...k...', '................'],
+    heart: [
+      '................', '................', '...kkk...kkk....', '..krrrk.krrrk...',
+      '.krwrrrkrrrrrk..', '.krrrrrrrrrrrk..', '.krrrrrrrrrrrk..', '..krrrrrrrrrk...',
+      '...krrrrrrrk....', '....krrrrrk.....', '.....krrrk......', '......krk.......',
+      '.......k........', '................', '................', '................'],
+    page: [
+      '................', '..kkkkkkkkkkk...', '..kwwwwwwwwwk...', '..kwggwwwbbwk...',
+      '..kwgggwbbbwk...', '..kwwggwwbbwk...', '..kwwwwwwwwwk...', '..kwwrwwwwwwk...',
+      '..kwwwwnnnwwk...', '..kwwwwwwwwwk...', '..kkkkkkkkkkk...', '................',
+      '................', '................', '................', '................']
+  };
+  const SPAL = {
+    k: P.k, s: '#f1c194', h: '#4a2c1a', e: '#22202e', m: '#c9615a', H: '#d98e2b', b: '#7a3b12',
+    c: '#2aa198', C: '#1f7a73', g: '#7a4b1e', p: '#3b4a7a', B: '#4a2c1a', w: '#fffbe8', y: P.gold,
+    r: P.red, n: '#2f6fd6', z: 'rgba(0,0,0,.22)', G: '#4b3f63', W: '#ffffff'
+  };
+  // tune smudge colors
+  const SMUDGE = { g: '#6d5f8c', G: '#4b3f63', w: '#ffffff', r: '#2b2140' };
+  const PAGE = { w: '#f3e3b5', g: '#5aa83b', b: '#2f7fd1', r: P.red, n: P.ink };
+
+  function sprite(c, name, x, y, o = {}) {
+    const rows = SPR[name]; if (!rows) return;
+    const pal = Object.assign({}, SPAL, name === 'smudge' ? SMUDGE : {}, name === 'page' ? PAGE : {}, o.pal || {});
+    const s = o.scale || 1;
+    const bob = o.bob ? Math.round(Math.sin((o.t || 0) / 260 + (o.phase || 0)) * 1) : 0;
+    for (let r = 0; r < 16; r++) {
+      const row = rows[r] || '';
+      for (let k = 0; k < 16; k++) {
+        const ch = row[o.flip ? 15 - k : k];
+        if (!ch || ch === '.') continue;
+        c.fillStyle = pal[ch] || '#ff00ff';
+        c.fillRect(x + k * s, y + (r + bob) * s, s, s);
+      }
+    }
+  }
+
+  // a generic coin (code-drawn circle)
+  function coin(c, x, y, t = 0) {
+    const w = Math.max(1, Math.round(Math.abs(Math.cos(t / 300)) * 5));
+    R(c, x + 8 - w, y + 4, w * 2, 8, P.goldD); R(c, x + 8 - w + 1, y + 5, Math.max(1, w * 2 - 2), 6, P.gold);
+  }
+  // a treasure chest
+  function chest(c, x, y, open) {
+    R(c, x + 1, y + 5, 14, 10, P.k); R(c, x + 2, y + 6, 12, 8, P.wood); R(c, x + 2, y + 9, 12, 1, P.woodD);
+    R(c, x + 7, y + 8, 2, 3, P.gold);
+    if (open) { R(c, x + 2, y + 2, 12, 4, P.woodD); R(c, x + 4, y + 6, 8, 2, '#ffe36e'); }
+  }
+
+  /* ---------- map drawing ---------- */
+  // rows: array of strings. base: optional map of same size giving ground under trees/mountains
+  function drawMap(c, rows, o = {}) {
+    const ox = o.ox || 0, oy = o.oy || 0, t = o.t || 0;
+    for (let gy = 0; gy < rows.length; gy++) for (let gx = 0; gx < rows[gy].length; gx++) {
+      const ch = rows[gy][gx];
+      const f = tiles[ch] || tiles['.'];
+      const base = o.base ? (o.base[gy] || '')[gx] : undefined;
+      f(c, ox + gx * T, oy + gy * T, gx, gy, t, rows, base);
+    }
+  }
+
+  /* ---------- stage ---------- */
+  function stage(sel, cols, rows) {
+    const cv = typeof sel === 'string' ? document.querySelector(sel) : sel;
+    cv.width = cols * T; cv.height = rows * T;
+    const ctx = cv.getContext('2d'); ctx.imageSmoothingEnabled = false;
+    return { cv, ctx, W: cv.width, H: cv.height };
+  }
+  function loop(fn) {
+    const reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) { fn(0); return; }
+    const go = t => { fn(t); requestAnimationFrame(go); };
+    requestAnimationFrame(go);
+  }
+
+  window.WW = Object.assign(window.WW || {}, { T, P, tiles, SPR, SPAL, sprite, coin, chest, drawMap, stage, loop, hash, R });
+})();
+
+/* art2.js */
+/* WORLDWALKER engine · more tiles, side-facing hero, the walkable/solid list */
+(function () {
+  const { tiles, P, R, hash, SPR } = WW;
+  const T = 16;
+
+  /* ground under trees / mountains: look at the 4 neighbours and copy the most common ground */
+  const GROUNDS = { n: 'n', s: 's', u: 's', g: 'g', z: 'z', f: 'f', '.': '.', ',': '.', '"': '.' };
+  function groundAt(m, gx, gy) {
+    if (!m) return '.';
+    const count = {};
+    [[0, -1], [0, 1], [-1, 0], [1, 0], [-1, -1], [1, 1]].forEach(([dx, dy]) => {
+      const ch = (m[gy + dy] || '')[gx + dx];
+      const g = GROUNDS[ch];
+      if (g) count[g] = (count[g] || 0) + 1;
+    });
+    let best = '.', n = 0;
+    for (const k in count) if (count[k] > n) { n = count[k]; best = k; }
+    return best;
+  }
+  function ground(c, x, y, gx, gy, m) { tiles[groundAt(m, gx, gy)](c, x, y, gx, gy); }
+
+  // wrap the kit's tree/mountain/rock tiles so they sit on the right ground
+  const oldT = tiles.T, oldM = tiles.M, oldA = tiles.A, oldR = tiles.r, oldP = tiles.P, oldx = tiles.x, oldF = tiles.F;
+  const onGround = (fn, strip) => (c, x, y, gx, gy, t, m) => {
+    const g = groundAt(m, gx, gy);
+    if (g === '.') return fn(c, x, y, gx, gy, t, m, '.');
+    // draw kit tile on a scratch canvas, then copy only non-grass pixels? simpler: draw ground then redraw shape
+    tiles[g](c, x, y, gx, gy);
+    strip(c, x, y, gx, gy, t, m, g);
+  };
+  tiles.T = onGround(oldT, (c, x, y) => {
+    R(c, x + 3, y + 14, 10, 2, 'rgba(0,0,0,.18)');
+    R(c, x + 7, y + 10, 2, 5, P.trunk);
+    R(c, x + 2, y + 3, 12, 8, P.leaf); R(c, x + 3, y + 1, 10, 11, P.leaf); R(c, x + 1, y + 5, 14, 5, P.leaf);
+    R(c, x + 4, y + 2, 4, 3, P.leafL); R(c, x + 3, y + 4, 2, 2, P.leafL);
+    R(c, x + 9, y + 8, 4, 2, P.leafD); R(c, x + 4, y + 10, 8, 1, P.leafD);
+  });
+  tiles.P = (c, x, y, gx, gy, t, m) => oldP(c, x, y, gx, gy, t, m, groundAt(m, gx, gy) === 'n' ? 'n' : '.');
+  tiles.M = (c, x, y, gx, gy, t, m) => { const g = groundAt(m, gx, gy); oldM(c, x, y, gx, gy, t, m, g === 'n' || g === 's' ? g : '.'); };
+  tiles.A = (c, x, y, gx, gy, t, m) => { const g = groundAt(m, gx, gy); oldA(c, x, y, gx, gy, t, m, g === 'n' || g === 's' ? g : '.'); };
+  tiles.r = (c, x, y, gx, gy, t, m) => {
+    ground(c, x, y, gx, gy, m);
+    R(c, x + 2, y + 5, 12, 9, P.stoneD); R(c, x + 3, y + 4, 10, 9, P.stone); R(c, x + 4, y + 5, 4, 2, P.stoneL);
+  };
+  tiles.x = (c, x, y, gx, gy, t, m) => {
+    ground(c, x, y, gx, gy, m);
+    R(c, x + 7, y + 9, 2, 6, P.woodD); R(c, x + 2, y + 2, 12, 8, P.k); R(c, x + 3, y + 3, 10, 6, P.wood);
+    R(c, x + 4, y + 5, 8, 1, P.woodD); R(c, x + 4, y + 7, 6, 1, P.woodD);
+  };
+  tiles.F = (c, x, y, gx, gy, t, m) => {
+    ground(c, x, y, gx, gy, m);
+    R(c, x, y + 6, T, 2, P.wood); R(c, x, y + 11, T, 2, P.wood);
+    R(c, x + 2, y + 4, 2, 11, P.woodD); R(c, x + 11, y + 4, 2, 11, P.woodD);
+  };
+
+  /* ---------- new tiles ---------- */
+  tiles.g = (c, x, y, gx, gy) => { // dry grass (Sahel, steppe)
+    R(c, x, y, T, T, '#d2b36a');
+    for (let i = 0; i < 5; i++) R(c, x + ((hash(gx, gy, i) * 14) | 0), y + ((hash(gx, gy, i + 9) * 13) | 0), 1, 3, i % 2 ? '#a9893f' : '#e6cf8c');
+  };
+  tiles.z = (c, x, y, gx, gy) => { // tundra: snow with brown-green patches
+    R(c, x, y, T, T, '#e7eef2');
+    for (let i = 0; i < 4; i++) R(c, x + ((hash(gx, gy, i) * 12) | 0), y + ((hash(gx, gy, i + 5) * 13) | 0), 3, 2, i % 2 ? '#8d9a6a' : '#a7a37a');
+  };
+  tiles.a = (c, x, y, gx, gy, t, m) => { // acacia
+    ground(c, x, y, gx, gy, m);
+    R(c, x + 3, y + 13, 10, 2, 'rgba(0,0,0,.18)');
+    R(c, x + 7, y + 7, 2, 7, '#5a3a22'); R(c, x + 5, y + 6, 2, 2, '#5a3a22'); R(c, x + 9, y + 6, 2, 2, '#5a3a22');
+    R(c, x, y + 3, 16, 3, '#4f7a2a'); R(c, x + 2, y + 2, 12, 1, '#4f7a2a'); R(c, x + 3, y + 1, 9, 1, '#6a9a38');
+    R(c, x + 1, y + 6, 14, 1, '#3c5e1f');
+  };
+  tiles.j = (c, x, y, gx, gy) => { // rainforest tree (dense, dark)
+    R(c, x, y, T, T, '#2f6b2a');
+    R(c, x + 1, y + 1, 14, 13, '#1f5a24'); R(c, x + 3, y + 2, 5, 4, '#3d8a35'); R(c, x + 9, y + 6, 5, 4, '#3d8a35');
+    R(c, x + 2, y + 9, 4, 3, '#16461b'); R(c, x + 7, y + 13, 2, 3, P.trunk);
+  };
+  tiles.O = (c, x, y, gx, gy, t, m) => { // well
+    ground(c, x, y, gx, gy, m);
+    R(c, x + 2, y + 6, 12, 9, P.stoneD); R(c, x + 3, y + 7, 10, 7, P.stone); R(c, x + 5, y + 9, 6, 3, '#1d3b5a');
+    R(c, x + 2, y + 1, 1, 7, P.woodD); R(c, x + 13, y + 1, 1, 7, P.woodD); R(c, x + 2, y + 1, 12, 2, P.wood);
+    R(c, x + 8, y + 3, 1, 5, '#e8e1d0'); R(c, x + 7, y + 7, 3, 2, P.wood);
+  };
+  tiles.K = (c, x, y, gx, gy, t, m) => { // rolling hill
+    ground(c, x, y, gx, gy, m);
+    R(c, x + 1, y + 6, 14, 9, '#3f8a2e'); R(c, x + 3, y + 3, 10, 12, '#3f8a2e');
+    R(c, x + 4, y + 4, 6, 3, '#7cc451'); R(c, x + 2, y + 7, 3, 2, '#7cc451'); R(c, x + 1, y + 14, 14, 1, '#2e6b22');
+  };
+  tiles.V = (c, x, y, gx, gy, t, m) => { // volcano
+    ground(c, x, y, gx, gy, m);
+    for (let r = 0; r < 14; r++) { const half = Math.min(8, 2 + r * 0.5) | 0; R(c, x + 8 - half, y + 2 + r, half, 1, '#6d5a52'); R(c, x + 8, y + 2 + r, half, 1, '#4e3f3a'); }
+    R(c, x + 6, y + 2, 4, 2, '#ff7a2a'); R(c, x + 7, y + 4, 2, 3, '#ffb13b');
+    const s = ((t || 0) / 400) % 3; R(c, x + 7 + (s | 0), y + 0, 2, 2, 'rgba(120,120,120,.8)');
+  };
+  tiles.L = (c, x, y, gx, gy, t) => {
+    R(c, x, y, T, T, '#c4401d');
+    R(c, x + ((hash(gx, gy) * 10) | 0), y + 4 + (((t || 0) / 300) % 3 | 0), 5, 2, '#ffb13b'); R(c, x + 2, y + 11, 6, 2, '#ff7a2a');
+  };
+  tiles.Q = (c, x, y) => { // blue/slate roof
+    R(c, x, y, T, T, '#3c6fb4');
+    for (let r = 0; r < 4; r++) R(c, x, y + r * 4 + 3, T, 1, '#2a4f84');
+    for (let r = 0; r < 4; r++) R(c, x + (r % 2 ? 4 : 10), y + r * 4, 1, 3, '#2a4f84');
+  };
+  tiles.J = (c, x, y) => { // flat-roof adobe / stone building
+    R(c, x, y, T, T, '#e2c48e'); R(c, x, y, T, 2, '#c9a56a'); R(c, x, y + 14, T, 2, '#b8935a');
+    R(c, x + 3, y + 5, 4, 5, '#5a3a22'); R(c, x + 10, y + 5, 3, 3, '#3c6fb4');
+  };
+  tiles.U = (c, x, y, gx) => { // tall city tower
+    R(c, x, y, T, T, '#6e7f96'); R(c, x + 1, y, 14, T, '#8fa3bd');
+    for (let r = 0; r < 5; r++) for (let k = 0; k < 3; k++) R(c, x + 3 + k * 4, y + 2 + r * 3, 2, 2, hash(gx + k, r) > .35 ? '#ffe36e' : '#3d4a5c');
+  };
+  tiles.X = (c, x, y) => { // factory
+    R(c, x, y, T, T, '#9a8f86'); R(c, x, y + 6, T, 10, '#b8aca0');
+    R(c, x + 2, y, 3, 7, '#7a6f66'); R(c, x + 2, y, 3, 1, '#c0392b');
+    for (let k = 0; k < 3; k++) { R(c, x + 1 + k * 5, y + 6, 4, 2, '#8a7f76'); R(c, x + 2 + k * 5, y + 10, 3, 3, '#4a6a8a'); }
+  };
+  tiles.I = (c, x, y, gx, gy, t, m) => { // oil pump
+    ground(c, x, y, gx, gy, m);
+    const b = Math.round(Math.sin((t || 0) / 300) * 2);
+    R(c, x + 7, y + 6, 2, 9, '#333'); R(c, x + 4, y + 14, 8, 2, '#333');
+    R(c, x + 1, y + 5 + b, 14, 2, '#222'); R(c, x + 1, y + 4 + b, 3, 4, '#c0392b');
+  };
+  tiles.m = (c, x, y, gx, gy, t, m) => { // market stall
+    ground(c, x, y, gx, gy, m);
+    const cols = ['#e04848', '#f2c14e', '#2aa198', '#8e5bd6'];
+    const col = cols[(hash(gx, gy) * 4) | 0];
+    for (let k = 0; k < 4; k++) R(c, x + k * 4, y + 2, 4, 4, k % 2 ? '#fffbe8' : col);
+    R(c, x + 1, y + 6, 1, 9, P.woodD); R(c, x + 14, y + 6, 1, 9, P.woodD);
+    R(c, x + 1, y + 10, 14, 4, P.wood); R(c, x + 3, y + 8, 3, 2, '#e07b39'); R(c, x + 7, y + 8, 3, 2, '#7cc451'); R(c, x + 11, y + 8, 2, 2, '#d1263a');
+  };
+  tiles.k = (c, x, y, gx, gy, t, m) => { // wooden dock (walkable)
+    tiles['~'](c, x, y, gx, gy, t, m);
+    R(c, x, y + 1, T, 14, '#9a6a3a');
+    for (let r = 0; r < 4; r++) R(c, x, y + 1 + r * 4, T, 1, '#6d4a26');
+  };
+  tiles['-'] = (c, x, y, gx, gy, t, m) => { // rail east-west
+    ground(c, x, y, gx, gy, m);
+    for (let k = 0; k < 4; k++) R(c, x + 1 + k * 4, y + 4, 2, 9, '#6d4c2f');
+    R(c, x, y + 5, T, 1, '#8a8f98'); R(c, x, y + 11, T, 1, '#8a8f98');
+  };
+  tiles['|'] = (c, x, y, gx, gy, t, m) => { // rail north-south
+    ground(c, x, y, gx, gy, m);
+    for (let k = 0; k < 4; k++) R(c, x + 4, y + 1 + k * 4, 9, 2, '#6d4c2f');
+    R(c, x + 5, y, 1, T, '#8a8f98'); R(c, x + 11, y, 1, T, '#8a8f98');
+  };
+  tiles.v = (c, x, y, gx, gy) => { // potatoes
+    tiles.o(c, x, y, gx, gy);
+    [[3, 4], [10, 5], [5, 10], [11, 11]].forEach(([a, b]) => { R(c, x + a, y + b, 4, 3, P.leaf); R(c, x + a + 1, y + b - 1, 2, 1, P.leafL); });
+  };
+  tiles.y = (c, x, y, gx, gy) => { // banana plant
+    tiles['.'](c, x, y, gx, gy);
+    R(c, x + 7, y + 7, 2, 8, '#6b8e23');
+    R(c, x + 1, y + 2, 7, 3, P.leafL); R(c, x + 8, y + 1, 7, 3, P.leaf); R(c, x + 2, y + 6, 5, 2, P.leaf); R(c, x + 9, y + 5, 6, 2, P.leafL);
+    R(c, x + 9, y + 8, 3, 4, '#f5d33b');
+  };
+  tiles.e = (c, x, y, gx, gy) => { // sugarcane
+    tiles['.'](c, x, y, gx, gy);
+    for (let i = 0; i < 4; i++) { const sx = x + 2 + i * 4; R(c, sx, y + 2, 2, 14, '#9acd52'); for (let k = 0; k < 4; k++) R(c, sx, y + 4 + k * 3, 2, 1, '#6e9a35'); R(c, sx - 1, y + 1, 3, 2, P.leaf); }
+  };
+  tiles.t = (c, x, y, gx, gy) => { // tea / terrace rows on a hillside
+    R(c, x, y, T, T, '#4f9a3a');
+    for (let r = 0; r < 4; r++) { R(c, x, y + r * 4, T, 3, '#3f8a2e'); R(c, x, y + r * 4 + 3, T, 1, '#7a5a2a'); }
+  };
+
+  /* ---------- side-facing hero ---------- */
+  SPR.heroSide = [
+    '................', '.....kkkkkk.....', '....kHHHHHHk....', '...kHHbbbbHHk...',
+    '..kkkkkkkkkkkkk.', '....khhhsssk....', '....khhsseskk...', '....khsssssk....',
+    '.....kssmmk.....', '....kgccccck....', '...kggcccscck...', '...kggCcccsk....',
+    '....kCCCCCCk....', '....kppppppk....', '....kppk.kppk...', '....kBBk..kBBk..'];
+  SPR.heroSideWalk = SPR.heroSide.slice(0, 14).concat(['.....kpppk......', '.....kBBBk......']);
+  SPR.heroUpWalk = SPR.heroUp.slice(0, 14).concat(['...kppk..kBBk...', '...kBBk.........']);
+  SPR.npcWalk = SPR.npc.slice(0, 14).concat(['...kppk..kBBk...', '...kBBk.........']);
+  // a stone with a glowing compass mark: where the episode's challenge waits
+  SPR.stone = [
+    '................', '................', '.....kkkkkk.....', '....kWWWWWWk....',
+    '...kWWyyyyWWk...', '...kWyWWWWyWk...', '...kWyWrrWyWk...', '...kWyWnnWyWk...',
+    '...kWyWWWWyWk...', '...kWWyyyyWWk...', '...kWWWWWWWWk...', '..kGGGGGGGGGGk..',
+    '..kGGGGGGGGGGk..', '...kkkkkkkkkk...', '................', '................'];
+
+  /* walkable or not */
+  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L '.split(''));
+  WW.solid = ch => SOLID.has(ch) || ch === undefined;
+
+  /* named looks for people */
+  WW.SKIN = ['#f6d3b3', '#e8b48a', '#c98e62', '#9a6440', '#6f4528', '#4a2e1c'];
+  WW.lookPal = (look = {}) => {
+    const shade = (hex, f) => { const n = parseInt(hex.slice(1), 16); const r = Math.round(((n >> 16) & 255) * f), g = Math.round(((n >> 8) & 255) * f), b = Math.round((n & 255) * f); return '#' + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1); };
+    const s = typeof look.skin === 'number' ? WW.SKIN[look.skin] || WW.SKIN[2] : (look.skin || WW.SKIN[2]);
+    const shirt = look.shirt || '#2aa198';
+    return {
+      s, h: look.hair || '#2b1d14', c: shirt, C: shade(shirt, 0.72),
+      p: look.robe ? shirt : (look.pants || '#3b4a7a'), B: '#3a2a1a',
+      H: look.hat || '#d98e2b', b: shade(look.hat || '#d98e2b', 0.55)
+    };
+  };
+  WW.groundAt = groundAt;
+})();
+
+/* save.js */
+/* WORLDWALKER engine · languages, the saved hero, Passport Code, class Google Sheet */
+(function () {
+  const CFG = WW.CONFIG = Object.assign({
+    SHEET_URL: '',          // paste the Apps Script web app URL here to turn on the class Sheet
+    TEACHER_CODE: 'ATLAS',  // typed on the world map, opens every episode
+    MODE: 'pages'           // 'pages' (GitHub Pages) or 'canvas' (one file uploaded to Canvas)
+  }, window.WW_CONFIG || {});
+
+  /* ---------------- episodes and tools ---------------- */
+  WW.EPISODES = [
+    ['1.1', 1], ['1.2', 1], ['1.3', 1], ['2.1', 2], ['2.2', 2], ['2.3', 2], ['3.1', 3], ['3.2', 3], ['3.3', 3],
+    ['4.1', 4], ['4.2', 4], ['4.3', 4], ['5.1', 5], ['5.2', 5], ['5.3', 5], ['6.1', 6], ['6.2', 6], ['6.3', 6],
+    ['7.1', 7], ['7.2', 7], ['7.3', 7], ['8.1', 8], ['8.2', 8], ['8.3', 8]].map(([id, realm]) => ({ id, realm }));
+  WW.TOOLS = [
+    { id: 'compass', ep: '1.3', icon: '🧭', name: { en: 'Compass Rose', es: 'Rosa de los vientos', fa: 'قطب‌نما' } },
+    { id: 'canoe', ep: '2.3', icon: '🛶', name: { en: 'Canoe', es: 'Canoa', fa: 'قایق کوچک' } },
+    { id: 'rail', ep: '3.3', icon: '🎫', name: { en: 'Rail Pass', es: 'Pase de tren', fa: 'کارت قطار' } },
+    { id: 'gourd', ep: '4.3', icon: '🫙', name: { en: 'Water Gourd', es: 'Calabaza de agua', fa: 'کدوی آب' } },
+    { id: 'key', ep: '5.3', icon: '🗝️', name: { en: 'Water Key', es: 'Llave del agua', fa: 'کلید آب' } },
+    { id: 'cloak', ep: '6.3', icon: '🧥', name: { en: 'Monsoon Cloak', es: 'Capa del monzón', fa: 'بارانی موسمی' } },
+    { id: 'seal', ep: '7.3', icon: '📜', name: { en: 'Trade Seal', es: 'Sello de comercio', fa: 'مهر تجارت' } },
+    { id: 'sail', ep: '8.2', icon: '⛵', name: { en: 'Sail', es: 'Vela', fa: 'بادبان' } }];
+  WW.REALMS = [null,
+    { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
+    { en: 'The Americas', es: 'Las Américas', fa: 'قارهٔ امریکا' },
+    { en: 'Europe, Russia & Central Asia', es: 'Europa, Rusia y Asia Central', fa: 'اروپا، روسیه و آسیای میانه' },
+    { en: 'Sub-Saharan Africa', es: 'África subsahariana', fa: 'افریقای جنوب صحرا' },
+    { en: 'North Africa & Southwest Asia', es: 'Norte de África y Suroeste de Asia', fa: 'شمال افریقا و جنوب غرب آسیا' },
+    { en: 'South & Southeast Asia', es: 'Sur y Sureste de Asia', fa: 'جنوب و جنوب شرق آسیا' },
+    { en: 'East Asia', es: 'Asia Oriental', fa: 'آسیای شرقی' },
+    { en: 'Australia, the Pacific & the World', es: 'Australia, el Pacífico y el mundo', fa: 'آسترالیا، اقیانوس آرام و جهان' }];
+  WW.THEMES = [
+    { k: 'loc', icon: '📍', col: '#e04848', name: { en: 'Where', es: 'Dónde', fa: 'کجا' }, full: { en: 'Location', es: 'Ubicación', fa: 'موقعیت' } },
+    { k: 'pla', icon: '🏞️', col: '#3fa34d', name: { en: 'What it is like', es: 'Cómo es', fa: 'چگونه است' }, full: { en: 'Place', es: 'Lugar', fa: 'مکان' } },
+    { k: 'hei', icon: '🌱', col: '#d98e2b', name: { en: 'People & land', es: 'Gente y tierra', fa: 'مردم و زمین' }, full: { en: 'Human–Environment Interaction', es: 'Interacción ser humano–ambiente', fa: 'رابطهٔ انسان و محیط' } },
+    { k: 'mov', icon: '🚚', col: '#2f7fd1', name: { en: 'On the move', es: 'En movimiento', fa: 'در حرکت' }, full: { en: 'Movement', es: 'Movimiento', fa: 'حرکت' } },
+    { k: 'reg', icon: '🧩', col: '#8e5bd6', name: { en: 'Regions', es: 'Regiones', fa: 'منطقه‌ها' }, full: { en: 'Region', es: 'Región', fa: 'منطقه' } }];
+  WW.epIndex = id => WW.EPISODES.findIndex(e => e.id === id);
+  WW.epFile = id => 'ep-' + id.replace('.', '-') + '.html';
+
+  /* ---------------- languages ---------------- */
+  WW.lang = 'en';
+  const langListeners = [];
+  WW.onLang = fn => langListeners.push(fn);
+  WW.L = t => (t == null ? '' : typeof t === 'string' || typeof t === 'number' ? String(t) : (t[WW.lang] || t.en || ''));
+  WW.setLang = l => {
+    WW.lang = l; WW.save.lang = l; WW.store();
+    document.documentElement.lang = l === 'fa' ? 'fa' : l;
+    langListeners.forEach(f => { try { f(l); } catch (e) { console.error(e); } });
+  };
+  WW.dir = () => (WW.lang === 'fa' ? 'rtl' : 'ltr');
+
+  /* the game's own words */
+  WW.S = {
+    next: { en: 'Next', es: 'Siguiente', fa: 'بعدی' },
+    back: { en: 'Back', es: 'Atrás', fa: 'برگشت' },
+    close: { en: 'Close', es: 'Cerrar', fa: 'بستن' },
+    easier: { en: 'Make it easier', es: 'Hazlo más fácil', fa: 'ساده‌ترش کن' },
+    harder: { en: 'Show the full version', es: 'Ver la versión completa', fa: 'نسخهٔ کامل را نشان بده' },
+    answer: { en: 'Answer', es: 'Responder', fa: 'جواب بده' },
+    right: { en: 'Yes!', es: '¡Sí!', fa: 'بله!' },
+    wrong: { en: 'Not quite.', es: 'No exactamente.', fa: 'نه کاملاً.' },
+    tryAgain: { en: 'Try again', es: 'Inténtalo otra vez', fa: 'دوباره کوشش کن' },
+    check: { en: 'Check', es: 'Revisar', fa: 'بررسی کن' },
+    cont: { en: 'Continue', es: 'Continuar', fa: 'ادامه' },
+    play: { en: 'Play', es: 'Jugar', fa: 'بازی کن' },
+    start: { en: 'Start', es: 'Empezar', fa: 'شروع' },
+    passport: { en: 'Passport', es: 'Pasaporte', fa: 'پاسپورت' },
+    map: { en: 'World map', es: 'Mapa del mundo', fa: 'نقشهٔ جهان' },
+    sound: { en: 'Sound', es: 'Sonido', fa: 'صدا' },
+    full: { en: 'Full screen', es: 'Pantalla completa', fa: 'تمام صفحه' },
+    firstName: { en: 'First name only', es: 'Solo tu primer nombre', fa: 'فقط نام اول' },
+    classCode: { en: 'Class code', es: 'Código de la clase', fa: 'کد صنف' },
+    secret: { en: 'Secret number (4 digits)', es: 'Número secreto (4 dígitos)', fa: 'شمارهٔ مخفی (۴ رقم)' },
+    pickLook: { en: 'Pick your look', es: 'Elige tu aspecto', fa: 'شکل خود را انتخاب کن' },
+    skin: { en: 'Skin', es: 'Piel', fa: 'پوست' }, hair: { en: 'Hair', es: 'Pelo', fa: 'مو' }, hat: { en: 'Hat', es: 'Sombrero', fa: 'کلاه' },
+    signIn: { en: 'Sign in to save your trip', es: 'Entra para guardar tu viaje', fa: 'برای ذخیرهٔ سفرت وارد شو' },
+    haveCode: { en: 'Have a Passport Code? Paste it here', es: '¿Tienes un código de pasaporte? Pégalo aquí', fa: 'کد پاسپورت داری؟ اینجا بگذار' },
+    useCode: { en: 'Use code', es: 'Usar código', fa: 'استفاده از کد' },
+    badCode: { en: 'That code does not look right. Check each letter.', es: 'Ese código no parece correcto. Revisa cada letra.', fa: 'این کد درست به نظر نمی‌رسد. هر حرف را بررسی کن.' },
+    codeOk: { en: 'Code accepted! Your hero is back.', es: '¡Código aceptado! Tu héroe volvió.', fa: 'کد قبول شد! قهرمانت برگشت.' },
+    needName: { en: 'Type your first name to start.', es: 'Escribe tu primer nombre para empezar.', fa: 'برای شروع نام اول خود را بنویس.' },
+    needPin: { en: 'The secret number must be 4 digits.', es: 'El número secreto debe tener 4 dígitos.', fa: 'شمارهٔ مخفی باید ۴ رقم باشد.' },
+    welcomeBack: { en: 'Welcome back', es: 'Bienvenido de nuevo', fa: 'خوش برگشتی' },
+    notYou: { en: 'Not you? Start a new hero', es: '¿No eres tú? Crea un héroe nuevo', fa: 'تو نیستی؟ قهرمان تازه بساز' },
+    quest: { en: 'Quest', es: 'Misión', fa: 'مأموریت' },
+    talkTo: { en: 'Talk to everyone', es: 'Habla con todos', fa: 'با همه گپ بزن' },
+    solve: { en: 'Solve the compass stone', es: 'Resuelve la piedra de la brújula', fa: 'سنگ قطب‌نما را حل کن' },
+    face: { en: 'Face the Smudge', es: 'Enfrenta al Borrón', fa: 'با لکه روبه‌رو شو' },
+    done: { en: 'Atlas page won back!', es: '¡Página del atlas recuperada!', fa: 'صفحهٔ اطلس پس گرفته شد!' },
+    scraps: { en: 'Atlas scraps', es: 'Pedazos del atlas', fa: 'تکه‌های اطلس' },
+    talkFirst: { en: 'Pip: "Talk to everyone here first. Their words are the clues!"', es: 'Pip: "Primero habla con todos aquí. ¡Sus palabras son las pistas!"', fa: 'پیپ: «اول با همه اینجا گپ بزن. حرف‌هایشان سرنخ است!»' },
+    solveFirst: { en: 'Pip: "The Smudge is hiding. Solve the compass stone to call it out."', es: 'Pip: "El Borrón se esconde. Resuelve la piedra de la brújula para llamarlo."', fa: 'پیپ: «لکه پنهان است. سنگ قطب‌نما را حل کن تا بیرون بیاید.»' },
+    ouch: { en: 'Ouch! The Smudge got you.', es: '¡Ay! El Borrón te tocó.', fa: 'آخ! لکه به تو خورد.' },
+    rescued: { en: 'Pip pulled you back to safety. Hearts refilled!', es: 'Pip te llevó a un lugar seguro. ¡Corazones llenos!', fa: 'پیپ تو را به جای امن برد. قلب‌ها پر شد!' },
+    shield: { en: 'Cloud shield', es: 'Escudo de nubes', fa: 'سپر ابر' },
+    learned: { en: 'What you learned', es: 'Lo que aprendiste', fa: 'آنچه یاد گرفتی' },
+    oneQ: { en: 'One question before you go', es: 'Una pregunta antes de irte', fa: 'یک سؤال پیش از رفتن' },
+    reflectHint: { en: 'Type 1–3 sentences in English, Spanish or Dari.', es: 'Escribe 1–3 oraciones en inglés, español o dari.', fa: '۱ تا ۳ جمله به انگلیسی، هسپانوی یا دری بنویس.' },
+    turnIn: { en: 'Turn in your work', es: 'Entrega tu trabajo', fa: 'کارت را تحویل بده' },
+    copyWork: { en: 'Copy my work', es: 'Copiar mi trabajo', fa: 'کارم را کاپی کن' },
+    download: { en: 'Download', es: 'Descargar', fa: 'دانلود' },
+    copied: { en: 'Copied! Now paste it in the Canvas assignment.', es: '¡Copiado! Ahora pégalo en la tarea de Canvas.', fa: 'کاپی شد! حالا آن را در تکلیف کانواس بگذار.' },
+    turnInNote: { en: 'Then paste (or upload) it in the Canvas assignment. Nothing is turned in until you do that step.', es: 'Luego pégalo (o súbelo) en la tarea de Canvas. Nada se entrega hasta que hagas ese paso.', fa: 'بعد آن را در تکلیف کانواس بگذار (یا آپلود کن). تا این کار را نکنی چیزی تحویل نمی‌شود.' },
+    savedHere: { en: 'Saved on this computer ✓', es: 'Guardado en esta computadora ✓', fa: 'در این کمپیوتر ذخیره شد ✓' },
+    savingSheet: { en: 'Saving to the class sheet…', es: 'Guardando en la hoja de la clase…', fa: 'ذخیره در جدول صنف…' },
+    savedSheet: { en: 'Saved to the class sheet ✓', es: 'Guardado en la hoja de la clase ✓', fa: 'در جدول صنف ذخیره شد ✓' },
+    sheetDown: { en: 'Could not reach the class sheet. Your Passport Code below has everything.', es: 'No se pudo llegar a la hoja de la clase. Tu código de pasaporte abajo tiene todo.', fa: 'به جدول صنف نرسیدیم. کد پاسپورت پایین همه چیز را دارد.' },
+    yourCode: { en: 'Your Passport Code', es: 'Tu código de pasaporte', fa: 'کد پاسپورت تو' },
+    codeHelp: { en: 'This code holds your whole hero. If your progress is ever missing, paste it on the start screen.', es: 'Este código guarda todo tu héroe. Si tu progreso falta, pégalo en la pantalla de inicio.', fa: 'این کد تمام قهرمانت را نگه می‌دارد. اگر پیشرفتت گم شد، آن را در صفحهٔ شروع بگذار.' },
+    copyCode: { en: 'Copy code', es: 'Copiar código', fa: 'کاپی کد' },
+    nextEp: { en: 'Next episode', es: 'Siguiente episodio', fa: 'قسمت بعدی' },
+    nextCanvas: { en: 'Open the next episode from your Canvas module.', es: 'Abre el siguiente episodio desde tu módulo de Canvas.', fa: 'قسمت بعدی را از ماژول کانواس خود باز کن.' },
+    stars: { en: 'Stars', es: 'Estrellas', fa: 'ستاره‌ها' },
+    starWhy: { en: '★ finish the episode · ★ find all atlas scraps · ★ beat the Smudge with 1 miss or less', es: '★ termina el episodio · ★ encuentra todos los pedazos · ★ vence al Borrón con 1 error o menos', fa: '★ قسمت را تمام کن · ★ همهٔ تکه‌ها را پیدا کن · ★ لکه را با ۱ اشتباه یا کمتر شکست بده' },
+    powers: { en: 'Five geography powers', es: 'Cinco poderes de geografía', fa: 'پنج نیروی جغرافیا' },
+    bag: { en: 'Bag · one tool from each realm', es: 'Bolsa · una herramienta de cada reino', fa: 'کوله · یک ابزار از هر سرزمین' },
+    stamps: { en: 'Stamps · one for every episode', es: 'Sellos · uno por cada episodio', fa: 'مهرها · یکی برای هر قسمت' },
+    pages: { en: 'Atlas pages', es: 'Páginas del atlas', fa: 'صفحه‌های اطلس' },
+    coins: { en: 'Coins', es: 'Monedas', fa: 'سکه‌ها' },
+    gotTool: { en: 'New tool for your bag', es: 'Nueva herramienta para tu bolsa', fa: 'ابزار تازه برای کوله‌ات' },
+    tapWord: { en: 'Tap a yellow word to see what it means.', es: 'Toca una palabra amarilla para ver qué significa.', fa: 'روی کلمهٔ زرد بزن تا معنایش را ببینی.' },
+    clickStart: { en: 'Click the game, then use the arrow keys', es: 'Haz clic en el juego y usa las flechas', fa: 'روی بازی کلیک کن، بعد از کلیدهای جهت استفاده کن' },
+    controls: { en: 'Arrow keys or WASD to walk · walk into people to talk · Space to use', es: 'Flechas o WASD para caminar · camina hacia las personas para hablar · Espacio para usar', fa: 'کلیدهای جهت یا WASD برای راه رفتن · برای گپ زدن به طرف مردم برو · Space برای استفاده' },
+    pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
+    allRight: { en: 'All correct!', es: '¡Todo correcto!', fa: 'همه درست است!' },
+    someWrong: { en: 'Some are in the wrong place. The red ones need to move.', es: 'Algunos están en el lugar equivocado. Los rojos deben moverse.', fa: 'بعضی در جای اشتباه هستند. سرخ‌ها باید جابجا شوند.' },
+    pickItem: { en: 'Tap a card, then tap where it belongs.', es: 'Toca una tarjeta y luego toca dónde va.', fa: 'روی یک کارت بزن، بعد جایی که تعلق دارد را بزن.' },
+    pickOrder: { en: 'Tap the cards in the right order.', es: 'Toca las tarjetas en el orden correcto.', fa: 'کارت‌ها را به ترتیب درست بزن.' },
+    reset: { en: 'Start over', es: 'Empezar de nuevo', fa: 'از نو شروع کن' },
+    choose: { en: 'Choose one', es: 'Elige uno', fa: 'یکی را انتخاب کن' },
+    because: { en: 'Pick your reasons', es: 'Elige tus razones', fa: 'دلیل‌هایت را انتخاب کن' },
+    episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
+    realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
+    teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
+    playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+    story: { en: 'The Smudge tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Pip, your living compass, win the pages back by learning each place.', es: 'El Borrón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Pip, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'لکه اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با پیپ، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
+  };
+  WW.T = k => WW.L(WW.S[k]);
+
+  /* ---------------- the saved hero ---------------- */
+  const KEY = 'worldwalker.save.v1';
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, teacher: false });
+  function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
+  WW.save = readLocal() || blank();
+  if (!WW.save.stats) WW.save.stats = blank().stats;
+  if (!WW.save.episodes) WW.save.episodes = {};
+  WW.lang = WW.save.lang || 'en';
+  WW.store = () => { try { localStorage.setItem(KEY, JSON.stringify(WW.save)); return true; } catch (e) { return false; } };
+  WW.resetHero = () => { const lang = WW.save.lang; WW.save = blank(); WW.save.lang = lang; WW.store(); };
+  WW.doneCount = () => Object.keys(WW.save.episodes).filter(k => WW.save.episodes[k] && WW.save.episodes[k].done).length;
+  WW.hasTool = id => { const t = WW.TOOLS.find(x => x.id === id); return !!(t && WW.save.episodes[t.ep] && WW.save.episodes[t.ep].done); };
+  WW.heartsMax = () => Math.min(5, 3 + Math.floor(WW.doneCount() / 8));
+
+  /* LOOK swatches (also used by the look picker) */
+  WW.LOOK = {
+    skin: WW.SKIN,
+    hair: ['#1b1410', '#4a2c1a', '#8a5a2b', '#d8b45a', '#7a2a1f', '#6e6e6e'],
+    hat: ['#d98e2b', '#2aa198', '#c0392b', '#3c6fb4', '#8e5bd6', '#3fa34d']
+  };
+  WW.heroPal = () => {
+    const l = WW.save.look || {};
+    const hat = WW.LOOK.hat[l.hat || 0];
+    return Object.assign(WW.lookPal({ skin: WW.LOOK.skin[l.skin ?? 1], hair: WW.LOOK.hair[l.hair || 0], hat }), { c: '#2aa198', C: '#1f7a73', p: '#3b4a7a' });
+  };
+
+  /* ---------------- Passport Code ----------------
+     15 letters/numbers: episodes done (24 bits) + five powers (5 bits each) + look (9 bits) + version (2 bits) + check (15 bits) */
+  const ALPH = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
+  function check15(n) { let h = 0x2a1; let x = n; for (let i = 0; i < 12; i++) { h = (h * 31 + Number(x & 31n)) & 0x7fff; x >>= 5n; } return BigInt(h); }
+  WW.passportCode = (s = WW.save) => {
+    let n = 0n;
+    WW.EPISODES.forEach((e, i) => { if (s.episodes[e.id] && s.episodes[e.id].done) n |= 1n << BigInt(i); });
+    let shift = 24n;
+    WW.THEMES.forEach(t => { n |= BigInt(Math.min(31, s.stats[t.k] || 0)) << shift; shift += 5n; });
+    const l = s.look || {};
+    n |= BigInt((l.skin ?? 1) & 7) << 49n; n |= BigInt((l.hair || 0) & 7) << 52n; n |= BigInt((l.hat || 0) & 7) << 55n;
+    n |= 1n << 58n; // version 1
+    const full = (n << 15n) | check15(n);
+    let out = '';
+    for (let i = 0; i < 15; i++) out = ALPH[Number((full >> BigInt(i * 5)) & 31n)] + out;
+    return 'WW-' + out.slice(0, 5) + '-' + out.slice(5, 10) + '-' + out.slice(10);
+  };
+  WW.readCode = code => {
+    const c = String(code || '').toUpperCase().replace(/^WW/, '').replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1');
+    if (c.length !== 15) return null;
+    let full = 0n;
+    for (const ch of c) { const v = ALPH.indexOf(ch); if (v < 0) return null; full = (full << 5n) | BigInt(v); }
+    const n = full >> 15n;
+    if ((full & 0x7fffn) !== check15(n)) return null;
+    const out = { episodes: {}, stats: {}, look: {} };
+    WW.EPISODES.forEach((e, i) => { if ((n >> BigInt(i)) & 1n) out.episodes[e.id] = { done: true, stars: 1 }; });
+    let shift = 24n;
+    WW.THEMES.forEach(t => { out.stats[t.k] = Number((n >> shift) & 31n); shift += 5n; });
+    out.look = { skin: Number((n >> 49n) & 7n), hair: Number((n >> 52n) & 7n), hat: Number((n >> 55n) & 7n) };
+    return out;
+  };
+  // never lose progress: keep the best of both
+  WW.merge = other => {
+    const s = WW.save;
+    for (const id in other.episodes || {}) {
+      const a = s.episodes[id], b = other.episodes[id];
+      if (!a || (!a.done && b.done) || (b.stars || 0) > (a.stars || 0)) s.episodes[id] = Object.assign({}, a, b);
+    }
+    for (const k in other.stats || {}) s.stats[k] = Math.max(s.stats[k] || 0, other.stats[k] || 0);
+    if (other.look && !s.name) s.look = other.look;
+    s.coins = Math.max(s.coins || 0, other.coins || 0, 15 * WW.doneCount());
+    WW.store();
+  };
+
+  /* ---------------- class Google Sheet ---------------- */
+  WW.sheetOn = () => !!(CFG.SHEET_URL && WW.save.name && WW.save.cls && /^\d{4}$/.test(WW.save.pin || ''));
+  function jsonp(url) {
+    return new Promise((res, rej) => {
+      const cb = 'wwcb' + Date.now(); const s = document.createElement('script');
+      const done = () => { delete window[cb]; s.remove(); };
+      window[cb] = d => { done(); res(d); };
+      s.onerror = () => { done(); rej(new Error('jsonp')); };
+      s.src = url + '&callback=' + cb; document.head.appendChild(s);
+      setTimeout(() => { if (window[cb]) { done(); rej(new Error('timeout')); } }, 9000);
+    });
+  }
+  WW.sheetLoad = async () => {
+    if (!WW.sheetOn()) return { ok: false, off: true };
+    const s = WW.save;
+    const url = CFG.SHEET_URL + '?action=load&cls=' + encodeURIComponent(s.cls) + '&name=' + encodeURIComponent(s.name) + '&pin=' + encodeURIComponent(s.pin);
+    let d;
+    try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
+    if (d && d.ok && d.found && d.state) {
+      const st = d.state;
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: st.coins, look: st.look });
+    }
+    return d || { ok: false };
+  };
+  WW.sheetSave = async (log) => {
+    if (!WW.sheetOn()) return { ok: false, off: true };
+    const s = WW.save;
+    const body = {
+      action: 'save', cls: s.cls, name: s.name, pin: s.pin,
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      log
+    };
+    try {
+      await fetch(CFG.SHEET_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain' }, body: JSON.stringify(body) });
+      return { ok: true };
+    } catch (e) { return { ok: false }; }
+  };
+})();
+
+/* ui.js */
+/* WORLDWALKER engine · everything with words: top bar, talk boxes, passport, start and finish screens */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  WW.esc = esc;
+
+  /* [[key|shown words]] -> yellow tap-to-define word */
+  WW.rich = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, (m, k, w) => `<span class="word" data-k="${esc(k.trim().toLowerCase())}" tabindex="0">${w}</span>`)
+    .replace(/\[\[([^\]]+)\]\]/g, (m, w) => `<span class="word" data-k="${esc(w.trim().toLowerCase())}" tabindex="0">${w}</span>`);
+  WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[([^\]]+)\]\]/g, '$1').replace(/<[^>]+>/g, '');
+
+  const $ = id => document.getElementById(id);
+  const ui = WW.ui = { stack: [] };
+
+  /* ---------------- overlay ---------------- */
+  ui.open = (opts) => {
+    const ov = $('ww-ov');
+    const h = { opts, close() { ui.close(h); }, render() { draw(); } };
+    function draw() {
+      ov.className = 'ov' + (opts.cls ? ' ' + opts.cls : '');
+      ov.setAttribute('dir', WW.dir());
+      ov.innerHTML = '';
+      const box = document.createElement('div');
+      box.className = 'ov-box';
+      ov.appendChild(box);
+      opts.render(box, h);
+      ov.scrollTop = 0;
+    }
+    ui.stack.push(h);
+    $('ww-screen').classList.add('ovopen');
+    draw();
+    WW.paused = true;
+    return h;
+  };
+  ui.close = (h) => {
+    ui.stack = ui.stack.filter(x => x !== h);
+    const top = ui.stack[ui.stack.length - 1];
+    if (top) top.render();
+    else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); WW.paused = false; hidePop(); }
+    if (h.opts.onClose) h.opts.onClose();
+  };
+  ui.top = () => ui.stack[ui.stack.length - 1];
+  WW.onLang(() => { const t = ui.top(); if (t) t.render(); ui.hud(); ui.quest(); });
+
+  /* definition pop-up for yellow words */
+  let pop;
+  function hidePop() { if (pop) pop.style.display = 'none'; }
+  document.addEventListener('click', e => {
+    const w = e.target.closest && e.target.closest('.word');
+    if (!w) { hidePop(); return; }
+    const words = (WW.ep && WW.ep.words) || {};
+    const d = words[w.dataset.k];
+    if (!d) return;
+    if (!pop) { pop = document.createElement('div'); pop.className = 'defpop'; $('ww-screen').appendChild(pop); }
+    pop.setAttribute('dir', WW.dir());
+    pop.innerHTML = `<b>${esc(w.textContent)}</b> — ${esc(L(d))}`;
+    pop.style.display = 'block';
+    const sr = $('ww-screen').getBoundingClientRect(), r = w.getBoundingClientRect();
+    pop.style.left = Math.max(6, Math.min(sr.width - 300, r.left - sr.left)) + 'px';
+    pop.style.top = (r.bottom - sr.top + 6) + 'px';
+    WW.sfx('blip');
+  });
+
+  /* ---------------- toast ---------------- */
+  let toastT;
+  WW.toast = (html, col) => {
+    const el = $('ww-toast'); if (!el) return;
+    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.style.display = 'block';
+    el.setAttribute('dir', WW.dir());
+    clearTimeout(toastT); toastT = setTimeout(() => (el.style.display = 'none'), 2600);
+  };
+
+  /* ---------------- top bar ---------------- */
+  ui.hud = () => {
+    const el = $('ww-hud'); if (!el || !WW.ep) return;
+    const run = WW.run || {}, max = WW.heartsMax();
+    let h = '<div class="hud-left">';
+    for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
+    h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+    h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
+    h += '<div class="hud-right">';
+    WW.THEMES.forEach(th => {
+      const v = WW.save.stats[th.k] || 0;
+      h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+    });
+    h += '</div>';
+    el.innerHTML = h;
+    const bar = $('ww-bar');
+    if (bar) {
+      bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
+      $('ww-b-pass').textContent = '📘 ' + T('passport');
+      const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
+      $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
+      $('ww-b-full').textContent = '⛶ ' + T('full');
+      $('ww-foot').textContent = T('controls');
+    }
+  };
+  ui.quest = () => {
+    const el = $('ww-quest'); if (!el || !WW.run) return;
+    const r = WW.run, ep = WW.ep;
+    const need = ep.npcs.length, got = r.talked.size;
+    const steps = [
+      [T('talkTo') + ` (${got}/${need})`, got >= need],
+      [L(ep.challenge.title) || T('solve'), r.challengeDone],
+      [T('face'), r.bossDone]];
+    let h = `<b>${esc(T('quest'))}:</b> `;
+    h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
+    h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
+    el.innerHTML = h; el.setAttribute('dir', WW.dir());
+  };
+
+  /* small canvas with a sprite drawn big */
+  WW.spriteCanvas = (name, pal, scale = 4, crop = 16) => {
+    const c = document.createElement('canvas'); c.width = 16 * scale; c.height = crop * scale;
+    const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
+    WW.sprite(x, name, 0, 0, { pal, scale });
+    return c;
+  };
+
+  /* ---------------- talking to a person ---------------- */
+  ui.talk = (npc, onDone) => {
+    let page = 0, easy = false, stage = 'read', picked = null;
+    const lines = npc.lines || [];
+    WW.sfx('blip');
+    ui.open({
+      cls: 'talkov',
+      render(box, h) {
+        const face = WW.spriteCanvas('npc', WW.lookPal(npc.look), 4, 11);
+        face.className = 'face';
+        const head = document.createElement('div'); head.className = 'talk-head';
+        head.appendChild(face);
+        head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
+        box.appendChild(head);
+        const body = document.createElement('div'); body.className = 'talk-body';
+        box.appendChild(body);
+        if (stage === 'read') {
+          const ln = lines[page] || {};
+          const txt = easy && ln.easy ? ln.easy : ln;
+          body.innerHTML = `<p class="say">${WW.rich(txt)}</p><p class="hint">${page === 0 && /\[\[/.test(L(ln)) ? esc(T('tapWord')) : ''}</p>`;
+          const acts = document.createElement('div'); acts.className = 'acts';
+          if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
+          if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
+          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : T('close')), 'gold', () => {
+            WW.sfx('blip');
+            if (page < lines.length - 1) { page++; h.render(); }
+            else if (npc.ask) { stage = 'ask'; h.render(); }
+            else { h.close(); onDone && onDone(true); }
+          }));
+          body.appendChild(acts);
+        } else {
+          const a = npc.ask;
+          body.innerHTML = `<p class="say q">${WW.rich(a.q)}</p>`;
+          const list = document.createElement('div'); list.className = 'choices';
+          WW.shuffle(a.choices.map((_, i) => i), (npc.x || 1) * 7 + (npc.y || 1)).forEach(i => {
+            const ch = a.choices[i];
+            const b = document.createElement('button'); b.dataset.i = i;
+            b.innerHTML = WW.rich(ch.t || ch);
+            if (picked != null && i === picked) b.className = ch.ok ? 'right' : 'wrong';
+            b.onclick = () => {
+              picked = i;
+              if (ch.ok) {
+                WW.sfx('good');
+                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
+              } else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+              h.render();
+            };
+            list.appendChild(b);
+          });
+          body.appendChild(list);
+          if (picked != null) {
+            const ch = a.choices[picked];
+            const fb = document.createElement('div'); fb.className = 'fb ' + (ch.ok ? 'right' : 'wrong');
+            fb.innerHTML = `<b>${esc(ch.ok ? T('right') : T('wrong'))}</b> ${WW.rich(ch.why || '')}`;
+            body.appendChild(fb);
+            const acts = document.createElement('div'); acts.className = 'acts';
+            if (ch.ok) acts.appendChild(btn(T('cont') + ' ▶', 'gold', () => { h.close(); onDone && onDone(true); }));
+            else acts.appendChild(btn(T('tryAgain'), 'ghost', () => { picked = null; h.render(); }));
+            body.appendChild(acts);
+          }
+        }
+      }
+    });
+  };
+  function btn(label, kind, fn) {
+    const b = document.createElement('button');
+    b.className = 'pbtn ' + (kind || ''); b.innerHTML = label; b.onclick = fn; return b;
+  }
+  WW.btn = btn;
+
+  /* a sign or a simple message */
+  ui.message = (title, text, onDone) => {
+    ui.open({
+      cls: 'msgov',
+      render(box, h) {
+        box.innerHTML = `${title ? `<h3>${esc(title)}</h3>` : ''}<p class="say">${WW.rich(text)}</p>`;
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn(T('close'), 'gold', () => { h.close(); onDone && onDone(); }));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  /* ---------------- look picker + hero preview ---------------- */
+  function lookPicker(box, h) {
+    const wrap = document.createElement('div'); wrap.className = 'looks';
+    const prev = WW.spriteCanvas('hero', WW.heroPal(), 6); prev.className = 'heroprev';
+    wrap.appendChild(prev);
+    const rows = document.createElement('div');
+    ['skin', 'hair', 'hat'].forEach(k => {
+      const r = document.createElement('div'); r.className = 'lrow';
+      r.innerHTML = `<span>${esc(T(k))}</span>`;
+      WW.LOOK[k].forEach((col, i) => {
+        const b = document.createElement('button'); b.className = 'sw' + ((WW.save.look[k] ?? (k === 'skin' ? 1 : 0)) === i ? ' on' : '');
+        b.style.background = col; b.setAttribute('aria-label', T(k) + ' ' + (i + 1));
+        b.onclick = () => { WW.save.look[k] = i; WW.store(); h.render(); };
+        r.appendChild(b);
+      });
+      rows.appendChild(r);
+    });
+    wrap.appendChild(rows);
+    box.appendChild(wrap);
+  }
+
+  /* ---------------- start screen ---------------- */
+  ui.start = (onGo) => {
+    let msg = '', newHero = !WW.save.name;
+    ui.open({
+      cls: 'startov',
+      render(box, h) {
+        const ep = WW.ep;
+        box.innerHTML = `<div class="logo">WORLDWALKER</div><div class="sublogo">THE TORN ATLAS</div>
+          <div class="epcard"><div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(WW.REALMS[ep.realm]))}</div>
+          <h2>${esc(L(ep.title))}</h2><div class="place">${esc(L(ep.place))}</div></div>
+          <div class="langrow">${['en', 'es', 'fa'].map(l => `<button class="pbtn ${WW.lang === l ? 'gold' : ''}" data-l="${l}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('')}</div>`;
+        box.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.l)));
+        if (!newHero) {
+          const s = WW.save;
+          box.insertAdjacentHTML('beforeend', `<p class="wb">${esc(T('welcomeBack'))}, <b>${esc(s.name)}</b>! ${s.cls ? '· ' + esc(s.cls) : ''}</p>`);
+          const acts = document.createElement('div'); acts.className = 'acts center';
+          acts.appendChild(btn(T('cont') + ' ▶', 'gold big', () => go()));
+          box.appendChild(acts);
+          const nb = document.createElement('p'); nb.className = 'small';
+          const a = document.createElement('a'); a.href = '#'; a.textContent = T('notYou');
+          a.onclick = e => { e.preventDefault(); WW.resetHero(); newHero = true; h.render(); };
+          nb.appendChild(a); box.appendChild(nb);
+          return;
+        }
+        const s = WW.save;
+        const form = document.createElement('div'); form.className = 'signin';
+        form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
+          <label>${esc(T('firstName'))}<input id="si-name" maxlength="24" autocomplete="off" value="${esc(s.name || '')}"></label>
+          <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
+          <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
+        box.appendChild(form);
+        const lk = document.createElement('div'); lk.className = 'lookbox';
+        lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
+        lookPicker(lk, h);
+        box.appendChild(lk);
+        const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
+        form.querySelectorAll('input').forEach(i => (i.oninput = keep));
+        const acts = document.createElement('div'); acts.className = 'acts center';
+        acts.appendChild(btn(T('play') + ' ▶', 'gold big', () => {
+          keep();
+          if (!s.name) { msg = T('needName'); return h.render(); }
+          if (s.pin && !/^\d{4}$/.test(s.pin)) { msg = T('needPin'); return h.render(); }
+          go();
+        }));
+        box.appendChild(acts);
+        if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+        const pc = document.createElement('div'); pc.className = 'codein';
+        pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
+        pc.appendChild(btn(T('useCode'), 'ghost', () => {
+          const d = WW.readCode($('si-code').value);
+          if (!d) { msg = T('badCode'); return h.render(); }
+          keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+        }));
+        box.appendChild(pc);
+      }
+    });
+    async function go() {
+      WW.audioInit();
+      const h = ui.top();
+      if (WW.sheetOn()) { await WW.sheetLoad(); }
+      h.close(); onGo();
+    }
+  };
+
+  /* episode opening card */
+  ui.intro = (onGo) => {
+    ui.open({
+      cls: 'introov',
+      render(box, h) {
+        const ep = WW.ep;
+        const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
+        box.appendChild(pip);
+        box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
+          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
+          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
+          <p class="small">${esc(T('controls'))}</p>`);
+        const acts = document.createElement('div'); acts.className = 'acts center';
+        acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  /* ---------------- passport ---------------- */
+  ui.passport = () => {
+    let msg = '';
+    ui.open({
+      cls: 'passov',
+      render(box, h) {
+        const s = WW.save;
+        const top = document.createElement('div'); top.className = 'pp-top';
+        const hero = WW.spriteCanvas('hero', WW.heroPal(), 5); hero.className = 'pp-hero';
+        top.appendChild(hero);
+        top.insertAdjacentHTML('beforeend', `<div><div class="pp-name">${esc(s.name || '—')}</div><div class="small">${esc(s.cls || '')}</div>
+          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / 24</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
+        box.appendChild(top);
+        let pw = `<h3>${esc(T('powers'))}</h3><div class="powers">`;
+        WW.THEMES.forEach(th => {
+          const v = s.stats[th.k] || 0;
+          pw += `<div class="pw"><span class="pwi">${th.icon}</span><div><b>${esc(L(th.name))}</b> <span class="small">(${esc(L(th.full))})</span>
+            <div class="bar"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></div></div><span class="pwn">${v}</span></div>`;
+        });
+        pw += '</div>';
+        box.insertAdjacentHTML('beforeend', pw);
+        let bag = `<h3>${esc(T('bag'))}</h3><div class="bag">`;
+        WW.TOOLS.forEach((t, i) => {
+          const has = WW.hasTool(t.id);
+          bag += `<div class="slot ${has ? 'has' : ''}"><span class="ti">${has ? t.icon : '?'}</span><span>${has ? esc(L(t.name)) : esc(T('realm')) + ' ' + (i + 1)}</span></div>`;
+        });
+        bag += '</div>';
+        box.insertAdjacentHTML('beforeend', bag);
+        let st = `<h3>${esc(T('stamps'))}</h3><div class="stamps">`;
+        for (let r = 1; r <= 8; r++) {
+          st += '<div class="scol">';
+          WW.EPISODES.filter(e => e.realm === r).forEach(e => {
+            const d = s.episodes[e.id];
+            st += `<span class="stamp ${d && d.done ? 'on r' + r : ''}" title="${e.id}">${e.id}${d && d.stars ? '<i>' + '★'.repeat(d.stars) + '</i>' : ''}</span>`;
+          });
+          st += '</div>';
+        }
+        st += '</div>';
+        box.insertAdjacentHTML('beforeend', st);
+        const code = WW.passportCode();
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('yourCode'))}</h3><p class="small">${esc(T('codeHelp'))}</p>
+          <div class="coderow"><code class="pcode">${code}</code></div>`);
+        const cr = box.querySelector('.coderow');
+        cr.appendChild(btn(T('copyCode'), 'gold', () => WW.copy(code).then(() => { msg = '✓'; h.render(); })));
+        if (msg) cr.insertAdjacentHTML('beforeend', `<span class="ok">${msg}</span>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn(T('close'), 'ghost', () => h.close()));
+        box.appendChild(acts);
+      }
+    });
+  };
+
+  WW.copy = (text) => {
+    if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text).catch(() => fallback());
+    return Promise.resolve(fallback());
+    function fallback() {
+      const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) { } ta.remove();
+    }
+  };
+  WW.download = (name, text) => {
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([text], { type: 'text/plain;charset=utf-8' }));
+    a.download = name; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+  };
+
+  /* ---------------- finish: page restored, reflect, save, turn in ---------------- */
+  ui.finish = () => {
+    const r = WW.run, ep = WW.ep;
+    let sheet = WW.sheetOn() ? 'saving' : 'off', note = '';
+    ui.open({
+      cls: 'finov',
+      render(box, h) {
+        const st = r.stars;
+        box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
+          <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
+        const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
+        if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
+          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+        const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
+        starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
+        box.appendChild(starter);
+        const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
+        ta.oninput = () => { r.reflection = ta.value; };
+        box.appendChild(ta);
+        const sv = document.createElement('div'); sv.className = 'savebox';
+        sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+          (sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+          `<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+        box.appendChild(sv);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
+        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`Worldwalker ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
+        box.appendChild(acts);
+        box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
+        const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
+        const nav = document.createElement('div'); nav.className = 'acts';
+        if (WW.CONFIG.MODE === 'pages') {
+          nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => (location.href = 'index.html')));
+          if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (location.href = WW.epFile(nx.id))));
+        } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
+        nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
+        box.appendChild(nav);
+      }
+    });
+    if (sheet === 'saving') {
+      WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
+    }
+  };
+  function logEntry() {
+    const r = WW.run;
+    return { episode: WW.ep.id, stars: r.stars, heartsLost: r.heartsLost, minutes: Math.round((Date.now() - r.t0) / 60000), missed: r.missed.map(i => 'Q' + (i + 1)), reflection: r.reflection || '' };
+  }
+  function workText() {
+    const r = WW.run, ep = WW.ep, s = WW.save;
+    const en = t => (t && t.en) || WW.plain(t);
+    const lines = [];
+    lines.push(`WORLDWALKER — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
+    lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
+    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
+    lines.push('');
+    lines.push('TALKS (question — my answer — tries)');
+    r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
+    lines.push('');
+    lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
+    lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
+    lines.push('');
+    lines.push('REFLECTION');
+    lines.push('Q: ' + WW.plain(ep.reflect.q));
+    lines.push('A: ' + (r.reflection || '(blank)'));
+    lines.push('');
+    lines.push('POWERS: ' + WW.THEMES.map(t => `${WW.plain(t.full)} ${s.stats[t.k] || 0}`).join(' · '));
+    lines.push('PASSPORT CODE: ' + WW.passportCode());
+    return lines.join('\n');
+  }
+  WW.workText = workText;
+})();
+
+/* challenges.js */
+/* WORLDWALKER engine · the compass-stone challenges and the Smudge trial
+   Challenge types (set by ep.challenge.type):
+     sort   – put each card in the right group (style:'bands' draws groups as land bands, e.g. elevation)
+     order  – tap the cards in the right order
+     claim  – choose one option, then back it up with one reason of each kind
+     combo  – set switches; some settings work and some do not
+     table  – read a small table of facts, answer questions about it            */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s), btn = (a, b, c) => WW.btn(a, b, c);
+  const shuffle = (a, seed = 7) => { a = a.slice(); let s = seed; for (let i = a.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor((s / 233280) * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  WW.shuffle = shuffle;
+
+  function header(box, ch) {
+    const pip = WW.spriteCanvas('stone', { W: '#9aa3ad', G: '#5e636b', y: '#f2c14e', r: '#e04848', n: '#2f6fd6' }, 3); pip.className = 'chface';
+    const hd = document.createElement('div'); hd.className = 'ch-head';
+    hd.appendChild(pip);
+    hd.insertAdjacentHTML('beforeend', `<div><h3>${esc(L(ch.title))}</h3>${(ch.intro ? `<p class="say">${WW.rich(ch.intro)}</p>` : '')}</div>`);
+    box.appendChild(hd);
+  }
+  function solved(h, ch, okText) {
+    const r = WW.run;
+    if (!r.challengeDone) {
+      r.challengeDone = true;
+      WW.gain(ch.stat || 'hei', 2, 5);
+      WW.sfx('win');
+      WW.game.onChallengeDone();
+    }
+    return okText;
+  }
+  function doneBlock(box, h, ch) {
+    const d = document.createElement('div'); d.className = 'fb right';
+    d.innerHTML = `<b>${esc(T('allRight'))}</b> ${WW.rich(ch.success || '')}`;
+    box.appendChild(d);
+    const acts = document.createElement('div'); acts.className = 'acts';
+    acts.appendChild(btn(T('cont') + ' ▶', 'gold', () => h.close()));
+    box.appendChild(acts);
+  }
+
+  /* ---------------- sort ---------------- */
+  function sortUI(ch) {
+    const place = {}; // item index -> bin id
+    let sel = null, checked = false;
+    const order = shuffle(ch.items.map((_, i) => i), ch.items.length * 13 + 5);
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        header(box, ch);
+        const done = WW.run.challengeDone;
+        box.insertAdjacentHTML('beforeend', `<p class="hint">${esc(T('pickItem'))}</p>`);
+        const pool = document.createElement('div'); pool.className = 'pool';
+        order.filter(i => place[i] == null).forEach(i => pool.appendChild(card(i)));
+        box.appendChild(pool);
+        const bins = document.createElement('div'); bins.className = 'bins ' + (ch.style === 'bands' ? 'bands' : '');
+        ch.bins.forEach(b => {
+          const el = document.createElement('div'); el.className = 'bin';
+          if (b.tile && ch.style === 'bands') {
+            const cv = document.createElement('canvas'); cv.width = 16 * 6; cv.height = 16; cv.className = 'bintile';
+            const x = cv.getContext('2d'); for (let i = 0; i < 6; i++) WW.tiles[b.tile](x, i * 16, 0, i, 1, 0);
+            el.appendChild(cv);
+          }
+          el.insertAdjacentHTML('beforeend', `<div class="binlabel">${b.icon ? b.icon + ' ' : ''}${WW.rich(b.label)}${b.sub ? `<span class="small"> · ${WW.rich(b.sub)}</span>` : ''}</div>`);
+          const inside = document.createElement('div'); inside.className = 'binin';
+          order.filter(i => place[i] === b.id).forEach(i => inside.appendChild(card(i)));
+          el.appendChild(inside);
+          el.onclick = e => {
+            if (e.target.closest('.card') || done) return;
+            if (sel != null) { place[sel] = b.id; sel = null; checked = false; WW.sfx('blip'); h.render(); }
+          };
+          el.classList.toggle('target', sel != null);
+          bins.appendChild(el);
+        });
+        box.appendChild(bins);
+        if (done) return doneBlock(box, h, ch);
+        const all = Object.keys(place).length === ch.items.length;
+        const acts = document.createElement('div'); acts.className = 'acts';
+        const cb = btn(T('check'), 'gold', () => {
+          checked = true; WW.run.challengeTries++;
+          const wrong = ch.items.filter((it, i) => place[i] !== it.bin);
+          if (!wrong.length) { solved(h, ch); } else WW.sfx('bad');
+          h.render();
+        });
+        cb.disabled = !all; acts.appendChild(cb);
+        box.appendChild(acts);
+        if (checked) {
+          const wrong = ch.items.map((it, i) => [it, i]).filter(([it, i]) => place[i] !== it.bin);
+          if (wrong.length) {
+            const fb = document.createElement('div'); fb.className = 'fb wrong';
+            fb.innerHTML = `<b>${esc(T('someWrong'))}</b>` + (wrong[0][0].why ? ` ${WW.rich(wrong[0][0].why)}` : '');
+            box.appendChild(fb);
+          }
+        }
+        function card(i) {
+          const it = ch.items[i];
+          const c = document.createElement('button'); c.className = 'card';
+          if (sel === i) c.classList.add('sel');
+          if (checked && place[i] != null) c.classList.add(place[i] === it.bin ? 'right' : 'wrong');
+          c.innerHTML = (it.icon ? `<span class="ic">${it.icon}</span>` : '') + WW.rich(it.t);
+          c.onclick = (e) => {
+            e.stopPropagation(); if (done) return;
+            if (sel != null && sel !== i && place[i] != null) { place[sel] = place[i]; sel = null; } // drop the chosen card into this card's group
+            else if (place[i] != null) { delete place[i]; sel = i; } else sel = sel === i ? null : i;
+            checked = false; WW.sfx('blip'); h.render();
+          };
+          c.dataset.i = i;
+          return c;
+        }
+      }
+    });
+  }
+
+  /* ---------------- order ---------------- */
+  function orderUI(ch) {
+    let seq = [], checked = false;
+    const order = shuffle(ch.items.map((_, i) => i), ch.items.length * 7 + 3);
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        header(box, ch);
+        const done = WW.run.challengeDone;
+        box.insertAdjacentHTML('beforeend', `<p class="hint">${esc(T('pickOrder'))}</p>`);
+        const line = document.createElement('ol'); line.className = 'seq';
+        seq.forEach((i, pos) => {
+          const li = document.createElement('li');
+          li.className = 'card' + (checked ? (i === pos ? ' right' : ' wrong') : '');
+          li.innerHTML = (ch.items[i].icon ? `<span class="ic">${ch.items[i].icon}</span>` : '') + WW.rich(ch.items[i].t);
+          line.appendChild(li);
+        });
+        box.appendChild(line);
+        const pool = document.createElement('div'); pool.className = 'pool';
+        order.filter(i => !seq.includes(i)).forEach(i => {
+          const c = document.createElement('button'); c.className = 'card'; c.dataset.i = i;
+          c.innerHTML = (ch.items[i].icon ? `<span class="ic">${ch.items[i].icon}</span>` : '') + WW.rich(ch.items[i].t);
+          c.onclick = () => { if (done) return; seq.push(i); checked = false; WW.sfx('blip'); h.render(); };
+          pool.appendChild(c);
+        });
+        box.appendChild(pool);
+        if (done) return doneBlock(box, h, ch);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        const cb = btn(T('check'), 'gold', () => {
+          checked = true; WW.run.challengeTries++;
+          if (seq.every((v, k) => v === k)) solved(h, ch); else WW.sfx('bad');
+          h.render();
+        });
+        cb.disabled = seq.length !== ch.items.length; acts.appendChild(cb);
+        acts.appendChild(btn(T('reset'), 'ghost', () => { seq = []; checked = false; h.render(); }));
+        box.appendChild(acts);
+        if (checked && !WW.run.challengeDone) {
+          const first = seq.findIndex((v, k) => v !== k);
+          const fb = document.createElement('div'); fb.className = 'fb wrong';
+          fb.innerHTML = `<b>${esc(T('wrong'))}</b> ${WW.rich(ch.why || '')} <span class="small">(#${first + 1})</span>`;
+          box.appendChild(fb);
+        }
+      }
+    });
+  }
+
+  /* ---------------- claim ---------------- */
+  function claimUI(ch) {
+    let pick = null, why = {}, checked = false;
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        header(box, ch);
+        const done = WW.run.challengeDone;
+        box.insertAdjacentHTML('beforeend', `<h4>1 · ${esc(T('choose'))}</h4>`);
+        const opts = document.createElement('div'); opts.className = 'opts';
+        ch.options.forEach((o, i) => {
+          const b = document.createElement('button'); b.className = 'opt' + (pick === i ? ' sel' : ''); b.dataset.i = i;
+          b.innerHTML = `<b>${o.icon ? o.icon + ' ' : ''}${WW.rich(o.name)}</b>${o.desc ? `<span>${WW.rich(o.desc)}</span>` : ''}`;
+          b.onclick = () => { if (done) return; pick = i; why = {}; checked = false; WW.sfx('blip'); h.render(); };
+          opts.appendChild(b);
+        });
+        box.appendChild(opts);
+        if (pick != null) {
+          box.insertAdjacentHTML('beforeend', `<h4>2 · ${esc(T('because'))}</h4>`);
+          ch.kinds.forEach(k => {
+            const grp = document.createElement('div'); grp.className = 'kind';
+            grp.innerHTML = `<div class="klabel">${WW.rich(k.label)}</div>`;
+            ch.reasons.forEach((r, ri) => {
+              if (r.kind !== k.id) return;
+              const b = document.createElement('button'); b.className = 'reason' + (why[k.id] === ri ? ' sel' : ''); b.dataset.r = ri;
+              if (checked && why[k.id] === ri) b.classList.add(r.fits.includes(pick) ? 'right' : 'wrong');
+              b.innerHTML = WW.rich(r.t);
+              b.onclick = () => { if (done) return; why[k.id] = ri; checked = false; WW.sfx('blip'); h.render(); };
+              grp.appendChild(b);
+            });
+            box.appendChild(grp);
+          });
+        }
+        if (done) {
+          const o = ch.options[pick ?? WW.run.claimPick ?? 0];
+          if (o && o.result) box.insertAdjacentHTML('beforeend', `<div class="fb right">${WW.rich(o.result)}</div>`);
+          return doneBlock(box, h, ch);
+        }
+        const ready = pick != null && ch.kinds.every(k => why[k.id] != null);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        const cb = btn(T('check'), 'gold', () => {
+          checked = true; WW.run.challengeTries++;
+          const ok = ch.kinds.every(k => ch.reasons[why[k.id]].fits.includes(pick));
+          if (ok) { WW.run.claimPick = pick; solved(h, ch); } else WW.sfx('bad');
+          h.render();
+        });
+        cb.disabled = !ready; acts.appendChild(cb);
+        box.appendChild(acts);
+        if (checked && !WW.run.challengeDone) {
+          const bad = ch.kinds.map(k => ch.reasons[why[k.id]]).find(r => !r.fits.includes(pick));
+          box.insertAdjacentHTML('beforeend', `<div class="fb wrong"><b>${esc(T('wrong'))}</b> ${WW.rich(ch.mismatch || '')} ${bad && bad.why ? WW.rich(bad.why) : ''}</div>`);
+        }
+      }
+    });
+  }
+
+  /* ---------------- combo ---------------- */
+  function comboUI(ch) {
+    const set = ch.switches.map(s => s.start || 0);
+    let tried = false;
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        header(box, ch);
+        const done = WW.run.challengeDone;
+        const sw = document.createElement('div'); sw.className = 'switches';
+        ch.switches.forEach((s, i) => {
+          const g = document.createElement('div'); g.className = 'sw-g';
+          g.innerHTML = `<div class="klabel">${s.icon ? s.icon + ' ' : ''}${WW.rich(s.name)}</div>`;
+          s.states.forEach((st, k) => {
+            const b = document.createElement('button'); b.className = 'reason' + (set[i] === k ? ' sel' : ''); b.dataset.s = i + ':' + k;
+            b.innerHTML = WW.rich(st);
+            b.onclick = () => { if (done) return; set[i] = k; tried = false; WW.sfx('blip'); h.render(); };
+            g.appendChild(b);
+          });
+          sw.appendChild(g);
+        });
+        box.appendChild(sw);
+        const key = set.join(',');
+        const res = ch.results[key] || ch.otherwise || { t: '' , ok: false };
+        if (res.show) {
+          const out = document.createElement('div'); out.className = 'outs';
+          res.show.forEach(o => out.insertAdjacentHTML('beforeend', `<span class="out ${o.ok ? 'good' : 'badp'}">${o.icon || ''} ${WW.rich(o.t)}</span>`));
+          box.appendChild(out);
+        }
+        if (done) return doneBlock(box, h, ch);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        acts.appendChild(btn(T('check'), 'gold', () => {
+          tried = true; WW.run.challengeTries++;
+          if (res.ok) solved(h, ch); else WW.sfx('bad');
+          h.render();
+        }));
+        box.appendChild(acts);
+        if (tried && !WW.run.challengeDone) box.insertAdjacentHTML('beforeend', `<div class="fb wrong"><b>${esc(T('wrong'))}</b> ${WW.rich(res.t)}</div>`);
+      }
+    });
+  }
+
+  /* ---------------- table ---------------- */
+  function tableUI(ch) {
+    let qi = 0, picked = null;
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        header(box, ch);
+        const done = WW.run.challengeDone;
+        let t = '<div class="tblwrap"><table class="dtbl"><thead><tr>' + ch.table.head.map(c => `<th>${WW.rich(c)}</th>`).join('') + '</tr></thead><tbody>';
+        ch.table.rows.forEach(r => (t += '<tr>' + r.map(c => `<td>${WW.rich(c)}</td>`).join('') + '</tr>'));
+        t += '</tbody></table></div>';
+        if (ch.table.note) t += `<p class="small">${WW.rich(ch.table.note)}</p>`;
+        box.insertAdjacentHTML('beforeend', t);
+        if (done) return doneBlock(box, h, ch);
+        const q = ch.questions[qi]; box.dataset.q = qi;
+        box.insertAdjacentHTML('beforeend', `<h4>${qi + 1} / ${ch.questions.length}</h4><p class="say q">${WW.rich(q.q)}</p>`);
+        const list = document.createElement('div'); list.className = 'choices';
+        shuffle(q.choices.map((_, i) => i), qi * 3 + 1).forEach(i => {
+          const c = q.choices[i];
+          const b = document.createElement('button'); b.innerHTML = WW.rich(c); b.dataset.i = i;
+          if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
+          b.onclick = () => {
+            if (picked === q.answer) return;
+            picked = i;
+            if (i === q.answer) WW.sfx('good'); else { WW.sfx('bad'); WW.run.challengeTries++; }
+            h.render();
+          };
+          list.appendChild(b);
+        });
+        box.appendChild(list);
+        if (picked != null) {
+          const ok = picked === q.answer;
+          box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
+          if (ok) {
+            const acts = document.createElement('div'); acts.className = 'acts';
+            acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {
+              picked = null;
+              if (qi < ch.questions.length - 1) qi++; else { WW.run.challengeTries = Math.max(1, WW.run.challengeTries); solved(h, ch); }
+              h.render();
+            }));
+            box.appendChild(acts);
+          }
+        }
+      }
+    });
+  }
+
+  WW.challenge = (ch) => {
+    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI }[ch.type];
+    if (!f) return console.error('unknown challenge type', ch.type);
+    f(ch);
+  };
+
+  /* ---------------- the Smudge trial ---------------- */
+  WW.bossTrial = (boss, onWin) => {
+    const need = boss.need || 3;
+    let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
+    let broken = 0, picked = null, last = null;
+    WW.ui.open({
+      cls: 'bossov',
+      render(box, h) {
+        const top = document.createElement('div'); top.className = 'boss-top';
+        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : '');
+        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5 });
+        top.appendChild(cv);
+        let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
+        for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}"></span>`;
+        shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
+        top.insertAdjacentHTML('beforeend', shield);
+        box.appendChild(top);
+        if (broken >= need) {
+          box.insertAdjacentHTML('beforeend', `<div class="fb right"><b>${esc(T('allRight'))}</b> ${WW.rich(boss.win || '')}</div>`);
+          const acts = document.createElement('div'); acts.className = 'acts';
+          acts.appendChild(btn(T('cont') + ' ▶', 'gold big', () => { h.close(); onWin(); }));
+          box.appendChild(acts);
+          return;
+        }
+        if (broken === 0 && picked == null && boss.taunt) box.insertAdjacentHTML('beforeend', `<p class="say taunt">${WW.rich(boss.taunt)}</p>`);
+        const qi = queue[0], q = boss.questions[qi];
+        box.dataset.q = qi;
+        box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
+        const list = document.createElement('div'); list.className = 'choices two';
+        const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
+        ord.forEach((i, pos) => {
+          const c = q.choices[i];
+          const b = document.createElement('button'); b.innerHTML = `<i>${'ABCDE'[pos]}</i> ${WW.rich(c)}`; b.dataset.i = i;
+          if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
+          b.disabled = picked != null;
+          b.onclick = () => {
+            picked = i;
+            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
+            else { last = 'hit'; WW.sfx('hurt'); WW.run.missed.includes(qi) || WW.run.missed.push(qi); WW.run.bossMisses++; WW.hurt(true); }
+            h.render();
+          };
+          list.appendChild(b);
+        });
+        box.appendChild(list);
+        if (picked != null) {
+          const ok = picked === q.answer;
+          box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
+          const acts = document.createElement('div'); acts.className = 'acts';
+          acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {
+            queue.shift(); if (!ok) queue.push(qi);
+            picked = null; last = null; h.render();
+          }));
+          box.appendChild(acts);
+        }
+      }
+    });
+  };
+})();
+
+/* game.js */
+/* WORLDWALKER engine · the game itself: map, walking, screens, people, Smudges, flow */
+(function () {
+  const TS = 16, SW = 16, SH = 11; // tile size, screen width/height in tiles
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  const $ = id => document.getElementById(id);
+
+  /* ---------------- sound (made in code, no files) ---------------- */
+  let ac = null;
+  WW.audioInit = () => { if (!ac) try { ac = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { } };
+  const NOTES = {
+    blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+  };
+  WW.sfx = (name) => {
+    if (!WW.save.sound || !ac) return;
+    let t = ac.currentTime;
+    (NOTES[name] || []).forEach(([f, d]) => {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.type = name === 'hurt' || name === 'bad' ? 'sawtooth' : 'square'; o.frequency.value = f;
+      g.gain.setValueAtTime(.06, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
+      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d); t += d * .9;
+    });
+  };
+
+  /* ---------------- the page around the game ---------------- */
+  function buildDom(root) {
+    root.innerHTML = `
+      <div class="ww-frame">
+        <div class="ww-bar" id="ww-bar">
+          <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
+          <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
+          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+        </div>
+        <div class="hud" id="ww-hud"></div>
+        <div class="quest" id="ww-quest"></div>
+        <div class="screen" id="ww-screen" tabindex="0">
+          <canvas id="ww-cv" aria-label="game map"></canvas>
+          <div id="ww-toast" class="toast" role="status"></div>
+          <div id="ww-ov" class="ov hidden" role="dialog" aria-modal="true"></div>
+        </div>
+        <div class="dpad" id="ww-dpad" aria-label="arrows">
+          <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
+          <button data-d="act" class="act" aria-label="use">●</button>
+          <button data-d="right" aria-label="right">▶</button><button data-d="down" aria-label="down">▼</button>
+        </div>
+        <div class="ww-foot" id="ww-foot"></div>
+      </div>`;
+    if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
+    root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
+    $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
+    if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
+    $('ww-b-pad').onclick = () => root.classList.toggle('touch');
+    $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };
+    $('ww-b-full').onclick = () => {
+      const el = root.querySelector('.ww-frame');
+      if (document.fullscreenElement) document.exitFullscreen(); else if (el.requestFullscreen) el.requestFullscreen().catch(() => window.open(location.href, '_blank'));
+      else window.open(location.href, '_blank');
+    };
+  }
+
+  /* ---------------- run state ---------------- */
+  const G = WW.game = {};
+  let map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+
+  WW.gain = (stat, n, coins) => {
+    WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
+    WW.save.coins = (WW.save.coins || 0) + (coins || 0);
+    WW.store(); WW.ui.hud();
+    const th = WW.THEMES.find(t => t.k === stat);
+    if (th) WW.toast(`+${n} ${th.icon} ${esc(L(th.name))}${coins ? ` · +${coins} ●` : ''}`, th.col);
+  };
+  WW.hurt = (inBoss) => {
+    const r = WW.run;
+    r.hearts--; r.heartsLost++; shakeT = performance.now();
+    if (r.hearts <= 0) {
+      r.hearts = WW.heartsMax();
+      if (!inBoss) { player.x = WW.ep.start[0]; player.y = WW.ep.start[1]; pip.x = player.x; pip.y = player.y; }
+      WW.toast(T('rescued'), '#2f7fd1');
+    } else if (!inBoss) WW.toast(T('ouch'), '#b0392b');
+    WW.ui.hud();
+  };
+
+  function screenOf(x, y) { return [Math.floor(x / SW), Math.floor(y / SH)]; }
+  function tileAt(x, y) { return (map[y] || '')[x]; }
+  function entAt(x, y) { return ents.find(e => e.x === x && e.y === y && !e.gone && e.visible !== false); }
+  function walkable(x, y) {
+    if (x < 0 || y < 0 || x >= W || y >= H) return false;
+    if (WW.solid(tileAt(x, y))) return false;
+    const e = entAt(x, y);
+    return !e || e.kind === 'scrap' || e.kind === 'smudge';
+  }
+
+  /* ---------------- start an episode ---------------- */
+  WW.start = (ep, rootSel) => {
+    WW.ep = ep;
+    ep.npcs = ep.npcs || []; ep.scraps = ep.scraps || []; ep.smudges = ep.smudges || []; ep.signs = ep.signs || [];
+    ep.realm = ep.realm || +ep.id[0];
+    map = ep.map; H = map.length; W = map[0].length;
+    const root = typeof rootSel === 'string' ? document.querySelector(rootSel) : (rootSel || document.getElementById('ww'));
+    buildDom(root);
+    document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
+    WW.run = {
+      hearts: WW.heartsMax(), heartsLost: 0, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
+      challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
+    };
+    ents = [];
+    ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
+    ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
+    ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
+    ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
+    ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
+    ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
+    player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
+    pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
+    const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
+    G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
+    WW.ui.hud(); WW.ui.quest();
+    WW.setLang(WW.lang);
+    bindInput();
+    requestAnimationFrame(frame);
+    WW.ui.start(() => WW.ui.intro(() => { $('ww-screen').focus(); }));
+  };
+
+  G.onChallengeDone = () => {
+    const b = ents.find(e => e.kind === 'boss'); b.visible = true;
+    WW.ui.quest();
+    setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
+  };
+
+  function finishEpisode() {
+    const r = WW.run, ep = WW.ep, s = WW.save;
+    r.bossDone = true;
+    const stars = 1 + (r.scraps.size >= ep.scraps.length ? 1 : 0) + (r.bossMisses <= 1 ? 1 : 0);
+    r.stars = stars;
+    const had = s.episodes[ep.id];
+    const toolBefore = WW.TOOLS.find(t => t.ep === ep.id && !WW.hasTool(t.id));
+    s.episodes[ep.id] = { done: true, stars: Math.max(stars, (had && had.stars) || 0), at: new Date().toISOString().slice(0, 10) };
+    if (toolBefore) r.newTool = toolBefore;
+    WW.gain(ep.boss.stat || 'reg', 2, 15);
+    WW.store();
+    WW.ui.quest();
+    WW.ui.finish();
+  }
+
+  /* ---------------- interacting ---------------- */
+  function interact(e) {
+    if (!e || WW.paused) return;
+    const ep = WW.ep, r = WW.run;
+    if (e.kind === 'npc') {
+      WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
+    } else if (e.kind === 'sign') {
+      WW.ui.message('🪧', e.ref.text);
+    } else if (e.kind === 'stone') {
+      const need = ep.challenge.needTalk ?? ep.npcs.length;
+      if (r.talked.size < need && !r.challengeDone) WW.ui.message('', T('talkFirst'));
+      else WW.challenge(ep.challenge);
+    } else if (e.kind === 'boss') {
+      WW.bossTrial(ep.boss, () => { e.gone = true; finishEpisode(); });
+    }
+  }
+  function pickup() {
+    const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
+    if (e) {
+      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin');
+      WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
+      WW.ui.hud(); WW.ui.quest();
+    }
+    const sm = ents.find(e => e.kind === 'smudge' && e.x === player.x && e.y === player.y);
+    if (sm) touchSmudge(sm);
+  }
+  function touchSmudge(sm) {
+    if (performance.now() < inv) return;
+    inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false);
+    // push the smudge away one tile
+    const opts = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2, sm.y + dy * 2]).filter(([x, y]) => walkable(x, y) && screenOf(x, y)[0] === sm.home[0] && screenOf(x, y)[1] === sm.home[1]);
+    if (opts.length) [sm.x, sm.y] = opts[0];
+  }
+
+  /* ---------------- moving ---------------- */
+  const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+  const STEP_MS = 150;
+  function tryStep(d, now) {
+    if (player.moving || trans || WW.paused) return;
+    player.dir = d;
+    const [dx, dy] = DIRS[d];
+    const nx = player.x + dx, ny = player.y + dy;
+    const e = entAt(nx, ny);
+    if (e && e.kind !== 'scrap' && e.kind !== 'smudge') { interact(e); held = null; return; }
+    if (!walkable(nx, ny)) return;
+    const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
+    pip.tx = player.x; pip.ty = player.y;
+    player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
+    if (sx !== tx || sy !== ty) { trans = { from: [sx, sy], to: [tx, ty], t0: now, d: [dx, dy] }; }
+  }
+  function actFacing() {
+    const [dx, dy] = DIRS[player.dir];
+    const e = entAt(player.x + dx, player.y + dy);
+    if (e) interact(e);
+  }
+
+  function bindInput() {
+    const keys = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right', W: 'up', S: 'down', A: 'left', D: 'right' };
+    window.addEventListener('keydown', e => {
+      const tag = (e.target.tagName || '').toLowerCase();
+      if (tag === 'input' || tag === 'textarea') return;
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && (t.opts.cls === 'passov' || t.opts.cls === 'msgov')) t.close(); return; }
+      if (WW.paused) return;
+      if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
+      else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
+      else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
+    });
+    window.addEventListener('keyup', e => { if (keys[e.key] === held) held = null; });
+    window.addEventListener('blur', () => (held = null));
+    const pad = $('ww-dpad');
+    pad.querySelectorAll('button').forEach(b => {
+      const d = b.dataset.d;
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else { held = d; heldSince = performance.now(); } };
+      const up = e => { e.preventDefault(); if (held === d) held = null; };
+      b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
+    });
+    // click on the map next to the hero = step that way (mouse users)
+    $('ww-cv').addEventListener('click', e => {
+      WW.audioInit(); $('ww-screen').focus();
+      if (WW.paused || trans) return;
+      const r = e.target.getBoundingClientRect();
+      const [sx, sy] = screenOf(player.x, player.y);
+      const tx = sx * SW + Math.floor((e.clientX - r.left) / r.width * SW), ty = sy * SH + Math.floor((e.clientY - r.top) / r.height * SH);
+      const dx = tx - player.x, dy = ty - player.y;
+      if (!dx && !dy) return;
+      const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+      const e2 = entAt(tx, ty);
+      if (e2 && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      clickTarget = [tx, ty];
+    });
+  }
+  let clickTarget = null;
+
+  /* ---------------- smudges wander ---------------- */
+  function moveSmudges(now) {
+    if (WW.paused || trans || G.noSmudges) return;
+    const [psx, psy] = screenOf(player.x, player.y);
+    ents.forEach(e => {
+      if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
+      if (now < e.next) return;
+      e.next = now + 650 + (e.phase % 3) * 120;
+      const dirs = Object.values(DIRS);
+      // drift a little toward the player, mostly random
+      const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
+      const pick = Math.random() < .35 && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
+      const nx = e.x + pick[0], ny = e.y + pick[1];
+      const [hx, hy] = screenOf(nx, ny);
+      if (hx !== e.home[0] || hy !== e.home[1]) return;
+      if (WW.solid(tileAt(nx, ny))) return;
+      const o = entAt(nx, ny); if (o && o !== e) return;
+      e.x = nx; e.y = ny;
+      if (e.x === player.x && e.y === player.y) touchSmudge(e);
+    });
+  }
+
+  /* ---------------- drawing ---------------- */
+  function drawScreen(c, sx, sy, ox, oy, t) {
+    c.save(); c.translate(ox, oy);
+    // tiles get their global position so edges and ground match the real map around them
+    for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
+      const gx = sx * SW + x, gy = sy * SH + y, ch = tileAt(gx, gy);
+      (WW.tiles[ch] || WW.tiles['.'])(c, x * TS, y * TS, gx, gy, t, map);
+    }
+    const inScreen = e => { const [ex, ey] = screenOf(e.x, e.y); return ex === sx && ey === sy; };
+    const px = e => (e.x - sx * SW) * TS, py = e => (e.y - sy * SH) * TS;
+    ents.forEach(e => {
+      if (e.gone || e.visible === false || !inScreen(e)) return;
+      if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, t, phase: e.id });
+      if (e.kind === 'stone') {
+        const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+        if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
+        WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+      }
+    });
+    ents.forEach(e => {
+      if (e.gone || e.visible === false || !inScreen(e)) return;
+      if (e.kind === 'npc') {
+        WW.sprite(c, 'npc', px(e), py(e) - 2, { pal: WW.lookPal(e.ref.look), bob: false });
+        if (!WW.run.talked.has(e.ref.id)) { // speech bubble
+          const b = Math.round(Math.sin(t / 250 + e.phase) * 1.5);
+          c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
+        }
+      }
+      if (e.kind === 'smudge') WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase });
+      if (e.kind === 'boss') {
+        const a = (Math.sin(t / 200) + 1) / 2;
+        c.fillStyle = `rgba(109,95,140,${.25 + a * .3})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 12 + a * 3, 0, 7); c.fill();
+        WW.sprite(c, 'smudge', px(e) - 8, py(e) - 16, { bob: true, t, scale: 2 });
+      }
+    });
+    c.restore();
+  }
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    const c = G.ctx; if (!c || !WW.run) return;
+    // movement timing
+    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; pickup(); }
+    if (!player.moving && !trans && !WW.paused) {
+      if (held) tryStep(held, now);
+      else if (clickTarget) {
+        const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
+        if (!dx && !dy) clickTarget = null;
+        else {
+          const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+          const bx = player.x, by = player.y; tryStep(d, now);
+          if (player.x === bx && player.y === by) {
+            const d2 = Math.abs(dx) > Math.abs(dy) ? (dy ? (dy > 0 ? 'down' : 'up') : null) : (dx ? (dx > 0 ? 'right' : 'left') : null);
+            if (d2) tryStep(d2, now);
+            if (player.x === bx && player.y === by) clickTarget = null;
+          }
+        }
+      }
+    }
+    moveSmudges(now);
+    // pip trails one tile behind
+    if (pip.tx != null && !player.moving) { pip.x = pip.tx; pip.y = pip.ty; pip.tx = null; }
+    // where to draw the hero inside the screen
+    const k = player.moving ? Math.min(1, (now - player.moving) / STEP_MS) : 1;
+    const fx = player.from ? player.from[0] + (player.x - player.from[0]) * k : player.x;
+    const fy = player.from ? player.from[1] + (player.y - player.from[1]) * k : player.y;
+    let [sx, sy] = screenOf(player.x, player.y);
+    c.save();
+    if (now - shakeT < 250) c.translate(Math.round(Math.sin(now / 20) * 2), 0);
+    if (trans) {
+      const p = Math.min(1, (now - trans.t0) / 380);
+      const [dx, dy] = trans.d;
+      const offX = -dx * p * SW * TS, offY = -dy * p * SH * TS;
+      drawScreen(c, trans.from[0], trans.from[1], offX, offY, now);
+      drawScreen(c, trans.to[0], trans.to[1], offX + dx * SW * TS, offY + dy * SH * TS, now);
+      const hx = (fx - trans.from[0] * SW) * TS + offX, hy = (fy - trans.from[1] * SH) * TS + offY;
+      drawHero(c, hx, hy, now);
+      if (p >= 1) trans = null;
+    } else {
+      drawScreen(c, sx, sy, 0, 0, now);
+      // pip
+      const [psx, psy] = screenOf(pip.x, pip.y);
+      if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
+      drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
+    }
+    c.restore();
+  }
+  function drawHero(c, x, y, now) {
+    if (performance.now() < inv && Math.floor(now / 90) % 2) return; // blink after a hit
+    const walk = player.moving && Math.floor(now / 75) % 2;
+    const d = player.dir;
+    const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
+    WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
+  }
+
+  /* ---------------- hooks for the automatic play-tests ---------------- */
+  WW.dbg = {
+    teleport(x, y) { player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; },
+    face(d) { player.dir = d; },
+    act() { actFacing(); },
+    bumpInto(x, y) { // stand next to (x,y) on a walkable tile and interact
+      for (const [d, [dx, dy]] of Object.entries(DIRS)) {
+        const sx = x - dx, sy = y - dy;
+        if (walkable(sx, sy)) { this.teleport(sx, sy); player.dir = d; actFacing(); return true; }
+      }
+      return false;
+    },
+    collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
+    get ents() { return ents; }, get player() { return player; },
+    noSmudges() { G.noSmudges = true; }
+  };
+})();
+
+</script>
+<script>
+/* WORLDWALKER · Episode 5.1 · Land, Water and Oil (WG.8)
+   Saudi Arabia and Türkiye. The Tigris and Euphrates start in Türkiye's mountains (top-left), pass a dam,
+   and flow down through farmland to the Persian Gulf. Desert, an oasis and oil pumps fill the south.
+   The top-right screen is the Temple of the Twin Rivers, where the dam puzzle waits. See docs/EPISODE-FORMAT.md */
+window.EPISODE = {
+  id: '5.1',
+  realm: 5,
+  sol: 'WG.8',
+  title: { en: 'Land, Water and Oil', es: 'Tierra, agua y petróleo', fa: 'زمین، آب و نفت' },
+  place: { en: 'Temple of the Twin Rivers', es: 'Templo de los Ríos Gemelos', fa: 'معبد دو دریا' },
+  intro: [
+    { en: 'Pip: "The Smudge dried up the twin rivers! Talk to the engineer in Türkiye\'s mountains, the farmer in Iraq and the water engineer from Saudi Arabia. Then solve the puzzle in the river temple."',
+      es: 'Pip: "¡El Borrón secó los ríos gemelos! Habla con la ingeniera en las montañas de Turquía, el agricultor en Irak y la ingeniera de agua de Arabia Saudita. Luego resuelve el acertijo en el templo del río."',
+      fa: 'پیپ: «لکه دو دریا را خشک کرد! با انجنیر در کوه‌های ترکیه، دهقان در عراق و انجنیر آب از عربستان سعودی گپ بزن. بعد معمای معبد دریا را حل کن.»' }
+  ],
+
+  /* 32 x 22 tiles = 2 x 2 screens. Top-left: Türkiye's mountains, river springs and a dam. Top-right: the temple (door on its west wall).
+     Bottom: the rivers cross farmland to the Gulf; desert, an oasis and oil pumps in the south. */
+  map: [
+    'MAAAAAAAAAAAAAAADDDDDDD~~DDDDDDD',
+    'MAAA~nMAAAA~MAAAD2222f~~~~fffffD',
+    'MMMM~MMnnMM~MMMMD2222~~~~~fffffD',
+    'MMM.~.x....~..MMD2222ffWWffffffD',
+    'M..~~~.....~.M..Dffffff~~fffoooD',
+    'M..~~~.P...~....dffffff~~W~~o1oD',
+    'M..WWW.....~....Dffffff~~fffoooD',
+    'M...~......b....Dffffff~~ffffffD',
+    'M.P.~......~.P..Dffffff~~ffffffD',
+    'M...b....P.~....Do1ooo1oooo1oooD',
+    'M...~......~....DDDDDDDDDDDDDDDD',
+    'r...~.www..~sssssssssssssss~~~~r',
+    'r...~.www..~............sss~===r',
+    'r...~......~~~~~B~~~~~~~~ss~===r',
+    'r...~.wwww.........1o1o.~ss~===r',
+    'r...~.wwww...wwwww......~~~~===r',
+    'rsss~........wwwww......~ss~===r',
+    'rsss~~~~B~~~~~~~~~B~~~~~~ss~~~~r',
+    'ruupssssssussussssssIsIsssssIssr',
+    'rsp~pssusssussussIssssssssIssssr',
+    'rssOssusssssussusssssssIsssxsssr',
+    'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
+  ],
+  start: [8, 4],
+
+  words: {
+    upstream: { en: 'closer to where a river starts', es: 'más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },
+    downstream: { en: 'closer to where a river ends', es: 'más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' },
+    dam: { en: 'a wall across a river that holds water back', es: 'un muro que cruza un río y detiene el agua', fa: 'دیواری که دریا را بند می‌کند و آب را نگه می‌دارد' },
+    'fertile crescent': { en: 'a curved strip of good farmland between two rivers in Southwest Asia', es: 'una franja curva de buena tierra de cultivo entre dos ríos en el suroeste de Asia', fa: 'نوار خمیده‌ای از زمین خوب زراعتی میان دو دریا در جنوب غرب آسیا' },
+    'water scarcity': { en: 'not having enough fresh water for the people who need it', es: 'no tener suficiente agua dulce para la gente que la necesita', fa: 'کافی نبودن آب شیرین برای مردمی که به آن نیاز دارند' },
+    oasis: { en: 'a place in the desert with a natural spring, where plants can grow', es: 'un lugar del desierto con un manantial natural, donde crecen plantas', fa: 'جایی در بیابان با چشمهٔ طبیعی که گیاه در آن می‌روید' },
+    desalination: { en: 'turning seawater into fresh water by taking out the salt', es: 'convertir agua de mar en agua dulce quitándole la sal', fa: 'شیرین کردن آب بحر با گرفتن نمک آن' },
+    treaty: { en: 'a written agreement that countries sign and promise to follow', es: 'un acuerdo escrito que los países firman y prometen cumplir', fa: 'توافق نوشته‌شده‌ای که کشورها امضا می‌کنند و قول می‌دهند به آن عمل کنند' }
+  },
+
+  npcs: [
+    {
+      x: 9, y: 6,
+      name: { en: 'Elif', es: 'Elif', fa: 'الیف' },
+      role: { en: 'Dam engineer in Türkiye', es: 'Ingeniera de represas en Turquía', fa: 'انجنیر بند در ترکیه' },
+      look: { skin: 1, hair: '#3a2a1a', shirt: '#c0392b', pants: '#2c3e50' },
+      lines: [
+        { en: 'Merhaba! That means hello in Turkish. I am Elif, an engineer. Snow falls on these mountains in winter. In spring it melts and feeds two great rivers: the Tigris and the Euphrates.',
+          es: '¡Merhaba! Así se dice hola en turco. Soy Elif, ingeniera. En invierno cae nieve en estas montañas. En primavera se derrite y alimenta dos grandes ríos: el Tigris y el Éufrates.',
+          fa: 'مرحبا! این به زبان ترکی یعنی سلام. من الیف هستم، یک انجنیر. در زمستان روی این کوه‌ها برف می‌بارد. در بهار برف آب می‌شود و دو دریای بزرگ را پر می‌کند: دجله و فرات.',
+          easy: { en: 'Hi! I am Elif. Snow melts on these mountains and starts two rivers: the Tigris and the Euphrates.', es: '¡Hola! Soy Elif. La nieve se derrite en estas montañas y forma dos ríos: el Tigris y el Éufrates.', fa: 'سلام! من الیف هستم. برف روی این کوه‌ها آب می‌شود و دو دریا را شروع می‌کند: دجله و فرات.' } },
+        { en: 'Here we are [[upstream|upstream]], close to where the rivers start. The rivers flow south through Syria and Iraq. Places closer to where a river ends are [[downstream|downstream]].',
+          es: 'Aquí estamos [[upstream|río arriba]], cerca de donde nacen los ríos. Los ríos corren al sur por Siria e Irak. Los lugares más cerca de donde termina un río están [[downstream|río abajo]].',
+          fa: 'ما این‌جا در [[upstream|بالای دریا]] هستیم، نزدیک جایی که دریاها شروع می‌شوند. دریاها به طرف جنوب از سوریه و عراق می‌گذرند. جاهایی که به آخر دریا نزدیک‌تر هستند [[downstream|پایین دریا]] هستند.',
+          easy: { en: 'Near the start of a river is [[upstream|upstream]]. Near the end is [[downstream|downstream]].', es: 'Cerca del inicio de un río es [[upstream|río arriba]]. Cerca del final es [[downstream|río abajo]].', fa: 'نزدیک شروع دریا [[upstream|بالای دریا]] است. نزدیک آخر آن [[downstream|پایین دریا]] است.' } },
+        { en: 'Türkiye built big [[dam|dams]], like the Atatürk Dam on the Euphrates. A dam holds water back. It makes electricity and saves water for dry months. But it also changes how much water flows to the next country.',
+          es: 'Turquía construyó grandes [[dam|represas]], como la represa Atatürk en el Éufrates. Una represa detiene el agua. Produce electricidad y guarda agua para los meses secos. Pero también cambia cuánta agua llega al siguiente país.',
+          fa: 'ترکیه [[dam|بندهای]] بزرگ ساخت، مثل بند اتاترک روی دریای فرات. بند آب را نگه می‌دارد. برق تولید می‌کند و آب را برای ماه‌های خشک ذخیره می‌کند. اما این را هم تغییر می‌دهد که چقدر آب به کشور بعدی برسد.',
+          easy: { en: 'A [[dam|dam]] holds water and makes electricity. It also means less water goes downstream.', es: 'Una [[dam|represa]] guarda agua y produce electricidad. También hace que baje menos agua río abajo.', fa: '[[dam|بند]] آب را نگه می‌دارد و برق می‌سازد. این یعنی آب کمتری به پایین دریا می‌رود.' } }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'What does upstream mean?', es: '¿Qué significa río arriba?', fa: 'بالای دریا یعنی چه؟' },
+        choices: [
+          { ok: true, t: { en: 'Closer to where a river starts', es: 'Más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },
+            why: { en: 'Türkiye\'s mountains are upstream, where the Tigris and Euphrates begin.', es: 'Las montañas de Turquía están río arriba, donde nacen el Tigris y el Éufrates.', fa: 'کوه‌های ترکیه در بالای دریا هستند، جایی که دجله و فرات شروع می‌شوند.' } },
+          { t: { en: 'Closer to where a river ends', es: 'Más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' },
+            why: { en: 'That is downstream.', es: 'Eso es río abajo.', fa: 'این پایین دریا است.' } },
+          { t: { en: 'The deepest part of a river', es: 'La parte más profunda de un río', fa: 'عمیق‌ترین قسمت دریا' },
+            why: { en: 'Upstream is about where, not how deep.', es: 'Río arriba habla de dónde, no de qué tan profundo.', fa: 'بالای دریا دربارهٔ جای آن است، نه عمق آن.' } }
+        ]
+      }
+    },
+    {
+      x: 14, y: 14,
+      name: { en: 'Abbas', es: 'Abbas', fa: 'عباس' },
+      role: { en: 'Wheat and date farmer in Iraq', es: 'Agricultor de trigo y dátiles en Irak', fa: 'دهقان گندم و خرما در عراق' },
+      look: { skin: 2, hair: '#222222', shirt: '#e8e2d0', robe: true },
+      lines: [
+        { en: 'Salaam! I am Abbas. My family grows wheat and dates by the river in Iraq. The land between the Tigris and the Euphrates is part of the [[fertile crescent|Fertile Crescent]], a curved strip of good farmland.',
+          es: '¡Salam! Soy Abbas. Mi familia cultiva trigo y dátiles junto al río en Irak. La tierra entre el Tigris y el Éufrates es parte de la [[fertile crescent|Media Luna Fértil]], una franja curva de buena tierra de cultivo.',
+          fa: 'سلام! من عباس هستم. خانوادهٔ من کنار دریا در عراق گندم و خرما می‌کارد. زمین میان دجله و فرات بخشی از [[fertile crescent|هلال حاصلخیز]] است، یک نوار خمیده از زمین خوب زراعتی.',
+          easy: { en: 'I farm by the river in Iraq. This good farmland is called the [[fertile crescent|Fertile Crescent]].', es: 'Cultivo junto al río en Irak. Esta buena tierra se llama la [[fertile crescent|Media Luna Fértil]].', fa: 'من کنار دریا در عراق کشت می‌کنم. این زمین خوب [[fertile crescent|هلال حاصلخیز]] نام دارد.' } },
+        { en: 'Thousands of years ago, farmers here dug canals to bring river water to their fields. Some of the first cities and the first writing began here, in ancient Mesopotamia.',
+          es: 'Hace miles de años, los agricultores de aquí cavaron canales para llevar agua del río a sus campos. Algunas de las primeras ciudades y la primera escritura nacieron aquí, en la antigua Mesopotamia.',
+          fa: 'هزاران سال پیش، دهقانان این‌جا کانال کندند تا آب دریا را به کشتزارهای خود ببرند. بعضی از اولین شهرها و اولین نوشتن در همین‌جا، در بین‌النهرین کهن، شروع شد.',
+          easy: { en: 'Long ago, farmers here dug canals. Some of the first cities and writing started here.', es: 'Hace mucho, los agricultores de aquí cavaron canales. Aquí empezaron algunas de las primeras ciudades y la escritura.', fa: 'خیلی وقت پیش، دهقانان این‌جا کانال کندند. بعضی از اولین شهرها و نوشتن از این‌جا شروع شد.' } },
+        { en: 'We are far [[downstream|downstream]]. When dams upstream hold water back, less reaches our fields. Countries that share a river can sign a [[treaty|treaty]] to split the water, or they can end up arguing about it.',
+          es: 'Nosotros estamos muy [[downstream|río abajo]]. Cuando las represas de río arriba detienen el agua, llega menos a nuestros campos. Los países que comparten un río pueden firmar un [[treaty|tratado]] para repartir el agua, o pueden terminar peleando por ella.',
+          fa: 'ما خیلی [[downstream|پایین دریا]] هستیم. وقتی بندهای بالای دریا آب را نگه می‌دارند، آب کمتری به کشتزارهای ما می‌رسد. کشورهایی که یک دریا را شریک هستند می‌توانند یک [[treaty|معاهده]] امضا کنند تا آب را تقسیم کنند، یا ممکن است سر آن جنجال کنند.',
+          easy: { en: 'We are [[downstream|downstream]]. Dams upstream mean less water for us. A [[treaty|treaty]] can help share it.', es: 'Estamos [[downstream|río abajo]]. Las represas de arriba nos dejan menos agua. Un [[treaty|tratado]] puede ayudar a compartirla.', fa: 'ما [[downstream|پایین دریا]] هستیم. بندهای بالا یعنی آب کمتر برای ما. یک [[treaty|معاهده]] می‌تواند در تقسیم آن کمک کند.' } }
+      ],
+      ask: {
+        stat: 'hei',
+        q: { en: 'What would most likely happen to downstream farms if an upstream country built a big new dam?', es: '¿Qué pasaría más probablemente con las granjas de río abajo si un país de río arriba construyera una represa grande?', fa: 'اگر کشور بالای دریا یک بند بزرگ تازه بسازد، به احتمال زیاد چه بر سر کشتزارهای پایین دریا می‌آید؟' },
+        choices: [
+          { ok: true, t: { en: 'Less water would reach them', es: 'Les llegaría menos agua', fa: 'آب کمتری به آن‌ها می‌رسد' },
+            why: { en: 'The dam holds water back, so less flows down to the next country.', es: 'La represa detiene el agua, así que baja menos al siguiente país.', fa: 'بند آب را نگه می‌دارد، پس آب کمتری به کشور بعدی می‌رود.' } },
+          { t: { en: 'They would flood from extra water', es: 'Se inundarían con agua extra', fa: 'از آب اضافه سیلاب می‌شوند' },
+            why: { en: 'A dam holds water back. It does not send extra water down.', es: 'Una represa detiene el agua. No manda agua extra hacia abajo.', fa: 'بند آب را نگه می‌دارد. آب اضافه به پایین نمی‌فرستد.' } },
+          { t: { en: 'More rain would fall on them', es: 'Les caería más lluvia', fa: 'باران بیشتری بر آن‌ها می‌بارد' },
+            why: { en: 'A dam does not change the rain. It changes the river water.', es: 'Una represa no cambia la lluvia. Cambia el agua del río.', fa: 'بند باران را تغییر نمی‌دهد. آب دریا را تغییر می‌دهد.' } }
+        ]
+      }
+    },
+    {
+      x: 21, y: 19,
+      name: { en: 'Nourah', es: 'Nourah', fa: 'نوره' },
+      role: { en: 'Water engineer from Saudi Arabia', es: 'Ingeniera de agua de Arabia Saudita', fa: 'انجنیر آب از عربستان سعودی' },
+      look: { skin: 2, hair: '#1a1a1a', shirt: '#1f6f8b', robe: true },
+      lines: [
+        { en: 'Marhaba! That means hello in Arabic. I am Nourah, from Saudi Arabia. Much of my country is desert. The Rub\' al Khali, or Empty Quarter, is the largest sand desert on Earth.',
+          es: '¡Marhaba! Así se dice hola en árabe. Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto. El Rub al-Jali, o Cuarto Vacío, es el desierto de arena más grande de la Tierra.',
+          fa: 'مرحبا! این به زبان عربی یعنی سلام. من نوره هستم، از عربستان سعودی. بیشتر کشور من بیابان است. ربع‌الخالی، یعنی «ربع خالی»، بزرگ‌ترین بیابان ریگی روی زمین است.',
+          easy: { en: 'Hi! I am Nourah from Saudi Arabia. Much of my country is desert.', es: '¡Hola! Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto.', fa: 'سلام! من نوره از عربستان سعودی هستم. بیشتر کشور من بیابان است.' } },
+        { en: 'Saudi Arabia has no rivers that flow all year. That is [[water scarcity|water scarcity]]. Long ago, towns grew around an [[oasis|oasis]], a spring in the desert where palm trees grow.',
+          es: 'Arabia Saudita no tiene ríos que corran todo el año. Eso es [[water scarcity|escasez de agua]]. Hace mucho, los pueblos crecieron alrededor de un [[oasis|oasis]], un manantial en el desierto donde crecen palmeras.',
+          fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد. این [[water scarcity|کم‌آبی]] است. در گذشته، شهرک‌ها دور یک [[oasis|واحه]] ساخته می‌شدند، یعنی چشمه‌ای در بیابان که درخت خرما در آن می‌روید.',
+          easy: { en: 'There are no rivers that flow all year here. Towns grew around an [[oasis|oasis]].', es: 'Aquí no hay ríos que corran todo el año. Los pueblos crecieron alrededor de un [[oasis|oasis]].', fa: 'این‌جا دریایی نیست که تمام سال جاری باشد. شهرک‌ها دور [[oasis|واحه]] ساخته شدند.' } },
+        { en: 'Under the sand is oil. Oil money built roads, airports and big cities. I work at a plant that does [[desalination|desalination]]: it turns seawater into fresh water. Saudi Arabia makes more fresh water from the sea than any other country.',
+          es: 'Bajo la arena hay petróleo. El dinero del petróleo construyó carreteras, aeropuertos y ciudades grandes. Trabajo en una planta de [[desalination|desalinización]]: convierte agua de mar en agua dulce. Arabia Saudita hace más agua dulce del mar que cualquier otro país.',
+          fa: 'زیر ریگ نفت است. پول نفت سرک‌ها، میدان‌های هوایی و شهرهای بزرگ را ساخت. من در یک کارخانهٔ [[desalination|شیرین‌سازی آب]] کار می‌کنم: آب بحر را به آب شیرین تبدیل می‌کند. عربستان سعودی از هر کشور دیگر بیشتر از بحر آب شیرین می‌سازد.',
+          easy: { en: 'Oil money built cities. My plant makes fresh water from seawater. That is [[desalination|desalination]].', es: 'El dinero del petróleo construyó ciudades. Mi planta hace agua dulce del agua de mar. Eso es la [[desalination|desalinización]].', fa: 'پول نفت شهرها را ساخت. کارخانهٔ من از آب بحر آب شیرین می‌سازد. این [[desalination|شیرین‌سازی آب]] است.' } }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'Where does much of Saudi Arabia\'s fresh water come from?', es: '¿De dónde viene gran parte del agua dulce de Arabia Saudita?', fa: 'بیشتر آب شیرین عربستان سعودی از کجا می‌آید؟' },
+        choices: [
+          { ok: true, t: { en: 'Seawater turned into fresh water', es: 'Agua de mar convertida en agua dulce', fa: 'آب بحر که شیرین شده' },
+            why: { en: 'That is desalination. It costs a lot of energy, but it works in a dry land.', es: 'Eso es la desalinización. Usa mucha energía, pero funciona en una tierra seca.', fa: 'این شیرین‌سازی آب است. انرژی زیاد مصرف می‌کند، اما در زمین خشک کار می‌کند.' } },
+          { t: { en: 'Big rivers that flow all year', es: 'Ríos grandes que corren todo el año', fa: 'دریاهای بزرگی که تمام سال جاری هستند' },
+            why: { en: 'Saudi Arabia has no rivers that flow all year.', es: 'Arabia Saudita no tiene ríos que corran todo el año.', fa: 'عربستان سعودی هیچ دریای جاری تمام‌سال ندارد.' } },
+          { t: { en: 'Snow melting in its rainforests', es: 'Nieve que se derrite en sus selvas', fa: 'برف که در جنگل‌های بارانی آن آب می‌شود' },
+            why: { en: 'Saudi Arabia is mostly desert, with no rainforests.', es: 'Arabia Saudita es casi todo desierto, sin selvas.', fa: 'عربستان سعودی بیشتر بیابان است و جنگل بارانی ندارد.' } }
+        ]
+      }
+    }
+  ],
+
+  signs: [
+    { x: 6, y: 3, text: { en: 'TÜRKIYE · MOUNTAINS · The Tigris and the Euphrates start here. ↓ [[downstream|Downstream]]: Syria, then Iraq, then the Persian Gulf.',
+      es: 'TURQUÍA · MONTAÑAS · Aquí nacen el Tigris y el Éufrates. ↓ [[downstream|Río abajo]]: Siria, luego Irak, luego el golfo Pérsico.',
+      fa: 'ترکیه · کوه‌ها · دجله و فرات از این‌جا شروع می‌شوند. ↓ [[downstream|پایین دریا]]: سوریه، بعد عراق، بعد خلیج فارس.' } },
+    { x: 27, y: 20, text: { en: 'PERSIAN GULF · Many of Saudi Arabia\'s biggest oil fields sit near this coast. Ships carry the oil all over the world.',
+      es: 'GOLFO PÉRSICO · Muchos de los campos de petróleo más grandes de Arabia Saudita están cerca de esta costa. Los barcos llevan el petróleo a todo el mundo.',
+      fa: 'خلیج فارس · بسیاری از بزرگ‌ترین میدان‌های نفت عربستان سعودی نزدیک این ساحل هستند. کشتی‌ها نفت را به سراسر جهان می‌برند.' } }
+  ],
+
+  scraps: [[1, 4], [30, 1], [1, 20]],
+  smudges: [[19, 12], [12, 19]],
+
+  challenge: {
+    at: [20, 6],
+    type: 'combo',
+    stat: 'hei',
+    title: { en: 'Temple of the Twin Rivers', es: 'Templo de los Ríos Gemelos', fa: 'معبد دو دریا' },
+    intro: { en: 'The Euphrates starts in the mountains of Türkiye, then flows through Syria and Iraq. Whoever is [[upstream|upstream]] decides how much water goes down. Set the dam and the middle canal so all three farms get water.',
+      es: 'El Éufrates nace en las montañas de Turquía y luego pasa por Siria e Irak. Quien está [[upstream|río arriba]] decide cuánta agua baja. Ajusta la represa y el canal del medio para que las tres granjas reciban agua.',
+      fa: 'فرات از کوه‌های ترکیه شروع می‌شود، بعد از سوریه و عراق می‌گذرد. هر کس در [[upstream|بالای دریا]] باشد، تصمیم می‌گیرد چقدر آب به پایین برود. بند و کانال میانی را طوری تنظیم کن که هر سه کشتزار آب بگیرند.' },
+    switches: [
+      { name: { en: 'Upstream dam · Türkiye', es: 'Represa de río arriba · Turquía', fa: 'بند بالای دریا · ترکیه' }, icon: '🚧', start: 0,
+        states: [{ en: 'Closed', es: 'Cerrada', fa: 'بسته' }, { en: 'Half open', es: 'Medio abierta', fa: 'نیمه باز' }, { en: 'Fully open', es: 'Totalmente abierta', fa: 'کاملاً باز' }] },
+      { name: { en: 'Middle canal · Syria', es: 'Canal del medio · Siria', fa: 'کانال میانی · سوریه' }, icon: '🚪', start: 0,
+        states: [{ en: 'Closed', es: 'Cerrado', fa: 'بسته' }, { en: 'Open', es: 'Abierto', fa: 'باز' }] }
+    ],
+    results: {
+      '0,0': { ok: false, t: { en: 'The dam holds all the water back. Only the upstream farm in Türkiye is green.', es: 'La represa detiene toda el agua. Solo la granja de río arriba en Turquía está verde.', fa: 'بند همهٔ آب را نگه می‌دارد. فقط کشتزار بالای دریا در ترکیه سبز است.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: false, icon: '🏜️' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: false, icon: '🏜️' }] },
+      '0,1': { ok: false, t: { en: 'The canal is open, but the dam lets no water through. Syria and Iraq stay dry.', es: 'El canal está abierto, pero la represa no deja pasar agua. Siria e Irak siguen secos.', fa: 'کانال باز است، اما بند هیچ آب را نمی‌گذارد برود. سوریه و عراق خشک می‌مانند.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: false, icon: '🏜️' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: false, icon: '🏜️' }] },
+      '1,0': { ok: false, t: { en: 'Some water passes the dam and runs past the closed canal to Iraq. The middle farm in Syria stays dry.', es: 'Algo de agua pasa la represa y sigue de largo por el canal cerrado hasta Irak. La granja del medio en Siria sigue seca.', fa: 'کمی آب از بند می‌گذرد و از کنار کانال بسته تا عراق می‌رود. کشتزار میانی در سوریه خشک می‌ماند.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: false, icon: '🏜️' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: true, icon: '💧' }] },
+      '1,1': { ok: false, t: { en: 'Only half the water gets through. The middle farm in Syria takes it all, so the farm in Iraq stays dry.', es: 'Solo pasa la mitad del agua. La granja del medio en Siria la toma toda, así que la granja de Irak sigue seca.', fa: 'فقط نیمی از آب می‌گذرد. کشتزار میانی در سوریه همه را می‌گیرد، پس کشتزار عراق خشک می‌ماند.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: true, icon: '💧' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: false, icon: '🏜️' }] },
+      '2,0': { ok: false, t: { en: 'Plenty of water flows down, but the closed canal keeps it away from the middle farm in Syria.', es: 'Baja mucha agua, pero el canal cerrado no la deja llegar a la granja del medio en Siria.', fa: 'آب زیاد به پایین می‌رود، اما کانال بسته نمی‌گذارد به کشتزار میانی در سوریه برسد.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: false, icon: '🏜️' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: true, icon: '💧' }] },
+      '2,1': { ok: true, t: { en: 'The dam is fully open and the canal is open. All three farms get water! Sharing the river helps everyone.', es: 'La represa está totalmente abierta y el canal también. ¡Las tres granjas reciben agua! Compartir el río ayuda a todos.', fa: 'بند کاملاً باز است و کانال هم باز است. هر سه کشتزار آب می‌گیرند! شریک شدن دریا به همه کمک می‌کند.' },
+        show: [{ t: { en: 'Upstream · Türkiye', es: 'Río arriba · Turquía', fa: 'بالای دریا · ترکیه' }, ok: true, icon: '💧' }, { t: { en: 'Middle · Syria', es: 'Medio · Siria', fa: 'میانه · سوریه' }, ok: true, icon: '💧' }, { t: { en: 'Downstream · Iraq', es: 'Río abajo · Irak', fa: 'پایین دریا · عراق' }, ok: true, icon: '💧' }] }
+    },
+    otherwise: { ok: false, t: { en: 'Not every farm gets water yet. Try another setting.', es: 'Todavía no todas las granjas reciben agua. Prueba otra combinación.', fa: 'هنوز همهٔ کشتزارها آب نمی‌گیرند. یک تنظیم دیگر را امتحان کن.' } },
+    success: { en: 'Water reaches every farm! Choices made upstream shape life downstream.', es: '¡El agua llega a todas las granjas! Lo que se decide río arriba cambia la vida río abajo.', fa: 'آب به همهٔ کشتزارها می‌رسد! تصمیم‌های بالای دریا زندگی پایین دریا را شکل می‌دهند.' }
+  },
+
+  boss: {
+    at: [20, 15],
+    stat: 'reg',
+    need: 3,
+    name: { en: 'The Drought Smudge', es: 'El Borrón de la Sequía', fa: 'لکهٔ خشکسالی' },
+    appear: { en: 'The Drought Smudge is waiting in the farmland, where the two rivers flow toward the Gulf!', es: '¡El Borrón de la Sequía espera en los campos, donde los dos ríos corren hacia el golfo!', fa: 'لکهٔ خشکسالی در کشتزارها انتظار می‌کشد، جایی که دو دریا به طرف خلیج می‌روند!' },
+    taunt: { en: 'Sssss… I drank the rivers dry. Who needs water anyway?', es: 'Sssss… Me bebí los ríos hasta secarlos. ¿Quién necesita agua, de todos modos?', fa: 'سسسس… دریاها را نوشیدم تا خشک شدند. اصلاً کی به آب نیاز دارد؟' },
+    win: { en: 'Rain falls on the mountains and the rivers run again. Atlas page 5.1 floats down into your hands!', es: 'Llueve en las montañas y los ríos vuelven a correr. ¡La página 5.1 del atlas cae en tus manos!', fa: 'روی کوه‌ها باران می‌بارد و دریاها دوباره جاری می‌شوند. صفحهٔ ۵.۱ اطلس به دستت می‌افتد!' },
+    questions: [
+      { q: { en: 'Where do the Tigris and Euphrates rivers start?', es: '¿Dónde nacen los ríos Tigris y Éufrates?', fa: 'دریاهای دجله و فرات از کجا شروع می‌شوند؟' },
+        choices: [{ en: 'In the mountains of Türkiye', es: 'En las montañas de Turquía', fa: 'در کوه‌های ترکیه' }, { en: 'In the deserts of Saudi Arabia', es: 'En los desiertos de Arabia Saudita', fa: 'در بیابان‌های عربستان سعودی' }, { en: 'In the Persian Gulf', es: 'En el golfo Pérsico', fa: 'در خلیج فارس' }, { en: 'In the Nile delta', es: 'En el delta del Nilo', fa: 'در دلتای نیل' }], answer: 0,
+        why: { en: 'Snow melts in Türkiye\'s mountains. Then the rivers flow south through Syria and Iraq.', es: 'La nieve se derrite en las montañas de Turquía. Luego los ríos corren al sur por Siria e Irak.', fa: 'برف در کوه‌های ترکیه آب می‌شود. بعد دریاها به جنوب از سوریه و عراق می‌گذرند.' } },
+      { q: { en: 'What does downstream mean?', es: '¿Qué significa río abajo?', fa: 'پایین دریا یعنی چه؟' },
+        choices: [{ en: 'Closer to where a river ends', es: 'Más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' }, { en: 'Closer to where a river starts', es: 'Más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' }, { en: 'Under the riverbed', es: 'Debajo del fondo del río', fa: 'زیر کف دریا' }, { en: 'Across the river', es: 'Al otro lado del río', fa: 'آن طرف دریا' }], answer: 0,
+        why: { en: 'Iraq is downstream on the Tigris and Euphrates, close to where they reach the Gulf.', es: 'Irak está río abajo en el Tigris y el Éufrates, cerca de donde llegan al golfo.', fa: 'عراق در پایین دجله و فرات است، نزدیک جایی که به خلیج می‌رسند.' } },
+      { q: { en: 'What is the Fertile Crescent?', es: '¿Qué es la Media Luna Fértil?', fa: 'هلال حاصلخیز چیست؟' },
+        choices: [{ en: 'A curved strip of good farmland between two rivers', es: 'Una franja curva de buena tierra de cultivo entre dos ríos', fa: 'نوار خمیده‌ای از زمین خوب زراعتی میان دو دریا' }, { en: 'A desert shaped like the moon', es: 'Un desierto con forma de luna', fa: 'بیابانی به شکل مهتاب' }, { en: 'A chain of snowy mountains', es: 'Una cadena de montañas con nieve', fa: 'یک سلسلهٔ کوه‌های برفی' }, { en: 'An oil field near the sea', es: 'Un campo de petróleo cerca del mar', fa: 'یک میدان نفت نزدیک بحر' }], answer: 0,
+        why: { en: 'Rich soil and river water let early farmers grow food between the Tigris and Euphrates.', es: 'La tierra rica y el agua del río dejaron que los primeros agricultores cultivaran entre el Tigris y el Éufrates.', fa: 'خاک خوب و آب دریا به دهقانان اولیه اجازه داد میان دجله و فرات غذا بکارند.' } },
+      { q: { en: 'Why did cities in this dry region grow up along rivers?', es: '¿Por qué las ciudades de esta región seca crecieron junto a los ríos?', fa: 'چرا شهرهای این منطقهٔ خشک کنار دریاها بزرگ شدند؟' },
+        choices: [{ en: 'A river was the only steady water supply', es: 'Un río era la única fuente de agua segura', fa: 'دریا تنها منبع همیشگی آب بود' }, { en: 'Rivers kept the cities cool in winter', es: 'Los ríos mantenían frescas las ciudades en invierno', fa: 'دریاها شهرها را در زمستان خنک نگه می‌داشتند' }, { en: 'Rivers marked the borders of countries', es: 'Los ríos marcaban las fronteras de los países', fa: 'دریاها سرحد کشورها را نشان می‌دادند' }, { en: 'Oil is always found next to rivers', es: 'El petróleo siempre está junto a los ríos', fa: 'نفت همیشه کنار دریا پیدا می‌شود' }], answer: 0,
+        why: { en: 'In a dry land, the green land follows the water.', es: 'En una tierra seca, la tierra verde sigue al agua.', fa: 'در زمین خشک، زمین سبز دنبال آب می‌رود.' } },
+      { q: { en: 'What is desalination?', es: '¿Qué es la desalinización?', fa: 'شیرین‌سازی آب چیست؟' },
+        choices: [{ en: 'Turning seawater into fresh water', es: 'Convertir agua de mar en agua dulce', fa: 'تبدیل آب بحر به آب شیرین' }, { en: 'Pumping oil out of the ground', es: 'Sacar petróleo de la tierra', fa: 'کشیدن نفت از زیر زمین' }, { en: 'Building a dam across a river', es: 'Construir una represa en un río', fa: 'ساختن بند روی دریا' }, { en: 'Adding salt to food', es: 'Echarle sal a la comida', fa: 'نمک زدن به غذا' }], answer: 0,
+        why: { en: 'Desalination takes the salt out of seawater. It costs a lot of energy.', es: 'La desalinización le quita la sal al agua de mar. Usa mucha energía.', fa: 'شیرین‌سازی نمک را از آب بحر می‌گیرد. انرژی زیاد مصرف می‌کند.' } },
+      { q: { en: 'What is the largest sand desert on Earth?', es: '¿Cuál es el desierto de arena más grande de la Tierra?', fa: 'بزرگ‌ترین بیابان ریگی روی زمین کدام است؟' },
+        choices: [{ en: 'The Rub\' al Khali (Empty Quarter)', es: 'El Rub al-Jali (Cuarto Vacío)', fa: 'ربع‌الخالی (ربع خالی)' }, { en: 'The Gobi Desert', es: 'El desierto de Gobi', fa: 'بیابان گوبی' }, { en: 'The Kalahari Desert', es: 'El desierto de Kalahari', fa: 'بیابان کالاهاری' }, { en: 'The Mojave Desert', es: 'El desierto de Mojave', fa: 'بیابان موهاوی' }], answer: 0,
+        why: { en: 'The Rub\' al Khali, on the Arabian Peninsula, is the largest sand desert on Earth.', es: 'El Rub al-Jali, en la península arábiga, es el desierto de arena más grande de la Tierra.', fa: 'ربع‌الخالی، در شبه‌جزیرهٔ عربستان، بزرگ‌ترین بیابان ریگی روی زمین است.' } },
+      { q: { en: 'Two countries share one river. What can they sign to share the water fairly?', es: 'Dos países comparten un río. ¿Qué pueden firmar para repartir el agua de forma justa?', fa: 'دو کشور یک دریا را شریک هستند. برای تقسیم عادلانهٔ آب چه چیزی می‌توانند امضا کنند؟' },
+        choices: [{ en: 'A treaty', es: 'Un tratado', fa: 'یک معاهده' }, { en: 'A map key', es: 'Una leyenda de mapa', fa: 'راهنمای نقشه' }, { en: 'A weather report', es: 'Un reporte del clima', fa: 'گزارش هوا' }, { en: 'A train ticket', es: 'Un boleto de tren', fa: 'تکت قطار' }], answer: 0,
+        why: { en: 'In a treaty, each country signs and promises to follow the same rules.', es: 'En un tratado, cada país firma y promete seguir las mismas reglas.', fa: 'در معاهده، هر کشور امضا می‌کند و قول می‌دهد از یک قاعده پیروی کند.' } },
+      { q: { en: 'What paid for many new roads, airports and cities in Saudi Arabia?', es: '¿Qué pagó muchas carreteras, aeropuertos y ciudades nuevas en Arabia Saudita?', fa: 'پول بسیاری از سرک‌ها، میدان‌های هوایی و شهرهای تازه در عربستان سعودی از کجا آمد؟' },
+        choices: [{ en: 'Money from oil', es: 'El dinero del petróleo', fa: 'پول نفت' }, { en: 'Money from cocoa', es: 'El dinero del cacao', fa: 'پول کاکائو' }, { en: 'Money from rice farms', es: 'El dinero de los arrozales', fa: 'پول کشتزارهای شالی' }, { en: 'Money from snow', es: 'El dinero de la nieve', fa: 'پول برف' }], answer: 0,
+        why: { en: 'Oil under the sand brought money that built roads, airports and modern cities.', es: 'El petróleo bajo la arena trajo dinero que construyó carreteras, aeropuertos y ciudades modernas.', fa: 'نفت زیر ریگ پولی آورد که سرک‌ها، میدان‌های هوایی و شهرهای نو را ساخت.' } }
+    ]
+  },
+
+  learned: [
+    { en: 'The Tigris and Euphrates start in Türkiye\'s mountains and flow [[downstream|downstream]] through Syria and Iraq. The land between them is part of the [[fertile crescent|Fertile Crescent]].', es: 'El Tigris y el Éufrates nacen en las montañas de Turquía y corren [[downstream|río abajo]] por Siria e Irak. La tierra entre ellos es parte de la [[fertile crescent|Media Luna Fértil]].', fa: 'دجله و فرات از کوه‌های ترکیه شروع می‌شوند و به [[downstream|پایین دریا]] از سوریه و عراق می‌گذرند. زمین میان آن‌ها بخشی از [[fertile crescent|هلال حاصلخیز]] است.' },
+    { en: 'A [[dam|dam]] [[upstream|upstream]] decides how much water reaches farms downstream. A [[treaty|treaty]] can help countries share a river.', es: 'Una [[dam|represa]] [[upstream|río arriba]] decide cuánta agua llega a las granjas de río abajo. Un [[treaty|tratado]] puede ayudar a los países a compartir un río.', fa: 'یک [[dam|بند]] در [[upstream|بالای دریا]] تصمیم می‌گیرد چقدر آب به کشتزارهای پایین برسد. یک [[treaty|معاهده]] می‌تواند به کشورها در شریک شدن دریا کمک کند.' },
+    { en: 'Saudi Arabia has huge deserts, oil and [[water scarcity|water scarcity]]. It uses [[desalination|desalination]] to make fresh water from the sea.', es: 'Arabia Saudita tiene desiertos enormes, petróleo y [[water scarcity|escasez de agua]]. Usa la [[desalination|desalinización]] para hacer agua dulce del mar.', fa: 'عربستان سعودی بیابان‌های بزرگ، نفت و [[water scarcity|کم‌آبی]] دارد. با [[desalination|شیرین‌سازی آب]] از آب بحر آب شیرین می‌سازد.' }
+  ],
+  reflect: {
+    q: { en: 'Where does the water in your home come from? What would change in your day if there were much less of it?', es: '¿De dónde viene el agua de tu casa? ¿Qué cambiaría en tu día si hubiera mucha menos?', fa: 'آب خانهٔ تو از کجا می‌آید؟ اگر آب خیلی کمتر باشد، در روز تو چه تغییر می‌کند؟' },
+    starter: { en: 'I think the water in my home comes from', es: 'Creo que el agua de mi casa viene de', fa: 'فکر می‌کنم آب خانهٔ من از' }
+  }
+};
+
+</script>
+<script>WW.start(window.EPISODE);</script>
+</body>
+</html>
