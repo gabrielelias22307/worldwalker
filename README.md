@@ -13,6 +13,7 @@ The Smudge tore the Great Atlas into 24 pages. In each episode the student walks
 | [`TEACHER-GUIDE.md`](TEACHER-GUIDE.md) | How to put episodes in Canvas, what you get back, the Passport Code, turning on the Google Sheet, the teacher code |
 | [`PLAN.md`](PLAN.md) | The design plan the game was built from |
 | `game/index.html` | The world map: progress, Passport Code, every episode |
+| `game/teacher.html` | Teacher console: every episode's map, talks, answer keys, and jump-to-any-part previews |
 | `game/ep-1-1.html` … `ep-8-3.html` | The 24 episodes (GitHub Pages versions) |
 | `game/episodes/` | One data file per episode: map, people, words in 3 languages, challenge, questions |
 | `game/engine/` | The game engine (drawing, walking, talks, challenges, boss trial, saving) |
@@ -45,6 +46,7 @@ node tools/build.js          # builds the Pages files, the Canvas files and the 
 node tests/play.js           # plays all 24 episodes start to finish in a real browser
 node tests/walk.js           # real keyboard walking, screen scrolling, Smudge hits, phone arrows
 node tests/maps.js           # draws every whole map to shots/maps/
+node tests/teacher.js        # the teacher console, its answer keys and the jump-to-part previews
 ```
 
 All characters and tiles are drawn in code; the game uses no picture or sound files.

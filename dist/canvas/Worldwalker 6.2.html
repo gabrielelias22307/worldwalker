@@ -26,6 +26,7 @@ button{font-family:inherit}
 .ww-bar button{font-size:13px;padding:6px 9px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
 .ww-bar .langs button.on{background:var(--gold);color:var(--ink);font-weight:700}
 .ww-bar .langs,.ww-bar .tools{display:flex;gap:5px;flex-wrap:wrap}
+.ww-preview{font-size:12px;font-weight:700;padding:5px 8px;background:var(--teal);color:#fff;border:2px solid #000;border-radius:4px;text-decoration:none}
 
 /* HUD */
 .hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#0b0a14;padding:7px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
@@ -1951,6 +1952,10 @@ window.WW_CONFIG.MODE = 'canvas';
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
     WW.ep = ep;
+    // teacher console: ep-X-Y.html?teacher=start|stone|boss|finish opens a preview that saves nothing
+    const jump = (new URLSearchParams(location.search).get('teacher') || '').toLowerCase();
+    G.preview = WW.save.teacher && ['start', 'stone', 'boss', 'finish'].includes(jump) ? jump : '';
+    if (G.preview) { WW.store = () => true; WW.sheetOn = () => false; }
     ep.npcs = ep.npcs || []; ep.scraps = ep.scraps || []; ep.smudges = ep.smudges || []; ep.signs = ep.signs || [];
     ep.realm = ep.realm || +ep.id[0];
     map = ep.map; H = map.length; W = map[0].length;
@@ -1976,8 +1981,23 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.setLang(WW.lang);
     bindInput();
     requestAnimationFrame(frame);
+    if (G.preview) return previewJump(G.preview);
     WW.ui.start(() => WW.ui.intro(() => { $('ww-screen').focus(); }));
   };
+
+  function previewJump(where) {
+    const ep = WW.ep, r = WW.run;
+    const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
+    if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
+    $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
+    if (where === 'start') return WW.ui.intro(() => { $('ww-screen').focus(); });
+    ep.npcs.forEach(n => r.talked.add(n.id));
+    if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
+    r.challengeDone = true; G.onChallengeDone();
+    if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
+    ents.forEach(e => { if (e.kind === 'scrap') { e.gone = true; r.scraps.add(e.id); } if (e.kind === 'boss') e.gone = true; });
+    finishEpisode();
+  }
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;

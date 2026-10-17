@@ -93,6 +93,10 @@
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
     WW.ep = ep;
+    // teacher console: ep-X-Y.html?teacher=start|stone|boss|finish opens a preview that saves nothing
+    const jump = (new URLSearchParams(location.search).get('teacher') || '').toLowerCase();
+    G.preview = WW.save.teacher && ['start', 'stone', 'boss', 'finish'].includes(jump) ? jump : '';
+    if (G.preview) { WW.store = () => true; WW.sheetOn = () => false; }
     ep.npcs = ep.npcs || []; ep.scraps = ep.scraps || []; ep.smudges = ep.smudges || []; ep.signs = ep.signs || [];
     ep.realm = ep.realm || +ep.id[0];
     map = ep.map; H = map.length; W = map[0].length;
@@ -118,8 +122,23 @@
     WW.setLang(WW.lang);
     bindInput();
     requestAnimationFrame(frame);
+    if (G.preview) return previewJump(G.preview);
     WW.ui.start(() => WW.ui.intro(() => { $('ww-screen').focus(); }));
   };
+
+  function previewJump(where) {
+    const ep = WW.ep, r = WW.run;
+    const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
+    if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
+    $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
+    if (where === 'start') return WW.ui.intro(() => { $('ww-screen').focus(); });
+    ep.npcs.forEach(n => r.talked.add(n.id));
+    if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
+    r.challengeDone = true; G.onChallengeDone();
+    if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
+    ents.forEach(e => { if (e.kind === 'scrap') { e.gone = true; r.scraps.add(e.id); } if (e.kind === 'boss') e.gone = true; });
+    finishEpisode();
+  }
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;

@@ -83,6 +83,7 @@
     locked: { en: 'Finish the episode before it first — or open it from your Canvas module.', es: 'Primero termina el episodio anterior, o ábrelo desde tu módulo de Canvas.', fa: 'اول قسمت قبلی را تمام کن، یا آن را از ماژول کانواس باز کن.' },
     teacher: { en: 'For teachers', es: 'Para maestros', fa: 'برای معلمان' },
     teacherOk: { en: 'Every episode is open on this computer.', es: 'Todos los episodios están abiertos en esta computadora.', fa: 'همهٔ قسمت‌ها در این کمپیوتر باز است.' },
+    console: { en: 'Open the teacher console', es: 'Abrir la consola del maestro', fa: 'کنسول معلم را باز کن' },
     wrongCode: { en: 'That is not the teacher code.', es: 'Ese no es el código del maestro.', fa: 'این کد معلم نیست.' },
     open: { en: 'Open', es: 'Abrir', fa: 'باز کن' },
     soon: { en: 'coming soon', es: 'muy pronto', fa: 'به زودی' },
@@ -119,7 +120,7 @@
       <p class="muted">${esc(T('codeHelp'))}</p>
       <input id="codeIn" placeholder="WW-XXXXX-XXXXX-XXXXX" aria-label="${esc(T('haveCode'))}"><button class="btn" id="useCode">${esc(T('useCode'))}</button>`;
     if (msg) h += `<p class="msg ${bad ? 'bad' : ''}">${esc(msg)}</p>`;
-    h += `<details ${s.teacher ? 'open' : ''}><summary>${esc(HT('teacher'))}</summary>${s.teacher ? `<p class="msg">${esc(HT('teacherOk'))}</p>` : `<input id="tcode" placeholder="${esc(T('teacherCode'))}"><button class="btn ghost" id="tgo">${esc(HT('open'))}</button>`}</details>`;
+    h += `<details ${s.teacher ? 'open' : ''}><summary>${esc(HT('teacher'))}</summary>${s.teacher ? `<p class="msg">${esc(HT('teacherOk'))}</p><a class="btn" href="teacher.html">🎓 ${esc(HT('console'))}</a>` : `<input id="tcode" placeholder="${esc(T('teacherCode'))}"><button class="btn ghost" id="tgo">${esc(HT('open'))}</button>`}</details>`;
     me.innerHTML = h;
     const hc = document.getElementById('heroCv').getContext('2d'); hc.imageSmoothingEnabled = false; WW.sprite(hc, 'hero', 0, 0, { pal: WW.heroPal(), scale: 6 });
     document.getElementById('copy').onclick = () => { navigator.clipboard && navigator.clipboard.writeText(WW.passportCode()); msg = '✓'; bad = false; render(); };

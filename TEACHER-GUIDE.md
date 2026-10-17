@@ -48,6 +48,20 @@ Now each finished episode adds a row to **Log** (episode, stars, hearts lost, mi
 
 On the world map, open **For teachers** and type the teacher code (default `ATLAS`, change it in `game/config.js`). Every episode opens on that computer, which is handy for showing an episode on the board or for a student who joins late.
 
+## Teacher console
+
+Open `game/teacher.html` (on the world map: **For teachers → Open the teacher console**) and type the teacher code. For each of the 24 episodes it shows:
+
+- the **whole map** with the start, the numbered people, the compass stone, the Smudge and the scraps marked
+- every person's talk (with the "Make it easier" version) and their question, with the **right answer checked** and the reason for every choice
+- the **compass stone answer key**: which cards go in which group, the right order, which reasons fit which choice, which switch settings work, or the table and its questions
+- all 8 **Smudge trial questions** with the right answer checked
+- the finish screen: the 3 things learned, the reflection question and its sentence starter, plus the signs and the yellow words
+
+Jump buttons open the episode in a new tab **straight at the start, the compass stone, the Smudge trial or the finish screen**. These are previews: nothing is saved on that computer and nothing goes to the class Sheet. **Print answer key** prints the episode you are looking at. **Student link** copies the normal link to the episode. **Lock this computer** turns teacher mode off again (do this on a student's computer).
+
+The console is in English, Spanish and Dari. The teacher code only keeps students from wandering in by accident. It is not real security, because the answers are in the game files anyone can open.
+
 ## Changing words or questions
 
 Each episode is one file in `game/episodes/` (for example `ep-4-1.js`). Every sentence sits there in English, Spanish and Dari side by side. Edit the words, then run:

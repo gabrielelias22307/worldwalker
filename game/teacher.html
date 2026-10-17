@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Worldwalker · Teacher Console</title>
+<link rel="stylesheet" href="engine/style.css">
+<style>
+  .tc{max-width:1280px;margin:0 auto;padding:12px 14px 40px;color:var(--text)}
+  .tc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+  .tc-top .logo{font-family:var(--pix);color:var(--gold);font-size:clamp(14px,2.6vw,20px);text-decoration:none}
+  .tc-top .sub{font-family:var(--pix);font-size:9px;color:var(--muted)}
+  .tc-top .right{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+  .tc button,.tc .btn{font:inherit;font-size:14px;font-weight:700;padding:7px 11px;border:2px solid #000;border-radius:4px;cursor:pointer;background:var(--panel2);color:#fff;text-decoration:none;display:inline-block}
+  .tc button.on,.tc .btn.gold{background:var(--gold);color:var(--ink)}
+  .tc .btn.teal{background:var(--teal)}
+  .tbox{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:14px}
+  .muted{color:var(--muted);font-size:14px}
+  .msg{font-size:14px;color:#7cc451}.msg.bad{color:#ff8f7a}
+  .gate{max-width:420px;margin:40px auto}
+  .gate input{font:inherit;font-size:16px;padding:8px 10px;border:2px solid #000;border-radius:4px;width:100%;margin:8px 0}
+  .layout{display:grid;grid-template-columns:250px 1fr;gap:16px;align-items:start}
+  @media (max-width:860px){.layout{grid-template-columns:1fr}}
+  .side{position:sticky;top:10px;max-height:calc(100vh - 20px);overflow:auto}
+  @media (max-width:860px){.side{position:static;max-height:none}}
+  .realm{margin-bottom:10px}
+  .realm h3{font-size:13px;margin:0 0 5px;padding:4px 8px;border-radius:4px;color:#fff}
+  .realm .eps{display:grid;gap:4px}
+  .ep{display:grid;grid-template-columns:40px 1fr;gap:6px;align-items:center;text-align:start;font-weight:400!important;font-size:13.5px!important;padding:6px 8px!important;background:#29264a!important;line-height:1.25}
+  .ep .id{font-family:var(--pix);font-size:9px;color:var(--gold)}
+  .ep.sel{background:#4a3d12!important;border-color:var(--gold)!important}
+  @media (max-width:860px){.realm .eps{grid-template-columns:repeat(auto-fill,minmax(200px,1fr))}}
+  h1.et{font-size:clamp(20px,3vw,28px);margin:0}
+  .kicker{font-family:var(--pix);font-size:10px;color:var(--gold);line-height:1.6}
+  .chips{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+  .chip{font-size:13px;background:#0b0a14;border:1px solid var(--line);border-radius:12px;padding:3px 10px}
+  .jump{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 4px}
+  .mapwrap{margin:12px 0;overflow:auto;border:3px solid #000;border-radius:6px;background:#000}
+  #map{display:block;width:100%;height:auto;image-rendering:pixelated}
+  .legend{display:flex;gap:12px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+  .legend b{display:inline-block;min-width:18px;text-align:center;border-radius:9px;color:#000;font-size:11px;padding:1px 4px;margin-inline-end:3px}
+  section.part{margin-top:18px}
+  section.part>h2{font-family:var(--pix);font-size:12px;color:var(--gold);margin:0 0 10px;line-height:1.6}
+  .say{background:var(--paper);color:var(--ink);border-radius:6px;padding:10px 12px;margin:6px 0;font-size:15px;line-height:1.5}
+  .say .easy{display:block;margin-top:6px;font-size:13.5px;color:#5a5670}
+  .word{background:#ffe9a6;border-bottom:2px solid var(--gold);padding:0 2px;border-radius:2px}
+  .people{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(330px,1fr))}
+  @media (max-width:420px){.people{grid-template-columns:1fr}}
+  .person h3{margin:0 0 2px;font-size:17px;display:flex;gap:8px;align-items:center}
+  .num{display:inline-grid;place-items:center;width:24px;height:24px;border-radius:12px;background:var(--gold);color:var(--ink);font-size:13px;font-weight:700;flex:none}
+  .q{font-weight:700;margin:10px 0 6px}
+  ul.ans{list-style:none;padding:0;margin:0;display:grid;gap:5px}
+  ul.ans li{padding:6px 9px;border-radius:5px;background:#29264a;font-size:14.5px;line-height:1.4}
+  ul.ans li.ok{background:#1f3d2a;outline:2px solid #7cc451;color:#e4f9d8;font-weight:700}
+  ul.ans li .why{display:block;font-size:13px;color:var(--muted);margin-top:2px}
+  ul.ans li.ok::before{content:'✔ ';color:#7cc451;font-weight:700}
+  table.k{border-collapse:collapse;width:100%;font-size:14.5px;margin:6px 0}
+  table.k th,table.k td{border:1px solid var(--line);padding:6px 8px;text-align:start;vertical-align:top}
+  table.k th{background:#29264a}
+  .tag{font-size:12px;font-weight:700;border-radius:4px;padding:1px 6px;background:#29264a;white-space:nowrap}
+  .tag.ok{background:#1f3d2a;color:#9be07a}.tag.no{background:#4a1f1f;color:#ff9a8a}
+  ol.order li{margin:4px 0}
+  .bossq{margin-bottom:12px}
+  .words{display:grid;gap:6px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));font-size:14px}
+  .words div{background:#29264a;border-radius:5px;padding:6px 9px}
+  [dir=rtl] .say,[dir=rtl] body{font-family:var(--read)}
+  @media print{
+    body{background:#fff;color:#000}
+    .tc{color:#000;max-width:none;padding:0}
+    .tc-top .right,.side,.jump,.noprint{display:none!important}
+    .layout{display:block}
+    .tbox{background:#fff;border:1px solid #999}
+    .muted,ul.ans li .why{color:#333}
+    .chip{background:#fff}
+    ul.ans li,table.k th,.words div{background:#fff;border:1px solid #ccc}
+    ul.ans li.ok{background:#e6f5df;outline:2px solid #3a8a2a;color:#000}
+    .kicker,section.part>h2{color:#7a5a00}
+    .person,.bossq{break-inside:avoid}
+  }
+</style>
+</head>
+<body>
+<div class="tc" id="tc">
+  <div class="tc-top">
+    <a class="logo" href="index.html">WORLDWALKER</a><span class="sub">TEACHER CONSOLE</span>
+    <span class="right" id="topRight"></span>
+  </div>
+  <div id="body"></div>
+</div>
+<script src="config.js"></script>
+<script src="engine/art.js"></script>
+<script src="engine/art2.js"></script>
+<script src="engine/save.js"></script>
+<script src="episodes/catalog.js"></script>
+<script>
+(function () {
+  const L = t => WW.L(t);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const rich = t => esc(L(t)).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '<span class="word" title="$1">$2</span>').replace(/\[\[([^\]]+)\]\]/g, '<span class="word">$1</span>');
+  const H = {
+    gate: { en: 'Type the teacher code to open the console.', es: 'Escribe el código del maestro para abrir la consola.', fa: 'کد معلم را بنویس تا کنسول باز شود.' },
+    wrong: { en: 'That is not the teacher code.', es: 'Ese no es el código del maestro.', fa: 'این کد معلم نیست.' },
+    open: { en: 'Open', es: 'Abrir', fa: 'باز کن' },
+    map: { en: 'World map', es: 'Mapa del mundo', fa: 'نقشهٔ جهان' },
+    print: { en: 'Print answer key', es: 'Imprimir respuestas', fa: 'چاپ جواب‌ها' },
+    lock: { en: 'Lock this computer', es: 'Bloquear esta computadora', fa: 'این کمپیوتر را قفل کن' },
+    episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
+    jumpNote: { en: 'Each button opens the episode in a new tab at that part. It is a preview: nothing is saved on this computer and nothing goes to the class sheet.', es: 'Cada botón abre el episodio en una pestaña nueva en esa parte. Es una vista previa: no se guarda nada en esta computadora ni en la hoja de la clase.', fa: 'هر دکمه قسمت را در یک تب تازه از همان بخش باز می‌کند. این فقط پیش‌نمایش است: چیزی در این کمپیوتر یا جدول صنف ذخیره نمی‌شود.' },
+    jStart: { en: '▶ Play from the start', es: '▶ Jugar desde el inicio', fa: '▶ از اول بازی کن' },
+    jStone: { en: '🧭 Compass stone', es: '🧭 Piedra brújula', fa: '🧭 سنگ قطب‌نما' },
+    jBoss: { en: '👾 Smudge trial', es: '👾 Prueba del Borrón', fa: '👾 آزمون لکه' },
+    jFinish: { en: '🏁 Finish screen', es: '🏁 Pantalla final', fa: '🏁 صفحهٔ پایان' },
+    jStudent: { en: 'Student link', es: 'Enlace para estudiantes', fa: 'لینک شاگرد' },
+    copied: { en: 'Link copied', es: 'Enlace copiado', fa: 'لینک کاپی شد' },
+    people: { en: 'People', es: 'Personas', fa: 'مردم' },
+    scraps: { en: 'atlas scraps', es: 'trozos del atlas', fa: 'تکه‌های اطلس' },
+    smudges: { en: 'wandering Smudges', es: 'Borrones sueltos', fa: 'لکه‌های سرگردان' },
+    questions: { en: 'trial questions', es: 'preguntas de la prueba', fa: 'سوال‌های آزمون' },
+    screens: { en: 'screens', es: 'pantallas', fa: 'صفحه' },
+    lgStart: { en: 'start', es: 'inicio', fa: 'شروع' },
+    lgPerson: { en: 'person', es: 'persona', fa: 'شخص' },
+    lgStone: { en: 'compass stone', es: 'piedra brújula', fa: 'سنگ قطب‌نما' },
+    lgBoss: { en: 'Smudge (after the stone)', es: 'Borrón (después de la piedra)', fa: 'لکه (بعد از سنگ)' },
+    lgScrap: { en: 'scrap', es: 'trozo', fa: 'تکه' },
+    pIntro: { en: 'Opening (Pip)', es: 'Inicio (Pip)', fa: 'آغاز (پیپ)' },
+    pPeople: { en: 'People and their questions', es: 'Personas y sus preguntas', fa: 'مردم و سوال‌هایشان' },
+    pStone: { en: 'Compass stone', es: 'Piedra brújula', fa: 'سنگ قطب‌نما' },
+    pBoss: { en: 'Smudge trial', es: 'Prueba del Borrón', fa: 'آزمون لکه' },
+    pFinish: { en: 'Finish screen', es: 'Pantalla final', fa: 'صفحهٔ پایان' },
+    pSigns: { en: 'Signs', es: 'Letreros', fa: 'تابلوها' },
+    pWords: { en: 'Tap-to-define words', es: 'Palabras para tocar', fa: 'کلمه‌های زرد' },
+    power: { en: 'Power', es: 'Poder', fa: 'قدرت' },
+    bossNeed: { en: 'right answers win', es: 'respuestas correctas ganan', fa: 'جواب درست برنده می‌شود' },
+    learned: { en: 'Three things learned', es: 'Tres cosas aprendidas', fa: 'سه چیز یاد گرفته شده' },
+    reflect: { en: 'Reflection question', es: 'Pregunta para reflexionar', fa: 'سوال فکر کردن' },
+    starter: { en: 'Sentence starter', es: 'Para empezar', fa: 'شروع جمله' },
+    group: { en: 'Group', es: 'Grupo', fa: 'گروه' },
+    cards: { en: 'Cards that go here', es: 'Tarjetas que van aquí', fa: 'کارت‌های این گروه' },
+    rightOrder: { en: 'Right order', es: 'Orden correcto', fa: 'ترتیب درست' },
+    ifWrong: { en: 'If the order is wrong', es: 'Si el orden está mal', fa: 'اگر ترتیب غلط باشد' },
+    options: { en: 'Choices', es: 'Opciones', fa: 'انتخاب‌ها' },
+    reasons: { en: 'Reasons', es: 'Razones', fa: 'دلیل‌ها' },
+    kind: { en: 'Kind', es: 'Tipo', fa: 'نوع' },
+    fits: { en: 'True for', es: 'Sirve para', fa: 'درست برای' },
+    fitsNone: { en: 'no choice (a trap)', es: 'ninguna (trampa)', fa: 'هیچ‌کدام (دام)' },
+    mismatch: { en: 'If a reason does not match', es: 'Si una razón no coincide', fa: 'اگر دلیل جور نیاید' },
+    switches: { en: 'Switches', es: 'Interruptores', fa: 'کلیدها' },
+    settings: { en: 'Settings and what happens', es: 'Ajustes y lo que pasa', fa: 'تنظیم‌ها و نتیجه' },
+    works: { en: 'works', es: 'funciona', fa: 'درست است' },
+    fails: { en: 'does not work', es: 'no funciona', fa: 'کار نمی‌کند' },
+    otherwise: { en: 'Any other setting', es: 'Cualquier otro ajuste', fa: 'هر تنظیم دیگر' },
+    starts: { en: 'starts at', es: 'empieza en', fa: 'شروع از' },
+    success: { en: 'When solved', es: 'Al resolver', fa: 'وقتی حل شود' },
+    loading: { en: 'Loading…', es: 'Cargando…', fa: 'در حال بارگذاری…' }
+  };
+  const HT = k => L(H[k]);
+  const TYPE = {
+    sort: { en: 'Sort the cards', es: 'Ordenar tarjetas', fa: 'دسته‌بندی کارت‌ها' },
+    order: { en: 'Put in order', es: 'Poner en orden', fa: 'به ترتیب گذاشتن' },
+    claim: { en: 'Choose and give reasons', es: 'Elegir y dar razones', fa: 'انتخاب و دلیل' },
+    combo: { en: 'Set the switches', es: 'Ajustar interruptores', fa: 'تنظیم کلیدها' },
+    table: { en: 'Read the table', es: 'Leer la tabla', fa: 'خواندن جدول' }
+  };
+  const REALM_COL = [null, '#c0392b', '#2f7fd1', '#8e5bd6', '#d98e2b', '#b8902a', '#3fa34d', '#b03a2e', '#2aa198'];
+  const cat = {}; (window.WW_CATALOG || []).forEach(e => (cat[e.id] = e));
+  const eps = {}; // id -> loaded episode data
+  let sel = (location.hash.match(/ep=(\d\.\d)/) || [])[1] || '1.1', msg = '', bad = false;
+  const $ = id => document.getElementById(id);
+  const theme = k => WW.THEMES.find(t => t.k === k);
+  const themeTag = k => { const t = theme(k); return t ? `<span class="tag">${t.icon} ${esc(L(t.full))}</span>` : ''; };
+
+  /* episode files set window.EPISODE; load one at a time and keep them */
+  function loadEp(id) {
+    if (eps[id]) return Promise.resolve(eps[id]);
+    return new Promise((res, rej) => {
+      const s = document.createElement('script');
+      s.src = 'episodes/ep-' + id.replace('.', '-') + '.js';
+      s.onload = () => { eps[id] = window.EPISODE; s.remove(); res(eps[id]); };
+      s.onerror = () => { s.remove(); rej(new Error('could not load ' + id)); };
+      document.head.appendChild(s);
+    });
+  }
+
+  function top() {
+    const tr = $('topRight');
+    tr.innerHTML = ['en', 'es', 'fa'].map(l => `<button data-l="${l}" class="${WW.lang === l ? 'on' : ''}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('') +
+      `<a class="btn" href="index.html">🗺️ ${esc(HT('map'))}</a>` +
+      (WW.save.teacher ? `<button id="print">🖨️ ${esc(HT('print'))}</button><button id="lock">🔒 ${esc(HT('lock'))}</button>` : '');
+    tr.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.l)));
+    if ($('print')) $('print').onclick = () => window.print();
+    if ($('lock')) $('lock').onclick = () => { WW.save.teacher = false; WW.store(); render(); };
+  }
+
+  function gate() {
+    $('body').innerHTML = `<div class="tbox gate"><p>${esc(HT('gate'))}</p><input id="tcode" autocomplete="off" aria-label="teacher code"><button class="btn gold" id="tgo">${esc(HT('open'))}</button>${msg ? `<p class="msg bad">${esc(msg)}</p>` : ''}</div>`;
+    const go = () => {
+      if ($('tcode').value.trim().toUpperCase() === String(WW.CONFIG.TEACHER_CODE).toUpperCase()) { WW.save.teacher = true; WW.store(); msg = ''; }
+      else msg = HT('wrong');
+      render();
+    };
+    $('tgo').onclick = go; $('tcode').onkeydown = e => { if (e.key === 'Enter') go(); }; $('tcode').focus();
+  }
+
+  function render() {
+    document.documentElement.dir = WW.dir();
+    top();
+    if (!WW.save.teacher) return gate();
+    let side = '';
+    for (let r = 1; r <= 8; r++) {
+      side += `<div class="realm"><h3 style="background:${REALM_COL[r]}">${r} · ${esc(L(WW.REALMS[r]))}</h3><div class="eps">`;
+      WW.EPISODES.filter(e => e.realm === r).forEach(e => {
+        const c = cat[e.id];
+        side += `<button class="ep ${e.id === sel ? 'sel' : ''}" data-ep="${e.id}"><span class="id">${e.id}</span><span>${c ? esc(L(c.title)) : '…'}</span></button>`;
+      });
+      side += '</div></div>';
+    }
+    $('body').innerHTML = `<div class="layout"><aside class="tbox side">${side}</aside><main class="tbox" id="main"><p class="muted">${esc(HT('loading'))}</p></main></div>`;
+    document.querySelectorAll('[data-ep]').forEach(b => (b.onclick = () => { sel = b.dataset.ep; history.replaceState(null, '', '#ep=' + sel); msg = ''; render(); }));
+    loadEp(sel).then(ep => { if (ep.id === sel) showEp(ep); }).catch(e => { $('main').innerHTML = `<p class="msg bad">${esc(e.message)}</p>`; });
+  }
+
+  function answers(choices, isOk, why) {
+    return `<ul class="ans">${choices.map((c, i) => `<li class="${isOk(c, i) ? 'ok' : ''}">${rich(c.t || c)}${why && why(c, i) ? `<span class="why">${rich(why(c, i))}</span>` : ''}</li>`).join('')}</ul>`;
+  }
+
+  function stoneKey(ch) {
+    let h = '';
+    if (ch.type === 'sort') {
+      h += `<table class="k"><tr><th>${esc(HT('group'))}</th><th>${esc(HT('cards'))}</th></tr>`;
+      ch.bins.forEach(b => {
+        h += `<tr><td>${b.icon || ''} <b>${rich(b.label)}</b>${b.sub ? `<div class="muted">${rich(b.sub)}</div>` : ''}</td><td><ul class="ans">${ch.items.filter(it => it.bin === b.id).map(it => `<li>${rich(it.t)}${it.why ? `<span class="why">${rich(it.why)}</span>` : ''}</li>`).join('')}</ul></td></tr>`;
+      });
+      h += '</table>';
+    } else if (ch.type === 'order') {
+      h += `<p class="q">${esc(HT('rightOrder'))}</p><ol class="order">${ch.items.map(it => `<li>${it.icon || ''} ${rich(it.t)}</li>`).join('')}</ol>`;
+      if (ch.why) h += `<p class="muted"><b>${esc(HT('ifWrong'))}:</b> ${rich(ch.why)}</p>`;
+    } else if (ch.type === 'claim') {
+      h += `<p class="q">${esc(HT('options'))}</p><ol>${ch.options.map(o => `<li>${o.icon || ''} <b>${rich(o.name)}</b>${o.desc ? ` — ${rich(o.desc)}` : ''}${o.result ? `<div class="muted">${rich(o.result)}</div>` : ''}</li>`).join('')}</ol>`;
+      const kindName = id => { const k = (ch.kinds || []).find(k => k.id === id); return k ? L(k.label) : id; };
+      h += `<p class="q">${esc(HT('reasons'))}</p><table class="k"><tr><th>${esc(HT('kind'))}</th><th>${esc(HT('reasons'))}</th><th>${esc(HT('fits'))}</th></tr>`;
+      ch.reasons.forEach(r => {
+        const fits = (r.fits || []).length ? r.fits.map(i => `<span class="tag ok">${i + 1}</span>`).join(' ') : `<span class="tag no">${esc(HT('fitsNone'))}</span>`;
+        h += `<tr><td>${esc(kindName(r.kind))}</td><td>${rich(r.t)}${r.why ? `<div class="muted">${rich(r.why)}</div>` : ''}</td><td>${fits}</td></tr>`;
+      });
+      h += '</table>';
+      if (ch.mismatch) h += `<p class="muted"><b>${esc(HT('mismatch'))}:</b> ${rich(ch.mismatch)}</p>`;
+    } else if (ch.type === 'combo') {
+      h += `<p class="q">${esc(HT('switches'))}</p><ul>${ch.switches.map(s => `<li>${s.icon || ''} <b>${rich(s.name)}</b>: ${s.states.map((st, i) => `${i === (s.start || 0) ? '<u>' : ''}${rich(st)}${i === (s.start || 0) ? '</u>' : ''}`).join(' / ')}</li>`).join('')}</ul>`;
+      h += `<p class="q">${esc(HT('settings'))}</p><table class="k"><tr>${ch.switches.map(s => `<th>${rich(s.name)}</th>`).join('')}<th></th></tr>`;
+      Object.entries(ch.results || {}).forEach(([key, res]) => {
+        const st = key.split(',').map(Number);
+        h += `<tr>${ch.switches.map((s, i) => `<td>${rich(s.states[st[i]])}</td>`).join('')}<td><span class="tag ${res.ok ? 'ok' : 'no'}">${esc(HT(res.ok ? 'works' : 'fails'))}</span> ${rich(res.t)}</td></tr>`;
+      });
+      if (ch.otherwise) h += `<tr><td colspan="${ch.switches.length}"><i>${esc(HT('otherwise'))}</i></td><td><span class="tag ${ch.otherwise.ok ? 'ok' : 'no'}">${esc(HT(ch.otherwise.ok ? 'works' : 'fails'))}</span> ${rich(ch.otherwise.t)}</td></tr>`;
+      h += '</table>';
+    } else if (ch.type === 'table') {
+      const t = ch.table;
+      h += `<table class="k"><tr>${t.head.map(c => `<th>${rich(c)}</th>`).join('')}</tr>${t.rows.map(r => `<tr>${r.map(c => `<td>${rich(c)}</td>`).join('')}</tr>`).join('')}</table>`;
+      if (t.note) h += `<p class="muted">${rich(t.note)}</p>`;
+      ch.questions.forEach((q, i) => {
+        h += `<div class="bossq"><p class="q">${i + 1}. ${rich(q.q)}</p>${answers(q.choices, (c, j) => j === q.answer)}${q.why ? `<p class="muted">${rich(q.why)}</p>` : ''}</div>`;
+      });
+    }
+    return h;
+  }
+
+  function drawMap(ep) {
+    const m = ep.map, cv = $('map'), S = 16;
+    cv.width = m[0].length * S; cv.height = m.length * S;
+    const x = cv.getContext('2d'); x.imageSmoothingEnabled = false;
+    WW.drawMap(x, m, { t: 0 });
+    (ep.scraps || []).forEach(s => WW.sprite(x, 'page', s[0] * S + 1, s[1] * S + 2, {}));
+    (ep.smudges || []).forEach(s => WW.sprite(x, 'smudge', s[0] * S, s[1] * S, {}));
+    WW.sprite(x, 'stone', ep.challenge.at[0] * S, ep.challenge.at[1] * S, { pal: { W: '#9aa3ad', G: '#5e636b', y: '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+    x.globalAlpha = .75; WW.sprite(x, 'smudge', ep.boss.at[0] * S - 8, ep.boss.at[1] * S - 16, { scale: 2 }); x.globalAlpha = 1;
+    WW.sprite(x, 'hero', ep.start[0] * S, ep.start[1] * S - 3, { pal: WW.heroPal() });
+    ep.npcs.forEach((n, i) => {
+      WW.sprite(x, 'npc', n.x * S, n.y * S - 2, { pal: WW.lookPal(n.look) });
+      x.fillStyle = '#f2c14e'; x.strokeStyle = '#000'; x.lineWidth = 1.5;
+      x.beginPath(); x.arc(n.x * S + 14, n.y * S - 4, 6, 0, 7); x.fill(); x.stroke();
+      x.fillStyle = '#22202e'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(i + 1), n.x * S + 14, n.y * S - 3.5);
+    });
+    x.strokeStyle = 'rgba(255,255,255,.4)'; x.setLineDash([4, 4]);
+    for (let i = 16; i < m[0].length; i += 16) { x.beginPath(); x.moveTo(i * S, 0); x.lineTo(i * S, cv.height); x.stroke(); }
+    for (let j = 11; j < m.length; j += 11) { x.beginPath(); x.moveTo(0, j * S); x.lineTo(cv.width, j * S); x.stroke(); }
+  }
+
+  function showEp(ep) {
+    const c = cat[ep.id] || ep, ch = ep.challenge, b = ep.boss, file = WW.epFile(ep.id);
+    const nScreens = (ep.map[0].length / 16) * (ep.map.length / 11);
+    let h = `<div class="kicker">${esc(HT('episode'))} ${ep.id} · ${esc(L(WW.REALMS[ep.realm || +ep.id[0]]))} · ${esc(ep.sol || '')}</div>
+      <h1 class="et">${esc(L(ep.title))}</h1><div class="muted">${esc(L(ep.place))}</div>
+      <div class="chips"><span class="chip">🗣️ ${ep.npcs.length} ${esc(HT('people'))}</span><span class="chip">🧭 ${esc(L(TYPE[ch.type]))}</span>
+      <span class="chip">👾 ${b.questions.length} ${esc(HT('questions'))} · ${b.need || 3} ${esc(HT('bossNeed'))}</span>
+      <span class="chip">📄 ${(ep.scraps || []).length} ${esc(HT('scraps'))}</span><span class="chip">☁️ ${(ep.smudges || []).length} ${esc(HT('smudges'))}</span>
+      <span class="chip">🗺️ ${nScreens} ${esc(HT('screens'))}</span></div>
+      <div class="jump">
+        <a class="btn gold" target="_blank" href="${file}?teacher=start">${esc(HT('jStart'))}</a>
+        <a class="btn teal" target="_blank" href="${file}?teacher=stone">${esc(HT('jStone'))}</a>
+        <a class="btn teal" target="_blank" href="${file}?teacher=boss">${esc(HT('jBoss'))}</a>
+        <a class="btn teal" target="_blank" href="${file}?teacher=finish">${esc(HT('jFinish'))}</a>
+        <button id="copyLink">🔗 ${esc(HT('jStudent'))}</button>
+      </div>
+      <p class="muted noprint">${esc(HT('jumpNote'))}${msg ? ` <span class="msg">${esc(msg)}</span>` : ''}</p>
+      <div class="mapwrap"><canvas id="map" aria-label="whole map"></canvas></div>
+      <div class="legend"><span>🧑 ${esc(HT('lgStart'))}</span><span><b style="background:#f2c14e">1</b>${esc(HT('lgPerson'))}</span><span>🗿 ${esc(HT('lgStone'))}</span><span>👾 ${esc(HT('lgBoss'))}</span><span>📄 ${esc(HT('lgScrap'))}</span></div>`;
+
+    h += `<section class="part"><h2>${esc(HT('pIntro'))}</h2>${(ep.intro || []).map(p => `<div class="say">${rich(p)}</div>`).join('')}</section>`;
+
+    h += `<section class="part"><h2>${esc(HT('pPeople'))}</h2><div class="people">`;
+    ep.npcs.forEach((n, i) => {
+      h += `<div class="tbox person"><h3><span class="num">${i + 1}</span>${esc(L(n.name))}</h3><div class="muted">${esc(L(n.role))} · ${themeTag(n.ask && n.ask.stat)}</div>
+        ${(n.lines || []).map(l => `<div class="say">${rich(l.t || l)}${l.easy ? `<span class="easy">↳ ${rich(l.easy)}</span>` : ''}</div>`).join('')}`;
+      if (n.ask) h += `<p class="q">${rich(n.ask.q)}</p>${answers(n.ask.choices, c => c.ok, c => c.why)}`;
+      h += '</div>';
+    });
+    h += '</div></section>';
+
+    h += `<section class="part"><h2>${esc(HT('pStone'))} · ${esc(L(TYPE[ch.type]))}</h2><p><b>${rich(ch.title)}</b> ${themeTag(ch.stat)}</p>${ch.intro ? `<div class="say">${rich(ch.intro)}</div>` : ''}${stoneKey(ch)}${ch.success ? `<p class="muted"><b>${esc(HT('success'))}:</b> ${rich(ch.success)}</p>` : ''}</section>`;
+
+    h += `<section class="part"><h2>${esc(HT('pBoss'))} · ${esc(L(b.name))}</h2><p class="muted">${b.need || 3} ${esc(HT('bossNeed'))} · ${themeTag(b.stat)}</p>${b.taunt ? `<div class="say">${rich(b.taunt)}</div>` : ''}`;
+    b.questions.forEach((q, i) => { h += `<div class="bossq"><p class="q">${i + 1}. ${rich(q.q)}</p>${answers(q.choices, (c, j) => j === q.answer)}${q.why ? `<p class="muted">${rich(q.why)}</p>` : ''}</div>`; });
+    h += '</section>';
+
+    h += `<section class="part"><h2>${esc(HT('pFinish'))}</h2><p class="q">${esc(HT('learned'))}</p><ul>${(ep.learned || []).map(l => `<li>${rich(l)}</li>`).join('')}</ul>
+      <p class="q">${esc(HT('reflect'))}</p><div class="say">${rich(ep.reflect.q)}</div><p class="muted"><b>${esc(HT('starter'))}:</b> ${rich(ep.reflect.starter)}…</p></section>`;
+
+    if ((ep.signs || []).length) h += `<section class="part"><h2>${esc(HT('pSigns'))}</h2>${ep.signs.map(s => `<div class="say">🪧 ${rich(s.text)}</div>`).join('')}</section>`;
+    const words = Object.entries(ep.words || {});
+    if (words.length) h += `<section class="part"><h2>${esc(HT('pWords'))}</h2><div class="words">${words.map(([k, v]) => `<div><b>${esc(k)}</b> — ${esc(L(v))}</div>`).join('')}</div></section>`;
+
+    $('main').innerHTML = h;
+    drawMap(ep);
+    $('copyLink').onclick = () => {
+      const url = new URL(file, location.href).href;
+      const done = () => { msg = HT('copied'); showEp(ep); };
+      if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(url).then(done, done); else { prompt(url, url); }
+    };
+    msg = '';
+  }
+
+  WW.onLang(render);
+  WW.setLang(WW.lang);
+})();
+</script>
+</body>
+</html>
