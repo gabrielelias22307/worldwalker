@@ -460,7 +460,7 @@
     const lines = [];
     lines.push(`WORLDWALKER — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
     lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
-    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
+    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
     lines.push('');
     lines.push('TALKS (question — my answer — tries)');
     r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
