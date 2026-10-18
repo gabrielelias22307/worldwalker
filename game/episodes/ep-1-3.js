@@ -158,6 +158,70 @@ window.EPISODE = {
       fa: 'بازار دره · هیچ جا همهٔ منابع لازم را ندارد. چیزی را که زیاد داریم می‌فروشیم و چیزی را که نداریم می‌خریم. این [[trade|تجارت]] است.' } }
   ],
 
+  /* the quest: Rahim the toolmaker (gold !) -> Ingrid the woodcutter -> trade with Rosa at the mine -> back to Rahim */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Iron for the Plows', es: 'Hierro para los arados', fa: 'آهن برای قلبه‌ها' },
+    giver: {
+      x: 16, y: 13,
+      name: { en: 'Rahim', es: 'Rahim', fa: 'رحیم' },
+      role: { en: 'Toolmaker', es: 'Fabricante de herramientas', fa: 'ابزارساز' },
+      look: { skin: 2, hair: '#1b1410', shirt: '#6b4f3a', pants: '#2e2e2e', style: 'short', hat: '#3a3a3a' },
+      lines: [
+        { en: 'Hello! I am the toolmaker. I make plows, saws and hammers. Tools are [[capital resource|capital resources]]. People make them to help make other things.',
+          es: '¡Hola! Soy el fabricante de herramientas. Hago arados, sierras y martillos. Las herramientas son [[capital resource|recursos de capital]]. La gente las hace para ayudar a hacer otras cosas.',
+          fa: 'سلام! من ابزارساز هستم. قلبه، اره و چکش می‌سازم. ابزارها [[capital resource|منابع سرمایه‌ای]] هستند. مردم آن‌ها را می‌سازند تا در ساختن چیزهای دیگر کمک کنند.' },
+        { en: 'But the Smudge rusted all my iron, and the farmers need new plows! Ingrid the woodcutter knows where to get iron. She is in the Timber Woods, in the north-west. Will you ask her?',
+          es: 'Pero el Borrón oxidó todo mi hierro, ¡y los agricultores necesitan arados nuevos! Ingrid, la leñadora, sabe dónde conseguir hierro. Está en el Bosque de Madera, en el noroeste. ¿Le preguntas?',
+          fa: 'اما لکه همهٔ آهنم را زنگ‌زده کرد، و دهقانان قلبهٔ نو لازم دارند! اینگرید چوب‌بُر می‌داند آهن را از کجا پیدا کنیم. او در جنگل چوب، در شمال غرب است. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Ingrid is in the Timber Woods, in the north-west. Look west of the woodcutter\'s cabin.',
+        es: 'Ingrid está en el Bosque de Madera, en el noroeste. Búscala al oeste de la cabaña del leñador.',
+        fa: 'اینگرید در جنگل چوب، در شمال غرب است. در غرب کلبهٔ چوب‌بُر بپال.' },
+      thanks: { en: 'Iron! Now I can make plows for the farmers. The mine had plenty of iron. The woods had plenty of trees. Each side gave what it had and got what it lacked. That is [[trade|trade]]!',
+        es: '¡Hierro! Ahora puedo hacer arados para los agricultores. La mina tenía mucho hierro. El bosque tenía muchos árboles. Cada lado dio lo que tenía y recibió lo que le faltaba. ¡Eso es el [[trade|comercio]]!',
+        fa: 'آهن! حالا می‌توانم برای دهقانان قلبه بسازم. معدن آهن زیاد داشت. جنگل درخت زیاد داشت. هر طرف چیزی را که داشت داد و چیزی را که نداشت گرفت. این [[trade|تجارت]] است!' }
+    },
+    contact: {
+      x: 5, y: 5,
+      name: { en: 'Ingrid', es: 'Ingrid', fa: 'اینگرید' },
+      role: { en: 'Woodcutter', es: 'Leñadora', fa: 'چوب‌بُر' },
+      look: { skin: 0, hair: '#c8a060', shirt: '#9c2f2f', pants: '#3a4a3a', style: 'long' },
+      lines: [
+        { en: 'Iron? Only the mine in the north-east mountains has it. Iron is a [[natural resource|natural resource]]. Resources are spread unevenly. My woods have lots of trees, but no iron at all.',
+          es: '¿Hierro? Solo la mina de las montañas del noreste lo tiene. El hierro es un [[natural resource|recurso natural]]. Los recursos están repartidos de forma desigual. Mi bosque tiene muchos árboles, pero nada de hierro.',
+          fa: 'آهن؟ فقط معدن کوه‌های شمال شرق آن را دارد. آهن یک [[natural resource|منبع طبیعی]] است. منابع نابرابر پخش شده‌اند. جنگل من درخت زیاد دارد، اما هیچ آهن ندارد.' },
+        { en: 'Go to Rosa, the trader by the railway at the mine. The miners have plenty of rock and iron. But almost no trees grow on the mountain. Offer Rosa what the miners lack!',
+          es: 'Ve con Rosa, la comerciante junto a la vía del tren en la mina. Los mineros tienen mucha roca y mucho hierro. Pero en la montaña casi no crecen árboles. ¡Ofrécele a Rosa lo que les falta a los mineros!',
+          fa: 'پیش روزا برو، تاجری که کنار خط آهن در معدن است. معدنچی‌ها سنگ و آهن زیاد دارند. اما در کوه تقریباً هیچ درختی نمی‌روید. به روزا چیزی را پیشنهاد کن که معدنچی‌ها ندارند!' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 26, y: 4,
+        name: { en: 'Rosa', es: 'Rosa', fa: 'روزا' },
+        role: { en: 'Mine trader', es: 'Comerciante de la mina', fa: 'تاجر معدن' },
+        look: { skin: 3, hair: '#3a2416', shirt: '#7a4fa3', pants: '#3a3a3a', style: 'bun' },
+        lines: [
+          { en: 'Welcome to the mine! We dig more iron than we can ever use. But the mountain cannot give us everything we need.',
+            es: '¡Bienvenido a la mina! Sacamos más hierro del que podemos usar. Pero la montaña no nos puede dar todo lo que necesitamos.',
+            fa: 'به معدن خوش آمدی! ما بیشتر از آنچه به کار ببریم آهن می‌کنیم. اما کوه نمی‌تواند هر چیزی را که لازم داریم به ما بدهد.' }
+        ]
+      },
+      q: { en: 'What will you offer Rosa for a load of iron?', es: '¿Qué le ofreces a Rosa a cambio de una carga de hierro?', fa: 'در بدل یک بار آهن، به روزا چه پیشنهاد می‌کنی؟' },
+      choices: [
+        { ok: true, t: { en: 'Logs from the Timber Woods', es: 'Troncos del Bosque de Madera', fa: 'کنده‌های چوب از جنگل چوب' },
+          why: { en: 'Good trade! The woods have plenty of trees, and the mountain has almost none. Miners use logs to hold up their tunnels. Each side gets what it lacks.', es: '¡Buen trato! El bosque tiene muchos árboles y la montaña casi ninguno. Los mineros usan troncos para sostener sus túneles. Cada lado recibe lo que le falta.', fa: 'معاملهٔ خوب! جنگل درخت زیاد دارد و کوه تقریباً هیچ ندارد. معدنچی‌ها با کنده‌های چوب سقف تونل‌ها را نگه می‌دارند. هر طرف چیزی را که ندارد می‌گیرد.' } },
+        { t: { en: 'A cart of iron ore', es: 'Una carreta de mineral de hierro', fa: 'یک گادی سنگ آهن' },
+          why: { en: 'The mine already has more iron than it can use. Nobody trades for something they already have plenty of.', es: 'La mina ya tiene más hierro del que puede usar. Nadie cambia algo por lo que ya tiene de sobra.', fa: 'معدن همین حالا بیشتر از ضرورتش آهن دارد. هیچ کس برای چیزی که زیاد دارد معامله نمی‌کند.' } },
+        { t: { en: 'A bag of mountain stones', es: 'Una bolsa de piedras de la montaña', fa: 'یک خلته سنگ کوه' },
+          why: { en: 'The mountain is made of rock! The miners have more than enough. Offer something the mountain does not have.', es: '¡La montaña está hecha de roca! Los mineros tienen de sobra. Ofrece algo que la montaña no tenga.', fa: 'کوه خودش از سنگ است! معدنچی‌ها بیشتر از کافی دارند. چیزی را پیشنهاد کن که کوه ندارد.' } }
+      ],
+      item: { icon: '🔩', name: { en: 'A load of iron', es: 'Una carga de hierro', fa: 'یک بار آهن' } }
+    }
+  },
+
   scraps: [[24, 1], [3, 3], [1, 20]],
   smudges: [[12, 8], [5, 18]],
 

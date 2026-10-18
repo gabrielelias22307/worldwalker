@@ -162,6 +162,70 @@ window.EPISODE = {
       fa: 'جنگل زمزمه از اینجا شروع می‌شود؟ بعضی می‌گویند از اولین درخت ناجو. بعضی می‌گویند از راه. بعضی می‌گویند از دریا. حق با کیست؟ هیچ کس نمی‌تواند ثابت کند.' } }
   ],
 
+  /* the quest: Ms. Lin the printer (gold !) -> Kwame the paper rider -> beat the Ink Thief in the Whispering Woods -> back to Ms. Lin */
+  quest: {
+    stat: 'reg',
+    title: { en: 'The Paper Route Map', es: 'El mapa de la ruta del periódico', fa: 'نقشهٔ مسیر روزنامه' },
+    giver: {
+      x: 27, y: 7,
+      name: { en: 'Ms. Lin', es: 'Sra. Lin', fa: 'خانم لین' },
+      role: { en: 'Newspaper printer', es: 'Impresora del periódico', fa: 'چاپ‌کنندهٔ روزنامه' },
+      look: { skin: 1, hair: '#2a2a2a', shirt: '#c0392b', pants: '#2f3b4a', style: 'bun' },
+      lines: [
+        { en: 'Help! I print the Hub Town newspaper. An Ink Thief just ran off with my paper route map!',
+          es: '¡Ayuda! Yo imprimo el periódico de Pueblo Centro. ¡Un Ladrón de Tinta acaba de llevarse mi mapa de reparto!',
+          fa: 'کمک! من روزنامهٔ شهرک مرکز را چاپ می‌کنم. یک دزد سیاهی همین حالا نقشهٔ رساندن روزنامه‌ام را برد!' },
+        { en: 'Kwame delivers my papers. He saw where the thief went. He is west of the river, just south of the wheat fields. Will you ask him?',
+          es: 'Kwame reparte mis periódicos. Él vio adónde fue el ladrón. Está al oeste del río, justo al sur de los campos de trigo. ¿Le preguntas?',
+          fa: 'کوامی روزنامه‌هایم را می‌رساند. او دید که دزد به کجا رفت. او در غرب دریا، درست جنوبِ زمین‌های گندم است. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Kwame is west of the river, just south of the wheat fields. Cross the bridge and walk west.',
+        es: 'Kwame está al oeste del río, justo al sur de los campos de trigo. Cruza el puente y camina hacia el oeste.',
+        fa: 'کوامی در غرب دریا، درست جنوبِ زمین‌های گندم است. از پل بگذر و به طرف غرب برو.' },
+      thanks: { en: 'My map! Look. Every home on it gets the paper from my print shop. My shop is the [[hub|hub]]. The route ends where the paper stops going. That is a [[functional region|functional region]]. Thank you!',
+        es: '¡Mi mapa! Mira. Cada casa del mapa recibe el periódico desde mi imprenta. Mi imprenta es el [[hub|centro]]. La ruta termina donde el periódico ya no llega. Eso es una [[functional region|región funcional]]. ¡Gracias!',
+        fa: 'نقشهٔ من! ببین. هر خانه‌ای که روی آن است، روزنامه را از چاپخانهٔ من می‌گیرد. چاپخانهٔ من [[hub|مرکز]] است. مسیر جایی تمام می‌شود که روزنامه دیگر نمی‌رسد. این یک [[functional region|منطقهٔ کارکردی]] است. تشکر!' }
+    },
+    contact: {
+      x: 9, y: 10,
+      name: { en: 'Kwame', es: 'Kwame', fa: 'کوامی' },
+      role: { en: 'Paper delivery rider', es: 'Repartidor de periódicos', fa: 'روزنامه‌رسان' },
+      look: { skin: 4, hair: '#120c08', shirt: '#2a9d8f', pants: '#3a3a3a', style: 'short', hat: '#e9c46a' },
+      lines: [
+        { en: 'Yes, I saw it! That map is important. It shows every home on my route. All the routes start at one [[hub|hub]]: Ms. Lin\'s print shop.',
+          es: '¡Sí, lo vi! Ese mapa es importante. Muestra cada casa de mi ruta. Todas las rutas empiezan en un [[hub|centro]]: la imprenta de la Sra. Lin.',
+          fa: 'بله، دیدمش! آن نقشه مهم است. هر خانهٔ مسیر مرا نشان می‌دهد. همهٔ مسیرها از یک [[hub|مرکز]] شروع می‌شوند: چاپخانهٔ خانم لین.' },
+        { en: 'The thief ran south-west into the Whispering Woods. It is hiding in a small gap between the pines, just north of the ranger. It hates region questions. Get two right and it will drop the map!',
+          es: 'El ladrón corrió al suroeste, hacia el Bosque de los Susurros. Se esconde en un pequeño hueco entre los pinos, justo al norte de la guardabosques. Odia las preguntas sobre regiones. ¡Acierta dos y soltará el mapa!',
+          fa: 'دزد به طرف جنوب غرب، به جنگل زمزمه دوید. او در یک جای خالی کوچک میان درختان ناجو، درست شمالِ جنگلبان پنهان است. از سوال‌های منطقه بدش می‌آید. دو سوال را درست جواب بده تا نقشه را بیندازد!' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [3, 14],
+      name: { en: 'The Ink Thief', es: 'Ladrón de Tinta', fa: 'دزد سیاهی' },
+      taunt: { en: 'Hee hee! This paper route map is mine now. Answer my region riddles, or I keep it!',
+        es: '¡Ji ji! Este mapa de reparto ahora es mío. ¡Responde mis acertijos sobre regiones o me lo quedo!',
+        fa: 'هی هی! این نقشهٔ رساندن روزنامه حالا مال من است. به چیستان‌های منطقهٔ من جواب بده، وگرنه آن را نگه می‌دارم!' },
+      win: { en: 'Drat! The Ink Thief drops the map and runs off in a puff of ink.',
+        es: '¡Rayos! El Ladrón de Tinta suelta el mapa y huye en una nube de tinta.',
+        fa: 'اَه! دزد سیاهی نقشه را می‌اندازد و در یک ابر سیاهی فرار می‌کند.' },
+      need: 2,
+      questions: [
+        { q: { en: 'Ms. Lin\'s newspaper goes out from her print shop to many homes. What is the hub of that region?', es: 'El periódico de la Sra. Lin sale de su imprenta hacia muchas casas. ¿Cuál es el centro de esa región?', fa: 'روزنامهٔ خانم لین از چاپخانه‌اش به خانه‌های زیادی می‌رود. مرکز این منطقه چیست؟' },
+          choices: [{ en: 'The print shop', es: 'La imprenta', fa: 'چاپخانه' }, { en: 'The Wheat Belt', es: 'El Cinturón del Trigo', fa: 'کمربند گندم' }, { en: 'The Whispering Woods', es: 'El Bosque de los Susurros', fa: 'جنگل زمزمه' }, { en: 'The river bridge', es: 'El puente del río', fa: 'پل دریا' }], answer: 0,
+          why: { en: 'The paper starts at the print shop and moves out to the homes. The starting point is the center, so it is the hub.', es: 'El periódico empieza en la imprenta y sale hacia las casas. El punto de partida es el centro de la región.', fa: 'روزنامه از چاپخانه شروع می‌شود و به خانه‌ها می‌رود. نقطهٔ شروع، مرکز منطقه است.' } },
+        { q: { en: 'Which one is a formal region?', es: '¿Cuál es una región formal?', fa: 'کدام یک منطقهٔ رسمی است؟' },
+          choices: [{ en: 'The countries that use the euro as money', es: 'Los países que usan el euro como dinero', fa: 'کشورهایی که پولشان یورو است' }, { en: 'The homes one pizza shop delivers to', es: 'Las casas a las que lleva comida una pizzería', fa: 'خانه‌هایی که یک پیتزافروشی به آن‌ها غذا می‌رساند' }, { en: 'The area people call "the Midwest"', es: 'La zona que la gente llama "el Medio Oeste"', fa: 'ساحه‌ای که مردم آن را «غرب میانه» می‌گویند' }, { en: 'The towns that send their kids to one school', es: 'Los pueblos que mandan a sus niños a una escuela', fa: 'شهرک‌هایی که اولادهایشان را به یک مکتب می‌فرستند' }], answer: 0,
+          why: { en: 'Each of those countries shares one trait: the euro. One shared trait makes a formal region. The others are built around a hub or live in people\'s minds.', es: 'Cada uno de esos países comparte una característica: el euro. Una característica compartida forma una región formal. Las otras se forman alrededor de un centro o viven en la mente de la gente.', fa: 'هر یک از آن کشورها یک ویژگی مشترک دارد: یورو. یک ویژگی مشترک منطقهٔ رسمی می‌سازد. باقی دور یک مرکز ساخته شده‌اند یا در ذهن مردم هستند.' } },
+        { q: { en: 'Everyone says the Whispering Woods are spooky. Why are they a perceptual region?', es: 'Todos dicen que el Bosque de los Susurros da miedo. ¿Por qué es una región perceptual?', fa: 'همه می‌گویند جنگل زمزمه ترسناک است. چرا یک منطقهٔ ادراکی است؟' },
+          choices: [{ en: 'People believe in them, but nobody can prove where they start', es: 'La gente cree en él, pero nadie puede probar dónde empieza', fa: 'مردم به آن باور دارند، اما کسی نمی‌تواند ثابت کند از کجا شروع می‌شود' }, { en: 'A fence goes all the way around them', es: 'Una cerca lo rodea por completo', fa: 'یک کتاره دور تا دور آن است' }, { en: 'A law says exactly where they end', es: 'Una ley dice exactamente dónde termina', fa: 'یک قانون دقیق می‌گوید کجا تمام می‌شود' }, { en: 'They are built around one print shop', es: 'Se forma alrededor de una imprenta', fa: 'دور یک چاپخانه ساخته شده' }], answer: 0,
+          why: { en: 'A perceptual region lives in people\'s minds. Everyone feels the woods are real, but each person puts the edge in a different place.', es: 'Una región perceptual vive en la mente de la gente. Todos sienten que el bosque es real, pero cada persona pone el borde en un lugar distinto.', fa: 'منطقهٔ ادراکی در ذهن مردم است. همه حس می‌کنند جنگل واقعی است، اما هر کس کناره‌اش را در یک جای دیگر می‌گذارد.' } }
+      ],
+      item: { icon: '🗺️', name: { en: 'The paper route map', es: 'El mapa de reparto', fa: 'نقشهٔ رساندن روزنامه' } }
+    }
+  },
+
   scraps: [[19, 1], [9, 20], [30, 20]],
   smudges: [[9, 8], [26, 19]],
 
