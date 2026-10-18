@@ -152,6 +152,15 @@
     otherwise: { en: 'Any other setting', es: 'Cualquier otro ajuste', fa: 'هر تنظیم دیگر' },
     starts: { en: 'starts at', es: 'empieza en', fa: 'شروع از' },
     success: { en: 'When solved', es: 'Al resolver', fa: 'وقتی حل شود' },
+    pQuest: { en: 'Quest', es: 'Misión', fa: 'مأموریت' },
+    questHow: { en: 'Giver (G, gold !) → contact (C) → action → back to the giver. The compass stone stays shut until the quest is done.', es: 'Quien pide ayuda (G, ! dorado) → contacto (C) → acción → volver con quien pidió ayuda. La piedra brújula no se abre hasta terminar la misión.', fa: 'دهندهٔ مأموریت (G، ! طلایی) → رابط (C) → کار → برگشت پیش دهنده. سنگ قطب‌نما تا پایان مأموریت بسته می‌ماند.' },
+    qWait: { en: 'If you come back too early', es: 'Si vuelves muy pronto', fa: 'اگر زود برگردی' },
+    qThanks: { en: 'When you come back', es: 'Cuando vuelves', fa: 'وقتی برگردی' },
+    qAction: { en: 'Action', es: 'Acción', fa: 'کار' },
+    qa_find: { en: 'find a secret spot (gold square on the map)', es: 'encontrar un lugar secreto (cuadro dorado en el mapa)', fa: 'پیدا کردن یک جای مخفی (مربع طلایی روی نقشه)' },
+    qa_fight: { en: 'beat the Ink Thief in a question duel', es: 'vencer al Ladrón de Tinta en un duelo de preguntas', fa: 'شکست دادن دزد رنگ در یک مسابقهٔ سؤال' },
+    qa_trade: { en: 'make the right trade', es: 'hacer el intercambio correcto', fa: 'معاملهٔ درست' },
+    qSpot: { en: 'The spot is at', es: 'El lugar está en', fa: 'جای آن در' },
     loading: { en: 'Loading…', es: 'Cargando…', fa: 'در حال بارگذاری…' }
   };
   const HT = k => L(H[k]);
@@ -282,6 +291,15 @@
       x.beginPath(); x.arc(n.x * S + 14, n.y * S - 4, 6, 0, 7); x.fill(); x.stroke();
       x.fillStyle = '#22202e'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(i + 1), n.x * S + 14, n.y * S - 3.5);
     });
+    const q = ep.quest;
+    if (q) { // quest people get a gold letter: G giver, C contact, T trader; the thief and the secret spot are marked too
+      const badge = (px, py, t, col) => { x.fillStyle = col; x.strokeStyle = '#000'; x.lineWidth = 1.5; x.beginPath(); x.arc(px * S + 14, py * S - 4, 6, 0, 7); x.fill(); x.stroke(); x.fillStyle = '#22202e'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(t, px * S + 14, py * S - 3.5); };
+      const people = [[q.giver, 'G'], [q.contact, 'C']].concat(q.action.type === 'trade' ? [[q.action.trader, 'T']] : []);
+      people.forEach(([p, t]) => { WW.drawPerson(x, p, p.x * S, p.y * S - 2, 0); badge(p.x, p.y, t, '#8fc3ff'); });
+      const a = q.action;
+      if (a.type === 'fight') { WW.sprite(x, 'smudge', a.at[0] * S, a.at[1] * S, { pal: WW.quest ? WW.quest.THIEF : { g: '#a04848', G: '#6e2c2c' } }); badge(a.at[0], a.at[1], '!', '#ff8f7a'); }
+      if (a.type === 'find') { x.fillStyle = '#fff3b0'; x.fillRect(a.at[0] * S + 7, a.at[1] * S + 3, 2, 10); x.fillRect(a.at[0] * S + 3, a.at[1] * S + 7, 10, 2); x.strokeStyle = '#f2c14e'; x.lineWidth = 2; x.setLineDash([]); x.strokeRect(a.at[0] * S + 1, a.at[1] * S + 1, 14, 14); }
+    }
     x.strokeStyle = 'rgba(255,255,255,.4)'; x.setLineDash([4, 4]);
     for (let i = 16; i < m[0].length; i += 16) { x.beginPath(); x.moveTo(i * S, 0); x.lineTo(i * S, cv.height); x.stroke(); }
     for (let j = 11; j < m.length; j += 11) { x.beginPath(); x.moveTo(0, j * S); x.lineTo(cv.width, j * S); x.stroke(); }
@@ -305,7 +323,7 @@
       </div>
       <p class="muted noprint">${esc(HT('jumpNote'))}${msg ? ` <span class="msg">${esc(msg)}</span>` : ''}</p>
       <div class="mapwrap"><canvas id="map" aria-label="whole map"></canvas></div>
-      <div class="legend"><span>🧑 ${esc(HT('lgStart'))}</span><span><b style="background:#f2c14e">1</b>${esc(HT('lgPerson'))}</span><span>🗿 ${esc(HT('lgStone'))}</span><span>👾 ${esc(HT('lgBoss'))}</span><span>📄 ${esc(HT('lgScrap'))}</span></div>`;
+      <div class="legend"><span>🧑 ${esc(HT('lgStart'))}</span><span><b style="background:#f2c14e">1</b>${esc(HT('lgPerson'))}</span><span>🗿 ${esc(HT('lgStone'))}</span><span>👾 ${esc(HT('lgBoss'))}</span><span>📄 ${esc(HT('lgScrap'))}</span>${ep.quest ? `<span><b style="background:#8fc3ff">G</b><b style="background:#8fc3ff">C</b>${esc(HT('pQuest'))}</span>` : ''}</div>`;
 
     h += `<section class="part"><h2>${esc(HT('pIntro'))}</h2>${(ep.intro || []).map(p => `<div class="say">${rich(p)}</div>`).join('')}</section>`;
 
@@ -318,6 +336,19 @@
     });
     h += '</div></section>';
 
+    if (ep.quest) {
+      const q = ep.quest, a = q.action, person = (p, t) => `<div class="tbox person"><h3><span class="num" style="background:#8fc3ff">${t}</span>${esc(L(p.name))}</h3><div class="muted">${esc(L(p.role))}</div>`;
+      h += `<section class="part"><h2>${esc(HT('pQuest'))} · ${esc(L(q.title))}</h2><p class="muted">${esc(HT('questHow'))} ${themeTag(q.stat)}</p><div class="people">`;
+      h += person(q.giver, 'G') + q.giver.lines.map(l => `<div class="say">${rich(l)}</div>`).join('') + `<p class="muted"><b>${esc(HT('qWait'))}:</b> ${rich(q.giver.wait)}</p><p class="muted"><b>${esc(HT('qThanks'))}:</b> ${rich(q.giver.thanks)}</p></div>`;
+      h += person(q.contact, 'C') + q.contact.lines.map(l => `<div class="say">${rich(l)}</div>`).join('') + '</div>';
+      h += '</div>';
+      h += `<p class="q">${esc(HT('qAction'))}: ${esc(L(H['qa_' + a.type]))}</p>`;
+      if (a.type === 'find') h += `<p>${esc(HT('qSpot'))} (${a.at[0]}, ${a.at[1]}) · <i>${rich(a.hint)}</i></p><div class="say">${rich(a.found)}</div>`;
+      if (a.type === 'fight') { h += `<p><b>${esc(L(a.name))}</b> · ${a.need || 2} ${esc(HT('bossNeed'))}</p><div class="say">${rich(a.taunt)}</div>`; a.questions.forEach((qq, i) => { h += `<div class="bossq"><p class="q">${i + 1}. ${rich(qq.q)}</p>${answers(qq.choices, (c, j) => j === qq.answer)}${qq.why ? `<p class="muted">${rich(qq.why)}</p>` : ''}</div>`; }); }
+      if (a.type === 'trade') h += person(a.trader, 'T') + a.trader.lines.map(l => `<div class="say">${rich(l)}</div>`).join('') + `<p class="q">${rich(a.q)}</p>${answers(a.choices, c => c.ok, c => c.why)}</div>`;
+      if (a.item) h += `<p class="muted">🎒 ${a.item.icon} ${rich(a.item.name)}</p>`;
+      h += '</section>';
+    }
     h += `<section class="part"><h2>${esc(HT('pStone'))} · ${esc(L(TYPE[ch.type]))}</h2><p><b>${rich(ch.title)}</b> ${themeTag(ch.stat)}</p>${ch.intro ? `<div class="say">${rich(ch.intro)}</div>` : ''}${stoneKey(ch)}${ch.success ? `<p class="muted"><b>${esc(HT('success'))}:</b> ${rich(ch.success)}</p>` : ''}</section>`;
 
     h += `<section class="part"><h2>${esc(HT('pBoss'))} · ${esc(L(b.name))}</h2><p class="muted">${b.need || 3} ${esc(HT('bossNeed'))} · ${themeTag(b.stat)}</p>${b.taunt ? `<div class="say">${rich(b.taunt)}</div>` : ''}`;

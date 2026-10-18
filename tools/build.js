@@ -1,7 +1,7 @@
 // node tools/build.js  ->  game/ep-X-Y.html (GitHub Pages) + dist/canvas/Worldwalker X.Y.html (one file for Canvas)
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..'), G = path.join(ROOT, 'game');
-const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'game.js'];
+const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'game.js'];
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');

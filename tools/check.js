@@ -81,6 +81,16 @@ function checkEpisode(file) {
   (ep.smudges || []).forEach((s, i) => place(s, 'smudge ' + i, true, new Set()));
   if ((ep.scraps || []).length !== 3) errs.push('need exactly 3 scraps');
   if ((ep.npcs || []).length < 3) errs.push('need at least 3 people (npcs)');
+  const qu = ep.quest, qa = qu && qu.action;
+  if (!qu) errs.push('quest missing (giver -> contact -> action -> back to giver)');
+  else {
+    ['giver', 'contact'].forEach(k => { const p = qu[k]; if (!p) errs.push('quest.' + k + ' missing'); else place([p.x, p.y], 'quest ' + k, true, block); });
+    if (!qa) errs.push('quest.action missing');
+    else if (qa.type === 'trade') { if (!qa.trader) errs.push('quest trade needs a trader'); else place([qa.trader.x, qa.trader.y], 'quest trader', true, block); }
+    else if (qa.type === 'fight') place(qa.at, 'quest thief', true, block);
+    else if (qa.type === 'find') place(qa.at, 'quest secret spot', true, new Set());
+    else errs.push('quest.action.type must be find, fight or trade');
+  }
   if (block.has(ep.start.join(','))) errs.push('start is on top of something');
   // reach: walk from start
   const seen = new Set([ep.start.join(',')]); const q = [ep.start];
@@ -98,6 +108,15 @@ function checkEpisode(file) {
   if (ep.challenge && !nextTo(ep.challenge.at)) errs.push('challenge stone cannot be reached');
   if (ep.boss && !seen.has(ep.boss.at.join(',')) && !nextTo(ep.boss.at)) errs.push('boss cannot be reached');
   (ep.scraps || []).forEach((s, i) => { if (!seen.has(s.join(','))) errs.push(`scrap ${i} cannot be reached`); });
+  if (qu) {
+    ['giver', 'contact'].forEach(k => { if (qu[k] && !nextTo([qu[k].x, qu[k].y])) errs.push(`quest ${k} cannot be reached`); });
+    if (qa && qa.type === 'trade' && qa.trader && !nextTo([qa.trader.x, qa.trader.y])) errs.push('quest trader cannot be reached');
+    if (qa && qa.type === 'fight' && qa.at && !nextTo(qa.at)) errs.push('quest thief cannot be reached');
+    if (qa && qa.type === 'find' && qa.at && !seen.has(qa.at.join(','))) errs.push('quest secret spot cannot be reached');
+    if (qa && qa.type === 'find' && qa.at && qa.at.join(',') === ep.start.join(',')) errs.push('quest secret spot is the start tile');
+    const scr = p => p && Math.floor(p.x / SW) + ',' + Math.floor(p.y / SH);
+    if (qu.giver && qu.contact && scr(qu.giver) === scr(qu.contact)) warns.push('quest giver and contact are on the same screen; spreading them out makes the quest a real trip');
+  }
   // screens used
   const screens = new Set([...seen].map(k => { const [x, y] = k.split(',').map(Number); return Math.floor(x / SW) + ',' + Math.floor(y / SH); }));
   const total = (W / SW) * (H / SH);
@@ -115,6 +134,39 @@ function checkEpisode(file) {
     }
     if (!n.look) warns.push(`npc ${i} has no look`);
   });
+
+  /* ---- quest ---- */
+  if (qu) {
+    if (!['loc', 'pla', 'hei', 'mov', 'reg'].includes(qu.stat)) errs.push('quest.stat must be loc/pla/hei/mov/reg');
+    if (!qu.title) errs.push('quest.title missing');
+    const g = qu.giver || {}, c = qu.contact || {};
+    if (!g.name || !g.role || !g.look) errs.push('quest.giver needs name, role, look');
+    if (!g.lines || g.lines.length < 2) errs.push('quest.giver needs 2+ lines');
+    if (!g.wait || !g.thanks) errs.push('quest.giver needs wait and thanks');
+    if (!c.name || !c.role || !c.look) errs.push('quest.contact needs name, role, look');
+    if (!c.lines || c.lines.length < 2) errs.push('quest.contact needs 2 lines (the last one is repeated as the reminder)');
+    if (qa && qa.type === 'find') { if (!qa.hint || !qa.found) errs.push('quest find needs hint and found'); }
+    if (qa && qa.type === 'fight') {
+      if (!qa.name || !qa.taunt || !qa.win) errs.push('quest fight needs name, taunt, win');
+      if (!qa.questions || qa.questions.length < 3) errs.push('quest fight needs 3+ questions');
+      if ((qa.need || 2) > (qa.questions || []).length - 1) errs.push('quest fight need is too big');
+      (qa.questions || []).forEach((qq, i) => {
+        if (!qq.choices || qq.choices.length < 3) errs.push(`quest fight q${i} needs 3-4 choices`);
+        if (!(qq.answer >= 0 && qq.answer < (qq.choices || []).length)) errs.push(`quest fight q${i} answer index is wrong`);
+        if (!qq.why) errs.push(`quest fight q${i} needs a why`);
+      });
+    }
+    if (qa && qa.type === 'trade') {
+      const t = qa.trader || {};
+      if (!t.name || !t.role || !t.look || !t.lines || !t.lines.length) errs.push('quest trader needs name, role, look, lines');
+      if (!qa.q) errs.push('quest trade needs q');
+      const oks = (qa.choices || []).filter(x => x.ok).length;
+      if (oks !== 1) errs.push(`quest trade needs exactly 1 ok choice (has ${oks})`);
+      if ((qa.choices || []).length < 3) errs.push('quest trade needs 3+ choices');
+      (qa.choices || []).forEach((x, k) => { if (!x.why) errs.push(`quest trade choice ${k} needs a why`); });
+    }
+    if (qa && qa.item && (!qa.item.name || !qa.item.icon)) errs.push('quest action item needs icon and name');
+  }
 
   /* ---- boss ---- */
   const b = ep.boss || {};
@@ -168,6 +220,7 @@ function checkEpisode(file) {
   return { errs, warns, ep };
 }
 
+if (require.main === module) {
 const files = process.argv.slice(2).length ? process.argv.slice(2).map(f => path.resolve(f.includes('/') ? f : path.join(G, 'episodes', f)))
   : fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => path.join(G, 'episodes', f));
 let bad = 0;
@@ -179,4 +232,5 @@ for (const f of files) {
   if (errs.length) bad++;
 }
 process.exitCode = bad ? 1 : 0;
+}
 module.exports = { checkEpisode };

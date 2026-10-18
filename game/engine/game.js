@@ -92,7 +92,7 @@
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y))) return false;
     const e = entAt(x, y);
-    return !e || e.kind === 'scrap' || e.kind === 'smudge';
+    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot';
   }
 
   /* ---------------- start an episode ---------------- */
@@ -111,13 +111,14 @@
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
     WW.run = {
       hearts: WW.heartsMax(), heartsLost: 0, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
-      challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
+      quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
     ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
+    WW.quest.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
@@ -140,6 +141,7 @@
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
     if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); });
     ep.npcs.forEach(n => r.talked.add(n.id));
+    r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
     r.challengeDone = true; G.onChallengeDone();
     if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
@@ -174,6 +176,7 @@
   function interact(e) {
     if (!e || WW.paused) return;
     const ep = WW.ep, r = WW.run;
+    if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -181,12 +184,14 @@
     } else if (e.kind === 'stone') {
       const need = ep.challenge.needTalk ?? ep.npcs.length;
       if (r.talked.size < need && !r.challengeDone) WW.ui.message('', T('talkFirst'));
+      else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
       WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
     }
   }
   function pickup() {
+    WW.quest.onStep(player.x, player.y);
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
       e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
@@ -213,7 +218,7 @@
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind !== 'scrap' && e.kind !== 'smudge') { interact(e); held = null; return; }
+    if (e && e.kind !== 'scrap' && e.kind !== 'smudge' && e.kind !== 'qspot') { interact(e); held = null; return; }
     if (!walkable(nx, ny)) return;
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
@@ -258,7 +263,7 @@
       if (!dx && !dy) return;
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
-      if (e2 && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      if (e2 && !['scrap', 'smudge', 'qspot'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
       clickTarget = [tx, ty];
     });
   }
@@ -314,6 +319,7 @@
           c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
         }
       }
+      if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
       if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
@@ -398,6 +404,7 @@
       }
       return false;
     },
+    standOn(x, y) { this.teleport(x, y); pickup(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; }

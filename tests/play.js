@@ -90,6 +90,64 @@ const SHOTS = !process.argv.includes('--no-shots');
         const n = await page.evaluate(() => WW.run.scraps.size);
         if (n !== ep.scraps.length) throw new Error('scraps ' + n);
       });
+      if (ep.quest) {
+        const q = ep.quest, a = q.action;
+        const talkThrough = async () => { // click the gold button until the talk box closes or asks a question
+          for (let k = 0; k < 8; k++) {
+            if (!(await page.evaluate(() => WW.paused)) || await page.locator('#ww-ov .choices').count()) break;
+            await clickGold();
+          }
+        };
+        await step('stone waits for the quest', async () => {
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.challenge.at);
+          if (!/!/.test(await page.textContent('#ww-ov'))) throw new Error('stone opened before the quest was done');
+          await clickGold(); await page.waitForFunction(() => !WW.paused);
+        });
+        await step('quest: ' + q.title.en + ' (' + a.type + ')', async () => {
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [q.contact.x, q.contact.y]);
+          await talkThrough();
+          if (await page.evaluate(() => WW.run.quest) !== 0) throw new Error('the contact started the quest before the giver');
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [q.giver.x, q.giver.y]);
+          await page.waitForSelector('.talkov'); await shot('q1-giver');
+          await talkThrough();
+          if (await page.evaluate(() => WW.run.quest) !== 1) throw new Error('giver did not start the quest');
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [q.contact.x, q.contact.y]);
+          await talkThrough();
+          if (await page.evaluate(() => WW.run.quest) !== 2) throw new Error('contact did not move the quest on');
+          await page.evaluate(() => WW.dbg.noSmudges());
+          if (a.type === 'find') {
+            await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), a.at);
+            await page.waitForSelector('.msgov'); await shot('q2-found'); await clickGold();
+          } else if (a.type === 'fight') {
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), a.at);
+            await page.waitForSelector('.bossov'); await shot('q2-fight');
+            for (let k = 0; k < 20; k++) {
+              if (await page.locator('#ww-ov .pbtn.gold.big').count()) break;
+              const qi = await page.evaluate(() => +document.querySelector('#ww-ov .ov-box').dataset.q);
+              await page.click(`#ww-ov .choices button[data-i="${a.questions[qi].answer}"]`);
+              if (await page.locator('#ww-ov .pbtn.gold.big').count()) break;
+              await clickGold();
+            }
+            await page.locator('#ww-ov .pbtn.gold.big').click();
+            if (await page.evaluate(() => WW.run.missed.length)) throw new Error('quest fight misses went into the Smudge trial');
+          } else {
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
+            await talkThrough(); await shot('q2-trade');
+            const wrong = a.choices.findIndex(x => !x.ok), ok = a.choices.findIndex(x => x.ok);
+            await page.click(`#ww-ov .choices button[data-i="${wrong}"]`);
+            await page.locator('#ww-ov .pbtn.ghost').last().click();
+            await page.click(`#ww-ov .choices button[data-i="${ok}"]`);
+            await clickGold();
+          }
+          await page.waitForFunction(() => !WW.paused);
+          if (await page.evaluate(() => WW.run.quest) !== 3) throw new Error('the ' + a.type + ' did not finish the action');
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [q.giver.x, q.giver.y]);
+          await talkThrough();
+          if (await page.evaluate(() => WW.run.quest) !== 4) throw new Error('quest did not finish at the giver');
+          const raw = await page.textContent('#ww-quest');
+          if (/undefined|\[\[/.test(raw)) throw new Error('quest bar shows raw text');
+        });
+      }
       const c = ep.challenge;
       await step('challenge (' + c.type + ')', async () => {
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.at);

@@ -1228,6 +1228,20 @@ window.WW_CONFIG.MODE = 'canvas';
     welcomeBack: { en: 'Welcome back', es: 'Bienvenido de nuevo', fa: 'خوش برگشتی' },
     notYou: { en: 'Not you? Start a new hero', es: '¿No eres tú? Crea un héroe nuevo', fa: 'تو نیستی؟ قهرمان تازه بساز' },
     quest: { en: 'Quest', es: 'Misión', fa: 'مأموریت' },
+    questFirst: { en: 'Pip: "Someone here needs your help first. Look for the person with a gold ! above their head."', es: 'Pip: "Primero alguien aquí necesita tu ayuda. Busca a la persona con un ! dorado sobre la cabeza."', fa: 'پیپ: «اول کسی اینجا به کمکت نیاز دارد. کسی را پیدا کن که بالای سرش یک ! طلایی است.»' },
+    accept: { en: "I'll help!", es: '¡Te ayudo!', fa: 'کمک می‌کنم!' },
+    newQuest: { en: 'New quest', es: 'Nueva misión', fa: 'مأموریت تازه' },
+    questDone: { en: 'Quest complete!', es: '¡Misión cumplida!', fa: 'مأموریت تمام شد!' },
+    qFindGiver: { en: 'find the person with !', es: 'busca a la persona con !', fa: 'کسی را با ! پیدا کن' },
+    qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
+    qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
+    qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
+    qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
+    foundIt: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش کردی!' },
+    traded: { en: 'Good trade!', es: '¡Buen intercambio!', fa: 'معاملهٔ خوب!' },
+    busy: { en: 'Hello, traveler! I am busy right now. Maybe someone else here needs you first.', es: '¡Hola, viajero! Ahora estoy ocupado. Quizás alguien más aquí te necesita primero.', fa: 'سلام، مسافر! حالا مصروف هستم. شاید اول کس دیگری اینجا به تو نیاز دارد.' },
+    goodLuck: { en: 'Thank you, traveler! Good luck on your journey.', es: '¡Gracias, viajero! Buena suerte en tu viaje.', fa: 'تشکر، مسافر! در سفرت موفق باشی.' },
+    thanksAgain: { en: 'Thank you again for your help!', es: '¡Gracias otra vez por tu ayuda!', fa: 'باز هم از کمکت تشکر!' },
     talkTo: { en: 'Talk to everyone', es: 'Habla con todos', fa: 'با همه گپ بزن' },
     solve: { en: 'Solve the compass stone', es: 'Resuelve la piedra de la brújula', fa: 'سنگ قطب‌نما را حل کن' },
     face: { en: 'Face the Smudge', es: 'Enfrenta al Borrón', fa: 'با لکه روبه‌رو شو' },
@@ -1496,6 +1510,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const need = ep.npcs.length, got = r.talked.size;
     const steps = [
       [T('talkTo') + ` (${got}/${need})`, got >= need],
+      ...(WW.quest.on() ? [[WW.quest.bar(), WW.quest.done()]] : []),
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
       [T('face'), r.bossDone]];
     let h = `<b>${esc(T('quest'))}:</b> `;
@@ -1520,7 +1535,7 @@ window.WW_CONFIG.MODE = 'canvas';
     ui.open({
       cls: 'talkov',
       render(box, h) {
-        const face = WW.spriteCanvas('npc', WW.lookPal(npc.look), 4, 11);
+        const face = WW.spriteCanvas(WW.personSprite ? WW.personSprite(npc) : 'npc', WW.lookPal(npc.look), 4, 11);
         face.className = 'face';
         const head = document.createElement('div'); head.className = 'talk-head';
         head.appendChild(face);
@@ -1535,7 +1550,7 @@ window.WW_CONFIG.MODE = 'canvas';
           const acts = document.createElement('div'); acts.className = 'acts';
           if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
           if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
-          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : T('close')), 'gold', () => {
+          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : npc.doneLabel ? esc(npc.doneLabel) + ' ▶' : T('close')), 'gold', () => {
             WW.sfx('blip');
             if (page < lines.length - 1) { page++; h.render(); }
             else if (npc.ask) { stage = 'ask'; h.render(); }
@@ -1840,6 +1855,7 @@ window.WW_CONFIG.MODE = 'canvas';
     lines.push('TALKS (question — my answer — tries)');
     r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
     lines.push('');
+    if (WW.quest.on()) lines.push(WW.quest.log());
     lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
     lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
     lines.push('');
@@ -2173,7 +2189,7 @@ window.WW_CONFIG.MODE = 'canvas';
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
         const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5 });
+        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal });
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
         for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
@@ -2201,7 +2217,7 @@ window.WW_CONFIG.MODE = 'canvas';
           b.onclick = () => {
             picked = i;
             if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
-            else { last = 'hit'; WW.sfx('hurt'); WW.run.missed.includes(qi) || WW.run.missed.push(qi); WW.run.bossMisses++; WW.hurt(true); }
+            else { last = 'hit'; WW.sfx('hurt'); const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
           list.appendChild(b);
@@ -2673,6 +2689,157 @@ window.WW_CONFIG.MODE = 'canvas';
   WW.fx = { setup, draw, burst, step, get sky() { return sky; }, SKY };
 })();
 
+/* quest.js */
+/* WORLDWALKER engine · the episode quest
+   A quest giver (gold !) asks for help -> you talk to a contact (?) -> you do one action -> you go back to the giver.
+   The action is one of:
+     find  – use the contact's clue to find a secret spot and walk onto it
+     fight – beat an Ink Thief in a short question duel
+     trade – offer the right goods to a trader
+   The compass stone stays shut until the quest is done. See docs/EPISODE-FORMAT.md ("quest"). */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k);
+  // quest steps: 0 not started · 1 go to the contact · 2 do the action · 3 go back to the giver · 4 done
+  const Q = WW.quest = {};
+  const THIEF = { g: '#a04848', G: '#6e2c2c', w: '#ffffff', r: '#2b1414' };
+  Q.THIEF = THIEF;
+
+  Q.on = () => !!(WW.ep && WW.ep.quest);
+  Q.step = () => (WW.run && WW.run.quest) || 0;
+  Q.done = () => !Q.on() || Q.step() >= 4;
+  function set(n) { WW.run.quest = n; WW.ui.quest(); }
+
+  /* make the map entities for the quest */
+  Q.ents = (ep) => {
+    const q = ep.quest, out = [];
+    if (!q) return out;
+    q.giver.id = 'qgiver'; q.contact.id = 'qcontact';
+    out.push({ kind: 'qnpc', role: 'giver', x: q.giver.x, y: q.giver.y, ref: q.giver, phase: 7 });
+    out.push({ kind: 'qnpc', role: 'contact', x: q.contact.x, y: q.contact.y, ref: q.contact, phase: 11 });
+    const a = q.action;
+    if (a.type === 'trade') { a.trader.id = 'qtrader'; out.push({ kind: 'qnpc', role: 'trader', x: a.trader.x, y: a.trader.y, ref: a.trader, phase: 13 }); }
+    if (a.type === 'fight') out.push({ kind: 'qfoe', x: a.at[0], y: a.at[1], visible: false });
+    if (a.type === 'find') out.push({ kind: 'qspot', x: a.at[0], y: a.at[1] });
+    return out;
+  };
+
+  const item = () => WW.ep.quest.action.item;
+  const itemName = () => (item() ? `${item().icon || '🎁'} ${WW.plain(item().name)}` : '');
+  const say = (who, text, after) => WW.ui.talk({ id: who.id, name: who.name, role: who.role, look: who.look, lines: [text] }, after);
+
+  /* walking into a quest person or the thief */
+  Q.interact = (e, ents) => {
+    const q = WW.ep.quest, s = Q.step();
+    if (e.kind === 'qfoe') return fight(e);
+    const who = e.ref;
+    if (e.role === 'giver') {
+      if (s === 0) WW.ui.talk(Object.assign({}, who, { lines: q.giver.lines, doneLabel: T('accept') }), () => { set(1); WW.sfx('good'); WW.toast('📜 ' + WW.esc(T('newQuest')) + ': ' + WW.esc(WW.plain(q.title)), '#c08a1e'); });
+      else if (s < 3) say(who, q.giver.wait);
+      else if (s === 3) say(who, q.giver.thanks, () => finish());
+      else say(who, T('thanksAgain'));
+    } else if (e.role === 'contact') {
+      if (s === 1) WW.ui.talk(Object.assign({}, who, { lines: q.contact.lines }), () => { set(2); showAction(ents); });
+      else if (s === 0) say(who, T('busy'));
+      else if (s === 2) say(who, q.contact.lines[q.contact.lines.length - 1]);
+      else say(who, T('goodLuck'));
+    } else if (e.role === 'trader') {
+      if (s !== 2) return say(who, s < 2 ? T('busy') : T('goodLuck'));
+      const a = q.action;
+      WW.ui.talk(Object.assign({}, who, { lines: a.trader.lines, ask: { stat: q.stat, q: a.q, choices: a.choices } }), () => {
+        set(3); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
+        WW.toast(`🤝 ${WW.esc(T('traded'))}${item() ? ' · ' + WW.esc(itemName()) : ''}`, '#2aa198');
+      });
+    }
+    return true;
+  };
+
+  function showAction(ents) {
+    const a = WW.ep.quest.action;
+    if (a.type === 'fight') {
+      const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
+      WW.fx.burst(f.x, f.y, 'purple');
+    }
+    WW.ui.quest();
+  }
+
+  function fight(e) {
+    const q = WW.ep.quest, a = q.action, r = WW.run;
+    r.questMissed = r.questMissed || [];
+    WW.bossTrial({ name: a.name, need: a.need || 2, taunt: a.taunt, win: a.win, questions: a.questions, pal: THIEF, minor: true, missedList: r.questMissed }, () => {
+      e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); set(3);
+      WW.music.play('realm' + WW.ep.realm);
+      if (item()) WW.toast(WW.esc(itemName()), '#2aa198');
+    });
+    return true;
+  }
+
+  /* stepping onto a tile: is it the secret spot? */
+  Q.onStep = (x, y) => {
+    if (!Q.on() || Q.step() !== 2) return;
+    const a = WW.ep.quest.action;
+    if (a.type !== 'find' || a.at[0] !== x || a.at[1] !== y) return;
+    WW.sfx('win'); WW.fx.burst(x, y, 'gold'); set(3);
+    WW.ui.message('✨ ' + T('foundIt'), a.found);
+  };
+
+  function finish() {
+    const q = WW.ep.quest;
+    set(4);
+    WW.fx.burst(q.giver.x, q.giver.y, 'gold');
+    WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10);
+    WW.toast('🏅 ' + WW.esc(T('questDone')), '#c08a1e');
+  }
+
+  /* what to draw above people's heads, and the secret spot's twinkle */
+  Q.mark = e => {
+    const s = Q.step();
+    if (e.role === 'giver') return s === 0 || s === 3 ? '!' : '';
+    if (e.role === 'contact') return s === 1 ? '?' : '';
+    if (e.role === 'trader') return s === 2 ? '?' : '';
+    return '';
+  };
+  Q.draw = (c, e, x, y, t) => {
+    if (e.kind === 'qnpc') {
+      WW.drawPerson(c, e.ref, x, y - 2, t, e.phase);
+      const m = Q.mark(e);
+      if (m) {
+        const b = Math.round(Math.sin(t / 220 + e.phase) * 1.5);
+        c.fillStyle = '#22202e'; c.fillRect(x + 5, y - 13 + b, 7, 9);
+        c.fillStyle = m === '!' ? '#f2c14e' : '#8fc3ff'; c.fillRect(x + 6, y - 12 + b, 5, 7);
+        c.fillStyle = '#22202e';
+        if (m === '!') { c.fillRect(x + 8, y - 11 + b, 1, 3); c.fillRect(x + 8, y - 7 + b, 1, 1); }
+        else { c.fillRect(x + 7, y - 11 + b, 3, 1); c.fillRect(x + 9, y - 10 + b, 1, 1); c.fillRect(x + 8, y - 9 + b, 1, 1); c.fillRect(x + 8, y - 7 + b, 1, 1); }
+      }
+    } else if (e.kind === 'qfoe') {
+      WW.shadow(c, x, y + 13, 10);
+      WW.sprite(c, 'smudge', x, y, { bob: true, t, phase: 2, pal: THIEF });
+      c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 7, 10, 2); // a bandit mask
+      c.fillStyle = '#ffffff'; c.fillRect(x + 4, y + 7, 2, 1); c.fillRect(x + 10, y + 7, 2, 1);
+    } else if (e.kind === 'qspot' && Q.step() === 2) {
+      const k = (Math.sin(t / 260) + 1) / 2;
+      c.fillStyle = `rgba(255,243,176,${0.25 + k * 0.6})`;
+      c.fillRect(x + 7, y + 4, 2, 8); c.fillRect(x + 4, y + 7, 8, 2);
+      c.fillStyle = `rgba(255,255,255,${k})`; c.fillRect(x + 7, y + 7, 2, 2);
+    }
+  };
+
+  /* the words in the quest bar */
+  Q.bar = () => {
+    const q = WW.ep.quest, s = Q.step(), a = q.action;
+    if (s >= 4) return '✓ ' + WW.plain(q.title);
+    const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
+      : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
+        : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
+    return `📜 ${WW.plain(q.title)}: ${now}`;
+  };
+  Q.log = () => {
+    if (!Q.on()) return '';
+    const q = WW.ep.quest, r = WW.run;
+    const extra = q.action.type === 'fight' ? ` (${(r.questMissed || []).length} missed)` : q.action.type === 'trade' ? ` (${(r.tries.qtrader || 0) + 1} ${(r.tries.qtrader || 0) ? 'tries' : 'try'})` : '';
+    return `QUEST: ${WW.plain({ en: q.title.en })} — ${Q.done() ? 'done' : 'not finished'}${extra}`;
+  };
+})();
+
 /* game.js */
 /* WORLDWALKER engine · the game itself: map, walking, screens, people, Smudges, flow */
 (function () {
@@ -2768,7 +2935,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y))) return false;
     const e = entAt(x, y);
-    return !e || e.kind === 'scrap' || e.kind === 'smudge';
+    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot';
   }
 
   /* ---------------- start an episode ---------------- */
@@ -2787,13 +2954,14 @@ window.WW_CONFIG.MODE = 'canvas';
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
     WW.run = {
       hearts: WW.heartsMax(), heartsLost: 0, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
-      challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
+      quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
     ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
+    WW.quest.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
@@ -2816,6 +2984,7 @@ window.WW_CONFIG.MODE = 'canvas';
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
     if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); });
     ep.npcs.forEach(n => r.talked.add(n.id));
+    r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
     r.challengeDone = true; G.onChallengeDone();
     if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
@@ -2850,6 +3019,7 @@ window.WW_CONFIG.MODE = 'canvas';
   function interact(e) {
     if (!e || WW.paused) return;
     const ep = WW.ep, r = WW.run;
+    if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -2857,12 +3027,14 @@ window.WW_CONFIG.MODE = 'canvas';
     } else if (e.kind === 'stone') {
       const need = ep.challenge.needTalk ?? ep.npcs.length;
       if (r.talked.size < need && !r.challengeDone) WW.ui.message('', T('talkFirst'));
+      else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
       WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
     }
   }
   function pickup() {
+    WW.quest.onStep(player.x, player.y);
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
       e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
@@ -2889,7 +3061,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind !== 'scrap' && e.kind !== 'smudge') { interact(e); held = null; return; }
+    if (e && e.kind !== 'scrap' && e.kind !== 'smudge' && e.kind !== 'qspot') { interact(e); held = null; return; }
     if (!walkable(nx, ny)) return;
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
@@ -2934,7 +3106,7 @@ window.WW_CONFIG.MODE = 'canvas';
       if (!dx && !dy) return;
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
-      if (e2 && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      if (e2 && !['scrap', 'smudge', 'qspot'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
       clickTarget = [tx, ty];
     });
   }
@@ -2990,6 +3162,7 @@ window.WW_CONFIG.MODE = 'canvas';
           c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
         }
       }
+      if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
       if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
@@ -3074,6 +3247,7 @@ window.WW_CONFIG.MODE = 'canvas';
       }
       return false;
     },
+    standOn(x, y) { this.teleport(x, y); pickup(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; }

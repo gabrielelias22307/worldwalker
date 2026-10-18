@@ -148,6 +148,55 @@ window.EPISODE = {
       fa: 'گل باد · در این نقشه شمال بالا است. شرق به طرف دریا است. [[compass rose|گل باد]] [[cardinal directions|جهت‌های اصلی]] را نشان می‌دهد: شمال، جنوب، شرق و غرب.' } }
   ],
 
+  /* the quest: Grandpa Tomas (gold !) -> Lena the shepherd -> find the compass by its relative location -> back to Tomas */
+  quest: {
+    stat: 'loc',
+    title: { en: "Grandpa's Lost Compass", es: 'La brújula perdida del abuelo', fa: 'قطب‌نمای گم‌شدهٔ پدرکلان' },
+    giver: {
+      x: 7, y: 3,
+      name: { en: 'Grandpa Tomas', es: 'Abuelo Tomás', fa: 'پدرکلان توماس' },
+      role: { en: 'Village elder', es: 'Anciano del pueblo', fa: 'ریش‌سفید ده' },
+      look: { skin: 3, hair: '#d8d4cc', shirt: '#8a5a2b', pants: '#3a3a3a' },
+      lines: [
+        { en: 'Oh, traveler! The Smudge\'s wind blew my old brass compass out of my window. My legs are too tired to look for it.',
+          es: '¡Ay, viajero! El viento del Borrón sacó mi vieja brújula de latón por la ventana. Mis piernas están muy cansadas para buscarla.',
+          fa: 'آه، مسافر! باد لکه قطب‌نمای برنجی کهنه‌ام را از کلکین بیرون برد. پاهایم برای پالیدن آن خیلی خسته است.' },
+        { en: 'Lena the shepherd saw where it landed. She is in the south-west corner of the valley. Will you ask her?',
+          es: 'Lena, la pastora, vio dónde cayó. Está en la esquina suroeste del valle. ¿Le preguntas?',
+          fa: 'لینا، چوپان، دید که کجا افتاد. او در گوشهٔ جنوب غربی دره است. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Lena is in the south-west corner. On this map south is down and west is to the left.',
+        es: 'Lena está en la esquina suroeste. En este mapa el sur está abajo y el oeste a la izquierda.',
+        fa: 'لینا در گوشهٔ جنوب غربی است. در این نقشه جنوب پایین و غرب طرف چپ است.' },
+      thanks: { en: 'My compass! The needle still points north. Thank you! You found it just by following directions.',
+        es: '¡Mi brújula! La aguja todavía apunta al norte. ¡Gracias! La encontraste solo siguiendo direcciones.',
+        fa: 'قطب‌نمای من! عقربه‌اش هنوز به شمال نشان می‌دهد. تشکر! تو آن را فقط با دنبال کردن جهت‌ها پیدا کردی.' }
+    },
+    contact: {
+      x: 6, y: 19,
+      name: { en: 'Lena', es: 'Lena', fa: 'لینا' },
+      role: { en: 'Shepherd', es: 'Pastora', fa: 'چوپان' },
+      look: { skin: 4, hair: '#1b1410', shirt: '#d98e2b', pants: '#4a3a2a', style: 'long' },
+      lines: [
+        { en: 'Yes, I saw it fly! I do not know its exact numbers, so I will give you a [[relative location|relative location]]. I will tell you what it is near.',
+          es: '¡Sí, la vi volar! No sé sus números exactos, así que te daré una [[relative location|ubicación relativa]]. Te diré qué tiene cerca.',
+          fa: 'بله، دیدم که پرید! عددهای دقیقش را نمی‌دانم، پس یک [[relative location|موقعیت نسبی]] می‌گویم. می‌گویم نزدیک چه چیزی است.' },
+        { en: 'Cross the south bridge to the east side of the river. Then walk two steps south along the riverbank. Look for the shine!',
+          es: 'Cruza el puente del sur hacia el lado este del río. Luego camina dos pasos al sur por la orilla. ¡Busca el brillo!',
+          fa: 'از پل جنوبی به طرف شرق دریا برو. بعد دو قدم به جنوب در کنار دریا راه برو. دنبال برق آن بگرد!' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [23, 18],
+      hint: { en: 'east of the river, 2 steps south of the south bridge', es: 'al este del río, 2 pasos al sur del puente del sur', fa: 'شرق دریا، ۲ قدم جنوبِ پل جنوبی' },
+      found: { en: 'There it is, shining in the grass by the river! You followed a [[relative location|relative location]]: across the bridge, then south along the river.',
+        es: '¡Ahí está, brillando en el pasto junto al río! Seguiste una [[relative location|ubicación relativa]]: cruzar el puente y luego ir al sur por el río.',
+        fa: 'آنجاست، در سبزه کنار دریا برق می‌زند! تو یک [[relative location|موقعیت نسبی]] را دنبال کردی: از پل گذشتی، بعد به جنوب کنار دریا رفتی.' },
+      item: { icon: '🧭', name: { en: "Grandpa's compass", es: 'La brújula del abuelo', fa: 'قطب‌نمای پدرکلان' } }
+    }
+  },
+
   scraps: [[29, 1], [2, 20], [16, 14]],
   smudges: [[12, 17], [27, 9]],
 

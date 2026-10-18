@@ -57,6 +57,32 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 
 `stat` is one of the five powers: `loc` Where (Location) · `pla` What it is like (Place) · `hei` People & land (Human–Environment Interaction) · `mov` On the move (Movement) · `reg` Regions (Region).
 
+## The quest (every episode has one)
+
+A small side story that the student must finish before the compass stone opens. **Episode 1.1 (`ep-1-1.js`) has the model quest.**
+
+1. The **giver** (a new person, gold **!** over their head) asks for help: `lines` (2), then the student presses "I'll help!".
+2. The student finds the **contact** (a new person, blue **?**) and hears 2 `lines`. The last line is the clue or the instruction, and it is repeated if they come back.
+3. The student does the **action**:
+   - `find`: walk onto a secret tile. The contact's clue must use real geography words (north/south/east/west, upstream, across the bridge, next to the market...). The spot twinkles a little once the quest reaches it.
+   - `fight`: an **Ink Thief** appears at `at`. Walking into it opens a short question duel: `need` (2) right answers out of 3–4 `questions` (same shape as the Smudge's questions). Misses do not count against the Smudge stars.
+   - `trade`: a **trader** (new person) asks `q` with 3 `choices`. Exactly one is `ok`; every choice has a `why`. The right one should make geographic sense (what this place has plenty of, what it needs).
+4. The student goes back to the giver, hears `thanks`, and gets +2 to the quest's `stat` and 10 coins.
+
+```js
+quest: {
+  stat: 'loc',
+  title: {..},                                  // short, shown in the quest bar
+  giver:   { x, y, name, role, look, lines: [ {..}, {..} ], wait: {..}, thanks: {..} },
+  contact: { x, y, name, role, look, lines: [ {..}, {..} ] },
+  action:  { type: 'find',  at: [x, y], hint: {..} /* few words for the quest bar */, found: {..}, item: { icon: '🧭', name: {..} } }
+        // { type: 'fight', at: [x, y], name: {..}, taunt: {..}, win: {..}, need: 2, questions: [ { q, choices: [4], answer: 0, why } x3 ], item }
+        // { type: 'trade', trader: { x, y, name, role, look, lines: [ {..} ] }, q: {..}, choices: [ { ok: true, t, why }, { t, why }, { t, why } ], item }
+}
+```
+
+Rules: put the giver, the contact and the action on **different screens** so the quest is a real trip. Every quest person and the thief stand on walkable tiles that do not block a path; the secret spot is a walkable tile that is not the start. `node tools/spots.js ep-X-Y.js` prints the map with rulers: a blank means walkable and reachable. Never use the word "debrief"; keep the grade-5 reading level; all three languages.
+
 ## Challenge types
 
 **sort** — put each card in the right group.

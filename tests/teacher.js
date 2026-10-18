@@ -27,7 +27,7 @@ const ids = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep
   for (const id of ids) {
     await page.click(`[data-ep="${id}"]`);
     await page.waitForFunction(id => document.querySelector('#main .kicker') && document.querySelector('#main .kicker').textContent.includes(id), id);
-    const r = await page.evaluate(() => ({ people: document.querySelectorAll('.person').length, keys: document.querySelectorAll('#main ul.ans li.ok').length, bossq: document.querySelectorAll('section.part .bossq').length, map: document.getElementById('map').width }));
+    const r = await page.evaluate(() => ({ people: document.querySelectorAll('.person .num:not([style])').length, keys: document.querySelectorAll('#main ul.ans li.ok').length, bossq: document.querySelectorAll('section.part .bossq').length, map: document.getElementById('map').width }));
     ok(r.people >= 3 && r.keys >= r.people + 8 && r.map > 0, `${id}: ${r.people} people, ${r.keys} marked answers, map drawn`);
   }
   await page.click('[data-l="fa"]');

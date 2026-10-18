@@ -102,6 +102,7 @@
     const need = ep.npcs.length, got = r.talked.size;
     const steps = [
       [T('talkTo') + ` (${got}/${need})`, got >= need],
+      ...(WW.quest.on() ? [[WW.quest.bar(), WW.quest.done()]] : []),
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
       [T('face'), r.bossDone]];
     let h = `<b>${esc(T('quest'))}:</b> `;
@@ -126,7 +127,7 @@
     ui.open({
       cls: 'talkov',
       render(box, h) {
-        const face = WW.spriteCanvas('npc', WW.lookPal(npc.look), 4, 11);
+        const face = WW.spriteCanvas(WW.personSprite ? WW.personSprite(npc) : 'npc', WW.lookPal(npc.look), 4, 11);
         face.className = 'face';
         const head = document.createElement('div'); head.className = 'talk-head';
         head.appendChild(face);
@@ -141,7 +142,7 @@
           const acts = document.createElement('div'); acts.className = 'acts';
           if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
           if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
-          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : T('close')), 'gold', () => {
+          acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : npc.doneLabel ? esc(npc.doneLabel) + ' ▶' : T('close')), 'gold', () => {
             WW.sfx('blip');
             if (page < lines.length - 1) { page++; h.render(); }
             else if (npc.ask) { stage = 'ask'; h.render(); }
@@ -446,6 +447,7 @@
     lines.push('TALKS (question — my answer — tries)');
     r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
     lines.push('');
+    if (WW.quest.on()) lines.push(WW.quest.log());
     lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
     lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
     lines.push('');

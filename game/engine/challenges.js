@@ -316,7 +316,7 @@
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
         const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5 });
+        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal });
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
         for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
@@ -344,7 +344,7 @@
           b.onclick = () => {
             picked = i;
             if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
-            else { last = 'hit'; WW.sfx('hurt'); WW.run.missed.includes(qi) || WW.run.missed.push(qi); WW.run.bossMisses++; WW.hurt(true); }
+            else { last = 'hit'; WW.sfx('hurt'); const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
           list.appendChild(b);
