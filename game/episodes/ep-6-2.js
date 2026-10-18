@@ -163,6 +163,70 @@ window.EPISODE = {
       fa: 'ایمنی آتشفشان · سبز = آرام. زرد = با دقت بپا. سرخ = همین حالا برو. راه بیرون رفتن خود را بدان و با خانواده‌ات تمرین کن.' } }
   ],
 
+  /* the quest: Ibu Dewi (gold !) -> Lola Nena on the terraces -> trade the island's fish and coconuts for Mekong rice -> back to Dewi */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Rice for the Island', es: 'Arroz para la isla', fa: 'برنج برای جزیره' },
+    giver: {
+      x: 21, y: 3,
+      name: { en: 'Ibu Dewi', es: 'Doña Dewi', fa: 'بی‌بی دیوی' },
+      role: { en: 'Cook on the little island', es: 'Cocinera de la islita', fa: 'آشپز جزیرهٔ کوچک' },
+      look: { skin: 4, hair: '#16100c', shirt: '#e0607a', pants: '#2a3a5a', style: 'bun' },
+      lines: [
+        { en: 'Welcome to our little island! We have lots of fish and coconuts here. But look: only sand and palm trees. There is no flat, wet land to grow rice.',
+          es: '¡Bienvenido a nuestra islita! Aquí tenemos mucho pescado y muchos cocos. Pero mira: solo arena y palmeras. No hay tierra plana y húmeda para sembrar arroz.',
+          fa: 'به جزیرهٔ کوچک ما خوش آمدی! این‌جا ماهی و نارگیل زیاد داریم. اما ببین: فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای کشت برنج نیست.' },
+        { en: 'The Quake Smudge sank our rice boat, and the festival is soon! Lola Nena farms on the island to the south. Take the long bridge south and ask her.',
+          es: '¡El Borrón Temblor hundió nuestro bote de arroz, y la fiesta es pronto! Lola Nena cultiva en la isla del sur. Toma el puente largo hacia el sur y pregúntale.',
+          fa: 'لکهٔ زلزله قایق برنج ما را غرق کرد و جشن نزدیک است! لولا ننا در جزیرهٔ جنوبی کشت می‌کند. از پل دراز به طرف جنوب برو و از او بپرس.' }
+      ],
+      wait: { en: 'Lola Nena is on the island to the south, up on the rice [[terrace|terraces]]. Take the long bridge south.',
+        es: 'Lola Nena está en la isla del sur, arriba en las [[terrace|terrazas]] de arroz. Toma el puente largo hacia el sur.',
+        fa: 'لولا ننا در جزیرهٔ جنوبی، بالای [[terrace|زمین‌های زینه‌ای]] برنج است. از پل دراز به طرف جنوب برو.' },
+      thanks: { en: 'Rice for the festival! Thank you! Our island has plenty of fish. The mainland has plenty of rice. Trade lets each place share what it has extra.',
+        es: '¡Arroz para la fiesta! ¡Gracias! Nuestra isla tiene mucho pescado. El continente tiene mucho arroz. El comercio deja que cada lugar comparta lo que le sobra.',
+        fa: 'برنج برای جشن! تشکر! جزیرهٔ ما ماهی زیاد دارد. خشکه برنج زیاد دارد. تجارت به هر جا کمک می‌کند آنچه را اضافه دارد با دیگران شریک کند.' }
+    },
+    contact: {
+      x: 26, y: 15,
+      name: { en: 'Lola Nena', es: 'Lola Nena', fa: 'لولا ننا' },
+      role: { en: 'Rice terrace farmer', es: 'Agricultora de terrazas de arroz', fa: 'دهقان زمین‌های زینه‌ای برنج' },
+      look: { skin: 2, hair: '#cfc8bd', shirt: '#2a8ac0', pants: '#5a3a2a', style: 'bun', hat: '#d8b060' },
+      lines: [
+        { en: 'We grow rice on these [[terrace|terraces]]. But the steps on the mountain are small. They grow just enough rice for our own village.',
+          es: 'Cultivamos arroz en estas [[terrace|terrazas]]. Pero los escalones de la montaña son pequeños. Dan solo el arroz justo para nuestro pueblo.',
+          fa: 'ما در این [[terrace|زمین‌های زینه‌ای]] برنج می‌کاریم. اما زینه‌های کوه کوچک هستند. فقط برای ده خود ما برنج کافی می‌دهند.' },
+        { en: 'Big, flat river plains grow much more. Go to the rice trader by the Mekong, on the [[mainland southeast asia|mainland]] in the north-west. Offer what the little island has plenty of.',
+          es: 'Las llanuras grandes y planas de los ríos dan mucho más. Ve con el comerciante de arroz junto al Mekong, en el [[mainland southeast asia|continente]], al noroeste. Ofrécele lo que la islita tiene de sobra.',
+          fa: 'دشت‌های بزرگ و هموار کنار دریا خیلی بیشتر برنج می‌دهند. نزد تاجر برنج کنار میکانگ برو، در [[mainland southeast asia|خشکه]] در شمال غرب. چیزی را پیشنهاد کن که جزیرهٔ کوچک زیاد دارد.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 11, y: 6,
+        name: { en: 'Uncle Bao', es: 'Don Bao', fa: 'کاکا بائو' },
+        role: { en: 'Rice trader on the Mekong', es: 'Comerciante de arroz del Mekong', fa: 'تاجر برنج میکانگ' },
+        look: { skin: 1, hair: '#2a2420', shirt: '#3a6a3a', pants: '#2a2a2a', style: 'short', hat: '#d8c890' },
+        lines: [
+          { en: 'The Mekong floods these flat fields every year. It leaves rich mud behind. So we grow more rice than we can eat!',
+            es: 'El Mekong inunda estos campos planos cada año. Deja lodo rico. ¡Por eso cultivamos más arroz del que podemos comer!',
+            fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد. به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
+        ]
+      },
+      q: { en: 'I will give you a big sack of rice. What will you give me for it?', es: 'Te daré un saco grande de arroz. ¿Qué me das a cambio?', fa: 'یک بوجی کلان برنج به تو می‌دهم. در عوض آن چه به من می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'Dried fish and coconuts from the little island', es: 'Pescado seco y cocos de la islita', fa: 'ماهی خشک و نارگیل از جزیرهٔ کوچک' },
+          why: { en: 'Good trade! The island has plenty of fish and coconuts. The mainland has plenty of rice. Each side gives what it has extra.', es: '¡Buen trato! La isla tiene mucho pescado y cocos. El continente tiene mucho arroz. Cada lado da lo que le sobra.', fa: 'معاملهٔ خوب! جزیره ماهی و نارگیل زیاد دارد. خشکه برنج زیاد دارد. هر طرف چیزی را می‌دهد که اضافه دارد.' } },
+        { t: { en: 'A sack of rice', es: 'Un saco de arroz', fa: 'یک بوجی برنج' },
+          why: { en: 'I already have more rice than I need! And the island has no rice to give.', es: '¡Ya tengo más arroz del que necesito! Y la isla no tiene arroz para dar.', fa: 'من همین حالا بیشتر از ضرورتم برنج دارم! جزیره هم برنجی برای دادن ندارد.' } },
+        { t: { en: 'Warm wool coats', es: 'Abrigos de lana', fa: 'کرتی‌های گرم پشمی' },
+          why: { en: 'Southeast Asia is near the equator. It is hot all year, so nobody here needs wool coats.', es: 'El sudeste asiático está cerca del ecuador. Hace calor todo el año, así que aquí nadie necesita abrigos de lana.', fa: 'جنوب شرق آسیا نزدیک خط استوا است. تمام سال گرم است، پس این‌جا کسی به کرتی پشمی ضرورت ندارد.' } }
+      ],
+      item: { icon: '🍚', name: { en: 'A sack of Mekong rice', es: 'Un saco de arroz del Mekong', fa: 'یک بوجی برنج میکانگ' } }
+    }
+  },
+
   scraps: [[14, 1], [28, 6], [3, 20]],
   smudges: [[10, 2], [9, 15]],
 
