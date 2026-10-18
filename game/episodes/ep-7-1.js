@@ -161,6 +161,70 @@ window.EPISODE = {
       fa: 'اسکلهٔ کشتی · شرق، آن طرف بحر: جزیره‌های جاپان. غرب: دشت دریاها، کوه‌های بلند و دشت گوبی.' } }
   ],
 
+  /* the quest: Teacher Zhou Lan (gold !) -> Batu the camel herder in the Gobi -> beat the Ink Thief where the rivers begin -> back to Zhou Lan */
+  quest: {
+    stat: 'loc',
+    title: { en: 'The Stolen River Map', es: 'El mapa de ríos robado', fa: 'نقشهٔ دزدی‌شدهٔ دریاها' },
+    giver: {
+      x: 19, y: 17,
+      name: { en: 'Teacher Zhou Lan', es: 'Maestra Zhou Lan', fa: 'معلم ژو لان' },
+      role: { en: 'Village school teacher', es: 'Maestra de la escuela del pueblo', fa: 'معلم مکتب ده' },
+      look: { skin: 1, hair: '#1c1612', shirt: '#2e8b7a', pants: '#3a3a4a', style: 'bun' },
+      lines: [
+        { en: 'Help, traveler! An Ink Thief grabbed my big river map. It shows where China\'s two great rivers go. My students need it tomorrow.',
+          es: '¡Ayuda, viajero! Un Ladrón de Tinta se llevó mi gran mapa de ríos. Muestra por dónde van los dos grandes ríos de China. Mis estudiantes lo necesitan mañana.',
+          fa: 'کمک، مسافر! یک دزد رنگ نقشهٔ بزرگ دریاهایم را گرفت. این نقشه نشان می‌دهد دو دریای بزرگ چین از کجا می‌روند. شاگردانم فردا به آن ضرورت دارند.' },
+        { en: 'Batu, a camel herder, saw where the thief ran. He is in the Gobi Desert, far to the north-west. Will you ask him?',
+          es: 'Batu, un pastor de camellos, vio adónde corrió el ladrón. Está en el desierto de Gobi, lejos al noroeste. ¿Le preguntas?',
+          fa: 'باتو، یک شترچران، دید که دزد به کجا دوید. او در دشت گوبی است، دور در شمال غرب. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Batu is in the Gobi Desert. Go north over the bridge. Then walk west and north into the sand.',
+        es: 'Batu está en el desierto de Gobi. Ve al norte por el puente. Luego camina al oeste y al norte hasta la arena.',
+        fa: 'باتو در دشت گوبی است. از پل به طرف شمال برو. بعد به طرف غرب و شمال تا ریگ‌ها راه برو.' },
+      thanks: { en: 'My river map! Now my students can follow both rivers from the high west down to the sea in the east. Thank you!',
+        es: '¡Mi mapa de ríos! Ahora mis estudiantes pueden seguir los dos ríos desde el oeste alto hasta el mar en el este. ¡Gracias!',
+        fa: 'نقشهٔ دریاهای من! حالا شاگردانم می‌توانند هر دو دریا را از غرب بلند تا بحر در شرق دنبال کنند. تشکر!' }
+    },
+    contact: {
+      x: 6, y: 4,
+      name: { en: 'Batu', es: 'Batu', fa: 'باتو' },
+      role: { en: 'Camel herder', es: 'Pastor de camellos', fa: 'شترچران' },
+      look: { skin: 3, hair: '#20180f', shirt: '#a0522d', pants: '#4a3b2a', hat: '#6b4a2a' },
+      lines: [
+        { en: 'Yes, I saw a dark, inky thing with a map! It ran past my camels. Rivers do not start in this dry desert, so it did not stay here.',
+          es: '¡Sí, vi una cosa oscura de tinta con un mapa! Pasó corriendo junto a mis camellos. Los ríos no nacen en este desierto seco, así que no se quedó aquí.',
+          fa: 'بله، یک چیز تاریک رنگی را با یک نقشه دیدم! از کنار شترهایم دوید. دریاها در این دشت خشک شروع نمی‌شوند، پس اینجا نماند.' },
+        { en: 'It ran south, up onto the high Tibetan [[plateau|Plateau]]. Look in the far south-west, where the southern river begins.',
+          es: 'Corrió al sur, hacia arriba, a la alta [[plateau|meseta]] del Tíbet. Busca lejos en el suroeste, donde nace el río del sur.',
+          fa: 'به طرف جنوب، بالای [[plateau|فلات]] بلند تبت دوید. دور در جنوب غرب بگرد، جایی که دریای جنوبی شروع می‌شود.' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [4, 17],
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
+      taunt: { en: 'Drip, drip! I will cover every river with ink. Answer my questions about the land, or the map stays black!',
+        es: '¡Plic, plic! Voy a cubrir cada río con tinta. ¡Responde mis preguntas sobre la tierra o el mapa se queda negro!',
+        fa: 'چک، چک! هر دریا را با رنگ می‌پوشانم. به سوال‌هایم دربارهٔ زمین جواب بده، وگرنه نقشه سیاه می‌ماند!' },
+      win: { en: 'The ink drips away. The thief drops the river map and runs off!',
+        es: 'La tinta se escurre. ¡El ladrón suelta el mapa de ríos y se va corriendo!',
+        fa: 'رنگ می‌چکد و می‌رود. دزد نقشهٔ دریاها را می‌اندازد و فرار می‌کند!' },
+      need: 2,
+      questions: [
+        { q: { en: 'Where do the Yellow River and the Yangtze begin?', es: '¿Dónde nacen el río Amarillo y el Yangtsé?', fa: 'دریای زرد و یانگتسی از کجا شروع می‌شوند؟' },
+          choices: [{ en: 'High in the mountains of western China', es: 'Arriba, en las montañas del oeste de China', fa: 'بالا در کوه‌های غرب چین' }, { en: 'In the Gobi Desert', es: 'En el desierto de Gobi', fa: 'در دشت گوبی' }, { en: 'At the sea near Shanghai', es: 'En el mar cerca de Shanghái', fa: 'در بحر نزدیک شانگهای' }, { en: 'On the islands of Japan', es: 'En las islas de Japón', fa: 'در جزیره‌های جاپان' }], answer: 0,
+          why: { en: 'Both rivers start high in the west. Then they flow downhill, east to the sea.', es: 'Los dos ríos nacen en lo alto del oeste. Luego bajan hacia el este hasta el mar.', fa: 'هر دو دریا از بلندی‌های غرب شروع می‌شوند. بعد به طرف پایین، به شرق تا بحر می‌روند.' } },
+        { q: { en: 'Why do very few people live in the Gobi Desert?', es: '¿Por qué vive muy poca gente en el desierto de Gobi?', fa: 'چرا مردم بسیار کم در دشت گوبی زندگی می‌کنند؟' },
+          choices: [{ en: 'It is too dry to grow much food', es: 'Es demasiado seco para cultivar mucha comida', fa: 'برای کشت غذای زیاد خیلی خشک است' }, { en: 'It is under the sea', es: 'Está bajo el mar', fa: 'زیر بحر است' }, { en: 'It is full of big cities', es: 'Está lleno de ciudades grandes', fa: 'پر از شهرهای بزرگ است' }, { en: 'It is covered with rice paddies', es: 'Está cubierto de arrozales', fa: 'با شالیزارها پوشیده است' }], answer: 0,
+          why: { en: 'A desert gets very little rain. Without water, farms cannot grow food.', es: 'Un desierto recibe muy poca lluvia. Sin agua, las granjas no pueden dar comida.', fa: 'دشت خشک باران بسیار کم دارد. بدون آب، کشتزارها غذا نمی‌دهند.' } },
+        { q: { en: 'Japan is an archipelago. What does that mean?', es: 'Japón es un archipiélago. ¿Qué significa eso?', fa: 'جاپان یک مجمع‌الجزایر است. این یعنی چه؟' },
+          choices: [{ en: 'It is a chain of islands', es: 'Es una cadena de islas', fa: 'یک زنجیره از جزیره‌ها است' }, { en: 'It is one big flat plain', es: 'Es una gran llanura plana', fa: 'یک دشت هموار بزرگ است' }, { en: 'It is a large desert', es: 'Es un gran desierto', fa: 'یک دشت خشک بزرگ است' }, { en: 'It is a high plateau', es: 'Es una meseta alta', fa: 'یک فلات بلند است' }], answer: 0,
+          why: { en: 'Japan has four main islands and thousands of small ones.', es: 'Japón tiene cuatro islas principales y miles de islas pequeñas.', fa: 'جاپان چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک دارد.' } }
+      ],
+      item: { icon: '🗺️', name: { en: "Teacher Zhou's river map", es: 'El mapa de ríos de la maestra Zhou', fa: 'نقشهٔ دریاهای معلم ژو' } }
+    }
+  },
+
   scraps: [[2, 8], [23, 1], [45, 17]],
   smudges: [[8, 3], [24, 13], [39, 13]],
 

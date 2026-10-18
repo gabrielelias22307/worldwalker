@@ -157,6 +157,55 @@ window.EPISODE = {
       fa: 'سر تپه ب · بلند و خشک. از اینجا تمام دشت، دریا و بحر دیده می‌شود. اما آب خیلی پایین است.' } }
   ],
 
+  /* the quest: Ms. Park the city planner (gold !) -> Hana the kite flyer on the hilltop -> find the flag at the river mouth -> back to Ms. Park */
+  quest: {
+    stat: 'loc',
+    title: { en: 'The Lost Planning Flag', es: 'La bandera perdida del plan', fa: 'بیرق گم‌شدهٔ نقشه' },
+    giver: {
+      x: 5, y: 17,
+      name: { en: 'Ms. Park', es: 'Sra. Park', fa: 'خانم پارک' },
+      role: { en: 'City planner', es: 'Planificadora de la ciudad', fa: 'طراح شهر' },
+      look: { skin: 1, hair: '#1a1410', shirt: '#c0392b', pants: '#2f3b4a', style: 'short' },
+      lines: [
+        { en: 'Oh no! The Smudge\'s wind took my red flag. I put it on my favorite spot for the new city. Now I cannot find it!',
+          es: '¡Ay, no! El viento del Borrón se llevó mi bandera roja. La puse en mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!',
+          fa: 'وای نه! باد لکه بیرق سرخم را برد. آن را در جای دلخواهم برای شهر نو گذاشته بودم. حالا پیدایش نمی‌کنم!' },
+        { en: 'Hana flies her kite on the hilltop in the north-east. From up there she sees everything. Will you ask her?',
+          es: 'Hana vuela su cometa en la colina del noreste. Desde allá arriba lo ve todo. ¿Le preguntas?',
+          fa: 'هانا در بالای تپه در شمال شرق گُدی‌پران بازی می‌کند. از آن بالا همه چیز را می‌بیند. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Hana is on the hilltop. Walk north to the road. Cross the bridge to the east. Then climb the path up the hill.',
+        es: 'Hana está en la colina. Camina al norte hasta el camino. Cruza el puente hacia el este. Luego sube por el sendero de la colina.',
+        fa: 'هانا بالای تپه است. به طرف شمال تا سرک برو. از پل به طرف شرق بگذر. بعد از راه باریک بالای تپه برو.' },
+      thanks: { en: 'My flag! The [[river mouth|river mouth]] links the river and the sea, so boats can reach the whole world. That is a great [[situation|situation]] for a city. Thank you!',
+        es: '¡Mi bandera! La [[river mouth|desembocadura]] une el río y el mar, así que los barcos llegan a todo el mundo. Esa es una gran [[situation|situación]] para una ciudad. ¡Gracias!',
+        fa: 'بیرق من! [[river mouth|دهانهٔ دریا]] دریا و بحر را به هم وصل می‌کند، پس کشتی‌ها به تمام دنیا می‌رسند. این یک [[situation|موقعیت]] عالی برای یک شهر است. تشکر!' }
+    },
+    contact: {
+      x: 21, y: 4,
+      name: { en: 'Hana', es: 'Hana', fa: 'هانا' },
+      role: { en: 'Kite flyer', es: 'Niña de la cometa', fa: 'گُدی‌پران‌باز' },
+      look: { skin: 2, hair: '#2a1d14', shirt: '#f2c94c', pants: '#3b5b8a', style: 'long' },
+      lines: [
+        { en: 'Yes! From this high hill I can see the whole [[plain|plain]]. I saw a red flag fly down the river toward the sea.',
+          es: '¡Sí! Desde esta colina alta veo toda la [[plain|llanura]]. Vi una bandera roja volar río abajo hacia el mar.',
+          fa: 'بله! از این تپهٔ بلند تمام [[plain|دشت هموار]] را می‌بینم. دیدم یک بیرق سرخ در امتداد دریا به طرف بحر پرید.' },
+        { en: 'It landed at the [[river mouth|river mouth]], where the river meets the sea. Walk south along the beach to the very last sand, right next to the sea.',
+          es: 'Cayó en la [[river mouth|desembocadura]], donde el río llega al mar. Camina al sur por la playa hasta la última arena, justo al lado del mar.',
+          fa: 'در [[river mouth|دهانهٔ دریا]] افتاد، جایی که دریا به بحر می‌رسد. در کنار ساحل به طرف جنوب تا آخرین ریگ برو، درست کنار بحر.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [23, 20],
+      hint: { en: 'south end of the beach, next to the sea', es: 'el extremo sur de la playa, junto al mar', fa: 'آخر جنوبی ساحل، کنار بحر' },
+      found: { en: 'There it is, flapping in the sand! You are at the [[river mouth|river mouth]]. The river and the sea both meet here.',
+        es: '¡Ahí está, ondeando en la arena! Estás en la [[river mouth|desembocadura]]. Aquí se juntan el río y el mar.',
+        fa: 'آنجاست، در ریگ‌ها تکان می‌خورد! تو در [[river mouth|دهانهٔ دریا]] هستی. دریا و بحر هر دو اینجا به هم می‌رسند.' },
+      item: { icon: '🚩', name: { en: "Ms. Park's planning flag", es: 'La bandera del plan de la Sra. Park', fa: 'بیرق نقشهٔ خانم پارک' } }
+    }
+  },
+
   scraps: [[7, 3], [27, 2], [2, 20]],
   smudges: [[17, 9], [16, 18]],
 

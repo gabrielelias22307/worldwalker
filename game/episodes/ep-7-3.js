@@ -158,6 +158,70 @@ window.EPISODE = {
       fa: 'بندر · کشتی، ریل و لاری همه همان [[container|کانتینرها]] را می‌برند. کالا وسیلهٔ سفر را عوض می‌کند، اما صندوق بسته می‌ماند.' } }
   ],
 
+  /* the quest: Grandpa Ganbold at the mine (gold !) -> Rizal the train driver -> trade with Ms. Lan at the assembly factories -> back to Ganbold */
+  quest: {
+    stat: 'mov',
+    title: { en: 'A Phone for Grandpa', es: 'Un teléfono para el abuelo', fa: 'یک مبایل برای پدرکلان' },
+    giver: {
+      x: 9, y: 6,
+      name: { en: 'Grandpa Ganbold', es: 'Abuelo Ganbold', fa: 'پدرکلان گانبولد' },
+      role: { en: 'Retired miner', es: 'Minero jubilado', fa: 'کارگر متقاعد معدن' },
+      look: { skin: 3, hair: '#cfc8bc', shirt: '#5b6e3a', pants: '#3a3226', hat: '#8a6a3a' },
+      lines: [
+        { en: 'Hello, young traveler! My granddaughter moved to the big city by the port. I want a phone so I can call her.',
+          es: '¡Hola, joven viajero! Mi nieta se mudó a la gran ciudad junto al puerto. Quiero un teléfono para poder llamarla.',
+          fa: 'سلام، مسافر جوان! نواسه‌ام به شهر بزرگ کنار بندر رفت. یک مبایل می‌خواهم تا به او زنگ بزنم.' },
+        { en: 'But our mine town has no phone factory. Rizal, the train driver, knows every stop on the line. Please ask him!',
+          es: 'Pero nuestro pueblo minero no tiene fábrica de teléfonos. Rizal, el conductor del tren, conoce cada parada de la línea. ¡Pregúntale, por favor!',
+          fa: 'اما شهرک معدنی ما فابریکهٔ مبایل ندارد. ریزال، رانندهٔ ریل، هر ایستگاه این خط را می‌شناسد. لطفاً از او بپرس!' }
+      ],
+      wait: { en: 'Rizal is east of here. Follow the railway east until you see the chip factory fence.',
+        es: 'Rizal está al este de aquí. Sigue la vía del tren hacia el este hasta ver la cerca de la fábrica de chips.',
+        fa: 'ریزال در شرق اینجا است. خط ریل را به طرف شرق دنبال کن تا جنگلهٔ فابریکهٔ چِپ را ببینی.' },
+      thanks: { en: 'A phone! Now I can call my granddaughter. And copper from our own mine helped make it. Thank you!',
+        es: '¡Un teléfono! Ahora puedo llamar a mi nieta. Y el cobre de nuestra propia mina ayudó a hacerlo. ¡Gracias!',
+        fa: 'یک مبایل! حالا می‌توانم به نواسه‌ام زنگ بزنم. و مس معدن خود ما در ساختن آن کمک کرد. تشکر!' }
+    },
+    contact: {
+      x: 22, y: 10,
+      name: { en: 'Rizal', es: 'Rizal', fa: 'ریزال' },
+      role: { en: 'Train driver', es: 'Conductor del tren', fa: 'رانندهٔ ریل' },
+      look: { skin: 4, hair: '#141010', shirt: '#2d5f9a', pants: '#2a2a2a', hat: '#2d5f9a' },
+      lines: [
+        { en: 'My train carries copper from your mine to the factories. Each place makes what it does best and trades for the rest. That is [[specialization|specialization]].',
+          es: 'Mi tren lleva cobre de tu mina a las fábricas. Cada lugar hace lo que mejor sabe hacer y comercia para conseguir lo demás. Eso es [[specialization|especialización]].',
+          fa: 'ریل من مس را از معدن شما به فابریکه‌ها می‌برد. هر جا چیزی را می‌سازد که بهتر بلد است و باقی را با تجارت به دست می‌آورد. این [[specialization|تخصص]] است.' },
+        { en: 'Ms. Lan trades phones by the assembly factories in the south-west. Offer her what your mine town has plenty of!',
+          es: 'La Sra. Lan cambia teléfonos junto a las fábricas de ensamblaje del suroeste. ¡Ofrécele lo que tu pueblo minero tiene de sobra!',
+          fa: 'خانم لان کنار فابریکه‌های اسمبل در جنوب غرب مبایل تبادله می‌کند. به او چیزی را پیشنهاد کن که شهرک معدنی شما زیاد دارد!' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 14, y: 18,
+        name: { en: 'Ms. Lan', es: 'Sra. Lan', fa: 'خانم لان' },
+        role: { en: 'Phone factory trader', es: 'Comerciante de la fábrica de teléfonos', fa: 'تاجر فابریکهٔ مبایل' },
+        look: { skin: 2, hair: '#1b1512', shirt: '#e07a3f', pants: '#34404f', style: 'bun' },
+        lines: [
+          { en: 'Welcome! My factory puts phones together. We need metal from many places to make them.',
+            es: '¡Bienvenido! Mi fábrica arma teléfonos. Necesitamos metal de muchos lugares para hacerlos.',
+            fa: 'خوش آمدی! فابریکهٔ من مبایل‌ها را اسمبل می‌کند. برای ساختن آن‌ها به فلز از جاهای زیاد ضرورت داریم.' }
+        ]
+      },
+      q: { en: 'Your mine town wants one phone. What will you trade me for it?', es: 'Tu pueblo minero quiere un teléfono. ¿Qué me das a cambio?', fa: 'شهرک معدنی شما یک مبایل می‌خواهد. در بدلش به من چه می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'A cart of copper from the mine', es: 'Un carrito de cobre de la mina', fa: 'یک گادی مس از معدن' },
+          why: { en: 'The mine has plenty of copper. The factory needs this [[raw material|raw material]] to make phones. Both sides win.', es: 'La mina tiene cobre de sobra. La fábrica necesita esta [[raw material|materia prima]] para hacer teléfonos. Los dos ganan.', fa: 'معدن مس زیاد دارد. فابریکه برای ساختن مبایل به این [[raw material|مادهٔ خام]] ضرورت دارد. هر دو طرف فایده می‌کنند.' } },
+        { t: { en: 'Bags of rice from the mine town', es: 'Sacos de arroz del pueblo minero', fa: 'بوجی‌های برنج از شهرک معدنی' },
+          why: { en: 'The mine is in rocky hills with no rice fields. The town has no rice to spare.', es: 'La mina está en cerros rocosos sin arrozales. El pueblo no tiene arroz de sobra.', fa: 'معدن در تپه‌های سنگلاخ است و شالیزار ندارد. شهرک برنج اضافه ندارد.' } },
+        { t: { en: 'The miners\' only digging machine', es: 'La única máquina de excavar de los mineros', fa: 'تنها ماشین کندن کارگران معدن' },
+          why: { en: 'Without it, the miners cannot work. Trade what you have plenty of, not what you need.', es: 'Sin ella, los mineros no pueden trabajar. Cambia lo que tienes de sobra, no lo que necesitas.', fa: 'بدون آن، کارگران معدن کار کرده نمی‌توانند. چیزی را تبادله کن که زیاد داری، نه چیزی که ضرورت داری.' } }
+      ],
+      item: { icon: '📱', name: { en: 'A phone for Grandpa Ganbold', es: 'Un teléfono para el abuelo Ganbold', fa: 'یک مبایل برای پدرکلان گانبولد' } }
+    }
+  },
+
   scraps: [[5, 2], [17, 7], [30, 17]],
   smudges: [[9, 4], [19, 20]],
 
