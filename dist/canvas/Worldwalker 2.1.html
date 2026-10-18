@@ -51,7 +51,10 @@ button{font-family:inherit}
 .screen:focus{outline-color:var(--gold)}
 .screen canvas#ww-cv{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
 .screen.ovopen{min-height:min(560px,85vh)}
-.toast{position:absolute;right:10px;top:10px;z-index:6;color:#fff;font-weight:700;font-size:15px;padding:8px 12px;border:3px solid #000;border-radius:4px;display:none;max-width:70%}
+.toast{position:absolute;right:10px;top:10px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:70%;pointer-events:none}
+.toast .tst{color:#fff;font-weight:700;font-size:15px;padding:7px 11px;border:3px solid #000;border-radius:4px;animation:pop .2s ease-out}
+.toast .tst.big{font-size:16px;padding:10px 14px;outline:3px solid #fff3b0;max-width:100%}
+.toast .tst small{display:block;font-weight:400;font-size:13px;opacity:.95}
 .defpop{position:absolute;z-index:9;max-width:300px;background:var(--ink);color:#fff;border:3px solid #ffe36e;border-radius:4px;padding:8px 12px;font-size:15px;line-height:1.4;display:none}
 .defpop b{color:#ffe36e}
 
@@ -246,6 +249,18 @@ button{font-family:inherit}
 .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:7}
 .confetti i{position:absolute;top:-12px;width:7px;height:10px;border-radius:1px;animation:fall 2.4s linear forwards}
 @keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r));opacity:.9}}
+
+/* ---------- goals, earnings, how you grow ---------- */
+.goals{background:#fff3c4;border:3px solid var(--ink);border-radius:6px;padding:8px 12px;margin:10px 0;text-align:start}
+.goals ol{margin:6px 0 6px 22px;padding:0}.goals li{margin:2px 0}
+[dir=rtl] .goals ol{margin:6px 22px 6px 0}
+ul.earned{list-style:none;padding:0;margin:4px 0;display:grid;gap:3px}
+ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
+.grow{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.grow .gw{background:#f3eedc;border-radius:6px;padding:6px 9px}
+.grow ul{list-style:none;padding:0;margin:4px 0 0}
+.grow li{font-size:14px;color:#8a8370;margin:2px 0}.grow li.on{color:#1f6a2e;font-weight:700}
+.hintbtn{font-size:14px!important}
 
 </style>
 </head>
@@ -1281,6 +1296,32 @@ window.WW_CONFIG.MODE = 'canvas';
     clickStart: { en: 'Click the game, then use the arrow keys', es: 'Haz clic en el juego y usa las flechas', fa: 'روی بازی کلیک کن، بعد از کلیدهای جهت استفاده کن' },
     controls: { en: 'Arrow keys or WASD to walk · walk into people to talk · Space to use', es: 'Flechas o WASD para caminar · camina hacia las personas para hablar · Espacio para usar', fa: 'کلیدهای جهت یا WASD برای راه رفتن · برای گپ زدن به طرف مردم برو · Space برای استفاده' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
+    goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
+    gTalk: { en: 'Talk to every person', es: 'Habla con cada persona', fa: 'با هر نفر گپ بزن' },
+    gQuest: { en: 'Help the person with the gold !', es: 'Ayuda a la persona con el ! dorado', fa: 'به کسی که ! طلایی دارد کمک کن' },
+    gStone: { en: 'Solve the glowing compass stone', es: 'Resuelve la piedra brújula que brilla', fa: 'سنگ قطب‌نمای درخشان را حل کن' },
+    gBoss: { en: 'Beat the Smudge in its question trial', es: 'Vence al Borrón en su prueba de preguntas', fa: 'لکه را در آزمون سؤال‌هایش شکست بده' },
+    gPage: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
+    gBonus: { en: 'Bonus: pick up the 3 atlas scraps (coins and a star)', es: 'Extra: recoge los 3 pedazos del atlas (monedas y una estrella)', fa: 'جایزه: ۳ تکهٔ اطلس را جمع کن (سکه و یک ستاره)' },
+    gDim: { en: 'The Smudge has dimmed this land. Every goal you finish brings its color back.', es: 'El Borrón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'لکه این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
+    claim: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
+    pageAppears: { en: 'Pip: "The Smudge is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Pip: "¡El Borrón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'پیپ: «لکه رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
+    grow: { en: 'How you grow', es: 'Cómo creces', fa: 'چگونه رشد می‌کنی' },
+    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Smudge: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Borrón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست لکه: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
+    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Smudge +15. Spend 10 coins on a hint from Pip in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Borrón +15. Gasta 10 monedas en una pista de Pip en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، لکه +۱۵. ۱۰ سکه برای یک کمک از پیپ در هر آزمون یا مسابقه خرج کن.' },
+    lvl: { en: 'level', es: 'nivel', fa: 'سطح' },
+    nextAt: { en: 'next at', es: 'siguiente en', fa: 'بعدی در' },
+    maxed: { en: 'all unlocked', es: 'todo desbloqueado', fa: 'همه باز شد' },
+    newPower: { en: 'New power!', es: '¡Nuevo poder!', fa: 'نیروی تازه!' },
+    earned: { en: 'What you earned', es: 'Lo que ganaste', fa: 'آنچه به دست آوردی' },
+    hint: { en: 'Hint', es: 'Pista', fa: 'کمک' },
+    hintFree: { en: 'free', es: 'gratis', fa: 'رایگان' },
+    hintNoCoins: { en: 'You need 10 coins for a hint.', es: 'Necesitas 10 monedas para una pista.', fa: 'برای کمک ۱۰ سکه لازم داری.' },
+    why_talk: { en: 'you answered', es: 'respondiste a', fa: 'جواب دادی به' },
+    why_stone: { en: 'compass stone', es: 'piedra brújula', fa: 'سنگ قطب‌نما' },
+    why_quest: { en: 'quest', es: 'misión', fa: 'مأموریت' },
+    why_boss: { en: 'beat the Smudge', es: 'venciste al Borrón', fa: 'لکه را شکست دادی' },
+    why_scrap: { en: 'atlas scrap', es: 'pedazo del atlas', fa: 'تکهٔ اطلس' },
     allRight: { en: 'All correct!', es: '¡Todo correcto!', fa: 'همه درست است!' },
     someWrong: { en: 'Some are in the wrong place. The red ones need to move.', es: 'Algunos están en el lugar equivocado. Los rojos deben moverse.', fa: 'بعضی در جای اشتباه هستند. سرخ‌ها باید جابجا شوند.' },
     pickItem: { en: 'Tap a card, then tap where it belongs.', es: 'Toca una tarjeta y luego toca dónde va.', fa: 'روی یک کارت بزن، بعد جایی که تعلق دارد را بزن.' },
@@ -1308,7 +1349,23 @@ window.WW_CONFIG.MODE = 'canvas';
   WW.resetHero = () => { const lang = WW.save.lang; WW.save = blank(); WW.save.lang = lang; WW.store(); };
   WW.doneCount = () => Object.keys(WW.save.episodes).filter(k => WW.save.episodes[k] && WW.save.episodes[k].done).length;
   WW.hasTool = id => { const t = WW.TOOLS.find(x => x.id === id); return !!(t && WW.save.episodes[t.ep] && WW.save.episodes[t.ep].done); };
-  WW.heartsMax = () => Math.min(5, 3 + Math.floor(WW.doneCount() / 8));
+  /* ---------------- what the five powers do ----------------
+     Each power unlocks a level at 3 points and another at 12. WW.tier('loc') is 0, 1 or 2. */
+  WW.TIERS = [3, 12];
+  WW.tier = k => WW.TIERS.filter(n => (WW.save.stats[k] || 0) >= n).length;
+  WW.PERKS = {
+    loc: [{ en: 'Compass arrow: an arrow points to your next goal', es: 'Flecha brújula: una flecha señala tu próxima meta', fa: 'تیر قطب‌نما: یک تیر هدف بعدی‌ات را نشان می‌دهد' },
+      { en: 'Scrap finder: a second arrow points to the nearest atlas scrap', es: 'Buscador: otra flecha señala el pedazo del atlas más cercano', fa: 'تکه‌یاب: تیر دوم نزدیک‌ترین تکهٔ اطلس را نشان می‌دهد' }],
+    pla: [{ en: 'Strong roots: +1 heart', es: 'Raíces fuertes: +1 corazón', fa: 'ریشهٔ قوی: +۱ قلب' },
+      { en: 'Deep roots: +1 more heart', es: 'Raíces profundas: +1 corazón más', fa: 'ریشهٔ عمیق: +۱ قلب دیگر' }],
+    hei: [{ en: 'Calm land: wandering Smudges move slower', es: 'Tierra tranquila: los Borrones sueltos van más lento', fa: 'زمین آرام: لکه‌های سرگردان آهسته‌تر می‌روند' },
+      { en: 'Healing scraps: each atlas scrap gives back a heart', es: 'Pedazos que curan: cada pedazo del atlas te devuelve un corazón', fa: 'تکهٔ شفابخش: هر تکهٔ اطلس یک قلب برمی‌گرداند' }],
+    mov: [{ en: 'Quick feet: you walk faster', es: 'Pies rápidos: caminas más rápido', fa: 'پای تیز: تندتر راه می‌روی' },
+      { en: 'Traveler: you walk faster still', es: 'Viajero: caminas aún más rápido', fa: 'مسافر: باز هم تندتر راه می‌روی' }],
+    reg: [{ en: 'Region sense: 1 free hint in every trial and duel', es: 'Sentido de región: 1 pista gratis en cada prueba y duelo', fa: 'حس منطقه: ۱ کمک رایگان در هر آزمون و مسابقه' },
+      { en: 'Region master: 2 free hints in every trial and duel', es: 'Maestro de regiones: 2 pistas gratis en cada prueba y duelo', fa: 'استاد منطقه: ۲ کمک رایگان در هر آزمون و مسابقه' }]
+  };
+  WW.heartsMax = () => 3 + WW.tier('pla');
 
   /* LOOK swatches (also used by the look picker) */
   WW.LOOK = {
@@ -1470,12 +1527,14 @@ window.WW_CONFIG.MODE = 'canvas';
   });
 
   /* ---------------- toast ---------------- */
-  let toastT;
-  WW.toast = (html, col) => {
-    const el = $('ww-toast'); if (!el) return;
-    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.style.display = 'block';
-    el.setAttribute('dir', WW.dir());
-    clearTimeout(toastT); toastT = setTimeout(() => (el.style.display = 'none'), 2600);
+  // small messages in the corner; several can show at once. big = a "New power!" banner
+  WW.toast = (html, col, big) => {
+    const box = $('ww-toast'); if (!box) return;
+    const el = document.createElement('div'); el.className = 'tst' + (big ? ' big' : '');
+    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.setAttribute('dir', WW.dir());
+    box.appendChild(el);
+    while (box.children.length > 4) box.firstChild.remove();
+    setTimeout(() => el.remove(), big ? 6000 : 3200);
   };
 
   /* ---------------- top bar ---------------- */
@@ -1512,7 +1571,8 @@ window.WW_CONFIG.MODE = 'canvas';
       [T('talkTo') + ` (${got}/${need})`, got >= need],
       ...(WW.quest.on() ? [[WW.quest.bar(), WW.quest.done()]] : []),
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
-      [T('face'), r.bossDone]];
+      [T('face'), r.bossDone],
+      [T('claim'), r.claimed]];
     let h = `<b>${esc(T('quest'))}:</b> `;
     h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
     h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
@@ -1570,7 +1630,7 @@ window.WW_CONFIG.MODE = 'canvas';
               picked = i;
               if (ch.ok) {
                 WW.sfx('good');
-                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
+                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
               } else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
               h.render();
             };
@@ -1706,6 +1766,10 @@ window.WW_CONFIG.MODE = 'canvas';
         box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
           ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
           ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
+          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
+            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
+            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
+            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
           <p class="small">${esc(T('controls'))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts center';
         acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
@@ -1735,6 +1799,14 @@ window.WW_CONFIG.MODE = 'canvas';
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
+        WW.THEMES.forEach(th => {
+          const v = s.stats[th.k] || 0, tr = WW.tier(th.k);
+          gr += `<div class="gw"><b>${th.icon} ${esc(L(th.full))}</b> <span class="small">${v} · ${esc(T('lvl'))} ${tr} · ${tr < 2 ? esc(T('nextAt')) + ' ' + WW.TIERS[tr] : esc(T('maxed'))}</span><ul>` +
+            WW.PERKS[th.k].map((p, i) => `<li class="${i < tr ? 'on' : ''}">${i < tr ? '✓' : '🔒 ' + WW.TIERS[i]} ${esc(L(p))}</li>`).join('') + '</ul></div>';
+        });
+        gr += `</div><p class="small">● ${esc(T('growCoins'))}</p>`;
+        box.insertAdjacentHTML('beforeend', gr);
         let bag = `<h3>${esc(T('bag'))}</h3><div class="bag">`;
         WW.TOOLS.forEach((t, i) => {
           const has = WW.hasTool(t.id);
@@ -1807,6 +1879,9 @@ window.WW_CONFIG.MODE = 'canvas';
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
         const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
         if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+        const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+        const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
           <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
         const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
@@ -1894,7 +1969,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const r = WW.run;
     if (!r.challengeDone) {
       r.challengeDone = true;
-      WW.gain(ch.stat || 'hei', 2, 5);
+      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone'));
       WW.sfx('win');
       WW.game.onChallengeDone();
     }
@@ -2183,6 +2258,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
     let broken = 0, picked = null, last = null;
+    let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
@@ -2209,9 +2285,11 @@ window.WW_CONFIG.MODE = 'canvas';
         box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
         const list = document.createElement('div'); list.className = 'choices two';
         const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
-        ord.forEach((i, pos) => {
+        let pos = 0;
+        ord.forEach(i => {
+          if (picked == null && (hidden[qi] || []).includes(i)) return;
           const c = q.choices[i];
-          const b = document.createElement('button'); b.innerHTML = `<i>${'ABCDE'[pos]}</i> ${WW.rich(c)}`; b.dataset.i = i;
+          const b = document.createElement('button'); b.innerHTML = `<i>${'ABCDE'[pos++]}</i> ${WW.rich(c)}`; b.dataset.i = i;
           if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
           b.disabled = picked != null;
           b.onclick = () => {
@@ -2223,6 +2301,16 @@ window.WW_CONFIG.MODE = 'canvas';
           list.appendChild(b);
         });
         box.appendChild(list);
+        const wrongLeft = q.choices.map((_, i) => i).filter(i => i !== q.answer && !(hidden[qi] || []).includes(i));
+        if (picked == null && wrongLeft.length > 1) {
+          const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
+            if (freeHints) freeHints--;
+            else if ((WW.save.coins || 0) >= 10) { WW.save.coins -= 10; WW.store(); WW.ui.hud(); }
+            else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
+            (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
+          });
+          const ha = document.createElement('div'); ha.className = 'acts'; ha.appendChild(hb); box.appendChild(ha);
+        }
         if (picked != null) {
           const ok = picked === q.answer;
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
@@ -2469,7 +2557,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   function setup(ep) {
     sky = Object.assign({ sky: 'clear', time: 'day' }, SKY[ep.id] || {}, ep.weather || {});
-    map = ep.map; parts = []; amb = []; cur = '';
+    map = ep.map; parts = []; amb = []; cur = ''; dim = null; liftT = 0;
     WW.style.realm = ep.realm || +ep.id[0];
     WW.style.night = sky.time === 'night';
     wind = sky.sky === 'snow' ? 0.25 : sky.sky === 'dust' || sky.sky === 'heat' ? 0.9 : 0.35;
@@ -2533,8 +2621,36 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- drawing ---------------- */
   // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
+  /* the Smudge's dimness: the land starts grey and gets its color back as goals are done */
+  let dim = null, liftT = 0, liftAt = null;
+  function smudgeDim(c, t, dt, hero) {
+    const g = WW.game, r = WW.run;
+    const target = !g || !g.progress || !r ? 0 : r.bossDone ? 0 : 1 - g.progress();
+    if (dim == null) dim = target;
+    dim += (target - dim) * Math.min(1, dt / 700);
+    if (dim > 0.01) {
+      c.save();
+      c.globalCompositeOperation = 'saturation'; c.fillStyle = `rgba(128,128,128,${0.62 * dim})`; c.fillRect(0, 0, VW, VH);
+      c.globalCompositeOperation = 'source-over'; c.fillStyle = `rgba(45,30,80,${0.16 * dim})`; c.fillRect(0, 0, VW, VH);
+      c.restore();
+    }
+    // the moment the Smudge is beaten: a ring of light spreads out from the hero
+    const k = (performance.now() - liftT) / 1400;
+    if (liftT && k < 1) {
+      const x = liftAt ? liftAt.x + 8 : VW / 2, y = liftAt ? liftAt.y + 8 : VH / 2, rad = 10 + k * 300;
+      c.save(); c.globalCompositeOperation = 'lighter';
+      c.strokeStyle = `rgba(255,240,180,${0.6 * (1 - k)})`; c.lineWidth = 10 * (1 - k) + 2;
+      c.beginPath(); c.arc(x, y, rad, 0, 7); c.stroke();
+      c.fillStyle = `rgba(255,250,220,${0.25 * (1 - k)})`; c.fillRect(0, 0, VW, VH);
+      c.restore();
+    }
+  }
+  function lift() { liftT = performance.now(); }
+
   function draw(c, sx, sy, hero, t, dt) {
     enterScreen(sx, sy);
+    if (hero) liftAt = hero;
+    smudgeDim(c, t, dt, hero);
     const ox = sx * VW, oy = sy * VH, k = Math.min(3, dt / 16.7);
     if (!calm()) {
       // cloud shadows drift over the whole world
@@ -2686,7 +2802,7 @@ window.WW_CONFIG.MODE = 'canvas';
     }
   }
 
-  WW.fx = { setup, draw, burst, step, get sky() { return sky; }, SKY };
+  WW.fx = { setup, draw, burst, step, lift, get sky() { return sky; }, SKY };
 })();
 
 /* quest.js */
@@ -2786,7 +2902,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const q = WW.ep.quest;
     set(4);
     WW.fx.burst(q.giver.x, q.giver.y, 'gold');
-    WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10);
+    WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10, T('why_quest') + ': ' + WW.plain(q.title));
     WW.toast('🏅 ' + WW.esc(T('questDone')), '#c08a1e');
   }
 
@@ -2826,7 +2942,7 @@ window.WW_CONFIG.MODE = 'canvas';
   /* the words in the quest bar */
   Q.bar = () => {
     const q = WW.ep.quest, s = Q.step(), a = q.action;
-    if (s >= 4) return '✓ ' + WW.plain(q.title);
+    if (s >= 4) return WW.plain(q.title);
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
@@ -2911,12 +3027,20 @@ window.WW_CONFIG.MODE = 'canvas';
   const G = WW.game = {};
   let lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
-  WW.gain = (stat, n, coins) => {
-    WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
+  // add to a power and/or coins, say why, and announce a new power level when one unlocks
+  WW.gain = (stat, n, coins, why, quiet) => {
+    const before = stat ? WW.tier(stat) : 0;
+    if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
     WW.save.coins = (WW.save.coins || 0) + (coins || 0);
+    if (WW.run) WW.run.gains.push({ stat, n: stat ? n : 0, coins: coins || 0, why: why || '' });
     WW.store(); WW.ui.hud();
     const th = WW.THEMES.find(t => t.k === stat);
-    if (th) WW.toast(`+${n} ${th.icon} ${esc(L(th.name))}${coins ? ` · +${coins} ●` : ''}`, th.col);
+    if (th && !quiet) WW.toast(`+${n} ${th.icon} ${esc(L(th.full))}${coins ? ` · +${coins} ●` : ''}${why ? `<small>${esc(why)}</small>` : ''}`, th.col);
+    if (th && WW.tier(stat) > before) {
+      WW.toast(`⭐ ${esc(T('newPower'))} ${th.icon} ${esc(L(WW.PERKS[stat][WW.tier(stat) - 1]))}`, th.col, true);
+      if (stat === 'pla' && WW.run) WW.run.hearts++;
+      WW.ui.hud();
+    }
   };
   WW.hurt = (inBoss) => {
     const r = WW.run;
@@ -2936,7 +3060,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y))) return false;
     const e = entAt(x, y);
-    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot';
+    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot' || e.kind === 'atlas';
   }
 
   /* ---------------- start an episode ---------------- */
@@ -2954,7 +3078,7 @@ window.WW_CONFIG.MODE = 'canvas';
     buildDom(root);
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
     WW.run = {
-      hearts: WW.heartsMax(), heartsLost: 0, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
+      hearts: WW.heartsMax(), heartsLost: 0, gains: [], hints: 0, claimed: false, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
       quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
     ents = [];
@@ -3000,18 +3124,28 @@ window.WW_CONFIG.MODE = 'canvas';
     setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
 
+  // the Smudge is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
+  function bossBeaten() {
+    const r = WW.run, ep = WW.ep;
+    r.bossDone = true;
+    WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
+    ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
+    WW.fx.lift();
+    WW.music.play('win', 'realm' + ep.realm);
+    WW.ui.quest();
+    setTimeout(() => WW.ui.message('', T('pageAppears')), 500);
+  }
   function finishEpisode() {
     const r = WW.run, ep = WW.ep, s = WW.save;
-    r.bossDone = true;
+    r.bossDone = true; r.claimed = true;
     const stars = 1 + (r.scraps.size >= ep.scraps.length ? 1 : 0) + (r.bossMisses <= 1 ? 1 : 0);
     r.stars = stars;
     const had = s.episodes[ep.id];
     const toolBefore = WW.TOOLS.find(t => t.ep === ep.id && !WW.hasTool(t.id));
     s.episodes[ep.id] = { done: true, stars: Math.max(stars, (had && had.stars) || 0), at: new Date().toISOString().slice(0, 10) };
     if (toolBefore) r.newTool = toolBefore;
-    WW.gain(ep.boss.stat || 'reg', 2, 15);
     WW.store();
-    WW.music.play('win', 'realm' + ep.realm);
+    WW.fx.lift(); WW.sfx('win');
     WW.ui.quest();
     WW.ui.finish();
   }
@@ -3031,14 +3165,17 @@ window.WW_CONFIG.MODE = 'canvas';
       else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
+      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
     }
   }
   function pickup() {
     WW.quest.onStep(player.x, player.y);
+    const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
+    if (pg && !WW.run.claimed) { pg.gone = true; WW.fx.burst(pg.x, pg.y, 'gold'); finishEpisode(); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
-      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
+      e.gone = true; WW.run.scraps.add(e.id); WW.gain(null, 0, 3, T('why_scrap'), true); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
+      if (WW.tier('hei') >= 2 && WW.run.hearts < WW.heartsMax()) { WW.run.hearts++; WW.toast('♥ +1', '#e04848'); }
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
@@ -3055,14 +3192,14 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- moving ---------------- */
   const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
-  const STEP_MS = 150;
+  const stepMs = () => 150 - 18 * WW.tier('mov'); // Movement power: quicker steps
   function tryStep(d, now) {
     if (player.moving || trans || WW.paused) return;
     player.dir = d;
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind !== 'scrap' && e.kind !== 'smudge' && e.kind !== 'qspot') { interact(e); held = null; return; }
+    if (e && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) return;
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
@@ -3107,7 +3244,7 @@ window.WW_CONFIG.MODE = 'canvas';
       if (!dx && !dy) return;
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
-      if (e2 && !['scrap', 'smudge', 'qspot'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      if (e2 && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
       clickTarget = [tx, ty];
     });
   }
@@ -3120,7 +3257,7 @@ window.WW_CONFIG.MODE = 'canvas';
     ents.forEach(e => {
       if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
       if (now < e.next) return;
-      e.next = now + 650 + (e.phase % 3) * 120;
+      e.next = now + (650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Smudges
       const dirs = Object.values(DIRS);
       // drift a little toward the player, mostly random
       const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
@@ -3164,6 +3301,12 @@ window.WW_CONFIG.MODE = 'canvas';
         }
       }
       if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+      if (e.kind === 'atlas') {
+        const a = (Math.sin(t / 250) + 1) / 2;
+        c.fillStyle = `rgba(255,230,140,${.25 + a * .35})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 6, 10 + a * 3, 0, 7); c.fill();
+        c.fillStyle = '#22202e'; c.fillRect(px(e) + 2, py(e) + 10, 12, 6); c.fillStyle = '#9aa3ad'; c.fillRect(px(e) + 3, py(e) + 11, 10, 4); c.fillStyle = '#c3c8ce'; c.fillRect(px(e) + 3, py(e) + 11, 10, 1);
+        WW.sprite(c, 'page', px(e) + 1, py(e) - 6, { bob: true, t });
+      }
       if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
@@ -3178,7 +3321,7 @@ window.WW_CONFIG.MODE = 'canvas';
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
     // movement timing
-    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+    if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
       if (held) tryStep(held, now);
@@ -3200,7 +3343,7 @@ window.WW_CONFIG.MODE = 'canvas';
     // pip trails one tile behind
     if (pip.tx != null && !player.moving) { pip.x = pip.tx; pip.y = pip.ty; pip.tx = null; }
     // where to draw the hero inside the screen
-    const k = player.moving ? Math.min(1, (now - player.moving) / STEP_MS) : 1;
+    const k = player.moving ? Math.min(1, (now - player.moving) / stepMs()) : 1;
     const fx = player.from ? player.from[0] + (player.x - player.from[0]) * k : player.x;
     const fy = player.from ? player.from[1] + (player.y - player.from[1]) * k : player.y;
     let [sx, sy] = screenOf(player.x, player.y);
@@ -3224,8 +3367,44 @@ window.WW_CONFIG.MODE = 'canvas';
       if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
+      drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
     c.restore();
+  }
+  /* the goal right now (for the Location power's arrow and for the dimness) */
+  G.goal = () => {
+    const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
+    if (r.bossDone) return r.claimed ? null : ep.boss.at;
+    const left = ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
+    if (left.length) { const n = near(left); return [n.x, n.y]; }
+    if (WW.quest.on() && !WW.quest.done()) {
+      const q = ep.quest, st = WW.quest.step(), a = q.action;
+      if (st === 0 || st === 3) return [q.giver.x, q.giver.y];
+      if (st === 1) return [q.contact.x, q.contact.y];
+      return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null; // a secret spot is found with the clue, not the arrow
+    }
+    return r.challengeDone ? ep.boss.at : ep.challenge.at;
+  };
+  G.progress = () => { // 0..1: how much of the episode is done (the land's color comes back with it)
+    const r = WW.run, ep = WW.ep;
+    const parts = [r.talked.size >= ep.npcs.length, WW.quest.done(), r.challengeDone, r.bossDone];
+    return parts.filter(Boolean).length / parts.length;
+  };
+  function arrow(c, hx, hy, tx, ty, col, rad) {
+    const dx = tx - hx, dy = ty - hy, d = Math.hypot(dx, dy); if (d < 20) return;
+    const ux = dx / d, uy = dy / d, ax = hx + ux * rad, ay = hy + uy * rad, px = -uy, py = ux;
+    c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(ax + ux * 7, ay + uy * 7); c.lineTo(ax + px * 5 - ux * 2, ay + py * 5 - uy * 2); c.lineTo(ax - px * 5 - ux * 2, ay - py * 5 - uy * 2); c.fill();
+    c.fillStyle = col; c.beginPath(); c.moveTo(ax + ux * 5, ay + uy * 5); c.lineTo(ax + px * 3.4 - ux, ay + py * 3.4 - uy); c.lineTo(ax - px * 3.4 - ux, ay - py * 3.4 - uy); c.fill();
+  }
+  function drawArrows(c, sx, sy, hx, hy, now) {
+    if (WW.paused || !WW.tier('loc')) return;
+    const cx = hx + 8, cy = hy + 6, pos = p => [(p[0] - sx * SW) * TS + 8, (p[1] - sy * SH) * TS + 8];
+    const g = G.goal();
+    if (g) { const [tx, ty] = pos(g); arrow(c, cx, cy, tx, ty + Math.sin(now / 200) * 1.5, '#f2c14e', 15); }
+    if (WW.tier('loc') >= 2) {
+      const left = ents.filter(e => e.kind === 'scrap' && !e.gone);
+      if (left.length) { const n = left.sort((a, b) => Math.hypot(a.x - player.x, a.y - player.y) - Math.hypot(b.x - player.x, b.y - player.y))[0]; const [tx, ty] = pos([n.x, n.y]); arrow(c, cx, cy, tx, ty, '#fff3b0', 22); }
+    }
   }
   function drawHero(c, x, y, now) {
     if (performance.now() < inv && Math.floor(now / 90) % 2) return; // blink after a hit
@@ -3249,6 +3428,7 @@ window.WW_CONFIG.MODE = 'canvas';
       return false;
     },
     standOn(x, y) { this.teleport(x, y); pickup(); },
+    get goal() { return G.goal(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; }

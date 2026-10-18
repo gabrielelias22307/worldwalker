@@ -44,7 +44,10 @@ button{font-family:inherit}
 .screen:focus{outline-color:var(--gold)}
 .screen canvas#ww-cv{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
 .screen.ovopen{min-height:min(560px,85vh)}
-.toast{position:absolute;right:10px;top:10px;z-index:6;color:#fff;font-weight:700;font-size:15px;padding:8px 12px;border:3px solid #000;border-radius:4px;display:none;max-width:70%}
+.toast{position:absolute;right:10px;top:10px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:70%;pointer-events:none}
+.toast .tst{color:#fff;font-weight:700;font-size:15px;padding:7px 11px;border:3px solid #000;border-radius:4px;animation:pop .2s ease-out}
+.toast .tst.big{font-size:16px;padding:10px 14px;outline:3px solid #fff3b0;max-width:100%}
+.toast .tst small{display:block;font-weight:400;font-size:13px;opacity:.95}
 .defpop{position:absolute;z-index:9;max-width:300px;background:var(--ink);color:#fff;border:3px solid #ffe36e;border-radius:4px;padding:8px 12px;font-size:15px;line-height:1.4;display:none}
 .defpop b{color:#ffe36e}
 
@@ -239,3 +242,15 @@ button{font-family:inherit}
 .confetti{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:7}
 .confetti i{position:absolute;top:-12px;width:7px;height:10px;border-radius:1px;animation:fall 2.4s linear forwards}
 @keyframes fall{to{transform:translate(var(--dx),110vh) rotate(var(--r));opacity:.9}}
+
+/* ---------- goals, earnings, how you grow ---------- */
+.goals{background:#fff3c4;border:3px solid var(--ink);border-radius:6px;padding:8px 12px;margin:10px 0;text-align:start}
+.goals ol{margin:6px 0 6px 22px;padding:0}.goals li{margin:2px 0}
+[dir=rtl] .goals ol{margin:6px 22px 6px 0}
+ul.earned{list-style:none;padding:0;margin:4px 0;display:grid;gap:3px}
+ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
+.grow{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.grow .gw{background:#f3eedc;border-radius:6px;padding:6px 9px}
+.grow ul{list-style:none;padding:0;margin:4px 0 0}
+.grow li{font-size:14px;color:#8a8370;margin:2px 0}.grow li.on{color:#1f6a2e;font-weight:700}
+.hintbtn{font-size:14px!important}

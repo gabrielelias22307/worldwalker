@@ -62,12 +62,14 @@
   });
 
   /* ---------------- toast ---------------- */
-  let toastT;
-  WW.toast = (html, col) => {
-    const el = $('ww-toast'); if (!el) return;
-    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.style.display = 'block';
-    el.setAttribute('dir', WW.dir());
-    clearTimeout(toastT); toastT = setTimeout(() => (el.style.display = 'none'), 2600);
+  // small messages in the corner; several can show at once. big = a "New power!" banner
+  WW.toast = (html, col, big) => {
+    const box = $('ww-toast'); if (!box) return;
+    const el = document.createElement('div'); el.className = 'tst' + (big ? ' big' : '');
+    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.setAttribute('dir', WW.dir());
+    box.appendChild(el);
+    while (box.children.length > 4) box.firstChild.remove();
+    setTimeout(() => el.remove(), big ? 6000 : 3200);
   };
 
   /* ---------------- top bar ---------------- */
@@ -104,7 +106,8 @@
       [T('talkTo') + ` (${got}/${need})`, got >= need],
       ...(WW.quest.on() ? [[WW.quest.bar(), WW.quest.done()]] : []),
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
-      [T('face'), r.bossDone]];
+      [T('face'), r.bossDone],
+      [T('claim'), r.claimed]];
     let h = `<b>${esc(T('quest'))}:</b> `;
     h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
     h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
@@ -162,7 +165,7 @@
               picked = i;
               if (ch.ok) {
                 WW.sfx('good');
-                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
+                if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
               } else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
               h.render();
             };
@@ -298,6 +301,10 @@
         box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
           ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
           ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
+          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
+            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
+            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
+            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
           <p class="small">${esc(T('controls'))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts center';
         acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
@@ -327,6 +334,14 @@
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
+        WW.THEMES.forEach(th => {
+          const v = s.stats[th.k] || 0, tr = WW.tier(th.k);
+          gr += `<div class="gw"><b>${th.icon} ${esc(L(th.full))}</b> <span class="small">${v} · ${esc(T('lvl'))} ${tr} · ${tr < 2 ? esc(T('nextAt')) + ' ' + WW.TIERS[tr] : esc(T('maxed'))}</span><ul>` +
+            WW.PERKS[th.k].map((p, i) => `<li class="${i < tr ? 'on' : ''}">${i < tr ? '✓' : '🔒 ' + WW.TIERS[i]} ${esc(L(p))}</li>`).join('') + '</ul></div>';
+        });
+        gr += `</div><p class="small">● ${esc(T('growCoins'))}</p>`;
+        box.insertAdjacentHTML('beforeend', gr);
         let bag = `<h3>${esc(T('bag'))}</h3><div class="bag">`;
         WW.TOOLS.forEach((t, i) => {
           const has = WW.hasTool(t.id);
@@ -399,6 +414,9 @@
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
         const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
         if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+        const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+        const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
           <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
         const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';

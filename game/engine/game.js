@@ -67,12 +67,20 @@
   const G = WW.game = {};
   let lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
-  WW.gain = (stat, n, coins) => {
-    WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
+  // add to a power and/or coins, say why, and announce a new power level when one unlocks
+  WW.gain = (stat, n, coins, why, quiet) => {
+    const before = stat ? WW.tier(stat) : 0;
+    if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
     WW.save.coins = (WW.save.coins || 0) + (coins || 0);
+    if (WW.run) WW.run.gains.push({ stat, n: stat ? n : 0, coins: coins || 0, why: why || '' });
     WW.store(); WW.ui.hud();
     const th = WW.THEMES.find(t => t.k === stat);
-    if (th) WW.toast(`+${n} ${th.icon} ${esc(L(th.name))}${coins ? ` · +${coins} ●` : ''}`, th.col);
+    if (th && !quiet) WW.toast(`+${n} ${th.icon} ${esc(L(th.full))}${coins ? ` · +${coins} ●` : ''}${why ? `<small>${esc(why)}</small>` : ''}`, th.col);
+    if (th && WW.tier(stat) > before) {
+      WW.toast(`⭐ ${esc(T('newPower'))} ${th.icon} ${esc(L(WW.PERKS[stat][WW.tier(stat) - 1]))}`, th.col, true);
+      if (stat === 'pla' && WW.run) WW.run.hearts++;
+      WW.ui.hud();
+    }
   };
   WW.hurt = (inBoss) => {
     const r = WW.run;
@@ -92,7 +100,7 @@
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y))) return false;
     const e = entAt(x, y);
-    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot';
+    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot' || e.kind === 'atlas';
   }
 
   /* ---------------- start an episode ---------------- */
@@ -110,7 +118,7 @@
     buildDom(root);
     document.title = `Worldwalker ${ep.id} · ${WW.plain({ en: (ep.title.en || ep.title) })}`;
     WW.run = {
-      hearts: WW.heartsMax(), heartsLost: 0, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
+      hearts: WW.heartsMax(), heartsLost: 0, gains: [], hints: 0, claimed: false, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
       quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
     ents = [];
@@ -156,18 +164,28 @@
     setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
 
+  // the Smudge is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
+  function bossBeaten() {
+    const r = WW.run, ep = WW.ep;
+    r.bossDone = true;
+    WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
+    ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
+    WW.fx.lift();
+    WW.music.play('win', 'realm' + ep.realm);
+    WW.ui.quest();
+    setTimeout(() => WW.ui.message('', T('pageAppears')), 500);
+  }
   function finishEpisode() {
     const r = WW.run, ep = WW.ep, s = WW.save;
-    r.bossDone = true;
+    r.bossDone = true; r.claimed = true;
     const stars = 1 + (r.scraps.size >= ep.scraps.length ? 1 : 0) + (r.bossMisses <= 1 ? 1 : 0);
     r.stars = stars;
     const had = s.episodes[ep.id];
     const toolBefore = WW.TOOLS.find(t => t.ep === ep.id && !WW.hasTool(t.id));
     s.episodes[ep.id] = { done: true, stars: Math.max(stars, (had && had.stars) || 0), at: new Date().toISOString().slice(0, 10) };
     if (toolBefore) r.newTool = toolBefore;
-    WW.gain(ep.boss.stat || 'reg', 2, 15);
     WW.store();
-    WW.music.play('win', 'realm' + ep.realm);
+    WW.fx.lift(); WW.sfx('win');
     WW.ui.quest();
     WW.ui.finish();
   }
@@ -187,14 +205,17 @@
       else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); finishEpisode(); });
+      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
     }
   }
   function pickup() {
     WW.quest.onStep(player.x, player.y);
+    const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
+    if (pg && !WW.run.claimed) { pg.gone = true; WW.fx.burst(pg.x, pg.y, 'gold'); finishEpisode(); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
-      e.gone = true; WW.run.scraps.add(e.id); WW.save.coins += 3; WW.store(); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
+      e.gone = true; WW.run.scraps.add(e.id); WW.gain(null, 0, 3, T('why_scrap'), true); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
+      if (WW.tier('hei') >= 2 && WW.run.hearts < WW.heartsMax()) { WW.run.hearts++; WW.toast('♥ +1', '#e04848'); }
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
@@ -211,14 +232,14 @@
 
   /* ---------------- moving ---------------- */
   const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
-  const STEP_MS = 150;
+  const stepMs = () => 150 - 18 * WW.tier('mov'); // Movement power: quicker steps
   function tryStep(d, now) {
     if (player.moving || trans || WW.paused) return;
     player.dir = d;
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind !== 'scrap' && e.kind !== 'smudge' && e.kind !== 'qspot') { interact(e); held = null; return; }
+    if (e && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) return;
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
@@ -263,7 +284,7 @@
       if (!dx && !dy) return;
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
-      if (e2 && !['scrap', 'smudge', 'qspot'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      if (e2 && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
       clickTarget = [tx, ty];
     });
   }
@@ -276,7 +297,7 @@
     ents.forEach(e => {
       if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
       if (now < e.next) return;
-      e.next = now + 650 + (e.phase % 3) * 120;
+      e.next = now + (650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Smudges
       const dirs = Object.values(DIRS);
       // drift a little toward the player, mostly random
       const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
@@ -320,6 +341,12 @@
         }
       }
       if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+      if (e.kind === 'atlas') {
+        const a = (Math.sin(t / 250) + 1) / 2;
+        c.fillStyle = `rgba(255,230,140,${.25 + a * .35})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 6, 10 + a * 3, 0, 7); c.fill();
+        c.fillStyle = '#22202e'; c.fillRect(px(e) + 2, py(e) + 10, 12, 6); c.fillStyle = '#9aa3ad'; c.fillRect(px(e) + 3, py(e) + 11, 10, 4); c.fillStyle = '#c3c8ce'; c.fillRect(px(e) + 3, py(e) + 11, 10, 1);
+        WW.sprite(c, 'page', px(e) + 1, py(e) - 6, { bob: true, t });
+      }
       if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2;
@@ -334,7 +361,7 @@
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
     // movement timing
-    if (player.moving && now - player.moving >= STEP_MS) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+    if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
       if (held) tryStep(held, now);
@@ -356,7 +383,7 @@
     // pip trails one tile behind
     if (pip.tx != null && !player.moving) { pip.x = pip.tx; pip.y = pip.ty; pip.tx = null; }
     // where to draw the hero inside the screen
-    const k = player.moving ? Math.min(1, (now - player.moving) / STEP_MS) : 1;
+    const k = player.moving ? Math.min(1, (now - player.moving) / stepMs()) : 1;
     const fx = player.from ? player.from[0] + (player.x - player.from[0]) * k : player.x;
     const fy = player.from ? player.from[1] + (player.y - player.from[1]) * k : player.y;
     let [sx, sy] = screenOf(player.x, player.y);
@@ -380,8 +407,44 @@
       if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
+      drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
     c.restore();
+  }
+  /* the goal right now (for the Location power's arrow and for the dimness) */
+  G.goal = () => {
+    const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
+    if (r.bossDone) return r.claimed ? null : ep.boss.at;
+    const left = ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
+    if (left.length) { const n = near(left); return [n.x, n.y]; }
+    if (WW.quest.on() && !WW.quest.done()) {
+      const q = ep.quest, st = WW.quest.step(), a = q.action;
+      if (st === 0 || st === 3) return [q.giver.x, q.giver.y];
+      if (st === 1) return [q.contact.x, q.contact.y];
+      return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null; // a secret spot is found with the clue, not the arrow
+    }
+    return r.challengeDone ? ep.boss.at : ep.challenge.at;
+  };
+  G.progress = () => { // 0..1: how much of the episode is done (the land's color comes back with it)
+    const r = WW.run, ep = WW.ep;
+    const parts = [r.talked.size >= ep.npcs.length, WW.quest.done(), r.challengeDone, r.bossDone];
+    return parts.filter(Boolean).length / parts.length;
+  };
+  function arrow(c, hx, hy, tx, ty, col, rad) {
+    const dx = tx - hx, dy = ty - hy, d = Math.hypot(dx, dy); if (d < 20) return;
+    const ux = dx / d, uy = dy / d, ax = hx + ux * rad, ay = hy + uy * rad, px = -uy, py = ux;
+    c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(ax + ux * 7, ay + uy * 7); c.lineTo(ax + px * 5 - ux * 2, ay + py * 5 - uy * 2); c.lineTo(ax - px * 5 - ux * 2, ay - py * 5 - uy * 2); c.fill();
+    c.fillStyle = col; c.beginPath(); c.moveTo(ax + ux * 5, ay + uy * 5); c.lineTo(ax + px * 3.4 - ux, ay + py * 3.4 - uy); c.lineTo(ax - px * 3.4 - ux, ay - py * 3.4 - uy); c.fill();
+  }
+  function drawArrows(c, sx, sy, hx, hy, now) {
+    if (WW.paused || !WW.tier('loc')) return;
+    const cx = hx + 8, cy = hy + 6, pos = p => [(p[0] - sx * SW) * TS + 8, (p[1] - sy * SH) * TS + 8];
+    const g = G.goal();
+    if (g) { const [tx, ty] = pos(g); arrow(c, cx, cy, tx, ty + Math.sin(now / 200) * 1.5, '#f2c14e', 15); }
+    if (WW.tier('loc') >= 2) {
+      const left = ents.filter(e => e.kind === 'scrap' && !e.gone);
+      if (left.length) { const n = left.sort((a, b) => Math.hypot(a.x - player.x, a.y - player.y) - Math.hypot(b.x - player.x, b.y - player.y))[0]; const [tx, ty] = pos([n.x, n.y]); arrow(c, cx, cy, tx, ty, '#fff3b0', 22); }
+    }
   }
   function drawHero(c, x, y, now) {
     if (performance.now() < inv && Math.floor(now / 90) % 2) return; // blink after a hit
@@ -405,6 +468,7 @@
       return false;
     },
     standOn(x, y) { this.teleport(x, y); pickup(); },
+    get goal() { return G.goal(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; }

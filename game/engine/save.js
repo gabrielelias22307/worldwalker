@@ -138,6 +138,32 @@
     clickStart: { en: 'Click the game, then use the arrow keys', es: 'Haz clic en el juego y usa las flechas', fa: 'روی بازی کلیک کن، بعد از کلیدهای جهت استفاده کن' },
     controls: { en: 'Arrow keys or WASD to walk · walk into people to talk · Space to use', es: 'Flechas o WASD para caminar · camina hacia las personas para hablar · Espacio para usar', fa: 'کلیدهای جهت یا WASD برای راه رفتن · برای گپ زدن به طرف مردم برو · Space برای استفاده' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
+    goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
+    gTalk: { en: 'Talk to every person', es: 'Habla con cada persona', fa: 'با هر نفر گپ بزن' },
+    gQuest: { en: 'Help the person with the gold !', es: 'Ayuda a la persona con el ! dorado', fa: 'به کسی که ! طلایی دارد کمک کن' },
+    gStone: { en: 'Solve the glowing compass stone', es: 'Resuelve la piedra brújula que brilla', fa: 'سنگ قطب‌نمای درخشان را حل کن' },
+    gBoss: { en: 'Beat the Smudge in its question trial', es: 'Vence al Borrón en su prueba de preguntas', fa: 'لکه را در آزمون سؤال‌هایش شکست بده' },
+    gPage: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
+    gBonus: { en: 'Bonus: pick up the 3 atlas scraps (coins and a star)', es: 'Extra: recoge los 3 pedazos del atlas (monedas y una estrella)', fa: 'جایزه: ۳ تکهٔ اطلس را جمع کن (سکه و یک ستاره)' },
+    gDim: { en: 'The Smudge has dimmed this land. Every goal you finish brings its color back.', es: 'El Borrón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'لکه این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
+    claim: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
+    pageAppears: { en: 'Pip: "The Smudge is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Pip: "¡El Borrón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'پیپ: «لکه رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
+    grow: { en: 'How you grow', es: 'Cómo creces', fa: 'چگونه رشد می‌کنی' },
+    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Smudge: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Borrón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست لکه: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
+    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Smudge +15. Spend 10 coins on a hint from Pip in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Borrón +15. Gasta 10 monedas en una pista de Pip en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، لکه +۱۵. ۱۰ سکه برای یک کمک از پیپ در هر آزمون یا مسابقه خرج کن.' },
+    lvl: { en: 'level', es: 'nivel', fa: 'سطح' },
+    nextAt: { en: 'next at', es: 'siguiente en', fa: 'بعدی در' },
+    maxed: { en: 'all unlocked', es: 'todo desbloqueado', fa: 'همه باز شد' },
+    newPower: { en: 'New power!', es: '¡Nuevo poder!', fa: 'نیروی تازه!' },
+    earned: { en: 'What you earned', es: 'Lo que ganaste', fa: 'آنچه به دست آوردی' },
+    hint: { en: 'Hint', es: 'Pista', fa: 'کمک' },
+    hintFree: { en: 'free', es: 'gratis', fa: 'رایگان' },
+    hintNoCoins: { en: 'You need 10 coins for a hint.', es: 'Necesitas 10 monedas para una pista.', fa: 'برای کمک ۱۰ سکه لازم داری.' },
+    why_talk: { en: 'you answered', es: 'respondiste a', fa: 'جواب دادی به' },
+    why_stone: { en: 'compass stone', es: 'piedra brújula', fa: 'سنگ قطب‌نما' },
+    why_quest: { en: 'quest', es: 'misión', fa: 'مأموریت' },
+    why_boss: { en: 'beat the Smudge', es: 'venciste al Borrón', fa: 'لکه را شکست دادی' },
+    why_scrap: { en: 'atlas scrap', es: 'pedazo del atlas', fa: 'تکهٔ اطلس' },
     allRight: { en: 'All correct!', es: '¡Todo correcto!', fa: 'همه درست است!' },
     someWrong: { en: 'Some are in the wrong place. The red ones need to move.', es: 'Algunos están en el lugar equivocado. Los rojos deben moverse.', fa: 'بعضی در جای اشتباه هستند. سرخ‌ها باید جابجا شوند.' },
     pickItem: { en: 'Tap a card, then tap where it belongs.', es: 'Toca una tarjeta y luego toca dónde va.', fa: 'روی یک کارت بزن، بعد جایی که تعلق دارد را بزن.' },
@@ -165,7 +191,23 @@
   WW.resetHero = () => { const lang = WW.save.lang; WW.save = blank(); WW.save.lang = lang; WW.store(); };
   WW.doneCount = () => Object.keys(WW.save.episodes).filter(k => WW.save.episodes[k] && WW.save.episodes[k].done).length;
   WW.hasTool = id => { const t = WW.TOOLS.find(x => x.id === id); return !!(t && WW.save.episodes[t.ep] && WW.save.episodes[t.ep].done); };
-  WW.heartsMax = () => Math.min(5, 3 + Math.floor(WW.doneCount() / 8));
+  /* ---------------- what the five powers do ----------------
+     Each power unlocks a level at 3 points and another at 12. WW.tier('loc') is 0, 1 or 2. */
+  WW.TIERS = [3, 12];
+  WW.tier = k => WW.TIERS.filter(n => (WW.save.stats[k] || 0) >= n).length;
+  WW.PERKS = {
+    loc: [{ en: 'Compass arrow: an arrow points to your next goal', es: 'Flecha brújula: una flecha señala tu próxima meta', fa: 'تیر قطب‌نما: یک تیر هدف بعدی‌ات را نشان می‌دهد' },
+      { en: 'Scrap finder: a second arrow points to the nearest atlas scrap', es: 'Buscador: otra flecha señala el pedazo del atlas más cercano', fa: 'تکه‌یاب: تیر دوم نزدیک‌ترین تکهٔ اطلس را نشان می‌دهد' }],
+    pla: [{ en: 'Strong roots: +1 heart', es: 'Raíces fuertes: +1 corazón', fa: 'ریشهٔ قوی: +۱ قلب' },
+      { en: 'Deep roots: +1 more heart', es: 'Raíces profundas: +1 corazón más', fa: 'ریشهٔ عمیق: +۱ قلب دیگر' }],
+    hei: [{ en: 'Calm land: wandering Smudges move slower', es: 'Tierra tranquila: los Borrones sueltos van más lento', fa: 'زمین آرام: لکه‌های سرگردان آهسته‌تر می‌روند' },
+      { en: 'Healing scraps: each atlas scrap gives back a heart', es: 'Pedazos que curan: cada pedazo del atlas te devuelve un corazón', fa: 'تکهٔ شفابخش: هر تکهٔ اطلس یک قلب برمی‌گرداند' }],
+    mov: [{ en: 'Quick feet: you walk faster', es: 'Pies rápidos: caminas más rápido', fa: 'پای تیز: تندتر راه می‌روی' },
+      { en: 'Traveler: you walk faster still', es: 'Viajero: caminas aún más rápido', fa: 'مسافر: باز هم تندتر راه می‌روی' }],
+    reg: [{ en: 'Region sense: 1 free hint in every trial and duel', es: 'Sentido de región: 1 pista gratis en cada prueba y duelo', fa: 'حس منطقه: ۱ کمک رایگان در هر آزمون و مسابقه' },
+      { en: 'Region master: 2 free hints in every trial and duel', es: 'Maestro de regiones: 2 pistas gratis en cada prueba y duelo', fa: 'استاد منطقه: ۲ کمک رایگان در هر آزمون و مسابقه' }]
+  };
+  WW.heartsMax = () => 3 + WW.tier('pla');
 
   /* LOOK swatches (also used by the look picker) */
   WW.LOOK = {

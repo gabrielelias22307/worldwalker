@@ -94,7 +94,7 @@
     const q = WW.ep.quest;
     set(4);
     WW.fx.burst(q.giver.x, q.giver.y, 'gold');
-    WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10);
+    WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10, T('why_quest') + ': ' + WW.plain(q.title));
     WW.toast('🏅 ' + WW.esc(T('questDone')), '#c08a1e');
   }
 
@@ -134,7 +134,7 @@
   /* the words in the quest bar */
   Q.bar = () => {
     const q = WW.ep.quest, s = Q.step(), a = q.action;
-    if (s >= 4) return '✓ ' + WW.plain(q.title);
+    if (s >= 4) return WW.plain(q.title);
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);

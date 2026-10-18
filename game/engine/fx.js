@@ -24,7 +24,7 @@
 
   function setup(ep) {
     sky = Object.assign({ sky: 'clear', time: 'day' }, SKY[ep.id] || {}, ep.weather || {});
-    map = ep.map; parts = []; amb = []; cur = '';
+    map = ep.map; parts = []; amb = []; cur = ''; dim = null; liftT = 0;
     WW.style.realm = ep.realm || +ep.id[0];
     WW.style.night = sky.time === 'night';
     wind = sky.sky === 'snow' ? 0.25 : sky.sky === 'dust' || sky.sky === 'heat' ? 0.9 : 0.35;
@@ -88,8 +88,36 @@
 
   /* ---------------- drawing ---------------- */
   // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
+  /* the Smudge's dimness: the land starts grey and gets its color back as goals are done */
+  let dim = null, liftT = 0, liftAt = null;
+  function smudgeDim(c, t, dt, hero) {
+    const g = WW.game, r = WW.run;
+    const target = !g || !g.progress || !r ? 0 : r.bossDone ? 0 : 1 - g.progress();
+    if (dim == null) dim = target;
+    dim += (target - dim) * Math.min(1, dt / 700);
+    if (dim > 0.01) {
+      c.save();
+      c.globalCompositeOperation = 'saturation'; c.fillStyle = `rgba(128,128,128,${0.62 * dim})`; c.fillRect(0, 0, VW, VH);
+      c.globalCompositeOperation = 'source-over'; c.fillStyle = `rgba(45,30,80,${0.16 * dim})`; c.fillRect(0, 0, VW, VH);
+      c.restore();
+    }
+    // the moment the Smudge is beaten: a ring of light spreads out from the hero
+    const k = (performance.now() - liftT) / 1400;
+    if (liftT && k < 1) {
+      const x = liftAt ? liftAt.x + 8 : VW / 2, y = liftAt ? liftAt.y + 8 : VH / 2, rad = 10 + k * 300;
+      c.save(); c.globalCompositeOperation = 'lighter';
+      c.strokeStyle = `rgba(255,240,180,${0.6 * (1 - k)})`; c.lineWidth = 10 * (1 - k) + 2;
+      c.beginPath(); c.arc(x, y, rad, 0, 7); c.stroke();
+      c.fillStyle = `rgba(255,250,220,${0.25 * (1 - k)})`; c.fillRect(0, 0, VW, VH);
+      c.restore();
+    }
+  }
+  function lift() { liftT = performance.now(); }
+
   function draw(c, sx, sy, hero, t, dt) {
     enterScreen(sx, sy);
+    if (hero) liftAt = hero;
+    smudgeDim(c, t, dt, hero);
     const ox = sx * VW, oy = sy * VH, k = Math.min(3, dt / 16.7);
     if (!calm()) {
       // cloud shadows drift over the whole world
@@ -241,5 +269,5 @@
     }
   }
 
-  WW.fx = { setup, draw, burst, step, get sky() { return sky; }, SKY };
+  WW.fx = { setup, draw, burst, step, lift, get sky() { return sky; }, SKY };
 })();

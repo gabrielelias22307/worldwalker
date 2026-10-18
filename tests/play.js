@@ -212,7 +212,16 @@ const SHOTS = !process.argv.includes('--no-shots');
         }
         await shot('8-boss-won');
         await page.locator('#ww-ov .pbtn.gold.big').click();
+        await page.waitForSelector('.msgov'); // Pip: the page is on the stone
+        if (await page.evaluate(() => WW.run.claimed)) throw new Error('the page was claimed before walking to it');
+        await clickGold(); await page.waitForFunction(() => !WW.paused);
+        await page.waitForTimeout(400); await shot('8b-page');
+        const goal = await page.evaluate(() => WW.dbg.goal);
+        if (!goal || goal.join() !== ep.boss.at.join()) throw new Error('the goal after the Smudge is not the page');
+        await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), ep.boss.at);
         await page.waitForSelector('.finov');
+        const fin = await page.textContent('#ww-ov');
+        if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');
       });
       await step('finish + turn in', async () => {
         await page.click('#ww-ov .starter');

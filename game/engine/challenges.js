@@ -21,7 +21,7 @@
     const r = WW.run;
     if (!r.challengeDone) {
       r.challengeDone = true;
-      WW.gain(ch.stat || 'hei', 2, 5);
+      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone'));
       WW.sfx('win');
       WW.game.onChallengeDone();
     }
@@ -310,6 +310,7 @@
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
     let broken = 0, picked = null, last = null;
+    let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
@@ -336,9 +337,11 @@
         box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
         const list = document.createElement('div'); list.className = 'choices two';
         const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
-        ord.forEach((i, pos) => {
+        let pos = 0;
+        ord.forEach(i => {
+          if (picked == null && (hidden[qi] || []).includes(i)) return;
           const c = q.choices[i];
-          const b = document.createElement('button'); b.innerHTML = `<i>${'ABCDE'[pos]}</i> ${WW.rich(c)}`; b.dataset.i = i;
+          const b = document.createElement('button'); b.innerHTML = `<i>${'ABCDE'[pos++]}</i> ${WW.rich(c)}`; b.dataset.i = i;
           if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
           b.disabled = picked != null;
           b.onclick = () => {
@@ -350,6 +353,16 @@
           list.appendChild(b);
         });
         box.appendChild(list);
+        const wrongLeft = q.choices.map((_, i) => i).filter(i => i !== q.answer && !(hidden[qi] || []).includes(i));
+        if (picked == null && wrongLeft.length > 1) {
+          const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
+            if (freeHints) freeHints--;
+            else if ((WW.save.coins || 0) >= 10) { WW.save.coins -= 10; WW.store(); WW.ui.hud(); }
+            else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
+            (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
+          });
+          const ha = document.createElement('div'); ha.className = 'acts'; ha.appendChild(hb); box.appendChild(ha);
+        }
         if (picked != null) {
           const ok = picked === q.answer;
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
