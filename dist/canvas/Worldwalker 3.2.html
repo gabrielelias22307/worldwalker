@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3413,6 +3414,55 @@ window.EPISODE = {
       es: 'MONTES URALES · Al oeste: Europa. Al este: Asia. Los geógrafos usan estas montañas como la línea entre las dos.',
       fa: 'کوه‌های اورال · غرب اینجا: اروپا. شرق اینجا: آسیا. جغرافیه‌دانان این کوه‌ها را خط میان این دو می‌دانند.' } }
   ],
+
+  /* the quest: Dr. Ruslan (gold !) -> Pyotr at the flat-roof station -> find the thermometer on the tundra, north of where the taiga ends -> back to Ruslan */
+  quest: {
+    stat: 'pla',
+    title: { en: 'The Lost Thermometer', es: 'El termómetro perdido', fa: 'حرارت‌سنج گم‌شده' },
+    giver: {
+      x: 9, y: 5,
+      name: { en: 'Dr. Ruslan', es: 'Dr. Ruslán', fa: 'داکتر رسلان' },
+      role: { en: 'Frozen-ground scientist', es: 'Científico del suelo helado', fa: 'دانشمند زمین یخ‌زده' },
+      look: { skin: 3, hair: '#2a1d14', shirt: '#4a6fa5', pants: '#2b2b3a', hat: '#5a3a22' },
+      lines: [
+        { en: 'Oh no! The Smudge\'s blizzard blew my ground thermometer away. It measures [[permafrost|permafrost]], the ground that stays frozen all year.',
+          es: '¡Ay, no! La ventisca del Borrón se llevó mi termómetro de suelo. Mide el [[permafrost|permafrost]], el suelo que sigue congelado todo el año.',
+          fa: 'وای! توفان برف لکه حرارت‌سنج زمین مرا برد. این وسیله [[permafrost|زمین همیشه یخ‌زده]] را اندازه می‌کند، زمینی که تمام سال یخ می‌ماند.' },
+        { en: 'Pyotr fixes the tracks at the station with the flat roofs, east of the Ural Mountains. He saw where it flew. Will you ride east and ask him?',
+          es: 'Pyotr arregla las vías en la estación de techos planos, al este de los montes Urales. Él vio a dónde voló. ¿Vas al este a preguntarle?',
+          fa: 'پیوتر در ایستگاهی که بام‌های هموار دارد، شرق کوه‌های اورال، خط آهن را ترمیم می‌کند. او دید که به کجا پرید. به طرف شرق می‌روی و از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Pyotr is at the station with the flat roofs. Follow the railway east, past the Ural Mountains.',
+        es: 'Pyotr está en la estación de techos planos. Sigue el ferrocarril al este, más allá de los montes Urales.',
+        fa: 'پیوتر در ایستگاهی است که بام‌های هموار دارد. خط آهن را به طرف شرق دنبال کن، از کوه‌های اورال بگذر.' },
+      thanks: { en: 'My thermometer! It shows the ground up there is frozen, even in summer. That is permafrost. Trees cannot grow roots in it, so the tundra has no forest. Thank you!',
+        es: '¡Mi termómetro! Muestra que el suelo de allá arriba está congelado, aun en verano. Eso es el permafrost. Los árboles no pueden echar raíces en él, por eso la tundra no tiene bosque. ¡Gracias!',
+        fa: 'حرارت‌سنج من! نشان می‌دهد زمین آن بالا حتی در تابستان یخ‌زده است. این همان زمین همیشه یخ‌زده است. درختان نمی‌توانند در آن ریشه بدوانند، پس توندرا جنگل ندارد. تشکر!' }
+    },
+    contact: {
+      x: 21, y: 7,
+      name: { en: 'Pyotr', es: 'Pyotr', fa: 'پیوتر' },
+      role: { en: 'Railway track worker', es: 'Trabajador de las vías', fa: 'کارگر خط آهن' },
+      look: { skin: 0, hair: '#e3c26b', shirt: '#e0782b', pants: '#2b3a4a', hat: '#c0392b' },
+      lines: [
+        { en: 'I saw it! The wind carried it east and then north, over the [[taiga|taiga]] forest. It came down where the trees stop.',
+          es: '¡Lo vi! El viento lo llevó al este y luego al norte, por encima del bosque de la [[taiga|taiga]]. Cayó donde se acaban los árboles.',
+          fa: 'دیدمش! باد آن را اول به شرق و بعد به شمال، از بالای جنگل [[taiga|تایگا]] برد. جایی افتاد که درختان تمام می‌شوند.' },
+        { en: 'Ride east to the town with the blue roof and the market stalls. Then walk north through the taiga until the trees end. It is on the [[tundra|tundra]], straight north of the blue-roof house.',
+          es: 'Ve al este hasta el pueblo del techo azul y los puestos del mercado. Luego camina al norte por la taiga hasta que se acaben los árboles. Está en la [[tundra|tundra]], justo al norte de la casa del techo azul.',
+          fa: 'به طرف شرق تا شهرکی برو که بام آبی و غرفه‌های بازار دارد. بعد از میان تایگا به طرف شمال برو تا درختان تمام شوند. حرارت‌سنج روی [[tundra|توندرا]]، درست شمالِ خانهٔ بام‌آبی است.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [34, 3],
+      hint: { en: 'tundra, straight north of the blue house by the market', es: 'tundra, justo al norte de la casa azul junto al mercado', fa: 'توندرا، درست شمالِ خانهٔ آبی کنار بازار' },
+      found: { en: 'There it is, on the flat, treeless [[tundra|tundra]]! The [[taiga|taiga]] ends just south of here. Farther north, it is too cold for trees.',
+        es: '¡Ahí está, en la [[tundra|tundra]] plana y sin árboles! La [[taiga|taiga]] termina justo al sur de aquí. Más al norte hace demasiado frío para los árboles.',
+        fa: 'آنجاست، روی [[tundra|توندرا]]ی هموار و بی‌درخت! [[taiga|تایگا]] درست جنوبِ اینجا تمام می‌شود. شمال‌تر برای درختان خیلی سرد است.' },
+      item: { icon: '🌡️', name: { en: 'Ground thermometer', es: 'Termómetro de suelo', fa: 'حرارت‌سنج زمین' } }
+    }
+  },
 
   scraps: [[30, 1], [45, 15], [1, 20]],
   smudges: [[26, 12], [40, 3]],

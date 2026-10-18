@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3415,6 +3416,70 @@ window.EPISODE = {
       es: 'PASO ALPINO · Cerrado por la nieve en invierno. Hace mucho tiempo, los comerciantes esperaban el verano para cruzar las montañas.',
       fa: 'درّهٔ الپ · در زمستان با برف بسته است. خیلی وقت پیش، تاجران تا تابستان صبر می‌کردند تا از کوه‌ها بگذرند.' } }
   ],
+
+  /* the quest: Pilot Daan (gold !) -> Inês the fisher on the peninsula -> beat the Ink Thief in the wheat east of the river -> back to Daan */
+  quest: {
+    stat: 'mov',
+    title: { en: 'The Stolen Sea Chart', es: 'La carta náutica robada', fa: 'نقشهٔ بحری دزدی‌شده' },
+    giver: {
+      x: 28, y: 7,
+      name: { en: 'Pilot Daan', es: 'Piloto Daan', fa: 'رهنما دان' },
+      role: { en: 'Harbor pilot', es: 'Piloto del puerto', fa: 'رهنمای کشتی‌ها در بندر' },
+      look: { skin: 4, hair: '#1b1410', shirt: '#e0782b', pants: '#22324f', hat: '#1f2a44' },
+      lines: [
+        { en: 'Help! An Ink Thief grabbed my sea chart and ran away. The chart shows ships the deep, [[navigable|navigable]] water up the river.',
+          es: '¡Ayuda! Un Ladrón de Tinta agarró mi carta náutica y se escapó. La carta les muestra a los barcos el agua honda y [[navigable|navegable]] del río.',
+          fa: 'کمک! یک دزد رنگ نقشهٔ بحری مرا گرفت و فرار کرد. این نقشه آب عمیق و [[navigable|قابل کشتیرانی]] دریا را به کشتی‌ها نشان می‌دهد.' },
+        { en: 'Inês the fisher saw which way it ran. She mends her nets on the peninsula, south-west of here. Will you ask her?',
+          es: 'Inês, la pescadora, vio por dónde se fue. Ella arregla sus redes en la península, al suroeste de aquí. ¿Le preguntas?',
+          fa: 'اینس، ماهی‌گیر، دید که به کدام طرف رفت. او در شبه‌جزیره، جنوب غربِ اینجا، تورهایش را ترمیم می‌کند. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Inês is on the [[peninsula|peninsula]], south-west of here. That land has water on three sides.',
+        es: 'Inês está en la [[peninsula|península]], al suroeste de aquí. Esa tierra tiene agua por tres lados.',
+        fa: 'اینس در [[peninsula|شبه‌جزیره]]، جنوب غربِ اینجا است. آن خشکه از سه طرف آب دارد.' },
+      thanks: { en: 'My chart! Now big ships can find the deep water again. Barges carry goods up the river, right into the middle of Europe. Thank you!',
+        es: '¡Mi carta! Ahora los barcos grandes pueden encontrar otra vez el agua honda. Las barcazas llevan mercancías río arriba, hasta el centro de Europa. ¡Gracias!',
+        fa: 'نقشهٔ من! حالا کشتی‌های بزرگ دوباره آب عمیق را پیدا می‌کنند. کشتی‌های باری مال را از راه دریا تا وسط اروپا می‌برند. تشکر!' }
+    },
+    contact: {
+      x: 8, y: 12,
+      name: { en: 'Inês', es: 'Inês', fa: 'اینس' },
+      role: { en: 'Fisher', es: 'Pescadora', fa: 'ماهی‌گیر' },
+      look: { skin: 2, hair: '#3a2a1a', shirt: '#2a7fb8', pants: '#4a3a2a', style: 'bun' },
+      lines: [
+        { en: 'Yes, I saw it! A little thief with ink all over its hands. It ran east, past the port, toward the river.',
+          es: '¡Sí, lo vi! Un ladroncito con las manos llenas de tinta. Corrió al este, pasó el puerto y fue hacia el río.',
+          fa: 'بله، دیدمش! یک دزد کوچک که دست‌هایش پر از رنگ بود. به طرف شرق دوید، از بندر گذشت و به طرف دریا رفت.' },
+        { en: 'Cross the south bridge to the east side of the river. The thief is hiding in the wheat field there. Answer its questions to win back the chart!',
+          es: 'Cruza el puente del sur hacia el lado este del río. El ladrón se esconde en el campo de trigo de allí. ¡Responde sus preguntas para recuperar la carta!',
+          fa: 'از پل جنوبی به طرف شرق دریا برو. دزد در کشتزار گندم آنجا پنهان است. به سوال‌هایش جواب بده تا نقشه را پس بگیری!' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [29, 15],
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
+      taunt: { en: 'Hee hee! This chart is mine now. Answer my questions about Europe, or I keep it!',
+        es: '¡Ji ji! Esta carta ahora es mía. ¡Responde mis preguntas sobre Europa o me la quedo!',
+        fa: 'هی هی! این نقشه حالا مال من است. به سوال‌هایم دربارهٔ اروپا جواب بده، وگرنه آن را نگه می‌دارم!' },
+      win: { en: 'The thief drops the sea chart and runs off in a puff of ink!',
+        es: '¡El ladrón suelta la carta náutica y huye en una nube de tinta!',
+        fa: 'دزد نقشهٔ بحری را می‌اندازد و در یک ابر رنگ فرار می‌کند!' },
+      need: 2,
+      questions: [
+        { q: { en: 'A narrow strip of water joins two bigger seas. What is it called?', es: 'Una franja angosta de agua une dos mares más grandes. ¿Cómo se llama?', fa: 'یک نوار باریک آب دو بحر بزرگ‌تر را به هم وصل می‌کند. نامش چیست؟' },
+          choices: [{ en: 'A strait', es: 'Un estrecho', fa: 'تنگه' }, { en: 'A peninsula', es: 'Una península', fa: 'شبه‌جزیره' }, { en: 'A fjord', es: 'Un fiordo', fa: 'فیورد' }, { en: 'A glacier', es: 'Un glaciar', fa: 'یخچال' }], answer: 0,
+          why: { en: 'A strait joins two seas. The Strait of Gibraltar joins the Atlantic Ocean to the Mediterranean Sea.', es: 'Un estrecho une dos mares. El estrecho de Gibraltar une el océano Atlántico con el mar Mediterráneo.', fa: 'تنگه دو بحر را وصل می‌کند. تنگهٔ جبل‌الطارق اقیانوس اطلس را به بحیرهٔ مدیترانه وصل می‌کند.' } },
+        { q: { en: 'The Rhine River starts in the Alps. Which way does it flow?', es: 'El río Rin nace en los Alpes. ¿Hacia dónde corre?', fa: 'دریای راین از کوه‌های الپ شروع می‌شود. به کدام طرف جاری است؟' },
+          choices: [{ en: 'North, to the North Sea', es: 'Al norte, hasta el mar del Norte', fa: 'به طرف شمال، تا بحر شمال' }, { en: 'South, to the Mediterranean Sea', es: 'Al sur, hasta el mar Mediterráneo', fa: 'به طرف جنوب، تا بحیرهٔ مدیترانه' }, { en: 'East, to the Black Sea', es: 'Al este, hasta el mar Negro', fa: 'به طرف شرق، تا بحیرهٔ سیاه' }, { en: 'West, to the Atlantic Ocean', es: 'Al oeste, hasta el océano Atlántico', fa: 'به طرف غرب، تا اقیانوس اطلس' }], answer: 0,
+          why: { en: 'The Rhine flows north to the North Sea. The Danube is the river that flows east to the Black Sea.', es: 'El Rin corre al norte, hasta el mar del Norte. El Danubio es el río que corre al este, hasta el mar Negro.', fa: 'راین به طرف شمال تا بحر شمال جاری است. دانوب دریایی است که به طرف شرق تا بحیرهٔ سیاه می‌رود.' } },
+        { q: { en: 'North of the Alps lies the wide North European Plain. Why do so many farms, roads and cities spread across it?', es: 'Al norte de los Alpes está la ancha llanura del norte de Europa. ¿Por qué hay tantas granjas, carreteras y ciudades en ella?', fa: 'شمال کوه‌های الپ دشت پهن شمال اروپا است. چرا این‌قدر زمین کشت، سرک و شهر در آن است؟' },
+          choices: [{ en: 'It is flat and easy to cross', es: 'Es plana y fácil de cruzar', fa: 'هموار است و گذشتن از آن آسان است' }, { en: 'It is covered in ice all year', es: 'Está cubierta de hielo todo el año', fa: 'تمام سال زیر یخ است' }, { en: 'It is the highest land in Europe', es: 'Es la tierra más alta de Europa', fa: 'بلندترین زمین اروپا است' }, { en: 'It has no rivers at all', es: 'No tiene ningún río', fa: 'هیچ دریا ندارد' }], answer: 0,
+          why: { en: 'Flat land is easy to farm, build on and travel across. So people and cities spread over the plain.', es: 'La tierra plana es fácil de cultivar, de construir y de cruzar. Por eso la gente y las ciudades se extienden por la llanura.', fa: 'زمین هموار برای کشت، ساختمان و سفر آسان است. پس مردم و شهرها در دشت پخش شده‌اند.' } }
+      ],
+      item: { icon: '🗺️', name: { en: "Daan's sea chart", es: 'La carta náutica de Daan', fa: 'نقشهٔ بحری دان' } }
+    }
+  },
 
   scraps: [[3, 7], [30, 17], [15, 20]],
   smudges: [[13, 15], [19, 8]],

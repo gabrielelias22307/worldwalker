@@ -45,7 +45,9 @@ window.EPISODE = {
     'freight train': { en: 'a train that carries goods, not people', es: 'un tren que lleva mercancías, no personas', fa: 'قطاری که مال می‌برد، نه مسافر' },
     'break of gauge': { en: 'a place where the width of the railway tracks changes, so cargo must move to a new train', es: 'un lugar donde cambia el ancho de las vías, así que la carga debe pasar a otro tren', fa: 'جایی که پهنای خط آهن تغییر می‌کند و بار باید به قطار دیگر برود' },
     pipeline: { en: 'a long pipe that carries oil, gas or water over a great distance', es: 'un tubo largo que lleva petróleo, gas o agua muy lejos', fa: 'نل درازی که تیل، گاز یا آب را تا راه دور می‌برد' },
-    'european union': { en: 'a group of 27 European countries that work together on trade, laws and travel', es: 'un grupo de 27 países europeos que trabajan juntos en comercio, leyes y viajes', fa: 'گروهی از ۲۷ کشور اروپایی که در تجارت، قانون و سفر با هم کار می‌کنند' }
+    'european union': { en: 'a group of 27 European countries that work together on trade, laws and travel', es: 'un grupo de 27 países europeos que trabajan juntos en comercio, leyes y viajes', fa: 'گروهی از ۲۷ کشور اروپایی که در تجارت، قانون و سفر با هم کار می‌کنند' },
+    oasis: { en: 'a green place in a desert where there is water, so crops can grow', es: 'un lugar verde en el desierto donde hay agua, así que pueden crecer cultivos', fa: 'جای سبز در صحرا که آب دارد و کشت در آن می‌روید' },
+    landlocked: { en: 'having no coast on any ocean', es: 'sin costa en ningún océano', fa: 'بدون ساحل در هیچ اقیانوس' }
   },
 
   npcs: [
@@ -155,6 +157,72 @@ window.EPISODE = {
       es: 'ESTACIÓN DE CARGA · Trenes entre China y Europa. Hoy la Ruta de la Seda va sobre rieles.',
       fa: 'ایستگاه قطار باری · قطارها میان چین و اروپا. امروز راه ابریشم روی خط آهن است.' } }
   ],
+
+  /* the quest: Gulnora the weaver (gold !) -> old Berdi on the caravan road -> trade oasis fruit for silk thread with Mr. Li -> back to Gulnora */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Thread for the Carpet', es: 'Hilo para la alfombra', fa: 'تار برای قالین' },
+    giver: {
+      x: 14, y: 9,
+      name: { en: 'Gulnora', es: 'Gulnora', fa: 'گلنوره' },
+      role: { en: 'Carpet weaver', es: 'Tejedora de alfombras', fa: 'قالین‌باف' },
+      look: { skin: 3, hair: '#141010', shirt: '#9b2d5a', pants: '#3a2f45', style: 'long', hat: '#d9a54a' },
+      lines: [
+        { en: 'The Smudge\'s sandstorm ruined my silk thread. I cannot finish this carpet without it!',
+          es: '¡La tormenta de arena del Borrón arruinó mi hilo de seda! No puedo terminar esta alfombra sin él.',
+          fa: 'توفان ریگ لکه تار ابریشمی مرا خراب کرد. بدون آن نمی‌توانم این قالین را تمام کنم!' },
+        { en: 'A silk trader from China just came to town. But first, ask old Berdi how to trade. He leads camels on the old caravan road, south of the bazaar.',
+          es: 'Un comerciante de seda de China acaba de llegar al pueblo. Pero primero, pregúntale al viejo Berdi cómo comerciar. Él guía camellos en el viejo camino de caravanas, al sur del bazar.',
+          fa: 'یک تاجر ابریشم از چین تازه به شهر آمده. اما اول از بابه بردی بپرس که چطور سودا کنی. او در راه قدیمی کاروان، جنوب بازار، شتر می‌برد.' }
+      ],
+      wait: { en: 'Old Berdi is on the old caravan road, in the desert south of the bazaar.',
+        es: 'El viejo Berdi está en el viejo camino de caravanas, en el desierto al sur del bazar.',
+        fa: 'بابه بردی در راه قدیمی کاروان، در صحرای جنوب بازار است.' },
+      thanks: { en: 'Silk thread from China! And Mr. Li got our sweet fruit. Each side gave what it had plenty of. That is how the [[silk road|Silk Road]] worked.',
+        es: '¡Hilo de seda de China! Y el señor Li recibió nuestra fruta dulce. Cada lado dio lo que tenía de sobra. Así funcionaba la [[silk road|Ruta de la Seda]].',
+        fa: 'تار ابریشمی از چین! و آقای لی میوهٔ شیرین ما را گرفت. هر طرف چیزی را داد که زیاد داشت. [[silk road|راه ابریشم]] همین‌طور کار می‌کرد.' }
+    },
+    contact: {
+      x: 4, y: 17,
+      name: { en: 'Old Berdi', es: 'El viejo Berdi', fa: 'بابه بردی' },
+      role: { en: 'Camel driver', es: 'Camellero', fa: 'ساربان' },
+      look: { skin: 4, hair: '#d8d4cc', shirt: '#c98a1c', pants: '#5a3a22', hat: '#f0ebe0' },
+      lines: [
+        { en: 'My family led caravans for hundreds of years. Here is our secret. A trader wants what his home does not have.',
+          es: 'Mi familia guió caravanas por cientos de años. Este es nuestro secreto. Un comerciante quiere lo que no hay en su tierra.',
+          fa: 'خانوادهٔ من صدها سال کاروان برده‌اند. راز ما این است. تاجر چیزی را می‌خواهد که در وطنش نیست.' },
+        { en: 'Mr. Li comes from China, where silk is made. So do not offer him silk! Offer fruit from our [[oasis|oasis]] farms. He waits at the freight station by the railway, in the north-east.',
+          es: 'El señor Li viene de China, donde se hace la seda. ¡Así que no le ofrezcas seda! Ofrécele fruta de nuestras granjas del [[oasis|oasis]]. Él espera en la estación de carga junto al ferrocarril, en el noreste.',
+          fa: 'آقای لی از چین آمده، جایی که ابریشم ساخته می‌شود. پس به او ابریشم پیشنهاد نکن! میوهٔ زمین‌های [[oasis|واحه]] ما را پیشنهاد کن. او در ایستگاه قطار باری کنار خط آهن، در شمال شرق منتظر است.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 26, y: 4,
+        name: { en: 'Mr. Li', es: 'Señor Li', fa: 'آقای لی' },
+        role: { en: 'Silk trader from China', es: 'Comerciante de seda de China', fa: 'تاجر ابریشم از چین' },
+        look: { skin: 1, hair: '#141010', shirt: '#2f6fd6', pants: '#2b2b3a' },
+        lines: [
+          { en: 'Ni hao! I came west on the freight train from China. I brought fine silk thread to trade.',
+            es: '¡Ni hao! Vine al oeste en el tren de carga desde China. Traje hilo de seda fino para comerciar.',
+            fa: 'نی هاو! با قطار باری از چین به طرف غرب آمدم. تار ابریشمی خوب برای سودا آورده‌ام.' }
+        ]
+      },
+      q: { en: 'Back home in China, we make plenty of silk. What will you give me for this thread?',
+        es: 'En mi tierra, China, hacemos mucha seda. ¿Qué me das por este hilo?',
+        fa: 'در وطن ما، چین، ابریشم زیاد می‌سازیم. در بدل این تار به من چه می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'Sweet melons and dried apricots from the oasis farms', es: 'Melones dulces y albaricoques secos de las granjas del oasis', fa: 'خربوزهٔ شیرین و زردآلوی خشک از زمین‌های واحه' },
+          why: { en: 'The oasis farms here grow plenty of fruit. Mr. Li cannot easily get it at home. Each side gets something new.', es: 'Las granjas del oasis de aquí dan mucha fruta. El señor Li no la consigue fácil en su tierra. Cada lado recibe algo nuevo.', fa: 'زمین‌های واحهٔ اینجا میوهٔ زیاد می‌دهند. آقای لی آن را در وطنش آسان پیدا نمی‌کند. هر طرف چیز نو می‌گیرد.' } },
+        { t: { en: 'A roll of silk cloth', es: 'Un rollo de tela de seda', fa: 'یک توپ تکهٔ ابریشمی' },
+          why: { en: 'China already makes plenty of silk. Mr. Li does not need more of what he sells.', es: 'China ya hace mucha seda. El señor Li no necesita más de lo que él vende.', fa: 'چین خودش ابریشم زیاد می‌سازد. آقای لی به چیزی که خودش می‌فروشد ضرورت ندارد.' } },
+        { t: { en: 'A basket of fresh fish from the sea', es: 'Una canasta de pescado fresco del mar', fa: 'یک سبد ماهی تازهٔ بحر' },
+          why: { en: 'This land is [[landlocked|landlocked]]. The sea is very far away, so there are no fresh sea fish to trade.', es: 'Esta tierra está [[landlocked|sin salida al mar]]. El mar está muy lejos, así que no hay pescado fresco del mar para cambiar.', fa: 'این سرزمین [[landlocked|محاط به خشکه]] است. بحر خیلی دور است، پس ماهی تازهٔ بحر برای سودا نیست.' } }
+      ],
+      item: { icon: '🧵', name: { en: 'Silk thread', es: 'Hilo de seda', fa: 'تار ابریشمی' } }
+    }
+  },
 
   scraps: [[3, 6], [29, 8], [1, 20]],
   smudges: [[8, 18], [25, 6]],

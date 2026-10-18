@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3422,6 +3423,76 @@ window.EPISODE = {
       es: 'EL CAMINO LARGO · Si el Canal de Suez está cerrado, los barcos de Asia deben dar toda la vuelta a África, por el cabo de Buena Esperanza. Eso suma de una a dos semanas más en el mar.',
       fa: 'راه دراز · اگر کانال سوئز بسته باشد، کشتی‌های آسیا باید تمام دور افریقا را از کنار دماغهٔ امید نیک بچرخند. این حدود یک تا دو هفته سفر بحری را زیاد می‌کند.' } }
   ],
+
+  /* the quest: Inès the chocolate maker (gold !) -> Oksana the wheat farmer -> trade with Akosua, the cocoa trader -> back to Inès */
+  quest: {
+    stat: 'reg',
+    title: { en: 'Beans for the Chocolate Shop', es: 'Granos para la chocolatería', fa: 'دانه برای دکان چاکلیت' },
+    giver: {
+      x: 13, y: 2,
+      name: { en: 'Inès Moreau', es: 'Inès Moreau', fa: 'اینس مورو' },
+      role: { en: 'Chocolate maker', es: 'Chocolatera', fa: 'چاکلیت‌ساز' },
+      look: { skin: 2, hair: '#3a2416', shirt: '#7a3e1d', pants: '#2b2b2b', style: 'bun' },
+      lines: [
+        { en: 'Oh no! I make chocolate, but I have no cocoa beans left. The Smudge\'s knot stopped the ships. My shop is empty!',
+          es: '¡Ay, no! Hago chocolate, pero ya no me quedan granos de cacao. El nudo del Borrón detuvo los barcos. ¡Mi tienda está vacía!',
+          fa: 'وای! من چاکلیت می‌سازم، اما دیگر دانهٔ کاکائو ندارم. گره لکه کشتی‌ها را بند کرد. دکانم خالی است!' },
+        { en: 'Cocoa does not grow here. Oksana, the farmer, knows where to get it. Her farm is south, across the bridge. Will you ask her?',
+          es: 'El cacao no crece aquí. Oksana, la agricultora, sabe dónde conseguirlo. Su granja está al sur, al otro lado del puente. ¿Le preguntas?',
+          fa: 'کاکائو اینجا نمی‌روید. اوکسانا، دهقان، می‌داند از کجا پیدا شود. فارم او در جنوب است، آن طرف پل. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Oksana\'s farm is south of the town. Cross the little bridge over the water.',
+        es: 'La granja de Oksana está al sur del pueblo. Cruza el puentecito sobre el agua.',
+        fa: 'فارم اوکسانا در جنوب شهر است. از پل کوچک روی آب بگذر.' },
+      thanks: { en: 'Cocoa beans! Now I can make chocolate again. My shop needs Ghana\'s cocoa, and Ghana needs our wheat. That is [[interdependence|interdependence]]. Thank you!',
+        es: '¡Granos de cacao! Ahora puedo volver a hacer chocolate. Mi tienda necesita el cacao de Ghana, y Ghana necesita nuestro trigo. Eso es [[interdependence|interdependencia]]. ¡Gracias!',
+        fa: 'دانهٔ کاکائو! حالا دوباره می‌توانم چاکلیت بسازم. دکان من به کاکائوی غانا ضرورت دارد و غانا به گندم ما. این [[interdependence|وابستگی متقابل]] است. تشکر!' }
+    },
+    contact: {
+      x: 6, y: 13,
+      name: { en: 'Oksana Kovalenko', es: 'Oksana Kovalenko', fa: 'اوکسانا کووالنکو' },
+      role: { en: 'Wheat farmer', es: 'Agricultora de trigo', fa: 'دهقان گندم' },
+      look: { skin: 0, hair: '#e0c27a', shirt: '#4f7a3a', pants: '#3a3a5a', style: 'long' },
+      lines: [
+        { en: 'Cocoa trees need heat and a lot of rain all year. They grow near the equator, in places like Ghana. Our land is too cool. But wheat grows very well here.',
+          es: 'Los árboles de cacao necesitan calor y mucha lluvia todo el año. Crecen cerca del ecuador, en lugares como Ghana. Nuestra tierra es muy fresca. Pero aquí el trigo crece muy bien.',
+          fa: 'درخت کاکائو در تمام سال به گرمی و باران زیاد ضرورت دارد. نزدیک خط استوا، در جاهایی مثل غانا، می‌روید. زمین ما بسیار سرد است. اما گندم اینجا خیلی خوب می‌روید.' },
+        { en: 'Go east to Akosua, the cocoa trader from Ghana. She is in the grassland. Offer her something our cool land has plenty of, but her hot land does not grow well.',
+          es: 'Ve al este, donde está Akosua, la comerciante de cacao de Ghana. Está en la pradera. Ofrécele algo que nuestra tierra fresca tiene en abundancia, pero que su tierra caliente no cultiva bien.',
+          fa: 'به شرق نزد آکوسوا، تاجر کاکائو از غانا، برو. او در علفزار است. چیزی به او پیشنهاد کن که زمین سرد ما زیاد دارد، اما زمین گرم او خوب نمی‌رویاند.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 19, y: 16,
+        name: { en: 'Akosua Owusu', es: 'Akosua Owusu', fa: 'آکوسوا اووسو' },
+        role: { en: 'Cocoa trader from Ghana', es: 'Comerciante de cacao de Ghana', fa: 'تاجر کاکائو از غانا' },
+        look: { skin: 5, hair: '#1b1410', shirt: '#e0a21a', pants: '#2f6b3a', hat: '#c0392b' },
+        lines: [
+          { en: 'Hello, friend! My family grows cocoa in Ghana. We have plenty of beans. What will you give me for a big bag?',
+            es: '¡Hola, amigo! Mi familia cultiva cacao en Ghana. Tenemos muchos granos. ¿Qué me das por una bolsa grande?',
+            fa: 'سلام، دوست! خانوادهٔ من در غانا کاکائو می‌کارد. دانهٔ زیاد داریم. برای یک بوجی کلان به من چه می‌دهی؟' }
+        ]
+      },
+      q: { en: 'What is the best thing to offer Akosua for her cocoa beans?', es: '¿Qué es lo mejor que puedes ofrecerle a Akosua por sus granos de cacao?', fa: 'بهترین چیزی که در بدل دانه‌های کاکائوی آکوسوا می‌توانی پیشنهاد کنی چیست؟' },
+      choices: [
+        { ok: true, t: { en: 'A sack of wheat flour from the European farms', es: 'Un saco de harina de trigo de las granjas de Europa', fa: 'یک بوجی آرد گندم از فارم‌های اروپا' },
+          why: { en: 'Yes! Wheat grows well in Europe\'s cool fields. Ghana is hot and wet, so it buys most of its wheat. Each side gives what it has plenty of. That is [[trade|trade]].',
+            es: '¡Sí! El trigo crece bien en los campos frescos de Europa. Ghana es caliente y húmeda, así que compra casi todo su trigo. Cada lado da lo que tiene en abundancia. Eso es el [[trade|comercio]].',
+            fa: 'بله! گندم در کشتزارهای سرد اروپا خوب می‌روید. غانا گرم و مرطوب است، پس بیشتر گندمش را می‌خرد. هر طرف چیزی را می‌دهد که زیاد دارد. این [[trade|تجارت]] است.' } },
+        { t: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' },
+          why: { en: 'Akosua already grows plenty of cocoa. Nobody trades for something they already have a lot of.',
+            es: 'Akosua ya cultiva mucho cacao. Nadie cambia algo por lo que ya tiene en abundancia.',
+            fa: 'آکوسوا خودش کاکائوی زیاد می‌کارد. هیچ‌کس چیزی را که زیاد دارد در بدل نمی‌گیرد.' } },
+        { t: { en: 'A basket of mangoes', es: 'Una canasta de mangos', fa: 'یک سبد انبه' },
+          why: { en: 'Mangoes grow in hot places like Ghana. Akosua can get them at home, so she does not need yours.',
+            es: 'Los mangos crecen en lugares calientes como Ghana. Akosua los consigue en su país, así que no necesita los tuyos.',
+            fa: 'انبه در جاهای گرم مثل غانا می‌روید. آکوسوا آن را در وطن خود پیدا می‌کند، پس به انبهٔ تو ضرورت ندارد.' } }
+      ],
+      item: { icon: '🍫', name: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' } }
+    }
+  },
 
   scraps: [[1, 1], [46, 1], [44, 17]],
   smudges: [[10, 13], [27, 12]],

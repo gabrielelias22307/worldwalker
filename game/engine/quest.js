@@ -138,7 +138,8 @@
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';

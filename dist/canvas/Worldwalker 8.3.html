@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3456,6 +3457,70 @@ window.EPISODE = {
       es: 'RÍO PLATEADO · Este río es la [[border|frontera]] entre dos vecinos, Orilla Norte y Orilla Sur. Los dos usan su agua para cultivos, para beber y para pescar. El río no es de un solo lado.',
       fa: 'دریای نقره‌ای · این دریا [[border|سرحد]] بین دو همسایه است، ساحل شمالی و ساحل جنوبی. هر دو از آب آن برای کشت، نوشیدن و ماهیگیری استفاده می‌کنند. این دریا مال فقط یک طرف نیست.' } }
   ],
+
+  /* the quest: Farida on the South Bank (gold !) -> Mateo the surveyor in the mountains -> beat the Ink Thief in the desert -> back to Farida */
+  quest: {
+    stat: 'reg',
+    title: { en: 'The Stolen Border Map', es: 'El mapa robado de la frontera', fa: 'نقشهٔ دزدیده‌شدهٔ سرحد' },
+    giver: {
+      x: 20, y: 16,
+      name: { en: 'Farida Noori', es: 'Farida Noori', fa: 'فریده نوری' },
+      role: { en: 'Farmer on the South Bank', es: 'Agricultora de la Orilla Sur', fa: 'دهقان در ساحل جنوبی' },
+      look: { skin: 3, hair: '#2b1d14', shirt: '#3f8f6f', pants: '#4a3a2a', robe: true, hat: '#d9a441' },
+      lines: [
+        { en: 'Please help! North Bank and South Bank made a map together. It shows our [[border|border]]: a line down the middle of the Silver River. Both sides signed it.',
+          es: '¡Ayuda, por favor! La Orilla Norte y la Orilla Sur hicieron un mapa juntas. Muestra nuestra [[border|frontera]]: una línea por el medio del Río Plateado. Los dos lados lo firmaron.',
+          fa: 'لطفاً کمک کن! ساحل شمالی و ساحل جنوبی با هم یک نقشه ساختند. این نقشه [[border|سرحد]] ما را نشان می‌دهد: یک خط در وسط دریای نقره‌ای. هر دو طرف آن را امضا کردند.' },
+        { en: 'An Ink Thief stole the map! It wants to smear the line so the neighbors fight. Mateo, the mapmaker, saw it run. He is in the mountains to the north-west. Will you ask him?',
+          es: '¡Un Ladrón de Tinta robó el mapa! Quiere borrar la línea para que los vecinos peleen. Mateo, el cartógrafo, lo vio correr. Está en las montañas, al noroeste. ¿Le preguntas?',
+          fa: 'یک دزد رنگ نقشه را دزدید! می‌خواهد خط را خراب کند تا همسایه‌ها جنگ کنند. ماتئو، نقشه‌کش، دید که کجا دوید. او در کوه‌ها به طرف شمال غرب است. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Mateo is in the mountains to the north-west. Cross the west bridge, then walk north.',
+        es: 'Mateo está en las montañas, al noroeste. Cruza el puente del oeste y luego camina al norte.',
+        fa: 'ماتئو در کوه‌ها به طرف شمال غرب است. از پل غربی بگذر، بعد به شمال برو.' },
+      thanks: { en: 'Our map is back, and the line is clear! Now both banks can read the same border. Clear borders help neighbors live in peace. Thank you!',
+        es: '¡Nuestro mapa volvió y la línea está clara! Ahora las dos orillas pueden leer la misma frontera. Las fronteras claras ayudan a los vecinos a vivir en paz. ¡Gracias!',
+        fa: 'نقشهٔ ما برگشت و خط روشن است! حالا هر دو ساحل می‌توانند یک سرحد را بخوانند. سرحدهای روشن به همسایه‌ها کمک می‌کنند که در صلح زندگی کنند. تشکر!' }
+    },
+    contact: {
+      x: 12, y: 5,
+      name: { en: 'Mateo Quispe', es: 'Mateo Quispe', fa: 'ماتئو کیسپه' },
+      role: { en: 'Land surveyor from Peru', es: 'Topógrafo de Perú', fa: 'اندازه‌گیر زمین از پیرو' },
+      look: { skin: 3, hair: '#1b1410', shirt: '#c8742a', pants: '#3a3a3a', hat: '#7a2f2f' },
+      lines: [
+        { en: 'I measure land and mark borders. Yes, the Ink Thief ran past me, laughing! It held a map with a river on it.',
+          es: 'Yo mido la tierra y marco fronteras. ¡Sí, el Ladrón de Tinta pasó corriendo y riéndose! Llevaba un mapa con un río.',
+          fa: 'من زمین را اندازه می‌گیرم و سرحدها را نشانی می‌کنم. بله، دزد رنگ خنده‌کنان از کنارم دوید! یک نقشه با یک دریا در دستش بود.' },
+        { en: 'It ran east, past the Council Hall, into the desert. The thief hates clear answers. Name each kind of [[border|border]] the right way, and it will drop the map.',
+          es: 'Corrió al este, pasó el Salón del Consejo y entró al desierto. El ladrón odia las respuestas claras. Nombra bien cada tipo de [[border|frontera]] y soltará el mapa.',
+          fa: 'به شرق دوید، از کنار تالار شورا گذشت و داخل ریگستان رفت. دزد از جواب‌های روشن بدش می‌آید. هر نوع [[border|سرحد]] را درست نام ببر، آن وقت نقشه را می‌اندازد.' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [44, 5],
+      name: { en: 'The Border Ink Thief', es: 'El Ladrón de Tinta de la Frontera', fa: 'دزد رنگِ سرحد' },
+      taunt: { en: 'Hee hee! One smear and the line is gone. Then who knows where North Bank ends?',
+        es: '¡Ji ji! Una mancha y la línea desaparece. ¿Y entonces quién sabrá dónde termina la Orilla Norte?',
+        fa: 'هی هی! با یک لکه خط گم می‌شود. بعد کی می‌داند ساحل شمالی کجا تمام می‌شود؟' },
+      win: { en: 'The Ink Thief drops the map and runs away. The border line is still clear!',
+        es: '¡El Ladrón de Tinta suelta el mapa y huye! La línea de la frontera sigue clara.',
+        fa: 'دزد رنگ نقشه را می‌اندازد و فرار می‌کند. خط سرحد هنوز روشن است!' },
+      need: 2,
+      questions: [
+        { q: { en: 'On a map, a border runs along the top of a long mountain range. What kind of border is it?', es: 'En un mapa, una frontera va por la cima de una larga cordillera. ¿Qué tipo de frontera es?', fa: 'روی یک نقشه، یک سرحد از سر یک سلسله‌کوه دراز می‌گذرد. این چه نوع سرحد است؟' },
+          choices: [{ en: 'A natural border', es: 'Una frontera natural', fa: 'سرحد طبیعی' }, { en: 'A geometric border', es: 'Una frontera geométrica', fa: 'سرحد هندسی' }, { en: 'A trade bloc', es: 'Un bloque comercial', fa: 'گروه تجارتی' }, { en: 'A treaty', es: 'Un tratado', fa: 'معاهده' }], answer: 0,
+          why: { en: 'It follows mountains, a part of nature. So it is a [[natural border|natural border]].', es: 'Sigue las montañas, que son parte de la naturaleza. Por eso es una [[natural border|frontera natural]].', fa: 'این سرحد کوه‌ها را دنبال می‌کند که بخشی از طبیعت هستند. پس [[natural border|سرحد طبیعی]] است.' } },
+        { q: { en: 'A border is a long, straight line across a desert. It does not follow any river or hill. What kind of border is it?', es: 'Una frontera es una línea larga y recta que cruza un desierto. No sigue ningún río ni cerro. ¿Qué tipo de frontera es?', fa: 'یک سرحد یک خط دراز و راست در یک ریگستان است. هیچ دریا یا تپه‌ای را دنبال نمی‌کند. این چه نوع سرحد است؟' },
+          choices: [{ en: 'A geometric border', es: 'Una frontera geométrica', fa: 'سرحد هندسی' }, { en: 'A natural border', es: 'Una frontera natural', fa: 'سرحد طبیعی' }, { en: 'A coastline', es: 'Una costa', fa: 'خط ساحل' }, { en: 'A river border', es: 'Una frontera de río', fa: 'سرحد دریایی' }], answer: 0,
+          why: { en: 'People drew that straight line with a ruler. It is a [[geometric border|geometric border]].', es: 'La gente dibujó esa línea recta con una regla. Es una [[geometric border|frontera geométrica]].', fa: 'مردم آن خط راست را با خط‌کش کشیدند. این یک [[geometric border|سرحد هندسی]] است.' } },
+        { q: { en: 'A country is [[upstream|upstream]] on a river. It wants to build a big dam. What should it do first?', es: 'Un país está [[upstream|río arriba]]. Quiere construir una represa grande. ¿Qué debería hacer primero?', fa: 'یک کشور در [[upstream|بالای دریا]] است. می‌خواهد یک بند بزرگ بسازد. اول باید چه کند؟' },
+          choices: [{ en: 'Talk with the countries downstream and agree on a plan', es: 'Hablar con los países río abajo y acordar un plan', fa: 'با کشورهای پایین دریا گپ بزند و روی یک پلان موافقه کند' }, { en: 'Build it fast before anyone notices', es: 'Construirla rápido antes de que alguien se dé cuenta', fa: 'آن را زود بسازد پیش از اینکه کسی بفهمد' }, { en: 'Move the border to the other side of the river', es: 'Mover la frontera al otro lado del río', fa: 'سرحد را به آن طرف دریا ببرد' }, { en: 'Close the border to all trucks', es: 'Cerrar la frontera a todos los camiones', fa: 'سرحد را به روی همهٔ لاری‌ها ببندد' }], answer: 0,
+          why: { en: 'A dam upstream changes the water for everyone below. Talking first, maybe with a [[treaty|treaty]], keeps the peace.', es: 'Una represa río arriba cambia el agua para todos los que están abajo. Hablar primero, quizás con un [[treaty|tratado]], mantiene la paz.', fa: 'بندی که در بالای دریا ساخته شود، آب را برای همهٔ مردم پایین تغییر می‌دهد. اول گپ زدن، شاید با یک [[treaty|معاهده]]، صلح را نگه می‌دارد.' } }
+      ],
+      item: { icon: '🗺️', name: { en: 'The Silver River border map', es: 'El mapa de la frontera del Río Plateado', fa: 'نقشهٔ سرحد دریای نقره‌ای' } }
+    }
+  },
 
   scraps: [[1, 1], [46, 1], [1, 20]],
   smudges: [[6, 8], [5, 18], [42, 8]],

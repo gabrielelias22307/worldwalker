@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3418,6 +3419,70 @@ window.EPISODE = {
       es: 'CALLE DE COMIDA · Pizza de Italia · tacos de México · biryani del sur de Asia · sushi de Japón · té de China. Una sola calle, comida de todo el mundo.',
       fa: 'سرک غذا · پیتزا از ایتالیا · تاکو از مکزیک · بریانی از جنوب آسیا · سوشی از جاپان · چای از چین. یک سرک، غذا از سراسر جهان.' } }
   ],
+
+  /* the quest: Priya the sweet maker in Dubai (gold !) -> Babak the rose picker in the Persian garden -> trade for rosewater in the Kashan bazaar -> back to Priya */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Rosewater from Kashan', es: 'Agua de rosas de Kashán', fa: 'گلاب کاشان' },
+    giver: {
+      x: 8, y: 19,
+      name: { en: 'Priya', es: 'Priya', fa: 'پریا' },
+      role: { en: 'Sweet maker in old Dubai', es: 'Pastelera en el Dubái antiguo', fa: 'شیرینی‌پز در دبی کهنه' },
+      look: { skin: 3, hair: '#140e0a', shirt: '#e0457b', pants: '#4a2a5a', style: 'long' },
+      lines: [
+        { en: 'Hello! My family came to Dubai from India. I make sweets called gulab jamun. But the Smudge\'s wall stopped the boats, and I have no rosewater left!',
+          es: '¡Hola! Mi familia llegó a Dubái desde la India. Hago unos dulces llamados gulab jamun. ¡Pero el muro del Borrón detuvo los barcos y ya no tengo agua de rosas!',
+          fa: 'سلام! خانوادهٔ من از هند به دبی آمد. من شیرینی‌ای به نام گلاب جامن می‌پزم. اما دیوار لکه کشتی‌ها را بند کرد و دیگر گلاب ندارم!' },
+        { en: 'The best rosewater comes from Kashan, across the water in Iran. Please take my basket of goods from the harbor. Babak, who picks roses in the Persian garden, can help you.',
+          es: 'La mejor agua de rosas viene de Kashán, al otro lado del agua, en Irán. Por favor, lleva mi canasta con productos del puerto. Babak, que recoge rosas en el jardín persa, te puede ayudar.',
+          fa: 'بهترین گلاب از کاشان می‌آید، آن طرف آب در ایران. لطفاً سبد کالاهای بندر مرا با خود ببر. بابک، که در باغ ایرانی گل می‌چیند، می‌تواند کمکت کند.' }
+      ],
+      wait: { en: 'Cross the water to the north. The Persian garden is in the north-east, behind a wall.',
+        es: 'Cruza el agua hacia el norte. El jardín persa está en el noreste, detrás de un muro.',
+        fa: 'از آب به طرف شمال بگذر. باغ ایرانی در شمال شرق است، پشت یک دیوار.' },
+      thanks: { en: 'Rosewater from Kashan! Thank you! Did you know? "Gulab" means rosewater. It comes from Persian: "gol" is rose and "ab" is water. The word crossed the sea with the [[trade route|traders]].',
+        es: '¡Agua de rosas de Kashán! ¡Gracias! ¿Sabías? "Gulab" significa agua de rosas. Viene del persa: "gol" es rosa y "ab" es agua. La palabra cruzó el mar con los comerciantes, por una [[trade route|ruta comercial]].',
+        fa: 'گلاب کاشان! تشکر! می‌دانستی؟ کلمهٔ «گلاب» در زبان هندی هم هست. از فارسی آمده: «گل» و «آب». این کلمه همراه تاجران از یک [[trade route|راه تجارتی]] از بحر گذشت.' }
+    },
+    contact: {
+      x: 21, y: 7,
+      name: { en: 'Babak', es: 'Babak', fa: 'بابک' },
+      role: { en: 'Rose picker in the Persian garden', es: 'Recolector de rosas del jardín persa', fa: 'گل‌چین در باغ ایرانی' },
+      look: { skin: 1, hair: '#3a2a1e', shirt: '#c94a5a', pants: '#3a4a3a', hat: '#d8c9a0' },
+      lines: [
+        { en: 'Every spring we pick pink roses near Kashan. We boil the petals to make rosewater. People in many countries use it in sweets.',
+          es: 'Cada primavera recogemos rosas rosadas cerca de Kashán. Hervimos los pétalos para hacer agua de rosas. Gente de muchos países la usa en dulces.',
+          fa: 'هر بهار ما نزدیک کاشان گل گلابی می‌چینیم. برگ‌های گل را می‌جوشانیم تا گلاب بسازیم. مردم در کشورهای زیاد از آن در شیرینی استفاده می‌کنند.' },
+        { en: 'Hamid sells our rosewater in the bazaar, at the east end of the stalls. He only trades for things Kashan does not have. Remember: Kashan is far from the sea.',
+          es: 'Hamid vende nuestra agua de rosas en el bazar, al final de los puestos, del lado este. Solo cambia cosas que Kashán no tiene. Recuerda: Kashán está lejos del mar.',
+          fa: 'حمید گلاب ما را در بازار می‌فروشد، در آخر دکان‌ها طرف شرق. او فقط چیزهایی را می‌گیرد که کاشان ندارد. یادت باشد: کاشان از بحر دور است.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 15, y: 6,
+        name: { en: 'Hamid', es: 'Hamid', fa: 'حمید' },
+        role: { en: 'Rosewater seller', es: 'Vendedor de agua de rosas', fa: 'گلاب‌فروش' },
+        look: { skin: 2, hair: '#9a948a', shirt: '#4a6a8a', pants: '#2a2a30', robe: true },
+        lines: [
+          { en: 'Rosewater, the best in Iran! A trade is fair when each side gets something it does not have at home.',
+            es: '¡Agua de rosas, la mejor de Irán! Un cambio es justo cuando cada lado recibe algo que no tiene en casa.',
+            fa: 'گلاب، بهترین گلاب ایران! یک معامله وقتی عادلانه است که هر طرف چیزی بگیرد که در خانه ندارد.' }
+        ]
+      },
+      q: { en: 'What will you give Hamid for a bottle of rosewater?', es: '¿Qué le das a Hamid por una botella de agua de rosas?', fa: 'برای یک بوتل گلاب به حمید چه می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'Pearls and dried fish from the Gulf', es: 'Perlas y pescado seco del golfo', fa: 'مروارید و ماهی خشک از خلیج' },
+          why: { en: 'Yes! Kashan is far from the sea, so sea goods are rare here. Dubai has plenty of them.', es: '¡Sí! Kashán está lejos del mar, así que aquí casi no hay productos del mar. Dubái tiene muchos.', fa: 'بلی! کاشان از بحر دور است، پس چیزهای بحری این‌جا کم است. دبی از آن‌ها زیاد دارد.' } },
+        { t: { en: 'A handwoven carpet', es: 'Una alfombra tejida a mano', fa: 'یک قالین دست‌باف' },
+          why: { en: 'Kashan is famous for its own carpets. The bazaar is full of them.', es: 'Kashán es famosa por sus propias alfombras. El bazar está lleno de ellas.', fa: 'کاشان به خاطر قالین‌های خودش مشهور است. بازار پر از قالین است.' } },
+        { t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
+          why: { en: 'Kashan sits next to a desert. There is sand everywhere here!', es: 'Kashán está junto a un desierto. ¡Aquí hay arena por todas partes!', fa: 'کاشان کنار یک بیابان است. این‌جا همه جا ریگ است!' } }
+      ],
+      item: { icon: '🌹', name: { en: 'Bottle of Kashan rosewater', es: 'Botella de agua de rosas de Kashán', fa: 'بوتل گلاب کاشان' } }
+    }
+  },
 
   scraps: [[15, 1], [20, 2], [3, 11]],
   smudges: [[7, 3], [20, 20]],

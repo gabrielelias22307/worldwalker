@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3306,7 +3307,8 @@ window.EPISODE = {
     seaway: { en: 'the St. Lawrence Seaway: a water route with locks that takes ships between the Great Lakes and the Atlantic Ocean', es: 'la Vía Marítima del San Lorenzo: una ruta de agua con esclusas que lleva barcos entre los Grandes Lagos y el océano Atlántico', fa: 'راه آبی سنت لارنس: راهی با دروازه‌های آبی که کشتی‌ها را میان جهیل‌های بزرگ و بحر اطلس می‌برد' },
     prairie: { en: 'wide, flat grassland; in Canada the flat middle of the country is called the prairies', es: 'tierra de pasto ancha y plana; en Canadá el centro plano del país se llama las praderas', fa: 'دشت پهن و هموار پر از سبزه؛ در کانادا میانهٔ هموار کشور را دشت‌ها (پریری) می‌گویند' },
     site: { en: 'the land right where a city stands: its ground, water and shape', es: 'el terreno justo donde está una ciudad: su suelo, su agua y su forma', fa: 'زمینی که شهر درست روی آن ایستاده: خاک، آب و شکل آن' },
-    situation: { en: 'where a city is compared to other places, and how it connects to them', es: 'dónde está una ciudad comparada con otros lugares y cómo se conecta con ellos', fa: 'جای یک شهر در مقایسه با جاهای دیگر، و اینکه چطور به آن‌ها وصل است' }
+    situation: { en: 'where a city is compared to other places, and how it connects to them', es: 'dónde está una ciudad comparada con otros lugares y cómo se conecta con ellos', fa: 'جای یک شهر در مقایسه با جاهای دیگر، و اینکه چطور به آن‌ها وصل است' },
+    downstream: { en: 'the way a river flows, toward the place where it ends, like a lake or the ocean', es: 'hacia donde corre un río, rumbo al lugar donde termina, como un lago o el océano', fa: 'طرفی که دریا به آن جاری است، به سوی جایی که ختم می‌شود، مثل جهیل یا بحر' }
   },
 
   npcs: [
@@ -3416,6 +3418,55 @@ window.EPISODE = {
       es: 'EL RÍO GRANDE · Este río es [[navigable|navegable]] por cientos de millas hacia el sur. Las barcazas llevan granos río abajo. El río Misisipi funciona igual.',
       fa: 'دریای بزرگ · این دریا تا صدها میل به طرف جنوب [[navigable|قابل کشتیرانی]] است. کشتی‌های باری غله را از آن می‌برند. دریای میسی‌سی‌پی هم همین‌طور است.' } }
   ],
+
+  /* the quest: Nokomis (gold !) -> Wen the fisher -> find the toy canoe downstream, east of the lake -> back to Nokomis */
+  quest: {
+    stat: 'mov',
+    title: { en: 'The Drifting Canoe', es: 'La canoa a la deriva', fa: 'قایق سرگردان' },
+    giver: {
+      x: 11, y: 7,
+      name: { en: 'Nokomis', es: 'Nokomis', fa: 'نوکومیس' },
+      role: { en: 'Canoe maker', es: 'Fabricante de canoas', fa: 'قایق‌ساز' },
+      look: { skin: 3, hair: '#d8d4cc', shirt: '#2a7a6a', pants: '#3a3a3a', style: 'long' },
+      lines: [
+        { en: 'Boozhoo! That means hello in my language, Ojibwe. I carved a little birchbark canoe for my grandson. The Smudge\'s wind blew it off the dock and into the lake!',
+          es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe. Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Borrón la sacó del muelle y la tiró al lago!',
+          fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام. من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد لکه آن را از بندر به داخل جهیل برد!' },
+        { en: 'Wen the fisher knows how water moves. She fishes on the big river in the south-east. Will you ask her where my canoe went?',
+          es: 'Wen, la pescadora, sabe cómo se mueve el agua. Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?',
+          fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند. او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' }
+      ],
+      wait: { en: 'Wen is by the big river in the south-east. On this map south is down and east is to the right.',
+        es: 'Wen está junto al río grande, en el sureste. En este mapa el sur está abajo y el este a la derecha.',
+        fa: 'وِن کنار دریای بزرگ در جنوب شرق است. در این نقشه جنوب پایین و شرق طرف راست است.' },
+      thanks: { en: 'My canoe! The lake water carried it east, toward the ocean. Big ships follow that same water road. Miigwech, thank you!',
+        es: '¡Mi canoa! El agua del lago la llevó hacia el este, rumbo al océano. Los barcos grandes siguen ese mismo camino de agua. ¡Miigwech, gracias!',
+        fa: 'قایق من! آب جهیل آن را به طرف شرق، به سوی بحر برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ، تشکر!' }
+    },
+    contact: {
+      x: 21, y: 18,
+      name: { en: 'Wen', es: 'Wen', fa: 'وِن' },
+      role: { en: 'River fisher', es: 'Pescadora de río', fa: 'ماهیگیر دریا' },
+      look: { skin: 1, hair: '#1b1410', shirt: '#d98e2b', pants: '#2a3a5a', hat: '#c8a870' },
+      lines: [
+        { en: 'Water always flows downhill. This lake empties into a river on its east side. That river flows east, all the way to the ocean. The St. Lawrence River does the same for the Great Lakes.',
+          es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este. Ese río corre hacia el este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.',
+          fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد. آن دریا به طرف شرق تا بحر جاری است. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
+        { en: 'So the canoe floated [[downstream|downstream]], to the east. Find the bridge over that river in the north-east. Cross it to the north bank. Then walk two steps east along the water.',
+          es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este. Busca el puente sobre ese río en el noreste. Crúzalo hasta la orilla norte. Luego camina dos pasos al este junto al agua.',
+          fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت. پلی را که در شمال شرق روی آن دریا است پیدا کن. از آن به ساحل شمالی برو. بعد دو قدم به طرف شرق در کنار آب راه برو.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [28, 2],
+      hint: { en: 'north bank, 2 steps east of the north-east bridge', es: 'orilla norte, 2 pasos al este del puente del noreste', fa: 'ساحل شمالی، ۲ قدم شرقِ پل شمال شرق' },
+      found: { en: 'There it is, caught in the reeds on the riverbank! The lake drains into the river, and the river carries everything [[downstream|downstream]], east to the ocean.',
+        es: '¡Ahí está, atrapada entre las cañas de la orilla! El lago desagua en el río, y el río lleva todo [[downstream|río abajo]], hacia el este, hasta el océano.',
+        fa: 'آنجاست، میان نی‌های کنار دریا گیر مانده! جهیل به دریا می‌ریزد و دریا همه چیز را به [[downstream|پایین دریا]]، به طرف شرق تا بحر، می‌برد.' },
+      item: { icon: '🛶', name: { en: 'The little birchbark canoe', es: 'La canoa pequeña de corteza', fa: 'قایق کوچک پوست توس' } }
+    }
+  },
 
   scraps: [[30, 1], [1, 20], [30, 12]],
   smudges: [[10, 19], [28, 9]],

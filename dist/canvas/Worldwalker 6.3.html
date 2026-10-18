@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3419,6 +3420,66 @@ window.EPISODE = {
       es: 'TABLERO DEL PUEBLO · Clínica abierta 3 días a la semana · Hospital más cercano: 2 horas en lancha y autobús · Escuela: 1 hora a pie',
       fa: 'تختهٔ قریه · کلینیک ۳ روز در هفته باز است · نزدیک‌ترین شفاخانه: ۲ ساعت با کشتی و بس · مکتب: ۱ ساعت پیاده' } }
   ],
+
+  /* the quest: Teacher Karim (gold !) -> Tuan the boat driver -> beat the Ink Thief in the city lanes to win back the village census sheet -> back to Karim */
+  quest: {
+    stat: 'reg',
+    title: { en: 'The Missing Village Count', es: 'El conteo perdido del pueblo', fa: 'شمارش گم‌شدهٔ قریه' },
+    giver: {
+      x: 20, y: 2,
+      name: { en: 'Teacher Karim', es: 'Maestro Karim', fa: 'معلم کریم' },
+      role: { en: 'Village schoolteacher', es: 'Maestro del pueblo', fa: 'معلم مکتب قریه' },
+      look: { skin: 4, hair: '#141010', shirt: '#f0f0e8', pants: '#4a5a3a', style: 'short' },
+      lines: [
+        { en: 'Help! Our village filled in its [[census|census]] sheet. It counts every person here: 120 children and 80 adults. The Ink Thief grabbed it and ran!',
+          es: '¡Ayuda! Nuestro pueblo llenó su hoja del [[census|censo]]. Cuenta a cada persona de aquí: 120 niños y 80 adultos. ¡El Ladrón de Tinta la agarró y salió corriendo!',
+          fa: 'کمک! قریهٔ ما ورق [[census|سرشماری]] خود را پر کرد. هر نفر این‌جا را می‌شمارد: ۱۲۰ کودک و ۸۰ بزرگسال. دزد رنگ آن را گرفت و فرار کرد!' },
+        { en: 'Without the count, the planners will think our village is small. Then no one will build the new classroom we need. Tuan the boat driver saw the thief. He waits by the river in the south-east.',
+          es: 'Sin el conteo, los planificadores van a creer que nuestro pueblo es pequeño. Entonces nadie va a construir el salón nuevo que necesitamos. Tuan, el lanchero, vio al ladrón. Espera junto al río, en el sureste.',
+          fa: 'بدون این شمارش، برنامه‌ریزها فکر می‌کنند قریهٔ ما کوچک است. آن وقت هیچ کس صنف تازه‌ای را که ضرورت داریم نمی‌سازد. توان، قایقران، دزد را دید. او کنار دریا در جنوب شرق منتظر است.' }
+      ],
+      wait: { en: 'Tuan waits by the river in the south-east, near the rice fields.',
+        es: 'Tuan espera junto al río en el sureste, cerca de los campos de arroz.',
+        fa: 'توان کنار دریا در جنوب شرق، نزدیک کشتزارهای برنج، منتظر است.' },
+      thanks: { en: 'Our census sheet! Now the planners will see 120 children here, not zero. Every place must be counted, or its needs stay hidden.',
+        es: '¡Nuestra hoja del censo! Ahora los planificadores verán 120 niños aquí, no cero. Hay que contar cada lugar, o sus necesidades se quedan escondidas.',
+        fa: 'ورق سرشماری ما! حالا برنامه‌ریزها ۱۲۰ کودک را این‌جا می‌بینند، نه صفر. هر جا باید شمرده شود، وگرنه ضرورت‌هایش پنهان می‌ماند.' }
+    },
+    contact: {
+      x: 26, y: 18,
+      name: { en: 'Tuan', es: 'Tuan', fa: 'توان' },
+      role: { en: 'Boat driver', es: 'Lanchero', fa: 'قایقران' },
+      look: { skin: 1, hair: '#1a1612', shirt: '#c84a2a', pants: '#2a3a4a', style: 'short', hat: '#e0c070' },
+      lines: [
+        { en: 'I take sick people to the city hospital by boat. It is a long trip. This morning I saw the Ink Thief run west on the main road. It held a paper full of numbers.',
+          es: 'Llevo a los enfermos al hospital de la ciudad en mi lancha. Es un viaje largo. Esta mañana vi al Ladrón de Tinta correr al oeste por la calle principal. Llevaba un papel lleno de números.',
+          fa: 'من مریض‌ها را با قایق به شفاخانهٔ شهر می‌برم. سفر درازی است. امروز صبح دیدم دزد رنگ از سرک عمومی به طرف غرب دوید. یک ورق پر از عدد در دستش بود.' },
+        { en: 'It is hiding in the city, in the wide lane just south of the tall towers. It loves hard questions about counting people. Answer two right, and it must give the sheet back!',
+          es: 'Se esconde en la ciudad, en la calle ancha justo al sur de las torres altas. Le encantan las preguntas difíciles sobre contar personas. ¡Responde dos bien y tendrá que devolver la hoja!',
+          fa: 'در شهر پنهان است، در کوچهٔ پهن درست جنوبِ برج‌های بلند. سوال‌های سخت دربارهٔ شمردن مردم را دوست دارد. دو جواب درست بده، آن وقت باید ورق را پس بدهد!' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [6, 9],
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
+      taunt: { en: 'Hee hee! Why count a little village? Only big cities matter!', es: '¡Ji ji! ¿Para qué contar un pueblito? ¡Solo importan las ciudades grandes!', fa: 'هی هی! چرا یک قریهٔ کوچک را بشماری؟ فقط شهرهای بزرگ مهم هستند!' },
+      win: { en: 'The Ink Thief drops the census sheet and runs away. Every number is still there!', es: 'El Ladrón de Tinta suelta la hoja del censo y se va corriendo. ¡Todos los números siguen ahí!', fa: 'دزد رنگ ورق سرشماری را می‌اندازد و فرار می‌کند. همهٔ عددها هنوز سر جایشان هستند!' },
+      need: 2,
+      questions: [
+        { q: { en: 'Why does a country do a census?', es: '¿Por qué un país hace un censo?', fa: 'چرا یک کشور سرشماری می‌کند؟' },
+          choices: [{ en: 'To learn how many people live in each place, so it can plan schools, clinics and roads', es: 'Para saber cuántas personas viven en cada lugar y así planear escuelas, clínicas y caminos', fa: 'تا بداند در هر جا چند نفر زندگی می‌کنند و برای مکتب، کلینیک و سرک برنامه بریزد' }, { en: 'To choose the best singer in the country', es: 'Para elegir al mejor cantante del país', fa: 'تا بهترین آوازخوان کشور را انتخاب کند' }, { en: 'To measure how much rain falls each year', es: 'Para medir cuánta lluvia cae cada año', fa: 'تا اندازه کند هر سال چقدر باران می‌بارد' }, { en: 'To decide how tall new buildings can be', es: 'Para decidir qué tan altos pueden ser los edificios nuevos', fa: 'تا تعیین کند ساختمان‌های تازه چقدر بلند باشند' }], answer: 0,
+          why: { en: 'A [[census|census]] counts people place by place. Leaders use the counts to plan what each place needs.', es: 'Un [[census|censo]] cuenta a la gente lugar por lugar. Los líderes usan los conteos para planear lo que necesita cada lugar.', fa: '[[census|سرشماری]] مردم را جا به جا می‌شمارد. رهبران از این شمارش برای برنامهٔ ضرورت‌های هر جا استفاده می‌کنند.' } },
+        { q: { en: 'A village is left out of the census. What is most likely to happen?', es: 'Un pueblo queda fuera del censo. ¿Qué es lo más probable que pase?', fa: 'یک قریه در سرشماری شمرده نمی‌شود. محتمل‌ترین نتیجه چیست؟' },
+          choices: [{ en: 'Planners may not send enough teachers, clinics or clean water there', es: 'Los planificadores quizás no manden suficientes maestros, clínicas o agua limpia ahí', fa: 'شاید برنامه‌ریزها معلم، کلینیک یا آب پاک کافی به آن‌جا نفرستند' }, { en: 'The village gets more money than every city', es: 'El pueblo recibe más dinero que todas las ciudades', fa: 'قریه از همهٔ شهرها پول بیشتر می‌گیرد' }, { en: 'The people in the village disappear', es: 'La gente del pueblo desaparece', fa: 'مردم قریه ناپدید می‌شوند' }, { en: 'The village moves closer to the city', es: 'El pueblo se acerca a la ciudad', fa: 'قریه به شهر نزدیک‌تر می‌شود' }], answer: 0,
+          why: { en: 'If people are not counted, their needs stay hidden. Planners cannot plan for people they do not see in the numbers.', es: 'Si la gente no se cuenta, sus necesidades quedan escondidas. Los planificadores no pueden planear para personas que no ven en los números.', fa: 'اگر مردم شمرده نشوند، ضرورت‌هایشان پنهان می‌ماند. برنامه‌ریزها نمی‌توانند برای کسانی برنامه بریزند که در عددها نمی‌بینند.' } },
+        { q: { en: 'The census shows that many young adults moved from villages to the city to find jobs. Which place now needs more homes and buses?', es: 'El censo muestra que muchos adultos jóvenes se mudaron de los pueblos a la ciudad para buscar trabajo. ¿Qué lugar necesita ahora más casas y autobuses?', fa: 'سرشماری نشان می‌دهد که بسیاری از جوانان برای پیدا کردن کار از قریه‌ها به شهر رفته‌اند. حالا کدام جا به خانه و بس بیشتر ضرورت دارد؟' },
+          choices: [{ en: 'The city, because its population is growing', es: 'La ciudad, porque su población está creciendo', fa: 'شهر، چون نفوس آن زیاد می‌شود' }, { en: 'The villages, because they have more young adults now', es: 'Los pueblos, porque ahora tienen más adultos jóvenes', fa: 'قریه‌ها، چون حالا جوانان بیشتری دارند' }, { en: 'Neither place, because the country\'s total did not change', es: 'Ningún lugar, porque el total del país no cambió', fa: 'هیچ جا، چون شمار کل کشور تغییر نکرد' }, { en: 'Neither place, because people never move for jobs', es: 'Ningún lugar, porque la gente nunca se muda por trabajo', fa: 'هیچ جا، چون مردم هیچ وقت برای کار جای خود را تغییر نمی‌دهند' }], answer: 0,
+          why: { en: 'The country total can stay the same while people move. When they move to the city, its [[population|population]] grows. A growing city needs more homes, buses, water and schools.', es: 'El total del país puede quedar igual mientras la gente se muda. Cuando se mudan a la ciudad, su [[population|población]] crece. Una ciudad que crece necesita más casas, autobuses, agua y escuelas.', fa: 'شمار کل کشور می‌تواند یکسان بماند در حالی که مردم جابه‌جا می‌شوند. وقتی به شهر می‌روند، [[population|نفوس]] شهر زیاد می‌شود. شهری که بزرگ می‌شود به خانه، بس، آب و مکتب بیشتر ضرورت دارد.' } }
+      ],
+      item: { icon: '📋', name: { en: 'The village census sheet', es: 'La hoja del censo del pueblo', fa: 'ورق سرشماری قریه' } }
+    }
+  },
 
   scraps: [[14, 8], [30, 19], [1, 20]],
   smudges: [[20, 9], [12, 14]],

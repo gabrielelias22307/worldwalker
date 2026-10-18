@@ -174,7 +174,7 @@ window.EPISODE = {
       lines: [
         { en: 'Help! I print the Hub Town newspaper. An Ink Thief just ran off with my paper route map!',
           es: '¡Ayuda! Yo imprimo el periódico de Pueblo Centro. ¡Un Ladrón de Tinta acaba de llevarse mi mapa de reparto!',
-          fa: 'کمک! من روزنامهٔ شهرک مرکز را چاپ می‌کنم. یک دزد سیاهی همین حالا نقشهٔ رساندن روزنامه‌ام را برد!' },
+          fa: 'کمک! من روزنامهٔ شهرک مرکز را چاپ می‌کنم. یک دزد رنگ همین حالا نقشهٔ رساندن روزنامه‌ام را برد!' },
         { en: 'Kwame delivers my papers. He saw where the thief went. He is west of the river, just south of the wheat fields. Will you ask him?',
           es: 'Kwame reparte mis periódicos. Él vio adónde fue el ladrón. Está al oeste del río, justo al sur de los campos de trigo. ¿Le preguntas?',
           fa: 'کوامی روزنامه‌هایم را می‌رساند. او دید که دزد به کجا رفت. او در غرب دریا، درست جنوبِ زمین‌های گندم است. از او می‌پرسی؟' }
@@ -203,13 +203,13 @@ window.EPISODE = {
     action: {
       type: 'fight',
       at: [3, 14],
-      name: { en: 'The Ink Thief', es: 'Ladrón de Tinta', fa: 'دزد سیاهی' },
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
       taunt: { en: 'Hee hee! This paper route map is mine now. Answer my region riddles, or I keep it!',
         es: '¡Ji ji! Este mapa de reparto ahora es mío. ¡Responde mis acertijos sobre regiones o me lo quedo!',
         fa: 'هی هی! این نقشهٔ رساندن روزنامه حالا مال من است. به چیستان‌های منطقهٔ من جواب بده، وگرنه آن را نگه می‌دارم!' },
       win: { en: 'Drat! The Ink Thief drops the map and runs off in a puff of ink.',
         es: '¡Rayos! El Ladrón de Tinta suelta el mapa y huye en una nube de tinta.',
-        fa: 'اَه! دزد سیاهی نقشه را می‌اندازد و در یک ابر سیاهی فرار می‌کند.' },
+        fa: 'اَه! دزد رنگ نقشه را می‌اندازد و در یک ابر سیاهی فرار می‌کند.' },
       need: 2,
       questions: [
         { q: { en: 'Ms. Lin\'s newspaper goes out from her print shop to many homes. What is the hub of that region?', es: 'El periódico de la Sra. Lin sale de su imprenta hacia muchas casas. ¿Cuál es el centro de esa región?', fa: 'روزنامهٔ خانم لین از چاپخانه‌اش به خانه‌های زیادی می‌رود. مرکز این منطقه چیست؟' },

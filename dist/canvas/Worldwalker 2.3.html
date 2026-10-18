@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3414,6 +3415,66 @@ window.EPISODE = {
       es: 'PARADA DE BUS · TRABAJOS EN LA CIUDAD: cocineros, constructores, enfermeras, choferes. ¡Se busca personal! Un trabajo es un [[pull factor|factor de atracción]].',
       fa: 'ایستگاه بس · کار در شهر: آشپز، معمار، نرس، راننده. کارگر لازم است! کار یک [[pull factor|عامل کشش]] است.' } }
   ],
+
+  /* the quest: Doña Marta (gold !) -> Nadège the mail carrier -> beat the Ink Thief by the river -> back to Marta with Diego's letter */
+  quest: {
+    stat: 'mov',
+    title: { en: 'The Stolen Letter', es: 'La carta robada', fa: 'نامهٔ دزدی‌شده' },
+    giver: {
+      x: 6, y: 3,
+      name: { en: 'Doña Marta', es: 'Doña Marta', fa: 'دونیا مارتا' },
+      role: { en: 'Grandmother in the farm town', es: 'Abuela del pueblo del campo', fa: 'مادرکلان در قریهٔ دهقانی' },
+      look: { skin: 1, hair: '#d8d4cc', shirt: '#4a6ab0', pants: '#3a3a3a', style: 'bun' },
+      lines: [
+        { en: 'Hello, dear. My grandson Diego moved to the city last year. He works at the hospital there. Every month he sends me a letter.',
+          es: 'Hola, mi amor. Mi nieto Diego se mudó a la ciudad el año pasado. Trabaja allá en el hospital. Cada mes me manda una carta.',
+          fa: 'سلام، عزیزم. نواسه‌ام دیگو سال گذشته به شهر رفت. او آنجا در شفاخانه کار می‌کند. هر ماه برایم یک نامه می‌فرستد.' },
+        { en: 'This morning the Ink Thief grabbed his letter on the Long Road! Nadège carries the mail. Please find her in the city, to the east.',
+          es: '¡Esta mañana el Ladrón de Tinta agarró su carta en el Camino Largo! Nadège lleva el correo. Por favor, búscala en la ciudad, hacia el este.',
+          fa: 'امروز صبح دزد رنگ نامهٔ او را در راه دراز قاپید! نادژ نامه‌رسان است. لطفاً او را در شهر، طرف شرق، پیدا کن.' }
+      ],
+      wait: { en: 'Nadège is in the city, east along the road. Look near the market stalls.',
+        es: 'Nadège está en la ciudad, hacia el este por el camino. Busca cerca de los puestos del mercado.',
+        fa: 'نادژ در شهر است، طرف شرق در امتداد سرک. نزدیک دکان‌های بازار ببین.' },
+      thanks: { en: 'Diego\'s letter! He says the city has good work, and he misses home. He also sent a [[remittance|remittance]] for his sister\'s school books. Thank you!',
+        es: '¡La carta de Diego! Dice que en la ciudad hay buen trabajo y que extraña su casa. También mandó una [[remittance|remesa]] para los libros de escuela de su hermana. ¡Gracias!',
+        fa: 'نامهٔ دیگو! می‌نویسد که شهر کار خوب دارد و دلش برای خانه تنگ شده. یک [[remittance|حواله]] هم برای کتاب‌های مکتب خواهرش فرستاده. تشکر!' }
+    },
+    contact: {
+      x: 26, y: 10,
+      name: { en: 'Nadège', es: 'Nadège', fa: 'نادژ' },
+      role: { en: 'Mail carrier', es: 'Cartera', fa: 'نامه‌رسان' },
+      look: { skin: 5, hair: '#120c08', shirt: '#2f6fd6', pants: '#22324f', hat: '#22324f' },
+      lines: [
+        { en: 'Oh no, Diego\'s letter! I carry letters both ways on this road. Workers in the city write home, and families write back. Letters like these keep a family [[network|network]] strong.',
+          es: '¡Ay no, la carta de Diego! Yo llevo cartas en las dos direcciones por este camino. Los trabajadores de la ciudad escriben a casa y las familias contestan. Cartas así mantienen fuerte la [[network|red]] de una familia.',
+          fa: 'وای، نامهٔ دیگو! من در این راه نامه‌ها را به هر دو طرف می‌برم. کارگران در شهر به خانه نامه می‌نویسند و خانواده‌ها جواب می‌دهند. این نامه‌ها [[network|شبکهٔ]] خانواده را قوی نگه می‌دارند.' },
+        { en: 'A thief in a black ink mask ran south, down to the river. Find the Ink Thief on the riverbank in the south-east. Answer its questions to get the letter back!',
+          es: 'Un ladrón con una máscara de tinta negra corrió al sur, hasta el río. Busca al Ladrón de Tinta en la orilla del río, en el sureste. ¡Contesta sus preguntas para recuperar la carta!',
+          fa: 'یک دزد با نقاب سیاه به طرف جنوب، تا دریا دوید. دزد رنگ را کنار دریا در جنوب شرق پیدا کن. به سوال‌هایش جواب بده تا نامه را پس بگیری!' }
+      ]
+    },
+    action: {
+      type: 'fight',
+      at: [17, 18],
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
+      taunt: { en: 'Hee hee! I took the letter. Now nobody knows why Diego moved. Do YOU know?', es: '¡Ji ji! Me llevé la carta. Ahora nadie sabe por qué se mudó Diego. ¿TÚ lo sabes?', fa: 'هی هی! نامه را بردم. حالا هیچ کس نمی‌داند دیگو چرا رفت. تو می‌دانی؟' },
+      win: { en: 'The Ink Thief drops the letter and runs away! The envelope is a little wet, but you can still read it.', es: '¡El Ladrón de Tinta suelta la carta y sale corriendo! El sobre está un poco mojado, pero todavía se puede leer.', fa: 'دزد رنگ نامه را می‌اندازد و فرار می‌کند! پاکت کمی تر شده، اما هنوز خوانده می‌شود.' },
+      need: 2,
+      questions: [
+        { q: { en: 'Diego left a dry farm town for a hospital job in the city. Which one is a pull factor for him?', es: 'Diego dejó un pueblo seco del campo por un trabajo en un hospital de la ciudad. ¿Cuál es un factor de atracción para él?', fa: 'دیگو یک قریهٔ خشک را برای کار در شفاخانهٔ شهر ترک کرد. کدام یک برای او عامل کشش است؟' },
+          choices: [{ en: 'The hospital job in the city', es: 'El trabajo en el hospital de la ciudad', fa: 'کار در شفاخانهٔ شهر' }, { en: 'The dry fields at home', es: 'Los campos secos en casa', fa: 'زمین‌های خشک در خانه' }, { en: 'The rain that comes too late', es: 'La lluvia que llega muy tarde', fa: 'بارانی که خیلی دیر می‌آید' }, { en: 'The empty school in his town', es: 'La escuela vacía de su pueblo', fa: 'مکتب خالی قریه‌اش' }], answer: 0,
+          why: { en: 'The job is in the new place and makes it look better, so it pulls. The other three are pushes from home.', es: 'El trabajo está en el lugar nuevo y lo hace ver mejor, así que atrae. Las otras tres son expulsiones desde casa.', fa: 'کار در جای نو است و آن را بهتر نشان می‌دهد، پس می‌کشد. سه تای دیگر رانش از خانه هستند.' } },
+        { q: { en: 'Most people who move do not go very far. Which move is the most common?', es: 'La mayoría de la gente que se muda no va muy lejos. ¿Qué mudanza es la más común?', fa: 'بیشتر کسانی که جابه‌جا می‌شوند خیلی دور نمی‌روند. کدام سفر از همه عام‌تر است؟' },
+          choices: [{ en: 'From a farm town to a city in the same country', es: 'De un pueblo del campo a una ciudad del mismo país', fa: 'از یک قریه به شهری در همان کشور' }, { en: 'From one continent to another continent', es: 'De un continente a otro continente', fa: 'از یک قاره به قارهٔ دیگر' }, { en: 'From a city to an island far out at sea', es: 'De una ciudad a una isla lejos en el mar', fa: 'از یک شهر به جزیره‌ای دور در بحر' }, { en: 'From the coast to the North Pole', es: 'De la costa al Polo Norte', fa: 'از ساحل به قطب شمال' }], answer: 0,
+          why: { en: 'Short moves are the most common, like Diego\'s move from the farm town to the city.', es: 'Las mudanzas cortas son las más comunes, como la de Diego del pueblo a la ciudad.', fa: 'سفرهای کوتاه از همه عام‌تر هستند، مثل رفتن دیگو از قریه به شهر.' } },
+        { q: { en: '"There are no jobs in my home town." What kind of cause of migration is this?', es: '"No hay trabajo en mi pueblo." ¿Qué tipo de causa de migración es esta?', fa: '«در قریهٔ من کار نیست.» این کدام نوع علت مهاجرت است؟' },
+          choices: [{ en: 'Economic', es: 'Económica', fa: 'اقتصادی' }, { en: 'Environmental', es: 'Ambiental', fa: 'محیطی' }, { en: 'Political', es: 'Política', fa: 'سیاسی' }, { en: 'Sociocultural', es: 'Sociocultural', fa: 'اجتماعی و فرهنگی' }], answer: 0,
+          why: { en: 'Jobs and money are economic causes. A drought or a flood would be environmental.', es: 'El trabajo y el dinero son causas económicas. Una sequía o una inundación serían ambientales.', fa: 'کار و پول علت‌های اقتصادی هستند. خشک‌سالی یا سیلاب علت محیطی است.' } }
+      ],
+      item: { icon: '✉️', name: { en: 'Diego\'s letter', es: 'La carta de Diego', fa: 'نامهٔ دیگو' } }
+    }
+  },
 
   scraps: [[30, 3], [1, 20], [30, 17]],
   smudges: [[10, 19], [22, 8]],

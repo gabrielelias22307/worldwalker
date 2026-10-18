@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3418,6 +3419,70 @@ window.EPISODE = {
       es: 'TIERRA HELADA · más de unos 12,000 pies (3,600 m). Aquí solo crece pasto duro para llamas y alpacas. Más arriba: nieve y hielo todo el año.',
       fa: 'تیرا الادا · بالاتر از حدود ۱۲۰۰۰ فوت (۳۶۰۰ متر). اینجا فقط علف سخت برای لاما و آلپاکا می‌روید. بالاتر: تمام سال برف و یخ.' } }
   ],
+
+  /* the quest: Taita Inti (gold !) -> Wilson the mule driver -> trade with Doña Nelly on the hot coast -> back to Inti */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Bananas for a Birthday', es: 'Bananos para un cumpleaños', fa: 'کیله برای روز تولد' },
+    giver: {
+      x: 29, y: 6,
+      name: { en: 'Taita Inti', es: 'Taita Inti', fa: 'تایتا اینتی' },
+      role: { en: 'Wool weaver', es: 'Tejedor de lana', fa: 'بافندهٔ پشم' },
+      look: { skin: 3, hair: '#3a3a3a', shirt: '#7a3a8a', pants: '#22324f', robe: true, hat: '#3a2a1a' },
+      lines: [
+        { en: 'Alli puncha, friend! Tomorrow is my granddaughter\'s birthday. She loves bananas more than anything.',
+          es: '¡Alli puncha, amigo! Mañana es el cumpleaños de mi nieta. A ella le encantan los bananos más que nada.',
+          fa: 'اَلی پونچا، دوست من! فردا روز تولد نواسه‌ام است. او کیله را از همه چیز بیشتر دوست دارد.' },
+        { en: 'But bananas cannot grow up here. It is far too cold. Wilson takes his mule up and down the mountain road. Please ask him what to do.',
+          es: 'Pero los bananos no crecen aquí arriba. Hace demasiado frío. Wilson sube y baja el camino de la montaña con su mula. Por favor, pregúntale qué hacer.',
+          fa: 'اما کیله اینجا بالا نمی‌روید. اینجا خیلی سرد است. ویلسون با قاطرش در سرک کوه بالا و پایین می‌رود. لطفاً از او بپرس چه کنم.' }
+      ],
+      wait: { en: 'Wilson rests with his mule by the coffee farms, on the west side of the mountain.',
+        es: 'Wilson descansa con su mula junto a los cafetales, en el lado oeste de la montaña.',
+        fa: 'ویلسون با قاطرش کنار فارم‌های قهوه، در طرف غرب کوه، استراحت می‌کند.' },
+      thanks: { en: 'Bananas from the hot coast! Each height grows something different. When we trade, every family eats better. Thank you!',
+        es: '¡Bananos de la costa caliente! Cada altura da algo diferente. Cuando intercambiamos, cada familia come mejor. ¡Gracias!',
+        fa: 'کیله از ساحل گرم! هر ارتفاع چیز دیگری می‌رویاند. وقتی تجارت می‌کنیم، هر خانواده بهتر می‌خورد. تشکر!' }
+    },
+    contact: {
+      x: 5, y: 10,
+      name: { en: 'Wilson', es: 'Wilson', fa: 'ویلسون' },
+      role: { en: 'Mule driver', es: 'Arriero', fa: 'قاطربان' },
+      look: { skin: 1, hair: '#4a2c1a', shirt: '#3fa34d', pants: '#5a4630', hat: '#d8c8a0' },
+      lines: [
+        { en: 'Every height on this mountain grows something different. Up high there are potatoes and wool. Down on the coast there are bananas and sugarcane. So people trade up and down the road.',
+          es: 'Cada altura de esta montaña da algo diferente. Arriba hay papas y lana. Abajo, en la costa, hay bananos y caña de azúcar. Por eso la gente intercambia cosas subiendo y bajando el camino.',
+          fa: 'هر ارتفاع این کوه چیز دیگری می‌رویاند. بالا کچالو و پشم است. پایین در ساحل کیله و نیشکر است. پس مردم در سرک کوه بالا و پایین تجارت می‌کنند.' },
+        { en: 'Go down to the beach in the [[tierra caliente|tierra caliente]]. Doña Nelly sells fruit on the east side of the beach. Offer her something the hot coast cannot grow.',
+          es: 'Baja a la playa, en la [[tierra caliente|tierra caliente]]. Doña Nelly vende fruta en el lado este de la playa. Ofrécele algo que no crece en la costa caliente.',
+          fa: 'پایین به ساحل در [[tierra caliente|تیرا کالینته]] برو. دونیا نِلی در طرف شرق ساحل میوه می‌فروشد. چیزی به او پیشنهاد کن که در ساحل گرم نمی‌روید.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 24, y: 20,
+        name: { en: 'Doña Nelly', es: 'Doña Nelly', fa: 'دونیا نِلی' },
+        role: { en: 'Fruit seller', es: 'Vendedora de fruta', fa: 'میوه‌فروش' },
+        look: { skin: 4, hair: '#120c08', shirt: '#e05a7a', pants: '#f2c14e', style: 'bun' },
+        lines: [
+          { en: 'Bananas! Sweet bananas from the [[tierra caliente|tierra caliente]]! I have more bananas than I can sell.',
+            es: '¡Bananos! ¡Bananos dulces de la [[tierra caliente|tierra caliente]]! Tengo más bananos de los que puedo vender.',
+            fa: 'کیله! کیلهٔ شیرین از [[tierra caliente|تیرا کالینته]]! من بیشتر از آنچه بتوانم بفروشم کیله دارم.' }
+        ]
+      },
+      q: { en: 'You want a bunch of bananas? What will you trade me for it?', es: '¿Quieres un racimo de bananos? ¿Qué me das a cambio?', fa: 'یک خوشه کیله می‌خواهی؟ در بدل آن به من چه می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'A sack of potatoes from the cold land', es: 'Un saco de papas de la tierra fría', fa: 'یک بوجی کچالو از زمین سرد' },
+          why: { en: 'Yes! Potatoes like the cold, so they do not grow well on the hot coast. Nelly has none, so she wants them.', es: '¡Sí! A la papa le gusta el frío, así que no crece bien en la costa caliente. Nelly no tiene, así que las quiere.', fa: 'بله! کچالو سرما را دوست دارد، پس در ساحل گرم خوب نمی‌روید. نلی کچالو ندارد، پس آن را می‌خواهد.' } },
+        { t: { en: 'A bundle of sugarcane', es: 'Un atado de caña de azúcar', fa: 'یک بسته نیشکر' },
+          why: { en: 'Sugarcane grows all around Nelly on the hot coast. She already has plenty.', es: 'La caña crece por todas partes en la costa caliente. Nelly ya tiene mucha.', fa: 'نیشکر در همه جای ساحل گرم، اطراف نلی، می‌روید. او خودش زیاد دارد.' } },
+        { t: { en: 'A bunch of ripe bananas', es: 'Un racimo de bananos maduros', fa: 'یک خوشه کیلهٔ پخته' },
+          why: { en: 'Nelly sells bananas! Trading bananas for bananas makes no sense.', es: '¡Nelly vende bananos! Cambiar bananos por bananos no tiene sentido.', fa: 'نلی کیله می‌فروشد! کیله در بدل کیله معنا ندارد.' } }
+      ],
+      item: { icon: '🍌', name: { en: 'A bunch of bananas', es: 'Un racimo de bananos', fa: 'یک خوشه کیله' } }
+    }
+  },
 
   scraps: [[2, 2], [30, 19], [30, 11]],
   smudges: [[24, 15], [20, 6]],

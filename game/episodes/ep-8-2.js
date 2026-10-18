@@ -231,7 +231,7 @@ window.EPISODE = {
             es: 'Los mangos crecen en lugares calientes como Ghana. Akosua los consigue en su país, así que no necesita los tuyos.',
             fa: 'انبه در جاهای گرم مثل غانا می‌روید. آکوسوا آن را در وطن خود پیدا می‌کند، پس به انبهٔ تو ضرورت ندارد.' } }
       ],
-      item: { icon: '🫘', name: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' } }
+      item: { icon: '🍫', name: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' } }
     }
   },
 

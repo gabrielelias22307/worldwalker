@@ -2830,7 +2830,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
       : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
         : a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
-    return `📜 ${WW.plain(q.title)}: ${now}`;
+    // Spanish: "vence a El Ladrón" -> "vence al Ladrón"
+    return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
   };
   Q.log = () => {
     if (!Q.on()) return '';
@@ -3310,6 +3311,7 @@ window.EPISODE = {
     delta: { en: 'flat land built where a river drops soil near the sea', es: 'tierra plana que se forma donde un río deja tierra cerca del mar', fa: 'زمین همواری که در جایی ساخته می‌شود که دریا نزدیک بحر خاک را می‌گذارد' },
     'wet season': { en: 'the months when most of the year\'s rain falls', es: 'los meses en que cae la mayor parte de la lluvia del año', fa: 'ماه‌هایی که بیشتر باران سال در آن می‌بارد' },
     'dry season': { en: 'the months when very little rain falls', es: 'los meses en que llueve muy poco', fa: 'ماه‌هایی که باران بسیار کم می‌بارد' },
+    downstream: { en: 'the way a river flows: from where it starts in the hills toward the sea', es: 'hacia donde corre un río: desde donde nace en los cerros hacia el mar', fa: 'طرفی که دریا جریان دارد: از جای شروعش در کوه‌ها به سوی بحر' },
     drought: { en: 'a long time with too little rain, so crops and wells dry out', es: 'un tiempo largo con muy poca lluvia, así que los cultivos y los pozos se secan', fa: 'مدت درازی با باران بسیار کم، که کشت و چاه‌ها خشک می‌شوند' }
   },
 
@@ -3420,6 +3422,55 @@ window.EPISODE = {
       es: 'FLECHAS DEL VIENTO · Verano: océano ➜ tierra, húmedo. Invierno: tierra ➜ océano, seco. El viento del monzón da la vuelta con la estación.',
       fa: 'تیرهای باد · تابستان: اقیانوس ⬅ خشکه، مرطوب. زمستان: خشکه ⬅ اقیانوس، خشک. باد موسمی با فصل برمی‌گردد.' } }
   ],
+
+  /* the quest: Nani Kamala (gold !) -> Arjun the duck herder -> follow the Ganges downstream to find the rain gauge -> back to Kamala */
+  quest: {
+    stat: 'mov',
+    title: { en: "Nani's Rain Gauge", es: 'El pluviómetro de la abuela', fa: 'باران‌سنج مادرکلان' },
+    giver: {
+      x: 27, y: 5,
+      name: { en: 'Nani Kamala', es: 'Abuela Kamala', fa: 'مادرکلان کمالا' },
+      role: { en: 'Rain keeper of the village', es: 'Guardiana de la lluvia del pueblo', fa: 'نگهبان باران ده' },
+      look: { skin: 3, hair: '#d9d6d0', shirt: '#7a3e9a', pants: '#4a3a2a', robe: true, style: 'bun' },
+      lines: [
+        { en: 'Oh, hello! Every day I measure the rain in a glass jar with lines on it. It is my rain gauge. The farmers ask me when the [[monsoon|monsoon]] rain has really come.',
+          es: '¡Ay, hola! Cada día mido la lluvia en un frasco de vidrio con rayas. Es mi pluviómetro. Los agricultores me preguntan cuándo llegó de verdad la lluvia del [[monsoon|monzón]].',
+          fa: 'آه، سلام! هر روز باران را در یک مرتبان شیشه‌ای خط‌دار اندازه می‌کنم. این باران‌سنج من است. دهقانان از من می‌پرسند که باران [[monsoon|باد موسمی]] واقعاً کی آمده است.' },
+        { en: 'The Storm Smudge blew it into the river! Arjun herds his ducks in the south-west, by the rice fields. He sees everything on the water. Please ask him.',
+          es: '¡El Borrón Tormenta lo tiró al río! Arjun cuida sus patos en el suroeste, junto a los campos de arroz. Él ve todo lo que pasa en el agua. Por favor, pregúntale.',
+          fa: 'لکهٔ طوفان آن را به دریا انداخت! ارجن مرغابی‌هایش را در جنوب غرب، کنار کشتزارهای برنج، می‌چراند. او همه چیز را روی آب می‌بیند. لطفاً از او بپرس.' }
+      ],
+      wait: { en: 'Arjun is in the south-west, by the rice fields. South is down. West is to the left.',
+        es: 'Arjun está en el suroeste, junto a los campos de arroz. El sur está abajo. El oeste está a la izquierda.',
+        fa: 'ارجن در جنوب غرب، کنار کشتزارهای برنج است. جنوب پایین است. غرب طرف چپ است.' },
+      thanks: { en: 'My rain gauge! Now I can tell the farmers when the [[wet season|wet season]] starts. And you learned something too: a river always carries things [[downstream|downstream]], toward the sea.',
+        es: '¡Mi pluviómetro! Ahora puedo decirles a los agricultores cuándo empieza la [[wet season|temporada de lluvias]]. Y tú también aprendiste algo: un río siempre lleva las cosas [[downstream|río abajo]], hacia el mar.',
+        fa: 'باران‌سنج من! حالا می‌توانم به دهقانان بگویم [[wet season|فصل بارانی]] کی شروع می‌شود. تو هم چیزی یاد گرفتی: دریا همیشه چیزها را به [[downstream|پایین دریا]]، به سوی بحر، می‌برد.' }
+    },
+    contact: {
+      x: 3, y: 12,
+      name: { en: 'Arjun', es: 'Arjun', fa: 'ارجن' },
+      role: { en: 'Duck herder', es: 'Pastor de patos', fa: 'چوپان مرغابی' },
+      look: { skin: 5, hair: '#0e0a08', shirt: '#3a7ac0', pants: '#d8cfa8', style: 'short' },
+      lines: [
+        { en: 'Yes, I saw a glass jar float by! The Ganges carried it [[downstream|downstream]]. That means it went the same way the water flows, toward the sea.',
+          es: '¡Sí, vi pasar flotando un frasco de vidrio! El Ganges lo llevó [[downstream|río abajo]]. Eso quiere decir que fue hacia donde corre el agua, hacia el mar.',
+          fa: 'بلی، دیدم یک مرتبان شیشه‌ای روی آب می‌رفت! گنگا آن را به [[downstream|پایین دریا]] برد. یعنی همان طرفی رفت که آب جریان دارد، به سوی بحر.' },
+        { en: 'Follow the river east across the rice plain. Then it turns south toward the sea. Walk south along its west bank to the bridge. Do not cross. Take one more step south.',
+          es: 'Sigue el río hacia el este por la llanura de arroz. Luego gira al sur, hacia el mar. Camina al sur por su orilla oeste hasta el puente. No lo cruces. Da un paso más al sur.',
+          fa: 'دریا را به طرف شرق از دشت برنج دنبال کن. بعد به طرف جنوب، به سوی بحر، دور می‌خورد. از کنار غربی آن به طرف جنوب تا پل برو. از پل نگذر. یک قدم دیگر به جنوب برو.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [25, 14],
+      hint: { en: 'west bank, 1 step south of the bridge where the river flows south', es: 'orilla oeste, 1 paso al sur del puente donde el río va al sur', fa: 'کنار غربی، ۱ قدم جنوبِ پلی که دریا آن‌جا به جنوب می‌رود' },
+      found: { en: 'There it is, stuck in the mud on the riverbank! The river carried the jar [[downstream|downstream]]: first east, then south toward the Bay of Bengal.',
+        es: '¡Ahí está, atorado en el lodo de la orilla! El río llevó el frasco [[downstream|río abajo]]: primero al este y luego al sur, hacia el golfo de Bengala.',
+        fa: 'آنجاست، در گِل کنار دریا گیر مانده! دریا مرتبان را به [[downstream|پایین دریا]] برد: اول به طرف شرق، بعد به طرف جنوب، به سوی خلیج بنگال.' },
+      item: { icon: '🧪', name: { en: "Nani's rain gauge", es: 'El pluviómetro de la abuela', fa: 'باران‌سنج مادرکلان' } }
+    }
+  },
 
   scraps: [[2, 4], [30, 4], [30, 12]],
   smudges: [[13, 9], [17, 15]],

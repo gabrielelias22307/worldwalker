@@ -172,7 +172,7 @@ window.EPISODE = {
           fa: 'سلام، عزیزم. نواسه‌ام دیگو سال گذشته به شهر رفت. او آنجا در شفاخانه کار می‌کند. هر ماه برایم یک نامه می‌فرستد.' },
         { en: 'This morning the Ink Thief grabbed his letter on the Long Road! Nadège carries the mail. Please find her in the city, to the east.',
           es: '¡Esta mañana el Ladrón de Tinta agarró su carta en el Camino Largo! Nadège lleva el correo. Por favor, búscala en la ciudad, hacia el este.',
-          fa: 'امروز صبح دزد سیاهی نامهٔ او را در راه دراز قاپید! نادژ نامه‌رسان است. لطفاً او را در شهر، طرف شرق، پیدا کن.' }
+          fa: 'امروز صبح دزد رنگ نامهٔ او را در راه دراز قاپید! نادژ نامه‌رسان است. لطفاً او را در شهر، طرف شرق، پیدا کن.' }
       ],
       wait: { en: 'Nadège is in the city, east along the road. Look near the market stalls.',
         es: 'Nadège está en la ciudad, hacia el este por el camino. Busca cerca de los puestos del mercado.',
@@ -192,15 +192,15 @@ window.EPISODE = {
           fa: 'وای، نامهٔ دیگو! من در این راه نامه‌ها را به هر دو طرف می‌برم. کارگران در شهر به خانه نامه می‌نویسند و خانواده‌ها جواب می‌دهند. این نامه‌ها [[network|شبکهٔ]] خانواده را قوی نگه می‌دارند.' },
         { en: 'A thief in a black ink mask ran south, down to the river. Find the Ink Thief on the riverbank in the south-east. Answer its questions to get the letter back!',
           es: 'Un ladrón con una máscara de tinta negra corrió al sur, hasta el río. Busca al Ladrón de Tinta en la orilla del río, en el sureste. ¡Contesta sus preguntas para recuperar la carta!',
-          fa: 'یک دزد با نقاب سیاه به طرف جنوب، تا دریا دوید. دزد سیاهی را کنار دریا در جنوب شرق پیدا کن. به سوال‌هایش جواب بده تا نامه را پس بگیری!' }
+          fa: 'یک دزد با نقاب سیاه به طرف جنوب، تا دریا دوید. دزد رنگ را کنار دریا در جنوب شرق پیدا کن. به سوال‌هایش جواب بده تا نامه را پس بگیری!' }
       ]
     },
     action: {
       type: 'fight',
       at: [17, 18],
-      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد سیاهی' },
+      name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
       taunt: { en: 'Hee hee! I took the letter. Now nobody knows why Diego moved. Do YOU know?', es: '¡Ji ji! Me llevé la carta. Ahora nadie sabe por qué se mudó Diego. ¿TÚ lo sabes?', fa: 'هی هی! نامه را بردم. حالا هیچ کس نمی‌داند دیگو چرا رفت. تو می‌دانی؟' },
-      win: { en: 'The Ink Thief drops the letter and runs away! The envelope is a little wet, but you can still read it.', es: '¡El Ladrón de Tinta suelta la carta y sale corriendo! El sobre está un poco mojado, pero todavía se puede leer.', fa: 'دزد سیاهی نامه را می‌اندازد و فرار می‌کند! پاکت کمی تر شده، اما هنوز خوانده می‌شود.' },
+      win: { en: 'The Ink Thief drops the letter and runs away! The envelope is a little wet, but you can still read it.', es: '¡El Ladrón de Tinta suelta la carta y sale corriendo! El sobre está un poco mojado, pero todavía se puede leer.', fa: 'دزد رنگ نامه را می‌اندازد و فرار می‌کند! پاکت کمی تر شده، اما هنوز خوانده می‌شود.' },
       need: 2,
       questions: [
         { q: { en: 'Diego left a dry farm town for a hospital job in the city. Which one is a pull factor for him?', es: 'Diego dejó un pueblo seco del campo por un trabajo en un hospital de la ciudad. ¿Cuál es un factor de atracción para él?', fa: 'دیگو یک قریهٔ خشک را برای کار در شفاخانهٔ شهر ترک کرد. کدام یک برای او عامل کشش است؟' },
