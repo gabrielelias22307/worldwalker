@@ -161,6 +161,55 @@ window.EPISODE = {
       fa: 'کوه کینیا · حدود ۵٬۲۰۰ متر بلندی · برف و یخ در سرش، خیلی نزدیک [[equator|خط استوا]]. [[elevation|ارتفاع]] بیشتر یعنی هوای سردتر.' } }
   ],
 
+  /* the quest: Hadiza the tree planter (gold !) -> Mr. Otieno the beekeeper -> find the lone acacia west of the east road -> back to Hadiza */
+  quest: {
+    stat: 'hei',
+    title: { en: 'Seeds for the Green Wall', es: 'Semillas para el Muro Verde', fa: 'تخم برای دیوار سبز' },
+    giver: {
+      x: 18, y: 9,
+      name: { en: 'Hadiza', es: 'Hadiza', fa: 'حدیزه' },
+      role: { en: 'Tree planter in the Sahel', es: 'Sembradora de árboles en el Sahel', fa: 'درخت‌کار در ساحل' },
+      look: { skin: 2, hair: '#2a1a12', shirt: '#4f9a3c', pants: '#5a4a32', robe: true },
+      lines: [
+        { en: 'Sannu, friend! I am Hadiza. I plant trees along the dry edge of the [[sahel|Sahel]]. Our trees make a long green wall. Their roots hold the soil and slow [[desertification|desertification]].',
+          es: '¡Sannu, amigo! Soy Hadiza. Siembro árboles en el borde seco del [[sahel|Sahel]]. Nuestros árboles forman un muro verde muy largo. Sus raíces sujetan la tierra y frenan la [[desertification|desertificación]].',
+          fa: 'سنّو، دوست من! من حدیزه هستم. در لبهٔ خشک [[sahel|ساحل]] درخت می‌کارم. درخت‌های ما یک دیوار سبز دراز می‌سازند. ریشه‌های آن‌ها خاک را نگه می‌دارند و [[desertification|بیابان‌زایی]] را آهسته می‌کنند.' },
+        { en: 'But the Smudge\'s dust storm blew away all my seeds. I need seeds from a tree that can live through a long dry season. Mr. Otieno, the beekeeper, knows every tree in the [[savanna|savanna]]. He is south-west of here. Will you ask him?',
+          es: 'Pero la tormenta de polvo del Borrón se llevó todas mis semillas. Necesito semillas de un árbol que aguante una época seca larga. El señor Otieno, el apicultor, conoce cada árbol de la [[savanna|sabana]]. Está al suroeste de aquí. ¿Le preguntas?',
+          fa: 'اما طوفان گرد و خاک لکه همهٔ تخم‌هایم را برد. تخم درختی را می‌خواهم که در یک فصل خشک دراز زنده بماند. آقای اوتینو، زنبوردار، هر درخت [[savanna|ساوانا]] را می‌شناسد. او در جنوب غرب این‌جا است. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Mr. Otieno is south-west of here. Walk south until the dry yellow grass turns green. Then go west.',
+        es: 'El señor Otieno está al suroeste de aquí. Camina al sur hasta que el pasto seco y amarillo se vuelva verde. Luego ve al oeste.',
+        fa: 'آقای اوتینو در جنوب غرب این‌جا است. به طرف جنوب برو تا علف خشک و زرد سبز شود. بعد به طرف غرب برو.' },
+      thanks: { en: 'Acacia pods! The acacia has long roots that reach deep water. That is how it lives through the dry season. I will plant these seeds in the Sahel to hold the soil. Thank you!',
+        es: '¡Vainas de acacia! La acacia tiene raíces largas que llegan al agua profunda. Así vive durante la época seca. Sembraré estas semillas en el Sahel para sujetar la tierra. ¡Gracias!',
+        fa: 'غلاف‌های اکاسیا! اکاسیا ریشه‌های دراز دارد که به آب عمیق می‌رسند. این‌طور در فصل خشک زنده می‌ماند. این تخم‌ها را در ساحل می‌کارم تا خاک را نگه دارند. تشکر!' }
+    },
+    contact: {
+      x: 14, y: 12,
+      name: { en: 'Mr. Otieno', es: 'Sr. Otieno', fa: 'آقای اوتینو' },
+      role: { en: 'Beekeeper in the savanna', es: 'Apicultor de la sabana', fa: 'زنبوردار در ساوانا' },
+      look: { skin: 5, hair: '#1b1410', shirt: '#c9822b', pants: '#3a3a2a', hat: '#e8d9a8' },
+      lines: [
+        { en: 'Hello! My bees love the acacia tree. It grows here in the [[savanna|savanna]]. Its roots go very deep, so it stays alive in the dry season.',
+          es: '¡Hola! A mis abejas les encanta la acacia. Crece aquí en la [[savanna|sabana]]. Sus raíces son muy profundas, por eso sigue viva en la época seca.',
+          fa: 'سلام! زنبورهای من درخت اکاسیا را خیلی دوست دارند. این درخت این‌جا در [[savanna|ساوانا]] می‌روید. ریشه‌هایش خیلی عمیق است، برای همین در فصل خشک زنده می‌ماند.' },
+        { en: 'Walk east to the road that runs south. Follow it south to the Mount Kenya sign. Then walk four steps west. You will stand next to a lone acacia. Its seed pods lie in the grass.',
+          es: 'Camina al este hasta el camino que va al sur. Síguelo al sur hasta el letrero del monte Kenia. Luego camina cuatro pasos al oeste. Estarás junto a una acacia sola. Sus vainas están en el pasto.',
+          fa: 'به طرف شرق تا راهی برو که به جنوب می‌رود. آن را به طرف جنوب تا تابلوی کوه کینیا دنبال کن. بعد چهار قدم به طرف غرب برو. کنار یک درخت اکاسیای تنها می‌ایستی. غلاف‌های تخمش در میان علف افتاده‌اند.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [19, 15],
+      hint: { en: '4 steps west of the road at the Mount Kenya sign', es: '4 pasos al oeste del camino, en el letrero del monte Kenia', fa: '۴ قدم غربِ راه، کنار تابلوی کوه کینیا' },
+      found: { en: 'Here are the acacia seed pods, in the grass! You followed the road south, then went west. The acacia grows in the [[savanna|savanna]], where there is a wet season and a dry season.',
+        es: '¡Aquí están las vainas de acacia, en el pasto! Seguiste el camino al sur y luego fuiste al oeste. La acacia crece en la [[savanna|sabana]], donde hay una época de lluvias y una época seca.',
+        fa: 'غلاف‌های تخم اکاسیا این‌جا در میان علف هستند! راه را به طرف جنوب دنبال کردی، بعد به غرب رفتی. اکاسیا در [[savanna|ساوانا]] می‌روید، جایی که یک فصل بارانی و یک فصل خشک دارد.' },
+      item: { icon: '🌱', name: { en: 'Acacia seed pods', es: 'Vainas de acacia', fa: 'غلاف‌های تخم اکاسیا' } }
+    }
+  },
+
   scraps: [[29, 1], [1, 20], [30, 12]],
   smudges: [[20, 5], [4, 14]],
 

@@ -160,6 +160,76 @@ window.EPISODE = {
       fa: 'بندر دوربان ⚓ · اقیانوس هند · کشتی‌ها از این‌جا به آسیا، اروپا و امریکا می‌روند. نیشکر روی تپه‌های سبز نزدیک می‌روید.' } }
   ],
 
+  /* the quest: Nomvula the cane farmer (gold !) -> Johan the train driver -> trade sugar for a water pump at the port -> back to Nomvula */
+  quest: {
+    stat: 'mov',
+    title: { en: 'Sugar for a Water Pump', es: 'Azúcar por una bomba de agua', fa: 'بوره در بدل پمپ آب' },
+    giver: {
+      x: 23, y: 4,
+      name: { en: 'Nomvula', es: 'Nomvula', fa: 'نومولا' },
+      role: { en: 'Sugarcane farmer', es: 'Agricultora de caña de azúcar', fa: 'دهقان نیشکر' },
+      look: { skin: 5, hair: '#1b1410', shirt: '#27ae60', pants: '#5d4037', style: 'bun' },
+      lines: [
+        { en: 'Sawubona! I am Nomvula. I grow sugarcane on these green hills near Durban. The rain and warm weather here are good for cane. We grow more sugar than we can eat.',
+          es: '¡Sawubona! Soy Nomvula. Cultivo caña de azúcar en estas colinas verdes cerca de Durban. La lluvia y el clima cálido de aquí son buenos para la caña. Producimos más azúcar de la que podemos comer.',
+          fa: 'ساوبونا! من نومولا هستم. روی این تپه‌های سبز نزدیک دوربان نیشکر می‌کارم. باران و هوای گرم این‌جا برای نیشکر خوب است. ما بیشتر از آن‌چه می‌خوریم بوره تولید می‌کنیم.' },
+        { en: 'But our water pump broke, and new pumps come in on ships. Johan drives the trains, west of here. He knows the traders at the port. Will you ask him?',
+          es: 'Pero nuestra bomba de agua se rompió, y las bombas nuevas llegan en barco. Johan maneja los trenes, al oeste de aquí. Conoce a los comerciantes del puerto. ¿Le preguntas?',
+          fa: 'اما پمپ آب ما خراب شد و پمپ‌های نو با کشتی می‌آیند. یوهان در غرب این‌جا قطار می‌راند. او تاجران بندر را می‌شناسد. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Johan works by the railway, west of here. Follow the tracks west.',
+        es: 'Johan trabaja junto a la vía del tren, al oeste de aquí. Sigue las vías hacia el oeste.',
+        fa: 'یوهان کنار خط آهن در غرب این‌جا کار می‌کند. خط آهن را به طرف غرب دنبال کن.' },
+      thanks: { en: 'A new water pump! Now our fields can drink again. We sent out sugar, our [[export|export]]. We got a pump, an [[import|import]]. That is trade!',
+        es: '¡Una bomba de agua nueva! Ahora nuestros campos pueden beber otra vez. Mandamos azúcar, nuestra [[export|exportación]]. Recibimos una bomba, una [[import|importación]]. ¡Eso es comercio!',
+        fa: 'یک پمپ آب نو! حالا کشتزارهای ما دوباره آب می‌خورند. ما بوره را فرستادیم، که [[export|صادرات]] ما است. یک پمپ گرفتیم، که [[import|واردات]] است. این تجارت است!' }
+    },
+    contact: {
+      x: 12, y: 8,
+      name: { en: 'Johan', es: 'Johan', fa: 'یوهان' },
+      role: { en: 'Train driver', es: 'Maquinista de tren', fa: 'رانندهٔ قطار' },
+      look: { skin: 0, hair: '#c8a165', shirt: '#2c3e50', pants: '#34495e', hat: '#7f8c8d' },
+      lines: [
+        { en: 'Hi, I am Johan. I drive trains on this railway. Every day my train carries ore, fruit and sugar east to the [[port|port]] of Durban.',
+          es: 'Hola, soy Johan. Manejo trenes en esta vía. Cada día mi tren lleva mineral, fruta y azúcar al este, al [[port|puerto]] de Durban.',
+          fa: 'سلام، من یوهان هستم. در این خط آهن قطار می‌رانم. هر روز قطار من سنگ معدنی، میوه و بوره را به طرف شرق، به [[port|بندر]] دوربان می‌برد.' },
+        { en: 'A ship trader named Mei Lin waits by the south warehouses, near the docks. She sells water pumps. Offer her something this land has a lot of, and her country needs.',
+          es: 'Una comerciante de barco llamada Mei Lin espera junto a las bodegas del sur, cerca de los muelles. Ella vende bombas de agua. Ofrécele algo que esta tierra tiene en abundancia y que su país necesita.',
+          fa: 'یک تاجر کشتی به نام می‌لین کنار گدام‌های جنوبی، نزدیک لنگرگاه، انتظار می‌کشد. او پمپ آب می‌فروشد. چیزی به او پیشنهاد کن که این سرزمین زیاد دارد و کشور او به آن نیاز دارد.' }
+      ]
+    },
+    action: {
+      type: 'trade',
+      trader: {
+        x: 22, y: 18,
+        name: { en: 'Mei Lin', es: 'Mei Lin', fa: 'می‌لین' },
+        role: { en: 'Ship trader from China', es: 'Comerciante de barco de China', fa: 'تاجر کشتی از چین' },
+        look: { skin: 1, hair: '#111111', shirt: '#d35400', pants: '#2c3e50', style: 'long' },
+        lines: [
+          { en: 'Ni hao! That means hello in Chinese. My ship brings water pumps and machines from factories in China. I take South African goods back home.',
+            es: '¡Ni hao! Así se dice hola en chino. Mi barco trae bombas de agua y máquinas de fábricas de China. Llevo productos de Sudáfrica de vuelta a casa.',
+            fa: 'نی هاو! این به زبان چینی یعنی سلام. کشتی من پمپ آب و ماشین‌آلات را از فابریکه‌های چین می‌آورد. من جنس‌های افریقای جنوبی را به کشورم می‌برم.' }
+        ]
+      },
+      q: { en: 'What will you trade me for one water pump?', es: '¿Qué me das a cambio de una bomba de agua?', fa: 'در بدل یک پمپ آب به من چه می‌دهی؟' },
+      choices: [
+        { ok: true, t: { en: 'A sack of sugar from Nomvula\'s farm', es: 'Un saco de azúcar de la finca de Nomvula', fa: 'یک بوجی بوره از کشتزار نومولا' },
+          why: { en: 'Good trade! The warm, rainy hills near Durban grow lots of sugarcane. Sugar is an [[export|export]] here, and my country needs more than it grows.',
+            es: '¡Buen trato! Las colinas cálidas y lluviosas cerca de Durban dan mucha caña de azúcar. El azúcar es una [[export|exportación]] de aquí, y mi país necesita más de la que produce.',
+            fa: 'معاملهٔ خوب! تپه‌های گرم و بارانی نزدیک دوربان نیشکر زیاد می‌دهند. بوره این‌جا [[export|صادرات]] است و کشور من بیشتر از آن‌چه تولید می‌کند به آن نیاز دارد.' } },
+        { t: { en: 'A bag of rice', es: 'Una bolsa de arroz', fa: 'یک خلطه برنج' },
+          why: { en: 'South Africa grows very little rice. It buys rice from other countries, so rice is an [[import|import]] here. Do not trade away what you have to buy.',
+            es: 'Sudáfrica cultiva muy poco arroz. Lo compra a otros países, así que aquí el arroz es una [[import|importación]]. No cambies lo que tienes que comprar.',
+            fa: 'افریقای جنوبی برنج بسیار کم می‌کارد. برنج را از کشورهای دیگر می‌خرد، پس برنج این‌جا [[import|واردات]] است. چیزی را که خودت می‌خری، در بدل چیز دیگر نده.' } },
+        { t: { en: 'A new phone', es: 'Un teléfono nuevo', fa: 'یک موبایل نو' },
+          why: { en: 'Most phones here come in on ships, just like my pumps. I want something this land makes a lot of.',
+            es: 'Casi todos los teléfonos de aquí llegan en barco, igual que mis bombas. Yo quiero algo que esta tierra produce en abundancia.',
+            fa: 'بیشتر موبایل‌های این‌جا با کشتی می‌آیند، درست مثل پمپ‌های من. من چیزی می‌خواهم که این سرزمین زیاد تولید می‌کند.' } }
+      ],
+      item: { icon: '⚙️', name: { en: 'A new water pump', es: 'Una bomba de agua nueva', fa: 'یک پمپ آب نو' } }
+    }
+  },
+
   scraps: [[1, 1], [16, 1], [13, 20]],
   smudges: [[14, 4], [20, 14]],
 
