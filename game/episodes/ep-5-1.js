@@ -161,6 +161,55 @@ window.EPISODE = {
       fa: 'خلیج فارس · بسیاری از بزرگ‌ترین میدان‌های نفت عربستان سعودی نزدیک این ساحل هستند. کشتی‌ها نفت را به سراسر جهان می‌برند.' } }
   ],
 
+  /* the quest: Salem the camel herder (gold !) -> Zainab and her old clay map in the temple -> find the hidden oasis spring -> back to Salem */
+  quest: {
+    stat: 'hei',
+    title: { en: 'The Hidden Oasis', es: 'El oasis escondido', fa: 'واحهٔ پنهان' },
+    giver: {
+      x: 29, y: 19,
+      name: { en: 'Salem', es: 'Salem', fa: 'سالم' },
+      role: { en: 'Camel herder in the desert', es: 'Pastor de camellos en el desierto', fa: 'شتربان در بیابان' },
+      look: { skin: 4, hair: '#1a1410', shirt: '#f2efe6', pants: '#6a5a44', robe: true, hat: '#c9c2b0' },
+      lines: [
+        { en: 'Help, traveler! The Smudge\'s sandstorm covered the old path to the [[oasis|oasis]]. My camels are thirsty, and my water jar is empty.',
+          es: '¡Ayuda, viajero! La tormenta de arena del Borrón tapó el viejo camino al [[oasis|oasis]]. Mis camellos tienen sed y mi jarra de agua está vacía.',
+          fa: 'کمک، مسافر! توفان ریگ لکه راه کهنهٔ [[oasis|واحه]] را پوشاند. شترهایم تشنه هستند و کوزهٔ آبم خالی است.' },
+        { en: 'In the desert, there are no rivers. An oasis spring is the only water for many days. Zainab in the river temple has an old map. Will you ask her?',
+          es: 'En el desierto no hay ríos. Un manantial de oasis es la única agua en muchos días. Zainab, en el templo del río, tiene un mapa viejo. ¿Le preguntas?',
+          fa: 'در بیابان دریا نیست. چشمهٔ واحه برای چند روز تنها آب است. زینب در معبد دریا یک نقشهٔ کهنه دارد. از او می‌پرسی؟' }
+      ],
+      wait: { en: 'Zainab is in the river temple, to the north. Its door is on the west wall.',
+        es: 'Zainab está en el templo del río, al norte. Su puerta está en la pared oeste.',
+        fa: 'زینب در معبد دریا است، طرف شمال. دروازه‌اش در دیوار غربی است.' },
+      thanks: { en: 'Cool, fresh water! Thank you. Now my camels can drink. In a dry land, people, palms and animals all gather around the water.',
+        es: '¡Agua fresca y limpia! Gracias. Ahora mis camellos pueden beber. En una tierra seca, la gente, las palmeras y los animales se juntan alrededor del agua.',
+        fa: 'آب سرد و تازه! تشکر. حالا شترهایم می‌توانند آب بنوشند. در زمین خشک، مردم، درختان خرما و حیوانات همه دور آب جمع می‌شوند.' }
+    },
+    contact: {
+      x: 28, y: 7,
+      name: { en: 'Zainab', es: 'Zainab', fa: 'زینب' },
+      role: { en: 'Keeper of old clay maps', es: 'Guardiana de mapas viejos de barro', fa: 'نگهبان نقشه‌های کهنهٔ گِلی' },
+      look: { skin: 1, hair: '#2a1d14', shirt: '#7a3f8f', pants: '#3a3040', style: 'bun' },
+      lines: [
+        { en: 'Long ago, people here drew maps on clay. This old map shows the [[oasis|oasis]]. Desert towns always grew next to a spring like this one.',
+          es: 'Hace mucho, la gente de aquí dibujaba mapas en barro. Este mapa viejo muestra el [[oasis|oasis]]. Los pueblos del desierto siempre crecían junto a un manantial como este.',
+          fa: 'خیلی وقت پیش، مردم این‌جا نقشه را روی گِل می‌کشیدند. این نقشهٔ کهنه [[oasis|واحه]] را نشان می‌دهد. شهرک‌های بیابان همیشه کنار چنین چشمه‌ای بزرگ می‌شدند.' },
+        { en: 'Cross the river to the south. Walk west to the palm trees in the far south-west corner. Find the well under the palms. Then take two steps east.',
+          es: 'Cruza el río hacia el sur. Camina al oeste hasta las palmeras en la esquina suroeste. Busca el pozo bajo las palmeras. Luego da dos pasos al este.',
+          fa: 'از دریا به طرف جنوب بگذر. به طرف غرب تا درختان خرما در گوشهٔ جنوب غربی برو. چاه زیر درختان خرما را پیدا کن. بعد دو قدم به طرف شرق برو.' }
+      ]
+    },
+    action: {
+      type: 'find',
+      at: [5, 20],
+      hint: { en: 'far south-west, 2 steps east of the well', es: 'lejos al suroeste, 2 pasos al este del pozo', fa: 'دور در جنوب غرب، ۲ قدم شرقِ چاه' },
+      found: { en: 'Water bubbles up out of the sand! This is the [[oasis|oasis]] spring. You fill Salem\'s jar with cool water.',
+        es: '¡El agua brota de la arena! Este es el manantial del [[oasis|oasis]]. Llenas la jarra de Salem con agua fresca.',
+        fa: 'آب از میان ریگ می‌جوشد! این چشمهٔ [[oasis|واحه]] است. کوزهٔ سالم را با آب سرد پر می‌کنی.' },
+      item: { icon: '🏺', name: { en: 'Jar of oasis water', es: 'Jarra de agua del oasis', fa: 'کوزهٔ آب واحه' } }
+    }
+  },
+
   scraps: [[1, 4], [30, 1], [1, 20]],
   smudges: [[19, 12], [12, 19]],
 
