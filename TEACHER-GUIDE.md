@@ -2,14 +2,15 @@
 
 **Play it:** https://gabrielelias22307.github.io/worldwalker/ (turn on GitHub Pages first: repo **Settings → Pages → Branch: main, folder: / (root) → Save**).
 
-## What students do in one episode (15–25 minutes)
+## What students do in one episode (20–30 minutes)
 
 1. Sign in with **first name**, **class code** (like `GEO-3B`) and a **4-digit secret number**, and pick a look. Next time they just press Continue.
 2. Walk the map (arrow keys or WASD; on-screen arrows on touch screens; or click where to walk).
 3. Talk to 3–4 people. Each talk is a short reading at about a grade-5 level, with **EN / ES / دری** buttons, yellow tap-to-define words and a **Make it easier** button. Each person asks one question.
-4. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).
-5. Beat the **Smudge**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
-6. The **finish screen**: 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
+4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
+5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).
+6. Beat the **Smudge**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
+7. The **finish screen**: 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
 
 Nobody gets stuck: running out of hearts just sends the student back with full hearts.
 
@@ -31,7 +32,7 @@ If the school network or Canvas blocks the game inside the page, students can st
 
 ## What you get back
 
-The turned-in text has: name, class, date, stars, scraps found, hearts lost, minutes played, every talk question with the student's answer and number of tries, the challenge, which Smudge questions they missed, their reflection, their five power scores and their **Passport Code**.
+The turned-in text has: name, class, date, stars, scraps found, hearts lost, minutes played, every talk question with the student's answer and number of tries, the quest (and how many tries the trade or duel took), the challenge, which Smudge questions they missed, their reflection, their five power scores and their **Passport Code**.
 
 ## The Passport Code (backup save)
 
@@ -58,6 +59,7 @@ Open `game/teacher.html` (on the world map: **For teachers → Open the teacher 
 - every person's talk (with the "Make it easier" version) and their question, with the **right answer checked** and the reason for every choice
 - the **compass stone answer key**: which cards go in which group, the right order, which reasons fit which choice, which switch settings work, or the table and its questions
 - all 8 **Smudge trial questions** with the right answer checked
+- the **quest**: who gives it, what the contact says, and the action's answer key (the secret spot is a gold square on the map; the thief's questions and the right trade are checked)
 - the finish screen: the 3 things learned, the reflection question and its sentence starter, plus the signs and the yellow words
 
 Jump buttons open the episode in a new tab **straight at the start, the compass stone, the Smudge trial or the finish screen**. These are previews: nothing is saved on that computer and nothing goes to the class Sheet. **Print answer key** prints the episode you are looking at. **Student link** copies the normal link to the episode. **Lock this computer** turns teacher mode off again (do this on a student's computer).
