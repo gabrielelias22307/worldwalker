@@ -467,7 +467,7 @@
     lines.push('');
     if (WW.quest.on()) lines.push(WW.quest.log());
     lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
-    lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
+    lines.push(`GRUMP TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
     lines.push('');
     lines.push('REFLECTION');
     lines.push('Q: ' + WW.plain(ep.reflect.q));

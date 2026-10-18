@@ -10,9 +10,9 @@ window.EPISODE = {
   title: { en: 'China and Japan', es: 'China y Japón', fa: 'چین و جاپان' },
   place: { en: 'Two Rivers and the Islands', es: 'Dos ríos y las islas', fa: 'دو دریا و جزیره‌ها' },
   intro: [
-    { en: 'Pip: "The Smudge scribbled all over East Asia! Rivers, mountains and islands are mixed up. Talk to the scientist on the high plateau, the rice farmer and the engineer across the sea. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón garabateó todo el este de Asia! Los ríos, las montañas y las islas están revueltos. Habla con la científica de la meseta alta, el agricultor de arroz y la ingeniera al otro lado del mar. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه روی تمام شرق آسیا خط‌خطی کرد! دریاها، کوه‌ها و جزیره‌ها مخلوط شده‌اند. با دانشمند فلات بلند، دهقان برنج و انجنیر آن طرف بحر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump scribbled all over East Asia! Rivers, mountains and islands are mixed up. Talk to the scientist on the high plateau, the rice farmer and the engineer across the sea. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón garabateó todo el este de Asia! Los ríos, las montañas y las islas están revueltos. Habla con la científica de la meseta alta, el agricultor de arroz y la ingeniera al otro lado del mar. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو روی تمام شرق آسیا خط‌خطی کرد! دریاها، کوه‌ها و جزیره‌ها مخلوط شده‌اند. با دانشمند فلات بلند، دهقان برنج و انجنیر آن طرف بحر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   map: [
@@ -233,9 +233,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'pla',
     title: { en: 'China, Japan or both?', es: '¿China, Japón o los dos?', fa: 'چین، جاپان یا هر دو؟' },
-    intro: { en: 'The Smudge tore the labels off the map. Put each card where it belongs: China, Japan, or both.',
-      es: 'El Borrón arrancó las etiquetas del mapa. Pon cada tarjeta donde va: China, Japón o los dos.',
-      fa: 'لکه نام‌ها را از نقشه کند. هر کارت را جای درستش بگذار: چین، جاپان یا هر دو.' },
+    intro: { en: 'The Grump tore the labels off the map. Put each card where it belongs: China, Japan, or both.',
+      es: 'El Gruñón arrancó las etiquetas del mapa. Pon cada tarjeta donde va: China, Japón o los dos.',
+      fa: 'غرغرو نام‌ها را از نقشه کند. هر کارت را جای درستش بگذار: چین، جاپان یا هر دو.' },
     bins: [
       { id: 'china', icon: '🏞️', label: { en: 'China', es: 'China', fa: 'چین' }, sub: { en: 'huge mainland', es: 'gran territorio continental', fa: 'خشکهٔ بسیار بزرگ' } },
       { id: 'japan', icon: '🗾', label: { en: 'Japan', es: 'Japón', fa: 'جاپان' }, sub: { en: 'chain of islands', es: 'cadena de islas', fa: 'زنجیرهٔ جزیره‌ها' } },
@@ -259,8 +259,8 @@ window.EPISODE = {
     at: [44, 18],
     stat: 'loc',
     need: 3,
-    name: { en: 'The Silt Smudge', es: 'El Borrón de Lodo', fa: 'لکهٔ گِل' },
-    appear: { en: 'The Silt Smudge is hiding on the south coast of the islands!', es: '¡El Borrón de Lodo se esconde en la costa sur de las islas!', fa: 'لکهٔ گِل در ساحل جنوبی جزیره‌ها پنهان است!' },
+    name: { en: 'The Silt Grump', es: 'El Gruñón de Lodo', fa: 'غرغروی گِل' },
+    appear: { en: 'The Silt Grump is hiding on the south coast of the islands!', es: '¡El Gruñón de Lodo se esconde en la costa sur de las islas!', fa: 'غرغروی گِل در ساحل جنوبی جزیره‌ها پنهان است!' },
     taunt: { en: 'Blub! I will bury every plain in mud. Where will your people live now?', es: '¡Glub! Voy a enterrar cada llanura en lodo. ¿Dónde vivirá tu gente ahora?', fa: 'بلوب! هر دشت را زیر گِل دفن می‌کنم. حالا مردمت کجا زندگی کنند؟' },
     win: { en: 'The mud washes away and the rivers run clear. Atlas page 7.1 floats into your hands!', es: 'El lodo se va y los ríos corren limpios. ¡La página 7.1 del atlas cae en tus manos!', fa: 'گِل شسته می‌شود و دریاها صاف جاری می‌شوند. صفحهٔ ۷.۱ اطلس به دستت می‌افتد!' },
     questions: [

@@ -85,7 +85,7 @@
     welcomeBack: { en: 'Welcome back', es: 'Bienvenido de nuevo', fa: 'خوش برگشتی' },
     notYou: { en: 'Not you? Start a new hero', es: '¿No eres tú? Crea un héroe nuevo', fa: 'تو نیستی؟ قهرمان تازه بساز' },
     quest: { en: 'Quest', es: 'Misión', fa: 'مأموریت' },
-    questFirst: { en: 'Pip: "Someone here needs your help first. Look for the person with a gold ! above their head."', es: 'Pip: "Primero alguien aquí necesita tu ayuda. Busca a la persona con un ! dorado sobre la cabeza."', fa: 'پیپ: «اول کسی اینجا به کمکت نیاز دارد. کسی را پیدا کن که بالای سرش یک ! طلایی است.»' },
+    questFirst: { en: 'Christopher: "Someone here needs your help first. Look for the person with a gold ! above their head."', es: 'Christopher: "Primero alguien aquí necesita tu ayuda. Busca a la persona con un ! dorado sobre la cabeza."', fa: 'کریستوفر: «اول کسی اینجا به کمکت نیاز دارد. کسی را پیدا کن که بالای سرش یک ! طلایی است.»' },
     accept: { en: "I'll help!", es: '¡Te ayudo!', fa: 'کمک می‌کنم!' },
     newQuest: { en: 'New quest', es: 'Nueva misión', fa: 'مأموریت تازه' },
     questDone: { en: 'Quest complete!', es: '¡Misión cumplida!', fa: 'مأموریت تمام شد!' },
@@ -101,13 +101,13 @@
     thanksAgain: { en: 'Thank you again for your help!', es: '¡Gracias otra vez por tu ayuda!', fa: 'باز هم از کمکت تشکر!' },
     talkTo: { en: 'Talk to everyone', es: 'Habla con todos', fa: 'با همه گپ بزن' },
     solve: { en: 'Solve the compass stone', es: 'Resuelve la piedra de la brújula', fa: 'سنگ قطب‌نما را حل کن' },
-    face: { en: 'Face the Smudge', es: 'Enfrenta al Borrón', fa: 'با لکه روبه‌رو شو' },
+    face: { en: 'Face the Grump', es: 'Enfrenta al Gruñón', fa: 'با غرغرو روبه‌رو شو' },
     done: { en: 'Atlas page won back!', es: '¡Página del atlas recuperada!', fa: 'صفحهٔ اطلس پس گرفته شد!' },
     scraps: { en: 'Atlas scraps', es: 'Pedazos del atlas', fa: 'تکه‌های اطلس' },
-    talkFirst: { en: 'Pip: "Talk to everyone here first. Their words are the clues!"', es: 'Pip: "Primero habla con todos aquí. ¡Sus palabras son las pistas!"', fa: 'پیپ: «اول با همه اینجا گپ بزن. حرف‌هایشان سرنخ است!»' },
-    solveFirst: { en: 'Pip: "The Smudge is hiding. Solve the compass stone to call it out."', es: 'Pip: "El Borrón se esconde. Resuelve la piedra de la brújula para llamarlo."', fa: 'پیپ: «لکه پنهان است. سنگ قطب‌نما را حل کن تا بیرون بیاید.»' },
-    ouch: { en: 'Ouch! The Smudge got you.', es: '¡Ay! El Borrón te tocó.', fa: 'آخ! لکه به تو خورد.' },
-    rescued: { en: 'Pip pulled you back to safety. Hearts refilled!', es: 'Pip te llevó a un lugar seguro. ¡Corazones llenos!', fa: 'پیپ تو را به جای امن برد. قلب‌ها پر شد!' },
+    talkFirst: { en: 'Christopher: "Talk to everyone here first. Their words are the clues!"', es: 'Christopher: "Primero habla con todos aquí. ¡Sus palabras son las pistas!"', fa: 'کریستوفر: «اول با همه اینجا گپ بزن. حرف‌هایشان سرنخ است!»' },
+    solveFirst: { en: 'Christopher: "The Grump is hiding. Solve the compass stone to call it out."', es: 'Christopher: "El Gruñón se esconde. Resuelve la piedra de la brújula para llamarlo."', fa: 'کریستوفر: «غرغرو پنهان است. سنگ قطب‌نما را حل کن تا بیرون بیاید.»' },
+    ouch: { en: 'Ouch! The Grump got you.', es: '¡Ay! El Gruñón te tocó.', fa: 'آخ! غرغرو به تو خورد.' },
+    rescued: { en: 'Christopher pulled you back to safety. Hearts refilled!', es: 'Christopher te llevó a un lugar seguro. ¡Corazones llenos!', fa: 'کریستوفر تو را به جای امن برد. قلب‌ها پر شد!' },
     shield: { en: 'Cloud shield', es: 'Escudo de nubes', fa: 'سپر ابر' },
     learned: { en: 'What you learned', es: 'Lo que aprendiste', fa: 'آنچه یاد گرفتی' },
     oneQ: { en: 'One question before you go', es: 'Una pregunta antes de irte', fa: 'یک سؤال پیش از رفتن' },
@@ -127,7 +127,7 @@
     nextEp: { en: 'Next episode', es: 'Siguiente episodio', fa: 'قسمت بعدی' },
     nextCanvas: { en: 'Open the next episode from your Canvas module.', es: 'Abre el siguiente episodio desde tu módulo de Canvas.', fa: 'قسمت بعدی را از ماژول کانواس خود باز کن.' },
     stars: { en: 'Stars', es: 'Estrellas', fa: 'ستاره‌ها' },
-    starWhy: { en: '★ finish the episode · ★ find all atlas scraps · ★ beat the Smudge with 1 miss or less', es: '★ termina el episodio · ★ encuentra todos los pedazos · ★ vence al Borrón con 1 error o menos', fa: '★ قسمت را تمام کن · ★ همهٔ تکه‌ها را پیدا کن · ★ لکه را با ۱ اشتباه یا کمتر شکست بده' },
+    starWhy: { en: '★ finish the episode · ★ find all atlas scraps · ★ beat the Grump with 1 miss or less', es: '★ termina el episodio · ★ encuentra todos los pedazos · ★ vence al Gruñón con 1 error o menos', fa: '★ قسمت را تمام کن · ★ همهٔ تکه‌ها را پیدا کن · ★ غرغرو را با ۱ اشتباه یا کمتر شکست بده' },
     powers: { en: 'Five geography powers', es: 'Cinco poderes de geografía', fa: 'پنج نیروی جغرافیا' },
     bag: { en: 'Bag · one tool from each realm', es: 'Bolsa · una herramienta de cada reino', fa: 'کوله · یک ابزار از هر سرزمین' },
     stamps: { en: 'Stamps · one for every episode', es: 'Sellos · uno por cada episodio', fa: 'مهرها · یکی برای هر قسمت' },
@@ -142,27 +142,32 @@
     gTalk: { en: 'Talk to every person', es: 'Habla con cada persona', fa: 'با هر نفر گپ بزن' },
     gQuest: { en: 'Help the person with the gold !', es: 'Ayuda a la persona con el ! dorado', fa: 'به کسی که ! طلایی دارد کمک کن' },
     gStone: { en: 'Solve the glowing compass stone', es: 'Resuelve la piedra brújula que brilla', fa: 'سنگ قطب‌نمای درخشان را حل کن' },
-    gBoss: { en: 'Beat the Smudge in its question trial', es: 'Vence al Borrón en su prueba de preguntas', fa: 'لکه را در آزمون سؤال‌هایش شکست بده' },
+    gBoss: { en: 'Beat the Grump in its question trial', es: 'Vence al Gruñón en su prueba de preguntas', fa: 'غرغرو را در آزمون سؤال‌هایش شکست بده' },
     gPage: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
     gBonus: { en: 'Bonus: pick up the 3 atlas scraps (coins and a star)', es: 'Extra: recoge los 3 pedazos del atlas (monedas y una estrella)', fa: 'جایزه: ۳ تکهٔ اطلس را جمع کن (سکه و یک ستاره)' },
-    gDim: { en: 'The Smudge has dimmed this land. Every goal you finish brings its color back.', es: 'El Borrón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'لکه این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
+    gDim: { en: 'The Grump has dimmed this land. Every goal you finish brings its color back.', es: 'El Gruñón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'غرغرو این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
     claim: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
-    pageAppears: { en: 'Pip: "The Smudge is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Pip: "¡El Borrón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'پیپ: «لکه رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
+    pageAppears: { en: 'Christopher: "The Grump is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Christopher: "¡El Gruñón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'کریستوفر: «غرغرو رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
     grow: { en: 'How you grow', es: 'Cómo creces', fa: 'چگونه رشد می‌کنی' },
-    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Smudge: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Borrón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست لکه: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
-    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Smudge +15. Spend 10 coins on a hint from Pip in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Borrón +15. Gasta 10 monedas en una pista de Pip en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، لکه +۱۵. ۱۰ سکه برای یک کمک از پیپ در هر آزمون یا مسابقه خرج کن.' },
+    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Grump: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Gruñón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست غرغرو: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
+    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Grump +15. Spend 10 coins on a hint from Christopher in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Gruñón +15. Gasta 10 monedas en una pista de Christopher en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، غرغرو +۱۵. ۱۰ سکه برای یک کمک از کریستوفر در هر آزمون یا مسابقه خرج کن.' },
     lvl: { en: 'level', es: 'nivel', fa: 'سطح' },
     nextAt: { en: 'next at', es: 'siguiente en', fa: 'بعدی در' },
     maxed: { en: 'all unlocked', es: 'todo desbloqueado', fa: 'همه باز شد' },
     newPower: { en: 'New power!', es: '¡Nuevo poder!', fa: 'نیروی تازه!' },
     earned: { en: 'What you earned', es: 'Lo que ganaste', fa: 'آنچه به دست آوردی' },
+    grr: [
+      { en: 'GRRR! Wrong! This atlas page stays torn!', es: '¡GRRR! ¡Mal! ¡Esta página del atlas sigue rota!', fa: 'غررر! غلط! این صفحهٔ اطلس پاره می‌ماند!' },
+      { en: 'HA! Is that all you know about this place?', es: '¡JA! ¿Eso es todo lo que sabes de este lugar?', fa: 'ها! همین قدر از این جا می‌دانی؟' },
+      { en: 'GRRR! You will never win this page back!', es: '¡GRRR! ¡Nunca vas a recuperar esta página!', fa: 'غررر! هرگز این صفحه را پس نمی‌گیری!' }],
+    furious: { en: 'The Grump is FURIOUS!', es: '¡El Gruñón está FURIOSO!', fa: 'غرغرو خیلی خشمگین است!' },
     hint: { en: 'Hint', es: 'Pista', fa: 'کمک' },
     hintFree: { en: 'free', es: 'gratis', fa: 'رایگان' },
     hintNoCoins: { en: 'You need 10 coins for a hint.', es: 'Necesitas 10 monedas para una pista.', fa: 'برای کمک ۱۰ سکه لازم داری.' },
     why_talk: { en: 'you answered', es: 'respondiste a', fa: 'جواب دادی به' },
     why_stone: { en: 'compass stone', es: 'piedra brújula', fa: 'سنگ قطب‌نما' },
     why_quest: { en: 'quest', es: 'misión', fa: 'مأموریت' },
-    why_boss: { en: 'beat the Smudge', es: 'venciste al Borrón', fa: 'لکه را شکست دادی' },
+    why_boss: { en: 'beat the Grump', es: 'venciste al Gruñón', fa: 'غرغرو را شکست دادی' },
     why_scrap: { en: 'atlas scrap', es: 'pedazo del atlas', fa: 'تکهٔ اطلس' },
     allRight: { en: 'All correct!', es: '¡Todo correcto!', fa: 'همه درست است!' },
     someWrong: { en: 'Some are in the wrong place. The red ones need to move.', es: 'Algunos están en el lugar equivocado. Los rojos deben moverse.', fa: 'بعضی در جای اشتباه هستند. سرخ‌ها باید جابجا شوند.' },
@@ -175,13 +180,14 @@
     realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
     teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
     playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
-    story: { en: 'The Smudge tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Pip, your living compass, win the pages back by learning each place.', es: 'El Borrón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Pip, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'لکه اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با پیپ، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
+    story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
   };
   WW.T = k => WW.L(WW.S[k]);
+  WW.grr = () => WW.L(WW.S.grr[(Math.random() * WW.S.grr.length) | 0]);
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -200,7 +206,7 @@
       { en: 'Scrap finder: a second arrow points to the nearest atlas scrap', es: 'Buscador: otra flecha señala el pedazo del atlas más cercano', fa: 'تکه‌یاب: تیر دوم نزدیک‌ترین تکهٔ اطلس را نشان می‌دهد' }],
     pla: [{ en: 'Strong roots: +1 heart', es: 'Raíces fuertes: +1 corazón', fa: 'ریشهٔ قوی: +۱ قلب' },
       { en: 'Deep roots: +1 more heart', es: 'Raíces profundas: +1 corazón más', fa: 'ریشهٔ عمیق: +۱ قلب دیگر' }],
-    hei: [{ en: 'Calm land: wandering Smudges move slower', es: 'Tierra tranquila: los Borrones sueltos van más lento', fa: 'زمین آرام: لکه‌های سرگردان آهسته‌تر می‌روند' },
+    hei: [{ en: 'Calm land: wandering Grumplings move slower', es: 'Tierra tranquila: los Gruñoncitos sueltos van más lento', fa: 'زمین آرام: غرغروهای سرگردان آهسته‌تر می‌روند' },
       { en: 'Healing scraps: each atlas scrap gives back a heart', es: 'Pedazos que curan: cada pedazo del atlas te devuelve un corazón', fa: 'تکهٔ شفابخش: هر تکهٔ اطلس یک قلب برمی‌گرداند' }],
     mov: [{ en: 'Quick feet: you walk faster', es: 'Pies rápidos: caminas más rápido', fa: 'پای تیز: تندتر راه می‌روی' },
       { en: 'Traveler: you walk faster still', es: 'Viajero: caminas aún más rápido', fa: 'مسافر: باز هم تندتر راه می‌روی' }],
@@ -261,7 +267,12 @@
     }
     for (const k in other.stats || {}) s.stats[k] = Math.max(s.stats[k] || 0, other.stats[k] || 0);
     if (other.look && !s.name) s.look = other.look;
-    s.coins = Math.max(s.coins || 0, other.coins || 0, 15 * WW.doneCount());
+    // coins: keep the most ever earned and the most ever spent, so spent coins never come back
+    if (other.coins != null) {
+      const spent = Math.max(s.spent || 0, other.spent || 0);
+      const earned = Math.max((s.coins || 0) + (s.spent || 0), (other.coins || 0) + (other.spent || 0));
+      s.spent = spent; s.coins = Math.max(0, earned - spent);
+    }
     WW.store();
   };
 
@@ -285,16 +296,19 @@
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: st.coins, look: st.look });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look });
     }
     return d || { ok: false };
   };
+  WW.spend = n => { WW.save.coins -= n; WW.save.spent = (WW.save.spent || 0) + n; WW.store(); };
+  // save the hero to the class Sheet after each goal (not only at the end), so leaving halfway loses little
+  WW.sheetSync = () => { if (WW.sheetOn()) WW.sheetSave(null); };
   WW.sheetSave = async (log) => {
     if (!WW.sheetOn()) return { ok: false, off: true };
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {

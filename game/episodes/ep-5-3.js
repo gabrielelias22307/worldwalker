@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Borders, Resources and Cooperation', es: 'Fronteras, recursos y cooperación', fa: 'سرحدها، منابع و همکاری' },
   place: { en: 'The Jordan River', es: 'El río Jordán', fa: 'دریای اردن' },
   intro: [
-    { en: 'Pip: "The Drought Smudge is drinking up the Jordan River! It wants the neighbors to fight over every drop. Talk to the engineer, the water planner and the farmer. Then lead the water council at the compass stone."',
-      es: 'Pip: "¡El Borrón Sequía se está bebiendo el río Jordán! Quiere que los vecinos peleen por cada gota. Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua en la piedra de la brújula."',
-      fa: 'پیپ: «لکهٔ خشکسالی آب دریای اردن را می‌نوشد! می‌خواهد همسایه‌ها بر سر هر قطره دعوا کنند. با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را کنار سنگ قطب‌نما رهبری کن.»' }
+    { en: 'Christopher: "The Drought Grump is drinking up the Jordan River! It wants the neighbors to fight over every drop. Talk to the engineer, the water planner and the farmer. Then lead the water council at the compass stone."',
+      es: 'Christopher: "¡El Gruñón Sequía se está bebiendo el río Jordán! Quiere que los vecinos peleen por cada gota. Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua en la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغروی خشکسالی آب دریای اردن را می‌نوشد! می‌خواهد همسایه‌ها بر سر هر قطره دعوا کنند. با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را کنار سنگ قطب‌نما رهبری کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -191,7 +191,7 @@ window.EPISODE = {
       lines: [
         { en: 'Yes, I saw it! A blob of ink with Rania\'s papers. The Jordan River is [[transboundary|transboundary]]. It crosses borders, so her report matters to everyone.',
           es: '¡Sí, lo vi! Una mancha de tinta con los papeles de Rania. El río Jordán es [[transboundary|transfronterizo]]. Cruza fronteras, así que su informe les importa a todos.',
-          fa: 'بلی، دیدمش! یک لکهٔ رنگ با کاغذهای رانیا. دریای اردن [[transboundary|فراسرحدی]] است. از سرحدها می‌گذرد، پس گزارش رانیا برای همه مهم است.' },
+          fa: 'بلی، دیدمش! یک غرغروی رنگ با کاغذهای رانیا. دریای اردن [[transboundary|فراسرحدی]] است. از سرحدها می‌گذرد، پس گزارش رانیا برای همه مهم است.' },
         { en: 'It ran south along the river, past the farms, to the old shore of the Dead Sea. It hides on the east side. Answer two of its questions right, and it will drop the report.',
           es: 'Corrió al sur por el río, pasó las granjas y llegó a la orilla vieja del mar Muerto. Se esconde del lado este. Responde bien dos de sus preguntas y soltará el informe.',
           fa: 'به طرف جنوب کنار دریا دوید، از کشتزارها گذشت و به ساحل کهنهٔ بحیرهٔ مرده رسید. در طرف شرق پنهان است. دو سؤالش را درست جواب بده، گزارش را می‌اندازد.' }
@@ -271,10 +271,10 @@ window.EPISODE = {
     at: [14, 19],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Drought Smudge', es: 'El Borrón Sequía', fa: 'لکهٔ خشکسالی' },
-    appear: { en: 'The Drought Smudge is sitting on the old shore of the Dead Sea!', es: '¡El Borrón Sequía está sentado en la orilla vieja del mar Muerto!', fa: 'لکهٔ خشکسالی روی ساحل کهنهٔ بحیرهٔ مرده نشسته است!' },
+    name: { en: 'The Drought Grump', es: 'El Gruñón Sequía', fa: 'غرغروی خشکسالی' },
+    appear: { en: 'The Drought Grump is sitting on the old shore of the Dead Sea!', es: '¡El Gruñón Sequía está sentado en la orilla vieja del mar Muerto!', fa: 'غرغروی خشکسالی روی ساحل کهنهٔ بحیرهٔ مرده نشسته است!' },
     taunt: { en: 'Slurp! Every drop is mine. Let the neighbors fight while I drink!', es: '¡Slurp! Cada gota es mía. ¡Que los vecinos peleen mientras yo bebo!', fa: 'هورت! هر قطره مال من است. بگذار همسایه‌ها دعوا کنند تا من بنوشم!' },
-    win: { en: 'The Smudge dries up and blows away. Atlas page 5.3 floats down, and the Water Key glows in your hand!', es: 'El Borrón se seca y se lo lleva el viento. Cae la página 5.3 del atlas, ¡y la Llave del agua brilla en tu mano!', fa: 'لکه خشک می‌شود و باد آن را می‌برد. صفحهٔ ۵.۳ اطلس پایین می‌آید و کلید آب در دستت می‌درخشد!' },
+    win: { en: 'The Grump dries up and blows away. Atlas page 5.3 floats down, and the Water Key glows in your hand!', es: 'El Gruñón se seca y se lo lleva el viento. Cae la página 5.3 del atlas, ¡y la Llave del agua brilla en tu mano!', fa: 'غرغرو خشک می‌شود و باد آن را می‌برد. صفحهٔ ۵.۳ اطلس پایین می‌آید و کلید آب در دستت می‌درخشد!' },
     questions: [
       { q: { en: 'What does transboundary mean?', es: '¿Qué significa transfronterizo?', fa: 'فراسرحدی یعنی چه؟' },
         choices: [{ en: 'Crossing from one country into another', es: 'Que cruza de un país a otro', fa: 'از یک کشور به کشور دیگر گذشتن' }, { en: 'Staying inside one city', es: 'Que se queda dentro de una ciudad', fa: 'داخل یک شهر ماندن' }, { en: 'Found only under the sea', es: 'Que solo está bajo el mar', fa: 'فقط زیر بحر پیدا شدن' }, { en: 'Owned by one family', es: 'Que es de una sola familia', fa: 'مال یک خانواده بودن' }], answer: 0,

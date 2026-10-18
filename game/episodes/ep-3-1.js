@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Europe', es: 'Europa', fa: 'اروپا' },
   place: { en: 'Peninsula Coast', es: 'Costa de las Penínsulas', fa: 'ساحل شبه‌جزیره‌ها' },
   intro: [
-    { en: 'Pip: "The Smudge froze the weather charts on Peninsula Coast! Nobody knows why the harbor is not frozen. Talk to the ferry captain, the barge skipper and the mountain guide. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón congeló los mapas del tiempo en la Costa de las Penínsulas! Nadie sabe por qué el puerto no está congelado. Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه نقشه‌های هوا را در ساحل شبه‌جزیره‌ها یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است. با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump froze the weather charts on Peninsula Coast! Nobody knows why the harbor is not frozen. Talk to the ferry captain, the barge skipper and the mountain guide. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón congeló los mapas del tiempo en la Costa de las Penínsulas! Nadie sabe por qué el puerto no está congelado. Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو نقشه‌های هوا را در ساحل شبه‌جزیره‌ها یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است. با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22. North: the sea and a port town. West: a peninsula with a bay on each side.
@@ -230,9 +230,9 @@ window.EPISODE = {
     type: 'table',
     stat: 'pla',
     title: { en: 'Same latitude, different winter', es: 'Misma latitud, otro invierno', fa: 'عرض یکسان، زمستان متفاوت' },
-    intro: { en: 'The Smudge froze the weather charts! Read the table. London and Calgary are the same distance from the equator. Why are their winters so different?',
-      es: '¡El Borrón congeló los mapas del tiempo! Lee la tabla. Londres y Calgary están a la misma distancia del ecuador. ¿Por qué sus inviernos son tan diferentes?',
-      fa: 'لکه نقشه‌های هوا را یخ زد! جدول را بخوان. لندن و کلگری به یک اندازه از خط استوا دور هستند. چرا زمستان‌شان این‌قدر فرق دارد؟' },
+    intro: { en: 'The Grump froze the weather charts! Read the table. London and Calgary are the same distance from the equator. Why are their winters so different?',
+      es: '¡El Gruñón congeló los mapas del tiempo! Lee la tabla. Londres y Calgary están a la misma distancia del ecuador. ¿Por qué sus inviernos son tan diferentes?',
+      fa: 'غرغرو نقشه‌های هوا را یخ زد! جدول را بخوان. لندن و کلگری به یک اندازه از خط استوا دور هستند. چرا زمستان‌شان این‌قدر فرق دارد؟' },
     table: {
       head: [
         { en: 'City', es: 'Ciudad', fa: 'شهر' },
@@ -268,8 +268,8 @@ window.EPISODE = {
     at: [14, 18],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Frost Smudge', es: 'El Borrón de Escarcha', fa: 'لکهٔ یخبندان' },
-    appear: { en: 'The Frost Smudge is hiding in the snowy Alpine pass!', es: '¡El Borrón de Escarcha se esconde en el paso nevado de los Alpes!', fa: 'لکهٔ یخبندان در درّهٔ برفی الپ پنهان است!' },
+    name: { en: 'The Frost Grump', es: 'El Gruñón de Escarcha', fa: 'غرغروی یخبندان' },
+    appear: { en: 'The Frost Grump is hiding in the snowy Alpine pass!', es: '¡El Gruñón de Escarcha se esconde en el paso nevado de los Alpes!', fa: 'غرغروی یخبندان در درّهٔ برفی الپ پنهان است!' },
     taunt: { en: 'Brrr! I froze every map of Europe. Can you still tell sea from mountain?', es: '¡Brrr! Congelé todos los mapas de Europa. ¿Todavía distingues el mar de la montaña?', fa: 'بررر! همهٔ نقشه‌های اروپا را یخ زدم. هنوز بحر را از کوه فرق می‌کنی؟' },
     win: { en: 'The frost melts away. Atlas page 3.1 floats down into your hands!', es: 'La escarcha se derrite. ¡La página 3.1 del atlas cae en tus manos!', fa: 'یخبندان آب می‌شود. صفحهٔ ۳.۱ اطلس به دستت می‌افتد!' },
     questions: [

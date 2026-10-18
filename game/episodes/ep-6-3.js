@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Population and Development', es: 'Población y desarrollo', fa: 'نفوس و انکشاف' },
   place: { en: 'Monsoon Crossroads', es: 'Cruce del Monzón', fa: 'چهارراه موسمی' },
   intro: [
-    { en: 'Pip: "The Smudge smeared every number in Monsoon Crossroads! Now people think one number tells the whole story. Talk to the census worker, the doctor and the city planner. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón manchó todos los números del Cruce del Monzón! Ahora la gente cree que un solo número cuenta toda la historia. Habla con la encuestadora del censo, la doctora y la planificadora de la ciudad. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه همهٔ عددهای چهارراه موسمی را خراب کرد! حالا مردم فکر می‌کنند یک عدد تمام قصه را می‌گوید. با کارمند سرشماری، داکتر و برنامه‌ریز شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump smeared every number in Monsoon Crossroads! Now people think one number tells the whole story. Talk to the census worker, the doctor and the city planner. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón manchó todos los números del Cruce del Monzón! Ahora la gente cree que un solo número cuenta toda la historia. Habla con la encuestadora del censo, la doctora y la planificadora de la ciudad. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو همهٔ عددهای چهارراه موسمی را خراب کرد! حالا مردم فکر می‌کنند یک عدد تمام قصه را می‌گوید. با کارمند سرشماری، داکتر و برنامه‌ریز شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -230,9 +230,9 @@ window.EPISODE = {
     type: 'table',
     stat: 'reg',
     title: { en: 'Read the numbers, find what they hide', es: 'Lee los números y descubre lo que esconden', fa: 'عددها را بخوان، آنچه پنهان می‌کنند را پیدا کن' },
-    intro: { en: 'The Smudge says one number tells everything. Read this table about four countries in South and Southeast Asia. Then answer the questions.',
-      es: 'El Borrón dice que un número lo dice todo. Lee esta tabla sobre cuatro países del sur y sudeste de Asia. Luego responde las preguntas.',
-      fa: 'لکه می‌گوید یک عدد همه چیز را می‌گوید. این جدول دربارهٔ چهار کشور جنوب و جنوب شرق آسیا را بخوان. بعد به سوال‌ها جواب بده.' },
+    intro: { en: 'The Grump says one number tells everything. Read this table about four countries in South and Southeast Asia. Then answer the questions.',
+      es: 'El Gruñón dice que un número lo dice todo. Lee esta tabla sobre cuatro países del sur y sudeste de Asia. Luego responde las preguntas.',
+      fa: 'غرغرو می‌گوید یک عدد همه چیز را می‌گوید. این جدول دربارهٔ چهار کشور جنوب و جنوب شرق آسیا را بخوان. بعد به سوال‌ها جواب بده.' },
     table: {
       head: [
         { en: 'Country', es: 'País', fa: 'کشور' },
@@ -269,10 +269,10 @@ window.EPISODE = {
     at: [6, 19],
     stat: 'pla',
     need: 3,
-    name: { en: 'The Average Smudge', es: 'El Borrón del Promedio', fa: 'لکهٔ اوسط' },
-    appear: { en: 'The Average Smudge is hiding in the old lanes in the south-west!', es: '¡El Borrón del Promedio se esconde en las calles viejas del suroeste!', fa: 'لکهٔ اوسط در کوچه‌های کهنهٔ جنوب غرب پنهان است!' },
+    name: { en: 'The Average Grump', es: 'El Gruñón del Promedio', fa: 'غرغروی اوسط' },
+    appear: { en: 'The Average Grump is hiding in the old lanes in the south-west!', es: '¡El Gruñón del Promedio se esconde en las calles viejas del suroeste!', fa: 'غرغروی اوسط در کوچه‌های کهنهٔ جنوب غرب پنهان است!' },
     taunt: { en: 'Ha! One number is all you need. Who cares about the people behind it?', es: '¡Ja! Un número es todo lo que necesitas. ¿A quién le importa la gente detrás de él?', fa: 'ها! یک عدد بس است. مردمِ پشت آن به چه درد می‌خورند؟' },
-    win: { en: 'The Smudge breaks into a thousand small numbers, one for every person. Atlas page 6.3 floats into your hands!', es: 'El Borrón se rompe en mil números pequeños, uno por cada persona. ¡La página 6.3 del atlas cae en tus manos!', fa: 'لکه به هزار عدد کوچک تقسیم می‌شود، یکی برای هر نفر. صفحهٔ ۶.۳ اطلس به دستت می‌افتد!' },
+    win: { en: 'The Grump breaks into a thousand small numbers, one for every person. Atlas page 6.3 floats into your hands!', es: 'El Gruñón se rompe en mil números pequeños, uno por cada persona. ¡La página 6.3 del atlas cae en tus manos!', fa: 'غرغرو به هزار عدد کوچک تقسیم می‌شود، یکی برای هر نفر. صفحهٔ ۶.۳ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What does a population pyramid show?', es: '¿Qué muestra una pirámide de población?', fa: 'هرم نفوس چه چیزی را نشان می‌دهد؟' },
         choices: [{ en: 'How many people are in each age group', es: 'Cuántas personas hay en cada grupo de edad', fa: 'در هر گروه سنی چند نفر هستند' }, { en: 'How much a country produces in a year', es: 'Cuánto produce un país en un año', fa: 'یک کشور در یک سال چقدر تولید می‌کند' }, { en: 'Where the cities are on a map', es: 'Dónde están las ciudades en un mapa', fa: 'شهرها در نقشه کجا هستند' }, { en: 'How much rain falls in each season', es: 'Cuánta lluvia cae en cada estación', fa: 'در هر فصل چقدر باران می‌بارد' }], answer: 0,

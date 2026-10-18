@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Latin America & the Caribbean', es: 'América Latina y el Caribe', fa: 'امریکای لاتین و کارائیب' },
   place: { en: 'The Coffee Mountain, Ecuador', es: 'La Montaña del Café, Ecuador', fa: 'کوه قهوه، اکوادور' },
   intro: [
-    { en: 'Pip: "The Smudge mixed up the seasons on this mountain in Ecuador! Now farmers are planting crops at the wrong height. Climb from the hot coast up to the snow. Talk to the banana worker, the coffee grower and the potato farmer. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón revolvió las estaciones en esta montaña de Ecuador! Ahora los agricultores siembran a la altura equivocada. Sube desde la costa caliente hasta la nieve. Habla con la trabajadora del banano, el cafetero y la agricultora de papas. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه فصل‌های این کوه را در اکوادور به هم زد! حالا دهقانان حاصلات را در ارتفاع غلط می‌کارند. از ساحل گرم تا برف بالا برو. با کارگر کیله، دهقان قهوه و دهقان کچالو گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump mixed up the seasons on this mountain in Ecuador! Now farmers are planting crops at the wrong height. Climb from the hot coast up to the snow. Talk to the banana worker, the coffee grower and the potato farmer. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón revolvió las estaciones en esta montaña de Ecuador! Ahora los agricultores siembran a la altura equivocada. Sube desde la costa caliente hasta la nieve. Habla con la trabajadora del banano, el cafetero y la agricultora de papas. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو فصل‌های این کوه را در اکوادور به هم زد! حالا دهقانان حاصلات را در ارتفاع غلط می‌کارند. از ساحل گرم تا برف بالا برو. با کارگر کیله، دهقان قهوه و دهقان کچالو گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Bottom to top:
@@ -234,9 +234,9 @@ window.EPISODE = {
     style: 'bands',
     stat: 'hei',
     title: { en: 'What grows at each height?', es: '¿Qué crece en cada altura?', fa: 'در هر ارتفاع چه می‌روید؟' },
-    intro: { en: 'The Smudge planted every crop at the wrong height! Put each card in the right zone, from the frozen top down to the hot coast.',
-      es: '¡El Borrón sembró cada cultivo a la altura equivocada! Pon cada tarjeta en la zona correcta, desde la cima helada hasta la costa caliente.',
-      fa: 'لکه هر حاصل را در ارتفاع غلط کاشت! هر کارت را در منطقهٔ درست بگذار، از بالای یخ‌زده تا ساحل گرم.' },
+    intro: { en: 'The Grump planted every crop at the wrong height! Put each card in the right zone, from the frozen top down to the hot coast.',
+      es: '¡El Gruñón sembró cada cultivo a la altura equivocada! Pon cada tarjeta en la zona correcta, desde la cima helada hasta la costa caliente.',
+      fa: 'غرغرو هر حاصل را در ارتفاع غلط کاشت! هر کارت را در منطقهٔ درست بگذار، از بالای یخ‌زده تا ساحل گرم.' },
     bins: [
       { id: 'helada', icon: '❄️', tile: 'n', label: { en: 'Tierra helada · frozen land', es: 'Tierra helada', fa: 'تیرا الادا · زمین یخ‌زده' }, sub: { en: 'above about 12,000 ft (3,600 m)', es: 'más de unos 12,000 pies (3,600 m)', fa: 'بالاتر از حدود ۱۲۰۰۰ فوت (۳۶۰۰ متر)' } },
       { id: 'fria', icon: '🥔', tile: 'v', label: { en: 'Tierra fría · cold land', es: 'Tierra fría', fa: 'تیرا فریا · زمین سرد' }, sub: { en: 'about 6,000–12,000 ft (1,800–3,600 m)', es: 'unos 6,000–12,000 pies (1,800–3,600 m)', fa: 'حدود ۶۰۰۰ تا ۱۲۰۰۰ فوت (۱۸۰۰ تا ۳۶۰۰ متر)' } },
@@ -268,8 +268,8 @@ window.EPISODE = {
     at: [20, 2],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Frost Smudge', es: 'El Borrón de Escarcha', fa: 'لکهٔ یخبندان' },
-    appear: { en: 'The Frost Smudge is hiding in the snow at the top of the mountain!', es: '¡El Borrón de Escarcha se esconde en la nieve, en la cima de la montaña!', fa: 'لکهٔ یخبندان در برف بالای کوه پنهان است!' },
+    name: { en: 'The Frost Grump', es: 'El Gruñón de Escarcha', fa: 'غرغروی یخبندان' },
+    appear: { en: 'The Frost Grump is hiding in the snow at the top of the mountain!', es: '¡El Gruñón de Escarcha se esconde en la nieve, en la cima de la montaña!', fa: 'غرغروی یخبندان در برف بالای کوه پنهان است!' },
     taunt: { en: 'Brrr! I will freeze the coffee and cook the potatoes. Nothing will grow in the right place!', es: '¡Brrr! Voy a congelar el café y a cocinar las papas. ¡Nada crecerá en su lugar!', fa: 'بررر! قهوه را یخ می‌زنم و کچالو را می‌پزم. هیچ چیز در جای درست نمی‌روید!' },
     win: { en: 'The frost melts into a cool mountain stream. Atlas page 2.2 floats down into your hands!', es: 'La escarcha se derrite en un arroyo fresco de montaña. ¡La página 2.2 del atlas cae en tus manos!', fa: 'یخبندان آب می‌شود و یک جوی خنک کوهستانی می‌سازد. صفحهٔ ۲.۲ اطلس به دستت می‌افتد!' },
     questions: [

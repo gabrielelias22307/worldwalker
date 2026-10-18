@@ -152,7 +152,7 @@
   document.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => { WW.setLang(b.dataset.l); }));
   WW.onLang(render);
 
-  // pixel banner: a strip of the world with the hero and Pip walking across
+  // pixel banner: a strip of the world with the hero and Christopher walking across
   const cv = document.getElementById('banner'); cv.width = 48 * 16; cv.height = 4 * 16;
   const c = cv.getContext('2d'); c.imageSmoothingEnabled = false;
   const strip = [

@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Land, Climate and Vegetation', es: 'Tierra, clima y vegetación', fa: 'زمین، اقلیم و نباتات' },
   place: { en: 'From Sahara to Rainforest', es: 'Del Sahara a la selva', fa: 'از صحرا تا جنگل بارانی' },
   intro: [
-    { en: 'Pip: "The Smudge blew dust all over Nigeria and Kenya! Now the land bands are mixed up. Talk to the herder, the ranger and the forest scientist. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón sopló polvo por todo Nigeria y Kenia! Ahora las franjas de tierra están revueltas. Habla con la pastora, la guardaparques y el científico del bosque. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه در سراسر نیجریه و کینیا گرد و خاک پاشید! حالا نوارهای زمین با هم مخلوط شده‌اند. با مالدار، نگهبان پارک و دانشمند جنگل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump blew dust all over Nigeria and Kenya! Now the land bands are mixed up. Talk to the herder, the ranger and the forest scientist. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón sopló polvo por todo Nigeria y Kenia! Ahora las franjas de tierra están revueltas. Habla con la pastora, la guardaparques y el científico del bosque. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو در سراسر نیجریه و کینیا گرد و خاک پاشید! حالا نوارهای زمین با هم مخلوط شده‌اند. با مالدار، نگهبان پارک و دانشمند جنگل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. North (top) is the Sahara, then the Sahel, the savanna, and the rainforest at the bottom. */
@@ -174,9 +174,9 @@ window.EPISODE = {
         { en: 'Sannu, friend! I am Hadiza. I plant trees along the dry edge of the [[sahel|Sahel]]. Our trees make a long green wall. Their roots hold the soil and slow [[desertification|desertification]].',
           es: '¡Sannu, amigo! Soy Hadiza. Siembro árboles en el borde seco del [[sahel|Sahel]]. Nuestros árboles forman un muro verde muy largo. Sus raíces sujetan la tierra y frenan la [[desertification|desertificación]].',
           fa: 'سنّو، دوست من! من حدیزه هستم. در لبهٔ خشک [[sahel|ساحل]] درخت می‌کارم. درخت‌های ما یک دیوار سبز دراز می‌سازند. ریشه‌های آن‌ها خاک را نگه می‌دارند و [[desertification|بیابان‌زایی]] را آهسته می‌کنند.' },
-        { en: 'But the Smudge\'s dust storm blew away all my seeds. I need seeds from a tree that can live through a long dry season. Mr. Otieno, the beekeeper, knows every tree in the [[savanna|savanna]]. He is south-west of here. Will you ask him?',
-          es: 'Pero la tormenta de polvo del Borrón se llevó todas mis semillas. Necesito semillas de un árbol que aguante una época seca larga. El señor Otieno, el apicultor, conoce cada árbol de la [[savanna|sabana]]. Está al suroeste de aquí. ¿Le preguntas?',
-          fa: 'اما طوفان گرد و خاک لکه همهٔ تخم‌هایم را برد. تخم درختی را می‌خواهم که در یک فصل خشک دراز زنده بماند. آقای اوتینو، زنبوردار، هر درخت [[savanna|ساوانا]] را می‌شناسد. او در جنوب غرب این‌جا است. از او می‌پرسی؟' }
+        { en: 'But the Grump\'s dust storm blew away all my seeds. I need seeds from a tree that can live through a long dry season. Mr. Otieno, the beekeeper, knows every tree in the [[savanna|savanna]]. He is south-west of here. Will you ask him?',
+          es: 'Pero la tormenta de polvo del Gruñón se llevó todas mis semillas. Necesito semillas de un árbol que aguante una época seca larga. El señor Otieno, el apicultor, conoce cada árbol de la [[savanna|sabana]]. Está al suroeste de aquí. ¿Le preguntas?',
+          fa: 'اما طوفان گرد و خاک غرغرو همهٔ تخم‌هایم را برد. تخم درختی را می‌خواهم که در یک فصل خشک دراز زنده بماند. آقای اوتینو، زنبوردار، هر درخت [[savanna|ساوانا]] را می‌شناسد. او در جنوب غرب این‌جا است. از او می‌پرسی؟' }
       ],
       wait: { en: 'Mr. Otieno is south-west of here. Walk south until the dry yellow grass turns green. Then go west.',
         es: 'El señor Otieno está al suroeste de aquí. Camina al sur hasta que el pasto seco y amarillo se vuelva verde. Luego ve al oeste.',
@@ -219,9 +219,9 @@ window.EPISODE = {
     style: 'bands',
     stat: 'reg',
     title: { en: 'From desert to rainforest', es: 'Del desierto a la selva', fa: 'از بیابان تا جنگل بارانی' },
-    intro: { en: 'The Smudge mixed up the land bands! Put each card in the band where you would find it. The bands go from north (top) to south (bottom).',
-      es: '¡El Borrón revolvió las franjas de tierra! Pon cada tarjeta en la franja donde la encontrarías. Las franjas van del norte (arriba) al sur (abajo).',
-      fa: 'لکه نوارهای زمین را مخلوط کرد! هر کارت را در نواری بگذار که آن را آن‌جا پیدا می‌کنی. نوارها از شمال (بالا) تا جنوب (پایین) هستند.' },
+    intro: { en: 'The Grump mixed up the land bands! Put each card in the band where you would find it. The bands go from north (top) to south (bottom).',
+      es: '¡El Gruñón revolvió las franjas de tierra! Pon cada tarjeta en la franja donde la encontrarías. Las franjas van del norte (arriba) al sur (abajo).',
+      fa: 'غرغرو نوارهای زمین را مخلوط کرد! هر کارت را در نواری بگذار که آن را آن‌جا پیدا می‌کنی. نوارها از شمال (بالا) تا جنوب (پایین) هستند.' },
     bins: [
       { id: 'sahara', icon: '🐪', tile: 'u', label: { en: 'Sahara desert', es: 'Desierto del Sahara', fa: 'بیابان صحرا' }, sub: { en: 'almost no rain', es: 'casi no llueve', fa: 'تقریباً باران نیست' } },
       { id: 'sahel', icon: '🌾', tile: 'g', label: { en: 'Sahel', es: 'Sahel', fa: 'ساحل' }, sub: { en: 'dry grass, one short rainy season', es: 'pasto seco, una temporada corta de lluvias', fa: 'علف خشک، یک فصل بارانی کوتاه' } },
@@ -245,8 +245,8 @@ window.EPISODE = {
     at: [24, 18],
     stat: 'pla',
     need: 3,
-    name: { en: 'The Dust Smudge', es: 'El Borrón de Polvo', fa: 'لکهٔ گرد و خاک' },
-    appear: { en: 'The Dust Smudge is hiding in the rainforest clearing in the south-east!', es: '¡El Borrón de Polvo se esconde en el claro de la selva, en el sureste!', fa: 'لکهٔ گرد و خاک در میدان باز جنگل بارانی، در جنوب شرق، پنهان است!' },
+    name: { en: 'The Dust Grump', es: 'El Gruñón de Polvo', fa: 'غرغروی گرد و خاک' },
+    appear: { en: 'The Dust Grump is hiding in the rainforest clearing in the south-east!', es: '¡El Gruñón de Polvo se esconde en el claro de la selva, en el sureste!', fa: 'غرغروی گرد و خاک در میدان باز جنگل بارانی، در جنوب شرق، پنهان است!' },
     taunt: { en: 'Whoosh! I blew sand over every band. Can you still tell the desert from the rainforest?', es: '¡Fuuu! Soplé arena sobre todas las franjas. ¿Todavía puedes distinguir el desierto de la selva?', fa: 'فوووو! روی همهٔ نوارها ریگ پاشیدم. هنوز می‌توانی بیابان را از جنگل بارانی جدا کنی؟' },
     win: { en: 'The dust settles. Atlas page 4.1 floats down into your hands!', es: 'El polvo se asienta. ¡La página 4.1 del atlas cae en tus manos!', fa: 'گرد و خاک می‌نشیند. صفحهٔ ۴.۱ اطلس به دستت می‌افتد!' },
     questions: [

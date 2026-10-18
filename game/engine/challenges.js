@@ -1,4 +1,4 @@
-/* WORLDWALKER engine · the compass-stone challenges and the Smudge trial
+/* WORLDWALKER engine · the compass-stone challenges and the Grump trial
    Challenge types (set by ep.challenge.type):
      sort   – put each card in the right group (style:'bands' draws groups as land bands, e.g. elevation)
      order  – tap the cards in the right order
@@ -21,7 +21,7 @@
     const r = WW.run;
     if (!r.challengeDone) {
       r.challengeDone = true;
-      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone'));
+      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone')); WW.sheetSync();
       WW.sfx('win');
       WW.game.onChallengeDone();
     }
@@ -305,21 +305,24 @@
     f(ch);
   };
 
-  /* ---------------- the Smudge trial ---------------- */
+  /* ---------------- the Grump trial ---------------- */
   WW.bossTrial = (boss, onWin) => {
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = 0, picked = null, last = null;
+    let broken = 0, picked = null, last = null, grr = '';
     let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
-        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal });
+        // the Grump gets FURIOUS once half its shield is cracked, and roars at every wrong answer
+        const furious = !boss.minor && broken >= need / 2 && broken < need;
+        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '') + (furious ? ' furious' : '');
+        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
+        if (!boss.minor) box.classList.toggle('roar', last === 'hit');
         top.appendChild(cv);
-        let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
+        let shield = `<div><div class="bname">${esc(L(boss.name))}${furious ? ` <span class="furious-tag">${esc(T('furious'))}</span>` : ''}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
         for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
         shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
         top.insertAdjacentHTML('beforeend', shield);
@@ -347,7 +350,7 @@
           b.onclick = () => {
             picked = i;
             if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
-            else { last = 'hit'; WW.sfx('hurt'); const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+            else { last = 'hit'; WW.sfx('hurt'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
           list.appendChild(b);
@@ -357,7 +360,7 @@
         if (picked == null && wrongLeft.length > 1) {
           const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
             if (freeHints) freeHints--;
-            else if ((WW.save.coins || 0) >= 10) { WW.save.coins -= 10; WW.store(); WW.ui.hud(); }
+            else if ((WW.save.coins || 0) >= 10) { WW.spend(10); WW.ui.hud(); }
             else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
             (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
           });
@@ -365,6 +368,7 @@
         }
         if (picked != null) {
           const ok = picked === q.answer;
+          if (!ok && grr && !boss.minor) box.insertAdjacentHTML('beforeend', `<p class="say taunt grr">${esc(grr)}</p>`);
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
           const acts = document.createElement('div'); acts.className = 'acts';
           acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {

@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Global Trade', es: 'El comercio mundial', fa: 'تجارت جهانی' },
   place: { en: 'The Narrow Places', es: 'Los Pasos Estrechos', fa: 'گذرگاه‌های تنگ' },
   intro: [
-    { en: 'Pip: "The Smudge tied a knot in the busiest sea road in the world! Ships are stuck, and store shelves are empty far away. Talk to the shop owner, the canal pilot and the strait pilot. Then fix the compass stone at the Asia port."',
-      es: 'Pip: "¡El Borrón hizo un nudo en el camino de mar más ocupado del mundo! Los barcos están atascados y los estantes de las tiendas están vacíos muy lejos de aquí. Habla con la dueña de la tienda, la piloto del canal y el piloto del estrecho. Luego arregla la piedra de la brújula en el puerto de Asia."',
-      fa: 'پیپ: «لکه در پرکارترین راه بحری جهان گره زد! کشتی‌ها گیر مانده‌اند و قفسه‌های دکان‌ها در جاهای دور خالی شده‌اند. با صاحب دکان، رهنمای کانال و رهنمای تنگه گپ بزن. بعد سنگ قطب‌نما را در بندر آسیا درست کن.»' }
+    { en: 'Christopher: "The Grump tied a knot in the busiest sea road in the world! Ships are stuck, and store shelves are empty far away. Talk to the shop owner, the canal pilot and the strait pilot. Then fix the compass stone at the Asia port."',
+      es: 'Christopher: "¡El Gruñón hizo un nudo en el camino de mar más ocupado del mundo! Los barcos están atascados y los estantes de las tiendas están vacíos muy lejos de aquí. Habla con la dueña de la tienda, la piloto del canal y el piloto del estrecho. Luego arregla la piedra de la brújula en el puerto de Asia."',
+      fa: 'کریستوفر: «غرغرو در پرکارترین راه بحری جهان گره زد! کشتی‌ها گیر مانده‌اند و قفسه‌های دکان‌ها در جاهای دور خالی شده‌اند. با صاحب دکان، رهنمای کانال و رهنمای تنگه گپ بزن. بعد سنگ قطب‌نما را در بندر آسیا درست کن.»' }
   ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
@@ -175,9 +175,9 @@ window.EPISODE = {
       role: { en: 'Chocolate maker', es: 'Chocolatera', fa: 'چاکلیت‌ساز' },
       look: { skin: 2, hair: '#3a2416', shirt: '#7a3e1d', pants: '#2b2b2b', style: 'bun' },
       lines: [
-        { en: 'Oh no! I make chocolate, but I have no cocoa beans left. The Smudge\'s knot stopped the ships. My shop is empty!',
-          es: '¡Ay, no! Hago chocolate, pero ya no me quedan granos de cacao. El nudo del Borrón detuvo los barcos. ¡Mi tienda está vacía!',
-          fa: 'وای! من چاکلیت می‌سازم، اما دیگر دانهٔ کاکائو ندارم. گره لکه کشتی‌ها را بند کرد. دکانم خالی است!' },
+        { en: 'Oh no! I make chocolate, but I have no cocoa beans left. The Grump\'s knot stopped the ships. My shop is empty!',
+          es: '¡Ay, no! Hago chocolate, pero ya no me quedan granos de cacao. El nudo del Gruñón detuvo los barcos. ¡Mi tienda está vacía!',
+          fa: 'وای! من چاکلیت می‌سازم، اما دیگر دانهٔ کاکائو ندارم. گره غرغرو کشتی‌ها را بند کرد. دکانم خالی است!' },
         { en: 'Cocoa does not grow here. Oksana, the farmer, knows where to get it. Her farm is south, across the bridge. Will you ask her?',
           es: 'El cacao no crece aquí. Oksana, la agricultora, sabe dónde conseguirlo. Su granja está al sur, al otro lado del puente. ¿Le preguntas?',
           fa: 'کاکائو اینجا نمی‌روید. اوکسانا، دهقان، می‌داند از کجا پیدا شود. فارم او در جنوب است، آن طرف پل. از او می‌پرسی؟' }
@@ -243,9 +243,9 @@ window.EPISODE = {
     type: 'combo',
     stat: 'mov',
     title: { en: 'Get the ship to Europe', es: 'Lleva el barco a Europa', fa: 'کشتی را به اروپا برسان' },
-    intro: { en: 'A ship full of bikes, phones and clothes must sail from this port in Asia to Europe. The Smudge blocked the Suez Canal! Set the switches. Find a route that works.',
-      es: 'Un barco lleno de bicicletas, teléfonos y ropa debe navegar de este puerto de Asia a Europa. ¡El Borrón bloqueó el Canal de Suez! Mueve los interruptores. Encuentra una ruta que funcione.',
-      fa: 'یک کشتی پر از بایسکل، تیلفون و لباس باید از این بندر آسیا به اروپا برود. لکه کانال سوئز را بست! کلیدها را تنظیم کن. راهی پیدا کن که کار کند.' },
+    intro: { en: 'A ship full of bikes, phones and clothes must sail from this port in Asia to Europe. The Grump blocked the Suez Canal! Set the switches. Find a route that works.',
+      es: 'Un barco lleno de bicicletas, teléfonos y ropa debe navegar de este puerto de Asia a Europa. ¡El Gruñón bloqueó el Canal de Suez! Mueve los interruptores. Encuentra una ruta que funcione.',
+      fa: 'یک کشتی پر از بایسکل، تیلفون و لباس باید از این بندر آسیا به اروپا برود. غرغرو کانال سوئز را بست! کلیدها را تنظیم کن. راهی پیدا کن که کار کند.' },
     switches: [
       { name: { en: 'Route from Asia to Europe', es: 'Ruta de Asia a Europa', fa: 'راه از آسیا به اروپا' }, icon: '🧭',
         states: [ { en: 'Through the Suez Canal', es: 'Por el Canal de Suez', fa: 'از راه کانال سوئز' }, { en: 'Around Africa\'s Cape of Good Hope', es: 'Alrededor del cabo de Buena Esperanza, en África', fa: 'دور دماغهٔ امید نیک در افریقا' } ], start: 0 },
@@ -280,8 +280,8 @@ window.EPISODE = {
     at: [23, 14],
     stat: 'hei',
     need: 3,
-    name: { en: 'The Knot Smudge', es: 'El Borrón del Nudo', fa: 'لکهٔ گره' },
-    appear: { en: 'The Knot Smudge is waiting in Africa\'s dry grassland, by the long way around!', es: '¡El Borrón del Nudo espera en las praderas secas de África, junto al camino largo!', fa: 'لکهٔ گره در علفزار خشک افریقا، کنار راه دراز، منتظر است!' },
+    name: { en: 'The Knot Grump', es: 'El Gruñón del Nudo', fa: 'غرغروی گره' },
+    appear: { en: 'The Knot Grump is waiting in Africa\'s dry grassland, by the long way around!', es: '¡El Gruñón del Nudo espera en las praderas secas de África, junto al camino largo!', fa: 'غرغروی گره در علفزار خشک افریقا، کنار راه دراز، منتظر است!' },
     taunt: { en: 'Ha! I tied every sea road in a knot. No ships, no trade, no bread on the shelf!', es: '¡Ja! Hice un nudo con cada camino del mar. ¡Sin barcos, sin comercio, sin pan en el estante!', fa: 'ها! هر راه بحری را گره زدم. نه کشتی، نه تجارت، نه نان در قفسه!' },
     win: { en: 'The knot comes loose and the sea roads open. Atlas page 8.2 sails into your hands, along with a Sail for your bag!', es: 'El nudo se suelta y los caminos del mar se abren. ¡La página 8.2 del atlas llega navegando a tus manos, junto con una Vela para tu bolsa!', fa: 'گره باز می‌شود و راه‌های بحری باز می‌شوند. صفحهٔ ۸.۲ اطلس با یک بادبان برای کوله‌ات به دستت می‌رسد!' },
     questions: [

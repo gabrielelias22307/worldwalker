@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'United States and Canada', es: 'Estados Unidos y Canadá', fa: 'امریکا و کانادا' },
   place: { en: 'The Great Lakes Port', es: 'El Puerto de los Grandes Lagos', fa: 'بندر جهیل‌های بزرگ' },
   intro: [
-    { en: 'Pip: "Welcome to the Americas! The Smudge muddied the water routes, and now the ships and trains are stuck. Talk to the ship captain, the wheat farmer and the barge pilot. Then use the compass stone to pick the best spot for a new city."',
-      es: 'Pip: "¡Bienvenido a las Américas! El Borrón ensució las rutas de agua y ahora los barcos y los trenes están atascados. Habla con la capitana, el agricultor de trigo y el piloto de la barcaza. Luego usa la piedra de la brújula para elegir el mejor lugar para una ciudad nueva."',
-      fa: 'پیپ: «به قارهٔ امریکا خوش آمدی! لکه راه‌های آبی را گل‌آلود کرد و حالا کشتی‌ها و قطارها گیر مانده‌اند. با کپتان کشتی، دهقان گندم و رانندهٔ کشتی باری گپ بزن. بعد با سنگ قطب‌نما بهترین جا را برای یک شهر تازه انتخاب کن.»' }
+    { en: 'Christopher: "Welcome to the Americas! The Grump muddied the water routes, and now the ships and trains are stuck. Talk to the ship captain, the wheat farmer and the barge pilot. Then use the compass stone to pick the best spot for a new city."',
+      es: 'Christopher: "¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua y ahora los barcos y los trenes están atascados. Habla con la capitana, el agricultor de trigo y el piloto de la barcaza. Luego usa la piedra de la brújula para elegir el mejor lugar para una ciudad nueva."',
+      fa: 'کریستوفر: «به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد و حالا کشتی‌ها و قطارها گیر مانده‌اند. با کپتان کشتی، دهقان گندم و رانندهٔ کشتی باری گپ بزن. بعد با سنگ قطب‌نما بهترین جا را برای یک شهر تازه انتخاب کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Water is the road: every route here leads to the docks. */
@@ -170,9 +170,9 @@ window.EPISODE = {
       role: { en: 'Canoe maker', es: 'Fabricante de canoas', fa: 'قایق‌ساز' },
       look: { skin: 3, hair: '#d8d4cc', shirt: '#2a7a6a', pants: '#3a3a3a', style: 'long' },
       lines: [
-        { en: 'Boozhoo! That means hello in my language, Ojibwe. I carved a little birchbark canoe for my grandson. The Smudge\'s wind blew it off the dock and into the lake!',
-          es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe. Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Borrón la sacó del muelle y la tiró al lago!',
-          fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام. من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد لکه آن را از بندر به داخل جهیل برد!' },
+        { en: 'Boozhoo! That means hello in my language, Ojibwe. I carved a little birchbark canoe for my grandson. The Grump\'s wind blew it off the dock and into the lake!',
+          es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe. Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Gruñón la sacó del muelle y la tiró al lago!',
+          fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام. من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد غرغرو آن را از بندر به داخل جهیل برد!' },
         { en: 'Wen the fisher knows how water moves. She fishes on the big river in the south-east. Will you ask her where my canoe went?',
           es: 'Wen, la pescadora, sabe cómo se mueve el agua. Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?',
           fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند. او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' }
@@ -258,8 +258,8 @@ window.EPISODE = {
     at: [28, 19],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Mud Smudge', es: 'El Borrón de Lodo', fa: 'لکهٔ گل' },
-    appear: { en: 'The Mud Smudge is oozing in the woods east of the big river!', es: '¡El Borrón de Lodo se arrastra en el bosque al este del río grande!', fa: 'لکهٔ گل در جنگل شرق دریای بزرگ می‌خزد!' },
+    name: { en: 'The Mud Grump', es: 'El Gruñón de Lodo', fa: 'غرغروی گل' },
+    appear: { en: 'The Mud Grump is oozing in the woods east of the big river!', es: '¡El Gruñón de Lodo se arrastra en el bosque al este del río grande!', fa: 'غرغروی گل در جنگل شرق دریای بزرگ می‌خزد!' },
     taunt: { en: 'Splat! I turned every road to mud. Your goods will never move again!', es: '¡Plaf! Convertí cada camino en lodo. ¡Tus productos nunca se moverán otra vez!', fa: 'شلپ! هر سرک را گل کردم. اجناس تو دیگر هرگز حرکت نمی‌کنند!' },
     win: { en: 'The mud washes away down the river. Atlas page 2.1 floats down into your hands!', es: 'El lodo se va río abajo. ¡La página 2.1 del atlas cae en tus manos!', fa: 'گل با دریا شسته می‌شود. صفحهٔ ۲.۱ اطلس به دستت می‌افتد!' },
     questions: [

@@ -88,7 +88,7 @@
 
   /* ---------------- drawing ---------------- */
   // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
-  /* the Smudge's dimness: the land starts grey and gets its color back as goals are done */
+  /* the Grump's dimness: the land starts grey and gets its color back as goals are done */
   let dim = null, liftT = 0, liftAt = null;
   function smudgeDim(c, t, dt, hero) {
     const g = WW.game, r = WW.run;
@@ -101,7 +101,7 @@
       c.globalCompositeOperation = 'source-over'; c.fillStyle = `rgba(45,30,80,${0.16 * dim})`; c.fillRect(0, 0, VW, VH);
       c.restore();
     }
-    // the moment the Smudge is beaten: a ring of light spreads out from the hero
+    // the moment the Grump is beaten: a ring of light spreads out from the hero
     const k = (performance.now() - liftT) / 1400;
     if (liftT && k < 1) {
       const x = liftAt ? liftAt.x + 8 : VW / 2, y = liftAt ? liftAt.y + 8 : VH / 2, rad = 10 + k * 300;

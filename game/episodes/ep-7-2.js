@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Cities, Site and Situation', es: 'Ciudades, sitio y situación', fa: 'شهرها، محل و موقعیت' },
   place: { en: 'The City on the River', es: 'La ciudad del río', fa: 'شهر کنار دریا' },
   intro: [
-    { en: 'Pip: "The Smudge washed away the plans for a new city! The people need a good place to build. Talk to the road keeper at the pass, the rice farmer and the harbor pilot. Then climb the hill to the compass stone and choose a spot."',
-      es: 'Pip: "¡El Borrón borró los planos de una ciudad nueva! La gente necesita un buen lugar para construir. Habla con el guardián del camino en el paso, la agricultora de arroz y el capitán del puerto. Luego sube la colina hasta la piedra de la brújula y elige un lugar."',
-      fa: 'پیپ: «لکه نقشه‌های یک شهر نو را شست و برد! مردم به یک جای خوب برای ساختن ضرورت دارند. با نگهبان راه در کوتل، دهقان برنج و رهنمای بندر گپ بزن. بعد از تپه بالا برو تا سنگ قطب‌نما و یک جا را انتخاب کن.»' }
+    { en: 'Christopher: "The Grump washed away the plans for a new city! The people need a good place to build. Talk to the road keeper at the pass, the rice farmer and the harbor pilot. Then climb the hill to the compass stone and choose a spot."',
+      es: 'Christopher: "¡El Gruñón borró los planos de una ciudad nueva! La gente necesita un buen lugar para construir. Habla con el guardián del camino en el paso, la agricultora de arroz y el capitán del puerto. Luego sube la colina hasta la piedra de la brújula y elige un lugar."',
+      fa: 'کریستوفر: «غرغرو نقشه‌های یک شهر نو را شست و برد! مردم به یک جای خوب برای ساختن ضرورت دارند. با نگهبان راه در کوتل، دهقان برنج و رهنمای بندر گپ بزن. بعد از تپه بالا برو تا سنگ قطب‌نما و یک جا را انتخاب کن.»' }
   ],
 
   map: [
@@ -167,9 +167,9 @@ window.EPISODE = {
       role: { en: 'City planner', es: 'Planificadora de la ciudad', fa: 'طراح شهر' },
       look: { skin: 1, hair: '#1a1410', shirt: '#c0392b', pants: '#2f3b4a', style: 'short' },
       lines: [
-        { en: 'Oh no! The Smudge\'s wind took my red flag. I put it on my favorite spot for the new city. Now I cannot find it!',
-          es: '¡Ay, no! El viento del Borrón se llevó mi bandera roja. La puse en mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!',
-          fa: 'وای نه! باد لکه بیرق سرخم را برد. آن را در جای دلخواهم برای شهر نو گذاشته بودم. حالا پیدایش نمی‌کنم!' },
+        { en: 'Oh no! The Grump\'s wind took my red flag. I put it on my favorite spot for the new city. Now I cannot find it!',
+          es: '¡Ay, no! El viento del Gruñón se llevó mi bandera roja. La puse en mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!',
+          fa: 'وای نه! باد غرغرو بیرق سرخم را برد. آن را در جای دلخواهم برای شهر نو گذاشته بودم. حالا پیدایش نمی‌کنم!' },
         { en: 'Hana flies her kite on the hilltop in the north-east. From up there she sees everything. Will you ask her?',
           es: 'Hana vuela su cometa en la colina del noreste. Desde allá arriba lo ve todo. ¿Le preguntas?',
           fa: 'هانا در بالای تپه در شمال شرق گُدی‌پران بازی می‌کند. از آن بالا همه چیز را می‌بیند. از او می‌پرسی؟' }
@@ -258,8 +258,8 @@ window.EPISODE = {
     at: [26, 15],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Flood Smudge', es: 'El Borrón de la Inundación', fa: 'لکهٔ سیلاب' },
-    appear: { en: 'The Flood Smudge is rising at the end of the harbor pier!', es: '¡El Borrón de la Inundación sube al final del muelle del puerto!', fa: 'لکهٔ سیلاب در آخر اسکلهٔ بندر بالا می‌آید!' },
+    name: { en: 'The Flood Grump', es: 'El Gruñón de la Inundación', fa: 'غرغروی سیلاب' },
+    appear: { en: 'The Flood Grump is rising at the end of the harbor pier!', es: '¡El Gruñón de la Inundación sube al final del muelle del puerto!', fa: 'غرغروی سیلاب در آخر اسکلهٔ بندر بالا می‌آید!' },
     taunt: { en: 'Splash! I will wash away every city plan. Site, situation, who cares?', es: '¡Splash! Voy a borrar todos los planos de ciudades. ¿Sitio, situación? ¿A quién le importa?', fa: 'شلپ! همهٔ نقشه‌های شهر را می‌شویم. محل، موقعیت، کی پروا دارد؟' },
     win: { en: 'The water goes back into the river. Atlas page 7.2 floats into your hands!', es: 'El agua vuelve al río. ¡La página 7.2 del atlas cae en tus manos!', fa: 'آب دوباره به دریا برمی‌گردد. صفحهٔ ۷.۲ اطلس به دستت می‌افتد!' },
     questions: [

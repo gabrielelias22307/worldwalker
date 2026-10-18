@@ -7,9 +7,9 @@ window.EPISODE = {
   title: { en: 'Intro to Maps', es: 'Introducción a los mapas', fa: 'آشنایی با نقشه‌ها' },
   place: { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
   intro: [
-    { en: 'Pip: "The Smudge blew through Mapmaker\'s Valley! Every sign is blurry and people are lost. Talk to the mapmaker, the captain and the teacher. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón pasó por el Valle del Cartógrafo! Todos los letreros están borrosos y la gente está perdida. Habla con la cartógrafa, la capitana y el maestro. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند. با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump blew through Mapmaker\'s Valley! Every sign is blurry and people are lost. Talk to the mapmaker, the captain and the teacher. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón pasó por el Valle del Cartógrafo! Todos los letreros están borrosos y la gente está perdida. Habla con la cartógrafa, la capitana y el maestro. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند. با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md */
@@ -158,9 +158,9 @@ window.EPISODE = {
       role: { en: 'Village elder', es: 'Anciano del pueblo', fa: 'ریش‌سفید ده' },
       look: { skin: 3, hair: '#d8d4cc', shirt: '#8a5a2b', pants: '#3a3a3a' },
       lines: [
-        { en: 'Oh, traveler! The Smudge\'s wind blew my old brass compass out of my window. My legs are too tired to look for it.',
-          es: '¡Ay, viajero! El viento del Borrón sacó mi vieja brújula de latón por la ventana. Mis piernas están muy cansadas para buscarla.',
-          fa: 'آه، مسافر! باد لکه قطب‌نمای برنجی کهنه‌ام را از کلکین بیرون برد. پاهایم برای پالیدن آن خیلی خسته است.' },
+        { en: 'Oh, traveler! The Grump\'s wind blew my old brass compass out of my window. My legs are too tired to look for it.',
+          es: '¡Ay, viajero! El viento del Gruñón sacó mi vieja brújula de latón por la ventana. Mis piernas están muy cansadas para buscarla.',
+          fa: 'آه، مسافر! باد غرغرو قطب‌نمای برنجی کهنه‌ام را از کلکین بیرون برد. پاهایم برای پالیدن آن خیلی خسته است.' },
         { en: 'Lena the shepherd saw where it landed. She is in the south-west corner of the valley. Will you ask her?',
           es: 'Lena, la pastora, vio dónde cayó. Está en la esquina suroeste del valle. ¿Le preguntas?',
           fa: 'لینا، چوپان، دید که کجا افتاد. او در گوشهٔ جنوب غربی دره است. از او می‌پرسی؟' }
@@ -205,9 +205,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'loc',
     title: { en: 'Exact spot or "near something"?', es: '¿Lugar exacto o "cerca de algo"?', fa: 'جای دقیق یا «نزدیک چیزی»؟' },
-    intro: { en: 'The Smudge mixed up the village directions. Sort each card. Is it an [[absolute location|absolute location]] or a [[relative location|relative location]]?',
-      es: 'El Borrón mezcló las direcciones del pueblo. Ordena cada tarjeta. ¿Es una [[absolute location|ubicación absoluta]] o una [[relative location|ubicación relativa]]?',
-      fa: 'لکه نشانی‌های ده را مخلوط کرد. هر کارت را جدا کن. آیا [[absolute location|موقعیت مطلق]] است یا [[relative location|موقعیت نسبی]]؟' },
+    intro: { en: 'The Grump mixed up the village directions. Sort each card. Is it an [[absolute location|absolute location]] or a [[relative location|relative location]]?',
+      es: 'El Gruñón mezcló las direcciones del pueblo. Ordena cada tarjeta. ¿Es una [[absolute location|ubicación absoluta]] o una [[relative location|ubicación relativa]]?',
+      fa: 'غرغرو نشانی‌های ده را مخلوط کرد. هر کارت را جدا کن. آیا [[absolute location|موقعیت مطلق]] است یا [[relative location|موقعیت نسبی]]؟' },
     bins: [
       { id: 'abs', icon: '📍', label: { en: 'Absolute location', es: 'Ubicación absoluta', fa: 'موقعیت مطلق' }, sub: { en: 'exact address or grid numbers', es: 'dirección exacta o números de cuadrícula', fa: 'آدرس دقیق یا عددهای شبکه' } },
       { id: 'rel', icon: '🧭', label: { en: 'Relative location', es: 'Ubicación relativa', fa: 'موقعیت نسبی' }, sub: { en: 'described by what is nearby', es: 'descrita por lo que está cerca', fa: 'با چیزهای نزدیک گفته می‌شود' } }
@@ -227,8 +227,8 @@ window.EPISODE = {
     at: [18, 15],
     stat: 'loc',
     need: 3,
-    name: { en: 'The Fog Smudge', es: 'El Borrón de Niebla', fa: 'لکهٔ مه' },
-    appear: { en: 'The Fog Smudge is hiding by the farm field in the south-east!', es: '¡El Borrón de Niebla se esconde junto al campo en el sureste!', fa: 'لکهٔ مه کنار کشتزار در جنوب شرق پنهان است!' },
+    name: { en: 'The Fog Grump', es: 'El Gruñón de Niebla', fa: 'غرغروی مه' },
+    appear: { en: 'The Fog Grump is hiding by the farm field in the south-east!', es: '¡El Gruñón de Niebla se esconde junto al campo en el sureste!', fa: 'غرغروی مه کنار کشتزار در جنوب شرق پنهان است!' },
     taunt: { en: 'Hee hee! I blurred every map in this valley. Can you still read one?', es: '¡Ji ji! Borré todos los mapas de este valle. ¿Todavía puedes leer uno?', fa: 'هی هی! همهٔ نقشه‌های این دره را تار کردم. هنوز می‌توانی یکی را بخوانی؟' },
     win: { en: 'The fog lifts. Atlas page 1.1 floats down into your hands!', es: 'La niebla se levanta. ¡La página 1.1 del atlas cae en tus manos!', fa: 'مه کنار می‌رود. صفحهٔ ۱.۱ اطلس به دستت می‌افتد!' },
     questions: [

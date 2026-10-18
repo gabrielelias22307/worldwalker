@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Manufacturing, Trade and Supply Chains', es: 'Fábricas, comercio y cadenas de suministro', fa: 'تولید، تجارت و زنجیرهٔ تأمین' },
   place: { en: 'Harbor of a Thousand Parts', es: 'Puerto de las Mil Piezas', fa: 'بندر هزار پرزه' },
   intro: [
-    { en: 'Pip: "The Smudge jammed the supply chain! Phones are stuck halfway, and the stores are empty. Talk to the chip engineer, the factory line leader and the crane operator. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón trabó la cadena de suministro! Los teléfonos están atascados a medio camino y las tiendas están vacías. Habla con la ingeniera de chips, la jefa de línea de la fábrica y el operador de grúa. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند. با انجنیر چِپ، سرپرست خط فابریکه و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump jammed the supply chain! Phones are stuck halfway, and the stores are empty. Talk to the chip engineer, the factory line leader and the crane operator. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón trabó la cadena de suministro! Los teléfonos están atascados a medio camino y las tiendas están vacías. Habla con la ingeniera de chips, la jefa de línea de la fábrica y el operador de grúa. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند. با انجنیر چِپ، سرپرست خط فابریکه و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   map: [
@@ -230,9 +230,9 @@ window.EPISODE = {
     type: 'order',
     stat: 'mov',
     title: { en: 'Follow the phone', es: 'Sigue al teléfono', fa: 'دنبال مبایل برو' },
-    intro: { en: 'The Smudge scrambled the trip a phone takes. Tap the steps in order, from the ground to your hand.',
-      es: 'El Borrón revolvió el viaje que hace un teléfono. Toca los pasos en orden, desde la tierra hasta tu mano.',
-      fa: 'لکه سفر یک مبایل را مخلوط کرد. قدم‌ها را به ترتیب لمس کن، از زمین تا دست تو.' },
+    intro: { en: 'The Grump scrambled the trip a phone takes. Tap the steps in order, from the ground to your hand.',
+      es: 'El Gruñón revolvió el viaje que hace un teléfono. Toca los pasos en orden, desde la tierra hasta tu mano.',
+      fa: 'غرغرو سفر یک مبایل را مخلوط کرد. قدم‌ها را به ترتیب لمس کن، از زمین تا دست تو.' },
     items: [
       { icon: '⛏️', t: { en: 'A mine digs up metals like copper and lithium', es: 'Una mina saca metales como cobre y litio', fa: 'یک معدن فلزهایی مثل مس و لیتیم بیرون می‌کشد' } },
       { icon: '🔬', t: { en: 'A chip factory makes tiny chips (semiconductors)', es: 'Una fábrica de chips hace chips diminutos (semiconductores)', fa: 'یک فابریکهٔ چِپ چِپ‌های کوچک (نیمه‌هادی) می‌سازد' } },
@@ -252,8 +252,8 @@ window.EPISODE = {
     at: [30, 13],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Tangle Smudge', es: 'El Borrón Enredado', fa: 'لکهٔ گره' },
-    appear: { en: 'The Tangle Smudge is knotting up the ships at the end of the pier!', es: '¡El Borrón Enredado está enredando los barcos al final del muelle!', fa: 'لکهٔ گره کشتی‌ها را در آخر اسکله گره می‌زند!' },
+    name: { en: 'The Tangle Grump', es: 'El Gruñón Enredado', fa: 'غرغروی گره' },
+    appear: { en: 'The Tangle Grump is knotting up the ships at the end of the pier!', es: '¡El Gruñón Enredado está enredando los barcos al final del muelle!', fa: 'غرغروی گره کشتی‌ها را در آخر اسکله گره می‌زند!' },
     taunt: { en: 'Knots and knots! Pull one link, and the whole chain falls apart!', es: '¡Nudos y más nudos! ¡Jala un eslabón y toda la cadena se deshace!', fa: 'گره پشت گره! یک حلقه را بکش، تمام زنجیر از هم می‌پاشد!' },
     win: { en: 'The knots come loose, and the ships sail again. Atlas page 7.3 floats into your hands!', es: 'Los nudos se sueltan y los barcos navegan otra vez. ¡La página 7.3 del atlas cae en tus manos!', fa: 'گره‌ها باز می‌شوند و کشتی‌ها دوباره حرکت می‌کنند. صفحهٔ ۷.۳ اطلس به دستت می‌افتد!' },
     questions: [

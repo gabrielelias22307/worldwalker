@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'People, Culture and Cities', es: 'Gente, cultura y ciudades', fa: 'مردم، فرهنگ و شهرها' },
   place: { en: 'Kinshasa on the Congo River', es: 'Kinshasa junto al río Congo', fa: 'کینشاسا کنار دریای کانگو' },
   intro: [
-    { en: 'Pip: "The Smudge made so much noise in Kinshasa that nobody can understand each other! Talk to the market seller, the boat captain and the pilot. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón hizo tanto ruido en Kinshasa que nadie se entiende! Habla con la vendedora del mercado, el capitán del barco y la piloto. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه در کینشاسا آن‌قدر سر و صدا کرد که هیچ‌کس حرف دیگری را نمی‌فهمد! با فروشندهٔ بازار، کپتان کشتی و پیلوت گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump made so much noise in Kinshasa that nobody can understand each other! Talk to the market seller, the boat captain and the pilot. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón hizo tanto ruido en Kinshasa que nadie se entiende! Habla con la vendedora del mercado, el capitán del barco y la piloto. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو در کینشاسا آن‌قدر سر و صدا کرد که هیچ‌کس حرف دیگری را نمی‌فهمد! با فروشندهٔ بازار، کپتان کشتی و پیلوت گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. The Congo River runs along the top, with two docks. Market top-left, homes bottom-left, downtown bottom-right. */
@@ -227,9 +227,9 @@ window.EPISODE = {
     type: 'table',
     stat: 'loc',
     title: { en: 'Four big cities', es: 'Cuatro ciudades grandes', fa: 'چهار شهر بزرگ' },
-    intro: { en: 'The Smudge scrambled the city guide! Read the table. Then answer the questions.',
-      es: '¡El Borrón revolvió la guía de ciudades! Lee la tabla. Luego responde las preguntas.',
-      fa: 'لکه راهنمای شهرها را خراب کرد! جدول را بخوان. بعد به سوال‌ها جواب بده.' },
+    intro: { en: 'The Grump scrambled the city guide! Read the table. Then answer the questions.',
+      es: '¡El Gruñón revolvió la guía de ciudades! Lee la tabla. Luego responde las preguntas.',
+      fa: 'غرغرو راهنمای شهرها را خراب کرد! جدول را بخوان. بعد به سوال‌ها جواب بده.' },
     table: {
       head: [
         { en: 'City', es: 'Ciudad', fa: 'شهر' },
@@ -266,8 +266,8 @@ window.EPISODE = {
     at: [22, 19],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Noise Smudge', es: 'El Borrón del Ruido', fa: 'لکهٔ سر و صدا' },
-    appear: { en: 'The Noise Smudge is hiding between the tall buildings downtown!', es: '¡El Borrón del Ruido se esconde entre los edificios altos del centro!', fa: 'لکهٔ سر و صدا میان ساختمان‌های بلند مرکز شهر پنهان است!' },
+    name: { en: 'The Noise Grump', es: 'El Gruñón del Ruido', fa: 'غرغروی سر و صدا' },
+    appear: { en: 'The Noise Grump is hiding between the tall buildings downtown!', es: '¡El Gruñón del Ruido se esconde entre los edificios altos del centro!', fa: 'غرغروی سر و صدا میان ساختمان‌های بلند مرکز شهر پنهان است!' },
     taunt: { en: 'BLAAH! I mixed up every language in this city. Can you still tell who lives where?', es: '¡BLAAA! Mezclé todos los idiomas de esta ciudad. ¿Todavía sabes quién vive dónde?', fa: 'بلااا! همهٔ زبان‌های این شهر را مخلوط کردم. هنوز می‌دانی کی کجا زندگی می‌کند؟' },
     win: { en: 'The noise turns into music. Atlas page 4.2 floats down into your hands!', es: 'El ruido se vuelve música. ¡La página 4.2 del atlas cae en tus manos!', fa: 'سر و صدا به موسیقی تبدیل می‌شود. صفحهٔ ۴.۲ اطلس به دستت می‌افتد!' },
     questions: [

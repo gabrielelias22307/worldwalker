@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Southeast Asia: Islands and the Ring of Fire', es: 'Sudeste asiático: islas y el Cinturón de Fuego', fa: 'جنوب شرق آسیا: جزیره‌ها و حلقهٔ آتش' },
   place: { en: 'The Mekong and the Islands', es: 'El Mekong y las islas', fa: 'میکانگ و جزیره‌ها' },
   intro: [
-    { en: 'Pip: "The Quake Smudge is shaking the islands apart! Talk to the boat seller, the rice farmer and the volcano watcher. Then fix the compass stone on the little island."',
-      es: 'Pip: "¡El Borrón Temblor está sacudiendo las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán. Luego arregla la piedra de la brújula en la islita."',
-      fa: 'پیپ: «لکهٔ زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن. بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.»' }
+    { en: 'Christopher: "The Quake Grump is shaking the islands apart! Talk to the boat seller, the rice farmer and the volcano watcher. Then fix the compass stone on the little island."',
+      es: 'Christopher: "¡El Gruñón Temblor está sacudiendo las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán. Luego arregla la piedra de la brújula en la islita."',
+      fa: 'کریستوفر: «غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن. بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -176,9 +176,9 @@ window.EPISODE = {
         { en: 'Welcome to our little island! We have lots of fish and coconuts here. But look: only sand and palm trees. There is no flat, wet land to grow rice.',
           es: '¡Bienvenido a nuestra islita! Aquí tenemos mucho pescado y muchos cocos. Pero mira: solo arena y palmeras. No hay tierra plana y húmeda para sembrar arroz.',
           fa: 'به جزیرهٔ کوچک ما خوش آمدی! این‌جا ماهی و نارگیل زیاد داریم. اما ببین: فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای کشت برنج نیست.' },
-        { en: 'The Quake Smudge sank our rice boat, and the festival is soon! Lola Nena farms on the island to the south. Take the long bridge south and ask her.',
-          es: '¡El Borrón Temblor hundió nuestro bote de arroz, y la fiesta es pronto! Lola Nena cultiva en la isla del sur. Toma el puente largo hacia el sur y pregúntale.',
-          fa: 'لکهٔ زلزله قایق برنج ما را غرق کرد و جشن نزدیک است! لولا ننا در جزیرهٔ جنوبی کشت می‌کند. از پل دراز به طرف جنوب برو و از او بپرس.' }
+        { en: 'The Quake Grump sank our rice boat, and the festival is soon! Lola Nena farms on the island to the south. Take the long bridge south and ask her.',
+          es: '¡El Gruñón Temblor hundió nuestro bote de arroz, y la fiesta es pronto! Lola Nena cultiva en la isla del sur. Toma el puente largo hacia el sur y pregúntale.',
+          fa: 'غرغروی زلزله قایق برنج ما را غرق کرد و جشن نزدیک است! لولا ننا در جزیرهٔ جنوبی کشت می‌کند. از پل دراز به طرف جنوب برو و از او بپرس.' }
       ],
       wait: { en: 'Lola Nena is on the island to the south, up on the rice [[terrace|terraces]]. Take the long bridge south.',
         es: 'Lola Nena está en la isla del sur, arriba en las [[terrace|terrazas]] de arroz. Toma el puente largo hacia el sur.',
@@ -236,9 +236,9 @@ window.EPISODE = {
     style: 'bands',
     stat: 'reg',
     title: { en: 'Mainland or islands?', es: '¿Continente o islas?', fa: 'خشکه یا جزیره؟' },
-    intro: { en: 'The Smudge shook the country names loose! Sort each country. Is it on the mainland, joined to Asia, or is it an island country out in the sea? (Malaysia is not here because it is both: part is on the mainland and part is on the island of Borneo.)',
-      es: '¡El Borrón soltó los nombres de los países! Ordena cada país. ¿Está en el continente, unido a Asia, o es un país de islas en el mar? (Malasia no está aquí porque es las dos cosas: una parte está en el continente y otra en la isla de Borneo.)',
-      fa: 'لکه نام کشورها را تکان داد و جدا کرد! هر کشور را جدا کن. آیا روی خشکه و وصل به آسیا است، یا یک کشور جزیره‌ای در بحر است؟ (مالیزیا این‌جا نیست چون هر دو است: یک بخش آن روی خشکه و بخش دیگر در جزیرهٔ بورنئو است.)' },
+    intro: { en: 'The Grump shook the country names loose! Sort each country. Is it on the mainland, joined to Asia, or is it an island country out in the sea? (Malaysia is not here because it is both: part is on the mainland and part is on the island of Borneo.)',
+      es: '¡El Gruñón soltó los nombres de los países! Ordena cada país. ¿Está en el continente, unido a Asia, o es un país de islas en el mar? (Malasia no está aquí porque es las dos cosas: una parte está en el continente y otra en la isla de Borneo.)',
+      fa: 'غرغرو نام کشورها را تکان داد و جدا کرد! هر کشور را جدا کن. آیا روی خشکه و وصل به آسیا است، یا یک کشور جزیره‌ای در بحر است؟ (مالیزیا این‌جا نیست چون هر دو است: یک بخش آن روی خشکه و بخش دیگر در جزیرهٔ بورنئو است.)' },
     bins: [
       { id: 'main', icon: '🏞️', tile: 'q', label: { en: 'Mainland Southeast Asia', es: 'Sudeste asiático continental', fa: 'خشکهٔ جنوب شرق آسیا' }, sub: { en: 'joined to the rest of Asia', es: 'unido al resto de Asia', fa: 'وصل به باقی آسیا' } },
       { id: 'isle', icon: '🏝️', tile: 'p', label: { en: 'Island (Maritime) Southeast Asia', es: 'Sudeste asiático insular (marítimo)', fa: 'جنوب شرق آسیای جزیره‌ای' }, sub: { en: 'out in the sea', es: 'en el mar', fa: 'در بحر' } }
@@ -261,8 +261,8 @@ window.EPISODE = {
     at: [27, 19],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Quake Smudge', es: 'El Borrón Temblor', fa: 'لکهٔ زلزله' },
-    appear: { en: 'The Quake Smudge is shaking the town under the volcano!', es: '¡El Borrón Temblor está sacudiendo el pueblo bajo el volcán!', fa: 'لکهٔ زلزله شهر زیر آتشفشان را تکان می‌دهد!' },
+    name: { en: 'The Quake Grump', es: 'El Gruñón Temblor', fa: 'غرغروی زلزله' },
+    appear: { en: 'The Quake Grump is shaking the town under the volcano!', es: '¡El Gruñón Temblor está sacudiendo el pueblo bajo el volcán!', fa: 'غرغروی زلزله شهر زیر آتشفشان را تکان می‌دهد!' },
     taunt: { en: 'Rumble rumble! I will shake every island loose and mix up the whole map!', es: '¡Brrrum brrrum! ¡Voy a soltar cada isla y revolver todo el mapa!', fa: 'غُرّ غُرّ! هر جزیره را تکان می‌دهم و تمام نقشه را به هم می‌زنم!' },
     win: { en: 'The shaking stops. The islands settle back in place, and atlas page 6.2 lands in your hands!', es: 'El temblor se detiene. Las islas vuelven a su lugar, ¡y la página 6.2 del atlas cae en tus manos!', fa: 'لرزش می‌ایستد. جزیره‌ها سر جایشان برمی‌گردند و صفحهٔ ۶.۲ اطلس به دستت می‌افتد!' },
     questions: [

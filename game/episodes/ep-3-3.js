@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Regional Connections', es: 'Conexiones regionales', fa: 'پیوندهای منطقه‌ای' },
   place: { en: 'Caravan Crossroads', es: 'Cruce de Caravanas', fa: 'چهارراه کاروان' },
   intro: [
-    { en: 'Pip: "The Smudge blew sand over the Caravan Crossroads! Trains, trucks and traders are all stuck. Talk to the museum guide, the rail worker and the truck driver. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón echó arena sobre el Cruce de Caravanas! Los trenes, los camiones y los comerciantes están atascados. Habla con la guía del museo, el trabajador del tren y la camionera. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه روی چهارراه کاروان ریگ پاشید! قطارها، موترهای باری و تاجران همه گیر مانده‌اند. با رهنمای موزیم، کارگر خط آهن و رانندهٔ موتر باری گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump blew sand over the Caravan Crossroads! Trains, trucks and traders are all stuck. Talk to the museum guide, the rail worker and the truck driver. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón echó arena sobre el Cruce de Caravanas! Los trenes, los camiones y los comerciantes están atascados. Habla con la guía del museo, el trabajador del tren y la camionera. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو روی چهارراه کاروان ریگ پاشید! قطارها، موترهای باری و تاجران همه گیر مانده‌اند. با رهنمای موزیم، کارگر خط آهن و رانندهٔ موتر باری گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   map: [
@@ -168,9 +168,9 @@ window.EPISODE = {
       role: { en: 'Carpet weaver', es: 'Tejedora de alfombras', fa: 'قالین‌باف' },
       look: { skin: 3, hair: '#141010', shirt: '#9b2d5a', pants: '#3a2f45', style: 'long', hat: '#d9a54a' },
       lines: [
-        { en: 'The Smudge\'s sandstorm ruined my silk thread. I cannot finish this carpet without it!',
-          es: '¡La tormenta de arena del Borrón arruinó mi hilo de seda! No puedo terminar esta alfombra sin él.',
-          fa: 'توفان ریگ لکه تار ابریشمی مرا خراب کرد. بدون آن نمی‌توانم این قالین را تمام کنم!' },
+        { en: 'The Grump\'s sandstorm ruined my silk thread. I cannot finish this carpet without it!',
+          es: '¡La tormenta de arena del Gruñón arruinó mi hilo de seda! No puedo terminar esta alfombra sin él.',
+          fa: 'توفان ریگ غرغرو تار ابریشمی مرا خراب کرد. بدون آن نمی‌توانم این قالین را تمام کنم!' },
         { en: 'A silk trader from China just came to town. But first, ask old Berdi how to trade. He leads camels on the old caravan road, south of the bazaar.',
           es: 'Un comerciante de seda de China acaba de llegar al pueblo. Pero primero, pregúntale al viejo Berdi cómo comerciar. Él guía camellos en el viejo camino de caravanas, al sur del bazar.',
           fa: 'یک تاجر ابریشم از چین تازه به شهر آمده. اما اول از بابه بردی بپرس که چطور سودا کنی. او در راه قدیمی کاروان، جنوب بازار، شتر می‌برد.' }
@@ -232,9 +232,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'reg',
     title: { en: 'What traveled the Silk Road?', es: '¿Qué viajaba por la Ruta de la Seda?', fa: 'چه چیز در راه ابریشم سفر می‌کرد؟' },
-    intro: { en: 'The Smudge buried the bazaar\'s old record book in sand! Sort each card. Was it a good that was traded, an idea that spread, or a person who traveled?',
-      es: '¡El Borrón enterró en la arena el viejo libro de registro del bazar! Ordena cada tarjeta. ¿Era una mercancía que se vendía, una idea que se extendía o una persona que viajaba?',
-      fa: 'لکه کتاب کهنهٔ ثبت بازار را زیر ریگ کرد! هر کارت را جدا کن. آیا مالی بود که خرید و فروش می‌شد، فکری که پخش می‌شد، یا کسی که سفر می‌کرد؟' },
+    intro: { en: 'The Grump buried the bazaar\'s old record book in sand! Sort each card. Was it a good that was traded, an idea that spread, or a person who traveled?',
+      es: '¡El Gruñón enterró en la arena el viejo libro de registro del bazar! Ordena cada tarjeta. ¿Era una mercancía que se vendía, una idea que se extendía o una persona que viajaba?',
+      fa: 'غرغرو کتاب کهنهٔ ثبت بازار را زیر ریگ کرد! هر کارت را جدا کن. آیا مالی بود که خرید و فروش می‌شد، فکری که پخش می‌شد، یا کسی که سفر می‌کرد؟' },
     bins: [
       { id: 'goods', icon: '📦', label: { en: 'Goods', es: 'Mercancías', fa: 'مال' }, sub: { en: 'things bought and sold', es: 'cosas que se compran y venden', fa: 'چیزهایی که خرید و فروش می‌شوند' } },
       { id: 'ideas', icon: '💡', label: { en: 'Ideas', es: 'Ideas', fa: 'فکرها' }, sub: { en: 'knowledge and ways of life', es: 'saberes y formas de vivir', fa: 'دانش و روش‌های زندگی' } },
@@ -258,8 +258,8 @@ window.EPISODE = {
     at: [25, 17],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Sandstorm Smudge', es: 'El Borrón de Arena', fa: 'لکهٔ توفان ریگ' },
-    appear: { en: 'The Sandstorm Smudge is hiding on the old caravan road in the desert!', es: '¡El Borrón de Arena se esconde en el viejo camino de caravanas, en el desierto!', fa: 'لکهٔ توفان ریگ در راه قدیمی کاروان در صحرا پنهان است!' },
+    name: { en: 'The Sandstorm Grump', es: 'El Gruñón de Arena', fa: 'غرغروی توفان ریگ' },
+    appear: { en: 'The Sandstorm Grump is hiding on the old caravan road in the desert!', es: '¡El Gruñón de Arena se esconde en el viejo camino de caravanas, en el desierto!', fa: 'غرغروی توفان ریگ در راه قدیمی کاروان در صحرا پنهان است!' },
     taunt: { en: 'Whirrr! I buried every road, rail and pipe in sand. Nothing can move now!', es: '¡Zummm! Enterré en arena todos los caminos, rieles y tubos. ¡Ya nada se puede mover!', fa: 'ووووز! همهٔ راه‌ها، خط‌های آهن و نل‌ها را زیر ریگ کردم. حالا هیچ چیز حرکت نمی‌کند!' },
     win: { en: 'The sand settles. Atlas page 3.3 floats down, with a Rail Pass tucked inside!', es: 'La arena se calma. ¡La página 3.3 del atlas cae, con un pase de tren adentro!', fa: 'ریگ آرام می‌شود. صفحهٔ ۳.۳ اطلس پایین می‌آید و یک کارت قطار در آن است!' },
     questions: [

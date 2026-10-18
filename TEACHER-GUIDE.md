@@ -9,11 +9,11 @@
 3. Talk to 3–4 people. Each talk is a short reading at about a grade-5 level, with **EN / ES / دری** buttons, yellow tap-to-define words and a **Make it easier** button. Each person asks one question.
 4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
 5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).
-6. Beat the **Smudge**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
-7. **Claim the atlas page.** The Smudge's grey lifts from the whole map and the page waits on a glowing stone where the Smudge stood. Walking onto it ends the episode.
+6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
+7. **Claim the atlas page.** The Grump's grey lifts from the whole map and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
 8. The **finish screen**: what they earned (and why), 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
 
-**How students know when they are done:** the intro card lists the five goals, the quest bar across the top ticks them off in order (… → Face the Smudge → Claim the atlas page), and the map starts grey and gets its color back with every goal finished.
+**How students know when they are done:** the intro card lists the five goals, the quest bar across the top ticks them off in order (… → Face the Grump → Claim the atlas page), and the map starts grey and gets its color back with every goal finished.
 
 ## What students collect, and what it does
 
@@ -22,7 +22,7 @@
 | Answer a person's question | +1 to that question's theme | +2 |
 | Finish the quest | +2 | +10 |
 | Solve the compass stone | +2 | +5 |
-| Beat the Smudge | +2 | +15 |
+| Beat the Grump | +2 | +15 |
 | Pick up an atlas scrap | – | +3 (and 3 scraps = a star) |
 
 Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). The **five powers** are the Five Themes of Geography, and they carry from episode to episode. Each one unlocks a level at **3** points and another at **12**:
@@ -31,15 +31,15 @@ Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). 
 |---|---|---|
 | 📍 Location | an arrow points to the next goal | a second arrow points to the nearest atlas scrap |
 | 🏞️ Place | +1 heart | +1 more heart |
-| 🌱 Human–Environment Interaction | wandering Smudges move slower | each atlas scrap gives back a heart |
+| 🌱 Human–Environment Interaction | wandering Grumplings move slower | each atlas scrap gives back a heart |
 | 🚚 Movement | walk faster | walk faster still |
 | 🧩 Region | 1 free hint in every trial and duel | 2 free hints |
 
-**Coins** buy more hints from Pip (10 coins each). A hint hides one wrong answer. A "New power!" banner appears the moment a level unlocks, the Passport has a **How you grow** page, and the world map shows each power's levels. The finish screen lists everything earned in that episode.
+**Coins** buy more hints from Christopher (10 coins each). A hint hides one wrong answer. A "New power!" banner appears the moment a level unlocks, the Passport has a **How you grow** page, and the world map shows each power's levels. The finish screen lists everything earned in that episode.
 
 Nobody gets stuck: running out of hearts just sends the student back with full hearts.
 
-**Music and sound:** every realm has its own song, and the Smudge trial has its own. The **Music** and **Sound** buttons above the game turn each one off; the choice is remembered on that computer. Headphones are a good idea in class.
+**Music and sound:** every realm has its own song, and the Grump trial has its own. The **Music** and **Sound** buttons above the game turn each one off; the choice is remembered on that computer. Headphones are a good idea in class.
 
 ## Putting an episode in Canvas
 
@@ -57,7 +57,7 @@ If the school network or Canvas blocks the game inside the page, students can st
 
 ## What you get back
 
-The turned-in text has: name, class, date, stars, hints used, scraps found, hearts lost, minutes played, every talk question with the student's answer and number of tries, the quest (and how many tries the trade or duel took), the challenge, which Smudge questions they missed, their reflection, their five power scores and their **Passport Code**.
+The turned-in text has: name, class, date, stars, hints used, scraps found, hearts lost, minutes played, every talk question with the student's answer and number of tries, the quest (and how many tries the trade or duel took), the challenge, which Grump questions they missed, their reflection, their five power scores and their **Passport Code**.
 
 ## The Passport Code (backup save)
 
@@ -70,7 +70,9 @@ The turned-in text has: name, class, date, stars, hints used, scraps found, hear
 3. **Deploy → New deployment → Web app**, Execute as: **Me**, Who has access: **Anyone**. Copy the web app URL.
 4. Paste the URL into `game/config.js` as `SHEET_URL: '...'`, then run `node tools/build.js` and push.
 
-Now each finished episode adds a row to **Log** (episode, stars, hearts lost, minutes, missed questions, reflection) and updates the student's row in **Students**. Only first name, class code and a scrambled secret number are stored.
+The student's row is updated after every goal (quest, compass stone, Grump), not only at the end, and at the start of every episode the game reads it back, so powers and coins follow the student to any computer. It never goes backwards: if an older computer saves later, the Sheet keeps the higher scores, and coins spent on hints stay spent. `node tests/sheet.js` checks all of this against a pretend Sheet; try one student in your real Sheet once before class.
+
+Each finished episode also adds a row to **Log** (episode, stars, hearts lost, minutes, missed questions, reflection) and updates the student's row in **Students**. Only first name, class code and a scrambled secret number are stored.
 
 ## Teacher code
 
@@ -80,14 +82,14 @@ On the world map, open **For teachers** and type the teacher code (default `ATLA
 
 Open `game/teacher.html` (on the world map: **For teachers → Open the teacher console**) and type the teacher code. For each of the 24 episodes it shows:
 
-- the **whole map** with the start, the numbered people, the compass stone, the Smudge and the scraps marked
+- the **whole map** with the start, the numbered people, the compass stone, the Grump and the scraps marked
 - every person's talk (with the "Make it easier" version) and their question, with the **right answer checked** and the reason for every choice
 - the **compass stone answer key**: which cards go in which group, the right order, which reasons fit which choice, which switch settings work, or the table and its questions
-- all 8 **Smudge trial questions** with the right answer checked
+- all 8 **Grump trial questions** with the right answer checked
 - the **quest**: who gives it, what the contact says, and the action's answer key (the secret spot is a gold square on the map; the thief's questions and the right trade are checked)
 - the finish screen: the 3 things learned, the reflection question and its sentence starter, plus the signs and the yellow words
 
-Jump buttons open the episode in a new tab **straight at the start, the compass stone, the Smudge trial or the finish screen**. These are previews: nothing is saved on that computer and nothing goes to the class Sheet. **Print answer key** prints the episode you are looking at. **Student link** copies the normal link to the episode. **Lock this computer** turns teacher mode off again (do this on a student's computer).
+Jump buttons open the episode in a new tab **straight at the start, the compass stone, the Grump trial or the finish screen**. These are previews: nothing is saved on that computer and nothing goes to the class Sheet. **Print answer key** prints the episode you are looking at. **Student link** copies the normal link to the episode. **Lock this computer** turns teacher mode off again (do this on a student's computer).
 
 The console is in English, Spanish and Dari. The teacher code only keeps students from wandering in by accident. It is not real security, because the answers are in the game files anyone can open.
 

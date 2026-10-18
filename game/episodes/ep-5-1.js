@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Land, Water and Oil', es: 'Tierra, agua y petróleo', fa: 'زمین، آب و نفت' },
   place: { en: 'Temple of the Twin Rivers', es: 'Templo de los Ríos Gemelos', fa: 'معبد دو دریا' },
   intro: [
-    { en: 'Pip: "The Smudge dried up the twin rivers! Talk to the engineer in Türkiye\'s mountains, the farmer in Iraq and the water engineer from Saudi Arabia. Then solve the puzzle in the river temple."',
-      es: 'Pip: "¡El Borrón secó los ríos gemelos! Habla con la ingeniera en las montañas de Turquía, el agricultor en Irak y la ingeniera de agua de Arabia Saudita. Luego resuelve el acertijo en el templo del río."',
-      fa: 'پیپ: «لکه دو دریا را خشک کرد! با انجنیر در کوه‌های ترکیه، دهقان در عراق و انجنیر آب از عربستان سعودی گپ بزن. بعد معمای معبد دریا را حل کن.»' }
+    { en: 'Christopher: "The Grump dried up the twin rivers! Talk to the engineer in Türkiye\'s mountains, the farmer in Iraq and the water engineer from Saudi Arabia. Then solve the puzzle in the river temple."',
+      es: 'Christopher: "¡El Gruñón secó los ríos gemelos! Habla con la ingeniera en las montañas de Turquía, el agricultor en Irak y la ingeniera de agua de Arabia Saudita. Luego resuelve el acertijo en el templo del río."',
+      fa: 'کریستوفر: «غرغرو دو دریا را خشک کرد! با انجنیر در کوه‌های ترکیه، دهقان در عراق و انجنیر آب از عربستان سعودی گپ بزن. بعد معمای معبد دریا را حل کن.»' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Top-left: Türkiye's mountains, river springs and a dam. Top-right: the temple (door on its west wall).
@@ -171,9 +171,9 @@ window.EPISODE = {
       role: { en: 'Camel herder in the desert', es: 'Pastor de camellos en el desierto', fa: 'شتربان در بیابان' },
       look: { skin: 4, hair: '#1a1410', shirt: '#f2efe6', pants: '#6a5a44', robe: true, hat: '#c9c2b0' },
       lines: [
-        { en: 'Help, traveler! The Smudge\'s sandstorm covered the old path to the [[oasis|oasis]]. My camels are thirsty, and my water jar is empty.',
-          es: '¡Ayuda, viajero! La tormenta de arena del Borrón tapó el viejo camino al [[oasis|oasis]]. Mis camellos tienen sed y mi jarra de agua está vacía.',
-          fa: 'کمک، مسافر! توفان ریگ لکه راه کهنهٔ [[oasis|واحه]] را پوشاند. شترهایم تشنه هستند و کوزهٔ آبم خالی است.' },
+        { en: 'Help, traveler! The Grump\'s sandstorm covered the old path to the [[oasis|oasis]]. My camels are thirsty, and my water jar is empty.',
+          es: '¡Ayuda, viajero! La tormenta de arena del Gruñón tapó el viejo camino al [[oasis|oasis]]. Mis camellos tienen sed y mi jarra de agua está vacía.',
+          fa: 'کمک، مسافر! توفان ریگ غرغرو راه کهنهٔ [[oasis|واحه]] را پوشاند. شترهایم تشنه هستند و کوزهٔ آبم خالی است.' },
         { en: 'In the desert, there are no rivers. An oasis spring is the only water for many days. Zainab in the river temple has an old map. Will you ask her?',
           es: 'En el desierto no hay ríos. Un manantial de oasis es la única agua en muchos días. Zainab, en el templo del río, tiene un mapa viejo. ¿Le preguntas?',
           fa: 'در بیابان دریا نیست. چشمهٔ واحه برای چند روز تنها آب است. زینب در معبد دریا یک نقشهٔ کهنه دارد. از او می‌پرسی؟' }
@@ -249,8 +249,8 @@ window.EPISODE = {
     at: [20, 15],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Drought Smudge', es: 'El Borrón de la Sequía', fa: 'لکهٔ خشکسالی' },
-    appear: { en: 'The Drought Smudge is waiting in the farmland, where the two rivers flow toward the Gulf!', es: '¡El Borrón de la Sequía espera en los campos, donde los dos ríos corren hacia el golfo!', fa: 'لکهٔ خشکسالی در کشتزارها انتظار می‌کشد، جایی که دو دریا به طرف خلیج می‌روند!' },
+    name: { en: 'The Drought Grump', es: 'El Gruñón de la Sequía', fa: 'غرغروی خشکسالی' },
+    appear: { en: 'The Drought Grump is waiting in the farmland, where the two rivers flow toward the Gulf!', es: '¡El Gruñón de la Sequía espera en los campos, donde los dos ríos corren hacia el golfo!', fa: 'غرغروی خشکسالی در کشتزارها انتظار می‌کشد، جایی که دو دریا به طرف خلیج می‌روند!' },
     taunt: { en: 'Sssss… I drank the rivers dry. Who needs water anyway?', es: 'Sssss… Me bebí los ríos hasta secarlos. ¿Quién necesita agua, de todos modos?', fa: 'سسسس… دریاها را نوشیدم تا خشک شدند. اصلاً کی به آب نیاز دارد؟' },
     win: { en: 'Rain falls on the mountains and the rivers run again. Atlas page 5.1 floats down into your hands!', es: 'Llueve en las montañas y los ríos vuelven a correr. ¡La página 5.1 del atlas cae en tus manos!', fa: 'روی کوه‌ها باران می‌بارد و دریاها دوباره جاری می‌شوند. صفحهٔ ۵.۱ اطلس به دستت می‌افتد!' },
     questions: [

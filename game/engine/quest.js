@@ -96,6 +96,7 @@
     WW.fx.burst(q.giver.x, q.giver.y, 'gold');
     WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10, T('why_quest') + ': ' + WW.plain(q.title));
     WW.toast('🏅 ' + WW.esc(T('questDone')), '#c08a1e');
+    WW.sheetSync();
   }
 
   /* what to draw above people's heads, and the secret spot's twinkle */

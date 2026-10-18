@@ -1,7 +1,7 @@
 /* WORLDWALKER · Episode 6.1 · South Asia — the Monsoon (WG.9)
    North to south the land teaches the region: the snowy Himalaya, tea terraces in the hills,
    the Ganges starting as melted ice and flowing east across a plain of rice paddies,
-   then turning south to build a delta (with mangroves) on the Bay of Bengal. Boss: the Storm Smudge (mockup 08). */
+   then turning south to build a delta (with mangroves) on the Bay of Bengal. Boss: the Storm Grump (mockup 08). */
 window.EPISODE = {
   id: '6.1',
   realm: 6,
@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'South Asia: The Monsoon', es: 'Asia del Sur: el monzón', fa: 'جنوب آسیا: باد موسمی' },
   place: { en: 'The Ganges Plain', es: 'La llanura del Ganges', fa: 'دشت گنگا' },
   intro: [
-    { en: 'Pip: "The Storm Smudge scrambled the monsoon winds! Now farmers do not know when to plant. Talk to the tea farmer, the rice farmer and the fisher. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón Tormenta revolvió los vientos del monzón! Ahora los agricultores no saben cuándo sembrar. Habla con el agricultor de té, la agricultora de arroz y el pescador. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکهٔ طوفان بادهای موسمی را به هم زد! حالا دهقانان نمی‌دانند چه وقت بکارند. با دهقان چای، دهقان برنج و ماهیگیر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Storm Grump scrambled the monsoon winds! Now farmers do not know when to plant. Talk to the tea farmer, the rice farmer and the fisher. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón Tormenta revolvió los vientos del monzón! Ahora los agricultores no saben cuándo sembrar. Habla con el agricultor de té, la agricultora de arroz y el pescador. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغروی طوفان بادهای موسمی را به هم زد! حالا دهقانان نمی‌دانند چه وقت بکارند. با دهقان چای، دهقان برنج و ماهیگیر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -177,9 +177,9 @@ window.EPISODE = {
         { en: 'Oh, hello! Every day I measure the rain in a glass jar with lines on it. It is my rain gauge. The farmers ask me when the [[monsoon|monsoon]] rain has really come.',
           es: '¡Ay, hola! Cada día mido la lluvia en un frasco de vidrio con rayas. Es mi pluviómetro. Los agricultores me preguntan cuándo llegó de verdad la lluvia del [[monsoon|monzón]].',
           fa: 'آه، سلام! هر روز باران را در یک مرتبان شیشه‌ای خط‌دار اندازه می‌کنم. این باران‌سنج من است. دهقانان از من می‌پرسند که باران [[monsoon|باد موسمی]] واقعاً کی آمده است.' },
-        { en: 'The Storm Smudge blew it into the river! Arjun herds his ducks in the south-west, by the rice fields. He sees everything on the water. Please ask him.',
-          es: '¡El Borrón Tormenta lo tiró al río! Arjun cuida sus patos en el suroeste, junto a los campos de arroz. Él ve todo lo que pasa en el agua. Por favor, pregúntale.',
-          fa: 'لکهٔ طوفان آن را به دریا انداخت! ارجن مرغابی‌هایش را در جنوب غرب، کنار کشتزارهای برنج، می‌چراند. او همه چیز را روی آب می‌بیند. لطفاً از او بپرس.' }
+        { en: 'The Storm Grump blew it into the river! Arjun herds his ducks in the south-west, by the rice fields. He sees everything on the water. Please ask him.',
+          es: '¡El Gruñón Tormenta lo tiró al río! Arjun cuida sus patos en el suroeste, junto a los campos de arroz. Él ve todo lo que pasa en el agua. Por favor, pregúntale.',
+          fa: 'غرغروی طوفان آن را به دریا انداخت! ارجن مرغابی‌هایش را در جنوب غرب، کنار کشتزارهای برنج، می‌چراند. او همه چیز را روی آب می‌بیند. لطفاً از او بپرس.' }
       ],
       wait: { en: 'Arjun is in the south-west, by the rice fields. South is down. West is to the left.',
         es: 'Arjun está en el suroeste, junto a los campos de arroz. El sur está abajo. El oeste está a la izquierda.',
@@ -222,9 +222,9 @@ window.EPISODE = {
     style: 'bands',
     stat: 'pla',
     title: { en: 'Summer monsoon or winter monsoon?', es: '¿Monzón de verano o monzón de invierno?', fa: 'باد موسمی تابستان یا زمستان؟' },
-    intro: { en: 'The Smudge mixed up the seasons on the village calendar. Sort each card. Does it belong to the summer monsoon or the winter monsoon?',
-      es: 'El Borrón mezcló las estaciones en el calendario del pueblo. Ordena cada tarjeta. ¿Es del monzón de verano o del monzón de invierno?',
-      fa: 'لکه فصل‌های تقویم ده را به هم زد. هر کارت را جدا کن. مربوط به باد موسمی تابستان است یا باد موسمی زمستان؟' },
+    intro: { en: 'The Grump mixed up the seasons on the village calendar. Sort each card. Does it belong to the summer monsoon or the winter monsoon?',
+      es: 'El Gruñón mezcló las estaciones en el calendario del pueblo. Ordena cada tarjeta. ¿Es del monzón de verano o del monzón de invierno?',
+      fa: 'غرغرو فصل‌های تقویم ده را به هم زد. هر کارت را جدا کن. مربوط به باد موسمی تابستان است یا باد موسمی زمستان؟' },
     bins: [
       { id: 'summer', icon: '🌧️', tile: 'q', label: { en: 'Summer monsoon', es: 'Monzón de verano', fa: 'باد موسمی تابستان' }, sub: { en: 'about June to September', es: 'más o menos de junio a septiembre', fa: 'تقریباً جون تا سپتامبر' } },
       { id: 'winter', icon: '☀️', tile: 'g', label: { en: 'Winter monsoon', es: 'Monzón de invierno', fa: 'باد موسمی زمستان' }, sub: { en: 'the cooler, dry months', es: 'los meses más frescos y secos', fa: 'ماه‌های سردتر و خشک' } }
@@ -247,8 +247,8 @@ window.EPISODE = {
     at: [10, 18],
     stat: 'loc',
     need: 3,
-    name: { en: 'The Storm Smudge', es: 'El Borrón Tormenta', fa: 'لکهٔ طوفان' },
-    appear: { en: 'The Storm Smudge is rising over the beach by the Bay of Bengal!', es: '¡El Borrón Tormenta se levanta sobre la playa del golfo de Bengala!', fa: 'لکهٔ طوفان بالای ساحل خلیج بنگال بلند می‌شود!' },
+    name: { en: 'The Storm Grump', es: 'El Gruñón Tormenta', fa: 'غرغروی طوفان' },
+    appear: { en: 'The Storm Grump is rising over the beach by the Bay of Bengal!', es: '¡El Gruñón Tormenta se levanta sobre la playa del golfo de Bengala!', fa: 'غرغروی طوفان بالای ساحل خلیج بنگال بلند می‌شود!' },
     taunt: { en: 'Whoosh! I mixed up the winds. Rain in winter, dust in summer! Nobody will know when to plant!', es: '¡Fiuuu! Revolví los vientos. ¡Lluvia en invierno, polvo en verano! ¡Nadie sabrá cuándo sembrar!', fa: 'ووووش! بادها را به هم زدم. باران در زمستان، گرد و خاک در تابستان! هیچ کس نمی‌داند چه وقت بکارد!' },
     win: { en: 'The cloud shield breaks. Gentle rain falls on the rice, and atlas page 6.1 drops into your hands!', es: 'El escudo de nubes se rompe. Una lluvia suave cae sobre el arroz, ¡y la página 6.1 del atlas cae en tus manos!', fa: 'سپر ابر می‌شکند. باران آرام روی برنج می‌بارد و صفحهٔ ۶.۱ اطلس به دستت می‌افتد!' },
     questions: [

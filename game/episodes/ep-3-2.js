@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Russia & Central Asia', es: 'Rusia y Asia Central', fa: 'روسیه و آسیای میانه' },
   place: { en: 'The Long Railway', es: 'El Largo Ferrocarril', fa: 'خط آهن دراز' },
   intro: [
-    { en: 'Pip: "The Smudge scrambled the train timetable! The Trans-Siberian train cannot leave Moscow. Talk to the conductor, the forest ranger and the herder. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón revolvió el horario del tren! El tren Transiberiano no puede salir de Moscú. Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه جدول حرکت قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند. با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump scrambled the train timetable! The Trans-Siberian train cannot leave Moscow. Talk to the conductor, the forest ranger and the herder. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón revolvió el horario del tren! El tren Transiberiano no puede salir de Moscú. Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو جدول حرکت قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند. با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   map: [
@@ -166,9 +166,9 @@ window.EPISODE = {
       role: { en: 'Frozen-ground scientist', es: 'Científico del suelo helado', fa: 'دانشمند زمین یخ‌زده' },
       look: { skin: 3, hair: '#2a1d14', shirt: '#4a6fa5', pants: '#2b2b3a', hat: '#5a3a22' },
       lines: [
-        { en: 'Oh no! The Smudge\'s blizzard blew my ground thermometer away. It measures [[permafrost|permafrost]], the ground that stays frozen all year.',
-          es: '¡Ay, no! La ventisca del Borrón se llevó mi termómetro de suelo. Mide el [[permafrost|permafrost]], el suelo que sigue congelado todo el año.',
-          fa: 'وای! توفان برف لکه حرارت‌سنج زمین مرا برد. این وسیله [[permafrost|زمین همیشه یخ‌زده]] را اندازه می‌کند، زمینی که تمام سال یخ می‌ماند.' },
+        { en: 'Oh no! The Grump\'s blizzard blew my ground thermometer away. It measures [[permafrost|permafrost]], the ground that stays frozen all year.',
+          es: '¡Ay, no! La ventisca del Gruñón se llevó mi termómetro de suelo. Mide el [[permafrost|permafrost]], el suelo que sigue congelado todo el año.',
+          fa: 'وای! توفان برف غرغرو حرارت‌سنج زمین مرا برد. این وسیله [[permafrost|زمین همیشه یخ‌زده]] را اندازه می‌کند، زمینی که تمام سال یخ می‌ماند.' },
         { en: 'Pyotr fixes the tracks at the station with the flat roofs, east of the Ural Mountains. He saw where it flew. Will you ride east and ask him?',
           es: 'Pyotr arregla las vías en la estación de techos planos, al este de los montes Urales. Él vio a dónde voló. ¿Vas al este a preguntarle?',
           fa: 'پیوتر در ایستگاهی که بام‌های هموار دارد، شرق کوه‌های اورال، خط آهن را ترمیم می‌کند. او دید که به کجا پرید. به طرف شرق می‌روی و از او می‌پرسی؟' }
@@ -213,9 +213,9 @@ window.EPISODE = {
     type: 'order',
     stat: 'mov',
     title: { en: 'Ride the Trans-Siberian', es: 'Viaja en el Transiberiano', fa: 'سفر با قطار ترانس‌سیبری' },
-    intro: { en: 'The Smudge scrambled the train timetable! Tap the stops in order from west to east, starting in Moscow.',
-      es: '¡El Borrón revolvió el horario del tren! Toca las paradas en orden de oeste a este, empezando en Moscú.',
-      fa: 'لکه جدول قطار را درهم کرد! ایستگاه‌ها را به ترتیب از غرب به شرق بزن، از مسکو شروع کن.' },
+    intro: { en: 'The Grump scrambled the train timetable! Tap the stops in order from west to east, starting in Moscow.',
+      es: '¡El Gruñón revolvió el horario del tren! Toca las paradas en orden de oeste a este, empezando en Moscú.',
+      fa: 'غرغرو جدول قطار را درهم کرد! ایستگاه‌ها را به ترتیب از غرب به شرق بزن، از مسکو شروع کن.' },
     items: [
       { icon: '🏛️', t: { en: 'Moscow · the capital, in the west', es: 'Moscú · la capital, en el oeste', fa: 'مسکو · پایتخت، در غرب' } },
       { icon: '⛰️', t: { en: 'Yekaterinburg · just past the Ural Mountains, in Asia', es: 'Ekaterimburgo · justo después de los montes Urales, en Asia', fa: 'یکاترینبورگ · کمی بعد از کوه‌های اورال، در آسیا' } },
@@ -233,8 +233,8 @@ window.EPISODE = {
     at: [44, 8],
     stat: 'hei',
     need: 3,
-    name: { en: 'The Blizzard Smudge', es: 'El Borrón de Ventisca', fa: 'لکهٔ برف و توفان' },
-    appear: { en: 'The Blizzard Smudge is hiding at the end of the line, by the docks of Vladivostok!', es: '¡El Borrón de Ventisca se esconde al final de la línea, junto al muelle de Vladivostok!', fa: 'لکهٔ برف و توفان در آخر خط، کنار بندر ولادی‌وستوک پنهان است!' },
+    name: { en: 'The Blizzard Grump', es: 'El Gruñón de Ventisca', fa: 'غرغروی برف و توفان' },
+    appear: { en: 'The Blizzard Grump is hiding at the end of the line, by the docks of Vladivostok!', es: '¡El Gruñón de Ventisca se esconde al final de la línea, junto al muelle de Vladivostok!', fa: 'غرغروی برف و توفان در آخر خط، کنار بندر ولادی‌وستوک پنهان است!' },
     taunt: { en: 'Whoooosh! I buried the whole railway in snow. Do you know where you are?', es: '¡Fiuuuu! Enterré todo el ferrocarril en nieve. ¿Sabes dónde estás?', fa: 'ووووش! تمام خط آهن را زیر برف کردم. می‌دانی کجا هستی؟' },
     win: { en: 'The snow clears. Atlas page 3.2 floats down into your hands!', es: 'La nieve se despeja. ¡La página 3.2 del atlas cae en tus manos!', fa: 'برف کنار می‌رود. صفحهٔ ۳.۲ اطلس به دستت می‌افتد!' },
     questions: [

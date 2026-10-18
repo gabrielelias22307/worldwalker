@@ -1,5 +1,5 @@
 /* WORLDWALKER engine · music: retro chip songs made in code (no sound files)
-   One song for each realm, a song for the Smudge trial and a short win jingle.
+   One song for each realm, a song for the Grump trial and a short win jingle.
    A song is a few channels of notes. Each word is one step (an eighth note):
    'E5' plays a note, '-' holds the note before it, '.' is quiet, '|' is only a bar line for reading.
    Drum words: k kick, s snare, h hi-hat, c clave; they can be joined, like 'kh'. Each channel loops on its own length. */
@@ -73,7 +73,7 @@
              F2 . C3 . F3 . C3 . | C3 . G2 . C3 . G2 . | Bb2 . F3 . C3 . G2 . | F2 . C3 . F2 . . .`,
       drums: 'k h s h k k s h'
     },
-    // the Smudge trial: fast and tense, A minor
+    // the Grump trial: fast and tense, A minor
     boss: {
       bpm: 150, lead: 'square',
       melody: `A5 . A5 C6 B5 . G#5 . | A5 . E5 . . . . . | F5 . F5 A5 G5 . E5 . | D5 . E5 . . . . . |

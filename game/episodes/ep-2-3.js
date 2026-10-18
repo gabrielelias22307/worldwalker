@@ -7,9 +7,9 @@ window.EPISODE = {
   title: { en: 'Migration in the Americas', es: 'Migración en las Américas', fa: 'مهاجرت در قارهٔ امریکا' },
   place: { en: 'The Long Road', es: 'El Camino Largo', fa: 'راه دراز' },
   intro: [
-    { en: 'Pip: "The Smudge tangled the Long Road! Travelers forgot why people move. Talk to the farmer, the bus driver and the cook. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón enredó el Camino Largo! Los viajeros olvidaron por qué la gente se muda. Habla con el agricultor, la chofer del bus y la cocinera. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه راه دراز را گره زد! مسافران فراموش کردند که چرا مردم جابه‌جا می‌شوند. با دهقان، رانندهٔ بس و آشپز گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump tangled the Long Road! Travelers forgot why people move. Talk to the farmer, the bus driver and the cook. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón enredó el Camino Largo! Los viajeros olvidaron por qué la gente se muda. Habla con el agricultor, la chofer del bus y la cocinera. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو راه دراز را گره زد! مسافران فراموش کردند که چرا مردم جابه‌جا می‌شوند. با دهقان، رانندهٔ بس و آشپز گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22. West: a dry farm town. A long road runs east to the bus stop and a busy city.
@@ -225,9 +225,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'mov',
     title: { en: 'Push or pull?', es: '¿Expulsión o atracción?', fa: 'رانش یا کشش؟' },
-    intro: { en: 'The Smudge mixed up the travelers\' reasons. Sort each card. Does it push people away from home, or pull them toward a new place?',
-      es: 'El Borrón mezcló las razones de los viajeros. Ordena cada tarjeta. ¿Empuja a la gente lejos de su hogar o la atrae a un lugar nuevo?',
-      fa: 'لکه دلیل‌های مسافران را مخلوط کرد. هر کارت را جدا کن. آیا مردم را از خانه دور می‌کند یا به طرف یک جای نو می‌کشد؟' },
+    intro: { en: 'The Grump mixed up the travelers\' reasons. Sort each card. Does it push people away from home, or pull them toward a new place?',
+      es: 'El Gruñón mezcló las razones de los viajeros. Ordena cada tarjeta. ¿Empuja a la gente lejos de su hogar o la atrae a un lugar nuevo?',
+      fa: 'غرغرو دلیل‌های مسافران را مخلوط کرد. هر کارت را جدا کن. آیا مردم را از خانه دور می‌کند یا به طرف یک جای نو می‌کشد؟' },
     bins: [
       { id: 'push', icon: '🚪', label: { en: 'Push factor', es: 'Factor de expulsión', fa: 'عامل رانش' }, sub: { en: 'makes home hard to stay in', es: 'hace difícil quedarse en casa', fa: 'ماندن در خانه را سخت می‌کند' } },
       { id: 'pull', icon: '🧲', label: { en: 'Pull factor', es: 'Factor de atracción', fa: 'عامل کشش' }, sub: { en: 'makes a new place look better', es: 'hace que un lugar nuevo se vea mejor', fa: 'جای نو را بهتر نشان می‌دهد' } }
@@ -249,8 +249,8 @@ window.EPISODE = {
     at: [24, 17],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Tangle Smudge', es: 'El Borrón Enredado', fa: 'لکهٔ گره‌خورده' },
-    appear: { en: 'The Tangle Smudge is hiding by the river dock in the south-east!', es: '¡El Borrón Enredado se esconde junto al muelle del río, en el sureste!', fa: 'لکهٔ گره‌خورده کنار بندر دریا در جنوب شرق پنهان است!' },
+    name: { en: 'The Tangle Grump', es: 'El Gruñón Enredado', fa: 'غرغروی گره‌خورده' },
+    appear: { en: 'The Tangle Grump is hiding by the river dock in the south-east!', es: '¡El Gruñón Enredado se esconde junto al muelle del río, en el sureste!', fa: 'غرغروی گره‌خورده کنار بندر دریا در جنوب شرق پنهان است!' },
     taunt: { en: 'Hee hee! I tied every road in knots. Who can say why people move now?', es: '¡Ji ji! Até todos los caminos en nudos. ¿Quién sabe ahora por qué se muda la gente?', fa: 'هی هی! همهٔ راه‌ها را گره زدم. حالا کی می‌داند مردم چرا جابه‌جا می‌شوند؟' },
     win: { en: 'The knots fall loose. Atlas page 2.3 floats down, and a little canoe waits at the dock for you!', es: 'Los nudos se sueltan. ¡La página 2.3 del atlas cae, y una canoa pequeña te espera en el muelle!', fa: 'گره‌ها باز می‌شوند. صفحهٔ ۲.۳ اطلس پایین می‌آید و یک قایق کوچک در بندر منتظر توست!' },
     questions: [

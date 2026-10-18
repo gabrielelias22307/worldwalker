@@ -262,6 +262,15 @@ ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
 .grow li{font-size:14px;color:#8a8370;margin:2px 0}.grow li.on{color:#1f6a2e;font-weight:700}
 .hintbtn{font-size:14px!important}
 
+/* ---------- the Grump ---------- */
+.bossov .ov-box.roar{animation:roar .45s}
+@keyframes roar{0%{box-shadow:0 0 0 0 rgba(220,40,40,.0)}20%{transform:translate(-6px,2px);box-shadow:0 0 0 8px rgba(220,40,40,.55)}40%{transform:translate(6px,-2px)}60%{transform:translate(-4px,1px)}100%{transform:none;box-shadow:0 0 0 0 rgba(220,40,40,0)}}
+.bossface.furious{animation:fury .5s infinite;border-color:#b0392b}
+@keyframes fury{25%{transform:translate(-2px,0) rotate(-2deg)}75%{transform:translate(2px,0) rotate(2deg)}}
+.furious-tag{display:inline-block;background:#b0392b;color:#fff;font-size:12px;padding:2px 6px;border-radius:3px;animation:fury .5s infinite}
+.say.grr{color:#8a1c24;font-weight:700;font-style:italic}
+.screen:has(.ov:not(.hidden)) .toast{top:auto;bottom:10px} /* while a box is open, messages move to the bottom corner */
+
 </style>
 </head>
 <body>
@@ -528,11 +537,23 @@ window.WW_CONFIG.MODE = 'canvas';
       '..kywwwrrwwwyk..', '..kywkwrrwkwyk..', '.kywwwwrrwwwwyk.', '.kywwwwnnwwwwyk.',
       '.kywwmwnnwmwwyk.', '..kywwwnnwwwyk..', '..kyywwwwwwyyk..', '...kyyyyyyyyk...',
       '....kkkkkkkk....', '................', '......zzzz......', '................'],
-    smudge: [
-      '................', '................', '................', '......kkkk......',
-      '....kkggggkk....', '...kggggggggk...', '..kgggggggggGk..', '..kgwwggggwwgk..',
-      '..kgwkggggwkgk..', '.kggggggggggggk.', '.kgggggrrrgggGk.', '.kggggggggggGGk.',
-      '..kgggGggGggGk..', '...kGk.kGk.kGk..', '....k...k...k...', '................'],
+    smudge: [ // the Grump: horns, angry brows, glowing eyes, jagged teeth
+      '................',
+      '...k........k...',
+      '..kGk......kGk..',
+      '..kGGkkkkkkGGk..',
+      '.kggggggggggggk.',
+      '.kgkggggggggkgk.',
+      '.kggkkggggkkggk.',
+      '.kggEeggggeEggk.',
+      '.kggeeggggeeggk.',
+      'kgggggggggggggGk',
+      'kggmtmtmtmtmggGk',
+      'kgggmmmmmmmgggGk',
+      '.kgggggggggggGk.',
+      '..kGkGkGGkGkGk..',
+      '...k.k.kk.k.k...',
+      '................'],
     heart: [
       '................', '................', '...kkk...kkk....', '..krrrk.krrrk...',
       '.krwrrrkrrrrrk..', '.krrrrrrrrrrrk..', '.krrrrrrrrrrrk..', '..krrrrrrrrrk...',
@@ -550,7 +571,7 @@ window.WW_CONFIG.MODE = 'canvas';
     r: P.red, n: '#2f6fd6', z: 'rgba(0,0,0,.22)', G: '#4b3f63', W: '#ffffff'
   };
   // tune smudge colors
-  const SMUDGE = { g: '#6d5f8c', G: '#4b3f63', w: '#ffffff', r: '#2b2140' };
+  const SMUDGE = { g: '#5b4a7c', G: '#3a2c55', w: '#ffffff', r: '#2b2140', e: '#ff3b2f', E: '#ffe08a', m: '#170c22', t: '#f4efe0' };
   const PAGE = { w: '#f3e3b5', g: '#5aa83b', b: '#2f7fd1', r: P.red, n: P.ink };
 
   function sprite(c, name, x, y, o = {}) {
@@ -1243,7 +1264,7 @@ window.WW_CONFIG.MODE = 'canvas';
     welcomeBack: { en: 'Welcome back', es: 'Bienvenido de nuevo', fa: 'خوش برگشتی' },
     notYou: { en: 'Not you? Start a new hero', es: '¿No eres tú? Crea un héroe nuevo', fa: 'تو نیستی؟ قهرمان تازه بساز' },
     quest: { en: 'Quest', es: 'Misión', fa: 'مأموریت' },
-    questFirst: { en: 'Pip: "Someone here needs your help first. Look for the person with a gold ! above their head."', es: 'Pip: "Primero alguien aquí necesita tu ayuda. Busca a la persona con un ! dorado sobre la cabeza."', fa: 'پیپ: «اول کسی اینجا به کمکت نیاز دارد. کسی را پیدا کن که بالای سرش یک ! طلایی است.»' },
+    questFirst: { en: 'Christopher: "Someone here needs your help first. Look for the person with a gold ! above their head."', es: 'Christopher: "Primero alguien aquí necesita tu ayuda. Busca a la persona con un ! dorado sobre la cabeza."', fa: 'کریستوفر: «اول کسی اینجا به کمکت نیاز دارد. کسی را پیدا کن که بالای سرش یک ! طلایی است.»' },
     accept: { en: "I'll help!", es: '¡Te ayudo!', fa: 'کمک می‌کنم!' },
     newQuest: { en: 'New quest', es: 'Nueva misión', fa: 'مأموریت تازه' },
     questDone: { en: 'Quest complete!', es: '¡Misión cumplida!', fa: 'مأموریت تمام شد!' },
@@ -1259,13 +1280,13 @@ window.WW_CONFIG.MODE = 'canvas';
     thanksAgain: { en: 'Thank you again for your help!', es: '¡Gracias otra vez por tu ayuda!', fa: 'باز هم از کمکت تشکر!' },
     talkTo: { en: 'Talk to everyone', es: 'Habla con todos', fa: 'با همه گپ بزن' },
     solve: { en: 'Solve the compass stone', es: 'Resuelve la piedra de la brújula', fa: 'سنگ قطب‌نما را حل کن' },
-    face: { en: 'Face the Smudge', es: 'Enfrenta al Borrón', fa: 'با لکه روبه‌رو شو' },
+    face: { en: 'Face the Grump', es: 'Enfrenta al Gruñón', fa: 'با غرغرو روبه‌رو شو' },
     done: { en: 'Atlas page won back!', es: '¡Página del atlas recuperada!', fa: 'صفحهٔ اطلس پس گرفته شد!' },
     scraps: { en: 'Atlas scraps', es: 'Pedazos del atlas', fa: 'تکه‌های اطلس' },
-    talkFirst: { en: 'Pip: "Talk to everyone here first. Their words are the clues!"', es: 'Pip: "Primero habla con todos aquí. ¡Sus palabras son las pistas!"', fa: 'پیپ: «اول با همه اینجا گپ بزن. حرف‌هایشان سرنخ است!»' },
-    solveFirst: { en: 'Pip: "The Smudge is hiding. Solve the compass stone to call it out."', es: 'Pip: "El Borrón se esconde. Resuelve la piedra de la brújula para llamarlo."', fa: 'پیپ: «لکه پنهان است. سنگ قطب‌نما را حل کن تا بیرون بیاید.»' },
-    ouch: { en: 'Ouch! The Smudge got you.', es: '¡Ay! El Borrón te tocó.', fa: 'آخ! لکه به تو خورد.' },
-    rescued: { en: 'Pip pulled you back to safety. Hearts refilled!', es: 'Pip te llevó a un lugar seguro. ¡Corazones llenos!', fa: 'پیپ تو را به جای امن برد. قلب‌ها پر شد!' },
+    talkFirst: { en: 'Christopher: "Talk to everyone here first. Their words are the clues!"', es: 'Christopher: "Primero habla con todos aquí. ¡Sus palabras son las pistas!"', fa: 'کریستوفر: «اول با همه اینجا گپ بزن. حرف‌هایشان سرنخ است!»' },
+    solveFirst: { en: 'Christopher: "The Grump is hiding. Solve the compass stone to call it out."', es: 'Christopher: "El Gruñón se esconde. Resuelve la piedra de la brújula para llamarlo."', fa: 'کریستوفر: «غرغرو پنهان است. سنگ قطب‌نما را حل کن تا بیرون بیاید.»' },
+    ouch: { en: 'Ouch! The Grump got you.', es: '¡Ay! El Gruñón te tocó.', fa: 'آخ! غرغرو به تو خورد.' },
+    rescued: { en: 'Christopher pulled you back to safety. Hearts refilled!', es: 'Christopher te llevó a un lugar seguro. ¡Corazones llenos!', fa: 'کریستوفر تو را به جای امن برد. قلب‌ها پر شد!' },
     shield: { en: 'Cloud shield', es: 'Escudo de nubes', fa: 'سپر ابر' },
     learned: { en: 'What you learned', es: 'Lo que aprendiste', fa: 'آنچه یاد گرفتی' },
     oneQ: { en: 'One question before you go', es: 'Una pregunta antes de irte', fa: 'یک سؤال پیش از رفتن' },
@@ -1285,7 +1306,7 @@ window.WW_CONFIG.MODE = 'canvas';
     nextEp: { en: 'Next episode', es: 'Siguiente episodio', fa: 'قسمت بعدی' },
     nextCanvas: { en: 'Open the next episode from your Canvas module.', es: 'Abre el siguiente episodio desde tu módulo de Canvas.', fa: 'قسمت بعدی را از ماژول کانواس خود باز کن.' },
     stars: { en: 'Stars', es: 'Estrellas', fa: 'ستاره‌ها' },
-    starWhy: { en: '★ finish the episode · ★ find all atlas scraps · ★ beat the Smudge with 1 miss or less', es: '★ termina el episodio · ★ encuentra todos los pedazos · ★ vence al Borrón con 1 error o menos', fa: '★ قسمت را تمام کن · ★ همهٔ تکه‌ها را پیدا کن · ★ لکه را با ۱ اشتباه یا کمتر شکست بده' },
+    starWhy: { en: '★ finish the episode · ★ find all atlas scraps · ★ beat the Grump with 1 miss or less', es: '★ termina el episodio · ★ encuentra todos los pedazos · ★ vence al Gruñón con 1 error o menos', fa: '★ قسمت را تمام کن · ★ همهٔ تکه‌ها را پیدا کن · ★ غرغرو را با ۱ اشتباه یا کمتر شکست بده' },
     powers: { en: 'Five geography powers', es: 'Cinco poderes de geografía', fa: 'پنج نیروی جغرافیا' },
     bag: { en: 'Bag · one tool from each realm', es: 'Bolsa · una herramienta de cada reino', fa: 'کوله · یک ابزار از هر سرزمین' },
     stamps: { en: 'Stamps · one for every episode', es: 'Sellos · uno por cada episodio', fa: 'مهرها · یکی برای هر قسمت' },
@@ -1300,27 +1321,32 @@ window.WW_CONFIG.MODE = 'canvas';
     gTalk: { en: 'Talk to every person', es: 'Habla con cada persona', fa: 'با هر نفر گپ بزن' },
     gQuest: { en: 'Help the person with the gold !', es: 'Ayuda a la persona con el ! dorado', fa: 'به کسی که ! طلایی دارد کمک کن' },
     gStone: { en: 'Solve the glowing compass stone', es: 'Resuelve la piedra brújula que brilla', fa: 'سنگ قطب‌نمای درخشان را حل کن' },
-    gBoss: { en: 'Beat the Smudge in its question trial', es: 'Vence al Borrón en su prueba de preguntas', fa: 'لکه را در آزمون سؤال‌هایش شکست بده' },
+    gBoss: { en: 'Beat the Grump in its question trial', es: 'Vence al Gruñón en su prueba de preguntas', fa: 'غرغرو را در آزمون سؤال‌هایش شکست بده' },
     gPage: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
     gBonus: { en: 'Bonus: pick up the 3 atlas scraps (coins and a star)', es: 'Extra: recoge los 3 pedazos del atlas (monedas y una estrella)', fa: 'جایزه: ۳ تکهٔ اطلس را جمع کن (سکه و یک ستاره)' },
-    gDim: { en: 'The Smudge has dimmed this land. Every goal you finish brings its color back.', es: 'El Borrón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'لکه این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
+    gDim: { en: 'The Grump has dimmed this land. Every goal you finish brings its color back.', es: 'El Gruñón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'غرغرو این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
     claim: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
-    pageAppears: { en: 'Pip: "The Smudge is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Pip: "¡El Borrón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'پیپ: «لکه رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
+    pageAppears: { en: 'Christopher: "The Grump is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Christopher: "¡El Gruñón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'کریستوفر: «غرغرو رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
     grow: { en: 'How you grow', es: 'Cómo creces', fa: 'چگونه رشد می‌کنی' },
-    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Smudge: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Borrón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست لکه: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
-    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Smudge +15. Spend 10 coins on a hint from Pip in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Borrón +15. Gasta 10 monedas en una pista de Pip en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، لکه +۱۵. ۱۰ سکه برای یک کمک از پیپ در هر آزمون یا مسابقه خرج کن.' },
+    growHow: { en: 'Answer a person: +1 · finish the quest: +2 · solve the stone: +2 · beat the Grump: +2. Each one adds to the power it is about.', es: 'Responder a una persona: +1 · terminar la misión: +2 · resolver la piedra: +2 · vencer al Gruñón: +2. Cada uno suma al poder del tema.', fa: 'جواب دادن به یک نفر: +۱ · تمام کردن مأموریت: +۲ · حل سنگ: +۲ · شکست غرغرو: +۲. هر کدام به نیروی همان موضوع اضافه می‌شود.' },
+    growCoins: { en: 'Coins: answer a person +2, scrap +3, stone +5, quest +10, Grump +15. Spend 10 coins on a hint from Christopher in any trial or duel.', es: 'Monedas: responder +2, pedazo +3, piedra +5, misión +10, Gruñón +15. Gasta 10 monedas en una pista de Christopher en cualquier prueba o duelo.', fa: 'سکه: جواب +۲، تکه +۳، سنگ +۵، مأموریت +۱۰، غرغرو +۱۵. ۱۰ سکه برای یک کمک از کریستوفر در هر آزمون یا مسابقه خرج کن.' },
     lvl: { en: 'level', es: 'nivel', fa: 'سطح' },
     nextAt: { en: 'next at', es: 'siguiente en', fa: 'بعدی در' },
     maxed: { en: 'all unlocked', es: 'todo desbloqueado', fa: 'همه باز شد' },
     newPower: { en: 'New power!', es: '¡Nuevo poder!', fa: 'نیروی تازه!' },
     earned: { en: 'What you earned', es: 'Lo que ganaste', fa: 'آنچه به دست آوردی' },
+    grr: [
+      { en: 'GRRR! Wrong! This atlas page stays torn!', es: '¡GRRR! ¡Mal! ¡Esta página del atlas sigue rota!', fa: 'غررر! غلط! این صفحهٔ اطلس پاره می‌ماند!' },
+      { en: 'HA! Is that all you know about this place?', es: '¡JA! ¿Eso es todo lo que sabes de este lugar?', fa: 'ها! همین قدر از این جا می‌دانی؟' },
+      { en: 'GRRR! You will never win this page back!', es: '¡GRRR! ¡Nunca vas a recuperar esta página!', fa: 'غررر! هرگز این صفحه را پس نمی‌گیری!' }],
+    furious: { en: 'The Grump is FURIOUS!', es: '¡El Gruñón está FURIOSO!', fa: 'غرغرو خیلی خشمگین است!' },
     hint: { en: 'Hint', es: 'Pista', fa: 'کمک' },
     hintFree: { en: 'free', es: 'gratis', fa: 'رایگان' },
     hintNoCoins: { en: 'You need 10 coins for a hint.', es: 'Necesitas 10 monedas para una pista.', fa: 'برای کمک ۱۰ سکه لازم داری.' },
     why_talk: { en: 'you answered', es: 'respondiste a', fa: 'جواب دادی به' },
     why_stone: { en: 'compass stone', es: 'piedra brújula', fa: 'سنگ قطب‌نما' },
     why_quest: { en: 'quest', es: 'misión', fa: 'مأموریت' },
-    why_boss: { en: 'beat the Smudge', es: 'venciste al Borrón', fa: 'لکه را شکست دادی' },
+    why_boss: { en: 'beat the Grump', es: 'venciste al Gruñón', fa: 'غرغرو را شکست دادی' },
     why_scrap: { en: 'atlas scrap', es: 'pedazo del atlas', fa: 'تکهٔ اطلس' },
     allRight: { en: 'All correct!', es: '¡Todo correcto!', fa: 'همه درست است!' },
     someWrong: { en: 'Some are in the wrong place. The red ones need to move.', es: 'Algunos están en el lugar equivocado. Los rojos deben moverse.', fa: 'بعضی در جای اشتباه هستند. سرخ‌ها باید جابجا شوند.' },
@@ -1333,13 +1359,14 @@ window.WW_CONFIG.MODE = 'canvas';
     realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
     teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
     playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
-    story: { en: 'The Smudge tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Pip, your living compass, win the pages back by learning each place.', es: 'El Borrón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Pip, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'لکه اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با پیپ، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
+    story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
   };
   WW.T = k => WW.L(WW.S[k]);
+  WW.grr = () => WW.L(WW.S.grr[(Math.random() * WW.S.grr.length) | 0]);
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -1358,7 +1385,7 @@ window.WW_CONFIG.MODE = 'canvas';
       { en: 'Scrap finder: a second arrow points to the nearest atlas scrap', es: 'Buscador: otra flecha señala el pedazo del atlas más cercano', fa: 'تکه‌یاب: تیر دوم نزدیک‌ترین تکهٔ اطلس را نشان می‌دهد' }],
     pla: [{ en: 'Strong roots: +1 heart', es: 'Raíces fuertes: +1 corazón', fa: 'ریشهٔ قوی: +۱ قلب' },
       { en: 'Deep roots: +1 more heart', es: 'Raíces profundas: +1 corazón más', fa: 'ریشهٔ عمیق: +۱ قلب دیگر' }],
-    hei: [{ en: 'Calm land: wandering Smudges move slower', es: 'Tierra tranquila: los Borrones sueltos van más lento', fa: 'زمین آرام: لکه‌های سرگردان آهسته‌تر می‌روند' },
+    hei: [{ en: 'Calm land: wandering Grumplings move slower', es: 'Tierra tranquila: los Gruñoncitos sueltos van más lento', fa: 'زمین آرام: غرغروهای سرگردان آهسته‌تر می‌روند' },
       { en: 'Healing scraps: each atlas scrap gives back a heart', es: 'Pedazos que curan: cada pedazo del atlas te devuelve un corazón', fa: 'تکهٔ شفابخش: هر تکهٔ اطلس یک قلب برمی‌گرداند' }],
     mov: [{ en: 'Quick feet: you walk faster', es: 'Pies rápidos: caminas más rápido', fa: 'پای تیز: تندتر راه می‌روی' },
       { en: 'Traveler: you walk faster still', es: 'Viajero: caminas aún más rápido', fa: 'مسافر: باز هم تندتر راه می‌روی' }],
@@ -1419,7 +1446,12 @@ window.WW_CONFIG.MODE = 'canvas';
     }
     for (const k in other.stats || {}) s.stats[k] = Math.max(s.stats[k] || 0, other.stats[k] || 0);
     if (other.look && !s.name) s.look = other.look;
-    s.coins = Math.max(s.coins || 0, other.coins || 0, 15 * WW.doneCount());
+    // coins: keep the most ever earned and the most ever spent, so spent coins never come back
+    if (other.coins != null) {
+      const spent = Math.max(s.spent || 0, other.spent || 0);
+      const earned = Math.max((s.coins || 0) + (s.spent || 0), (other.coins || 0) + (other.spent || 0));
+      s.spent = spent; s.coins = Math.max(0, earned - spent);
+    }
     WW.store();
   };
 
@@ -1443,16 +1475,19 @@ window.WW_CONFIG.MODE = 'canvas';
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: st.coins, look: st.look });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look });
     }
     return d || { ok: false };
   };
+  WW.spend = n => { WW.save.coins -= n; WW.save.spent = (WW.save.spent || 0) + n; WW.store(); };
+  // save the hero to the class Sheet after each goal (not only at the end), so leaving halfway loses little
+  WW.sheetSync = () => { if (WW.sheetOn()) WW.sheetSave(null); };
   WW.sheetSave = async (log) => {
     if (!WW.sheetOn()) return { ok: false, off: true };
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {
@@ -1932,7 +1967,7 @@ window.WW_CONFIG.MODE = 'canvas';
     lines.push('');
     if (WW.quest.on()) lines.push(WW.quest.log());
     lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
-    lines.push(`SMUDGE TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
+    lines.push(`GRUMP TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
     lines.push('');
     lines.push('REFLECTION');
     lines.push('Q: ' + WW.plain(ep.reflect.q));
@@ -1946,7 +1981,7 @@ window.WW_CONFIG.MODE = 'canvas';
 })();
 
 /* challenges.js */
-/* WORLDWALKER engine · the compass-stone challenges and the Smudge trial
+/* WORLDWALKER engine · the compass-stone challenges and the Grump trial
    Challenge types (set by ep.challenge.type):
      sort   – put each card in the right group (style:'bands' draws groups as land bands, e.g. elevation)
      order  – tap the cards in the right order
@@ -1969,7 +2004,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const r = WW.run;
     if (!r.challengeDone) {
       r.challengeDone = true;
-      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone'));
+      WW.gain(ch.stat || 'hei', 2, 5, T('why_stone')); WW.sheetSync();
       WW.sfx('win');
       WW.game.onChallengeDone();
     }
@@ -2253,21 +2288,24 @@ window.WW_CONFIG.MODE = 'canvas';
     f(ch);
   };
 
-  /* ---------------- the Smudge trial ---------------- */
+  /* ---------------- the Grump trial ---------------- */
   WW.bossTrial = (boss, onWin) => {
     const need = boss.need || 3;
     let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = 0, picked = null, last = null;
+    let broken = 0, picked = null, last = null, grr = '';
     let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
       render(box, h) {
         const top = document.createElement('div'); top.className = 'boss-top';
-        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal });
+        // the Grump gets FURIOUS once half its shield is cracked, and roars at every wrong answer
+        const furious = !boss.minor && broken >= need / 2 && broken < need;
+        const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '') + (furious ? ' furious' : '');
+        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
+        if (!boss.minor) box.classList.toggle('roar', last === 'hit');
         top.appendChild(cv);
-        let shield = `<div><div class="bname">${esc(L(boss.name))}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
+        let shield = `<div><div class="bname">${esc(L(boss.name))}${furious ? ` <span class="furious-tag">${esc(T('furious'))}</span>` : ''}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
         for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
         shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
         top.insertAdjacentHTML('beforeend', shield);
@@ -2295,7 +2333,7 @@ window.WW_CONFIG.MODE = 'canvas';
           b.onclick = () => {
             picked = i;
             if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
-            else { last = 'hit'; WW.sfx('hurt'); const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+            else { last = 'hit'; WW.sfx('hurt'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
           list.appendChild(b);
@@ -2305,7 +2343,7 @@ window.WW_CONFIG.MODE = 'canvas';
         if (picked == null && wrongLeft.length > 1) {
           const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
             if (freeHints) freeHints--;
-            else if ((WW.save.coins || 0) >= 10) { WW.save.coins -= 10; WW.store(); WW.ui.hud(); }
+            else if ((WW.save.coins || 0) >= 10) { WW.spend(10); WW.ui.hud(); }
             else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
             (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
           });
@@ -2313,6 +2351,7 @@ window.WW_CONFIG.MODE = 'canvas';
         }
         if (picked != null) {
           const ok = picked === q.answer;
+          if (!ok && grr && !boss.minor) box.insertAdjacentHTML('beforeend', `<p class="say taunt grr">${esc(grr)}</p>`);
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
           const acts = document.createElement('div'); acts.className = 'acts';
           acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {
@@ -2328,7 +2367,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
 /* music.js */
 /* WORLDWALKER engine · music: retro chip songs made in code (no sound files)
-   One song for each realm, a song for the Smudge trial and a short win jingle.
+   One song for each realm, a song for the Grump trial and a short win jingle.
    A song is a few channels of notes. Each word is one step (an eighth note):
    'E5' plays a note, '-' holds the note before it, '.' is quiet, '|' is only a bar line for reading.
    Drum words: k kick, s snare, h hi-hat, c clave; they can be joined, like 'kh'. Each channel loops on its own length. */
@@ -2402,7 +2441,7 @@ window.WW_CONFIG.MODE = 'canvas';
              F2 . C3 . F3 . C3 . | C3 . G2 . C3 . G2 . | Bb2 . F3 . C3 . G2 . | F2 . C3 . F2 . . .`,
       drums: 'k h s h k k s h'
     },
-    // the Smudge trial: fast and tense, A minor
+    // the Grump trial: fast and tense, A minor
     boss: {
       bpm: 150, lead: 'square',
       melody: `A5 . A5 C6 B5 . G#5 . | A5 . E5 . . . . . | F5 . F5 A5 G5 . E5 . | D5 . E5 . . . . . |
@@ -2621,7 +2660,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- drawing ---------------- */
   // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
-  /* the Smudge's dimness: the land starts grey and gets its color back as goals are done */
+  /* the Grump's dimness: the land starts grey and gets its color back as goals are done */
   let dim = null, liftT = 0, liftAt = null;
   function smudgeDim(c, t, dt, hero) {
     const g = WW.game, r = WW.run;
@@ -2634,7 +2673,7 @@ window.WW_CONFIG.MODE = 'canvas';
       c.globalCompositeOperation = 'source-over'; c.fillStyle = `rgba(45,30,80,${0.16 * dim})`; c.fillRect(0, 0, VW, VH);
       c.restore();
     }
-    // the moment the Smudge is beaten: a ring of light spreads out from the hero
+    // the moment the Grump is beaten: a ring of light spreads out from the hero
     const k = (performance.now() - liftT) / 1400;
     if (liftT && k < 1) {
       const x = liftAt ? liftAt.x + 8 : VW / 2, y = liftAt ? liftAt.y + 8 : VH / 2, rad = 10 + k * 300;
@@ -2904,6 +2943,7 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.fx.burst(q.giver.x, q.giver.y, 'gold');
     WW.gain(q.stat || 'reg', 2, (q.reward && q.reward.coins) || 10, T('why_quest') + ': ' + WW.plain(q.title));
     WW.toast('🏅 ' + WW.esc(T('questDone')), '#c08a1e');
+    WW.sheetSync();
   }
 
   /* what to draw above people's heads, and the secret spot's twinkle */
@@ -2958,7 +2998,7 @@ window.WW_CONFIG.MODE = 'canvas';
 })();
 
 /* game.js */
-/* WORLDWALKER engine · the game itself: map, walking, screens, people, Smudges, flow */
+/* WORLDWALKER engine · the game itself: map, walking, screens, people, Grumplings, flow */
 (function () {
   const TS = 16, SW = 16, SH = 11; // tile size, screen width/height in tiles
   const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
@@ -2973,14 +3013,14 @@ window.WW_CONFIG.MODE = 'canvas';
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
     let t = ac.currentTime;
     (NOTES[name] || []).forEach(([f, d]) => {
       const o = ac.createOscillator(), g = ac.createGain();
-      o.type = name === 'hurt' || name === 'bad' ? 'sawtooth' : 'square'; o.frequency.value = f;
+      o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : 'square'; o.frequency.value = f;
       g.gain.setValueAtTime(.06, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
       o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d); t += d * .9;
     });
@@ -3121,14 +3161,15 @@ window.WW_CONFIG.MODE = 'canvas';
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
-    setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
+    setTimeout(() => WW.toast('Christopher: ' + WW.plain(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
 
-  // the Smudge is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
+  // the Grump is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
   function bossBeaten() {
     const r = WW.run, ep = WW.ep;
     r.bossDone = true;
     WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
+    WW.sheetSync();
     ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
     WW.fx.lift();
     WW.music.play('win', 'realm' + ep.realm);
@@ -3256,12 +3297,16 @@ window.WW_CONFIG.MODE = 'canvas';
     const [psx, psy] = screenOf(player.x, player.y);
     ents.forEach(e => {
       if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
+      // every so often a Grumpling flies into a rage: it turns red and charges at the hero for a moment
+      if (!e.nextRage) e.nextRage = now + 4000 + Math.random() * 5000;
+      if (now > e.nextRage) { e.rageUntil = now + 1900; e.nextRage = now + 7000 + Math.random() * 5000; WW.sfx('growl'); shakeT = now; }
+      const rage = now < (e.rageUntil || 0);
       if (now < e.next) return;
-      e.next = now + (650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Smudges
+      e.next = now + (rage ? 260 : 650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Grumplings
       const dirs = Object.values(DIRS);
-      // drift a little toward the player, mostly random
+      // drift a little toward the player, mostly random (always toward the player in a rage)
       const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
-      const pick = Math.random() < .35 && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
+      const pick = (rage || Math.random() < .35) && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
       const nx = e.x + pick[0], ny = e.y + pick[1];
       const [hx, hy] = screenOf(nx, ny);
       if (hx !== e.home[0] || hy !== e.home[1]) return;
@@ -3307,11 +3352,22 @@ window.WW_CONFIG.MODE = 'canvas';
         c.fillStyle = '#22202e'; c.fillRect(px(e) + 2, py(e) + 10, 12, 6); c.fillStyle = '#9aa3ad'; c.fillRect(px(e) + 3, py(e) + 11, 10, 4); c.fillStyle = '#c3c8ce'; c.fillRect(px(e) + 3, py(e) + 11, 10, 1);
         WW.sprite(c, 'page', px(e) + 1, py(e) - 6, { bob: true, t });
       }
-      if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
+      if (e.kind === 'smudge') {
+        const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
+        WW.shadow(c, px(e), py(e) + 13, 8);
+        if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
+        WW.sprite(c, 'smudge', px(e) + j, py(e), { bob: true, t, phase: e.phase, pal: rage ? { g: '#a8323a', G: '#6e1c24', e: '#fff070' } : null });
+      }
       if (e.kind === 'boss') {
-        const a = (Math.sin(t / 200) + 1) / 2;
-        c.fillStyle = `rgba(109,95,140,${.25 + a * .3})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 12 + a * 3, 0, 7); c.fill();
-        WW.sprite(c, 'smudge', px(e) - 8, py(e) - 16, { bob: true, t, scale: 2 });
+        const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;
+        // a dark, spiky cloud around the Grump
+        for (let k = 0; k < 10; k++) {
+          const ang = k / 10 * Math.PI * 2 + t / 900, rr = 13 + a * 3 + (k % 2) * 4 + (roar ? 4 : 0);
+          c.fillStyle = roar ? 'rgba(170,30,40,.55)' : `rgba(40,25,60,${.35 + a * .2})`;
+          c.beginPath(); c.arc(px(e) + 8 + Math.cos(ang) * rr * .55, py(e) + 4 + Math.sin(ang) * rr * .45, 5, 0, 7); c.fill();
+        }
+        const j = roar ? Math.round(Math.sin(t / 25) * 2) : 0;
+        WW.sprite(c, 'smudge', px(e) - 8 + j, py(e) - 16, { bob: true, t, scale: 2, pal: roar ? { g: '#7a2a40', e: '#fff070' } : null });
       }
     });
     c.restore();
@@ -3340,6 +3396,10 @@ window.WW_CONFIG.MODE = 'canvas';
       }
     }
     moveSmudges(now);
+    const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
+    if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
+      bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near
+    }
     // pip trails one tile behind
     if (pip.tx != null && !player.moving) { pip.x = pip.tx; pip.y = pip.ty; pip.tx = null; }
     // where to draw the hero inside the screen
@@ -3369,6 +3429,7 @@ window.WW_CONFIG.MODE = 'canvas';
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
+    if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
     c.restore();
   }
   /* the goal right now (for the Location power's arrow and for the dimness) */
@@ -3447,9 +3508,9 @@ window.EPISODE = {
   title: { en: 'Latin America & the Caribbean', es: 'América Latina y el Caribe', fa: 'امریکای لاتین و کارائیب' },
   place: { en: 'The Coffee Mountain, Ecuador', es: 'La Montaña del Café, Ecuador', fa: 'کوه قهوه، اکوادور' },
   intro: [
-    { en: 'Pip: "The Smudge mixed up the seasons on this mountain in Ecuador! Now farmers are planting crops at the wrong height. Climb from the hot coast up to the snow. Talk to the banana worker, the coffee grower and the potato farmer. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón revolvió las estaciones en esta montaña de Ecuador! Ahora los agricultores siembran a la altura equivocada. Sube desde la costa caliente hasta la nieve. Habla con la trabajadora del banano, el cafetero y la agricultora de papas. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه فصل‌های این کوه را در اکوادور به هم زد! حالا دهقانان حاصلات را در ارتفاع غلط می‌کارند. از ساحل گرم تا برف بالا برو. با کارگر کیله، دهقان قهوه و دهقان کچالو گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump mixed up the seasons on this mountain in Ecuador! Now farmers are planting crops at the wrong height. Climb from the hot coast up to the snow. Talk to the banana worker, the coffee grower and the potato farmer. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón revolvió las estaciones en esta montaña de Ecuador! Ahora los agricultores siembran a la altura equivocada. Sube desde la costa caliente hasta la nieve. Habla con la trabajadora del banano, el cafetero y la agricultora de papas. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو فصل‌های این کوه را در اکوادور به هم زد! حالا دهقانان حاصلات را در ارتفاع غلط می‌کارند. از ساحل گرم تا برف بالا برو. با کارگر کیله، دهقان قهوه و دهقان کچالو گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Bottom to top:
@@ -3673,9 +3734,9 @@ window.EPISODE = {
     style: 'bands',
     stat: 'hei',
     title: { en: 'What grows at each height?', es: '¿Qué crece en cada altura?', fa: 'در هر ارتفاع چه می‌روید؟' },
-    intro: { en: 'The Smudge planted every crop at the wrong height! Put each card in the right zone, from the frozen top down to the hot coast.',
-      es: '¡El Borrón sembró cada cultivo a la altura equivocada! Pon cada tarjeta en la zona correcta, desde la cima helada hasta la costa caliente.',
-      fa: 'لکه هر حاصل را در ارتفاع غلط کاشت! هر کارت را در منطقهٔ درست بگذار، از بالای یخ‌زده تا ساحل گرم.' },
+    intro: { en: 'The Grump planted every crop at the wrong height! Put each card in the right zone, from the frozen top down to the hot coast.',
+      es: '¡El Gruñón sembró cada cultivo a la altura equivocada! Pon cada tarjeta en la zona correcta, desde la cima helada hasta la costa caliente.',
+      fa: 'غرغرو هر حاصل را در ارتفاع غلط کاشت! هر کارت را در منطقهٔ درست بگذار، از بالای یخ‌زده تا ساحل گرم.' },
     bins: [
       { id: 'helada', icon: '❄️', tile: 'n', label: { en: 'Tierra helada · frozen land', es: 'Tierra helada', fa: 'تیرا الادا · زمین یخ‌زده' }, sub: { en: 'above about 12,000 ft (3,600 m)', es: 'más de unos 12,000 pies (3,600 m)', fa: 'بالاتر از حدود ۱۲۰۰۰ فوت (۳۶۰۰ متر)' } },
       { id: 'fria', icon: '🥔', tile: 'v', label: { en: 'Tierra fría · cold land', es: 'Tierra fría', fa: 'تیرا فریا · زمین سرد' }, sub: { en: 'about 6,000–12,000 ft (1,800–3,600 m)', es: 'unos 6,000–12,000 pies (1,800–3,600 m)', fa: 'حدود ۶۰۰۰ تا ۱۲۰۰۰ فوت (۱۸۰۰ تا ۳۶۰۰ متر)' } },
@@ -3707,8 +3768,8 @@ window.EPISODE = {
     at: [20, 2],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Frost Smudge', es: 'El Borrón de Escarcha', fa: 'لکهٔ یخبندان' },
-    appear: { en: 'The Frost Smudge is hiding in the snow at the top of the mountain!', es: '¡El Borrón de Escarcha se esconde en la nieve, en la cima de la montaña!', fa: 'لکهٔ یخبندان در برف بالای کوه پنهان است!' },
+    name: { en: 'The Frost Grump', es: 'El Gruñón de Escarcha', fa: 'غرغروی یخبندان' },
+    appear: { en: 'The Frost Grump is hiding in the snow at the top of the mountain!', es: '¡El Gruñón de Escarcha se esconde en la nieve, en la cima de la montaña!', fa: 'غرغروی یخبندان در برف بالای کوه پنهان است!' },
     taunt: { en: 'Brrr! I will freeze the coffee and cook the potatoes. Nothing will grow in the right place!', es: '¡Brrr! Voy a congelar el café y a cocinar las papas. ¡Nada crecerá en su lugar!', fa: 'بررر! قهوه را یخ می‌زنم و کچالو را می‌پزم. هیچ چیز در جای درست نمی‌روید!' },
     win: { en: 'The frost melts into a cool mountain stream. Atlas page 2.2 floats down into your hands!', es: 'La escarcha se derrite en un arroyo fresco de montaña. ¡La página 2.2 del atlas cae en tus manos!', fa: 'یخبندان آب می‌شود و یک جوی خنک کوهستانی می‌سازد. صفحهٔ ۲.۲ اطلس به دستت می‌افتد!' },
     questions: [

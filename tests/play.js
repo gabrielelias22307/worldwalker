@@ -45,7 +45,7 @@ const SHOTS = !process.argv.includes('--no-shots');
       await step('stone waits for talks', async () => {
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.challenge.at);
         const t = await page.textContent('#ww-ov');
-        if (!/Pip/.test(t)) throw new Error('stone opened before talking');
+        if (!/Christopher/.test(t)) throw new Error('stone opened before talking');
         await clickGold();
       });
       for (let i = 0; i < ep.npcs.length; i++) {
@@ -129,7 +129,7 @@ const SHOTS = !process.argv.includes('--no-shots');
               await clickGold();
             }
             await page.locator('#ww-ov .pbtn.gold.big').click();
-            if (await page.evaluate(() => WW.run.missed.length)) throw new Error('quest fight misses went into the Smudge trial');
+            if (await page.evaluate(() => WW.run.missed.length)) throw new Error('quest fight misses went into the Grump trial');
           } else {
             await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
             await talkThrough(); await shot('q2-trade');
@@ -212,12 +212,12 @@ const SHOTS = !process.argv.includes('--no-shots');
         }
         await shot('8-boss-won');
         await page.locator('#ww-ov .pbtn.gold.big').click();
-        await page.waitForSelector('.msgov'); // Pip: the page is on the stone
+        await page.waitForSelector('.msgov'); // Christopher: the page is on the stone
         if (await page.evaluate(() => WW.run.claimed)) throw new Error('the page was claimed before walking to it');
         await clickGold(); await page.waitForFunction(() => !WW.paused);
         await page.waitForTimeout(400); await shot('8b-page');
         const goal = await page.evaluate(() => WW.dbg.goal);
-        if (!goal || goal.join() !== ep.boss.at.join()) throw new Error('the goal after the Smudge is not the page');
+        if (!goal || goal.join() !== ep.boss.at.join()) throw new Error('the goal after the Grump is not the page');
         await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), ep.boss.at);
         await page.waitForSelector('.finov');
         const fin = await page.textContent('#ww-ov');

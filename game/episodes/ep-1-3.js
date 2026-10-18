@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Resources & Work', es: 'Recursos y trabajo', fa: 'منابع و کار' },
   place: { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
   intro: [
-    { en: 'Pip: "The Smudge mixed up everything people use to make things! The bakery has no flour and the mine is quiet. Talk to the miner, the baker and the farmer. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón revolvió todo lo que la gente usa para hacer cosas! La panadería no tiene harina y la mina está en silencio. Habla con el minero, la panadera y la agricultora. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه همهٔ چیزهایی را که مردم برای ساختن به کار می‌برند به هم زد! نانوایی آرد ندارد و معدن خاموش است. با معدنچی، نانوا و دهقان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump mixed up everything people use to make things! The bakery has no flour and the mine is quiet. Talk to the miner, the baker and the farmer. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón revolvió todo lo que la gente usa para hacer cosas! La panadería no tiene harina y la mina está en silencio. Habla con el minero, la panadera y la agricultora. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو همهٔ چیزهایی را که مردم برای ساختن به کار می‌برند به هم زد! نانوایی آرد ندارد و معدن خاموش است. با معدنچی، نانوا و دهقان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Each corner shows a different kind of work. */
@@ -171,9 +171,9 @@ window.EPISODE = {
         { en: 'Hello! I am the toolmaker. I make plows, saws and hammers. Tools are [[capital resource|capital resources]]. People make them to help make other things.',
           es: '¡Hola! Soy el fabricante de herramientas. Hago arados, sierras y martillos. Las herramientas son [[capital resource|recursos de capital]]. La gente las hace para ayudar a hacer otras cosas.',
           fa: 'سلام! من ابزارساز هستم. قلبه، اره و چکش می‌سازم. ابزارها [[capital resource|منابع سرمایه‌ای]] هستند. مردم آن‌ها را می‌سازند تا در ساختن چیزهای دیگر کمک کنند.' },
-        { en: 'But the Smudge rusted all my iron, and the farmers need new plows! Ingrid the woodcutter knows where to get iron. She is in the Timber Woods, in the north-west. Will you ask her?',
-          es: 'Pero el Borrón oxidó todo mi hierro, ¡y los agricultores necesitan arados nuevos! Ingrid, la leñadora, sabe dónde conseguir hierro. Está en el Bosque de Madera, en el noroeste. ¿Le preguntas?',
-          fa: 'اما لکه همهٔ آهنم را زنگ‌زده کرد، و دهقانان قلبهٔ نو لازم دارند! اینگرید چوب‌بُر می‌داند آهن را از کجا پیدا کنیم. او در جنگل چوب، در شمال غرب است. از او می‌پرسی؟' }
+        { en: 'But the Grump rusted all my iron, and the farmers need new plows! Ingrid the woodcutter knows where to get iron. She is in the Timber Woods, in the north-west. Will you ask her?',
+          es: 'Pero el Gruñón oxidó todo mi hierro, ¡y los agricultores necesitan arados nuevos! Ingrid, la leñadora, sabe dónde conseguir hierro. Está en el Bosque de Madera, en el noroeste. ¿Le preguntas?',
+          fa: 'اما غرغرو همهٔ آهنم را زنگ‌زده کرد، و دهقانان قلبهٔ نو لازم دارند! اینگرید چوب‌بُر می‌داند آهن را از کجا پیدا کنیم. او در جنگل چوب، در شمال غرب است. از او می‌پرسی؟' }
       ],
       wait: { en: 'Ingrid is in the Timber Woods, in the north-west. Look west of the woodcutter\'s cabin.',
         es: 'Ingrid está en el Bosque de Madera, en el noroeste. Búscala al oeste de la cabaña del leñador.',
@@ -230,9 +230,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'hei',
     title: { en: 'Natural, human or capital?', es: '¿Natural, humano o de capital?', fa: 'طبیعی، انسانی یا سرمایه‌ای؟' },
-    intro: { en: 'The Smudge dumped the valley\'s resources in one big pile. Put each card in the right group.',
-      es: 'El Borrón tiró todos los recursos del valle en un solo montón. Pon cada tarjeta en el grupo correcto.',
-      fa: 'لکه همهٔ منابع دره را در یک توده ریخت. هر کارت را در گروه درست بگذار.' },
+    intro: { en: 'The Grump dumped the valley\'s resources in one big pile. Put each card in the right group.',
+      es: 'El Gruñón tiró todos los recursos del valle en un solo montón. Pon cada tarjeta en el grupo correcto.',
+      fa: 'غرغرو همهٔ منابع دره را در یک توده ریخت. هر کارت را در گروه درست بگذار.' },
     bins: [
       { id: 'nat', icon: '🌳', label: { en: 'Natural resource', es: 'Recurso natural', fa: 'منبع طبیعی' }, sub: { en: 'comes from the earth', es: 'viene de la tierra', fa: 'از زمین می‌آید' } },
       { id: 'hum', icon: '🧑‍🔧', label: { en: 'Human resource', es: 'Recurso humano', fa: 'منبع انسانی' }, sub: { en: 'people and their skills', es: 'personas y sus habilidades', fa: 'مردم و مهارت‌هایشان' } },
@@ -265,8 +265,8 @@ window.EPISODE = {
     at: [22, 17],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Rust Smudge', es: 'El Borrón Oxidado', fa: 'لکهٔ زنگ‌زده' },
-    appear: { en: 'The Rust Smudge is creeping through the market in the south-east!', es: '¡El Borrón Oxidado se arrastra por el mercado en el sureste!', fa: 'لکهٔ زنگ‌زده در بازار جنوب شرق می‌خزد!' },
+    name: { en: 'The Rust Grump', es: 'El Gruñón Oxidado', fa: 'غرغروی زنگ‌زده' },
+    appear: { en: 'The Rust Grump is creeping through the market in the south-east!', es: '¡El Gruñón Oxidado se arrastra por el mercado en el sureste!', fa: 'غرغروی زنگ‌زده در بازار جنوب شرق می‌خزد!' },
     taunt: { en: 'Creak! I rust every tool and spoil every field. With no resources, nobody can make anything!', es: '¡Crac! Oxido cada herramienta y daño cada campo. ¡Sin recursos, nadie puede hacer nada!', fa: 'غژ! من هر ابزار را زنگ می‌زنم و هر زمین را خراب می‌کنم. بدون منابع، هیچ کس چیزی ساخته نمی‌تواند!' },
     win: { en: 'The rust flakes away and every tool shines. Atlas page 1.3 floats down into your hands!', es: 'El óxido se cae y cada herramienta brilla. ¡La página 1.3 del atlas cae en tus manos!', fa: 'زنگ می‌ریزد و هر ابزار برق می‌زند. صفحهٔ ۱.۳ اطلس به دستت می‌افتد!' },
     questions: [

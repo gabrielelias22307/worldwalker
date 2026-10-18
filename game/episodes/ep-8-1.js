@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Australia and the Pacific', es: 'Australia y el Pacífico', fa: 'آسترالیا و اقیانوس آرام' },
   place: { en: 'Harbor City and the Far Islands', es: 'Ciudad del Puerto y las Islas Lejanas', fa: 'شهر بندر و جزیره‌های دور' },
   intro: [
-    { en: 'Pip: "The Smudge rolled across the last realm! Now the Outback, the coast and the islands are all mixed up. Talk to the ranger, the ferry captain and the reef scientist. Then fix the compass stone in the Outback town."',
-      es: 'Pip: "¡El Borrón pasó por el último reino! Ahora el Outback, la costa y las islas están todos mezclados. Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra de la brújula en el pueblo del Outback."',
-      fa: 'پیپ: «لکه از آخرین سرزمین گذشت! حالا اوت‌بک، ساحل و جزیره‌ها همه با هم مخلوط شده‌اند. با محافظ پارک، کپتان کشتی و دانشمند صخرهٔ مرجانی گپ بزن. بعد سنگ قطب‌نما را در قریهٔ اوت‌بک درست کن.»' }
+    { en: 'Christopher: "The Grump rolled across the last realm! Now the Outback, the coast and the islands are all mixed up. Talk to the ranger, the ferry captain and the reef scientist. Then fix the compass stone in the Outback town."',
+      es: 'Christopher: "¡El Gruñón pasó por el último reino! Ahora el Outback, la costa y las islas están todos mezclados. Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra de la brújula en el pueblo del Outback."',
+      fa: 'کریستوفر: «غرغرو از آخرین سرزمین گذشت! حالا اوت‌بک، ساحل و جزیره‌ها همه با هم مخلوط شده‌اند. با محافظ پارک، کپتان کشتی و دانشمند صخرهٔ مرجانی گپ بزن. بعد سنگ قطب‌نما را در قریهٔ اوت‌بک درست کن.»' }
   ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
@@ -174,9 +174,9 @@ window.EPISODE = {
         { en: 'Help! I am a Flying Doctor. I fly my small plane from Harbor City to sick people in the [[outback|Outback]]. Towns there are very far apart.',
           es: '¡Ayuda! Soy doctora voladora. Vuelo en mi avioneta desde Ciudad del Puerto para ver a enfermos en el [[outback|Outback]]. Allí los pueblos están muy lejos unos de otros.',
           fa: 'کمک! من داکتر پرنده هستم. با طیارهٔ کوچکم از شهر بندر نزد مریضان در [[outback|اوت‌بک]] پرواز می‌کنم. قریه‌های آنجا از هم بسیار دور هستند.' },
-        { en: 'The Smudge\'s wind shook my plane, and my medicine bag fell out! Tess saw where it landed. She is in the little Outback town, far to the south-west. Will you ask her?',
-          es: '¡El viento del Borrón sacudió mi avioneta y se cayó mi maletín de medicinas! Tess vio dónde cayó. Está en el pueblito del Outback, lejos hacia el suroeste. ¿Le preguntas?',
-          fa: 'باد لکه طیاره‌ام را تکان داد و بکس دواهایم افتاد! تِس دید که کجا افتاد. او در قریهٔ کوچک اوت‌بک است، دور به طرف جنوب غرب. از او می‌پرسی؟' }
+        { en: 'The Grump\'s wind shook my plane, and my medicine bag fell out! Tess saw where it landed. She is in the little Outback town, far to the south-west. Will you ask her?',
+          es: '¡El viento del Gruñón sacudió mi avioneta y se cayó mi maletín de medicinas! Tess vio dónde cayó. Está en el pueblito del Outback, lejos hacia el suroeste. ¿Le preguntas?',
+          fa: 'باد غرغرو طیاره‌ام را تکان داد و بکس دواهایم افتاد! تِس دید که کجا افتاد. او در قریهٔ کوچک اوت‌بک است، دور به طرف جنوب غرب. از او می‌پرسی؟' }
       ],
       wait: { en: 'Tess is in the little Outback town. Go west, then south. Look for the houses by the long road.',
         es: 'Tess está en el pueblito del Outback. Ve al oeste y luego al sur. Busca las casas junto al camino largo.',
@@ -218,9 +218,9 @@ window.EPISODE = {
     type: 'table',
     stat: 'loc',
     title: { en: 'Near or far?', es: '¿Cerca o lejos?', fa: 'نزدیک یا دور؟' },
-    intro: { en: 'The Smudge smeared the travel notes of this town. Read the table about four real places. Then answer the questions.',
-      es: 'El Borrón manchó las notas de viaje de este pueblo. Lee la tabla sobre cuatro lugares reales. Luego responde las preguntas.',
-      fa: 'لکه یادداشت‌های سفر این قریه را خراب کرد. جدول دربارهٔ چهار جای واقعی را بخوان. بعد به سوال‌ها جواب بده.' },
+    intro: { en: 'The Grump smeared the travel notes of this town. Read the table about four real places. Then answer the questions.',
+      es: 'El Gruñón manchó las notas de viaje de este pueblo. Lee la tabla sobre cuatro lugares reales. Luego responde las preguntas.',
+      fa: 'غرغرو یادداشت‌های سفر این قریه را خراب کرد. جدول دربارهٔ چهار جای واقعی را بخوان. بعد به سوال‌ها جواب بده.' },
     table: {
       head: [
         { en: 'Place', es: 'Lugar', fa: 'جا' },
@@ -260,8 +260,8 @@ window.EPISODE = {
     at: [41, 6],
     stat: 'pla',
     need: 3,
-    name: { en: 'The Tide Smudge', es: 'El Borrón de la Marea', fa: 'لکهٔ مد بحر' },
-    appear: { en: 'The Tide Smudge is hiding on the high island across the long dock!', es: '¡El Borrón de la Marea se esconde en la isla alta, al otro lado del muelle largo!', fa: 'لکهٔ مد بحر در جزیرهٔ بلند، آن طرف اسکلهٔ دراز، پنهان است!' },
+    name: { en: 'The Tide Grump', es: 'El Gruñón de la Marea', fa: 'غرغروی مد بحر' },
+    appear: { en: 'The Tide Grump is hiding on the high island across the long dock!', es: '¡El Gruñón de la Marea se esconde en la isla alta, al otro lado del muelle largo!', fa: 'غرغروی مد بحر در جزیرهٔ بلند، آن طرف اسکلهٔ دراز، پنهان است!' },
     taunt: { en: 'Splash! I washed away the map of the Pacific. Islands, reefs, deserts... who can tell them apart now?', es: '¡Splash! Borré el mapa del Pacífico con agua. Islas, arrecifes, desiertos... ¿quién puede distinguirlos ahora?', fa: 'شَلَپ! نقشهٔ اقیانوس آرام را با آب شستم. جزیره‌ها، صخره‌ها، ریگستان‌ها... حالا کی می‌تواند آن‌ها را از هم جدا کند؟' },
     win: { en: 'The tide goes out. Atlas page 8.1 floats up from the water and into your hands!', es: 'La marea baja. ¡La página 8.1 del atlas sale del agua y llega a tus manos!', fa: 'آب بحر پس می‌رود. صفحهٔ ۸.۱ اطلس از آب بیرون می‌آید و به دستت می‌رسد!' },
     questions: [

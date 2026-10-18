@@ -8,9 +8,9 @@ window.EPISODE = {
   title: { en: 'Culture and Cultural Diffusion', es: 'Cultura y difusión cultural', fa: 'فرهنگ و پخش فرهنگی' },
   place: { en: 'Kashan and Dubai', es: 'Kashán y Dubái', fa: 'کاشان و دبی' },
   intro: [
-    { en: 'Pip: "The Wall Smudge put up walls across the water! Now ideas cannot travel, and the word map is scrambled. Talk to the tea seller, the gardener and the city guide. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón Muro levantó muros sobre el agua! Ahora las ideas no pueden viajar y el mapa de palabras está revuelto. Habla con el vendedor de té, la jardinera y la guía de la ciudad. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکهٔ دیوار روی آب دیوار ساخت! حالا فکرها نمی‌توانند سفر کنند و نقشهٔ کلمه‌ها به هم خورده است. با چای‌فروش، باغبان و رهنمای شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Wall Grump put up walls across the water! Now ideas cannot travel, and the word map is scrambled. Talk to the tea seller, the gardener and the city guide. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón Muro levantó muros sobre el agua! Ahora las ideas no pueden viajar y el mapa de palabras está revuelto. Habla con el vendedor de té, la jardinera y la guía de la ciudad. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغروی دیوار روی آب دیوار ساخت! حالا فکرها نمی‌توانند سفر کنند و نقشهٔ کلمه‌ها به هم خورده است. با چای‌فروش، باغبان و رهنمای شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -171,9 +171,9 @@ window.EPISODE = {
       role: { en: 'Sweet maker in old Dubai', es: 'Pastelera en el Dubái antiguo', fa: 'شیرینی‌پز در دبی کهنه' },
       look: { skin: 3, hair: '#140e0a', shirt: '#e0457b', pants: '#4a2a5a', style: 'long' },
       lines: [
-        { en: 'Hello! My family came to Dubai from India. I make sweets called gulab jamun. But the Smudge\'s wall stopped the boats, and I have no rosewater left!',
-          es: '¡Hola! Mi familia llegó a Dubái desde la India. Hago unos dulces llamados gulab jamun. ¡Pero el muro del Borrón detuvo los barcos y ya no tengo agua de rosas!',
-          fa: 'سلام! خانوادهٔ من از هند به دبی آمد. من شیرینی‌ای به نام گلاب جامن می‌پزم. اما دیوار لکه کشتی‌ها را بند کرد و دیگر گلاب ندارم!' },
+        { en: 'Hello! My family came to Dubai from India. I make sweets called gulab jamun. But the Grump\'s wall stopped the boats, and I have no rosewater left!',
+          es: '¡Hola! Mi familia llegó a Dubái desde la India. Hago unos dulces llamados gulab jamun. ¡Pero el muro del Gruñón detuvo los barcos y ya no tengo agua de rosas!',
+          fa: 'سلام! خانوادهٔ من از هند به دبی آمد. من شیرینی‌ای به نام گلاب جامن می‌پزم. اما دیوار غرغرو کشتی‌ها را بند کرد و دیگر گلاب ندارم!' },
         { en: 'The best rosewater comes from Kashan, across the water in Iran. Please take my basket of goods from the harbor. Babak, who picks roses in the Persian garden, can help you.',
           es: 'La mejor agua de rosas viene de Kashán, al otro lado del agua, en Irán. Por favor, lleva mi canasta con productos del puerto. Babak, que recoge rosas en el jardín persa, te puede ayudar.',
           fa: 'بهترین گلاب از کاشان می‌آید، آن طرف آب در ایران. لطفاً سبد کالاهای بندر مرا با خود ببر. بابک، که در باغ ایرانی گل می‌چیند، می‌تواند کمکت کند.' }
@@ -233,9 +233,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'reg',
     title: { en: 'Words that traveled', es: 'Palabras que viajaron', fa: 'کلمه‌هایی که سفر کردند' },
-    intro: { en: 'The Smudge scrambled the word map! Every English word on these cards traveled from far away. Sort each word. Did it come into English from Arabic, or from Persian (Farsi and Dari)?',
-      es: '¡El Borrón revolvió el mapa de palabras! Cada palabra inglesa de estas tarjetas viajó desde lejos. Ordena cada palabra. ¿Llegó al inglés desde el árabe o desde el persa (farsi y dari)?',
-      fa: 'لکه نقشهٔ کلمه‌ها را به هم زد! هر کلمهٔ انگلیسی روی این کارت‌ها از جای دور سفر کرده است. هر کلمه را جدا کن. آیا از عربی به انگلیسی آمده یا از فارسی (فارسی ایران و دری)؟' },
+    intro: { en: 'The Grump scrambled the word map! Every English word on these cards traveled from far away. Sort each word. Did it come into English from Arabic, or from Persian (Farsi and Dari)?',
+      es: '¡El Gruñón revolvió el mapa de palabras! Cada palabra inglesa de estas tarjetas viajó desde lejos. Ordena cada palabra. ¿Llegó al inglés desde el árabe o desde el persa (farsi y dari)?',
+      fa: 'غرغرو نقشهٔ کلمه‌ها را به هم زد! هر کلمهٔ انگلیسی روی این کارت‌ها از جای دور سفر کرده است. هر کلمه را جدا کن. آیا از عربی به انگلیسی آمده یا از فارسی (فارسی ایران و دری)؟' },
     bins: [
       { id: 'ar', icon: '📘', label: { en: 'From Arabic', es: 'Del árabe', fa: 'از عربی' }, sub: { en: 'spoken in the UAE and many other countries', es: 'se habla en los Emiratos y muchos otros países', fa: 'در امارات و بسیاری کشورهای دیگر گپ زده می‌شود' } },
       { id: 'fa', icon: '📗', label: { en: 'From Persian', es: 'Del persa', fa: 'از فارسی' }, sub: { en: 'spoken in Iran, Afghanistan (Dari) and Tajikistan', es: 'se habla en Irán, Afganistán (dari) y Tayikistán', fa: 'در ایران، افغانستان (دری) و تاجیکستان گپ زده می‌شود' } }
@@ -257,8 +257,8 @@ window.EPISODE = {
     at: [24, 19],
     stat: 'mov',
     need: 3,
-    name: { en: 'The Wall Smudge', es: 'El Borrón Muro', fa: 'لکهٔ دیوار' },
-    appear: { en: 'The Wall Smudge is hiding between the glass towers of Dubai!', es: '¡El Borrón Muro se esconde entre las torres de vidrio de Dubái!', fa: 'لکهٔ دیوار میان برج‌های شیشه‌ای دبی پنهان است!' },
+    name: { en: 'The Wall Grump', es: 'El Gruñón Muro', fa: 'غرغروی دیوار' },
+    appear: { en: 'The Wall Grump is hiding between the glass towers of Dubai!', es: '¡El Gruñón Muro se esconde entre las torres de vidrio de Dubái!', fa: 'غرغروی دیوار میان برج‌های شیشه‌ای دبی پنهان است!' },
     taunt: { en: 'Hmph! Ideas should stay home. I will stop every word and every recipe at the wall!', es: '¡Bah! Las ideas deben quedarse en casa. ¡Detendré cada palabra y cada receta en el muro!', fa: 'هه! فکرها باید در خانه بمانند. هر کلمه و هر دستور پخت را پشت دیوار نگه می‌دارم!' },
     win: { en: 'The wall crumbles. Ideas fly free, and atlas page 5.2 lands in your hands!', es: 'El muro se derrumba. Las ideas vuelan libres, ¡y la página 5.2 del atlas cae en tus manos!', fa: 'دیوار فرو می‌ریزد. فکرها آزاد پرواز می‌کنند و صفحهٔ ۵.۲ اطلس به دستت می‌افتد!' },
     questions: [

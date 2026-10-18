@@ -4,7 +4,7 @@ A top-down geography RPG for **APA World Geography** (Alexandria City High Schoo
 
 **▶ Play:** https://gabrielelias22307.github.io/worldwalker/ (after GitHub Pages is turned on: Settings → Pages → Branch `main`, folder `/ (root)`)
 
-The Smudge tore the Great Atlas into 24 pages. In each episode the student walks a map of that region, talks to the people who live there (short grade-5 readings with tap-to-define words and a "Make it easier" button), does a quest for someone who needs help (find a secret spot, beat an Ink Thief, or make the right trade), solves the compass stone, beats the Smudge in a question trial drawn from the subunit's mastery-check bank, writes one reflection and turns in their work. The hero, five geography powers (the Five Themes), tools and stamps carry from episode to episode.
+The Grump tore the Great Atlas into 24 pages. In each episode the student walks a map of that region, talks to the people who live there (short grade-5 readings with tap-to-define words and a "Make it easier" button), does a quest for someone who needs help (find a secret spot, beat an Ink Thief, or make the right trade), solves the compass stone, beats the Grump in a question trial drawn from the subunit's mastery-check bank, writes one reflection and turns in their work. The hero, five geography powers (the Five Themes), tools and stamps carry from episode to episode.
 
 ## What is in this repo
 
@@ -44,7 +44,7 @@ The Smudge tore the Great Atlas into 24 pages. In each episode the student walks
 node tools/check.js          # every episode: map, places you can reach, 3 languages, questions
 node tools/build.js          # builds the Pages files, the Canvas files and the Canvas blocks
 node tests/play.js           # plays all 24 episodes start to finish in a real browser
-node tests/walk.js           # real keyboard walking, screen scrolling, Smudge hits, phone arrows
+node tests/walk.js           # real keyboard walking, screen scrolling, Grump hits, phone arrows
 node tests/maps.js           # draws every whole map to shots/maps/
 node tests/teacher.js        # the teacher console, its answer keys and the jump-to-part previews
 node tests/music.js          # renders every song to shots/music/ (sampler.wav is not made here)
@@ -53,6 +53,6 @@ node tests/look.js 6.1 7.3   # screenshots episodes after a few seconds: weather
 
 All characters and tiles are drawn in code, and the music is played by code too: the game uses no picture or sound files.
 
-**Music:** each realm has its own retro song, the Smudge trial has a fast song and winning a page plays a short jingle. Students can turn it off with the **Music** button (sound effects have their own **Sound** button).
+**Music:** each realm has its own retro song, the Grump trial has a fast song and winning a page plays a short jingle. Students can turn it off with the **Music** button (sound effects have their own **Sound** button).
 
 **Weather and time of day** are set per episode in `game/engine/fx.js` (`SKY`): monsoon rain in 6.1, snow in Siberia (3.2), heat and blowing sand in the deserts, cherry petals in 7.1, autumn leaves in 2.1, sunsets, and a night city with lit windows in 7.3. An episode file can override it with `weather: { sky: 'rain', time: 'sunset' }`. Students who turn on "reduce motion" on their device get a still world.

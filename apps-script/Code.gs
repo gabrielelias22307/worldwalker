@@ -1,12 +1,12 @@
 /**
- * WORLDWALKER — class Sheet save script (DRAFT, not yet tested in a real Sheet)
+ * WORLDWALKER — class Sheet save script (tested against a pretend Sheet by tests/sheet.js; try it once in your real Sheet)
  *
  * Set-up (Phase 0):
  *  1. Make a Google Sheet with tabs: Students, Log, Classes, Settings.
  *  2. Extensions > Apps Script, paste this file, save.
  *  3. In Settings put: A1 "teacherCode", B1 your code; A2 "salt", B2 any long random words.
  *  4. Deploy > New deployment > Web app. Execute as: Me. Who has access: Anyone.
- *  5. Copy the web app URL into engine/save.js (SHEET_URL).
+ *  5. Copy the web app URL into game/config.js (SHEET_URL), then run node tools/build.js.
  *
  * The game sends:
  *   GET  ?action=load&cls=GEO-3B&name=Ana&pin=1234            -> the student's saved hero
@@ -17,7 +17,7 @@
  */
 
 const STUDENT_COLS = ['key', 'cls', 'name', 'pinHash', 'look', 'loc', 'pla', 'hei', 'mov', 'reg',
-  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version'];
+  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent'];
 const LOG_COLS = ['time', 'cls', 'name', 'episode', 'stars', 'heartsLost', 'minutes', 'missed', 'reflection'];
 
 function doGet(e) {
@@ -71,24 +71,40 @@ function save_(b) {
   const sh = sheet_('Students', STUDENT_COLS);
   let row = findRow_(sh, key);
   const ph = hash_(b.pin);
+  let old = null;
   if (row) {
-    const old = rowToObj_(sh, row);
+    old = rowToObj_(sh, row);
     if (old.pinHash !== ph) return { ok: false, error: 'wrong secret number' };
   } else {
     row = sh.getLastRow() + 1;
   }
-  const s = b.state || {};
+  const s = Object.assign({}, b.state || {});
+  // never go backwards: keep the best of what is in the Sheet and what this computer sent
+  // (coins: the most ever earned minus the most ever spent, so spent coins never come back)
+  const n = v => Number(v) || 0;
+  if (old) {
+    ['loc', 'pla', 'hei', 'mov', 'reg', 'heartsMax'].forEach(k => (s[k] = Math.max(n(s[k]), n(old[k]))));
+    const spent = Math.max(n(s.spent), n(old.spent));
+    const earned = Math.max(n(s.coins) + n(s.spent), n(old.coins) + n(old.spent));
+    s.spent = spent; s.coins = Math.max(0, earned - spent);
+    const eps = safeJson_(old.episodes, {});
+    Object.keys(s.episodes || {}).forEach(id => {
+      const a = eps[id], c = s.episodes[id];
+      if (!a || (!a.done && c.done) || n(c.stars) > n(a.stars)) eps[id] = c;
+    });
+    s.episodes = eps;
+  }
   const rec = {
     key, cls: clean_(b.cls).toUpperCase(), name: clean_(b.name), pinHash: ph,
     look: JSON.stringify(s.look || {}),
     loc: s.loc || 0, pla: s.pla || 0, hei: s.hei || 0, mov: s.mov || 0, reg: s.reg || 0,
-    heartsMax: s.heartsMax || 3, coins: s.coins || 0,
+    heartsMax: s.heartsMax || 3, coins: s.coins || 0, spent: s.spent || 0,
     episodes: JSON.stringify(s.episodes || {}), tools: JSON.stringify(s.tools || []),
     passport: s.passport || '', lastPlayed: new Date(), version: s.version || 1
   };
   sh.getRange(row, 1, 1, STUDENT_COLS.length).setValues([STUDENT_COLS.map(c => rec[c])]);
 
-  if (b.log) { // one line per finished episode
+  if (b.log) { // one line per finished episode (saves after each goal send no log)
     const lg = sheet_('Log', LOG_COLS);
     const L = b.log;
     lg.appendRow([new Date(), rec.cls, rec.name, L.episode || '', L.stars || 0, L.heartsLost || 0,
@@ -104,6 +120,7 @@ function sheet_(name, cols) {
   let sh = ss.getSheetByName(name);
   if (!sh) sh = ss.insertSheet(name);
   if (sh.getLastRow() === 0) sh.appendRow(cols);
+  else if (sh.getLastColumn() < cols.length) sh.getRange(1, 1, 1, cols.length).setValues([cols]); // add new column titles to an older Sheet
   return sh;
 }
 function findRow_(sh, key) {

@@ -246,11 +246,23 @@
       '..kywwwrrwwwyk..', '..kywkwrrwkwyk..', '.kywwwwrrwwwwyk.', '.kywwwwnnwwwwyk.',
       '.kywwmwnnwmwwyk.', '..kywwwnnwwwyk..', '..kyywwwwwwyyk..', '...kyyyyyyyyk...',
       '....kkkkkkkk....', '................', '......zzzz......', '................'],
-    smudge: [
-      '................', '................', '................', '......kkkk......',
-      '....kkggggkk....', '...kggggggggk...', '..kgggggggggGk..', '..kgwwggggwwgk..',
-      '..kgwkggggwkgk..', '.kggggggggggggk.', '.kgggggrrrgggGk.', '.kggggggggggGGk.',
-      '..kgggGggGggGk..', '...kGk.kGk.kGk..', '....k...k...k...', '................'],
+    smudge: [ // the Grump: horns, angry brows, glowing eyes, jagged teeth
+      '................',
+      '...k........k...',
+      '..kGk......kGk..',
+      '..kGGkkkkkkGGk..',
+      '.kggggggggggggk.',
+      '.kgkggggggggkgk.',
+      '.kggkkggggkkggk.',
+      '.kggEeggggeEggk.',
+      '.kggeeggggeeggk.',
+      'kgggggggggggggGk',
+      'kggmtmtmtmtmggGk',
+      'kgggmmmmmmmgggGk',
+      '.kgggggggggggGk.',
+      '..kGkGkGGkGkGk..',
+      '...k.k.kk.k.k...',
+      '................'],
     heart: [
       '................', '................', '...kkk...kkk....', '..krrrk.krrrk...',
       '.krwrrrkrrrrrk..', '.krrrrrrrrrrrk..', '.krrrrrrrrrrrk..', '..krrrrrrrrrk...',
@@ -268,7 +280,7 @@
     r: P.red, n: '#2f6fd6', z: 'rgba(0,0,0,.22)', G: '#4b3f63', W: '#ffffff'
   };
   // tune smudge colors
-  const SMUDGE = { g: '#6d5f8c', G: '#4b3f63', w: '#ffffff', r: '#2b2140' };
+  const SMUDGE = { g: '#5b4a7c', G: '#3a2c55', w: '#ffffff', r: '#2b2140', e: '#ff3b2f', E: '#ffe08a', m: '#170c22', t: '#f4efe0' };
   const PAGE = { w: '#f3e3b5', g: '#5aa83b', b: '#2f7fd1', r: P.red, n: P.ink };
 
   function sprite(c, name, x, y, o = {}) {

@@ -1,4 +1,4 @@
-/* WORLDWALKER engine · the game itself: map, walking, screens, people, Smudges, flow */
+/* WORLDWALKER engine · the game itself: map, walking, screens, people, Grumplings, flow */
 (function () {
   const TS = 16, SW = 16, SH = 11; // tile size, screen width/height in tiles
   const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
@@ -13,14 +13,14 @@
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
     let t = ac.currentTime;
     (NOTES[name] || []).forEach(([f, d]) => {
       const o = ac.createOscillator(), g = ac.createGain();
-      o.type = name === 'hurt' || name === 'bad' ? 'sawtooth' : 'square'; o.frequency.value = f;
+      o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : 'square'; o.frequency.value = f;
       g.gain.setValueAtTime(.06, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
       o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d); t += d * .9;
     });
@@ -161,14 +161,15 @@
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
-    setTimeout(() => WW.toast('Pip: ' + WW.plain(WW.ep.boss.appear || { en: 'The Smudge is out! Find it.', es: '¡Salió el Borrón! Búscalo.', fa: 'لکه بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
+    setTimeout(() => WW.toast('Christopher: ' + WW.plain(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
   };
 
-  // the Smudge is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
+  // the Grump is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
   function bossBeaten() {
     const r = WW.run, ep = WW.ep;
     r.bossDone = true;
     WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
+    WW.sheetSync();
     ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
     WW.fx.lift();
     WW.music.play('win', 'realm' + ep.realm);
@@ -296,12 +297,16 @@
     const [psx, psy] = screenOf(player.x, player.y);
     ents.forEach(e => {
       if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
+      // every so often a Grumpling flies into a rage: it turns red and charges at the hero for a moment
+      if (!e.nextRage) e.nextRage = now + 4000 + Math.random() * 5000;
+      if (now > e.nextRage) { e.rageUntil = now + 1900; e.nextRage = now + 7000 + Math.random() * 5000; WW.sfx('growl'); shakeT = now; }
+      const rage = now < (e.rageUntil || 0);
       if (now < e.next) return;
-      e.next = now + (650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Smudges
+      e.next = now + (rage ? 260 : 650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Grumplings
       const dirs = Object.values(DIRS);
-      // drift a little toward the player, mostly random
+      // drift a little toward the player, mostly random (always toward the player in a rage)
       const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
-      const pick = Math.random() < .35 && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
+      const pick = (rage || Math.random() < .35) && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
       const nx = e.x + pick[0], ny = e.y + pick[1];
       const [hx, hy] = screenOf(nx, ny);
       if (hx !== e.home[0] || hy !== e.home[1]) return;
@@ -347,11 +352,22 @@
         c.fillStyle = '#22202e'; c.fillRect(px(e) + 2, py(e) + 10, 12, 6); c.fillStyle = '#9aa3ad'; c.fillRect(px(e) + 3, py(e) + 11, 10, 4); c.fillStyle = '#c3c8ce'; c.fillRect(px(e) + 3, py(e) + 11, 10, 1);
         WW.sprite(c, 'page', px(e) + 1, py(e) - 6, { bob: true, t });
       }
-      if (e.kind === 'smudge') { WW.shadow(c, px(e), py(e) + 13, 8); WW.sprite(c, 'smudge', px(e), py(e), { bob: true, t, phase: e.phase }); }
+      if (e.kind === 'smudge') {
+        const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
+        WW.shadow(c, px(e), py(e) + 13, 8);
+        if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
+        WW.sprite(c, 'smudge', px(e) + j, py(e), { bob: true, t, phase: e.phase, pal: rage ? { g: '#a8323a', G: '#6e1c24', e: '#fff070' } : null });
+      }
       if (e.kind === 'boss') {
-        const a = (Math.sin(t / 200) + 1) / 2;
-        c.fillStyle = `rgba(109,95,140,${.25 + a * .3})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 12 + a * 3, 0, 7); c.fill();
-        WW.sprite(c, 'smudge', px(e) - 8, py(e) - 16, { bob: true, t, scale: 2 });
+        const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;
+        // a dark, spiky cloud around the Grump
+        for (let k = 0; k < 10; k++) {
+          const ang = k / 10 * Math.PI * 2 + t / 900, rr = 13 + a * 3 + (k % 2) * 4 + (roar ? 4 : 0);
+          c.fillStyle = roar ? 'rgba(170,30,40,.55)' : `rgba(40,25,60,${.35 + a * .2})`;
+          c.beginPath(); c.arc(px(e) + 8 + Math.cos(ang) * rr * .55, py(e) + 4 + Math.sin(ang) * rr * .45, 5, 0, 7); c.fill();
+        }
+        const j = roar ? Math.round(Math.sin(t / 25) * 2) : 0;
+        WW.sprite(c, 'smudge', px(e) - 8 + j, py(e) - 16, { bob: true, t, scale: 2, pal: roar ? { g: '#7a2a40', e: '#fff070' } : null });
       }
     });
     c.restore();
@@ -380,6 +396,10 @@
       }
     }
     moveSmudges(now);
+    const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
+    if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
+      bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near
+    }
     // pip trails one tile behind
     if (pip.tx != null && !player.moving) { pip.x = pip.tx; pip.y = pip.ty; pip.tx = null; }
     // where to draw the hero inside the screen
@@ -409,6 +429,7 @@
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
+    if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
     c.restore();
   }
   /* the goal right now (for the Location power's arrow and for the dimness) */

@@ -254,3 +254,12 @@ ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
 .grow ul{list-style:none;padding:0;margin:4px 0 0}
 .grow li{font-size:14px;color:#8a8370;margin:2px 0}.grow li.on{color:#1f6a2e;font-weight:700}
 .hintbtn{font-size:14px!important}
+
+/* ---------- the Grump ---------- */
+.bossov .ov-box.roar{animation:roar .45s}
+@keyframes roar{0%{box-shadow:0 0 0 0 rgba(220,40,40,.0)}20%{transform:translate(-6px,2px);box-shadow:0 0 0 8px rgba(220,40,40,.55)}40%{transform:translate(6px,-2px)}60%{transform:translate(-4px,1px)}100%{transform:none;box-shadow:0 0 0 0 rgba(220,40,40,0)}}
+.bossface.furious{animation:fury .5s infinite;border-color:#b0392b}
+@keyframes fury{25%{transform:translate(-2px,0) rotate(-2deg)}75%{transform:translate(2px,0) rotate(2deg)}}
+.furious-tag{display:inline-block;background:#b0392b;color:#fff;font-size:12px;padding:2px 6px;border-radius:3px;animation:fury .5s infinite}
+.say.grr{color:#8a1c24;font-weight:700;font-style:italic}
+.screen:has(.ov:not(.hidden)) .toast{top:auto;bottom:10px} /* while a box is open, messages move to the bottom corner */

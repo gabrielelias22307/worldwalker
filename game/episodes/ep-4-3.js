@@ -9,9 +9,9 @@ window.EPISODE = {
   title: { en: 'Resources, Economy and Trade', es: 'Recursos, economía y comercio', fa: 'منابع، اقتصاد و تجارت' },
   place: { en: 'From the Mine to Durban', es: 'De la mina a Durban', fa: 'از معدن تا دوربان' },
   intro: [
-    { en: 'Pip: "The Smudge broke the trade chain in South Africa! Ore is stuck at the mine and ships wait at the port. Talk to the engineer, the bank worker and the crane driver. Then fix the compass stone."',
-      es: 'Pip: "¡El Borrón rompió la cadena de comercio en Sudáfrica! El mineral está atascado en la mina y los barcos esperan en el puerto. Habla con la ingeniera, el empleado del banco y la operadora de grúa. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «لکه زنجیر تجارت را در افریقای جنوبی شکست! سنگ معدنی در معدن مانده و کشتی‌ها در بندر انتظار می‌کشند. با انجنیر، کارمند بانک و راننده جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "The Grump broke the trade chain in South Africa! Ore is stuck at the mine and ships wait at the port. Talk to the engineer, the bank worker and the crane driver. Then fix the compass stone."',
+      es: 'Christopher: "¡El Gruñón rompió la cadena de comercio en Sudáfrica! El mineral está atascado en la mina y los barcos esperan en el puerto. Habla con la ingeniera, el empleado del banco y la operadora de grúa. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «غرغرو زنجیر تجارت را در افریقای جنوبی شکست! سنگ معدنی در معدن مانده و کشتی‌ها در بندر انتظار می‌کشند. با انجنیر، کارمند بانک و راننده جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Mine top-left, city bottom-left, railway across the top and down the east, port and ocean on the right. */
@@ -238,9 +238,9 @@ window.EPISODE = {
     type: 'order',
     stat: 'mov',
     title: { en: 'From the mine to your kitchen', es: 'De la mina a tu cocina', fa: 'از معدن تا آشپزخانهٔ تو' },
-    intro: { en: 'The Smudge scattered the trade chain! Chrome ore leaves a mine in South Africa and ends up far away. Tap the steps in the right order, from first to last.',
-      es: '¡El Borrón desarmó la cadena de comercio! El mineral de cromo sale de una mina en Sudáfrica y termina muy lejos. Toca los pasos en el orden correcto, del primero al último.',
-      fa: 'لکه زنجیر تجارت را پراگنده کرد! سنگ کروم از یک معدن در افریقای جنوبی بیرون می‌آید و به جای دور می‌رسد. قدم‌ها را به ترتیب درست، از اول تا آخر، لمس کن.' },
+    intro: { en: 'The Grump scattered the trade chain! Chrome ore leaves a mine in South Africa and ends up far away. Tap the steps in the right order, from first to last.',
+      es: '¡El Gruñón desarmó la cadena de comercio! El mineral de cromo sale de una mina en Sudáfrica y termina muy lejos. Toca los pasos en el orden correcto, del primero al último.',
+      fa: 'غرغرو زنجیر تجارت را پراگنده کرد! سنگ کروم از یک معدن در افریقای جنوبی بیرون می‌آید و به جای دور می‌رسد. قدم‌ها را به ترتیب درست، از اول تا آخر، لمس کن.' },
     items: [
       { icon: '⛏️', t: { en: 'Miners dig chrome ore from deep in the ground', es: 'Mineros sacan mineral de cromo de lo profundo de la tierra', fa: 'معدن‌کاران سنگ کروم را از عمق زمین بیرون می‌کنند' } },
       { icon: '🏭', t: { en: 'A processing plant crushes the rock and pulls out the ore', es: 'Una planta de procesamiento tritura la roca y saca el mineral', fa: 'یک کارخانهٔ پروسس سنگ را میده می‌کند و سنگ معدنی را جدا می‌کند' } },
@@ -260,8 +260,8 @@ window.EPISODE = {
     at: [21, 16],
     stat: 'hei',
     need: 3,
-    name: { en: 'The Rust Smudge', es: 'El Borrón de Óxido', fa: 'لکهٔ زنگ' },
-    appear: { en: 'The Rust Smudge is lurking by the warehouses near the port!', es: '¡El Borrón de Óxido acecha junto a las bodegas cerca del puerto!', fa: 'لکهٔ زنگ کنار گدام‌های نزدیک بندر کمین کرده است!' },
+    name: { en: 'The Rust Grump', es: 'El Gruñón de Óxido', fa: 'غرغروی زنگ' },
+    appear: { en: 'The Rust Grump is lurking by the warehouses near the port!', es: '¡El Gruñón de Óxido acecha junto a las bodegas cerca del puerto!', fa: 'غرغروی زنگ کنار گدام‌های نزدیک بندر کمین کرده است!' },
     taunt: { en: 'Creak! I rusted the trains and jammed the cranes. Who will carry the ore now?', es: '¡Crac! Oxidé los trenes y trabé las grúas. ¿Quién llevará el mineral ahora?', fa: 'غِژ! قطارها را زنگ زدم و جرثقیل‌ها را بند کردم. حالا کی سنگ معدنی را می‌برد؟' },
     win: { en: 'The rust flakes away. Atlas page 4.3 floats down into your hands!', es: 'El óxido se cae. ¡La página 4.3 del atlas cae en tus manos!', fa: 'زنگ ریخته می‌شود. صفحهٔ ۴.۳ اطلس به دستت می‌افتد!' },
     questions: [

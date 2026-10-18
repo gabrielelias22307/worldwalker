@@ -12,11 +12,11 @@ node tests/play.js 2.2            # plays it start to finish in a real browser, 
 
 ## What a student does in every episode
 
-1. Opening card (the `intro` lines, spoken by Pip).
+1. Opening card (the `intro` lines, spoken by Christopher).
 2. Walk the map. Talk to every person (`npcs`). Each person says 2–3 short `lines`, then asks one question (`ask`). A right answer adds to one of the five powers.
-3. Optional: read signs (`signs`), pick up 3 atlas scraps (`scraps`), avoid the Smudges (`smudges`).
+3. Optional: read signs (`signs`), pick up 3 atlas scraps (`scraps`), avoid the Grumplings (`smudges`).
 4. Walk into the glowing compass stone (`challenge`). It stays locked until every person has been talked to.
-5. Solving it calls out the Smudge (`boss`). Walk into it: a question trial. Each right answer cracks one piece of the cloud shield (`need`, normally 3). A wrong answer costs a heart, explains why, and the question comes back later.
+5. Solving it calls out the Grump (`boss`). Walk into it: a question trial. Each right answer cracks one piece of the cloud shield (`need`, normally 3). A wrong answer costs a heart, explains why, and the question comes back later.
 6. Finish screen: `learned` (3 lines), a `reflect` question with a sentence `starter`, save, Passport Code, turn in.
 
 Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
@@ -39,7 +39,7 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 |---|---|
 | `id`, `realm`, `sol` | `'2.2'`, `2`, `'WG.4'` |
 | `title`, `place` | short names |
-| `intro` | 1–2 lines from Pip: what the Smudge did here and what to do |
+| `intro` | 1–2 lines from Christopher: what the Grump did here and what to do |
 | `map` | rows of letters (legend below). Width a multiple of 16, height a multiple of 11. 32×22 = 2×2 screens is the normal size; 48×22 or 32×33 for bigger worlds |
 | `start` | `[x, y]` where the hero starts (walkable) |
 | `words` | `{ key: {en, es, fa} }` meanings for the yellow words |
@@ -65,7 +65,7 @@ A small side story that the student must finish before the compass stone opens. 
 2. The student finds the **contact** (a new person, blue **?**) and hears 2 `lines`. The last line is the clue or the instruction, and it is repeated if they come back.
 3. The student does the **action**:
    - `find`: walk onto a secret tile. The contact's clue must use real geography words (north/south/east/west, upstream, across the bridge, next to the market...). The spot twinkles a little once the quest reaches it.
-   - `fight`: an **Ink Thief** appears at `at`. Walking into it opens a short question duel: `need` (2) right answers out of 3–4 `questions` (same shape as the Smudge's questions). Misses do not count against the Smudge stars.
+   - `fight`: an **Ink Thief** appears at `at`. Walking into it opens a short question duel: `need` (2) right answers out of 3–4 `questions` (same shape as the Grump's questions). Misses do not count against the Grump stars.
    - `trade`: a **trader** (new person) asks `q` with 3 `choices`. Exactly one is `ok`; every choice has a `why`. The right one should make geographic sense (what this place has plenty of, what it needs).
 4. The student goes back to the giver, hears `thanks`, and gets +2 to the quest's `stat` and 10 coins.
 

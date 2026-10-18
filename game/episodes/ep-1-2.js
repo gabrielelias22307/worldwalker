@@ -9,16 +9,16 @@ window.EPISODE = {
   title: { en: 'Regional Tour', es: 'Gira por las regiones', fa: 'سفر به منطقه‌ها' },
   place: { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
   intro: [
-    { en: 'Pip: "Oh no! The Smudge ate every region line in Mapmaker\'s Valley. Now nobody knows where the Wheat Belt ends or what Hub Town is the center of. Talk to the farmer, the boat pilot and the ranger. Then fix the compass stone."',
-      es: 'Pip: "¡Oh, no! El Borrón se comió todas las líneas de las regiones del Valle del Cartógrafo. Ahora nadie sabe dónde termina el Cinturón del Trigo ni de qué es centro el Pueblo Centro. Habla con la agricultora, el piloto del bote y la guardabosques. Luego arregla la piedra de la brújula."',
-      fa: 'پیپ: «وای! لکه همهٔ خط‌های منطقه‌ها را در درهٔ نقشه‌کش خورد. حالا هیچ کس نمی‌داند کمربند گندم کجا تمام می‌شود یا شهرک مرکز، مرکزِ چه چیزی است. با دهقان، رانندهٔ کشتی و جنگلبان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'Christopher: "Oh no! The Grump ate every region line in Mapmaker\'s Valley. Now nobody knows where the Wheat Belt ends or what Hub Town is the center of. Talk to the farmer, the boat pilot and the ranger. Then fix the compass stone."',
+      es: 'Christopher: "¡Oh, no! El Gruñón se comió todas las líneas de las regiones del Valle del Cartógrafo. Ahora nadie sabe dónde termina el Cinturón del Trigo ni de qué es centro el Pueblo Centro. Habla con la agricultora, el piloto del bote y la guardabosques. Luego arregla la piedra de la brújula."',
+      fa: 'کریستوفر: «وای! غرغرو همهٔ خط‌های منطقه‌ها را در درهٔ نقشه‌کش خورد. حالا هیچ کس نمی‌داند کمربند گندم کجا تمام می‌شود یا شهرک مرکز، مرکزِ چه چیزی است. با دهقان، رانندهٔ کشتی و جنگلبان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
      NW: the Wheat Belt, every field is wheat (formal region).
      NE: Hub Town, where the streams join one river, with a market and a dock (functional region).
      SW: the Whispering Woods, thick in the corner and thin at the edges, so nobody agrees where they start (perceptual region).
-     SE: an open meadow by the river where the Smudge hides. */
+     SE: an open meadow by the river where the Grump hides. */
   map: [
     'TTTTTTTTTTTTTTTTTT~TTT~~TTTTTTTT',
     'T.RRR.wwwwwFwwww..~.T.~~.RRR.QQT',
@@ -234,9 +234,9 @@ window.EPISODE = {
     type: 'sort',
     stat: 'reg',
     title: { en: 'Which kind of region?', es: '¿Qué tipo de región?', fa: 'کدام نوع منطقه؟' },
-    intro: { en: 'The Smudge tore the labels off the valley\'s region maps. Put each card in the right group: [[formal region|formal]], [[functional region|functional]] or [[perceptual region|perceptual]].',
-      es: 'El Borrón arrancó las etiquetas de los mapas de regiones del valle. Pon cada tarjeta en el grupo correcto: [[formal region|formal]], [[functional region|funcional]] o [[perceptual region|perceptual]].',
-      fa: 'لکه برچسپ‌های نقشه‌های منطقه را کند. هر کارت را در گروه درست بگذار: [[formal region|رسمی]]، [[functional region|کارکردی]] یا [[perceptual region|ادراکی]].' },
+    intro: { en: 'The Grump tore the labels off the valley\'s region maps. Put each card in the right group: [[formal region|formal]], [[functional region|functional]] or [[perceptual region|perceptual]].',
+      es: 'El Gruñón arrancó las etiquetas de los mapas de regiones del valle. Pon cada tarjeta en el grupo correcto: [[formal region|formal]], [[functional region|funcional]] o [[perceptual region|perceptual]].',
+      fa: 'غرغرو برچسپ‌های نقشه‌های منطقه را کند. هر کارت را در گروه درست بگذار: [[formal region|رسمی]]، [[functional region|کارکردی]] یا [[perceptual region|ادراکی]].' },
     bins: [
       { id: 'formal', icon: '📏', label: { en: 'Formal region', es: 'Región formal', fa: 'منطقهٔ رسمی' }, sub: { en: 'one trait is true everywhere', es: 'una característica en todas partes', fa: 'یک ویژگی در همه جا درست است' } },
       { id: 'func', icon: '🎯', label: { en: 'Functional region', es: 'Región funcional', fa: 'منطقهٔ کارکردی' }, sub: { en: 'built around one hub', es: 'formada alrededor de un centro', fa: 'دور یک مرکز ساخته شده' } },
@@ -269,8 +269,8 @@ window.EPISODE = {
     at: [28, 16],
     stat: 'reg',
     need: 3,
-    name: { en: 'The Line-Eater Smudge', es: 'El Borrón Come-Líneas', fa: 'لکهٔ خط‌خور' },
-    appear: { en: 'The Line-Eater Smudge is hiding in the meadow east of the river!', es: '¡El Borrón Come-Líneas se esconde en el prado al este del río!', fa: 'لکهٔ خط‌خور در چمنزار شرق دریا پنهان است!' },
+    name: { en: 'The Line-Eater Grump', es: 'El Gruñón Come-Líneas', fa: 'غرغروی خط‌خور' },
+    appear: { en: 'The Line-Eater Grump is hiding in the meadow east of the river!', es: '¡El Gruñón Come-Líneas se esconde en el prado al este del río!', fa: 'غرغروی خط‌خور در چمنزار شرق دریا پنهان است!' },
     taunt: { en: 'Crunch, crunch! I ate every region line. Without lines, how will you know where anything ends?', es: '¡Ñam, ñam! Me comí todas las líneas de las regiones. Sin líneas, ¿cómo sabrás dónde termina algo?', fa: 'قرچ، قرچ! همهٔ خط‌های منطقه را خوردم. بدون خط، چطور می‌فهمی چیزی کجا تمام می‌شود؟' },
     win: { en: 'The region lines snap back onto the map. Atlas page 1.2 floats down into your hands!', es: 'Las líneas de las regiones vuelven al mapa. ¡La página 1.2 del atlas cae en tus manos!', fa: 'خط‌های منطقه دوباره روی نقشه برمی‌گردند. صفحهٔ ۱.۲ اطلس به دستت می‌افتد!' },
     questions: [
