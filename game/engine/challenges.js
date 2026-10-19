@@ -326,6 +326,7 @@
         for (let i = 0; i < need; i++) shield += `<span class="${i < need - broken ? 'on' : ''}${last === 'crack' && i === need - broken ? ' cracked' : ''}"></span>`;
         shield += `</div><div class="hearts">${'<span class="hrt">♥</span>'.repeat(WW.run.hearts)}${'<span class="hrt empty">♥</span>'.repeat(Math.max(0, WW.heartsMax() - WW.run.hearts))}</div></div>`;
         top.insertAdjacentHTML('beforeend', shield);
+        if (last === 'crack') top.insertAdjacentHTML('beforeend', '<span class="starshot">★</span>'); // a right answer throws a star at the Grump
         box.appendChild(top);
         if (broken >= need) {
           box.insertAdjacentHTML('beforeend', `<div class="fb right"><b>${esc(T('allRight'))}</b> ${WW.rich(boss.win || '')}</div>`);

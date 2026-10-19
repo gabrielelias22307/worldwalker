@@ -48,6 +48,7 @@ node tests/walk.js           # real keyboard walking, screen scrolling, Grump hi
 node tests/maps.js           # draws every whole map to shots/maps/
 node tests/teacher.js        # the teacher console, its answer keys and the jump-to-part previews
 node tests/music.js          # renders every song to shots/music/ (sampler.wav is not made here)
+node tests/stars.js          # Space throws stars: Grumplings, the Grump, coins, talking still works
 node tests/look.js 6.1 7.3   # screenshots episodes after a few seconds: weather, light, animals
 ```
 

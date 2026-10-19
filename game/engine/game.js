@@ -13,7 +13,7 @@
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
@@ -65,7 +65,7 @@
 
   /* ---------------- run state ---------------- */
   const G = WW.game = {};
-  let lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+  let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
   // add to a power and/or coins, say why, and announce a new power level when one unlocks
   WW.gain = (stat, n, coins, why, quiet) => {
@@ -124,7 +124,8 @@
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
-    ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
+    ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], hx: s[0], hy: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
+    stars = []; zapped = 0; toldShield = false;
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
@@ -220,7 +221,7 @@
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
-    const sm = ents.find(e => e.kind === 'smudge' && e.x === player.x && e.y === player.y);
+    const sm = ents.find(e => e.kind === 'smudge' && e.visible !== false && e.x === player.x && e.y === player.y);
     if (sm) touchSmudge(sm);
   }
   function touchSmudge(sm) {
@@ -250,7 +251,54 @@
   function actFacing() {
     const [dx, dy] = DIRS[player.dir];
     const e = entAt(player.x + dx, player.y + dy);
-    if (e) interact(e);
+    if (e && e.kind !== 'smudge' && e.kind !== 'boss') interact(e);
+    else throwStar();
+  }
+
+  /* ---------------- throwing stars (Space): they knock out Grumplings and sting the Grump ---------------- */
+  function throwStar() {
+    const now = performance.now();
+    if (WW.paused || trans || now - lastShot < 280) return;
+    lastShot = now;
+    const [dx, dy] = DIRS[player.dir];
+    stars.push({ x: player.x * TS + 8, y: player.y * TS + 6, dx, dy, dist: 0, born: now });
+    WW.sfx('zap');
+  }
+  function moveStars(dt) {
+    const SPEED = 0.16, RANGE = 7 * TS;
+    stars = stars.filter(s => {
+      const step = SPEED * dt; s.x += s.dx * step; s.y += s.dy * step; s.dist += step;
+      if (s.dist > RANGE) return false;
+      const tx = Math.floor(s.x / TS), ty = Math.floor(s.y / TS);
+      if (WW.solid(tileAt(tx, ty))) { WW.fx.burst(tx - s.dx * 0.4, ty - s.dy * 0.4, 'dust'); return false; }
+      const hit = ents.find(e => (e.kind === 'smudge' || e.kind === 'boss') && !e.gone && e.visible !== false && !(e.stunUntil > performance.now()) &&
+        Math.abs(e.x * TS + 8 - s.x) < 11 && Math.abs(e.y * TS + (e.kind === 'boss' ? 0 : 8) - s.y) < (e.kind === 'boss' ? 16 : 11));
+      if (!hit) return true;
+      if (hit.kind === 'smudge') { // knocked out for a while, then it floats back
+        hit.stunUntil = performance.now() + 9000; hit.visible = false;
+        WW.fx.burst(hit.x, hit.y, 'poof'); WW.sfx('pop');
+        if (zapped < 5) { zapped++; WW.gain(null, 0, 1, '', true); WW.toast('★ +1 ●', '#c08a1e'); }
+      } else { // the Grump: it stings, but only right answers break its cloud shield
+        hit.roarT = performance.now(); shakeT = performance.now(); WW.sfx('growl'); WW.fx.burst(hit.x, hit.y, 'gold');
+        if (!toldShield) { toldShield = true; WW.toast(WW.esc(T('starShield')), '#4b3f63'); }
+      }
+      return false;
+    });
+    ents.forEach(e => { if (e.kind === 'smudge' && e.stunUntil && performance.now() > e.stunUntil) { e.stunUntil = 0; e.visible = true; e.x = e.hx; e.y = e.hy; WW.fx.burst(e.x, e.y, 'purple'); } });
+  }
+  function drawStars(c, sx, sy, now) {
+    stars.forEach(s => {
+      const x = s.x - sx * SW * TS, y = s.y - sy * SH * TS, a = (now - s.born) / 60;
+      c.fillStyle = 'rgba(255,240,150,.35)'; c.fillRect(Math.round(x - s.dx * 6) - 1, Math.round(y - s.dy * 6) - 1, 3, 3); // a little trail
+      c.save(); c.translate(Math.round(x), Math.round(y)); c.rotate(a);
+      c.fillStyle = '#22202e'; star(c, 5.5); c.fillStyle = '#f2c14e'; star(c, 4); c.fillStyle = '#fff6c8'; c.fillRect(-1, -1, 2, 2);
+      c.restore();
+    });
+  }
+  function star(c, r) {
+    c.beginPath();
+    for (let i = 0; i < 10; i++) { const rr = i % 2 ? r * 0.45 : r, ang = i * Math.PI / 5 - Math.PI / 2; c.lineTo(Math.cos(ang) * rr, Math.sin(ang) * rr); }
+    c.closePath(); c.fill();
   }
 
   function bindInput() {
@@ -296,7 +344,7 @@
     if (WW.paused || trans || G.noSmudges) return;
     const [psx, psy] = screenOf(player.x, player.y);
     ents.forEach(e => {
-      if (e.kind !== 'smudge' || e.home[0] !== psx || e.home[1] !== psy) return;
+      if (e.kind !== 'smudge' || e.visible === false || e.home[0] !== psx || e.home[1] !== psy) return;
       // every so often a Grumpling flies into a rage: it turns red and charges at the hero for a moment
       if (!e.nextRage) e.nextRage = now + 4000 + Math.random() * 5000;
       if (now > e.nextRage) { e.rageUntil = now + 1900; e.nextRage = now + 7000 + Math.random() * 5000; WW.sfx('growl'); shakeT = now; }
@@ -396,6 +444,7 @@
       }
     }
     moveSmudges(now);
+    if (!WW.paused) moveStars(dt);
     const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
     if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
       bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near
@@ -426,6 +475,7 @@
       if (psx === sx && psy === sy) WW.shadow(c, (pip.x - sx * SW) * TS, (pip.y - sy * SH) * TS + 13, 6);
       if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
+      drawStars(c, sx, sy, now);
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
@@ -484,11 +534,13 @@
     bumpInto(x, y) { // stand next to (x,y) on a walkable tile and interact
       for (const [d, [dx, dy]] of Object.entries(DIRS)) {
         const sx = x - dx, sy = y - dy;
-        if (walkable(sx, sy)) { this.teleport(sx, sy); player.dir = d; actFacing(); return true; }
+        if (walkable(sx, sy)) { this.teleport(sx, sy); player.dir = d; interact(entAt(x, y)); return true; }
       }
       return false;
     },
     standOn(x, y) { this.teleport(x, y); pickup(); },
+    fire() { lastShot = 0; throwStar(); },
+    get stars() { return stars; },
     get goal() { return G.goal(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
