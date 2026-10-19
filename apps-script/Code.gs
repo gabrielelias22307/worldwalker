@@ -17,7 +17,7 @@
  */
 
 const STUDENT_COLS = ['key', 'cls', 'name', 'pinHash', 'look', 'loc', 'pla', 'hei', 'mov', 'reg',
-  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent'];
+  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent', 'bag', 'built', 'metChris'];
 const LOG_COLS = ['time', 'cls', 'name', 'episode', 'stars', 'heartsLost', 'minutes', 'missed', 'reflection'];
 
 function doGet(e) {
@@ -62,6 +62,9 @@ function load_(cls, name, pin) {
   rec.episodes = safeJson_(rec.episodes, {});
   rec.tools = safeJson_(rec.tools, []);
   rec.look = safeJson_(rec.look, {});
+  rec.bag = safeJson_(rec.bag, {});
+  rec.built = safeJson_(rec.built, {});
+  rec.metChris = rec.metChris === true || rec.metChris === 'TRUE' || rec.metChris === 'true';
   return { ok: true, found: true, state: rec };
 }
 
@@ -93,6 +96,17 @@ function save_(b) {
       if (!a || (!a.done && c.done) || n(c.stars) > n(a.stars)) eps[id] = c;
     });
     s.episodes = eps;
+    // the bag: the most ever got and the most ever used (wood spent on a bridge never comes back); things built stay built
+    const bag = safeJson_(old.bag, {});
+    Object.keys(s.bag || {}).forEach(k => {
+      const a = bag[k] || {}, c = s.bag[k] || {};
+      bag[k] = { got: Math.max(n(a.got), n(c.got)), used: Math.max(n(a.used), n(c.used)) };
+    });
+    s.bag = bag;
+    const built = safeJson_(old.built, {});
+    Object.keys(s.built || {}).forEach(id => { built[id] = Array.from(new Set([].concat(built[id] || [], s.built[id] || []))); });
+    s.built = built;
+    s.metChris = !!s.metChris || old.metChris === true || old.metChris === 'TRUE';
   }
   const rec = {
     key, cls: clean_(b.cls).toUpperCase(), name: clean_(b.name), pinHash: ph,
@@ -100,7 +114,8 @@ function save_(b) {
     loc: s.loc || 0, pla: s.pla || 0, hei: s.hei || 0, mov: s.mov || 0, reg: s.reg || 0,
     heartsMax: s.heartsMax || 3, coins: s.coins || 0, spent: s.spent || 0,
     episodes: JSON.stringify(s.episodes || {}), tools: JSON.stringify(s.tools || []),
-    passport: s.passport || '', lastPlayed: new Date(), version: s.version || 1
+    passport: s.passport || '', lastPlayed: new Date(), version: s.version || 1,
+    bag: JSON.stringify(s.bag || {}), built: JSON.stringify(s.built || {}), metChris: !!s.metChris
   };
   sh.getRange(row, 1, 1, STUDENT_COLS.length).setValues([STUDENT_COLS.map(c => rec[c])]);
 

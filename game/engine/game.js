@@ -13,7 +13,7 @@
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
@@ -33,7 +33,7 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest"></div>
@@ -51,6 +51,7 @@
       </div>`;
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
+    $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
     $('ww-b-pad').onclick = () => root.classList.toggle('touch');
@@ -94,14 +95,24 @@
   };
 
   function screenOf(x, y) { return [Math.floor(x / SW), Math.floor(y / SH)]; }
+  // for christopher.js and tools.js: the map and the things on it
+  G.tileAt = (x, y) => tileAt(x, y);
+  G.setTile = (x, y, ch) => { map[y] = map[y].slice(0, x) + ch + map[y].slice(x + 1); };
+  G.entAt = (x, y) => entAt(x, y);
+  G.walkable = (x, y) => walkable(x, y);
+  G.screenOf = screenOf;
+  G.shake = () => { if (!WW.calm) shakeT = performance.now(); };
+  G.interact = e => interact(e);
+  Object.defineProperties(G, { player: { get: () => player }, pip: { get: () => pip }, ents: { get: () => ents }, size: { get: () => [W, H] } });
   function tileAt(x, y) { return (map[y] || '')[x]; }
   function entAt(x, y) { return ents.find(e => e.x === x && e.y === y && !e.gone && e.visible !== false); }
   function walkable(x, y) {
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y))) return false;
     const e = entAt(x, y);
-    return !e || e.kind === 'scrap' || e.kind === 'smudge' || e.kind === 'qspot' || e.kind === 'atlas';
+    return !e || PASS.includes(e.kind);
   }
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -134,21 +145,27 @@
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
+    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep);
     WW.ui.hud(); WW.ui.quest();
     WW.setLang(WW.lang);
     bindInput();
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
     WW.music.play('realm' + ep.realm);
-    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); }));
+    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
   };
+  // the first time a hero plays an episode with christopher.meet, he flies in and says who he is
+  function meetChris() {
+    const m = WW.ep.christopher && WW.ep.christopher.meet;
+    if (m && !WW.save.metChris) WW.chris.meet(m);
+  }
 
   function previewJump(where) {
     const ep = WW.ep, r = WW.run;
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -162,7 +179,7 @@
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
-    setTimeout(() => WW.toast('Christopher: ' + WW.plain(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), '#4b3f63'), 600);
+    setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), 600);
   };
 
   // the Grump is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
@@ -241,18 +258,22 @@
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e.kind)) { interact(e); held = null; return; }
-    if (!walkable(nx, ny)) return;
+    if (e && e.kind === 'post') return;
+    if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
+    if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
     player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
     if (sx !== tx || sy !== ty) { trans = { from: [sx, sy], to: [tx, ty], t0: now, d: [dx, dy] }; }
   }
   function actFacing() {
-    const [dx, dy] = DIRS[player.dir];
-    const e = entAt(player.x + dx, player.y + dy);
-    if (e && e.kind !== 'smudge' && e.kind !== 'boss') interact(e);
-    else throwStar();
+    if (WW.paused) return;
+    const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
+    const e = entAt(tx, ty);
+    if (e && e.kind === 'post') return WW.tools.post(e);
+    if (e && !PASS.includes(e.kind) && e.kind !== 'boss') return interact(e);
+    if (WW.tools.on() && WW.tools.act(tx, ty, e)) return; // the axe, sickle, seeds or a signpost
+    throwStar();
   }
 
   /* ---------------- throwing stars (Space): they knock out Grumplings and sting the Grump ---------------- */
@@ -285,7 +306,7 @@
         if (zapped < 5) { zapped++; WW.gain(null, 0, 1, '', true); WW.toast('★ +1 ●', '#c08a1e'); }
       } else { // the Grump: it stings, but only right answers break its cloud shield
         hit.roarT = performance.now(); shakeT = performance.now(); WW.sfx('growl'); WW.fx.burst(hit.x, hit.y, 'gold');
-        if (!toldShield) { toldShield = true; WW.toast(WW.esc(T('starShield')), '#4b3f63'); }
+        if (!toldShield) { toldShield = true; WW.chris.say(T('starShield')); }
       }
       return false;
     });
@@ -311,9 +332,12 @@
     window.addEventListener('keydown', e => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
-      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); return; }
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
       WW.audioInit();
+      if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
+      if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
       if (WW.paused) return;
+      if (/^[1-5]$/.test(e.key)) { WW.tools.pick(['star', 'axe', 'sickle', 'seed', 'sign'][+e.key - 1]); return; }
       if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
       else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
@@ -338,7 +362,7 @@
       if (!dx && !dy) return;
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
-      if (e2 && !['scrap', 'smudge', 'qspot', 'atlas'].includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
+      if (e2 && !PASS.includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
       clickTarget = [tx, ty];
     });
   }
@@ -388,11 +412,13 @@
       const gx = sx * SW + x, gy = sy * SH + y, ch = tileAt(gx, gy);
       (WW.tiles[ch] || WW.tiles['.'])(c, x * TS, y * TS, gx, gy, t, map);
     }
+    WW.tools.under(c, sx, sy);
     const inScreen = e => { const [ex, ey] = screenOf(e.x, e.y); return ex === sx && ey === sy; };
     const px = e => (e.x - sx * SW) * TS, py = e => (e.y - sy * SH) * TS;
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, t, phase: e.id });
+      if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
       if (e.kind === 'stone') {
         const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
         if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
@@ -459,6 +485,7 @@
     }
     moveSmudges(now);
     if (!WW.paused) moveStars(dt);
+    WW.tools.tick(now);
     const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
     if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
       bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near
@@ -484,15 +511,21 @@
       if (p >= 1) trans = null;
     } else {
       drawScreen(c, sx, sy, 0, 0, now);
-      // pip
+      // Christopher (he flies in when you first meet him)
       const [psx, psy] = screenOf(pip.x, pip.y);
-      if (psx === sx && psy === sy) WW.shadow(c, (pip.x - sx * SW) * TS, (pip.y - sy * SH) * TS + 13, 6);
-      if (psx === sx && psy === sy) WW.sprite(c, 'pip', (pip.x - sx * SW) * TS + 2, (pip.y - sy * SH) * TS - 4, { bob: true, t: now, phase: 1 });
+      if (psx === sx && psy === sy) {
+        let cx = (pip.x - sx * SW) * TS + 1, cy = (pip.y - sy * SH) * TS - 5;
+        if (pip.x === player.x && pip.y === player.y) { cx -= 13; cy -= 7; } // same tile as the hero: float beside, not behind
+        if (pip.fly && !WW.calm) { const q = Math.min(1, (now - pip.fly.t0) / 900), e = 1 - (1 - q) ** 3; cx = pip.fly.from[0] + (cx - pip.fly.from[0]) * e; cy = pip.fly.from[1] + (cy - pip.fly.from[1]) * e; }
+        pip.dx = cx; pip.dy = cy;
+        WW.chris.draw(c, Math.round(cx), Math.round(cy), now);
+      }
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
       drawStars(c, sx, sy, now);
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
+    WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
     if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
     c.restore();
   }
@@ -522,9 +555,11 @@
     c.fillStyle = col; c.beginPath(); c.moveTo(ax + ux * 5, ay + uy * 5); c.lineTo(ax + px * 3.4 - ux, ay + py * 3.4 - uy); c.lineTo(ax - px * 3.4 - ux, ay - py * 3.4 - uy); c.fill();
   }
   function drawArrows(c, sx, sy, hx, hy, now) {
-    if (WW.paused || !WW.tier('loc')) return;
+    const way = G.wayUntil && now < G.wayUntil;
+    if (WW.paused || (!WW.tier('loc') && !way)) return;
     const cx = hx + 8, cy = hy + 6, pos = p => [(p[0] - sx * SW) * TS + 8, (p[1] - sy * SH) * TS + 8];
-    const g = G.goal();
+    if (way && now - (G.wayT || 0) > 400) { G.wayT = now; G.wayAt = WW.chris.nextStep().at; }
+    const g = way ? G.wayAt : G.goal();
     if (g) { const [tx, ty] = pos(g); arrow(c, cx, cy, tx, ty + Math.sin(now / 200) * 1.5, '#f2c14e', 15); }
     if (WW.tier('loc') >= 2) {
       const left = ents.filter(e => e.kind === 'scrap' && !e.gone);
@@ -553,11 +588,19 @@
       return false;
     },
     standOn(x, y) { this.teleport(x, y); pickup(); },
+    faceFrom(x, y, avoid) { // stand next to (x,y) facing it, without touching it (avoid: tiles not to stand on)
+      for (const [d, [dx, dy]] of Object.entries(DIRS)) {
+        const sx = x - dx, sy = y - dy;
+        if (walkable(sx, sy) && !(avoid || []).some(p => p[0] === sx && p[1] === sy)) { this.teleport(sx, sy); player.dir = d; return true; }
+      }
+      return false;
+    },
     fire() { lastShot = 0; throwStar(); },
     get stars() { return stars; },
     get goal() { return G.goal(); },
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
-    noSmudges() { G.noSmudges = true; }
+    noSmudges() { G.noSmudges = true; },
+    use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); }
   };
 })();

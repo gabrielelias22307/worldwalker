@@ -277,3 +277,34 @@ ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
 /* ---------- vivid colors: one dial for the whole game picture (map, people, faces, banner) ---------- */
 :root{--vivid:saturate(1.45) brightness(1.07) contrast(1.05)}
 canvas{filter:var(--vivid)}
+/* Christopher's speech bubble on the map */
+.cbubble{display:none;position:absolute;z-index:4;max-width:min(330px,80%);background:var(--paper);color:var(--ink);border:3px solid var(--ink);border-radius:8px;padding:7px 10px 8px;font-size:15px;line-height:1.35;box-shadow:0 3px 0 rgba(0,0,0,.35);cursor:pointer;animation:pop .18s ease-out}
+.cbubble::after{content:'';position:absolute;left:calc(50% - 7px);bottom:-10px;border:7px solid transparent;border-top-color:var(--ink);border-bottom:0}
+.cbubble.below::after{bottom:auto;top:-10px;border:7px solid transparent;border-bottom-color:var(--ink);border-top:0}
+.cbubble.meet{outline:3px solid var(--gold)}
+.cbubble .cb-name{font-weight:700;font-size:12px;color:#7a3b12;margin-bottom:2px}
+.cbubble .cb-acts{display:flex;flex-wrap:wrap;gap:6px;margin-top:7px}
+.cbubble .cb-acts .pbtn{font-size:13px;padding:4px 9px;min-height:30px}
+.cbubble[dir=rtl]{text-align:right}
+.ov .chrisjob,.pp-chris{background:#fff3c4;border:2px solid #e3c25b;border-radius:6px;padding:6px 9px}
+.pp-chris{display:flex;gap:8px;align-items:flex-start;margin:10px 0;font-size:14px}
+/* the tool bar under the map */
+.toolbar{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:6px 0 0;padding:6px;background:var(--panel);border:3px solid #000;border-radius:6px}
+.toolbar .tslot{position:relative;width:46px;height:46px;padding:0;display:grid;place-items:center;background:var(--panel2);border:3px solid #000;border-radius:6px;cursor:pointer}
+.toolbar .tslot canvas{width:32px;height:32px;image-rendering:pixelated}
+.toolbar .tslot.on{background:#5a4f9c;outline:3px solid var(--gold)}
+.toolbar .tslot i{position:absolute;left:3px;top:1px;font-style:normal;font-size:11px;color:#fff3b0;font-weight:700}
+.toolbar .tslot b{position:absolute;right:3px;bottom:1px;font-size:12px;color:#fff;text-shadow:0 1px 0 #000}
+.toolbar .tbag{display:flex;gap:10px;margin-inline-start:auto;color:#fff;font-weight:700}
+.toolbar .tbag span{display:flex;align-items:center;gap:3px}
+.toolbar .tbag canvas{width:24px;height:24px;image-rendering:pixelated}
+.toolbar .tcarry{flex-basis:100%;color:var(--text);font-size:14px;background:#2f2a55;border-radius:4px;padding:5px 8px}
+.toolbar .tcarry small{color:var(--muted)}
+.flyicon{position:fixed;z-index:50;width:24px;height:24px;pointer-events:none;image-rendering:pixelated;transition:left .6s ease-in,top .6s ease-in,opacity .6s ease-in}
+.ov .signlist{margin:6px 0;padding-inline-start:22px;font-size:16px;line-height:1.6}
+@media (prefers-reduced-motion:reduce){.cbubble{animation:none}.flyicon{display:none}}
+.gridlabs{position:absolute;inset:0;pointer-events:none;z-index:3}
+.gridlabs .gl{position:absolute;background:rgba(34,32,46,.85);color:#fff3b0;font-weight:700;font-size:13px;line-height:1;padding:3px 5px;border-radius:3px;white-space:nowrap}
+.gridlabs .gl.col{transform:translate(-50%,-100%)}
+.gridlabs .gl.row{transform:translate(-100%,-50%)}
+.ctag{display:none;position:absolute;z-index:4;transform:translateX(-50%);background:var(--ink);color:var(--gold);font-weight:700;font-size:13px;padding:2px 7px;border-radius:3px;pointer-events:none}

@@ -1,0 +1,349 @@
+/* WORLDWALKER engine · the tool bar and building (an episode turns it on with tools: ['axe', 'sickle'])
+   1 ★ stars · 2 axe (small trees and bushes -> wood) · 3 sickle (tall grass -> fiber, sometimes a seed or a coin; ripe crops -> coins)
+   4 seeds (plant on farm soil) · 5 signposts (while you carry them). Space uses the tool on the tile you face.
+   Chopped trees and cut grass grow back. Border trees never get cut.
+   build: [...] in the episode lists what can be built (see docs/EPISODE-FORMAT.md): kind 'repair' (fix a broken thing with wood)
+   or kind 'signpost' (put a sign where its directions point; a wrong spot explains why, and you can pick the sign up again). */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  const $ = id => document.getElementById(id);
+  const X = WW.tools = {};
+  const G = () => WW.game;
+  // what the axe and sickle work on: tile -> [what it gives, how many, what is left, seconds to grow back]
+  const CHOP = { T: ['wood', 2, '%', 180], P: ['wood', 2, '%', 180], a: ['wood', 2, '%', 180], Y: ['wood', 1, '.', 150] };
+  const CUT = { '"': ['fiber', 1, '.', 60] };
+  const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign'];
+  let sel = 'star', regrow = [], told = {}, bar = null;
+
+  X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
+
+  /* ---------------- the bag (saved with the hero: got and used, like coins, so spent wood never comes back) ---------------- */
+  X.have = item => { const b = (WW.save.bag || {})[item]; return b ? (b.got || 0) - (b.used || 0) : 0; };
+  X.add = (item, n) => {
+    const s = WW.save; s.bag = s.bag || {}; const b = (s.bag[item] = s.bag[item] || { got: 0, used: 0 }); b.got += n; WW.store(); X.render();
+  };
+  X.use = (item, n) => { if (X.have(item) < n) return false; const b = WW.save.bag[item]; b.used += n; WW.store(); X.render(); return true; };
+  const costText = cost => Object.entries(cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ');
+  const missing = cost => Object.entries(cost).filter(([k, n]) => X.have(k) < n);
+  const howGet = k => T('how_' + k);
+
+  /* ---------------- set up an episode ---------------- */
+  X.setup = (ep) => {
+    regrow = []; told = {}; sel = 'star';
+    // things already built in an earlier play stay built
+    const built = ((WW.save.built || {})[ep.id]) || [];
+    (ep.build || []).filter(b => b.kind === 'repair' && built.includes(b.id)).forEach(b => b.at.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+    const old = $('ww-tools'); if (old) old.remove();
+    bar = null;
+    if (!X.on()) return;
+    bar = document.createElement('div'); bar.className = 'toolbar'; bar.id = 'ww-tools';
+    $('ww-screen').insertAdjacentElement('afterend', bar);
+    X.render();
+  };
+  // the icons' own colors (kept apart from the hero's palette)
+  const TPAL = { S: '#c3c8ce', b: '#8b5a2b', B: '#6d4424', o: '#c79a5b', O: '#7a5a34', g: '#3f8a2e', G: '#2a6320' };
+  const ICON = { star: 'starIcon', axe: 'axe', sickle: 'sickle', seed: 'seedIcon', sign: 'signIcon', wood: 'wood', fiber: 'fiber' };
+  X.render = () => {
+    if (!bar) return;
+    const r = WW.run || {}, signs = (r.signs || []).filter(s => !s.placed).length;
+    bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
+    SLOTS.forEach((k, i) => {
+      if (k === 'sign' && !signs) return;
+      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T('tool_' + k)}`;
+      b.setAttribute('aria-label', T('tool_' + k));
+      b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
+      const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
+      b.insertAdjacentHTML('beforeend', `<i>${i + 1}</i>${n != null ? `<b>${n}</b>` : ''}`);
+      b.onclick = () => { X.pick(k); WW.audioInit(); $('ww-screen').focus(); };
+      bar.appendChild(b);
+    });
+    const bag = document.createElement('div'); bag.className = 'tbag';
+    ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
+    bar.appendChild(bag);
+    const held = X.heldSign();
+    if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">🪧 <b>${esc(T('sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
+  };
+  X.pick = k => {
+    if (!X.on()) return;
+    if (k === 'sign') {
+      const r = WW.run; if (!(r.signs || []).some(s => !s.placed)) return;
+      if (sel === 'sign') { // pressing 5 again: hold the next signpost
+        const left = r.signs.filter(s => !s.placed); const i = left.indexOf(X.heldSign().s); r.holding = left[(i + 1) % left.length].id;
+      }
+    }
+    sel = k; WW.sfx('blip'); X.render();
+  };
+  X.selected = () => sel;
+
+  /* ---------------- using the selected tool on the tile you face ---------------- */
+  X.act = (x, y, e) => {
+    const g = G(), ch = g.tileAt(x, y), [W, H] = g.size, border = x <= 0 || y <= 0 || x >= W - 1 || y >= H - 1;
+    if (sel === 'star') return false; // the game throws a star
+    if (sel === 'axe') {
+      const c = CHOP[ch];
+      if (!c) return hint('axeWhat');
+      if (border || (WW.ep.keep || []).some(p => p[0] === x && p[1] === y)) return hint('borderTree', true);
+      return harvest(x, y, ch, c, 'chips');
+    }
+    if (sel === 'sickle') {
+      const crop = g.ents.find(o => o.kind === 'crop' && !o.gone && o.x === x && o.y === y);
+      if (crop) return reap(crop);
+      const c = CUT[ch];
+      if (!c) return hint('sickleWhat');
+      return harvest(x, y, ch, c, 'leaves');
+    }
+    if (sel === 'seed') return plant(x, y, e);
+    if (sel === 'sign') return place(x, y, e);
+    return false;
+  };
+  function hint(key, always) { if (always || !told[key]) { told[key] = 1; WW.chris.say(T(key)); } WW.sfx('bad'); return true; }
+  function harvest(x, y, ch, [item, n, left, secs], burst) {
+    const g = G();
+    g.setTile(x, y, left);
+    regrow.push({ x, y, ch, at: performance.now() + secs * 1000 });
+    X.add(item, n);
+    let extra = '';
+    if (item === 'fiber') { // tall grass sometimes hides a seed or a coin
+      const r = Math.random();
+      if (r < 0.25) { X.add('seed', 1); extra = ' · +1 ' + T('item_seed'); }
+      else if (r < 0.35) { WW.gain(null, 0, 1, T('item_fiber'), true); extra = ' · +1 ●'; }
+    }
+    g.shake(); WW.sfx(item === 'wood' ? 'chop' : 'cut');
+    WW.fx.burst(x, y, burst);
+    fly(x, y, item);
+    WW.toast(`+${n} ${esc(T('item_' + item))}${esc(extra)}`, item === 'wood' ? '#8b5a2b' : '#3f8a2e');
+    return true;
+  }
+  // the thing you got flies to the bag
+  function fly(x, y, item) {
+    if (WW.calm || !bar) return;
+    const cv = $('ww-cv'), g = G(), [sx, sy] = g.screenOf(g.player.x, g.player.y), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const target = bar.querySelector('.tbag') || bar; const tr = target.getBoundingClientRect();
+    const ic = WW.spriteCanvas(ICON[item] || 'wood', TPAL, 2); ic.className = 'flyicon';
+    ic.style.left = (cr.left + ((x - sx * 16) * 16) * k) + 'px'; ic.style.top = (cr.top + ((y - sy * 11) * 16) * k) + 'px';
+    document.body.appendChild(ic);
+    requestAnimationFrame(() => { ic.style.left = (tr.left + 6) + 'px'; ic.style.top = (tr.top + 2) + 'px'; ic.style.opacity = '0.2'; });
+    setTimeout(() => ic.remove(), 700);
+  }
+
+  /* seeds: plant them on farm soil, harvest the ripe crop with the sickle for coins */
+  function plant(x, y, e) {
+    const g = G();
+    if (X.have('seed') < 1) return hint('noSeeds', true);
+    if (g.tileAt(x, y) !== 'o' || (e && e.kind === 'crop')) return hint('needSoil', true);
+    X.use('seed', 1);
+    g.ents.push({ kind: 'crop', x, y, t0: performance.now() });
+    WW.sfx('blip'); WW.fx.burst(x, y, 'dust'); WW.toast(esc(T('planted')), '#3f8a2e');
+    return true;
+  }
+  const GROW = 45000; // a crop is ripe after 45 seconds
+  const stage = o => Math.min(2, Math.floor((performance.now() - o.t0) / (GROW / 2)));
+  function reap(o) {
+    if (stage(o) < 2) return hint('notRipe', true);
+    o.gone = true;
+    const back = Math.random() < 0.5;
+    if (back) X.add('seed', 1);
+    WW.gain(null, 0, 3, T('why_harvest'), true);
+    WW.sfx('coin'); WW.fx.burst(o.x, o.y, 'gold'); G().shake();
+    WW.toast(`+3 ● ${esc(T('why_harvest'))}${back ? ' · +1 ' + esc(T('item_seed')) : ''}`, '#c08a1e');
+    return true;
+  }
+
+  /* grow back after a while (never while you stand there) */
+  X.tick = (now) => {
+    const g = G(); if (!g.player) return;
+    regrow = regrow.filter(r => {
+      if (now < r.at) return true;
+      if ((g.player.x === r.x && g.player.y === r.y) || g.entAt(r.x, r.y)) { r.at = now + 3000; return true; }
+      g.setTile(r.x, r.y, r.ch); WW.fx.burst(r.x, r.y, 'leaves'); return false;
+    });
+  };
+
+  X.growAll = () => { regrow.forEach(r => (r.at = 0)); X.tick(performance.now()); }; // for the play-tests
+
+  /* ---------------- repairs ---------------- */
+  const repairAt = (x, y) => (WW.ep.build || []).find(b => b.kind === 'repair' && b.at.some(p => p[0] === x && p[1] === y) && G().tileAt(x, y) !== b.tile);
+  X.bump = (x, y) => { // walked into something solid: is it a broken thing we can fix?
+    const b = repairAt(x, y); if (!b) return false;
+    openRepair(b); return true;
+  };
+  function openRepair(b) {
+    WW.ui.open({
+      cls: 'msgov',
+      render(box, h) {
+        const lack = missing(b.cost);
+        box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(b.ask)}</p><p class="small"><b>${esc(T('costs'))}:</b> ${esc(costText(b.cost))} · ${esc(T('youHave'))}: ${esc(Object.keys(b.cost).map(k => X.have(k) + ' ' + T('item_' + k)).join(' + '))}</p>`;
+        if (lack.length) box.insertAdjacentHTML('beforeend', `<p class="say">${esc(lack.map(([k]) => howGet(k)).join(' '))}</p>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        if (!lack.length) acts.appendChild(WW.btn('🔨 ' + esc(T('fixIt')), 'gold', () => { h.close(); doRepair(b); }));
+        acts.appendChild(WW.btn(T('close'), 'ghost', () => h.close()));
+        box.appendChild(acts);
+      }
+    });
+  }
+  function doRepair(b) {
+    Object.entries(b.cost).forEach(([k, n]) => X.use(k, n));
+    const g = G(); b.at.forEach(([x, y]) => { g.setTile(x, y, b.tile); WW.fx.burst(x, y, 'gold'); });
+    const s = WW.save; s.built = s.built || {}; s.built[WW.ep.id] = Array.from(new Set([...(s.built[WW.ep.id] || []), b.id]));
+    WW.store(); WW.sheetSync && WW.sheetSync();
+    g.shake(); WW.sfx('win');
+    WW.chris.say(b.done);
+  }
+  // Christopher: is a broken thing in the way of the next goal?
+  X.blockingRepair = (at, reachable) => {
+    const b = (WW.ep.build || []).find(o => o.kind === 'repair' && o.at.some(p => G().tileAt(p[0], p[1]) !== o.tile));
+    if (!b || reachable(at)) return null;
+    const lack = missing(b.cost);
+    return { at: b.at[0], text: T('nsFix').replace('{n}', WW.plain(b.name)).replace('{c}', costText(b.cost)) + ' ' + WW.chris.go(b.at[0]) + (lack.length ? ' ' + lack.map(([k]) => howGet(k)).join(' ') : '') };
+  };
+
+  /* ---------------- signposts: the compass stone in the world ---------------- */
+  const signItems = () => (WW.ep.challenge.items || []).map(id => (WW.ep.build || []).find(b => b.id === id)).filter(Boolean);
+  X.heldSign = () => {
+    const r = WW.run; if (!r || !r.signs) return null;
+    const left = r.signs.filter(s => !s.placed); if (!left.length) return null;
+    const s = left.find(o => o.id === r.holding) || left[0];
+    return { s, b: signItems().find(b => b.id === s.id), n: r.signs.indexOf(s) + 1 };
+  };
+  X.signText = () => {
+    const r = WW.run; if (!r.signs) return null;
+    const left = r.signs.filter(s => !s.placed || !s.right).length;
+    return T('nsSigns').replace('{n}', left);
+  };
+  // walking into the compass stone, when its type is 'build'
+  X.stone = (ch) => {
+    const r = WW.run;
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        box.innerHTML = `<h3>🪧 ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
+        const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : '🪧'} ${i + 1}. ${WW.rich(b.text)}</li>`; }).join('');
+        box.insertAdjacentHTML('beforeend', `<ol class="signlist">${list}</ol><p class="small">${esc(T('sgCost').replace('{c}', costText(signItems()[0].cost || {})))} ${esc(T('sgHow'))}</p>`);
+        if (ch.grid) box.insertAdjacentHTML('beforeend', `<p class="small">🗺️ ${esc(T('sgGrid'))}</p>`);
+        const acts = document.createElement('div'); acts.className = 'acts';
+        if (!r.signs) acts.appendChild(WW.btn('🪧 ' + esc(T('sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T('sgStart')); }));
+        else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
+        if (ch.fallback) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); WW.challenge(Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
+        box.appendChild(acts);
+      }
+    });
+  };
+  function place(x, y, e) {
+    const g = G(), held = X.heldSign();
+    if (!held) return false;
+    if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) return hint('sgBlocked', true);
+    const { s, b } = held;
+    if (!s.paid) {
+      const lack = missing(b.cost || {});
+      if (lack.length) { WW.chris.say(T('sgNeed').replace('{c}', costText(b.cost)) + ' ' + lack.map(([k]) => howGet(k)).join(' ')); WW.sfx('bad'); return true; }
+      Object.entries(b.cost || {}).forEach(([k, n]) => X.use(k, n)); s.paid = true;
+    }
+    const right = b.ok.some(p => p[0] === x && p[1] === y);
+    s.placed = [x, y]; s.right = right;
+    g.ents.push({ kind: 'post', x, y, sign: s, b, t0: performance.now() });
+    WW.run.challengeTries++;
+    if (right) {
+      WW.sfx('good'); WW.fx.burst(x, y, 'gold');
+      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why)}`);
+      if (WW.run.signs.every(o => o.right)) setTimeout(allDone, 700);
+    } else {
+      WW.sfx('bad'); g.shake();
+      WW.chris.say(`❌ ${wrongWhy(b, x, y)} ${T('sgPickUp')}`);
+    }
+    const next = WW.run.signs.find(o => !o.placed); if (next) WW.run.holding = next.id; else sel = 'star';
+    X.render();
+    return true;
+  }
+  const gl = t => (typeof t === 'string' ? t : L(t)); // a grid label can be one string or {en, es, fa}
+  function gridLabel(grid, x, y) {
+    const c = x - grid.x, r = y - grid.y;
+    if (c < 0 || r < 0 || c >= grid.cols.length || r >= grid.rows.length) return null;
+    return `${gl(grid.rows[r])}, ${gl(grid.cols[c])}`;
+  }
+  function wrongWhy(b, x, y) {
+    const grid = WW.ep.challenge.grid;
+    if (b.grid && grid) {
+      const here = gridLabel(grid, x, y), want = gridLabel(grid, b.ok[0][0], b.ok[0][1]);
+      if (!here) return T('sgOffGrid');
+      return T('sgWrongGrid').replace('{here}', here).replace('{want}', want);
+    }
+    const [tx, ty] = b.ok.slice().sort((p, q) => Math.abs(p[0] - x) + Math.abs(p[1] - y) - Math.abs(q[0] - x) - Math.abs(q[1] - y))[0];
+    const d = WW.chris.dirWord(x, y, tx, ty);
+    return (d ? T('sgWrongRel').replace('{d}', d) : T('dirClose')) + ' ' + L(b.why);
+  }
+  // Space on a placed signpost: a wrong one comes back to your hands, a right one is read out
+  X.post = (e) => {
+    if (e.sign.right) { WW.chris.say(`✅ ${WW.plain(e.b.text)}`); return; }
+    e.gone = true; e.sign.placed = null; WW.run.holding = e.sign.id; sel = 'sign';
+    WW.sfx('blip'); WW.chris.say(T('sgPicked')); X.render();
+  };
+  function allDone() {
+    const ch = WW.ep.challenge;
+    WW.challengeSolved(ch);
+    sel = 'star'; X.render();
+    WW.chris.say(`🎉 ${L(ch.success)}`);
+  }
+
+  /* drawing: the survey grid under everything, crops and signposts on top */
+  X.under = (c, sx, sy) => {
+    const grid = WW.ep.challenge && WW.ep.challenge.grid; if (!grid) return;
+    const ox = (grid.x - sx * 16) * 16, oy = (grid.y - sy * 11) * 16, w = grid.cols.length * 16, hh = grid.rows.length * 16;
+    if (ox > 256 || oy > 176 || ox + w < -40 || oy + hh < -40) return;
+    c.save();
+    c.fillStyle = 'rgba(255,251,232,.28)'; c.fillRect(ox, oy, w, hh);
+    c.strokeStyle = 'rgba(34,32,46,.55)'; c.lineWidth = 1;
+    for (let i = 0; i <= grid.cols.length; i++) { c.beginPath(); c.moveTo(ox + i * 16 + .5, oy); c.lineTo(ox + i * 16 + .5, oy + hh); c.stroke(); }
+    for (let j = 0; j <= grid.rows.length; j++) { c.beginPath(); c.moveTo(ox, oy + j * 16 + .5); c.lineTo(ox + w, oy + j * 16 + .5); c.stroke(); }
+    c.restore();
+  };
+  // the grid's numbers are crisp HTML labels over the map (canvas text this small is too blurry to read)
+  let labs = null, labKey = '';
+  X.labels = (scr) => {
+    const grid = WW.ep && WW.ep.challenge && WW.ep.challenge.grid, cv = $('ww-cv');
+    const on = grid && scr && G().screenOf(grid.x, grid.y).join() === scr.join() && !(WW.ui.stack.length);
+    if (!on) { if (labs) labs.style.display = 'none'; return; }
+    if (!labs || !labs.isConnected) { labs = document.createElement('div'); labs.className = 'gridlabs'; $('ww-screen').appendChild(labs); labKey = ''; }
+    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const key = [k, cr.left - sr.left, cr.top - sr.top].join();
+    labs.style.display = 'block';
+    if (key === labKey) return;
+    labKey = key;
+    const ox = (grid.x - scr[0] * 16) * 16, oy = (grid.y - scr[1] * 11) * 16, L0 = cr.left - sr.left, T0 = cr.top - sr.top;
+    labs.innerHTML = grid.cols.map((t, i) => `<span class="gl col" style="left:${L0 + (ox + i * 16 + 8) * k}px;top:${T0 + oy * k - 2}px">${esc(gl(t))}</span>`).join('') +
+      grid.rows.map((t, j) => `<span class="gl row" style="left:${L0 + ox * k - 3}px;top:${T0 + (oy + j * 16 + 8) * k}px">${esc(gl(t))}</span>`).join('');
+  };
+  WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
+  X.drawEnt = (c, e, x, y, t) => {
+    if (e.kind === 'crop') {
+      const st = stage(e);
+      c.fillStyle = '#3f8a2e';
+      if (st === 0) { c.fillRect(x + 7, y + 9, 2, 4); c.fillRect(x + 5, y + 8, 2, 2); c.fillRect(x + 9, y + 8, 2, 2); }
+      else if (st === 1) { c.fillRect(x + 7, y + 4, 2, 9); c.fillRect(x + 4, y + 6, 3, 3); c.fillRect(x + 9, y + 5, 3, 3); }
+      else { c.fillRect(x + 7, y + 4, 2, 9); c.fillStyle = '#f2c14e'; c.fillRect(x + 4, y + 2, 8, 5); c.fillStyle = '#c08a1e'; c.fillRect(x + 5, y + 3, 2, 2); c.fillRect(x + 9, y + 4, 2, 2);
+        const k = (Math.sin(t / 250) + 1) / 2; c.fillStyle = `rgba(255,255,255,${k})`; c.fillRect(x + 12, y + 1, 1, 1); }
+    } else if (e.kind === 'post') {
+      const wob = e.sign.right || WW.calm ? 0 : Math.round(Math.sin(t / 90) * 1.2);
+      WW.shadow(c, x, y + 13, 8);
+      c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 6, 2, 9);
+      c.fillStyle = '#6d4c2f'; c.fillRect(x + 7, y + 6, 1, 9);
+      c.fillStyle = '#22202e'; c.fillRect(x + 1 + wob, y + 1, 14, 8);
+      c.fillStyle = e.sign.right ? '#3fa34d' : '#c0392b'; c.fillRect(x + 2 + wob, y + 2, 12, 6);
+      c.fillStyle = '#fffbe8'; c.fillRect(x + 4 + wob, y + 4, 8, 1); c.fillRect(x + 4 + wob, y + 6, 5, 1);
+      c.fillStyle = '#ffffff'; c.font = 'bold 6px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+      c.fillText(e.sign.right ? '✓' : '?', x + 8, y - 3);
+    }
+  };
+
+  /* ---------------- little pixel icons for the tool bar ---------------- */
+  const pad = rows => rows.map(r => (r + '................').slice(0, 16)).concat(Array(16).fill('................')).slice(0, 16);
+  Object.assign(WW.SPR, {
+    axe: pad(['', '.........kkk', '........kSSSk', '.......kSSSSSk', '.......kSSWSSk', '........kkSSk', '.......kbkkk', '......kbk', '.....kbk', '....kbk', '...kbk', '..kbk', '.kbk', '.kk']),
+    sickle: pad(['', '......kkkk', '....kkSSSSk', '...kSSkkkSSk', '..kSk....kSk', '..kSk.....kk', '..kSk', '...kSk', '....kSkk', '.....kkbk', '.......kbk', '........kbk', '.........kbk', '..........kk']),
+    seedIcon: pad(['', '', '.......kk', '......kgGk', '.......kgk.kk', '.......kgkkgGk', '........kggk', '......kkkkk', '.....kooooOk', '....kooOoooOk', '....kOoooOook', '.....kooOook', '......kkkkk']),
+    signIcon: pad(['', '.kkkkkkkkkkkkk', '.kbbbbbbbbbbbk', '.kbWWWWWWWWbbk', '.kbbbbbbbbbbbk', '.kbWWWWWbbbbbk', '.kkkkkkkkkkkkk', '......kbk', '......kbk', '......kbk', '......kbk', '......kbk', '....kkkkkkk']),
+    wood: pad(['', '', '', '..kkkkkkkkkk', '.kbbbbbbbbkOk', 'kbBbbbBbbbkOOk', 'kbbbbbbbbbkOok', 'kbbBbbbbBbkOOk', '.kbbbbbbbbkOk', '..kkkkkkkkkk']),
+    fiber: pad(['', '...g..g..g', '...gg.g.gg', '....g.g.g', '....ggggg', '.....ggg', '....kkkkk', '....kOOOk', '.....ggg', '....g.g.g', '...g..g..g', '...g..g..g']),
+    starIcon: pad(['', '.......kk', '......kyyk', '......kyyk', '.kkkkkyyyykkkkk', '.kyyyyyWyyyyyyk', '..kyyyyyyyyyyk', '...kyyyyyyyyk', '...kyyyyyyyyk', '..kyyykkkyyyk', '..kyyk...kyyk', '..kkk.....kkk'])
+  });
+
+})();

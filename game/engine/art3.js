@@ -301,6 +301,25 @@
     if (WW.style.night) for (let r = 0; r < 5; r++) for (let k = 0; k < 3; k++) if (hash(gx + k, r + gy * 7) > 0.45) R(c, x + 3 + k * 4, y + 2 + r * 3, 2, 2, '#ffd76a');
   };
 
+  /* ---------------- things the tools change (tools.js) ---------------- */
+  tiles['%'] = (c, x, y, gx, gy, t, m) => { // a stump where a tree was chopped (it grows back)
+    under(c, x, y, gx, gy, m); shadow(c, x, y + 11, 8);
+    R(c, x + 4, y + 8, 8, 5, P.k); R(c, x + 5, y + 8, 6, 4, P.trunk); R(c, x + 5, y + 8, 6, 1, '#d9b27a'); R(c, x + 7, y + 9, 2, 1, '#a8814f');
+    R(c, x + 10, y + 5, 2, 3, P.leafL); R(c, x + 11, y + 4, 1, 1, P.leafL);
+  };
+  tiles.Y = (c, x, y, gx, gy, t, m) => { // a small bush (the axe clears it)
+    under(c, x, y, gx, gy, m); shadow(c, x, y + 12, 12);
+    const s = calm ? 0 : Math.round(Math.sin(t / 900 + gx) * 0.6);
+    R(c, x + 2 + s, y + 5, 12, 8, P.k); R(c, x + 3 + s, y + 4, 10, 9, '#2e8b3a'); R(c, x + 4 + s, y + 5, 4, 3, '#5cc46a');
+    R(c, x + 9 + s, y + 9, 3, 2, '#1f6a2a'); R(c, x + 6 + s, y + 7, 1, 1, '#e04848'); R(c, x + 10 + s, y + 6, 1, 1, '#e04848');
+  };
+  tiles.Z = (c, x, y, gx, gy, t, m) => { // a broken bridge: a gap, two loose planks and a rope
+    water(c, x, y, gx, gy, t, m, P.water);
+    R(c, x, y + 2, 4, 12, P.k); R(c, x, y + 3, 3, 10, '#a0703f');
+    R(c, x + 6, y + 6, 4, 2, '#8b5a2b'); R(c, x + 11, y + 10, 3, 2, '#8b5a2b');
+    R(c, x, y + 2, T, 1, '#5b3a1e'); R(c, x + 5, y + 3, 6, 1, '#5b3a1e');
+  };
+
   /* ---------------- people ---------------- */
   // hair styles made from the base person: change a few pixels
   const edit = (rows, list) => { const out = rows.map(r => r.split('')); list.forEach(([r, k, ch]) => (out[r][k] = ch)); return out.map(r => r.join('')); };

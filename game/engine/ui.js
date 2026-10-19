@@ -26,7 +26,7 @@
       opts.render(box, h);
       ov.scrollTop = 0;
     }
-    ui.stack.push(h);
+    ui.stack.push(h); holdToast();
     $('ww-screen').classList.add('ovopen');
     draw();
     WW.paused = true;
@@ -38,6 +38,7 @@
     if (top) top.render();
     else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); WW.paused = false; hidePop(); }
     if (h.opts.onClose) h.opts.onClose();
+    setTimeout(pumpToast, 250);
   };
   ui.top = () => ui.stack[ui.stack.length - 1];
   WW.onLang(() => { const t = ui.top(); if (t) t.render(); ui.hud(); ui.quest(); });
@@ -63,14 +64,29 @@
 
   /* ---------------- toast ---------------- */
   // small messages in the corner; several can show at once. big = a "New power!" banner
+  /* reward pop-ups wait in a line: one at a time, and never on top of an open panel or while Christopher is introducing himself */
+  const tq = []; let tCur = null, tTimer = 0;
   WW.toast = (html, col, big) => {
-    const box = $('ww-toast'); if (!box) return;
-    const el = document.createElement('div'); el.className = 'tst' + (big ? ' big' : '');
-    el.innerHTML = html; el.style.background = col || '#3fa34d'; el.setAttribute('dir', WW.dir());
-    box.appendChild(el);
-    while (box.children.length > 4) box.firstChild.remove();
-    setTimeout(() => el.remove(), big ? 6000 : 3200);
+    tq.push({ html, col, big, at: performance.now() });
+    while (tq.length > 6) { const i = tq.findIndex(o => !o.big); tq.splice(i < 0 ? 0 : i, 1); } // a long line: drop the small ones first
+    pumpToast();
   };
+  function pumpToast() {
+    const box = $('ww-toast'); if (!box) return;
+    if (tCur || ui.stack.length || (WW.chris && WW.chris.scene)) return;
+    while (tq.length && !tq[0].big && performance.now() - tq[0].at > 12000) tq.shift(); // small news that waited too long is old news
+    if (!tq.length) return;
+    const o = tCur = tq.shift();
+    const el = o.el = document.createElement('div'); el.className = 'tst' + (o.big ? ' big' : '');
+    el.innerHTML = o.html; el.style.background = o.col || '#3fa34d'; el.setAttribute('dir', WW.dir());
+    box.innerHTML = ''; box.appendChild(el);
+    if (o.big) WW.sfx('win');
+    tTimer = setTimeout(() => { el.remove(); tCur = null; setTimeout(pumpToast, 150); }, o.big ? 3600 : tq.length ? 1500 : 2400);
+  }
+  // a panel opens: the pop-up on screen steps back into the line and comes back after the panel closes
+  function holdToast() { if (!tCur) return; clearTimeout(tTimer); tCur.el.remove(); tq.unshift(tCur); tCur = null; }
+  WW.toastPump = pumpToast;
+  WW.toastsWaiting = () => tq.length + (tCur ? 1 : 0);
 
   /* ---------------- top bar ---------------- */
   ui.hud = () => {
@@ -302,6 +318,7 @@
         box.appendChild(pip);
         box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
           ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
+          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
           ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
           <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
             <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
@@ -336,6 +353,7 @@
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
         WW.THEMES.forEach(th => {
           const v = s.stats[th.k] || 0, tr = WW.tier(th.k);
@@ -350,6 +368,7 @@
           bag += `<div class="slot ${has ? 'has' : ''}"><span class="ti">${has ? t.icon : '?'}</span><span>${has ? esc(L(t.name)) : esc(T('realm')) + ' ' + (i + 1)}</span></div>`;
         });
         bag += '</div>';
+        if (WW.tools) bag += `<p class="small">🎒 ${esc(T('gathered'))}: ${['wood', 'fiber', 'seed'].map(k => `<b>${WW.tools.have(k)}</b> ${esc(T('item_' + k))}`).join(' · ')}</p>`;
         box.insertAdjacentHTML('beforeend', bag);
         let st = `<h3>${esc(T('stamps'))}</h3><div class="stamps">`;
         for (let r = 1; r <= 8; r++) {

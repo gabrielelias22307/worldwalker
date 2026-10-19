@@ -6,6 +6,7 @@ const ctx = { window: {}, console, Math, performance: { now: () => 0 } };
 ctx.window.window = ctx.window; vm.createContext(ctx);
 vm.runInContext(fs.readFileSync(path.join(G, 'engine', 'art.js'), 'utf8').replace(/window\./g, 'window.'), ctx);
 ctx.WW = ctx.window.WW; vm.runInContext('var WW = window.WW;' + fs.readFileSync(path.join(G, 'engine', 'art2.js'), 'utf8'), ctx);
+vm.runInContext('var WW = window.WW;' + fs.readFileSync(path.join(G, 'engine', 'art3.js'), 'utf8'), ctx); // stumps, bushes, broken bridges
 const WW = ctx.window.WW;
 const SW = 16, SH = 11;
 
@@ -96,16 +97,22 @@ function checkEpisode(file) {
     else errs.push('quest.action.type must be find, fight or trade');
   }
   if (block.has(ep.start.join(','))) errs.push('start is on top of something');
-  // reach: walk from start
-  const seen = new Set([ep.start.join(',')]); const q = [ep.start];
-  while (q.length) {
-    const [x, y] = q.shift();
-    for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
-      const nx = x + dx, ny = y + dy, k = nx + ',' + ny;
-      if (seen.has(k) || solid(nx, ny) || block.has(k)) continue;
-      seen.add(k); q.push([nx, ny]);
+  // reach: walk from start (fixed: tiles a repair turns walkable count as fixed)
+  const reach = fixed => {
+    const seen = new Set([ep.start.join(',')]); const q = [ep.start];
+    while (q.length) {
+      const [x, y] = q.shift();
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, k = nx + ',' + ny;
+        if (seen.has(k) || (solid(nx, ny) && !fixed.has(k)) || block.has(k)) continue;
+        seen.add(k); q.push([nx, ny]);
+      }
     }
-  }
+    return seen;
+  };
+  const repairs = (ep.build || []).filter(b => b.kind === 'repair');
+  const before = reach(new Set());
+  const seen = reach(new Set(repairs.flatMap(b => (b.at || []).map(p => p.join(',')))));
   const nextTo = ([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => seen.has((x + dx) + ',' + (y + dy)));
   (ep.npcs || []).forEach((n, i) => { if (!nextTo([n.x, n.y])) errs.push(`npc ${i} cannot be reached`); });
   (ep.signs || []).forEach((s, i) => { if (!nextTo([s.x, s.y])) errs.push(`sign ${i} cannot be reached`); });
@@ -121,6 +128,32 @@ function checkEpisode(file) {
     const scr = p => p && Math.floor(p.x / SW) + ',' + Math.floor(p.y / SH);
     if (qu.giver && qu.contact && scr(qu.giver) === scr(qu.contact)) warns.push('quest giver and contact are on the same screen; spreading them out makes the quest a real trip');
   }
+  /* ---- tools and build list ---- */
+  (ep.tools || []).forEach(t => { if (!['axe', 'sickle'].includes(t)) errs.push(`tool "${t}" must be axe or sickle`); });
+  if (ep.christopher && ep.christopher.meet && !(ep.christopher.meet.length >= 2 && ep.christopher.meet.length <= 3)) warns.push('christopher.meet should be 2 or 3 short lines');
+  const ids = new Set();
+  (ep.build || []).forEach((b, i) => {
+    const w = `build ${i} (${b.id})`;
+    if (!b.id) errs.push(`build ${i} needs an id`); else if (ids.has(b.id)) errs.push(`${w}: id is used twice`); else ids.add(b.id);
+    Object.keys(b.cost || {}).forEach(k => { if (!['wood', 'fiber'].includes(k)) errs.push(`${w}: cost "${k}" must be wood or fiber`); });
+    if (Object.keys(b.cost || {}).length && !(ep.tools || []).length) errs.push(`${w} costs wood or fiber, but the episode has no tools`);
+    if (b.kind === 'repair') {
+      if (!b.name || !b.ask || !b.done) errs.push(`${w}: a repair needs name, ask and done`);
+      if (!(b.at || []).length) errs.push(`${w}: a repair needs at: [[x, y], ...]`);
+      if (!WW.tiles[b.tile] || WW.solid(b.tile)) errs.push(`${w}: tile "${b.tile}" must be a walkable tile`);
+      (b.at || []).forEach(p => { if (at(p, w) && !solid(p[0], p[1])) errs.push(`${w}: (${p}) is not broken (it is already walkable)`); });
+      if (!(b.at || []).some(([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => before.has((x + dx) + ',' + (y + dy))))) errs.push(`${w}: you cannot walk up to it before it is fixed`);
+    } else if (b.kind === 'signpost') {
+      if (!b.text || !b.why) errs.push(`${w}: a signpost needs text and why`);
+      if (!(b.ok || []).length) errs.push(`${w}: a signpost needs ok: [[x, y], ...]`);
+      (b.ok || []).forEach(p => {
+        if (!at(p, w)) return; const k = p.join(',');
+        if (solid(p[0], p[1]) || blockers.has(k)) errs.push(`${w}: right spot (${k}) is not open ground`);
+        else if (!seen.has(k)) errs.push(`${w}: right spot (${k}) cannot be reached`);
+      });
+    } else errs.push(`${w}: kind must be repair or signpost`);
+  });
+
   // screens used
   const screens = new Set([...seen].map(k => { const [x, y] = k.split(',').map(Number); return Math.floor(x / SW) + ',' + Math.floor(y / SH); }));
   const total = (W / SW) * (H / SH);
@@ -184,10 +217,24 @@ function checkEpisode(file) {
   ['name', 'win', 'taunt', 'appear'].forEach(k => { if (!b[k]) errs.push('boss.' + k + ' missing'); });
 
   /* ---- challenge ---- */
-  const c = ep.challenge || {};
-  if (!['loc', 'pla', 'hei', 'mov', 'reg'].includes(c.stat)) errs.push('challenge.stat must be loc/pla/hei/mov/reg');
-  if (!c.title || !c.intro || !c.success) errs.push('challenge needs title, intro, success');
-  if (c.type === 'sort') {
+  const c0 = ep.challenge || {};
+  if (!['loc', 'pla', 'hei', 'mov', 'reg'].includes(c0.stat)) errs.push('challenge.stat must be loc/pla/hei/mov/reg');
+  if (!c0.title || !c0.intro || !c0.success) errs.push('challenge needs title, intro, success');
+  let c = c0;
+  if (c0.type === 'build') {
+    const signs = (c0.items || []).map(id => (ep.build || []).find(b => b.id === id));
+    if (signs.length < 2) errs.push('build challenge needs 2+ items (signpost ids from build)');
+    signs.forEach((b, i) => { if (!b || b.kind !== 'signpost') errs.push(`build challenge item ${i} "${c0.items[i]}" is not a signpost in build`); });
+    const g = c0.grid;
+    if (g) {
+      if (!(g.rows || []).length || !(g.cols || []).length) errs.push('challenge.grid needs rows and cols');
+      else for (let y = g.y; y < g.y + g.rows.length; y++) for (let x = g.x; x < g.x + g.cols.length; x++) if (solid(x, y) || blockers.has(x + ',' + y)) errs.push(`challenge.grid (${x},${y}) is not open ground`);
+    }
+    signs.forEach(b => { if (b && b.grid) { if (!g) errs.push(`signpost ${b.id} uses the grid, but challenge.grid is missing`); else (b.ok || []).forEach(([x, y]) => { if (x < g.x || y < g.y || x >= g.x + g.cols.length || y >= g.y + g.rows.length) errs.push(`signpost ${b.id}: (${x},${y}) is outside the grid`); }); } });
+    if (!c0.fallback) { warns.push('build challenge has no card fallback'); c = null; }
+    else c = Object.assign({}, c0, c0.fallback); // the card version is checked like any other challenge
+  }
+  if (!c) { /* nothing more */ } else if (c.type === 'sort') {
     const ids = (c.bins || []).map(x => x.id);
     if (ids.length < 2) errs.push('sort needs 2+ bins');
     if ((c.items || []).length < 5) errs.push('sort needs 5+ items');
@@ -220,7 +267,7 @@ function checkEpisode(file) {
     else c.table.rows.forEach((r, i) => { if (r.length !== c.table.head.length) errs.push(`table row ${i} has ${r.length} cells, head has ${c.table.head.length}`); });
     if ((c.questions || []).length < 3) errs.push('table needs 3+ questions');
     (c.questions || []).forEach((qq, i) => { if (!(qq.answer >= 0 && qq.answer < qq.choices.length)) errs.push(`table q${i} answer index is wrong`); if (!qq.why) errs.push(`table q${i} needs a why`); });
-  } else errs.push('challenge.type must be sort, order, claim, combo or table');
+  } else errs.push('challenge.type must be sort, order, claim, combo, table or build' + (c0.type === 'build' ? ' (the fallback too)' : ''));
   return { errs, warns, ep };
 }
 

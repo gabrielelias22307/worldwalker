@@ -12,7 +12,7 @@ const url = 'file://' + path.join(ROOT, 'game', 'ep-1-1.html');
     await p.evaluate(st => { localStorage.setItem('worldwalker.save.v1', JSON.stringify({ v: 1, name: 'Tester', cls: 'GEO-1', look: {}, stats: st, coins: 0, episodes: {}, lang: 'en', sound: false, music: false })); }, stats);
     await p.goto(url);
     await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForSelector('.introov');
-    await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForFunction(() => !WW.paused);
+    await p.locator('#ww-ov .pbtn.gold.big').click(); await p.evaluate(() => WW.chris.skip()); await p.waitForFunction(() => !WW.paused);
   };
   // beginner
   await start({ loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 });
@@ -21,7 +21,8 @@ const url = 'file://' + path.join(ROOT, 'game', 'ep-1-1.html');
   // a gain that crosses 3 points shows the New power banner
   await p.evaluate(() => WW.gain('pla', 3, 0, 'test'));
   ok(await p.evaluate(() => WW.heartsMax()) === 4, 'Place 3 = +1 heart');
-  ok(/New power/.test(await p.textContent('#ww-toast')), '"New power!" banner appears when a level unlocks');
+  // pop-ups wait in line, so the banner comes right after the "+3" one
+  ok(await p.waitForFunction(() => /New power/.test(document.getElementById('ww-toast').textContent), null, { timeout: 8000 }).then(() => true, () => false), '"New power!" banner appears when a level unlocks');
   ok(await p.evaluate(() => WW.run.gains.some(g => g.why === 'test')), 'every reward is logged with its reason');
   // expert
   await start({ loc: 12, pla: 12, hei: 12, mov: 12, reg: 12 });

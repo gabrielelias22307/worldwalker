@@ -34,7 +34,27 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.locator('#ww-ov .pbtn.gold.big').click();
         await page.waitForSelector('.introov');
         await shot('1-intro');
+        // reward pop-ups: count how many show at once, and whether one ever shows over an open panel
+        await page.evaluate(() => {
+          window.__toast = { most: 0, overPanel: 0 };
+          new MutationObserver(() => {
+            const n = document.querySelectorAll('#ww-toast .tst').length;
+            window.__toast.most = Math.max(window.__toast.most, n);
+            if (n && WW.ui.stack.length) window.__toast.overPanel++;
+          }).observe(document.getElementById('ww-toast'), { childList: true });
+        });
         await page.locator('#ww-ov .pbtn.gold.big').click();
+        const meet = await page.evaluate(() => !!(WW.ep.christopher && WW.ep.christopher.meet));
+        if (meet) { // meeting Christopher: he flies in and talks in a bubble over his head
+          await page.waitForSelector('.cbubble.meet', { state: 'visible' });
+          await page.waitForTimeout(500);
+          const say = await page.textContent('.cbubble');
+          if (!/living compass/.test(say)) throw new Error('Christopher did not say who he is: ' + say);
+          await shot('2a-meet-christopher');
+          for (let k = 0; k < 3; k++) { await page.keyboard.press('c'); await page.waitForTimeout(120); }
+          if (await page.evaluate(() => WW.chris.scene)) throw new Error('the meeting did not end after his lines');
+          if (!(await page.evaluate(() => WW.save.metChris))) throw new Error('meeting Christopher was not saved');
+        }
         await page.waitForFunction(() => !WW.paused);
         await page.evaluate(() => WW.dbg.noSmudges());
         await page.waitForTimeout(300);
@@ -47,6 +67,77 @@ const SHOTS = !process.argv.includes('--no-shots');
         const t = await page.textContent('#ww-ov');
         if (!/Christopher/.test(t)) throw new Error('stone opened before talking');
         await clickGold();
+      });
+      if (ep.tools) await step('tool bar: axe, sickle, seeds', async () => {
+        const [W, H] = [ep.map[0].length, ep.map.length];
+        const find = (chs, inner) => { const out = []; ep.map.forEach((r, y) => [...r].forEach((ch, x) => { if (chs.includes(ch) && (!inner || (x > 0 && y > 0 && x < W - 1 && y < H - 1))) out.push([x, y]); })); return out; };
+        // C: Christopher says what to do next
+        await page.keyboard.press('c');
+        await page.waitForSelector('.cbubble', { state: 'visible' });
+        if (!/Talk to|Go /.test(await page.textContent('.cbubble'))) throw new Error('C did not say what to do next');
+        await page.keyboard.press('Escape');
+        // the axe on a border tree: it stays, and Christopher says why
+        await page.keyboard.press('2');
+        await page.evaluate(() => WW.dbg.faceFrom(0, 5)); await page.evaluate(() => WW.dbg.act());
+        if (await page.evaluate(() => WW.tools.have('wood'))) throw new Error('a border tree was chopped');
+        if (!/edge of the map/.test(await page.textContent('.cbubble'))) throw new Error('no reason given for the border tree');
+        // chop 5 trees and bushes for 8+ wood
+        const trees = find('TY', true).filter(([x, y]) => !(ep.keep || []).some(p => p[0] === x && p[1] === y))
+          .sort((a, b) => Math.abs(a[0] - ep.start[0]) + Math.abs(a[1] - ep.start[1]) - Math.abs(b[0] - ep.start[0]) - Math.abs(b[1] - ep.start[1]));
+        let chopped = 0;
+        for (const [x, y] of trees) {
+          if (chopped >= 5) break;
+          // the first one from its left side, so the screenshot shows the stump
+          const avoid = chopped ? [] : [[x, y + 1], [x, y - 1], [x + 1, y]];
+          if (!(await page.evaluate(([x, y, avoid]) => WW.dbg.faceFrom(x, y, avoid), [x, y, avoid]))) continue;
+          await page.evaluate(() => WW.dbg.act()); chopped++;
+          if (chopped === 1) { await page.waitForTimeout(140); await shot('2b-chop'); }
+          if (await page.evaluate(([x, y]) => WW.game.tileAt(x, y), [x, y]) === ep.map[y][x]) throw new Error('the tree at ' + [x, y] + ' was not chopped');
+        }
+        if (await page.evaluate(() => WW.tools.have('wood')) < 8) throw new Error('not enough wood from 5 trees');
+        // the sickle on tall grass
+        await page.keyboard.press('3');
+        for (const [x, y] of find('"', true).slice(0, 5)) { if (await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), [x, y])) await page.evaluate(() => WW.dbg.act()); }
+        if (await page.evaluate(() => WW.tools.have('fiber')) < 4) throw new Error('not enough fiber from the tall grass');
+        // seeds: wrong ground explains why, farm soil grows a crop, the sickle picks it for coins
+        await page.evaluate(() => WW.tools.add('seed', 1));
+        await page.keyboard.press('4');
+        const soil = find('o', true)[0];
+        await page.evaluate(() => WW.dbg.faceFrom(5, 2)); await page.evaluate(() => WW.dbg.act());
+        { const t = await page.textContent('.cbubble'); if (!/farm soil/.test(t)) throw new Error('planting on grass did not explain why: ' + t + ' sel=' + await page.evaluate(() => WW.tools.selected())); }
+        await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), soil); await page.evaluate(() => WW.dbg.act());
+        if (!(await page.evaluate(() => WW.dbg.ents.some(e => e.kind === 'crop')))) throw new Error('no crop was planted');
+        await page.evaluate(() => WW.dbg.ents.filter(e => e.kind === 'crop').forEach(e => (e.t0 -= 60000)));
+        const c0 = await page.evaluate(() => WW.save.coins);
+        await page.keyboard.press('3'); await page.evaluate(() => WW.dbg.act());
+        if (await page.evaluate(() => WW.save.coins) !== c0 + 3) throw new Error('harvest did not pay 3 coins');
+        // regrowth: a chopped tree grows back
+        await page.evaluate(() => WW.tools.growAll());
+        const back = await page.evaluate(([x, y]) => WW.game.tileAt(x, y), trees[0]);
+        if (back !== ep.map[trees[0][1]][trees[0][0]]) throw new Error('the chopped tree did not grow back');
+        await page.keyboard.press('1');
+        await page.evaluate(() => WW.chris.hide());
+      });
+      for (const b of (ep.build || []).filter(b => b.kind === 'repair')) await step('repair the ' + b.name.en, async () => {
+        const [x, y] = b.at[0];
+        const before = await page.evaluate(() => WW.tools.have('wood'));
+        await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), [x, y]);
+        const dir = await page.evaluate(() => WW.dbg.player.dir);
+        await page.keyboard.down({ up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir]);
+        await page.waitForSelector('.msgov'); await page.keyboard.up({ up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir]);
+        await page.locator('#ww-ov .pbtn.gold').click();
+        await page.waitForFunction(() => !WW.paused);
+        if (await page.evaluate(([x, y]) => WW.game.tileAt(x, y), [x, y]) !== b.tile) throw new Error('not fixed');
+        if (await page.evaluate(() => WW.tools.have('wood')) !== before - b.cost.wood) throw new Error('wood was not used');
+        if (!(await page.evaluate(id => (WW.save.built[WW.ep.id] || []).includes(id), b.id))) throw new Error('the repair was not saved');
+        // walk across it
+        await page.keyboard.down({ up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir]);
+        await page.waitForFunction(([x, y]) => WW.dbg.player.x !== x || WW.dbg.player.y !== y ? Math.abs(WW.dbg.player.x - x) + Math.abs(WW.dbg.player.y - y) >= 2 : false, [x, y], { timeout: 4000 });
+        await page.keyboard.up({ up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir]);
+        await page.waitForTimeout(300);
+        await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), [x - 1, y]);
+        await page.waitForTimeout(400); await shot('2c-bridge-repaired');
+        await page.evaluate(() => WW.chris.hide());
       });
       for (let i = 0; i < ep.npcs.length; i++) {
         const n = ep.npcs[i];
@@ -159,7 +250,36 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.at);
         await page.waitForSelector('.chov');
         await shot('5-challenge');
-        if (c.type === 'sort') {
+        if (c.type === 'build') {
+          if (!(await page.locator('#ww-ov .pbtn', { hasText: /cards/ }).count())) throw new Error('no "Use cards instead" button');
+          await page.locator('#ww-ov .pbtn.gold').click(); // take the signposts
+          await page.waitForFunction(() => !WW.paused);
+          const signs = c.items.map(id => ep.build.find(b => b.id === id));
+          const okSpots = signs.flatMap(b => b.ok);
+          for (let i = 0; i < signs.length; i++) {
+            const b = signs[i];
+            await page.evaluate(id => { if (WW.tools.selected() !== 'sign') WW.tools.pick('sign'); WW.run.holding = id; WW.tools.render(); }, b.id);
+            if (i === 0 || b.grid) { // a wrong spot first: it explains why, then you pick the sign up again
+              const wrong = b.grid ? [c.grid.x + c.grid.cols.length - 1, c.grid.y] : [b.ok[0][0], b.ok[0][1] + 2];
+              await page.evaluate(([x, y, avoid]) => WW.dbg.faceFrom(x, y, avoid), [...wrong, okSpots]);
+              await page.evaluate(() => WW.dbg.act());
+              const say = await page.textContent('.cbubble');
+              if (!/❌/.test(say)) throw new Error('a wrong spot was not called wrong: ' + say);
+              if (b.grid && !/50°N|40°N|30°N/.test(say)) throw new Error('the grid answer did not say which spot it is');
+              await page.evaluate(() => WW.dbg.act()); // pick it up
+              if (await page.evaluate(() => WW.dbg.ents.some(e => e.kind === 'post' && !e.gone && !e.sign.right))) throw new Error('could not pick the wrong sign up');
+              await page.evaluate(id => { if (WW.tools.selected() !== 'sign') WW.tools.pick('sign'); WW.run.holding = id; WW.tools.render(); }, b.id);
+            }
+            await page.evaluate(([x, y, avoid]) => WW.dbg.faceFrom(x, y, avoid), [...b.ok[0], okSpots]);
+            await page.evaluate(() => WW.dbg.act());
+            { const t = await page.textContent('.cbubble'); if (!/✅/.test(t)) throw new Error('the right spot was not accepted for ' + b.text.en + ': ' + t + JSON.stringify(await page.evaluate(() => [WW.dbg.player, WW.run.signs]))); }
+          }
+          await page.waitForFunction(() => WW.run.challengeDone, null, { timeout: 3000 });
+          await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), [c.grid.x + 1, c.grid.y + 3]);
+          await page.waitForTimeout(900); // Christopher says where the Grump is; hide him for the picture
+          await page.evaluate(() => { WW.dbg.player.dir = 'up'; WW.chris.hide(); });
+          await page.waitForTimeout(300); await shot('5b-signposts-placed');
+        } else if (c.type === 'sort') {
           // one wrong try first
           for (let i = 0; i < c.items.length; i++) {
             await page.click(`#ww-ov .pool .card[data-i="${i}"]`);
@@ -198,7 +318,7 @@ const SHOTS = !process.argv.includes('--no-shots');
         }
         if (!(await page.evaluate(() => WW.run.challengeDone))) throw new Error('challenge not solved by the right answer');
         await shot('6-challenge-done');
-        await clickGold();
+        if (c.type !== 'build') await clickGold();
         await page.waitForFunction(() => !WW.paused);
       });
       await step('boss trial', async () => {
@@ -230,6 +350,7 @@ const SHOTS = !process.argv.includes('--no-shots');
         if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');
       });
       await step('finish + turn in', async () => {
+        await page.waitForTimeout(800); await shot('9a-finish-top');
         await page.click('#ww-ov .starter');
         await page.fill('#ww-ov textarea', 'A place that is very clear in my mental map is my school.');
         await shot('9-finish');
@@ -240,6 +361,9 @@ const SHOTS = !process.argv.includes('--no-shots');
         if (!back) throw new Error('passport code does not read back');
         await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('9-finish-fa'); await page.click('[data-lang=en]');
         await page.click('#ww-b-pass'); await page.waitForSelector('.passov'); await shot('10-passport');
+        const tq = await page.evaluate(() => window.__toast);
+        if (tq.most > 1) throw new Error(tq.most + ' reward pop-ups showed at once');
+        if (tq.overPanel) throw new Error('a reward pop-up showed on top of an open panel');
       });
     } catch (e) { /* recorded in steps */ }
     const ok = steps.every(s => s.startsWith('✓')) && !errs.length;

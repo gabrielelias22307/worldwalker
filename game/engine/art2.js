@@ -189,7 +189,7 @@
     '..kGGGGGGGGGGk..', '...kkkkkkkkkk...', '................', '................'];
 
   /* walkable or not */
-  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L '.split(''));
+  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L YZ'.split(''));
   WW.solid = ch => SOLID.has(ch) || ch === undefined;
 
   /* named looks for people */

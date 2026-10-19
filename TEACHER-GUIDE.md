@@ -2,6 +2,10 @@
 
 **Play it:** https://gabrielelias22307.github.io/worldwalker/ (turn on GitHub Pages first: repo **Settings → Pages → Branch: main, folder: / (root) → Save**).
 
+## Christopher
+
+**Christopher is your living compass: he points the way, tells you what to do next, and trades hints for coins.** He is the little glowing compass that floats next to the hero. In Episode 1.1 he flies in after the opening card and introduces himself (only the first time a student plays). After that, **C** (or the 🧭 button above the game) asks him "What do I do next?". He answers in a speech bubble over his head, using the student's next goal and a direction ("Go south-east ↘"). For 5 coins he shows a gold arrow to the goal for 30 seconds.
+
 ## What students do in one episode (20–30 minutes)
 
 1. Sign in with **first name**, **class code** (like `GEO-3B`) and a **4-digit secret number**, and pick a look. Next time they just press Continue.
@@ -9,9 +13,10 @@
    **Space** (or the ● button on touch screens) talks to the person you face; anywhere else it throws a **star** ★. Stars knock out the Grump's helpers for a few seconds (+1 coin each, up to 5 per episode) and sting the big Grump, but only right answers in its trial break its cloud shield.
 
    **The Grump's helpers** (1–3 on every map; 2 in realms 1–2, more later): the **Grumpling** wanders and sometimes rages and charges; the **Ink Bat** is fast and flies over water and trees; the **Mud Blob** is slow but follows you and takes 2 stars; the **Dust Devil** zooms in straight lines and bounces off walls. Touching any of them costs a heart. Each realm has its own mix (dust devils in the deserts, bats near forests and water).
+   **Episode 1.1 tool bar** (under the map; keys **1–5** or tap): ★ stars, 🪓 **axe** (chop small trees and bushes → wood), **sickle** (cut tall grass → fiber, sometimes a seed or a coin), **seeds** (plant on the brown farm soil; a ripe crop picked with the sickle pays 3 coins), and **signposts** while they carry them. Space uses the chosen tool on the tile in front of the hero. Trees and grass grow back, and trees on the edge of the map can't be cut. Wood fixes the broken **south bridge** (4 wood), which students need to reach Mr. Farid and the lost compass.
 3. Talk to 3–4 people. Each talk is a short reading at about a grade-5 level, with **EN / ES / دری** buttons, and yellow tap-to-define words. Each person asks one question. The **✕** in the corner (or Esc) leaves a talk at any time; the person counts only once the student finishes the talk.
 4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
-5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).
+5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table). **In 1.1 the stone is in the world:** it hands out 4 signposts, and students put each one where its words point. Two use a relative location ("Just south of the big lake", "Two steps west of the south bridge") and two use an absolute location on the small latitude/longitude grid next to the stone ("40°N, 74°W"). A sign in the wrong spot says why, and the student picks it up and tries again. Each signpost costs 1 wood + 1 fiber the first time. A **Use cards instead** button opens the old card sort.
 6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
 7. **Claim the atlas page.** The Grump's mist clears away and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
 8. The **finish screen**: what they earned (and why), 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
@@ -28,7 +33,7 @@
 | Beat the Grump | +2 | +15 |
 | Pick up an atlas scrap | – | +3 (and 3 scraps = a star) |
 
-Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). The **five powers** are the Five Themes of Geography, and they carry from episode to episode. Each one unlocks a level at **3** points and another at **12**:
+Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). Pop-ups wait in line: only one shows at a time, and never on top of an open question or talk. The **five powers** are the Five Themes of Geography, and they carry from episode to episode. Each one unlocks a level at **3** points and another at **12**:
 
 | Power | Level 1 (3) | Level 2 (12) |
 |---|---|---|

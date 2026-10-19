@@ -12,7 +12,7 @@ node tests/play.js 2.2            # plays it start to finish in a real browser, 
 
 ## What a student does in every episode
 
-1. Opening card (the `intro` lines, spoken by Christopher).
+1. Opening card (the `intro` lines, spoken by Christopher). *Christopher is your living compass: he points the way, tells you what to do next, and trades hints for coins.* In 1.1 he flies in and introduces himself (`christopher.meet`). Press **C** (or 🧭) any time to ask him what to do next; his messages are a speech bubble over him on the map.
 2. Walk the map. Talk to every person (`npcs`). Each person says 2–3 short `lines`, then asks one question (`ask`). A right answer adds to one of the five powers.
 3. Optional: read signs (`signs`), pick up 3 atlas scraps (`scraps`), avoid the Grumplings (`smudges`).
 4. Walk into the glowing compass stone (`challenge`). It stays locked until every person has been talked to.
@@ -52,6 +52,10 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 | `learned` | 3 lines |
 | `reflect` | `{ q, starter }` — an open question that connects the place to the student's own life |
 | `weather` | optional: `{ sky, time }` to change the episode's weather and light. `sky`: `clear`, `rain`, `drizzle`, `snow`, `petals`, `leaves`, `dust`, `heat`. `time`: `day`, `sunset`, `night`. Without it the episode uses its line in `SKY` in `game/engine/fx.js` |
+| `christopher` | optional: `{ meet: [2–3 lines] }` — the first time a hero plays this episode, Christopher flies in and says these lines in his bubble (1.1 only for now) |
+| `tools` | optional: `['axe', 'sickle']` turns on the tool bar (keys 1–5): ★ stars, axe (small trees `T P a` and bushes `Y` → wood), sickle (tall grass `"` → fiber, sometimes a seed or a coin; ripe crops → 3 coins), seeds (plant on farm soil `o`), signposts. Space uses the tool on the tile you face. Chopped trees and grass grow back; trees on the map's edge can never be cut |
+| `keep` | optional: `[[x, y], ...]` trees the axe must never cut (for example a tree that keeps a path closed on purpose) |
+| `build` | optional: what can be built here (see "Building" below) |
 | `look.style` / `look.hat` | optional on a person: `'short'`, `'long'` or `'bun'` hair (otherwise picked from the name); `hat: '#hex'` gives them a hat |
 
 `stat` is one of the five powers: `loc` Where (Location) · `pla` What it is like (Place) · `hei` People & land (Human–Environment Interaction) · `mov` On the move (Movement) · `reg` Regions (Region).
@@ -82,7 +86,33 @@ quest: {
 
 Rules: put the giver, the contact and the action on **different screens** so the quest is a real trip. Every quest person and the thief stand on walkable tiles that do not block a path; the secret spot is a walkable tile that is not the start. `node tools/spots.js ep-X-Y.js` prints the map with rulers: a blank means walkable and reachable. Never use the word "debrief"; keep the grade-5 reading level; all three languages.
 
+## Building (`build`)
+
+Wood and fiber pay for things that use the episode's big idea. Each entry has an `id` and a `kind`. What a student has got and used is saved with the hero (and in the class Sheet), and a repair stays built on replays.
+
+**repair** — a broken thing on the map. Walking into it opens a panel with the cost; "Fix it" uses the wood and swaps the tiles.
+```js
+{ id: 'bridge', kind: 'repair', at: [[21, 16], [22, 16]], tile: 'b', cost: { wood: 4 },
+  name: {..}, ask: {..} /* what broke and why fix it */, done: {..} /* Christopher says this after */ }
+```
+Draw the broken tiles with `Z` (broken bridge) in the map. `tools/check.js` checks that you can walk up to it before it is fixed and that everything behind it can be reached after.
+
+**signpost** — a sign the student puts where its words point (used by the `build` challenge below).
+```js
+{ id: 'west', kind: 'signpost', cost: { wood: 1, fiber: 1 }, ok: [[19, 16]] /* right spots */,
+  text: {..} /* "Two steps west of the south bridge" */, why: {..} /* shown on a wrong spot */,
+  grid: true /* optional: the spot is on the challenge's survey grid */ }
+```
+A wrong spot says which way the right one is (or, on the grid, which square this is and which one the sign wants) and the student can pick the sign up again. The cost is paid only the first time a sign is put up.
+
 ## Challenge types
+
+**build** — the compass stone moved into the world. Walking into the stone hands out the signposts; placing all of them in the right spots solves it. Keep the card version as `fallback` ("Use cards instead").
+```js
+{ type: 'build', items: ['lake', 'west', 'abs1', 'abs2'] /* signpost ids from build */,
+  grid: { x: 3, y: 8, rows: [ {..'50°N'}, .. ], cols: [ {..'80°W'}, .. ] } /* optional survey grid on open ground; north is up, west is left */,
+  fallback: { type: 'sort', title, intro, bins, items } }
+```
 
 **sort** — put each card in the right group.
 ```js
@@ -124,6 +154,7 @@ Walkable ground:
 | `1` sprout | `2` young plant | `3` coffee bush | `w` wheat |
 | `q` rice paddy | `v` potatoes | `y` banana | `e` sugarcane |
 | `t` tea terraces | `b` bridge (east–west) | `B` bridge (north–south) | `k` wooden dock |
+| `%` tree stump (after the axe) | | | |
 | `-` railway (east–west) | `\|` railway (north–south) | `d` door | `l` light paving (streets, plazas) |
 
 Solid (cannot walk through):
@@ -137,6 +168,7 @@ Solid (cannot walk through):
 | `R` red roof | `Q` blue roof | `h` house wall + window | `J` flat-roof building |
 | `U` tall city building | `X` factory | `I` oil pump | `O` well |
 | `m` market stall | `W` stone wall | `D` temple wall | `C` tiny city (for maps of maps) |
+| `Y` small bush (the axe clears it) | `Z` broken bridge (a `build` repair fixes it) | | |
 
 Houses are roof rows over a wall row with a door: `RRR` above `hdh`. Trees and mountains automatically sit on the ground around them (pines on snow, mountains on sand).
 

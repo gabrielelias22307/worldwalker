@@ -8,7 +8,7 @@ const ROOT = path.join(__dirname, '..');
   const url = 'file://' + path.join(ROOT, 'game', 'ep-1-1.html');
   await p.goto(url); await p.evaluate(() => localStorage.clear()); await p.goto(url);
   await p.fill('#si-name', 'Walker'); await p.locator('#ww-ov .pbtn.gold.big').click(); await p.locator('#ww-ov .pbtn.gold.big').click();
-  await p.waitForFunction(() => !WW.paused);
+  await p.evaluate(() => WW.chris.skip()); await p.waitForFunction(() => !WW.paused);
   const pos = () => p.evaluate(() => [WW.dbg.player.x, WW.dbg.player.y]);
   // walk down to the path row then right across the screen edge (x 15 -> 16)
   await p.keyboard.down('ArrowDown'); await p.waitForTimeout(120); await p.keyboard.up('ArrowDown'); await p.waitForTimeout(250);
@@ -38,7 +38,7 @@ const ROOT = path.join(__dirname, '..');
   ph.on('pageerror', e => errs.push('phone: ' + e.message));
   await ph.goto(url); await ph.waitForTimeout(500); await ph.fill('#si-name', 'Phone');
   await ph.screenshot({ path: path.join(ROOT, 'shots', 'phone-start.png'), fullPage: true });
-  await ph.locator('#ww-ov .pbtn.gold.big').click(); await ph.locator('#ww-ov .pbtn.gold.big').click(); await ph.waitForTimeout(300);
+  await ph.locator('#ww-ov .pbtn.gold.big').click(); await ph.locator('#ww-ov .pbtn.gold.big').click(); await ph.evaluate(() => WW.chris.skip()); await ph.waitForTimeout(300);
   await ph.screenshot({ path: path.join(ROOT, 'shots', 'phone-map.png'), fullPage: true });
   const dp = await ph.evaluate(() => getComputedStyle(document.getElementById('ww-dpad')).display);
   out.push('phone: arrows shown = ' + (dp !== 'none' ? '✓' : '✗') + ', page width ' + await ph.evaluate(() => document.documentElement.scrollWidth));

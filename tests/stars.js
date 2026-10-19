@@ -8,7 +8,7 @@ const url = 'file://' + path.join(__dirname, '..', 'game', 'ep-1-1.html');
   let failed = 0; const ok = (c, w) => { console.log((c ? '✓ ' : '✗ ') + w); if (!c) failed++; };
   await p.goto(url); await p.evaluate(() => localStorage.clear()); await p.goto(url);
   await p.fill('#si-name', 'Tester'); await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForSelector('.introov');
-  await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForFunction(() => !WW.paused);
+  await p.locator('#ww-ov .pbtn.gold.big').click(); await p.evaluate(() => WW.chris.skip()); await p.waitForFunction(() => !WW.paused);
   await p.click('#ww-cv', { position: { x: 5, y: 5 } }).catch(() => {});
   // a star flies when Space is pressed in the open
   await p.evaluate(() => { WW.dbg.noSmudges(); WW.dbg.ents.filter(e => e.kind === 'smudge').forEach(e => (e.visible = false)); WW.dbg.teleport(4, 16); WW.dbg.face('right'); });
@@ -34,11 +34,13 @@ const url = 'file://' + path.join(__dirname, '..', 'game', 'ep-1-1.html');
   const total = await p.evaluate(() => WW.run.gains.filter(g => g.stat == null).reduce((a, g) => a + g.coins, 0));
   ok(total <= 5, `stars give at most 5 coins per episode (${total} given for 9 knock-outs)`);
   // the Grump only stings
-  await p.evaluate(() => { WW.ep.npcs.forEach(n => WW.run.talked.add(n.id)); WW.run.quest = 4; WW.run.challengeDone = true; WW.game.onChallengeDone(); const [x, y] = WW.ep.boss.at; WW.dbg.teleport(x - 3, y); WW.dbg.face('right'); WW.dbg.fire(); });
+  await p.evaluate(() => { WW.ep.npcs.forEach(n => WW.run.talked.add(n.id)); WW.run.quest = 4; WW.run.challengeDone = true; WW.game.onChallengeDone(); });
+  await p.waitForTimeout(800); // Christopher first says the Grump is out
+  await p.evaluate(() => { const [x, y] = WW.ep.boss.at; WW.dbg.teleport(x - 3, y); WW.dbg.face('right'); WW.dbg.fire(); });
   await p.waitForTimeout(600);
   const boss = await p.evaluate(() => { const e = WW.dbg.ents.find(e => e.kind === 'boss'); return { gone: !!e.gone, roared: !!e.roarT, done: WW.run.bossDone }; });
   ok(boss.roared && !boss.gone && !boss.done, 'a star stings the Grump but does not beat it');
-  ok(/RIGHT ANSWERS/.test(await p.textContent('#ww-toast')), 'Christopher explains that only right answers break the shield');
+  ok(/RIGHT ANSWERS/.test(await p.textContent('.cbubble')), 'Christopher explains (in his bubble) that only right answers break the shield');
   // Space still talks to a person you face
   await p.evaluate(() => { const n = WW.ep.npcs[0]; WW.dbg.teleport(n.x, n.y + 1); WW.dbg.face('up'); });
   await p.keyboard.press('Space'); await p.waitForTimeout(150);

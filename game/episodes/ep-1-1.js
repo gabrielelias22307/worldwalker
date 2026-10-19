@@ -12,10 +12,11 @@ window.EPISODE = {
       fa: 'کریستوفر: «غرغرو از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند. با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
   ],
 
-  /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md */
+  /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md
+     A creek (row 11) splits the east bank: the broken south bridge (ZZ) must be fixed with wood to reach Mr. Farid and the lost compass. */
   map: [
     'TTTTTTTTTTTTTTTTTTTTT~~TTTTTTTTT',
-    'T....................~~........T',
+    'T............."""""..~~........T',
     'T.RRR....QQQQ........~~.T,~~~~.T',
     'T.hdh....hhdh........~~...~~~~.T',
     'T.................x..~~...~~~~.T',
@@ -23,21 +24,71 @@ window.EPISODE = {
     'T.....x:....,........~~..T....PT',
     'T..,...:......RRRR...~~.....,..T',
     'T......:......hdhh...~~kk......T',
-    'T.,..,.:.....,.......~~.....P..T',
+    'T.,..,.:.....,..Y.Y..~~.....P..T',
     'T......:.............~~.T......T',
-    'T......:..........T..~~........T',
+    'T......:..........T..~~~~~~~~~~T',
     'T.T.T..:..T.T........~~.QQQQ.K.T',
     'T..T...:...T."..r.,..~~.hdhh.K.T',
     'T...,..:."...."......~~........T',
     'T..".T.:."..T........~~........T',
-    'T......::::::::::::::bb:::::::.T',
-    'T.T..........T.......~~....:...T',
+    'T......::::::::::::::ZZ:::::::.T',
+    'T.T..........T....Y..~~....:...T',
     'T..T......T....ro1o..~~....:.K.T',
     'T...T......T..T.2ooT.~~.KK.:.K.T',
     'T................T...~~........T',
     'TTTTTTTTTTTTTTTTTTTTT~~TTTTTTTTT'
   ],
   start: [4, 6],
+
+  /* Christopher flies in and says who he is (only the first time a hero plays) */
+  christopher: {
+    meet: [
+      { en: 'Hi! I am Christopher, your living compass. My needle always knows which way is north.',
+        es: '¡Hola! Soy Christopher, tu brújula viva. Mi aguja siempre sabe dónde está el norte.',
+        fa: 'سلام! من کریستوفر هستم، قطب‌نمای زندهٔ تو. عقربه‌ام همیشه می‌داند شمال کجاست.' },
+      { en: 'I fly with you and point the way. Press C (or tap 🧭) any time, and I will tell you what to do next.',
+        es: 'Vuelo contigo y te señalo el camino. Pulsa C (o toca 🧭) cuando quieras y te diré qué hacer después.',
+        fa: 'من با تو پرواز می‌کنم و راه را نشان می‌دهم. هر وقت C را بزنی (یا 🧭 را لمس کنی)، می‌گویم بعد چه کنی.' },
+      { en: 'Stuck? I trade hints for coins. Your tool bar is below the map: 2 is the axe, 3 is the sickle. Let us go!',
+        es: '¿Atascado? Cambio pistas por monedas. Tu barra de herramientas está debajo del mapa: 2 es el hacha, 3 es la hoz. ¡Vamos!',
+        fa: 'گیر کردی؟ در برابر سکه کمک می‌دهم. ابزارهایت زیر نقشه است: ۲ تبر است، ۳ داس است. برویم!' }
+    ]
+  },
+
+  /* the tool bar: chop small trees and bushes for wood, cut tall grass for fiber (and sometimes seeds) */
+  tools: ['axe', 'sickle'],
+
+  /* what can be built here (see docs/EPISODE-FORMAT.md) */
+  build: [
+    { id: 'bridge', kind: 'repair', at: [[21, 16], [22, 16]], tile: 'b', cost: { wood: 4 },
+      name: { en: 'south bridge', es: 'puente del sur', fa: 'پل جنوبی' },
+      ask: { en: 'The Grump\'s wind broke the south bridge. Mr. Farid and the lost compass are on the other side. Four pieces of wood will fix it.',
+        es: 'El viento del Gruñón rompió el puente del sur. El Sr. Farid y la brújula perdida están del otro lado. Cuatro piezas de madera lo arreglan.',
+        fa: 'باد غرغرو پل جنوبی را شکست. استاد فرید و قطب‌نمای گم‌شده آن طرف هستند. چهار تکه چوب آن را درست می‌کند.' },
+      done: { en: 'The south bridge is fixed! Now you can cross the river to the south-east side.',
+        es: '¡El puente del sur está arreglado! Ahora puedes cruzar el río hacia el sureste.',
+        fa: 'پل جنوبی درست شد! حالا می‌توانی از دریا به طرف جنوب‌شرق بگذری.' } },
+    { id: 'lake', kind: 'signpost', cost: { wood: 1, fiber: 1 }, ok: [[26, 5], [27, 5], [28, 5], [29, 5]],
+      text: { en: 'Just south of the big lake', es: 'Justo al sur del lago grande', fa: 'درست جنوبِ جهیل بزرگ' },
+      why: { en: 'The big lake is in the north-east. South means the side below it on this map.',
+        es: 'El lago grande está en el noreste. Sur es el lado de abajo en este mapa.',
+        fa: 'جهیل بزرگ در شمال‌شرق است. جنوب در این نقشه یعنی طرف پایینِ آن.' } },
+    { id: 'west', kind: 'signpost', cost: { wood: 1, fiber: 1 }, ok: [[19, 16]],
+      text: { en: 'Two steps west of the south bridge', es: 'Dos pasos al oeste del puente del sur', fa: 'دو قدم غربِ پل جنوبی' },
+      why: { en: 'West is to the left on this map. Start at the south bridge and count two steps left.',
+        es: 'El oeste está a la izquierda en este mapa. Empieza en el puente del sur y cuenta dos pasos a la izquierda.',
+        fa: 'غرب در این نقشه طرف چپ است. از پل جنوبی شروع کن و دو قدم به چپ بشمار.' } },
+    { id: 'abs1', kind: 'signpost', grid: true, cost: { wood: 1, fiber: 1 }, ok: [[4, 9]],
+      text: { en: '40°N, 74°W', es: '40°N, 74°O', fa: '۴۰ درجه شمالی، ۷۴ درجه غربی' },
+      why: { en: 'Find the 40°N row and the 74°W column. The sign goes where they cross.',
+        es: 'Busca la fila de 40°N y la columna de 74°O. El letrero va donde se cruzan.',
+        fa: 'ردیف ۴۰ درجه شمالی و ستون ۷۴ درجه غربی را پیدا کن. تابلو جایی می‌رود که به هم می‌رسند.' } },
+    { id: 'abs2', kind: 'signpost', grid: true, cost: { wood: 1, fiber: 1 }, ok: [[3, 10]],
+      text: { en: '30°N, 80°W', es: '30°N, 80°O', fa: '۳۰ درجه شمالی، ۸۰ درجه غربی' },
+      why: { en: 'Find the 30°N row and the 80°W column. The sign goes where they cross.',
+        es: 'Busca la fila de 30°N y la columna de 80°O. El letrero va donde se cruzan.',
+        fa: 'ردیف ۳۰ درجه شمالی و ستون ۸۰ درجه غربی را پیدا کن. تابلو جایی می‌رود که به هم می‌رسند.' } }
+  ],
 
   words: {
     'mental map': { en: 'the map of a place that you keep in your head', es: 'el mapa de un lugar que guardas en tu cabeza', fa: 'نقشهٔ یک جا که در ذهن خود داری' },
@@ -202,8 +253,21 @@ window.EPISODE = {
 
   challenge: {
     at: [10, 8],
-    type: 'sort',
+    type: 'build',
     stat: 'loc',
+    title: { en: 'Put the village signs back', es: 'Vuelve a poner los letreros del pueblo', fa: 'تابلوهای ده را دوباره بگذار' },
+    intro: { en: 'The Grump blew away the village signs. Put each one where its words point. Two use a [[relative location|relative location]] (what is near). Two use an [[absolute location|absolute location]] (grid numbers).',
+      es: 'El Gruñón se llevó los letreros del pueblo. Pon cada uno donde dicen sus palabras. Dos usan una [[relative location|ubicación relativa]] (lo que está cerca). Dos usan una [[absolute location|ubicación absoluta]] (números de cuadrícula).',
+      fa: 'غرغرو تابلوهای ده را با باد برد. هر کدام را جایی بگذار که نوشته‌اش می‌گوید. دو تا [[relative location|موقعیت نسبی]] دارند (چه چیزی نزدیک است). دو تا [[absolute location|موقعیت مطلق]] دارند (عددهای شبکه).' },
+    items: ['lake', 'west', 'abs1', 'abs2'],
+    // a small surveyed grid next to the stone: latitude rows (north is up) and longitude columns (west is left)
+    grid: { x: 3, y: 8,
+      rows: [{ en: '50°N', es: '50°N', fa: '۵۰° شمالی' }, { en: '40°N', es: '40°N', fa: '۴۰° شمالی' }, { en: '30°N', es: '30°N', fa: '۳۰° شمالی' }],
+      cols: [{ en: '80°W', es: '80°O', fa: '۸۰° غربی' }, { en: '74°W', es: '74°O', fa: '۷۴° غربی' }, { en: '70°W', es: '70°O', fa: '۷۰° غربی' }] },
+    success: { en: 'Every sign points the right way again!', es: '¡Todos los letreros vuelven a señalar bien!', fa: 'همهٔ تابلوها دوباره راه درست را نشان می‌دهند!' },
+    // "Use cards instead": the old card sort
+    fallback: {
+    type: 'sort',
     title: { en: 'Exact spot or "near something"?', es: '¿Lugar exacto o "cerca de algo"?', fa: 'جای دقیق یا «نزدیک چیزی»؟' },
     intro: { en: 'The Grump mixed up the village directions. Sort each card. Is it an [[absolute location|absolute location]] or a [[relative location|relative location]]?',
       es: 'El Gruñón mezcló las direcciones del pueblo. Ordena cada tarjeta. ¿Es una [[absolute location|ubicación absoluta]] o una [[relative location|ubicación relativa]]?',
@@ -221,6 +285,7 @@ window.EPISODE = {
       { bin: 'rel', t: { en: 'Next to the biggest lake in the valley', es: 'Junto al lago más grande del valle', fa: 'کنار بزرگ‌ترین جهیل دره' }, why: { en: '"Next to" another place is always relative.', es: '"Junto a" otro lugar siempre es relativa.', fa: '«کنار» یک جای دیگر همیشه نسبی است.' } }
     ],
     success: { en: 'The village signs point the right way again!', es: '¡Los letreros del pueblo vuelven a señalar bien!', fa: 'تابلوهای ده دوباره راه درست را نشان می‌دهند!' }
+    }
   },
 
   boss: {

@@ -51,7 +51,7 @@ vm.createContext(box); vm.runInContext(fs.readFileSync(path.join(ROOT, 'apps-scr
   const signIn = async p => {
     if (await p.locator('#si-name').count()) { await p.fill('#si-name', 'Ana'); await p.fill('#si-cls', 'GEO-1'); await p.fill('#si-pin', '1234'); }
     await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForSelector('.introov');
-    await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForFunction(() => !WW.paused);
+    await p.locator('#ww-ov .pbtn.gold.big').click(); await p.evaluate(() => WW.chris.skip()); await p.waitForFunction(() => !WW.paused);
   };
   const student = () => { const sh = tabs.Students; const head = sh.rows[0]; const r = sh.rows.find(x => x[0] === 'GEO-1|ana'); return r && Object.fromEntries(head.map((h, i) => [h, r[i]])); };
 

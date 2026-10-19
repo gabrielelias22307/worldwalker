@@ -135,7 +135,67 @@
     gotTool: { en: 'New tool for your bag', es: 'Nueva herramienta para tu bolsa', fa: 'ابزار تازه برای کوله‌ات' },
     tapWord: { en: 'Tap a yellow word to see what it means.', es: 'Toca una palabra amarilla para ver qué significa.', fa: 'روی کلمهٔ زرد بزن تا معنایش را ببینی.' },
     clickStart: { en: 'Click the game, then use the arrow keys', es: 'Haz clic en el juego y usa las flechas', fa: 'روی بازی کلیک کن، بعد از کلیدهای جهت استفاده کن' },
-    controls: { en: 'Arrow keys or WASD to walk · walk into people to talk · Space to throw a star ★', es: 'Flechas o WASD para caminar · camina hacia las personas para hablar · Espacio para lanzar una estrella ★', fa: 'کلیدهای جهت یا WASD برای راه رفتن · برای گپ زدن به طرف مردم برو · Space برای پرتاب ستاره ★' },
+    controls: { en: 'Arrows or WASD: walk · walk into people to talk · Space: use your tool (★ throws a star) · 1–5: pick a tool · C: Christopher', es: 'Flechas o WASD: caminar · camina hacia las personas para hablar · Espacio: usa tu herramienta (★ lanza una estrella) · 1–5: elige herramienta · C: Christopher', fa: 'کلیدهای جهت یا WASD: راه رفتن · برای گپ زدن به طرف مردم برو · Space: از ابزارت استفاده کن (★ ستاره پرتاب می‌کند) · ۱ تا ۵: ابزار را انتخاب کن · C: کریستوفر' },
+    /* Christopher (christopher.js) */
+    chrisName: { en: 'Christopher', es: 'Christopher', fa: 'کریستوفر' },
+    chrisJob: { en: 'Christopher is your living compass: he points the way, tells you what to do next, and trades hints for coins.', es: 'Christopher es tu brújula viva: te señala el camino, te dice qué hacer después y cambia pistas por monedas.', fa: 'کریستوفر قطب‌نمای زندهٔ توست: راه را نشان می‌دهد، می‌گوید بعد چه کنی، و در برابر سکه کمک می‌دهد.' },
+    chrisKey: { en: 'Press C (or 🧭) to ask Christopher what to do next.', es: 'Pulsa C (o 🧭) para preguntarle a Christopher qué hacer.', fa: 'C (یا 🧭) را بزن تا از کریستوفر بپرسی بعد چه کنی.' },
+    dir_n: { en: 'north ⬆', es: 'al norte ⬆', fa: 'شمال ⬆' }, dir_ne: { en: 'northeast ↗', es: 'al noreste ↗', fa: 'شمال‌شرق ↗' },
+    dir_e: { en: 'east ➡', es: 'al este ➡', fa: 'شرق ➡' }, dir_se: { en: 'southeast ↘', es: 'al sureste ↘', fa: 'جنوب‌شرق ↘' },
+    dir_s: { en: 'south ⬇', es: 'al sur ⬇', fa: 'جنوب ⬇' }, dir_sw: { en: 'southwest ↙', es: 'al suroeste ↙', fa: 'جنوب‌غرب ↙' },
+    dir_w: { en: 'west ⬅', es: 'al oeste ⬅', fa: 'غرب ⬅' }, dir_nw: { en: 'northwest ↖', es: 'al noroeste ↖', fa: 'شمال‌غرب ↖' },
+    dirHere: { en: 'It is right next to you.', es: 'Está justo a tu lado.', fa: 'درست کنار توست.' },
+    goDir: { en: 'Go {d}.', es: 'Ve {d}.', fa: 'برو به طرف {d}.' },
+    nsTalk: { en: 'Talk to {n}, the {r}.', es: 'Habla con {n} ({r}).', fa: 'با {n} ({r}) گپ بزن.' },
+    nsFind: { en: 'Find the secret spot. The clue: {h}', es: 'Busca el lugar secreto. La pista: {h}', fa: 'جای مخفی را پیدا کن. نشانه: {h}' },
+    nsStone: { en: 'Walk into the glowing compass stone.', es: 'Camina hacia la piedra brújula que brilla.', fa: 'به طرف سنگ قطب‌نمای درخشان برو.' },
+    nsBoss: { en: 'The Grump is out. Walk into it to start the trial.', es: 'El Gruñón salió. Camina hacia él para empezar la prueba.', fa: 'غرغرو بیرون آمده. به طرفش برو تا آزمون شروع شود.' },
+    nsPage: { en: 'Take the atlas page from the stone.', es: 'Toma la página del atlas de la piedra.', fa: 'صفحهٔ اطلس را از روی سنگ بگیر.' },
+    nsFix: { en: 'The {n} is broken. Fix it with {c}.', es: 'El {n} está roto. Arréglalo con {c}.', fa: '{n} خراب است. با {c} درستش کن.' },
+    nsSigns: { en: 'Put up your signposts: {n} still need the right spot. Pick them with 5.', es: 'Pon tus letreros: a {n} les falta el lugar correcto. Elígelos con 5.', fa: 'تابلوهایت را بگذار: {n} تا هنوز جای درست را لازم دارند. با ۵ انتخابشان کن.' },
+    showWay: { en: 'Show me the way', es: 'Muéstrame el camino', fa: 'راه را نشانم بده' },
+    noCoins5: { en: 'You need 5 coins for that. Pick up atlas scraps or answer people to get coins.', es: 'Necesitas 5 monedas. Recoge pedazos del atlas o responde a las personas para ganar monedas.', fa: 'برای این ۵ سکه لازم داری. تکه‌های اطلس را بردار یا به مردم جواب بده تا سکه بگیری.' },
+    wayOn: { en: 'Follow the gold arrow! It stays for 30 seconds.', es: '¡Sigue la flecha dorada! Dura 30 segundos.', fa: 'دنبال پیکان طلایی برو! ۳۰ ثانیه می‌ماند.' },
+    /* the tool bar (tools.js) */
+    tool_star: { en: 'Stars (Space throws one)', es: 'Estrellas (Espacio lanza una)', fa: 'ستاره‌ها (Space یکی پرتاب می‌کند)' },
+    tool_axe: { en: 'Axe: chop small trees and bushes', es: 'Hacha: corta árboles pequeños y arbustos', fa: 'تبر: درخت‌های کوچک و بوته‌ها را ببُر' },
+    tool_sickle: { en: 'Sickle: cut tall grass, pick ripe crops', es: 'Hoz: corta pasto alto, cosecha', fa: 'داس: علف بلند را ببُر، محصول رسیده را بچین' },
+    tool_seed: { en: 'Seeds: plant on farm soil', es: 'Semillas: siembra en tierra de cultivo', fa: 'تخم‌ها: در خاک مزرعه بکار' },
+    tool_sign: { en: 'Signposts: put one where its words point', es: 'Letreros: pon cada uno donde dicen sus palabras', fa: 'تابلوها: هر کدام را جایی بگذار که نوشته‌اش می‌گوید' },
+    gathered: { en: 'What you gathered', es: 'Lo que juntaste', fa: 'آنچه جمع کردی' },
+    dirClose: { en: 'So close! The right spot is one step away.', es: '¡Muy cerca! El lugar correcto está a un paso.', fa: 'خیلی نزدیک! جای درست یک قدم دورتر است.' },
+    item_wood: { en: 'wood', es: 'madera', fa: 'چوب' },
+    item_fiber: { en: 'fiber', es: 'fibra', fa: 'الیاف' },
+    item_seed: { en: 'seed', es: 'semilla', fa: 'تخم' },
+    how_wood: { en: 'Get wood: pick the axe (2) and face a small tree or bush, then press Space.', es: 'Consigue madera: elige el hacha (2), mira a un árbol pequeño o arbusto y pulsa Espacio.', fa: 'چوب بگیر: تبر (۲) را انتخاب کن، رو به درخت کوچک یا بوته بایست و Space را بزن.' },
+    how_fiber: { en: 'Get fiber: pick the sickle (3) and face tall grass, then press Space.', es: 'Consigue fibra: elige la hoz (3), mira al pasto alto y pulsa Espacio.', fa: 'الیاف بگیر: داس (۳) را انتخاب کن، رو به علف بلند بایست و Space را بزن.' },
+    axeWhat: { en: 'The axe works on small trees and bushes. Face one and press Space.', es: 'El hacha sirve para árboles pequeños y arbustos. Mira a uno y pulsa Espacio.', fa: 'تبر برای درخت‌های کوچک و بوته‌هاست. رو به یکی بایست و Space را بزن.' },
+    borderTree: { en: 'This tree keeps the edge of the map safe, so we leave it. Try a tree inside the map.', es: 'Este árbol cuida el borde del mapa, así que lo dejamos. Prueba con un árbol de adentro.', fa: 'این درخت لبهٔ نقشه را نگه می‌دارد، پس آن را نمی‌بُریم. یک درخت داخل نقشه را امتحان کن.' },
+    sickleWhat: { en: 'The sickle cuts tall grass and picks ripe crops. Face one and press Space.', es: 'La hoz corta pasto alto y cosecha. Mira uno y pulsa Espacio.', fa: 'داس علف بلند را می‌بُرد و محصول رسیده را می‌چیند. رو به یکی بایست و Space را بزن.' },
+    noSeeds: { en: 'No seeds yet. Cut tall grass with the sickle: sometimes a seed falls out.', es: 'Aún no tienes semillas. Corta pasto alto con la hoz: a veces sale una semilla.', fa: 'هنوز تخم نداری. علف بلند را با داس ببُر: گاهی یک تخم بیرون می‌افتد.' },
+    needSoil: { en: 'Seeds need farm soil: the brown rows by the farm.', es: 'Las semillas necesitan tierra de cultivo: las filas cafés de la granja.', fa: 'تخم‌ها خاک مزرعه لازم دارند: ردیف‌های قهوه‌ای کنار مزرعه.' },
+    planted: { en: 'Planted! Come back in a little while.', es: '¡Sembrado! Vuelve en un rato.', fa: 'کاشته شد! کمی بعد برگرد.' },
+    notRipe: { en: 'Not ripe yet. Wait until it turns gold.', es: 'Todavía no está listo. Espera a que se ponga dorado.', fa: 'هنوز نرسیده. صبر کن تا طلایی شود.' },
+    why_harvest: { en: 'harvest', es: 'cosecha', fa: 'برداشت' },
+    costs: { en: 'Costs', es: 'Cuesta', fa: 'قیمت' },
+    youHave: { en: 'you have', es: 'tienes', fa: 'داری' },
+    fixIt: { en: 'Fix it', es: 'Arreglarlo', fa: 'درستش کن' },
+    /* signposts (the compass stone in the world) */
+    sgTake: { en: 'Take the signposts', es: 'Toma los letreros', fa: 'تابلوها را بگیر' },
+    sgCards: { en: 'Use cards instead', es: 'Usar tarjetas', fa: 'به جایش کارت استفاده کن' },
+    sgStart: { en: 'Each sign says where it goes. Walk there, face the spot, and press Space. Press 5 to switch signs.', es: 'Cada letrero dice dónde va. Camina allí, mira el lugar y pulsa Espacio. Pulsa 5 para cambiar de letrero.', fa: 'هر تابلو می‌گوید کجا برود. آنجا برو، رو به آن جا بایست و Space را بزن. برای عوض کردن تابلو ۵ را بزن.' },
+    sgHow: { en: 'Face the spot and press Space.', es: 'Mira el lugar y pulsa Espacio.', fa: 'رو به آن جا بایست و Space را بزن.' },
+    sgHolding: { en: 'Sign {i} of {n}', es: 'Letrero {i} de {n}', fa: 'تابلوی {i} از {n}' },
+    sgCost: { en: 'Each signpost costs {c} the first time you put it up.', es: 'Cada letrero cuesta {c} la primera vez que lo pones.', fa: 'هر تابلو بار اول که می‌گذاری {c} قیمت دارد.' },
+    sgGrid: { en: 'The signs with numbers go on the grid by the stone. Its lines are latitude (°N) and longitude (°W).', es: 'Los letreros con números van en la cuadrícula junto a la piedra. Sus líneas son latitud (°N) y longitud (°O).', fa: 'تابلوهای عدددار روی شبکهٔ کنار سنگ می‌روند. خط‌هایش عرض جغرافیایی (°N) و طول جغرافیایی (°W) هستند.' },
+    sgBlocked: { en: 'A signpost needs an open spot of ground in front of you.', es: 'Un letrero necesita un lugar libre frente a ti.', fa: 'تابلو یک جای خالی جلوی تو لازم دارد.' },
+    sgNeed: { en: 'This signpost needs {c}.', es: 'Este letrero necesita {c}.', fa: 'این تابلو {c} لازم دارد.' },
+    sgRight: { en: 'Right spot!', es: '¡Lugar correcto!', fa: 'جای درست!' },
+    sgWrongGrid: { en: 'This spot is {here}. The sign says {want}. Find where those two lines cross.', es: 'Este lugar es {here}. El letrero dice {want}. Busca dónde se cruzan esas dos líneas.', fa: 'این جا {here} است. تابلو می‌گوید {want}. جایی را پیدا کن که این دو خط به هم می‌رسند.' },
+    sgOffGrid: { en: 'This sign has numbers, so it goes on the grid by the compass stone.', es: 'Este letrero tiene números, así que va en la cuadrícula junto a la piedra brújula.', fa: 'این تابلو عدد دارد، پس روی شبکهٔ کنار سنگ قطب‌نما می‌رود.' },
+    sgWrongRel: { en: 'Not here. The right spot is {d} from here.', es: 'Aquí no. El lugar correcto está {d} de aquí.', fa: 'این جا نه. جای درست به طرف {d} از این جاست.' },
+    sgPickUp: { en: 'Face the sign and press Space to pick it up again.', es: 'Mira el letrero y pulsa Espacio para levantarlo otra vez.', fa: 'رو به تابلو بایست و Space را بزن تا دوباره برش داری.' },
+    sgPicked: { en: 'Got it back. Try another spot.', es: 'Lo tienes de vuelta. Prueba otro lugar.', fa: 'پسش گرفتی. جای دیگری را امتحان کن.' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -187,7 +247,7 @@
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -267,6 +327,10 @@
     }
     for (const k in other.stats || {}) s.stats[k] = Math.max(s.stats[k] || 0, other.stats[k] || 0);
     if (other.look && !s.name) s.look = other.look;
+    // the bag: the most ever got and the most ever used, like coins; things built stay built
+    for (const k in other.bag || {}) { const a = (s.bag = s.bag || {})[k] || { got: 0, used: 0 }, b = other.bag[k]; s.bag[k] = { got: Math.max(a.got || 0, b.got || 0), used: Math.max(a.used || 0, b.used || 0) }; }
+    for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
+    if (other.metChris) s.metChris = true;
     // coins: keep the most ever earned and the most ever spent, so spent coins never come back
     if (other.coins != null) {
       const spent = Math.max(s.spent || 0, other.spent || 0);
@@ -296,7 +360,7 @@
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris });
     }
     return d || { ok: false };
   };
@@ -308,7 +372,7 @@
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {

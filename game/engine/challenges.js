@@ -4,7 +4,8 @@
      order  – tap the cards in the right order
      claim  – choose one option, then back it up with one reason of each kind
      combo  – set switches; some settings work and some do not
-     table  – read a small table of facts, answer questions about it            */
+     table  – read a small table of facts, answer questions about it
+     build  – the stone moved into the world: place signposts where they point (tools.js); fallback: a card version  */
 (function () {
   const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s), btn = (a, b, c) => WW.btn(a, b, c);
   const shuffle = (a, seed = 7) => { a = a.slice(); let s = seed; for (let i = a.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor((s / 233280) * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -299,8 +300,9 @@
     });
   }
 
+  WW.challengeSolved = ch => solved(null, ch);
   WW.challenge = (ch) => {
-    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI }[ch.type];
+    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI, build: c => WW.tools.stone(c) }[ch.type];
     if (!f) return console.error('unknown challenge type', ch.type);
     f(ch);
   };

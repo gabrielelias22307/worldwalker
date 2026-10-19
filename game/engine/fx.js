@@ -64,13 +64,14 @@
   function burst(gx, gy, kind) {
     if (calm() && kind !== 'gold') return;
     const x = gx * TS + 8, y = gy * TS + 8;
-    const n = { gold: 16, purple: 22, dust: 4, snow: 4, splash: 6, poof: 30 }[kind] || 8;
+    // chips and leaves: a few bits of wood or grass fly up and fall
+    const n = { gold: 16, purple: 22, dust: 4, snow: 4, splash: 6, poof: 30, chips: 8, leaves: 9 }[kind] || 8;
     for (let i = 0; i < n; i++) {
       const a = rnd() * Math.PI * 2, sp = kind === 'dust' || kind === 'snow' ? 0.15 + rnd() * 0.2 : kind === 'splash' ? 0.4 + rnd() * 0.3 : 0.5 + rnd() * 1.1;
       parts.push({
         x: kind === 'dust' || kind === 'snow' ? x + (rnd() - 0.5) * 8 : x, y: kind === 'dust' || kind === 'snow' ? y + 6 : y,
-        vx: Math.cos(a) * sp, vy: kind === 'dust' || kind === 'snow' ? -0.1 - rnd() * 0.15 : kind === 'splash' ? -0.8 - rnd() * 0.6 : Math.sin(a) * sp,
-        g: kind === 'splash' ? 0.06 : kind === 'gold' ? 0.02 : 0, life: kind === 'poof' ? 70 : kind === 'dust' || kind === 'snow' ? 26 : 45, age: 0, kind,
+        vx: Math.cos(a) * sp, vy: kind === 'dust' || kind === 'snow' ? -0.1 - rnd() * 0.15 : kind === 'splash' || kind === 'chips' || kind === 'leaves' ? -0.8 - rnd() * 0.6 : Math.sin(a) * sp,
+        g: kind === 'splash' || kind === 'chips' || kind === 'leaves' ? 0.06 : kind === 'gold' ? 0.02 : 0, life: kind === 'poof' ? 70 : kind === 'dust' || kind === 'snow' ? 26 : 45, age: 0, kind,
         size: kind === 'poof' ? 2 + ((rnd() * 3) | 0) : kind === 'dust' || kind === 'snow' ? 2 : 1 + ((rnd() * 2) | 0)
       });
     }
@@ -82,7 +83,7 @@
     else if ('nzi'.includes(ch)) burst(gx, gy, 'snow');
   }
 
-  const PCOL = { gold: ['#fff3b0', '#f2c14e', '#ffffff'], purple: ['#a08cc8', '#6d5f8c', '#4b3f63'], poof: ['#a08cc8', '#6d5f8c', '#d8d0ec'], dust: ['rgba(201,176,100,.7)'], snow: ['rgba(255,255,255,.85)'], splash: ['#d8f0ff', '#ffffff'] };
+  const PCOL = { gold: ['#fff3b0', '#f2c14e', '#ffffff'], purple: ['#a08cc8', '#6d5f8c', '#4b3f63'], poof: ['#a08cc8', '#6d5f8c', '#d8d0ec'], dust: ['rgba(201,176,100,.7)'], snow: ['rgba(255,255,255,.85)'], splash: ['#d8f0ff', '#ffffff'], chips: ['#c79a5b', '#8b5a2b', '#e8c48a'], leaves: ['#5cc46a', '#2e8b3a', '#a5d86a'] };
 
   /* ---------------- drawing ---------------- */
   // c: the map canvas. sx, sy: the screen being shown. hero: {x, y} in pixels on that screen. t: time in ms
