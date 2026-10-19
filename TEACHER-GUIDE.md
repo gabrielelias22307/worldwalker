@@ -10,10 +10,10 @@
 4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
 5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).
 6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
-7. **Claim the atlas page.** The Grump's grey lifts from the whole map and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
+7. **Claim the atlas page.** The Grump's mist clears away and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
 8. The **finish screen**: what they earned (and why), 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
 
-**How students know when they are done:** the intro card lists the five goals, the quest bar across the top ticks them off in order (… → Face the Grump → Claim the atlas page), and the map starts grey and gets its color back with every goal finished.
+**How students know when they are done:** the intro card lists the five goals, the quest bar across the top ticks them off in order (… → Face the Grump → Claim the atlas page), and a dark mist around the edges of the map shrinks back with every goal finished (the map itself always keeps its full colors).
 
 ## What students collect, and what it does
 

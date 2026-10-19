@@ -145,7 +145,7 @@
     gBoss: { en: 'Beat the Grump in its question trial', es: 'Vence al Gruñón en su prueba de preguntas', fa: 'غرغرو را در آزمون سؤال‌هایش شکست بده' },
     gPage: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
     gBonus: { en: 'Bonus: pick up the 3 atlas scraps (coins and a star)', es: 'Extra: recoge los 3 pedazos del atlas (monedas y una estrella)', fa: 'جایزه: ۳ تکهٔ اطلس را جمع کن (سکه و یک ستاره)' },
-    gDim: { en: 'The Grump has dimmed this land. Every goal you finish brings its color back.', es: 'El Gruñón oscureció esta tierra. Cada meta que cumples le devuelve el color.', fa: 'غرغرو این سرزمین را تیره کرده. هر هدفی که تمام کنی رنگش را برمی‌گرداند.' },
+    gDim: { en: "The Grump's dark mist hangs around this land. Every goal you finish pushes it back.", es: 'La niebla oscura del Gruñón rodea esta tierra. Cada meta que cumples la hace retroceder.', fa: 'مه تاریک غرغرو دور این سرزمین را گرفته. هر هدفی که تمام کنی آن را عقب می‌زند.' },
     claim: { en: 'Claim the atlas page', es: 'Toma la página del atlas', fa: 'صفحهٔ اطلس را بگیر' },
     pageAppears: { en: 'Christopher: "The Grump is gone and the land has its colors back! The atlas page is on the stone. Go and take it!"', es: 'Christopher: "¡El Gruñón se fue y la tierra recuperó sus colores! La página del atlas está sobre la piedra. ¡Ve a tomarla!"', fa: 'کریستوفر: «غرغرو رفت و رنگ‌های سرزمین برگشت! صفحهٔ اطلس روی سنگ است. برو و آن را بگیر!»' },
     grow: { en: 'How you grow', es: 'Cómo creces', fa: 'چگونه رشد می‌کنی' },

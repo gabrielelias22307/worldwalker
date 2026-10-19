@@ -32,8 +32,6 @@
     const n = { rain: 90, drizzle: 40, snow: 70, petals: 18, leaves: 14, dust: 26, heat: 14 }[sky.sky] || 0;
     for (let i = 0; i < n; i++) drops.push(newDrop(true));
     clouds = [];
-    if (sky.time === 'day' && (sky.sky === 'clear' || sky.sky === 'heat' || sky.sky === 'leaves' || sky.sky === 'petals'))
-      for (let i = 0; i < 2; i++) clouds.push({ x: rnd() * VW * 2 - VW / 2, y: rnd() * VH, r: 40 + rnd() * 30, v: 0.006 + rnd() * 0.004 });
   }
   function newDrop(anywhere) {
     return { x: rnd() * (VW + 40) - 20, y: anywhere ? rnd() * VH : -8 - rnd() * 20, s: 0.6 + rnd() * 0.8, ph: rnd() * 6, c: (rnd() * 4) | 0 };
@@ -96,10 +94,10 @@
     if (dim == null) dim = target;
     dim += (target - dim) * Math.min(1, dt / 700);
     if (dim > 0.01) {
-      c.save();
-      c.globalCompositeOperation = 'saturation'; c.fillStyle = `rgba(128,128,128,${0.62 * dim})`; c.fillRect(0, 0, VW, VH);
-      c.globalCompositeOperation = 'source-over'; c.fillStyle = `rgba(45,30,80,${0.16 * dim})`; c.fillRect(0, 0, VW, VH);
-      c.restore();
+      // the Grump's gloom: a dark mist creeping in from the edges of the screen (the middle keeps its full color)
+      const g = c.createRadialGradient(VW / 2, VH / 2, VH * (0.55 - 0.12 * dim), VW / 2, VH / 2, VW * 0.62);
+      g.addColorStop(0, 'rgba(40,20,60,0)'); g.addColorStop(1, `rgba(40,20,60,${0.55 * dim})`);
+      c.fillStyle = g; c.fillRect(0, 0, VW, VH);
     }
     // the moment the Grump is beaten: a ring of light spreads out from the hero
     const k = (performance.now() - liftT) / 1400;
@@ -194,9 +192,9 @@
 
   function weather(c, t, dt, k) {
     const s = sky.sky;
-    if (!drops.length || calm()) { if (s === 'rain' || s === 'drizzle') { c.fillStyle = 'rgba(30,45,70,.14)'; c.fillRect(0, 0, VW, VH); } return; }
+    if (!drops.length || calm()) { if (s === 'rain' || s === 'drizzle') { c.fillStyle = 'rgba(30,45,70,.05)'; c.fillRect(0, 0, VW, VH); } return; }
     if (s === 'rain' || s === 'drizzle') {
-      c.fillStyle = s === 'rain' ? 'rgba(30,45,70,.16)' : 'rgba(40,55,80,.08)'; c.fillRect(0, 0, VW, VH);
+      c.fillStyle = s === 'rain' ? 'rgba(30,45,70,.06)' : 'rgba(40,55,80,.03)'; c.fillRect(0, 0, VW, VH);
       c.fillStyle = s === 'rain' ? 'rgba(210,228,255,.7)' : 'rgba(215,230,255,.55)';
       drops.forEach(d => {
         d.y += (s === 'rain' ? 5 : 3.2) * d.s * k; d.x -= (s === 'rain' ? 1.4 : 0.8) * k;
@@ -235,7 +233,6 @@
         c.fillStyle = s === 'dust' ? 'rgba(214,180,110,.55)' : 'rgba(232,209,138,.45)'; c.fillRect(Math.round(d.x), Math.round(d.y), 2, 1);
         if (d.x > VW + 4) { d.x = -4 - rnd() * 30; d.y = rnd() * VH; }
       });
-      if (s === 'heat') { c.fillStyle = 'rgba(255,200,90,.05)'; c.fillRect(0, 0, VW, VH); }
     }
   }
 
@@ -244,13 +241,13 @@
     const tm = sky.time;
     if (tm === 'sunset') {
       const g = c.createLinearGradient(0, 0, 0, VH);
-      g.addColorStop(0, 'rgba(255,110,50,.30)'); g.addColorStop(0.6, 'rgba(255,150,70,.16)'); g.addColorStop(1, 'rgba(120,60,140,.14)');
+      g.addColorStop(0, 'rgba(255,120,50,.20)'); g.addColorStop(0.5, 'rgba(255,160,70,.06)'); g.addColorStop(1, 'rgba(255,160,70,0)');
       c.fillStyle = g; c.fillRect(0, 0, VW, VH);
     } else if (tm === 'night') {
       if (!dark) { dark = document.createElement('canvas'); dark.width = VW; dark.height = VH; }
       const d = dark.getContext('2d');
       d.globalCompositeOperation = 'source-over'; d.clearRect(0, 0, VW, VH);
-      d.fillStyle = 'rgba(12,18,52,.5)'; d.fillRect(0, 0, VW, VH);
+      d.fillStyle = 'rgba(12,18,52,.32)'; d.fillRect(0, 0, VW, VH);
       d.globalCompositeOperation = 'destination-out';
       const hole = (x, y, r, a) => { const g = d.createRadialGradient(x, y, 0, x, y, r); g.addColorStop(0, `rgba(0,0,0,${a})`); g.addColorStop(1, 'rgba(0,0,0,0)'); d.fillStyle = g; d.fillRect(x - r, y - r, r * 2, r * 2); };
       if (hero) hole(hero.x + 8, hero.y + 6, 44, 0.85);
