@@ -11,17 +11,17 @@ const url = 'file://' + path.join(__dirname, '..', 'game', 'ep-1-1.html');
   await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForFunction(() => !WW.paused);
   await p.click('#ww-cv', { position: { x: 5, y: 5 } }).catch(() => {});
   // a star flies when Space is pressed in the open
-  await p.evaluate(() => { WW.dbg.teleport(4, 16); WW.dbg.face('right'); });
+  await p.evaluate(() => { WW.dbg.noSmudges(); WW.dbg.ents.filter(e => e.kind === 'smudge').forEach(e => (e.visible = false)); WW.dbg.teleport(4, 16); WW.dbg.face('right'); });
   await p.keyboard.press('Space');
   ok(await p.evaluate(() => WW.dbg.stars.length) === 1, 'Space throws a star');
-  const x0 = await p.evaluate(() => WW.dbg.stars[0] && WW.dbg.stars[0].x); await p.waitForTimeout(200);
+  const x0 = await p.evaluate(() => WW.dbg.stars[0] && WW.dbg.stars[0].x); await p.waitForTimeout(80);
   const x1 = await p.evaluate(() => WW.dbg.stars[0] && WW.dbg.stars[0].x);
   ok(x1 > x0, 'the star flies the way the hero faces');
   await p.waitForTimeout(1500);
+  await p.evaluate(() => WW.dbg.ents.filter(e => e.kind === 'smudge').forEach(e => (e.visible = true)));
   ok(await p.evaluate(() => WW.dbg.stars.length) === 0, 'the star is gone after its range');
   // knock out a Grumpling
-  const g = await p.evaluate(() => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); s.next = 1e15; s.nextRage = 1e15; WW.dbg.teleport(s.x - 3, s.y); WW.dbg.face('right'); return { x: s.x, y: s.y }; });
-  const free = await p.evaluate(g => !WW.solid(WW.ep.map[g.y][g.x - 1]) && !WW.solid(WW.ep.map[g.y][g.x - 2]), g);
+  const free = await p.evaluate(() => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); s.next = 1e15; s.nextRage = 1e15; const m = WW.ep.map; if (WW.solid(m[s.y][s.x - 1]) || WW.solid(m[s.y][s.x - 2])) return false; WW.dbg.teleport(s.x - 2, s.y); WW.dbg.face('right'); return true; });
   const coins0 = await p.evaluate(() => WW.save.coins);
   await p.evaluate(() => WW.dbg.fire()); await p.waitForTimeout(700);
   const after = await p.evaluate(() => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); return { vis: s.visible, coins: WW.save.coins }; });
@@ -30,8 +30,9 @@ const url = 'file://' + path.join(__dirname, '..', 'game', 'ep-1-1.html');
   await p.evaluate(() => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); s.stunUntil = 1; }); await p.waitForTimeout(200);
   ok(await p.evaluate(() => WW.dbg.ents.find(e => e.kind === 'smudge').visible) === true, 'the Grumpling floats back later');
   // the coin cap
-  const capped = await p.evaluate(async () => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); const c0 = WW.save.coins; for (let i = 0; i < 8; i++) { s.stunUntil = 0; s.visible = true; WW.dbg.teleport(s.x - 2, s.y); WW.dbg.face('right'); WW.dbg.fire(); await new Promise(r => setTimeout(r, 400)); s.stunUntil = 1; await new Promise(r => setTimeout(r, 50)); } return WW.save.coins - c0; });
-  ok(capped <= 4, `stars give at most 5 coins per episode (${capped} more after the first)`);
+  await p.evaluate(async () => { const s = WW.dbg.ents.find(e => e.kind === 'smudge'); const c0 = WW.save.coins; for (let i = 0; i < 8; i++) { s.stunUntil = 0; s.visible = true; WW.dbg.teleport(s.x - 2, s.y); WW.dbg.face('right'); WW.dbg.fire(); await new Promise(r => setTimeout(r, 400)); s.stunUntil = 1; await new Promise(r => setTimeout(r, 50)); } return WW.save.coins - c0; });
+  const total = await p.evaluate(() => WW.run.gains.filter(g => g.stat == null).reduce((a, g) => a + g.coins, 0));
+  ok(total <= 5, `stars give at most 5 coins per episode (${total} given for 9 knock-outs)`);
   // the Grump only stings
   await p.evaluate(() => { WW.ep.npcs.forEach(n => WW.run.talked.add(n.id)); WW.run.quest = 4; WW.run.challengeDone = true; WW.game.onChallengeDone(); const [x, y] = WW.ep.boss.at; WW.dbg.teleport(x - 3, y); WW.dbg.face('right'); WW.dbg.fire(); });
   await p.waitForTimeout(600);
