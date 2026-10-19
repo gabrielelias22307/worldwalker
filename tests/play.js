@@ -56,9 +56,15 @@ const SHOTS = !process.argv.includes('--no-shots');
           await page.waitForSelector('.talkov');
           if (i === 0) {
             await shot('3-talk-en');
-            // try the easy version and the 3 languages
-            const easy = page.locator('#ww-ov .pbtn.ghost', { hasText: /easier/i });
-            if (await easy.count()) { await easy.first().click(); }
+            if (await page.locator('#ww-ov .pbtn', { hasText: /easier/i }).count()) throw new Error('the "Make it easier" button is still there');
+            // leave with ✕, come back: the person is still not talked to
+            await page.click('#ww-ov .talkx');
+            if (await page.evaluate(id => WW.run.talked.has(id), n.id || 'npc0')) throw new Error('leaving with ✕ counted the talk as done');
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [n.x, n.y]); await page.waitForSelector('.talkov');
+            await page.keyboard.press('Escape');
+            if (await page.locator('.talkov').count()) throw new Error('Escape did not leave the talk');
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [n.x, n.y]); await page.waitForSelector('.talkov');
+            // the 3 languages
             await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('3-talk-fa');
             await page.click('[data-lang=es]'); await page.waitForTimeout(100); await shot('3-talk-es');
             const raw = await page.textContent('#ww-ov');

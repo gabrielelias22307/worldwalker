@@ -31,7 +31,6 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 - Spanish: natural Latin-American Spanish. Dari: simple, careful Afghan Dari in Arabic script (use Afghan words: مکتب not مدرسه for school, سرک for road, دریا for river).
 - **Yellow tap-to-define words:** write `[[key|shown words]]` in any language. `key` must be a lower-case key in `words`. Example: `[[latitude|latitud]]` in Spanish uses the key `latitude`.
 - Plain language for students and teachers. Never the word "debrief".
-- `easy` (optional on a line): a shorter version shown by the "Make it easier" button.
 
 ## The fields
 

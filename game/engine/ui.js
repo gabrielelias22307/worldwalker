@@ -124,7 +124,7 @@
 
   /* ---------------- talking to a person ---------------- */
   ui.talk = (npc, onDone) => {
-    let page = 0, easy = false, stage = 'read', picked = null;
+    let page = 0, stage = 'read', picked = null;
     const lines = npc.lines || [];
     WW.sfx('blip');
     ui.open({
@@ -135,15 +135,17 @@
         const head = document.createElement('div'); head.className = 'talk-head';
         head.appendChild(face);
         head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
+        // ✕ leaves the talk at any time; the person stays not-talked-to until the student finishes
+        const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
+        x.onclick = () => h.close(); head.appendChild(x);
         box.appendChild(head);
         const body = document.createElement('div'); body.className = 'talk-body';
         box.appendChild(body);
         if (stage === 'read') {
           const ln = lines[page] || {};
-          const txt = easy && ln.easy ? ln.easy : ln;
+          const txt = ln;
           body.innerHTML = `<p class="say">${WW.rich(txt)}</p><p class="hint">${page === 0 && /\[\[/.test(L(ln)) ? esc(T('tapWord')) : ''}</p>`;
           const acts = document.createElement('div'); acts.className = 'acts';
-          if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
           if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
           acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : npc.doneLabel ? esc(npc.doneLabel) + ' ▶' : T('close')), 'gold', () => {
             WW.sfx('blip');

@@ -306,7 +306,7 @@
     window.addEventListener('keydown', e => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
-      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && (t.opts.cls === 'passov' || t.opts.cls === 'msgov')) t.close(); return; }
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); return; }
       WW.audioInit();
       if (WW.paused) return;
       if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }

@@ -275,6 +275,12 @@ ul.earned li{background:#f3eedc;border-radius:4px;padding:4px 8px}
 .starshot{position:absolute;left:40px;top:120px;font-size:30px;color:#f2c14e;text-shadow:0 0 6px #fff3b0,0 0 2px #22202e;pointer-events:none;animation:starshot .5s ease-in forwards}
 @keyframes starshot{0%{transform:translate(220px,40px) rotate(0) scale(.7);opacity:1}85%{transform:translate(0,-80px) rotate(540deg) scale(1.3);opacity:1}100%{transform:translate(0,-80px) rotate(600deg) scale(2);opacity:0}}
 
+/* ✕ to leave a talk */
+.talk-head{position:relative}
+.talkx{margin-left:auto;font-size:18px;font-weight:700;line-height:1;width:34px;height:34px;border:3px solid var(--ink);border-radius:4px;background:#fff;color:var(--ink);cursor:pointer;flex:none}
+.talkx:hover{background:#fde2de}
+[dir=rtl] .talkx{margin-left:0;margin-right:auto}
+
 </style>
 </head>
 <body>
@@ -1238,8 +1244,7 @@ window.WW_CONFIG.MODE = 'canvas';
     next: { en: 'Next', es: 'Siguiente', fa: 'بعدی' },
     back: { en: 'Back', es: 'Atrás', fa: 'برگشت' },
     close: { en: 'Close', es: 'Cerrar', fa: 'بستن' },
-    easier: { en: 'Make it easier', es: 'Hazlo más fácil', fa: 'ساده‌ترش کن' },
-    harder: { en: 'Show the full version', es: 'Ver la versión completa', fa: 'نسخهٔ کامل را نشان بده' },
+    leave: { en: 'Leave the talk (Esc)', es: 'Salir de la charla (Esc)', fa: 'ترک گفتگو (Esc)' },
     answer: { en: 'Answer', es: 'Responder', fa: 'جواب بده' },
     right: { en: 'Yes!', es: '¡Sí!', fa: 'بله!' },
     wrong: { en: 'Not quite.', es: 'No exactamente.', fa: 'نه کاملاً.' },
@@ -1629,7 +1634,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- talking to a person ---------------- */
   ui.talk = (npc, onDone) => {
-    let page = 0, easy = false, stage = 'read', picked = null;
+    let page = 0, stage = 'read', picked = null;
     const lines = npc.lines || [];
     WW.sfx('blip');
     ui.open({
@@ -1640,15 +1645,17 @@ window.WW_CONFIG.MODE = 'canvas';
         const head = document.createElement('div'); head.className = 'talk-head';
         head.appendChild(face);
         head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
+        // ✕ leaves the talk at any time; the person stays not-talked-to until the student finishes
+        const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
+        x.onclick = () => h.close(); head.appendChild(x);
         box.appendChild(head);
         const body = document.createElement('div'); body.className = 'talk-body';
         box.appendChild(body);
         if (stage === 'read') {
           const ln = lines[page] || {};
-          const txt = easy && ln.easy ? ln.easy : ln;
+          const txt = ln;
           body.innerHTML = `<p class="say">${WW.rich(txt)}</p><p class="hint">${page === 0 && /\[\[/.test(L(ln)) ? esc(T('tapWord')) : ''}</p>`;
           const acts = document.createElement('div'); acts.className = 'acts';
-          if (ln.easy) acts.appendChild(btn(easy ? T('harder') : T('easier'), 'ghost', () => { easy = !easy; h.render(); }));
           if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
           acts.appendChild(btn(page < lines.length - 1 ? T('next') + ' ▶' : (npc.ask ? T('answer') + ' ▶' : npc.doneLabel ? esc(npc.doneLabel) + ' ▶' : T('close')), 'gold', () => {
             WW.sfx('blip');
@@ -3309,7 +3316,7 @@ window.WW_CONFIG.MODE = 'canvas';
     window.addEventListener('keydown', e => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
-      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && (t.opts.cls === 'passov' || t.opts.cls === 'msgov')) t.close(); return; }
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); return; }
       WW.audioInit();
       if (WW.paused) return;
       if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }

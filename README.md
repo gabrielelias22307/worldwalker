@@ -4,7 +4,7 @@ A top-down geography RPG for **APA World Geography** (Alexandria City High Schoo
 
 **▶ Play:** https://gabrielelias22307.github.io/worldwalker/ (after GitHub Pages is turned on: Settings → Pages → Branch `main`, folder `/ (root)`)
 
-The Grump tore the Great Atlas into 24 pages. In each episode the student walks a map of that region, talks to the people who live there (short grade-5 readings with tap-to-define words and a "Make it easier" button), does a quest for someone who needs help (find a secret spot, beat an Ink Thief, or make the right trade), solves the compass stone, beats the Grump in a question trial drawn from the subunit's mastery-check bank, writes one reflection and turns in their work. The hero, five geography powers (the Five Themes), tools and stamps carry from episode to episode.
+The Grump tore the Great Atlas into 24 pages. In each episode the student walks a map of that region, talks to the people who live there (short grade-5 readings with tap-to-define words), does a quest for someone who needs help (find a secret spot, beat an Ink Thief, or make the right trade), solves the compass stone, beats the Grump in a question trial drawn from the subunit's mastery-check bank, writes one reflection and turns in their work. The hero, five geography powers (the Five Themes), tools and stamps carry from episode to episode.
 
 ## What is in this repo
 
