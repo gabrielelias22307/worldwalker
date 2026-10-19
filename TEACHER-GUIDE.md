@@ -6,7 +6,9 @@
 
 1. Sign in with **first name**, **class code** (like `GEO-3B`) and a **4-digit secret number**, and pick a look. Next time they just press Continue.
 2. Walk the map (arrow keys or WASD; on-screen arrows on touch screens; or click where to walk).
-   **Space** (or the ● button on touch screens) talks to the person you face; anywhere else it throws a **star** ★. Stars knock out the little Grumplings for a few seconds (+1 coin each, up to 5 per episode) and sting the big Grump, but only right answers in its trial break its cloud shield.
+   **Space** (or the ● button on touch screens) talks to the person you face; anywhere else it throws a **star** ★. Stars knock out the Grump's helpers for a few seconds (+1 coin each, up to 5 per episode) and sting the big Grump, but only right answers in its trial break its cloud shield.
+
+   **The Grump's helpers** (1–3 on every map; 2 in realms 1–2, more later): the **Grumpling** wanders and sometimes rages and charges; the **Ink Bat** is fast and flies over water and trees; the **Mud Blob** is slow but follows you and takes 2 stars; the **Dust Devil** zooms in straight lines and bounces off walls. Touching any of them costs a heart. Each realm has its own mix (dust devils in the deserts, bats near forests and water).
 3. Talk to 3–4 people. Each talk is a short reading at about a grade-5 level, with **EN / ES / دری** buttons, and yellow tap-to-define words. Each person asks one question. The **✕** in the corner (or Esc) leaves a talk at any time; the person counts only once the student finishes the talk.
 4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
 5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table).

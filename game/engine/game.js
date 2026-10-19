@@ -124,7 +124,7 @@
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
-    ep.smudges.forEach((s, i) => ents.push({ kind: 'smudge', x: s[0], y: s[1], hx: s[0], hy: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i }));
+    ep.smudges.forEach((s, i) => { const type = WW.foeType(ep, i); ents.push({ kind: 'smudge', type, hp: WW.FOES[type].hp, x: s[0], y: s[1], hx: s[0], hy: s[1], home: screenOf(s[0], s[1]), next: 0, phase: i, dir: [1, 0] }); });
     stars = []; zapped = 0; toldShield = false;
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
@@ -274,8 +274,13 @@
       const hit = ents.find(e => (e.kind === 'smudge' || e.kind === 'boss') && !e.gone && e.visible !== false && !(e.stunUntil > performance.now()) &&
         Math.abs(e.x * TS + 8 - s.x) < 11 && Math.abs(e.y * TS + (e.kind === 'boss' ? 0 : 8) - s.y) < (e.kind === 'boss' ? 16 : 11));
       if (!hit) return true;
-      if (hit.kind === 'smudge') { // knocked out for a while, then it floats back
-        hit.stunUntil = performance.now() + 9000; hit.visible = false;
+      if (hit.kind === 'smudge' && hit.hp > 1) { // a Mud Blob takes 2 stars: the first one squishes it and pushes it back
+        hit.hp--; hit.hurtT = performance.now(); WW.sfx('pop'); WW.fx.burst(hit.x, hit.y, 'dust');
+        const bx = hit.x + s.dx, by = hit.y + s.dy;
+        if (!WW.solid(tileAt(bx, by)) && !entAt(bx, by) && screenOf(bx, by).join() === hit.home.join()) { hit.x = bx; hit.y = by; }
+        hit.next = performance.now() + 900;
+      } else if (hit.kind === 'smudge') { // knocked out for a while, then it floats back
+        hit.stunUntil = performance.now() + 9000; hit.visible = false; hit.hp = (WW.FOES[hit.type] || WW.FOES.grump).hp;
         WW.fx.burst(hit.x, hit.y, 'poof'); WW.sfx('pop');
         if (zapped < 5) { zapped++; WW.gain(null, 0, 1, '', true); WW.toast('★ +1 ●', '#c08a1e'); }
       } else { // the Grump: it stings, but only right answers break its cloud shield
@@ -343,27 +348,37 @@
   function moveSmudges(now) {
     if (WW.paused || trans || G.noSmudges) return;
     const [psx, psy] = screenOf(player.x, player.y);
+    const calmer = WW.tier('hei') ? 1.6 : 1; // People & land power: calmer bad guys
     ents.forEach(e => {
       if (e.kind !== 'smudge' || e.visible === false || e.home[0] !== psx || e.home[1] !== psy) return;
+      const F = WW.FOES[e.type] || WW.FOES.grump;
       // every so often a Grumpling flies into a rage: it turns red and charges at the hero for a moment
-      if (!e.nextRage) e.nextRage = now + 4000 + Math.random() * 5000;
-      if (now > e.nextRage) { e.rageUntil = now + 1900; e.nextRage = now + 7000 + Math.random() * 5000; WW.sfx('growl'); shakeT = now; }
-      const rage = now < (e.rageUntil || 0);
+      let rage = false;
+      if (e.type === 'grump') {
+        if (!e.nextRage) e.nextRage = now + 4000 + Math.random() * 5000;
+        if (now > e.nextRage) { e.rageUntil = now + 1900; e.nextRage = now + 7000 + Math.random() * 5000; WW.sfx('growl'); shakeT = now; }
+        rage = now < (e.rageUntil || 0);
+      }
       if (now < e.next) return;
-      e.next = now + (rage ? 260 : 650 + (e.phase % 3) * 120) * (WW.tier('hei') ? 1.6 : 1); // People & land power: calmer Grumplings
+      e.next = now + (rage ? 260 : F.ms + (e.phase % 3) * (F.ms / 6)) * calmer;
       const dirs = Object.values(DIRS);
-      // drift a little toward the player, mostly random (always toward the player in a rage)
       const toward = [[Math.sign(player.x - e.x), 0], [0, Math.sign(player.y - e.y)]].filter(([a, b]) => a || b);
-      const pick = (rage || Math.random() < .35) && toward.length ? toward[(Math.random() * toward.length) | 0] : dirs[(Math.random() * 4) | 0];
+      const towardOne = () => toward[(Math.random() * toward.length) | 0];
+      let pick;
+      if (e.type === 'whirl') pick = e.dir; // straight lines; turns when it bumps into something
+      else if (e.type === 'blob') pick = Math.random() < .6 && toward.length ? towardOne() : dirs[(Math.random() * 4) | 0]; // slow but follows you
+      else if (e.type === 'bat') pick = Math.random() < .3 && toward.length ? towardOne() : dirs[(Math.random() * 4) | 0]; // twitchy
+      else pick = (rage || Math.random() < .35) && toward.length ? towardOne() : dirs[(Math.random() * 4) | 0];
       const nx = e.x + pick[0], ny = e.y + pick[1];
       const [hx, hy] = screenOf(nx, ny);
-      if (hx !== e.home[0] || hy !== e.home[1]) return;
-      if (WW.solid(tileAt(nx, ny))) return;
-      const o = entAt(nx, ny); if (o && o !== e) return;
+      const edge = nx <= 0 || ny <= 0 || nx >= W - 1 || ny >= H - 1;
+      const blocked = hx !== e.home[0] || hy !== e.home[1] || edge || (!F.fly && WW.solid(tileAt(nx, ny))) || (() => { const o = entAt(nx, ny); return o && o !== e && o.kind !== 'scrap' && o.kind !== 'qspot'; })();
+      if (blocked) { if (e.type === 'whirl') e.dir = dirs[(Math.random() * 4) | 0]; return; }
       e.x = nx; e.y = ny;
       if (e.x === player.x && e.y === player.y) touchSmudge(e);
     });
   }
+
 
   /* ---------------- drawing ---------------- */
   function drawScreen(c, sx, sy, ox, oy, t) {
@@ -402,9 +417,8 @@
       }
       if (e.kind === 'smudge') {
         const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
-        WW.shadow(c, px(e), py(e) + 13, 8);
         if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
-        WW.sprite(c, 'smudge', px(e) + j, py(e), { bob: true, t, phase: e.phase, pal: rage ? { g: '#a8323a', G: '#6e1c24', e: '#fff070' } : null });
+        WW.drawFoe(c, e, px(e) + j, py(e), t, rage);
       }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;

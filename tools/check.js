@@ -78,7 +78,11 @@ function checkEpisode(file) {
   if (!ep.challenge) errs.push('challenge missing'); else place(ep.challenge.at, 'challenge stone', true, block);
   if (!ep.boss) errs.push('boss missing'); else place(ep.boss.at, 'boss', true, new Set());
   (ep.scraps || []).forEach((s, i) => place(s, 'scrap ' + i, true, new Set()));
-  (ep.smudges || []).forEach((s, i) => place(s, 'smudge ' + i, true, new Set()));
+  (ep.smudges || []).forEach((s, i) => {
+    place(Array.isArray(s) ? s.slice(0, 2) : s, 'bad guy ' + i, true, new Set());
+    if (s[2] && !['grump', 'bat', 'blob', 'whirl'].includes(s[2])) errs.push(`bad guy ${i} type "${s[2]}" must be grump, bat, blob or whirl`);
+  });
+  if ((ep.smudges || []).length < 1 || (ep.smudges || []).length > 3) errs.push('need 1 to 3 bad guys (smudges)');
   if ((ep.scraps || []).length !== 3) errs.push('need exactly 3 scraps');
   if ((ep.npcs || []).length < 3) errs.push('need at least 3 people (npcs)');
   const qu = ep.quest, qa = qu && qu.action;

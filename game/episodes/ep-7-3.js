@@ -223,7 +223,7 @@ window.EPISODE = {
   },
 
   scraps: [[5, 2], [17, 7], [30, 17]],
-  smudges: [[9, 4], [19, 20]],
+  smudges: [[9, 4], [19, 20], [8, 16]],
 
   challenge: {
     at: [21, 17],

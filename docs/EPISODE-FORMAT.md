@@ -46,7 +46,7 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 | `look` | `{ skin: 0-5, hair: '#hex', shirt: '#hex', pants: '#hex', robe: true }` — show many skin tones, respectfully |
 | `signs` | `{ x, y, text }` on an `x` tile |
 | `scraps` | exactly 3 `[x, y]` on walkable tiles, hidden in corners worth exploring |
-| `smudges` | 1–3 `[x, y]`; each wanders inside its own screen |
+| `smudges` | 1–3 bad guys, `[x, y]` or `[x, y, 'type']`; each roams inside its own screen. Types: `grump` (Grumpling), `bat` (Ink Bat, flies over anything), `blob` (Mud Blob, 2 stars), `whirl` (Dust Devil, straight lines). Without a type, the first is a Grumpling and the realm picks the rest (`WW.REALM_FOES` in `game/engine/foes.js`) |
 | `challenge` | see below; `at: [x, y]` on a walkable tile, `stat`, `title`, `intro`, `success` |
 | `boss` | `{ at, stat, need: 3, name, appear, taunt, win, questions: [ { q, choices: [4 options], answer: 0, why } ] }` — 8 questions. Choices are shuffled on screen, so the right one can be listed first |
 | `learned` | 3 lines |

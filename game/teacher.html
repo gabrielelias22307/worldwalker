@@ -90,6 +90,7 @@
 <script src="engine/art.js"></script>
 <script src="engine/art2.js"></script>
 <script src="engine/art3.js"></script>
+<script src="engine/foes.js"></script>
 <script src="engine/save.js"></script>
 <script src="episodes/catalog.js"></script>
 <script>
@@ -114,7 +115,7 @@
     copied: { en: 'Link copied', es: 'Enlace copiado', fa: 'لینک کاپی شد' },
     people: { en: 'People', es: 'Personas', fa: 'مردم' },
     scraps: { en: 'atlas scraps', es: 'trozos del atlas', fa: 'تکه‌های اطلس' },
-    smudges: { en: 'wandering Grumplings', es: 'Gruñoncitos sueltos', fa: 'غرغروهای سرگردان' },
+    smudges: { en: 'bad guys', es: 'enemigos', fa: 'دشمن' },
     questions: { en: 'trial questions', es: 'preguntas de la prueba', fa: 'سوال‌های آزمون' },
     screens: { en: 'screens', es: 'pantallas', fa: 'صفحه' },
     lgStart: { en: 'start', es: 'inicio', fa: 'شروع' },
@@ -280,7 +281,7 @@
     WW.style.realm = ep.realm || +ep.id[0];
     WW.drawMap(x, m, { t: 0 });
     (ep.scraps || []).forEach(s => WW.sprite(x, 'page', s[0] * S + 1, s[1] * S + 2, {}));
-    (ep.smudges || []).forEach(s => WW.sprite(x, 'smudge', s[0] * S, s[1] * S, {}));
+    (ep.smudges || []).forEach((s, i) => { const type = WW.foeType(ep, i); WW.drawFoe(x, { type, phase: i, hp: WW.FOES[type].hp }, s[0] * S, s[1] * S, 0); });
     WW.sprite(x, 'stone', ep.challenge.at[0] * S, ep.challenge.at[1] * S, { pal: { W: '#9aa3ad', G: '#5e636b', y: '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
     x.globalAlpha = .75; WW.sprite(x, 'smudge', ep.boss.at[0] * S - 8, ep.boss.at[1] * S - 16, { scale: 2 }); x.globalAlpha = 1;
     WW.sprite(x, 'hero', ep.start[0] * S, ep.start[1] * S - 3, { pal: WW.heroPal() });
@@ -311,7 +312,7 @@
       <h1 class="et">${esc(L(ep.title))}</h1><div class="muted">${esc(L(ep.place))}</div>
       <div class="chips"><span class="chip">🗣️ ${ep.npcs.length} ${esc(HT('people'))}</span><span class="chip">🧭 ${esc(L(TYPE[ch.type]))}</span>
       <span class="chip">👾 ${b.questions.length} ${esc(HT('questions'))} · ${b.need || 3} ${esc(HT('bossNeed'))}</span>
-      <span class="chip">📄 ${(ep.scraps || []).length} ${esc(HT('scraps'))}</span><span class="chip">☁️ ${(ep.smudges || []).length} ${esc(HT('smudges'))}</span>
+      <span class="chip">📄 ${(ep.scraps || []).length} ${esc(HT('scraps'))}</span><span class="chip">☁️ ${(ep.smudges || []).length} ${esc(HT('smudges'))}: ${(ep.smudges || []).map((_, i) => esc(L(WW.FOES[WW.foeType(ep, i)].name))).join(', ')}</span>
       <span class="chip">🗺️ ${nScreens} ${esc(HT('screens'))}</span></div>
       <div class="jump">
         <a class="btn gold" target="_blank" href="${file}?teacher=start">${esc(HT('jStart'))}</a>
