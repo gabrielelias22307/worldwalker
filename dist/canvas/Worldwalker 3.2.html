@@ -4206,7 +4206,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -4354,7 +4354,6 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
@@ -4739,7 +4738,7 @@ window.EPISODE = {
     'P---------------------------------------------k=',
     'P.........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',
     'P.wwwwww..MMPPnnPPnPPPPPPnnPPPnPnnnnnnn~~~~Pnn~=',
-    'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~~~PnPn~=',
+    'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~s~PnPn~=',
     'Pwwwwwwww.MMnPnnPPnPPnPPnPnnPnnPnnnnn~~~~nnPn~~=',
     'P.wwwww...KKnPnnnnnPnPnnnPnnnPPnPnnn~~~~nnPnn~~=',
     'Pgggggggggggggggggggggggggggggggggg~~~~gggggggg=',
@@ -4751,6 +4750,11 @@ window.EPISODE = {
     'PKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
   ],
   start: [5, 8],
+
+  secret: { tool: 'canoe', at: [40, 12],
+    text: { en: 'The canoe reached an island in Lake Baikal! In the chest is a note. It says Baikal is the deepest lake on Earth. It is more than 1,600 meters deep.',
+      es: '¡La canoa llegó a una isla del lago Baikal! En el cofre hay una nota. Dice que el Baikal es el lago más profundo de la Tierra. Tiene más de 1600 metros de profundidad.',
+      fa: 'قایق کوچک به یک جزیره در جهیل بایکال رسید! در صندوق یک یادداشت است. می‌گوید بایکال عمیق‌ترین جهیل روی زمین است. عمق آن بیشتر از ۱۶۰۰ متر است.' } },
 
   tools: ['axe', 'sickle'],
 

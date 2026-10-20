@@ -112,7 +112,7 @@
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -260,7 +260,6 @@
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);

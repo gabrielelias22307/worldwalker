@@ -26,7 +26,7 @@ window.EPISODE = {
     'P---------------------------------------------k=',
     'P.........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',
     'P.wwwwww..MMPPnnPPnPPPPPPnnPPPnPnnnnnnn~~~~Pnn~=',
-    'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~~~PnPn~=',
+    'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~s~PnPn~=',
     'Pwwwwwwww.MMnPnnPPnPPnPPnPnnPnnPnnnnn~~~~nnPn~~=',
     'P.wwwww...KKnPnnnnnPnPnnnPnnnPPnPnnn~~~~nnPnn~~=',
     'Pgggggggggggggggggggggggggggggggggg~~~~gggggggg=',
@@ -38,6 +38,11 @@ window.EPISODE = {
     'PKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
   ],
   start: [5, 8],
+
+  secret: { tool: 'canoe', at: [40, 12],
+    text: { en: 'The canoe reached an island in Lake Baikal! In the chest is a note. It says Baikal is the deepest lake on Earth. It is more than 1,600 meters deep.',
+      es: '¡La canoa llegó a una isla del lago Baikal! En el cofre hay una nota. Dice que el Baikal es el lago más profundo de la Tierra. Tiene más de 1600 metros de profundidad.',
+      fa: 'قایق کوچک به یک جزیره در جهیل بایکال رسید! در صندوق یک یادداشت است. می‌گوید بایکال عمیق‌ترین جهیل روی زمین است. عمق آن بیشتر از ۱۶۰۰ متر است.' } },
 
   tools: ['axe', 'sickle'],
 

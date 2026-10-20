@@ -15,15 +15,15 @@ window.EPISODE = {
 
   map: [
     'KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAA',
-    'KggggggggggggggggggJJJgXXggAAAAA',
+    'KggggggggggggggggggJJJgXXggGgAAA',
     'KgggggggggggggggxggJJJgXXgggAAAA',
     'K-----------------------------AA',
     'Kgggxggggggg:ggg:gggggggggggAAAA',
     'KgWWWWWWWWgg:ggg:gggggggggggAAAA',
     'KgWssssssWgg:ggg:gggggggggggAAAA',
     'KgWssOsssWgQQQgQQQgggggggggg~~AA',
-    'KgWssssssWghdhghdhggggggggg~~gAA',
-    'KgWssssssWssssssssssgoooogg~~gAA',
+    'KgWssssssWghdhghdhggggggggg~~.AA',
+    'KgWssssssWssssssssssgoooogg~~.AA',
     'KgWWW::WWWsmmsmmsmmsgo2o2g~~ggAA',
     'Kgggg::gggssssssssssgoo2og~~ggAA',
     'Kgggg::gggssssssssssgo2oo~~gggAA',
@@ -38,6 +38,13 @@ window.EPISODE = {
     'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrAA'
   ],
   start: [8, 4],
+
+  tools: ['axe', 'sickle'],
+
+  secret: { tool: 'compass', at: [28, 1],
+    text: { en: 'The Compass Rose found a hidden path into the mountains! In the chest is an old note. It says people back then did not call it the Silk Road. A German geographer gave it that name in 1877.',
+      es: '¡La rosa de los vientos encontró un camino escondido en las montañas! En el cofre hay una nota vieja. Dice que la gente de esa época no lo llamaba la Ruta de la Seda. Un geógrafo alemán le dio ese nombre en 1877.',
+      fa: 'قطب‌نما یک راه پنهان را در کوه‌ها پیدا کرد! در صندوق یک یادداشت کهنه است. می‌گوید مردم آن زمان آن را جادهٔ ابریشم نمی‌گفتند. یک جغرافیه‌دان آلمانی در سال ۱۸۷۷ این نام را به آن داد.' } },
 
   words: {
     'silk road': { en: 'a web of old trade routes across Asia between China and Europe', es: 'una red de antiguas rutas de comercio por Asia, entre China y Europa', fa: 'شبکه‌ای از راه‌های قدیمی تجارت در آسیا میان چین و اروپا' },
@@ -220,7 +227,8 @@ window.EPISODE = {
 
   challenge: {
     at: [17, 11],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    zones: [{ bin: 'goods', x: 10, y: 11, w: 4, h: 2 }, { bin: 'ideas', x: 1, y: 11, w: 4, h: 2 }, { bin: 'people', x: 17, y: 16, w: 4, h: 2 }],
     stat: 'reg',
     title: { en: 'What traveled the Silk Road?', es: '¿Qué viajaba por la Ruta de la Seda?', fa: 'چه چیز در راه ابریشم سفر می‌کرد؟' },
     intro: { en: 'The Grump buried the bazaar\'s old record book in sand! Sort each card. Was it a good that was traded, an idea that spread, or a person who traveled?',

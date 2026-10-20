@@ -22,7 +22,7 @@ window.EPISODE = {
   map: [
     'jjjjjjj~~jjjjj~~================',
     'jMM..qq~~qq..ps~=~~~~~~~~~~~~~~=',
-    'jM..qqq~~qqq..s~=~~~psssp~~~~~~=',
+    'jM..qqq~~qqq..s~=~~~psssp~~~s~~=',
     'j.RRR.q~~q.QQQs~=~~sss,ssp~~~~~=',
     'j.hdh..bb..hdhskkkkks,,.,ss~~~~=',
     'jj....q~~q....s~=~~ss,.,sskksp~=',
@@ -44,6 +44,13 @@ window.EPISODE = {
     '================================'
   ],
   start: [3, 2],
+
+  tools: ['axe', 'sickle'],
+  // only the canoe (Episode 2.3) reaches the tiny island in the northeast sea
+  secret: { tool: 'canoe', at: [28, 2],
+    text: { en: 'The canoe found the tiny island! Indonesia has more active volcanoes than any other country, about 130 of them.',
+      es: '¡La canoa encontró la islita! Indonesia tiene más volcanes activos que cualquier otro país, unos 130.',
+      fa: 'قایق کوچک جزیرهٔ خُرد را پیدا کرد! اندونیزیا از هر کشور دیگر آتشفشان فعال بیشتر دارد، حدود ۱۳۰ آتشفشان.' } },
 
   words: {
     'mainland southeast asia': { en: 'the part of Southeast Asia joined to the rest of Asia: Myanmar, Thailand, Laos, Cambodia and Vietnam', es: 'la parte del sudeste asiático unida al resto de Asia: Myanmar, Tailandia, Laos, Camboya y Vietnam', fa: 'بخشی از جنوب شرق آسیا که به باقی آسیا وصل است: میانمار، تایلند، لائوس، کمبودیا و ویتنام' },
@@ -223,7 +230,9 @@ window.EPISODE = {
 
   challenge: {
     at: [24, 4],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // mainland cards go to the rice fields on the mainland, by the Mekong; island cards go to two different islands out in the sea
+    zones: [{ bin: 'main', x: 2, y: 6, w: 5, h: 2 }, { bin: 'isle', x: 24, y: 5, w: 2, h: 2 }, { bin: 'isle', x: 24, y: 12, w: 2, h: 1 }],
     style: 'bands',
     stat: 'reg',
     title: { en: 'Mainland or islands?', es: '¿Continente o islas?', fa: 'خشکه یا جزیره؟' },

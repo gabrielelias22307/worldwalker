@@ -4206,7 +4206,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -4354,7 +4354,6 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
@@ -4759,7 +4758,7 @@ window.EPISODE = {
   secret: { tool: 'compass', at: [24, 1],
     text: { en: 'The Compass Rose found the hidden path! In the chest is an old map. It says the five Great Lakes hold about one fifth of all the fresh lake water on Earth.',
       es: '¡La rosa de los vientos encontró el camino escondido! En el cofre hay un mapa viejo. Dice que los cinco Grandes Lagos tienen cerca de una quinta parte del agua dulce de lagos de la Tierra.',
-      fa: 'قطب‌نما راه پنهان را پیدا کرد! در صندوق یک نقشهٔ کهنه است. می‌گوید پنج دریاچهٔ بزرگ حدود یک پنجم آب شیرین جهیل‌های زمین را دارند.' } },
+      fa: 'قطب‌نما راه پنهان را پیدا کرد! در صندوق یک نقشهٔ کهنه است. می‌گوید پنج جهیل بزرگ حدود یک پنجم آب شیرین جهیل‌های زمین را دارند.' } },
 
   words: {
     harbor: { en: 'a calm, sheltered part of the coast where large ships can dock safely', es: 'una parte tranquila y protegida de la costa donde los barcos grandes pueden atracar seguros', fa: 'بخش آرام و محفوظ ساحل که کشتی‌های بزرگ می‌توانند با امنیت لنگر بیندازند' },

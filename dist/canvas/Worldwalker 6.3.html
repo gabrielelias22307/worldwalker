@@ -4206,7 +4206,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -4354,7 +4354,6 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
@@ -4742,9 +4741,9 @@ window.EPISODE = {
     'UlUUlUUlJJlUlll...........:..,.T',
     'Ullllllllllllll..p...,....:....T',
     'Ulll:llllllll.............:....T',
-    'W...:.....................:.~~.T',
+    'W...:.....................:.~~~T',
     'WRRR:QQQ:RRR:QQ..qqqqqqqq.:.~~.T',
-    'Whdh:hdh:hdh:hd..qqqqqqqq.:.~~.T',
+    'Whdh:hdh:hdh:hd..qqqqqqqq.:.~~~T',
     'W...:...:...:....qqqqqqqq.:.~~,T',
     'W.mm:mm.:.mm:.............::bb.T',
     'W...:...:...:....qqqq.RRR...~~.T',
@@ -4755,6 +4754,13 @@ window.EPISODE = {
     'WWWWWWWWWWWWWWWWTTTTTTTTTTTT~~TT'
   ],
   start: [2, 5],
+
+  tools: ['axe', 'sickle'],
+  // only the canoe (Episode 2.3) reaches the little river bank in the east
+  secret: { tool: 'canoe', at: [30, 12],
+    text: { en: 'The canoe found the hidden river bank! Afghanistan is more than four times bigger than Bangladesh. But Bangladesh has about four times as many people.',
+      es: '¡La canoa encontró la orilla escondida! Afganistán es más de cuatro veces más grande que Bangladés. Pero Bangladés tiene unas cuatro veces más gente.',
+      fa: 'قایق کوچک کنارهٔ پنهان دریا را پیدا کرد! افغانستان بیشتر از چهار برابر بنگله‌دیش بزرگ است. اما بنگله‌دیش حدود چهار برابر مردم بیشتر دارد.' } },
 
   words: {
     population: { en: 'all the people who live in one place', es: 'todas las personas que viven en un lugar', fa: 'همهٔ مردمی که در یک جا زندگی می‌کنند' },
@@ -4932,7 +4938,9 @@ window.EPISODE = {
 
   challenge: {
     at: [24, 15],
-    type: 'table',
+    type: 'survey', // in the world; the card version (table) is the fallback
+    // one survey post per country: India at the edge of the busy market town, Bangladesh by the river (it is a land of river deltas), Vietnam in the rice paddies, Singapore among the tall city buildings
+    spots: [[14, 15], [27, 12], [21, 13], [12, 9]],
     stat: 'reg',
     title: { en: 'Read the numbers, find what they hide', es: 'Lee los números y descubre lo que esconden', fa: 'عددها را بخوان، آنچه پنهان می‌کنند را پیدا کن' },
     intro: { en: 'The Grump says one number tells everything. Read this table about four countries in South and Southeast Asia. Then answer the questions.',

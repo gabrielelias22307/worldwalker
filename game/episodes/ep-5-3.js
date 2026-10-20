@@ -23,7 +23,7 @@ window.EPISODE = {
     '=~MMMMMAA~~AAMMMMMMMMMMMMMMMMMMM',
     '=~s..T.nA~~AnM..ggggrgggggJJJggM',
     '=~s..,.~~~~~~...gggggggg:gJJJggM',
-    '=~s.T.~~~~~~~...ggrgggg:::::ggaM',
+    '=~s.T.~~~s~~~...ggrgggg:::::ggaM',
     '=~sX..~~~~~~,x..gg:::::::gOggggM',
     '=~sXs.."~~"..,..gg:gggrgggggg"gM',
     '=kkss.o1o~~o1o..gg:ggggggrgggggM',
@@ -44,6 +44,13 @@ window.EPISODE = {
     'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM'
   ],
   start: [14, 2],
+
+  tools: ['axe', 'sickle'],
+  // only the Canoe (Episode 2.3) reaches the tiny island in the lake
+  secret: { tool: 'canoe', at: [9, 3],
+    text: { en: 'The canoe found a tiny island in the lake! The Sea of Galilee is the lowest freshwater lake on Earth. It is about 210 meters below sea level.',
+      es: '¡La canoa encontró una islita en el lago! El mar de Galilea es el lago de agua dulce más bajo de la Tierra. Está a unos 210 metros bajo el nivel del mar.',
+      fa: 'قایق کوچک یک جزیرهٔ کوچک در جهیل پیدا کرد! جهیل طبریه پست‌ترین جهیل آب شیرین روی زمین است. حدود ۲۱۰ متر پایین‌تر از سطح بحر است.' } },
 
   words: {
     scarce: { en: 'hard to find because there is only a little of it', es: 'difícil de encontrar porque hay muy poco', fa: 'چیزی که کم است و به سختی پیدا می‌شود' },
@@ -220,7 +227,9 @@ window.EPISODE = {
 
   challenge: {
     at: [23, 14],
-    type: 'claim',
+    type: 'site', // in the world; the card version (claim) is the fallback
+    // A: a dam on the Yarmouk in the dry east · B: the desalination plant on the Mediterranean coast · C: the shrinking Dead Sea shore
+    spots: [[27, 8], [3, 6], [4, 18]],
     stat: 'hei',
     title: { en: 'The water council', es: 'El consejo del agua', fa: 'شورای آب' },
     intro: { en: 'The neighbors meet at the old well. They ask you to choose a plan for the river. Pick one plan. Then back it up with one reason that is fair to people and one reason that is good for the land and water.',

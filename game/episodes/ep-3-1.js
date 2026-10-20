@@ -25,7 +25,7 @@ window.EPISODE = {
     '==~s::::::::::::::::::bb::::::.T',
     '==~s..mm........:.....~~.......T',
     '==~s~~~~s....T..:.....~~..QQQQ.T',
-    '==~~~~~~~s......:.mm.k~~k.hdhh.T',
+    '==~~~s~~~s......:.mm.k~~k.hdhh.T',
     '==~~~~~~~s......:....k~~k......T',
     '==~sssssss......:....k~~k....T.T',
     '==~k............:..P..~~...T...T',
@@ -40,6 +40,11 @@ window.EPISODE = {
     '==AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA'
   ],
   start: [8, 7],
+
+  secret: { tool: 'canoe', at: [5, 9],
+    text: { en: 'The canoe reached the tiny island in the bay! In the chest is an old sea map. It says Great Britain is the biggest island in Europe.',
+      es: '¡La canoa llegó a la islita de la bahía! En el cofre hay un mapa viejo del mar. Dice que Gran Bretaña es la isla más grande de Europa.',
+      fa: 'قایق به جزیرهٔ کوچک در خلیج رسید! در صندوق یک نقشهٔ کهنهٔ بحر است. می‌گوید بریتانیای کبیر بزرگ‌ترین جزیرهٔ اروپا است.' } },
 
   tools: ['axe', 'sickle'],
 

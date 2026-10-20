@@ -21,7 +21,7 @@ window.EPISODE = {
     'MAAA~nMAAAA~MAAAD2222f~~~~fffffD',
     'MMMM~MMnnMM~MMMMD2222~~~~~fffffD',
     'MMM.~.x....~..MMD2222ffWWffffffD',
-    'M..~~~.....~.M..Dffffff~~fffoooD',
+    'M..~.~.....~.M..Dffffff~~fffoooD',
     'M..~~~.P...~....dffffff~~W~~o1oD',
     'M..WWW.....~....Dffffff~~fffoooD',
     'M...~......b....Dffffff~~ffffffD',
@@ -43,6 +43,11 @@ window.EPISODE = {
   start: [8, 4],
 
   tools: ['axe', 'sickle'],
+  // only the Canoe (Episode 2.3) reaches the tiny island in the dam lake
+  secret: { tool: 'canoe', at: [4, 4],
+    text: { en: 'The canoe reached a tiny island in the dam lake! The Atatürk Dam on the Euphrates made one of the biggest lakes in all of Türkiye.',
+      es: '¡La canoa llegó a una islita en el lago de la represa! La represa Atatürk en el Éufrates formó uno de los lagos más grandes de toda Turquía.',
+      fa: 'قایق کوچک به یک جزیرهٔ کوچک در جهیل بند رسید! بند اتاترک روی دریای فرات یکی از بزرگ‌ترین جهیل‌های تمام ترکیه را ساخته است.' } },
 
   words: {
     upstream: { en: 'closer to where a river starts', es: 'más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },

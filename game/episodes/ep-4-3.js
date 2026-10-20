@@ -17,12 +17,12 @@ window.EPISODE = {
   /* 32 x 22 tiles = 2 x 2 screens. Mine top-left, city bottom-left, railway across the top and down the east, port and ocean on the right. */
   map: [
     'KKKKKKKKKKKKKKKKTTTTTTTTTTTT~===',
-    'K::::rr::::r:K.............T~===',
-    'K:rr:::::XX:r:...eeeeee.K...~===',
-    'K::::::r:XX:::...eeeeee..K..~===',
-    'K:::rr:::::::r...eeeeee.....~===',
-    'K:r::::::r::::.............T~===',
-    'K:::::::::::::.....K........~===',
+    'K::::rr::::r:K...........K.T~===',
+    'K:rr:::::XX:r:...eeeeee.K.G.~XX=',
+    'K::::::r:XX:::...eeeeee..K..~XX=',
+    'K:::rr:::::::r...eeeeee.....~ss=',
+    'K:r::::::r::::.............T~ss=',
+    'K:::::::::::::.....K........kss=',
     'K...----------------------..~===',
     'K.......x................|..~===',
     'K................eeeeee..|K.~===',
@@ -40,6 +40,13 @@ window.EPISODE = {
     'KKKKKKKKKKKKKKKKTTTTTTTTTT======'
   ],
   start: [2, 9],
+
+  tools: ['axe', 'sickle'],
+  // only the Rail Pass (Episode 3.3) opens the old rail gate in the north-east hills
+  secret: { tool: 'rail', at: [26, 1],
+    text: { en: 'The Rail Pass opened the old rail gate! In the chest is a miner\'s note. It says South Africa digs up more platinum than any other country on Earth.',
+      es: '¡El pase de tren abrió la vieja puerta del ferrocarril! En el cofre hay una nota de un minero. Dice que Sudáfrica saca más platino que cualquier otro país de la Tierra.',
+      fa: 'کارت قطار دروازهٔ کهنهٔ خط آهن را باز کرد! در صندوق یادداشت یک معدن‌کار است. می‌گوید افریقای جنوبی از هر کشور دیگر روی زمین بیشتر پلاتین استخراج می‌کند.' } },
 
   words: {
     mineral: { en: 'a solid material found naturally in rock, like gold or chrome', es: 'un material sólido que se encuentra en la roca, como el oro o el cromo', fa: 'مادهٔ سختی که به طور طبیعی در سنگ پیدا می‌شود، مثل طلا یا کروم' },
@@ -226,7 +233,9 @@ window.EPISODE = {
 
   challenge: {
     at: [20, 8],
-    type: 'order',
+    type: 'route', // in the world; the card version (order) is the fallback
+    // mine pit -> processing plant -> along the rail -> Durban cranes -> end of the pier (ship) -> steel factory -> city store
+    spots: [[3, 3], [11, 3], [14, 8], [28, 17], [29, 20], [29, 4], [10, 14]],
     stat: 'mov',
     title: { en: 'From the mine to your kitchen', es: 'De la mina a tu cocina', fa: 'از معدن تا آشپزخانهٔ تو' },
     intro: { en: 'The Grump scattered the trade chain! Chrome ore leaves a mine in South Africa and ends up far away. Tap the steps in the right order, from first to last.',

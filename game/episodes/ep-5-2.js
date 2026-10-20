@@ -38,11 +38,18 @@ window.EPISODE = {
     'p:::::::::::::::::::::::::::::sp',
     'psmmsmmsmmsssssssUUsmmmmsUUUsssp',
     'pssssssssssssssssUUssssssUUUsxsp',
-    'pssssssssssssssssUUssssssUUUsssp',
-    'ppsspsssssssspssssspssssssspsssp',
+    'pssssssssssssssssUUssssssUUUsspp',
+    'ppsspsssssssspssssspssssssspsGsp',
     'pppppppppppppppppppppppppppppppp'
   ],
   start: [4, 16],
+
+  tools: ['axe', 'sickle'],
+  // only the Water Gourd (Episode 4.3) opens the hot desert corner past Dubai
+  secret: { tool: 'gourd', at: [30, 20],
+    text: { en: 'The Water Gourd kept you cool on the hot sand! Almost all of Dubai\'s drinking water comes from the sea. Big plants take the salt out.',
+      es: '¡La calabaza de agua te mantuvo fresco en la arena caliente! Casi toda el agua potable de Dubái viene del mar. Grandes plantas le quitan la sal.',
+      fa: 'کدوی آب تو را روی ریگ داغ تازه نگه داشت! تقریباً همهٔ آب نوشیدنی دبی از بحر می‌آید. فابریکه‌های بزرگ نمک آن را می‌گیرند.' } },
 
   words: {
     culture: { en: 'the way of life a group of people shares: food, language, clothes, buildings, beliefs and games', es: 'la forma de vida que comparte un grupo de personas: comida, idioma, ropa, edificios, creencias y juegos', fa: 'شیوهٔ زندگی که یک گروه مردم با هم دارند: غذا، زبان، لباس، ساختمان، باورها و بازی‌ها' },
@@ -222,7 +229,9 @@ window.EPISODE = {
 
   challenge: {
     at: [13, 18],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // Persian words go to the Kashan bazaar lane (north, Iran); Arabic words go to the Dubai market (south, UAE)
+    zones: [{ bin: 'fa', x: 5, y: 3, w: 6, h: 1 }, { bin: 'ar', x: 10, y: 14, w: 5, h: 1 }],
     stat: 'reg',
     title: { en: 'Words that traveled', es: 'Palabras que viajaron', fa: 'کلمه‌هایی که سفر کردند' },
     intro: { en: 'The Grump scrambled the word map! Every English word on these cards traveled from far away. Sort each word. Did it come into English from Arabic, or from Persian (Farsi and Dari)?',

@@ -4206,7 +4206,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop']; // things you can walk over
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -4354,7 +4354,6 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[d];
     const nx = player.x + dx, ny = player.y + dy;
     const e = entAt(nx, ny);
-    if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
     if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
@@ -4735,7 +4734,7 @@ window.EPISODE = {
   map: [
     'jjjjjjj~~jjjjj~~================',
     'jMM..qq~~qq..ps~=~~~~~~~~~~~~~~=',
-    'jM..qqq~~qqq..s~=~~~psssp~~~~~~=',
+    'jM..qqq~~qqq..s~=~~~psssp~~~s~~=',
     'j.RRR.q~~q.QQQs~=~~sss,ssp~~~~~=',
     'j.hdh..bb..hdhskkkkks,,.,ss~~~~=',
     'jj....q~~q....s~=~~ss,.,sskksp~=',
@@ -4757,6 +4756,13 @@ window.EPISODE = {
     '================================'
   ],
   start: [3, 2],
+
+  tools: ['axe', 'sickle'],
+  // only the canoe (Episode 2.3) reaches the tiny island in the northeast sea
+  secret: { tool: 'canoe', at: [28, 2],
+    text: { en: 'The canoe found the tiny island! Indonesia has more active volcanoes than any other country, about 130 of them.',
+      es: '¡La canoa encontró la islita! Indonesia tiene más volcanes activos que cualquier otro país, unos 130.',
+      fa: 'قایق کوچک جزیرهٔ خُرد را پیدا کرد! اندونیزیا از هر کشور دیگر آتشفشان فعال بیشتر دارد، حدود ۱۳۰ آتشفشان.' } },
 
   words: {
     'mainland southeast asia': { en: 'the part of Southeast Asia joined to the rest of Asia: Myanmar, Thailand, Laos, Cambodia and Vietnam', es: 'la parte del sudeste asiático unida al resto de Asia: Myanmar, Tailandia, Laos, Camboya y Vietnam', fa: 'بخشی از جنوب شرق آسیا که به باقی آسیا وصل است: میانمار، تایلند، لائوس، کمبودیا و ویتنام' },
@@ -4936,7 +4942,9 @@ window.EPISODE = {
 
   challenge: {
     at: [24, 4],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // mainland cards go to the rice fields on the mainland, by the Mekong; island cards go to two different islands out in the sea
+    zones: [{ bin: 'main', x: 2, y: 6, w: 5, h: 2 }, { bin: 'isle', x: 24, y: 5, w: 2, h: 2 }, { bin: 'isle', x: 24, y: 12, w: 2, h: 1 }],
     style: 'bands',
     stat: 'reg',
     title: { en: 'Mainland or islands?', es: '¿Continente o islas?', fa: 'خشکه یا جزیره؟' },

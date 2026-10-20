@@ -28,7 +28,7 @@ window.EPISODE = {
     'aggggggg:ggggaggggggggg:ggggggga',
     'a...""..:.....a.....a..:.......a',
     'a..a....:."".....""....:...AA..a',
-    'a"....".:...a..........:..MAAM.a',
+    'a"....".:...a..........:..MAnG.a',
     'a.......:..............:.MMMMMMa',
     'a....a..:....""...a....:x.MMM..a',
     'a.a.....:..a.......".".:.......a',
@@ -39,6 +39,13 @@ window.EPISODE = {
     'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj'
   ],
   start: [4, 6],
+
+  tools: ['axe', 'sickle'],
+
+  secret: { tool: 'compass', at: [28, 13],
+    text: { en: 'The Compass Rose found a hidden path up Mount Kenya! In the chest is a note. It says Mount Kenya is very close to the equator, but it has snow and small glaciers on top.',
+      es: '¡La rosa de los vientos encontró un camino escondido en el monte Kenia! En el cofre hay una nota. Dice que el monte Kenia está muy cerca del ecuador, pero tiene nieve y pequeños glaciares en la cima.',
+      fa: 'قطب‌نما یک راه پنهان را به بالای کوه کینیا پیدا کرد! در صندوق یک یادداشت است. می‌گوید کوه کینیا خیلی نزدیک خط استوا است، اما بالای آن برف و یخچال‌های کوچک دارد.' } },
 
   words: {
     sahara: { en: 'the largest hot desert on Earth, across the top of Africa', es: 'el desierto caliente más grande de la Tierra, en el norte de África', fa: 'بزرگ‌ترین بیابان گرم روی زمین، در شمال افریقا' },
@@ -206,7 +213,8 @@ window.EPISODE = {
 
   challenge: {
     at: [26, 8],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    zones: [{ bin: 'sahara', x: 24, y: 1, w: 4, h: 2 }, { bin: 'sahel', x: 24, y: 5, w: 4, h: 2 }, { bin: 'savanna', x: 24, y: 11, w: 3, h: 2 }, { bin: 'rain', x: 25, y: 18, w: 3, h: 2 }],
     style: 'bands',
     stat: 'reg',
     title: { en: 'From desert to rainforest', es: 'Del desierto a la selva', fa: 'از بیابان تا جنگل بارانی' },

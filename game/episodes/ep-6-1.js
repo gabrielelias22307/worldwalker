@@ -24,8 +24,8 @@ window.EPISODE = {
     'AAMMn.~.nMMMAAMMMMAAAMMMMAAAMMAA',
     'AMtt..~..tttt..MMtttt..tttt..MMA',
     'Mttt..b..ttt.....ttt.....ttt...M',
-    'M.....~.....,.....QQQ..RRR....,M',
-    'M..T..~...T.......hdh..hdh..T..M',
+    'M.....~.....,.....QQQ..RRRgggg,M',
+    'M..T..~...T.......hdh..hdhgggg.M',
     'M.....~~~~~~~~~~~b~~~~~~~~~~...M',
     'Tqqqq.qqqq.qqqq.qqqqq.qqq.~~...j',
     'Tqqqq.qqqq.qqqq.qqqqq.qqq.~~.O.j',
@@ -37,12 +37,19 @@ window.EPISODE = {
     'Tqqqqq.qqqqq.p.qqqqq......~~jjjj',
     'Tqqqqq.qqqqq...qqqqq..p.x.~~jj.j',
     'Tpssssspsssssspssssssspss~~~~ssj',
-    'Tssskksssssssssssskksssss~~~~kkj',
+    'Tssskksssssssssssskksssss~s~~kkj',
     '~~~~kk~~~~~~~~~~~~kk~~~~~~~~~kk~',
     '================================',
     '================================'
   ],
   start: [10, 5],
+
+  tools: ['axe', 'sickle'],
+  // only the canoe (Episode 2.3) reaches the little island in the delta
+  secret: { tool: 'canoe', at: [26, 18],
+    text: { en: 'The canoe found the island in the delta! The Ganges delta is the biggest river delta in the world. Tigers live in its mangrove forest, and they can swim.',
+      es: '¡La canoa encontró la isla en el delta! El delta del Ganges es el delta de río más grande del mundo. En su bosque de manglares viven tigres, y saben nadar.',
+      fa: 'قایق کوچک جزیره را در دلتا پیدا کرد! دلتای گنگا بزرگ‌ترین دلتای دریا در جهان است. در جنگل مانگرو آن ببرها زندگی می‌کنند و می‌توانند آب‌بازی کنند.' } },
 
   words: {
     monsoon: { en: 'a wind that changes direction with the season: wet from the ocean in summer, dry from the land in winter', es: 'un viento que cambia de dirección con la estación: húmedo desde el océano en verano, seco desde la tierra en invierno', fa: 'بادی که با فصل جهتش را تغییر می‌دهد: در تابستان از اقیانوس و مرطوب، در زمستان از خشکه و خشک' },
@@ -117,7 +124,7 @@ window.EPISODE = {
     },
     {
       x: 20, y: 18,
-      name: { en: 'Rahim', es: 'Rahim', fa: 'رحیم' },
+      name: { en: 'Selim', es: 'Selim', fa: 'سلیم' },
       role: { en: 'Fisher on the Bay of Bengal', es: 'Pescador del golfo de Bengala', fa: 'ماهیگیر خلیج بنگال' },
       look: { skin: 5, hair: '#0e0a08', shirt: '#2a8a7a', pants: '#3a3a3a' },
       lines: [
@@ -209,7 +216,9 @@ window.EPISODE = {
 
   challenge: {
     at: [22, 5],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // summer cards go to the rice paddies by the river (the wet wind comes in from the sea); winter cards go to the dry ground in the northeast corner (the dry wind blows from the northeast, over the land)
+    zones: [{ bin: 'summer', x: 18, y: 8, w: 3, h: 2 }, { bin: 'summer', x: 22, y: 8, w: 3, h: 2 }, { bin: 'winter', x: 26, y: 5, w: 4, h: 2 }],
     style: 'bands',
     stat: 'pla',
     title: { en: 'Summer monsoon or winter monsoon?', es: '¿Monzón de verano o monzón de invierno?', fa: 'باد موسمی تابستان یا زمستان؟' },

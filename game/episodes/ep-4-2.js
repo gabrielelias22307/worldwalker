@@ -18,12 +18,12 @@ window.EPISODE = {
     '================================',
     '================================',
     '====kk===============kk=========',
-    '~~~~kk~~~~~~~~~~~~~~~kk~~~~~~~~~',
+    '~~~~kk~~~~~~~s~~~~~~~kk~~~~~~~~~',
     '~~~~kk~~~~~~~~~~~~~~~kk~~~~~~~~~',
     'T::::::::::::::::::::::::::::::T',
     'T.p....x..p..p.:..p........p..pT',
     'T.mm:mm:mm:mm:.:...,...T....,..T',
-    'T:::::::::::::::..T......,...T.T',
+    'T:::::::::::::::..T......,...KKT',
     'T.mm:mm:mm:mm:.:....,.....T....T',
     'T::::::::::::::::::::::::::::::T',
     'T..............::::::::::::::::T',
@@ -39,6 +39,13 @@ window.EPISODE = {
     'TTTTTTTTTTTTTTTTUUUUUUUUUUUUUUUT'
   ],
   start: [3, 6],
+
+  tools: ['axe', 'sickle'],
+
+  secret: { tool: 'canoe', at: [13, 3],
+    text: { en: 'The canoe reached a little island in the Congo River! In the chest is a river map. It says the Congo is the deepest river in the world. In some places it is more than 200 meters deep.',
+      es: '¡La canoa llegó a una islita en el río Congo! En el cofre hay un mapa del río. Dice que el Congo es el río más profundo del mundo. En algunos lugares tiene más de 200 metros de profundidad.',
+      fa: 'قایق به یک جزیرهٔ کوچک در دریای کانگو رسید! در صندوق یک نقشهٔ دریا است. می‌گوید کانگو عمیق‌ترین دریای جهان است. در بعضی جاها عمق آن بیشتر از ۲۰۰ متر است.' } },
 
   words: {
     culture: { en: 'the way of life of a group of people: language, food, music, clothes and beliefs', es: 'la forma de vida de un grupo de personas: idioma, comida, música, ropa y creencias', fa: 'روش زندگی یک گروه از مردم: زبان، غذا، موسیقی، لباس و باورها' },
@@ -215,7 +222,8 @@ window.EPISODE = {
 
   challenge: {
     at: [9, 15],
-    type: 'table',
+    type: 'survey', // in the world; the card version (table) is the fallback
+    spots: [[1, 6], [23, 6], [28, 9], [28, 7]],
     stat: 'loc',
     title: { en: 'Four big cities', es: 'Cuatro ciudades grandes', fa: 'چهار شهر بزرگ' },
     intro: { en: 'The Grump scrambled the city guide! Read the table. Then answer the questions.',

@@ -111,7 +111,7 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.evaluate(() => WW.tools.add('seed', 1));
         await page.keyboard.press('4');
         const soil = find('o', true).find(([x, y]) => true);
-        for (const g of find('.,', true)) if (await page.evaluate(([x, y]) => !WW.dbg.ents.some(e => e.x === x && e.y === y && !e.gone) && WW.dbg.faceFrom(x, y), g)) break;
+        for (const g of find('.,gsnzu:l', true)) if (await page.evaluate(([x, y]) => !WW.dbg.ents.some(e => e.x === x && e.y === y && !e.gone) && WW.dbg.faceFrom(x, y), g)) break;
         await page.evaluate(() => WW.dbg.act());
         { const t = await page.textContent('.cbubble'); if (!/farm soil/.test(t)) throw new Error('planting on grass did not explain why: ' + t); }
         if (soil) {
