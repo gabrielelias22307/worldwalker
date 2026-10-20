@@ -206,6 +206,23 @@ const SHOTS = !process.argv.includes('--no-shots');
         if (!(await page.evaluate(() => (WW.save.secrets || []).includes(WW.ep.id)))) throw new Error('the secret was not saved');
         await page.evaluate(e => { delete WW.save.episodes[e]; }, toolEp);
       });
+      if ((ep.finds || []).length) await step(`finds (${ep.finds.length})`, async () => {
+        const c0 = await page.evaluate(() => WW.save.coins);
+        for (let i = 0; i < ep.finds.length; i++) {
+          const f = ep.finds[i];
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), f.clueAt);
+          await page.waitForSelector('.msgov'); if (i === 0) await shot('f-clue');
+          const raw = await page.textContent('#ww-ov'); if (/\[\[|undefined/.test(raw)) throw new Error('raw text in a clue');
+          await clickGold(); await page.waitForFunction(() => !WW.paused);
+          await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), f.at);
+          await page.waitForSelector('.msgov'); if (i === 0) await shot('f-found');
+          await clickGold(); await page.waitForFunction(() => !WW.paused);
+          if (f.decor && !(await page.evaluate(d => WW.save.camp.owned.includes(d), f.decor))) throw new Error('find ' + i + ' did not give its decoration');
+        }
+        const n = await page.evaluate(() => WW.world.foundCount());
+        if (n !== ep.finds.length) throw new Error(`found ${n} of ${ep.finds.length}`);
+        if (await page.evaluate(() => WW.save.coins) < c0 + 3 * ep.finds.length) throw new Error('finds did not give 3 coins each');
+      });
       await step('collect scraps', async () => {
         for (let i = 0; i < ep.scraps.length; i++) await page.evaluate(i => WW.dbg.collect(i), i);
         const n = await page.evaluate(() => WW.run.scraps.size);
@@ -432,11 +449,41 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.waitForFunction(() => !WW.paused);
       });
       await step('boss trial', async () => {
-        await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.boss.at);
-        await page.waitForSelector('.bossov');
+        // the Grump hides in rings of fog: walking into the fog asks a question
+        const fog = await page.evaluate(() => WW.run.fog && [...WW.run.fog.set].map(k => k.split(',').map(Number)));
+        if (fog && fog.length) {
+          await page.waitForTimeout(300); await shot('6b-grump-fog');
+          const ok = await page.evaluate(([x, y]) => !WW.game.walkable(x, y), fog[0]);
+          if (!ok) throw new Error('the fog can be walked through');
+          // stand just outside the outer ring, facing an empty fog tile
+          const placed = await page.evaluate(() => {
+            const D = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
+            for (const [fx, fy] of WW.run.fog.rings[0]) {
+              if (WW.dbg.ents.some(e => e.x === fx && e.y === fy && !e.gone && e.visible !== false)) continue;
+              for (const [d, [dx, dy]] of Object.entries(D)) {
+                const sx = fx - dx, sy = fy - dy;
+                if (WW.game.walkable(sx, sy) && !WW.world.fogAt(sx, sy)) { WW.dbg.teleport(sx, sy); WW.dbg.face(d); return true; }
+              }
+            }
+            return false;
+          });
+          if (!placed) throw new Error('no way to walk up to the fog');
+          await page.waitForTimeout(150);
+          const dir = await page.evaluate(() => WW.dbg.player.dir);
+          const key = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir];
+          await page.keyboard.down(key); await page.waitForSelector('.bossov'); await page.keyboard.up(key);
+        } else {
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.boss.at);
+          await page.waitForSelector('.bossov');
+        }
         await shot('7-boss');
-        let wrongOnce = false;
-        for (let k = 0; k < 30; k++) {
+        let wrongOnce = false, cleared = 0;
+        for (let k = 0; k < 40; k++) {
+          if (!(await page.locator('.bossov').count())) { // a right answer cleared a ring of fog: walk into the Grump again
+            await page.waitForFunction(() => !WW.paused); cleared++;
+            if (cleared === 1) { await page.waitForTimeout(200); await shot('7b-fog-cleared'); }
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.boss.at); await page.waitForSelector('.bossov');
+          }
           if (await page.locator('#ww-ov .pbtn.gold.big').count()) break;
           const qi = await page.evaluate(() => +document.querySelector('#ww-ov .ov-box').dataset.q);
           const q = ep.boss.questions[qi];

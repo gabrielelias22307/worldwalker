@@ -29,9 +29,10 @@
     if (ch.type === 'survey') ch.spots.forEach((p, i) => out.push({ kind: 'survey', x: p[0], y: p[1], i }));
     if (ch.type === 'levers') ch.switches.forEach((s, i) => out.push({ kind: 'lever', x: s.at[0], y: s.at[1], i }));
     if (ep.secret) out.push({ kind: 'chest', x: ep.secret.at[0], y: ep.secret.at[1] });
+    (ep.finds || []).forEach((f, i) => out.push({ kind: 'clue', x: f.clueAt[0], y: f.clueAt[1], i }));
     return out;
   };
-  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest'];
+  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest', 'clue'];
   Wd.setup = (ep) => {
     const r = WW.run, ch = ep.challenge;
     r.worldOn = false; r.route = 0; r.seen = new Set(); r.levers = ch.type === 'levers' ? ch.switches.map(s => s.start || 0) : null;
@@ -44,7 +45,8 @@
     if (ch === 'G') { const t = tool(); return !!(t && WW.hasTool(t.id)); }
     return false;
   };
-  Wd.bump = (x, y) => { // walked into a closed tool gate: say what opens it
+  Wd.bump = (x, y) => { // walked into the Grump's fog (a question) or a closed tool gate (what opens it)
+    if (Wd.fogAt(x, y)) { const b = G().ents.find(e => e.kind === 'boss'); if (b) G().interact(b); return true; }
     if (G().tileAt(x, y) !== 'G') return false;
     const t = tool(); if (!t) return false;
     WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
@@ -88,6 +90,7 @@
   Wd.interact = (e) => {
     const r = WW.run, ch = WW.ep.challenge, g = G();
     if (e.kind === 'chest') return openChest(e);
+    if (e.kind === 'clue') return readClue(e);
     if (r.challengeDone) { WW.chris.say(L(ch.success)); return; }
     if (!r.worldOn) { WW.chris.say(T('wStoneFirst')); WW.sfx('bad'); return; }
     if (e.kind === 'stop') {
@@ -147,6 +150,36 @@
     if (res.ok) WW.challengeSolved(ch); else WW.sfx('bad');
   }
 
+  /* ---------------- finds (FUN-PASS section 6): a clue note on the map leads to a hidden spot ----------------
+     finds: [{ clueAt: [x, y], at: [x, y], clue: {..}, text: {..}, decor: 'shell' (optional) }]
+     Reading the note gives the clue (Christopher repeats it in his bubble). Stepping on the right spot: +3 coins and, if the
+     find has one, a decoration for the camp. Each find counts once per hero (save.finds). */
+  const findKey = i => WW.ep.id + ':' + i;
+  const found = i => (WW.save.finds || []).includes(findKey(i));
+  function readClue(e) {
+    const f = WW.ep.finds[e.i];
+    WW.run.clues = WW.run.clues || new Set(); WW.run.clues.add(e.i);
+    if (found(e.i)) return WW.chris.say(`✅ ${T('findDone')}`);
+    WW.sfx('blip');
+    WW.ui.message(`📜 ${T('findClue')}`, f.clue, () => WW.chris.say(`📜 ${L(f.clue)}`));
+  }
+  Wd.onStep = (x, y) => {
+    const ep = WW.ep; if (!ep.finds) return false;
+    const i = ep.finds.findIndex(f => f.at[0] === x && f.at[1] === y);
+    if (i < 0 || found(i)) return false;
+    const f = ep.finds[i], s = WW.save;
+    s.finds = s.finds || []; s.finds.push(findKey(i));
+    let extra = '';
+    if (f.decor && WW.camp && WW.camp.give(f.decor)) { const d = WW.camp.DECOR.find(o => o.id === f.decor); if (d) extra = ` ${d.icon} ${T('findDecor').replace('{d}', L(d.name))}`; }
+    WW.store(); WW.sheetSync && WW.sheetSync();
+    WW.fx.burst(x, y, 'gold'); WW.sfx('win');
+    WW.gain(null, 0, 3, T('why_find'), true);
+    WW.toast(`✨ +3 ● ${esc(T('why_find'))}`, '#c08a1e');
+    WW.ui.message(`✨ ${T('findFound')}`, L(f.text) + extra);
+    return true;
+  };
+  Wd.foundCount = () => (WW.ep.finds || []).filter((_, i) => found(i)).length;
+
   /* the secret chest */
   function openChest(e) {
     const ep = WW.ep, s = WW.save, t = tool();
@@ -177,6 +210,59 @@
     if (ch.type === 'levers') return T('w_leverTest');
   };
 
+  /* ---------------- the Grump trial in the world (FUN-PASS section 3) ----------------
+     When the Grump comes out, rings of its fog close the way to it (one ring for each right answer but the last).
+     Walk into the fog: one question. Right: the outer ring clears and you walk on. Wrong: a heart, the reason, and the
+     question comes back later. The last right answer breaks its shield. */
+  Wd.fogSetup = () => {
+    const g = G(), ep = WW.ep, r = WW.run, [W, H] = g.size, need = ep.boss.need || 3, [bx, by] = ep.boss.at;
+    const dist = new Map([[bx + ',' + by, 0]]), q = [[bx, by]];
+    while (q.length) {
+      const [x, y] = q.shift(), d = dist.get(x + ',' + y);
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, k = nx + ',' + ny;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H || dist.has(k) || WW.solid(g.tileAt(nx, ny))) continue;
+        dist.set(k, d + 1); q.push([nx, ny]);
+      }
+    }
+    const pd = dist.get(g.player.x + ',' + g.player.y) ?? 99;
+    const rings = [];
+    for (let k = need; k >= 2; k--) { // need-1 rings, outer first (the last answer is asked at the Grump); never around the hero
+      if (k >= pd) continue;
+      const ring = [...dist].filter(([, d]) => d === k).map(([key]) => key.split(',').map(Number));
+      if (ring.length) rings.push(ring);
+    }
+    r.fog = { rings, cleared: 0, set: new Set(rings.flat().map(p => p.join(','))), st: {} };
+  };
+  Wd.fogAt = (x, y) => { const f = WW.run && WW.run.fog; return !!(f && f.set.has(x + ',' + y)); };
+  Wd.fogAsk = (onWin) => {
+    const r = WW.run, f = r.fog;
+    if (!f) return WW.bossTrial(WW.ep.boss, onWin);
+    f.st.onCrack = () => clearRing();
+    WW.bossTrial(WW.ep.boss, onWin, f.st);
+  };
+  function clearRing() {
+    const f = WW.run.fog, g = G(); if (!f || f.cleared >= f.rings.length) return;
+    const ring = f.rings[f.cleared++];
+    ring.forEach(([x, y]) => f.set.delete(x + ',' + y));
+    // a short pause while the fog lifts
+    WW.paused = true; WW.sfx('gate'); g.shake();
+    ring.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, i % 2 ? 'poof' : 'gold'), WW.calm ? 0 : Math.min(500, i * 25)));
+    setTimeout(() => { WW.paused = false; WW.chris.say(f.cleared < f.rings.length ? T('fogMore').replace('{n}', (WW.ep.boss.need || 3) - (f.st.broken || 0)) : T('fogLast')); }, WW.calm ? 100 : 650);
+  }
+  Wd.drawFog = (c, sx, sy, t) => {
+    const f = WW.run && WW.run.fog; if (!f || !f.set.size) return;
+    f.set.forEach(k => {
+      const [x, y] = k.split(',').map(Number), px = (x - sx * 16) * 16, py = (y - sy * 11) * 16;
+      if (px < -16 || py < -16 || px > 256 || py > 176) return;
+      const w = WW.calm ? 0 : Math.sin(t / 500 + x * 1.7 + y), a = .78 + w * .06;
+      c.fillStyle = `rgba(58,44,85,${a})`; c.fillRect(px, py, 16, 16);
+      c.fillStyle = `rgba(110,92,150,${a})`;
+      c.beginPath(); c.arc(px + 5 + w * 2, py + 6, 5, 0, 7); c.arc(px + 11 - w * 2, py + 10, 6, 0, 7); c.fill();
+      c.fillStyle = 'rgba(200,190,230,.25)'; c.fillRect(px + 3, py + 4, 3, 1);
+    });
+  };
+
   /* ---------------- drawing ---------------- */
   Wd.draw = (c, e, x, y, t) => {
     const r = WW.run, ch = WW.ep.challenge;
@@ -204,6 +290,13 @@
       c.fillStyle = '#5e636b'; c.fillRect(x + 3, y + 11, 10, 4); c.fillStyle = '#9aa3ad'; c.fillRect(x + 4, y + 11, 8, 1);
       c.strokeStyle = '#22202e'; c.lineWidth = 2; c.beginPath(); c.moveTo(x + 8, y + 12); c.lineTo(x + 8 + lean, y + 4); c.stroke();
       c.fillStyle = '#e04848'; c.beginPath(); c.arc(x + 8 + lean, y + 4, 2.5, 0, 7); c.fill();
+    } else if (e.kind === 'clue') { // a rolled-up note with a ?
+      const done = (WW.save.finds || []).includes(WW.ep.id + ':' + e.i);
+      if (!done) glow('rgba(255,236,150,A)', .1 + pulse * .15);
+      c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 6, 10, 7);
+      c.fillStyle = done ? '#d8f0d0' : '#f3e3b5'; c.fillRect(x + 4, y + 7, 8, 5);
+      c.fillStyle = '#c79a5b'; c.fillRect(x + 2, y + 6, 2, 7); c.fillRect(x + 12, y + 6, 2, 7);
+      c.fillStyle = '#22202e'; c.font = 'bold 7px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(done ? '✓' : '?', x + 8, y + 2);
     } else if (e.kind === 'chest') {
       const open = (WW.save.secrets || []).includes(WW.ep.id);
       if (!open) glow('rgba(255,236,150,A)', .2 + pulse * .25);

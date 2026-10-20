@@ -83,6 +83,16 @@ vm.createContext(box); vm.runInContext(fs.readFileSync(path.join(ROOT, 'apps-scr
   // finishing an episode writes one Log line
   await bp.evaluate(() => WW.sheetSave({ episode: '1.2', stars: 3, heartsLost: 0, minutes: 12, missed: [], reflection: 'test' })); await bp.waitForTimeout(400);
   ok(tabs.Log && tabs.Log.rows.length === 2, 'finishing an episode adds one Log line');
+  // the class atlas: totals for the class, no names
+  await bp.evaluate(() => { WW.save.episodes['1.2'] = { done: true, stars: 3 }; WW.store(); WW.sheetSync(); }); await bp.waitForTimeout(400);
+  const cl = JSON.parse(box.doGet({ parameter: { action: 'class', cls: 'GEO-1' } }).text);
+  ok(cl.ok && cl.students === 1 && cl.total >= 1 && cl.pages['1.2'] === 1, `the class atlas counts restored pages (${JSON.stringify(cl.pages)}, ${cl.students} student)`);
+  ok(!JSON.stringify(cl).includes('Ana'), 'the class atlas shows no names');
+  const other = JSON.parse(box.doGet({ parameter: { action: 'class', cls: 'GEO-9' } }).text);
+  ok(other.ok && other.total === 0, 'another class sees only its own atlas');
+  // the camp is saved too: what you bought stays yours on another computer
+  await bp.evaluate(() => { WW.camp.give('globe'); WW.save.camp.slots[0] = 'globe'; WW.store(); WW.sheetSync(); }); await bp.waitForTimeout(400);
+  ok(/globe/.test(student().camp || ''), 'the camp is saved in the Sheet');
   console.log(`  (${posts} saves sent)`);
   await b.close(); console.log(failed ? failed + ' failed' : 'all good'); process.exitCode = failed ? 1 : 0;
 })();

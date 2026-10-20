@@ -10,6 +10,7 @@
  *
  * The game sends:
  *   GET  ?action=load&cls=GEO-3B&name=Ana&pin=1234            -> the student's saved hero
+ *   GET  ?action=class&cls=GEO-3B                              -> the class atlas: pages restored per episode (totals only, no names)
  *   POST {action:'save', cls, name, pin, state:{...}, log:{...}} (sent as text/plain)
  * GET also accepts &callback=fn (JSONP) in case the school network blocks the normal way.
  *
@@ -17,7 +18,7 @@
  */
 
 const STUDENT_COLS = ['key', 'cls', 'name', 'pinHash', 'look', 'loc', 'pla', 'hei', 'mov', 'reg',
-  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent', 'bag', 'built', 'metChris', 'secrets'];
+  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent', 'bag', 'built', 'metChris', 'secrets', 'camp', 'finds'];
 const LOG_COLS = ['time', 'cls', 'name', 'episode', 'stars', 'heartsLost', 'minutes', 'missed', 'reflection'];
 
 function doGet(e) {
@@ -25,6 +26,7 @@ function doGet(e) {
   let out;
   try {
     if (p.action === 'load') out = load_(p.cls, p.name, p.pin);
+    else if (p.action === 'class') out = classAtlas_(p.cls);
     else if (p.action === 'ping') out = { ok: true, time: new Date().toISOString() };
     else out = { ok: false, error: 'unknown action' };
   } catch (err) {
@@ -49,6 +51,26 @@ function doPost(e) {
   return reply_(out);
 }
 
+/* ---------- the class atlas: how many in the class restored each page (never who, never a ranking) ---------- */
+function classAtlas_(cls) {
+  const want = clean_(cls).toUpperCase();
+  if (!want) return { ok: false, error: 'missing class' };
+  const sh = sheet_('Students', STUDENT_COLS);
+  const n = sh.getLastRow();
+  const pages = {}; let total = 0, students = 0;
+  if (n >= 2) {
+    const rows = sh.getRange(2, 1, n - 1, STUDENT_COLS.length).getValues();
+    const ci = STUDENT_COLS.indexOf('cls'), ei = STUDENT_COLS.indexOf('episodes');
+    rows.forEach(r => {
+      if (String(r[ci]).toUpperCase() !== want) return;
+      students++;
+      const eps = safeJson_(r[ei], {});
+      Object.keys(eps).forEach(id => { if (eps[id] && eps[id].done) { pages[id] = (pages[id] || 0) + 1; total++; } });
+    });
+  }
+  return { ok: true, pages, total, students };
+}
+
 /* ---------- load and save ---------- */
 
 function load_(cls, name, pin) {
@@ -65,6 +87,8 @@ function load_(cls, name, pin) {
   rec.bag = safeJson_(rec.bag, {});
   rec.built = safeJson_(rec.built, {});
   rec.secrets = safeJson_(rec.secrets, []);
+  rec.camp = safeJson_(rec.camp, null);
+  rec.finds = safeJson_(rec.finds, []);
   rec.metChris = rec.metChris === true || rec.metChris === 'TRUE' || rec.metChris === 'true';
   return { ok: true, found: true, state: rec };
 }
@@ -109,6 +133,9 @@ function save_(b) {
     s.built = built;
     s.metChris = !!s.metChris || old.metChris === true || old.metChris === 'TRUE';
     s.secrets = Array.from(new Set([].concat(safeJson_(old.secrets, []), s.secrets || [])));
+    s.finds = Array.from(new Set([].concat(safeJson_(old.finds, []), s.finds || [])));
+    const oc = safeJson_(old.camp, null); // camp: owned decorations never go away; the newest layout wins
+    if (oc) s.camp = { owned: Array.from(new Set([].concat(oc.owned || [], (s.camp || {}).owned || []))), slots: (s.camp && s.camp.slots) || oc.slots || [] };
   }
   const rec = {
     key, cls: clean_(b.cls).toUpperCase(), name: clean_(b.name), pinHash: ph,
@@ -118,7 +145,9 @@ function save_(b) {
     episodes: JSON.stringify(s.episodes || {}), tools: JSON.stringify(s.tools || []),
     passport: s.passport || '', lastPlayed: new Date(), version: s.version || 1,
     bag: JSON.stringify(s.bag || {}), built: JSON.stringify(s.built || {}), metChris: !!s.metChris,
-    secrets: JSON.stringify(s.secrets || [])
+    secrets: JSON.stringify(s.secrets || []),
+    camp: JSON.stringify(s.camp || null),
+    finds: JSON.stringify(s.finds || [])
   };
   sh.getRange(row, 1, 1, STUDENT_COLS.length).setValues([STUDENT_COLS.map(c => rec[c])]);
 

@@ -316,3 +316,16 @@ canvas{filter:var(--vivid)}
 .gridlabs .gl.zone{font-size:12px;background:rgba(34,32,46,.9)}
 .gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
 .ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}
+/* the base camp */
+.campcv{display:block;width:100%;max-width:640px;margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
+.campslots,.campshop,.campown{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.campshop p,.campown p{flex-basis:100%;margin:4px 0 0}
+.campslot{width:86px;min-height:58px;font-size:24px;background:#fff3c4;border:2px dashed #b8902a;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.campslot small{font-size:11px;color:#5a4a2a}
+.campslot.on{border-style:solid;outline:3px solid var(--gold)}
+.campitem{font:inherit;font-size:14px;padding:6px 9px;border:2px solid var(--ink);border-radius:4px;background:#fff;cursor:pointer}
+.campitem small{color:#6a5a7a}
+.campitem.owned{background:#dff3d8}.campitem:disabled{cursor:default}
+.campitem.ghost{background:#f0eef8}
+.campmsg{font-weight:700}
+.passov .campbtn{margin:8px 0}

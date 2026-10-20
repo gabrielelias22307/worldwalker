@@ -323,6 +323,19 @@ canvas{filter:var(--vivid)}
 .gridlabs .gl.zone{font-size:12px;background:rgba(34,32,46,.9)}
 .gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
 .ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}
+/* the base camp */
+.campcv{display:block;width:100%;max-width:640px;margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
+.campslots,.campshop,.campown{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.campshop p,.campown p{flex-basis:100%;margin:4px 0 0}
+.campslot{width:86px;min-height:58px;font-size:24px;background:#fff3c4;border:2px dashed #b8902a;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.campslot small{font-size:11px;color:#5a4a2a}
+.campslot.on{border-style:solid;outline:3px solid var(--gold)}
+.campitem{font:inherit;font-size:14px;padding:6px 9px;border:2px solid var(--ink);border-radius:4px;background:#fff;cursor:pointer}
+.campitem small{color:#6a5a7a}
+.campitem.owned{background:#dff3d8}.campitem:disabled{cursor:default}
+.campitem.ghost{background:#f0eef8}
+.campmsg{font-weight:700}
+.passov .campbtn{margin:8px 0}
 
 </style>
 </head>
@@ -1497,6 +1510,27 @@ window.WW_CONFIG.MODE = 'canvas';
     gateNeed: { en: 'This gate opens for the {t} (you earn it in Episode {e}). Come back when you have it!', es: 'Esta puerta se abre con {t} (lo ganas en el episodio {e}). ¡Vuelve cuando lo tengas!', fa: 'این دروازه با {t} باز می‌شود (آن را در قسمت {e} می‌گیری). وقتی داشتی برگرد!' },
     secretFound: { en: 'A secret!', es: '¡Un secreto!', fa: 'یک راز!' },
     why_secret: { en: 'secret found', es: 'secreto encontrado', fa: 'راز پیدا شد' },
+    fogMore: { en: 'The fog pulled back! {n} more right answer(s) to break the Grump\'s shield. Walk into the fog again.', es: '¡La niebla se retiró! Faltan {n} respuesta(s) correcta(s) para romper el escudo del Gruñón. Camina hacia la niebla otra vez.', fa: 'مه عقب رفت! {n} جواب درست دیگر لازم است تا سپر غرغرو بشکند. دوباره به طرف مه برو.' },
+    fogLast: { en: 'The fog is gone! Walk into the Grump for the last question.', es: '¡La niebla se fue! Camina hacia el Gruñón para la última pregunta.', fa: 'مه رفت! برای سؤال آخر به طرف غرغرو برو.' },
+    nsFog: { en: 'The Grump hides in its fog. Walk into the fog: each right answer clears one ring.', es: 'El Gruñón se esconde en su niebla. Camina hacia la niebla: cada respuesta correcta quita un anillo.', fa: 'غرغرو در مه خود پنهان است. به طرف مه برو: هر جواب درست یک حلقه را پاک می‌کند.' },
+    /* the base camp (camp.js) */
+    campOpen: { en: 'My camp', es: 'Mi campamento', fa: 'اردوگاه من' },
+    campTitle: { en: 'My camp', es: 'Mi campamento', fa: 'اردوگاه من' },
+    campHow: { en: 'Your atlas pages hang on the wall. Your tools sit on the rack. Each finished realm leaves a souvenir on the shelf. Decorate the floor!', es: 'Tus páginas del atlas cuelgan en la pared. Tus herramientas están en el estante. Cada reino terminado deja un recuerdo en la repisa. ¡Decora el piso!', fa: 'صفحه‌های اطلس تو روی دیوار آویزان است. ابزارهایت روی جای ابزار است. هر سرزمین تمام شده یک یادگاری روی طاقچه می‌گذارد. فرش را تزئین کن!' },
+    campBag: { en: 'You have', es: 'Tienes', fa: 'داری' },
+    campEmpty: { en: 'empty', es: 'vacío', fa: 'خالی' },
+    campPut: { en: 'What goes on this spot?', es: '¿Qué va en este lugar?', fa: 'چه چیزی این جا برود؟' },
+    campNone: { en: 'You have no decorations yet. Get one below.', es: 'Aún no tienes adornos. Consigue uno abajo.', fa: 'هنوز تزئینی نداری. از پایین یکی بگیر.' },
+    campTakeDown: { en: 'Take it down (you keep it)', es: 'Quitarlo (lo guardas)', fa: 'برش دار (مال خودت می‌ماند)' },
+    campShop: { en: 'Decorations', es: 'Adornos', fa: 'تزئینات' },
+    campOwned: { en: 'yours', es: 'tuyo', fa: 'مال تو' },
+    campFind: { en: 'find it on a map', es: 'encuéntralo en un mapa', fa: 'روی یک نقشه پیدایش کن' },
+    campCant: { en: 'You need {c} for that. Chop, cut grass and collect coins in the episodes.', es: 'Necesitas {c}. Corta árboles, pasto y junta monedas en los episodios.', fa: 'برای این {c} لازم داری. در قسمت‌ها درخت ببُر، علف ببُر و سکه جمع کن.' },
+    findClue: { en: 'A clue!', es: '¡Una pista!', fa: 'یک نشانه!' },
+    findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش کردی!' },
+    findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
+    findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
+    why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -1548,7 +1582,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], finds: [], camp: { owned: [], slots: [null, null, null, null, null, null] }, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -1633,6 +1667,12 @@ window.WW_CONFIG.MODE = 'canvas';
     for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
     if (other.metChris) s.metChris = true;
     if (other.secrets) s.secrets = Array.from(new Set([...(s.secrets || []), ...other.secrets]));
+    if (other.finds) s.finds = Array.from(new Set([...(s.finds || []), ...other.finds]));
+    if (other.camp) { // camp: everything ever owned stays owned; keep this computer's layout unless it is empty
+      const c = s.camp = s.camp || { owned: [], slots: [] };
+      c.owned = Array.from(new Set([...(c.owned || []), ...(other.camp.owned || [])]));
+      if (!(c.slots || []).some(Boolean) && (other.camp.slots || []).some(Boolean)) c.slots = other.camp.slots.slice();
+    }
     // coins: keep the most ever earned and the most ever spent, so spent coins never come back
     if (other.coins != null) {
       const spent = Math.max(s.spent || 0, other.spent || 0);
@@ -1662,9 +1702,17 @@ window.WW_CONFIG.MODE = 'canvas';
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [] });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [], finds: st.finds || [], camp: st.camp || null });
     }
     return d || { ok: false };
+  };
+  // the class atlas: how many pages the whole class restored, per episode (no names, no ranking)
+  WW.classAtlas = async () => {
+    if (!WW.sheetOn()) return null;
+    const url = CFG.SHEET_URL + '?action=class&cls=' + encodeURIComponent(WW.save.cls);
+    let d;
+    try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return null; } }
+    return d && d.ok ? d : null;
   };
   WW.spend = n => { WW.save.coins -= n; WW.save.spent = (WW.save.spent || 0) + n; WW.store(); };
   // save the hero to the class Sheet after each goal (not only at the end), so leaving halfway loses little
@@ -1674,7 +1722,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], finds: s.finds || [], camp: s.camp || null, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {
@@ -2035,6 +2083,16 @@ window.WW_CONFIG.MODE = 'canvas';
     setTimeout(() => { pg.remove(); pass.classList.add('gotpage'); setTimeout(() => pass.classList.remove('gotpage'), 900); WW.sfx('coin'); WW.paused = false; done(); }, 1400);
   };
 
+  /* the base camp (camp.js) in a panel */
+  ui.camp = () => ui.open({
+    cls: 'campov',
+    render(box, h) {
+      const inner = document.createElement('div'); box.appendChild(inner);
+      WW.camp.render(inner, () => { ui.hud(); WW.tools && WW.tools.render(); });
+      const a = document.createElement('div'); a.className = 'acts'; a.appendChild(btn(T('close'), 'gold', () => h.close())); box.appendChild(a);
+    }
+  });
+
   /* ---------------- passport ---------------- */
   ui.passport = () => {
     let msg = '';
@@ -2056,6 +2114,7 @@ window.WW_CONFIG.MODE = 'canvas';
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        { const cb = btn('🏕️ ' + esc(T('campOpen')), 'teal', () => ui.camp()); cb.classList.add('campbtn'); box.appendChild(cb); }
         box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
         WW.THEMES.forEach(th => {
@@ -2515,11 +2574,15 @@ window.WW_CONFIG.MODE = 'canvas';
   };
 
   /* ---------------- the Grump trial ---------------- */
-  WW.bossTrial = (boss, onWin) => {
+  /* st (optional): the trial in the world — the same questions, one at a time. Each right answer closes the panel and
+     calls st.onCrack(broken) (a ring of fog clears); the state stays in st for the next time you walk into the fog. */
+  WW.bossTrial = (boss, onWin, st) => {
     const need = boss.need || 3;
-    let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = 0, picked = null, last = null, grr = '';
-    let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
+    if (st && !st.queue) Object.assign(st, { queue: shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1), broken: 0, freeHints: WW.tier('reg'), hidden: {} });
+    let queue = st ? st.queue : shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
+    let broken = st ? st.broken : 0, picked = null, last = null, grr = '';
+    let freeHints = st ? st.freeHints : WW.tier('reg'); const hidden = st ? st.hidden : {}; // Region power: free hints. A hint hides one wrong answer.
+    const keep = () => { if (st) Object.assign(st, { broken, freeHints }); };
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
@@ -2559,7 +2622,7 @@ window.WW_CONFIG.MODE = 'canvas';
           b.disabled = picked != null;
           b.onclick = () => {
             picked = i;
-            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
+            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); keep(); }
             else { last = 'hit'; WW.sfx('hurt'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
@@ -2569,7 +2632,7 @@ window.WW_CONFIG.MODE = 'canvas';
         const wrongLeft = q.choices.map((_, i) => i).filter(i => i !== q.answer && !(hidden[qi] || []).includes(i));
         if (picked == null && wrongLeft.length > 1) {
           const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
-            if (freeHints) freeHints--;
+            if (freeHints) { freeHints--; keep(); }
             else if ((WW.save.coins || 0) >= 10) { WW.spend(10); WW.ui.hud(); }
             else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
             (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
@@ -2581,9 +2644,11 @@ window.WW_CONFIG.MODE = 'canvas';
           if (!ok && grr && !boss.minor) box.insertAdjacentHTML('beforeend', `<p class="say taunt grr">${esc(grr)}</p>`);
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
           const acts = document.createElement('div'); acts.className = 'acts';
-          acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {
+          const step = st && ok && broken < need; // in the world: a right answer clears the fog, then you walk on
+          acts.appendChild(btn((step ? T('cont') : T('next')) + ' ▶', 'gold', () => {
             queue.shift(); if (!ok) queue.push(qi);
-            picked = null; last = null; h.render();
+            picked = null; last = null;
+            if (step) { h.close(); st.onCrack && st.onCrack(broken); } else h.render();
           }));
           box.appendChild(acts);
         }
@@ -3418,7 +3483,7 @@ window.WW_CONFIG.MODE = 'canvas';
         at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
         text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : WW.quest.bar().replace(/^📜\s*/, '');
       } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
-      else { at = ep.boss.at; text = T('nsBoss'); }
+      else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
     }
     // a broken bridge in the way? say so first
     const fix = at && WW.tools && WW.tools.blockingRepair ? WW.tools.blockingRepair(at, reachable) : null;
@@ -3888,9 +3953,10 @@ window.WW_CONFIG.MODE = 'canvas';
     if (ch.type === 'survey') ch.spots.forEach((p, i) => out.push({ kind: 'survey', x: p[0], y: p[1], i }));
     if (ch.type === 'levers') ch.switches.forEach((s, i) => out.push({ kind: 'lever', x: s.at[0], y: s.at[1], i }));
     if (ep.secret) out.push({ kind: 'chest', x: ep.secret.at[0], y: ep.secret.at[1] });
+    (ep.finds || []).forEach((f, i) => out.push({ kind: 'clue', x: f.clueAt[0], y: f.clueAt[1], i }));
     return out;
   };
-  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest'];
+  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest', 'clue'];
   Wd.setup = (ep) => {
     const r = WW.run, ch = ep.challenge;
     r.worldOn = false; r.route = 0; r.seen = new Set(); r.levers = ch.type === 'levers' ? ch.switches.map(s => s.start || 0) : null;
@@ -3903,7 +3969,8 @@ window.WW_CONFIG.MODE = 'canvas';
     if (ch === 'G') { const t = tool(); return !!(t && WW.hasTool(t.id)); }
     return false;
   };
-  Wd.bump = (x, y) => { // walked into a closed tool gate: say what opens it
+  Wd.bump = (x, y) => { // walked into the Grump's fog (a question) or a closed tool gate (what opens it)
+    if (Wd.fogAt(x, y)) { const b = G().ents.find(e => e.kind === 'boss'); if (b) G().interact(b); return true; }
     if (G().tileAt(x, y) !== 'G') return false;
     const t = tool(); if (!t) return false;
     WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
@@ -3947,6 +4014,7 @@ window.WW_CONFIG.MODE = 'canvas';
   Wd.interact = (e) => {
     const r = WW.run, ch = WW.ep.challenge, g = G();
     if (e.kind === 'chest') return openChest(e);
+    if (e.kind === 'clue') return readClue(e);
     if (r.challengeDone) { WW.chris.say(L(ch.success)); return; }
     if (!r.worldOn) { WW.chris.say(T('wStoneFirst')); WW.sfx('bad'); return; }
     if (e.kind === 'stop') {
@@ -4006,6 +4074,36 @@ window.WW_CONFIG.MODE = 'canvas';
     if (res.ok) WW.challengeSolved(ch); else WW.sfx('bad');
   }
 
+  /* ---------------- finds (FUN-PASS section 6): a clue note on the map leads to a hidden spot ----------------
+     finds: [{ clueAt: [x, y], at: [x, y], clue: {..}, text: {..}, decor: 'shell' (optional) }]
+     Reading the note gives the clue (Christopher repeats it in his bubble). Stepping on the right spot: +3 coins and, if the
+     find has one, a decoration for the camp. Each find counts once per hero (save.finds). */
+  const findKey = i => WW.ep.id + ':' + i;
+  const found = i => (WW.save.finds || []).includes(findKey(i));
+  function readClue(e) {
+    const f = WW.ep.finds[e.i];
+    WW.run.clues = WW.run.clues || new Set(); WW.run.clues.add(e.i);
+    if (found(e.i)) return WW.chris.say(`✅ ${T('findDone')}`);
+    WW.sfx('blip');
+    WW.ui.message(`📜 ${T('findClue')}`, f.clue, () => WW.chris.say(`📜 ${L(f.clue)}`));
+  }
+  Wd.onStep = (x, y) => {
+    const ep = WW.ep; if (!ep.finds) return false;
+    const i = ep.finds.findIndex(f => f.at[0] === x && f.at[1] === y);
+    if (i < 0 || found(i)) return false;
+    const f = ep.finds[i], s = WW.save;
+    s.finds = s.finds || []; s.finds.push(findKey(i));
+    let extra = '';
+    if (f.decor && WW.camp && WW.camp.give(f.decor)) { const d = WW.camp.DECOR.find(o => o.id === f.decor); if (d) extra = ` ${d.icon} ${T('findDecor').replace('{d}', L(d.name))}`; }
+    WW.store(); WW.sheetSync && WW.sheetSync();
+    WW.fx.burst(x, y, 'gold'); WW.sfx('win');
+    WW.gain(null, 0, 3, T('why_find'), true);
+    WW.toast(`✨ +3 ● ${esc(T('why_find'))}`, '#c08a1e');
+    WW.ui.message(`✨ ${T('findFound')}`, L(f.text) + extra);
+    return true;
+  };
+  Wd.foundCount = () => (WW.ep.finds || []).filter((_, i) => found(i)).length;
+
   /* the secret chest */
   function openChest(e) {
     const ep = WW.ep, s = WW.save, t = tool();
@@ -4036,6 +4134,59 @@ window.WW_CONFIG.MODE = 'canvas';
     if (ch.type === 'levers') return T('w_leverTest');
   };
 
+  /* ---------------- the Grump trial in the world (FUN-PASS section 3) ----------------
+     When the Grump comes out, rings of its fog close the way to it (one ring for each right answer but the last).
+     Walk into the fog: one question. Right: the outer ring clears and you walk on. Wrong: a heart, the reason, and the
+     question comes back later. The last right answer breaks its shield. */
+  Wd.fogSetup = () => {
+    const g = G(), ep = WW.ep, r = WW.run, [W, H] = g.size, need = ep.boss.need || 3, [bx, by] = ep.boss.at;
+    const dist = new Map([[bx + ',' + by, 0]]), q = [[bx, by]];
+    while (q.length) {
+      const [x, y] = q.shift(), d = dist.get(x + ',' + y);
+      for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+        const nx = x + dx, ny = y + dy, k = nx + ',' + ny;
+        if (nx < 0 || ny < 0 || nx >= W || ny >= H || dist.has(k) || WW.solid(g.tileAt(nx, ny))) continue;
+        dist.set(k, d + 1); q.push([nx, ny]);
+      }
+    }
+    const pd = dist.get(g.player.x + ',' + g.player.y) ?? 99;
+    const rings = [];
+    for (let k = need; k >= 2; k--) { // need-1 rings, outer first (the last answer is asked at the Grump); never around the hero
+      if (k >= pd) continue;
+      const ring = [...dist].filter(([, d]) => d === k).map(([key]) => key.split(',').map(Number));
+      if (ring.length) rings.push(ring);
+    }
+    r.fog = { rings, cleared: 0, set: new Set(rings.flat().map(p => p.join(','))), st: {} };
+  };
+  Wd.fogAt = (x, y) => { const f = WW.run && WW.run.fog; return !!(f && f.set.has(x + ',' + y)); };
+  Wd.fogAsk = (onWin) => {
+    const r = WW.run, f = r.fog;
+    if (!f) return WW.bossTrial(WW.ep.boss, onWin);
+    f.st.onCrack = () => clearRing();
+    WW.bossTrial(WW.ep.boss, onWin, f.st);
+  };
+  function clearRing() {
+    const f = WW.run.fog, g = G(); if (!f || f.cleared >= f.rings.length) return;
+    const ring = f.rings[f.cleared++];
+    ring.forEach(([x, y]) => f.set.delete(x + ',' + y));
+    // a short pause while the fog lifts
+    WW.paused = true; WW.sfx('gate'); g.shake();
+    ring.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, i % 2 ? 'poof' : 'gold'), WW.calm ? 0 : Math.min(500, i * 25)));
+    setTimeout(() => { WW.paused = false; WW.chris.say(f.cleared < f.rings.length ? T('fogMore').replace('{n}', (WW.ep.boss.need || 3) - (f.st.broken || 0)) : T('fogLast')); }, WW.calm ? 100 : 650);
+  }
+  Wd.drawFog = (c, sx, sy, t) => {
+    const f = WW.run && WW.run.fog; if (!f || !f.set.size) return;
+    f.set.forEach(k => {
+      const [x, y] = k.split(',').map(Number), px = (x - sx * 16) * 16, py = (y - sy * 11) * 16;
+      if (px < -16 || py < -16 || px > 256 || py > 176) return;
+      const w = WW.calm ? 0 : Math.sin(t / 500 + x * 1.7 + y), a = .78 + w * .06;
+      c.fillStyle = `rgba(58,44,85,${a})`; c.fillRect(px, py, 16, 16);
+      c.fillStyle = `rgba(110,92,150,${a})`;
+      c.beginPath(); c.arc(px + 5 + w * 2, py + 6, 5, 0, 7); c.arc(px + 11 - w * 2, py + 10, 6, 0, 7); c.fill();
+      c.fillStyle = 'rgba(200,190,230,.25)'; c.fillRect(px + 3, py + 4, 3, 1);
+    });
+  };
+
   /* ---------------- drawing ---------------- */
   Wd.draw = (c, e, x, y, t) => {
     const r = WW.run, ch = WW.ep.challenge;
@@ -4063,6 +4214,13 @@ window.WW_CONFIG.MODE = 'canvas';
       c.fillStyle = '#5e636b'; c.fillRect(x + 3, y + 11, 10, 4); c.fillStyle = '#9aa3ad'; c.fillRect(x + 4, y + 11, 8, 1);
       c.strokeStyle = '#22202e'; c.lineWidth = 2; c.beginPath(); c.moveTo(x + 8, y + 12); c.lineTo(x + 8 + lean, y + 4); c.stroke();
       c.fillStyle = '#e04848'; c.beginPath(); c.arc(x + 8 + lean, y + 4, 2.5, 0, 7); c.fill();
+    } else if (e.kind === 'clue') { // a rolled-up note with a ?
+      const done = (WW.save.finds || []).includes(WW.ep.id + ':' + e.i);
+      if (!done) glow('rgba(255,236,150,A)', .1 + pulse * .15);
+      c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 6, 10, 7);
+      c.fillStyle = done ? '#d8f0d0' : '#f3e3b5'; c.fillRect(x + 4, y + 7, 8, 5);
+      c.fillStyle = '#c79a5b'; c.fillRect(x + 2, y + 6, 2, 7); c.fillRect(x + 12, y + 6, 2, 7);
+      c.fillStyle = '#22202e'; c.font = 'bold 7px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(done ? '✓' : '?', x + 8, y + 2);
     } else if (e.kind === 'chest') {
       const open = (WW.save.secrets || []).includes(WW.ep.id);
       if (!open) glow('rgba(255,236,150,A)', .2 + pulse * .25);
@@ -4088,6 +4246,145 @@ window.WW_CONFIG.MODE = 'canvas';
     if (ch.type === 'survey') ch.spots.forEach((p, i) => on(...p) && out.push({ x: p[0], y: p[1], t: r.seen.has(i) ? '✓ ' + WW.plain(ch.table.rows[i][0]) : '📋 ?' }));
     if (ch.type === 'levers' && r.levers) ch.switches.forEach((s, i) => on(...s.at) && out.push({ x: s.at[0], y: s.at[1], t: `${s.icon ? s.icon + ' ' : ''}${WW.plain(s.states[r.levers[i]])}` }));
     return out;
+  };
+})();
+
+/* camp.js */
+/* WORLDWALKER engine · the base camp (FUN-PASS section 4): a home that grows
+   Restored atlas pages hang on the wall, stamps decorate the frames, earned tools sit on a rack, each finished realm leaves
+   a souvenir on the shelf, and the student places decorations they buy with wood, fiber and coins (or find on the maps).
+   Open it from the Passport (in a game) or the world map. It needs only art.js and save.js, so the world map page can use it.
+   Saved as save.camp = { owned: [ids], slots: [id or null ×6] } (and in the class Sheet). Nothing bought is ever lost:
+   you can move or take down a decoration at any time and it stays yours. */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc ? WW.esc(s) : String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const C = WW.camp = {};
+  // what you can put in your camp: cost in wood, fiber and coins (find: only from a secret on a map)
+  C.DECOR = [
+    { id: 'rug', icon: '🟥', cost: { fiber: 4 }, name: { en: 'Woven rug', es: 'Alfombra tejida', fa: 'قالین بافته' } },
+    { id: 'plant', icon: '🪴', cost: { fiber: 2, coins: 5 }, name: { en: 'Potted plant', es: 'Planta en maceta', fa: 'گلدان' } },
+    { id: 'lantern', icon: '🏮', cost: { wood: 2, coins: 5 }, name: { en: 'Lantern', es: 'Farol', fa: 'فانوس' } },
+    { id: 'stool', icon: '🪑', cost: { wood: 3 }, name: { en: 'Stool', es: 'Banquito', fa: 'چوکی' } },
+    { id: 'books', icon: '📚', cost: { wood: 4, coins: 10 }, name: { en: 'Book shelf', es: 'Estante de libros', fa: 'الماری کتاب' } },
+    { id: 'globe', icon: '🌍', cost: { coins: 25 }, name: { en: 'Globe', es: 'Globo terráqueo', fa: 'کرهٔ زمین' } },
+    { id: 'telescope', icon: '🔭', cost: { wood: 2, coins: 15 }, name: { en: 'Telescope', es: 'Telescopio', fa: 'دوربین نجومی' } },
+    { id: 'kite', icon: '🪁', cost: { fiber: 3, wood: 1 }, name: { en: 'Kite', es: 'Cometa', fa: 'گدی‌پران' } },
+    // found on the maps (the "finds" in the episodes give these)
+    { id: 'shell', icon: '🐚', find: true, name: { en: 'Sea shell', es: 'Concha de mar', fa: 'صدف دریایی' } },
+    { id: 'gem', icon: '💎', find: true, name: { en: 'Shiny stone', es: 'Piedra brillante', fa: 'سنگ درخشان' } },
+    { id: 'fossil', icon: '🦴', find: true, name: { en: 'Old fossil', es: 'Fósil antiguo', fa: 'فسیل کهنه' } },
+    { id: 'vase', icon: '🏺', find: true, name: { en: 'Clay pot', es: 'Vasija de barro', fa: 'کوزهٔ گلی' } },
+    { id: 'drum', icon: '🥁', find: true, name: { en: 'Drum', es: 'Tambor', fa: 'دهل' } },
+    { id: 'flower', icon: '🌺', find: true, name: { en: 'Pressed flower', es: 'Flor seca', fa: 'گل خشک' } },
+    { id: 'coinold', icon: '🪙', find: true, name: { en: 'Old coin', es: 'Moneda antigua', fa: 'سکهٔ کهنه' } },
+    { id: 'feather', icon: '🪶', find: true, name: { en: 'Feather', es: 'Pluma', fa: 'پر' } }
+  ];
+  // one souvenir for each finished realm
+  C.SOUVENIR = ['🗺️', '🌽', '🪆', '🦓', '🏺', '🪷', '🏮', '🐚'];
+  const SLOTS = 6;
+
+  const camp = () => { const s = WW.save; s.camp = s.camp || { owned: [], slots: Array(SLOTS).fill(null) }; while (s.camp.slots.length < SLOTS) s.camp.slots.push(null); return s.camp; };
+  C.give = (id) => { const c = camp(); if (!c.owned.includes(id)) { c.owned.push(id); WW.store(); return true; } return false; };
+  const have = item => { const b = (WW.save.bag || {})[item]; return b ? (b.got || 0) - (b.used || 0) : 0; };
+  const canPay = cost => Object.entries(cost || {}).every(([k, n]) => (k === 'coins' ? (WW.save.coins || 0) : have(k)) >= n);
+  function pay(cost) {
+    Object.entries(cost || {}).forEach(([k, n]) => {
+      if (k === 'coins') { WW.spend(n); return; }
+      const s = WW.save; s.bag = s.bag || {}; const b = (s.bag[k] = s.bag[k] || { got: 0, used: 0 }); b.used += n;
+    });
+    WW.store(); WW.sheetSync && WW.sheetSync();
+  }
+  const costText = cost => Object.entries(cost || {}).map(([k, n]) => `${n} ${k === 'coins' ? '●' : T('item_' + k)}`).join(' + ');
+  const realmDone = r => WW.EPISODES.filter(e => e.realm === r).every(e => WW.save.episodes[e.id] && WW.save.episodes[e.id].done);
+
+  /* the camp picture: a cabin wall with 24 page frames, a tool rack, a souvenir shelf and the decorations on the floor */
+  function scene(cv) {
+    const c = cv.getContext('2d'), W = cv.width, H = cv.height, R = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(x, y, w, h); };
+    c.imageSmoothingEnabled = false;
+    R(0, 0, W, H, '#6d4c2f');                                    // log wall
+    for (let y = 0; y < 112; y += 8) { R(0, y, W, 1, '#5b3a1e'); R(0, y + 4, W, 1, '#7d5a38'); }
+    R(0, 112, W, H - 112, '#a0703f'); for (let x = 0; x < W; x += 20) R(x, 112, 1, H - 112, '#8b5a2b'); // floor boards
+    R(0, 110, W, 3, '#3f2a17');
+    // 24 atlas page frames: 8 realms × 3 episodes
+    WW.EPISODES.forEach((e, i) => {
+      const col = Math.floor(i / 3), row = i % 3, x = 6 + col * 26, y = 6 + row * 26, d = WW.save.episodes[e.id];
+      R(x, y, 22, 22, '#2b1d10'); R(x + 1, y + 1, 20, 20, d && d.done ? '#f3e3b5' : '#4a3520');
+      if (d && d.done) {
+        WW.sprite(c, 'page', x + 3, y + 3, { scale: 1 });
+        for (let s = 0; s < (d.stars || 1); s++) R(x + 3 + s * 6, y + 18, 4, 2, '#f2c14e'); // stamps: one gold mark per star
+      } else { c.fillStyle = 'rgba(255,255,255,.25)'; c.font = '9px sans-serif'; c.textAlign = 'center'; c.fillText(e.id, x + 11, y + 14); }
+    });
+    // tool rack
+    R(218, 6, 96, 4, '#3f2a17');
+    c.font = '13px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    WW.TOOLS.forEach((t, i) => {
+      const x = 224 + (i % 4) * 23, y = 20 + Math.floor(i / 4) * 22;
+      R(x - 1, y - 11, 2, 4, '#3f2a17');
+      if (WW.hasTool(t.id)) { c.fillStyle = '#000'; c.fillText(t.icon, x, y); } else { c.fillStyle = 'rgba(0,0,0,.25)'; c.beginPath(); c.arc(x, y, 6, 0, 7); c.fill(); }
+    });
+    // souvenir shelf
+    R(218, 78, 96, 4, '#3f2a17'); R(222, 82, 3, 6, '#3f2a17'); R(307, 82, 3, 6, '#3f2a17');
+    c.fillStyle = '#000'; c.font = '13px sans-serif';
+    C.SOUVENIR.forEach((s, i) => { if (realmDone(i + 1)) c.fillText(s, 226 + i * 11.5, 70); });
+    // decorations on the floor
+    const cp = camp();
+    cp.slots.forEach((id, i) => {
+      const d = C.DECOR.find(o => o.id === id), x = 30 + i * 50, y = 140;
+      c.fillStyle = 'rgba(0,0,0,.18)'; c.beginPath(); c.ellipse(x, y + 12, 14, 4, 0, 0, 7); c.fill();
+      if (d) { c.fillStyle = '#000'; c.font = '26px sans-serif'; c.fillText(d.icon, x, y); }
+      else { c.strokeStyle = 'rgba(255,255,255,.35)'; c.setLineDash([3, 3]); c.strokeRect(x - 12, y - 12, 24, 24); c.setLineDash([]); }
+    });
+    // the hero stands in the middle
+    if (WW.heroPal) WW.sprite(c, 'hero', 150, 124, { pal: WW.heroPal(), scale: 2 });
+  }
+
+  /* render the camp into a box; onChange() is called after anything changes (the HUD shows new coins) */
+  C.render = (box, onChange) => {
+    let pickSlot = null, msg = '';
+    const draw = () => {
+      const cp = camp();
+      box.innerHTML = `<h3>🏕️ ${esc(T('campTitle'))}</h3><p class="small">${esc(T('campHow'))}</p>`;
+      const cv = document.createElement('canvas'); cv.width = 320; cv.height = 176; cv.className = 'campcv';
+      box.appendChild(cv); scene(cv);
+      box.insertAdjacentHTML('beforeend', `<p class="small">📄 ${WW.doneCount()} / 24 · ${esc(T('campBag'))}: <b>${have('wood')}</b> ${esc(T('item_wood'))} · <b>${have('fiber')}</b> ${esc(T('item_fiber'))} · <b>${WW.save.coins || 0}</b> ●</p>`);
+      // the six spots on the floor
+      const slots = document.createElement('div'); slots.className = 'campslots';
+      cp.slots.forEach((id, i) => {
+        const d = C.DECOR.find(o => o.id === id), b = document.createElement('button');
+        b.className = 'campslot' + (pickSlot === i ? ' on' : ''); b.innerHTML = d ? `${d.icon}<small>${esc(L(d.name))}</small>` : `＋<small>${esc(T('campEmpty'))}</small>`;
+        b.onclick = () => { pickSlot = pickSlot === i ? null : i; draw(); };
+        slots.appendChild(b);
+      });
+      box.appendChild(slots);
+      if (pickSlot != null) { // choose what goes on this spot
+        const mine = cp.owned.map(id => C.DECOR.find(o => o.id === id)).filter(Boolean);
+        const row = document.createElement('div'); row.className = 'campown';
+        row.innerHTML = `<p class="small"><b>${esc(T('campPut'))}</b></p>`;
+        if (!mine.length) row.insertAdjacentHTML('beforeend', `<p class="small">${esc(T('campNone'))}</p>`);
+        mine.forEach(d => { const b = document.createElement('button'); b.className = 'campitem'; b.innerHTML = `${d.icon} ${esc(L(d.name))}`; b.onclick = () => { const k = cp.slots.indexOf(d.id); if (k >= 0) cp.slots[k] = null; cp.slots[pickSlot] = d.id; pickSlot = null; WW.store(); WW.sheetSync && WW.sheetSync(); draw(); }; row.appendChild(b); });
+        if (cp.slots[pickSlot]) { const b = document.createElement('button'); b.className = 'campitem ghost'; b.textContent = '✕ ' + T('campTakeDown'); b.onclick = () => { cp.slots[pickSlot] = null; pickSlot = null; WW.store(); draw(); }; row.appendChild(b); }
+        box.appendChild(row);
+      }
+      // the shop
+      const shop = document.createElement('div'); shop.className = 'campshop';
+      shop.innerHTML = `<p class="small"><b>${esc(T('campShop'))}</b></p>`;
+      C.DECOR.forEach(d => {
+        const owned = cp.owned.includes(d.id), b = document.createElement('button');
+        b.className = 'campitem' + (owned ? ' owned' : ''); b.dataset.id = d.id;
+        b.innerHTML = `${d.icon} ${esc(L(d.name))} <small>${owned ? '✓ ' + esc(T('campOwned')) : d.find ? esc(T('campFind')) : esc(costText(d.cost))}</small>`;
+        b.disabled = owned || d.find;
+        b.onclick = () => {
+          if (!canPay(d.cost)) { msg = T('campCant').replace('{c}', costText(d.cost)); return draw(); }
+          pay(d.cost); C.give(d.id); msg = '✓ ' + L(d.name);
+          const k = cp.slots.indexOf(null); if (k >= 0) cp.slots[k] = d.id; // put it up right away if there is room
+          WW.store(); WW.sfx && WW.sfx('coin'); onChange && onChange(); draw();
+        };
+        shop.appendChild(b);
+      });
+      box.appendChild(shop);
+      if (msg) box.insertAdjacentHTML('beforeend', `<p class="small campmsg">${esc(msg)}</p>`);
+    };
+    draw();
   };
 })();
 
@@ -4203,6 +4500,7 @@ window.WW_CONFIG.MODE = 'canvas';
   function walkable(x, y) {
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y)) && !WW.world.pass(tileAt(x, y))) return false; // earned tools: canoe, sail, tool gates
+    if (WW.world.fogAt(x, y)) return false; // the Grump's fog
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
@@ -4226,6 +4524,10 @@ window.WW_CONFIG.MODE = 'canvas';
       hearts: WW.heartsMax(), heartsLost: 0, gains: [], hints: 0, claimed: false, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
       quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
+    // people who remember you (FUN-PASS section 5): remember: { ep: '1.1', t: {..} } adds a first line if you finished that episode
+    [...ep.npcs, ...(ep.quest ? [ep.quest.giver, ep.quest.contact] : [])].forEach(n => {
+      if (n && n.remember && !n._remembered && WW.save.episodes[n.remember.ep] && WW.save.episodes[n.remember.ep].done) { n._remembered = true; n.lines = [n.remember.t, ...(n.lines || [])]; }
+    });
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
@@ -4272,6 +4574,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
+    WW.world.fogSetup();
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
     setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), 600);
@@ -4320,11 +4623,12 @@ window.WW_CONFIG.MODE = 'canvas';
       else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
+      WW.world.fogAsk(() => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
     }
   }
   function pickup() {
     WW.quest.onStep(player.x, player.y);
+    if (WW.world.onStep(player.x, player.y)) return;
     const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
     if (pg && !WW.run.claimed) { pg.gone = true; WW.run.claimed = true; WW.fx.burst(pg.x, pg.y, 'gold'); WW.ui.pageHome([pg.x, pg.y], finishEpisode); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
@@ -4427,7 +4731,7 @@ window.WW_CONFIG.MODE = 'canvas';
     window.addEventListener('keydown', e => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
-      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov', 'campov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
       WW.audioInit();
       if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
@@ -4520,6 +4824,7 @@ window.WW_CONFIG.MODE = 'canvas';
         WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
       }
     });
+    WW.world.drawFog(c, sx, sy, t);
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'npc') {
@@ -4766,6 +5071,16 @@ window.EPISODE = {
         fa: 'گیر کردی؟ در برابر سکه کمک می‌دهم. ابزارهایت زیر نقشه است: ۲ تبر است، ۳ داس است. برویم!' }
     ]
   },
+
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [13, 6], at: [11, 9], decor: 'feather',
+      clue: { en: 'From this note, walk 3 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! On this map south is down and west is to the left. A feather was hiding in the grass.', es: '¡Seguiste las direcciones de la brújula! En este mapa el sur está abajo y el oeste a la izquierda. Una pluma estaba escondida en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! در این نقشه جنوب پایین و غرب طرف چپ است. یک پر در سبزه پنهان بود.' } },
+    { clueAt: [5, 7], at: [23, 8], decor: 'shell',
+      clue: { en: 'Use the map key: blue is water and brown boards are a dock. Stand on the dock square that touches the river.', es: 'Usa la leyenda: el azul es agua y las tablas cafés son un muelle. Párate en el cuadro del muelle que toca el río.', fa: 'از راهنمای نقشه استفاده کن: آبی آب است و تخته‌های قهوه‌ای اسکله است. روی خانهٔ اسکله که به دریا می‌رسد بایست.' },
+      text: { en: 'You read the map key! Map symbols mean the same thing to everyone who reads the key. A sea shell was on the dock.', es: '¡Leíste la leyenda! Los símbolos del mapa significan lo mismo para todos los que leen la leyenda. Había una concha en el muelle.', fa: 'تو راهنمای نقشه را خواندی! نشانه‌های نقشه برای هر کسی که راهنما را بخواند یک معنا دارند. یک صدف روی اسکله بود.' } }
+  ],
 
   /* the tool bar: chop small trees and bushes for wood, cut tall grass for fiber (and sometimes seeds) */
   tools: ['axe', 'sickle'],

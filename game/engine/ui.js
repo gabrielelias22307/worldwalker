@@ -348,6 +348,16 @@
     setTimeout(() => { pg.remove(); pass.classList.add('gotpage'); setTimeout(() => pass.classList.remove('gotpage'), 900); WW.sfx('coin'); WW.paused = false; done(); }, 1400);
   };
 
+  /* the base camp (camp.js) in a panel */
+  ui.camp = () => ui.open({
+    cls: 'campov',
+    render(box, h) {
+      const inner = document.createElement('div'); box.appendChild(inner);
+      WW.camp.render(inner, () => { ui.hud(); WW.tools && WW.tools.render(); });
+      const a = document.createElement('div'); a.className = 'acts'; a.appendChild(btn(T('close'), 'gold', () => h.close())); box.appendChild(a);
+    }
+  });
+
   /* ---------------- passport ---------------- */
   ui.passport = () => {
     let msg = '';
@@ -369,6 +379,7 @@
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        { const cb = btn('🏕️ ' + esc(T('campOpen')), 'teal', () => ui.camp()); cb.classList.add('campbtn'); box.appendChild(cb); }
         box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
         WW.THEMES.forEach(th => {

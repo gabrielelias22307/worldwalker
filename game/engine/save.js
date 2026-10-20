@@ -234,6 +234,27 @@
     gateNeed: { en: 'This gate opens for the {t} (you earn it in Episode {e}). Come back when you have it!', es: 'Esta puerta se abre con {t} (lo ganas en el episodio {e}). ¡Vuelve cuando lo tengas!', fa: 'این دروازه با {t} باز می‌شود (آن را در قسمت {e} می‌گیری). وقتی داشتی برگرد!' },
     secretFound: { en: 'A secret!', es: '¡Un secreto!', fa: 'یک راز!' },
     why_secret: { en: 'secret found', es: 'secreto encontrado', fa: 'راز پیدا شد' },
+    fogMore: { en: 'The fog pulled back! {n} more right answer(s) to break the Grump\'s shield. Walk into the fog again.', es: '¡La niebla se retiró! Faltan {n} respuesta(s) correcta(s) para romper el escudo del Gruñón. Camina hacia la niebla otra vez.', fa: 'مه عقب رفت! {n} جواب درست دیگر لازم است تا سپر غرغرو بشکند. دوباره به طرف مه برو.' },
+    fogLast: { en: 'The fog is gone! Walk into the Grump for the last question.', es: '¡La niebla se fue! Camina hacia el Gruñón para la última pregunta.', fa: 'مه رفت! برای سؤال آخر به طرف غرغرو برو.' },
+    nsFog: { en: 'The Grump hides in its fog. Walk into the fog: each right answer clears one ring.', es: 'El Gruñón se esconde en su niebla. Camina hacia la niebla: cada respuesta correcta quita un anillo.', fa: 'غرغرو در مه خود پنهان است. به طرف مه برو: هر جواب درست یک حلقه را پاک می‌کند.' },
+    /* the base camp (camp.js) */
+    campOpen: { en: 'My camp', es: 'Mi campamento', fa: 'اردوگاه من' },
+    campTitle: { en: 'My camp', es: 'Mi campamento', fa: 'اردوگاه من' },
+    campHow: { en: 'Your atlas pages hang on the wall. Your tools sit on the rack. Each finished realm leaves a souvenir on the shelf. Decorate the floor!', es: 'Tus páginas del atlas cuelgan en la pared. Tus herramientas están en el estante. Cada reino terminado deja un recuerdo en la repisa. ¡Decora el piso!', fa: 'صفحه‌های اطلس تو روی دیوار آویزان است. ابزارهایت روی جای ابزار است. هر سرزمین تمام شده یک یادگاری روی طاقچه می‌گذارد. فرش را تزئین کن!' },
+    campBag: { en: 'You have', es: 'Tienes', fa: 'داری' },
+    campEmpty: { en: 'empty', es: 'vacío', fa: 'خالی' },
+    campPut: { en: 'What goes on this spot?', es: '¿Qué va en este lugar?', fa: 'چه چیزی این جا برود؟' },
+    campNone: { en: 'You have no decorations yet. Get one below.', es: 'Aún no tienes adornos. Consigue uno abajo.', fa: 'هنوز تزئینی نداری. از پایین یکی بگیر.' },
+    campTakeDown: { en: 'Take it down (you keep it)', es: 'Quitarlo (lo guardas)', fa: 'برش دار (مال خودت می‌ماند)' },
+    campShop: { en: 'Decorations', es: 'Adornos', fa: 'تزئینات' },
+    campOwned: { en: 'yours', es: 'tuyo', fa: 'مال تو' },
+    campFind: { en: 'find it on a map', es: 'encuéntralo en un mapa', fa: 'روی یک نقشه پیدایش کن' },
+    campCant: { en: 'You need {c} for that. Chop, cut grass and collect coins in the episodes.', es: 'Necesitas {c}. Corta árboles, pasto y junta monedas en los episodios.', fa: 'برای این {c} لازم داری. در قسمت‌ها درخت ببُر، علف ببُر و سکه جمع کن.' },
+    findClue: { en: 'A clue!', es: '¡Una pista!', fa: 'یک نشانه!' },
+    findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش کردی!' },
+    findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
+    findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
+    why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -285,7 +306,7 @@
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], finds: [], camp: { owned: [], slots: [null, null, null, null, null, null] }, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -370,6 +391,12 @@
     for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
     if (other.metChris) s.metChris = true;
     if (other.secrets) s.secrets = Array.from(new Set([...(s.secrets || []), ...other.secrets]));
+    if (other.finds) s.finds = Array.from(new Set([...(s.finds || []), ...other.finds]));
+    if (other.camp) { // camp: everything ever owned stays owned; keep this computer's layout unless it is empty
+      const c = s.camp = s.camp || { owned: [], slots: [] };
+      c.owned = Array.from(new Set([...(c.owned || []), ...(other.camp.owned || [])]));
+      if (!(c.slots || []).some(Boolean) && (other.camp.slots || []).some(Boolean)) c.slots = other.camp.slots.slice();
+    }
     // coins: keep the most ever earned and the most ever spent, so spent coins never come back
     if (other.coins != null) {
       const spent = Math.max(s.spent || 0, other.spent || 0);
@@ -399,9 +426,17 @@
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [] });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [], finds: st.finds || [], camp: st.camp || null });
     }
     return d || { ok: false };
+  };
+  // the class atlas: how many pages the whole class restored, per episode (no names, no ranking)
+  WW.classAtlas = async () => {
+    if (!WW.sheetOn()) return null;
+    const url = CFG.SHEET_URL + '?action=class&cls=' + encodeURIComponent(WW.save.cls);
+    let d;
+    try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return null; } }
+    return d && d.ok ? d : null;
   };
   WW.spend = n => { WW.save.coins -= n; WW.save.spent = (WW.save.spent || 0) + n; WW.store(); };
   // save the hero to the class Sheet after each goal (not only at the end), so leaving halfway loses little
@@ -411,7 +446,7 @@
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], finds: s.finds || [], camp: s.camp || null, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {

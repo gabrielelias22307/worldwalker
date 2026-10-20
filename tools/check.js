@@ -118,6 +118,17 @@ function checkEpisode(file) {
     if (sec.at) place(sec.at, 'secret chest', true, block);
     if (!['canoe', 'sail'].includes(sec.tool) && !hasG) errs.push('secret needs a tool gate tile "G" in the map');
   } else if (hasG) errs.push('the map has a tool gate "G" but no secret');
+  /* ---- finds: a clue note and a hidden spot ---- */
+  const FIND_DECOR = ['shell', 'gem', 'fossil', 'vase', 'drum', 'flower', 'coinold', 'feather'];
+  (ep.finds || []).forEach((f, i) => {
+    if (!f.clue || !f.text) errs.push(`find ${i} needs clue and text`);
+    if (f.decor && !FIND_DECOR.includes(f.decor)) errs.push(`find ${i} decor "${f.decor}" must be one of ${FIND_DECOR.join(', ')}`);
+    if (f.clueAt) place(f.clueAt, 'find ' + i + ' clue note', true, block); else errs.push(`find ${i} needs clueAt`);
+    if (f.at) place(f.at, 'find ' + i + ' hidden spot', true, new Set()); else errs.push(`find ${i} needs at`);
+  });
+  [...(ep.npcs || []), ...(ep.quest ? [ep.quest.giver, ep.quest.contact] : [])].forEach((n, i) => {
+    if (n && n.remember) { if (!/^\d\.\d$/.test(n.remember.ep || '') || !(parseFloat(n.remember.ep) < parseFloat(ep.id))) errs.push(`${n.name && n.name.en}: remember.ep must be an earlier episode`); if (!n.remember.t) errs.push(`${n.name && n.name.en}: remember needs t`); }
+  });
   if (block.has(ep.start.join(','))) errs.push('start is on top of something');
   // reach: walk from start (fixed: tiles a repair turns walkable count as fixed)
   const reach = (fixed, pass) => {
@@ -158,6 +169,11 @@ function checkEpisode(file) {
     const scr = p => p && Math.floor(p.x / SW) + ',' + Math.floor(p.y / SH);
     if (qu.giver && qu.contact && scr(qu.giver) === scr(qu.contact)) warns.push('quest giver and contact are on the same screen; spreading them out makes the quest a real trip');
   }
+  (ep.finds || []).forEach((f, i) => {
+    if (f.clueAt && !nextTo(f.clueAt)) errs.push(`find ${i} clue note cannot be reached`);
+    if (f.at && !seen.has(f.at.join(','))) errs.push(`find ${i} hidden spot cannot be reached (without tools)`);
+    if (f.at && f.at.join() === ep.start.join()) errs.push(`find ${i} hidden spot is the start tile`);
+  });
   if (c0w.type === 'route') (c0w.items || []).forEach((it, i) => { if (it.at && !nextTo(it.at)) errs.push(`route stop ${i} cannot be reached`); });
   if (c0w.type === 'site') (c0w.options || []).forEach((o, i) => { if (o.at && !nextTo(o.at)) errs.push(`site ${i} cannot be reached`); });
   if (c0w.type === 'survey') (c0w.spots || []).forEach((p, i) => { if (!nextTo(p)) errs.push(`survey post ${i} cannot be reached`); });

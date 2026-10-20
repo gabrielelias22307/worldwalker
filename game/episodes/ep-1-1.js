@@ -55,6 +55,16 @@ window.EPISODE = {
     ]
   },
 
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [13, 6], at: [11, 9], decor: 'feather',
+      clue: { en: 'From this note, walk 3 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! On this map south is down and west is to the left. A feather was hiding in the grass.', es: '¡Seguiste las direcciones de la brújula! En este mapa el sur está abajo y el oeste a la izquierda. Una pluma estaba escondida en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! در این نقشه جنوب پایین و غرب طرف چپ است. یک پر در سبزه پنهان بود.' } },
+    { clueAt: [5, 7], at: [23, 8], decor: 'shell',
+      clue: { en: 'Use the map key: blue is water and brown boards are a dock. Stand on the dock square that touches the river.', es: 'Usa la leyenda: el azul es agua y las tablas cafés son un muelle. Párate en el cuadro del muelle que toca el río.', fa: 'از راهنمای نقشه استفاده کن: آبی آب است و تخته‌های قهوه‌ای اسکله است. روی خانهٔ اسکله که به دریا می‌رسد بایست.' },
+      text: { en: 'You read the map key! Map symbols mean the same thing to everyone who reads the key. A sea shell was on the dock.', es: '¡Leíste la leyenda! Los símbolos del mapa significan lo mismo para todos los que leen la leyenda. Había una concha en el muelle.', fa: 'تو راهنمای نقشه را خواندی! نشانه‌های نقشه برای هر کسی که راهنما را بخواند یک معنا دارند. یک صدف روی اسکله بود.' } }
+  ],
+
   /* the tool bar: chop small trees and bushes for wood, cut tall grass for fiber (and sometimes seeds) */
   tools: ['axe', 'sickle'],
 

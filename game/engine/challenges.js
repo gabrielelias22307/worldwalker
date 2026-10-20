@@ -308,11 +308,15 @@
   };
 
   /* ---------------- the Grump trial ---------------- */
-  WW.bossTrial = (boss, onWin) => {
+  /* st (optional): the trial in the world — the same questions, one at a time. Each right answer closes the panel and
+     calls st.onCrack(broken) (a ring of fog clears); the state stays in st for the next time you walk into the fog. */
+  WW.bossTrial = (boss, onWin, st) => {
     const need = boss.need || 3;
-    let queue = shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = 0, picked = null, last = null, grr = '';
-    let freeHints = WW.tier('reg'); const hidden = {}; // Region power: free hints. A hint hides one wrong answer.
+    if (st && !st.queue) Object.assign(st, { queue: shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1), broken: 0, freeHints: WW.tier('reg'), hidden: {} });
+    let queue = st ? st.queue : shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
+    let broken = st ? st.broken : 0, picked = null, last = null, grr = '';
+    let freeHints = st ? st.freeHints : WW.tier('reg'); const hidden = st ? st.hidden : {}; // Region power: free hints. A hint hides one wrong answer.
+    const keep = () => { if (st) Object.assign(st, { broken, freeHints }); };
     WW.music.play('boss');
     WW.ui.open({
       cls: 'bossov',
@@ -352,7 +356,7 @@
           b.disabled = picked != null;
           b.onclick = () => {
             picked = i;
-            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); }
+            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); keep(); }
             else { last = 'hit'; WW.sfx('hurt'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
@@ -362,7 +366,7 @@
         const wrongLeft = q.choices.map((_, i) => i).filter(i => i !== q.answer && !(hidden[qi] || []).includes(i));
         if (picked == null && wrongLeft.length > 1) {
           const hb = btn(`💡 ${esc(T('hint'))} · ${freeHints ? esc(T('hintFree')) + ' ×' + freeHints : '10 ●'}`, 'ghost hintbtn', () => {
-            if (freeHints) freeHints--;
+            if (freeHints) { freeHints--; keep(); }
             else if ((WW.save.coins || 0) >= 10) { WW.spend(10); WW.ui.hud(); }
             else return WW.toast(esc(T('hintNoCoins')), '#b0392b');
             (hidden[qi] = hidden[qi] || []).push(wrongLeft[0]); WW.run.hints++; WW.sfx('blip'); h.render();
@@ -374,9 +378,11 @@
           if (!ok && grr && !boss.minor) box.insertAdjacentHTML('beforeend', `<p class="say taunt grr">${esc(grr)}</p>`);
           box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${esc(ok ? T('right') : T('wrong'))}</b> ${WW.rich(q.why || '')}</div>`);
           const acts = document.createElement('div'); acts.className = 'acts';
-          acts.appendChild(btn(T('next') + ' ▶', 'gold', () => {
+          const step = st && ok && broken < need; // in the world: a right answer clears the fog, then you walk on
+          acts.appendChild(btn((step ? T('cont') : T('next')) + ' ▶', 'gold', () => {
             queue.shift(); if (!ok) queue.push(qi);
-            picked = null; last = null; h.render();
+            picked = null; last = null;
+            if (step) { h.close(); st.onCrack && st.onCrack(broken); } else h.render();
           }));
           box.appendChild(acts);
         }

@@ -109,6 +109,7 @@
   function walkable(x, y) {
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
     if (WW.solid(tileAt(x, y)) && !WW.world.pass(tileAt(x, y))) return false; // earned tools: canoe, sail, tool gates
+    if (WW.world.fogAt(x, y)) return false; // the Grump's fog
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
@@ -132,6 +133,10 @@
       hearts: WW.heartsMax(), heartsLost: 0, gains: [], hints: 0, claimed: false, talked: new Set(), asked: new Set(), tries: {}, scraps: new Set(),
       quest: 0, questMissed: [], challengeDone: false, challengeTries: 0, bossDone: false, bossMisses: 0, missed: [], log: [], t0: Date.now(), reflection: '', stars: 0
     };
+    // people who remember you (FUN-PASS section 5): remember: { ep: '1.1', t: {..} } adds a first line if you finished that episode
+    [...ep.npcs, ...(ep.quest ? [ep.quest.giver, ep.quest.contact] : [])].forEach(n => {
+      if (n && n.remember && !n._remembered && WW.save.episodes[n.remember.ep] && WW.save.episodes[n.remember.ep].done) { n._remembered = true; n.lines = [n.remember.t, ...(n.lines || [])]; }
+    });
     ents = [];
     ep.npcs.forEach((n, i) => { n.id = n.id || 'npc' + i; ents.push({ kind: 'npc', x: n.x, y: n.y, ref: n, phase: i }); });
     ep.scraps.forEach((s, i) => ents.push({ kind: 'scrap', x: s[0], y: s[1], id: i }));
@@ -178,6 +183,7 @@
 
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
+    WW.world.fogSetup();
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
     setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), 600);
@@ -226,11 +232,12 @@
       else if (!WW.quest.done() && !r.challengeDone) WW.ui.message('', T('questFirst'));
       else WW.challenge(ep.challenge);
     } else if (e.kind === 'boss') {
-      WW.bossTrial(ep.boss, () => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
+      WW.world.fogAsk(() => { e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); bossBeaten(); });
     }
   }
   function pickup() {
     WW.quest.onStep(player.x, player.y);
+    if (WW.world.onStep(player.x, player.y)) return;
     const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
     if (pg && !WW.run.claimed) { pg.gone = true; WW.run.claimed = true; WW.fx.burst(pg.x, pg.y, 'gold'); WW.ui.pageHome([pg.x, pg.y], finishEpisode); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
@@ -333,7 +340,7 @@
     window.addEventListener('keydown', e => {
       const tag = (e.target.tagName || '').toLowerCase();
       if (tag === 'input' || tag === 'textarea') return;
-      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
+      if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov', 'campov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
       WW.audioInit();
       if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
@@ -426,6 +433,7 @@
         WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
       }
     });
+    WW.world.drawFog(c, sx, sy, t);
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'npc') {

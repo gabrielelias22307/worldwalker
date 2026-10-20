@@ -51,6 +51,12 @@
   .ep .pl{display:block;font-size:12.5px;color:var(--muted)}
   .note{margin-top:12px;font-size:14px;color:var(--muted)}
   [dir=rtl] .hpw .n{text-align:left}
+  .campmodal{position:fixed;inset:0;z-index:50;background:rgba(10,9,20,.65);overflow:auto;padding:14px}
+  .campmodal .ov-box{background:var(--paper);color:var(--ink);border:4px solid var(--ink);border-radius:4px;padding:14px 16px;max-width:760px;margin:0 auto}
+  .classatlas{background:var(--panel);border:2px solid var(--line);border-radius:8px;padding:10px 12px;margin:0 0 12px;color:var(--text);font-size:15px}
+  .classatlas b{color:var(--gold)}
+  .ep .cl{font-size:11.5px;color:#9fe0a8;display:block}
+  .ep.lit{box-shadow:inset 0 0 0 2px #7cc451}
 </style>
 </head>
 <body>
@@ -63,6 +69,7 @@
   <div class="layout">
     <aside class="mecard" id="me"></aside>
     <main>
+      <div class="classatlas" id="classAtlas" hidden></div>
       <h2 class="sec" id="worldTitle"></h2>
       <div class="world" id="world"></div>
       <p class="note" id="note"></p>
@@ -74,6 +81,7 @@
 <script src="engine/art2.js"></script>
 <script src="engine/art3.js"></script>
 <script src="engine/save.js"></script>
+<script src="engine/camp.js"></script>
 <script src="episodes/catalog.js"></script>
 <script>
 (function () {
@@ -88,6 +96,10 @@
     console: { en: 'Open the teacher console', es: 'Abrir la consola del maestro', fa: 'کنسول معلم را باز کن' },
     wrongCode: { en: 'That is not the teacher code.', es: 'Ese no es el código del maestro.', fa: 'این کد معلم نیست.' },
     open: { en: 'Open', es: 'Abrir', fa: 'باز کن' },
+    classAtlas: { en: 'Our class atlas', es: 'El atlas de nuestra clase', fa: 'اطلس صنف ما' },
+    classTotal: { en: 'Together our class restored {n} pages. {m} of the 24 atlas pages are lit up.', es: 'Juntos, nuestra clase restauró {n} páginas. {m} de las 24 páginas del atlas están iluminadas.', fa: 'صنف ما با هم {n} صفحه را درست کرد. {m} صفحه از ۲۴ صفحهٔ اطلس روشن است.' },
+    classHow: { en: 'Every page anyone in your class restores lights up on the map (👥).', es: 'Cada página que alguien de tu clase restaura se ilumina en el mapa (👥).', fa: 'هر صفحه‌ای که کسی در صنف تو درست کند روی نقشه روشن می‌شود (👥).' },
+    classN: { en: '{n} in your class', es: '{n} de tu clase', fa: '{n} نفر از صنف تو' },
     soon: { en: 'coming soon', es: 'muy pronto', fa: 'به زودی' },
     note: { en: 'Each episode is one Canvas assignment. Your progress is saved in this browser, in your Passport Code, and in the class sheet when your teacher turns it on.', es: 'Cada episodio es una tarea de Canvas. Tu progreso se guarda en este navegador, en tu código de pasaporte y en la hoja de la clase cuando tu maestro la active.', fa: 'هر قسمت یک تکلیف کانواس است. پیشرفتت در این مرورگر، در کد پاسپورت و در جدول صنف (وقتی معلم روشن کند) ذخیره می‌شود.' }
   };
@@ -119,6 +131,7 @@
     WW.THEMES.forEach(th => { const v = s.stats[th.k] || 0, tr = WW.tier(th.k); h += `<div class="hpw"><span>${th.icon}</span><div><div>${esc(L(th.full))}</div><div class="hbar"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></div><div class="perk">${tr ? '✓' : '🔒 ' + WW.TIERS[0]} ${esc(L(WW.PERKS[th.k][0]))}${tr ? `<br>${tr > 1 ? '✓' : '🔒 ' + WW.TIERS[1]} ${esc(L(WW.PERKS[th.k][1]))}` : ''}</div></div><span class="n">${v}</span></div>`; });
     h += `<p class="muted" style="font-size:13px">${esc(T('growHow'))}</p>`;
     h += `<h2 class="sec" style="margin-top:14px">${esc(T('bag'))}</h2><div style="display:flex;gap:6px;flex-wrap:wrap">${WW.TOOLS.map(t => `<span title="${esc(L(t.name))}" style="font-size:22px;opacity:${WW.hasTool(t.id) ? 1 : .25}">${t.icon}</span>`).join('')}</div>`;
+    h += `<p><button class="btn" id="campBtn">🏕️ ${esc(T('campOpen'))}</button></p>`;
     h += `<h2 class="sec" style="margin-top:14px">${esc(T('yourCode'))}</h2><span class="code" id="code">${WW.passportCode()}</span> <button class="btn ghost" id="copy">${esc(T('copyCode'))}</button>
       <p class="muted">${esc(T('codeHelp'))}</p>
       <input id="codeIn" placeholder="WW-XXXXX-XXXXX-XXXXX" aria-label="${esc(T('haveCode'))}"><button class="btn" id="useCode">${esc(T('useCode'))}</button>`;
@@ -126,6 +139,7 @@
     h += `<details ${s.teacher ? 'open' : ''}><summary>${esc(HT('teacher'))}</summary>${s.teacher ? `<p class="msg">${esc(HT('teacherOk'))}</p><a class="btn" href="teacher.html">🎓 ${esc(HT('console'))}</a>` : `<input id="tcode" placeholder="${esc(T('teacherCode'))}"><button class="btn ghost" id="tgo">${esc(HT('open'))}</button>`}</details>`;
     me.innerHTML = h;
     const hc = document.getElementById('heroCv').getContext('2d'); hc.imageSmoothingEnabled = false; WW.sprite(hc, 'hero', 0, 0, { pal: WW.heroPal(), scale: 6 });
+    document.getElementById('campBtn').onclick = openCamp;
     document.getElementById('copy').onclick = () => { navigator.clipboard && navigator.clipboard.writeText(WW.passportCode()); msg = '✓'; bad = false; render(); };
     document.getElementById('useCode').onclick = () => { const d = WW.readCode(document.getElementById('codeIn').value); if (!d) { msg = T('badCode'); bad = true; } else { WW.merge(d); if (!s.name) s.look = d.look; WW.store(); msg = T('codeOk'); bad = false; } render(); };
     const tg = document.getElementById('tgo'); if (tg) tg.onclick = () => { if (document.getElementById('tcode').value.trim().toUpperCase() === String(WW.CONFIG.TEACHER_CODE).toUpperCase()) { s.teacher = true; WW.store(); msg = ''; } else { msg = HT('wrongCode'); bad = true; } render(); };
@@ -141,13 +155,29 @@
         const c = cat[e.id], d = s.episodes[e.id], can = openable(i) && !!c;
         const cls = d && d.done ? 'done' : i === nextIdx && can ? 'next' : can ? '' : 'locked';
         const st = d && d.done ? '★'.repeat(d.stars || 1) : !c ? HT('soon') : can ? '▶' : '🔒';
-        w += `<a class="ep ${cls}" ${can ? `href="${WW.epFile(e.id)}"` : `role="button" data-locked="1"`}><span class="id">${e.id}</span><span>${c ? esc(L(c.title)) : '…'}<span class="pl">${c ? esc(L(c.place)) : ''}</span></span><span class="st">${st}</span></a>`;
+        const n = classPages && classPages[e.id] || 0; // the class atlas: how many in the class restored this page (never who)
+        w += `<a class="ep ${cls}${n ? ' lit' : ''}" ${can ? `href="${WW.epFile(e.id)}"` : `role="button" data-locked="1"`}><span class="id">${e.id}</span><span>${c ? esc(L(c.title)) : '…'}<span class="pl">${c ? esc(L(c.place)) : ''}</span>${n ? `<span class="cl">👥 ${esc(HT('classN').replace('{n}', n))}</span>` : ''}</span><span class="st">${st}</span></a>`;
       });
       w += '</div></section>';
     }
     document.getElementById('world').innerHTML = w;
     document.querySelectorAll('[data-locked]').forEach(a => (a.onclick = () => { msg = HT('locked'); bad = true; render(); window.scrollTo({ top: 0, behavior: 'smooth' }); }));
     document.getElementById('note').textContent = HT('note');
+    const ca = document.getElementById('classAtlas');
+    if (classInfo) { ca.hidden = false; ca.innerHTML = `🌍 <b>${esc(HT('classAtlas'))}</b> · ${esc(HT('classTotal').replace('{n}', classInfo.total).replace('{m}', Object.keys(classInfo.pages || {}).length))}<div class="muted">${esc(HT('classHow'))}</div>`; }
+  }
+  // the class atlas (FUN-PASS section 8): when the class Sheet is on, every page anyone in the class restored lights up
+  let classInfo = null, classPages = null;
+  if (WW.classAtlas) WW.classAtlas().then(d => { if (d) { classInfo = d; classPages = d.pages || {}; render(); } }).catch(() => { });
+  // the base camp in a pop-up
+  function openCamp() {
+    const m = document.createElement('div'); m.className = 'campmodal'; m.setAttribute('dir', WW.dir());
+    const box = document.createElement('div'); box.className = 'ov-box'; m.appendChild(box);
+    const inner = document.createElement('div'); box.appendChild(inner);
+    WW.camp.render(inner, render);
+    const close = document.createElement('button'); close.className = 'btn'; close.textContent = T('close'); close.onclick = () => m.remove();
+    box.appendChild(close); document.body.appendChild(m);
+    m.onclick = e => { if (e.target === m) m.remove(); };
   }
   document.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => { WW.setLang(b.dataset.l); }));
   WW.onLang(render);
