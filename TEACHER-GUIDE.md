@@ -26,7 +26,7 @@
    - **levers** (was set the switches): they pull levers on the map, then test them at the stone.
 
    **Earned tools now do something.** From Episode 2.1 on, each map hides an optional chest that only a tool from an earlier episode reaches (+5 coins). The 🛶 Canoe paddles on rivers, the ⛵ Sail crosses the open sea, and the other tools open a small tool gate. Nothing students need is ever behind a tool, so the teacher code can still open any episode.
-6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
+6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. The Grump hides in rings of dark fog on the map: walking into the fog asks one question, a right answer lifts a ring, and the last question is asked at the Grump itself. A wrong answer costs a heart and shows why, and that question comes back.
 7. **Claim the atlas page.** The Grump's mist clears away and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
 8. The **finish screen**: what they earned (and why), 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.
 
@@ -55,6 +55,17 @@ Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). 
 **Coins** buy more hints from Christopher (10 coins each). A hint hides one wrong answer. A "New power!" banner appears the moment a level unlocks, the Passport has a **How you grow** page, and the world map shows each power's levels. The finish screen lists everything earned in that episode.
 
 Nobody gets stuck: running out of hearts just sends the student back with full hearts.
+
+## More to do on every map
+
+- **Finds:** each map has 2 clue notes (📜). A clue leads to a hidden spot, for example "walk 3 steps south, then 2 steps west", or "stand on the dock square that touches the river" (map key). Stepping on the right spot gives +3 coins and a decoration for the camp.
+- **Secret chests:** from 2.1 on, one chest per map needs a tool from an earlier episode (see above).
+- **People who remember you:** a few people in later episodes mention what the student did for them before, for example Rosa in 8.3 remembers the student from Mapmaker's Valley.
+
+## The camp and the class atlas
+
+- **My camp** (🏕️ in the Passport and on the world map) is a small cabin. Restored atlas pages hang on the wall (stars show as gold marks), earned tools sit on a rack, and every finished realm leaves a souvenir on the shelf. Students spend wood, fiber and coins (or use their finds) to decorate six spots on the floor. Decorations can be moved or taken down at any time, and nothing bought is ever lost.
+- **Class atlas:** when the class Sheet is on, the world map shows how many pages the class restored together and lights up every page someone in the class has restored (👥 3 in your class). It never shows names or a ranking.
 
 **Music and sound:** every realm has its own song, and the Grump trial has its own. The **Music** and **Sound** buttons above the game turn each one off; the choice is remembered on that computer. Headphones are a good idea in class.
 

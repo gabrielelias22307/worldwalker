@@ -16,7 +16,7 @@ node tests/play.js 2.2            # plays it start to finish in a real browser, 
 2. Walk the map. Talk to every person (`npcs`). Each person says 2–3 short `lines`, then asks one question (`ask`). A right answer adds to one of the five powers.
 3. Optional: read signs (`signs`), pick up 3 atlas scraps (`scraps`), avoid the Grumplings (`smudges`).
 4. Walk into the glowing compass stone (`challenge`). It stays locked until every person has been talked to.
-5. Solving it calls out the Grump (`boss`). Walk into it: a question trial. Each right answer cracks one piece of the cloud shield (`need`, normally 3). A wrong answer costs a heart, explains why, and the question comes back later.
+5. Solving it calls out the Grump (`boss`), hidden in rings of fog (one ring for each right answer but the last). Walking into the fog asks one trial question: a right answer lifts the outer ring, a wrong one costs a heart, explains and comes back. The last question is asked at the Grump itself. Each right answer cracks one piece of the cloud shield (`need`, normally 3). A wrong answer costs a heart, explains why, and the question comes back later.
 6. Finish screen: `learned` (3 lines), a `reflect` question with a sentence `starter`, save, Passport Code, turn in.
 
 Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
@@ -57,6 +57,8 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 | `keep` | optional: `[[x, y], ...]` trees the axe must never cut (for example a tree that keeps a path closed on purpose) |
 | `build` | optional: what can be built here (see "Building" below) |
 | `secret` | optional (2.1 and later): `{ tool, at: [x, y], text }` — a chest (+5 coins, saved) that only a tool earned in an EARLIER episode reaches. `canoe` paddles on rivers `~`, `sail` on `~` and deep water `=`; every other tool (`compass`, `rail`, `gourd`, `key`, `cloak`, `seal`) opens a tool gate `G` in the map. Never put anything required behind it: the teacher code can open any episode |
+| `finds` | 2 per map: `[{ clueAt: [x, y], at: [x, y], clue, text, decor }]` — a clue note (solid) leads to a hidden spot the student steps on: +3 coins and the camp decoration `decor` (`shell gem fossil vase drum flower coinold feather`). Make the clue teach: compass steps from the note, the map key, or the episode's idea. Counted once per hero |
+| `remember` | on a person (npc, quest giver or contact), optional: `{ ep: '1.1', t: {..} }` — one first line they say only if the student finished that earlier episode ("Grandpa Tomas still checks his compass every morning!") |
 | `look.style` / `look.hat` | optional on a person: `'short'`, `'long'` or `'bun'` hair (otherwise picked from the name); `hat: '#hex'` gives them a hat |
 
 `stat` is one of the five powers: `loc` Where (Location) · `pla` What it is like (Place) · `hei` People & land (Human–Environment Interaction) · `mov` On the move (Movement) · `reg` Regions (Region).
