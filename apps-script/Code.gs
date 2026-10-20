@@ -17,7 +17,7 @@
  */
 
 const STUDENT_COLS = ['key', 'cls', 'name', 'pinHash', 'look', 'loc', 'pla', 'hei', 'mov', 'reg',
-  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent', 'bag', 'built', 'metChris'];
+  'heartsMax', 'coins', 'episodes', 'tools', 'passport', 'lastPlayed', 'version', 'spent', 'bag', 'built', 'metChris', 'secrets'];
 const LOG_COLS = ['time', 'cls', 'name', 'episode', 'stars', 'heartsLost', 'minutes', 'missed', 'reflection'];
 
 function doGet(e) {
@@ -64,6 +64,7 @@ function load_(cls, name, pin) {
   rec.look = safeJson_(rec.look, {});
   rec.bag = safeJson_(rec.bag, {});
   rec.built = safeJson_(rec.built, {});
+  rec.secrets = safeJson_(rec.secrets, []);
   rec.metChris = rec.metChris === true || rec.metChris === 'TRUE' || rec.metChris === 'true';
   return { ok: true, found: true, state: rec };
 }
@@ -107,6 +108,7 @@ function save_(b) {
     Object.keys(s.built || {}).forEach(id => { built[id] = Array.from(new Set([].concat(built[id] || [], s.built[id] || []))); });
     s.built = built;
     s.metChris = !!s.metChris || old.metChris === true || old.metChris === 'TRUE';
+    s.secrets = Array.from(new Set([].concat(safeJson_(old.secrets, []), s.secrets || [])));
   }
   const rec = {
     key, cls: clean_(b.cls).toUpperCase(), name: clean_(b.name), pinHash: ph,
@@ -115,7 +117,8 @@ function save_(b) {
     heartsMax: s.heartsMax || 3, coins: s.coins || 0, spent: s.spent || 0,
     episodes: JSON.stringify(s.episodes || {}), tools: JSON.stringify(s.tools || []),
     passport: s.passport || '', lastPlayed: new Date(), version: s.version || 1,
-    bag: JSON.stringify(s.bag || {}), built: JSON.stringify(s.built || {}), metChris: !!s.metChris
+    bag: JSON.stringify(s.bag || {}), built: JSON.stringify(s.built || {}), metChris: !!s.metChris,
+    secrets: JSON.stringify(s.secrets || [])
   };
   sh.getRange(row, 1, 1, STUDENT_COLS.length).setValues([STUDENT_COLS.map(c => rec[c])]);
 

@@ -59,16 +59,13 @@ window.EPISODE = {
       lines: [
         { en: 'This old building is a [[caravanserai|caravanserai]]. Traders stopped here safely for the night. Thick walls closed around this courtyard. Camels and horses drank at the well and were unloaded here.',
           es: 'Este edificio antiguo es un [[caravanserai|caravasar]]. Aquí los comerciantes paraban seguros por la noche. Muros gruesos rodeaban este patio. Los camellos y caballos bebían en el pozo y aquí los descargaban.',
-          fa: 'این ساختمان قدیمی یک [[caravanserai|کاروانسرا]] است. تاجران شب اینجا در امان می‌ماندند. دیوارهای ضخیم دور این حویلی را گرفته بودند. شترها و اسپ‌ها از چاه آب می‌خوردند و بارشان اینجا پایین می‌شد.',
-          easy: { en: 'This is a [[caravanserai|caravanserai]]. Traders and camels slept here safely at night.', es: 'Este es un [[caravanserai|caravasar]]. Los comerciantes y los camellos dormían aquí seguros por la noche.', fa: 'این یک [[caravanserai|کاروانسرا]] است. تاجران و شترها شب اینجا در امان می‌خوابیدند.' } },
+          fa: 'این ساختمان قدیمی یک [[caravanserai|کاروانسرا]] است. تاجران شب اینجا در امان می‌ماندند. دیوارهای ضخیم دور این حویلی را گرفته بودند. شترها و اسپ‌ها از چاه آب می‌خوردند و بارشان اینجا پایین می‌شد.' },
         { en: 'For hundreds of years, caravans crossed Central Asia between China and Europe. The [[silk road|Silk Road]] was not one road. It was a web of many routes. Camels carried silk, spices and other goods.',
           es: 'Por cientos de años, las caravanas cruzaron Asia Central entre China y Europa. La [[silk road|Ruta de la Seda]] no era un solo camino. Era una red de muchas rutas. Los camellos llevaban seda, especias y otras mercancías.',
-          fa: 'صدها سال کاروان‌ها از آسیای میانه میان چین و اروپا می‌گذشتند. [[silk road|راه ابریشم]] یک راه نبود. شبکه‌ای از راه‌های زیاد بود. شترها ابریشم، ادویه و مال‌های دیگر می‌بردند.',
-          easy: { en: 'The [[silk road|Silk Road]] was many routes, not one. Camels carried silk and spices between China and Europe.', es: 'La [[silk road|Ruta de la Seda]] eran muchas rutas, no una. Los camellos llevaban seda y especias entre China y Europa.', fa: '[[silk road|راه ابریشم]] چند راه بود، نه یک راه. شترها ابریشم و ادویه را میان چین و اروپا می‌بردند.' } },
+          fa: 'صدها سال کاروان‌ها از آسیای میانه میان چین و اروپا می‌گذشتند. [[silk road|راه ابریشم]] یک راه نبود. شبکه‌ای از راه‌های زیاد بود. شترها ابریشم، ادویه و مال‌های دیگر می‌بردند.' },
         { en: 'Cities like Samarkand and Bukhara, here in Uzbekistan, grew rich as stops on these routes. Not only goods traveled. Ideas, languages and new foods moved with the traders too.',
           es: 'Ciudades como Samarcanda y Bujará, aquí en Uzbekistán, se hicieron ricas como paradas de estas rutas. No solo viajaban mercancías. Las ideas, los idiomas y las comidas nuevas también se movían con los comerciantes.',
-          fa: 'شهرهایی مثل سمرقند و بخارا، اینجا در ازبکستان، به عنوان منزل‌های این راه‌ها پولدار شدند. تنها مال سفر نمی‌کرد. فکرها، زبان‌ها و غذاهای نو هم با تاجران حرکت می‌کردند.',
-          easy: { en: 'Samarkand and Bukhara grew rich from this trade. Ideas and languages traveled too.', es: 'Samarcanda y Bujará se hicieron ricas con este comercio. Las ideas y los idiomas también viajaban.', fa: 'سمرقند و بخارا از این تجارت پولدار شدند. فکرها و زبان‌ها هم سفر می‌کردند.' } }
+          fa: 'شهرهایی مثل سمرقند و بخارا، اینجا در ازبکستان، به عنوان منزل‌های این راه‌ها پولدار شدند. تنها مال سفر نمی‌کرد. فکرها، زبان‌ها و غذاهای نو هم با تاجران حرکت می‌کردند.' }
       ],
       ask: {
         stat: 'pla',
@@ -91,16 +88,13 @@ window.EPISODE = {
       lines: [
         { en: 'Today the Silk Road runs on rails! Long [[freight train|freight trains]] carry containers between China and Europe. Many of them cross Kazakhstan on the way.',
           es: '¡Hoy la Ruta de la Seda va sobre rieles! Largos [[freight train|trenes de carga]] llevan contenedores entre China y Europa. Muchos cruzan Kazajistán en el camino.',
-          fa: 'امروز راه ابریشم روی خط آهن است! [[freight train|قطارهای باری]] دراز کانتینرها را میان چین و اروپا می‌برند. بسیاری از آن‌ها در راه از قزاقستان می‌گذرند.',
-          easy: { en: '[[freight train|Freight trains]] now carry goods between China and Europe.', es: 'Ahora los [[freight train|trenes de carga]] llevan mercancías entre China y Europa.', fa: 'حالا [[freight train|قطارهای باری]] مال را میان چین و اروپا می‌برند.' } },
+          fa: 'امروز راه ابریشم روی خط آهن است! [[freight train|قطارهای باری]] دراز کانتینرها را میان چین و اروپا می‌برند. بسیاری از آن‌ها در راه از قزاقستان می‌گذرند.' },
         { en: 'Why a train? It takes less than half the time a ship takes. And it costs less than sending goods by plane.',
           es: '¿Por qué un tren? Tarda menos de la mitad del tiempo que un barco. Y cuesta menos que enviar las cosas en avión.',
-          fa: 'چرا قطار؟ کمتر از نصف وقتی که کشتی می‌گیرد طول می‌کشد. و از فرستادن مال با طیاره ارزان‌تر است.',
-          easy: { en: 'Trains are faster than ships and cheaper than planes.', es: 'Los trenes son más rápidos que los barcos y más baratos que los aviones.', fa: 'قطار از کشتی تیزتر و از طیاره ارزان‌تر است.' } },
+          fa: 'چرا قطار؟ کمتر از نصف وقتی که کشتی می‌گیرد طول می‌کشد. و از فرستادن مال با طیاره ارزان‌تر است.' },
         { en: 'At the border with China, the rails change width. That is a [[break of gauge|break of gauge]]. Cranes lift each container onto a new train. This region also sends oil and gas west through [[pipeline|pipelines]] thousands of miles long.',
           es: 'En la frontera con China, las vías cambian de ancho. Eso es un [[break of gauge|cambio de ancho de vía]]. Las grúas suben cada contenedor a otro tren. Esta región también manda petróleo y gas al oeste por [[pipeline|oleoductos y gasoductos]] de miles de millas.',
-          fa: 'در سرحد چین پهنای خط آهن تغییر می‌کند. این [[break of gauge|تغییر پهنای خط آهن]] است. جرثقیل‌ها هر کانتینر را به قطار دیگر می‌گذارند. این منطقه تیل و گاز را هم از راه [[pipeline|نل‌های انتقال]] هزاران میل دراز به غرب می‌فرستد.',
-          easy: { en: 'At the China border, the rails change width. Cranes move the containers to a new train. [[pipeline|Pipelines]] carry oil and gas.', es: 'En la frontera con China, las vías cambian de ancho. Las grúas pasan los contenedores a otro tren. Los [[pipeline|oleoductos]] llevan petróleo y gas.', fa: 'در سرحد چین پهنای خط آهن تغییر می‌کند. جرثقیل‌ها کانتینرها را به قطار دیگر می‌برند. [[pipeline|نل‌های انتقال]] تیل و گاز را می‌برند.' } }
+          fa: 'در سرحد چین پهنای خط آهن تغییر می‌کند. این [[break of gauge|تغییر پهنای خط آهن]] است. جرثقیل‌ها هر کانتینر را به قطار دیگر می‌گذارند. این منطقه تیل و گاز را هم از راه [[pipeline|نل‌های انتقال]] هزاران میل دراز به غرب می‌فرستد.' }
       ],
       ask: {
         stat: 'mov',
@@ -123,16 +117,13 @@ window.EPISODE = {
       lines: [
         { en: 'My trips often start at the Port of Rotterdam in the Netherlands. Rotterdam sits where a big river, the Rhine, meets the sea. Huge ships unload containers there every day.',
           es: 'Mis viajes muchas veces empiezan en el puerto de Róterdam, en los Países Bajos. Róterdam está donde un río grande, el Rin, llega al mar. Allí, barcos enormes descargan contenedores todos los días.',
-          fa: 'سفرهای من اکثراً از بندر روتردام در هالند شروع می‌شود. روتردام جایی است که یک دریای بزرگ، راین، به بحر می‌رسد. هر روز کشتی‌های بسیار بزرگ آنجا کانتینر پایین می‌کنند.',
-          easy: { en: 'I start at the port of Rotterdam. It is where the Rhine River meets the sea.', es: 'Empiezo en el puerto de Róterdam. Está donde el río Rin llega al mar.', fa: 'من از بندر روتردام شروع می‌کنم. جایی است که دریای راین به بحر می‌رسد.' } },
+          fa: 'سفرهای من اکثراً از بندر روتردام در هالند شروع می‌شود. روتردام جایی است که یک دریای بزرگ، راین، به بحر می‌رسد. هر روز کشتی‌های بسیار بزرگ آنجا کانتینر پایین می‌کنند.' },
         { en: 'Many European countries joined the [[european union|European Union]]. Inside it, my truck crosses borders without stopping at a checkpoint. That makes trade faster and cheaper. Outside it, I wait at each border.',
           es: 'Muchos países europeos se unieron a la [[european union|Unión Europea]]. Dentro de ella, mi camión cruza las fronteras sin parar en un puesto de control. Eso hace el comercio más rápido y barato. Fuera de ella, espero en cada frontera.',
-          fa: 'بسیاری از کشورهای اروپایی عضو [[european union|اتحادیهٔ اروپا]] شدند. داخل آن، موتر من بدون ایستادن در پوستهٔ تلاشی از سرحد می‌گذرد. این تجارت را تیزتر و ارزان‌تر می‌کند. بیرون از آن، در هر سرحد منتظر می‌مانم.',
-          easy: { en: 'In the [[european union|European Union]], trucks cross borders without stopping. Trade is faster.', es: 'En la [[european union|Unión Europea]], los camiones cruzan fronteras sin parar. El comercio es más rápido.', fa: 'در [[european union|اتحادیهٔ اروپا]] موترهای باری بدون ایستادن از سرحد می‌گذرند. تجارت تیزتر است.' } },
+          fa: 'بسیاری از کشورهای اروپایی عضو [[european union|اتحادیهٔ اروپا]] شدند. داخل آن، موتر من بدون ایستادن در پوستهٔ تلاشی از سرحد می‌گذرد. این تجارت را تیزتر و ارزان‌تر می‌کند. بیرون از آن، در هر سرحد منتظر می‌مانم.' },
         { en: 'Cities grow where trade routes meet. Ports, river crossings and rail hubs pull in people and money. That helped Rotterdam, Vienna and Moscow become big cities. It helped this bazaar town grow too.',
           es: 'Las ciudades crecen donde se juntan las rutas de comercio. Los puertos, los cruces de ríos y los centros de trenes atraen gente y dinero. Eso ayudó a que Róterdam, Viena y Moscú fueran grandes ciudades. También ayudó a crecer a este pueblo del bazar.',
-          fa: 'شهرها جایی بزرگ می‌شوند که راه‌های تجارت به هم می‌رسند. بندرها، گذرگاه‌های دریا و مرکزهای خط آهن مردم و پول را جذب می‌کنند. این به روتردام، ویانا و مسکو کمک کرد شهرهای بزرگ شوند. به رشد این شهرک بازار هم کمک کرد.',
-          easy: { en: 'Cities grow where trade routes meet. Routes bring people and money.', es: 'Las ciudades crecen donde se juntan las rutas de comercio. Las rutas traen gente y dinero.', fa: 'شهرها جایی بزرگ می‌شوند که راه‌های تجارت به هم می‌رسند. راه‌ها مردم و پول می‌آورند.' } }
+          fa: 'شهرها جایی بزرگ می‌شوند که راه‌های تجارت به هم می‌رسند. بندرها، گذرگاه‌های دریا و مرکزهای خط آهن مردم و پول را جذب می‌کنند. این به روتردام، ویانا و مسکو کمک کرد شهرهای بزرگ شوند. به رشد این شهرک بازار هم کمک کرد.' }
       ],
       ask: {
         stat: 'loc',

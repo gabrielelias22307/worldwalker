@@ -64,12 +64,10 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the Levant, at the east end of the Mediterranean Sea. Look around. Rain falls only in winter, and summers are long and dry. Fresh water here is [[scarce|scarce]].',
           es: 'Bienvenido al Levante, en el extremo este del mar Mediterráneo. Mira a tu alrededor. Solo llueve en invierno y los veranos son largos y secos. Aquí el agua dulce es [[scarce|escasa]].',
-          fa: 'به شام (لِوانت) در شرق بحیرهٔ مدیترانه خوش آمدی. به اطراف نگاه کن. باران فقط در زمستان می‌بارد و تابستان‌ها دراز و خشک هستند. آب شیرین این‌جا [[scarce|کمیاب]] است.',
-          easy: { en: 'This land is dry. Rain falls only in winter. Fresh water is [[scarce|scarce]].', es: 'Esta tierra es seca. Solo llueve en invierno. El agua dulce es [[scarce|escasa]].', fa: 'این زمین خشک است. باران فقط در زمستان می‌بارد. آب شیرین [[scarce|کمیاب]] است.' } },
+          fa: 'به شام (لِوانت) در شرق بحیرهٔ مدیترانه خوش آمدی. به اطراف نگاه کن. باران فقط در زمستان می‌بارد و تابستان‌ها دراز و خشک هستند. آب شیرین این‌جا [[scarce|کمیاب]] است.' },
         { en: 'But the sea never runs dry! My plant does [[desalination|desalination]]. It takes the salt out of seawater to make fresh water. The hard part: it needs lots of energy, and it leaves very salty water behind.',
           es: '¡Pero el mar nunca se seca! Mi planta hace [[desalination|desalinización]]. Le quita la sal al agua de mar para hacer agua dulce. Lo difícil: necesita mucha energía y deja atrás agua muy salada.',
-          fa: 'اما بحر هرگز خشک نمی‌شود! فابریکهٔ من [[desalination|آب بحر را شیرین می‌کند]]. نمک را از آب بحر می‌گیرد تا آب شیرین بسازد. مشکل این است: انرژی زیاد لازم دارد و آب بسیار شور از آن باقی می‌ماند.',
-          easy: { en: '[[desalination|Desalination]] takes salt out of seawater. It makes fresh water, but it uses lots of energy.', es: 'La [[desalination|desalinización]] le quita la sal al agua de mar. Hace agua dulce, pero usa mucha energía.', fa: '[[desalination|شیرین کردن آب بحر]] نمک را از آب بحر می‌گیرد. آب شیرین می‌سازد، اما انرژی زیاد مصرف می‌کند.' } }
+          fa: 'اما بحر هرگز خشک نمی‌شود! فابریکهٔ من [[desalination|آب بحر را شیرین می‌کند]]. نمک را از آب بحر می‌گیرد تا آب شیرین بسازد. مشکل این است: انرژی زیاد لازم دارد و آب بسیار شور از آن باقی می‌ماند.' }
       ],
       ask: {
         stat: 'pla',
@@ -92,16 +90,13 @@ window.EPISODE = {
       lines: [
         { en: 'Rivers do not stop at borders. The Jordan River and its branches touch several neighbors: Lebanon, Syria, Jordan, Israel and the Palestinians. A resource that crosses borders is [[transboundary|transboundary]].',
           es: 'Los ríos no se detienen en las fronteras. El río Jordán y sus ramas tocan a varios vecinos: Líbano, Siria, Jordania, Israel y los palestinos. Un recurso que cruza fronteras es [[transboundary|transfronterizo]].',
-          fa: 'دریاها در سرحد نمی‌ایستند. دریای اردن و شاخه‌هایش به چند همسایه می‌رسند: لبنان، سوریه، اردن، اسرائیل و فلسطینی‌ها. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.',
-          easy: { en: 'One river, many neighbors. A resource that crosses borders is [[transboundary|transboundary]].', es: 'Un río, muchos vecinos. Un recurso que cruza fronteras es [[transboundary|transfronterizo]].', fa: 'یک دریا، چند همسایه. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.' } },
+          fa: 'دریاها در سرحد نمی‌ایستند. دریای اردن و شاخه‌هایش به چند همسایه می‌رسند: لبنان، سوریه، اردن، اسرائیل و فلسطینی‌ها. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.' },
         { en: 'Neighbors who share a river can argue, or they can work together. A [[border dispute|border dispute]] is an argument over where a line should be. But neighbors can also sign a [[treaty|treaty]]: a written agreement with clear rules.',
           es: 'Los vecinos que comparten un río pueden discutir o pueden trabajar juntos. Una [[border dispute|disputa fronteriza]] es una discusión sobre dónde debe estar una línea. Pero los vecinos también pueden firmar un [[treaty|tratado]]: un acuerdo escrito con reglas claras.',
-          fa: 'همسایه‌هایی که یک دریا را شریک دارند می‌توانند دعوا کنند یا با هم کار کنند. [[border dispute|اختلاف سرحدی]] دعوا بر سر جای یک خط است. اما همسایه‌ها می‌توانند یک [[treaty|معاهده]] هم امضا کنند: یک توافق نوشته‌شده با قاعده‌های روشن.',
-          easy: { en: 'Neighbors can fight over a river, or sign a [[treaty|treaty]] with clear rules for sharing.', es: 'Los vecinos pueden pelear por un río o firmar un [[treaty|tratado]] con reglas claras para compartir.', fa: 'همسایه‌ها می‌توانند بر سر دریا دعوا کنند، یا یک [[treaty|معاهده]] با قاعده‌های روشن برای شریک شدن امضا کنند.' } },
+          fa: 'همسایه‌هایی که یک دریا را شریک دارند می‌توانند دعوا کنند یا با هم کار کنند. [[border dispute|اختلاف سرحدی]] دعوا بر سر جای یک خط است. اما همسایه‌ها می‌توانند یک [[treaty|معاهده]] هم امضا کنند: یک توافق نوشته‌شده با قاعده‌های روشن.' },
         { en: 'In 1994, Jordan and Israel signed a peace treaty. Part of it set rules for sharing water from the Jordan and Yarmouk rivers. Scientists can also share weather data and river reports. Sharing takes trust, and trust takes work.',
           es: 'En 1994, Jordania e Israel firmaron un tratado de paz. Una parte puso reglas para compartir el agua de los ríos Jordán y Yarmuk. Los científicos también pueden compartir datos del clima e informes del río. Compartir necesita confianza, y la confianza cuesta trabajo.',
-          fa: 'در سال ۱۹۹۴، اردن و اسرائیل یک معاهدهٔ صلح امضا کردند. بخشی از آن قاعده‌هایی برای شریک شدن آب دریای اردن و دریای یرموک گذاشت. دانشمندان هم می‌توانند معلومات هوا و گزارش‌های دریا را شریک کنند. شریک شدن اعتماد می‌خواهد و اعتماد زحمت می‌خواهد.',
-          easy: { en: 'In 1994, Jordan and Israel signed a treaty with rules for sharing river water. Sharing takes trust.', es: 'En 1994, Jordania e Israel firmaron un tratado con reglas para compartir el agua del río. Compartir necesita confianza.', fa: 'در سال ۱۹۹۴، اردن و اسرائیل معاهده‌ای با قاعده‌های شریک شدن آب دریا امضا کردند. شریک شدن اعتماد می‌خواهد.' } }
+          fa: 'در سال ۱۹۹۴، اردن و اسرائیل یک معاهدهٔ صلح امضا کردند. بخشی از آن قاعده‌هایی برای شریک شدن آب دریای اردن و دریای یرموک گذاشت. دانشمندان هم می‌توانند معلومات هوا و گزارش‌های دریا را شریک کنند. شریک شدن اعتماد می‌خواهد و اعتماد زحمت می‌خواهد.' }
       ],
       ask: {
         stat: 'reg',
@@ -124,16 +119,13 @@ window.EPISODE = {
       lines: [
         { en: 'My family grows tomatoes and dates here in the Jordan Valley. The river flows south, down to the Dead Sea. It is the lowest place on land on Earth.',
           es: 'Mi familia cultiva tomates y dátiles aquí en el valle del Jordán. El río corre hacia el sur, hasta el mar Muerto. Es el lugar más bajo en tierra firme del planeta.',
-          fa: 'خانوادهٔ من این‌جا در درهٔ اردن بادنجان رومی و خرما کشت می‌کند. دریا به طرف جنوب تا بحیرهٔ مرده می‌رود. آن‌جا پایین‌ترین جای خشکهٔ زمین است.',
-          easy: { en: 'I grow tomatoes and dates. The river flows south into the Dead Sea.', es: 'Yo cultivo tomates y dátiles. El río corre al sur hasta el mar Muerto.', fa: 'من بادنجان رومی و خرما کشت می‌کنم. دریا به طرف جنوب به بحیرهٔ مرده می‌ریزد.' } },
+          fa: 'خانوادهٔ من این‌جا در درهٔ اردن بادنجان رومی و خرما کشت می‌کند. دریا به طرف جنوب تا بحیرهٔ مرده می‌رود. آن‌جا پایین‌ترین جای خشکهٔ زمین است.' },
         { en: 'So many farms and cities take water from the river that only a little reaches the end. The Dead Sea is shrinking every year. You can see its old shore far from the water now.',
           es: 'Tantas granjas y ciudades sacan agua del río que solo un poco llega al final. El mar Muerto se encoge cada año. Ahora puedes ver su orilla vieja lejos del agua.',
-          fa: 'این‌قدر کشتزارها و شهرها از دریا آب می‌گیرند که فقط کمی به آخر آن می‌رسد. بحیرهٔ مرده هر سال کوچک‌تر می‌شود. حالا ساحل کهنه‌اش را دور از آب می‌بینی.',
-          easy: { en: 'People take lots of river water. Only a little reaches the Dead Sea, so it is shrinking.', es: 'La gente saca mucha agua del río. Solo un poco llega al mar Muerto, así que se encoge.', fa: 'مردم آب زیادی از دریا می‌گیرند. فقط کمی به بحیرهٔ مرده می‌رسد، پس کوچک می‌شود.' } },
+          fa: 'این‌قدر کشتزارها و شهرها از دریا آب می‌گیرند که فقط کمی به آخر آن می‌رسد. بحیرهٔ مرده هر سال کوچک‌تر می‌شود. حالا ساحل کهنه‌اش را دور از آب می‌بینی.' },
         { en: 'I use [[drip irrigation|drip irrigation]]. Thin tubes drip water right at each plant\'s roots. Less water is lost to the hot sun, so more can stay in the river.',
           es: 'Yo uso [[drip irrigation|riego por goteo]]. Unos tubos delgados dejan caer gotas justo en las raíces de cada planta. Se pierde menos agua con el sol caliente, así que más puede quedarse en el río.',
-          fa: 'من از [[drip irrigation|آبیاری قطره‌ای]] استفاده می‌کنم. نل‌های باریک آب را قطره‌قطره به ریشهٔ هر بوته می‌رسانند. آب کمتری زیر آفتاب گرم از بین می‌رود، پس آب بیشتری در دریا می‌ماند.',
-          easy: { en: '[[drip irrigation|Drip irrigation]] puts water right at the roots. It saves water.', es: 'El [[drip irrigation|riego por goteo]] pone el agua justo en las raíces. Ahorra agua.', fa: '[[drip irrigation|آبیاری قطره‌ای]] آب را درست به ریشه می‌رساند. آب را صرفه می‌کند.' } }
+          fa: 'من از [[drip irrigation|آبیاری قطره‌ای]] استفاده می‌کنم. نل‌های باریک آب را قطره‌قطره به ریشهٔ هر بوته می‌رسانند. آب کمتری زیر آفتاب گرم از بین می‌رود، پس آب بیشتری در دریا می‌ماند.' }
       ],
       ask: {
         stat: 'loc',

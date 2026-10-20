@@ -41,6 +41,8 @@ window.EPISODE = {
   ],
   start: [8, 7],
 
+  tools: ['axe', 'sickle'],
+
   words: {
     peninsula: { en: 'land with water on three sides', es: 'tierra con agua por tres lados', fa: 'خشکه‌ای که از سه طرف آب دارد' },
     fjord: { en: 'a long, narrow strip of sea between tall cliffs, carved by glaciers', es: 'una franja de mar larga y angosta entre acantilados altos, tallada por glaciares', fa: 'نوار دراز و باریک بحر میان صخره‌های بلند که یخچال‌ها کنده‌اند' },
@@ -59,16 +61,13 @@ window.EPISODE = {
       lines: [
         { en: 'Look around you! There is water on three sides. This land is a [[peninsula|peninsula]]. Spain, Italy, Greece and Norway are peninsulas too. That is why almost nowhere in Europe is far from the sea.',
           es: '¡Mira a tu alrededor! Hay agua por tres lados. Esta tierra es una [[peninsula|península]]. España, Italia, Grecia y Noruega también son penínsulas. Por eso casi ningún lugar de Europa está lejos del mar.',
-          fa: 'به اطراف نگاه کن! از سه طرف آب است. این خشکه یک [[peninsula|شبه‌جزیره]] است. اسپانیا، ایتالیا، یونان و ناروی هم شبه‌جزیره هستند. به همین دلیل تقریباً هیچ جای اروپا از بحر دور نیست.',
-          easy: { en: 'Water on three sides = a [[peninsula|peninsula]]. Europe has many. Most places in Europe are close to the sea.', es: 'Agua por tres lados = una [[peninsula|península]]. Europa tiene muchas. Casi todo en Europa está cerca del mar.', fa: 'آب از سه طرف = [[peninsula|شبه‌جزیره]]. اروپا تعداد زیادی دارد. بیشتر جاهای اروپا نزدیک بحر هستند.' } },
+          fa: 'به اطراف نگاه کن! از سه طرف آب است. این خشکه یک [[peninsula|شبه‌جزیره]] است. اسپانیا، ایتالیا، یونان و ناروی هم شبه‌جزیره هستند. به همین دلیل تقریباً هیچ جای اروپا از بحر دور نیست.' },
         { en: 'I grew up in Norway. Long ago, thick glaciers carved deep, narrow inlets into its rock. A [[fjord|fjord]] is a long strip of sea between tall cliffs. Ferries use fjords like roads between towns.',
           es: 'Crecí en Noruega. Hace mucho tiempo, glaciares gruesos tallaron entradas de mar hondas y angostas en la roca. Un [[fjord|fiordo]] es una franja de mar entre acantilados altos. Los ferris usan los fiordos como caminos entre pueblos.',
-          fa: 'من در ناروی بزرگ شدم. خیلی وقت پیش، یخچال‌های ضخیم شکاف‌های عمیق و باریک در سنگ آن کندند. [[fjord|فیورد]] نوار دراز بحر میان صخره‌های بلند است. کشتی‌ها از فیوردها مثل سرک میان شهرها استفاده می‌کنند.',
-          easy: { en: 'Glaciers cut long, narrow inlets in Norway. Each one is a [[fjord|fjord]]. Boats use them like roads.', es: 'Los glaciares cortaron entradas largas y angostas en Noruega. Cada una es un [[fjord|fiordo]]. Los barcos las usan como caminos.', fa: 'یخچال‌ها در ناروی شکاف‌های دراز و باریک کندند. هر کدام یک [[fjord|فیورد]] است. کشتی‌ها از آن‌ها مثل سرک استفاده می‌کنند.' } },
+          fa: 'من در ناروی بزرگ شدم. خیلی وقت پیش، یخچال‌های ضخیم شکاف‌های عمیق و باریک در سنگ آن کندند. [[fjord|فیورد]] نوار دراز بحر میان صخره‌های بلند است. کشتی‌ها از فیوردها مثل سرک میان شهرها استفاده می‌کنند.' },
         { en: 'Norway is far north, but its harbors stay open in winter. A warm ocean current, the [[north atlantic drift|North Atlantic Drift]], brings mild water across the Atlantic. Winds carry that mild air over western Europe.',
           es: 'Noruega está muy al norte, pero sus puertos siguen abiertos en invierno. Una corriente marina cálida, la [[north atlantic drift|Deriva del Atlántico Norte]], trae agua templada por el Atlántico. Los vientos llevan ese aire templado sobre el oeste de Europa.',
-          fa: 'ناروی خیلی شمال است، اما بندرهایش در زمستان باز می‌مانند. یک جریان گرم بحری به نام [[north atlantic drift|جریان گرم اطلس شمالی]] آب معتدل را از اقیانوس اطلس می‌آورد. بادها آن هوای معتدل را به غرب اروپا می‌برند.',
-          easy: { en: 'A warm sea current, the [[north atlantic drift|North Atlantic Drift]], keeps western Europe\'s winters mild.', es: 'Una corriente cálida, la [[north atlantic drift|Deriva del Atlántico Norte]], hace que los inviernos del oeste de Europa sean templados.', fa: 'یک جریان گرم بحری به نام [[north atlantic drift|جریان گرم اطلس شمالی]] زمستان غرب اروپا را معتدل نگه می‌دارد.' } }
+          fa: 'ناروی خیلی شمال است، اما بندرهایش در زمستان باز می‌مانند. یک جریان گرم بحری به نام [[north atlantic drift|جریان گرم اطلس شمالی]] آب معتدل را از اقیانوس اطلس می‌آورد. بادها آن هوای معتدل را به غرب اروپا می‌برند.' }
       ],
       ask: {
         stat: 'loc',
@@ -91,16 +90,13 @@ window.EPISODE = {
       lines: [
         { en: 'My barge carries coal, grain and steel on the Rhine. The Rhine flows north from the Alps to the North Sea. It is [[navigable|navigable]], which means it is deep enough for big cargo boats.',
           es: 'Mi barcaza lleva carbón, granos y acero por el Rin. El Rin corre hacia el norte, desde los Alpes hasta el mar del Norte. Es [[navigable|navegable]]: es bastante profundo para barcos grandes de carga.',
-          fa: 'کشتی باری من زغال‌سنگ، غله و فولاد را روی دریای راین می‌برد. راین از کوه‌های الپ به طرف شمال تا بحر شمال جاری است. راین [[navigable|قابل کشتیرانی]] است، یعنی برای کشتی‌های بزرگ باری به اندازهٔ کافی عمیق است.',
-          easy: { en: 'I carry coal and grain on the Rhine. Big boats can use it. It is [[navigable|navigable]].', es: 'Llevo carbón y granos por el Rin. Los barcos grandes pueden usarlo. Es [[navigable|navegable]].', fa: 'من زغال‌سنگ و غله را روی راین می‌برم. کشتی‌های بزرگ می‌توانند در آن بروند. [[navigable|قابل کشتیرانی]] است.' } },
+          fa: 'کشتی باری من زغال‌سنگ، غله و فولاد را روی دریای راین می‌برد. راین از کوه‌های الپ به طرف شمال تا بحر شمال جاری است. راین [[navigable|قابل کشتیرانی]] است، یعنی برای کشتی‌های بزرگ باری به اندازهٔ کافی عمیق است.' },
         { en: 'The Danube flows the other way, east. It starts in Germany, passes about ten countries and ends in the Black Sea. Vienna and Budapest grew on its banks. In Europe, rivers join countries together.',
           es: 'El Danubio corre hacia el otro lado, al este. Nace en Alemania, pasa por unos diez países y termina en el mar Negro. Viena y Budapest crecieron en sus orillas. En Europa, los ríos unen a los países.',
-          fa: 'دریای دانوب به طرف دیگر، یعنی شرق، جاری است. از آلمان شروع می‌شود، از حدود ده کشور می‌گذرد و به بحیرهٔ سیاه می‌ریزد. ویانا و بوداپست کنار آن بزرگ شدند. در اروپا دریاها کشورها را به هم وصل می‌کنند.',
-          easy: { en: 'The Danube flows east through about ten countries to the Black Sea. Rivers join countries together.', es: 'El Danubio corre al este por unos diez países hasta el mar Negro. Los ríos unen a los países.', fa: 'دانوب از حدود ده کشور به طرف شرق تا بحیرهٔ سیاه می‌رود. دریاها کشورها را به هم وصل می‌کنند.' } },
+          fa: 'دریای دانوب به طرف دیگر، یعنی شرق، جاری است. از آلمان شروع می‌شود، از حدود ده کشور می‌گذرد و به بحیرهٔ سیاه می‌ریزد. ویانا و بوداپست کنار آن بزرگ شدند. در اروپا دریاها کشورها را به هم وصل می‌کنند.' },
         { en: 'People dug canals to link one river to the next. A load can cross most of Europe without leaving the water. Moving heavy goods by boat costs much less than carrying them over land.',
           es: 'La gente cavó canales para unir un río con otro. Una carga puede cruzar casi toda Europa sin salir del agua. Mover cosas pesadas en barco cuesta mucho menos que llevarlas por tierra.',
-          fa: 'مردم کانال کندند تا یک دریا را به دریای دیگر وصل کنند. یک بار می‌تواند بیشتر اروپا را بدون بیرون آمدن از آب طی کند. بردن بار سنگین با کشتی خیلی ارزان‌تر از بردن آن از راه خشکه است.',
-          easy: { en: 'Canals join the rivers. Boats carry heavy goods for less money than trucks.', es: 'Los canales unen los ríos. Los barcos llevan cosas pesadas por menos dinero que los camiones.', fa: 'کانال‌ها دریاها را وصل می‌کنند. کشتی‌ها بار سنگین را ارزان‌تر از موترهای باری می‌برند.' } }
+          fa: 'مردم کانال کندند تا یک دریا را به دریای دیگر وصل کنند. یک بار می‌تواند بیشتر اروپا را بدون بیرون آمدن از آب طی کند. بردن بار سنگین با کشتی خیلی ارزان‌تر از بردن آن از راه خشکه است.' }
       ],
       ask: {
         stat: 'mov',
@@ -123,16 +119,13 @@ window.EPISODE = {
       lines: [
         { en: 'Behind me stand the Alps. Before tunnels and modern roads, people crossed them on foot through narrow passes. Snow closed those passes for months every winter.',
           es: 'Detrás de mí están los Alpes. Antes de los túneles y las carreteras modernas, la gente los cruzaba a pie por pasos angostos. La nieve cerraba esos pasos por meses cada invierno.',
-          fa: 'پشت سر من کوه‌های الپ هستند. پیش از تونل‌ها و سرک‌های امروزی، مردم از راه درّه‌های باریک پیاده از آن‌ها می‌گذشتند. برف هر زمستان آن راه‌ها را برای چند ماه می‌بست.',
-          easy: { en: 'These are the Alps. Long ago, people walked over them. Snow closed the way in winter.', es: 'Estos son los Alpes. Hace mucho, la gente los cruzaba caminando. La nieve cerraba el paso en invierno.', fa: 'این‌ها کوه‌های الپ هستند. خیلی وقت پیش مردم پیاده از آن‌ها می‌گذشتند. برف در زمستان راه را می‌بست.' } },
+          fa: 'پشت سر من کوه‌های الپ هستند. پیش از تونل‌ها و سرک‌های امروزی، مردم از راه درّه‌های باریک پیاده از آن‌ها می‌گذشتند. برف هر زمستان آن راه‌ها را برای چند ماه می‌بست.' },
         { en: 'A landform that makes travel slow, costly or dangerous is a [[natural barrier|natural barrier]]. The Alps are one. The Pyrenees, between Spain and France, are another.',
           es: 'Una forma de relieve que hace el viaje lento, caro o peligroso es una [[natural barrier|barrera natural]]. Los Alpes son una. Los Pirineos, entre España y Francia, son otra.',
-          fa: 'شکلی از زمین که سفر را کند، گران یا خطرناک می‌کند [[natural barrier|مانع طبیعی]] نام دارد. کوه‌های الپ یکی از آن‌هاست. کوه‌های پیرنه، میان اسپانیا و فرانسه، یکی دیگر است.',
-          easy: { en: 'Mountains that make travel hard are a [[natural barrier|natural barrier]]. The Alps and the Pyrenees are barriers.', es: 'Las montañas que hacen difícil viajar son una [[natural barrier|barrera natural]]. Los Alpes y los Pirineos son barreras.', fa: 'کوه‌هایی که سفر را سخت می‌کنند [[natural barrier|مانع طبیعی]] هستند. الپ و پیرنه مانع هستند.' } },
+          fa: 'شکلی از زمین که سفر را کند، گران یا خطرناک می‌کند [[natural barrier|مانع طبیعی]] نام دارد. کوه‌های الپ یکی از آن‌هاست. کوه‌های پیرنه، میان اسپانیا و فرانسه، یکی دیگر است.' },
         { en: 'Mountains kept people apart. So languages, laws and customs often changed at the mountains. But north of the Alps, the flat North European Plain is easy to cross.',
           es: 'Las montañas separaban a la gente. Por eso los idiomas, las leyes y las costumbres muchas veces cambiaban en las montañas. Pero al norte de los Alpes, la llanura del norte de Europa es plana y fácil de cruzar.',
-          fa: 'کوه‌ها مردم را از هم جدا نگه داشتند. به همین دلیل زبان‌ها، قانون‌ها و رسم‌ها اکثراً در کنار کوه‌ها تغییر می‌کردند. اما شمال الپ، دشت شمال اروپا هموار است و گذشتن از آن آسان است.',
-          easy: { en: 'Mountains kept people apart, so languages changed there. The plain in the north is flat and easy to cross.', es: 'Las montañas separaban a la gente, así que los idiomas cambiaban allí. La llanura del norte es plana y fácil de cruzar.', fa: 'کوه‌ها مردم را جدا نگه داشتند، پس زبان‌ها آنجا تغییر کردند. دشت شمال هموار و آسان برای گذشتن است.' } }
+          fa: 'کوه‌ها مردم را از هم جدا نگه داشتند. به همین دلیل زبان‌ها، قانون‌ها و رسم‌ها اکثراً در کنار کوه‌ها تغییر می‌کردند. اما شمال الپ، دشت شمال اروپا هموار است و گذشتن از آن آسان است.' }
       ],
       ask: {
         stat: 'hei',
@@ -227,7 +220,9 @@ window.EPISODE = {
 
   challenge: {
     at: [12, 8],
-    type: 'table',
+    type: 'survey', // in the world; the card version (table) is the fallback
+    // one survey post per city in the table: London by the western sea, Calgary far inland by the mountains, Moscow in the east
+    spots: [[4, 7], [15, 16], [29, 12]],
     stat: 'pla',
     title: { en: 'Same latitude, different winter', es: 'Misma latitud, otro invierno', fa: 'عرض یکسان، زمستان متفاوت' },
     intro: { en: 'The Grump froze the weather charts! Read the table. London and Calgary are the same distance from the equator. Why are their winters so different?',

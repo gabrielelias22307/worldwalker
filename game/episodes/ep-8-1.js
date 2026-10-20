@@ -66,12 +66,10 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to Harbor City! It is like Sydney, the biggest city in Australia. Sydney is built around a huge natural [[harbor|harbor]] on the [[coast|coast]]. Every day my ferry carries people to work across the water.',
           es: '¡Bienvenido a Ciudad del Puerto! Es como Sídney, la ciudad más grande de Australia. Sídney está construida alrededor de un enorme [[harbor|puerto]] natural en la [[coast|costa]]. Cada día mi ferry lleva gente al trabajo por el agua.',
-          fa: 'به شهر بندر خوش آمدی! این شهر مثل سیدنی است، بزرگ‌ترین شهر آسترالیا. سیدنی دور یک [[harbor|بندر]] طبیعی بسیار بزرگ در [[coast|ساحل]] ساخته شده. هر روز کشتی من مردم را از روی آب به کار می‌برد.',
-          easy: { en: 'This city is like Sydney. It is on the [[coast|coast]], next to the sea.', es: 'Esta ciudad es como Sídney. Está en la [[coast|costa]], junto al mar.', fa: 'این شهر مثل سیدنی است. در [[coast|ساحل]]، کنار بحر است.' } },
+          fa: 'به شهر بندر خوش آمدی! این شهر مثل سیدنی است، بزرگ‌ترین شهر آسترالیا. سیدنی دور یک [[harbor|بندر]] طبیعی بسیار بزرگ در [[coast|ساحل]] ساخته شده. هر روز کشتی من مردم را از روی آب به کار می‌برد.' },
         { en: 'More than 8 out of 10 Australians live near the coast. Why? The coast gets more rain. The middle of the country, the [[outback|Outback]], is very dry. Farming is hard there, so very few people live there.',
           es: 'Más de 8 de cada 10 australianos viven cerca de la costa. ¿Por qué? La costa recibe más lluvia. El centro del país, el [[outback|Outback]], es muy seco. Es difícil cultivar allí, así que vive muy poca gente.',
-          fa: 'بیشتر از ۸ نفر از هر ۱۰ نفر آسترالیایی نزدیک ساحل زندگی می‌کنند. چرا؟ ساحل باران بیشتر دارد. میانهٔ کشور، یعنی [[outback|اوت‌بک]]، بسیار خشک است. دهقانی آنجا سخت است، پس مردم بسیار کم آنجا زندگی می‌کنند.',
-          easy: { en: 'Most Australians live near the coast. The coast has rain. The middle, the [[outback|Outback]], is very dry.', es: 'La mayoría de los australianos vive cerca de la costa. La costa tiene lluvia. El centro, el [[outback|Outback]], es muy seco.', fa: 'بیشتر آسترالیایی‌ها نزدیک ساحل زندگی می‌کنند. ساحل باران دارد. میانه، یعنی [[outback|اوت‌بک]]، بسیار خشک است.' } }
+          fa: 'بیشتر از ۸ نفر از هر ۱۰ نفر آسترالیایی نزدیک ساحل زندگی می‌کنند. چرا؟ ساحل باران بیشتر دارد. میانهٔ کشور، یعنی [[outback|اوت‌بک]]، بسیار خشک است. دهقانی آنجا سخت است، پس مردم بسیار کم آنجا زندگی می‌کنند.' }
       ],
       ask: {
         stat: 'loc',
@@ -94,16 +92,13 @@ window.EPISODE = {
       lines: [
         { en: 'G\'day! I am a ranger. I look after this land with my community. That giant red rock is like Uluru. Aboriginal Australians have lived here for tens of thousands of years. Uluru is a sacred place, so visitors may not climb it.',
           es: '¡Hola! Soy guardaparques. Cuido esta tierra con mi comunidad. Esa enorme roca roja es como Uluru. Los aborígenes australianos han vivido aquí por decenas de miles de años. Uluru es un lugar sagrado, por eso los visitantes no pueden escalarlo.',
-          fa: 'سلام! من محافظ پارک هستم. با مردم خود از این زمین مراقبت می‌کنم. آن سنگ سرخ بسیار بزرگ مثل اولورو است. مردم بومی آسترالیا ده‌ها هزار سال اینجا زندگی کرده‌اند. اولورو یک جای مقدس است، پس مهمانان اجازه ندارند از آن بالا شوند.',
-          easy: { en: 'I am a ranger. The big red rock is like Uluru. It is a sacred place for Aboriginal Australians.', es: 'Soy guardaparques. La gran roca roja es como Uluru. Es un lugar sagrado para los aborígenes australianos.', fa: 'من محافظ پارک هستم. سنگ سرخ بزرگ مثل اولورو است. برای مردم بومی آسترالیا جای مقدس است.' } },
+          fa: 'سلام! من محافظ پارک هستم. با مردم خود از این زمین مراقبت می‌کنم. آن سنگ سرخ بسیار بزرگ مثل اولورو است. مردم بومی آسترالیا ده‌ها هزار سال اینجا زندگی کرده‌اند. اولورو یک جای مقدس است، پس مهمانان اجازه ندارند از آن بالا شوند.' },
         { en: 'Australia is the driest continent where people live. Out here in the [[outback|Outback]], towns are small and [[remote|remote]]. A hospital can be hundreds of kilometers away. So doctors fly out to sick people in small planes.',
           es: 'Australia es el continente habitado más seco. Aquí en el [[outback|Outback]], los pueblos son pequeños y [[remote|remotos]]. Un hospital puede estar a cientos de kilómetros. Por eso los doctores vuelan a ver a los enfermos en avionetas.',
-          fa: 'آسترالیا خشک‌ترین قاره‌ای است که مردم در آن زندگی می‌کنند. اینجا در [[outback|اوت‌بک]]، قریه‌ها کوچک و [[remote|دورافتاده]] هستند. شفاخانه شاید صدها کیلومتر دور باشد. برای همین داکترها با طیاره‌های کوچک نزد مریضان پرواز می‌کنند.',
-          easy: { en: 'The Outback is very dry. Towns are far apart. Doctors fly to sick people in small planes.', es: 'El Outback es muy seco. Los pueblos están lejos unos de otros. Los doctores vuelan en avionetas para ver a los enfermos.', fa: 'اوت‌بک بسیار خشک است. قریه‌ها از هم دور هستند. داکترها با طیارهٔ کوچک نزد مریضان می‌روند.' } },
+          fa: 'آسترالیا خشک‌ترین قاره‌ای است که مردم در آن زندگی می‌کنند. اینجا در [[outback|اوت‌بک]]، قریه‌ها کوچک و [[remote|دورافتاده]] هستند. شفاخانه شاید صدها کیلومتر دور باشد. برای همین داکترها با طیاره‌های کوچک نزد مریضان پرواز می‌کنند.' },
         { en: 'This dry land is still rich. Big mines in Western Australia dig iron ore. Ships carry it to steel mills in East Asia, mostly in China. Iron ore is one of Australia\'s biggest [[export|exports]].',
           es: 'Esta tierra seca igual es rica. Grandes minas en Australia Occidental sacan mineral de hierro. Los barcos lo llevan a fábricas de acero en Asia Oriental, sobre todo en China. El mineral de hierro es una de las mayores [[export|exportaciones]] de Australia.',
-          fa: 'این زمین خشک باز هم ثروتمند است. معدن‌های بزرگ در غرب آسترالیا سنگ آهن بیرون می‌کشند. کشتی‌ها آن را به فابریکه‌های فولاد در آسیای شرقی، بیشتر در چین، می‌برند. سنگ آهن یکی از بزرگ‌ترین [[export|صادرات]] آسترالیا است.',
-          easy: { en: 'Mines dig iron ore. Ships take it to China to make steel.', es: 'Las minas sacan mineral de hierro. Los barcos lo llevan a China para hacer acero.', fa: 'معدن‌ها سنگ آهن بیرون می‌کشند. کشتی‌ها آن را برای ساختن فولاد به چین می‌برند.' } }
+          fa: 'این زمین خشک باز هم ثروتمند است. معدن‌های بزرگ در غرب آسترالیا سنگ آهن بیرون می‌کشند. کشتی‌ها آن را به فابریکه‌های فولاد در آسیای شرقی، بیشتر در چین، می‌برند. سنگ آهن یکی از بزرگ‌ترین [[export|صادرات]] آسترالیا است.' }
       ],
       ask: {
         stat: 'pla',
@@ -126,16 +121,13 @@ window.EPISODE = {
       lines: [
         { en: 'Talofa! My home is an [[atoll|atoll]], like the islands of Tuvalu. It is a ring of low coral land around a calm lagoon. The island you crossed is a [[high island|high island]]. A volcano made it, so it has hills and deep soil. Our soil is thin and sandy.',
           es: '¡Talofa! Mi hogar es un [[atoll|atolón]], como las islas de Tuvalu. Es un anillo de tierra baja de coral alrededor de una laguna tranquila. La isla que cruzaste es una [[high island|isla alta]]. La hizo un volcán, por eso tiene cerros y tierra profunda. Nuestra tierra es delgada y arenosa.',
-          fa: 'تالوفا! خانهٔ من یک [[atoll|اتول]] است، مثل جزیره‌های تووالو. یک حلقه از زمین پست مرجانی دور یک آب آرام است. جزیره‌ای که از آن گذشتی یک [[high island|جزیرهٔ بلند]] است. آتشفشان آن را ساخته، پس تپه و خاک عمیق دارد. خاک ما نازک و ریگی است.',
-          easy: { en: 'I live on an [[atoll|atoll]], a low ring of coral land. A [[high island|high island]] is made by a volcano and has hills.', es: 'Vivo en un [[atoll|atolón]], un anillo bajo de tierra de coral. Una [[high island|isla alta]] la hace un volcán y tiene cerros.', fa: 'من در یک [[atoll|اتول]] زندگی می‌کنم، یک حلقهٔ پست از زمین مرجانی. [[high island|جزیرهٔ بلند]] را آتشفشان ساخته و تپه دارد.' } },
+          fa: 'تالوفا! خانهٔ من یک [[atoll|اتول]] است، مثل جزیره‌های تووالو. یک حلقه از زمین پست مرجانی دور یک آب آرام است. جزیره‌ای که از آن گذشتی یک [[high island|جزیرهٔ بلند]] است. آتشفشان آن را ساخته، پس تپه و خاک عمیق دارد. خاک ما نازک و ریگی است.' },
         { en: 'I study the [[coral reef|coral reef]]. Tiny animals called coral build it. The reef is a home for fish, and it breaks big waves before they hit land. But when the sea gets too warm, coral turns white and can die.',
           es: 'Yo estudio el [[coral reef|arrecife de coral]]. Lo construyen animales muy pequeños llamados corales. El arrecife es el hogar de los peces y rompe las olas grandes antes de que lleguen a la tierra. Pero cuando el mar se calienta demasiado, el coral se pone blanco y puede morir.',
-          fa: 'من [[coral reef|صخرهٔ مرجانی]] را مطالعه می‌کنم. جانوران بسیار کوچکی به نام مرجان آن را می‌سازند. این صخره خانهٔ ماهی‌ها است و موج‌های بزرگ را پیش از رسیدن به خشکه می‌شکند. اما وقتی بحر بیش از حد گرم شود، مرجان سفید می‌شود و ممکن است بمیرد.',
-          easy: { en: 'Coral builds the reef. Fish live there. Warm water can make coral die.', es: 'El coral construye el arrecife. Allí viven peces. El agua caliente puede matar el coral.', fa: 'مرجان صخره را می‌سازد. ماهی‌ها آنجا زندگی می‌کنند. آب گرم ممکن است مرجان را بکشد.' } },
+          fa: 'من [[coral reef|صخرهٔ مرجانی]] را مطالعه می‌کنم. جانوران بسیار کوچکی به نام مرجان آن را می‌سازند. این صخره خانهٔ ماهی‌ها است و موج‌های بزرگ را پیش از رسیدن به خشکه می‌شکند. اما وقتی بحر بیش از حد گرم شود، مرجان سفید می‌شود و ممکن است بمیرد.' },
         { en: 'Rising seas are a real danger for atoll nations like Tuvalu and Kiribati. Our land is only a few meters above the waves. One strong storm can push salt water across the whole island. Our leaders ask bigger countries to help slow the rising seas.',
           es: 'El mar que sube es un peligro real para países de atolones como Tuvalu y Kiribati. Nuestra tierra está solo unos pocos metros sobre las olas. Una tormenta fuerte puede empujar agua salada por toda la isla. Nuestros líderes piden a los países más grandes que ayuden a frenar la subida del mar.',
-          fa: 'بالا آمدن آب بحر برای کشورهای اتولی مثل تووالو و کیریباتی خطر واقعی است. زمین ما فقط چند متر بالاتر از موج‌ها است. یک توفان قوی می‌تواند آب شور را روی تمام جزیره ببرد. رهبران ما از کشورهای بزرگ‌تر می‌خواهند که در کند کردن بالا آمدن بحر کمک کنند.',
-          easy: { en: 'Our island is very low. Rising seas and storms can cover it with salt water.', es: 'Nuestra isla es muy baja. El mar que sube y las tormentas pueden cubrirla con agua salada.', fa: 'جزیرهٔ ما بسیار پست است. بالا آمدن بحر و توفان‌ها می‌توانند آن را با آب شور بپوشانند.' } }
+          fa: 'بالا آمدن آب بحر برای کشورهای اتولی مثل تووالو و کیریباتی خطر واقعی است. زمین ما فقط چند متر بالاتر از موج‌ها است. یک توفان قوی می‌تواند آب شور را روی تمام جزیره ببرد. رهبران ما از کشورهای بزرگ‌تر می‌خواهند که در کند کردن بالا آمدن بحر کمک کنند.' }
       ],
       ask: {
         stat: 'hei',

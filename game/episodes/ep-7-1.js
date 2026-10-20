@@ -62,16 +62,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello, traveler! I measure the weather up here on the Tibetan [[plateau|Plateau]]. It is so high that people call it "the roof of the world." To the south stand the Himalaya, the highest mountains on Earth.',
           es: '¡Hola, viajero! Yo mido el clima aquí arriba, en la [[plateau|meseta]] del Tíbet. Es tan alta que la llaman "el techo del mundo". Al sur están los Himalaya, las montañas más altas de la Tierra.',
-          fa: 'سلام، مسافر! من اینجا بالای [[plateau|فلات]] تبت هوا را اندازه می‌گیرم. آن‌قدر بلند است که مردم آن را «بام دنیا» می‌گویند. در جنوب، کوه‌های همالیا قرار دارند، بلندترین کوه‌های زمین.',
-          easy: { en: 'This is the Tibetan [[plateau|Plateau]], very high land. The Himalaya are just to the south.', es: 'Esta es la [[plateau|meseta]] del Tíbet, una tierra muy alta. Los Himalaya están justo al sur.', fa: 'این [[plateau|فلات]] تبت است، زمین بسیار بلند. همالیا درست در جنوب آن است.' } },
+          fa: 'سلام، مسافر! من اینجا بالای [[plateau|فلات]] تبت هوا را اندازه می‌گیرم. آن‌قدر بلند است که مردم آن را «بام دنیا» می‌گویند. در جنوب، کوه‌های همالیا قرار دارند، بلندترین کوه‌های زمین.' },
         { en: 'Two great rivers begin in these high mountains: the Yellow River and the Yangtze. Both flow thousands of miles east to the sea. North of here is the Gobi Desert, dry and rocky.',
           es: 'Dos grandes ríos nacen en estas montañas altas: el río Amarillo y el Yangtsé. Los dos corren miles de millas hacia el este hasta el mar. Al norte está el desierto de Gobi, seco y rocoso.',
-          fa: 'دو دریای بزرگ از این کوه‌های بلند شروع می‌شوند: دریای زرد و دریای یانگتسی. هر دو هزاران میل به طرف شرق تا بحر می‌روند. در شمال اینجا دشت گوبی است، خشک و سنگلاخ.',
-          easy: { en: 'The Yellow River and the Yangtze start here and flow east. The Gobi Desert is to the north.', es: 'El río Amarillo y el Yangtsé nacen aquí y corren al este. El desierto de Gobi está al norte.', fa: 'دریای زرد و یانگتسی از اینجا شروع می‌شوند و به شرق می‌روند. دشت گوبی در شمال است.' } },
+          fa: 'دو دریای بزرگ از این کوه‌های بلند شروع می‌شوند: دریای زرد و دریای یانگتسی. هر دو هزاران میل به طرف شرق تا بحر می‌روند. در شمال اینجا دشت گوبی است، خشک و سنگلاخ.' },
         { en: 'Cold mountains and dry desert are hard places to live. So very few people live in the west of China. Most people live in the east, near the rivers and the coast. We say the east has a high [[population density|population density]].',
           es: 'Las montañas frías y el desierto seco son lugares difíciles para vivir. Por eso muy poca gente vive en el oeste de China. La mayoría vive en el este, cerca de los ríos y la costa. Decimos que el este tiene una alta [[population density|densidad de población]].',
-          fa: 'کوه‌های سرد و دشت خشک جای سخت برای زندگی هستند. پس مردم بسیار کم در غرب چین زندگی می‌کنند. بیشتر مردم در شرق، نزدیک دریاها و ساحل زندگی می‌کنند. می‌گوییم شرق [[population density|تراکم نفوس]] بلند دارد.',
-          easy: { en: 'Few people live in the cold, dry west. Most live in the east. The east has a high [[population density|population density]].', es: 'Poca gente vive en el oeste frío y seco. La mayoría vive en el este. El este tiene una alta [[population density|densidad de población]].', fa: 'مردم کم در غرب سرد و خشک زندگی می‌کنند. بیشتر در شرق زندگی می‌کنند. شرق [[population density|تراکم نفوس]] بلند دارد.' } }
+          fa: 'کوه‌های سرد و دشت خشک جای سخت برای زندگی هستند. پس مردم بسیار کم در غرب چین زندگی می‌کنند. بیشتر مردم در شرق، نزدیک دریاها و ساحل زندگی می‌کنند. می‌گوییم شرق [[population density|تراکم نفوس]] بلند دارد.' }
       ],
       ask: {
         stat: 'loc',
@@ -94,16 +91,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to my rice paddies! This wide, flat land is a [[plain|plain]]. Flat land is easy to farm and easy to build on. Rice needs flat fields that can hold water. People here have grown rice for thousands of years.',
           es: '¡Bienvenido a mis arrozales! Esta tierra ancha y plana es una [[plain|llanura]]. La tierra plana es fácil de cultivar y de construir. El arroz necesita campos planos que guarden agua. Aquí se cultiva arroz desde hace miles de años.',
-          fa: 'به شالیزارهای من خوش آمدی! این زمین پهن و هموار یک [[plain|دشت هموار]] است. زمین هموار برای زراعت و ساختمان آسان است. برنج به کشتزار هموار ضرورت دارد که آب را نگه دارد. مردم اینجا هزاران سال است برنج می‌کارند.',
-          easy: { en: 'This flat land is a [[plain|plain]]. Rice grows well in flat fields full of water.', es: 'Esta tierra plana es una [[plain|llanura]]. El arroz crece bien en campos planos llenos de agua.', fa: 'این زمین هموار یک [[plain|دشت هموار]] است. برنج در کشتزارهای هموار پر از آب خوب می‌روید.' } },
+          fa: 'به شالیزارهای من خوش آمدی! این زمین پهن و هموار یک [[plain|دشت هموار]] است. زمین هموار برای زراعت و ساختمان آسان است. برنج به کشتزار هموار ضرورت دارد که آب را نگه دارد. مردم اینجا هزاران سال است برنج می‌کارند.' },
         { en: 'The Yangtze, right here, is the longest river in Asia. Up north, the Yellow River carries so much [[silt|silt]] that the water looks yellow-brown. Silt makes rich soil. But floods could wash away whole villages. Long ago, farmers called it "China\'s Sorrow."',
           es: 'El Yangtsé, aquí mismo, es el río más largo de Asia. Al norte, el río Amarillo lleva tanto [[silt|limo]] que el agua se ve café amarillenta. El limo hace tierra fértil. Pero sus inundaciones podían llevarse pueblos enteros. Hace mucho, los agricultores lo llamaban "la Tristeza de China".',
-          fa: 'یانگتسی، همین‌جا، درازترین دریای آسیا است. در شمال، دریای زرد آن‌قدر [[silt|لای]] با خود دارد که آبش زرد و نصواری معلوم می‌شود. لای خاک را حاصلخیز می‌کند. اما سیلابش می‌توانست قریه‌های کامل را ببرد. در گذشته دهقانان آن را «غم چین» می‌گفتند.',
-          easy: { en: 'The Yangtze is Asia\'s longest river. The Yellow River\'s [[silt|silt]] makes rich soil, but its floods were terrible.', es: 'El Yangtsé es el río más largo de Asia. El [[silt|limo]] del río Amarillo hace tierra fértil, pero sus inundaciones eran terribles.', fa: 'یانگتسی درازترین دریای آسیا است. [[silt|لای]] دریای زرد خاک را حاصلخیز می‌کند، اما سیلابش وحشتناک بود.' } },
+          fa: 'یانگتسی، همین‌جا، درازترین دریای آسیا است. در شمال، دریای زرد آن‌قدر [[silt|لای]] با خود دارد که آبش زرد و نصواری معلوم می‌شود. لای خاک را حاصلخیز می‌کند. اما سیلابش می‌توانست قریه‌های کامل را ببرد. در گذشته دهقانان آن را «غم چین» می‌گفتند.' },
         { en: 'Where the Yangtze meets the sea, a giant city grew: Shanghai. It is a [[megacity|megacity]], with more than 20 million people. Flat land, a big river and the sea pull people together.',
           es: 'Donde el Yangtsé llega al mar creció una ciudad gigante: Shanghái. Es una [[megacity|megaciudad]], con más de 20 millones de personas. La tierra plana, un río grande y el mar juntan a la gente.',
-          fa: 'جایی که یانگتسی به بحر می‌رسد، یک شهر بسیار بزرگ رشد کرد: شانگهای. این یک [[megacity|ابرشهر]] است، با بیشتر از ۲۰ میلیون نفر. زمین هموار، یک دریای بزرگ و بحر، مردم را یکجا جمع می‌کنند.',
-          easy: { en: 'Shanghai grew where the river meets the sea. It is a [[megacity|megacity]].', es: 'Shanghái creció donde el río llega al mar. Es una [[megacity|megaciudad]].', fa: 'شانگهای جایی رشد کرد که دریا به بحر می‌رسد. یک [[megacity|ابرشهر]] است.' } }
+          fa: 'جایی که یانگتسی به بحر می‌رسد، یک شهر بسیار بزرگ رشد کرد: شانگهای. این یک [[megacity|ابرشهر]] است، با بیشتر از ۲۰ میلیون نفر. زمین هموار، یک دریای بزرگ و بحر، مردم را یکجا جمع می‌کنند.' }
       ],
       ask: {
         stat: 'hei',
@@ -126,16 +120,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to Japan! Japan is an [[archipelago|archipelago]], a chain of islands. It has four main islands and thousands of small ones. About three-quarters of the land is mountains.',
           es: '¡Bienvenido a Japón! Japón es un [[archipelago|archipiélago]], una cadena de islas. Tiene cuatro islas principales y miles de islas pequeñas. Cerca de tres cuartas partes de la tierra son montañas.',
-          fa: 'به جاپان خوش آمدی! جاپان یک [[archipelago|مجمع‌الجزایر]] است، یک زنجیره از جزیره‌ها. چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک دارد. تقریباً سه حصه از چهار حصهٔ زمینش کوه است.',
-          easy: { en: 'Japan is a chain of islands, an [[archipelago|archipelago]]. Most of it is mountains.', es: 'Japón es una cadena de islas, un [[archipelago|archipiélago]]. Casi todo es montaña.', fa: 'جاپان زنجیره‌ای از جزیره‌ها، یک [[archipelago|مجمع‌الجزایر]] است. بیشترش کوه است.' } },
+          fa: 'به جاپان خوش آمدی! جاپان یک [[archipelago|مجمع‌الجزایر]] است، یک زنجیره از جزیره‌ها. چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک دارد. تقریباً سه حصه از چهار حصهٔ زمینش کوه است.' },
         { en: 'So people crowd onto narrow strips of flat land by the coast. Greater Tokyo has about 37 million people! With so little flat land, buildings go up instead of out. Farmers cut [[terrace|terraces]], flat steps, into hillsides to grow rice.',
           es: 'Por eso la gente se amontona en franjas angostas de tierra plana junto a la costa. ¡El Gran Tokio tiene unos 37 millones de personas! Con tan poca tierra plana, los edificios crecen hacia arriba y no hacia los lados. Los agricultores cortan [[terrace|terrazas]], escalones planos, en las laderas para sembrar arroz.',
-          fa: 'پس مردم روی نوارهای باریک زمین هموار کنار ساحل جمع می‌شوند. توکیوی بزرگ حدود ۳۷ میلیون نفر دارد! با زمین هموار این‌قدر کم، تعمیرها به جای پهن شدن بلند ساخته می‌شوند. دهقانان در دامنهٔ کوه [[terrace|زمین‌های زینه‌ای]] می‌کنند تا برنج بکارند.',
-          easy: { en: 'People crowd onto the flat coast. Buildings go up. Farmers grow rice on [[terrace|terraces]].', es: 'La gente se amontona en la costa plana. Los edificios crecen hacia arriba. Se siembra arroz en [[terrace|terrazas]].', fa: 'مردم در ساحل هموار جمع می‌شوند. تعمیرها بلند می‌شوند. دهقانان برنج را روی [[terrace|زمین‌های زینه‌ای]] می‌کارند.' } },
+          fa: 'پس مردم روی نوارهای باریک زمین هموار کنار ساحل جمع می‌شوند. توکیوی بزرگ حدود ۳۷ میلیون نفر دارد! با زمین هموار این‌قدر کم، تعمیرها به جای پهن شدن بلند ساخته می‌شوند. دهقانان در دامنهٔ کوه [[terrace|زمین‌های زینه‌ای]] می‌کنند تا برنج بکارند.' },
         { en: 'Japan sits on the [[ring of fire|Ring of Fire]]. It has many earthquakes and volcanoes, like snowy Mount Fuji. I design tall buildings that sway in an earthquake instead of snapping. A big earthquake under the sea can cause a [[tsunami|tsunami]].',
           es: 'Japón está en el [[ring of fire|Cinturón de Fuego]]. Tiene muchos terremotos y volcanes, como el monte Fuji con su nieve. Yo diseño edificios altos que se mecen en un terremoto en vez de romperse. Un gran terremoto bajo el mar puede causar un [[tsunami|tsunami]].',
-          fa: 'جاپان روی [[ring of fire|حلقهٔ آتش]] قرار دارد. زلزله و آتشفشان زیاد دارد، مثل کوه برفی فوجی. من تعمیرهای بلند را طوری طرح می‌کنم که در زلزله تاب بخورند، نه اینکه بشکنند. یک زلزلهٔ بزرگ زیر بحر می‌تواند [[tsunami|سونامی]] بسازد.',
-          easy: { en: 'Japan has many earthquakes and volcanoes. Its tall buildings sway so they do not break.', es: 'Japón tiene muchos terremotos y volcanes. Sus edificios altos se mecen para no romperse.', fa: 'جاپان زلزله و آتشفشان زیاد دارد. تعمیرهای بلندش تاب می‌خورند تا نشکنند.' } }
+          fa: 'جاپان روی [[ring of fire|حلقهٔ آتش]] قرار دارد. زلزله و آتشفشان زیاد دارد، مثل کوه برفی فوجی. من تعمیرهای بلند را طوری طرح می‌کنم که در زلزله تاب بخورند، نه اینکه بشکنند. یک زلزلهٔ بزرگ زیر بحر می‌تواند [[tsunami|سونامی]] بسازد.' }
       ],
       ask: {
         stat: 'pla',

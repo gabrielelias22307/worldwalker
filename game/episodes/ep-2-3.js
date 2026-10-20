@@ -58,16 +58,13 @@ window.EPISODE = {
       lines: [
         { en: 'When I was young, this field grew tall corn. Now the rain comes late, or it does not come at all. A long [[drought|drought]] has dried our soil.',
           es: 'Cuando yo era joven, este campo daba maíz alto. Ahora la lluvia llega tarde, o no llega. Una larga [[drought|sequía]] secó nuestra tierra.',
-          fa: 'وقتی جوان بودم، این زمین جواری بلند می‌داد. حالا باران دیر می‌آید یا هیچ نمی‌آید. یک [[drought|خشک‌سالی]] طولانی خاک ما را خشک کرده است.',
-          easy: { en: 'This field used to grow a lot of corn. Now there is a [[drought|drought]]. The soil is dry.', es: 'Este campo daba mucho maíz. Ahora hay [[drought|sequía]]. La tierra está seca.', fa: 'این زمین قبلاً جواری زیاد می‌داد. حالا [[drought|خشک‌سالی]] است. خاک خشک است.' } },
+          fa: 'وقتی جوان بودم، این زمین جواری بلند می‌داد. حالا باران دیر می‌آید یا هیچ نمی‌آید. یک [[drought|خشک‌سالی]] طولانی خاک ما را خشک کرده است.' },
         { en: 'A reason that makes a place hard to stay in is a [[push factor|push factor]]. No rain, no jobs, a flood or danger can all push people away from home.',
           es: 'Una razón que hace difícil quedarse en un lugar es un [[push factor|factor de expulsión]]. La falta de lluvia, la falta de trabajo, una inundación o el peligro pueden empujar a la gente lejos de su hogar.',
-          fa: 'دلیلی که ماندن در یک جا را سخت می‌کند [[push factor|عامل رانش]] نام دارد. نبودن باران، نبودن کار، سیلاب یا خطر می‌توانند مردم را از خانه دور کنند.',
-          easy: { en: 'A [[push factor|push factor]] makes it hard to stay. A drought is a push factor.', es: 'Un [[push factor|factor de expulsión]] hace difícil quedarse. Una sequía es un factor de expulsión.', fa: '[[push factor|عامل رانش]] ماندن را سخت می‌کند. خشک‌سالی یک عامل رانش است.' } },
+          fa: 'دلیلی که ماندن در یک جا را سخت می‌کند [[push factor|عامل رانش]] نام دارد. نبودن باران، نبودن کار، سیلاب یا خطر می‌توانند مردم را از خانه دور کنند.' },
         { en: 'Many young people from our town left to work in the city. Now fewer hands work the farms, and our school has fewer children. [[migration|Migration]] changes the town people leave, too.',
           es: 'Muchos jóvenes de nuestro pueblo se fueron a trabajar a la ciudad. Ahora hay menos manos en el campo y la escuela tiene menos niños. La [[migration|migración]] también cambia el pueblo que la gente deja.',
-          fa: 'بسیاری از جوانان قریهٔ ما برای کار به شهر رفتند. حالا دست‌های کمتری در زمین کار می‌کنند و مکتب ما شاگردان کمتری دارد. [[migration|مهاجرت]] قریه‌ای را که مردم ترک می‌کنند هم تغییر می‌دهد.',
-          easy: { en: 'Young people left for city jobs. Now the farms and the school are emptier.', es: 'Los jóvenes se fueron a trabajar a la ciudad. Ahora el campo y la escuela están más vacíos.', fa: 'جوانان برای کار به شهر رفتند. حالا زمین‌ها و مکتب خالی‌تر هستند.' } }
+          fa: 'بسیاری از جوانان قریهٔ ما برای کار به شهر رفتند. حالا دست‌های کمتری در زمین کار می‌کنند و مکتب ما شاگردان کمتری دارد. [[migration|مهاجرت]] قریه‌ای را که مردم ترک می‌کنند هم تغییر می‌دهد.' }
       ],
       ask: {
         stat: 'hei',
@@ -90,16 +87,13 @@ window.EPISODE = {
       lines: [
         { en: 'Every morning my bus carries people from the farm towns to the city. Some visit. Some stay to live. [[migration|Migration]] means moving from one place to another to live.',
           es: 'Cada mañana mi bus lleva gente de los pueblos del campo a la ciudad. Algunos visitan. Otros se quedan a vivir. La [[migration|migración]] es mudarse de un lugar a otro para vivir.',
-          fa: 'هر صبح بس من مردم را از قریه‌های دهقانی به شهر می‌برد. بعضی به دیدن می‌آیند. بعضی برای زندگی می‌مانند. [[migration|مهاجرت]] یعنی رفتن از یک جا به جای دیگر برای زندگی.',
-          easy: { en: 'My bus goes from the farm towns to the city. [[migration|Migration]] means moving to live in a new place.', es: 'Mi bus va del campo a la ciudad. La [[migration|migración]] es mudarse a vivir a un lugar nuevo.', fa: 'بس من از قریه‌ها به شهر می‌رود. [[migration|مهاجرت]] یعنی رفتن برای زندگی در یک جای نو.' } },
+          fa: 'هر صبح بس من مردم را از قریه‌های دهقانی به شهر می‌برد. بعضی به دیدن می‌آیند. بعضی برای زندگی می‌مانند. [[migration|مهاجرت]] یعنی رفتن از یک جا به جای دیگر برای زندگی.' },
         { en: 'A reason that makes a new place look better is a [[pull factor|pull factor]]. Jobs, safe streets, good schools and family who already live there can all pull people in.',
           es: 'Una razón que hace que un lugar nuevo se vea mejor es un [[pull factor|factor de atracción]]. El trabajo, las calles seguras, las buenas escuelas y la familia que ya vive allí pueden atraer a la gente.',
-          fa: 'دلیلی که یک جای نو را بهتر نشان می‌دهد [[pull factor|عامل کشش]] نام دارد. کار، سرک‌های امن، مکتب‌های خوب و خانواده‌ای که آنجا زندگی می‌کند، همه مردم را به طرف خود می‌کشند.',
-          easy: { en: 'A [[pull factor|pull factor]] makes a new place look better. Jobs and family are pull factors.', es: 'Un [[pull factor|factor de atracción]] hace que un lugar nuevo se vea mejor. El trabajo y la familia son factores de atracción.', fa: '[[pull factor|عامل کشش]] جای نو را بهتر نشان می‌دهد. کار و خانواده عامل کشش هستند.' } },
+          fa: 'دلیلی که یک جای نو را بهتر نشان می‌دهد [[pull factor|عامل کشش]] نام دارد. کار، سرک‌های امن، مکتب‌های خوب و خانواده‌ای که آنجا زندگی می‌کند، همه مردم را به طرف خود می‌کشند.' },
         { en: 'Most moves mix push and pull. One family may leave dry fields, follow a job and join a cousin, all at once. People often go where relatives and neighbors already went. These links are a [[network|network]].',
           es: 'Casi todas las mudanzas mezclan expulsión y atracción. Una familia puede dejar campos secos, seguir un trabajo y unirse a un primo, todo a la vez. La gente suele ir a donde ya fueron sus parientes y vecinos. Esos lazos son una [[network|red]].',
-          fa: 'بیشتر سفرها رانش و کشش را با هم دارند. یک خانواده شاید زمین خشک را ترک کند، دنبال کار برود و با یک خویشاوند یکجا شود، همه با هم. مردم اکثراً جایی می‌روند که خویشاوندان و همسایه‌ها قبلاً رفته‌اند. این پیوندها یک [[network|شبکه]] است.',
-          easy: { en: 'Most moves have a push and a pull. People often go where their family already lives. That is a [[network|network]].', es: 'Casi todas las mudanzas tienen expulsión y atracción. La gente suele ir a donde ya vive su familia. Eso es una [[network|red]].', fa: 'بیشتر سفرها رانش و کشش دارند. مردم اکثراً جایی می‌روند که خانواده‌شان زندگی می‌کند. این یک [[network|شبکه]] است.' } }
+          fa: 'بیشتر سفرها رانش و کشش را با هم دارند. یک خانواده شاید زمین خشک را ترک کند، دنبال کار برود و با یک خویشاوند یکجا شود، همه با هم. مردم اکثراً جایی می‌روند که خویشاوندان و همسایه‌ها قبلاً رفته‌اند. این پیوندها یک [[network|شبکه]] است.' }
       ],
       ask: {
         stat: 'mov',
@@ -122,16 +116,13 @@ window.EPISODE = {
       lines: [
         { en: 'I came to this city for work. Now I cook at my own food stand. New workers bring new foods, music and languages. They open shops. The city grows, and the buses get more crowded too.',
           es: 'Vine a esta ciudad a trabajar. Ahora cocino en mi propio puesto de comida. Los nuevos trabajadores traen comidas, música e idiomas nuevos. Abren tiendas. La ciudad crece, y los buses también se llenan más.',
-          fa: 'من برای کار به این شهر آمدم. حالا در دکان غذای خودم آشپزی می‌کنم. کارگران نو غذا، موسیقی و زبان‌های نو می‌آورند. دکان باز می‌کنند. شهر بزرگ می‌شود و بس‌ها هم پرتر می‌شوند.',
-          easy: { en: 'Newcomers bring new foods and open shops. The city grows. It also gets more crowded.', es: 'Los recién llegados traen comidas nuevas y abren tiendas. La ciudad crece. También se llena más.', fa: 'تازه‌واردان غذاهای نو می‌آورند و دکان باز می‌کنند. شهر بزرگ می‌شود. پرتر هم می‌شود.' } },
+          fa: 'من برای کار به این شهر آمدم. حالا در دکان غذای خودم آشپزی می‌کنم. کارگران نو غذا، موسیقی و زبان‌های نو می‌آورند. دکان باز می‌کنند. شهر بزرگ می‌شود و بس‌ها هم پرتر می‌شوند.' },
         { en: 'Every month I send part of my pay to my mother back home. Money that migrants send to family at home is a [[remittance|remittance]]. It pays first for food, rent, school fees and medicine.',
           es: 'Cada mes le mando una parte de mi sueldo a mi mamá. El dinero que los migrantes envían a su familia es una [[remittance|remesa]]. Primero paga comida, renta, la escuela y medicinas.',
-          fa: 'هر ماه بخشی از معاشم را برای مادرم در وطن می‌فرستم. پولی که مهاجران برای خانواده می‌فرستند [[remittance|حواله]] نام دارد. اول خرج نان، کرایهٔ خانه، فیس مکتب و دوا می‌شود.',
-          easy: { en: 'I send money to my mother each month. That money is a [[remittance|remittance]]. It pays for food and school.', es: 'Le mando dinero a mi mamá cada mes. Ese dinero es una [[remittance|remesa]]. Paga comida y escuela.', fa: 'هر ماه برای مادرم پول می‌فرستم. آن پول [[remittance|حواله]] است. خرج نان و مکتب می‌شود.' } },
+          fa: 'هر ماه بخشی از معاشم را برای مادرم در وطن می‌فرستم. پولی که مهاجران برای خانواده می‌فرستند [[remittance|حواله]] نام دارد. اول خرج نان، کرایهٔ خانه، فیس مکتب و دوا می‌شود.' },
         { en: 'This money is earned by work and then shared. It is not charity. One payment is small, but they add up. In 2024, workers sent about 685 billion dollars to low- and middle-income countries.',
           es: 'Este dinero se gana trabajando y luego se comparte. No es caridad. Un envío es pequeño, pero se suman. En 2024, los trabajadores enviaron unos 685 mil millones de dólares a países de ingresos bajos y medios.',
-          fa: 'این پول با کار به دست می‌آید و بعد شریک می‌شود. خیرات نیست. یک حواله کوچک است، اما همه با هم زیاد می‌شوند. در سال ۲۰۲۴، کارگران حدود ۶۸۵ میلیارد دالر به کشورهای کم‌درآمد و میانه‌درآمد فرستادند.',
-          easy: { en: 'This money is earned by work. Small payments add up to billions of dollars each year.', es: 'Este dinero se gana trabajando. Los envíos pequeños suman miles de millones de dólares cada año.', fa: 'این پول با کار به دست می‌آید. حواله‌های کوچک هر سال به میلیاردها دالر می‌رسند.' } }
+          fa: 'این پول با کار به دست می‌آید و بعد شریک می‌شود. خیرات نیست. یک حواله کوچک است، اما همه با هم زیاد می‌شوند. در سال ۲۰۲۴، کارگران حدود ۶۸۵ میلیارد دالر به کشورهای کم‌درآمد و میانه‌درآمد فرستادند.' }
       ],
       ask: {
         stat: 'pla',

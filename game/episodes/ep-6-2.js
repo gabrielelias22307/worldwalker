@@ -64,16 +64,13 @@ window.EPISODE = {
       lines: [
         { en: 'Xin chào! I sell fruit from my boat on the Mekong River. The Mekong is the longest river in Mainland Southeast Asia. It starts in the mountains of China and reaches the sea in Vietnam.',
           es: '¡Xin chào! Vendo fruta desde mi bote en el río Mekong. El Mekong es el río más largo del sudeste asiático continental. Nace en las montañas de China y llega al mar en Vietnam.',
-          fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم. میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از کوه‌های چین شروع می‌شود و در ویتنام به بحر می‌رسد.',
-          easy: { en: 'The Mekong is the longest river in Mainland Southeast Asia. It flows from China to Vietnam.', es: 'El Mekong es el río más largo del sudeste asiático continental. Va de China a Vietnam.', fa: 'میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از چین تا ویتنام می‌رود.' } },
+          fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم. میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از کوه‌های چین شروع می‌شود و در ویتنام به بحر می‌رسد.' },
         { en: 'Southeast Asia has two parts. [[mainland southeast asia|Mainland Southeast Asia]] is joined to the rest of Asia. It has five countries: Myanmar, Thailand, Laos, Cambodia and Vietnam.',
           es: 'El sudeste asiático tiene dos partes. El [[mainland southeast asia|sudeste asiático continental]] está unido al resto de Asia. Tiene cinco países: Myanmar, Tailandia, Laos, Camboya y Vietnam.',
-          fa: 'جنوب شرق آسیا دو بخش دارد. [[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به باقی آسیا وصل است. پنج کشور دارد: میانمار، تایلند، لائوس، کمبودیا و ویتنام.',
-          easy: { en: 'The mainland part has five countries: Myanmar, Thailand, Laos, Cambodia and Vietnam.', es: 'La parte continental tiene cinco países: Myanmar, Tailandia, Laos, Camboya y Vietnam.', fa: 'بخش خشکه پنج کشور دارد: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' } },
+          fa: 'جنوب شرق آسیا دو بخش دارد. [[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به باقی آسیا وصل است. پنج کشور دارد: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' },
         { en: 'The other part is out in the sea: [[maritime southeast asia|Island (Maritime) Southeast Asia]]. Walk east on the wooden walkway, or south over the long bridge. You will see how much water lies between the islands!',
           es: 'La otra parte está en el mar: el [[maritime southeast asia|sudeste asiático insular (marítimo)]]. Camina al este por la pasarela de madera o al sur por el puente largo. ¡Verás cuánta agua hay entre las islas!',
-          fa: 'بخش دیگر در بحر است: [[maritime southeast asia|جنوب شرق آسیای جزیره‌ای (بحری)]]. از راه چوبی به طرف شرق یا از پل دراز به طرف جنوب برو. می‌بینی میان جزیره‌ها چقدر آب است!',
-          easy: { en: 'The other part is islands in the sea. Cross the bridge to see them.', es: 'La otra parte son islas en el mar. Cruza el puente para verlas.', fa: 'بخش دیگر جزیره‌هایی در بحر است. از پل بگذر تا آن‌ها را ببینی.' } }
+          fa: 'بخش دیگر در بحر است: [[maritime southeast asia|جنوب شرق آسیای جزیره‌ای (بحری)]]. از راه چوبی به طرف شرق یا از پل دراز به طرف جنوب برو. می‌بینی میان جزیره‌ها چقدر آب است!' }
       ],
       ask: {
         stat: 'loc',
@@ -96,16 +93,13 @@ window.EPISODE = {
       lines: [
         { en: 'Selamat datang! Welcome to Java, one island of Indonesia. Indonesia has more than seventeen thousand islands! A big group of islands like this is an [[archipelago|archipelago]].',
           es: '¡Selamat datang! Bienvenido a Java, una isla de Indonesia. ¡Indonesia tiene más de diecisiete mil islas! Un grupo grande de islas como este es un [[archipelago|archipiélago]].',
-          fa: 'سلامت داتانگ! به جاوه، یکی از جزیره‌های اندونیزیا، خوش آمدی. اندونیزیا بیش از هفده هزار جزیره دارد! گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.',
-          easy: { en: 'Indonesia has more than 17,000 islands. A big group of islands is an [[archipelago|archipelago]].', es: 'Indonesia tiene más de 17,000 islas. Un grupo grande de islas es un [[archipelago|archipiélago]].', fa: 'اندونیزیا بیش از ۱۷۰۰۰ جزیره دارد. گروه بزرگ جزیره‌ها [[archipelago|مجمع‌الجزایر]] است.' } },
+          fa: 'سلامت داتانگ! به جاوه، یکی از جزیره‌های اندونیزیا، خوش آمدی. اندونیزیا بیش از هفده هزار جزیره دارد! گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.' },
         { en: 'See the volcano above my farm? Its ash fell on this land long ago. Over many years, ash breaks down into [[fertile|fertile]] soil. It is full of the minerals plants need.',
           es: '¿Ves el volcán arriba de mi granja? Su ceniza cayó sobre esta tierra hace mucho. Con muchos años, la ceniza se convierte en suelo [[fertile|fértil]]. Está lleno de los minerales que necesitan las plantas.',
-          fa: 'آتشفشان بالای کشتزار مرا می‌بینی؟ خاکسترش مدت‌ها پیش روی این زمین ریخت. در طول سال‌ها، خاکستر به خاک [[fertile|حاصلخیز]] تبدیل می‌شود. پر از موادی است که گیاه لازم دارد.',
-          easy: { en: 'Volcano ash turns into [[fertile|fertile]] soil. Crops grow well in it.', es: 'La ceniza del volcán se vuelve suelo [[fertile|fértil]]. Los cultivos crecen bien en él.', fa: 'خاکستر آتشفشان به خاک [[fertile|حاصلخیز]] تبدیل می‌شود. کشت در آن خوب می‌روید.' } },
+          fa: 'آتشفشان بالای کشتزار مرا می‌بینی؟ خاکسترش مدت‌ها پیش روی این زمین ریخت. در طول سال‌ها، خاکستر به خاک [[fertile|حاصلخیز]] تبدیل می‌شود. پر از موادی است که گیاه لازم دارد.' },
         { en: 'We cut [[terrace|terraces]] into the steep slopes, like giant steps. Each step holds water, so rice can grow on the mountain. This rich soil helps feed one of the most crowded places on Earth.',
           es: 'Cortamos [[terrace|terrazas]] en las laderas empinadas, como escalones gigantes. Cada escalón guarda agua, así que el arroz puede crecer en la montaña. Este suelo rico ayuda a alimentar a uno de los lugares más poblados del planeta.',
-          fa: 'ما در دامنه‌های سرازیر [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ. هر زینه آب را نگه می‌دارد، پس برنج روی کوه می‌روید. این خاک پربار کمک می‌کند یکی از پرجمعیت‌ترین جاهای زمین نان بخورد.',
-          easy: { en: '[[terrace|Terraces]] are flat steps on a hill. They hold water for rice.', es: 'Las [[terrace|terrazas]] son escalones planos en un cerro. Guardan agua para el arroz.', fa: '[[terrace|زمین‌های زینه‌ای]] زینه‌های هموار روی تپه هستند. برای برنج آب نگه می‌دارند.' } }
+          fa: 'ما در دامنه‌های سرازیر [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ. هر زینه آب را نگه می‌دارد، پس برنج روی کوه می‌روید. این خاک پربار کمک می‌کند یکی از پرجمعیت‌ترین جاهای زمین نان بخورد.' }
       ],
       ask: {
         stat: 'hei',
@@ -128,16 +122,13 @@ window.EPISODE = {
       lines: [
         { en: 'Mabuhay! I watch this volcano for a living. The Philippines has more than seven thousand islands. We sit on the [[ring of fire|Ring of Fire]], a band around the edge of the Pacific Ocean.',
           es: '¡Mabuhay! Mi trabajo es vigilar este volcán. Filipinas tiene más de siete mil islas. Estamos en el [[ring of fire|Cinturón de Fuego]], una franja alrededor del borde del océano Pacífico.',
-          fa: 'مابوهای! کار من نگهبانی همین آتشفشان است. فیلیپین بیش از هفت هزار جزیره دارد. ما روی [[ring of fire|حلقهٔ آتش]] هستیم، کمربندی دور کنارهٔ اقیانوس آرام.',
-          easy: { en: 'The Philippines has more than 7,000 islands. It is on the [[ring of fire|Ring of Fire]] around the Pacific Ocean.', es: 'Filipinas tiene más de 7,000 islas. Está en el [[ring of fire|Cinturón de Fuego]] alrededor del Pacífico.', fa: 'فیلیپین بیش از ۷۰۰۰ جزیره دارد. روی [[ring of fire|حلقهٔ آتش]] دور اقیانوس آرام است.' } },
+          fa: 'مابوهای! کار من نگهبانی همین آتشفشان است. فیلیپین بیش از هفت هزار جزیره دارد. ما روی [[ring of fire|حلقهٔ آتش]] هستیم، کمربندی دور کنارهٔ اقیانوس آرام.' },
         { en: 'The Earth\'s outer shell is broken into huge [[plate|plates]], like a cracked eggshell. Along the Ring of Fire, plates meet and grind. That shakes the ground with earthquakes and lets melted rock rise up into volcanoes.',
           es: 'La capa exterior de la Tierra está rota en enormes [[plate|placas]], como una cáscara de huevo rajada. En el Cinturón de Fuego, las placas se encuentran y se rozan. Eso sacude el suelo con terremotos y deja subir roca derretida a los volcanes.',
-          fa: 'پوستهٔ بیرونی زمین به [[plate|صفحه‌های]] بزرگ شکسته است، مثل پوست تخم‌مرغ کفیده. در حلقهٔ آتش، صفحه‌ها به هم می‌رسند و به هم ساییده می‌شوند. این کار زمین را با زلزله تکان می‌دهد و سنگ ذوب‌شده را به آتشفشان‌ها بالا می‌آورد.',
-          easy: { en: 'Big [[plate|plates]] of the Earth grind together here. That makes earthquakes and volcanoes.', es: 'Grandes [[plate|placas]] de la Tierra se rozan aquí. Eso causa terremotos y volcanes.', fa: '[[plate|صفحه‌های]] بزرگ زمین این‌جا به هم ساییده می‌شوند. این زلزله و آتشفشان می‌سازد.' } },
+          fa: 'پوستهٔ بیرونی زمین به [[plate|صفحه‌های]] بزرگ شکسته است، مثل پوست تخم‌مرغ کفیده. در حلقهٔ آتش، صفحه‌ها به هم می‌رسند و به هم ساییده می‌شوند. این کار زمین را با زلزله تکان می‌دهد و سنگ ذوب‌شده را به آتشفشان‌ها بالا می‌آورد.' },
         { en: 'We cannot stop the danger, but we can make it smaller. Sensors watch the volcano day and night. Warnings move people out before an eruption, and drills teach children where to go.',
           es: 'No podemos detener el peligro, pero sí hacerlo más pequeño. Unos sensores vigilan el volcán día y noche. Las alertas sacan a la gente antes de una erupción, y los simulacros enseñan a los niños adónde ir.',
-          fa: 'ما نمی‌توانیم خطر را متوقف کنیم، اما می‌توانیم آن را کوچک‌تر کنیم. دستگاه‌ها شب و روز آتشفشان را می‌پایند. هشدارها مردم را پیش از فوران بیرون می‌برند و تمرین‌ها به کودکان یاد می‌دهند کجا بروند.',
-          easy: { en: 'Sensors, warnings and drills keep people safer.', es: 'Los sensores, las alertas y los simulacros protegen más a la gente.', fa: 'دستگاه‌ها، هشدارها و تمرین‌ها مردم را بیشتر در امان نگه می‌دارند.' } }
+          fa: 'ما نمی‌توانیم خطر را متوقف کنیم، اما می‌توانیم آن را کوچک‌تر کنیم. دستگاه‌ها شب و روز آتشفشان را می‌پایند. هشدارها مردم را پیش از فوران بیرون می‌برند و تمرین‌ها به کودکان یاد می‌دهند کجا بروند.' }
       ],
       ask: {
         stat: 'pla',

@@ -61,16 +61,13 @@ window.EPISODE = {
       lines: [
         { en: 'Sawubona! That means hello in Zulu. I am Thandiwe, a mining engineer. The ground in South Africa holds valuable [[mineral|minerals]], like gold, platinum and chrome. They are [[natural resource|natural resources]].',
           es: '¡Sawubona! Así se dice hola en zulú. Soy Thandiwe, ingeniera de minas. La tierra de Sudáfrica guarda [[mineral|minerales]] valiosos, como oro, platino y cromo. Son [[natural resource|recursos naturales]].',
-          fa: 'ساوبونا! این به زبان زولو یعنی سلام. من تاندیوه هستم، انجنیر معدن. زمین افریقای جنوبی [[mineral|معدنیات]] قیمتی دارد، مثل طلا، پلاتین و کروم. این‌ها [[natural resource|منابع طبیعی]] هستند.',
-          easy: { en: 'Hi! I am an engineer at a mine. South Africa has gold, platinum and chrome under the ground.', es: '¡Hola! Soy ingeniera en una mina. Sudáfrica tiene oro, platino y cromo bajo la tierra.', fa: 'سلام! من انجنیر معدن هستم. افریقای جنوبی زیر زمین طلا، پلاتین و کروم دارد.' } },
+          fa: 'ساوبونا! این به زبان زولو یعنی سلام. من تاندیوه هستم، انجنیر معدن. زمین افریقای جنوبی [[mineral|معدنیات]] قیمتی دارد، مثل طلا، پلاتین و کروم. این‌ها [[natural resource|منابع طبیعی]] هستند.' },
         { en: 'In 1886, people found gold right here. Thousands came to dig, and a city grew up fast around the mines. That city is Johannesburg. Its Zulu name, eGoli, means "place of gold."',
           es: 'En 1886, la gente encontró oro justo aquí. Miles vinieron a excavar, y una ciudad creció rápido alrededor de las minas. Esa ciudad es Johannesburgo. Su nombre en zulú, eGoli, significa "lugar del oro".',
-          fa: 'در سال ۱۸۸۶ مردم درست همین‌جا طلا پیدا کردند. هزاران نفر برای کندن آمدند و یک شهر به زودی دور معدن‌ها ساخته شد. آن شهر ژوهانسبرگ است. نام زولوی آن، اِگولی، یعنی «جای طلا».',
-          easy: { en: 'Gold was found here in 1886. The city of Johannesburg grew around the mines.', es: 'Aquí se encontró oro en 1886. La ciudad de Johannesburgo creció alrededor de las minas.', fa: 'در سال ۱۸۸۶ این‌جا طلا پیدا شد. شهر ژوهانسبرگ دور معدن‌ها بزرگ شد.' } },
+          fa: 'در سال ۱۸۸۶ مردم درست همین‌جا طلا پیدا کردند. هزاران نفر برای کندن آمدند و یک شهر به زودی دور معدن‌ها ساخته شد. آن شهر ژوهانسبرگ است. نام زولوی آن، اِگولی، یعنی «جای طلا».' },
         { en: 'South Africa also has most of the world\'s platinum. Car factories use it in parts that clean the smoke from engines. We mine chrome too. Chrome keeps steel shiny, so steel pots and spoons do not rust.',
           es: 'Sudáfrica también tiene la mayor parte del platino del mundo. Las fábricas de carros lo usan en piezas que limpian el humo de los motores. También sacamos cromo. El cromo mantiene el acero brillante, así las ollas y cucharas de acero no se oxidan.',
-          fa: 'افریقای جنوبی بیشتر پلاتین جهان را هم دارد. فابریکه‌های موتر از آن در پرزه‌هایی استفاده می‌کنند که دود انجن را پاک می‌کند. ما کروم هم استخراج می‌کنیم. کروم فولاد را براق نگه می‌دارد، پس دیگ و قاشق فولادی زنگ نمی‌زنند.',
-          easy: { en: 'Platinum goes into car parts. Chrome keeps steel from rusting.', es: 'El platino va en piezas de carros. El cromo evita que el acero se oxide.', fa: 'پلاتین در پرزه‌های موتر به کار می‌رود. کروم نمی‌گذارد فولاد زنگ بزند.' } }
+          fa: 'افریقای جنوبی بیشتر پلاتین جهان را هم دارد. فابریکه‌های موتر از آن در پرزه‌هایی استفاده می‌کنند که دود انجن را پاک می‌کند. ما کروم هم استخراج می‌کنیم. کروم فولاد را براق نگه می‌دارد، پس دیگ و قاشق فولادی زنگ نمی‌زنند.' }
       ],
       ask: {
         stat: 'hei',
@@ -93,16 +90,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello! I am Sipho. I work at a bank in Johannesburg. The city started with gold. Now it is a big center for banking and trade in Africa.',
           es: '¡Hola! Soy Sipho. Trabajo en un banco en Johannesburgo. La ciudad empezó con el oro. Ahora es un gran centro de bancos y comercio en África.',
-          fa: 'سلام! من سیپو هستم. در یک بانک در ژوهانسبرگ کار می‌کنم. این شهر با طلا شروع شد. حالا یک مرکز بزرگ بانک و تجارت در افریقا است.',
-          easy: { en: 'I work at a bank. Johannesburg began with gold. Now it is a center for banks and trade.', es: 'Trabajo en un banco. Johannesburgo empezó con el oro. Ahora es un centro de bancos y comercio.', fa: 'من در بانک کار می‌کنم. ژوهانسبرگ با طلا شروع شد. حالا مرکز بانک و تجارت است.' } },
+          fa: 'سلام! من سیپو هستم. در یک بانک در ژوهانسبرگ کار می‌کنم. این شهر با طلا شروع شد. حالا یک مرکز بزرگ بانک و تجارت در افریقا است.' },
         { en: 'Here is the hard part. Selling [[raw material|raw materials]] earns some money. But the most money is made where they become [[finished product|finished products]], like phones and cars. Many of those are made in other countries and [[import|imported]].',
           es: 'Aquí viene lo difícil. Vender [[raw material|materias primas]] da algo de dinero. Pero el mayor dinero se gana donde se convierten en [[finished product|productos terminados]], como teléfonos y carros. Muchos de esos se hacen en otros países y se [[import|importan]].',
-          fa: 'قسمت سخت این است. فروختن [[raw material|مواد خام]] کمی پول می‌آورد. اما بیشترین پول جایی به دست می‌آید که این مواد به [[finished product|جنس آماده]]، مثل موبایل و موتر، تبدیل می‌شوند. بسیاری از آن‌ها در کشورهای دیگر ساخته و [[import|وارد]] می‌شوند.',
-          easy: { en: 'Raw rock earns a little money. Phones and cars made from it earn much more.', es: 'La roca sin procesar da poco dinero. Los teléfonos y carros hechos con ella dan mucho más.', fa: 'سنگ خام کمی پول می‌آورد. موبایل و موتری که از آن ساخته می‌شود پول خیلی بیشتری می‌آورد.' } },
+          fa: 'قسمت سخت این است. فروختن [[raw material|مواد خام]] کمی پول می‌آورد. اما بیشترین پول جایی به دست می‌آید که این مواد به [[finished product|جنس آماده]]، مثل موبایل و موتر، تبدیل می‌شوند. بسیاری از آن‌ها در کشورهای دیگر ساخته و [[import|وارد]] می‌شوند.' },
         { en: 'Other countries sell a [[cash crop|cash crop]], a crop grown mostly to sell. Ghana and Ivory Coast sell cocoa. Ethiopia and Kenya sell coffee. If the world price of that one crop falls, the whole country feels it.',
           es: 'Otros países venden un [[cash crop|cultivo comercial]], un cultivo que se siembra más que nada para vender. Ghana y Costa de Marfil venden cacao. Etiopía y Kenia venden café. Si el precio mundial de ese cultivo baja, todo el país lo siente.',
-          fa: 'کشورهای دیگر یک [[cash crop|کشت تجارتی]] می‌فروشند، یعنی کشتی که بیشتر برای فروش است. گانا و ساحل عاج کاکائو می‌فروشند. ایتوپیا و کینیا قهوه می‌فروشند. اگر قیمت جهانی همان یک کشت پایین بیاید، تمام کشور آن را حس می‌کند.',
-          easy: { en: 'Some countries sell one main crop, like cocoa or coffee. If its price drops, the whole country earns less.', es: 'Algunos países venden un cultivo principal, como cacao o café. Si su precio baja, todo el país gana menos.', fa: 'بعضی کشورها یک کشت اصلی، مثل کاکائو یا قهوه، می‌فروشند. اگر قیمتش پایین بیاید، تمام کشور کمتر پول می‌گیرد.' } }
+          fa: 'کشورهای دیگر یک [[cash crop|کشت تجارتی]] می‌فروشند، یعنی کشتی که بیشتر برای فروش است. گانا و ساحل عاج کاکائو می‌فروشند. ایتوپیا و کینیا قهوه می‌فروشند. اگر قیمت جهانی همان یک کشت پایین بیاید، تمام کشور آن را حس می‌کند.' }
       ],
       ask: {
         stat: 'reg',
@@ -125,16 +119,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to Durban, on the Indian Ocean! I am Ayanda. I drive one of the giant cranes at this [[port|port]]. It is one of the busiest ports in Africa.',
           es: '¡Bienvenido a Durban, en el océano Índico! Soy Ayanda. Manejo una de las grúas gigantes de este [[port|puerto]]. Es uno de los puertos más activos de África.',
-          fa: 'به دوربان، کنار اقیانوس هند، خوش آمدی! من آیاندا هستم. یکی از جرثقیل‌های بزرگ این [[port|بندر]] را می‌رانم. این یکی از پرکارترین بندرهای افریقا است.',
-          easy: { en: 'I drive a big crane at the [[port|port]] of Durban. Ships come here from all over the world.', es: 'Manejo una grúa grande en el [[port|puerto]] de Durban. Aquí llegan barcos de todo el mundo.', fa: 'من در [[port|بندر]] دوربان یک جرثقیل بزرگ را می‌رانم. کشتی‌ها از سراسر جهان به این‌جا می‌آیند.' } },
+          fa: 'به دوربان، کنار اقیانوس هند، خوش آمدی! من آیاندا هستم. یکی از جرثقیل‌های بزرگ این [[port|بندر]] را می‌رانم. این یکی از پرکارترین بندرهای افریقا است.' },
         { en: 'Trains bring ore, sugar, fruit and new cars to the docks. My crane loads them onto ships. Those are [[export|exports]]: goods sold and sent to other countries.',
           es: 'Los trenes traen mineral, azúcar, fruta y carros nuevos a los muelles. Mi grúa los sube a los barcos. Esas son [[export|exportaciones]]: productos que se venden y se envían a otros países.',
-          fa: 'قطارها سنگ معدنی، بوره، میوه و موترهای نو را به لنگرگاه می‌آورند. جرثقیل من آن‌ها را در کشتی بار می‌کند. این‌ها [[export|صادرات]] هستند: جنس‌هایی که فروخته و به کشورهای دیگر فرستاده می‌شوند.',
-          easy: { en: 'Goods we send out on ships are [[export|exports]].', es: 'Los productos que mandamos en barcos son [[export|exportaciones]].', fa: 'جنس‌هایی که با کشتی بیرون می‌فرستیم [[export|صادرات]] هستند.' } },
+          fa: 'قطارها سنگ معدنی، بوره، میوه و موترهای نو را به لنگرگاه می‌آورند. جرثقیل من آن‌ها را در کشتی بار می‌کند. این‌ها [[export|صادرات]] هستند: جنس‌هایی که فروخته و به کشورهای دیگر فرستاده می‌شوند.' },
         { en: 'Ships also bring things in, like phones, machines and medicine. Those are [[import|imports]]. A port connects a whole country to the world.',
           es: 'Los barcos también traen cosas, como teléfonos, máquinas y medicinas. Esas son [[import|importaciones]]. Un puerto conecta a todo un país con el mundo.',
-          fa: 'کشتی‌ها چیزهایی هم با خود می‌آورند، مثل موبایل، ماشین‌آلات و دوا. این‌ها [[import|واردات]] هستند. یک بندر تمام کشور را به جهان وصل می‌کند.',
-          easy: { en: 'Goods that come in on ships are [[import|imports]].', es: 'Los productos que llegan en barcos son [[import|importaciones]].', fa: 'جنس‌هایی که با کشتی می‌آیند [[import|واردات]] هستند.' } }
+          fa: 'کشتی‌ها چیزهایی هم با خود می‌آورند، مثل موبایل، ماشین‌آلات و دوا. این‌ها [[import|واردات]] هستند. یک بندر تمام کشور را به جهان وصل می‌کند.' }
       ],
       ask: {
         stat: 'mov',

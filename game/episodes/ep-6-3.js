@@ -67,16 +67,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello! I work on the [[census|census]]. I count every person in the country. Then I turn the numbers into pictures. One picture is a [[population pyramid|population pyramid]]. It shows how many people are in each age group.',
           es: '¡Hola! Trabajo en el [[census|censo]]. Cuento a cada persona del país. Luego convierto los números en dibujos. Un dibujo es una [[population pyramid|pirámide de población]]. Muestra cuántas personas hay en cada grupo de edad.',
-          fa: 'سلام! من در [[census|سرشماری]] کار می‌کنم. هر نفر کشور را می‌شمارم. بعد عددها را به تصویر تبدیل می‌کنم. یک تصویر [[population pyramid|هرم نفوس]] است. نشان می‌دهد در هر گروه سنی چند نفر هستند.',
-          easy: { en: 'I count people. A [[population pyramid|population pyramid]] shows how many people are each age.', es: 'Yo cuento personas. Una [[population pyramid|pirámide de población]] muestra cuántas personas hay de cada edad.', fa: 'من مردم را می‌شمارم. [[population pyramid|هرم نفوس]] نشان می‌دهد هر سن چند نفر دارد.' } },
+          fa: 'سلام! من در [[census|سرشماری]] کار می‌کنم. هر نفر کشور را می‌شمارم. بعد عددها را به تصویر تبدیل می‌کنم. یک تصویر [[population pyramid|هرم نفوس]] است. نشان می‌دهد در هر گروه سنی چند نفر هستند.' },
         { en: 'Children are at the bottom of the pyramid. Old people are at the top. A wide bottom means many babies and children. That country will need many new schools soon. A wide top means many older people. That country needs more nurses and doctors.',
           es: 'Los niños están abajo en la pirámide. Las personas mayores están arriba. Una base ancha significa muchos bebés y niños. Ese país necesitará muchas escuelas nuevas pronto. Una parte de arriba ancha significa muchas personas mayores. Ese país necesita más enfermeras y doctores.',
-          fa: 'اطفال در پایین هرم هستند. کلان‌سالان در بالا هستند. پایین پهن یعنی نوزادان و اطفال زیاد. آن کشور به زودی به مکتب‌های نو زیاد ضرورت دارد. بالای پهن یعنی کلان‌سالان زیاد. آن کشور به نرس و داکتر بیشتر ضرورت دارد.',
-          easy: { en: 'Wide bottom = many children, so build schools. Wide top = many old people, so train nurses.', es: 'Base ancha = muchos niños, así que hay que construir escuelas. Parte de arriba ancha = muchos mayores, así que hay que formar enfermeras.', fa: 'پایین پهن = اطفال زیاد، پس مکتب بساز. بالای پهن = کلان‌سالان زیاد، پس نرس تربیه کن.' } },
+          fa: 'اطفال در پایین هرم هستند. کلان‌سالان در بالا هستند. پایین پهن یعنی نوزادان و اطفال زیاد. آن کشور به زودی به مکتب‌های نو زیاد ضرورت دارد. بالای پهن یعنی کلان‌سالان زیاد. آن کشور به نرس و داکتر بیشتر ضرورت دارد.' },
         { en: 'A [[line graph|line graph]] shows change over time. The line for world [[population|population]] climbs and climbs. In 1950 there were about 2.5 billion people. In 2022 there were more than 8 billion!',
           es: 'Una [[line graph|gráfica de líneas]] muestra el cambio con el tiempo. La línea de la [[population|población]] del mundo sube y sube. En 1950 había unos 2,500 millones de personas. ¡En 2022 había más de 8,000 millones!',
-          fa: '[[line graph|گراف خطی]] تغییر را با گذشت زمان نشان می‌دهد. خط [[population|نفوس]] جهان بالا و بالا می‌رود. در سال ۱۹۵۰ حدود ۲.۵ میلیارد نفر بودند. در سال ۲۰۲۲ بیشتر از ۸ میلیارد نفر شدند!',
-          easy: { en: 'World population grew from about 2.5 billion (1950) to more than 8 billion (2022).', es: 'La población del mundo creció de unos 2,500 millones (1950) a más de 8,000 millones (2022).', fa: 'نفوس جهان از حدود ۲.۵ میلیارد (۱۹۵۰) به بیشتر از ۸ میلیارد (۲۰۲۲) رسید.' } }
+          fa: '[[line graph|گراف خطی]] تغییر را با گذشت زمان نشان می‌دهد. خط [[population|نفوس]] جهان بالا و بالا می‌رود. در سال ۱۹۵۰ حدود ۲.۵ میلیارد نفر بودند. در سال ۲۰۲۲ بیشتر از ۸ میلیارد نفر شدند!' }
       ],
       ask: {
         stat: 'reg',
@@ -99,12 +96,10 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to our village clinic. [[life expectancy|Life expectancy]] is how long a baby born today can expect to live, on average. Clean water, good food, vaccines and nearby clinics all help people live longer.',
           es: 'Bienvenido a la clínica del pueblo. La [[life expectancy|esperanza de vida]] es cuánto puede esperar vivir, en promedio, un bebé que nace hoy. El agua limpia, la buena comida, las vacunas y las clínicas cercanas ayudan a vivir más.',
-          fa: 'به کلینیک قریهٔ ما خوش آمدی. [[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند. آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.',
-          easy: { en: '[[life expectancy|Life expectancy]] = how long people live, on average. Clean water and clinics help.', es: '[[life expectancy|Esperanza de vida]] = cuánto vive la gente, en promedio. El agua limpia y las clínicas ayudan.', fa: '[[life expectancy|اوسط عمر]] = مردم به طور اوسط چند سال زندگی می‌کنند. آب پاک و کلینیک کمک می‌کند.' } },
+          fa: 'به کلینیک قریهٔ ما خوش آمدی. [[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند. آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.' },
         { en: 'Our country has one life expectancy number. But it hides a gap. In the big city, the hospital is a short walk away. Here in the village, the nearest hospital is two hours away by boat and bus.',
           es: 'Nuestro país tiene un solo número de esperanza de vida. Pero ese número esconde una diferencia. En la ciudad grande, el hospital está a pocos pasos. Aquí en el pueblo, el hospital más cercano está a dos horas en lancha y autobús.',
-          fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند. در شهر بزرگ، شفاخانه چند قدم دور است. اینجا در قریه، نزدیک‌ترین شفاخانه دو ساعت با کشتی و بس فاصله دارد.',
-          easy: { en: 'One country number hides a gap. The city has a hospital close by. The village does not.', es: 'Un número del país esconde una diferencia. La ciudad tiene un hospital cerca. El pueblo no.', fa: 'یک عدد کشور یک فرق را پنهان می‌کند. شهر شفاخانهٔ نزدیک دارد. قریه ندارد.' } }
+          fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند. در شهر بزرگ، شفاخانه چند قدم دور است. اینجا در قریه، نزدیک‌ترین شفاخانه دو ساعت با کشتی و بس فاصله دارد.' }
       ],
       ask: {
         stat: 'hei',
@@ -127,16 +122,13 @@ window.EPISODE = {
       lines: [
         { en: 'I plan roads, water pipes and schools for this city. People tell me, "Our city\'s [[average|average]] income is high!" But look around. The towers up north are full of rich offices. These old lanes are full of families who earn much less.',
           es: 'Yo planeo calles, tubos de agua y escuelas para esta ciudad. La gente me dice: "¡El ingreso [[average|promedio]] de nuestra ciudad es alto!" Pero mira a tu alrededor. Las torres del norte están llenas de oficinas ricas. Estas calles viejas están llenas de familias que ganan mucho menos.',
-          fa: 'من برای این شهر سرک، نل آب و مکتب پلان می‌کنم. مردم می‌گویند: «عاید [[average|اوسط]] شهر ما بلند است!» اما به اطراف ببین. تعمیرهای بلند شمال پر از دفترهای پولدار است. این کوچه‌های کهنه پر از فامیل‌هایی است که خیلی کمتر پول می‌گیرند.',
-          easy: { en: 'The city [[average|average]] looks good. But rich towers and poor lanes are very different.', es: 'El [[average|promedio]] de la ciudad se ve bien. Pero las torres ricas y las calles pobres son muy diferentes.', fa: '[[average|اوسط]] شهر خوب معلوم می‌شود. اما تعمیرهای پولدار و کوچه‌های فقیر خیلی فرق دارند.' } },
+          fa: 'من برای این شهر سرک، نل آب و مکتب پلان می‌کنم. مردم می‌گویند: «عاید [[average|اوسط]] شهر ما بلند است!» اما به اطراف ببین. تعمیرهای بلند شمال پر از دفترهای پولدار است. این کوچه‌های کهنه پر از فامیل‌هایی است که خیلی کمتر پول می‌گیرند.' },
         { en: 'Here is the trick. Nine workers earn $20,000 a year. One worker earns $800,000. The average is $98,000! That sounds great. But nine of the ten workers earn far less. One very big number pulls the average up.',
           es: 'Este es el truco. Nueve trabajadores ganan $20,000 al año. Un trabajador gana $800,000. ¡El promedio es $98,000! Suena muy bien. Pero nueve de los diez ganan mucho menos. Un número muy grande sube el promedio.',
-          fa: 'فریب اینجاست. نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک کارگر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر می‌شود! خوب معلوم می‌شود. اما نُه نفر از ده نفر خیلی کمتر می‌گیرند. یک عدد بسیار بزرگ اوسط را بالا می‌برد.',
-          easy: { en: '9 workers earn $20,000. 1 earns $800,000. The average is $98,000, but almost nobody earns that.', es: '9 ganan $20,000. 1 gana $800,000. El promedio es $98,000, pero casi nadie gana eso.', fa: '۹ نفر ۲۰٬۰۰۰ دالر می‌گیرند. ۱ نفر ۸۰۰٬۰۰۰ دالر. اوسط ۹۸٬۰۰۰ دالر است، اما تقریباً هیچ‌کس این‌قدر نمی‌گیرد.' } },
+          fa: 'فریب اینجاست. نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک کارگر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر می‌شود! خوب معلوم می‌شود. اما نُه نفر از ده نفر خیلی کمتر می‌گیرند. یک عدد بسیار بزرگ اوسط را بالا می‌برد.' },
         { en: 'So a good geographer asks a second question: how is the money [[distributed|distributed]]? Is it shared by many people, or held by a few?',
           es: 'Por eso un buen geógrafo hace una segunda pregunta: ¿cómo está [[distributed|repartido]] el dinero? ¿Lo comparten muchas personas o lo tienen unas pocas?',
-          fa: 'پس یک جغرافیه‌دان خوب سوال دوم را می‌پرسد: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد تقسیم شده، یا دست چند نفر است؟',
-          easy: { en: 'Always ask: who has the money? Many people, or just a few?', es: 'Pregunta siempre: ¿quién tiene el dinero? ¿Muchas personas o solo unas pocas?', fa: 'همیشه بپرس: پول دست کیست؟ مردم زیاد یا فقط چند نفر؟' } }
+          fa: 'پس یک جغرافیه‌دان خوب سوال دوم را می‌پرسد: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد تقسیم شده، یا دست چند نفر است؟' }
       ],
       ask: {
         stat: 'pla',

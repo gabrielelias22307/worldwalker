@@ -112,12 +112,10 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to Mapmaker\'s Valley! I draw maps for a living. But you carry a map that nobody printed: a [[mental map|mental map]]. It is the map of a place inside your own head.',
           es: '¡Bienvenido al Valle del Cartógrafo! Yo dibujo mapas. Pero tú llevas un mapa que nadie imprimió: un [[mental map|mapa mental]]. Es el mapa de un lugar dentro de tu cabeza.',
-          fa: 'به درهٔ نقشه‌کش خوش آمدی! من نقشه می‌کشم. اما تو نقشه‌ای داری که کسی چاپ نکرده: یک [[mental map|نقشهٔ ذهنی]]. این نقشهٔ یک جا در ذهن خودت است.',
-          easy: { en: 'Hi! I make maps. You have a map in your head too. It is called a [[mental map|mental map]].', es: '¡Hola! Yo hago mapas. Tú también tienes un mapa en tu cabeza. Se llama [[mental map|mapa mental]].', fa: 'سلام! من نقشه می‌سازم. تو هم یک نقشه در ذهنت داری. نامش [[mental map|نقشهٔ ذهنی]] است.' } },
+          fa: 'به درهٔ نقشه‌کش خوش آمدی! من نقشه می‌کشم. اما تو نقشه‌ای داری که کسی چاپ نکرده: یک [[mental map|نقشهٔ ذهنی]]. این نقشهٔ یک جا در ذهن خودت است.' },
         { en: 'Your mental map is sharp where you go often, like your street and your school. It is blank where you have never been. Two friends in the same city will draw two different mental maps.',
           es: 'Tu mapa mental es claro donde vas seguido, como tu calle y tu escuela. Está en blanco donde nunca has ido. Dos amigos de la misma ciudad dibujarán dos mapas mentales diferentes.',
-          fa: 'نقشهٔ ذهنی تو جایی که زیاد می‌روی، مثل کوچه و مکتبت، روشن است. جایی که هرگز نرفته‌ای خالی است. دو دوست در یک شهر دو نقشهٔ ذهنی متفاوت می‌کشند.',
-          easy: { en: 'You know your own street well. Places you never go are blank in your head.', es: 'Conoces bien tu calle. Los lugares donde nunca vas están en blanco en tu cabeza.', fa: 'کوچهٔ خودت را خوب می‌شناسی. جاهایی که هرگز نمی‌روی در ذهنت خالی است.' } }
+          fa: 'نقشهٔ ذهنی تو جایی که زیاد می‌روی، مثل کوچه و مکتبت، روشن است. جایی که هرگز نرفته‌ای خالی است. دو دوست در یک شهر دو نقشهٔ ذهنی متفاوت می‌کشند.' }
       ],
       ask: {
         stat: 'loc',
@@ -140,12 +138,10 @@ window.EPISODE = {
       lines: [
         { en: 'In the middle of the ocean, I cannot say "turn left at the big tree"! Sailors use [[latitude|latitude]] and [[longitude|longitude]]. These lines make a grid around the whole Earth.',
           es: '¡En medio del océano no puedo decir "gira a la izquierda en el árbol grande"! Los marineros usamos la [[latitude|latitud]] y la [[longitude|longitud]]. Estas líneas forman una cuadrícula alrededor de la Tierra.',
-          fa: 'در وسط بحر نمی‌توانم بگویم «کنار درخت بزرگ به چپ برو»! ملاحان از [[latitude|عرض جغرافیایی]] و [[longitude|طول جغرافیایی]] استفاده می‌کنند. این خط‌ها دور تمام زمین یک شبکه می‌سازند.',
-          easy: { en: 'At sea there are no trees or roads. Sailors use a grid of lines called [[latitude|latitude]] and [[longitude|longitude]].', es: 'En el mar no hay árboles ni calles. Los marineros usan líneas llamadas [[latitude|latitud]] y [[longitude|longitud]].', fa: 'در بحر درخت و سرک نیست. ملاحان از خط‌هایی به نام [[latitude|عرض]] و [[longitude|طول]] جغرافیایی استفاده می‌کنند.' } },
+          fa: 'در وسط بحر نمی‌توانم بگویم «کنار درخت بزرگ به چپ برو»! ملاحان از [[latitude|عرض جغرافیایی]] و [[longitude|طول جغرافیایی]] استفاده می‌کنند. این خط‌ها دور تمام زمین یک شبکه می‌سازند.' },
         { en: 'A grid address like 40°N, 74°W is an [[absolute location|absolute location]]. It is exact and it does not change. "Next to the river" is a [[relative location|relative location]]. It tells where a place is by what is near it.',
           es: 'Una dirección en la cuadrícula como 40°N, 74°O es una [[absolute location|ubicación absoluta]]. Es exacta y no cambia. "Junto al río" es una [[relative location|ubicación relativa]]. Dice dónde está un lugar por lo que tiene cerca.',
-          fa: 'آدرسی مثل ۴۰ درجه شمالی، ۷۴ درجه غربی یک [[absolute location|موقعیت مطلق]] است. دقیق است و تغییر نمی‌کند. «کنار دریا» یک [[relative location|موقعیت نسبی]] است. جای یک مکان را با چیزهای نزدیکش می‌گوید.',
-          easy: { en: 'Exact grid numbers = [[absolute location|absolute location]]. "Near the river" = [[relative location|relative location]].', es: 'Números exactos = [[absolute location|ubicación absoluta]]. "Cerca del río" = [[relative location|ubicación relativa]].', fa: 'عددهای دقیق = [[absolute location|موقعیت مطلق]]. «نزدیک دریا» = [[relative location|موقعیت نسبی]].' } }
+          fa: 'آدرسی مثل ۴۰ درجه شمالی، ۷۴ درجه غربی یک [[absolute location|موقعیت مطلق]] است. دقیق است و تغییر نمی‌کند. «کنار دریا» یک [[relative location|موقعیت نسبی]] است. جای یک مکان را با چیزهای نزدیکش می‌گوید.' }
       ],
       ask: {
         stat: 'loc',
@@ -168,12 +164,10 @@ window.EPISODE = {
       lines: [
         { en: 'The Earth is round like a ball. A paper map is flat. You cannot flatten a ball without stretching it. The way a mapmaker flattens the Earth is called a [[projection|projection]].',
           es: 'La Tierra es redonda como una pelota. Un mapa de papel es plano. No puedes aplanar una pelota sin estirarla. La forma en que un cartógrafo aplana la Tierra se llama [[projection|proyección]].',
-          fa: 'زمین مثل توپ گرد است. نقشهٔ کاغذی هموار است. نمی‌شود توپ را بدون کش کردن هموار کرد. روشی که نقشه‌کش زمین را هموار می‌کند [[projection|پروجکشن]] نام دارد.',
-          easy: { en: 'The Earth is round. Maps are flat. Making the Earth flat stretches some places.', es: 'La Tierra es redonda. Los mapas son planos. Aplanar la Tierra estira algunos lugares.', fa: 'زمین گرد است. نقشه هموار است. هموار کردن زمین بعضی جاها را کش می‌کند.' } },
+          fa: 'زمین مثل توپ گرد است. نقشهٔ کاغذی هموار است. نمی‌شود توپ را بدون کش کردن هموار کرد. روشی که نقشه‌کش زمین را هموار می‌کند [[projection|پروجکشن]] نام دارد.' },
         { en: 'On many world maps, Greenland looks as big as Africa. It is not! Africa is about 14 times bigger. Every map is a choice. The mapmaker picks what goes in the middle, what gets a name, and what is left out.',
           es: 'En muchos mapas del mundo, Groenlandia parece tan grande como África. ¡No lo es! África es unas 14 veces más grande. Cada mapa es una elección. El cartógrafo decide qué va en el centro, qué lleva nombre y qué se deja fuera.',
-          fa: 'در بسیاری از نقشه‌های جهان، گرینلند به بزرگی افریقا دیده می‌شود. اما نیست! افریقا حدود ۱۴ برابر بزرگ‌تر است. هر نقشه یک انتخاب است. نقشه‌کش انتخاب می‌کند چه چیز در وسط باشد، چه چیز نام بگیرد و چه چیز بیرون بماند.',
-          easy: { en: 'Greenland looks huge on many maps, but Africa is about 14 times bigger. Every map is made by a person who makes choices.', es: 'Groenlandia parece enorme en muchos mapas, pero África es unas 14 veces más grande. Cada mapa lo hace una persona que toma decisiones.', fa: 'گرینلند در بسیاری نقشه‌ها بزرگ دیده می‌شود، اما افریقا حدود ۱۴ برابر بزرگ‌تر است. هر نقشه را یک نفر با انتخاب‌های خودش می‌سازد.' } }
+          fa: 'در بسیاری از نقشه‌های جهان، گرینلند به بزرگی افریقا دیده می‌شود. اما نیست! افریقا حدود ۱۴ برابر بزرگ‌تر است. هر نقشه یک انتخاب است. نقشه‌کش انتخاب می‌کند چه چیز در وسط باشد، چه چیز نام بگیرد و چه چیز بیرون بماند.' }
       ],
       ask: {
         stat: 'pla',

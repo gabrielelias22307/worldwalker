@@ -313,3 +313,6 @@ canvas{filter:var(--vivid)}
 .pagefly.home{transition:left .6s ease-in,top .6s ease-in,transform .6s ease-in,opacity .6s ease-in}
 #ww-b-pass.gotpage{animation:gotpage .9s ease-out}
 @keyframes gotpage{0%{transform:scale(1)}30%{transform:scale(1.25);background:var(--gold);color:var(--ink)}100%{transform:scale(1)}}
+.gridlabs .gl.zone{font-size:12px;background:rgba(34,32,46,.9)}
+.gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
+.ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}

@@ -66,16 +66,13 @@ window.EPISODE = {
       lines: [
         { en: 'Salaam! Welcome to the old bazaar of Kashan, in Iran. Look around: carpets, spices, tea and music. All of it is [[culture|culture]]. Culture is the way of life a group of people shares.',
           es: '¡Salam! Bienvenido al viejo bazar de Kashán, en Irán. Mira a tu alrededor: alfombras, especias, té y música. Todo eso es [[culture|cultura]]. La cultura es la forma de vida que comparte un grupo de personas.',
-          fa: 'سلام! به بازار کهنهٔ کاشان در ایران خوش آمدی. به اطراف نگاه کن: قالین، ادویه، چای و موسیقی. همهٔ این‌ها [[culture|فرهنگ]] است. فرهنگ شیوهٔ زندگی است که یک گروه مردم با هم دارند.',
-          easy: { en: 'Hi! Food, music, clothes and buildings are all part of [[culture|culture]]. Culture is a group\'s way of life.', es: '¡Hola! La comida, la música, la ropa y los edificios son parte de la [[culture|cultura]]. La cultura es la forma de vida de un grupo.', fa: 'سلام! غذا، موسیقی، لباس و ساختمان همه بخشی از [[culture|فرهنگ]] هستند. فرهنگ شیوهٔ زندگی یک گروه است.' } },
+          fa: 'سلام! به بازار کهنهٔ کاشان در ایران خوش آمدی. به اطراف نگاه کن: قالین، ادویه، چای و موسیقی. همهٔ این‌ها [[culture|فرهنگ]] است. فرهنگ شیوهٔ زندگی است که یک گروه مردم با هم دارند.' },
         { en: 'Each piece of a culture is a [[culture trait|culture trait]]. A food, a word or a game can be a trait. Traits do not stay home. Tea first grew in China. Traders carried it west on the [[silk road|Silk Road]].',
           es: 'Cada parte de una cultura es un [[culture trait|rasgo cultural]]. Una comida, una palabra o un juego pueden ser un rasgo. Los rasgos no se quedan en casa. El té creció primero en China. Los comerciantes lo llevaron al oeste por la [[silk road|Ruta de la Seda]].',
-          fa: 'هر جزء فرهنگ یک [[culture trait|ویژگی فرهنگی]] است. یک غذا، یک کلمه یا یک بازی می‌تواند یک ویژگی باشد. ویژگی‌ها در خانه نمی‌مانند. چای اول در چین سبز شد. تاجران آن را از [[silk road|راه ابریشم]] به غرب آوردند.',
-          easy: { en: 'One piece of culture is a [[culture trait|culture trait]]. Tea came from China. Traders carried it here.', es: 'Una parte de la cultura es un [[culture trait|rasgo cultural]]. El té vino de China. Los comerciantes lo trajeron aquí.', fa: 'یک جزء فرهنگ [[culture trait|ویژگی فرهنگی]] است. چای از چین آمد. تاجران آن را این‌جا آوردند.' } },
+          fa: 'هر جزء فرهنگ یک [[culture trait|ویژگی فرهنگی]] است. یک غذا، یک کلمه یا یک بازی می‌تواند یک ویژگی باشد. ویژگی‌ها در خانه نمی‌مانند. چای اول در چین سبز شد. تاجران آن را از [[silk road|راه ابریشم]] به غرب آوردند.' },
         { en: 'When a trait spreads from one group to another, it is [[cultural diffusion|cultural diffusion]]. It only needs people to meet, trade or travel. Chess began in India. Traders carried it to Persia, and then to Europe.',
           es: 'Cuando un rasgo pasa de un grupo a otro, es [[cultural diffusion|difusión cultural]]. Solo hace falta que la gente se encuentre, comercie o viaje. El ajedrez empezó en la India. Los comerciantes lo llevaron a Persia y luego a Europa.',
-          fa: 'وقتی یک ویژگی از یک گروه به گروه دیگر پخش می‌شود، آن را [[cultural diffusion|پخش فرهنگی]] می‌گوییم. فقط لازم است مردم همدیگر را ببینند، تجارت کنند یا سفر کنند. شطرنج در هند شروع شد. تاجران آن را به فارس و بعد به اروپا بردند.',
-          easy: { en: 'A trait that spreads to new people = [[cultural diffusion|cultural diffusion]]. Chess went from India to Persia to Europe.', es: 'Un rasgo que llega a gente nueva = [[cultural diffusion|difusión cultural]]. El ajedrez fue de la India a Persia y a Europa.', fa: 'ویژگی‌ای که به مردم تازه می‌رسد = [[cultural diffusion|پخش فرهنگی]]. شطرنج از هند به فارس و به اروپا رفت.' } }
+          fa: 'وقتی یک ویژگی از یک گروه به گروه دیگر پخش می‌شود، آن را [[cultural diffusion|پخش فرهنگی]] می‌گوییم. فقط لازم است مردم همدیگر را ببینند، تجارت کنند یا سفر کنند. شطرنج در هند شروع شد. تاجران آن را به فارس و بعد به اروپا بردند.' }
       ],
       ask: {
         stat: 'mov',
@@ -98,12 +95,10 @@ window.EPISODE = {
       lines: [
         { en: 'This is a Persian garden. Water channels cut it into four parts. But Kashan sits next to a dry desert. Where does the water come from? Across Iran, people dug a [[qanat|qanat]]: a long tunnel under the ground that brings water from the mountains.',
           es: 'Este es un jardín persa. Canales de agua lo dividen en cuatro partes. Pero Kashán está junto a un desierto seco. ¿De dónde viene el agua? En todo Irán, la gente cavó un [[qanat|qanat]]: un túnel largo bajo la tierra que trae agua de las montañas.',
-          fa: 'این یک باغ ایرانی است. جوی‌های آب آن را چهار بخش می‌کنند. اما کاشان کنار یک بیابان خشک است. آب از کجا می‌آید؟ در سراسر ایران مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب را از کوه‌ها می‌آورد.',
-          easy: { en: 'This garden is in a dry land. A [[qanat|qanat]] is a tunnel under the ground. It brings water from the mountains.', es: 'Este jardín está en una tierra seca. Un [[qanat|qanat]] es un túnel bajo la tierra. Trae agua de las montañas.', fa: 'این باغ در یک زمین خشک است. [[qanat|کاریز]] یک تونل زیر زمین است. آب را از کوه‌ها می‌آورد.' } },
+          fa: 'این یک باغ ایرانی است. جوی‌های آب آن را چهار بخش می‌کنند. اما کاشان کنار یک بیابان خشک است. آب از کجا می‌آید؟ در سراسر ایران مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب را از کوه‌ها می‌آورد.' },
         { en: 'Qanats are very old. The idea spread from Iran to many dry lands. In Afghanistan people call them karez! Even the English word "paradise" comes from an old Persian word for a walled garden like this one.',
           es: 'Los qanats son muy antiguos. La idea pasó de Irán a muchas tierras secas. ¡En Afganistán los llaman karez! Hasta la palabra "paraíso" viene de una palabra persa antigua para un jardín con muros como este.',
-          fa: 'کاریزها خیلی کهنه هستند. این فکر از ایران به بسیاری از سرزمین‌های خشک پخش شد. در ایران به آن قنات می‌گویند و در افغانستان کاریز! حتی کلمهٔ انگلیسی «پارادایس» (بهشت) از یک کلمهٔ کهنهٔ فارسی برای باغ دیوارداری مثل همین باغ آمده است.',
-          easy: { en: 'The qanat idea spread to many dry lands. In Afghanistan it is called karez. The word "paradise" comes from Persian too.', es: 'La idea del qanat llegó a muchas tierras secas. En Afganistán se llama karez. La palabra "paraíso" también viene del persa.', fa: 'فکر کاریز به بسیاری از سرزمین‌های خشک رسید. در ایران قنات می‌گویند. کلمهٔ «پارادایس» هم از فارسی آمده است.' } }
+          fa: 'کاریزها خیلی کهنه هستند. این فکر از ایران به بسیاری از سرزمین‌های خشک پخش شد. در ایران به آن قنات می‌گویند و در افغانستان کاریز! حتی کلمهٔ انگلیسی «پارادایس» (بهشت) از یک کلمهٔ کهنهٔ فارسی برای باغ دیوارداری مثل همین باغ آمده است.' }
       ],
       ask: {
         stat: 'hei',
@@ -126,16 +121,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to Dubai, in the United Arab Emirates! You can read a street like a page. Everything people built on the land is the [[cultural landscape|cultural landscape]]: towers, shops, signs and houses of worship.',
           es: '¡Bienvenido a Dubái, en los Emiratos Árabes Unidos! Puedes leer una calle como una página. Todo lo que la gente construyó sobre la tierra es el [[cultural landscape|paisaje cultural]]: torres, tiendas, letreros y lugares de culto.',
-          fa: 'به دبی در امارات متحدهٔ عربی خوش آمدی! می‌توانی یک سرک را مثل یک صفحه بخوانی. هر چیزی که مردم روی زمین ساخته‌اند [[cultural landscape|منظرهٔ فرهنگی]] است: برج‌ها، دکان‌ها، تابلوها و عبادتگاه‌ها.',
-          easy: { en: 'Buildings, shops and signs that people made are the [[cultural landscape|cultural landscape]]. You can read them like a book.', es: 'Los edificios, tiendas y letreros que hizo la gente son el [[cultural landscape|paisaje cultural]]. Puedes leerlos como un libro.', fa: 'ساختمان‌ها، دکان‌ها و تابلوهایی که مردم ساخته‌اند [[cultural landscape|منظرهٔ فرهنگی]] است. می‌توانی آن‌ها را مثل کتاب بخوانی.' } },
+          fa: 'به دبی در امارات متحدهٔ عربی خوش آمدی! می‌توانی یک سرک را مثل یک صفحه بخوانی. هر چیزی که مردم روی زمین ساخته‌اند [[cultural landscape|منظرهٔ فرهنگی]] است: برج‌ها، دکان‌ها، تابلوها و عبادتگاه‌ها.' },
         { en: 'Look at the signs. Most are in Arabic and English. Most people who live in Dubai were born in other countries, like India, Pakistan and the Philippines. So you see their languages and foods here too.',
           es: 'Mira los letreros. La mayoría están en árabe e inglés. La mayoría de la gente que vive en Dubái nació en otros países, como la India, Pakistán y Filipinas. Por eso también ves sus idiomas y sus comidas aquí.',
-          fa: 'به تابلوها نگاه کن. بیشتر آن‌ها به عربی و انگلیسی هستند. بیشتر مردمی که در دبی زندگی می‌کنند در کشورهای دیگر مثل هند، پاکستان و فیلیپین به دنیا آمده‌اند. پس زبان‌ها و غذاهای آن‌ها را هم این‌جا می‌بینی.',
-          easy: { en: 'Signs here are in Arabic and English. Many people came from other countries, so you see many languages.', es: 'Aquí los letreros están en árabe e inglés. Mucha gente vino de otros países, así que ves muchos idiomas.', fa: 'تابلوهای این‌جا به عربی و انگلیسی هستند. مردم زیادی از کشورهای دیگر آمده‌اند، پس زبان‌های زیادی می‌بینی.' } },
+          fa: 'به تابلوها نگاه کن. بیشتر آن‌ها به عربی و انگلیسی هستند. بیشتر مردمی که در دبی زندگی می‌کنند در کشورهای دیگر مثل هند، پاکستان و فیلیپین به دنیا آمده‌اند. پس زبان‌ها و غذاهای آن‌ها را هم این‌جا می‌بینی.' },
         { en: 'Old Dubai has houses with tall [[windcatcher|windcatchers]] on the roof. Traders from Iran built many of them over 100 years ago. They carried the idea across the water. That is cultural diffusion you can touch!',
           es: 'El Dubái antiguo tiene casas con [[windcatcher|torres de viento]] altas en el techo. Comerciantes de Irán construyeron muchas hace más de 100 años. Llevaron la idea a través del agua. ¡Es difusión cultural que puedes tocar!',
-          fa: 'دبی کهنه خانه‌هایی با [[windcatcher|بادگیر]] بلند روی بام دارد. تاجران ایرانی بسیاری از آن‌ها را بیش از ۱۰۰ سال پیش ساختند. آن‌ها این فکر را از آن طرف آب آوردند. این پخش فرهنگی است که می‌توانی لمسش کنی!',
-          easy: { en: 'Traders from Iran built houses with [[windcatcher|windcatchers]] here long ago. The idea crossed the water.', es: 'Comerciantes de Irán construyeron aquí casas con [[windcatcher|torres de viento]] hace mucho. La idea cruzó el agua.', fa: 'تاجران ایرانی مدت‌ها پیش این‌جا خانه‌هایی با [[windcatcher|بادگیر]] ساختند. این فکر از آب گذشت.' } }
+          fa: 'دبی کهنه خانه‌هایی با [[windcatcher|بادگیر]] بلند روی بام دارد. تاجران ایرانی بسیاری از آن‌ها را بیش از ۱۰۰ سال پیش ساختند. آن‌ها این فکر را از آن طرف آب آوردند. این پخش فرهنگی است که می‌توانی لمسش کنی!' }
       ],
       ask: {
         stat: 'pla',

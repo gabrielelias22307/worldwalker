@@ -96,15 +96,37 @@ function checkEpisode(file) {
     else if (qa.type === 'find') place(qa.at, 'quest secret spot', true, new Set());
     else errs.push('quest.action.type must be find, fight or trade');
   }
+  /* ---- the compass stone in the world: its things on the map ---- */
+  const c0w = ep.challenge || {};
+  { const list = c0w.type === 'route' ? c0w.items : c0w.type === 'site' ? c0w.options : c0w.type === 'levers' ? c0w.switches : null;
+    if (list) { if ((c0w.spots || []).length !== list.length) errs.push(`${c0w.type} needs one spot in spots for each ${c0w.type === 'route' ? 'item' : c0w.type === 'site' ? 'option' : 'switch'}`); list.forEach((o, i) => { o.at = o.at || (c0w.spots || [])[i]; }); } }
+  if (c0w.type === 'route') (c0w.items || []).forEach((it, i) => it.at ? place(it.at, 'route stop ' + i, true, block) : errs.push(`route item ${i} needs at: [x, y]`));
+  if (c0w.type === 'site') (c0w.options || []).forEach((o, i) => o.at ? place(o.at, 'site ' + i, true, block) : errs.push(`site option ${i} needs at: [x, y]`));
+  if (c0w.type === 'survey') {
+    if (!c0w.table || (c0w.spots || []).length !== (c0w.table.rows || []).length) errs.push('survey needs one spot in spots for every table row');
+    (c0w.spots || []).forEach((p, i) => place(p, 'survey post ' + i, true, block));
+  }
+  if (c0w.type === 'levers') (c0w.switches || []).forEach((sw, i) => sw.at ? place(sw.at, 'lever ' + i, true, block) : errs.push(`lever ${i} needs at: [x, y]`));
+  /* ---- the secret only an earned tool reaches ---- */
+  const TOOL_EP = { compass: '1.3', canoe: '2.3', rail: '3.3', gourd: '4.3', key: '5.3', cloak: '6.3', seal: '7.3', sail: '8.2' };
+  const sec = ep.secret;
+  const hasG = map.some(r => r.includes('G'));
+  if (sec) {
+    if (!TOOL_EP[sec.tool]) errs.push(`secret.tool "${sec.tool}" is not a tool`);
+    else if (!(parseFloat(TOOL_EP[sec.tool]) < parseFloat(ep.id))) errs.push(`secret.tool ${sec.tool} is earned in ${TOOL_EP[sec.tool]}, not before this episode`);
+    if (!sec.text) errs.push('secret needs text');
+    if (sec.at) place(sec.at, 'secret chest', true, block);
+    if (!['canoe', 'sail'].includes(sec.tool) && !hasG) errs.push('secret needs a tool gate tile "G" in the map');
+  } else if (hasG) errs.push('the map has a tool gate "G" but no secret');
   if (block.has(ep.start.join(','))) errs.push('start is on top of something');
   // reach: walk from start (fixed: tiles a repair turns walkable count as fixed)
-  const reach = fixed => {
+  const reach = (fixed, pass) => {
     const seen = new Set([ep.start.join(',')]); const q = [ep.start];
     while (q.length) {
       const [x, y] = q.shift();
       for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
         const nx = x + dx, ny = y + dy, k = nx + ',' + ny;
-        if (seen.has(k) || (solid(nx, ny) && !fixed.has(k)) || block.has(k)) continue;
+        if (seen.has(k) || (solid(nx, ny) && !fixed.has(k) && !(pass && nx >= 0 && ny >= 0 && nx < W && ny < H && pass.includes(tile(nx, ny)))) || block.has(k)) continue;
         seen.add(k); q.push([nx, ny]);
       }
     }
@@ -112,7 +134,15 @@ function checkEpisode(file) {
   };
   const repairs = (ep.build || []).filter(b => b.kind === 'repair');
   const before = reach(new Set());
-  const seen = reach(new Set(repairs.flatMap(b => (b.at || []).map(p => p.join(',')))));
+  const fixedAll = new Set(repairs.flatMap(b => (b.at || []).map(p => p.join(','))));
+  const seen = reach(fixedAll);
+  if (sec && sec.at && TOOL_EP[sec.tool]) {
+    const pass = sec.tool === 'sail' ? '~=G' : sec.tool === 'canoe' ? '~G' : 'G';
+    const near = (set, [x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => set.has((x + dx) + ',' + (y + dy)));
+    // without any tool you cannot get to it, but with this tool you can (other tools may open other ways; that is fine)
+    if (near(seen, sec.at)) errs.push('the secret chest can be reached without the tool');
+    if (!near(reach(fixedAll, pass), sec.at)) errs.push(`the secret chest cannot be reached even with the ${sec.tool}`);
+  }
   const nextTo = ([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => seen.has((x + dx) + ',' + (y + dy)));
   (ep.npcs || []).forEach((n, i) => { if (!nextTo([n.x, n.y])) errs.push(`npc ${i} cannot be reached`); });
   (ep.signs || []).forEach((s, i) => { if (!nextTo([s.x, s.y])) errs.push(`sign ${i} cannot be reached`); });
@@ -128,6 +158,24 @@ function checkEpisode(file) {
     const scr = p => p && Math.floor(p.x / SW) + ',' + Math.floor(p.y / SH);
     if (qu.giver && qu.contact && scr(qu.giver) === scr(qu.contact)) warns.push('quest giver and contact are on the same screen; spreading them out makes the quest a real trip');
   }
+  if (c0w.type === 'route') (c0w.items || []).forEach((it, i) => { if (it.at && !nextTo(it.at)) errs.push(`route stop ${i} cannot be reached`); });
+  if (c0w.type === 'site') (c0w.options || []).forEach((o, i) => { if (o.at && !nextTo(o.at)) errs.push(`site ${i} cannot be reached`); });
+  if (c0w.type === 'survey') (c0w.spots || []).forEach((p, i) => { if (!nextTo(p)) errs.push(`survey post ${i} cannot be reached`); });
+  if (c0w.type === 'levers') (c0w.switches || []).forEach((sw, i) => { if (sw.at && !nextTo(sw.at)) errs.push(`lever ${i} cannot be reached`); });
+  if (c0w.type === 'carry') {
+    const zs = c0w.zones || [], cover = new Map();
+    (c0w.bins || []).forEach(b => {
+      const tiles = zs.filter(z => z.bin === b.id).flatMap(z => { const o = []; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) o.push(x + ',' + y); return o; });
+      const open = tiles.filter(k => seen.has(k) && !blockers.has(k)).length, need = (c0w.items || []).filter(it => it.bin === b.id).length;
+      if (!tiles.length) errs.push(`carry: bin "${b.id}" has no zone`);
+      else if (open < need + 1) errs.push(`carry: zone for "${b.id}" has ${open} open tiles you can reach; it needs at least ${need + 1}`);
+    });
+    zs.forEach((z, i) => {
+      if (!(c0w.bins || []).some(b => b.id === z.bin)) errs.push(`carry zone ${i} bin "${z.bin}" is not a bin`);
+      for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) { const k = x + ',' + y; if (cover.has(k)) errs.push(`carry zones ${cover.get(k)} and ${i} overlap at (${k})`); cover.set(k, i); }
+    });
+  }
+
   /* ---- tools and build list ---- */
   (ep.tools || []).forEach(t => { if (!['axe', 'sickle'].includes(t)) errs.push(`tool "${t}" must be axe or sickle`); });
   if (ep.christopher && ep.christopher.meet && !(ep.christopher.meet.length >= 2 && ep.christopher.meet.length <= 3)) warns.push('christopher.meet should be 2 or 3 short lines');
@@ -221,7 +269,9 @@ function checkEpisode(file) {
   if (!['loc', 'pla', 'hei', 'mov', 'reg'].includes(c0.stat)) errs.push('challenge.stat must be loc/pla/hei/mov/reg');
   if (!c0.title || !c0.intro || !c0.success) errs.push('challenge needs title, intro, success');
   let c = c0;
-  if (c0.type === 'build') {
+  const BASE = { carry: 'sort', route: 'order', site: 'claim', survey: 'table', levers: 'combo' };
+  if (BASE[c0.type]) c = Object.assign({}, c0, { type: BASE[c0.type] }); // the card version uses the same data
+  else if (c0.type === 'build') {
     const signs = (c0.items || []).map(id => (ep.build || []).find(b => b.id === id));
     if (signs.length < 2) errs.push('build challenge needs 2+ items (signpost ids from build)');
     signs.forEach((b, i) => { if (!b || b.kind !== 'signpost') errs.push(`build challenge item ${i} "${c0.items[i]}" is not a signpost in build`); });
@@ -267,7 +317,7 @@ function checkEpisode(file) {
     else c.table.rows.forEach((r, i) => { if (r.length !== c.table.head.length) errs.push(`table row ${i} has ${r.length} cells, head has ${c.table.head.length}`); });
     if ((c.questions || []).length < 3) errs.push('table needs 3+ questions');
     (c.questions || []).forEach((qq, i) => { if (!(qq.answer >= 0 && qq.answer < qq.choices.length)) errs.push(`table q${i} answer index is wrong`); if (!qq.why) errs.push(`table q${i} needs a why`); });
-  } else errs.push('challenge.type must be sort, order, claim, combo, table or build' + (c0.type === 'build' ? ' (the fallback too)' : ''));
+  } else errs.push('challenge.type must be sort, order, claim, combo, table, build, carry, route, site, survey or levers' + (c0.type === 'build' ? ' (the fallback too)' : ''));
   return { errs, warns, ep };
 }
 

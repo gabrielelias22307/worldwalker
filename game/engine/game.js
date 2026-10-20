@@ -108,7 +108,7 @@
   function entAt(x, y) { return ents.find(e => e.x === x && e.y === y && !e.gone && e.visible !== false); }
   function walkable(x, y) {
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
-    if (WW.solid(tileAt(x, y))) return false;
+    if (WW.solid(tileAt(x, y)) && !WW.world.pass(tileAt(x, y))) return false; // earned tools: canoe, sail, tool gates
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
@@ -139,6 +139,7 @@
     stars = []; zapped = 0; toldShield = false;
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
+    WW.world.ents(ep).forEach(e => ents.push(e)); WW.world.setup(ep);
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
@@ -214,6 +215,7 @@
     if (!e || WW.paused) return;
     const ep = WW.ep, r = WW.run;
     if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
+    if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -260,7 +262,7 @@
     const e = entAt(nx, ny);
     if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
-    if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny)) held = null; return; }
+    if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
     player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
@@ -435,6 +437,7 @@
         }
       }
       if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+      if (WW.world.KINDS.includes(e.kind)) WW.world.draw(c, e, px(e), py(e), t);
       if (e.kind === 'atlas') {
         const a = (Math.sin(t / 250) + 1) / 2;
         c.fillStyle = `rgba(255,230,140,${.25 + a * .35})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 6, 10 + a * 3, 0, 7); c.fill();
@@ -541,6 +544,7 @@
       if (st === 1) return [q.contact.x, q.contact.y];
       return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null; // a secret spot is found with the clue, not the arrow
     }
+    if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
     return r.challengeDone ? ep.boss.at : ep.challenge.at;
   };
   G.progress = () => { // 0..1: how much of the episode is done (the land's color comes back with it)
@@ -572,6 +576,7 @@
     const d = player.dir;
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
     WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
+    WW.world.boat(c, Math.round(x), Math.round(y), tileAt(player.x, player.y));
     WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 
@@ -601,6 +606,11 @@
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; },
-    use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); }
+    use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
+    useOn(tiles) { // face the first free tile in the list and use the tool on it (play-tests)
+      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+      return null;
+    }
   };
 })();

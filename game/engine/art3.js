@@ -320,6 +320,18 @@
     R(c, x, y + 2, T, 1, '#5b3a1e'); R(c, x + 5, y + 3, 6, 1, '#5b3a1e');
   };
 
+  // the tool gate tile: closed with a padlock, open when you have the tool
+  tiles.G = (c, x, y, gx, gy, t, m) => {
+    under(c, x, y, gx, gy, m);
+    const tl = WW.ep && WW.ep.secret && WW.TOOLS.find(o => o.id === WW.ep.secret.tool), open = tl && WW.hasTool(tl.id);
+    c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 2, 2, 13); c.fillRect(x + 13, y + 2, 2, 13);
+    c.fillStyle = '#6d4424'; c.fillRect(x + 1, y + 2, 1, 13); c.fillRect(x + 13, y + 2, 1, 13);
+    if (open) { c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + 4, 2, 10); c.fillRect(x + 11, y + 4, 2, 10); return; }
+    c.fillStyle = '#8b5a2b'; for (let i = 0; i < 4; i++) c.fillRect(x + 3 + i * 3, y + 4, 2, 11);
+    c.fillStyle = '#5b3a1e'; c.fillRect(x + 3, y + 6, 10, 1); c.fillRect(x + 3, y + 12, 10, 1);
+    c.fillStyle = '#f2c14e'; c.fillRect(x + 6, y + 8, 4, 3); c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 9, 2, 1);
+  };
+
   /* ---------------- people ---------------- */
   // hair styles made from the base person: change a few pixels
   const edit = (rows, list) => { const out = rows.map(r => r.split('')); list.forEach(([r, k, ch]) => (out[r][k] = ch)); return out.map(r => r.join('')); };

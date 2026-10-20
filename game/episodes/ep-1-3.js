@@ -59,16 +59,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello! I dig in this mine. Rocks, metals, oil, water, soil and trees all come from the earth. They are [[natural resource|natural resources]].',
           es: '¡Hola! Yo trabajo en esta mina. Las rocas, los metales, el petróleo, el agua, el suelo y los árboles vienen de la tierra. Son [[natural resource|recursos naturales]].',
-          fa: 'سلام! من در این معدن کار می‌کنم. سنگ، فلز، تیل، آب، خاک و درخت همه از زمین می‌آیند. این‌ها [[natural resource|منابع طبیعی]] هستند.',
-          easy: { en: 'Things from the earth, like metal, water and trees, are [[natural resource|natural resources]].', es: 'Las cosas de la tierra, como metal, agua y árboles, son [[natural resource|recursos naturales]].', fa: 'چیزهایی که از زمین می‌آیند، مثل فلز، آب و درخت، [[natural resource|منابع طبیعی]] هستند.' } },
+          fa: 'سلام! من در این معدن کار می‌کنم. سنگ، فلز، تیل، آب، خاک و درخت همه از زمین می‌آیند. این‌ها [[natural resource|منابع طبیعی]] هستند.' },
         { en: 'No two places hold the same natural resources. Huge oil fields sit under the desert in Saudi Arabia. The Democratic Republic of the Congo holds a large share of the world\'s cobalt.',
           es: 'No hay dos lugares con los mismos recursos naturales. Hay enormes campos de petróleo bajo el desierto de Arabia Saudita. La República Democrática del Congo tiene gran parte del cobalto del mundo.',
-          fa: 'هیچ دو جایی منابع طبیعی یکسان ندارند. زیر ریگستان عربستان سعودی ساحه‌های بزرگ تیل است. جمهوری دموکراتیک کانگو بخش بزرگی از کوبالت جهان را دارد.',
-          easy: { en: 'Each place has different resources. Saudi Arabia has oil. The Congo has cobalt.', es: 'Cada lugar tiene recursos distintos. Arabia Saudita tiene petróleo. El Congo tiene cobalto.', fa: 'هر جا منابع مختلف دارد. عربستان سعودی تیل دارد. کانگو کوبالت دارد.' } },
+          fa: 'هیچ دو جایی منابع طبیعی یکسان ندارند. زیر ریگستان عربستان سعودی ساحه‌های بزرگ تیل است. جمهوری دموکراتیک کانگو بخش بزرگی از کوبالت جهان را دارد.' },
         { en: 'Cobalt is a metal used inside batteries for phones and cars. Towns, roads and worker camps grew up around those mines. That is [[land use|land use]]: how people use the land.',
           es: 'El cobalto es un metal que se usa en las baterías de teléfonos y carros. Alrededor de esas minas crecieron pueblos, caminos y campamentos de trabajadores. Eso es el [[land use|uso del suelo]]: cómo la gente usa la tierra.',
-          fa: 'کوبالت فلزی است که در بتری موبایل و موتر به کار می‌رود. دور آن معدن‌ها شهرک، سرک و کمپ کارگران ساخته شد. این [[land use|استفاده از زمین]] است: اینکه مردم زمین را چطور به کار می‌برند.',
-          easy: { en: 'Cobalt goes into phone batteries. Mines changed the land around them. That is [[land use|land use]].', es: 'El cobalto va en las baterías de los teléfonos. Las minas cambiaron la tierra a su alrededor. Eso es el [[land use|uso del suelo]].', fa: 'کوبالت در بتری موبایل می‌رود. معدن‌ها زمین دور خود را تغییر دادند. این [[land use|استفاده از زمین]] است.' } }
+          fa: 'کوبالت فلزی است که در بتری موبایل و موتر به کار می‌رود. دور آن معدن‌ها شهرک، سرک و کمپ کارگران ساخته شد. این [[land use|استفاده از زمین]] است: اینکه مردم زمین را چطور به کار می‌برند.' }
       ],
       ask: {
         stat: 'loc',
@@ -91,16 +88,13 @@ window.EPISODE = {
       lines: [
         { en: 'Salaam! Smell that bread? My bakery needs three kinds of [[resource|resources]]. First, wheat for my flour. Wheat grows from the earth, so it is a [[natural resource|natural resource]].',
           es: '¡Salam! ¿Hueles ese pan? Mi panadería necesita tres tipos de [[resource|recursos]]. Primero, trigo para mi harina. El trigo crece de la tierra, así que es un [[natural resource|recurso natural]].',
-          fa: 'سلام! بوی نان را حس می‌کنی؟ نانوایی من سه نوع [[resource|منبع]] لازم دارد. اول، گندم برای آرد. گندم از زمین می‌روید، پس [[natural resource|منبع طبیعی]] است.',
-          easy: { en: 'My bakery needs three kinds of [[resource|resources]]. Wheat is a [[natural resource|natural resource]].', es: 'Mi panadería necesita tres tipos de [[resource|recursos]]. El trigo es un [[natural resource|recurso natural]].', fa: 'نانوایی من سه نوع [[resource|منبع]] لازم دارد. گندم [[natural resource|منبع طبیعی]] است.' } },
+          fa: 'سلام! بوی نان را حس می‌کنی؟ نانوایی من سه نوع [[resource|منبع]] لازم دارد. اول، گندم برای آرد. گندم از زمین می‌روید، پس [[natural resource|منبع طبیعی]] است.' },
         { en: 'Second, me! I know how to shape the dough. People and their skills are [[human resource|human resources]]. A trained nurse or a skilled driver is a human resource too.',
           es: 'Segundo, ¡yo! Sé cómo darle forma a la masa. Las personas y sus habilidades son [[human resource|recursos humanos]]. Una enfermera preparada o un buen chofer también son recursos humanos.',
-          fa: 'دوم، خودم! من می‌دانم خمیر را چطور شکل بدهم. مردم و مهارت‌هایشان [[human resource|منابع انسانی]] هستند. یک نرس آموزش‌دیده یا یک دریور ماهر هم منبع انسانی است.',
-          easy: { en: 'I am the baker. People and their skills are [[human resource|human resources]].', es: 'Yo soy la panadera. Las personas y sus habilidades son [[human resource|recursos humanos]].', fa: 'من نانوا هستم. مردم و مهارت‌هایشان [[human resource|منابع انسانی]] هستند.' } },
+          fa: 'دوم، خودم! من می‌دانم خمیر را چطور شکل بدهم. مردم و مهارت‌هایشان [[human resource|منابع انسانی]] هستند. یک نرس آموزش‌دیده یا یک دریور ماهر هم منبع انسانی است.' },
         { en: 'Third, my oven. People built it to help make bread. That makes it a [[capital resource|capital resource]]. Take away the wheat, the baker or the oven, and the bakery stops.',
           es: 'Tercero, mi horno. La gente lo construyó para ayudar a hacer pan. Eso lo hace un [[capital resource|recurso de capital]]. Si quitas el trigo, la panadera o el horno, la panadería se detiene.',
-          fa: 'سوم، تنور من. مردم آن را ساختند تا در پختن نان کمک کند. پس [[capital resource|منبع سرمایه‌ای]] است. اگر گندم، نانوا یا تنور را برداری، نانوایی از کار می‌ماند.',
-          easy: { en: 'My oven is a [[capital resource|capital resource]]: a tool people made. I need all three.', es: 'Mi horno es un [[capital resource|recurso de capital]]: una herramienta hecha por personas. Necesito los tres.', fa: 'تنور من [[capital resource|منبع سرمایه‌ای]] است: ابزاری که مردم ساخته‌اند. من هر سه را لازم دارم.' } }
+          fa: 'سوم، تنور من. مردم آن را ساختند تا در پختن نان کمک کند. پس [[capital resource|منبع سرمایه‌ای]] است. اگر گندم، نانوا یا تنور را برداری، نانوایی از کار می‌ماند.' }
       ],
       ask: {
         stat: 'pla',
@@ -123,16 +117,13 @@ window.EPISODE = {
       lines: [
         { en: 'Good soil is a resource too, not only metal or oil. My family came from Brazil. Brazil has some of the richest farmland on Earth.',
           es: 'La buena tierra también es un recurso, no solo el metal o el petróleo. Mi familia vino de Brasil. Brasil tiene algunas de las tierras de cultivo más ricas del mundo.',
-          fa: 'خاک خوب هم یک منبع است، نه فقط فلز یا تیل. خانوادهٔ من از برازیل آمده. برازیل یکی از حاصل‌خیزترین زمین‌های زراعتی جهان را دارد.',
-          easy: { en: 'Good soil is a resource too. Brazil has very rich farmland.', es: 'La buena tierra también es un recurso. Brasil tiene tierras de cultivo muy ricas.', fa: 'خاک خوب هم منبع است. برازیل زمین زراعتی بسیار خوب دارد.' } },
+          fa: 'خاک خوب هم یک منبع است، نه فقط فلز یا تیل. خانوادهٔ من از برازیل آمده. برازیل یکی از حاصل‌خیزترین زمین‌های زراعتی جهان را دارد.' },
         { en: 'Some of that farmland pushes into the edge of the Amazon Rainforest. Farmers need the space to feed their families. Scientists want the forest left alone, because the trees hold carbon and many kinds of animals.',
           es: 'Parte de esas tierras de cultivo entra en el borde de la selva amazónica. Los agricultores necesitan el espacio para alimentar a sus familias. Los científicos quieren que el bosque se quede como está, porque los árboles guardan carbono y muchos tipos de animales.',
-          fa: 'بخشی از آن زمین‌های زراعتی به کنارهٔ جنگل بارانی آمازون می‌رسد. دهقانان برای نان خانواده‌شان به این زمین ضرورت دارند. دانشمندان می‌خواهند جنگل دست نخورده بماند، چون درختان کاربن و انواع زیادی از حیوانات را نگه می‌دارند.',
-          easy: { en: 'Farmers want to clear some rainforest for farms. Scientists want to keep the forest.', es: 'Los agricultores quieren despejar parte de la selva para sembrar. Los científicos quieren cuidar el bosque.', fa: 'دهقانان می‌خواهند بخشی از جنگل را برای زراعت پاک کنند. دانشمندان می‌خواهند جنگل بماند.' } },
+          fa: 'بخشی از آن زمین‌های زراعتی به کنارهٔ جنگل بارانی آمازون می‌رسد. دهقانان برای نان خانواده‌شان به این زمین ضرورت دارند. دانشمندان می‌خواهند جنگل دست نخورده بماند، چون درختان کاربن و انواع زیادی از حیوانات را نگه می‌دارند.' },
         { en: 'Both sides have a real reason. So every resource comes with a question about [[land use|land use]]: who decides what the land becomes?',
           es: 'Los dos lados tienen una razón real. Por eso cada recurso trae una pregunta sobre el [[land use|uso del suelo]]: ¿quién decide en qué se convierte la tierra?',
-          fa: 'هر دو طرف دلیل واقعی دارند. پس هر منبع یک سوال دربارهٔ [[land use|استفاده از زمین]] با خود دارد: چه کسی تصمیم می‌گیرد زمین چه شود؟',
-          easy: { en: 'Both sides have a reason. Who decides how to use the land?', es: 'Los dos lados tienen una razón. ¿Quién decide cómo usar la tierra?', fa: 'هر دو طرف دلیل دارند. چه کسی تصمیم می‌گیرد زمین چطور به کار برود؟' } }
+          fa: 'هر دو طرف دلیل واقعی دارند. پس هر منبع یک سوال دربارهٔ [[land use|استفاده از زمین]] با خود دارد: چه کسی تصمیم می‌گیرد زمین چه شود؟' }
       ],
       ask: {
         stat: 'hei',

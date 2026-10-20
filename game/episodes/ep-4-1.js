@@ -62,16 +62,13 @@ window.EPISODE = {
       lines: [
         { en: 'Sannu! That means hello in Hausa. I am Aisha. My family farms and keeps cattle here in the [[sahel|Sahel]] of northern Nigeria. The Sahel is a belt of dry grassland just south of the [[sahara|Sahara]], the largest hot desert on Earth.',
           es: '¡Sannu! Así se dice hola en hausa. Soy Aisha. Mi familia cultiva y cría ganado aquí, en el [[sahel|Sahel]] del norte de Nigeria. El Sahel es una franja de pasto seco justo al sur del [[sahara|Sahara]], el desierto caliente más grande de la Tierra.',
-          fa: 'سنّو! این به زبان هوسا یعنی سلام. من عایشه هستم. خانوادهٔ من این‌جا در [[sahel|ساحل]] شمال نیجریه کشت می‌کند و گاو نگه می‌دارد. ساحل نوار علفزار خشک است، درست در جنوب [[sahara|صحرا]]، بزرگ‌ترین بیابان گرم روی زمین.',
-          easy: { en: 'Hi! I am Aisha. I farm and keep cattle in the [[sahel|Sahel]]. It is dry grassland just south of the [[sahara|Sahara]] desert.', es: '¡Hola! Soy Aisha. Cultivo y crío ganado en el [[sahel|Sahel]]. Es pasto seco justo al sur del desierto del [[sahara|Sahara]].', fa: 'سلام! من عایشه هستم. در [[sahel|ساحل]] کشت می‌کنم و گاو دارم. این‌جا علفزار خشک است، درست در جنوب بیابان [[sahara|صحرا]].' } },
+          fa: 'سنّو! این به زبان هوسا یعنی سلام. من عایشه هستم. خانوادهٔ من این‌جا در [[sahel|ساحل]] شمال نیجریه کشت می‌کند و گاو نگه می‌دارد. ساحل نوار علفزار خشک است، درست در جنوب [[sahara|صحرا]]، بزرگ‌ترین بیابان گرم روی زمین.' },
         { en: 'We get one short rainy season each year. The rest of the year is long and dry. We plant millet when the rain comes. We harvest before the dry months arrive.',
           es: 'Tenemos una sola temporada de lluvias corta cada año. El resto del año es largo y seco. Sembramos mijo cuando llega la lluvia. Cosechamos antes de que lleguen los meses secos.',
-          fa: 'ما هر سال فقط یک فصل بارانی کوتاه داریم. باقی سال دراز و خشک است. وقتی باران می‌آید، ارزن می‌کاریم. پیش از ماه‌های خشک حاصل را جمع می‌کنیم.',
-          easy: { en: 'Rain comes once a year, for a short time. We plant when it rains.', es: 'La lluvia llega una vez al año, por poco tiempo. Sembramos cuando llueve.', fa: 'باران سالی یک بار و برای مدت کوتاه می‌آید. وقتی باران می‌بارد، می‌کاریم.' } },
+          fa: 'ما هر سال فقط یک فصل بارانی کوتاه داریم. باقی سال دراز و خشک است. وقتی باران می‌آید، ارزن می‌کاریم. پیش از ماه‌های خشک حاصل را جمع می‌کنیم.' },
         { en: 'Look north. Sand is creeping into old fields. That is [[desertification|desertification]]. The rain fails, animals eat the grass down to bare soil, and people cut trees for firewood. Now we plant long rows of trees. Their roots hold the soil.',
           es: 'Mira al norte. La arena se mete en los campos viejos. Eso es la [[desertification|desertificación]]. La lluvia falla, los animales comen el pasto hasta dejar la tierra pelada y la gente corta árboles para leña. Ahora sembramos filas largas de árboles. Sus raíces sujetan la tierra.',
-          fa: 'به طرف شمال نگاه کن. ریگ آهسته به کشتزارهای کهنه می‌آید. این [[desertification|بیابان‌زایی]] است. باران نمی‌بارد، حیوانات علف را تا خاک لُچ می‌خورند و مردم درخت را برای هیزم می‌بُرند. حالا ما قطارهای دراز درخت می‌کاریم. ریشه‌های آن‌ها خاک را نگه می‌دارند.',
-          easy: { en: 'The desert is growing into our fields. This is [[desertification|desertification]]. Trees can help stop it.', es: 'El desierto está entrando en nuestros campos. Esto es la [[desertification|desertificación]]. Los árboles ayudan a frenarla.', fa: 'بیابان به کشتزارهای ما می‌آید. این [[desertification|بیابان‌زایی]] است. درخت‌ها کمک می‌کنند جلوی آن گرفته شود.' } }
+          fa: 'به طرف شمال نگاه کن. ریگ آهسته به کشتزارهای کهنه می‌آید. این [[desertification|بیابان‌زایی]] است. باران نمی‌بارد، حیوانات علف را تا خاک لُچ می‌خورند و مردم درخت را برای هیزم می‌بُرند. حالا ما قطارهای دراز درخت می‌کاریم. ریشه‌های آن‌ها خاک را نگه می‌دارند.' }
       ],
       ask: {
         stat: 'hei',
@@ -94,16 +91,13 @@ window.EPISODE = {
       lines: [
         { en: 'Jambo! That means hello in Swahili. I am Wanjiru, a wildlife ranger in Kenya. This is the [[savanna|savanna]]: wide grassland with trees spread far apart. Giraffes eat from the flat-topped acacia trees. Zebras and lions live here too.',
           es: '¡Jambo! Así se dice hola en suajili. Soy Wanjiru, guardaparques en Kenia. Esta es la [[savanna|sabana]]: una pradera ancha con árboles muy separados. Las jirafas comen de las acacias de copa plana. Aquí también viven cebras y leones.',
-          fa: 'جامبو! این به زبان سواحیلی یعنی سلام. من وانجیرو هستم، نگهبان حیات وحش در کینیا. این‌جا [[savanna|ساوانا]] است: علفزار پهن با درختانی که از هم دور هستند. زرافه‌ها از درختان اکاسیا که سر هموار دارند می‌خورند. گوره‌خر و شیر هم این‌جا زندگی می‌کنند.',
-          easy: { en: 'Hi! I am a ranger. This is the [[savanna|savanna]]: grass and a few trees. Giraffes, zebras and lions live here.', es: '¡Hola! Soy guardaparques. Esta es la [[savanna|sabana]]: pasto y pocos árboles. Aquí viven jirafas, cebras y leones.', fa: 'سلام! من نگهبان پارک هستم. این‌جا [[savanna|ساوانا]] است: علف و چند درخت. زرافه، گوره‌خر و شیر این‌جا زندگی می‌کنند.' } },
+          fa: 'جامبو! این به زبان سواحیلی یعنی سلام. من وانجیرو هستم، نگهبان حیات وحش در کینیا. این‌جا [[savanna|ساوانا]] است: علفزار پهن با درختانی که از هم دور هستند. زرافه‌ها از درختان اکاسیا که سر هموار دارند می‌خورند. گوره‌خر و شیر هم این‌جا زندگی می‌کنند.' },
         { en: 'The savanna has a wet season and a dry season. In the dry season the grass turns gold. Then the animals walk far to find water.',
           es: 'La sabana tiene una época de lluvias y una época seca. En la época seca el pasto se pone dorado. Entonces los animales caminan lejos para encontrar agua.',
-          fa: 'ساوانا یک فصل بارانی و یک فصل خشک دارد. در فصل خشک علف زرد طلایی می‌شود. آن وقت حیوانات راه دور می‌روند تا آب پیدا کنند.',
-          easy: { en: 'There is a wet season and a dry season. In the dry season, animals walk far for water.', es: 'Hay época de lluvias y época seca. En la época seca, los animales caminan lejos por agua.', fa: 'یک فصل بارانی و یک فصل خشک هست. در فصل خشک، حیوانات برای آب راه دور می‌روند.' } },
+          fa: 'ساوانا یک فصل بارانی و یک فصل خشک دارد. در فصل خشک علف زرد طلایی می‌شود. آن وقت حیوانات راه دور می‌روند تا آب پیدا کنند.' },
         { en: 'Now look east at Mount Kenya. It sits almost on the [[equator|equator]], but it has snow and ice on top! The reason is [[elevation|elevation]]. The higher you climb, the colder the air gets.',
           es: 'Ahora mira al este, al monte Kenia. Está casi sobre el [[equator|ecuador]], ¡pero tiene nieve y hielo arriba! La razón es la [[elevation|elevación]]. Mientras más alto subes, más frío es el aire.',
-          fa: 'حالا به طرف شرق، به کوه کینیا نگاه کن. تقریباً روی [[equator|خط استوا]] است، اما سرش برف و یخ دارد! دلیلش [[elevation|ارتفاع]] است. هر چه بالاتر بروی، هوا سردتر می‌شود.',
-          easy: { en: 'Mount Kenya is near the [[equator|equator]] but has snow. It is very high, and high places are cold.', es: 'El monte Kenia está cerca del [[equator|ecuador]] pero tiene nieve. Es muy alto, y los lugares altos son fríos.', fa: 'کوه کینیا نزدیک [[equator|خط استوا]] است اما برف دارد. خیلی بلند است و جاهای بلند سرد هستند.' } }
+          fa: 'حالا به طرف شرق، به کوه کینیا نگاه کن. تقریباً روی [[equator|خط استوا]] است، اما سرش برف و یخ دارد! دلیلش [[elevation|ارتفاع]] است. هر چه بالاتر بروی، هوا سردتر می‌شود.' }
       ],
       ask: {
         stat: 'pla',
@@ -126,16 +120,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the [[rainforest|rainforest]] of southern Nigeria! I study the trees here. Close to the equator it is hot, and rain falls in most months of the year. The trees grow so tall and thick that little sunlight reaches the ground.',
           es: '¡Bienvenido a la [[rainforest|selva tropical]] del sur de Nigeria! Yo estudio los árboles de aquí. Cerca del ecuador hace calor y llueve casi todos los meses del año. Los árboles crecen tan altos y tupidos que llega poca luz al suelo.',
-          fa: 'به [[rainforest|جنگل بارانی]] جنوب نیجریه خوش آمدی! من درخت‌های این‌جا را مطالعه می‌کنم. نزدیک خط استوا هوا گرم است و در بیشتر ماه‌های سال باران می‌بارد. درخت‌ها آن‌قدر بلند و انبوه می‌شوند که نور کمی به زمین می‌رسد.',
-          easy: { en: 'This is the [[rainforest|rainforest]]. It is hot and it rains a lot. The trees are very tall.', es: 'Esta es la [[rainforest|selva tropical]]. Hace calor y llueve mucho. Los árboles son muy altos.', fa: 'این‌جا [[rainforest|جنگل بارانی]] است. هوا گرم است و زیاد باران می‌بارد. درخت‌ها خیلی بلند هستند.' } },
+          fa: 'به [[rainforest|جنگل بارانی]] جنوب نیجریه خوش آمدی! من درخت‌های این‌جا را مطالعه می‌کنم. نزدیک خط استوا هوا گرم است و در بیشتر ماه‌های سال باران می‌بارد. درخت‌ها آن‌قدر بلند و انبوه می‌شوند که نور کمی به زمین می‌رسد.' },
         { en: 'Did you see the pattern on your walk? Going south from the Sahara, the land gets wetter and greener: desert, then Sahel, then savanna, then rainforest. Each band has its own [[climate|climate]] and [[vegetation|vegetation]].',
           es: '¿Viste el patrón en tu camino? Yendo al sur desde el Sahara, la tierra se vuelve más húmeda y más verde: desierto, luego Sahel, luego sabana, luego selva. Cada franja tiene su propio [[climate|clima]] y su propia [[vegetation|vegetación]].',
-          fa: 'در راه این نقشه را دیدی؟ از صحرا که به طرف جنوب بروی، زمین مرطوب‌تر و سبزتر می‌شود: بیابان، بعد ساحل، بعد ساوانا، بعد جنگل بارانی. هر نوار [[climate|اقلیم]] و [[vegetation|نباتات]] خودش را دارد.',
-          easy: { en: 'Going south, the land gets wetter: desert, Sahel, savanna, rainforest.', es: 'Yendo al sur, la tierra es más húmeda: desierto, Sahel, sabana, selva.', fa: 'به طرف جنوب، زمین مرطوب‌تر می‌شود: بیابان، ساحل، ساوانا، جنگل بارانی.' } },
+          fa: 'در راه این نقشه را دیدی؟ از صحرا که به طرف جنوب بروی، زمین مرطوب‌تر و سبزتر می‌شود: بیابان، بعد ساحل، بعد ساوانا، بعد جنگل بارانی. هر نوار [[climate|اقلیم]] و [[vegetation|نباتات]] خودش را دارد.' },
         { en: 'My home city is Lagos, on the Atlantic coast. It is one of the largest cities in Africa. In Kenya, Nairobi sits inland on a high [[plateau|plateau]]. It is a center for business and technology.',
           es: 'Mi ciudad es Lagos, en la costa del Atlántico. Es una de las ciudades más grandes de África. En Kenia, Nairobi está tierra adentro, sobre una [[plateau|meseta]] alta. Es un centro de negocios y tecnología.',
-          fa: 'شهر من لاگوس است، در ساحل اقیانوس اطلس. یکی از بزرگ‌ترین شهرهای افریقا است. در کینیا، نایروبی دور از بحر روی یک [[plateau|فلات]] بلند است. نایروبی مرکز تجارت و تکنالوژی است.',
-          easy: { en: 'Lagos is a huge city on the ocean coast. Nairobi is on a high [[plateau|plateau]]. It is known for business and technology.', es: 'Lagos es una ciudad enorme en la costa. Nairobi está en una [[plateau|meseta]] alta. Es conocida por los negocios y la tecnología.', fa: 'لاگوس شهر بسیار بزرگی در ساحل بحر است. نایروبی روی یک [[plateau|فلات]] بلند است و به تجارت و تکنالوژی مشهور است.' } }
+          fa: 'شهر من لاگوس است، در ساحل اقیانوس اطلس. یکی از بزرگ‌ترین شهرهای افریقا است. در کینیا، نایروبی دور از بحر روی یک [[plateau|فلات]] بلند است. نایروبی مرکز تجارت و تکنالوژی است.' }
       ],
       ask: {
         stat: 'reg',

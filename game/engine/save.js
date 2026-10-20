@@ -197,6 +197,43 @@
     sgPickUp: { en: 'Face the sign and press Space to pick it up again.', es: 'Mira el letrero y pulsa Espacio para levantarlo otra vez.', fa: 'رو به تابلو بایست و Space را بزن تا دوباره برش داری.' },
     sgRefund: { en: 'Your signposts came down. You got back {c}.', es: 'Tus letreros se quitaron. Te devolvieron {c}.', fa: 'تابلوهایت برداشته شد. {c} پس گرفتی.' },
     sgPicked: { en: 'Got it back. Try another spot.', es: 'Lo tienes de vuelta. Prueba otro lugar.', fa: 'پسش گرفتی. جای دیگری را امتحان کن.' },
+    /* the compass stone in the world (world.js, tools.js carry) */
+    wStart: { en: 'Start', es: 'Empezar', fa: 'شروع کن' },
+    wStoneFirst: { en: 'Start at the glowing compass stone first. It tells you what to do.', es: 'Primero ve a la piedra brújula que brilla. Ella te dice qué hacer.', fa: 'اول به سنگ قطب‌نمای درخشان برو. او می‌گوید چه کنی.' },
+    cTake: { en: 'Take the cards', es: 'Toma las tarjetas', fa: 'کارت‌ها را بگیر' },
+    cHow: { en: 'Carry each card to the marked area where it belongs:', es: 'Lleva cada tarjeta al área marcada donde va:', fa: 'هر کارت را به جای نشانی‌شده‌ای که مالِ آن است ببر:' },
+    cStart: { en: 'Carry each card to the right colored area. Face a spot inside it and press Space. Press 5 to switch cards.', es: 'Lleva cada tarjeta al área de color correcta. Mira un lugar dentro y pulsa Espacio. Pulsa 5 para cambiar de tarjeta.', fa: 'هر کارت را به جای رنگی درست ببر. رو به جایی داخل آن بایست و Space را بزن. برای عوض کردن کارت ۵ را بزن.' },
+    cHolding: { en: 'Card {i} of {n}', es: 'Tarjeta {i} de {n}', fa: 'کارت {i} از {n}' },
+    cWrongZone: { en: 'This is the "{z}" area.', es: 'Esta es el área de "{z}".', fa: 'این جا ساحهٔ «{z}» است.' },
+    cOffZone: { en: 'This spot is outside the colored areas. Put the card inside one of them.', es: 'Este lugar está fuera de las áreas de color. Pon la tarjeta dentro de una.', fa: 'این جا بیرون از ساحه‌های رنگی است. کارت را داخل یکی از آن‌ها بگذار.' },
+    tool_card: { en: 'Cards: carry each one to the right area', es: 'Tarjetas: lleva cada una al área correcta', fa: 'کارت‌ها: هر کدام را به ساحهٔ درست ببر' },
+    nsCards: { en: 'Carry your cards: {n} still need the right area. Pick them with 5.', es: 'Lleva tus tarjetas: a {n} les falta el área correcta. Elígelas con 5.', fa: 'کارت‌هایت را ببر: {n} تا هنوز ساحهٔ درست را لازم دارند. با ۵ انتخابشان کن.' },
+    w_routeHow: { en: 'The stops are on the map. Walk into them in the right order.', es: 'Las paradas están en el mapa. Camina hacia ellas en el orden correcto.', fa: 'ایستگاه‌ها روی نقشه هستند. به ترتیب درست به طرف آن‌ها برو.' },
+    w_routeGo: { en: 'Find the first stop and walk into it. Then the next one, in order.', es: 'Busca la primera parada y camina hacia ella. Luego la siguiente, en orden.', fa: 'ایستگاه اول را پیدا کن و به طرفش برو. بعد ایستگاه بعدی، به ترتیب.' },
+    w_routeSeen: { en: 'Stops done: {n} of {m}', es: 'Paradas hechas: {n} de {m}', fa: 'ایستگاه‌های تمام شده: {n} از {m}' },
+    w_routeNext: { en: 'Now find the next stop.', es: 'Ahora busca la siguiente parada.', fa: 'حالا ایستگاه بعدی را پیدا کن.' },
+    w_routeWrong: { en: 'Not this stop yet.', es: 'Todavía no es esta parada.', fa: 'هنوز نوبت این ایستگاه نیست.' },
+    ns_route: { en: 'Visit stop {n} of {m}, in order.', es: 'Visita la parada {n} de {m}, en orden.', fa: 'به ایستگاه {n} از {m} برو، به ترتیب.' },
+    w_siteHow: { en: 'Visit every flag on the map. At the last one, plant your flag at the best site and say why.', es: 'Visita cada bandera del mapa. En la última, pon tu bandera en el mejor lugar y di por qué.', fa: 'به هر بیرق روی نقشه سر بزن. در آخری، بیرقت را در بهترین جا بگذار و بگو چرا.' },
+    w_siteGo: { en: 'Walk to each flag and look at the site.', es: 'Camina a cada bandera y mira el lugar.', fa: 'به طرف هر بیرق برو و آن جا را ببین.' },
+    w_siteSeen: { en: 'Sites visited: {n} of {m}', es: 'Lugares visitados: {n} de {m}', fa: 'جاهای دیده شده: {n} از {m}' },
+    w_siteMore: { en: 'Visit {n} more site(s) before you choose.', es: 'Visita {n} lugar(es) más antes de elegir.', fa: 'پیش از انتخاب به {n} جای دیگر هم سر بزن.' },
+    ns_site: { en: 'Visit the flags: {n} left.', es: 'Visita las banderas: faltan {n}.', fa: 'به بیرق‌ها سر بزن: {n} تا مانده.' },
+    ns_siteDone: { en: 'You saw every site. Walk into the flag you think is best.', es: 'Viste todos los lugares. Camina hacia la bandera que crees que es la mejor.', fa: 'همهٔ جاها را دیدی. به طرف بیرقی برو که فکر می‌کنی بهترین است.' },
+    w_surveyHow: { en: 'Visit every survey post on the map to collect the facts. Then come back and answer.', es: 'Visita cada poste de datos del mapa para juntar los datos. Luego vuelve y responde.', fa: 'به هر تیر معلومات روی نقشه سر بزن تا معلومات جمع کنی. بعد برگرد و جواب بده.' },
+    w_surveyGo: { en: 'Find the survey posts with a 📋 on the map.', es: 'Busca los postes con 📋 en el mapa.', fa: 'تیرهای 📋 دار را روی نقشه پیدا کن.' },
+    w_surveySeen: { en: 'Posts read: {n} of {m}', es: 'Postes leídos: {n} de {m}', fa: 'تیرهای خوانده شده: {n} از {m}' },
+    w_surveyPost: { en: 'Survey post', es: 'Poste de datos', fa: 'تیر معلومات' },
+    w_surveyLeft: { en: '{n} more survey post(s) to find.', es: 'Faltan {n} poste(s) de datos.', fa: '{n} تیر معلومات دیگر مانده.' },
+    w_surveyAll: { en: 'You have all the facts! Go back to the compass stone and answer.', es: '¡Tienes todos los datos! Vuelve a la piedra brújula y responde.', fa: 'همهٔ معلومات را داری! به سنگ قطب‌نما برگرد و جواب بده.' },
+    w_leversHow: { en: 'Pull the levers on the map to set them. Then come back here to test them.', es: 'Mueve las palancas del mapa. Luego vuelve aquí para probarlas.', fa: 'دسته‌های روی نقشه را تنظیم کن. بعد این جا برگرد و امتحانشان کن.' },
+    w_leversGo: { en: 'Find the levers. Walk into one to change it.', es: 'Busca las palancas. Camina hacia una para cambiarla.', fa: 'دسته‌ها را پیدا کن. به طرف یکی برو تا عوضش کنی.' },
+    w_leverTest: { en: 'Test the levers at the compass stone.', es: 'Prueba las palancas en la piedra brújula.', fa: 'دسته‌ها را در سنگ قطب‌نما امتحان کن.' },
+    w_leverAgain: { en: 'Change the levers on the map and test again.', es: 'Cambia las palancas en el mapa y prueba otra vez.', fa: 'دسته‌ها را روی نقشه عوض کن و دوباره امتحان کن.' },
+    /* the earned tools' secrets */
+    gateNeed: { en: 'This gate opens for the {t} (you earn it in Episode {e}). Come back when you have it!', es: 'Esta puerta se abre con {t} (lo ganas en el episodio {e}). ¡Vuelve cuando lo tengas!', fa: 'این دروازه با {t} باز می‌شود (آن را در قسمت {e} می‌گیری). وقتی داشتی برگرد!' },
+    secretFound: { en: 'A secret!', es: '¡Un secreto!', fa: 'یک راز!' },
+    why_secret: { en: 'secret found', es: 'secreto encontrado', fa: 'راز پیدا شد' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -248,7 +285,7 @@
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -332,6 +369,7 @@
     for (const k in other.bag || {}) { const a = (s.bag = s.bag || {})[k] || { got: 0, used: 0 }, b = other.bag[k]; s.bag[k] = { got: Math.max(a.got || 0, b.got || 0), used: Math.max(a.used || 0, b.used || 0) }; }
     for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
     if (other.metChris) s.metChris = true;
+    if (other.secrets) s.secrets = Array.from(new Set([...(s.secrets || []), ...other.secrets]));
     // coins: keep the most ever earned and the most ever spent, so spent coins never come back
     if (other.coins != null) {
       const spent = Math.max(s.spent || 0, other.spent || 0);
@@ -361,7 +399,7 @@
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [] });
     }
     return d || { ok: false };
   };
@@ -373,7 +411,7 @@
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {

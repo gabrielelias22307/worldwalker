@@ -52,7 +52,7 @@
     const w = bubble.offsetWidth, h = bubble.offsetHeight;
     bubble.style.left = Math.max(6, Math.min(sr.width - w - 6, px - w / 2)) + 'px';
     const above = py - h - 10;
-    bubble.style.top = (above > 4 ? above : py + 40) + 'px';
+    bubble.style.top = Math.max(4, Math.min(sr.height - h - 4, above > 4 ? above : py + 34 * scale)) + 'px'; // never off the screen
     bubble.classList.toggle('below', above <= 4);
     if (C.scene) { // his name, crisp, under him while you meet him
       if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.className = 'ctag'; $('ww-screen').appendChild(tag); }
@@ -121,7 +121,7 @@
         const q = ep.quest, st = WW.quest.step(), a = q.action;
         at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
         text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : WW.quest.bar().replace(/^📜\s*/, '');
-      } else if (!r.challengeDone) { at = ep.challenge.at; text = WW.tools && WW.tools.signText ? WW.tools.signText() || T('nsStone') : T('nsStone'); }
+      } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
       else { at = ep.boss.at; text = T('nsBoss'); }
     }
     // a broken bridge in the way? say so first

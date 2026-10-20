@@ -58,16 +58,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the [[mountain pass|mountain pass]]! This is the only road between two valleys. Every trader must pass through here. That is this place\'s [[situation|situation]]: what it connects to.',
           es: '¡Bienvenido al [[mountain pass|paso de montaña]]! Este es el único camino entre dos valles. Todo comerciante debe pasar por aquí. Esa es la [[situation|situación]] de este lugar: con qué se conecta.',
-          fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است. هر تاجر باید از اینجا بگذرد. این [[situation|موقعیت]] این جا است: اینکه به چه چیزها وصل است.',
-          easy: { en: 'This pass is the only road between two valleys. That is its [[situation|situation]].', es: 'Este paso es el único camino entre dos valles. Esa es su [[situation|situación]].', fa: 'این کوتل تنها راه میان دو دره است. این [[situation|موقعیت]] آن است.' } },
+          fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است. هر تاجر باید از اینجا بگذرد. این [[situation|موقعیت]] این جا است: اینکه به چه چیزها وصل است.' },
         { en: 'Now look at the ground. Rocky, cold and narrow. Almost no farmland. That is its [[site|site]]: the land itself. Great situation, hard site!',
           es: 'Ahora mira el suelo. Rocoso, frío y angosto. Casi no hay tierra para cultivar. Ese es su [[site|sitio]]: la tierra misma. ¡Gran situación, sitio difícil!',
-          fa: 'حالا به زمین ببین. سنگلاخ، سرد و باریک. تقریباً زمین زراعتی ندارد. این [[site|محل]] آن است: خود زمین. موقعیت عالی، محل سخت!',
-          easy: { en: 'The ground is rocky and cold. That is its [[site|site]], the land itself.', es: 'El suelo es rocoso y frío. Ese es su [[site|sitio]], la tierra misma.', fa: 'زمین سنگلاخ و سرد است. این [[site|محل]] آن است، خود زمین.' } },
+          fa: 'حالا به زمین ببین. سنگلاخ، سرد و باریک. تقریباً زمین زراعتی ندارد. این [[site|محل]] آن است: خود زمین. موقعیت عالی، محل سخت!' },
         { en: 'Here is a secret. These rocks will look the same in a thousand years. But a situation can change in ten. If someone digs a tunnel in another valley, the traders will stop coming here.',
           es: 'Te cuento un secreto. Estas rocas se verán igual en mil años. Pero una situación puede cambiar en diez. Si alguien cava un túnel en otro valle, los comerciantes dejarán de venir.',
-          fa: 'یک راز بگویم. این سنگ‌ها تا هزار سال همین‌طور می‌مانند. اما موقعیت می‌تواند در ده سال تغییر کند. اگر کسی در درهٔ دیگر تونل بکند، تاجران دیگر اینجا نمی‌آیند.',
-          easy: { en: 'Site barely changes. Situation can change fast, like when a new tunnel opens.', es: 'El sitio casi no cambia. La situación puede cambiar rápido, como cuando abren un túnel nuevo.', fa: 'محل تقریباً تغییر نمی‌کند. موقعیت می‌تواند زود تغییر کند، مثل وقتی یک تونل نو باز می‌شود.' } }
+          fa: 'یک راز بگویم. این سنگ‌ها تا هزار سال همین‌طور می‌مانند. اما موقعیت می‌تواند در ده سال تغییر کند. اگر کسی در درهٔ دیگر تونل بکند، تاجران دیگر اینجا نمی‌آیند.' }
       ],
       ask: {
         stat: 'loc',
@@ -90,16 +87,13 @@ window.EPISODE = {
       lines: [
         { en: 'I grow rice on this flat [[plain|plain]]. Every year the river drops rich soil on my fields. Flat land, fresh water and rich soil make a strong [[site|site]] for a city.',
           es: 'Yo cultivo arroz en esta [[plain|llanura]] plana. Cada año el río deja tierra fértil en mis campos. La tierra plana, el agua dulce y el suelo fértil hacen un buen [[site|sitio]] para una ciudad.',
-          fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را روی کشتزارهایم می‌گذارد. زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.',
-          easy: { en: 'Flat land, water and rich soil = a strong [[site|site]].', es: 'Tierra plana, agua y suelo fértil = un buen [[site|sitio]].', fa: 'زمین هموار، آب و خاک حاصلخیز = یک [[site|محل]] خوب.' } },
+          fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را روی کشتزارهایم می‌گذارد. زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.' },
         { en: 'But in the rainy season, the river floods. Then the hilltop is the safe, dry place. Up there, though, you must carry water all the way up the hill.',
           es: 'Pero en la temporada de lluvias el río se desborda. Entonces la colina es el lugar seguro y seco. Aunque allá arriba hay que subir el agua cargando.',
-          fa: 'اما در فصل باران، دریا سیلاب می‌شود. آن وقت سر تپه جای مصون و خشک است. اما آن بالا باید آب را تا سر تپه ببری.',
-          easy: { en: 'The plain floods. The hill stays dry, but water is far away.', es: 'La llanura se inunda. La colina queda seca, pero el agua está lejos.', fa: 'دشت سیلاب می‌شود. تپه خشک می‌ماند، اما آب دور است.' } },
+          fa: 'اما در فصل باران، دریا سیلاب می‌شود. آن وقت سر تپه جای مصون و خشک است. اما آن بالا باید آب را تا سر تپه ببری.' },
         { en: 'My rice goes to the town to be sold. The farms, villages and mines around a city that send it goods are its [[hinterland|hinterland]]. A big hinterland can help a city grow into a busy trade center.',
           es: 'Mi arroz va al pueblo para venderse. Las granjas, pueblos y minas alrededor de una ciudad que le mandan productos son su [[hinterland|hinterland]] o zona de influencia. Un hinterland grande puede ayudar a una ciudad a volverse un centro de comercio.',
-          fa: 'برنج من برای فروش به شهر می‌رود. کشتزارها، قریه‌ها و معدن‌های اطراف یک شهر که برایش کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. یک پس‌کرانهٔ بزرگ می‌تواند شهر را یک مرکز پرکار تجارت بسازد.',
-          easy: { en: 'Farms around a city send it food. They are its [[hinterland|hinterland]].', es: 'Las granjas alrededor de una ciudad le mandan comida. Son su [[hinterland|hinterland]].', fa: 'کشتزارهای اطراف شهر برایش غذا می‌فرستند. آن‌ها [[hinterland|پس‌کرانهٔ]] شهر هستند.' } }
+          fa: 'برنج من برای فروش به شهر می‌رود. کشتزارها، قریه‌ها و معدن‌های اطراف یک شهر که برایش کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. یک پس‌کرانهٔ بزرگ می‌تواند شهر را یک مرکز پرکار تجارت بسازد.' }
       ],
       ask: {
         stat: 'hei',
@@ -122,16 +116,13 @@ window.EPISODE = {
       lines: [
         { en: 'I guide ships at the [[river mouth|river mouth]]. Here the river meets the sea. Boats go up the river to the farm towns. Ships sail out to ports across the sea. That is a great [[situation|situation]]!',
           es: 'Yo guío barcos en la [[river mouth|desembocadura]]. Aquí el río llega al mar. Los botes suben por el río a los pueblos agrícolas. Los barcos salen a puertos al otro lado del mar. ¡Esa es una gran [[situation|situación]]!',
-          fa: 'من کشتی‌ها را در [[river mouth|دهانهٔ دریا]] رهنمایی می‌کنم. اینجا دریا به بحر می‌رسد. قایق‌ها از دریا بالا تا قریه‌های زراعتی می‌روند. کشتی‌ها به بندرهای آن طرف بحر می‌روند. این یک [[situation|موقعیت]] عالی است!',
-          easy: { en: 'River + sea = boats inland and ships to other ports. A great [[situation|situation]].', es: 'Río + mar = botes tierra adentro y barcos a otros puertos. Una gran [[situation|situación]].', fa: 'دریا + بحر = قایق به داخل و کشتی به بندرهای دیگر. یک [[situation|موقعیت]] عالی.' } },
+          fa: 'من کشتی‌ها را در [[river mouth|دهانهٔ دریا]] رهنمایی می‌کنم. اینجا دریا به بحر می‌رسد. قایق‌ها از دریا بالا تا قریه‌های زراعتی می‌روند. کشتی‌ها به بندرهای آن طرف بحر می‌روند. این یک [[situation|موقعیت]] عالی است!' },
         { en: 'Many of the biggest cities in East Asia grew where a river meets the sea. Shanghai sits near the mouth of the Yangtze River. Rice and goods come down the river, and ships carry them away.',
           es: 'Muchas de las ciudades más grandes del este de Asia crecieron donde un río llega al mar. Shanghái está cerca de la desembocadura del río Yangtsé. El arroz y los productos bajan por el río y los barcos se los llevan.',
-          fa: 'بسیاری از بزرگ‌ترین شهرهای شرق آسیا جایی رشد کردند که دریا به بحر می‌رسد. شانگهای نزدیک دهانهٔ دریای یانگتسی است. برنج و کالا از دریا پایین می‌آیند و کشتی‌ها آن‌ها را می‌برند.',
-          easy: { en: 'Big East Asian cities like Shanghai grew where a river meets the sea.', es: 'Grandes ciudades del este de Asia, como Shanghái, crecieron donde un río llega al mar.', fa: 'شهرهای بزرگ شرق آسیا مثل شانگهای جایی رشد کردند که دریا به بحر می‌رسد.' } },
+          fa: 'بسیاری از بزرگ‌ترین شهرهای شرق آسیا جایی رشد کردند که دریا به بحر می‌رسد. شانگهای نزدیک دهانهٔ دریای یانگتسی است. برنج و کالا از دریا پایین می‌آیند و کشتی‌ها آن‌ها را می‌برند.' },
         { en: 'Alexandria, Virginia is like this too! Its site is deep water on the Potomac River. First it was a busy port. Today it is a city next to the nation\'s capital. The site stayed the same. The situation changed.',
           es: '¡Alexandria, Virginia, también es así! Su sitio es agua profunda en el río Potomac. Primero fue un puerto muy activo. Hoy es una ciudad junto a la capital del país. El sitio quedó igual. La situación cambió.',
-          fa: 'الکساندریا، ویرجینیا هم همین‌طور است! محل آن آب عمیق در دریای پوتومک است. اول یک بندر پرکار بود. امروز شهری کنار پایتخت کشور است. محل همان ماند. موقعیت تغییر کرد.',
-          easy: { en: 'Alexandria, Virginia: same site (deep river water), new situation (next to the capital).', es: 'Alexandria, Virginia: mismo sitio (agua profunda del río), nueva situación (junto a la capital).', fa: 'الکساندریا، ویرجینیا: همان محل (آب عمیق دریا)، موقعیت نو (کنار پایتخت).' } }
+          fa: 'الکساندریا، ویرجینیا هم همین‌طور است! محل آن آب عمیق در دریای پوتومک است. اول یک بندر پرکار بود. امروز شهری کنار پایتخت کشور است. محل همان ماند. موقعیت تغییر کرد.' }
       ],
       ask: {
         stat: 'mov',

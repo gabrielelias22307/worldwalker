@@ -39,6 +39,8 @@ window.EPISODE = {
   ],
   start: [5, 8],
 
+  tools: ['axe', 'sickle'],
+
   words: {
     tundra: { en: 'flat, treeless land in the far north that is frozen most of the year', es: 'tierra plana y sin árboles en el extremo norte, congelada casi todo el año', fa: 'زمین هموار و بی‌درخت در شمال دور که بیشتر سال یخ‌زده است' },
     taiga: { en: 'the huge forest of pine, spruce and fir across the north of Russia', es: 'el enorme bosque de pinos, píceas y abetos en el norte de Rusia', fa: 'جنگل بسیار بزرگ صنوبر و کاج در شمال روسیه' },
@@ -57,16 +59,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome aboard! This is the Trans-Siberian Railway. It runs east from Moscow all the way to Vladivostok on the Pacific Ocean. It is the longest railway line in the world. The whole ride takes about a week.',
           es: '¡Bienvenido a bordo! Este es el ferrocarril Transiberiano. Va hacia el este, desde Moscú hasta Vladivostok, en el océano Pacífico. Es la línea de tren más larga del mundo. El viaje completo dura una semana más o menos.',
-          fa: 'خوش آمدی! این خط آهن ترانس‌سیبری است. از مسکو به طرف شرق تا ولادی‌وستوک کنار اقیانوس آرام می‌رود. درازترین خط آهن دنیا است. تمام سفر حدود یک هفته طول می‌کشد.',
-          easy: { en: 'This train goes east from Moscow to the Pacific Ocean. It is the longest railway in the world. The trip takes about a week.', es: 'Este tren va al este, de Moscú al océano Pacífico. Es el ferrocarril más largo del mundo. El viaje dura una semana más o menos.', fa: 'این قطار از مسکو به طرف شرق تا اقیانوس آرام می‌رود. درازترین خط آهن دنیا است. سفر حدود یک هفته است.' } },
+          fa: 'خوش آمدی! این خط آهن ترانس‌سیبری است. از مسکو به طرف شرق تا ولادی‌وستوک کنار اقیانوس آرام می‌رود. درازترین خط آهن دنیا است. تمام سفر حدود یک هفته طول می‌کشد.' },
         { en: 'Russia is the largest country on Earth. It stretches across eleven time zones. When the school day starts in Moscow, it is already afternoon on the Pacific coast.',
           es: 'Rusia es el país más grande de la Tierra. Cruza once husos horarios. Cuando empiezan las clases en Moscú, ya es de tarde en la costa del Pacífico.',
-          fa: 'روسیه بزرگ‌ترین کشور زمین است. یازده منطقهٔ زمانی را در بر می‌گیرد. وقتی درس مکتب در مسکو شروع می‌شود، در ساحل اقیانوس آرام بعد از چاشت است.',
-          easy: { en: 'Russia is the biggest country on Earth. It has eleven time zones.', es: 'Rusia es el país más grande de la Tierra. Tiene once husos horarios.', fa: 'روسیه بزرگ‌ترین کشور زمین است. یازده منطقهٔ زمانی دارد.' } },
+          fa: 'روسیه بزرگ‌ترین کشور زمین است. یازده منطقهٔ زمانی را در بر می‌گیرد. وقتی درس مکتب در مسکو شروع می‌شود، در ساحل اقیانوس آرام بعد از چاشت است.' },
         { en: 'But most Russians live here in the west, near Moscow and Saint Petersburg. About three out of four live west of the Ural Mountains. The reason is cold. East of the Urals, winters are long and the ground stays frozen.',
           es: 'Pero la mayoría de los rusos vive aquí, en el oeste, cerca de Moscú y San Petersburgo. Unos tres de cada cuatro viven al oeste de los montes Urales. La razón es el frío. Al este de los Urales, los inviernos son largos y el suelo sigue congelado.',
-          fa: 'اما بیشتر مردم روسیه اینجا در غرب، نزدیک مسکو و سن‌پترزبورگ زندگی می‌کنند. از هر چهار نفر حدود سه نفر در غرب کوه‌های اورال زندگی می‌کنند. دلیلش سرما است. در شرق اورال زمستان‌ها دراز هستند و زمین یخ‌زده می‌ماند.',
-          easy: { en: 'Most Russians live in the west, near Moscow. The east is very cold, so few people live there.', es: 'La mayoría de los rusos vive en el oeste, cerca de Moscú. El este es muy frío, así que vive poca gente allí.', fa: 'بیشتر مردم روسیه در غرب، نزدیک مسکو زندگی می‌کنند. شرق خیلی سرد است، پس مردم کمی آنجا زندگی می‌کنند.' } }
+          fa: 'اما بیشتر مردم روسیه اینجا در غرب، نزدیک مسکو و سن‌پترزبورگ زندگی می‌کنند. از هر چهار نفر حدود سه نفر در غرب کوه‌های اورال زندگی می‌کنند. دلیلش سرما است. در شرق اورال زمستان‌ها دراز هستند و زمین یخ‌زده می‌ماند.' }
       ],
       ask: {
         stat: 'reg',
@@ -89,16 +88,13 @@ window.EPISODE = {
       lines: [
         { en: 'This is the [[taiga|taiga]], the largest forest on Earth. Pine, spruce and fir grow here. Winters are long and bitter, and the soil is thin and poor. Crops grow badly, so few people live in it.',
           es: 'Esta es la [[taiga|taiga]], el bosque más grande de la Tierra. Aquí crecen pinos, píceas y abetos. Los inviernos son largos y duros, y la tierra es delgada y pobre. Los cultivos crecen mal, así que vive poca gente aquí.',
-          fa: 'این [[taiga|تایگا]] است، بزرگ‌ترین جنگل زمین. کاج و صنوبر اینجا می‌رویند. زمستان‌ها دراز و سخت هستند و خاک نازک و ضعیف است. کشت خوب نمی‌روید، پس مردم کمی اینجا زندگی می‌کنند.',
-          easy: { en: 'This forest is the [[taiga|taiga]]. It is the biggest forest on Earth. It is very cold, so few people live here.', es: 'Este bosque es la [[taiga|taiga]]. Es el bosque más grande de la Tierra. Hace mucho frío, así que vive poca gente aquí.', fa: 'این جنگل [[taiga|تایگا]] است. بزرگ‌ترین جنگل زمین است. خیلی سرد است، پس مردم کمی اینجا زندگی می‌کنند.' } },
+          fa: 'این [[taiga|تایگا]] است، بزرگ‌ترین جنگل زمین. کاج و صنوبر اینجا می‌رویند. زمستان‌ها دراز و سخت هستند و خاک نازک و ضعیف است. کشت خوب نمی‌روید، پس مردم کمی اینجا زندگی می‌کنند.' },
         { en: 'North of the trees lies the [[tundra|tundra]]: flat land with no trees, frozen most of the year. Under it is [[permafrost|permafrost]], ground that stays frozen all year. Builders raise houses on posts so their heat does not melt it.',
           es: 'Al norte de los árboles está la [[tundra|tundra]]: tierra plana sin árboles, congelada casi todo el año. Debajo está el [[permafrost|permafrost]], suelo que sigue congelado todo el año. Los constructores ponen las casas sobre postes para que su calor no lo derrita.',
-          fa: 'شمال درختان [[tundra|توندرا]] است: زمین هموار بی‌درخت که بیشتر سال یخ‌زده است. زیر آن [[permafrost|زمین همیشه یخ‌زده]] است، زمینی که تمام سال یخ می‌ماند. معماران خانه‌ها را روی پایه‌ها بلند می‌سازند تا گرمی خانه آن را آب نکند.',
-          easy: { en: 'Farther north is the [[tundra|tundra]]. It has no trees. The ground under it, [[permafrost|permafrost]], is frozen all year.', es: 'Más al norte está la [[tundra|tundra]]. No tiene árboles. El suelo de abajo, el [[permafrost|permafrost]], está congelado todo el año.', fa: 'شمال‌تر [[tundra|توندرا]] است. درخت ندارد. زمین زیر آن، [[permafrost|زمین همیشه یخ‌زده]]، تمام سال یخ است.' } },
+          fa: 'شمال درختان [[tundra|توندرا]] است: زمین هموار بی‌درخت که بیشتر سال یخ‌زده است. زیر آن [[permafrost|زمین همیشه یخ‌زده]] است، زمینی که تمام سال یخ می‌ماند. معماران خانه‌ها را روی پایه‌ها بلند می‌سازند تا گرمی خانه آن را آب نکند.' },
         { en: 'This is Lake Baikal. It is the deepest lake in the world, and it holds more fresh water than any other lake. The railway runs along its southern shore, near the city of Irkutsk.',
           es: 'Este es el lago Baikal. Es el lago más profundo del mundo y tiene más agua dulce que cualquier otro lago. El ferrocarril pasa por su orilla sur, cerca de la ciudad de Irkutsk.',
-          fa: 'این جهیل بایکال است. عمیق‌ترین جهیل دنیا است و از هر جهیل دیگر آب شیرین بیشتری دارد. خط آهن از کنار ساحل جنوبی آن، نزدیک شهر ایرکوتسک، می‌گذرد.',
-          easy: { en: 'Lake Baikal is the deepest lake in the world. The train passes it near Irkutsk.', es: 'El lago Baikal es el lago más profundo del mundo. El tren pasa cerca, por Irkutsk.', fa: 'جهیل بایکال عمیق‌ترین جهیل دنیا است. قطار نزدیک ایرکوتسک از کنارش می‌گذرد.' } }
+          fa: 'این جهیل بایکال است. عمیق‌ترین جهیل دنیا است و از هر جهیل دیگر آب شیرین بیشتری دارد. خط آهن از کنار ساحل جنوبی آن، نزدیک شهر ایرکوتسک، می‌گذرد.' }
       ],
       ask: {
         stat: 'pla',
@@ -121,16 +117,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the [[steppe|steppe]]! It is a wide, flat grassland. It is [[semi-arid|semi-arid]]: too dry for a forest, but grass grows well. My family grazes horses and sheep here, as herders have done for thousands of years.',
           es: '¡Bienvenido a la [[steppe|estepa]]! Es una pradera ancha y plana. Es [[semi-arid|semiárida]]: muy seca para un bosque, pero el pasto crece bien. Mi familia cría caballos y ovejas aquí, como lo han hecho los pastores por miles de años.',
-          fa: 'به [[steppe|استپ]] خوش آمدی! این یک علفزار پهن و هموار است. [[semi-arid|نیمه‌خشک]] است: برای جنگل بسیار خشک، اما علف خوب می‌روید. خانوادهٔ من اینجا اسپ و گوسفند می‌چرانند، همان‌طور که چوپانان هزاران سال این کار را کرده‌اند.',
-          easy: { en: 'This is the [[steppe|steppe]], a dry grassland. Grass grows here, but not trees. We raise horses and sheep.', es: 'Esta es la [[steppe|estepa]], una pradera seca. Aquí crece pasto, pero no árboles. Criamos caballos y ovejas.', fa: 'این [[steppe|استپ]] است، یک علفزار خشک. علف می‌روید، اما درخت نه. ما اسپ و گوسفند داریم.' } },
+          fa: 'به [[steppe|استپ]] خوش آمدی! این یک علفزار پهن و هموار است. [[semi-arid|نیمه‌خشک]] است: برای جنگل بسیار خشک، اما علف خوب می‌روید. خانوادهٔ من اینجا اسپ و گوسفند می‌چرانند، همان‌طور که چوپانان هزاران سال این کار را کرده‌اند.' },
         { en: 'I live in Kazakhstan, in Central Asia. Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan and Tajikistan are all [[landlocked|landlocked]]. Not one touches an ocean. Our goods must cross other countries to reach a ship.',
           es: 'Vivo en Kazajistán, en Asia Central. Kazajistán, Uzbekistán, Turkmenistán, Kirguistán y Tayikistán son todos países [[landlocked|sin salida al mar]]. Ninguno toca un océano. Nuestras cosas deben cruzar otros países para llegar a un barco.',
-          fa: 'من در قزاقستان، در آسیای میانه زندگی می‌کنم. قزاقستان، ازبکستان، ترکمنستان، قرغزستان و تاجکستان همه [[landlocked|محاط به خشکه]] هستند. هیچ کدام به اقیانوس نمی‌رسد. مال ما باید از کشورهای دیگر بگذرد تا به کشتی برسد.',
-          easy: { en: 'The five countries of Central Asia are [[landlocked|landlocked]]. They have no ocean coast.', es: 'Los cinco países de Asia Central son países [[landlocked|sin salida al mar]]. No tienen costa en el océano.', fa: 'پنج کشور آسیای میانه [[landlocked|محاط به خشکه]] هستند. ساحل اقیانوس ندارند.' } },
+          fa: 'من در قزاقستان، در آسیای میانه زندگی می‌کنم. قزاقستان، ازبکستان، ترکمنستان، قرغزستان و تاجکستان همه [[landlocked|محاط به خشکه]] هستند. هیچ کدام به اقیانوس نمی‌رسد. مال ما باید از کشورهای دیگر بگذرد تا به کشتی برسد.' },
         { en: 'Long ago, camel caravans on the Silk Road crossed this land between China and Europe. Today freight trains follow some of the same paths.',
           es: 'Hace mucho tiempo, las caravanas de camellos de la Ruta de la Seda cruzaban esta tierra entre China y Europa. Hoy, trenes de carga siguen algunos de esos mismos caminos.',
-          fa: 'خیلی وقت پیش، کاروان‌های شتر در راه ابریشم از این زمین میان چین و اروپا می‌گذشتند. امروز قطارهای باری از بعضی همان راه‌ها می‌روند.',
-          easy: { en: 'Camels once carried goods across here on the Silk Road. Now trains do.', es: 'Antes los camellos llevaban cosas por aquí en la Ruta de la Seda. Ahora lo hacen los trenes.', fa: 'زمانی شترها در راه ابریشم از اینجا بار می‌بردند. حالا قطارها می‌برند.' } }
+          fa: 'خیلی وقت پیش، کاروان‌های شتر در راه ابریشم از این زمین میان چین و اروپا می‌گذشتند. امروز قطارهای باری از بعضی همان راه‌ها می‌روند.' }
       ],
       ask: {
         stat: 'loc',
@@ -210,7 +203,9 @@ window.EPISODE = {
 
   challenge: {
     at: [24, 7],
-    type: 'order',
+    type: 'route', // in the world; the card version (order) is the fallback
+    // the stops along the Trans-Siberian line, west to east: Moscow, past the Urals, Siberia, Lake Baikal, the Pacific
+    spots: [[3, 8], [14, 8], [26, 8], [39, 10], [45, 10]],
     stat: 'mov',
     title: { en: 'Ride the Trans-Siberian', es: 'Viaja en el Transiberiano', fa: 'سفر با قطار ترانس‌سیبری' },
     intro: { en: 'The Grump scrambled the train timetable! Tap the stops in order from west to east, starting in Moscow.',

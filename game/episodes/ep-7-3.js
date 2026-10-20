@@ -59,16 +59,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the chip factory! I make [[semiconductor|semiconductors]]. They are tiny chips that control electricity inside phones, cars and computers. Without them, your phone cannot do anything.',
           es: '¡Bienvenido a la fábrica de chips! Yo hago [[semiconductor|semiconductores]]. Son chips diminutos que controlan la electricidad dentro de teléfonos, carros y computadoras. Sin ellos, tu teléfono no puede hacer nada.',
-          fa: 'به فابریکهٔ چِپ خوش آمدی! من [[semiconductor|نیمه‌هادی]] می‌سازم. این‌ها چِپ‌های بسیار کوچک هستند که برق را در داخل مبایل، موتر و کمپیوتر کنترول می‌کنند. بدون آن‌ها مبایل تو هیچ کاری کرده نمی‌تواند.',
-          easy: { en: 'I make [[semiconductor|semiconductors]], tiny chips. Phones and cars need them to work.', es: 'Yo hago [[semiconductor|semiconductores]], chips diminutos. Los teléfonos y carros los necesitan para funcionar.', fa: 'من [[semiconductor|نیمه‌هادی]] می‌سازم، چِپ‌های کوچک. مبایل و موتر برای کار به آن‌ها ضرورت دارند.' } },
+          fa: 'به فابریکهٔ چِپ خوش آمدی! من [[semiconductor|نیمه‌هادی]] می‌سازم. این‌ها چِپ‌های بسیار کوچک هستند که برق را در داخل مبایل، موتر و کمپیوتر کنترول می‌کنند. بدون آن‌ها مبایل تو هیچ کاری کرده نمی‌تواند.' },
         { en: 'Roughly nine in ten of the world\'s most advanced chips are made in Taiwan, where I live. One new chip factory costs billions of dollars. That is far more than a normal office building!',
           es: 'Cerca de nueve de cada diez de los chips más avanzados del mundo se hacen en Taiwán, donde yo vivo. Una fábrica nueva de chips cuesta miles de millones de dólares. ¡Mucho más que un edificio de oficinas normal!',
-          fa: 'تقریباً نُه از هر ده چِپ پیشرفتهٔ جهان در تایوان ساخته می‌شود، جایی که من زندگی می‌کنم. یک فابریکهٔ نو چِپ میلیاردها دالر قیمت دارد. این خیلی بیشتر از یک تعمیر عادی دفتر است!',
-          easy: { en: 'Most of the best chips are made in Taiwan. A chip factory costs billions of dollars.', es: 'La mayoría de los mejores chips se hacen en Taiwán. Una fábrica de chips cuesta miles de millones de dólares.', fa: 'بیشتر بهترین چِپ‌ها در تایوان ساخته می‌شوند. فابریکهٔ چِپ میلیاردها دالر قیمت دارد.' } },
+          fa: 'تقریباً نُه از هر ده چِپ پیشرفتهٔ جهان در تایوان ساخته می‌شود، جایی که من زندگی می‌کنم. یک فابریکهٔ نو چِپ میلیاردها دالر قیمت دارد. این خیلی بیشتر از یک تعمیر عادی دفتر است!' },
         { en: 'But no country makes an advanced chip all alone. Machines from the Netherlands print the tiny circuits with light. Japan sends special pure chemicals. South Korea makes huge amounts of memory chips.',
           es: 'Pero ningún país hace un chip avanzado solo. Máquinas de los Países Bajos imprimen los circuitos diminutos con luz. Japón manda químicos especiales muy puros. Corea del Sur hace enormes cantidades de chips de memoria.',
-          fa: 'اما هیچ کشوری چِپ پیشرفته را تنها نمی‌سازد. ماشین‌های هالند مدارهای بسیار کوچک را با نور چاپ می‌کنند. جاپان مواد کیمیایی خاص و بسیار پاک می‌فرستد. کوریای جنوبی مقدار بسیار زیاد چِپ حافظه می‌سازد.',
-          easy: { en: 'Many countries help: machines from the Netherlands, chemicals from Japan, memory chips from South Korea.', es: 'Muchos países ayudan: máquinas de los Países Bajos, químicos de Japón, chips de memoria de Corea del Sur.', fa: 'کشورهای زیاد کمک می‌کنند: ماشین از هالند، مواد کیمیایی از جاپان، چِپ حافظه از کوریای جنوبی.' } }
+          fa: 'اما هیچ کشوری چِپ پیشرفته را تنها نمی‌سازد. ماشین‌های هالند مدارهای بسیار کوچک را با نور چاپ می‌کنند. جاپان مواد کیمیایی خاص و بسیار پاک می‌فرستد. کوریای جنوبی مقدار بسیار زیاد چِپ حافظه می‌سازد.' }
       ],
       ask: {
         stat: 'pla',
@@ -91,16 +88,13 @@ window.EPISODE = {
       lines: [
         { en: 'On my line, we put phones together. This is called [[assembly|assembly]]. The screen, the battery, the camera and the chips all arrive here from different places.',
           es: 'En mi línea armamos teléfonos. Esto se llama [[assembly|ensamblaje]]. La pantalla, la batería, la cámara y los chips llegan aquí desde lugares diferentes.',
-          fa: 'در خط من، مبایل‌ها را یکجا می‌کنیم. این کار [[assembly|یکجا کردن پرزه‌ها]] نام دارد. صفحه، بتری، کمره و چِپ‌ها همه از جاهای مختلف اینجا می‌رسند.',
-          easy: { en: 'We put phones together. That is [[assembly|assembly]]. The parts come from many places.', es: 'Armamos teléfonos. Eso es [[assembly|ensamblaje]]. Las piezas vienen de muchos lugares.', fa: 'ما مبایل‌ها را یکجا می‌کنیم. این [[assembly|یکجا کردن پرزه‌ها]] است. پرزه‌ها از جاهای زیاد می‌آیند.' } },
+          fa: 'در خط من، مبایل‌ها را یکجا می‌کنیم. این کار [[assembly|یکجا کردن پرزه‌ها]] نام دارد. صفحه، بتری، کمره و چِپ‌ها همه از جاهای مختلف اینجا می‌رسند.' },
         { en: 'It all starts with [[raw material|raw materials]]. Mines in places like Chile, Australia and the Congo dig up metals like copper, lithium and cobalt. Then come the chips, then my factory, then the ship. All of these steps together make a [[supply chain|supply chain]].',
           es: 'Todo empieza con las [[raw material|materias primas]]. Minas en lugares como Chile, Australia y el Congo sacan metales como cobre, litio y cobalto. Luego vienen los chips, luego mi fábrica, luego el barco. Todos estos pasos juntos forman una [[supply chain|cadena de suministro]].',
-          fa: 'همه چیز با [[raw material|مواد خام]] شروع می‌شود. معدن‌ها در جاهایی مثل چیلی، آسترالیا و کانگو فلزهایی مثل مس، لیتیم و کوبالت بیرون می‌کشند. بعد چِپ‌ها، بعد فابریکهٔ من، بعد کشتی. همهٔ این قدم‌ها با هم یک [[supply chain|زنجیرهٔ تأمین]] می‌سازند.',
-          easy: { en: 'Mine, then chip factory, then my factory, then ship. Together they are a [[supply chain|supply chain]].', es: 'Mina, luego fábrica de chips, luego mi fábrica, luego barco. Juntos son una [[supply chain|cadena de suministro]].', fa: 'معدن، بعد فابریکهٔ چِپ، بعد فابریکهٔ من، بعد کشتی. با هم یک [[supply chain|زنجیرهٔ تأمین]] هستند.' } },
+          fa: 'همه چیز با [[raw material|مواد خام]] شروع می‌شود. معدن‌ها در جاهایی مثل چیلی، آسترالیا و کانگو فلزهایی مثل مس، لیتیم و کوبالت بیرون می‌کشند. بعد چِپ‌ها، بعد فابریکهٔ من، بعد کشتی. همهٔ این قدم‌ها با هم یک [[supply chain|زنجیرهٔ تأمین]] می‌سازند.' },
         { en: 'Each place does what it does best and trades for the rest. That is [[specialization|specialization]]. Our factory puts together millions of phones for [[export|export]] to other countries.',
           es: 'Cada lugar hace lo que mejor sabe hacer y comercia para conseguir lo demás. Eso es la [[specialization|especialización]]. Nuestra fábrica arma millones de teléfonos para [[export|exportar]] a otros países.',
-          fa: 'هر جا کاری را می‌کند که بهتر از همه بلد است و باقی را با تجارت به دست می‌آورد. این [[specialization|تخصص]] است. فابریکهٔ ما میلیون‌ها مبایل را برای [[export|صادرات]] به کشورهای دیگر یکجا می‌کند.',
-          easy: { en: 'Each place does its best job and trades. That is [[specialization|specialization]].', es: 'Cada lugar hace su mejor trabajo y comercia. Eso es [[specialization|especialización]].', fa: 'هر جا بهترین کار خود را می‌کند و تجارت می‌کند. این [[specialization|تخصص]] است.' } }
+          fa: 'هر جا کاری را می‌کند که بهتر از همه بلد است و باقی را با تجارت به دست می‌آورد. این [[specialization|تخصص]] است. فابریکهٔ ما میلیون‌ها مبایل را برای [[export|صادرات]] به کشورهای دیگر یکجا می‌کند.' }
       ],
       ask: {
         stat: 'reg',
@@ -123,16 +117,13 @@ window.EPISODE = {
       lines: [
         { en: 'I lift [[container|containers]] onto ships with my crane. A container is a big steel box. It can go by ship, by train and by truck, and nobody has to open it on the way.',
           es: 'Con mi grúa subo [[container|contenedores]] a los barcos. Un contenedor es una gran caja de acero. Puede ir en barco, en tren y en camión, y nadie tiene que abrirlo en el camino.',
-          fa: 'من با جرثقیلم [[container|کانتینرها]] را روی کشتی بالا می‌کنم. کانتینر یک صندوق بزرگ فولادی است. می‌تواند با کشتی، ریل و لاری برود، و کسی در راه آن را باز نمی‌کند.',
-          easy: { en: 'A [[container|container]] is a steel box. Ships, trains and trucks all carry it.', es: 'Un [[container|contenedor]] es una caja de acero. Barcos, trenes y camiones lo llevan.', fa: '[[container|کانتینر]] یک صندوق فولادی است. کشتی، ریل و لاری همه آن را می‌برند.' } },
+          fa: 'من با جرثقیلم [[container|کانتینرها]] را روی کشتی بالا می‌کنم. کانتینر یک صندوق بزرگ فولادی است. می‌تواند با کشتی، ریل و لاری برود، و کسی در راه آن را باز نمی‌کند.' },
         { en: 'The biggest ships carry thousands of containers at once. A phone packed here may sail across the Pacific Ocean for weeks. Then it goes to a warehouse, then to a store, then to you.',
           es: 'Los barcos más grandes llevan miles de contenedores a la vez. Un teléfono empacado aquí puede navegar por el océano Pacífico durante semanas. Luego va a un almacén, luego a una tienda y luego a ti.',
-          fa: 'بزرگ‌ترین کشتی‌ها هزاران کانتینر را یکجا می‌برند. مبایلی که اینجا بسته‌بندی می‌شود ممکن است هفته‌ها در بحر آرام سفر کند. بعد به گدام، بعد به دکان، بعد به دست تو می‌رسد.',
-          easy: { en: 'Ships cross the ocean for weeks. Then the phone goes to a warehouse, a store, and you.', es: 'Los barcos cruzan el océano durante semanas. Luego el teléfono va a un almacén, a una tienda y a ti.', fa: 'کشتی‌ها هفته‌ها از بحر می‌گذرند. بعد مبایل به گدام، دکان و به تو می‌رسد.' } },
+          fa: 'بزرگ‌ترین کشتی‌ها هزاران کانتینر را یکجا می‌برند. مبایلی که اینجا بسته‌بندی می‌شود ممکن است هفته‌ها در بحر آرام سفر کند. بعد به گدام، بعد به دکان، بعد به دست تو می‌رسد.' },
         { en: 'When one link breaks, the whole chain feels it. In 2021, many nearly finished cars sat waiting in parking lots. Why? One small chip was missing! Car prices went up far away, even for used cars in Virginia.',
           es: 'Cuando se rompe un eslabón, toda la cadena lo siente. En 2021, muchos carros casi terminados esperaban en estacionamientos. ¿Por qué? ¡Faltaba un chip pequeño! Los precios de los carros subieron lejos de aquí, hasta los de carros usados en Virginia.',
-          fa: 'وقتی یک حلقه می‌شکند، تمام زنجیر آن را حس می‌کند. در سال ۲۰۲۱، بسیاری از موترهای تقریباً تکمیل‌شده در پارکینگ‌ها منتظر ماندند. چرا؟ یک چِپ کوچک کم بود! قیمت موترها در جاهای دور بالا رفت، حتی موترهای دست دوم در ویرجینیا.',
-          easy: { en: 'In 2021, cars waited because one small chip was missing. Prices went up even in Virginia.', es: 'En 2021, los carros esperaban porque faltaba un chip pequeño. Los precios subieron hasta en Virginia.', fa: 'در ۲۰۲۱ موترها منتظر ماندند چون یک چِپ کوچک کم بود. قیمت‌ها حتی در ویرجینیا بالا رفت.' } }
+          fa: 'وقتی یک حلقه می‌شکند، تمام زنجیر آن را حس می‌کند. در سال ۲۰۲۱، بسیاری از موترهای تقریباً تکمیل‌شده در پارکینگ‌ها منتظر ماندند. چرا؟ یک چِپ کوچک کم بود! قیمت موترها در جاهای دور بالا رفت، حتی موترهای دست دوم در ویرجینیا.' }
       ],
       ask: {
         stat: 'mov',

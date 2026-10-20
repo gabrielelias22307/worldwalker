@@ -320,6 +320,9 @@ canvas{filter:var(--vivid)}
 .pagefly.home{transition:left .6s ease-in,top .6s ease-in,transform .6s ease-in,opacity .6s ease-in}
 #ww-b-pass.gotpage{animation:gotpage .9s ease-out}
 @keyframes gotpage{0%{transform:scale(1)}30%{transform:scale(1.25);background:var(--gold);color:var(--ink)}100%{transform:scale(1)}}
+.gridlabs .gl.zone{font-size:12px;background:rgba(34,32,46,.9)}
+.gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
+.ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}
 
 </style>
 </head>
@@ -873,7 +876,7 @@ window.WW_CONFIG.MODE = 'canvas';
     '..kGGGGGGGGGGk..', '...kkkkkkkkkk...', '................', '................'];
 
   /* walkable or not */
-  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L YZ'.split(''));
+  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L YZG'.split(''));
   WW.solid = ch => SOLID.has(ch) || ch === undefined;
 
   /* named looks for people */
@@ -1214,6 +1217,18 @@ window.WW_CONFIG.MODE = 'canvas';
     R(c, x, y + 2, T, 1, '#5b3a1e'); R(c, x + 5, y + 3, 6, 1, '#5b3a1e');
   };
 
+  // the tool gate tile: closed with a padlock, open when you have the tool
+  tiles.G = (c, x, y, gx, gy, t, m) => {
+    under(c, x, y, gx, gy, m);
+    const tl = WW.ep && WW.ep.secret && WW.TOOLS.find(o => o.id === WW.ep.secret.tool), open = tl && WW.hasTool(tl.id);
+    c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 2, 2, 13); c.fillRect(x + 13, y + 2, 2, 13);
+    c.fillStyle = '#6d4424'; c.fillRect(x + 1, y + 2, 1, 13); c.fillRect(x + 13, y + 2, 1, 13);
+    if (open) { c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + 4, 2, 10); c.fillRect(x + 11, y + 4, 2, 10); return; }
+    c.fillStyle = '#8b5a2b'; for (let i = 0; i < 4; i++) c.fillRect(x + 3 + i * 3, y + 4, 2, 11);
+    c.fillStyle = '#5b3a1e'; c.fillRect(x + 3, y + 6, 10, 1); c.fillRect(x + 3, y + 12, 10, 1);
+    c.fillStyle = '#f2c14e'; c.fillRect(x + 6, y + 8, 4, 3); c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 9, 2, 1);
+  };
+
   /* ---------------- people ---------------- */
   // hair styles made from the base person: change a few pixels
   const edit = (rows, list) => { const out = rows.map(r => r.split('')); list.forEach(([r, k, ch]) => (out[r][k] = ch)); return out.map(r => r.join('')); };
@@ -1445,6 +1460,43 @@ window.WW_CONFIG.MODE = 'canvas';
     sgPickUp: { en: 'Face the sign and press Space to pick it up again.', es: 'Mira el letrero y pulsa Espacio para levantarlo otra vez.', fa: 'رو به تابلو بایست و Space را بزن تا دوباره برش داری.' },
     sgRefund: { en: 'Your signposts came down. You got back {c}.', es: 'Tus letreros se quitaron. Te devolvieron {c}.', fa: 'تابلوهایت برداشته شد. {c} پس گرفتی.' },
     sgPicked: { en: 'Got it back. Try another spot.', es: 'Lo tienes de vuelta. Prueba otro lugar.', fa: 'پسش گرفتی. جای دیگری را امتحان کن.' },
+    /* the compass stone in the world (world.js, tools.js carry) */
+    wStart: { en: 'Start', es: 'Empezar', fa: 'شروع کن' },
+    wStoneFirst: { en: 'Start at the glowing compass stone first. It tells you what to do.', es: 'Primero ve a la piedra brújula que brilla. Ella te dice qué hacer.', fa: 'اول به سنگ قطب‌نمای درخشان برو. او می‌گوید چه کنی.' },
+    cTake: { en: 'Take the cards', es: 'Toma las tarjetas', fa: 'کارت‌ها را بگیر' },
+    cHow: { en: 'Carry each card to the marked area where it belongs:', es: 'Lleva cada tarjeta al área marcada donde va:', fa: 'هر کارت را به جای نشانی‌شده‌ای که مالِ آن است ببر:' },
+    cStart: { en: 'Carry each card to the right colored area. Face a spot inside it and press Space. Press 5 to switch cards.', es: 'Lleva cada tarjeta al área de color correcta. Mira un lugar dentro y pulsa Espacio. Pulsa 5 para cambiar de tarjeta.', fa: 'هر کارت را به جای رنگی درست ببر. رو به جایی داخل آن بایست و Space را بزن. برای عوض کردن کارت ۵ را بزن.' },
+    cHolding: { en: 'Card {i} of {n}', es: 'Tarjeta {i} de {n}', fa: 'کارت {i} از {n}' },
+    cWrongZone: { en: 'This is the "{z}" area.', es: 'Esta es el área de "{z}".', fa: 'این جا ساحهٔ «{z}» است.' },
+    cOffZone: { en: 'This spot is outside the colored areas. Put the card inside one of them.', es: 'Este lugar está fuera de las áreas de color. Pon la tarjeta dentro de una.', fa: 'این جا بیرون از ساحه‌های رنگی است. کارت را داخل یکی از آن‌ها بگذار.' },
+    tool_card: { en: 'Cards: carry each one to the right area', es: 'Tarjetas: lleva cada una al área correcta', fa: 'کارت‌ها: هر کدام را به ساحهٔ درست ببر' },
+    nsCards: { en: 'Carry your cards: {n} still need the right area. Pick them with 5.', es: 'Lleva tus tarjetas: a {n} les falta el área correcta. Elígelas con 5.', fa: 'کارت‌هایت را ببر: {n} تا هنوز ساحهٔ درست را لازم دارند. با ۵ انتخابشان کن.' },
+    w_routeHow: { en: 'The stops are on the map. Walk into them in the right order.', es: 'Las paradas están en el mapa. Camina hacia ellas en el orden correcto.', fa: 'ایستگاه‌ها روی نقشه هستند. به ترتیب درست به طرف آن‌ها برو.' },
+    w_routeGo: { en: 'Find the first stop and walk into it. Then the next one, in order.', es: 'Busca la primera parada y camina hacia ella. Luego la siguiente, en orden.', fa: 'ایستگاه اول را پیدا کن و به طرفش برو. بعد ایستگاه بعدی، به ترتیب.' },
+    w_routeSeen: { en: 'Stops done: {n} of {m}', es: 'Paradas hechas: {n} de {m}', fa: 'ایستگاه‌های تمام شده: {n} از {m}' },
+    w_routeNext: { en: 'Now find the next stop.', es: 'Ahora busca la siguiente parada.', fa: 'حالا ایستگاه بعدی را پیدا کن.' },
+    w_routeWrong: { en: 'Not this stop yet.', es: 'Todavía no es esta parada.', fa: 'هنوز نوبت این ایستگاه نیست.' },
+    ns_route: { en: 'Visit stop {n} of {m}, in order.', es: 'Visita la parada {n} de {m}, en orden.', fa: 'به ایستگاه {n} از {m} برو، به ترتیب.' },
+    w_siteHow: { en: 'Visit every flag on the map. At the last one, plant your flag at the best site and say why.', es: 'Visita cada bandera del mapa. En la última, pon tu bandera en el mejor lugar y di por qué.', fa: 'به هر بیرق روی نقشه سر بزن. در آخری، بیرقت را در بهترین جا بگذار و بگو چرا.' },
+    w_siteGo: { en: 'Walk to each flag and look at the site.', es: 'Camina a cada bandera y mira el lugar.', fa: 'به طرف هر بیرق برو و آن جا را ببین.' },
+    w_siteSeen: { en: 'Sites visited: {n} of {m}', es: 'Lugares visitados: {n} de {m}', fa: 'جاهای دیده شده: {n} از {m}' },
+    w_siteMore: { en: 'Visit {n} more site(s) before you choose.', es: 'Visita {n} lugar(es) más antes de elegir.', fa: 'پیش از انتخاب به {n} جای دیگر هم سر بزن.' },
+    ns_site: { en: 'Visit the flags: {n} left.', es: 'Visita las banderas: faltan {n}.', fa: 'به بیرق‌ها سر بزن: {n} تا مانده.' },
+    ns_siteDone: { en: 'You saw every site. Walk into the flag you think is best.', es: 'Viste todos los lugares. Camina hacia la bandera que crees que es la mejor.', fa: 'همهٔ جاها را دیدی. به طرف بیرقی برو که فکر می‌کنی بهترین است.' },
+    w_surveyHow: { en: 'Visit every survey post on the map to collect the facts. Then come back and answer.', es: 'Visita cada poste de datos del mapa para juntar los datos. Luego vuelve y responde.', fa: 'به هر تیر معلومات روی نقشه سر بزن تا معلومات جمع کنی. بعد برگرد و جواب بده.' },
+    w_surveyGo: { en: 'Find the survey posts with a 📋 on the map.', es: 'Busca los postes con 📋 en el mapa.', fa: 'تیرهای 📋 دار را روی نقشه پیدا کن.' },
+    w_surveySeen: { en: 'Posts read: {n} of {m}', es: 'Postes leídos: {n} de {m}', fa: 'تیرهای خوانده شده: {n} از {m}' },
+    w_surveyPost: { en: 'Survey post', es: 'Poste de datos', fa: 'تیر معلومات' },
+    w_surveyLeft: { en: '{n} more survey post(s) to find.', es: 'Faltan {n} poste(s) de datos.', fa: '{n} تیر معلومات دیگر مانده.' },
+    w_surveyAll: { en: 'You have all the facts! Go back to the compass stone and answer.', es: '¡Tienes todos los datos! Vuelve a la piedra brújula y responde.', fa: 'همهٔ معلومات را داری! به سنگ قطب‌نما برگرد و جواب بده.' },
+    w_leversHow: { en: 'Pull the levers on the map to set them. Then come back here to test them.', es: 'Mueve las palancas del mapa. Luego vuelve aquí para probarlas.', fa: 'دسته‌های روی نقشه را تنظیم کن. بعد این جا برگرد و امتحانشان کن.' },
+    w_leversGo: { en: 'Find the levers. Walk into one to change it.', es: 'Busca las palancas. Camina hacia una para cambiarla.', fa: 'دسته‌ها را پیدا کن. به طرف یکی برو تا عوضش کنی.' },
+    w_leverTest: { en: 'Test the levers at the compass stone.', es: 'Prueba las palancas en la piedra brújula.', fa: 'دسته‌ها را در سنگ قطب‌نما امتحان کن.' },
+    w_leverAgain: { en: 'Change the levers on the map and test again.', es: 'Cambia las palancas en el mapa y prueba otra vez.', fa: 'دسته‌ها را روی نقشه عوض کن و دوباره امتحان کن.' },
+    /* the earned tools' secrets */
+    gateNeed: { en: 'This gate opens for the {t} (you earn it in Episode {e}). Come back when you have it!', es: 'Esta puerta se abre con {t} (lo ganas en el episodio {e}). ¡Vuelve cuando lo tengas!', fa: 'این دروازه با {t} باز می‌شود (آن را در قسمت {e} می‌گیری). وقتی داشتی برگرد!' },
+    secretFound: { en: 'A secret!', es: '¡Un secreto!', fa: 'یک راز!' },
+    why_secret: { en: 'secret found', es: 'secreto encontrado', fa: 'راز پیدا شد' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -1496,7 +1548,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
@@ -1580,6 +1632,7 @@ window.WW_CONFIG.MODE = 'canvas';
     for (const k in other.bag || {}) { const a = (s.bag = s.bag || {})[k] || { got: 0, used: 0 }, b = other.bag[k]; s.bag[k] = { got: Math.max(a.got || 0, b.got || 0), used: Math.max(a.used || 0, b.used || 0) }; }
     for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
     if (other.metChris) s.metChris = true;
+    if (other.secrets) s.secrets = Array.from(new Set([...(s.secrets || []), ...other.secrets]));
     // coins: keep the most ever earned and the most ever spent, so spent coins never come back
     if (other.coins != null) {
       const spent = Math.max(s.spent || 0, other.spent || 0);
@@ -1609,7 +1662,7 @@ window.WW_CONFIG.MODE = 'canvas';
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return { ok: false }; } }
     if (d && d.ok && d.found && d.state) {
       const st = d.state;
-      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris });
+      WW.merge({ episodes: st.episodes || {}, stats: { loc: st.loc, pla: st.pla, hei: st.hei, mov: st.mov, reg: st.reg }, coins: +st.coins || 0, spent: +st.spent || 0, look: st.look, bag: st.bag || {}, built: st.built || {}, metChris: !!st.metChris, secrets: st.secrets || [] });
     }
     return d || { ok: false };
   };
@@ -1621,7 +1674,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const s = WW.save;
     const body = {
       action: 'save', cls: s.cls, name: s.name, pin: s.pin,
-      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
+      state: { look: s.look, loc: s.stats.loc, pla: s.stats.pla, hei: s.stats.hei, mov: s.stats.mov, reg: s.stats.reg, heartsMax: WW.heartsMax(), coins: s.coins, spent: s.spent || 0, episodes: s.episodes, bag: s.bag || {}, built: s.built || {}, metChris: !!s.metChris, secrets: s.secrets || [], tools: WW.TOOLS.filter(t => WW.hasTool(t.id)).map(t => t.id), passport: WW.passportCode(), version: 1 },
       log
     };
     try {
@@ -2311,7 +2364,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   /* ---------------- claim ---------------- */
   function claimUI(ch) {
-    let pick = null, why = {}, checked = false;
+    let pick = ch.pickAt ?? null, why = {}, checked = false; // pickAt: the site the student is standing at (world version)
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
@@ -2456,7 +2509,7 @@ window.WW_CONFIG.MODE = 'canvas';
 
   WW.challengeSolved = ch => solved(null, ch);
   WW.challenge = (ch) => {
-    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI, build: c => WW.tools.stone(c) }[ch.type];
+    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI, build: c => WW.tools.stone(c), carry: c => WW.tools.stone(c), route: c => WW.world.stone(c), site: c => WW.world.stone(c), survey: c => WW.world.stone(c), levers: c => WW.world.stone(c) }[ch.type];
     if (!f) return console.error('unknown challenge type', ch.type);
     f(ch);
   };
@@ -3295,7 +3348,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const w = bubble.offsetWidth, h = bubble.offsetHeight;
     bubble.style.left = Math.max(6, Math.min(sr.width - w - 6, px - w / 2)) + 'px';
     const above = py - h - 10;
-    bubble.style.top = (above > 4 ? above : py + 40) + 'px';
+    bubble.style.top = Math.max(4, Math.min(sr.height - h - 4, above > 4 ? above : py + 34 * scale)) + 'px'; // never off the screen
     bubble.classList.toggle('below', above <= 4);
     if (C.scene) { // his name, crisp, under him while you meet him
       if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.className = 'ctag'; $('ww-screen').appendChild(tag); }
@@ -3364,7 +3417,7 @@ window.WW_CONFIG.MODE = 'canvas';
         const q = ep.quest, st = WW.quest.step(), a = q.action;
         at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
         text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : WW.quest.bar().replace(/^📜\s*/, '');
-      } else if (!r.challengeDone) { at = ep.challenge.at; text = WW.tools && WW.tools.signText ? WW.tools.signText() || T('nsStone') : T('nsStone'); }
+      } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
       else { at = ep.boss.at; text = T('nsBoss'); }
     }
     // a broken bridge in the way? say so first
@@ -3454,8 +3507,9 @@ window.WW_CONFIG.MODE = 'canvas';
     bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
-      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T('tool_' + k)}`;
-      b.setAttribute('aria-label', T('tool_' + k));
+      const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
+      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T(tk)}`;
+      b.setAttribute('aria-label', T(tk));
       b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
       const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
       b.insertAdjacentHTML('beforeend', `<i>${i + 1}</i>${n != null ? `<b>${n}</b>` : ''}`);
@@ -3466,7 +3520,7 @@ window.WW_CONFIG.MODE = 'canvas';
     ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
     bar.appendChild(bag);
     const held = X.heldSign();
-    if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">🪧 <b>${esc(T('sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
+    if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
   X.pick = k => {
     if (!X.on()) return;
@@ -3605,7 +3659,16 @@ window.WW_CONFIG.MODE = 'canvas';
   };
 
   /* ---------------- signposts: the compass stone in the world ---------------- */
-  const signItems = () => (WW.ep.challenge.items || []).map(id => (WW.ep.build || []).find(b => b.id === id)).filter(Boolean);
+  // what you carry: the 1.1 signposts (ids in build), or for a 'carry' challenge the sort cards, each going to its bin's marked areas
+  const carry = () => WW.ep.challenge.type === 'carry';
+  const zoneTiles = (ch, bin) => (ch.zones || []).filter(z => z.bin === bin).flatMap(z => { const out = []; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) out.push([x, y]); return out; });
+  const zoneAt = (ch, x, y) => (ch.zones || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+  const signItems = () => {
+    const ch = WW.ep.challenge;
+    if (ch.type === 'carry') return ch._carry || (ch._carry = ch.items.map((it, k) => ({ id: 'c' + k, kind: 'signpost', text: it.t, icon: it.icon, why: it.why, bin: it.bin, ok: zoneTiles(ch, it.bin) })));
+    return (ch.items || []).map(id => (WW.ep.build || []).find(b => b.id === id)).filter(Boolean);
+  };
+  X.zoneTiles = zoneTiles;
   X.heldSign = () => {
     const r = WW.run; if (!r || !r.signs) return null;
     const left = r.signs.filter(s => !s.placed); if (!left.length) return null;
@@ -3615,7 +3678,7 @@ window.WW_CONFIG.MODE = 'canvas';
   X.signText = () => {
     const r = WW.run; if (!r.signs) return null;
     const left = r.signs.filter(s => !s.placed || !s.right).length;
-    return T('nsSigns').replace('{n}', left);
+    return T(carry() ? 'nsCards' : 'nsSigns').replace('{n}', left);
   };
   // walking into the compass stone, when its type is 'build'
   X.stone = (ch) => {
@@ -3623,14 +3686,17 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
-        box.innerHTML = `<h3>🪧 ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
-        const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : '🪧'} ${i + 1}. ${WW.rich(b.text)}</li>`; }).join('');
-        box.insertAdjacentHTML('beforeend', `<ol class="signlist">${list}</ol><p class="small">${esc(T('sgCost').replace('{c}', costText(signItems()[0].cost || {})))} ${esc(T('sgHow'))}</p>`);
+        const cv = carry(), mark = cv ? '📦' : '🪧';
+        box.innerHTML = `<h3>${mark} ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
+        if (cv) box.insertAdjacentHTML('beforeend', `<p class="say"><b>${esc(T('cHow'))}</b> ${ch.bins.map(b => `<span class="zchip">${b.icon || ''} ${WW.rich(b.label)}</span>`).join(' ')}</p>`);
+        const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : mark} ${i + 1}. ${b.icon ? b.icon + ' ' : ''}${WW.rich(b.text)}</li>`; }).join('');
+        const cost = signItems()[0].cost;
+        box.insertAdjacentHTML('beforeend', `<ol class="signlist">${list}</ol><p class="small">${cost ? esc(T('sgCost').replace('{c}', costText(cost))) + ' ' : ''}${esc(T('sgHow'))}</p>`);
         if (ch.grid) box.insertAdjacentHTML('beforeend', `<p class="small">🗺️ ${esc(T('sgGrid'))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts';
-        if (!r.signs) acts.appendChild(WW.btn('🪧 ' + esc(T('sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T('sgStart')); }));
+        if (!r.signs) acts.appendChild(WW.btn(mark + ' ' + esc(T(cv ? 'cTake' : 'sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T(cv ? 'cStart' : 'sgStart')); }));
         else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
-        if (ch.fallback) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); refundSigns(); WW.challenge(Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
+        if ((ch.fallback || cv) && !r.challengeDone) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); refundSigns(); WW.challenge(cv ? Object.assign({}, ch, { type: 'sort' }) : Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
         box.appendChild(acts);
       }
     });
@@ -3662,7 +3728,7 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.run.challengeTries++;
     if (right) {
       WW.sfx('good'); WW.fx.burst(x, y, 'gold');
-      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why)}`);
+      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`);
       if (WW.run.signs.every(o => o.right)) setTimeout(allDone, 700);
     } else {
       WW.sfx('bad'); g.shake();
@@ -3679,7 +3745,11 @@ window.WW_CONFIG.MODE = 'canvas';
     return `${gl(grid.rows[r])}, ${gl(grid.cols[c])}`;
   }
   function wrongWhy(b, x, y) {
-    const grid = WW.ep.challenge.grid;
+    const grid = WW.ep.challenge.grid, ch = WW.ep.challenge;
+    if (b.bin) { // a card in the wrong marked area
+      const z = zoneAt(ch, x, y), bin = z && ch.bins.find(o => o.id === z.bin);
+      return (bin ? T('cWrongZone').replace('{z}', WW.plain(bin.label)) : T('cOffZone')) + ' ' + L(b.why || '');
+    }
     if (b.grid && grid) {
       const here = gridLabel(grid, x, y), want = gridLabel(grid, b.ok[0][0], b.ok[0][1]);
       if (!here) return T('sgOffGrid');
@@ -3703,8 +3773,16 @@ window.WW_CONFIG.MODE = 'canvas';
   }
 
   /* drawing: the survey grid under everything, crops and signposts on top */
+  const ZCOL = ['#f2c14e', '#2f7fd1', '#e04848', '#3fa34d', '#8e5bd6', '#d98e2b'];
   X.under = (c, sx, sy) => {
-    const grid = WW.ep.challenge && WW.ep.challenge.grid; if (!grid) return;
+    const ch = WW.ep.challenge;
+    if (ch && ch.type === 'carry') (ch.zones || []).forEach(z => { // the marked areas, one color for each group
+      const col = ZCOL[ch.bins.findIndex(b => b.id === z.bin) % ZCOL.length], ox = (z.x - sx * 16) * 16, oy = (z.y - sy * 11) * 16;
+      if (ox > 256 || oy > 176 || ox + z.w * 16 < 0 || oy + z.h * 16 < 0) return;
+      c.save(); c.globalAlpha = .34; c.fillStyle = col; c.fillRect(ox, oy, z.w * 16, z.h * 16);
+      c.globalAlpha = .9; c.strokeStyle = col; c.lineWidth = 2; c.setLineDash([4, 3]); c.strokeRect(ox + 1, oy + 1, z.w * 16 - 2, z.h * 16 - 2); c.restore();
+    });
+    const grid = ch && ch.grid; if (!grid) return;
     const ox = (grid.x - sx * 16) * 16, oy = (grid.y - sy * 11) * 16, w = grid.cols.length * 16, hh = grid.rows.length * 16;
     if (ox > 256 || oy > 176 || ox + w < -40 || oy + hh < -40) return;
     c.save();
@@ -3717,18 +3795,30 @@ window.WW_CONFIG.MODE = 'canvas';
   // the grid's numbers are crisp HTML labels over the map (canvas text this small is too blurry to read)
   let labs = null, labKey = '';
   X.labels = (scr) => {
-    const grid = WW.ep && WW.ep.challenge && WW.ep.challenge.grid, cv = $('ww-cv');
-    const on = grid && scr && G().screenOf(grid.x, grid.y).join() === scr.join() && !(WW.ui.stack.length);
-    if (!on) { if (labs) labs.style.display = 'none'; return; }
+    const ch = WW.ep && WW.ep.challenge, cv = $('ww-cv'), list = [];
+    if (ch && scr && !WW.ui.stack.length) {
+      const grid = ch.grid;
+      if (grid && G().screenOf(grid.x, grid.y).join() === scr.join()) {
+        const ox = grid.x - scr[0] * 16, oy = grid.y - scr[1] * 11;
+        grid.cols.forEach((t, i) => list.push({ cls: 'col', px: (ox + i) * 16 + 8, py: oy * 16, t: gl(t) }));
+        grid.rows.forEach((t, j) => list.push({ cls: 'row', px: ox * 16, py: (oy + j) * 16 + 8, t: gl(t) }));
+      }
+      if (ch.type === 'carry') (ch.zones || []).forEach(z => {
+        if (G().screenOf(z.x, z.y).join() !== scr.join()) return;
+        const b = ch.bins.find(o => o.id === z.bin);
+        list.push({ cls: 'col zone', px: (z.x - scr[0] * 16) * 16 + z.w * 8, py: (z.y - scr[1] * 11) * 16, t: `${b.icon || ''} ${WW.plain(b.label)}` });
+      });
+      if (WW.world) WW.world.labels(scr).forEach(o => list.push({ cls: 'col thing', px: (o.x - scr[0] * 16) * 16 + 8, py: (o.y - scr[1] * 11) * 16 - 2, t: o.t }));
+    }
+    if (!list.length) { if (labs) labs.style.display = 'none'; return; }
     if (!labs || !labs.isConnected) { labs = document.createElement('div'); labs.className = 'gridlabs'; $('ww-screen').appendChild(labs); labKey = ''; }
     const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
-    const key = [k, cr.left - sr.left, cr.top - sr.top].join();
+    const key = [k, cr.left - sr.left, cr.top - sr.top, WW.lang, ...list.map(o => o.t + o.px + o.py)].join();
     labs.style.display = 'block';
     if (key === labKey) return;
     labKey = key;
-    const ox = (grid.x - scr[0] * 16) * 16, oy = (grid.y - scr[1] * 11) * 16, L0 = cr.left - sr.left, T0 = cr.top - sr.top;
-    labs.innerHTML = grid.cols.map((t, i) => `<span class="gl col" style="left:${L0 + (ox + i * 16 + 8) * k}px;top:${T0 + oy * k - 2}px">${esc(gl(t))}</span>`).join('') +
-      grid.rows.map((t, j) => `<span class="gl row" style="left:${L0 + ox * k - 3}px;top:${T0 + (oy + j * 16 + 8) * k}px">${esc(gl(t))}</span>`).join('');
+    const L0 = cr.left - sr.left, T0 = cr.top - sr.top;
+    labs.innerHTML = list.map(o => `<span class="gl ${o.cls}" style="left:${L0 + o.px * k + (o.cls === 'row' ? -3 : 0)}px;top:${T0 + o.py * k - (o.cls === 'row' ? 0 : 2)}px">${esc(o.t)}</span>`).join('');
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {
@@ -3764,6 +3854,241 @@ window.WW_CONFIG.MODE = 'canvas';
     starIcon: pad(['', '.......kk', '......kyyk', '......kyyk', '.kkkkkyyyykkkkk', '.kyyyyyWyyyyyyk', '..kyyyyyyyyyyk', '...kyyyyyyyyk', '...kyyyyyyyyk', '..kyyykkkyyyk', '..kyyk...kyyk', '..kkk.....kkk'])
   });
 
+})();
+
+/* world.js */
+/* WORLDWALKER engine · the compass stone moved into the world, and the earned tools' secrets
+   Challenge types that happen on the map (the card version is always one tap away: "Use cards instead"):
+     carry  – (sort in the world) carry each card to the right marked area      -> tools.js (like the 1.1 signposts)
+     route  – (order in the world) visit the stops in the right order
+     site   – (claim in the world) visit each site, then plant the flag and say why
+     survey – (table in the world) visit each survey post to read its facts, then answer
+     levers – (combo in the world) pull the levers on the map, then test them at the stone
+   Each one adds spots: [[x, y], ...] to the challenge: one map spot per item, option, table row or switch, in the same order.
+   secret: { tool, at: [x, y], text } — a chest only an earned tool reaches: the Canoe paddles on rivers (~), the Sail crosses
+   deep water (=) too, and every other tool opens a tool gate (G) on the map. Optional: a required path never needs a tool. */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  const Wd = WW.world = {};
+  const G = () => WW.game;
+  Wd.BASE = { carry: 'sort', route: 'order', site: 'claim', survey: 'table', levers: 'combo', build: null };
+  Wd.isWorld = ch => !!(ch && ch.type in Wd.BASE);
+  const tool = () => WW.ep && WW.ep.secret && WW.TOOLS.find(t => t.id === WW.ep.secret.tool);
+
+  /* ---------------- things on the map ---------------- */
+  // spots: [[x, y], ...] — one map spot for each item (route), option (site), table row (survey) or switch (levers)
+  Wd.norm = (ch) => {
+    const list = ch.type === 'route' ? ch.items : ch.type === 'site' ? ch.options : ch.type === 'levers' ? ch.switches : null;
+    if (list) list.forEach((o, i) => { o.at = o.at || (ch.spots || [])[i]; });
+  };
+  Wd.ents = (ep) => {
+    const ch = ep.challenge, out = []; Wd.norm(ch);
+    if (ch.type === 'route') ch.items.forEach((it, i) => out.push({ kind: 'stop', x: it.at[0], y: it.at[1], i }));
+    if (ch.type === 'site') ch.options.forEach((o, i) => out.push({ kind: 'site', x: o.at[0], y: o.at[1], i }));
+    if (ch.type === 'survey') ch.spots.forEach((p, i) => out.push({ kind: 'survey', x: p[0], y: p[1], i }));
+    if (ch.type === 'levers') ch.switches.forEach((s, i) => out.push({ kind: 'lever', x: s.at[0], y: s.at[1], i }));
+    if (ep.secret) out.push({ kind: 'chest', x: ep.secret.at[0], y: ep.secret.at[1] });
+    return out;
+  };
+  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest'];
+  Wd.setup = (ep) => {
+    const r = WW.run, ch = ep.challenge;
+    r.worldOn = false; r.route = 0; r.seen = new Set(); r.levers = ch.type === 'levers' ? ch.switches.map(s => s.start || 0) : null;
+  };
+
+  /* the earned tools: canoe on rivers, sail on deep water, the episode's tool gate */
+  Wd.pass = ch => {
+    if (ch === '~') return WW.hasTool('canoe') || WW.hasTool('sail');
+    if (ch === '=') return WW.hasTool('sail');
+    if (ch === 'G') { const t = tool(); return !!(t && WW.hasTool(t.id)); }
+    return false;
+  };
+  Wd.bump = (x, y) => { // walked into a closed tool gate: say what opens it
+    if (G().tileAt(x, y) !== 'G') return false;
+    const t = tool(); if (!t) return false;
+    WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
+    return true;
+  };
+
+  /* ---------------- the stone ---------------- */
+  const cards = ch => () => { const h = WW.ui.top(); if (h) h.close(); WW.challenge(Object.assign({}, ch, { type: Wd.BASE[ch.type] })); };
+  function stonePanel(ch, how, extra, go) {
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        box.innerHTML = `<h3>🧭 ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p><p class="say"><b>${esc(T(how))}</b></p>${extra ? extra() : ''}`;
+        const acts = document.createElement('div'); acts.className = 'acts';
+        if (go) acts.appendChild(WW.btn(go.label, 'gold', () => { h.close(); go.fn(); }));
+        else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
+        if (!WW.run.challengeDone) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', cards(ch)));
+        box.appendChild(acts);
+      }
+    });
+  }
+  Wd.stone = (ch) => {
+    const r = WW.run;
+    if (ch.type === 'carry') return WW.tools.stone(ch);
+    if (r.challengeDone) return WW.ui.message('', ch.success);
+    const start = () => { r.worldOn = true; WW.chris.say(T('w_' + ch.type + 'Go')); };
+    if (ch.type === 'route') return stonePanel(ch, 'w_routeHow', () => `<p class="small">${esc(T('w_routeSeen').replace('{n}', r.route).replace('{m}', ch.items.length))}</p>`, r.worldOn ? null : { label: '🧭 ' + esc(T('wStart')), fn: start });
+    if (ch.type === 'site') return stonePanel(ch, 'w_siteHow', () => `<p class="small">${esc(T('w_siteSeen').replace('{n}', r.seen.size).replace('{m}', ch.options.length))}</p>`, r.worldOn ? null : { label: '🚩 ' + esc(T('wStart')), fn: start });
+    if (ch.type === 'survey') {
+      const all = r.seen.size >= ch.spots.length;
+      if (all) return WW.challenge(Object.assign({}, ch, { type: 'table' }));
+      return stonePanel(ch, 'w_surveyHow', () => `<p class="small">${esc(T('w_surveySeen').replace('{n}', r.seen.size).replace('{m}', ch.spots.length))}</p>`, r.worldOn ? null : { label: '📋 ' + esc(T('wStart')), fn: start });
+    }
+    if (ch.type === 'levers') {
+      if (!r.worldOn) return stonePanel(ch, 'w_leversHow', null, { label: '🕹️ ' + esc(T('wStart')), fn: start });
+      return testLevers(ch);
+    }
+  };
+
+  /* ---------------- walking into the things ---------------- */
+  Wd.interact = (e) => {
+    const r = WW.run, ch = WW.ep.challenge, g = G();
+    if (e.kind === 'chest') return openChest(e);
+    if (r.challengeDone) { WW.chris.say(L(ch.success)); return; }
+    if (!r.worldOn) { WW.chris.say(T('wStoneFirst')); WW.sfx('bad'); return; }
+    if (e.kind === 'stop') {
+      const it = ch.items[e.i];
+      if (e.i < r.route) return WW.chris.say(`✅ ${WW.plain(it.t)}`);
+      if (e.i === r.route) {
+        r.route++; WW.sfx('good'); WW.fx.burst(e.x, e.y, 'gold');
+        if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`🎉 ${L(ch.success)}`); return; }
+        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`);
+      } else {
+        r.challengeTries++; WW.sfx('bad'); g.shake();
+        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`);
+      }
+      return;
+    }
+    if (e.kind === 'site') {
+      const o = ch.options[e.i];
+      r.seen.add(e.i); WW.sfx('blip');
+      if (r.seen.size < ch.options.length) {
+        return WW.ui.message(`🚩 ${WW.plain(o.name)}`, `${o.desc ? L(o.desc) + ' ' : ''}${T('w_siteMore').replace('{n}', ch.options.length - r.seen.size)}`);
+      }
+      return WW.challenge(Object.assign({}, ch, { type: 'claim', pickAt: e.i }));
+    }
+    if (e.kind === 'survey') {
+      const row = ch.table.rows[e.i]; r.seen.add(e.i); WW.sfx('blip');
+      const tbl = `<table class="dtbl"><tr>${ch.table.head.map(c => `<th>${WW.rich(c)}</th>`).join('')}</tr><tr>${row.map(c => `<td>${WW.rich(c)}</td>`).join('')}</tr></table>`;
+      const left = ch.spots.length - r.seen.size;
+      return WW.ui.open({
+        cls: 'msgov',
+        render(box, h) {
+          box.innerHTML = `<h3>📋 ${esc(T('w_surveyPost'))}</h3><div class="tblwrap">${tbl}</div><p class="say">${esc(left ? T('w_surveyLeft').replace('{n}', left) : T('w_surveyAll'))}</p>`;
+          const a = document.createElement('div'); a.className = 'acts'; a.appendChild(WW.btn(T('cont') + ' ▶', 'gold', () => h.close())); box.appendChild(a);
+        }
+      });
+    }
+    if (e.kind === 'lever') {
+      const s = ch.switches[e.i];
+      r.levers[e.i] = (r.levers[e.i] + 1) % s.states.length; WW.sfx('pop'); g.shake();
+      WW.chris.say(`${s.icon || '🕹️'} ${WW.plain(s.name)}: <b>${esc(WW.plain(s.states[r.levers[e.i]]))}</b>. ${T('w_leverTest')}`);
+    }
+  };
+  function testLevers(ch) {
+    const r = WW.run, key = r.levers.join(','), res = ch.results[key] || ch.otherwise || { ok: false, t: '' };
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        box.innerHTML = `<h3>🕹️ ${esc(L(ch.title))}</h3><ul class="signlist">${ch.switches.map((s, i) => `<li>${s.icon || ''} <b>${WW.rich(s.name)}</b>: ${WW.rich(s.states[r.levers[i]])}</li>`).join('')}</ul>`;
+        if (res.show) box.insertAdjacentHTML('beforeend', `<div class="outs">${res.show.map(o => `<span class="out ${o.ok ? 'good' : 'badp'}">${o.icon || ''} ${WW.rich(o.t)}</span>`).join('')}</div>`);
+        box.insertAdjacentHTML('beforeend', `<div class="fb ${res.ok ? 'right' : 'wrong'}"><b>${esc(T(res.ok ? 'right' : 'wrong'))}</b> ${WW.rich(res.t || '')}</div>`);
+        const a = document.createElement('div'); a.className = 'acts';
+        a.appendChild(WW.btn(T(res.ok ? 'cont' : 'close') + ' ▶', 'gold', () => { h.close(); if (res.ok) WW.chris.say(`🎉 ${L(ch.success)}`); }));
+        if (!res.ok) { a.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', cards(ch))); box.insertAdjacentHTML('beforeend', `<p class="small">${esc(T('w_leverAgain'))}</p>`); }
+        box.appendChild(a);
+      }
+    });
+    r.challengeTries++;
+    if (res.ok) WW.challengeSolved(ch); else WW.sfx('bad');
+  }
+
+  /* the secret chest */
+  function openChest(e) {
+    const ep = WW.ep, s = WW.save, t = tool();
+    s.secrets = s.secrets || [];
+    if (s.secrets.includes(ep.id)) return WW.chris.say(`${t ? t.icon + ' ' : ''}${L(ep.secret.text)}`);
+    s.secrets.push(ep.id); WW.store(); WW.sheetSync && WW.sheetSync();
+    WW.fx.burst(e.x, e.y, 'gold'); WW.sfx('win');
+    WW.gain(null, 0, 5, T('why_secret'), true);
+    WW.toast(`🎁 +5 ● ${esc(T('why_secret'))}`, '#c08a1e');
+    WW.ui.message(`🎁 ${t ? t.icon + ' ' : ''}${T('secretFound')}`, ep.secret.text);
+  }
+
+  /* where to go next for the world challenge (Christopher and the arrow) */
+  Wd.next = () => {
+    const r = WW.run, ch = WW.ep.challenge;
+    if (!r.worldOn || r.challengeDone) return null;
+    if (ch.type === 'route') return ch.items[r.route].at;
+    if (ch.type === 'site') { const i = ch.options.findIndex((_, k) => !r.seen.has(k)); return i < 0 ? null : ch.options[i].at; }
+    if (ch.type === 'survey') { const i = ch.spots.findIndex((_, k) => !r.seen.has(k)); return i < 0 ? ch.at : ch.spots[i]; }
+    return null;
+  };
+  Wd.nextText = () => {
+    const r = WW.run, ch = WW.ep.challenge;
+    if (!Wd.isWorld(ch) || ch.type === 'carry' || ch.type === 'build' || !r.worldOn) return null;
+    if (ch.type === 'route') return T('ns_route').replace('{n}', r.route + 1).replace('{m}', ch.items.length);
+    if (ch.type === 'site') return r.seen.size < ch.options.length ? T('ns_site').replace('{n}', ch.options.length - r.seen.size) : T('ns_siteDone');
+    if (ch.type === 'survey') return r.seen.size < ch.spots.length ? T('w_surveyLeft').replace('{n}', ch.spots.length - r.seen.size) : T('w_surveyAll');
+    if (ch.type === 'levers') return T('w_leverTest');
+  };
+
+  /* ---------------- drawing ---------------- */
+  Wd.draw = (c, e, x, y, t) => {
+    const r = WW.run, ch = WW.ep.challenge;
+    const glow = (col, a) => { c.fillStyle = col.replace('A', a); c.beginPath(); c.arc(x + 8, y + 9, 9, 0, 7); c.fill(); };
+    const pulse = WW.calm ? 0.5 : (Math.sin(t / 300 + e.i) + 1) / 2;
+    WW.shadow(c, x, y + 13, 10);
+    if (e.kind === 'stop') { // a little station sign
+      const done = e.i < r.route;
+      if (!done && r.worldOn) glow('rgba(255,236,150,A)', .2 + pulse * .2);
+      c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 5, 2, 10); c.fillRect(x + 2, y + 1, 12, 7);
+      c.fillStyle = done ? '#3fa34d' : '#2f6fd6'; c.fillRect(x + 3, y + 2, 10, 5);
+      c.fillStyle = '#fffbe8'; c.fillRect(x + 5, y + 4, 6, 1);
+    } else if (e.kind === 'site') { // a flag pole
+      if (r.worldOn && !r.challengeDone) glow('rgba(255,236,150,A)', .15 + pulse * .2);
+      c.fillStyle = '#22202e'; c.fillRect(x + 4, y + 1, 2, 14);
+      c.fillStyle = r.seen.has(e.i) ? '#e04848' : '#fffbe8'; c.fillRect(x + 6, y + 2, 8, 5); c.fillStyle = '#22202e'; c.fillRect(x + 6, y + 7, 8, 1);
+    } else if (e.kind === 'survey') { // a post with a clipboard
+      if (r.worldOn && !r.seen.has(e.i)) glow('rgba(255,236,150,A)', .15 + pulse * .2);
+      c.fillStyle = '#6d4c2f'; c.fillRect(x + 7, y + 8, 2, 7);
+      c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 1, 10, 10); c.fillStyle = r.seen.has(e.i) ? '#d8f0d0' : '#fffbe8'; c.fillRect(x + 4, y + 2, 8, 8);
+      c.fillStyle = '#9aa3ad'; for (let k = 0; k < 3; k++) c.fillRect(x + 5, y + 4 + k * 2, 6, 1);
+    } else if (e.kind === 'lever') { // a lever on a post; it leans with its setting
+      const st = r.levers ? r.levers[e.i] : 0, n = ch.switches[e.i].states.length, lean = n > 1 ? -4 + 8 * st / (n - 1) : 0;
+      if (r.worldOn) glow('rgba(255,236,150,A)', .12 + pulse * .15);
+      c.fillStyle = '#5e636b'; c.fillRect(x + 3, y + 11, 10, 4); c.fillStyle = '#9aa3ad'; c.fillRect(x + 4, y + 11, 8, 1);
+      c.strokeStyle = '#22202e'; c.lineWidth = 2; c.beginPath(); c.moveTo(x + 8, y + 12); c.lineTo(x + 8 + lean, y + 4); c.stroke();
+      c.fillStyle = '#e04848'; c.beginPath(); c.arc(x + 8 + lean, y + 4, 2.5, 0, 7); c.fill();
+    } else if (e.kind === 'chest') {
+      const open = (WW.save.secrets || []).includes(WW.ep.id);
+      if (!open) glow('rgba(255,236,150,A)', .2 + pulse * .25);
+      c.fillStyle = '#22202e'; c.fillRect(x + 2, y + 5, 12, 10);
+      c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + (open ? 9 : 6), 10, open ? 5 : 8);
+      c.fillStyle = '#f2c14e'; c.fillRect(x + 3, y + (open ? 9 : 9), 10, 1); c.fillRect(x + 7, y + 8, 2, 3);
+      if (open) { c.fillStyle = '#6d4424'; c.fillRect(x + 3, y + 3, 10, 3); }
+    }
+  };
+  // a canoe (or a sail boat) under the hero on water
+  Wd.boat = (c, x, y, ch) => {
+    if (ch !== '~' && ch !== '=') return;
+    c.fillStyle = '#22202e'; c.fillRect(x, y + 9, 16, 6);
+    c.fillStyle = '#a0703f'; c.fillRect(x + 1, y + 10, 14, 4); c.fillStyle = '#6d4424'; c.fillRect(x + 2, y + 13, 12, 1);
+    if (ch === '=') { c.fillStyle = '#22202e'; c.fillRect(x + 12, y - 6, 1, 16); c.fillStyle = '#fffbe8'; c.fillRect(x + 13, y - 5, 3, 9); }
+  };
+  /* labels over the map (crisp HTML): what each stop, site, survey post and lever is */
+  Wd.labels = (scr) => {
+    const ch = WW.ep.challenge, r = WW.run, out = [];
+    const on = (x, y) => G().screenOf(x, y).join() === scr.join();
+    if (ch.type === 'route') ch.items.forEach((it, i) => on(...it.at) && out.push({ x: it.at[0], y: it.at[1], t: `${i < r.route ? '✓ ' : ''}${it.icon ? it.icon + ' ' : ''}${WW.plain(it.t)}` }));
+    if (ch.type === 'site') ch.options.forEach((o, i) => on(...o.at) && out.push({ x: o.at[0], y: o.at[1], t: `${o.icon ? o.icon + ' ' : ''}${WW.plain(o.name)}` }));
+    if (ch.type === 'survey') ch.spots.forEach((p, i) => on(...p) && out.push({ x: p[0], y: p[1], t: r.seen.has(i) ? '✓ ' + WW.plain(ch.table.rows[i][0]) : '📋 ?' }));
+    if (ch.type === 'levers' && r.levers) ch.switches.forEach((s, i) => on(...s.at) && out.push({ x: s.at[0], y: s.at[1], t: `${s.icon ? s.icon + ' ' : ''}${WW.plain(s.states[r.levers[i]])}` }));
+    return out;
+  };
 })();
 
 /* game.js */
@@ -3877,7 +4202,7 @@ window.WW_CONFIG.MODE = 'canvas';
   function entAt(x, y) { return ents.find(e => e.x === x && e.y === y && !e.gone && e.visible !== false); }
   function walkable(x, y) {
     if (x < 0 || y < 0 || x >= W || y >= H) return false;
-    if (WW.solid(tileAt(x, y))) return false;
+    if (WW.solid(tileAt(x, y)) && !WW.world.pass(tileAt(x, y))) return false; // earned tools: canoe, sail, tool gates
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
@@ -3908,6 +4233,7 @@ window.WW_CONFIG.MODE = 'canvas';
     stars = []; zapped = 0; toldShield = false;
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
+    WW.world.ents(ep).forEach(e => ents.push(e)); WW.world.setup(ep);
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
@@ -3983,6 +4309,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if (!e || WW.paused) return;
     const ep = WW.ep, r = WW.run;
     if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
+    if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -4029,7 +4356,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(nx, ny);
     if (e && e.kind === 'post') return;
     if (e && !PASS.includes(e.kind)) { interact(e); held = null; return; }
-    if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny)) held = null; return; }
+    if (!walkable(nx, ny)) { if (WW.tools.bump(nx, ny) || WW.world.bump(nx, ny)) held = null; return; }
     const [sx, sy] = screenOf(player.x, player.y), [tx, ty] = screenOf(nx, ny);
     pip.tx = player.x; pip.ty = player.y;
     player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
@@ -4204,6 +4531,7 @@ window.WW_CONFIG.MODE = 'canvas';
         }
       }
       if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+      if (WW.world.KINDS.includes(e.kind)) WW.world.draw(c, e, px(e), py(e), t);
       if (e.kind === 'atlas') {
         const a = (Math.sin(t / 250) + 1) / 2;
         c.fillStyle = `rgba(255,230,140,${.25 + a * .35})`; c.beginPath(); c.arc(px(e) + 8, py(e) + 6, 10 + a * 3, 0, 7); c.fill();
@@ -4310,6 +4638,7 @@ window.WW_CONFIG.MODE = 'canvas';
       if (st === 1) return [q.contact.x, q.contact.y];
       return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null; // a secret spot is found with the clue, not the arrow
     }
+    if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
     return r.challengeDone ? ep.boss.at : ep.challenge.at;
   };
   G.progress = () => { // 0..1: how much of the episode is done (the land's color comes back with it)
@@ -4341,6 +4670,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const d = player.dir;
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
     WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
+    WW.world.boat(c, Math.round(x), Math.round(y), tileAt(player.x, player.y));
     WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 
@@ -4370,7 +4700,12 @@ window.WW_CONFIG.MODE = 'canvas';
     collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.teleport(e.x, e.y); pickup(); },
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; },
-    use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); }
+    use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
+    useOn(tiles) { // face the first free tile in the list and use the tool on it (play-tests)
+      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+      return null;
+    }
   };
 })();
 
@@ -4445,16 +4780,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello! I work on the [[census|census]]. I count every person in the country. Then I turn the numbers into pictures. One picture is a [[population pyramid|population pyramid]]. It shows how many people are in each age group.',
           es: '¡Hola! Trabajo en el [[census|censo]]. Cuento a cada persona del país. Luego convierto los números en dibujos. Un dibujo es una [[population pyramid|pirámide de población]]. Muestra cuántas personas hay en cada grupo de edad.',
-          fa: 'سلام! من در [[census|سرشماری]] کار می‌کنم. هر نفر کشور را می‌شمارم. بعد عددها را به تصویر تبدیل می‌کنم. یک تصویر [[population pyramid|هرم نفوس]] است. نشان می‌دهد در هر گروه سنی چند نفر هستند.',
-          easy: { en: 'I count people. A [[population pyramid|population pyramid]] shows how many people are each age.', es: 'Yo cuento personas. Una [[population pyramid|pirámide de población]] muestra cuántas personas hay de cada edad.', fa: 'من مردم را می‌شمارم. [[population pyramid|هرم نفوس]] نشان می‌دهد هر سن چند نفر دارد.' } },
+          fa: 'سلام! من در [[census|سرشماری]] کار می‌کنم. هر نفر کشور را می‌شمارم. بعد عددها را به تصویر تبدیل می‌کنم. یک تصویر [[population pyramid|هرم نفوس]] است. نشان می‌دهد در هر گروه سنی چند نفر هستند.' },
         { en: 'Children are at the bottom of the pyramid. Old people are at the top. A wide bottom means many babies and children. That country will need many new schools soon. A wide top means many older people. That country needs more nurses and doctors.',
           es: 'Los niños están abajo en la pirámide. Las personas mayores están arriba. Una base ancha significa muchos bebés y niños. Ese país necesitará muchas escuelas nuevas pronto. Una parte de arriba ancha significa muchas personas mayores. Ese país necesita más enfermeras y doctores.',
-          fa: 'اطفال در پایین هرم هستند. کلان‌سالان در بالا هستند. پایین پهن یعنی نوزادان و اطفال زیاد. آن کشور به زودی به مکتب‌های نو زیاد ضرورت دارد. بالای پهن یعنی کلان‌سالان زیاد. آن کشور به نرس و داکتر بیشتر ضرورت دارد.',
-          easy: { en: 'Wide bottom = many children, so build schools. Wide top = many old people, so train nurses.', es: 'Base ancha = muchos niños, así que hay que construir escuelas. Parte de arriba ancha = muchos mayores, así que hay que formar enfermeras.', fa: 'پایین پهن = اطفال زیاد، پس مکتب بساز. بالای پهن = کلان‌سالان زیاد، پس نرس تربیه کن.' } },
+          fa: 'اطفال در پایین هرم هستند. کلان‌سالان در بالا هستند. پایین پهن یعنی نوزادان و اطفال زیاد. آن کشور به زودی به مکتب‌های نو زیاد ضرورت دارد. بالای پهن یعنی کلان‌سالان زیاد. آن کشور به نرس و داکتر بیشتر ضرورت دارد.' },
         { en: 'A [[line graph|line graph]] shows change over time. The line for world [[population|population]] climbs and climbs. In 1950 there were about 2.5 billion people. In 2022 there were more than 8 billion!',
           es: 'Una [[line graph|gráfica de líneas]] muestra el cambio con el tiempo. La línea de la [[population|población]] del mundo sube y sube. En 1950 había unos 2,500 millones de personas. ¡En 2022 había más de 8,000 millones!',
-          fa: '[[line graph|گراف خطی]] تغییر را با گذشت زمان نشان می‌دهد. خط [[population|نفوس]] جهان بالا و بالا می‌رود. در سال ۱۹۵۰ حدود ۲.۵ میلیارد نفر بودند. در سال ۲۰۲۲ بیشتر از ۸ میلیارد نفر شدند!',
-          easy: { en: 'World population grew from about 2.5 billion (1950) to more than 8 billion (2022).', es: 'La población del mundo creció de unos 2,500 millones (1950) a más de 8,000 millones (2022).', fa: 'نفوس جهان از حدود ۲.۵ میلیارد (۱۹۵۰) به بیشتر از ۸ میلیارد (۲۰۲۲) رسید.' } }
+          fa: '[[line graph|گراف خطی]] تغییر را با گذشت زمان نشان می‌دهد. خط [[population|نفوس]] جهان بالا و بالا می‌رود. در سال ۱۹۵۰ حدود ۲.۵ میلیارد نفر بودند. در سال ۲۰۲۲ بیشتر از ۸ میلیارد نفر شدند!' }
       ],
       ask: {
         stat: 'reg',
@@ -4477,12 +4809,10 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to our village clinic. [[life expectancy|Life expectancy]] is how long a baby born today can expect to live, on average. Clean water, good food, vaccines and nearby clinics all help people live longer.',
           es: 'Bienvenido a la clínica del pueblo. La [[life expectancy|esperanza de vida]] es cuánto puede esperar vivir, en promedio, un bebé que nace hoy. El agua limpia, la buena comida, las vacunas y las clínicas cercanas ayudan a vivir más.',
-          fa: 'به کلینیک قریهٔ ما خوش آمدی. [[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند. آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.',
-          easy: { en: '[[life expectancy|Life expectancy]] = how long people live, on average. Clean water and clinics help.', es: '[[life expectancy|Esperanza de vida]] = cuánto vive la gente, en promedio. El agua limpia y las clínicas ayudan.', fa: '[[life expectancy|اوسط عمر]] = مردم به طور اوسط چند سال زندگی می‌کنند. آب پاک و کلینیک کمک می‌کند.' } },
+          fa: 'به کلینیک قریهٔ ما خوش آمدی. [[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند. آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.' },
         { en: 'Our country has one life expectancy number. But it hides a gap. In the big city, the hospital is a short walk away. Here in the village, the nearest hospital is two hours away by boat and bus.',
           es: 'Nuestro país tiene un solo número de esperanza de vida. Pero ese número esconde una diferencia. En la ciudad grande, el hospital está a pocos pasos. Aquí en el pueblo, el hospital más cercano está a dos horas en lancha y autobús.',
-          fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند. در شهر بزرگ، شفاخانه چند قدم دور است. اینجا در قریه، نزدیک‌ترین شفاخانه دو ساعت با کشتی و بس فاصله دارد.',
-          easy: { en: 'One country number hides a gap. The city has a hospital close by. The village does not.', es: 'Un número del país esconde una diferencia. La ciudad tiene un hospital cerca. El pueblo no.', fa: 'یک عدد کشور یک فرق را پنهان می‌کند. شهر شفاخانهٔ نزدیک دارد. قریه ندارد.' } }
+          fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند. در شهر بزرگ، شفاخانه چند قدم دور است. اینجا در قریه، نزدیک‌ترین شفاخانه دو ساعت با کشتی و بس فاصله دارد.' }
       ],
       ask: {
         stat: 'hei',
@@ -4505,16 +4835,13 @@ window.EPISODE = {
       lines: [
         { en: 'I plan roads, water pipes and schools for this city. People tell me, "Our city\'s [[average|average]] income is high!" But look around. The towers up north are full of rich offices. These old lanes are full of families who earn much less.',
           es: 'Yo planeo calles, tubos de agua y escuelas para esta ciudad. La gente me dice: "¡El ingreso [[average|promedio]] de nuestra ciudad es alto!" Pero mira a tu alrededor. Las torres del norte están llenas de oficinas ricas. Estas calles viejas están llenas de familias que ganan mucho menos.',
-          fa: 'من برای این شهر سرک، نل آب و مکتب پلان می‌کنم. مردم می‌گویند: «عاید [[average|اوسط]] شهر ما بلند است!» اما به اطراف ببین. تعمیرهای بلند شمال پر از دفترهای پولدار است. این کوچه‌های کهنه پر از فامیل‌هایی است که خیلی کمتر پول می‌گیرند.',
-          easy: { en: 'The city [[average|average]] looks good. But rich towers and poor lanes are very different.', es: 'El [[average|promedio]] de la ciudad se ve bien. Pero las torres ricas y las calles pobres son muy diferentes.', fa: '[[average|اوسط]] شهر خوب معلوم می‌شود. اما تعمیرهای پولدار و کوچه‌های فقیر خیلی فرق دارند.' } },
+          fa: 'من برای این شهر سرک، نل آب و مکتب پلان می‌کنم. مردم می‌گویند: «عاید [[average|اوسط]] شهر ما بلند است!» اما به اطراف ببین. تعمیرهای بلند شمال پر از دفترهای پولدار است. این کوچه‌های کهنه پر از فامیل‌هایی است که خیلی کمتر پول می‌گیرند.' },
         { en: 'Here is the trick. Nine workers earn $20,000 a year. One worker earns $800,000. The average is $98,000! That sounds great. But nine of the ten workers earn far less. One very big number pulls the average up.',
           es: 'Este es el truco. Nueve trabajadores ganan $20,000 al año. Un trabajador gana $800,000. ¡El promedio es $98,000! Suena muy bien. Pero nueve de los diez ganan mucho menos. Un número muy grande sube el promedio.',
-          fa: 'فریب اینجاست. نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک کارگر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر می‌شود! خوب معلوم می‌شود. اما نُه نفر از ده نفر خیلی کمتر می‌گیرند. یک عدد بسیار بزرگ اوسط را بالا می‌برد.',
-          easy: { en: '9 workers earn $20,000. 1 earns $800,000. The average is $98,000, but almost nobody earns that.', es: '9 ganan $20,000. 1 gana $800,000. El promedio es $98,000, pero casi nadie gana eso.', fa: '۹ نفر ۲۰٬۰۰۰ دالر می‌گیرند. ۱ نفر ۸۰۰٬۰۰۰ دالر. اوسط ۹۸٬۰۰۰ دالر است، اما تقریباً هیچ‌کس این‌قدر نمی‌گیرد.' } },
+          fa: 'فریب اینجاست. نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک کارگر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر می‌شود! خوب معلوم می‌شود. اما نُه نفر از ده نفر خیلی کمتر می‌گیرند. یک عدد بسیار بزرگ اوسط را بالا می‌برد.' },
         { en: 'So a good geographer asks a second question: how is the money [[distributed|distributed]]? Is it shared by many people, or held by a few?',
           es: 'Por eso un buen geógrafo hace una segunda pregunta: ¿cómo está [[distributed|repartido]] el dinero? ¿Lo comparten muchas personas o lo tienen unas pocas?',
-          fa: 'پس یک جغرافیه‌دان خوب سوال دوم را می‌پرسد: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد تقسیم شده، یا دست چند نفر است؟',
-          easy: { en: 'Always ask: who has the money? Many people, or just a few?', es: 'Pregunta siempre: ¿quién tiene el dinero? ¿Muchas personas o solo unas pocas?', fa: 'همیشه بپرس: پول دست کیست؟ مردم زیاد یا فقط چند نفر؟' } }
+          fa: 'پس یک جغرافیه‌دان خوب سوال دوم را می‌پرسد: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد تقسیم شده، یا دست چند نفر است؟' }
       ],
       ask: {
         stat: 'pla',

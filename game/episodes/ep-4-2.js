@@ -59,16 +59,13 @@ window.EPISODE = {
       lines: [
         { en: 'Mbote! That means hello in Lingala. I am Grâce. I sell fish and cassava leaves in this market in Kinshasa, the capital of DR Congo.',
           es: '¡Mbote! Así se dice hola en lingala. Soy Grâce. Vendo pescado y hojas de yuca en este mercado de Kinshasa, la capital de RD Congo.',
-          fa: 'مبوته! این به زبان لینگالا یعنی سلام. من گراس هستم. در این بازار کینشاسا، پایتخت جمهوری دموکراتیک کانگو، ماهی و برگ کاساوا می‌فروشم.',
-          easy: { en: 'Hello! I am Grâce. I sell food in the market in Kinshasa, DR Congo.', es: '¡Hola! Soy Grâce. Vendo comida en el mercado de Kinshasa, RD Congo.', fa: 'سلام! من گراس هستم. در بازار کینشاسا در کانگو خوراکی می‌فروشم.' } },
+          fa: 'مبوته! این به زبان لینگالا یعنی سلام. من گراس هستم. در این بازار کینشاسا، پایتخت جمهوری دموکراتیک کانگو، ماهی و برگ کاساوا می‌فروشم.' },
         { en: 'DR Congo has more than 200 languages and many [[ethnic group|ethnic groups]]. French is the [[official language|official language]]. On the street here, most people speak Lingala. You hear it in our music too: Congolese rumba is loved all over Africa.',
           es: 'RD Congo tiene más de 200 idiomas y muchos [[ethnic group|grupos étnicos]]. El francés es el [[official language|idioma oficial]]. En la calle, aquí casi todos hablan lingala. También lo oyes en nuestra música: la rumba congoleña es querida en toda África.',
-          fa: 'کانگو بیش از ۲۰۰ زبان و [[ethnic group|قوم‌های]] زیاد دارد. فرانسوی [[official language|زبان رسمی]] است. این‌جا در سرک، بیشتر مردم لینگالا گپ می‌زنند. آن را در موسیقی ما هم می‌شنوی: رومبای کانگویی در سراسر افریقا محبوب است.',
-          easy: { en: 'My country has more than 200 languages. French is the [[official language|official language]]. Here people also speak Lingala.', es: 'Mi país tiene más de 200 idiomas. El francés es el [[official language|idioma oficial]]. Aquí la gente también habla lingala.', fa: 'کشور من بیش از ۲۰۰ زبان دارد. فرانسوی [[official language|زبان رسمی]] است. این‌جا مردم لینگالا هم گپ می‌زنند.' } },
+          fa: 'کانگو بیش از ۲۰۰ زبان و [[ethnic group|قوم‌های]] زیاد دارد. فرانسوی [[official language|زبان رسمی]] است. این‌جا در سرک، بیشتر مردم لینگالا گپ می‌زنند. آن را در موسیقی ما هم می‌شنوی: رومبای کانگویی در سراسر افریقا محبوب است.' },
         { en: 'Every day new people arrive from farms and small towns. They come for jobs and school. That move to cities is called [[urbanization|urbanization]]. Kinshasa now has more than 10 million people!',
           es: 'Cada día llega gente nueva del campo y de pueblos pequeños. Vienen por trabajo y por la escuela. Esa mudanza a las ciudades se llama [[urbanization|urbanización]]. ¡Kinshasa ya tiene más de 10 millones de personas!',
-          fa: 'هر روز مردم تازه از قریه‌ها و شهرک‌های کوچک می‌آیند. آن‌ها برای کار و مکتب می‌آیند. این کوچ به شهرها [[urbanization|شهرنشینی]] نام دارد. حالا کینشاسا بیش از ۱۰ میلیون نفر دارد!',
-          easy: { en: 'People move here from farms for jobs and school. This is [[urbanization|urbanization]].', es: 'La gente se muda aquí del campo por trabajo y escuela. Esto es la [[urbanization|urbanización]].', fa: 'مردم از قریه برای کار و مکتب به این‌جا می‌آیند. این [[urbanization|شهرنشینی]] است.' } }
+          fa: 'هر روز مردم تازه از قریه‌ها و شهرک‌های کوچک می‌آیند. آن‌ها برای کار و مکتب می‌آیند. این کوچ به شهرها [[urbanization|شهرنشینی]] نام دارد. حالا کینشاسا بیش از ۱۰ میلیون نفر دارد!' }
       ],
       ask: {
         stat: 'mov',
@@ -91,16 +88,13 @@ window.EPISODE = {
       lines: [
         { en: 'I am Captain Mbuyi. This is the Congo River, the second-longest river in Africa. It is also the deepest river in the world!',
           es: 'Soy el capitán Mbuyi. Este es el río Congo, el segundo río más largo de África. ¡También es el río más profundo del mundo!',
-          fa: 'من کپتان مبویی هستم. این دریای کانگو است، دومین دریای دراز افریقا. عمیق‌ترین دریای جهان هم است!',
-          easy: { en: 'This is the Congo River. It is very long and the deepest river in the world.', es: 'Este es el río Congo. Es muy largo y el más profundo del mundo.', fa: 'این دریای کانگو است. خیلی دراز است و عمیق‌ترین دریای جهان است.' } },
+          fa: 'من کپتان مبویی هستم. این دریای کانگو است، دومین دریای دراز افریقا. عمیق‌ترین دریای جهان هم است!' },
         { en: 'Thick [[rainforest|rainforest]] covers much of DR Congo. Building roads there is very hard. So the river is our road. Boats carry people, cassava, fish and phones between Kinshasa and towns far upstream, like Kisangani.',
           es: 'Una [[rainforest|selva]] espesa cubre gran parte de RD Congo. Construir carreteras ahí es muy difícil. Por eso el río es nuestra carretera. Los barcos llevan gente, yuca, pescado y teléfonos entre Kinshasa y pueblos lejanos río arriba, como Kisangani.',
-          fa: '[[rainforest|جنگل بارانی]] انبوه بیشتر کانگو را پوشانده است. ساختن سرک در آن‌جا خیلی سخت است. پس دریا سرک ما است. کشتی‌ها مردم، کاساوا، ماهی و موبایل را میان کینشاسا و شهرهای دور در بالای دریا، مثل کیسانگانی، می‌برند.',
-          easy: { en: 'The forest makes roads hard to build. So boats on the river carry people and goods.', es: 'La selva hace difícil construir carreteras. Por eso los barcos del río llevan gente y mercancías.', fa: 'جنگل ساختن سرک را سخت می‌کند. پس کشتی‌های دریا مردم و بار را می‌برند.' } },
+          fa: '[[rainforest|جنگل بارانی]] انبوه بیشتر کانگو را پوشانده است. ساختن سرک در آن‌جا خیلی سخت است. پس دریا سرک ما است. کشتی‌ها مردم، کاساوا، ماهی و موبایل را میان کینشاسا و شهرهای دور در بالای دریا، مثل کیسانگانی، می‌برند.' },
         { en: 'Look across the water. That is Brazzaville, the capital of another country, the Republic of the Congo. Two capital cities face each other across one river!',
           es: 'Mira al otro lado del agua. Esa es Brazzaville, la capital de otro país, la República del Congo. ¡Dos capitales, una frente a la otra, separadas por un río!',
-          fa: 'آن طرف آب را ببین. آن‌جا برازاویل است، پایتخت یک کشور دیگر، جمهوری کانگو. دو پایتخت آن طرف و این طرف یک دریا روبه‌روی هم هستند!',
-          easy: { en: 'Across the river is Brazzaville, the capital of a different country.', es: 'Al otro lado del río está Brazzaville, la capital de otro país.', fa: 'آن طرف دریا برازاویل است، پایتخت یک کشور دیگر.' } }
+          fa: 'آن طرف آب را ببین. آن‌جا برازاویل است، پایتخت یک کشور دیگر، جمهوری کانگو. دو پایتخت آن طرف و این طرف یک دریا روبه‌روی هم هستند!' }
       ],
       ask: {
         stat: 'hei',
@@ -123,16 +117,13 @@ window.EPISODE = {
       lines: [
         { en: 'Selam! That means hello in Amharic. I am Meron, a pilot. I just flew here from Addis Ababa, the capital of Ethiopia.',
           es: '¡Selam! Así se dice hola en amárico. Soy Meron, piloto. Acabo de volar hasta aquí desde Adís Abeba, la capital de Etiopía.',
-          fa: 'سِلام! این به زبان امهری یعنی سلام. من میرون هستم، یک پیلوت. همین حالا از ادیس ابابا، پایتخت ایتوپیا، به این‌جا پرواز کردم.',
-          easy: { en: 'Hi! I am Meron, a pilot from Addis Ababa, Ethiopia.', es: '¡Hola! Soy Meron, piloto de Adís Abeba, Etiopía.', fa: 'سلام! من میرون هستم، پیلوت از ادیس ابابا، ایتوپیا.' } },
+          fa: 'سِلام! این به زبان امهری یعنی سلام. من میرون هستم، یک پیلوت. همین حالا از ادیس ابابا، پایتخت ایتوپیا، به این‌جا پرواز کردم.' },
         { en: 'Addis Ababa sits high on a [[plateau|plateau]], about 2,400 meters above the sea. Because of that high [[elevation|elevation]], the air is cool most of the year.',
           es: 'Adís Abeba está en lo alto de una [[plateau|meseta]], a unos 2,400 metros sobre el mar. Por esa gran [[elevation|elevación]], el aire es fresco casi todo el año.',
-          fa: 'ادیس ابابا بالای یک [[plateau|فلات]] است، حدود ۲٬۴۰۰ متر بالاتر از بحر. به خاطر این [[elevation|ارتفاع]] زیاد، هوا بیشتر سال خنک است.',
-          easy: { en: 'My city is very high up, on a [[plateau|plateau]]. So the air is cool.', es: 'Mi ciudad está muy alta, en una [[plateau|meseta]]. Por eso el aire es fresco.', fa: 'شهر من خیلی بلند است، روی یک [[plateau|فلات]]. برای همین هوا خنک است.' } },
+          fa: 'ادیس ابابا بالای یک [[plateau|فلات]] است، حدود ۲٬۴۰۰ متر بالاتر از بحر. به خاطر این [[elevation|ارتفاع]] زیاد، هوا بیشتر سال خنک است.' },
         { en: 'Ethiopia has more than 80 languages. Amharic is one of the main ones. Ethiopia even has its own alphabet and its own calendar! Each [[culture|culture]] adds something to the country.',
           es: 'Etiopía tiene más de 80 idiomas. El amárico es uno de los principales. ¡Etiopía hasta tiene su propio alfabeto y su propio calendario! Cada [[culture|cultura]] le aporta algo al país.',
-          fa: 'ایتوپیا بیش از ۸۰ زبان دارد. امهری یکی از زبان‌های اصلی است. ایتوپیا حتی الفبا و تقویم خودش را دارد! هر [[culture|فرهنگ]] چیزی به کشور اضافه می‌کند.',
-          easy: { en: 'Ethiopia has more than 80 languages, its own alphabet and its own calendar.', es: 'Etiopía tiene más de 80 idiomas, su propio alfabeto y su propio calendario.', fa: 'ایتوپیا بیش از ۸۰ زبان، الفبای خودش و تقویم خودش را دارد.' } }
+          fa: 'ایتوپیا بیش از ۸۰ زبان دارد. امهری یکی از زبان‌های اصلی است. ایتوپیا حتی الفبا و تقویم خودش را دارد! هر [[culture|فرهنگ]] چیزی به کشور اضافه می‌کند.' }
       ],
       ask: {
         stat: 'pla',

@@ -157,7 +157,7 @@
 
   /* ---------------- claim ---------------- */
   function claimUI(ch) {
-    let pick = null, why = {}, checked = false;
+    let pick = ch.pickAt ?? null, why = {}, checked = false; // pickAt: the site the student is standing at (world version)
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
@@ -302,7 +302,7 @@
 
   WW.challengeSolved = ch => solved(null, ch);
   WW.challenge = (ch) => {
-    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI, build: c => WW.tools.stone(c) }[ch.type];
+    const f = { sort: sortUI, order: orderUI, claim: claimUI, combo: comboUI, table: tableUI, build: c => WW.tools.stone(c), carry: c => WW.tools.stone(c), route: c => WW.world.stone(c), site: c => WW.world.stone(c), survey: c => WW.world.stone(c), levers: c => WW.world.stone(c) }[ch.type];
     if (!f) return console.error('unknown challenge type', ch.type);
     f(ch);
   };

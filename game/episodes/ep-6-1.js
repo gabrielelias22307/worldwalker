@@ -65,16 +65,13 @@ window.EPISODE = {
       lines: [
         { en: 'Namaste! Behind me are the [[himalaya|Himalaya]], the tallest mountains on Earth. They formed because the [[indian plate|Indian Plate]] is slowly pushing into the rest of Asia. It is still pushing today!',
           es: '¡Namasté! Detrás de mí está el [[himalaya|Himalaya]], las montañas más altas de la Tierra. Se formaron porque la [[indian plate|placa india]] empuja despacio contra el resto de Asia. ¡Todavía sigue empujando!',
-          fa: 'نمستی! پشت سر من [[himalaya|هیمالیا]] است، بلندترین کوه‌های زمین. این کوه‌ها ساخته شدند چون [[indian plate|صفحهٔ هند]] آهسته به باقی آسیا فشار می‌آورد. هنوز هم فشار می‌آورد!',
-          easy: { en: 'The [[himalaya|Himalaya]] are the tallest mountains. The [[indian plate|Indian Plate]] pushed into Asia and lifted them up.', es: 'El [[himalaya|Himalaya]] tiene las montañas más altas. La [[indian plate|placa india]] empujó contra Asia y las levantó.', fa: '[[himalaya|هیمالیا]] بلندترین کوه‌ها است. [[indian plate|صفحهٔ هند]] به آسیا فشار آورد و آن‌ها را بلند کرد.' } },
+          fa: 'نمستی! پشت سر من [[himalaya|هیمالیا]] است، بلندترین کوه‌های زمین. این کوه‌ها ساخته شدند چون [[indian plate|صفحهٔ هند]] آهسته به باقی آسیا فشار می‌آورد. هنوز هم فشار می‌آورد!' },
         { en: 'Look at a map. South Asia sticks out from the rest of Asia into the ocean. That is why it is called a [[subcontinent|subcontinent]]. India is by far its biggest country, in land and in people.',
           es: 'Mira un mapa. Asia del Sur sobresale del resto de Asia hacia el océano. Por eso se llama un [[subcontinent|subcontinente]]. La India es por mucho su país más grande, en tierra y en gente.',
-          fa: 'به نقشه نگاه کن. جنوب آسیا از باقی آسیا به طرف اقیانوس بیرون زده است. به همین خاطر آن را [[subcontinent|نیم‌قاره]] می‌گویند. هند از نگاه زمین و مردم بزرگ‌ترین کشور آن است.',
-          easy: { en: 'South Asia sticks out from Asia. It is a [[subcontinent|subcontinent]]. India is its biggest country.', es: 'Asia del Sur sobresale de Asia. Es un [[subcontinent|subcontinente]]. La India es su país más grande.', fa: 'جنوب آسیا از آسیا بیرون زده است. یک [[subcontinent|نیم‌قاره]] است. هند بزرگ‌ترین کشور آن است.' } },
+          fa: 'به نقشه نگاه کن. جنوب آسیا از باقی آسیا به طرف اقیانوس بیرون زده است. به همین خاطر آن را [[subcontinent|نیم‌قاره]] می‌گویند. هند از نگاه زمین و مردم بزرگ‌ترین کشور آن است.' },
         { en: 'Snow and ice up here melt into rivers. The Ganges River starts at a glacier in these mountains. It flows across the plain below and out to the sea.',
           es: 'La nieve y el hielo de aquí arriba se derriten y forman ríos. El río Ganges nace en un glaciar de estas montañas. Corre por la llanura de abajo y sale al mar.',
-          fa: 'برف و یخ این بالا آب می‌شوند و دریا می‌سازند. دریای گنگا از یک یخچال در همین کوه‌ها شروع می‌شود. از دشت پایین می‌گذرد و به بحر می‌رسد.',
-          easy: { en: 'Melting ice makes the Ganges River. It flows down to the plain and the sea.', es: 'El hielo que se derrite forma el río Ganges. Baja a la llanura y al mar.', fa: 'یخ آب‌شده دریای گنگا را می‌سازد. به دشت و بحر می‌رود.' } }
+          fa: 'برف و یخ این بالا آب می‌شوند و دریا می‌سازند. دریای گنگا از یک یخچال در همین کوه‌ها شروع می‌شود. از دشت پایین می‌گذرد و به بحر می‌رسد.' }
       ],
       ask: {
         stat: 'reg',
@@ -97,16 +94,13 @@ window.EPISODE = {
       lines: [
         { en: 'Hello! My family grows rice on the Ganges plain. Rice needs lots of water. So we wait for the [[monsoon|monsoon]]. It is a wind that changes direction with the seasons.',
           es: '¡Hola! Mi familia cultiva arroz en la llanura del Ganges. El arroz necesita mucha agua. Por eso esperamos el [[monsoon|monzón]]. Es un viento que cambia de dirección con las estaciones.',
-          fa: 'سلام! خانوادهٔ من در دشت گنگا برنج کشت می‌کند. برنج آب زیاد می‌خواهد. پس ما منتظر [[monsoon|باد موسمی]] می‌مانیم. این بادی است که با فصل‌ها جهتش را تغییر می‌دهد.',
-          easy: { en: 'I grow rice. Rice needs lots of water. We wait for the [[monsoon|monsoon]] wind.', es: 'Yo cultivo arroz. El arroz necesita mucha agua. Esperamos el viento del [[monsoon|monzón]].', fa: 'من برنج کشت می‌کنم. برنج آب زیاد می‌خواهد. ما منتظر [[monsoon|باد موسمی]] می‌مانیم.' } },
+          fa: 'سلام! خانوادهٔ من در دشت گنگا برنج کشت می‌کند. برنج آب زیاد می‌خواهد. پس ما منتظر [[monsoon|باد موسمی]] می‌مانیم. این بادی است که با فصل‌ها جهتش را تغییر می‌دهد.' },
         { en: 'Most of the whole year\'s rain falls in just a few months, from about June to September. That is the [[wet season|wet season]]. We plant rice so the young plants get that heavy rain. Wells and ponds fill up too.',
           es: 'Casi toda la lluvia del año cae en solo unos meses, más o menos de junio a septiembre. Esa es la [[wet season|temporada de lluvias]]. Sembramos el arroz para que las plantas jóvenes reciban esa lluvia fuerte. Los pozos y estanques también se llenan.',
-          fa: 'بیشتر باران تمام سال فقط در چند ماه می‌بارد، تقریباً از جون تا سپتامبر. این [[wet season|فصل بارانی]] است. ما برنج را طوری می‌کاریم که نهال‌های جوان آن باران زیاد را بگیرند. چاه‌ها و حوض‌ها هم پر می‌شوند.',
-          easy: { en: 'Most rain falls from about June to September. We plant rice then.', es: 'Casi toda la lluvia cae de junio a septiembre. Ahí sembramos el arroz.', fa: 'بیشتر باران از جون تا سپتامبر می‌بارد. ما همان وقت برنج می‌کاریم.' } },
+          fa: 'بیشتر باران تمام سال فقط در چند ماه می‌بارد، تقریباً از جون تا سپتامبر. این [[wet season|فصل بارانی]] است. ما برنج را طوری می‌کاریم که نهال‌های جوان آن باران زیاد را بگیرند. چاه‌ها و حوض‌ها هم پر می‌شوند.' },
         { en: 'The monsoon can hurt us in two ways. If the rain comes late or weak, crops dry out. That is a [[drought|drought]], and food gets expensive. If the rain comes too strong, rivers flood our fields and roads.',
           es: 'El monzón nos puede hacer daño de dos formas. Si la lluvia llega tarde o débil, los cultivos se secan. Eso es una [[drought|sequía]], y la comida se pone cara. Si la lluvia llega muy fuerte, los ríos inundan los campos y los caminos.',
-          fa: 'باد موسمی از دو راه به ما ضرر می‌زند. اگر باران دیر یا کم بیاید، کشت‌ها خشک می‌شوند. این [[drought|خشکسالی]] است و غذا گران می‌شود. اگر باران بسیار زیاد بیاید، دریاها کشتزارها و سرک‌ها را زیر آب می‌برند.',
-          easy: { en: 'Too little rain = [[drought|drought]]. Too much rain = floods.', es: 'Muy poca lluvia = [[drought|sequía]]. Demasiada lluvia = inundaciones.', fa: 'باران خیلی کم = [[drought|خشکسالی]]. باران خیلی زیاد = سیلاب.' } }
+          fa: 'باد موسمی از دو راه به ما ضرر می‌زند. اگر باران دیر یا کم بیاید، کشت‌ها خشک می‌شوند. این [[drought|خشکسالی]] است و غذا گران می‌شود. اگر باران بسیار زیاد بیاید، دریاها کشتزارها و سرک‌ها را زیر آب می‌برند.' }
       ],
       ask: {
         stat: 'hei',
@@ -129,16 +123,13 @@ window.EPISODE = {
       lines: [
         { en: 'Salaam! I fish in the Bay of Bengal, where the Ganges reaches the sea. The river drops soil here and builds a huge, flat [[delta|delta]]. Dhaka, the capital of Bangladesh, sits on this delta.',
           es: '¡Salam! Pesco en el golfo de Bengala, donde el Ganges llega al mar. El río deja tierra aquí y forma un [[delta|delta]] enorme y plano. Daca, la capital de Bangladés, está en este delta.',
-          fa: 'سلام! من در خلیج بنگال ماهی می‌گیرم، جایی که گنگا به بحر می‌رسد. دریا این‌جا خاک می‌گذارد و یک [[delta|دلتای]] بزرگ و هموار می‌سازد. داکه، پایتخت بنگله‌دیش، روی همین دلتا است.',
-          easy: { en: 'The Ganges drops soil by the sea. It makes flat land called a [[delta|delta]].', es: 'El Ganges deja tierra junto al mar. Forma tierra plana llamada [[delta|delta]].', fa: 'گنگا کنار بحر خاک می‌گذارد. زمین هموار به نام [[delta|دلتا]] می‌سازد.' } },
+          fa: 'سلام! من در خلیج بنگال ماهی می‌گیرم، جایی که گنگا به بحر می‌رسد. دریا این‌جا خاک می‌گذارد و یک [[delta|دلتای]] بزرگ و هموار می‌سازد. داکه، پایتخت بنگله‌دیش، روی همین دلتا است.' },
         { en: 'In summer, the land heats up faster than the ocean. So wet wind blows in from the ocean, from the southwest. It brings months of heavy rain.',
           es: 'En verano, la tierra se calienta más rápido que el océano. Por eso un viento húmedo sopla desde el océano, desde el suroeste. Trae meses de lluvia fuerte.',
-          fa: 'در تابستان، خشکه زودتر از اقیانوس گرم می‌شود. پس باد مرطوب از اقیانوس، از جنوب غرب، می‌وزد. چند ماه باران زیاد می‌آورد.',
-          easy: { en: 'Summer: wind from the ocean. It brings heavy rain.', es: 'Verano: viento desde el océano. Trae lluvia fuerte.', fa: 'تابستان: باد از اقیانوس. باران زیاد می‌آورد.' } },
+          fa: 'در تابستان، خشکه زودتر از اقیانوس گرم می‌شود. پس باد مرطوب از اقیانوس، از جنوب غرب، می‌وزد. چند ماه باران زیاد می‌آورد.' },
         { en: 'In winter, the wind turns around. It blows from the land, from the northeast, out toward the sea. The air is dry. That is the [[dry season|dry season]]. I can fish on calm water.',
           es: 'En invierno, el viento da la vuelta. Sopla desde la tierra, desde el noreste, hacia el mar. El aire es seco. Esa es la [[dry season|temporada seca]]. Puedo pescar en agua tranquila.',
-          fa: 'در زمستان، باد برمی‌گردد. از خشکه، از شمال شرق، به طرف بحر می‌وزد. هوا خشک است. این [[dry season|فصل خشک]] است. می‌توانم روی آب آرام ماهی بگیرم.',
-          easy: { en: 'Winter: wind from the land. The air is dry. That is the [[dry season|dry season]].', es: 'Invierno: viento desde la tierra. El aire es seco. Esa es la [[dry season|temporada seca]].', fa: 'زمستان: باد از خشکه. هوا خشک است. این [[dry season|فصل خشک]] است.' } }
+          fa: 'در زمستان، باد برمی‌گردد. از خشکه، از شمال شرق، به طرف بحر می‌وزد. هوا خشک است. این [[dry season|فصل خشک]] است. می‌توانم روی آب آرام ماهی بگیرم.' }
       ],
       ask: {
         stat: 'mov',

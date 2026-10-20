@@ -66,16 +66,13 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to my shop! Look around. Coffee from Colombia. Cocoa from Ghana. Phones from Asia. No country has everything it needs, because resources are spread unevenly. So countries [[trade|trade]].',
           es: '¡Bienvenido a mi tienda! Mira a tu alrededor. Café de Colombia. Cacao de Ghana. Teléfonos de Asia. Ningún país tiene todo lo que necesita, porque los recursos están repartidos de forma desigual. Por eso los países [[trade|comercian]].',
-          fa: 'به دکان من خوش آمدی! به اطراف ببین. قهوه از کلمبیا. کاکائو از غانا. تیلفون از آسیا. هیچ کشوری همه چیزهایی را که لازم دارد ندارد، چون منابع به طور نابرابر پخش شده‌اند. پس کشورها [[trade|تجارت]] می‌کنند.',
-          easy: { en: 'No country has everything. So countries buy and sell with each other. That is [[trade|trade]].', es: 'Ningún país lo tiene todo. Por eso los países compran y venden entre sí. Eso es el [[trade|comercio]].', fa: 'هیچ کشوری همه چیز ندارد. پس کشورها با هم خرید و فروش می‌کنند. این [[trade|تجارت]] است.' } },
+          fa: 'به دکان من خوش آمدی! به اطراف ببین. قهوه از کلمبیا. کاکائو از غانا. تیلفون از آسیا. هیچ کشوری همه چیزهایی را که لازم دارد ندارد، چون منابع به طور نابرابر پخش شده‌اند. پس کشورها [[trade|تجارت]] می‌کنند.' },
         { en: 'Countries [[specialize|specialize]]. Each one makes a few things instead of everything. Ghana grows cocoa. Ukraine grows wheat. They trade, and both end up with more than they could make alone.',
           es: 'Los países se [[specialize|especializan]]. Cada uno hace pocas cosas en vez de todo. Ghana cultiva cacao. Ucrania cultiva trigo. Comercian, y los dos terminan con más de lo que podrían hacer solos.',
-          fa: 'کشورها [[specialize|تخصص]] پیدا می‌کنند. هر کدام چند چیز محدود می‌سازد، نه همه چیز. غانا کاکائو می‌کارد. اوکراین گندم می‌کارد. با هم تجارت می‌کنند و هر دو بیشتر از آنچه تنها می‌توانستند بسازند، به دست می‌آورند.',
-          easy: { en: 'Ghana grows cocoa. Ukraine grows wheat. They trade. Both get more.', es: 'Ghana cultiva cacao. Ucrania cultiva trigo. Comercian. Los dos tienen más.', fa: 'غانا کاکائو می‌کارد. اوکراین گندم می‌کارد. با هم تجارت می‌کنند. هر دو بیشتر دارند.' } },
+          fa: 'کشورها [[specialize|تخصص]] پیدا می‌کنند. هر کدام چند چیز محدود می‌سازد، نه همه چیز. غانا کاکائو می‌کارد. اوکراین گندم می‌کارد. با هم تجارت می‌کنند و هر دو بیشتر از آنچه تنها می‌توانستند بسازند، به دست می‌آورند.' },
         { en: 'How does a country choose what to make? It looks at [[opportunity cost|opportunity cost]]: what you give up to make one choice instead of another. A country makes what it gives up the least to make.',
           es: '¿Cómo elige un país qué hacer? Mira el [[opportunity cost|costo de oportunidad]]: lo que dejas de tener al elegir una cosa en vez de otra. Un país hace lo que le cuesta menos dejar.',
-          fa: 'یک کشور چطور انتخاب می‌کند چه بسازد؟ به [[opportunity cost|هزینهٔ فرصت]] نگاه می‌کند: چیزی که از دست می‌دهی وقتی یک انتخاب را به جای دیگری می‌کنی. کشور چیزی را می‌سازد که برای ساختنش کمترین چیز را از دست می‌دهد.',
-          easy: { en: '[[opportunity cost|Opportunity cost]] is what you give up when you choose. Countries make what costs them the least to give up.', es: 'El [[opportunity cost|costo de oportunidad]] es lo que dejas al elegir. Los países hacen lo que menos les cuesta dejar.', fa: '[[opportunity cost|هزینهٔ فرصت]] چیزی است که هنگام انتخاب از دست می‌دهی. کشورها چیزی را می‌سازند که کمترین از دست دادن را دارد.' } }
+          fa: 'یک کشور چطور انتخاب می‌کند چه بسازد؟ به [[opportunity cost|هزینهٔ فرصت]] نگاه می‌کند: چیزی که از دست می‌دهی وقتی یک انتخاب را به جای دیگری می‌کنی. کشور چیزی را می‌سازد که برای ساختنش کمترین چیز را از دست می‌دهد.' }
       ],
       ask: {
         stat: 'reg',
@@ -98,16 +95,13 @@ window.EPISODE = {
       lines: [
         { en: 'Ahlan! I am a canal pilot. I guide giant ships through the Suez Canal in Egypt. People dug this [[canal|canal]]. It joins the Mediterranean Sea and the Red Sea, so ships from Asia do not have to sail all the way around Africa.',
           es: '¡Ahlan! Soy piloto del canal. Guío barcos gigantes por el Canal de Suez en Egipto. La gente cavó este [[canal|canal]]. Une el mar Mediterráneo con el mar Rojo, así que los barcos de Asia no tienen que dar toda la vuelta a África.',
-          fa: 'اهلاً! من رهنمای کانال هستم. کشتی‌های بسیار بزرگ را از کانال سوئز در مصر می‌گذرانم. مردم این [[canal|کانال]] را کندند. این کانال بحیرهٔ مدیترانه را به بحیرهٔ سرخ وصل می‌کند، پس کشتی‌های آسیا مجبور نیستند تمام دور افریقا را بچرخند.',
-          easy: { en: 'People dug the Suez Canal. It is a short way from Asia to Europe.', es: 'La gente cavó el Canal de Suez. Es un camino corto de Asia a Europa.', fa: 'مردم کانال سوئز را کندند. این یک راه کوتاه از آسیا به اروپا است.' } },
+          fa: 'اهلاً! من رهنمای کانال هستم. کشتی‌های بسیار بزرگ را از کانال سوئز در مصر می‌گذرانم. مردم این [[canal|کانال]] را کندند. این کانال بحیرهٔ مدیترانه را به بحیرهٔ سرخ وصل می‌کند، پس کشتی‌های آسیا مجبور نیستند تمام دور افریقا را بچرخند.' },
         { en: 'This canal is a [[chokepoint|chokepoint]]: a narrow place that a lot of trade must pass through. Narrow places are easy to block. In March 2021, one huge ship got stuck sideways here. The canal closed for six days, and hundreds of ships waited in line.',
           es: 'Este canal es un [[chokepoint|punto de estrangulamiento]]: un lugar estrecho por donde debe pasar mucho comercio. Los lugares estrechos son fáciles de bloquear. En marzo de 2021, un barco enorme se atascó de lado aquí. El canal se cerró por seis días y cientos de barcos esperaron en fila.',
-          fa: 'این کانال یک [[chokepoint|گلوگاه]] است: جای تنگی که تجارت زیادی باید از آن بگذرد. بستن جاهای تنگ آسان است. در ماه مارچ ۲۰۲۱، یک کشتی بسیار بزرگ اینجا کج گیر ماند. کانال شش روز بسته شد و صدها کشتی در صف منتظر ماندند.',
-          easy: { en: 'In 2021 one big ship got stuck here. The canal closed for six days.', es: 'En 2021 un barco grande se atascó aquí. El canal se cerró por seis días.', fa: 'در سال ۲۰۲۱ یک کشتی بزرگ اینجا گیر ماند. کانال شش روز بسته شد.' } },
+          fa: 'این کانال یک [[chokepoint|گلوگاه]] است: جای تنگی که تجارت زیادی باید از آن بگذرد. بستن جاهای تنگ آسان است. در ماه مارچ ۲۰۲۱، یک کشتی بسیار بزرگ اینجا کج گیر ماند. کانال شش روز بسته شد و صدها کشتی در صف منتظر ماندند.' },
         { en: 'When ships must go the long way, the trip takes more days and burns much more fuel. Somebody pays for that. Usually it is the shopper, thousands of kilometers away. Prices go up, and shelves take longer to fill.',
           es: 'Cuando los barcos tienen que ir por el camino largo, el viaje toma más días y gasta mucho más combustible. Alguien paga por eso. Casi siempre es el comprador, a miles de kilómetros. Los precios suben y los estantes tardan más en llenarse.',
-          fa: 'وقتی کشتی‌ها مجبور به رفتن از راه دراز هستند، سفر روزهای بیشتر می‌گیرد و تیل بسیار بیشتر مصرف می‌کند. کسی باید پولش را بدهد. معمولاً خریدار است، هزاران کیلومتر دورتر. قیمت‌ها بالا می‌روند و قفسه‌ها دیرتر پر می‌شوند.',
-          easy: { en: 'The long way takes more days and more fuel. So prices go up in stores.', es: 'El camino largo toma más días y más combustible. Por eso suben los precios en las tiendas.', fa: 'راه دراز روزهای بیشتر و تیل بیشتر می‌گیرد. پس قیمت‌ها در دکان‌ها بالا می‌روند.' } }
+          fa: 'وقتی کشتی‌ها مجبور به رفتن از راه دراز هستند، سفر روزهای بیشتر می‌گیرد و تیل بسیار بیشتر مصرف می‌کند. کسی باید پولش را بدهد. معمولاً خریدار است، هزاران کیلومتر دورتر. قیمت‌ها بالا می‌روند و قفسه‌ها دیرتر پر می‌شوند.' }
       ],
       ask: {
         stat: 'mov',
@@ -130,16 +124,13 @@ window.EPISODE = {
       lines: [
         { en: 'Selamat datang! This water is like the Strait of Malacca, between Malaysia and Indonesia. A [[strait|strait]] is a narrow passage of water that nature made. A canal is different: people dug it.',
           es: '¡Selamat datang! Esta agua es como el estrecho de Malaca, entre Malasia e Indonesia. Un [[strait|estrecho]] es un paso estrecho de agua hecho por la naturaleza. Un canal es diferente: lo cavó la gente.',
-          fa: 'سلامت داتانگ! این آب مثل تنگهٔ ملاکا بین مالیزیا و اندونزیا است. [[strait|تنگه]] یک گذرگاه تنگ آبی است که طبیعت ساخته. کانال فرق دارد: مردم آن را کندند.',
-          easy: { en: 'A [[strait|strait]] is a narrow water path made by nature. A canal is dug by people.', es: 'Un [[strait|estrecho]] es un paso de agua estrecho hecho por la naturaleza. Un canal lo cava la gente.', fa: '[[strait|تنگه]] راه تنگ آبی است که طبیعت ساخته. کانال را مردم می‌کنند.' } },
+          fa: 'سلامت داتانگ! این آب مثل تنگهٔ ملاکا بین مالیزیا و اندونزیا است. [[strait|تنگه]] یک گذرگاه تنگ آبی است که طبیعت ساخته. کانال فرق دارد: مردم آن را کندند.' },
         { en: 'Ships from China, Japan and Korea pass here on the way to India, Africa and Europe. Oil tankers come the other way. This is one of the busiest [[shipping lane|shipping lanes]] in the world.',
           es: 'Los barcos de China, Japón y Corea pasan por aquí rumbo a India, África y Europa. Los barcos petroleros vienen en la otra dirección. Esta es una de las [[shipping lane|rutas marítimas]] más ocupadas del mundo.',
-          fa: 'کشتی‌های چین، جاپان و کوریا از اینجا به طرف هند، افریقا و اروپا می‌گذرند. کشتی‌های تیل از طرف دیگر می‌آیند. این یکی از پرکارترین [[shipping lane|راه‌های بحری]] جهان است.',
-          easy: { en: 'Many, many ships pass here every day. It is a very busy sea road.', es: 'Muchísimos barcos pasan por aquí cada día. Es un camino de mar muy ocupado.', fa: 'کشتی‌های بسیار زیادی هر روز از اینجا می‌گذرند. این یک راه بحری بسیار پرکار است.' } },
+          fa: 'کشتی‌های چین، جاپان و کوریا از اینجا به طرف هند، افریقا و اروپا می‌گذرند. کشتی‌های تیل از طرف دیگر می‌آیند. این یکی از پرکارترین [[shipping lane|راه‌های بحری]] جهان است.' },
         { en: 'All this trade ties countries together. That is [[interdependence|interdependence]]. It brings more choices and lower prices. But a country that buys everything from one place has a problem if that place stops selling.',
           es: 'Todo este comercio une a los países. Eso es la [[interdependence|interdependencia]]. Trae más opciones y precios más bajos. Pero un país que lo compra todo en un solo lugar tiene un problema si ese lugar deja de vender.',
-          fa: 'این همه تجارت کشورها را به هم وصل می‌کند. این [[interdependence|وابستگی متقابل]] است. انتخاب‌های بیشتر و قیمت‌های پایین‌تر می‌آورد. اما کشوری که همه چیز را از یک جا می‌خرد، اگر آن جا فروش را بس کند، مشکل پیدا می‌کند.',
-          easy: { en: 'Countries depend on each other. That is [[interdependence|interdependence]]. It helps, but it has a risk too.', es: 'Los países dependen unos de otros. Eso es la [[interdependence|interdependencia]]. Ayuda, pero también tiene un riesgo.', fa: 'کشورها به هم وابسته هستند. این [[interdependence|وابستگی متقابل]] است. کمک می‌کند، اما خطر هم دارد.' } }
+          fa: 'این همه تجارت کشورها را به هم وصل می‌کند. این [[interdependence|وابستگی متقابل]] است. انتخاب‌های بیشتر و قیمت‌های پایین‌تر می‌آورد. اما کشوری که همه چیز را از یک جا می‌خرد، اگر آن جا فروش را بس کند، مشکل پیدا می‌کند.' }
       ],
       ask: {
         stat: 'loc',

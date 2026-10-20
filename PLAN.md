@@ -86,7 +86,7 @@ Each episode = one Canvas subunit = one atlas page. Episodes are built from a sm
 Every episode follows the same five beats (about **15 – 25 minutes**):
 
 1. **Arrive** — a 3-line opening with Pip. What the Smudge did here.
-2. **Explore and talk** — 2 to 4 screens, 3 people to talk to. This is where the reading lives (grade-5 level, EN / ES / دری, yellow tap-to-define words, "Make it easier").
+2. **Explore and talk** — 2 to 4 screens, 3 people to talk to. This is where the reading lives (grade-5 level, EN / ES / دری, yellow tap-to-define words).
 3. **Main challenge** — the episode's special mode (farm, build, puzzle, route…).
 4. **Boss trial** — 5 to 8 questions drawn from that subunit's mastery-check bank. Wrong answers explain why and come back later.
 5. **Atlas page + save + turn in** — what you learned, one reflection question, save to the class Sheet, Copy / Download turn-in.
@@ -224,7 +224,7 @@ Both can use the class Sheet. Phase 0 tests both on a school Chromebook before a
 
 - **EN / ES / دری** buttons on every talk box, question and reading. Dari reads right to left. All three languages sit side by side in each episode's data file, so a word can be fixed without touching the game.
 - **Grade-5 reading level** for talk and questions, checked with the same reading-level script used on the Read and Respond packets.
-- **Yellow words** open a one-line meaning. **"Make it easier"** swaps to a shorter version.
+- **Yellow words** open a one-line meaning.
 - **No hearts lost while reading.** Hearts only matter in boss trials and Smudge chases.
 - **Reduced motion** is respected (animations stop if the computer asks for less motion).
 - **Color is never the only signal** (locked dots also show an icon, wrong answers also show words).

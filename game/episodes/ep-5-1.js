@@ -42,6 +42,8 @@ window.EPISODE = {
   ],
   start: [8, 4],
 
+  tools: ['axe', 'sickle'],
+
   words: {
     upstream: { en: 'closer to where a river starts', es: 'más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },
     downstream: { en: 'closer to where a river ends', es: 'más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' },
@@ -62,16 +64,13 @@ window.EPISODE = {
       lines: [
         { en: 'Merhaba! That means hello in Turkish. I am Elif, an engineer. Snow falls on these mountains in winter. In spring it melts and feeds two great rivers: the Tigris and the Euphrates.',
           es: '¡Merhaba! Así se dice hola en turco. Soy Elif, ingeniera. En invierno cae nieve en estas montañas. En primavera se derrite y alimenta dos grandes ríos: el Tigris y el Éufrates.',
-          fa: 'مرحبا! این به زبان ترکی یعنی سلام. من الیف هستم، یک انجنیر. در زمستان روی این کوه‌ها برف می‌بارد. در بهار برف آب می‌شود و دو دریای بزرگ را پر می‌کند: دجله و فرات.',
-          easy: { en: 'Hi! I am Elif. Snow melts on these mountains and starts two rivers: the Tigris and the Euphrates.', es: '¡Hola! Soy Elif. La nieve se derrite en estas montañas y forma dos ríos: el Tigris y el Éufrates.', fa: 'سلام! من الیف هستم. برف روی این کوه‌ها آب می‌شود و دو دریا را شروع می‌کند: دجله و فرات.' } },
+          fa: 'مرحبا! این به زبان ترکی یعنی سلام. من الیف هستم، یک انجنیر. در زمستان روی این کوه‌ها برف می‌بارد. در بهار برف آب می‌شود و دو دریای بزرگ را پر می‌کند: دجله و فرات.' },
         { en: 'Here we are [[upstream|upstream]], close to where the rivers start. The rivers flow south through Syria and Iraq. Places closer to where a river ends are [[downstream|downstream]].',
           es: 'Aquí estamos [[upstream|río arriba]], cerca de donde nacen los ríos. Los ríos corren al sur por Siria e Irak. Los lugares más cerca de donde termina un río están [[downstream|río abajo]].',
-          fa: 'ما این‌جا در [[upstream|بالای دریا]] هستیم، نزدیک جایی که دریاها شروع می‌شوند. دریاها به طرف جنوب از سوریه و عراق می‌گذرند. جاهایی که به آخر دریا نزدیک‌تر هستند [[downstream|پایین دریا]] هستند.',
-          easy: { en: 'Near the start of a river is [[upstream|upstream]]. Near the end is [[downstream|downstream]].', es: 'Cerca del inicio de un río es [[upstream|río arriba]]. Cerca del final es [[downstream|río abajo]].', fa: 'نزدیک شروع دریا [[upstream|بالای دریا]] است. نزدیک آخر آن [[downstream|پایین دریا]] است.' } },
+          fa: 'ما این‌جا در [[upstream|بالای دریا]] هستیم، نزدیک جایی که دریاها شروع می‌شوند. دریاها به طرف جنوب از سوریه و عراق می‌گذرند. جاهایی که به آخر دریا نزدیک‌تر هستند [[downstream|پایین دریا]] هستند.' },
         { en: 'Türkiye built big [[dam|dams]], like the Atatürk Dam on the Euphrates. A dam holds water back. It makes electricity and saves water for dry months. But it also changes how much water flows to the next country.',
           es: 'Turquía construyó grandes [[dam|represas]], como la represa Atatürk en el Éufrates. Una represa detiene el agua. Produce electricidad y guarda agua para los meses secos. Pero también cambia cuánta agua llega al siguiente país.',
-          fa: 'ترکیه [[dam|بندهای]] بزرگ ساخت، مثل بند اتاترک روی دریای فرات. بند آب را نگه می‌دارد. برق تولید می‌کند و آب را برای ماه‌های خشک ذخیره می‌کند. اما این را هم تغییر می‌دهد که چقدر آب به کشور بعدی برسد.',
-          easy: { en: 'A [[dam|dam]] holds water and makes electricity. It also means less water goes downstream.', es: 'Una [[dam|represa]] guarda agua y produce electricidad. También hace que baje menos agua río abajo.', fa: '[[dam|بند]] آب را نگه می‌دارد و برق می‌سازد. این یعنی آب کمتری به پایین دریا می‌رود.' } }
+          fa: 'ترکیه [[dam|بندهای]] بزرگ ساخت، مثل بند اتاترک روی دریای فرات. بند آب را نگه می‌دارد. برق تولید می‌کند و آب را برای ماه‌های خشک ذخیره می‌کند. اما این را هم تغییر می‌دهد که چقدر آب به کشور بعدی برسد.' }
       ],
       ask: {
         stat: 'loc',
@@ -94,16 +93,13 @@ window.EPISODE = {
       lines: [
         { en: 'Salaam! I am Abbas. My family grows wheat and dates by the river in Iraq. The land between the Tigris and the Euphrates is part of the [[fertile crescent|Fertile Crescent]], a curved strip of good farmland.',
           es: '¡Salam! Soy Abbas. Mi familia cultiva trigo y dátiles junto al río en Irak. La tierra entre el Tigris y el Éufrates es parte de la [[fertile crescent|Media Luna Fértil]], una franja curva de buena tierra de cultivo.',
-          fa: 'سلام! من عباس هستم. خانوادهٔ من کنار دریا در عراق گندم و خرما می‌کارد. زمین میان دجله و فرات بخشی از [[fertile crescent|هلال حاصلخیز]] است، یک نوار خمیده از زمین خوب زراعتی.',
-          easy: { en: 'I farm by the river in Iraq. This good farmland is called the [[fertile crescent|Fertile Crescent]].', es: 'Cultivo junto al río en Irak. Esta buena tierra se llama la [[fertile crescent|Media Luna Fértil]].', fa: 'من کنار دریا در عراق کشت می‌کنم. این زمین خوب [[fertile crescent|هلال حاصلخیز]] نام دارد.' } },
+          fa: 'سلام! من عباس هستم. خانوادهٔ من کنار دریا در عراق گندم و خرما می‌کارد. زمین میان دجله و فرات بخشی از [[fertile crescent|هلال حاصلخیز]] است، یک نوار خمیده از زمین خوب زراعتی.' },
         { en: 'Thousands of years ago, farmers here dug canals to bring river water to their fields. Some of the first cities and the first writing began here, in ancient Mesopotamia.',
           es: 'Hace miles de años, los agricultores de aquí cavaron canales para llevar agua del río a sus campos. Algunas de las primeras ciudades y la primera escritura nacieron aquí, en la antigua Mesopotamia.',
-          fa: 'هزاران سال پیش، دهقانان این‌جا کانال کندند تا آب دریا را به کشتزارهای خود ببرند. بعضی از اولین شهرها و اولین نوشتن در همین‌جا، در بین‌النهرین کهن، شروع شد.',
-          easy: { en: 'Long ago, farmers here dug canals. Some of the first cities and writing started here.', es: 'Hace mucho, los agricultores de aquí cavaron canales. Aquí empezaron algunas de las primeras ciudades y la escritura.', fa: 'خیلی وقت پیش، دهقانان این‌جا کانال کندند. بعضی از اولین شهرها و نوشتن از این‌جا شروع شد.' } },
+          fa: 'هزاران سال پیش، دهقانان این‌جا کانال کندند تا آب دریا را به کشتزارهای خود ببرند. بعضی از اولین شهرها و اولین نوشتن در همین‌جا، در بین‌النهرین کهن، شروع شد.' },
         { en: 'We are far [[downstream|downstream]]. When dams upstream hold water back, less reaches our fields. Countries that share a river can sign a [[treaty|treaty]] to split the water, or they can end up arguing about it.',
           es: 'Nosotros estamos muy [[downstream|río abajo]]. Cuando las represas de río arriba detienen el agua, llega menos a nuestros campos. Los países que comparten un río pueden firmar un [[treaty|tratado]] para repartir el agua, o pueden terminar peleando por ella.',
-          fa: 'ما خیلی [[downstream|پایین دریا]] هستیم. وقتی بندهای بالای دریا آب را نگه می‌دارند، آب کمتری به کشتزارهای ما می‌رسد. کشورهایی که یک دریا را شریک هستند می‌توانند یک [[treaty|معاهده]] امضا کنند تا آب را تقسیم کنند، یا ممکن است سر آن جنجال کنند.',
-          easy: { en: 'We are [[downstream|downstream]]. Dams upstream mean less water for us. A [[treaty|treaty]] can help share it.', es: 'Estamos [[downstream|río abajo]]. Las represas de arriba nos dejan menos agua. Un [[treaty|tratado]] puede ayudar a compartirla.', fa: 'ما [[downstream|پایین دریا]] هستیم. بندهای بالا یعنی آب کمتر برای ما. یک [[treaty|معاهده]] می‌تواند در تقسیم آن کمک کند.' } }
+          fa: 'ما خیلی [[downstream|پایین دریا]] هستیم. وقتی بندهای بالای دریا آب را نگه می‌دارند، آب کمتری به کشتزارهای ما می‌رسد. کشورهایی که یک دریا را شریک هستند می‌توانند یک [[treaty|معاهده]] امضا کنند تا آب را تقسیم کنند، یا ممکن است سر آن جنجال کنند.' }
       ],
       ask: {
         stat: 'hei',
@@ -126,16 +122,13 @@ window.EPISODE = {
       lines: [
         { en: 'Marhaba! That means hello in Arabic. I am Nourah, from Saudi Arabia. Much of my country is desert. The Rub\' al Khali, or Empty Quarter, is the largest sand desert on Earth.',
           es: '¡Marhaba! Así se dice hola en árabe. Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto. El Rub al-Jali, o Cuarto Vacío, es el desierto de arena más grande de la Tierra.',
-          fa: 'مرحبا! این به زبان عربی یعنی سلام. من نوره هستم، از عربستان سعودی. بیشتر کشور من بیابان است. ربع‌الخالی، یعنی «ربع خالی»، بزرگ‌ترین بیابان ریگی روی زمین است.',
-          easy: { en: 'Hi! I am Nourah from Saudi Arabia. Much of my country is desert.', es: '¡Hola! Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto.', fa: 'سلام! من نوره از عربستان سعودی هستم. بیشتر کشور من بیابان است.' } },
+          fa: 'مرحبا! این به زبان عربی یعنی سلام. من نوره هستم، از عربستان سعودی. بیشتر کشور من بیابان است. ربع‌الخالی، یعنی «ربع خالی»، بزرگ‌ترین بیابان ریگی روی زمین است.' },
         { en: 'Saudi Arabia has no rivers that flow all year. That is [[water scarcity|water scarcity]]. Long ago, towns grew around an [[oasis|oasis]], a spring in the desert where palm trees grow.',
           es: 'Arabia Saudita no tiene ríos que corran todo el año. Eso es [[water scarcity|escasez de agua]]. Hace mucho, los pueblos crecieron alrededor de un [[oasis|oasis]], un manantial en el desierto donde crecen palmeras.',
-          fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد. این [[water scarcity|کم‌آبی]] است. در گذشته، شهرک‌ها دور یک [[oasis|واحه]] ساخته می‌شدند، یعنی چشمه‌ای در بیابان که درخت خرما در آن می‌روید.',
-          easy: { en: 'There are no rivers that flow all year here. Towns grew around an [[oasis|oasis]].', es: 'Aquí no hay ríos que corran todo el año. Los pueblos crecieron alrededor de un [[oasis|oasis]].', fa: 'این‌جا دریایی نیست که تمام سال جاری باشد. شهرک‌ها دور [[oasis|واحه]] ساخته شدند.' } },
+          fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد. این [[water scarcity|کم‌آبی]] است. در گذشته، شهرک‌ها دور یک [[oasis|واحه]] ساخته می‌شدند، یعنی چشمه‌ای در بیابان که درخت خرما در آن می‌روید.' },
         { en: 'Under the sand is oil. Oil money built roads, airports and big cities. I work at a plant that does [[desalination|desalination]]: it turns seawater into fresh water. Saudi Arabia makes more fresh water from the sea than any other country.',
           es: 'Bajo la arena hay petróleo. El dinero del petróleo construyó carreteras, aeropuertos y ciudades grandes. Trabajo en una planta de [[desalination|desalinización]]: convierte agua de mar en agua dulce. Arabia Saudita hace más agua dulce del mar que cualquier otro país.',
-          fa: 'زیر ریگ نفت است. پول نفت سرک‌ها، میدان‌های هوایی و شهرهای بزرگ را ساخت. من در یک کارخانهٔ [[desalination|شیرین‌سازی آب]] کار می‌کنم: آب بحر را به آب شیرین تبدیل می‌کند. عربستان سعودی از هر کشور دیگر بیشتر از بحر آب شیرین می‌سازد.',
-          easy: { en: 'Oil money built cities. My plant makes fresh water from seawater. That is [[desalination|desalination]].', es: 'El dinero del petróleo construyó ciudades. Mi planta hace agua dulce del agua de mar. Eso es la [[desalination|desalinización]].', fa: 'پول نفت شهرها را ساخت. کارخانهٔ من از آب بحر آب شیرین می‌سازد. این [[desalination|شیرین‌سازی آب]] است.' } }
+          fa: 'زیر ریگ نفت است. پول نفت سرک‌ها، میدان‌های هوایی و شهرهای بزرگ را ساخت. من در یک کارخانهٔ [[desalination|شیرین‌سازی آب]] کار می‌کنم: آب بحر را به آب شیرین تبدیل می‌کند. عربستان سعودی از هر کشور دیگر بیشتر از بحر آب شیرین می‌سازد.' }
       ],
       ask: {
         stat: 'pla',
@@ -215,7 +208,9 @@ window.EPISODE = {
 
   challenge: {
     at: [20, 6],
-    type: 'combo',
+    type: 'levers', // in the world; the card version (combo) is the fallback
+    // the dam lever upstream (north, Türkiye) and the canal lever downstream (Syria)
+    spots: [[12, 3], [12, 12]],
     stat: 'hei',
     title: { en: 'Temple of the Twin Rivers', es: 'Templo de los Ríos Gemelos', fa: 'معبد دو دریا' },
     intro: { en: 'The Euphrates starts in the mountains of Türkiye, then flows through Syria and Iraq. Whoever is [[upstream|upstream]] decides how much water goes down. Set the dam and the middle canal so all three farms get water.',

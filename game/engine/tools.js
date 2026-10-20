@@ -49,8 +49,9 @@
     bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
-      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T('tool_' + k)}`;
-      b.setAttribute('aria-label', T('tool_' + k));
+      const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
+      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T(tk)}`;
+      b.setAttribute('aria-label', T(tk));
       b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
       const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
       b.insertAdjacentHTML('beforeend', `<i>${i + 1}</i>${n != null ? `<b>${n}</b>` : ''}`);
@@ -61,7 +62,7 @@
     ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
     bar.appendChild(bag);
     const held = X.heldSign();
-    if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">🪧 <b>${esc(T('sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
+    if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
   X.pick = k => {
     if (!X.on()) return;
@@ -200,7 +201,16 @@
   };
 
   /* ---------------- signposts: the compass stone in the world ---------------- */
-  const signItems = () => (WW.ep.challenge.items || []).map(id => (WW.ep.build || []).find(b => b.id === id)).filter(Boolean);
+  // what you carry: the 1.1 signposts (ids in build), or for a 'carry' challenge the sort cards, each going to its bin's marked areas
+  const carry = () => WW.ep.challenge.type === 'carry';
+  const zoneTiles = (ch, bin) => (ch.zones || []).filter(z => z.bin === bin).flatMap(z => { const out = []; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) out.push([x, y]); return out; });
+  const zoneAt = (ch, x, y) => (ch.zones || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+  const signItems = () => {
+    const ch = WW.ep.challenge;
+    if (ch.type === 'carry') return ch._carry || (ch._carry = ch.items.map((it, k) => ({ id: 'c' + k, kind: 'signpost', text: it.t, icon: it.icon, why: it.why, bin: it.bin, ok: zoneTiles(ch, it.bin) })));
+    return (ch.items || []).map(id => (WW.ep.build || []).find(b => b.id === id)).filter(Boolean);
+  };
+  X.zoneTiles = zoneTiles;
   X.heldSign = () => {
     const r = WW.run; if (!r || !r.signs) return null;
     const left = r.signs.filter(s => !s.placed); if (!left.length) return null;
@@ -210,7 +220,7 @@
   X.signText = () => {
     const r = WW.run; if (!r.signs) return null;
     const left = r.signs.filter(s => !s.placed || !s.right).length;
-    return T('nsSigns').replace('{n}', left);
+    return T(carry() ? 'nsCards' : 'nsSigns').replace('{n}', left);
   };
   // walking into the compass stone, when its type is 'build'
   X.stone = (ch) => {
@@ -218,14 +228,17 @@
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
-        box.innerHTML = `<h3>🪧 ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
-        const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : '🪧'} ${i + 1}. ${WW.rich(b.text)}</li>`; }).join('');
-        box.insertAdjacentHTML('beforeend', `<ol class="signlist">${list}</ol><p class="small">${esc(T('sgCost').replace('{c}', costText(signItems()[0].cost || {})))} ${esc(T('sgHow'))}</p>`);
+        const cv = carry(), mark = cv ? '📦' : '🪧';
+        box.innerHTML = `<h3>${mark} ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
+        if (cv) box.insertAdjacentHTML('beforeend', `<p class="say"><b>${esc(T('cHow'))}</b> ${ch.bins.map(b => `<span class="zchip">${b.icon || ''} ${WW.rich(b.label)}</span>`).join(' ')}</p>`);
+        const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : mark} ${i + 1}. ${b.icon ? b.icon + ' ' : ''}${WW.rich(b.text)}</li>`; }).join('');
+        const cost = signItems()[0].cost;
+        box.insertAdjacentHTML('beforeend', `<ol class="signlist">${list}</ol><p class="small">${cost ? esc(T('sgCost').replace('{c}', costText(cost))) + ' ' : ''}${esc(T('sgHow'))}</p>`);
         if (ch.grid) box.insertAdjacentHTML('beforeend', `<p class="small">🗺️ ${esc(T('sgGrid'))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts';
-        if (!r.signs) acts.appendChild(WW.btn('🪧 ' + esc(T('sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T('sgStart')); }));
+        if (!r.signs) acts.appendChild(WW.btn(mark + ' ' + esc(T(cv ? 'cTake' : 'sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T(cv ? 'cStart' : 'sgStart')); }));
         else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
-        if (ch.fallback) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); refundSigns(); WW.challenge(Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
+        if ((ch.fallback || cv) && !r.challengeDone) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); refundSigns(); WW.challenge(cv ? Object.assign({}, ch, { type: 'sort' }) : Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
         box.appendChild(acts);
       }
     });
@@ -257,7 +270,7 @@
     WW.run.challengeTries++;
     if (right) {
       WW.sfx('good'); WW.fx.burst(x, y, 'gold');
-      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why)}`);
+      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`);
       if (WW.run.signs.every(o => o.right)) setTimeout(allDone, 700);
     } else {
       WW.sfx('bad'); g.shake();
@@ -274,7 +287,11 @@
     return `${gl(grid.rows[r])}, ${gl(grid.cols[c])}`;
   }
   function wrongWhy(b, x, y) {
-    const grid = WW.ep.challenge.grid;
+    const grid = WW.ep.challenge.grid, ch = WW.ep.challenge;
+    if (b.bin) { // a card in the wrong marked area
+      const z = zoneAt(ch, x, y), bin = z && ch.bins.find(o => o.id === z.bin);
+      return (bin ? T('cWrongZone').replace('{z}', WW.plain(bin.label)) : T('cOffZone')) + ' ' + L(b.why || '');
+    }
     if (b.grid && grid) {
       const here = gridLabel(grid, x, y), want = gridLabel(grid, b.ok[0][0], b.ok[0][1]);
       if (!here) return T('sgOffGrid');
@@ -298,8 +315,16 @@
   }
 
   /* drawing: the survey grid under everything, crops and signposts on top */
+  const ZCOL = ['#f2c14e', '#2f7fd1', '#e04848', '#3fa34d', '#8e5bd6', '#d98e2b'];
   X.under = (c, sx, sy) => {
-    const grid = WW.ep.challenge && WW.ep.challenge.grid; if (!grid) return;
+    const ch = WW.ep.challenge;
+    if (ch && ch.type === 'carry') (ch.zones || []).forEach(z => { // the marked areas, one color for each group
+      const col = ZCOL[ch.bins.findIndex(b => b.id === z.bin) % ZCOL.length], ox = (z.x - sx * 16) * 16, oy = (z.y - sy * 11) * 16;
+      if (ox > 256 || oy > 176 || ox + z.w * 16 < 0 || oy + z.h * 16 < 0) return;
+      c.save(); c.globalAlpha = .34; c.fillStyle = col; c.fillRect(ox, oy, z.w * 16, z.h * 16);
+      c.globalAlpha = .9; c.strokeStyle = col; c.lineWidth = 2; c.setLineDash([4, 3]); c.strokeRect(ox + 1, oy + 1, z.w * 16 - 2, z.h * 16 - 2); c.restore();
+    });
+    const grid = ch && ch.grid; if (!grid) return;
     const ox = (grid.x - sx * 16) * 16, oy = (grid.y - sy * 11) * 16, w = grid.cols.length * 16, hh = grid.rows.length * 16;
     if (ox > 256 || oy > 176 || ox + w < -40 || oy + hh < -40) return;
     c.save();
@@ -312,18 +337,30 @@
   // the grid's numbers are crisp HTML labels over the map (canvas text this small is too blurry to read)
   let labs = null, labKey = '';
   X.labels = (scr) => {
-    const grid = WW.ep && WW.ep.challenge && WW.ep.challenge.grid, cv = $('ww-cv');
-    const on = grid && scr && G().screenOf(grid.x, grid.y).join() === scr.join() && !(WW.ui.stack.length);
-    if (!on) { if (labs) labs.style.display = 'none'; return; }
+    const ch = WW.ep && WW.ep.challenge, cv = $('ww-cv'), list = [];
+    if (ch && scr && !WW.ui.stack.length) {
+      const grid = ch.grid;
+      if (grid && G().screenOf(grid.x, grid.y).join() === scr.join()) {
+        const ox = grid.x - scr[0] * 16, oy = grid.y - scr[1] * 11;
+        grid.cols.forEach((t, i) => list.push({ cls: 'col', px: (ox + i) * 16 + 8, py: oy * 16, t: gl(t) }));
+        grid.rows.forEach((t, j) => list.push({ cls: 'row', px: ox * 16, py: (oy + j) * 16 + 8, t: gl(t) }));
+      }
+      if (ch.type === 'carry') (ch.zones || []).forEach(z => {
+        if (G().screenOf(z.x, z.y).join() !== scr.join()) return;
+        const b = ch.bins.find(o => o.id === z.bin);
+        list.push({ cls: 'col zone', px: (z.x - scr[0] * 16) * 16 + z.w * 8, py: (z.y - scr[1] * 11) * 16, t: `${b.icon || ''} ${WW.plain(b.label)}` });
+      });
+      if (WW.world) WW.world.labels(scr).forEach(o => list.push({ cls: 'col thing', px: (o.x - scr[0] * 16) * 16 + 8, py: (o.y - scr[1] * 11) * 16 - 2, t: o.t }));
+    }
+    if (!list.length) { if (labs) labs.style.display = 'none'; return; }
     if (!labs || !labs.isConnected) { labs = document.createElement('div'); labs.className = 'gridlabs'; $('ww-screen').appendChild(labs); labKey = ''; }
     const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
-    const key = [k, cr.left - sr.left, cr.top - sr.top].join();
+    const key = [k, cr.left - sr.left, cr.top - sr.top, WW.lang, ...list.map(o => o.t + o.px + o.py)].join();
     labs.style.display = 'block';
     if (key === labKey) return;
     labKey = key;
-    const ox = (grid.x - scr[0] * 16) * 16, oy = (grid.y - scr[1] * 11) * 16, L0 = cr.left - sr.left, T0 = cr.top - sr.top;
-    labs.innerHTML = grid.cols.map((t, i) => `<span class="gl col" style="left:${L0 + (ox + i * 16 + 8) * k}px;top:${T0 + oy * k - 2}px">${esc(gl(t))}</span>`).join('') +
-      grid.rows.map((t, j) => `<span class="gl row" style="left:${L0 + ox * k - 3}px;top:${T0 + (oy + j * 16 + 8) * k}px">${esc(gl(t))}</span>`).join('');
+    const L0 = cr.left - sr.left, T0 = cr.top - sr.top;
+    labs.innerHTML = list.map(o => `<span class="gl ${o.cls}" style="left:${L0 + o.px * k + (o.cls === 'row' ? -3 : 0)}px;top:${T0 + o.py * k - (o.cls === 'row' ? 0 : 2)}px">${esc(o.t)}</span>`).join('');
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {

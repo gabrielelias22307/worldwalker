@@ -62,16 +62,13 @@ window.EPISODE = {
       lines: [
         { en: '¡Hola! Welcome to the hot coast of Ecuador. We are near sea level, in the [[tierra caliente|tierra caliente]], the hot land. It is hot and wet all year.',
           es: '¡Hola! Bienvenido a la costa caliente de Ecuador. Estamos cerca del nivel del mar, en la [[tierra caliente|tierra caliente]]. Aquí hace calor y llueve todo el año.',
-          fa: 'سلام! به ساحل گرم اکوادور خوش آمدی. ما نزدیک سطح بحر هستیم، در [[tierra caliente|تیرا کالینته]] یعنی زمین گرم. اینجا تمام سال گرم و مرطوب است.',
-          easy: { en: 'This is the hot coast, near sea level. It is the [[tierra caliente|tierra caliente]].', es: 'Esta es la costa caliente, cerca del nivel del mar. Es la [[tierra caliente|tierra caliente]].', fa: 'اینجا ساحل گرم نزدیک سطح بحر است. نامش [[tierra caliente|تیرا کالینته]] است.' } },
+          fa: 'سلام! به ساحل گرم اکوادور خوش آمدی. ما نزدیک سطح بحر هستیم، در [[tierra caliente|تیرا کالینته]] یعنی زمین گرم. اینجا تمام سال گرم و مرطوب است.' },
         { en: 'Bananas and sugarcane love this heat. Ecuador sells more bananas to other countries than any other country in the world.',
           es: 'Al banano y a la caña de azúcar les encanta este calor. Ecuador vende más bananos a otros países que cualquier otro país del mundo.',
-          fa: 'کیله و نیشکر این گرما را دوست دارند. اکوادور از هر کشور دیگر جهان بیشتر کیله به کشورهای دیگر می‌فروشد.',
-          easy: { en: 'Bananas and sugarcane like heat. Ecuador sells the most bananas in the world.', es: 'Al banano y a la caña les gusta el calor. Ecuador vende más bananos que nadie.', fa: 'کیله و نیشکر گرما را دوست دارند. اکوادور از همه بیشتر کیله می‌فروشد.' } },
+          fa: 'کیله و نیشکر این گرما را دوست دارند. اکوادور از هر کشور دیگر جهان بیشتر کیله به کشورهای دیگر می‌فروشد.' },
         { en: 'Most of these bananas get shipped far away to be sold. A crop grown mainly to sell, not to eat at home, is a [[cash crop|cash crop]].',
           es: 'La mayoría de estos bananos se mandan lejos para venderse. Un cultivo que se siembra sobre todo para vender, no para comer en casa, es un [[cash crop|cultivo comercial]].',
-          fa: 'بیشتر این کیله‌ها به جاهای دور فرستاده می‌شوند تا فروخته شوند. حاصلی که بیشتر برای فروش است، نه برای خوردن در خانه، [[cash crop|حاصل نقدی]] نام دارد.',
-          easy: { en: 'We grow bananas to sell. That makes them a [[cash crop|cash crop]].', es: 'Sembramos bananos para vender. Por eso son un [[cash crop|cultivo comercial]].', fa: 'ما کیله را برای فروش می‌کاریم. پس [[cash crop|حاصل نقدی]] است.' } }
+          fa: 'بیشتر این کیله‌ها به جاهای دور فرستاده می‌شوند تا فروخته شوند. حاصلی که بیشتر برای فروش است، نه برای خوردن در خانه، [[cash crop|حاصل نقدی]] نام دارد.' }
       ],
       ask: {
         stat: 'pla',
@@ -94,16 +91,13 @@ window.EPISODE = {
       lines: [
         { en: 'Buenos días! My coffee farm sits in the [[tierra templada|tierra templada]], the mild land in the middle of the mountain. The days are warm and the nights are cool.',
           es: '¡Buenos días! Mi finca de café está en la [[tierra templada|tierra templada]], en el medio de la montaña. Los días son cálidos y las noches son frescas.',
-          fa: 'صبح بخیر! فارم قهوهٔ من در [[tierra templada|تیرا تمپلادا]] است، یعنی زمین معتدل در میانهٔ کوه. روزها گرم و شب‌ها خنک است.',
-          easy: { en: 'My coffee grows in the middle of the mountain, the [[tierra templada|tierra templada]].', es: 'Mi café crece en el medio de la montaña, la [[tierra templada|tierra templada]].', fa: 'قهوهٔ من در میانهٔ کوه می‌روید، در [[tierra templada|تیرا تمپلادا]].' } },
+          fa: 'صبح بخیر! فارم قهوهٔ من در [[tierra templada|تیرا تمپلادا]] است، یعنی زمین معتدل در میانهٔ کوه. روزها گرم و شب‌ها خنک است.' },
         { en: 'Air gets cooler as you climb. It drops about 3.5 degrees Fahrenheit for every 1,000 feet of [[altitude|altitude]]. So two towns the same distance from the equator can feel nothing alike.',
           es: 'El aire se enfría a medida que subes. Baja unos 3.5 grados Fahrenheit por cada 1,000 pies de [[altitude|altitud]]. Por eso dos pueblos a la misma distancia del ecuador pueden sentirse muy distintos.',
-          fa: 'هر چه بالاتر بروی هوا سردتر می‌شود. برای هر ۱۰۰۰ فوت [[altitude|ارتفاع]] حدود ۳.۵ درجهٔ فارنهایت سردتر می‌شود. پس دو شهرک با یک فاصله از خط استوا می‌توانند هیچ شباهتی نداشته باشند.',
-          easy: { en: 'The higher you go, the colder the air. That is because of [[altitude|altitude]].', es: 'Mientras más subes, más frío es el aire. Eso es por la [[altitude|altitud]].', fa: 'هر چه بالاتر بروی، هوا سردتر است. این به خاطر [[altitude|ارتفاع]] است.' } },
+          fa: 'هر چه بالاتر بروی هوا سردتر می‌شود. برای هر ۱۰۰۰ فوت [[altitude|ارتفاع]] حدود ۳.۵ درجهٔ فارنهایت سردتر می‌شود. پس دو شهرک با یک فاصله از خط استوا می‌توانند هیچ شباهتی نداشته باشند.' },
         { en: 'Coffee plants are picky. They do not like frost, and they do not like steady heat. Mountain slopes give them cool, wet air all year. That is why coffee comes from the highlands of Colombia, Guatemala and Honduras too.',
           es: 'Las plantas de café son exigentes. No les gusta la helada ni el calor constante. Las laderas de la montaña les dan aire fresco y húmedo todo el año. Por eso el café también viene de las tierras altas de Colombia, Guatemala y Honduras.',
-          fa: 'بوتهٔ قهوه سخت‌گیر است. نه یخبندان را دوست دارد و نه گرمای دایمی را. شیب کوه تمام سال به آن هوای خنک و مرطوب می‌دهد. به همین خاطر قهوه از کوهستان‌های کلمبیا، گواتمالا و هندوراس هم می‌آید.',
-          easy: { en: 'Coffee does not like frost or too much heat. The cool, wet mountain slopes are just right.', es: 'Al café no le gusta la helada ni el exceso de calor. Las laderas frescas y húmedas son perfectas.', fa: 'قهوه نه یخبندان را دوست دارد نه گرمای زیاد را. شیب خنک و مرطوب کوه برایش درست است.' } }
+          fa: 'بوتهٔ قهوه سخت‌گیر است. نه یخبندان را دوست دارد و نه گرمای دایمی را. شیب کوه تمام سال به آن هوای خنک و مرطوب می‌دهد. به همین خاطر قهوه از کوهستان‌های کلمبیا، گواتمالا و هندوراس هم می‌آید.' }
       ],
       ask: {
         stat: 'hei',
@@ -126,16 +120,13 @@ window.EPISODE = {
       lines: [
         { en: 'Alli puncha! That means "good day" in Kichwa, my language. I farm potatoes up here in the [[tierra fria|tierra fría]], the cold land. Potatoes were first grown in the Andes thousands of years ago.',
           es: '¡Alli puncha! Eso quiere decir "buen día" en kichwa, mi idioma. Yo siembro papas aquí arriba, en la [[tierra fria|tierra fría]]. Las papas se sembraron por primera vez en los Andes hace miles de años.',
-          fa: 'اَلی پونچا! این در زبان من، کیچوا، یعنی «روز بخیر». من اینجا بالا در [[tierra fria|تیرا فریا]] یعنی زمین سرد کچالو می‌کارم. کچالو اولین بار هزاران سال پیش در کوه‌های اندیز کاشته شد.',
-          easy: { en: 'I grow potatoes in the cold land, the [[tierra fria|tierra fría]]. Potatoes first came from the Andes.', es: 'Yo siembro papas en la [[tierra fria|tierra fría]]. Las papas vienen de los Andes.', fa: 'من در زمین سرد، [[tierra fria|تیرا فریا]]، کچالو می‌کارم. کچالو اول از اندیز آمد.' } },
+          fa: 'اَلی پونچا! این در زبان من، کیچوا، یعنی «روز بخیر». من اینجا بالا در [[tierra fria|تیرا فریا]] یعنی زمین سرد کچالو می‌کارم. کچالو اولین بار هزاران سال پیش در کوه‌های اندیز کاشته شد.' },
         { en: 'Potatoes and wheat can take the cold. Higher up is the [[tierra helada|tierra helada]], the frozen land. Only tough grass grows there, and our llamas and alpacas graze on it. Above that is only snow and ice.',
           es: 'La papa y el trigo aguantan el frío. Más arriba está la [[tierra helada|tierra helada]]. Allí solo crece pasto duro, y nuestras llamas y alpacas lo comen. Más arriba solo hay nieve y hielo.',
-          fa: 'کچالو و گندم سرما را تحمل می‌کنند. بالاتر [[tierra helada|تیرا الادا]] یعنی زمین یخ‌زده است. آنجا فقط علف سخت می‌روید و لاماها و آلپاکاهای ما آن را می‌چرند. بالاتر از آن فقط برف و یخ است.',
-          easy: { en: 'Higher up is the frozen land, the [[tierra helada|tierra helada]]. Llamas and alpacas eat the grass. Then there is only snow.', es: 'Más arriba está la [[tierra helada|tierra helada]]. Las llamas y alpacas comen el pasto. Luego solo hay nieve.', fa: 'بالاتر زمین یخ‌زده یا [[tierra helada|تیرا الادا]] است. لاما و آلپاکا علف می‌خورند. بعد فقط برف است.' } },
+          fa: 'کچالو و گندم سرما را تحمل می‌کنند. بالاتر [[tierra helada|تیرا الادا]] یعنی زمین یخ‌زده است. آنجا فقط علف سخت می‌روید و لاماها و آلپاکاهای ما آن را می‌چرند. بالاتر از آن فقط برف و یخ است.' },
         { en: 'Many big cities in Latin America were built high up, like Quito, Bogotá and Mexico City. The cool air is easier to live in than the heavy heat of the coast. This cool weather near the equator is a [[highland climate|highland climate]].',
           es: 'Muchas ciudades grandes de América Latina se construyeron en lo alto, como Quito, Bogotá y Ciudad de México. El aire fresco es más cómodo que el calor pesado de la costa. Este clima fresco cerca del ecuador es un [[highland climate|clima de montaña]].',
-          fa: 'بسیاری از شهرهای بزرگ امریکای لاتین در بلندی ساخته شدند، مثل کیتو، بوگوتا و مکسیکوسیتی. زندگی در هوای خنک آسان‌تر از گرمای سنگین ساحل است. این هوای خنک نزدیک خط استوا [[highland climate|آب و هوای کوهستانی]] نام دارد.',
-          easy: { en: 'Quito, Bogotá and Mexico City are high up, where the air is cool. That is a [[highland climate|highland climate]].', es: 'Quito, Bogotá y Ciudad de México están en lo alto, donde el aire es fresco. Eso es un [[highland climate|clima de montaña]].', fa: 'کیتو، بوگوتا و مکسیکوسیتی در بلندی هستند، جایی که هوا خنک است. این [[highland climate|آب و هوای کوهستانی]] است.' } }
+          fa: 'بسیاری از شهرهای بزرگ امریکای لاتین در بلندی ساخته شدند، مثل کیتو، بوگوتا و مکسیکوسیتی. زندگی در هوای خنک آسان‌تر از گرمای سنگین ساحل است. این هوای خنک نزدیک خط استوا [[highland climate|آب و هوای کوهستانی]] نام دارد.' }
       ],
       ask: {
         stat: 'loc',

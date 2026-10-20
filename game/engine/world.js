@@ -1,0 +1,233 @@
+/* WORLDWALKER engine · the compass stone moved into the world, and the earned tools' secrets
+   Challenge types that happen on the map (the card version is always one tap away: "Use cards instead"):
+     carry  – (sort in the world) carry each card to the right marked area      -> tools.js (like the 1.1 signposts)
+     route  – (order in the world) visit the stops in the right order
+     site   – (claim in the world) visit each site, then plant the flag and say why
+     survey – (table in the world) visit each survey post to read its facts, then answer
+     levers – (combo in the world) pull the levers on the map, then test them at the stone
+   Each one adds spots: [[x, y], ...] to the challenge: one map spot per item, option, table row or switch, in the same order.
+   secret: { tool, at: [x, y], text } — a chest only an earned tool reaches: the Canoe paddles on rivers (~), the Sail crosses
+   deep water (=) too, and every other tool opens a tool gate (G) on the map. Optional: a required path never needs a tool. */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  const Wd = WW.world = {};
+  const G = () => WW.game;
+  Wd.BASE = { carry: 'sort', route: 'order', site: 'claim', survey: 'table', levers: 'combo', build: null };
+  Wd.isWorld = ch => !!(ch && ch.type in Wd.BASE);
+  const tool = () => WW.ep && WW.ep.secret && WW.TOOLS.find(t => t.id === WW.ep.secret.tool);
+
+  /* ---------------- things on the map ---------------- */
+  // spots: [[x, y], ...] — one map spot for each item (route), option (site), table row (survey) or switch (levers)
+  Wd.norm = (ch) => {
+    const list = ch.type === 'route' ? ch.items : ch.type === 'site' ? ch.options : ch.type === 'levers' ? ch.switches : null;
+    if (list) list.forEach((o, i) => { o.at = o.at || (ch.spots || [])[i]; });
+  };
+  Wd.ents = (ep) => {
+    const ch = ep.challenge, out = []; Wd.norm(ch);
+    if (ch.type === 'route') ch.items.forEach((it, i) => out.push({ kind: 'stop', x: it.at[0], y: it.at[1], i }));
+    if (ch.type === 'site') ch.options.forEach((o, i) => out.push({ kind: 'site', x: o.at[0], y: o.at[1], i }));
+    if (ch.type === 'survey') ch.spots.forEach((p, i) => out.push({ kind: 'survey', x: p[0], y: p[1], i }));
+    if (ch.type === 'levers') ch.switches.forEach((s, i) => out.push({ kind: 'lever', x: s.at[0], y: s.at[1], i }));
+    if (ep.secret) out.push({ kind: 'chest', x: ep.secret.at[0], y: ep.secret.at[1] });
+    return out;
+  };
+  Wd.KINDS = ['stop', 'site', 'survey', 'lever', 'chest'];
+  Wd.setup = (ep) => {
+    const r = WW.run, ch = ep.challenge;
+    r.worldOn = false; r.route = 0; r.seen = new Set(); r.levers = ch.type === 'levers' ? ch.switches.map(s => s.start || 0) : null;
+  };
+
+  /* the earned tools: canoe on rivers, sail on deep water, the episode's tool gate */
+  Wd.pass = ch => {
+    if (ch === '~') return WW.hasTool('canoe') || WW.hasTool('sail');
+    if (ch === '=') return WW.hasTool('sail');
+    if (ch === 'G') { const t = tool(); return !!(t && WW.hasTool(t.id)); }
+    return false;
+  };
+  Wd.bump = (x, y) => { // walked into a closed tool gate: say what opens it
+    if (G().tileAt(x, y) !== 'G') return false;
+    const t = tool(); if (!t) return false;
+    WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
+    return true;
+  };
+
+  /* ---------------- the stone ---------------- */
+  const cards = ch => () => { const h = WW.ui.top(); if (h) h.close(); WW.challenge(Object.assign({}, ch, { type: Wd.BASE[ch.type] })); };
+  function stonePanel(ch, how, extra, go) {
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        box.innerHTML = `<h3>🧭 ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p><p class="say"><b>${esc(T(how))}</b></p>${extra ? extra() : ''}`;
+        const acts = document.createElement('div'); acts.className = 'acts';
+        if (go) acts.appendChild(WW.btn(go.label, 'gold', () => { h.close(); go.fn(); }));
+        else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
+        if (!WW.run.challengeDone) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', cards(ch)));
+        box.appendChild(acts);
+      }
+    });
+  }
+  Wd.stone = (ch) => {
+    const r = WW.run;
+    if (ch.type === 'carry') return WW.tools.stone(ch);
+    if (r.challengeDone) return WW.ui.message('', ch.success);
+    const start = () => { r.worldOn = true; WW.chris.say(T('w_' + ch.type + 'Go')); };
+    if (ch.type === 'route') return stonePanel(ch, 'w_routeHow', () => `<p class="small">${esc(T('w_routeSeen').replace('{n}', r.route).replace('{m}', ch.items.length))}</p>`, r.worldOn ? null : { label: '🧭 ' + esc(T('wStart')), fn: start });
+    if (ch.type === 'site') return stonePanel(ch, 'w_siteHow', () => `<p class="small">${esc(T('w_siteSeen').replace('{n}', r.seen.size).replace('{m}', ch.options.length))}</p>`, r.worldOn ? null : { label: '🚩 ' + esc(T('wStart')), fn: start });
+    if (ch.type === 'survey') {
+      const all = r.seen.size >= ch.spots.length;
+      if (all) return WW.challenge(Object.assign({}, ch, { type: 'table' }));
+      return stonePanel(ch, 'w_surveyHow', () => `<p class="small">${esc(T('w_surveySeen').replace('{n}', r.seen.size).replace('{m}', ch.spots.length))}</p>`, r.worldOn ? null : { label: '📋 ' + esc(T('wStart')), fn: start });
+    }
+    if (ch.type === 'levers') {
+      if (!r.worldOn) return stonePanel(ch, 'w_leversHow', null, { label: '🕹️ ' + esc(T('wStart')), fn: start });
+      return testLevers(ch);
+    }
+  };
+
+  /* ---------------- walking into the things ---------------- */
+  Wd.interact = (e) => {
+    const r = WW.run, ch = WW.ep.challenge, g = G();
+    if (e.kind === 'chest') return openChest(e);
+    if (r.challengeDone) { WW.chris.say(L(ch.success)); return; }
+    if (!r.worldOn) { WW.chris.say(T('wStoneFirst')); WW.sfx('bad'); return; }
+    if (e.kind === 'stop') {
+      const it = ch.items[e.i];
+      if (e.i < r.route) return WW.chris.say(`✅ ${WW.plain(it.t)}`);
+      if (e.i === r.route) {
+        r.route++; WW.sfx('good'); WW.fx.burst(e.x, e.y, 'gold');
+        if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`🎉 ${L(ch.success)}`); return; }
+        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`);
+      } else {
+        r.challengeTries++; WW.sfx('bad'); g.shake();
+        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`);
+      }
+      return;
+    }
+    if (e.kind === 'site') {
+      const o = ch.options[e.i];
+      r.seen.add(e.i); WW.sfx('blip');
+      if (r.seen.size < ch.options.length) {
+        return WW.ui.message(`🚩 ${WW.plain(o.name)}`, `${o.desc ? L(o.desc) + ' ' : ''}${T('w_siteMore').replace('{n}', ch.options.length - r.seen.size)}`);
+      }
+      return WW.challenge(Object.assign({}, ch, { type: 'claim', pickAt: e.i }));
+    }
+    if (e.kind === 'survey') {
+      const row = ch.table.rows[e.i]; r.seen.add(e.i); WW.sfx('blip');
+      const tbl = `<table class="dtbl"><tr>${ch.table.head.map(c => `<th>${WW.rich(c)}</th>`).join('')}</tr><tr>${row.map(c => `<td>${WW.rich(c)}</td>`).join('')}</tr></table>`;
+      const left = ch.spots.length - r.seen.size;
+      return WW.ui.open({
+        cls: 'msgov',
+        render(box, h) {
+          box.innerHTML = `<h3>📋 ${esc(T('w_surveyPost'))}</h3><div class="tblwrap">${tbl}</div><p class="say">${esc(left ? T('w_surveyLeft').replace('{n}', left) : T('w_surveyAll'))}</p>`;
+          const a = document.createElement('div'); a.className = 'acts'; a.appendChild(WW.btn(T('cont') + ' ▶', 'gold', () => h.close())); box.appendChild(a);
+        }
+      });
+    }
+    if (e.kind === 'lever') {
+      const s = ch.switches[e.i];
+      r.levers[e.i] = (r.levers[e.i] + 1) % s.states.length; WW.sfx('pop'); g.shake();
+      WW.chris.say(`${s.icon || '🕹️'} ${WW.plain(s.name)}: <b>${esc(WW.plain(s.states[r.levers[e.i]]))}</b>. ${T('w_leverTest')}`);
+    }
+  };
+  function testLevers(ch) {
+    const r = WW.run, key = r.levers.join(','), res = ch.results[key] || ch.otherwise || { ok: false, t: '' };
+    WW.ui.open({
+      cls: 'chov',
+      render(box, h) {
+        box.innerHTML = `<h3>🕹️ ${esc(L(ch.title))}</h3><ul class="signlist">${ch.switches.map((s, i) => `<li>${s.icon || ''} <b>${WW.rich(s.name)}</b>: ${WW.rich(s.states[r.levers[i]])}</li>`).join('')}</ul>`;
+        if (res.show) box.insertAdjacentHTML('beforeend', `<div class="outs">${res.show.map(o => `<span class="out ${o.ok ? 'good' : 'badp'}">${o.icon || ''} ${WW.rich(o.t)}</span>`).join('')}</div>`);
+        box.insertAdjacentHTML('beforeend', `<div class="fb ${res.ok ? 'right' : 'wrong'}"><b>${esc(T(res.ok ? 'right' : 'wrong'))}</b> ${WW.rich(res.t || '')}</div>`);
+        const a = document.createElement('div'); a.className = 'acts';
+        a.appendChild(WW.btn(T(res.ok ? 'cont' : 'close') + ' ▶', 'gold', () => { h.close(); if (res.ok) WW.chris.say(`🎉 ${L(ch.success)}`); }));
+        if (!res.ok) { a.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', cards(ch))); box.insertAdjacentHTML('beforeend', `<p class="small">${esc(T('w_leverAgain'))}</p>`); }
+        box.appendChild(a);
+      }
+    });
+    r.challengeTries++;
+    if (res.ok) WW.challengeSolved(ch); else WW.sfx('bad');
+  }
+
+  /* the secret chest */
+  function openChest(e) {
+    const ep = WW.ep, s = WW.save, t = tool();
+    s.secrets = s.secrets || [];
+    if (s.secrets.includes(ep.id)) return WW.chris.say(`${t ? t.icon + ' ' : ''}${L(ep.secret.text)}`);
+    s.secrets.push(ep.id); WW.store(); WW.sheetSync && WW.sheetSync();
+    WW.fx.burst(e.x, e.y, 'gold'); WW.sfx('win');
+    WW.gain(null, 0, 5, T('why_secret'), true);
+    WW.toast(`🎁 +5 ● ${esc(T('why_secret'))}`, '#c08a1e');
+    WW.ui.message(`🎁 ${t ? t.icon + ' ' : ''}${T('secretFound')}`, ep.secret.text);
+  }
+
+  /* where to go next for the world challenge (Christopher and the arrow) */
+  Wd.next = () => {
+    const r = WW.run, ch = WW.ep.challenge;
+    if (!r.worldOn || r.challengeDone) return null;
+    if (ch.type === 'route') return ch.items[r.route].at;
+    if (ch.type === 'site') { const i = ch.options.findIndex((_, k) => !r.seen.has(k)); return i < 0 ? null : ch.options[i].at; }
+    if (ch.type === 'survey') { const i = ch.spots.findIndex((_, k) => !r.seen.has(k)); return i < 0 ? ch.at : ch.spots[i]; }
+    return null;
+  };
+  Wd.nextText = () => {
+    const r = WW.run, ch = WW.ep.challenge;
+    if (!Wd.isWorld(ch) || ch.type === 'carry' || ch.type === 'build' || !r.worldOn) return null;
+    if (ch.type === 'route') return T('ns_route').replace('{n}', r.route + 1).replace('{m}', ch.items.length);
+    if (ch.type === 'site') return r.seen.size < ch.options.length ? T('ns_site').replace('{n}', ch.options.length - r.seen.size) : T('ns_siteDone');
+    if (ch.type === 'survey') return r.seen.size < ch.spots.length ? T('w_surveyLeft').replace('{n}', ch.spots.length - r.seen.size) : T('w_surveyAll');
+    if (ch.type === 'levers') return T('w_leverTest');
+  };
+
+  /* ---------------- drawing ---------------- */
+  Wd.draw = (c, e, x, y, t) => {
+    const r = WW.run, ch = WW.ep.challenge;
+    const glow = (col, a) => { c.fillStyle = col.replace('A', a); c.beginPath(); c.arc(x + 8, y + 9, 9, 0, 7); c.fill(); };
+    const pulse = WW.calm ? 0.5 : (Math.sin(t / 300 + e.i) + 1) / 2;
+    WW.shadow(c, x, y + 13, 10);
+    if (e.kind === 'stop') { // a little station sign
+      const done = e.i < r.route;
+      if (!done && r.worldOn) glow('rgba(255,236,150,A)', .2 + pulse * .2);
+      c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 5, 2, 10); c.fillRect(x + 2, y + 1, 12, 7);
+      c.fillStyle = done ? '#3fa34d' : '#2f6fd6'; c.fillRect(x + 3, y + 2, 10, 5);
+      c.fillStyle = '#fffbe8'; c.fillRect(x + 5, y + 4, 6, 1);
+    } else if (e.kind === 'site') { // a flag pole
+      if (r.worldOn && !r.challengeDone) glow('rgba(255,236,150,A)', .15 + pulse * .2);
+      c.fillStyle = '#22202e'; c.fillRect(x + 4, y + 1, 2, 14);
+      c.fillStyle = r.seen.has(e.i) ? '#e04848' : '#fffbe8'; c.fillRect(x + 6, y + 2, 8, 5); c.fillStyle = '#22202e'; c.fillRect(x + 6, y + 7, 8, 1);
+    } else if (e.kind === 'survey') { // a post with a clipboard
+      if (r.worldOn && !r.seen.has(e.i)) glow('rgba(255,236,150,A)', .15 + pulse * .2);
+      c.fillStyle = '#6d4c2f'; c.fillRect(x + 7, y + 8, 2, 7);
+      c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 1, 10, 10); c.fillStyle = r.seen.has(e.i) ? '#d8f0d0' : '#fffbe8'; c.fillRect(x + 4, y + 2, 8, 8);
+      c.fillStyle = '#9aa3ad'; for (let k = 0; k < 3; k++) c.fillRect(x + 5, y + 4 + k * 2, 6, 1);
+    } else if (e.kind === 'lever') { // a lever on a post; it leans with its setting
+      const st = r.levers ? r.levers[e.i] : 0, n = ch.switches[e.i].states.length, lean = n > 1 ? -4 + 8 * st / (n - 1) : 0;
+      if (r.worldOn) glow('rgba(255,236,150,A)', .12 + pulse * .15);
+      c.fillStyle = '#5e636b'; c.fillRect(x + 3, y + 11, 10, 4); c.fillStyle = '#9aa3ad'; c.fillRect(x + 4, y + 11, 8, 1);
+      c.strokeStyle = '#22202e'; c.lineWidth = 2; c.beginPath(); c.moveTo(x + 8, y + 12); c.lineTo(x + 8 + lean, y + 4); c.stroke();
+      c.fillStyle = '#e04848'; c.beginPath(); c.arc(x + 8 + lean, y + 4, 2.5, 0, 7); c.fill();
+    } else if (e.kind === 'chest') {
+      const open = (WW.save.secrets || []).includes(WW.ep.id);
+      if (!open) glow('rgba(255,236,150,A)', .2 + pulse * .25);
+      c.fillStyle = '#22202e'; c.fillRect(x + 2, y + 5, 12, 10);
+      c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + (open ? 9 : 6), 10, open ? 5 : 8);
+      c.fillStyle = '#f2c14e'; c.fillRect(x + 3, y + (open ? 9 : 9), 10, 1); c.fillRect(x + 7, y + 8, 2, 3);
+      if (open) { c.fillStyle = '#6d4424'; c.fillRect(x + 3, y + 3, 10, 3); }
+    }
+  };
+  // a canoe (or a sail boat) under the hero on water
+  Wd.boat = (c, x, y, ch) => {
+    if (ch !== '~' && ch !== '=') return;
+    c.fillStyle = '#22202e'; c.fillRect(x, y + 9, 16, 6);
+    c.fillStyle = '#a0703f'; c.fillRect(x + 1, y + 10, 14, 4); c.fillStyle = '#6d4424'; c.fillRect(x + 2, y + 13, 12, 1);
+    if (ch === '=') { c.fillStyle = '#22202e'; c.fillRect(x + 12, y - 6, 1, 16); c.fillStyle = '#fffbe8'; c.fillRect(x + 13, y - 5, 3, 9); }
+  };
+  /* labels over the map (crisp HTML): what each stop, site, survey post and lever is */
+  Wd.labels = (scr) => {
+    const ch = WW.ep.challenge, r = WW.run, out = [];
+    const on = (x, y) => G().screenOf(x, y).join() === scr.join();
+    if (ch.type === 'route') ch.items.forEach((it, i) => on(...it.at) && out.push({ x: it.at[0], y: it.at[1], t: `${i < r.route ? '✓ ' : ''}${it.icon ? it.icon + ' ' : ''}${WW.plain(it.t)}` }));
+    if (ch.type === 'site') ch.options.forEach((o, i) => on(...o.at) && out.push({ x: o.at[0], y: o.at[1], t: `${o.icon ? o.icon + ' ' : ''}${WW.plain(o.name)}` }));
+    if (ch.type === 'survey') ch.spots.forEach((p, i) => on(...p) && out.push({ x: p[0], y: p[1], t: r.seen.has(i) ? '✓ ' + WW.plain(ch.table.rows[i][0]) : '📋 ?' }));
+    if (ch.type === 'levers' && r.levers) ch.switches.forEach((s, i) => on(...s.at) && out.push({ x: s.at[0], y: s.at[1], t: `${s.icon ? s.icon + ' ' : ''}${WW.plain(s.states[r.levers[i]])}` }));
+    return out;
+  };
+})();
