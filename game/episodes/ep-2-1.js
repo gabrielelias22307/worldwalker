@@ -42,6 +42,15 @@ window.EPISODE = {
   start: [7, 9],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [19, 13], at: [22, 17], decor: 'feather',
+      clue: { en: 'From this note, walk 4 steps south, then 3 steps east. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 3 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۳ قدم به شرق. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and east is to the right. Four of the five Great Lakes touch the border between the United States and Canada. A bird feather was in the grass.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Cuatro de los cinco Grandes Lagos tocan la frontera entre Estados Unidos y Canadá. Había una pluma de pájaro en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر پرنده در سبزه بود.' } },
+    { clueAt: [15, 11], at: [24, 15], decor: 'coinold',
+      clue: { en: 'Grain from the [[prairie|prairie]] rides the train, then a barge on the big river. Find the barge dock on the river that flows south. Stand on the dock square where the dirt road meets the river.', es: 'El grano de la [[prairie|pradera]] viaja en tren y luego en una barcaza por el río grande. Busca el muelle de barcazas en el río que corre hacia el sur. Párate en el cuadro del muelle donde el camino de tierra llega al río.', fa: 'غله از [[prairie|دشت]] با ریل می‌رود، بعد با یک کشتیِ باری روی دریای بزرگ. اسکلهٔ کشتی‌های باری را روی دریایی پیدا کن که به طرف جنوب می‌رود. روی خانهٔ اسکله بایست که سرکِ خاکی به دریا می‌رسد.' },
+      text: { en: 'You found the barge dock! A barge is a flat boat that carries heavy loads like grain. One barge can carry as much grain as many big trucks. An old coin was between the boards.', es: '¡Encontraste el muelle de barcazas! Una barcaza es un bote plano que lleva cargas pesadas, como grano. Una sola barcaza lleva tanto grano como muchos camiones grandes. Había una moneda antigua entre las tablas.', fa: 'تو اسکلهٔ کشتی‌های باری را پیدا کردی! کشتیِ باری یک قایق هموار است که بارهای سنگین مثل غله را می‌برد. یک کشتیِ باری به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه بین تخته‌ها بود.' } }
+  ],
   // only the Compass Rose (Episode 1.3) opens the little gate by the lake
   secret: { tool: 'compass', at: [24, 1],
     text: { en: 'The Compass Rose found the hidden path! In the chest is an old map. It says the five Great Lakes hold about one fifth of all the fresh lake water on Earth.',

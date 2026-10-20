@@ -42,6 +42,15 @@ window.EPISODE = {
   start: [10, 4],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [20, 9], at: [24, 12], decor: 'vase',
+      clue: { en: 'From this note, walk 3 steps south, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and east is to the right. A small clay vase was by the road. Clay is a natural resource: potters dig it out of the ground.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Había un jarrón de barro junto al camino. El barro es un recurso natural: los alfareros lo sacan de la tierra.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. یک گلدان کوچک گِلی کنار سرک بود. گِل یک منبع طبیعی است: کوزه‌گرها آن را از زمین می‌کَنند.' } },
+    { clueAt: [12, 4], at: [24, 5], decor: 'fossil',
+      clue: { en: 'Iron ore is a [[natural resource|natural resource]]. Miners dig it out of the mountains. Follow the railway track down from the mine. Stand on the dark stone square just below the end of the track.', es: 'El mineral de hierro es un [[natural resource|recurso natural]]. Los mineros lo sacan de las montañas. Sigue la vía del tren hacia abajo desde la mina. Párate en el cuadro de piedra oscura justo debajo del final de la vía.', fa: 'سنگ آهن یک [[natural resource|منبع طبیعی]] است. معدنچی‌ها آن را از کوه‌ها بیرون می‌آورند. خط ریل را از معدن به طرف پایین دنبال کن. روی خانهٔ سنگیِ تیره درست زیرِ آخرِ خط ریل بایست.' },
+      text: { en: 'You found where the mine carts stop! Iron ore is a rock with iron in it. Factories melt it to make iron and steel. A fossil was in the stone.', es: '¡Encontraste dónde paran los carritos de la mina! El mineral de hierro es una roca que tiene hierro. Las fábricas lo derriten para hacer hierro y acero. Había un fósil en la piedra.', fa: 'تو جایی را پیدا کردی که واگون‌های معدن می‌ایستند! سنگ آهن سنگی است که در آن آهن است. فابریکه‌ها آن را ذوب می‌کنند تا آهن و فولاد بسازند. یک فسیل در سنگ بود.' } }
+  ],
 
   words: {
     resource: { en: 'anything people use to make or do something', es: 'cualquier cosa que la gente usa para hacer o producir algo', fa: 'هر چیزی که مردم برای ساختن یا انجام کاری به کار می‌برند' },
@@ -115,6 +124,7 @@ window.EPISODE = {
       x: 8, y: 13,
       name: { en: 'Ana', es: 'Ana', fa: 'آنا' },
       role: { en: 'Farmer', es: 'Agricultora', fa: 'دهقان' },
+      remember: { ep: '1.1', t: { en: 'Hello again! Lena the shepherd told me you found Grandpa Tomas\'s lost compass. He checks it every morning now. He says thank you!', es: '¡Hola otra vez! Lena, la pastora, me contó que encontraste la brújula perdida del abuelo Tomás. Ahora la mira cada mañana. ¡Te manda las gracias!', fa: 'سلام دوباره! لینا چوپان به من گفت که تو قطب‌نمای گم‌شدهٔ پدرکلان توماس را پیدا کردی. حالا هر صبح به آن نگاه می‌کند. او از تو تشکر می‌کند!' } },
       look: { skin: 4, hair: '#1b1410', shirt: '#3fa34d', pants: '#5a4630' },
       lines: [
         { en: 'Good soil is a resource too, not only metal or oil. My family came from Brazil. Brazil has some of the richest farmland on Earth.',
