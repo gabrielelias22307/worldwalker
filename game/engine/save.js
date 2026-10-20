@@ -255,6 +255,8 @@
     findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
     findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
     why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+    helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
+    free: { en: 'free', es: 'gratis', fa: 'رایگان' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },

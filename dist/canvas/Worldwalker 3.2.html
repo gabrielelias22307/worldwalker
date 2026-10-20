@@ -16,20 +16,29 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
 button{font-family:inherit}
-.ww-frame{max-width:960px;margin:0 auto;padding:10px 12px 24px;background:var(--bg)}
-.ww-frame:fullscreen{max-width:none;height:100vh;overflow:auto;display:flex;flex-direction:column;justify-content:center}
-.ww-frame:fullscreen .screen{max-width:calc((100vh - 160px) * 16 / 11);margin:0 auto;width:100%}
+/* the whole game is exactly as tall as the window: no page scrolling (FUN-PASS-2, Part A) */
+html,body{height:100%;overflow:hidden}
+.ww-frame{max-width:1200px;height:100vh;height:100dvh;margin:0 auto;padding:6px 8px;background:var(--bg);display:flex;flex-direction:column;gap:0}
+.ww-frame:fullscreen{max-width:none}
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-bottom:2px;position:relative}
+.ww-frame>.ww-bar,.ww-frame>.hud,.ww-frame>.quest{width:100%;max-width:max(var(--gw,100%),min(100%,560px));margin-left:auto;margin-right:auto}
+/* a phone: the tool bar sits under the map */
+.ww-frame.narrow .stage>.toolbar{position:static;transform:none;margin:5px auto 0;width:max-content;max-width:100%}
+.cbubble.dock{max-width:none}
+.cbubble.dock::after{bottom:auto;top:-10px;left:var(--tx,50%);border:7px solid transparent;border-bottom-color:var(--ink);border-top:0}
 
 /* top bar */
-.ww-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ww-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
 .ww-logo{font-family:var(--pix);font-size:12px;color:var(--gold);text-decoration:none;margin-right:auto}
-.ww-bar button{font-size:13px;padding:6px 9px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
+.ww-bar button{font-size:13px;padding:5px 8px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer;line-height:1.3}
+@media (max-width:820px){.ww-bar .lbl{display:none}.ww-bar button{padding:5px 7px}}
+@media (max-width:520px){.ww-logo{display:none}.ww-bar{gap:4px;justify-content:center}.ww-bar .langs,.ww-bar .tools{gap:3px}.ww-bar button{font-size:12px;padding:4px 6px}}
 .ww-bar .langs button.on{background:var(--gold);color:var(--ink);font-weight:700}
 .ww-bar .langs,.ww-bar .tools{display:flex;gap:5px;flex-wrap:wrap}
 .ww-preview{font-size:12px;font-weight:700;padding:5px 8px;background:var(--teal);color:#fff;border:2px solid #000;border-radius:4px;text-decoration:none}
 
 /* HUD */
-.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#0b0a14;padding:7px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap;background:#0b0a14;padding:5px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
 .hud-left,.hud-right{display:flex;align-items:center;gap:6px}
 .hrt{color:var(--red);font-size:16px;line-height:1}
 .hrt.empty{color:#4a2630}
@@ -39,7 +48,14 @@ button{font-family:inherit}
 .meter i{font-style:normal;font-size:12px}
 .track{display:block;width:40px;height:9px;background:#2a2840;border:2px solid #000}
 .track b{display:block;height:100%}
-.quest{background:#0b0a14;border:3px solid #000;border-top:1px solid #2a2840;border-bottom:0;padding:5px 10px;font-size:14px;color:var(--muted)}
+/* the quest bar: the current goal only, on one line; ☰ (or Q) opens the whole list over the map */
+.quest{background:#0b0a14;border:3px solid #000;border-top:1px solid #2a2840;border-bottom:0;padding:3px 8px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px;white-space:nowrap;cursor:pointer;min-width:0}
+.quest .qgoal{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.quest .qlist{background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;font-size:13px;padding:1px 7px;cursor:pointer}
+.qpop{position:absolute;z-index:7;left:8px;top:8px;max-width:calc(100% - 16px);background:rgba(11,10,20,.94);color:var(--text);border:3px solid #000;outline:2px solid var(--gold);border-radius:6px;padding:8px 12px;font-size:14px;line-height:1.5;display:none}
+.qpop.on{display:block}
+.qpop ol{margin:4px 0 0;padding-inline-start:20px}
+.qpop .qdone{color:#7cc451}.qpop .qnow{color:#fff;font-weight:700}.qpop li{color:var(--muted)}
 .quest b{color:var(--gold)}
 .quest i{font-style:normal;color:#5a5680}
 .quest .qnow{color:#fff;font-weight:700}
@@ -47,10 +63,10 @@ button{font-family:inherit}
 .quest .qscr{color:#c9b064}
 
 /* screen */
-.screen{position:relative;background:#000;border:3px solid #000;outline:3px solid var(--line);border-radius:0 0 6px 6px;overflow:hidden;user-select:none}
+.screen{position:relative;background:#000;border:3px solid #000;outline:3px solid var(--line);border-radius:0 0 6px 6px;overflow:hidden;user-select:none;flex:none;width:100%}
 .screen:focus{outline-color:var(--gold)}
 .screen canvas#ww-cv{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
-.screen.ovopen{min-height:min(560px,85vh)}
+
 .toast{position:absolute;right:10px;top:10px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:70%;pointer-events:none}
 .toast .tst{color:#fff;font-weight:700;font-size:15px;padding:7px 11px;border:3px solid #000;border-radius:4px;animation:pop .2s ease-out}
 .toast .tst.big{font-size:16px;padding:10px 14px;outline:3px solid #fff3b0;max-width:100%}
@@ -218,16 +234,15 @@ button{font-family:inherit}
 .savebox{margin-top:10px;padding:8px 12px;background:#efe8d2;border:2px solid #b7a77e;border-radius:4px;display:grid;gap:4px}
 
 /* touch arrows */
-.dpad{display:none;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,56px);gap:6px;justify-content:center;margin:12px auto 0;touch-action:none}
+.dpad{display:none;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(3,44px);gap:4px;justify-content:center;margin:6px auto 0;touch-action:none;flex:none}
 .dpad button{background:var(--panel2);color:#fff;border:3px solid #000;border-radius:8px;font-size:22px;cursor:pointer}
 .dpad [data-d=up]{grid-column:2;grid-row:1}.dpad [data-d=left]{grid-column:1;grid-row:2}.dpad .act{grid-column:2;grid-row:2;background:var(--gold);color:var(--ink)}
 .dpad [data-d=right]{grid-column:3;grid-row:2}.dpad [data-d=down]{grid-column:2;grid-row:3}
 @media (pointer:coarse){.dpad{display:grid}}
-.ww-foot{text-align:center;color:var(--muted);font-size:13.5px;margin-top:10px}
+.ww-foot{display:none}
 @media (max-width:640px){
-  .track{width:22px}.hud{font-size:9px}.hud-mid{font-size:12px;order:3;width:100%}
+  .track{width:22px}.hud{font-size:9px;padding:4px 6px}.hud-mid{display:none}
   .ov{padding:6px}.ov-box{padding:10px 12px}
-  .screen.ovopen{min-height:85vh}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 /* talk boxes sit at the bottom like a classic RPG; the map stays visible */
@@ -324,7 +339,7 @@ canvas{filter:var(--vivid)}
 .gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
 .ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}
 /* the base camp */
-.campcv{display:block;width:100%;max-width:640px;margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
+.campcv{display:block;width:100%;max-width:min(640px,calc(42vh * 320 / 176));margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
 .campslots,.campshop,.campown{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 .campshop p,.campown p{flex-basis:100%;margin:4px 0 0}
 .campslot{width:86px;min-height:58px;font-size:24px;background:#fff3c4;border:2px dashed #b8902a;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -336,6 +351,33 @@ canvas{filter:var(--vivid)}
 .campitem.ghost{background:#f0eef8}
 .campmsg{font-weight:700}
 .passov .campbtn{margin:8px 0}
+
+/* small windows: panels cover the whole game, not just the little map, so they are easy to read */
+@media (max-width:700px),(max-height:560px){.ov{position:fixed;z-index:20}}
+/* the tool bar sits inside the map, over its bottom edge (like Stardew Valley); it hops to the top when the hero walks under it */
+.screen .toolbar{position:absolute;z-index:3;left:50%;bottom:4px;transform:translateX(-50%);margin:0;max-width:calc(100% - 8px);width:max-content;padding:4px 6px;gap:5px;background:rgba(11,10,20,.78);border:2px solid #000;border-radius:8px;flex-wrap:wrap;justify-content:center}
+.screen .toolbar.top{bottom:auto;top:4px}
+.screen .toolbar .tslot{width:38px;height:38px;border-width:2px}
+.screen .toolbar .tslot canvas{width:26px;height:26px}
+.screen .toolbar .tbag{margin-inline-start:6px;gap:7px}
+.screen .toolbar .tbag canvas{width:20px;height:20px}
+.screen .toolbar .tcarry{order:-1;flex-basis:100%;max-width:min(560px,92vw);font-size:13px;padding:3px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.screen .toolbar{padding:3px 4px;gap:3px}.screen .toolbar .tslot{width:32px;height:32px}.screen .toolbar .tslot canvas{width:22px;height:22px}.screen .toolbar .tslot i{font-size:9px}.screen .toolbar .tslot b{font-size:10px}.screen .toolbar .tbag{gap:4px}}
+/* Christopher's bubble: narrower on small screens; its tail points back at him from whichever side it sits */
+.cbubble{max-width:min(330px,58%)}
+@media (max-width:520px){.cbubble{font-size:14px;padding:5px 8px 6px;max-width:min(260px,62%)}.cbubble .cb-acts .pbtn{font-size:12px;padding:3px 7px}}
+.cbubble.side-l::after,.cbubble.side-r::after{bottom:auto;top:calc(50% - 7px);border:7px solid transparent}
+.cbubble.side-l::after{left:auto;right:-10px;border-left-color:var(--ink);border-right:0}
+.cbubble.side-r::after{left:-10px;border-right-color:var(--ink);border-left:0}
+.ww-help{font-weight:700}
+
+/* map labels shrink with the map so they never pile up on a small screen */
+.gridlabs .gl{font-size:clamp(8px,calc(var(--gw,900px) / 72),13px);padding:2px 4px}
+.gridlabs .gl.zone{font-size:clamp(8px,calc(var(--gw,900px) / 76),12px)}
+.gridlabs .gl.thing{font-size:clamp(8px,calc(var(--gw,900px) / 80),11px);max-width:clamp(70px,calc(var(--gw,900px) / 6),150px)}
+
+/* the bubble's tail points at Christopher, wherever the bubble sits above or below him */
+.cbubble:not(.side-l):not(.side-r)::after{left:var(--tx,calc(50% - 7px))}
 
 </style>
 </head>
@@ -1531,6 +1573,8 @@ window.WW_CONFIG.MODE = 'canvas';
     findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
     findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
     why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+    helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
+    free: { en: 'free', es: 'gratis', fa: 'رایگان' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -1760,6 +1804,13 @@ window.WW_CONFIG.MODE = 'canvas';
       ov.appendChild(box);
       opts.render(box, h);
       ov.scrollTop = 0;
+      // keyboard players: the main button (or the first answer) has focus, so Enter or Space presses it
+      const f = box.querySelector('.choices button:not([disabled]), .pbtn.gold:not([disabled])');
+      const main = [...box.querySelectorAll('.pbtn.gold:not([disabled])')].pop();
+      const empty = [...box.querySelectorAll('input:not([type=hidden]),textarea')].find(i => !i.value); // a form: the first empty box
+      const answered = box.querySelector('.fb, .choices button.right'); // after an answer: Continue
+      const pick = empty || (answered && main) || box.querySelector('.choices button:not([disabled])') || main || f;
+      if (pick) try { pick.focus({ preventScroll: true }); } catch (e) { }
     }
     ui.stack.push(h); holdToast();
     $('ww-screen').classList.add('ovopen');
@@ -1841,12 +1892,14 @@ window.WW_CONFIG.MODE = 'canvas';
     const bar = $('ww-bar');
     if (bar) {
       bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
-      $('ww-b-pass').textContent = '📘 ' + T('passport');
-      const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
-      $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
-      $('ww-b-mus').textContent = (WW.save.music ? '🎵 ' : '🚫 ') + T('music');
-      $('ww-b-full').textContent = '⛶ ' + T('full');
-      $('ww-foot').textContent = T('controls');
+      const lab = (id, icon, word) => { const b = $(id); if (!b) return; b.innerHTML = `${icon}<span class="lbl"> ${esc(word)}</span>`; b.title = word; b.setAttribute('aria-label', word); };
+      lab('ww-b-pass', '📘', T('passport'));
+      lab('ww-b-map', '🗺️', T('map'));
+      lab('ww-b-snd', WW.save.sound ? '🔊' : '🔇', T('sound'));
+      lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
+      lab('ww-b-full', '⛶', T('full'));
+      lab('ww-b-help', '?', T('helpKeys'));
+      lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
     }
   };
   ui.quest = () => {
@@ -1859,10 +1912,24 @@ window.WW_CONFIG.MODE = 'canvas';
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
       [T('face'), r.bossDone],
       [T('claim'), r.claimed]];
-    let h = `<b>${esc(T('quest'))}:</b> `;
-    h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
-    h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
-    el.innerHTML = h; el.setAttribute('dir', WW.dir());
+    // one line: the goal right now. The whole list opens with ☰ (or Q) and is in the Passport.
+    const now = steps.findIndex(([, ok]) => !ok), cur = now < 0 ? steps[steps.length - 1] : steps[now];
+    const label = now < 0 ? '✓ ' + cur[0] : `▶ ${cur[0]}`;
+    el.innerHTML = `<b>${esc(T('quest'))}:</b><span class="qgoal" title="${esc(steps.map(s => s[0]).join(' → '))}"><span class="${now < 0 ? 'qdone' : 'qnow'}">${esc(label)}</span> <span class="qscr">· 📄 ${r.scraps.size}/${ep.scraps.length}</span></span><span class="qlist" aria-label="${esc(T('goals'))}">☰ ${now < 0 ? steps.length : now + 1}/${steps.length}</span>`;
+    el.setAttribute('dir', WW.dir());
+    ui.questSteps = steps;
+    const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
+  };
+  // the whole goal list, over the top of the map (tap the quest bar, or press Q)
+  ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
+    return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
+  let qTimer = 0;
+  ui.questPop = (refresh) => {
+    const pop = $('ww-qpop'); if (!pop) return;
+    if (!refresh && pop.classList.contains('on')) { pop.classList.remove('on'); return; }
+    pop.innerHTML = `<b>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</b>${ui.questList()}<div class="small">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+    pop.setAttribute('dir', WW.dir()); pop.classList.add('on');
+    clearTimeout(qTimer); if (!refresh) qTimer = setTimeout(() => pop.classList.remove('on'), 7000);
   };
 
   /* small canvas with a sprite drawn big */
@@ -2016,13 +2083,16 @@ window.WW_CONFIG.MODE = 'canvas';
         box.appendChild(lk);
         const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
         form.querySelectorAll('input').forEach(i => (i.oninput = keep));
+        // Enter in a box goes to the next box, and from the last one it starts the game
+        form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
         const acts = document.createElement('div'); acts.className = 'acts center';
-        acts.appendChild(btn(T('play') + ' ▶', 'gold big', () => {
+        const playBtn = btn(T('play') + ' ▶', 'gold big', () => {
           keep();
           if (!s.name) { msg = T('needName'); return h.render(); }
           if (s.pin && !/^\d{4}$/.test(s.pin)) { msg = T('needPin'); return h.render(); }
           go();
-        }));
+        });
+        acts.appendChild(playBtn);
         box.appendChild(acts);
         if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
         const pc = document.createElement('div'); pc.className = 'codein';
@@ -2089,6 +2159,7 @@ window.WW_CONFIG.MODE = 'canvas';
     render(box, h) {
       const inner = document.createElement('div'); box.appendChild(inner);
       WW.camp.render(inner, () => { ui.hud(); WW.tools && WW.tools.render(); });
+      requestAnimationFrame(() => { $('ww-ov').scrollTop = 0; });
       const a = document.createElement('div'); a.className = 'acts'; a.appendChild(btn(T('close'), 'gold', () => h.close())); box.appendChild(a);
     }
   });
@@ -2114,6 +2185,7 @@ window.WW_CONFIG.MODE = 'canvas';
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        if (WW.run && ui.questSteps) box.insertAdjacentHTML('beforeend', `<h3>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</h3><div class="ppgoals">${ui.questList()}</div>`);
         { const cb = btn('🏕️ ' + esc(T('campOpen')), 'teal', () => ui.camp()); cb.classList.add('campbtn'); box.appendChild(cb); }
         box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
@@ -3379,7 +3451,7 @@ window.WW_CONFIG.MODE = 'canvas';
   function el() {
     if (!bubble || !bubble.isConnected) {
       bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
-      $('ww-screen').appendChild(bubble);
+      $('ww-stage').appendChild(bubble); // in the stage, so on a phone it can sit under the map
       bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
     }
     return bubble;
@@ -3388,7 +3460,10 @@ window.WW_CONFIG.MODE = 'canvas';
   C.showing = () => !!(bubble && bubble.style.display === 'block');
 
   /* say something over his head. buttons: [{ label, kind, fn }] */
-  C.say = (text, buttons) => {
+  /* opt.at: [x, y] — the place he is talking about; the bubble sits on the other side so it never covers it */
+  let aim = null;
+  C.say = (text, buttons, opt) => {
+    aim = (opt && opt.at) || null;
     const b = el(); b.setAttribute('dir', WW.dir());
     b.classList.toggle('meet', C.scene);
     b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
@@ -3406,19 +3481,53 @@ window.WW_CONFIG.MODE = 'canvas';
   /* keep the bubble over his head (called every frame) */
   C.place = () => {
     if (!C.showing()) return;
-    const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv) return;
+    const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
     const [sx, sy] = g.screenOf(g.player.x, g.player.y), pip = g.pip;
-    const scale = cv.getBoundingClientRect().width / cv.width, sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect();
-    const px = ((pip.dx ?? (pip.x - sx * 16) * 16) + 9) * scale + (cr.left - sr.left), py = ((pip.dy ?? (pip.y - sy * 11) * 16) - 8) * scale + (cr.top - sr.top);
-    const w = bubble.offsetWidth, h = bubble.offsetHeight;
-    bubble.style.left = Math.max(6, Math.min(sr.width - w - 6, px - w / 2)) + 'px';
-    const above = py - h - 10;
-    bubble.style.top = Math.max(4, Math.min(sr.height - h - 4, above > 4 ? above : py + 34 * scale)) + 'px'; // never off the screen
-    bubble.classList.toggle('below', above <= 4);
+    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width, stR = $('ww-stage').getBoundingClientRect();
+    const ox = cr.left - sr.left, oy = cr.top - sr.top, SW = sr.width, SH = sr.height, bx = sr.left - stR.left, by = sr.top - stR.top;
+    const tile = (x, y, pad) => ({ x: ox + ((x - sx * 16) * 16 - pad) * k, y: oy + ((y - sy * 11) * 16 - pad - 3) * k, w: (16 + pad * 2) * k, h: (19 + pad * 2) * k });
+    const dx = pip.dx ?? (pip.x - sx * 16) * 16, dy = pip.dy ?? (pip.y - sy * 11) * 16;
+    const me = { x: ox + (dx - 2) * k, y: oy + (dy - 2) * k, w: 20 * k, h: 20 * k }, mx = me.x + me.w / 2, my = me.y + me.h / 2;
+    const hero = tile(g.player.x, g.player.y, 1);
+    const onScr = aim && g.screenOf(aim[0], aim[1]).join() === [sx, sy].join();
+    const target = onScr ? tile(aim[0], aim[1], 4) : null;
+    let dir = null; // which way the place he names is (even off this screen)
+    if (aim && (aim[0] !== g.player.x || aim[1] !== g.player.y)) { const ax = ox + ((aim[0] - sx * 16) * 16 + 8) * k - mx, ay = oy + ((aim[1] - sy * 11) * 16 + 8) * k - my, l = Math.hypot(ax, ay) || 1; dir = [ax / l, ay / l]; }
+    // a phone: the bubble sits under the map (and the tool bar), full width, its tail pointing up at him
+    const dock = !!document.querySelector('.ww-frame.narrow');
+    bubble.classList.toggle('dock', dock);
+    if (dock) {
+      const tb = $('ww-tools'), below = tb && tb.parentNode === $('ww-stage') ? tb.getBoundingClientRect().bottom - stR.top : by + SH;
+      bubble.style.left = bx + 'px'; bubble.style.width = SW + 'px'; bubble.style.top = (below + 12) + 'px';
+      bubble.style.setProperty('--tx', Math.max(12, Math.min(SW - 24, mx - 7)) + 'px');
+      bubble.classList.remove('below', 'side-l', 'side-r');
+    } else bubble.style.width = '';
+    const w = bubble.offsetWidth, h = bubble.offsetHeight, gap = 10;
+    const over = (a, b) => b ? Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x)) * Math.max(0, Math.min(a.y + a.h, b.y + b.h) - Math.max(a.y, b.y)) / (b.w * b.h) : 0;
+    // spots around Christopher and the hero together (so it never sits on the hero): above or below (left, centred
+    // or right), or beside them
+    const U = { x: Math.min(me.x, hero.x), y: Math.min(me.y, hero.y) }; U.r = Math.max(me.x + me.w, hero.x + hero.w); U.b = Math.max(me.y + me.h, hero.y + hero.h);
+    const cands = [];
+    [mx - w / 2, mx - w + 24, mx - 24].forEach(x => { cands.push(['above', x, U.y - h - gap]); cands.push(['below', x, U.b + gap]); });
+    cands.push(['left', U.x - w - gap, my - h / 2], ['right', U.r + gap, my - h / 2]);
+    let best = null;
+    cands.forEach(([side, x0, y0]) => {
+      const x = Math.max(4, Math.min(SW - w - 4, x0)), y = Math.max(4, Math.min(SH - h - 4, y0)), r = { x, y, w, h };
+      let score = 1000 * over(r, target) + 700 * over(r, hero) + 0.6 * (Math.abs(x - x0) + Math.abs(y - y0));
+      if (dir) { const cx = x + w / 2 - mx, cy = y + h / 2 - my, l = Math.hypot(cx, cy) || 1; score += 120 * Math.max(0, (cx * dir[0] + cy * dir[1]) / l); } // lean away from the place he names
+      if (side === 'above') score -= 5; // above him reads best when nothing is in the way
+      if (!best || score < best.score) best = { side, x, y, score };
+    });
+    if (!dock) bubble.style.setProperty('--tx', Math.max(10, Math.min(w - 24, mx - best.x - 7)) + 'px'); // the tail points at him
+    if (!dock) { bubble.style.left = (bx + best.x) + 'px'; bubble.style.top = (by + best.y) + 'px'; }
+    bubble.classList.toggle('below', !dock && best.side === 'below');
+    bubble.classList.toggle('side-l', !dock && best.side === 'left');
+    bubble.classList.toggle('side-r', !dock && best.side === 'right');
+    const px = mx, py = me.y, scale = k;
     if (C.scene) { // his name, crisp, under him while you meet him
-      if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.className = 'ctag'; $('ww-screen').appendChild(tag); }
+      if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.className = 'ctag'; $('ww-stage').appendChild(tag); }
       tag.textContent = T('chrisName'); tag.style.display = 'block';
-      tag.style.left = px + 'px'; tag.style.top = (py + 30 * scale) + 'px';
+      tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
     } else if (tag) tag.style.display = 'none';
     // walked away: the bubble goes (no timer)
     if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
@@ -3499,14 +3608,16 @@ window.WW_CONFIG.MODE = 'canvas';
     const ns = C.nextStep();
     const way = WW.game.wayUntil && performance.now() < WW.game.wayUntil;
     C.say(ns.text, [
-      ...(ns.at && !way ? [{ label: '🧭 ' + T('showWay') + ' · 5 ●', kind: 'gold', fn: buyWay }] : []),
-      { label: '✕', kind: 'ghost', fn: () => C.hide() }]);
+      ...(ns.at && !way ? [{ label: '🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
+      { label: '✕', kind: 'ghost', fn: () => C.hide() }], { at: ns.at });
     said = 'next';
   };
+  // the way is free the first time in each episode, and whenever you have fewer than 5 coins (never a dead end)
+  const wayFree = () => !WW.run.wayUsed || (WW.save.coins || 0) < 5;
   function buyWay() {
-    if ((WW.save.coins || 0) < 5) return C.say(T('noCoins5'));
-    WW.spend(5); WW.ui.hud(); WW.game.wayUntil = performance.now() + 30000;
-    WW.sfx('coin'); C.say(T('wayOn'));
+    if (!wayFree()) { WW.spend(5); WW.ui.hud(); }
+    WW.run.wayUsed = true; WW.game.wayUntil = performance.now() + 30000;
+    WW.sfx('coin'); C.say(T('wayOn'), null, { at: C.nextStep().at });
   }
 
   /* draw him: a little bigger than before, with a soft glow, and his name while you meet him */
@@ -3560,7 +3671,7 @@ window.WW_CONFIG.MODE = 'canvas';
     bar = null;
     if (!X.on()) return;
     bar = document.createElement('div'); bar.className = 'toolbar'; bar.id = 'ww-tools';
-    $('ww-screen').insertAdjacentElement('afterend', bar);
+    $('ww-screen').appendChild(bar); // inside the map, over its bottom edge
     X.render();
   };
   // the icons' own colors (kept apart from the hero's palette)
@@ -3676,6 +3787,7 @@ window.WW_CONFIG.MODE = 'canvas';
   /* grow back after a while (never while you stand there) */
   X.tick = (now) => {
     const g = G(); if (!g.player) return;
+    if (bar) bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
     regrow = regrow.filter(r => {
       if (now < r.at) return true;
       if ((g.player.x === r.x && g.player.y === r.y) || g.entAt(r.x, r.y)) { r.at = now + 3000; return true; }
@@ -3713,7 +3825,7 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.paused = true; WW.sfx('gate');
     const gap = WW.calm ? 0 : 260;
     b.at.forEach(([x, y], i) => setTimeout(() => { g.setTile(x, y, b.tile); WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake(); }, gap * (i + 1)));
-    setTimeout(() => { WW.paused = false; WW.sfx('win'); WW.chris.say(b.done); }, gap * (b.at.length + 1) + 150);
+    setTimeout(() => { WW.paused = false; WW.sfx('win'); WW.chris.say(b.done, null, { at: b.at[0] }); }, gap * (b.at.length + 1) + 150);
   }
   // Christopher: is a broken thing in the way of the next goal?
   X.blockingRepair = (at, reachable) => {
@@ -3793,11 +3905,11 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.run.challengeTries++;
     if (right) {
       WW.sfx('good'); WW.fx.burst(x, y, 'gold');
-      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`);
+      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`, null, { at: [x, y] });
       if (WW.run.signs.every(o => o.right)) setTimeout(allDone, 700);
     } else {
       WW.sfx('bad'); g.shake();
-      WW.chris.say(`❌ ${wrongWhy(b, x, y)} ${T('sgPickUp')}`);
+      WW.chris.say(`❌ ${wrongWhy(b, x, y)} ${T('sgPickUp')}`, null, { at: [x, y] });
     }
     const next = WW.run.signs.find(o => !o.placed); if (next) WW.run.holding = next.id; else sel = 'star';
     X.render();
@@ -4023,10 +4135,10 @@ window.WW_CONFIG.MODE = 'canvas';
       if (e.i === r.route) {
         r.route++; WW.sfx('good'); WW.fx.burst(e.x, e.y, 'gold');
         if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`🎉 ${L(ch.success)}`); return; }
-        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`);
+        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`, null, { at: [e.x, e.y] });
       } else {
         r.challengeTries++; WW.sfx('bad'); g.shake();
-        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`);
+        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`, null, { at: [e.x, e.y] });
       }
       return;
     }
@@ -4424,14 +4536,17 @@ window.WW_CONFIG.MODE = 'canvas';
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
         </div>
         <div class="hud" id="ww-hud"></div>
-        <div class="quest" id="ww-quest"></div>
-        <div class="screen" id="ww-screen" tabindex="0">
-          <canvas id="ww-cv" aria-label="game map"></canvas>
-          <div id="ww-toast" class="toast" role="status"></div>
-          <div id="ww-ov" class="ov hidden" role="dialog" aria-modal="true"></div>
+        <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
+        <div class="stage" id="ww-stage">
+          <div class="screen" id="ww-screen" tabindex="0">
+            <canvas id="ww-cv" aria-label="game map"></canvas>
+            <div id="ww-qpop" class="qpop" role="status"></div>
+            <div id="ww-toast" class="toast" role="status"></div>
+            <div id="ww-ov" class="ov hidden" role="dialog" aria-modal="true"></div>
+          </div>
         </div>
         <div class="dpad" id="ww-dpad" aria-label="arrows">
           <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
@@ -4445,7 +4560,24 @@ window.WW_CONFIG.MODE = 'canvas';
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
-    $('ww-b-pad').onclick = () => root.classList.toggle('touch');
+    $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+    $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
+    $('ww-quest').onclick = () => WW.ui.questPop();
+    // the map takes all the height that is left, keeping its 16 × 11 shape
+    G.fit = () => {
+      const st = $('ww-stage'), sc = $('ww-screen'), fr = root.querySelector('.ww-frame'); if (!st || !sc) return;
+      const w = Math.max(160, Math.min(st.clientWidth, Math.floor((st.clientHeight - 8) * 16 / 11))), h = Math.round((w - 6) * 11 / 16 + 6);
+      sc.style.width = w + 'px'; sc.style.height = h + 'px';
+      fr.style.setProperty('--gw', w + 'px'); // the bars above line up with the map
+      // a tall, narrow window (a phone): the tool bar and Christopher's bubble go under the map instead of over it
+      const narrow = w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
+      fr.classList.toggle('narrow', narrow);
+      const bar = $('ww-tools');
+      if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+      if (WW.chris) WW.chris.place();
+    };
+    window.addEventListener('resize', G.fit);
+    if (window.ResizeObserver) new ResizeObserver(() => G.fit()).observe($('ww-stage'));
     $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };
     $('ww-b-mus').onclick = () => { WW.audioInit(); WW.music.toggle(); WW.ui.hud(); };
     $('ww-b-full').onclick = () => {
@@ -4542,7 +4674,7 @@ window.WW_CONFIG.MODE = 'canvas';
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
-    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep);
+    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); G.fit();
     WW.ui.hud(); WW.ui.quest();
     WW.setLang(WW.lang);
     bindInput();
@@ -4577,7 +4709,7 @@ window.WW_CONFIG.MODE = 'canvas';
     WW.world.fogSetup();
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
-    setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), 600);
+    setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }, null, { at: WW.ep.boss.at }), 600);
   };
 
   // the Grump is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
@@ -4726,6 +4858,13 @@ window.WW_CONFIG.MODE = 'canvas';
     c.closePath(); c.fill();
   }
 
+  // a quick tap of a new direction only turns the hero (to face grass or soil without stepping on it); holding walks
+  const TURN_MS = 110;
+  function press(d) {
+    held = d;
+    heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
+    if (player && !player.moving && !WW.paused) player.dir = d;
+  }
   function bindInput() {
     const keys = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right', W: 'up', S: 'down', A: 'left', D: 'right' };
     window.addEventListener('keydown', e => {
@@ -4735,9 +4874,10 @@ window.WW_CONFIG.MODE = 'canvas';
       WW.audioInit();
       if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
+      if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
       if (/^[1-5]$/.test(e.key)) { WW.tools.pick(['star', 'axe', 'sickle', 'seed', 'sign'][+e.key - 1]); return; }
-      if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
+      if (keys[e.key]) { e.preventDefault(); if (!e.repeat) press(keys[e.key]); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
       else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
     });
@@ -4746,7 +4886,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else { held = d; heldSince = performance.now(); } };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
@@ -4869,7 +5009,7 @@ window.WW_CONFIG.MODE = 'canvas';
     if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
-      if (held) tryStep(held, now);
+      if (held && now - heldSince >= TURN_MS) tryStep(held, now);
       else if (clickTarget) {
         const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
         if (!dx && !dy) clickTarget = null;
@@ -5239,9 +5379,9 @@ window.EPISODE = {
     spots: [[3, 8], [14, 8], [26, 8], [39, 10], [45, 10]],
     stat: 'mov',
     title: { en: 'Ride the Trans-Siberian', es: 'Viaja en el Transiberiano', fa: 'سفر با قطار ترانس‌سیبری' },
-    intro: { en: 'The Grump scrambled the train timetable! Tap the stops in order from west to east, starting in Moscow.',
-      es: '¡El Gruñón revolvió el horario del tren! Toca las paradas en orden de oeste a este, empezando en Moscú.',
-      fa: 'غرغرو جدول قطار را درهم کرد! ایستگاه‌ها را به ترتیب از غرب به شرق بزن، از مسکو شروع کن.' },
+    intro: { en: 'The Grump scrambled the train timetable! Walk to the stops on the map in order, from west to east, starting in Moscow.',
+      es: '¡El Gruñón revolvió el horario del tren! Camina a las paradas del mapa en orden, de oeste a este, empezando en Moscú.',
+      fa: 'غرغرو جدول قطار را درهم کرد! به ترتیب از غرب به شرق به ایستگاه‌های روی نقشه برو، از مسکو شروع کن.' },
     items: [
       { icon: '🏛️', t: { en: 'Moscow · the capital, in the west', es: 'Moscú · la capital, en el oeste', fa: 'مسکو · پایتخت، در غرب' } },
       { icon: '⛰️', t: { en: 'Yekaterinburg · just past the Ural Mountains, in Asia', es: 'Ekaterimburgo · justo después de los montes Urales, en Asia', fa: 'یکاترینبورگ · کمی بعد از کوه‌های اورال، در آسیا' } },

@@ -33,14 +33,17 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
         </div>
         <div class="hud" id="ww-hud"></div>
-        <div class="quest" id="ww-quest"></div>
-        <div class="screen" id="ww-screen" tabindex="0">
-          <canvas id="ww-cv" aria-label="game map"></canvas>
-          <div id="ww-toast" class="toast" role="status"></div>
-          <div id="ww-ov" class="ov hidden" role="dialog" aria-modal="true"></div>
+        <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
+        <div class="stage" id="ww-stage">
+          <div class="screen" id="ww-screen" tabindex="0">
+            <canvas id="ww-cv" aria-label="game map"></canvas>
+            <div id="ww-qpop" class="qpop" role="status"></div>
+            <div id="ww-toast" class="toast" role="status"></div>
+            <div id="ww-ov" class="ov hidden" role="dialog" aria-modal="true"></div>
+          </div>
         </div>
         <div class="dpad" id="ww-dpad" aria-label="arrows">
           <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
@@ -54,7 +57,24 @@
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
-    $('ww-b-pad').onclick = () => root.classList.toggle('touch');
+    $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+    $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
+    $('ww-quest').onclick = () => WW.ui.questPop();
+    // the map takes all the height that is left, keeping its 16 × 11 shape
+    G.fit = () => {
+      const st = $('ww-stage'), sc = $('ww-screen'), fr = root.querySelector('.ww-frame'); if (!st || !sc) return;
+      const w = Math.max(160, Math.min(st.clientWidth, Math.floor((st.clientHeight - 8) * 16 / 11))), h = Math.round((w - 6) * 11 / 16 + 6);
+      sc.style.width = w + 'px'; sc.style.height = h + 'px';
+      fr.style.setProperty('--gw', w + 'px'); // the bars above line up with the map
+      // a tall, narrow window (a phone): the tool bar and Christopher's bubble go under the map instead of over it
+      const narrow = w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
+      fr.classList.toggle('narrow', narrow);
+      const bar = $('ww-tools');
+      if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+      if (WW.chris) WW.chris.place();
+    };
+    window.addEventListener('resize', G.fit);
+    if (window.ResizeObserver) new ResizeObserver(() => G.fit()).observe($('ww-stage'));
     $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };
     $('ww-b-mus').onclick = () => { WW.audioInit(); WW.music.toggle(); WW.ui.hud(); };
     $('ww-b-full').onclick = () => {
@@ -151,7 +171,7 @@
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
-    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep);
+    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); G.fit();
     WW.ui.hud(); WW.ui.quest();
     WW.setLang(WW.lang);
     bindInput();
@@ -186,7 +206,7 @@
     WW.world.fogSetup();
     WW.fx.burst(WW.ep.challenge.at[0], WW.ep.challenge.at[1], 'gold'); WW.fx.burst(b.x, b.y, 'poof');
     WW.ui.quest();
-    setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }), 600);
+    setTimeout(() => WW.chris.say(WW.ep.boss.appear || { en: 'The Grump is out! Find it.', es: '¡Salió el Gruñón! Búscalo.', fa: 'غرغرو بیرون آمد! پیدایش کن.' }, null, { at: WW.ep.boss.at }), 600);
   };
 
   // the Grump is beaten: its dimness lifts and the atlas page waits on a pedestal where it stood
@@ -335,6 +355,13 @@
     c.closePath(); c.fill();
   }
 
+  // a quick tap of a new direction only turns the hero (to face grass or soil without stepping on it); holding walks
+  const TURN_MS = 110;
+  function press(d) {
+    held = d;
+    heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
+    if (player && !player.moving && !WW.paused) player.dir = d;
+  }
   function bindInput() {
     const keys = { ArrowUp: 'up', ArrowDown: 'down', ArrowLeft: 'left', ArrowRight: 'right', w: 'up', s: 'down', a: 'left', d: 'right', W: 'up', S: 'down', A: 'left', D: 'right' };
     window.addEventListener('keydown', e => {
@@ -344,9 +371,10 @@
       WW.audioInit();
       if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
+      if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
       if (/^[1-5]$/.test(e.key)) { WW.tools.pick(['star', 'axe', 'sickle', 'seed', 'sign'][+e.key - 1]); return; }
-      if (keys[e.key]) { e.preventDefault(); held = keys[e.key]; heldSince = performance.now(); }
+      if (keys[e.key]) { e.preventDefault(); if (!e.repeat) press(keys[e.key]); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
       else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
     });
@@ -355,7 +383,7 @@
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else { held = d; heldSince = performance.now(); } };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
@@ -478,7 +506,7 @@
     if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
-      if (held) tryStep(held, now);
+      if (held && now - heldSince >= TURN_MS) tryStep(held, now);
       else if (clickTarget) {
         const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
         if (!dx && !dy) clickTarget = null;

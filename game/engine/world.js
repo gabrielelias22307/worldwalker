@@ -99,10 +99,10 @@
       if (e.i === r.route) {
         r.route++; WW.sfx('good'); WW.fx.burst(e.x, e.y, 'gold');
         if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`🎉 ${L(ch.success)}`); return; }
-        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`);
+        WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`, null, { at: [e.x, e.y] });
       } else {
         r.challengeTries++; WW.sfx('bad'); g.shake();
-        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`);
+        WW.chris.say(`❌ ${T('w_routeWrong')} ${L(ch.why || '')}`, null, { at: [e.x, e.y] });
       }
       return;
     }

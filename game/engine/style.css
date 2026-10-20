@@ -9,20 +9,29 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
 button{font-family:inherit}
-.ww-frame{max-width:960px;margin:0 auto;padding:10px 12px 24px;background:var(--bg)}
-.ww-frame:fullscreen{max-width:none;height:100vh;overflow:auto;display:flex;flex-direction:column;justify-content:center}
-.ww-frame:fullscreen .screen{max-width:calc((100vh - 160px) * 16 / 11);margin:0 auto;width:100%}
+/* the whole game is exactly as tall as the window: no page scrolling (FUN-PASS-2, Part A) */
+html,body{height:100%;overflow:hidden}
+.ww-frame{max-width:1200px;height:100vh;height:100dvh;margin:0 auto;padding:6px 8px;background:var(--bg);display:flex;flex-direction:column;gap:0}
+.ww-frame:fullscreen{max-width:none}
+.stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-bottom:2px;position:relative}
+.ww-frame>.ww-bar,.ww-frame>.hud,.ww-frame>.quest{width:100%;max-width:max(var(--gw,100%),min(100%,560px));margin-left:auto;margin-right:auto}
+/* a phone: the tool bar sits under the map */
+.ww-frame.narrow .stage>.toolbar{position:static;transform:none;margin:5px auto 0;width:max-content;max-width:100%}
+.cbubble.dock{max-width:none}
+.cbubble.dock::after{bottom:auto;top:-10px;left:var(--tx,50%);border:7px solid transparent;border-bottom-color:var(--ink);border-top:0}
 
 /* top bar */
-.ww-bar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px}
+.ww-bar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:5px}
 .ww-logo{font-family:var(--pix);font-size:12px;color:var(--gold);text-decoration:none;margin-right:auto}
-.ww-bar button{font-size:13px;padding:6px 9px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer}
+.ww-bar button{font-size:13px;padding:5px 8px;background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;cursor:pointer;line-height:1.3}
+@media (max-width:820px){.ww-bar .lbl{display:none}.ww-bar button{padding:5px 7px}}
+@media (max-width:520px){.ww-logo{display:none}.ww-bar{gap:4px;justify-content:center}.ww-bar .langs,.ww-bar .tools{gap:3px}.ww-bar button{font-size:12px;padding:4px 6px}}
 .ww-bar .langs button.on{background:var(--gold);color:var(--ink);font-weight:700}
 .ww-bar .langs,.ww-bar .tools{display:flex;gap:5px;flex-wrap:wrap}
 .ww-preview{font-size:12px;font-weight:700;padding:5px 8px;background:var(--teal);color:#fff;border:2px solid #000;border-radius:4px;text-decoration:none}
 
 /* HUD */
-.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;background:#0b0a14;padding:7px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
+.hud{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:nowrap;background:#0b0a14;padding:5px 10px;font-family:var(--pix);font-size:10px;border:3px solid #000;border-bottom:0;border-radius:6px 6px 0 0}
 .hud-left,.hud-right{display:flex;align-items:center;gap:6px}
 .hrt{color:var(--red);font-size:16px;line-height:1}
 .hrt.empty{color:#4a2630}
@@ -32,7 +41,14 @@ button{font-family:inherit}
 .meter i{font-style:normal;font-size:12px}
 .track{display:block;width:40px;height:9px;background:#2a2840;border:2px solid #000}
 .track b{display:block;height:100%}
-.quest{background:#0b0a14;border:3px solid #000;border-top:1px solid #2a2840;border-bottom:0;padding:5px 10px;font-size:14px;color:var(--muted)}
+/* the quest bar: the current goal only, on one line; ☰ (or Q) opens the whole list over the map */
+.quest{background:#0b0a14;border:3px solid #000;border-top:1px solid #2a2840;border-bottom:0;padding:3px 8px;font-size:14px;color:var(--muted);display:flex;align-items:center;gap:8px;white-space:nowrap;cursor:pointer;min-width:0}
+.quest .qgoal{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis}
+.quest .qlist{background:var(--panel2);color:#fff;border:2px solid #000;border-radius:4px;font-size:13px;padding:1px 7px;cursor:pointer}
+.qpop{position:absolute;z-index:7;left:8px;top:8px;max-width:calc(100% - 16px);background:rgba(11,10,20,.94);color:var(--text);border:3px solid #000;outline:2px solid var(--gold);border-radius:6px;padding:8px 12px;font-size:14px;line-height:1.5;display:none}
+.qpop.on{display:block}
+.qpop ol{margin:4px 0 0;padding-inline-start:20px}
+.qpop .qdone{color:#7cc451}.qpop .qnow{color:#fff;font-weight:700}.qpop li{color:var(--muted)}
 .quest b{color:var(--gold)}
 .quest i{font-style:normal;color:#5a5680}
 .quest .qnow{color:#fff;font-weight:700}
@@ -40,10 +56,10 @@ button{font-family:inherit}
 .quest .qscr{color:#c9b064}
 
 /* screen */
-.screen{position:relative;background:#000;border:3px solid #000;outline:3px solid var(--line);border-radius:0 0 6px 6px;overflow:hidden;user-select:none}
+.screen{position:relative;background:#000;border:3px solid #000;outline:3px solid var(--line);border-radius:0 0 6px 6px;overflow:hidden;user-select:none;flex:none;width:100%}
 .screen:focus{outline-color:var(--gold)}
 .screen canvas#ww-cv{display:block;width:100%;height:auto;image-rendering:pixelated;image-rendering:crisp-edges;cursor:pointer}
-.screen.ovopen{min-height:min(560px,85vh)}
+
 .toast{position:absolute;right:10px;top:10px;z-index:6;display:flex;flex-direction:column;align-items:flex-end;gap:5px;max-width:70%;pointer-events:none}
 .toast .tst{color:#fff;font-weight:700;font-size:15px;padding:7px 11px;border:3px solid #000;border-radius:4px;animation:pop .2s ease-out}
 .toast .tst.big{font-size:16px;padding:10px 14px;outline:3px solid #fff3b0;max-width:100%}
@@ -211,16 +227,15 @@ button{font-family:inherit}
 .savebox{margin-top:10px;padding:8px 12px;background:#efe8d2;border:2px solid #b7a77e;border-radius:4px;display:grid;gap:4px}
 
 /* touch arrows */
-.dpad{display:none;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,56px);gap:6px;justify-content:center;margin:12px auto 0;touch-action:none}
+.dpad{display:none;grid-template-columns:repeat(3,52px);grid-template-rows:repeat(3,44px);gap:4px;justify-content:center;margin:6px auto 0;touch-action:none;flex:none}
 .dpad button{background:var(--panel2);color:#fff;border:3px solid #000;border-radius:8px;font-size:22px;cursor:pointer}
 .dpad [data-d=up]{grid-column:2;grid-row:1}.dpad [data-d=left]{grid-column:1;grid-row:2}.dpad .act{grid-column:2;grid-row:2;background:var(--gold);color:var(--ink)}
 .dpad [data-d=right]{grid-column:3;grid-row:2}.dpad [data-d=down]{grid-column:2;grid-row:3}
 @media (pointer:coarse){.dpad{display:grid}}
-.ww-foot{text-align:center;color:var(--muted);font-size:13.5px;margin-top:10px}
+.ww-foot{display:none}
 @media (max-width:640px){
-  .track{width:22px}.hud{font-size:9px}.hud-mid{font-size:12px;order:3;width:100%}
+  .track{width:22px}.hud{font-size:9px;padding:4px 6px}.hud-mid{display:none}
   .ov{padding:6px}.ov-box{padding:10px 12px}
-  .screen.ovopen{min-height:85vh}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 /* talk boxes sit at the bottom like a classic RPG; the map stays visible */
@@ -317,7 +332,7 @@ canvas{filter:var(--vivid)}
 .gridlabs .gl.thing{font-size:11px;font-weight:600;background:rgba(255,251,232,.92);color:var(--ink);border:1px solid var(--ink);max-width:150px;white-space:normal;text-align:center}
 .ov .zchip{display:inline-block;background:#fff3c4;border:2px solid #e3c25b;border-radius:4px;padding:1px 6px;margin:2px}
 /* the base camp */
-.campcv{display:block;width:100%;max-width:640px;margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
+.campcv{display:block;width:100%;max-width:min(640px,calc(42vh * 320 / 176));margin:6px auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px}
 .campslots,.campshop,.campown{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
 .campshop p,.campown p{flex-basis:100%;margin:4px 0 0}
 .campslot{width:86px;min-height:58px;font-size:24px;background:#fff3c4;border:2px dashed #b8902a;border-radius:6px;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center}
@@ -329,3 +344,30 @@ canvas{filter:var(--vivid)}
 .campitem.ghost{background:#f0eef8}
 .campmsg{font-weight:700}
 .passov .campbtn{margin:8px 0}
+
+/* small windows: panels cover the whole game, not just the little map, so they are easy to read */
+@media (max-width:700px),(max-height:560px){.ov{position:fixed;z-index:20}}
+/* the tool bar sits inside the map, over its bottom edge (like Stardew Valley); it hops to the top when the hero walks under it */
+.screen .toolbar{position:absolute;z-index:3;left:50%;bottom:4px;transform:translateX(-50%);margin:0;max-width:calc(100% - 8px);width:max-content;padding:4px 6px;gap:5px;background:rgba(11,10,20,.78);border:2px solid #000;border-radius:8px;flex-wrap:wrap;justify-content:center}
+.screen .toolbar.top{bottom:auto;top:4px}
+.screen .toolbar .tslot{width:38px;height:38px;border-width:2px}
+.screen .toolbar .tslot canvas{width:26px;height:26px}
+.screen .toolbar .tbag{margin-inline-start:6px;gap:7px}
+.screen .toolbar .tbag canvas{width:20px;height:20px}
+.screen .toolbar .tcarry{order:-1;flex-basis:100%;max-width:min(560px,92vw);font-size:13px;padding:3px 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:520px){.screen .toolbar{padding:3px 4px;gap:3px}.screen .toolbar .tslot{width:32px;height:32px}.screen .toolbar .tslot canvas{width:22px;height:22px}.screen .toolbar .tslot i{font-size:9px}.screen .toolbar .tslot b{font-size:10px}.screen .toolbar .tbag{gap:4px}}
+/* Christopher's bubble: narrower on small screens; its tail points back at him from whichever side it sits */
+.cbubble{max-width:min(330px,58%)}
+@media (max-width:520px){.cbubble{font-size:14px;padding:5px 8px 6px;max-width:min(260px,62%)}.cbubble .cb-acts .pbtn{font-size:12px;padding:3px 7px}}
+.cbubble.side-l::after,.cbubble.side-r::after{bottom:auto;top:calc(50% - 7px);border:7px solid transparent}
+.cbubble.side-l::after{left:auto;right:-10px;border-left-color:var(--ink);border-right:0}
+.cbubble.side-r::after{left:-10px;border-right-color:var(--ink);border-left:0}
+.ww-help{font-weight:700}
+
+/* map labels shrink with the map so they never pile up on a small screen */
+.gridlabs .gl{font-size:clamp(8px,calc(var(--gw,900px) / 72),13px);padding:2px 4px}
+.gridlabs .gl.zone{font-size:clamp(8px,calc(var(--gw,900px) / 76),12px)}
+.gridlabs .gl.thing{font-size:clamp(8px,calc(var(--gw,900px) / 80),11px);max-width:clamp(70px,calc(var(--gw,900px) / 6),150px)}
+
+/* the bubble's tail points at Christopher, wherever the bubble sits above or below him */
+.cbubble:not(.side-l):not(.side-r)::after{left:var(--tx,calc(50% - 7px))}

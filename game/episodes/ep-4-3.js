@@ -246,9 +246,9 @@ window.EPISODE = {
     spots: [[3, 3], [11, 3], [14, 8], [28, 17], [29, 20], [29, 4], [10, 14]],
     stat: 'mov',
     title: { en: 'From the mine to your kitchen', es: 'De la mina a tu cocina', fa: 'از معدن تا آشپزخانهٔ تو' },
-    intro: { en: 'The Grump scattered the trade chain! Chrome ore leaves a mine in South Africa and ends up far away. Tap the steps in the right order, from first to last.',
-      es: '¡El Gruñón desarmó la cadena de comercio! El mineral de cromo sale de una mina en Sudáfrica y termina muy lejos. Toca los pasos en el orden correcto, del primero al último.',
-      fa: 'غرغرو زنجیر تجارت را پراگنده کرد! سنگ کروم از یک معدن در افریقای جنوبی بیرون می‌آید و به جای دور می‌رسد. قدم‌ها را به ترتیب درست، از اول تا آخر، لمس کن.' },
+    intro: { en: 'The Grump scattered the trade chain! Chrome ore leaves a mine in South Africa and ends up far away. Walk to each step on the map in the right order, from first to last.',
+      es: '¡El Gruñón desarmó la cadena de comercio! El mineral de cromo sale de una mina en Sudáfrica y termina muy lejos. Camina a cada paso del mapa en el orden correcto, del primero al último.',
+      fa: 'غرغرو زنجیر تجارت را پراگنده کرد! سنگ کروم از یک معدن در افریقای جنوبی بیرون می‌آید و به جای دور می‌رسد. به ترتیب درست، از اول تا آخر، به هر قدم روی نقشه برو.' },
     items: [
       { icon: '⛏️', t: { en: 'Miners dig chrome ore from deep in the ground', es: 'Mineros sacan mineral de cromo de lo profundo de la tierra', fa: 'معدن‌کاران سنگ کروم را از عمق زمین بیرون می‌کنند' } },
       { icon: '🏭', t: { en: 'A processing plant crushes the rock and pulls out the ore', es: 'Una planta de procesamiento tritura la roca y saca el mineral', fa: 'یک کارخانهٔ پروسس سنگ را میده می‌کند و سنگ معدنی را جدا می‌کند' } },

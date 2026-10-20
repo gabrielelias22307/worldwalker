@@ -34,6 +34,14 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.locator('#ww-ov .pbtn.gold.big').click();
         await page.waitForSelector('.introov');
         await shot('1-intro');
+        // count the question panels this episode opens (FUN-PASS-2: this number should go down)
+        await page.evaluate(() => {
+          window.__qpanels = 0;
+          new MutationObserver(() => {
+            const t = WW.ui.top(); const ov = document.getElementById('ww-ov');
+            if (t && !t.__q && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) { t.__q = true; window.__qpanels++; }
+          }).observe(document.getElementById('ww-ov'), { childList: true, subtree: true });
+        });
         // reward pop-ups: count how many show at once, and whether one ever shows over an open panel
         await page.evaluate(() => {
           window.__toast = { most: 0, overPanel: 0 };
@@ -525,7 +533,8 @@ const SHOTS = !process.argv.includes('--no-shots');
     } catch (e) { /* recorded in steps */ }
     const ok = steps.every(s => s.startsWith('✓')) && !errs.length;
     if (!ok) failed++;
-    console.log(`Episode ${id}: ${ok ? 'PLAYED THROUGH ✓' : 'PROBLEM ✗'}`);
+    const qp = await page.evaluate(() => window.__qpanels).catch(() => '?');
+    console.log(`Episode ${id}: ${ok ? 'PLAYED THROUGH ✓' : 'PROBLEM ✗'} · question panels: ${qp}`);
     steps.filter(s => !ok || s.startsWith('✗')).forEach(s => console.log('   ' + s));
     errs.forEach(e => console.log('   ' + e));
     await page.close();

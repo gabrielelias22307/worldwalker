@@ -25,6 +25,13 @@
       ov.appendChild(box);
       opts.render(box, h);
       ov.scrollTop = 0;
+      // keyboard players: the main button (or the first answer) has focus, so Enter or Space presses it
+      const f = box.querySelector('.choices button:not([disabled]), .pbtn.gold:not([disabled])');
+      const main = [...box.querySelectorAll('.pbtn.gold:not([disabled])')].pop();
+      const empty = [...box.querySelectorAll('input:not([type=hidden]),textarea')].find(i => !i.value); // a form: the first empty box
+      const answered = box.querySelector('.fb, .choices button.right'); // after an answer: Continue
+      const pick = empty || (answered && main) || box.querySelector('.choices button:not([disabled])') || main || f;
+      if (pick) try { pick.focus({ preventScroll: true }); } catch (e) { }
     }
     ui.stack.push(h); holdToast();
     $('ww-screen').classList.add('ovopen');
@@ -106,12 +113,14 @@
     const bar = $('ww-bar');
     if (bar) {
       bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
-      $('ww-b-pass').textContent = '📘 ' + T('passport');
-      const m = $('ww-b-map'); if (m) m.textContent = '🗺️ ' + T('map');
-      $('ww-b-snd').textContent = (WW.save.sound ? '🔊 ' : '🔇 ') + T('sound');
-      $('ww-b-mus').textContent = (WW.save.music ? '🎵 ' : '🚫 ') + T('music');
-      $('ww-b-full').textContent = '⛶ ' + T('full');
-      $('ww-foot').textContent = T('controls');
+      const lab = (id, icon, word) => { const b = $(id); if (!b) return; b.innerHTML = `${icon}<span class="lbl"> ${esc(word)}</span>`; b.title = word; b.setAttribute('aria-label', word); };
+      lab('ww-b-pass', '📘', T('passport'));
+      lab('ww-b-map', '🗺️', T('map'));
+      lab('ww-b-snd', WW.save.sound ? '🔊' : '🔇', T('sound'));
+      lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
+      lab('ww-b-full', '⛶', T('full'));
+      lab('ww-b-help', '?', T('helpKeys'));
+      lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
     }
   };
   ui.quest = () => {
@@ -124,10 +133,24 @@
       [L(ep.challenge.title) || T('solve'), r.challengeDone],
       [T('face'), r.bossDone],
       [T('claim'), r.claimed]];
-    let h = `<b>${esc(T('quest'))}:</b> `;
-    h += steps.map(([s, ok], i) => `<span class="${ok ? 'qdone' : (i === 0 || steps[i - 1][1]) ? 'qnow' : ''}">${ok ? '✓ ' : ''}${esc(s)}</span>`).join(' <i>→</i> ');
-    h += ` <span class="qscr">· ${esc(T('scraps'))} ${r.scraps.size}/${ep.scraps.length}</span>`;
-    el.innerHTML = h; el.setAttribute('dir', WW.dir());
+    // one line: the goal right now. The whole list opens with ☰ (or Q) and is in the Passport.
+    const now = steps.findIndex(([, ok]) => !ok), cur = now < 0 ? steps[steps.length - 1] : steps[now];
+    const label = now < 0 ? '✓ ' + cur[0] : `▶ ${cur[0]}`;
+    el.innerHTML = `<b>${esc(T('quest'))}:</b><span class="qgoal" title="${esc(steps.map(s => s[0]).join(' → '))}"><span class="${now < 0 ? 'qdone' : 'qnow'}">${esc(label)}</span> <span class="qscr">· 📄 ${r.scraps.size}/${ep.scraps.length}</span></span><span class="qlist" aria-label="${esc(T('goals'))}">☰ ${now < 0 ? steps.length : now + 1}/${steps.length}</span>`;
+    el.setAttribute('dir', WW.dir());
+    ui.questSteps = steps;
+    const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
+  };
+  // the whole goal list, over the top of the map (tap the quest bar, or press Q)
+  ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
+    return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
+  let qTimer = 0;
+  ui.questPop = (refresh) => {
+    const pop = $('ww-qpop'); if (!pop) return;
+    if (!refresh && pop.classList.contains('on')) { pop.classList.remove('on'); return; }
+    pop.innerHTML = `<b>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</b>${ui.questList()}<div class="small">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+    pop.setAttribute('dir', WW.dir()); pop.classList.add('on');
+    clearTimeout(qTimer); if (!refresh) qTimer = setTimeout(() => pop.classList.remove('on'), 7000);
   };
 
   /* small canvas with a sprite drawn big */
@@ -281,13 +304,16 @@
         box.appendChild(lk);
         const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
         form.querySelectorAll('input').forEach(i => (i.oninput = keep));
+        // Enter in a box goes to the next box, and from the last one it starts the game
+        form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
         const acts = document.createElement('div'); acts.className = 'acts center';
-        acts.appendChild(btn(T('play') + ' ▶', 'gold big', () => {
+        const playBtn = btn(T('play') + ' ▶', 'gold big', () => {
           keep();
           if (!s.name) { msg = T('needName'); return h.render(); }
           if (s.pin && !/^\d{4}$/.test(s.pin)) { msg = T('needPin'); return h.render(); }
           go();
-        }));
+        });
+        acts.appendChild(playBtn);
         box.appendChild(acts);
         if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
         const pc = document.createElement('div'); pc.className = 'codein';
@@ -354,6 +380,7 @@
     render(box, h) {
       const inner = document.createElement('div'); box.appendChild(inner);
       WW.camp.render(inner, () => { ui.hud(); WW.tools && WW.tools.render(); });
+      requestAnimationFrame(() => { $('ww-ov').scrollTop = 0; });
       const a = document.createElement('div'); a.className = 'acts'; a.appendChild(btn(T('close'), 'gold', () => h.close())); box.appendChild(a);
     }
   });
@@ -379,6 +406,7 @@
         });
         pw += '</div>';
         box.insertAdjacentHTML('beforeend', pw);
+        if (WW.run && ui.questSteps) box.insertAdjacentHTML('beforeend', `<h3>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</h3><div class="ppgoals">${ui.questList()}</div>`);
         { const cb = btn('🏕️ ' + esc(T('campOpen')), 'teal', () => ui.camp()); cb.classList.add('campbtn'); box.appendChild(cb); }
         box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;

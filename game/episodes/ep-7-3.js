@@ -242,9 +242,9 @@ window.EPISODE = {
     spots: [[7, 2], [25, 6], [6, 13], [27, 15], [25, 18], [23, 16], [15, 17]],
     stat: 'mov',
     title: { en: 'Follow the phone', es: 'Sigue al teléfono', fa: 'دنبال مبایل برو' },
-    intro: { en: 'The Grump scrambled the trip a phone takes. Tap the steps in order, from the ground to your hand.',
-      es: 'El Gruñón revolvió el viaje que hace un teléfono. Toca los pasos en orden, desde la tierra hasta tu mano.',
-      fa: 'غرغرو سفر یک مبایل را مخلوط کرد. قدم‌ها را به ترتیب لمس کن، از زمین تا دست تو.' },
+    intro: { en: 'The Grump scrambled the trip a phone takes. Walk to each step on the map in order, from the ground to your hand.',
+      es: 'El Gruñón revolvió el viaje que hace un teléfono. Camina a cada paso del mapa en orden, desde la tierra hasta tu mano.',
+      fa: 'غرغرو سفر یک مبایل را مخلوط کرد. به ترتیب، از زمین تا دست تو، به هر قدم روی نقشه برو.' },
     items: [
       { icon: '⛏️', t: { en: 'A mine digs up metals like copper and lithium', es: 'Una mina saca metales como cobre y litio', fa: 'یک معدن فلزهایی مثل مس و لیتیم بیرون می‌کشد' } },
       { icon: '🔬', t: { en: 'A chip factory makes tiny chips (semiconductors)', es: 'Una fábrica de chips hace chips diminutos (semiconductores)', fa: 'یک فابریکهٔ چِپ چِپ‌های کوچک (نیمه‌هادی) می‌سازد' } },

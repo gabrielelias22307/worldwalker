@@ -222,9 +222,9 @@ window.EPISODE = {
     spots: [[3, 8], [14, 8], [26, 8], [39, 10], [45, 10]],
     stat: 'mov',
     title: { en: 'Ride the Trans-Siberian', es: 'Viaja en el Transiberiano', fa: 'سفر با قطار ترانس‌سیبری' },
-    intro: { en: 'The Grump scrambled the train timetable! Tap the stops in order from west to east, starting in Moscow.',
-      es: '¡El Gruñón revolvió el horario del tren! Toca las paradas en orden de oeste a este, empezando en Moscú.',
-      fa: 'غرغرو جدول قطار را درهم کرد! ایستگاه‌ها را به ترتیب از غرب به شرق بزن، از مسکو شروع کن.' },
+    intro: { en: 'The Grump scrambled the train timetable! Walk to the stops on the map in order, from west to east, starting in Moscow.',
+      es: '¡El Gruñón revolvió el horario del tren! Camina a las paradas del mapa en orden, de oeste a este, empezando en Moscú.',
+      fa: 'غرغرو جدول قطار را درهم کرد! به ترتیب از غرب به شرق به ایستگاه‌های روی نقشه برو، از مسکو شروع کن.' },
     items: [
       { icon: '🏛️', t: { en: 'Moscow · the capital, in the west', es: 'Moscú · la capital, en el oeste', fa: 'مسکو · پایتخت، در غرب' } },
       { icon: '⛰️', t: { en: 'Yekaterinburg · just past the Ural Mountains, in Asia', es: 'Ekaterimburgo · justo después de los montes Urales, en Asia', fa: 'یکاترینبورگ · کمی بعد از کوه‌های اورال، در آسیا' } },

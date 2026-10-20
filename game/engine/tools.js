@@ -37,7 +37,7 @@
     bar = null;
     if (!X.on()) return;
     bar = document.createElement('div'); bar.className = 'toolbar'; bar.id = 'ww-tools';
-    $('ww-screen').insertAdjacentElement('afterend', bar);
+    $('ww-screen').appendChild(bar); // inside the map, over its bottom edge
     X.render();
   };
   // the icons' own colors (kept apart from the hero's palette)
@@ -153,6 +153,7 @@
   /* grow back after a while (never while you stand there) */
   X.tick = (now) => {
     const g = G(); if (!g.player) return;
+    if (bar) bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
     regrow = regrow.filter(r => {
       if (now < r.at) return true;
       if ((g.player.x === r.x && g.player.y === r.y) || g.entAt(r.x, r.y)) { r.at = now + 3000; return true; }
@@ -190,7 +191,7 @@
     WW.paused = true; WW.sfx('gate');
     const gap = WW.calm ? 0 : 260;
     b.at.forEach(([x, y], i) => setTimeout(() => { g.setTile(x, y, b.tile); WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake(); }, gap * (i + 1)));
-    setTimeout(() => { WW.paused = false; WW.sfx('win'); WW.chris.say(b.done); }, gap * (b.at.length + 1) + 150);
+    setTimeout(() => { WW.paused = false; WW.sfx('win'); WW.chris.say(b.done, null, { at: b.at[0] }); }, gap * (b.at.length + 1) + 150);
   }
   // Christopher: is a broken thing in the way of the next goal?
   X.blockingRepair = (at, reachable) => {
@@ -270,11 +271,11 @@
     WW.run.challengeTries++;
     if (right) {
       WW.sfx('good'); WW.fx.burst(x, y, 'gold');
-      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`);
+      WW.chris.say(`✅ ${T('sgRight')} ${WW.plain(b.text)}. ${L(b.why || '')}`, null, { at: [x, y] });
       if (WW.run.signs.every(o => o.right)) setTimeout(allDone, 700);
     } else {
       WW.sfx('bad'); g.shake();
-      WW.chris.say(`❌ ${wrongWhy(b, x, y)} ${T('sgPickUp')}`);
+      WW.chris.say(`❌ ${wrongWhy(b, x, y)} ${T('sgPickUp')}`, null, { at: [x, y] });
     }
     const next = WW.run.signs.find(o => !o.placed); if (next) WW.run.holding = next.id; else sel = 'star';
     X.render();
