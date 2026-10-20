@@ -201,7 +201,7 @@ const SHOTS = !process.argv.includes('--no-shots');
         await page.evaluate(e => { WW.save.episodes[e] = { done: true, stars: 1 }; }, toolEp);
         const c0 = await page.evaluate(() => WW.save.coins);
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.secret.at);
-        await page.waitForSelector('.msgov'); await shot('s-secret'); await clickGold(); await page.waitForFunction(() => !WW.paused);
+        await page.waitForSelector('.msgov'); await page.waitForTimeout(450); await shot('s-secret'); await clickGold(); await page.waitForFunction(() => !WW.paused);
         if (await page.evaluate(() => WW.save.coins) !== c0 + 5) throw new Error('the chest did not give 5 coins');
         if (!(await page.evaluate(() => (WW.save.secrets || []).includes(WW.ep.id)))) throw new Error('the secret was not saved');
         await page.evaluate(e => { delete WW.save.episodes[e]; }, toolEp);
@@ -211,11 +211,11 @@ const SHOTS = !process.argv.includes('--no-shots');
         for (let i = 0; i < ep.finds.length; i++) {
           const f = ep.finds[i];
           await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), f.clueAt);
-          await page.waitForSelector('.msgov'); if (i === 0) await shot('f-clue');
+          await page.waitForSelector('.msgov'); if (i === 0) { await page.waitForTimeout(450); await shot('f-clue'); }
           const raw = await page.textContent('#ww-ov'); if (/\[\[|undefined/.test(raw)) throw new Error('raw text in a clue');
           await clickGold(); await page.waitForFunction(() => !WW.paused);
           await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), f.at);
-          await page.waitForSelector('.msgov'); if (i === 0) await shot('f-found');
+          await page.waitForSelector('.msgov'); if (i === 0) { await page.waitForTimeout(450); await shot('f-found'); }
           await clickGold(); await page.waitForFunction(() => !WW.paused);
           if (f.decor && !(await page.evaluate(d => WW.save.camp.owned.includes(d), f.decor))) throw new Error('find ' + i + ' did not give its decoration');
         }
