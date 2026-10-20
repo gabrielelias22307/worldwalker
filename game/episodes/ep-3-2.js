@@ -45,6 +45,15 @@ window.EPISODE = {
       fa: 'قایق کوچک به یک جزیره در جهیل بایکال رسید! در صندوق یک یادداشت است. می‌گوید بایکال عمیق‌ترین جهیل روی زمین است. عمق آن بیشتر از ۱۶۰۰ متر است.' } },
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [7, 10], at: [12, 10], decor: 'gem',
+      clue: { en: 'The Ural Mountains are the line between Europe and Asia. Stand on the first square of Asia: just east of the mountains, one step south of the railway.', es: 'Los montes Urales son la línea entre Europa y Asia. Párate en el primer cuadro de Asia: justo al este de las montañas, un paso al sur del ferrocarril.', fa: 'کوه‌های اورال خط میان اروپا و آسیا هستند. روی اولین خانهٔ آسیا بایست: درست شرقِ کوه‌ها، یک قدم جنوبِ خط آهن.' },
+      text: { en: 'You crossed from Europe into Asia! The Ural Mountains are famous for beautiful stones, like green malachite. A shiny green gem was here.', es: '¡Pasaste de Europa a Asia! Los montes Urales son famosos por sus piedras hermosas, como la malaquita verde. Aquí había una gema verde y brillante.', fa: 'تو از اروپا به آسیا رفتی! کوه‌های اورال به خاطر سنگ‌های زیبا مثل ملاکیت سبز مشهور هستند. یک جواهر سبز و براق اینجا بود.' } },
+    { clueAt: [30, 17], at: [26, 19], decor: 'feather',
+      clue: { en: 'From this note, walk 4 steps west, then 2 steps south. Something is hidden in the steppe grass.', es: 'Desde esta nota, camina 4 pasos al oeste y luego 2 pasos al sur. Algo está escondido en el pasto de la estepa.', fa: 'از این یادداشت، ۴ قدم به غرب برو، بعد ۲ قدم به جنوب. چیزی در علف‌های دشت پنهان است.' },
+      text: { en: 'You followed compass directions! West is to the left and south is down. On the steppe of Kazakhstan, some herders still hunt with trained golden eagles. An eagle feather was in the grass.', es: '¡Seguiste las direcciones de la brújula! El oeste está a la izquierda y el sur abajo. En la estepa de Kazajistán, algunos pastores todavía cazan con águilas reales entrenadas. Había una pluma de águila en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! غرب طرف چپ و جنوب پایین است. در دشت‌های قزاقستان، بعضی چوپان‌ها هنوز با عقاب‌های طلایی تربیه‌شده شکار می‌کنند. یک پر عقاب در علف‌ها بود.' } }
+  ],
 
   words: {
     tundra: { en: 'flat, treeless land in the far north that is frozen most of the year', es: 'tierra plana y sin árboles en el extremo norte, congelada casi todo el año', fa: 'زمین هموار و بی‌درخت در شمال دور که بیشتر سال یخ‌زده است' },

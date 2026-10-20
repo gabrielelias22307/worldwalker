@@ -47,6 +47,15 @@ window.EPISODE = {
       fa: 'قایق به جزیرهٔ کوچک در خلیج رسید! در صندوق یک نقشهٔ کهنهٔ بحر است. می‌گوید بریتانیای کبیر بزرگ‌ترین جزیرهٔ اروپا است.' } },
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [11, 12], at: [15, 10], decor: 'shell',
+      clue: { en: 'From this note, walk 2 steps north, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al norte y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! North is up and east is to the right. Europe has many peninsulas and bays, so many places are close to the sea. A sea shell was here.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Europa tiene muchas penínsulas y bahías, así que muchos lugares están cerca del mar. Aquí había una concha de mar.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. اروپا شبه‌جزیره‌ها و خلیج‌های زیاد دارد، پس بسیاری از جاها نزدیک بحر هستند. یک صدف بحری اینجا بود.' } },
+    { clueAt: [18, 12], at: [21, 17], decor: 'flower',
+      clue: { en: 'The Rhine River starts high in the Alps and flows north to the sea. Follow it south to where it leaves the mountains. Stand on the snowy square on its west bank.', es: 'El río Rin nace en lo alto de los Alpes y corre al norte hasta el mar. Síguelo hacia el sur hasta donde sale de las montañas. Párate en el cuadro de nieve en su orilla oeste.', fa: 'دریای راین از بلندی‌های الپ شروع می‌شود و به طرف شمال تا بحر جاری است. آن را به طرف جنوب دنبال کن تا جایی که از کوه‌ها بیرون می‌آید. روی خانهٔ برفی در کنار غربی آن بایست.' },
+      text: { en: 'You followed the river to its start! The Rhine begins in the Swiss Alps and flows north about 1,230 kilometers to the North Sea. A white edelweiss flower grows here, high in the Alps.', es: '¡Seguiste el río hasta su comienzo! El Rin nace en los Alpes suizos y corre al norte unos 1230 kilómetros hasta el mar del Norte. Aquí, en lo alto de los Alpes, crece una flor blanca, la edelweiss.', fa: 'تو دریا را تا سرچشمه‌اش دنبال کردی! راین از کوه‌های الپ در سویس شروع می‌شود و حدود ۱۲۳۰ کیلومتر به طرف شمال تا بحر شمال جاری است. یک گل سفید ادلوایس اینجا، در بلندی‌های الپ، می‌روید.' } }
+  ],
 
   words: {
     peninsula: { en: 'land with water on three sides', es: 'tierra con agua por tres lados', fa: 'خشکه‌ای که از سه طرف آب دارد' },

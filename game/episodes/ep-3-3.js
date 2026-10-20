@@ -40,6 +40,15 @@ window.EPISODE = {
   start: [8, 4],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [8, 12], at: [6, 7], decor: 'coinold',
+      clue: { en: 'Use the map key: a well is a stone box with a little wooden roof. Go into the caravanserai, where camels drank. Stand one step east of the well.', es: 'Usa la leyenda: un pozo es una caja de piedra con un techito de madera. Entra al caravasar, donde bebían los camellos. Párate un paso al este del pozo.', fa: 'از راهنمای نقشه استفاده کن: چاه یک قطی سنگی با یک سقف کوچک چوبی است. داخل کاروانسرا برو، جایی که شترها آب می‌خوردند. یک قدم شرقِ چاه بایست.' },
+      text: { en: 'You read the map key! Silk Road traders carried coins from many lands, from China to Persia to Rome. An old coin was by the well.', es: '¡Leíste la leyenda! Los comerciantes de la Ruta de la Seda llevaban monedas de muchas tierras, desde China hasta Persia y Roma. Había una moneda antigua junto al pozo.', fa: 'تو راهنمای نقشه را خواندی! تاجران راه ابریشم سکه‌هایی از سرزمین‌های زیاد، از چین تا فارس و روم، با خود داشتند. یک سکهٔ کهنه کنار چاه بود.' } },
+    { clueAt: [12, 16], at: [17, 19], decor: 'fossil',
+      clue: { en: 'From this note, walk 3 steps south, then 5 steps east, into the desert. Something is hidden in the sand.', es: 'Desde esta nota, camina 3 pasos al sur y luego 5 pasos al este, hacia el desierto. Algo está escondido en la arena.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۵ قدم به شرق، به طرف صحرا. چیزی در ریگ پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and east is to the right. Millions of years ago, a sea covered much of Central Asia. A fossil sea shell was in the sand.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Hace millones de años, un mar cubría gran parte de Asia Central. Había un fósil de concha de mar en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. میلیون‌ها سال پیش، یک بحر بخش بزرگی از آسیای میانه را پوشانده بود. یک فسیل صدف بحری در ریگ بود.' } }
+  ],
 
   secret: { tool: 'compass', at: [28, 1],
     text: { en: 'The Compass Rose found a hidden path into the mountains! In the chest is an old note. It says people back then did not call it the Silk Road. A German geographer gave it that name in 1877.',
@@ -91,6 +100,7 @@ window.EPISODE = {
       x: 22, y: 2,
       name: { en: 'Timur', es: 'Timur', fa: 'تیمور' },
       role: { en: 'Freight rail worker', es: 'Trabajador de trenes de carga', fa: 'کارگر قطار باری' },
+      remember: { ep: '3.2', t: { en: 'Hey, I know you! My friend Olga is a conductor on the Trans-Siberian. She says you put the stops back in order, from Moscow to Vladivostok, so her train could leave. Thank you!', es: '¡Oye, te conozco! Mi amiga Olga es conductora del Transiberiano. Dice que pusiste las paradas en orden otra vez, de Moscú a Vladivostok, para que su tren pudiera salir. ¡Gracias!', fa: 'هی، من تو را می‌شناسم! دوستم اولگا کنترولر قطار ترانس‌سیبری است. او می‌گوید تو ایستگاه‌ها را دوباره به ترتیب گذاشتی، از مسکو تا ولادی‌وستوک، تا قطارش حرکت کند. تشکر!' } },
       look: { skin: 3, hair: '#1b1410', shirt: '#e0782b', pants: '#2b3a4a' },
       lines: [
         { en: 'Today the Silk Road runs on rails! Long [[freight train|freight trains]] carry containers between China and Europe. Many of them cross Kazakhstan on the way.',
