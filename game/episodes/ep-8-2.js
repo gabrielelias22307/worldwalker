@@ -45,6 +45,15 @@ window.EPISODE = {
   start: [19, 4],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [28, 5], at: [24, 7], decor: 'coinold',
+      clue: { en: 'Find the canal: the narrow strip of water in the desert. Stand on the sand square just south of the bridge that crosses it.', es: 'Busca el canal: la franja angosta de agua en el desierto. Párate en el cuadro de arena justo al sur del puente que lo cruza.', fa: 'کانال را پیدا کن: نوار باریک آب در ریگستان. روی خانهٔ ریگی بایست که درست جنوبِ پلی است که از روی کانال می‌گذرد.' },
+      text: { en: 'You found the canal on the map! People dug the Suez Canal in Egypt. It opened in 1869 and joins the Mediterranean Sea to the Red Sea. An old trader\'s coin was in the sand.', es: '¡Encontraste el canal en el mapa! El Canal de Suez, en Egipto, lo cavaron personas. Se abrió en 1869 y une el mar Mediterráneo con el mar Rojo. Había una moneda antigua de un comerciante en la arena.', fa: 'تو کانال را روی نقشه پیدا کردی! کانال سوئز در مصر را مردم کندند. این کانال در سال ۱۸۶۹ باز شد و بحیرهٔ مدیترانه را به بحیرهٔ سرخ وصل می‌کند. یک سکهٔ کهنهٔ یک تاجر در ریگ بود.' } },
+    { clueAt: [36, 9], at: [34, 13], decor: 'vase',
+      clue: { en: 'From this note, walk 4 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and west is to the left. The strait on this map is like the Strait of Malacca, a narrow sea road between Malaysia and Indonesia. Tens of thousands of ships sail through it every year. A small vase from a trade ship was hiding here.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. El estrecho de este mapa es como el estrecho de Malaca, un camino de mar angosto entre Malasia e Indonesia. Decenas de miles de barcos pasan por él cada año. Un jarrón pequeño de un barco de comercio estaba escondido aquí.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. تنگهٔ این نقشه مثل تنگهٔ ملاکا است، یک راه بحری باریک میان مالیزیا و اندونیزیا. هر سال ده‌ها هزار کشتی از آن می‌گذرند. یک گلدان کوچک از یک کشتی تجارتی اینجا پنهان بود.' } }
+  ],
   // only the Trade Seal (Episode 7.3) opens the gate of the locked port warehouse between the factories
   secret: { tool: 'seal', at: [36, 1],
     text: { en: 'The Trade Seal opened the locked warehouse at the port! The biggest container ships can carry more than 20,000 big metal boxes at once.',
@@ -125,6 +134,7 @@ window.EPISODE = {
     },
     {
       x: 37, y: 16,
+      remember: { ep: '8.1', t: { en: 'Hello, friend! Captain Chloe Tran, a ferry captain in Australia, told me you found Dr. Priya Nair\'s medicine bag in the Outback. Her plane flies medicine to remote farms again!', es: '¡Hola, amigo! La capitana Chloe Tran, que maneja un ferry en Australia, me contó que encontraste el maletín de medicinas de la Dra. Priya Nair en el Outback. ¡Su avioneta vuelve a llevar medicinas a granjas lejanas!', fa: 'سلام، دوست! کپتان کلوی ترَن، کپتان کشتی مسافربری در آسترالیا، به من گفت که تو بکس دواهای داکتر پریا نایر را در اوت‌بک پیدا کردی. طیارهٔ او دوباره دوا را به فارم‌های دور می‌برد!' } },
       name: { en: 'Captain Hafiz Rahman', es: 'Capitán Hafiz Rahman', fa: 'کپتان حافظ رحمان' },
       role: { en: 'Ship pilot on the Strait of Malacca, Malaysia', es: 'Piloto de barcos en el estrecho de Malaca, Malasia', fa: 'رهنمای کشتی در تنگهٔ ملاکا، مالیزیا' },
       look: { skin: 3, hair: '#1b1410', shirt: '#f2f2f2', pants: '#1f2f4f', hat: '#1f2f4f' },

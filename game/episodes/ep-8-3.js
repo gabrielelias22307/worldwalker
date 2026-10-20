@@ -48,6 +48,15 @@ window.EPISODE = {
   start: [24, 9],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [4, 12], at: [8, 13], decor: 'flower',
+      clue: { en: 'Rivers are often borders between countries. Find the bridge farthest west on the river. Stand on the land square just north of it.', es: 'Los ríos muchas veces son fronteras entre países. Busca el puente que está más al oeste en el río. Párate en el cuadro de tierra justo al norte de él.', fa: 'دریاها اکثراً سرحد میان کشورها هستند. پلی را پیدا کن که از همه غربی‌تر روی دریا است. روی خانهٔ خشکه بایست که درست شمالِ آن پل است.' },
+      text: { en: 'You found the border river! A river is a natural border that is easy to see on a map. The Rio Grande forms part of the border between the United States and Mexico. A flower was growing on the river bank.', es: '¡Encontraste el río frontera! Un río es una frontera natural fácil de ver en un mapa. El río Bravo, o Río Grande, forma parte de la frontera entre Estados Unidos y México. Había una flor en la orilla del río.', fa: 'تو دریای سرحدی را پیدا کردی! دریا یک سرحد طبیعی است که روی نقشه آسان دیده می‌شود. دریای ریو گرانده بخشی از سرحد میان ایالات متحدهٔ امریکا و مکسیکو است. یک گل در کنار دریا روییده بود.' } },
+    { clueAt: [32, 2], at: [35, 7], decor: 'gem',
+      clue: { en: 'From this note, walk 3 steps east, then 5 steps south. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al este y luego 5 pasos al sur. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به شرق برو، بعد ۵ قدم به جنوب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! East is to the right and south is down. In deserts, many borders are straight lines drawn on a map. Much of the border between Egypt and Sudan follows one line of latitude. A shiny gem was hidden in the sand.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el sur abajo. En los desiertos, muchas fronteras son líneas rectas dibujadas en un mapa. Gran parte de la frontera entre Egipto y Sudán sigue una línea de latitud. Una gema brillante estaba escondida en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و جنوب پایین است. در ریگستان‌ها، بسیاری از سرحدها خط‌های راستی هستند که روی نقشه کشیده شده‌اند. بخش بزرگی از سرحد میان مصر و سودان یک خط عرض جغرافیایی را دنبال می‌کند. یک جواهر درخشان در ریگ پنهان بود.' } }
+  ],
   // only the Sail (Episode 8.2) crosses the deep water to the little island in the east sea
   secret: { tool: 'sail', at: [45, 18],
     text: { en: 'Your sail carried you over deep water to a hidden island! The note in the chest says the Mekong River flows through six countries, so they all must share it.',
@@ -70,6 +79,7 @@ window.EPISODE = {
     {
       x: 21, y: 3,
       name: { en: 'Rosa', es: 'Rosa', fa: 'روزا' },
+      remember: { ep: '1.1', t: { en: 'Look at you now! I remember you in Mapmaker\'s Valley. You put the village signposts back, found Grandpa Tomas\'s compass and won your very first atlas page.', es: '¡Mírate ahora! Te recuerdo en el Valle del Cartógrafo. Volviste a poner los letreros del pueblo, encontraste la brújula del abuelo Tomás y ganaste tu primera página del atlas.', fa: 'حالا خودت را ببین! تو را در درهٔ نقشه‌کش به یاد دارم. تابلوهای ده را دوباره سر جایشان گذاشتی، قطب‌نمای پدرکلان توماس را پیدا کردی و اولین صفحهٔ اطلس خود را بردی.' } },
       role: { en: 'Mapmaker and host of the Council', es: 'Cartógrafa y anfitriona del Consejo', fa: 'نقشه‌کش و میزبان شورا' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#c0392b' },
       lines: [

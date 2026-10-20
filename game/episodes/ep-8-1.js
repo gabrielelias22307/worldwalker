@@ -44,6 +44,15 @@ window.EPISODE = {
   start: [22, 10],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [13, 16], at: [10, 14], decor: 'fossil',
+      clue: { en: 'Use the map key: find the well in the little Outback town. Stand on the square just east of the well.', es: 'Usa la leyenda: busca el pozo del pueblito del Outback. Párate en el cuadro que está justo al este del pozo.', fa: 'از راهنمای نقشه استفاده کن: چاه را در قریهٔ کوچک اوت‌بک پیدا کن. روی خانه‌ای بایست که درست به طرف شرقِ چاه است.' },
+      text: { en: 'You read the map key! Water is precious in the dry Outback. Many farms pump it up from deep under the ground, from the Great Artesian Basin. It is one of the largest stores of underground water in the world. A fossil was lying by the well.', es: '¡Leíste la leyenda! El agua es muy valiosa en el Outback seco. Muchas granjas la sacan con bombas desde muy abajo de la tierra, de la Gran Cuenca Artesiana. Es una de las reservas de agua subterránea más grandes del mundo. Había un fósil junto al pozo.', fa: 'تو راهنمای نقشه را خواندی! آب در اوت‌بک خشک بسیار قیمتی است. بسیاری از فارم‌ها آب را با پمپ از عمق زیر زمین بیرون می‌کشند، از حوزهٔ بزرگ آرتزین. این یکی از بزرگ‌ترین ذخیره‌های آب زیرزمینی در جهان است. یک فسیل کنار چاه افتاده بود.' } },
+    { clueAt: [41, 14], at: [43, 18], decor: 'shell',
+      clue: { en: 'From this note, walk 2 steps east, then 4 steps south. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al este y luego 4 pasos al sur. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شرق برو، بعد ۴ قدم به جنوب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! East is to the right and south is down. You walked along the ring of the atoll, next to the calm lagoon. A sea shell was in the sand.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el sur abajo. Caminaste por el anillo del atolón, junto a la laguna tranquila. Había una concha en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و جنوب پایین است. تو روی حلقهٔ اتول، کنار آب آرام وسط آن، راه رفتی. یک صدف در ریگ بود.' } }
+  ],
   // only the Canoe (Episode 2.3) paddles across the atoll's lagoon to the tiny island in the middle
   secret: { tool: 'canoe', at: [39, 16],
     text: { en: 'Your canoe crossed the calm lagoon to a tiny island! The note in the chest says the highest land in Tuvalu is less than 5 meters above the sea.',
