@@ -12,7 +12,8 @@
   // what the axe and sickle work on: tile -> [what it gives, how many, what is left, seconds to grow back]
   const CHOP = { T: ['wood', 2, '%', 180], P: ['wood', 2, '%', 180], a: ['wood', 2, '%', 180], Y: ['wood', 1, '.', 150] };
   const CUT = { '"': ['fiber', 1, '.', 60] };
-  const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign'];
+  const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign', 'build'];
+  X.SLOTS = SLOTS;
   let sel = 'star', regrow = [], told = {}, bar = null, lastFit = null;
 
   X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
@@ -42,18 +43,21 @@
   };
   // the icons' own colors (kept apart from the hero's palette)
   const TPAL = { S: '#c3c8ce', b: '#8b5a2b', B: '#6d4424', o: '#c79a5b', O: '#7a5a34', g: '#3f8a2e', G: '#2a6320' };
-  const ICON = { star: 'starIcon', axe: 'axe', sickle: 'sickle', seed: 'seedIcon', sign: 'signIcon', wood: 'wood', fiber: 'fiber' };
+  const ICON = { star: 'starIcon', axe: 'axe', sickle: 'sickle', seed: 'seedIcon', sign: 'signIcon', build: 'hammerIcon', wood: 'wood', fiber: 'fiber' };
   X.render = () => {
     if (!bar) return;
     const r = WW.run || {}, signs = (r.signs || []).filter(s => !s.placed).length;
     bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
+      if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
+      const farm = k === 'seed' && WW.farm && WW.farm.on(), crop = farm && WW.farm.current();
       const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
       const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : '') + (lastFit === k && sel !== k ? ' fit' : ''); b.title = `${i + 1} · ${T(tk)}`; b.dataset.k = k;
       b.setAttribute('aria-label', T(tk));
-      b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
-      const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
+      if (crop) { b.title = `${i + 1} · ${crop.icon} ${L(crop.name)} (${T('seedCycle')})`; b.insertAdjacentHTML('beforeend', `<span class="tcrop">${crop.icon}</span>`); }
+      else b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
+      const n = k === 'seed' ? (farm ? WW.farm.seedCount() : X.have('seed')) : k === 'sign' ? signs : k === 'build' ? WW.farm.kitLeft() : null;
       b.insertAdjacentHTML('beforeend', `<i>${i + 1}</i>${n != null ? `<b>${n}</b>` : ''}`);
       b.onclick = () => { X.pick(k); WW.audioInit(); $('ww-screen').focus(); };
       bar.appendChild(b);
@@ -61,6 +65,8 @@
     const bag = document.createElement('div'); bag.className = 'tbag';
     ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
     bar.appendChild(bag);
+    if (sel === 'build' && WW.farm) { const line = WW.farm.carryLine(); if (line) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${line}</div>`); }
+    if (sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.current()) { const c = WW.farm.current(); bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${c.icon} <b>${esc(L(c.name))}</b> · ${WW.farm.seedCount()} <small>${esc(T('seedCycle'))}</small></div>`); }
     const held = X.heldSign();
     if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
@@ -76,6 +82,8 @@
   X.pick = (k, auto) => {
     if (!X.on()) return;
     if (auto) { sel = k; X.render(); const b = bar && bar.querySelector('.tslot.on'); if (b) { b.classList.add('auto'); setTimeout(() => b.classList.remove('auto'), 600); } return; }
+    if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
+    if (k === 'seed' && sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.crops().length > 1) WW.farm.nextCrop(); // 4 again: the next crop
     if (k === 'sign') {
       const r = WW.run; if (!(r.signs || []).some(s => !s.placed)) return;
       if (sel === 'sign') { // pressing 5 again: hold the next signpost
@@ -98,13 +106,14 @@
     }
     if (sel === 'sickle') {
       const crop = g.ents.find(o => o.kind === 'crop' && !o.gone && o.x === x && o.y === y);
-      if (crop) return reap(crop);
+      if (crop) return crop.type ? (stage(crop) < 2 ? hint('notRipe', true) : WW.farm.reap(crop)) : reap(crop);
       const c = CUT[ch];
       if (!c) return hint('sickleWhat');
       return harvest(x, y, ch, c, 'leaves');
     }
-    if (sel === 'seed') return plant(x, y, e);
+    if (sel === 'seed') return WW.farm && WW.farm.on() && !(g.tileAt(x, y) === 'o' && X.have('seed') > 0) ? WW.farm.plant(x, y, e) : plant(x, y, e);
     if (sel === 'sign') return place(x, y, e);
+    if (sel === 'build') return WW.farm.place(x, y, e);
     return false;
   };
   function hint(key, always) { if (always || !told[key]) { told[key] = 1; WW.chris.say(T(key)); } WW.sfx('bad'); return true; }
@@ -148,7 +157,7 @@
     return true;
   }
   const GROW = 45000; // a crop is ripe after 45 seconds
-  const stage = o => Math.min(2, Math.floor((performance.now() - o.t0) / (GROW / 2)));
+  const stage = o => Math.min(2, Math.floor((performance.now() - o.t0) / ((o.grow || GROW) / 2)));
   function reap(o) {
     if (stage(o) < 2) return hint('notRipe', true);
     o.gone = true;
@@ -381,6 +390,7 @@
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {
+    if (e.kind === 'crop' && e.type) return WW.farm.drawCrop(c, e, x, y, t, stage(e));
     if (e.kind === 'crop') {
       const st = stage(e);
       c.fillStyle = '#3f8a2e';
@@ -410,6 +420,7 @@
     signIcon: pad(['', '.kkkkkkkkkkkkk', '.kbbbbbbbbbbbk', '.kbWWWWWWWWbbk', '.kbbbbbbbbbbbk', '.kbWWWWWbbbbbk', '.kkkkkkkkkkkkk', '......kbk', '......kbk', '......kbk', '......kbk', '......kbk', '....kkkkkkk']),
     wood: pad(['', '', '', '..kkkkkkkkkk', '.kbbbbbbbbkOk', 'kbBbbbBbbbkOOk', 'kbbbbbbbbbkOok', 'kbbBbbbbBbkOOk', '.kbbbbbbbbkOk', '..kkkkkkkkkk']),
     fiber: pad(['', '...g..g..g', '...gg.g.gg', '....g.g.g', '....ggggg', '.....ggg', '....kkkkk', '....kOOOk', '.....ggg', '....g.g.g', '...g..g..g', '...g..g..g']),
+    hammerIcon: pad(['', '..kkkkkk', '.kSSSSSSk', '.kSSSSSSkk', '..kkkkkkSk', '.....kbk.k', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kkk']),
     starIcon: pad(['', '.......kk', '......kyyk', '......kyyk', '.kkkkkyyyykkkkk', '.kyyyyyWyyyyyyk', '..kyyyyyyyyyyk', '...kyyyyyyyyk', '...kyyyyyyyyk', '..kyyykkkyyyk', '..kyyk...kyyk', '..kkk.....kkk'])
   });
 

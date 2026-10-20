@@ -267,5 +267,7 @@
     }
   }
 
-  WW.fx = { setup, draw, burst, step, lift, get sky() { return sky; }, SKY };
+  // the weather can change while you play (the monsoon in 6.1)
+  function setSky(name) { if (sky.sky === name) return; sky.sky = name; cur = ''; drops = []; const n = { rain: 90, drizzle: 40, snow: 70, petals: 18, leaves: 14, dust: 26, heat: 14 }[name] || 0; for (let i = 0; i < n; i++) drops.push(newDrop(true)); }
+  WW.fx = { setup, draw, burst, step, lift, setSky, get sky() { return sky; }, SKY };
 })();

@@ -46,6 +46,18 @@ window.EPISODE = {
   start: [3, 5],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): fence the wheat region — a formal region has one trait everywhere and a clear border */
+  build: [
+    { id: 'fence', kind: 'place', board: [1, 4], tile: 'F', ok: [[5, 1], [5, 3], [16, 1], [16, 3]], cost: { wood: 1 },
+      name: { en: 'Fence for the wheat region', es: 'Cerca para la región del trigo', fa: 'کتاره برای ساحهٔ گندم' },
+      ask: { en: 'Wheat grows on every field up here, so this is a [[formal region|formal region]]: one trait is true everywhere. Its border is clear. Close the gaps in the fence on the west and east edges of the wheat. Leave the middle gap on each side open as a gate.',
+        es: 'Aquí arriba crece trigo en todos los campos, así que es una [[formal region|región formal]]: un rasgo es igual en todas partes. Su borde es claro. Cierra los huecos de la cerca en los bordes oeste y este del trigo. Deja abierto el hueco del medio de cada lado como portón.',
+        fa: 'این بالا در همهٔ کشتزارها گندم می‌روید، پس این یک [[formal region|ساحهٔ رسمی]] است: یک ویژگی در همه جا یکسان است. مرزش روشن است. شکاف‌های کتاره را در لبهٔ غربی و شرقی گندم ببند. شکاف وسط هر طرف را به عنوان دروازه باز بگذار.' },
+      why: { en: 'Right on the edge of the wheat region!', es: '¡Justo en el borde de la región del trigo!', fa: 'درست در لبهٔ ساحهٔ گندم!' },
+      wrong: { en: 'This spot is not on the edge of the wheat. A formal region\'s border runs along the edge of the land that shares its trait.', es: 'Este lugar no está en el borde del trigo. El borde de una región formal va por la orilla de la tierra que comparte el rasgo.', fa: 'این جا در لبهٔ گندم نیست. مرز ساحهٔ رسمی در لبهٔ زمینی می‌رود که آن ویژگی را دارد.' },
+      done: { en: 'The wheat region has a clear border now, with a gate on each side. Every field inside grows wheat: a formal region.', es: 'La región del trigo ya tiene un borde claro, con un portón a cada lado. Todos los campos de adentro tienen trigo: una región formal.', fa: 'ساحهٔ گندم حالا مرز روشن دارد، با یک دروازه در هر طرف. همهٔ کشتزارهای داخل گندم دارند: یک ساحهٔ رسمی.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [25, 10], at: [29, 13], decor: 'gem',

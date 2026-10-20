@@ -388,6 +388,17 @@ canvas{filter:var(--vivid)}
 .dpad .padchris{grid-column:1;grid-row:1;background:#fff3c4;color:var(--ink)}
 .dpad .padgoals{grid-column:3;grid-row:1;font-size:18px}
 
+/* the monsoon badge (6.1) and crop seeds in the tool bar */
+.seasonbadge{position:absolute;z-index:3;top:6px;left:50%;transform:translateX(-50%);background:rgba(255,243,196,.92);color:var(--ink);border:2px solid #000;border-radius:12px;padding:1px 10px;font-weight:700;font-size:13px;pointer-events:none}
+.seasonbadge.wet{background:rgba(143,195,255,.95)}
+.toolbar .tslot .tcrop{font-size:20px;line-height:1}
+
+/* the carry line always takes its own full row over the tool slots; the bar sits above map labels */
+.screen .toolbar{z-index:4}
+.screen .toolbar .tcarry,.ww-frame.narrow .stage>.toolbar .tcarry{flex-basis:100%;max-width:100%;width:0;min-width:100%}
+.seasonbadge{left:8px;transform:none}
+.toolbar.top~.seasonbadge,.seasonbadge.under{top:auto;bottom:8px}
+
 </style>
 </head>
 <body>
@@ -1584,6 +1595,29 @@ window.WW_CONFIG.MODE = 'canvas';
     why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
     helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
     free: { en: 'free', es: 'gratis', fa: 'رایگان' },
+    /* building in place and planting (farm.js) */
+    tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
+    takeKit: { en: 'Take the building kit', es: 'Toma el equipo para construir', fa: 'وسایل ساختن را بگیر' },
+    kitHow: { en: 'Face a spot and press Space to put a piece there. A wrong spot will say why.', es: 'Mira un lugar y pulsa Espacio para poner una pieza. Si el lugar está mal, te diré por qué.', fa: 'رو به جایی بایست و Space را بزن تا یک تکه بگذاری. اگر جا غلط باشد، می‌گویم چرا.' },
+    kitShort: { en: 'Face a spot, press Space.', es: 'Mira un lugar, pulsa Espacio.', fa: 'رو به یک جا بایست، Space را بزن.' },
+    perPiece: { en: 'for each piece', es: 'por cada pieza', fa: 'برای هر تکه' },
+    pieces: { en: 'pieces', es: 'piezas', fa: 'تکه' },
+    pieceNeed: { en: 'Each piece needs {c}.', es: 'Cada pieza necesita {c}.', fa: 'هر تکه {c} لازم دارد.' },
+    piecesLeft: { en: '{n} piece(s) to go.', es: 'Faltan {n} pieza(s).', fa: '{n} تکهٔ دیگر مانده.' },
+    pickPiece: { en: 'Face it and press Space to pick it up.', es: 'Míralo y pulsa Espacio para levantarlo.', fa: 'رو به آن بایست و Space را بزن تا برش داری.' },
+    piecePicked: { en: 'Got the piece back. Try another spot.', es: 'Recuperaste la pieza. Prueba otro lugar.', fa: 'تکه را پس گرفتی. جای دیگری را امتحان کن.' },
+    why_build: { en: 'you built it', es: 'lo construiste', fa: 'ساختی' },
+    basketTitle: { en: 'Seed basket', es: 'Canasta de semillas', fa: 'سبد تخم' },
+    basketGot: { en: 'You have seeds of:', es: 'Tienes semillas de:', fa: 'تخم این‌ها را داری:' },
+    basketHow: { en: 'Pick seeds with 4 (press 4 again for the next crop). Face open ground and press Space to plant.', es: 'Elige semillas con 4 (pulsa 4 otra vez para el siguiente cultivo). Mira tierra libre y pulsa Espacio para sembrar.', fa: 'با ۴ تخم را انتخاب کن (۴ را دوباره بزن برای محصول بعدی). رو به زمین خالی بایست و Space را بزن تا بکاری.' },
+    seedCycle: { en: 'press 4 again for the next crop', es: 'pulsa 4 otra vez para el siguiente cultivo', fa: '۴ را دوباره بزن برای محصول بعدی' },
+    noCropSeeds: { en: 'No {c} seeds left. Get more from the seed basket.', es: 'No quedan semillas de {c}. Consigue más en la canasta.', fa: 'تخم {c} نمانده. از سبد تخم بیشتر بگیر.' },
+    plantWhere: { en: 'Plant on open ground, not on a path, water or something else.', es: 'Siembra en tierra libre, no en un camino, en el agua ni sobre otra cosa.', fa: 'در زمین خالی بکار، نه روی راه، آب یا چیز دیگر.' },
+    seedBack: { en: 'The seed is back in your bag.', es: 'La semilla volvió a tu bolsa.', fa: 'تخم دوباره در کوله‌ات است.' },
+    seasonWet: { en: 'Summer monsoon: rain', es: 'Monzón de verano: lluvia', fa: 'موسمی تابستان: باران' },
+    seasonDry: { en: 'Winter monsoon: dry', es: 'Monzón de invierno: seco', fa: 'موسمی زمستان: خشک' },
+    monsoonWet: { en: 'The summer monsoon is here! Wet wind from the ocean brings heavy rain. Time to plant rice!', es: '¡Llegó el monzón de verano! El viento húmedo del océano trae lluvia fuerte. ¡Es hora de sembrar arroz!', fa: 'موسمی تابستان رسید! باد مرطوب از بحر باران زیاد می‌آورد. وقت کاشتن برنج است!' },
+    monsoonDry: { en: 'The winter monsoon is back: dry wind blows from the land. No rain for a while.', es: 'Volvió el monzón de invierno: un viento seco sopla desde la tierra. No lloverá por un tiempo.', fa: 'موسمی زمستان برگشت: باد خشک از خشکه می‌وزد. مدتی باران نمی‌بارد.' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },
     goals: { en: 'To win this atlas page', es: 'Para ganar esta página del atlas', fa: 'برای بردن این صفحهٔ اطلس' },
@@ -3212,7 +3246,9 @@ window.WW_CONFIG.MODE = 'canvas';
     }
   }
 
-  WW.fx = { setup, draw, burst, step, lift, get sky() { return sky; }, SKY };
+  // the weather can change while you play (the monsoon in 6.1)
+  function setSky(name) { if (sky.sky === name) return; sky.sky = name; cur = ''; drops = []; const n = { rain: 90, drizzle: 40, snow: 70, petals: 18, leaves: 14, dust: 26, heat: 14 }[name] || 0; for (let i = 0; i < n; i++) drops.push(newDrop(true)); }
+  WW.fx = { setup, draw, burst, step, lift, setSky, get sky() { return sky; }, SKY };
 })();
 
 /* quest.js */
@@ -3655,7 +3691,8 @@ window.WW_CONFIG.MODE = 'canvas';
   // what the axe and sickle work on: tile -> [what it gives, how many, what is left, seconds to grow back]
   const CHOP = { T: ['wood', 2, '%', 180], P: ['wood', 2, '%', 180], a: ['wood', 2, '%', 180], Y: ['wood', 1, '.', 150] };
   const CUT = { '"': ['fiber', 1, '.', 60] };
-  const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign'];
+  const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign', 'build'];
+  X.SLOTS = SLOTS;
   let sel = 'star', regrow = [], told = {}, bar = null, lastFit = null;
 
   X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
@@ -3685,18 +3722,21 @@ window.WW_CONFIG.MODE = 'canvas';
   };
   // the icons' own colors (kept apart from the hero's palette)
   const TPAL = { S: '#c3c8ce', b: '#8b5a2b', B: '#6d4424', o: '#c79a5b', O: '#7a5a34', g: '#3f8a2e', G: '#2a6320' };
-  const ICON = { star: 'starIcon', axe: 'axe', sickle: 'sickle', seed: 'seedIcon', sign: 'signIcon', wood: 'wood', fiber: 'fiber' };
+  const ICON = { star: 'starIcon', axe: 'axe', sickle: 'sickle', seed: 'seedIcon', sign: 'signIcon', build: 'hammerIcon', wood: 'wood', fiber: 'fiber' };
   X.render = () => {
     if (!bar) return;
     const r = WW.run || {}, signs = (r.signs || []).filter(s => !s.placed).length;
     bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
+      if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
+      const farm = k === 'seed' && WW.farm && WW.farm.on(), crop = farm && WW.farm.current();
       const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
       const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : '') + (lastFit === k && sel !== k ? ' fit' : ''); b.title = `${i + 1} · ${T(tk)}`; b.dataset.k = k;
       b.setAttribute('aria-label', T(tk));
-      b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
-      const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
+      if (crop) { b.title = `${i + 1} · ${crop.icon} ${L(crop.name)} (${T('seedCycle')})`; b.insertAdjacentHTML('beforeend', `<span class="tcrop">${crop.icon}</span>`); }
+      else b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
+      const n = k === 'seed' ? (farm ? WW.farm.seedCount() : X.have('seed')) : k === 'sign' ? signs : k === 'build' ? WW.farm.kitLeft() : null;
       b.insertAdjacentHTML('beforeend', `<i>${i + 1}</i>${n != null ? `<b>${n}</b>` : ''}`);
       b.onclick = () => { X.pick(k); WW.audioInit(); $('ww-screen').focus(); };
       bar.appendChild(b);
@@ -3704,6 +3744,8 @@ window.WW_CONFIG.MODE = 'canvas';
     const bag = document.createElement('div'); bag.className = 'tbag';
     ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
     bar.appendChild(bag);
+    if (sel === 'build' && WW.farm) { const line = WW.farm.carryLine(); if (line) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${line}</div>`); }
+    if (sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.current()) { const c = WW.farm.current(); bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${c.icon} <b>${esc(L(c.name))}</b> · ${WW.farm.seedCount()} <small>${esc(T('seedCycle'))}</small></div>`); }
     const held = X.heldSign();
     if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
@@ -3719,6 +3761,8 @@ window.WW_CONFIG.MODE = 'canvas';
   X.pick = (k, auto) => {
     if (!X.on()) return;
     if (auto) { sel = k; X.render(); const b = bar && bar.querySelector('.tslot.on'); if (b) { b.classList.add('auto'); setTimeout(() => b.classList.remove('auto'), 600); } return; }
+    if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
+    if (k === 'seed' && sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.crops().length > 1) WW.farm.nextCrop(); // 4 again: the next crop
     if (k === 'sign') {
       const r = WW.run; if (!(r.signs || []).some(s => !s.placed)) return;
       if (sel === 'sign') { // pressing 5 again: hold the next signpost
@@ -3741,13 +3785,14 @@ window.WW_CONFIG.MODE = 'canvas';
     }
     if (sel === 'sickle') {
       const crop = g.ents.find(o => o.kind === 'crop' && !o.gone && o.x === x && o.y === y);
-      if (crop) return reap(crop);
+      if (crop) return crop.type ? (stage(crop) < 2 ? hint('notRipe', true) : WW.farm.reap(crop)) : reap(crop);
       const c = CUT[ch];
       if (!c) return hint('sickleWhat');
       return harvest(x, y, ch, c, 'leaves');
     }
-    if (sel === 'seed') return plant(x, y, e);
+    if (sel === 'seed') return WW.farm && WW.farm.on() && !(g.tileAt(x, y) === 'o' && X.have('seed') > 0) ? WW.farm.plant(x, y, e) : plant(x, y, e);
     if (sel === 'sign') return place(x, y, e);
+    if (sel === 'build') return WW.farm.place(x, y, e);
     return false;
   };
   function hint(key, always) { if (always || !told[key]) { told[key] = 1; WW.chris.say(T(key)); } WW.sfx('bad'); return true; }
@@ -3791,7 +3836,7 @@ window.WW_CONFIG.MODE = 'canvas';
     return true;
   }
   const GROW = 45000; // a crop is ripe after 45 seconds
-  const stage = o => Math.min(2, Math.floor((performance.now() - o.t0) / (GROW / 2)));
+  const stage = o => Math.min(2, Math.floor((performance.now() - o.t0) / ((o.grow || GROW) / 2)));
   function reap(o) {
     if (stage(o) < 2) return hint('notRipe', true);
     o.gone = true;
@@ -4024,6 +4069,7 @@ window.WW_CONFIG.MODE = 'canvas';
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {
+    if (e.kind === 'crop' && e.type) return WW.farm.drawCrop(c, e, x, y, t, stage(e));
     if (e.kind === 'crop') {
       const st = stage(e);
       c.fillStyle = '#3f8a2e';
@@ -4053,6 +4099,7 @@ window.WW_CONFIG.MODE = 'canvas';
     signIcon: pad(['', '.kkkkkkkkkkkkk', '.kbbbbbbbbbbbk', '.kbWWWWWWWWbbk', '.kbbbbbbbbbbbk', '.kbWWWWWbbbbbk', '.kkkkkkkkkkkkk', '......kbk', '......kbk', '......kbk', '......kbk', '......kbk', '....kkkkkkk']),
     wood: pad(['', '', '', '..kkkkkkkkkk', '.kbbbbbbbbkOk', 'kbBbbbBbbbkOOk', 'kbbbbbbbbbkOok', 'kbbBbbbbBbkOOk', '.kbbbbbbbbkOk', '..kkkkkkkkkk']),
     fiber: pad(['', '...g..g..g', '...gg.g.gg', '....g.g.g', '....ggggg', '.....ggg', '....kkkkk', '....kOOOk', '.....ggg', '....g.g.g', '...g..g..g', '...g..g..g']),
+    hammerIcon: pad(['', '..kkkkkk', '.kSSSSSSk', '.kSSSSSSkk', '..kkkkkkSk', '.....kbk.k', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kbk', '.....kkk']),
     starIcon: pad(['', '.......kk', '......kyyk', '......kyyk', '.kkkkkyyyykkkkk', '.kyyyyyWyyyyyyk', '..kyyyyyyyyyyk', '...kyyyyyyyyk', '...kyyyyyyyyk', '..kyyykkkyyyk', '..kyyk...kyyk', '..kkk.....kkk'])
   });
 
@@ -4525,6 +4572,218 @@ window.WW_CONFIG.MODE = 'canvas';
   };
 })();
 
+/* farm.js */
+/* WORLDWALKER engine · building in place and planting that teaches (FUN-PASS-2, Part C)
+   build: [{ id, kind: 'place', board: [x, y], tile: 'F', ok: [[x, y], ...], cost: { wood: 1 } (each piece),
+            name, ask, why (said at a right spot), wrong (why a spot is wrong), done }]
+     Walk into the build board, take the kit (tool 6), and put each piece where it belongs (Space). A right spot builds it;
+     a wrong spot leaves a red piece and says why — face it and press Space to pick it up (nothing is lost). When every piece
+     is in, the build is saved (it stays built on replays).
+   plant: { basket: [x, y], crops: [{ id, icon, name, zones: [{ x, y, w, h }], ok, no, noBy: [{ x, y, w, h, t }], rain: true, dry }] }
+     The basket gives seeds of each crop. A seed grows only in its zones (and, with rain: true, only while the summer monsoon
+     rain falls). Anywhere else it sprouts, wilts with a one-line reason, and the seed comes back.
+   seasons: { dry: 40, wet: 40 } — the monsoon comes and goes (seconds); rain on the map while it is wet. */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  const F = WW.farm = {};
+  const G = () => WW.game;
+  const X = () => WW.tools;
+  F.KINDS = ['board', 'basket', 'piece'];
+  F.on = () => !!(WW.ep && WW.ep.plant);
+  const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
+  const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+
+  /* ---------------- set up ---------------- */
+  F.ents = (ep) => {
+    const out = [];
+    (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
+    if (ep.plant && ep.plant.basket) out.push({ kind: 'basket', x: ep.plant.basket[0], y: ep.plant.basket[1] });
+    return out;
+  };
+  F.setup = (ep) => {
+    const r = WW.run;
+    r.kit = null; r.crop = 0; r.wet = false; r.told = {};
+    places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile))); // built before: still built
+    if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
+    badge();
+  };
+
+  /* ---------------- the monsoon comes and goes ---------------- */
+  let badgeEl = null;
+  function badge() {
+    const ep = WW.ep, sc = document.getElementById('ww-screen');
+    if (!ep.seasons) { if (badgeEl) badgeEl.remove(); badgeEl = null; return; }
+    if (!badgeEl || !badgeEl.isConnected) { badgeEl = document.createElement('div'); badgeEl.className = 'seasonbadge'; sc.appendChild(badgeEl); }
+    badgeEl.textContent = WW.run.wet ? '🌧️ ' + T('seasonWet') : '☀️ ' + T('seasonDry');
+    badgeEl.classList.toggle('wet', WW.run.wet);
+  }
+  F.tick = (now) => {
+    const r = WW.run, ep = WW.ep; if (!r || !G().player) return;
+    if (badgeEl && badgeEl.classList.contains('wet') !== !!r.wet) badge(); // always shows the weather there is
+    if (badgeEl) { const tb = document.getElementById('ww-tools'); badgeEl.classList.toggle('under', !!(tb && tb.classList.contains('top'))); } // out of the tool bar's way
+    if (ep.seasons && !WW.paused && now > r.seasonAt) {
+      r.wet = !r.wet; r.seasonAt = now + (r.wet ? ep.seasons.wet : ep.seasons.dry) * 1000;
+      WW.fx.setSky && WW.fx.setSky(r.wet ? 'rain' : 'clear');
+      badge(); WW.sfx(r.wet ? 'gate' : 'blip');
+      WW.chris.say(T(r.wet ? 'monsoonWet' : 'monsoonDry'));
+    }
+    // a seed in the wrong place sprouts, then wilts and comes back to the bag
+    G().ents.forEach(o => {
+      if (o.kind !== 'crop' || o.gone || !o.wiltAt || now < o.wiltAt) return;
+      o.gone = true; X().add('seed:' + o.type, 1);
+      WW.fx.burst(o.x, o.y, 'dust'); WW.sfx('bad');
+      const c = crop(o.type);
+      // why it wilted: no rain yet, or the land here (each wrong band can say its own reason)
+      const band = (c.noBy || []).find(z => o.x >= z.x && o.y >= z.y && o.x < z.x + z.w && o.y < z.y + z.h);
+      const why = inZone(c, o.x, o.y) && c.rain && !o.wet ? (c.dry || c.no) : band ? band.t : c.no;
+      WW.chris.say(`🥀 ${L(why)} ${T('seedBack')}`, null, { at: [o.x, o.y] });
+    });
+  };
+  WW.onLang && WW.onLang(() => WW.run && badge());
+
+  /* ---------------- planting ---------------- */
+  const crop = id => (WW.ep.plant.crops || []).find(c => c.id === id);
+  F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
+  F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
+  F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
+  F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
+  const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+  const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
+  F.plant = (x, y, e) => {
+    const c = F.current(), g = G();
+    if (!c) return false;
+    if (X().have('seed:' + c.id) < 1) { WW.chris.say(T('noCropSeeds').replace('{c}', c.icon + ' ' + L(c.name))); WW.sfx('bad'); return true; }
+    if (e || !ground(g.tileAt(x, y))) { WW.chris.say(T('plantWhere')); WW.sfx('bad'); return true; }
+    X().use('seed:' + c.id, 1);
+    const good = inZone(c, x, y) && (!c.rain || WW.run.wet);
+    const o = { kind: 'crop', type: c.id, x, y, t0: performance.now(), grow: 30000, wet: WW.run.wet };
+    if (!good) o.wiltAt = performance.now() + (WW.calm ? 600 : 1800); // it sprouts... then wilts
+    g.ents.push(o);
+    WW.sfx('blip'); WW.fx.burst(x, y, 'dust');
+    if (good) WW.chris.say(`🌱 ${L(c.ok)}`, null, { at: [x, y] });
+    return true;
+  };
+  F.reap = (o) => {
+    const c = crop(o.type);
+    o.gone = true; X().add('seed:' + o.type, 2);
+    WW.gain(null, 0, 3, T('why_harvest'), true);
+    WW.sfx('coin'); WW.fx.burst(o.x, o.y, 'gold'); G().shake();
+    WW.toast(`+3 ● ${c.icon} ${esc(L(c.name))} · +2 ${esc(T('item_seed'))}`, '#c08a1e');
+    return true;
+  };
+  function basket() {
+    const cs = F.crops(); let got = 0;
+    cs.forEach(c => { const n = X().have('seed:' + c.id); if (n < 3) { X().add('seed:' + c.id, 3 - n); got++; } });
+    WW.sfx(got ? 'coin' : 'blip');
+    WW.ui.message('🧺 ' + T('basketTitle'), `${L(WW.ep.plant.ask || { en: '', es: '', fa: '' })} ${T('basketGot')} ${cs.map(c => `${c.icon} ${L(c.name)}`).join(' · ')}. ${T('basketHow')}`);
+    if (X().selected() !== 'seed') X().pick('seed', true);
+    X().render();
+  }
+
+  /* ---------------- building in place ---------------- */
+  F.kit = () => { const r = WW.run; return r && r.kit ? places().find(b => b.id === r.kit.id) : null; };
+  F.kitLeft = () => { const r = WW.run; return r && r.kit ? r.kit.left : 0; };
+  function board(e) {
+    const b = e.b, r = WW.run, done = built(b.id);
+    WW.ui.open({
+      cls: 'msgov',
+      render(box, h) {
+        const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ');
+        box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
+          (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
+        const a = document.createElement('div'); a.className = 'acts';
+        if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+        a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
+        box.appendChild(a);
+      }
+    });
+  }
+  F.place = (x, y, e) => {
+    const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
+    if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+    if (!r.kit.prepaid) { // each piece costs wood (or fiber) the first time it goes down
+      const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
+      if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
+      Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
+    } else r.kit.prepaid--;
+    const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+    if (right) {
+      g.setTile(x, y, b.tile); r.kit.left--;
+      WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
+      if (r.kit.left <= 0) return finish(b);
+      WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
+    } else {
+      g.ents.push({ kind: 'piece', x, y, b });
+      WW.sfx('bad'); g.shake();
+      WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+    }
+    X().render();
+    return true;
+  };
+  F.pickPiece = (e) => { // a piece in the wrong spot comes back to your hands (already paid for)
+    e.gone = true; const r = WW.run;
+    if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+    r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
+  };
+  function finish(b) {
+    const s = WW.save, r = WW.run;
+    s.built = s.built || {}; s.built[WW.ep.id] = Array.from(new Set([...(s.built[WW.ep.id] || []), b.id]));
+    G().ents.forEach(o => { if (o.kind === 'piece' && o.b === b) { o.gone = true; } }); // leftover red pieces: the wood goes back
+    const extra = r.kit.prepaid; r.kit = null;
+    if (extra) Object.entries(b.cost || {}).forEach(([k, n]) => X().add(k, n * extra));
+    WW.store(); WW.sheetSync && WW.sheetSync();
+    WW.paused = true; WW.sfx('gate');
+    b.ok.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, 'gold'), WW.calm ? 0 : i * 90));
+    setTimeout(() => {
+      WW.paused = false; WW.sfx('win');
+      WW.gain(null, 0, 5, T('why_build'), true); WW.toast(`🔨 +5 ● ${esc(L(b.name))}`, '#8b5a2b');
+      X().pick('star', true); WW.chris.say(`🎉 ${L(b.done)}`, null, { at: b.ok[0] });
+    }, WW.calm ? 100 : 700);
+    return true;
+  }
+
+  /* ---------------- talking to things ---------------- */
+  F.interact = (e) => {
+    if (e.kind === 'board') return board(e);
+    if (e.kind === 'basket') return basket();
+    if (e.kind === 'piece') return F.pickPiece(e);
+  };
+  F.carryLine = () => {
+    const b = F.kit(); if (!b || X().selected() !== 'build') return '';
+    return `🔨 <b>${esc(L(b.name))}:</b> ${esc(T('piecesLeft').replace('{n}', WW.run.kit.left))} <small>${esc(T('kitShort'))}</small>`;
+  };
+
+  /* ---------------- drawing ---------------- */
+  F.drawEnt = (c, e, x, y, t) => {
+    if (e.kind === 'board') { // a little sign with a hammer
+      const done = built(e.b.id), k = WW.calm ? .5 : (Math.sin(t / 300) + 1) / 2;
+      if (!done) { c.fillStyle = `rgba(255,236,150,${.15 + k * .2})`; c.beginPath(); c.arc(x + 8, y + 8, 9, 0, 7); c.fill(); }
+      WW.shadow(c, x, y + 13, 10);
+      c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 7, 2, 8); c.fillRect(x + 1, y + 1, 14, 8);
+      c.fillStyle = done ? '#3fa34d' : '#c79a5b'; c.fillRect(x + 2, y + 2, 12, 6);
+      c.fillStyle = '#5e636b'; c.fillRect(x + 5, y + 3, 6, 2); c.fillStyle = '#6d4424'; c.fillRect(x + 7, y + 5, 2, 3);
+    } else if (e.kind === 'basket') {
+      WW.shadow(c, x, y + 13, 12);
+      c.fillStyle = '#22202e'; c.fillRect(x + 2, y + 7, 12, 8); c.fillStyle = '#c79a5b'; c.fillRect(x + 3, y + 8, 10, 6);
+      c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + 10, 10, 1); c.fillRect(x + 3, y + 12, 10, 1);
+      c.fillStyle = '#3f8a2e'; c.fillRect(x + 5, y + 5, 2, 3); c.fillStyle = '#f2c14e'; c.fillRect(x + 8, y + 5, 2, 3); c.fillStyle = '#d1263a'; c.fillRect(x + 11, y + 6, 2, 2);
+    } else if (e.kind === 'piece') { // a piece in the wrong spot: its tile, faded, with a red mark
+      c.save(); c.globalAlpha = .55; (WW.tiles[e.b.tile] || WW.tiles['.'])(c, x, y, e.x, e.y, t, WW.ep.map); c.restore();
+      c.strokeStyle = '#e04848'; c.lineWidth = 2; c.strokeRect(x + 1, y + 1, 14, 14);
+      c.fillStyle = '#e04848'; c.font = 'bold 9px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText('✕', x + 8, y + 8);
+    }
+  };
+  // a typed crop: a sprout, then the plant; a wilting one turns brown
+  F.drawCrop = (c, e, x, y, t, st) => {
+    const cr = crop(e.type);
+    if (e.wiltAt) { const k = Math.min(1, 1 - (e.wiltAt - performance.now()) / 1800); c.fillStyle = k > .5 ? '#8b6a3a' : '#5a8a2e'; c.fillRect(x + 7, y + 8 + Math.round(k * 2), 2, 5 - Math.round(k * 2)); c.fillRect(x + 5 + Math.round(k), y + 9, 2, 1); c.fillRect(x + 9 - Math.round(k), y + 9, 2, 1); return; }
+    c.fillStyle = '#3f8a2e';
+    if (st === 0) { c.fillRect(x + 7, y + 9, 2, 4); c.fillRect(x + 5, y + 8, 2, 2); c.fillRect(x + 9, y + 8, 2, 2); }
+    else if (st === 1) { c.fillRect(x + 7, y + 4, 2, 9); c.fillRect(x + 4, y + 6, 3, 3); c.fillRect(x + 9, y + 5, 3, 3); }
+    else { c.fillRect(x + 7, y + 5, 2, 8); c.font = '9px sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillStyle = '#000'; c.fillText(cr ? cr.icon : '🌾', x + 8, y + 4); }
+  };
+})();
+
 /* game.js */
 /* WORLDWALKER engine · the game itself: map, walking, screens, people, Grumplings, flow */
 (function () {
@@ -4662,7 +4921,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post', 'piece']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -4694,13 +4953,14 @@ window.WW_CONFIG.MODE = 'canvas';
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
     WW.world.ents(ep).forEach(e => ents.push(e)); WW.world.setup(ep);
+    WW.farm.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
-    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); G.fit();
+    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); WW.farm.setup(ep); G.fit();
     WW.ui.hud(); WW.ui.quest();
     WW.setLang(WW.lang);
     bindInput();
@@ -4771,6 +5031,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const ep = WW.ep, r = WW.run;
     if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
     if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
+    if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -4830,6 +5091,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
     if (e && e.kind === 'post') return WW.tools.post(e);
+    if (e && e.kind === 'piece') return WW.farm.pickPiece(e);
     if (e && !PASS.includes(e.kind) && e.kind !== 'boss') return interact(e);
     if (!walkable(tx, ty) && !e && (WW.tools.bump(tx, ty) || WW.world.bump(tx, ty))) return;
     if (WW.tools.on()) {
@@ -4918,7 +5180,7 @@ window.WW_CONFIG.MODE = 'canvas';
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
       if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
-      if (/^[1-5]$/.test(e.key)) { WW.tools.pick(['star', 'axe', 'sickle', 'seed', 'sign'][+e.key - 1]); return; }
+      if (/^[1-6]$/.test(e.key)) { WW.tools.pick(WW.tools.SLOTS[+e.key - 1]); return; }
       if (keys[e.key]) { e.preventDefault(); if (!e.repeat) press(keys[e.key]); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
       else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
@@ -5000,6 +5262,7 @@ window.WW_CONFIG.MODE = 'canvas';
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, t, phase: e.id });
       if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
+      if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
       if (e.kind === 'stone') {
         const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
         if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
@@ -5069,7 +5332,7 @@ window.WW_CONFIG.MODE = 'canvas';
     }
     moveSmudges(now);
     if (!WW.paused) moveStars(dt);
-    WW.tools.tick(now);
+    WW.tools.tick(now); WW.farm.tick(now);
     const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
     if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
       bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near
@@ -5246,6 +5509,18 @@ window.EPISODE = {
   start: [3, 5],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): fence the wheat region — a formal region has one trait everywhere and a clear border */
+  build: [
+    { id: 'fence', kind: 'place', board: [1, 4], tile: 'F', ok: [[5, 1], [5, 3], [16, 1], [16, 3]], cost: { wood: 1 },
+      name: { en: 'Fence for the wheat region', es: 'Cerca para la región del trigo', fa: 'کتاره برای ساحهٔ گندم' },
+      ask: { en: 'Wheat grows on every field up here, so this is a [[formal region|formal region]]: one trait is true everywhere. Its border is clear. Close the gaps in the fence on the west and east edges of the wheat. Leave the middle gap on each side open as a gate.',
+        es: 'Aquí arriba crece trigo en todos los campos, así que es una [[formal region|región formal]]: un rasgo es igual en todas partes. Su borde es claro. Cierra los huecos de la cerca en los bordes oeste y este del trigo. Deja abierto el hueco del medio de cada lado como portón.',
+        fa: 'این بالا در همهٔ کشتزارها گندم می‌روید، پس این یک [[formal region|ساحهٔ رسمی]] است: یک ویژگی در همه جا یکسان است. مرزش روشن است. شکاف‌های کتاره را در لبهٔ غربی و شرقی گندم ببند. شکاف وسط هر طرف را به عنوان دروازه باز بگذار.' },
+      why: { en: 'Right on the edge of the wheat region!', es: '¡Justo en el borde de la región del trigo!', fa: 'درست در لبهٔ ساحهٔ گندم!' },
+      wrong: { en: 'This spot is not on the edge of the wheat. A formal region\'s border runs along the edge of the land that shares its trait.', es: 'Este lugar no está en el borde del trigo. El borde de una región formal va por la orilla de la tierra que comparte el rasgo.', fa: 'این جا در لبهٔ گندم نیست. مرز ساحهٔ رسمی در لبهٔ زمینی می‌رود که آن ویژگی را دارد.' },
+      done: { en: 'The wheat region has a clear border now, with a gate on each side. Every field inside grows wheat: a formal region.', es: 'La región del trigo ya tiene un borde claro, con un portón a cada lado. Todos los campos de adentro tienen trigo: una región formal.', fa: 'ساحهٔ گندم حالا مرز روشن دارد، با یک دروازه در هر طرف. همهٔ کشتزارهای داخل گندم دارند: یک ساحهٔ رسمی.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [25, 10], at: [29, 13], decor: 'gem',

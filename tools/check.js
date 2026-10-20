@@ -118,6 +118,18 @@ function checkEpisode(file) {
     if (sec.at) place(sec.at, 'secret chest', true, block);
     if (!['canoe', 'sail'].includes(sec.tool) && !hasG) errs.push('secret needs a tool gate tile "G" in the map');
   } else if (hasG) errs.push('the map has a tool gate "G" but no secret');
+  /* ---- build boards and the seed basket are solid things on the map ---- */
+  (ep.build || []).forEach((b, i) => { if (b.kind === 'place' && b.board) place(b.board, `build ${i} board`, true, block); });
+  if (ep.plant) {
+    if (ep.plant.basket) place(ep.plant.basket, 'seed basket', true, block); else errs.push('plant needs basket: [x, y]');
+    if (!(ep.plant.crops || []).length) errs.push('plant needs crops');
+    (ep.plant.crops || []).forEach((c, i) => {
+      if (!c.id || !c.icon || !c.name || !c.ok || !c.no) errs.push(`crop ${i} needs id, icon, name, ok and no`);
+      if (c.rain && !c.dry) errs.push(`crop ${i} needs rain: it also needs dry (why it wilts with no rain)`);
+      if (c.rain && !ep.seasons) errs.push(`crop ${i} needs rain, but the episode has no seasons`);
+      if (!(c.zones || []).length) errs.push(`crop ${i} needs zones`);
+    });
+  }
   /* ---- finds: a clue note and a hidden spot ---- */
   const FIND_DECOR = ['shell', 'gem', 'fossil', 'vase', 'drum', 'flower', 'coinold', 'feather'];
   (ep.finds || []).forEach((f, i) => {
@@ -215,7 +227,23 @@ function checkEpisode(file) {
         if (solid(p[0], p[1]) || blockers.has(k)) errs.push(`${w}: right spot (${k}) is not open ground`);
         else if (!seen.has(k)) errs.push(`${w}: right spot (${k}) cannot be reached`);
       });
-    } else errs.push(`${w}: kind must be repair or signpost`);
+    } else if (b.kind === 'place') {
+      if (!b.name || !b.ask || !b.why || !b.wrong || !b.done) errs.push(`${w}: a place build needs name, ask, why, wrong and done`);
+      if (!WW.tiles[b.tile]) errs.push(`${w}: tile "${b.tile}" is not a map letter`);
+      if (!(b.ok || []).length) errs.push(`${w}: a place build needs ok: [[x, y], ...]`);
+      (b.ok || []).forEach(p => { if (!at(p, w)) return; const k = p.join(','); if (solid(p[0], p[1]) || blockers.has(k)) errs.push(`${w}: piece spot (${k}) is not open ground`); else if (!seen.has(k)) errs.push(`${w}: piece spot (${k}) cannot be reached`); });
+      if (!b.board) errs.push(`${w}: a place build needs board: [x, y]`); else if (!nextTo(b.board)) errs.push(`${w}: the build board cannot be reached`);
+      // once it is built, everything a student needs must still be reachable (a fence must never wall anyone in)
+      if (WW.solid(b.tile)) {
+        const walls = new Set((b.ok || []).map(p => p.join(',')));
+        const s2 = new Set([ep.start.join(',')]), q2 = [ep.start];
+        while (q2.length) { const [x, y] = q2.shift(); for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (s2.has(k) || walls.has(k) || (solid(nx, ny) && !fixedAll.has(k)) || block.has(k)) continue; s2.add(k); q2.push([nx, ny]); } }
+        const near2 = ([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => s2.has((x + dx) + ',' + (y + dy)));
+        const need = [...(ep.npcs || []).map(n => [n.x, n.y]), ep.challenge.at, ...(qu ? [[qu.giver.x, qu.giver.y], [qu.contact.x, qu.contact.y]] : [])];
+        need.forEach(p => { if (!near2(p)) errs.push(`${w}: once built, (${p}) cannot be reached`); });
+        (ep.scraps || []).forEach(p => { if (!s2.has(p.join(','))) errs.push(`${w}: once built, scrap (${p}) cannot be reached`); });
+      }
+    } else errs.push(`${w}: kind must be repair, signpost or place`);
   });
 
   // screens used

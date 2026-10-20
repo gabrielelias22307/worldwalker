@@ -108,6 +108,24 @@ Draw the broken tiles with `Z` (broken bridge) in the map. `tools/check.js` chec
 ```
 A wrong spot says which way the right one is (or, on the grid, which square this is and which one the sign wants) and the student can pick the sign up again. The cost is paid only the first time a sign is put up.
 
+**place** — a build the student puts together piece by piece where it belongs (FUN-PASS-2: one build per episode that teaches its big idea). Walking into the build `board` gives the kit (tool 6). Space puts a piece on the faced tile: a right spot builds it at once (`tile`), a wrong spot leaves a red piece and says `wrong` — face it and press Space to pick it up (nothing is lost). When every `ok` spot is built, the build is saved and gives 5 coins.
+```js
+{ id: 'fence', kind: 'place', board: [1, 4], tile: 'F', ok: [[5, 1], [5, 3], [16, 1], [16, 3]], cost: { wood: 1 } /* each piece */,
+  name: {..}, ask: {..} /* the big idea and what to build */, why: {..} /* a right spot */, wrong: {..} /* why a spot is wrong */, done: {..} }
+```
+`tools/check.js` checks that every piece spot is open ground you can reach, and that once it is built (a fence is solid) every person, the stone and every scrap can still be reached.
+
+## Planting that teaches (`plant`, `seasons`)
+
+In farm episodes the seed basket gives seeds of each crop (tool 4; press 4 again for the next crop). A seed grows only in its crop's `zones` — and with `rain: true` only while the summer monsoon rain falls. Anywhere else it sprouts, wilts with a one-line reason and the seed comes back. A ripe crop picked with the sickle gives 3 coins and 2 seeds.
+```js
+plant: { basket: [2, 18], ask: {..}, crops: [
+  { id: 'coffee', icon: '☕', name: {..}, zones: [{ x: 1, y: 8, w: 30, h: 5 }], ok: {..}, no: {..},
+    noBy: [{ x: 0, y: 0, w: 32, h: 8, t: {..} /* why it wilts in this band: too cold up here */ }] },
+  { id: 'rice', icon: '🌾', name: {..}, rain: true, dry: {..} /* why it wilts with no rain */, zones: [...], ok: {..}, no: {..} } ] },
+seasons: { dry: 35, wet: 45 }   // seconds: the monsoon comes and goes; rain falls on the map and a badge shows the season
+```
+
 ## The compass stone in the world
 
 Every episode's stone happens on the map. The card data stays the same and is the fallback ("Use cards instead"); the world version only adds map positions:

@@ -380,3 +380,14 @@ canvas{filter:var(--vivid)}
 
 .dpad .padchris{grid-column:1;grid-row:1;background:#fff3c4;color:var(--ink)}
 .dpad .padgoals{grid-column:3;grid-row:1;font-size:18px}
+
+/* the monsoon badge (6.1) and crop seeds in the tool bar */
+.seasonbadge{position:absolute;z-index:3;top:6px;left:50%;transform:translateX(-50%);background:rgba(255,243,196,.92);color:var(--ink);border:2px solid #000;border-radius:12px;padding:1px 10px;font-weight:700;font-size:13px;pointer-events:none}
+.seasonbadge.wet{background:rgba(143,195,255,.95)}
+.toolbar .tslot .tcrop{font-size:20px;line-height:1}
+
+/* the carry line always takes its own full row over the tool slots; the bar sits above map labels */
+.screen .toolbar{z-index:4}
+.screen .toolbar .tcarry,.ww-frame.narrow .stage>.toolbar .tcarry{flex-basis:100%;max-width:100%;width:0;min-width:100%}
+.seasonbadge{left:8px;transform:none}
+.toolbar.top~.seasonbadge,.seasonbadge.under{top:auto;bottom:8px}

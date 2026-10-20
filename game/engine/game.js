@@ -134,7 +134,7 @@
     const e = entAt(x, y);
     return !e || PASS.includes(e.kind);
   }
-  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post']; // things you can walk over (a placed sign never walls you in)
+  const PASS = ['scrap', 'smudge', 'qspot', 'atlas', 'crop', 'post', 'piece']; // things you can walk over (a placed sign never walls you in)
 
   /* ---------------- start an episode ---------------- */
   WW.start = (ep, rootSel) => {
@@ -166,13 +166,14 @@
     ep.signs.forEach(s => ents.push({ kind: 'sign', x: s.x, y: s.y, ref: s }));
     WW.quest.ents(ep).forEach(e => ents.push(e));
     WW.world.ents(ep).forEach(e => ents.push(e)); WW.world.setup(ep);
+    WW.farm.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
-    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); G.fit();
+    G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); WW.farm.setup(ep); G.fit();
     WW.ui.hud(); WW.ui.quest();
     WW.setLang(WW.lang);
     bindInput();
@@ -243,6 +244,7 @@
     const ep = WW.ep, r = WW.run;
     if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
     if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
+    if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
     if (e.kind === 'npc') {
       WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
     } else if (e.kind === 'sign') {
@@ -302,6 +304,7 @@
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
     if (e && e.kind === 'post') return WW.tools.post(e);
+    if (e && e.kind === 'piece') return WW.farm.pickPiece(e);
     if (e && !PASS.includes(e.kind) && e.kind !== 'boss') return interact(e);
     if (!walkable(tx, ty) && !e && (WW.tools.bump(tx, ty) || WW.world.bump(tx, ty))) return;
     if (WW.tools.on()) {
@@ -390,7 +393,7 @@
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
       if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
-      if (/^[1-5]$/.test(e.key)) { WW.tools.pick(['star', 'axe', 'sickle', 'seed', 'sign'][+e.key - 1]); return; }
+      if (/^[1-6]$/.test(e.key)) { WW.tools.pick(WW.tools.SLOTS[+e.key - 1]); return; }
       if (keys[e.key]) { e.preventDefault(); if (!e.repeat) press(keys[e.key]); }
       else if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); actFacing(); }
       else if (e.key === 'p' || e.key === 'P') WW.ui.passport();
@@ -472,6 +475,7 @@
       if (e.gone || e.visible === false || !inScreen(e)) return;
       if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, t, phase: e.id });
       if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
+      if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
       if (e.kind === 'stone') {
         const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
         if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
@@ -541,7 +545,7 @@
     }
     moveSmudges(now);
     if (!WW.paused) moveStars(dt);
-    WW.tools.tick(now);
+    WW.tools.tick(now); WW.farm.tick(now);
     const bossE = ents.find(e => e.kind === 'boss' && e.visible && !e.gone);
     if (bossE && !WW.paused && Math.abs(bossE.x - player.x) + Math.abs(bossE.y - player.y) <= 5 && now - (bossE.roarT || 0) > 5500) {
       bossE.roarT = now; shakeT = now; WW.sfx('growl'); G.flashT = now; // the Grump roars when you come near

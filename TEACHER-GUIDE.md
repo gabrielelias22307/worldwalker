@@ -57,6 +57,11 @@ Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). 
 
 Nobody gets stuck: running out of hearts just sends the student back with full hearts.
 
+## Building and planting that teach
+
+- **Builds:** each episode has one thing to build with the wood and fiber students gather, and where it goes is the lesson. In 1.2 students fence the wheat fields (a formal region has a clear border); in 2.2 they build coffee terraces in the mild middle of the mountain; in 6.1 they build rice paddy walls on the flat, low land by the river. They walk into the build board, take the kit and put each piece down. A piece in the wrong place says why and can be picked up again.
+- **Planting:** in the farm episodes the seed basket gives seeds of each crop, and a seed grows only where (and when) the lesson says. In 2.2 potatoes grow in the cold land, coffee in the mild land and bananas in the hot land. In 6.1 rice grows in the paddies only while the summer monsoon rain falls (the rain comes and goes on the map), and tea grows on the hills. A seed planted in the wrong place sprouts, wilts with a one-line reason, and comes back to the bag.
+
 ## More to do on every map
 
 - **Finds:** each map has 2 clue notes (📜). A clue leads to a hidden spot, for example "walk 3 steps south, then 2 steps west", or "stand on the dock square that touches the river" (map key). Stepping on the right spot gives +3 coins and a decoration for the camp.

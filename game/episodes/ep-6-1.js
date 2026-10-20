@@ -45,6 +45,33 @@ window.EPISODE = {
   start: [10, 5],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): paddy walls on the flat, low land, ready for the monsoon */
+  build: [
+    { id: 'paddy', kind: 'place', board: [6, 10], tile: 'q', ok: [[1, 10], [2, 10], [3, 10], [4, 10]], cost: { wood: 1 },
+      name: { en: 'Rice paddy walls', es: 'Bordos del arrozal', fa: 'دیوارهای شالیزار' },
+      ask: { en: 'The summer monsoon brings heavy rain. Low mud walls around a flat field hold the water, so rice can grow in it. Build paddy walls on the flat, low land by the river, between the two paddies.',
+        es: 'El monzón de verano trae lluvia fuerte. Unos bordos bajos de lodo alrededor de un campo plano guardan el agua, y así crece el arroz. Construye bordos en la tierra plana y baja junto al río, entre los dos arrozales.',
+        fa: 'موسمی تابستان باران زیاد می‌آورد. دیوارهای پست گلی دور یک زمین هموار آب را نگه می‌دارند تا برنج در آن بروید. دیوارهای شالیزار را در زمین هموار و پست کنار دریا، بین دو شالیزار بساز.' },
+      why: { en: 'Flat and low: the rain will stand here, just right for rice.', es: 'Plano y bajo: aquí el agua de lluvia se queda, justo lo que necesita el arroz.', fa: 'هموار و پست: آب باران این جا می‌ماند، درست همان که برنج لازم دارد.' },
+      wrong: { en: 'Not here. Rain runs off hills and away from high ground. Paddy walls go on the flat, low land by the river, next to the other paddies.', es: 'Aquí no. La lluvia corre por las colinas y se va de la tierra alta. Los bordos van en la tierra plana y baja junto al río, al lado de los otros arrozales.', fa: 'این جا نه. باران از تپه‌ها و زمین بلند جاری می‌شود. دیوارهای شالیزار در زمین هموار و پست کنار دریا، کنار شالیزارهای دیگر می‌روند.' },
+      done: { en: 'The new paddy is ready for the monsoon rain. Most of the world\'s rice grows in paddies like this in South and East Asia.', es: 'El nuevo arrozal está listo para la lluvia del monzón. La mayor parte del arroz del mundo crece en arrozales así en el sur y el este de Asia.', fa: 'شالیزار تازه برای باران موسمی آماده است. بیشتر برنج جهان در شالیزارهایی مثل این در جنوب و شرق آسیا می‌روید.' } }
+  ],
+  /* planting teaches the monsoon: rice grows only in the paddies, and only while the summer rain falls */
+  seasons: { dry: 35, wet: 45 },
+  plant: {
+    basket: [11, 6],
+    ask: { en: 'Rice needs water standing in the field. Tea likes rain that runs off the hills.', es: 'El arroz necesita agua en el campo. Al té le gusta la lluvia que baja por las colinas.', fa: 'برنج آب ایستاده در کشتزار را لازم دارد. چای بارانی را دوست دارد که از تپه‌ها جاری می‌شود.' },
+    crops: [
+      { id: 'rice', icon: '🌾', name: { en: 'rice', es: 'arroz', fa: 'برنج' }, rain: true, zones: [{ x: 1, y: 8, w: 25, h: 9 }],
+        ok: { en: 'Rice in a flat paddy, in the monsoon rain. It will grow!', es: 'Arroz en un arrozal plano, con la lluvia del monzón. ¡Va a crecer!', fa: 'برنج در شالیزار هموار، در باران موسمی. می‌روید!' },
+        dry: { en: 'No rain yet: this is the dry winter monsoon. Rice needs the summer monsoon rain. Wait for the rain, then plant.', es: 'Todavía no llueve: es el monzón de invierno, seco. El arroz necesita la lluvia del monzón de verano. Espera la lluvia y luego siembra.', fa: 'هنوز باران نیست: این موسمی خشک زمستان است. برنج باران موسمی تابستان را لازم دارد. منتظر باران بمان، بعد بکار.' },
+        no: { en: 'Rice needs flat, low land where water can stand: the paddies by the river.', es: 'El arroz necesita tierra plana y baja donde el agua se quede: los arrozales junto al río.', fa: 'برنج زمین هموار و پست می‌خواهد که آب در آن بماند: شالیزارهای کنار دریا.' } },
+      { id: 'tea', icon: '🍵', name: { en: 'tea', es: 'té', fa: 'چای' }, zones: [{ x: 1, y: 2, w: 30, h: 3 }],
+        ok: { en: 'Tea on the hills: the rain runs off and the roots stay dry. It will grow!', es: 'Té en las colinas: la lluvia baja y las raíces quedan secas. ¡Va a crecer!', fa: 'چای روی تپه‌ها: باران جاری می‌شود و ریشه‌ها خشک می‌مانند. می‌روید!' },
+        no: { en: 'Tea grows on the hills, where rain runs off. Down here the water stands and the roots get too wet.', es: 'El té crece en las colinas, donde la lluvia baja. Aquí abajo el agua se queda y las raíces se mojan demasiado.', fa: 'چای روی تپه‌ها می‌روید، جایی که باران جاری می‌شود. این پایین آب می‌ماند و ریشه‌ها خیلی تر می‌شوند.' } }
+    ]
+  },
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [12, 5], at: [5, 2], decor: 'flower',

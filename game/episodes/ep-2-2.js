@@ -44,6 +44,38 @@ window.EPISODE = {
   start: [2, 19],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): terraces in the mild band, where coffee grows */
+  build: [
+    { id: 'terraces', kind: 'place', board: [11, 12], tile: 't', ok: [[16, 9], [16, 10], [16, 11], [16, 12]], cost: { wood: 1 },
+      name: { en: 'Coffee terraces', es: 'Terrazas de café', fa: 'زینه‌های قهوه' },
+      ask: { en: 'Coffee likes the mild middle of the mountain, the [[tierra templada|tierra templada]]: not too hot, not too cold. Build terraces (flat steps) beside the coffee fields so the rain does not wash the soil down the slope.',
+        es: 'Al café le gusta la parte media y templada de la montaña, la [[tierra templada|tierra templada]]: ni muy caliente ni muy fría. Construye terrazas (escalones planos) junto a los cafetales para que la lluvia no se lleve la tierra.',
+        fa: 'قهوه وسط معتدل کوه را دوست دارد، [[tierra templada|تیرا تمپلادا]]: نه خیلی گرم، نه خیلی سرد. کنار کشتزارهای قهوه زینه‌ها (پله‌های هموار) بساز تا باران خاک را از سراشیبی نشوید.' },
+      why: { en: 'A terrace in the mild band, right beside the coffee!', es: '¡Una terraza en la franja templada, junto al café!', fa: 'یک زینه در نوار معتدل، درست کنار قهوه!' },
+      wrong: { en: 'This is not the mild band. Coffee grows in the middle of the mountain, between the cold potato fields and the hot banana fields. Build the terraces there, beside the coffee.', es: 'Esta no es la franja templada. El café crece en el medio de la montaña, entre las papas frías y los bananos calientes. Construye las terrazas allí, junto al café.', fa: 'این جا نوار معتدل نیست. قهوه در وسط کوه می‌روید، بین کشتزارهای سرد کچالو و کشتزارهای گرم کیله. زینه‌ها را آن جا، کنار قهوه بساز.' },
+      done: { en: 'The terraces are built! Farmers in the Andes have farmed on steps like these for hundreds of years.', es: '¡Las terrazas están listas! Los agricultores de los Andes cultivan en escalones así desde hace cientos de años.', fa: 'زینه‌ها ساخته شد! دهقانان اند صدها سال است روی پله‌هایی مثل این‌ها کشت می‌کنند.' } }
+  ],
+  /* planting teaches the bands: each crop grows only at its height */
+  plant: {
+    basket: [2, 18],
+    ask: { en: 'Each crop grows best at its own height on the mountain.', es: 'Cada cultivo crece mejor a su propia altura en la montaña.', fa: 'هر محصول در ارتفاع خودش روی کوه بهتر می‌روید.' },
+    crops: [
+      { id: 'potato', icon: '🥔', name: { en: 'potato', es: 'papa', fa: 'کچالو' }, zones: [{ x: 1, y: 4, w: 30, h: 4 }],
+        ok: { en: 'Potatoes love the cold land up high. It will grow!', es: '¡A las papas les encanta la tierra fría de arriba! Va a crecer.', fa: 'کچالو زمین سرد بالا را دوست دارد. می‌روید!' },
+        no: { en: 'Potatoes need the cold land, high on the mountain.', es: 'Las papas necesitan la tierra fría, alto en la montaña.', fa: 'کچالو زمین سرد، بالای کوه را لازم دارد.' },
+        noBy: [{ x: 0, y: 0, w: 32, h: 4, t: { en: 'Too cold up here: this is the frozen land. Potatoes grow a little lower, in the cold land.', es: 'Aquí hace demasiado frío: es la tierra helada. Las papas crecen un poco más abajo, en la tierra fría.', fa: 'این جا خیلی سرد است: زمین یخ‌زده. کچالو کمی پایین‌تر، در زمین سرد می‌روید.' } }] },
+      { id: 'coffee', icon: '☕', name: { en: 'coffee', es: 'café', fa: 'قهوه' }, zones: [{ x: 1, y: 8, w: 30, h: 5 }],
+        ok: { en: 'Coffee in the mild land, the middle of the mountain. It will grow!', es: 'Café en la tierra templada, el medio de la montaña. ¡Va a crecer!', fa: 'قهوه در زمین معتدل، وسط کوه. می‌روید!' },
+        no: { en: 'Coffee needs the mild land in the middle of the mountain.', es: 'El café necesita la tierra templada del medio de la montaña.', fa: 'قهوه زمین معتدل وسط کوه را لازم دارد.' },
+        noBy: [{ x: 0, y: 0, w: 32, h: 8, t: { en: 'Too cold up here for coffee. It grows lower down, in the mild land.', es: 'Aquí hace demasiado frío para el café. Crece más abajo, en la tierra templada.', fa: 'این جا برای قهوه خیلی سرد است. پایین‌تر، در زمین معتدل می‌روید.' } },
+          { x: 0, y: 13, w: 32, h: 8, t: { en: 'Too hot down here for coffee. It grows higher up, in the mild land.', es: 'Aquí abajo hace demasiado calor para el café. Crece más arriba, en la tierra templada.', fa: 'این پایین برای قهوه خیلی گرم است. بالاتر، در زمین معتدل می‌روید.' } }] },
+      { id: 'banana', icon: '🍌', name: { en: 'banana', es: 'banano', fa: 'کیله' }, zones: [{ x: 1, y: 13, w: 30, h: 6 }],
+        ok: { en: 'Bananas in the hot land near the sea. It will grow!', es: 'Bananos en la tierra caliente cerca del mar. ¡Va a crecer!', fa: 'کیله در زمین گرم نزدیک بحر. می‌روید!' },
+        no: { en: 'Bananas need the hot land, low down near the sea.', es: 'Los bananos necesitan la tierra caliente, abajo cerca del mar.', fa: 'کیله زمین گرم، پایین نزدیک بحر را لازم دارد.' },
+        noBy: [{ x: 0, y: 0, w: 32, h: 13, t: { en: 'Too cold up here for bananas. They grow low down, in the hot land.', es: 'Aquí hace demasiado frío para los bananos. Crecen abajo, en la tierra caliente.', fa: 'این جا برای کیله خیلی سرد است. پایین، در زمین گرم می‌روید.' } }] }
+    ]
+  },
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [16, 14], at: [19, 19], decor: 'shell',

@@ -387,8 +387,12 @@
       const t = WW.TOOLS.find(o => o.id === ep.secret.tool);
       h += `<section class="part"><h2>🎁 ${esc(HT('pSecret'))}</h2><p><b>${t ? t.icon + ' ' + esc(L(t.name)) + ' (' + t.ep + ')' : ''}</b> · (${ep.secret.at.join(', ')}) — ${esc(HT('secretHow'))}</p><div class="say">${rich(ep.secret.text)}</div></section>`;
     }
-    if (ep.tools || ep.build) {
+    if (ep.tools || ep.build || ep.plant) {
       h += `<section class="part"><h2>🪓 ${esc(HT('pBuild'))}</h2>${ep.tools ? `<p>${esc(HT('toolsOn'))}</p>` : ''}`;
+      (ep.build || []).filter(b => b.kind === 'place').forEach(b => {
+        h += `<div class="tbox"><h3>🔨 ${esc(L(b.name))}</h3><div class="muted">${esc(HT('cost'))}: ${esc(costTxt(b.cost))} × ${b.ok.length} · (${b.ok.map(p => p.join(', ')).join(') (')})</div><div class="say">${rich(b.ask)}</div><p class="muted"><b>✗</b> ${rich(b.wrong)}</p></div>`;
+      });
+      if (ep.plant) h += `<div class="tbox"><h3>🧺 ${ep.plant.crops.map(c => c.icon + ' ' + esc(L(c.name))).join(' · ')}</h3>${ep.plant.crops.map(c => `<p><b>${c.icon} ${esc(L(c.name))}</b>${c.rain ? ' 🌧️' : ''}: ${rich(c.ok)}<br><span class="muted">✗ ${rich(c.no)}${c.dry ? ' · ' + rich(c.dry) : ''}</span></p>`).join('')}</div>`;
       (ep.build || []).filter(b => b.kind === 'repair').forEach(b => {
         h += `<div class="tbox"><h3>🔨 ${esc(HT('repair'))}: ${esc(L(b.name))}</h3><div class="muted">${esc(HT('cost'))}: ${esc(costTxt(b.cost))} · (${b.at.map(p => p.join(', ')).join(') (')})</div><div class="say">${rich(b.ask)}</div></div>`;
       });
