@@ -17,7 +17,9 @@ const url = 'file://' + path.join(ROOT, 'game', 'ep-1-1.html');
   // beginner
   await start({ loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 });
   ok(await p.evaluate(() => WW.heartsMax()) === 3, 'beginner has 3 hearts');
-  ok((await p.textContent('#ww-quest')).includes('Claim the atlas page'), 'quest bar ends with "Claim the atlas page"');
+  await p.click('#ww-quest'); // the quest bar shows the goal now; tapping it opens the whole list
+  ok((await p.textContent('#ww-qpop')).includes('Claim the atlas page'), 'the goal list ends with "Claim the atlas page"');
+  ok(!(await p.textContent('#ww-quest')).includes('Claim the atlas page'), 'the quest bar shows only the goal right now');
   // a gain that crosses 3 points shows the New power banner
   await p.evaluate(() => WW.gain('pla', 3, 0, 'test'));
   ok(await p.evaluate(() => WW.heartsMax()) === 4, 'Place 3 = +1 heart');
