@@ -17,6 +17,15 @@
 3. Talk to 3–4 people. Each talk is a short reading at about a grade-5 level, with **EN / ES / دری** buttons, and yellow tap-to-define words. Each person asks one question. The **✕** in the corner (or Esc) leaves a talk at any time; the person counts only once the student finishes the talk.
 4. Do the **quest**. A person with a gold **!** over their head asks for help. The student talks to a second person (blue **?**), then does one thing: **find** a secret spot from a direction clue, **beat an Ink Thief** in a short question duel, or **make the right trade**. Then they go back for thanks. The compass stone stays locked until the quest is done.
 5. Solve the glowing **compass stone** (sort cards, put steps in order, pick a city site and give reasons, set switches, or read a table). **In 1.1 the stone is in the world:** it hands out 4 signposts, and students put each one where its words point. Two use a relative location ("Just south of the big lake", "Two steps west of the south bridge") and two use an absolute location on the small latitude/longitude grid next to the stone ("40°N, 74°W"). A sign in the wrong spot says why, and the student picks it up and tries again. Each signpost costs 1 wood + 1 fiber the first time. A **Use cards instead** button opens the old card sort.
+
+   **Every episode's stone is now on the map**, and the card version is always one tap away (**Use cards instead**):
+   - **carry** (was sort): students carry each card to the right colored area. A wrong area says which area it is and why.
+   - **route** (was order): they walk into the stops in the right order, for example the Trans-Siberian stops from west to east.
+   - **site** (was choose and give reasons): they visit every flag, then plant the flag at the best site and pick their reasons.
+   - **survey** (was read the table): they read each survey post on the map, then answer the questions at the stone.
+   - **levers** (was set the switches): they pull levers on the map, then test them at the stone.
+
+   **Earned tools now do something.** From Episode 2.1 on, each map hides an optional chest that only a tool from an earlier episode reaches (+5 coins). The 🛶 Canoe paddles on rivers, the ⛵ Sail crosses the open sea, and the other tools open a small tool gate. Nothing students need is ever behind a tool, so the teacher code can still open any episode.
 6. Beat the **Grump**: 8 questions from that subunit's mastery-check bank. 3 right answers win. A wrong answer costs a heart and shows why, and that question comes back.
 7. **Claim the atlas page.** The Grump's mist clears away and the page waits on a glowing stone where the Grump stood. Walking onto it ends the episode.
 8. The **finish screen**: what they earned (and why), 3 things learned, one written reflection, stars, the Passport Code, and **Copy my work / Download** for turning in.

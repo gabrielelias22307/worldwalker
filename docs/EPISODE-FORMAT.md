@@ -56,6 +56,7 @@ Stars: ★ finishing · ★ all 3 scraps · ★ the boss with 1 miss or less.
 | `tools` | optional: `['axe', 'sickle']` turns on the tool bar (keys 1–5): ★ stars, axe (small trees `T P a` and bushes `Y` → wood), sickle (tall grass `"` → fiber, sometimes a seed or a coin; ripe crops → 3 coins), seeds (plant on farm soil `o`), signposts. Space uses the tool on the tile you face. Chopped trees and grass grow back; trees on the map's edge can never be cut |
 | `keep` | optional: `[[x, y], ...]` trees the axe must never cut (for example a tree that keeps a path closed on purpose) |
 | `build` | optional: what can be built here (see "Building" below) |
+| `secret` | optional (2.1 and later): `{ tool, at: [x, y], text }` — a chest (+5 coins, saved) that only a tool earned in an EARLIER episode reaches. `canoe` paddles on rivers `~`, `sail` on `~` and deep water `=`; every other tool (`compass`, `rail`, `gourd`, `key`, `cloak`, `seal`) opens a tool gate `G` in the map. Never put anything required behind it: the teacher code can open any episode |
 | `look.style` / `look.hat` | optional on a person: `'short'`, `'long'` or `'bun'` hair (otherwise picked from the name); `hat: '#hex'` gives them a hat |
 
 `stat` is one of the five powers: `loc` Where (Location) · `pla` What it is like (Place) · `hei` People & land (Human–Environment Interaction) · `mov` On the move (Movement) · `reg` Regions (Region).
@@ -105,7 +106,22 @@ Draw the broken tiles with `Z` (broken bridge) in the map. `tools/check.js` chec
 ```
 A wrong spot says which way the right one is (or, on the grid, which square this is and which one the sign wants) and the student can pick the sign up again. The cost is paid only the first time a sign is put up.
 
-## Challenge types
+## The compass stone in the world
+
+Every episode's stone happens on the map. The card data stays the same and is the fallback ("Use cards instead"); the world version only adds map positions:
+
+| card type | world type | add to `challenge` | on the map |
+|---|---|---|---|
+| sort | `carry` | `zones: [{ bin, x, y, w, h }]` (≥1 rectangle per bin, room for every card + 1) | carry each card to the right colored area; a wrong area says which area it is and why |
+| order | `route` | `spots: [[x, y], ...]` one per item, same order | walk into the stops in the right order; a wrong stop explains with `why` |
+| claim | `site` | `spots` one per option | visit every flag, then plant the flag at the best site and pick reasons |
+| table | `survey` | `spots` one per table row | read each survey post (one row each), then answer at the stone |
+| combo | `levers` | `spots` one per switch (`start` must not be the solved setting) | pull the levers, then test them at the stone |
+| (1.1) | `build` | signposts in `build` + `items` ids, optional `grid` and `fallback` | put each signpost where its words point |
+
+Put the zones and spots where the land fits the idea (crops by height on the terraces, stops along the railway, the dam lever upstream). `tools/worldify.py` applies a small JSON spec to an episode (type, spots/zones, map rows, secret).
+
+## Challenge types (the card versions)
 
 **build** — the compass stone moved into the world. Walking into the stone hands out the signposts; placing all of them in the right spots solves it. Keep the card version as `fallback` ("Use cards instead").
 ```js
@@ -168,7 +184,7 @@ Solid (cannot walk through):
 | `R` red roof | `Q` blue roof | `h` house wall + window | `J` flat-roof building |
 | `U` tall city building | `X` factory | `I` oil pump | `O` well |
 | `m` market stall | `W` stone wall | `D` temple wall | `C` tiny city (for maps of maps) |
-| `Y` small bush (the axe clears it) | `Z` broken bridge (a `build` repair fixes it) | | |
+| `Y` small bush (the axe clears it) | `Z` broken bridge (a `build` repair fixes it) | `G` tool gate (opens for the episode's `secret.tool`) | |
 
 Houses are roof rows over a wall row with a door: `RRR` above `hdh`. Trees and mountains automatically sit on the ground around them (pines on snow, mountains on sand).
 

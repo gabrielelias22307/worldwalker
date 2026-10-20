@@ -173,7 +173,12 @@
     gridNote: { en: 'Survey grid at', es: 'Cuadrícula en', fa: 'شبکه در' },
     fallback: { en: 'Card version (students can choose "Use cards instead")', es: 'Versión con tarjetas (pueden elegir "Usar tarjetas")', fa: 'نسخهٔ کارتی (شاگرد می‌تواند «به جایش کارت» را انتخاب کند)' },
     lgFix: { en: 'repair', es: 'reparar', fa: 'ترمیم' },
-    lgSign: { en: 'signpost spot', es: 'lugar del letrero', fa: 'جای تابلو' }
+    lgSign: { en: 'signpost spot', es: 'lugar del letrero', fa: 'جای تابلو' },
+    lgWorld: { en: 'stone task on the map', es: 'tarea de la piedra en el mapa', fa: 'کار سنگ روی نقشه' },
+    lgSecret: { en: 'secret chest', es: 'cofre secreto', fa: 'صندوق مخفی' },
+    pSecret: { en: 'Secret (optional)', es: 'Secreto (opcional)', fa: 'راز (اختیاری)' },
+    secretHow: { en: 'Only reached with a tool earned in an earlier episode. +5 coins.', es: 'Solo se llega con una herramienta ganada en un episodio anterior. +5 monedas.', fa: 'فقط با ابزاری که در قسمت قبلی گرفته شده می‌رسی. +۵ سکه.' },
+    worldNote: { en: 'Students do this on the map. "Use cards instead" opens this card version:', es: 'Los estudiantes lo hacen en el mapa. "Usar tarjetas" abre esta versión:', fa: 'شاگردان این را روی نقشه انجام می‌دهند. «به جایش کارت» این نسخه را باز می‌کند:' }
   };
   const HT = k => L(H[k]);
   const TYPE = {
@@ -182,7 +187,12 @@
     claim: { en: 'Choose and give reasons', es: 'Elegir y dar razones', fa: 'انتخاب و دلیل' },
     combo: { en: 'Set the switches', es: 'Ajustar interruptores', fa: 'تنظیم کلیدها' },
     table: { en: 'Read the table', es: 'Leer la tabla', fa: 'خواندن جدول' },
-    build: { en: 'Place signposts on the map', es: 'Poner letreros en el mapa', fa: 'گذاشتن تابلوها روی نقشه' }
+    build: { en: 'Place signposts on the map', es: 'Poner letreros en el mapa', fa: 'گذاشتن تابلوها روی نقشه' },
+    carry: { en: 'Carry cards to the right areas (map)', es: 'Llevar tarjetas a las áreas correctas (mapa)', fa: 'بردن کارت‌ها به ساحه‌های درست (نقشه)' },
+    route: { en: 'Visit the stops in order (map)', es: 'Visitar las paradas en orden (mapa)', fa: 'رفتن به ایستگاه‌ها به ترتیب (نقشه)' },
+    site: { en: 'Visit the sites, plant the flag (map)', es: 'Visitar los lugares y poner la bandera (mapa)', fa: 'دیدن جاها و گذاشتن بیرق (نقشه)' },
+    survey: { en: 'Read the survey posts, then answer (map)', es: 'Leer los postes de datos y responder (mapa)', fa: 'خواندن تیرهای معلومات و جواب دادن (نقشه)' },
+    levers: { en: 'Pull the levers, then test (map)', es: 'Mover las palancas y probar (mapa)', fa: 'تنظیم دسته‌ها و امتحان (نقشه)' }
   };
   const REALM_COL = [null, '#c0392b', '#2f7fd1', '#8e5bd6', '#d98e2b', '#b8902a', '#3fa34d', '#b03a2e', '#2aa198'];
   const cat = {}; (window.WW_CATALOG || []).forEach(e => (cat[e.id] = e));
@@ -247,8 +257,13 @@
   }
 
   const costTxt = c => Object.entries(c || {}).map(([k, n]) => `${n} ${k}`).join(' + ');
+  const WBASE = { carry: 'sort', route: 'order', site: 'claim', survey: 'table', levers: 'combo' };
   function stoneKey(ch, ep) {
     let h = '';
+    if (WBASE[ch.type]) {
+      if (ch.type === 'carry') h += `<p class="muted">${(ch.zones || []).map(z => { const b = ch.bins.find(o => o.id === z.bin); return `${b.icon || ''} ${esc(L(b.label))}: (${z.x}, ${z.y}) ${z.w}×${z.h}`; }).join(' · ')}</p>`;
+      return h + `<p class="muted">${esc(HT('worldNote'))}</p>` + stoneKey(Object.assign({}, ch, { type: WBASE[ch.type] }), ep);
+    }
     if (ch.type === 'build') {
       const g = ch.grid, gl = t => (typeof t === 'string' ? t : L(t));
       h += `<table class="k"><tr><th>${esc(HT('sign'))}</th><th>${esc(HT('rightSpot'))}</th></tr>`;
@@ -308,6 +323,10 @@
     (ep.scraps || []).forEach(s => WW.sprite(x, 'page', s[0] * S + 1, s[1] * S + 2, {}));
     (ep.smudges || []).forEach((s, i) => { const type = WW.foeType(ep, i); WW.drawFoe(x, { type, phase: i, hp: WW.FOES[type].hp }, s[0] * S, s[1] * S, 0); });
     WW.sprite(x, 'stone', ep.challenge.at[0] * S, ep.challenge.at[1] * S, { pal: { W: '#9aa3ad', G: '#5e636b', y: '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+    const chw = ep.challenge, wspots = chw.type === 'carry' ? [] : (chw.spots || []);
+    wspots.forEach((p, i) => { x.fillStyle = '#2f6fd6'; x.strokeStyle = '#000'; x.lineWidth = 1.5; x.beginPath(); x.arc(p[0] * S + 8, p[1] * S + 8, 6, 0, 7); x.fill(); x.stroke(); x.fillStyle = '#fff'; x.font = 'bold 9px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText(String(i + 1), p[0] * S + 8, p[1] * S + 8.5); });
+    if (chw.type === 'carry') (chw.zones || []).forEach((z, i) => { x.strokeStyle = ['#f2c14e', '#2f7fd1', '#e04848', '#3fa34d', '#8e5bd6', '#d98e2b'][chw.bins.findIndex(b => b.id === z.bin) % 6]; x.lineWidth = 3; x.setLineDash([5, 3]); x.strokeRect(z.x * S + 1, z.y * S + 1, z.w * S - 2, z.h * S - 2); x.setLineDash([]); });
+    if (ep.secret) { const [sx, sy] = ep.secret.at; x.font = '14px sans-serif'; x.textAlign = 'center'; x.textBaseline = 'middle'; x.fillText('🎁', sx * S + 8, sy * S + 8); }
     (ep.build || []).forEach(b => {
       if (b.kind === 'repair') b.at.forEach(p => { x.strokeStyle = '#ff8f7a'; x.lineWidth = 2; x.setLineDash([3, 2]); x.strokeRect(p[0] * S + 1, p[1] * S + 1, S - 2, S - 2); x.setLineDash([]); });
       if (b.kind === 'signpost') b.ok.forEach(p => { x.strokeStyle = '#3fa34d'; x.lineWidth = 2; x.strokeRect(p[0] * S + 2, p[1] * S + 2, S - 4, S - 4); });
@@ -352,11 +371,15 @@
       </div>
       <p class="muted noprint">${esc(HT('jumpNote'))}${msg ? ` <span class="msg">${esc(msg)}</span>` : ''}</p>
       <div class="mapwrap"><canvas id="map" aria-label="whole map"></canvas></div>
-      <div class="legend"><span>🧑 ${esc(HT('lgStart'))}</span><span><b style="background:#f2c14e">1</b>${esc(HT('lgPerson'))}</span><span>🗿 ${esc(HT('lgStone'))}</span><span>👾 ${esc(HT('lgBoss'))}</span><span>📄 ${esc(HT('lgScrap'))}</span>${(ep.build || []).length ? `<span><b style="background:none;border:2px dashed #ff8f7a"></b>${esc(HT('lgFix'))}</span><span><b style="background:none;border:2px solid #3fa34d"></b>${esc(HT('lgSign'))}</span>` : ''}${ep.quest ? `<span><b style="background:#8fc3ff">G</b><b style="background:#8fc3ff">C</b>${esc(HT('pQuest'))}</span>` : ''}</div>`;
+      <div class="legend"><span>🧑 ${esc(HT('lgStart'))}</span><span><b style="background:#f2c14e">1</b>${esc(HT('lgPerson'))}</span><span>🗿 ${esc(HT('lgStone'))}</span><span>👾 ${esc(HT('lgBoss'))}</span><span>📄 ${esc(HT('lgScrap'))}</span>${WBASE[ep.challenge.type] ? `<span><b style="background:#2f6fd6;color:#fff">1</b>${esc(HT('lgWorld'))}</span>` : ''}${ep.secret ? `<span>🎁 ${esc(HT('lgSecret'))}</span>` : ''}${(ep.build || []).length ? `<span><b style="background:none;border:2px dashed #ff8f7a"></b>${esc(HT('lgFix'))}</span><span><b style="background:none;border:2px solid #3fa34d"></b>${esc(HT('lgSign'))}</span>` : ''}${ep.quest ? `<span><b style="background:#8fc3ff">G</b><b style="background:#8fc3ff">C</b>${esc(HT('pQuest'))}</span>` : ''}</div>`;
 
     h += `<section class="part"><h2>${esc(HT('pIntro'))}</h2>${(ep.intro || []).map(p => `<div class="say">${rich(p)}</div>`).join('')}</section>`;
     h += `<section class="part"><h2>🧭 ${esc(HT('pChris'))}</h2><p><b>${esc(WW.T('chrisJob'))}</b></p>` +
       (ep.christopher && ep.christopher.meet ? `<p class="muted">${esc(HT('chrisMeet'))}:</p>${ep.christopher.meet.map(l => `<div class="say">${rich(l)}</div>`).join('')}` : '') + '</section>';
+    if (ep.secret) {
+      const t = WW.TOOLS.find(o => o.id === ep.secret.tool);
+      h += `<section class="part"><h2>🎁 ${esc(HT('pSecret'))}</h2><p><b>${t ? t.icon + ' ' + esc(L(t.name)) + ' (' + t.ep + ')' : ''}</b> · (${ep.secret.at.join(', ')}) — ${esc(HT('secretHow'))}</p><div class="say">${rich(ep.secret.text)}</div></section>`;
+    }
     if (ep.tools || ep.build) {
       h += `<section class="part"><h2>🪓 ${esc(HT('pBuild'))}</h2>${ep.tools ? `<p>${esc(HT('toolsOn'))}</p>` : ''}`;
       (ep.build || []).filter(b => b.kind === 'repair').forEach(b => {
