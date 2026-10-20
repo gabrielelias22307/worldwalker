@@ -255,6 +255,18 @@ const SHOTS = !process.argv.includes('--no-shots');
           await page.locator('#ww-ov .pbtn.gold').click(); // take the signposts
           await page.waitForFunction(() => !WW.paused);
           const signs = c.items.map(id => ep.build.find(b => b.id === id));
+          // put one up (it costs wood and fiber), then switch to the cards: the cost comes back
+          const bag0 = await page.evaluate(() => [WW.tools.have('wood'), WW.tools.have('fiber')]);
+          await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), signs[0].ok[0]); await page.evaluate(() => WW.dbg.act());
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.at); await page.waitForSelector('.chov');
+          await page.locator('#ww-ov .pbtn', { hasText: /cards/ }).click();
+          const bag1 = await page.evaluate(() => [WW.tools.have('wood'), WW.tools.have('fiber')]);
+          if (bag1.join() !== bag0.join()) throw new Error(`switching to cards lost wood or fiber: ${bag0} -> ${bag1}`);
+          if (await page.evaluate(() => WW.dbg.ents.some(e => e.kind === 'post' && !e.gone))) throw new Error('signposts stayed up after switching to cards');
+          await page.evaluate(() => WW.ui.top().close()); await page.waitForFunction(() => !WW.paused);
+          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.at); await page.waitForSelector('.chov');
+          await page.locator('#ww-ov .pbtn.gold').click(); // take them again
+          await page.waitForFunction(() => !WW.paused);
           const okSpots = signs.flatMap(b => b.ok);
           for (let i = 0; i < signs.length; i++) {
             const b = signs[i];

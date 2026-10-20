@@ -13,7 +13,7 @@
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], power: [[523, .08], [659, .08], [784, .08], [1047, .08], [1319, .3]], gate: [[392, .1], [523, .1], [659, .22]], step: [[120, .02]]
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
@@ -230,7 +230,7 @@
   function pickup() {
     WW.quest.onStep(player.x, player.y);
     const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
-    if (pg && !WW.run.claimed) { pg.gone = true; WW.fx.burst(pg.x, pg.y, 'gold'); finishEpisode(); return; }
+    if (pg && !WW.run.claimed) { pg.gone = true; WW.run.claimed = true; WW.fx.burst(pg.x, pg.y, 'gold'); WW.ui.pageHome([pg.x, pg.y], finishEpisode); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);
     if (e) {
       e.gone = true; WW.run.scraps.add(e.id); WW.gain(null, 0, 3, T('why_scrap'), true); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');

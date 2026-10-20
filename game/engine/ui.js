@@ -80,7 +80,7 @@
     const el = o.el = document.createElement('div'); el.className = 'tst' + (o.big ? ' big' : '');
     el.innerHTML = o.html; el.style.background = o.col || '#3fa34d'; el.setAttribute('dir', WW.dir());
     box.innerHTML = ''; box.appendChild(el);
-    if (o.big) WW.sfx('win');
+    if (o.big) WW.sfx('power'); // a few notes when a new power unlocks
     tTimer = setTimeout(() => { el.remove(); tCur = null; setTimeout(pumpToast, 150); }, o.big ? 3600 : tq.length ? 1500 : 2400);
   }
   // a panel opens: the pop-up on screen steps back into the line and comes back after the panel closes
@@ -330,6 +330,22 @@
         box.appendChild(acts);
       }
     });
+  };
+
+  /* the atlas page flies up and back into the Passport before the finish screen (a short moment; skipped with reduced motion) */
+  ui.pageHome = (at, done) => {
+    const cv = $('ww-cv'), pass = $('ww-b-pass');
+    if (WW.calm || !cv || !pass) return done();
+    WW.paused = true; WW.sfx('power');
+    const g = WW.game, [sx, sy] = g.screenOf(at[0], at[1]), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const pg = WW.spriteCanvas('page', null, 6); pg.className = 'pagefly';
+    pg.style.left = (cr.left + ((at[0] - sx * 16) * 16 + 8) * k - 48) + 'px'; pg.style.top = (cr.top + ((at[1] - sy * 11) * 16) * k - 40) + 'px';
+    document.body.appendChild(pg);
+    const pr = pass.getBoundingClientRect();
+    // 1: rise to the middle of the map and grow, 2: shrink into the Passport button
+    requestAnimationFrame(() => requestAnimationFrame(() => { pg.style.left = (cr.left + cr.width / 2 - 48) + 'px'; pg.style.top = (cr.top + cr.height / 2 - 70) + 'px'; pg.style.transform = 'scale(1.6) rotate(-6deg)'; }));
+    setTimeout(() => { pg.classList.add('home'); pg.style.left = (pr.left + pr.width / 2 - 48) + 'px'; pg.style.top = (pr.top + pr.height / 2 - 48) + 'px'; pg.style.transform = 'scale(.2) rotate(8deg)'; pg.style.opacity = '.6'; }, 750);
+    setTimeout(() => { pg.remove(); pass.classList.add('gotpage'); setTimeout(() => pass.classList.remove('gotpage'), 900); WW.sfx('coin'); WW.paused = false; done(); }, 1400);
   };
 
   /* ---------------- passport ---------------- */

@@ -33,7 +33,7 @@
 | Beat the Grump | +2 | +15 |
 | Pick up an atlas scrap | – | +3 (and 3 scraps = a star) |
 
-Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). Pop-ups wait in line: only one shows at a time, and never on top of an open question or talk. The **five powers** are the Five Themes of Geography, and they carry from episode to episode. Each one unlocks a level at **3** points and another at **12**:
+Every reward pops up with the reason ("+1 📍 Location · you answered Rosa"). Pop-ups wait in line: only one shows at a time, and never on top of an open question or talk. Big wins get their own short moment: a few notes when a new power unlocks, a pause while the bridge planks go down, and the atlas page flying back into the Passport (all skipped when the computer asks for reduced motion). The **five powers** are the Five Themes of Geography, and they carry from episode to episode. Each one unlocks a level at **3** points and another at **12**:
 
 | Power | Level 1 (3) | Level 2 (12) |
 |---|---|---|

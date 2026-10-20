@@ -195,6 +195,7 @@
     sgOffGrid: { en: 'This sign has numbers, so it goes on the grid by the compass stone.', es: 'Este letrero tiene números, así que va en la cuadrícula junto a la piedra brújula.', fa: 'این تابلو عدد دارد، پس روی شبکهٔ کنار سنگ قطب‌نما می‌رود.' },
     sgWrongRel: { en: 'Not here. The right spot is {d} from here.', es: 'Aquí no. El lugar correcto está {d} de aquí.', fa: 'این جا نه. جای درست به طرف {d} از این جاست.' },
     sgPickUp: { en: 'Face the sign and press Space to pick it up again.', es: 'Mira el letrero y pulsa Espacio para levantarlo otra vez.', fa: 'رو به تابلو بایست و Space را بزن تا دوباره برش داری.' },
+    sgRefund: { en: 'Your signposts came down. You got back {c}.', es: 'Tus letreros se quitaron. Te devolvieron {c}.', fa: 'تابلوهایت برداشته شد. {c} پس گرفتی.' },
     sgPicked: { en: 'Got it back. Try another spot.', es: 'Lo tienes de vuelta. Prueba otro lugar.', fa: 'پسش گرفتی. جای دیگری را امتحان کن.' },
     starShield: { en: 'Christopher: "Your stars sting the Grump, but only RIGHT ANSWERS can break its cloud shield! Walk into it to start the trial."', es: 'Christopher: "Tus estrellas le pican al Gruñón, ¡pero solo las RESPUESTAS CORRECTAS rompen su escudo de nubes! Camina hacia él para empezar la prueba."', fa: 'کریستوفر: «ستاره‌هایت غرغرو را می‌زند، اما فقط جواب‌های درست سپر ابرش را می‌شکند! به طرفش برو تا آزمون شروع شود.»' },
     pts: { en: 'points', es: 'puntos', fa: 'امتیاز' },

@@ -183,11 +183,13 @@
   }
   function doRepair(b) {
     Object.entries(b.cost).forEach(([k, n]) => X.use(k, n));
-    const g = G(); b.at.forEach(([x, y]) => { g.setTile(x, y, b.tile); WW.fx.burst(x, y, 'gold'); });
-    const s = WW.save; s.built = s.built || {}; s.built[WW.ep.id] = Array.from(new Set([...(s.built[WW.ep.id] || []), b.id]));
+    const g = G(), s = WW.save; s.built = s.built || {}; s.built[WW.ep.id] = Array.from(new Set([...(s.built[WW.ep.id] || []), b.id]));
     WW.store(); WW.sheetSync && WW.sheetSync();
-    g.shake(); WW.sfx('win');
-    WW.chris.say(b.done);
+    // a short pause while the planks go down one by one, then the way is open
+    WW.paused = true; WW.sfx('gate');
+    const gap = WW.calm ? 0 : 260;
+    b.at.forEach(([x, y], i) => setTimeout(() => { g.setTile(x, y, b.tile); WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake(); }, gap * (i + 1)));
+    setTimeout(() => { WW.paused = false; WW.sfx('win'); WW.chris.say(b.done); }, gap * (b.at.length + 1) + 150);
   }
   // Christopher: is a broken thing in the way of the next goal?
   X.blockingRepair = (at, reachable) => {
@@ -223,11 +225,22 @@
         const acts = document.createElement('div'); acts.className = 'acts';
         if (!r.signs) acts.appendChild(WW.btn('🪧 ' + esc(T('sgTake')), 'gold', () => { r.signs = signItems().map(b => ({ id: b.id, placed: null, right: false, paid: false })); r.holding = r.signs[0].id; sel = 'sign'; h.close(); X.render(); WW.chris.say(T('sgStart')); }));
         else acts.appendChild(WW.btn(T('close'), 'gold', () => h.close()));
-        if (ch.fallback) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); WW.challenge(Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
+        if (ch.fallback) acts.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', () => { h.close(); refundSigns(); WW.challenge(Object.assign({}, ch, ch.fallback, { at: ch.at })); }));
         box.appendChild(acts);
       }
     });
   };
+  // switching to the cards: signposts come down and their wood and fiber go back in the bag (nothing is lost)
+  function refundSigns() {
+    const r = WW.run; if (!r.signs || r.challengeDone) return;
+    const back = {};
+    r.signs.forEach(s => { if (s.paid) Object.entries((signItems().find(b => b.id === s.id) || {}).cost || {}).forEach(([k, n]) => (back[k] = (back[k] || 0) + n)); });
+    G().ents.forEach(e => { if (e.kind === 'post') e.gone = true; });
+    r.signs = null; r.holding = null; sel = 'star';
+    Object.entries(back).forEach(([k, n]) => X.add(k, n)); // added to "got", so the class Sheet never goes backwards
+    if (Object.keys(back).length) WW.toast(esc(T('sgRefund').replace('{c}', costText(back))), '#8b5a2b');
+    X.render();
+  }
   function place(x, y, e) {
     const g = G(), held = X.heldSign();
     if (!held) return false;
