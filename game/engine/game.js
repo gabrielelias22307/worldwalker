@@ -589,7 +589,7 @@
 
   /* ---------------- hooks for the automatic play-tests ---------------- */
   WW.dbg = {
-    teleport(x, y) { player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; },
+    teleport(x, y) { player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; clickTarget = null; held = null; },
     face(d) { player.dir = d; },
     act() { actFacing(); },
     bumpInto(x, y) { // stand next to (x,y) on a walkable tile and interact
