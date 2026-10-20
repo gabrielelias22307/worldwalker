@@ -34,7 +34,7 @@ window.EPISODE = {
     'rssssRRRssssassgg.ww..:..ww.ss~~~~~~pssssssp~~~=',
     'rsgsshdhsOsssssgg.....:..ww.ss~~~~~psss~~sssp~~=',
     'rss::::::::::::::::::::.....ss~~~~~ss~~~~~~ss~~=',
-    'rsssssssssssgssgg.....,..T..ss~~~~~ss~~~~~~ss~~=',
+    'rsssssssssssgssgg.....,..T..ss~~~~~ss~~s~~~ss~~=',
     'rsssssssrssssgsgg.ww...QQQ..ss~~~~~ss~~~~~~ss~~=',
     'rsgsssasssssssggg.ww...hdh..ss~~~~~psss~~sssp~~=',
     'rssssssssgssrsgggg.........sss~~~~~~pssssssp~~~=',
@@ -42,6 +42,13 @@ window.EPISODE = {
     'rrrrrrrrrrrrrrrrTTTTTTTTTTTpp~~~================'
   ],
   start: [22, 10],
+
+  tools: ['axe', 'sickle'],
+  // only the Canoe (Episode 2.3) paddles across the atoll's lagoon to the tiny island in the middle
+  secret: { tool: 'canoe', at: [39, 16],
+    text: { en: 'Your canoe crossed the calm lagoon to a tiny island! The note in the chest says the highest land in Tuvalu is less than 5 meters above the sea.',
+      es: '¡Tu canoa cruzó la laguna tranquila hasta una isla pequeñita! La nota del cofre dice que la tierra más alta de Tuvalu está a menos de 5 metros sobre el mar.',
+      fa: 'قایق کوچک تو از آب آرام وسط اتول گذشت و به یک جزیرهٔ خیلی کوچک رسید! یادداشت داخل صندوق می‌گوید بلندترین جای تووالو کمتر از ۵ متر از سطح بحر بلند است.' } },
 
   words: {
     coast: { en: 'the land along the edge of the sea', es: 'la tierra a la orilla del mar', fa: 'زمین کنار بحر' },
@@ -207,7 +214,9 @@ window.EPISODE = {
 
   challenge: {
     at: [10, 17],
-    type: 'table',
+    type: 'survey', // in the world; the card version (table) is the fallback
+    // one survey post per place in the table: Sydney on the harbor coast, Alice Springs deep in the dry Outback, Fiji on the high volcano island, Tuvalu on the far side of the low atoll
+    spots: [[28, 12], [4, 10], [43, 3], [41, 19]],
     stat: 'loc',
     title: { en: 'Near or far?', es: '¿Cerca o lejos?', fa: 'نزدیک یا دور؟' },
     intro: { en: 'The Grump smeared the travel notes of this town. Read the table about four real places. Then answer the questions.',

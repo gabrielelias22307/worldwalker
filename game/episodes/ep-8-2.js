@@ -22,7 +22,7 @@ window.EPISODE = {
     'TTTTTTTTTTTTTTTTrrrrrrrrrrrrrrrrTTTTTTTTTTTTTTTT',
     'T..RRR..QQQ...,.suussuussuuussus.XX..XX..UU.UU.T',
     'T..hdh..hdh.....ssuuussssuussuus.XX..XX..UU.UU.T',
-    'T.m.m.m.........uussssxsuussssuu...........,...T',
+    'T.m.m.m.........uussssxsuussssuu...GF......,...T',
     'T::::::::::::::::::::::::::::::::::::::::::::::T',
     'T......k...k....ssuussssssuussss..k....k....k..T',
     '~~~B~~~k~~~k~~~~~~~~~~~~B~~~~~~~~~k~~~~k~~~~k~~=',
@@ -43,6 +43,13 @@ window.EPISODE = {
     '================================================'
   ],
   start: [19, 4],
+
+  tools: ['axe', 'sickle'],
+  // only the Trade Seal (Episode 7.3) opens the gate of the locked port warehouse between the factories
+  secret: { tool: 'seal', at: [36, 1],
+    text: { en: 'The Trade Seal opened the locked warehouse at the port! The biggest container ships can carry more than 20,000 big metal boxes at once.',
+      es: '¡El Sello de comercio abrió el almacén cerrado del puerto! Los barcos portacontenedores más grandes pueden llevar más de 20,000 cajas grandes de metal a la vez.',
+      fa: 'مهر تجارت گدام قفل‌شدهٔ بندر را باز کرد! بزرگ‌ترین کشتی‌های کانتینری می‌توانند بیشتر از ۲۰ هزار صندوق بزرگ فلزی را یک‌جا ببرند.' } },
 
   words: {
     trade: { en: 'buying and selling things between people or countries', es: 'comprar y vender cosas entre personas o países', fa: 'خرید و فروش چیزها بین مردم یا کشورها' },
@@ -231,7 +238,9 @@ window.EPISODE = {
 
   challenge: {
     at: [40, 3],
-    type: 'combo',
+    type: 'levers', // in the world; the card version (combo) is the fallback
+    // the route lever on the far south coast (the long way around Africa), the Suez lever on the canal through the desert, the Malacca lever by the narrow strait in the rainforest
+    spots: [[26, 18], [21, 7], [38, 10]],
     stat: 'mov',
     title: { en: 'Get the ship to Europe', es: 'Lleva el barco a Europa', fa: 'کشتی را به اروپا برسان' },
     intro: { en: 'A ship full of bikes, phones and clothes must sail from this port in Asia to Europe. The Grump blocked the Suez Canal! Set the switches. Find a route that works.',

@@ -39,13 +39,20 @@ window.EPISODE = {
     '~~~~~~~~B~~~~~~~~~~~~~~~B~~~~~~~~~~~~~~~~~~~~~~=',
     '~~~~~~~~B~~~~~~~~~~~~~~~B~~~~~~~~~~~~~~~~~~~~~~=',
     'T...,...:....T..........:..QQQ.....sss~~~~~~~~~=',
-    'T.TT....:..TT...........:..hdh...p..ssskk~~~~~~=',
-    'T.TTT...:...............:...........sss~~~~~~~~=',
-    'T..T....:...T,...oo1o...:..www....p..sss~~~~~~~=',
+    'T.TT....:..TT...........:..hdh...p..ssskk~~~====',
+    'T.TTT...:...............:...........sss~~~~~=s==',
+    'T..T....:...T,...oo1o...:..www....p..sss~~~~====',
     'T.......:........o2oo.......www.......ssss~~~~~=',
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT================'
   ],
   start: [24, 9],
+
+  tools: ['axe', 'sickle'],
+  // only the Sail (Episode 8.2) crosses the deep water to the little island in the east sea
+  secret: { tool: 'sail', at: [45, 18],
+    text: { en: 'Your sail carried you over deep water to a hidden island! The note in the chest says the Mekong River flows through six countries, so they all must share it.',
+      es: '¡Tu vela te llevó por aguas profundas hasta una isla escondida! La nota del cofre dice que el río Mekong pasa por seis países, así que todos deben compartirlo.',
+      fa: 'بادبان تو را از آب‌های عمیق به یک جزیرهٔ پنهان برد! یادداشت داخل صندوق می‌گوید دریای میکانگ از شش کشور می‌گذرد، پس همه باید آن را با هم استفاده کنند.' } },
 
   words: {
     border: { en: 'a line that shows where one country ends and another begins', es: 'una línea que muestra dónde termina un país y empieza otro', fa: 'خطی که نشان می‌دهد یک کشور کجا تمام می‌شود و کشور دیگر کجا شروع می‌شود' },
@@ -256,7 +263,9 @@ window.EPISODE = {
 
   challenge: {
     at: [24, 4],
-    type: 'claim',
+    type: 'site', // in the world; the card version (claim) is the fallback
+    // A (wall) on the north riverbank where a wall would cut the valley in two, B (treaty) at the main bridge where both banks meet, C (neutral group) far off in the east desert, on nobody's side
+    spots: [[15, 13], [25, 13], [34, 9]],
     stat: 'hei',
     title: { en: 'Settle the river fight', es: 'Resuelve la pelea por el río', fa: 'دعوای دریا را حل کن' },
     intro: { en: 'North Bank and South Bank share the Silver River. In a dry year, both need its water for their farms. The Grump whispers, "Fight!" Choose how the neighbors should settle it. Then pick one reason it is fair and one reason it will last.',
