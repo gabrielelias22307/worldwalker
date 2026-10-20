@@ -16,8 +16,8 @@ window.EPISODE = {
 
   map: [
     'MMMMMMMMMMMMMMMMTTTTTTTTTTTTTTT=',
-    'MMMMMMMMMMMMMMMMFFFFFFFFFFFFF~==',
-    'MMMM::::MMMMM...FlXXX.XXX.XXF~==',
+    'MMMMMMMMMMMMMM.MFFFFFFFFFFFFF~==',
+    'MMMM::::MMMMM.G.FlXXX.XXX.XXF~==',
     'MMM:::r::::MM...FlXXX.XXX.XXF~==',
     'MM::r:::r:::M...FlXdX.XdX.dXF~==',
     'MM:::r::::::,...llllllllllllF~==',
@@ -39,6 +39,13 @@ window.EPISODE = {
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTT~==='
   ],
   start: [3, 8],
+
+  tools: ['axe', 'sickle'],
+  // only the Rail Pass (Episode 3.3) opens the gate to the old mine track in the northern hills
+  secret: { tool: 'rail', at: [14, 1],
+    text: { en: 'The Rail Pass opened the old mine track! A note in the chest says one tiny phone chip can hold billions of parts. Many of the best chips in the world are made in Taiwan.',
+      es: '¡El Pase de Tren abrió la vieja vía de la mina! Una nota en el cofre dice que un chip diminuto de teléfono puede tener miles de millones de piezas. Muchos de los mejores chips del mundo se hacen en Taiwán.',
+      fa: 'کارت قطار راه کهنهٔ معدن را باز کرد! یک یادداشت در صندوق می‌گوید یک چِپ کوچک مبایل می‌تواند میلیاردها پرزه داشته باشد. بسیاری از بهترین چِپ‌های دنیا در تایوان ساخته می‌شوند.' } },
 
   words: {
     'supply chain': { en: 'all the steps and places needed to make a product and bring it to you', es: 'todos los pasos y lugares que se necesitan para hacer un producto y llevártelo', fa: 'همهٔ قدم‌ها و جاهایی که برای ساختن یک کالا و رساندنش به تو لازم است' },
@@ -218,7 +225,10 @@ window.EPISODE = {
 
   challenge: {
     at: [21, 17],
-    type: 'order',
+    type: 'route', // in the world; the card version (order) is the fallback
+    // follow the phone across the map: the mine in the north-west hills, the fenced chip factory, the assembly factories in the south-west,
+    // the crane on the pier, the warehouse by the city, the market stall, and you at your house
+    spots: [[7, 2], [25, 6], [6, 13], [27, 15], [25, 18], [23, 16], [15, 17]],
     stat: 'mov',
     title: { en: 'Follow the phone', es: 'Sigue al teléfono', fa: 'دنبال مبایل برو' },
     intro: { en: 'The Grump scrambled the trip a phone takes. Tap the steps in order, from the ground to your hand.',

@@ -27,7 +27,7 @@ window.EPISODE = {
     'MMAMMMM.qq:q.~~qqqqqqq..~=======',
     'MAMMMMM.qq:q.~~qqqqqqq..~=======',
     'MMMAMMM.qq:q.~~.........~=======',
-    'AMMMMAM...B..~~~~~~~~~~~~=======',
+    'AMMMMAM...B..~s~~~~~~~~~~=======',
     'MMMMMMM...B..~~~~~~~~~~~~=======',
     'MMAMMM.qqq:qq......kkkss~=======',
     'MMMMM..qqq:qq.qqqqqRR.sskkk=====',
@@ -39,6 +39,13 @@ window.EPISODE = {
     'MTTTTTTTTTTTTTTTTTTTTTTT~======='
   ],
   start: [9, 7],
+
+  tools: ['axe', 'sickle'],
+  // only the Canoe (Episode 2.3) reaches the little island where the river bends toward the sea
+  secret: { tool: 'canoe', at: [14, 12],
+    text: { en: 'The canoe reached the river island! A note in the chest says Shanghai sits where the Yangtze River meets the sea. Its port moves more containers than any other port in the world.',
+      es: '¡La canoa llegó a la isla del río! Una nota en el cofre dice que Shanghái está donde el río Yangtsé llega al mar. Su puerto mueve más contenedores que cualquier otro puerto del mundo.',
+      fa: 'قایق کوچک به جزیرهٔ دریا رسید! یک یادداشت در صندوق می‌گوید شانگهای در جایی است که دریای یانگتسی به بحر می‌رسد. بندر آن از هر بندر دیگر دنیا کانتینر بیشتری جابجا می‌کند.' } },
 
   words: {
     site: { en: 'the land a city sits on: flat or high, wet or dry, rich soil or rock', es: 'la tierra donde está una ciudad: plana o alta, húmeda o seca, suelo fértil o roca', fa: 'زمینی که شهر روی آن است: هموار یا بلند، تر یا خشک، خاک حاصلخیز یا سنگ' },
@@ -202,7 +209,9 @@ window.EPISODE = {
 
   challenge: {
     at: [23, 3],
-    type: 'claim',
+    type: 'site', // in the world; the card version (claim) is the fallback
+    // a flag at each site: A on the sand where the river meets the sea, B on the hilltop over the rice plain, C on the narrow road through the western pass
+    spots: [[23, 14], [26, 3], [1, 5]],
     stat: 'loc',
     title: { en: 'Found a city', es: 'Funda una ciudad', fa: 'یک شهر بنا کن' },
     intro: { en: 'Where should the new city go? Pick A, B or C. Then back up your choice with one [[site|SITE]] reason (the land) and one [[situation|SITUATION]] reason (what it connects to). More than one place can work if your reasons fit.',

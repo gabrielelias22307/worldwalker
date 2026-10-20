@@ -20,7 +20,7 @@ window.EPISODE = {
     'AsssssssssssssKK..K..KK..K.KK.K.~~====~MMMMMMMM=',
     'AsusssusssusssWWWWWWWWW.WWWWWWWW~~====...MMAMMM=',
     'Assusssussssssss.....:..........~~=.p~...MAVAMM=',
-    'Asssssssssssussswwwww:wwwwwwwwww~~===~UU.MAAAMM=',
+    'Asssssssssssussswwwww:wwwwwwwwww~~===~...MAAAMM=',
     'AssssussrMMssusswwwww:wwwwwwwwww~~===~U..MMMMMM=',
     'AsssussssMA~~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
     'AssrssssssMs~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
@@ -28,7 +28,7 @@ window.EPISODE = {
     'Aggggggggggggggg::::::::::::::::kkkkkk.hdMMMMMM=',
     'Aggggggggggggggg.wwww:......UUUU~~~==~....qMMMM=',
     'AMMzAAzzzMMAzzzMwwwww:.RRR.fUUUU~~~==~...qqMMMM=',
-    'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~~~==~...qqMMMM=',
+    'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~s~==~...qqMMMM=',
     'Azzzzzzzzzzzzzzzqqqqq:qqqqJUfUUU~~~==~...qqMMMM=',
     'AzzzMAMzzznzzzzzqqqqq:qqqqq..UUU~~~==~....MMMMM=',
     'AzznMz~~~~~~~~~~~~~~~B~~~~~~~~~~~~~==~..RRRMMMM=',
@@ -40,6 +40,13 @@ window.EPISODE = {
     'AAAAAAAAAAAAAAAATTTTTTTTTTTTTTTT================'
   ],
   start: [18, 9],
+
+  tools: ['axe', 'sickle'],
+  // only the Canoe (Episode 2.3) reaches the tiny island in the sea between China and Japan
+  secret: { tool: 'canoe', at: [33, 12],
+    text: { en: 'The canoe reached the tiny island! A note in the chest says Japan has more than 14,000 islands. But most people live on the four big ones.',
+      es: '¡La canoa llegó a la islita! Una nota en el cofre dice que Japón tiene más de 14,000 islas. Pero casi toda la gente vive en las cuatro grandes.',
+      fa: 'قایق کوچک به جزیرهٔ خُرد رسید! یک یادداشت در صندوق می‌گوید جاپان بیشتر از ۱۴۰۰۰ جزیره دارد. اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' } },
 
   words: {
     plateau: { en: 'a large area of high, mostly flat land', es: 'una gran zona de tierra alta y casi plana', fa: 'یک ساحهٔ بزرگ از زمین بلند و تقریباً هموار' },
@@ -221,7 +228,9 @@ window.EPISODE = {
 
   challenge: {
     at: [26, 8],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // a marked area for each group: China by the Gobi desert and the Great Wall, Japan on the island under Mount Fuji, both in the rice paddies of the river plain
+    zones: [{ bin: 'china', x: 12, y: 3, w: 4, h: 2 }, { bin: 'japan', x: 38, y: 2, w: 3, h: 2 }, { bin: 'both', x: 16, y: 13, w: 4, h: 2 }],
     stat: 'pla',
     title: { en: 'China, Japan or both?', es: '¿China, Japón o los dos?', fa: 'چین، جاپان یا هر دو؟' },
     intro: { en: 'The Grump tore the labels off the map. Put each card where it belongs: China, Japan, or both.',
