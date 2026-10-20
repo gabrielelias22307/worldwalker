@@ -45,6 +45,15 @@ window.EPISODE = {
   start: [4, 16],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [7, 15], at: [11, 18], decor: 'coinold',
+      clue: { en: 'From this note, walk 3 steps south, then 4 steps east. Something old is hidden in the sand.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este. Algo antiguo está escondido en la arena.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق. چیزی کهنه در ریگ پنهان است.' },
+      text: { en: 'You followed the compass! South is down and east is to the right. An old coin was in the sand. Until 1966, people in Dubai paid with the Gulf rupee, money that came from India.', es: '¡Seguiste la brújula! El sur está abajo y el este a la derecha. Había una moneda antigua en la arena. Hasta 1966, en Dubái se pagaba con la rupia del Golfo, un dinero que venía de la India.', fa: 'تو قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. یک سکهٔ کهنه در ریگ بود. تا سال ۱۹۶۶ مردم دبی با روپیهٔ خلیج پول می‌دادند، پولی که از هند می‌آمد.' } },
+    { clueAt: [14, 7], at: [8, 8], decor: 'vase',
+      clue: { en: 'In dry Kashan, a qanat brings water from the mountains to the courtyard well. Find the well. Stand on the flower square just east of it.', es: 'En la seca Kashán, un qanat trae agua de las montañas al pozo del patio. Busca el pozo. Párate en el cuadro de flores que está justo al este.', fa: 'در کاشان خشک، کاریز آب را از کوه‌ها به چاه حویلی می‌آورد. چاه را پیدا کن. روی خانهٔ گل‌دار که درست طرف شرق آن است بایست.' },
+      text: { en: 'You found the spot east of the well! East is to the right on this map. Some qanats are more than 2,000 years old. A clay water vase was waiting by the well.', es: '¡Encontraste el lugar al este del pozo! En este mapa, el este está a la derecha. Algunos qanats tienen más de 2,000 años. Un jarrón de barro para el agua esperaba junto al pozo.', fa: 'تو جای شرقِ چاه را پیدا کردی! در این نقشه شرق طرف راست است. بعضی کاریزها بیش از ۲۰۰۰ سال عمر دارند. یک کوزهٔ گِلی آب کنار چاه منتظر بود.' } }
+  ],
   // only the Water Gourd (Episode 4.3) opens the hot desert corner past Dubai
   secret: { tool: 'gourd', at: [30, 20],
     text: { en: 'The Water Gourd kept you cool on the hot sand! Almost all of Dubai\'s drinking water comes from the sea. Big plants take the salt out.',

@@ -46,6 +46,15 @@ window.EPISODE = {
   start: [14, 2],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [15, 9], at: [11, 8], decor: 'flower',
+      clue: { en: 'The Yarmouk River flows in from the east and joins the Jordan River. Stand on the land square that touches both rivers: south of the Yarmouk and east of the Jordan.', es: 'El río Yarmuk llega desde el este y se une al río Jordán. Párate en el cuadro de tierra que toca los dos ríos: al sur del Yarmuk y al este del Jordán.', fa: 'دریای یرموک از طرف شرق می‌آید و با دریای اردن یکی می‌شود. روی خانهٔ خشکه‌ای بایست که به هر دو دریا می‌رسد: جنوبِ یرموک و شرقِ اردن.' },
+      text: { en: 'You found where two rivers meet! A river that flows into a bigger river is called a tributary. The Yarmouk is the biggest tributary of the Jordan. Wildflowers grow by the water.', es: '¡Encontraste donde se juntan dos ríos! Un río que desemboca en un río más grande se llama afluente. El Yarmuk es el afluente más grande del Jordán. Junto al agua crecen flores silvestres.', fa: 'تو جایی را پیدا کردی که دو دریا به هم می‌رسند! دریایی که به یک دریای بزرگ‌تر می‌ریزد، شاخهٔ آن دریا است. یرموک بزرگ‌ترین شاخهٔ دریای اردن است. گل‌های خودرو کنار آب می‌رویند.' } },
+    { clueAt: [21, 2], at: [19, 5], decor: 'fossil',
+      clue: { en: 'From this note, walk 3 steps south, then 2 steps west. Look in the dry grass.', es: 'Desde esta nota, camina 3 pasos al sur y luego 2 pasos al oeste. Busca en el pasto seco.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۲ قدم به غرب. در علف خشک بپال.' },
+      text: { en: 'You followed the compass! South is down and west is to the left. A fossil sea shell was in the dry grass. Millions of years ago, a sea covered this land.', es: '¡Seguiste la brújula! El sur está abajo y el oeste a la izquierda. Había un fósil de concha marina en el pasto seco. Hace millones de años, un mar cubría esta tierra.', fa: 'تو قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. فسیل یک صدف بحری در علف خشک بود. ملیون‌ها سال پیش، یک بحر این زمین را پوشانده بود.' } }
+  ],
   // only the Canoe (Episode 2.3) reaches the tiny island in the lake
   secret: { tool: 'canoe', at: [9, 3],
     text: { en: 'The canoe found a tiny island in the lake! The Sea of Galilee is the lowest freshwater lake on Earth. It is about 210 meters below sea level.',
@@ -93,6 +102,7 @@ window.EPISODE = {
       x: 25, y: 4,
       name: { en: 'Lina', es: 'Lina', fa: 'لینا' },
       role: { en: 'Water planner', es: 'Planificadora del agua', fa: 'برنامه‌ریز آب' },
+      remember: { ep: '5.1', t: { en: 'Hello! Elif, the dam engineer in Türkiye, told me about you. You set the dam and the canal so all three farms on the river got water. That is real sharing!', es: '¡Hola! Elif, la ingeniera de represas de Turquía, me habló de ti. Ajustaste la represa y el canal para que las tres granjas del río recibieran agua. ¡Eso sí es compartir!', fa: 'سلام! الیف، انجنیر بند در ترکیه، دربارهٔ تو به من گفت. تو بند و کانال را طوری تنظیم کردی که هر سه کشتزار کنار دریا آب گرفتند. این شریک کردن واقعی است!' } },
       look: { skin: 3, hair: '#2a1a12', shirt: '#2a7fa8', pants: '#3a2f45', robe: true },
       lines: [
         { en: 'Rivers do not stop at borders. The Jordan River and its branches touch several neighbors: Lebanon, Syria, Jordan, Israel and the Palestinians. A resource that crosses borders is [[transboundary|transboundary]].',

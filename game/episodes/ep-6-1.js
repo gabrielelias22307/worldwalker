@@ -45,6 +45,15 @@ window.EPISODE = {
   start: [10, 5],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [12, 5], at: [5, 2], decor: 'flower',
+      clue: { en: 'The Ganges starts as melting ice in the Himalaya. Follow the river north, up toward the snow. Stand on the square just west of the river, as far north as you can go.', es: 'El Ganges nace del hielo que se derrite en el Himalaya. Sigue el río hacia el norte, hacia la nieve. Párate en el cuadro justo al oeste del río, lo más al norte que puedas llegar.', fa: 'گنگا از یخ آب‌شده در همالیا شروع می‌شود. دریا را به طرف شمال، به سوی برف، دنبال کن. روی خانه‌ای که درست غربِ دریا است بایست، تا جایی که می‌توانی به شمال برو.' },
+      text: { en: 'You found the top of the river! The Ganges begins at the Gangotri Glacier, high in the Himalaya. Its first water is melted ice and snow. A mountain flower grew by the cold water.', es: '¡Encontraste el comienzo del río! El Ganges nace en el glaciar Gangotri, en lo alto del Himalaya. Su primera agua es hielo y nieve derretidos. Una flor de montaña crecía junto al agua fría.', fa: 'تو سرِ دریا را پیدا کردی! گنگا از یخچال گنگوتری، بلند در همالیا، شروع می‌شود. اولین آب آن یخ و برف آب‌شده است. یک گل کوهی کنار آب سرد روییده بود.' } },
+    { clueAt: [16, 18], at: [14, 15], decor: 'feather',
+      clue: { en: 'In summer, the monsoon wind blows from the sea onto the land. Walk like the summer wind: 3 steps north, away from the sea. Then walk 2 steps west.', es: 'En verano, el viento del monzón sopla del mar hacia la tierra. Camina como el viento de verano: 3 pasos al norte, lejos del mar. Luego camina 2 pasos al oeste.', fa: 'در تابستان، باد موسمی از بحر به طرف خشکه می‌وزد. مثل باد تابستان راه برو: ۳ قدم به شمال، دور از بحر. بعد ۲ قدم به غرب برو.' },
+      text: { en: 'You walked like the summer monsoon! Wet wind from the ocean brings heavy rain from about June to September. That rain fills the rice paddies. A duck feather was lying in the field.', es: '¡Caminaste como el monzón de verano! El viento húmedo del océano trae lluvias fuertes más o menos de junio a septiembre. Esa lluvia llena los arrozales. Una pluma de pato estaba en el campo.', fa: 'تو مثل باد موسمی تابستان راه رفتی! باد مرطوب از بحر تقریباً از جون تا سپتمبر باران زیاد می‌آورد. این باران کشتزارهای برنج را پر می‌کند. یک پر مرغابی در کشتزار افتاده بود.' } }
+  ],
   // only the canoe (Episode 2.3) reaches the little island in the delta
   secret: { tool: 'canoe', at: [26, 18],
     text: { en: 'The canoe found the island in the delta! The Ganges delta is the biggest river delta in the world. Tigers live in its mangrove forest, and they can swim.',
