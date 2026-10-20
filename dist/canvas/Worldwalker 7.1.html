@@ -5059,6 +5059,16 @@ window.EPISODE = {
   start: [18, 9],
 
   tools: ['axe', 'sickle'],
+
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [18, 3], at: [6, 16], decor: 'fossil',
+      clue: { en: 'Both great rivers start high in the west and flow east to the sea. Go up to the plateau and find where the southern river begins. Stand on the land square just south of its most western water square.', es: 'Los dos grandes ríos nacen en lo alto del oeste y corren al este hasta el mar. Sube a la meseta y busca dónde empieza el río del sur. Párate en el cuadro de tierra justo al sur de su cuadro de agua más al oeste.', fa: 'هر دو دریای بزرگ از بلندی‌های غرب شروع می‌شوند و به طرف شرق تا بحر می‌روند. به سطح مرتفع برو و پیدا کن دریای جنوبی از کجا شروع می‌شود. روی خانهٔ خشکه که درست جنوبِ غربی‌ترین خانهٔ آبِ آن است بایست.' },
+      text: { en: 'You found where the river starts! The Yangtze begins high on the Tibetan Plateau and flows east to the sea. A fossil sea shell was here. Long ago, this high land was under the sea.', es: '¡Encontraste dónde nace el río! El Yangtsé nace en lo alto de la meseta del Tíbet y corre al este hasta el mar. Aquí había una concha fósil. Hace mucho tiempo, esta tierra alta estaba bajo el mar.', fa: 'تو جایی را پیدا کردی که دریا شروع می‌شود! دریای یانگ‌تسه از بلندی‌های سطح مرتفع تبت شروع می‌شود و به طرف شرق تا بحر می‌رود. یک فسیلِ صدف این جا بود. خیلی وقت پیش، این زمین بلند زیر بحر بود.' } },
+    { clueAt: [39, 11], at: [38, 19], decor: 'shell',
+      clue: { en: 'From this note, walk 8 steps south, then 1 step west. Something is hidden there.', es: 'Desde esta nota, camina 8 pasos al sur y luego 1 paso al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۸ قدم به جنوب برو، بعد ۱ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and west is to the left. A sea shell was on the shore. Japan is an archipelago, a chain of islands, so no place in Japan is very far from the sea.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. Había una concha en la orilla. Japón es un archipiélago, una cadena de islas, así que ningún lugar de Japón está muy lejos del mar.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. یک صدف در ساحل بود. جاپان یک مجمع‌الجزایر است، یعنی زنجیری از جزیره‌ها، پس هیچ جای جاپان از بحر خیلی دور نیست.' } }
+  ],
   // only the Canoe (Episode 2.3) reaches the tiny island in the sea between China and Japan
   secret: { tool: 'canoe', at: [33, 12],
     text: { en: 'The canoe reached the tiny island! A note in the chest says Japan has more than 14,000 islands. But most people live on the four big ones.',
@@ -5182,6 +5192,7 @@ window.EPISODE = {
     title: { en: 'The Stolen River Map', es: 'El mapa de ríos robado', fa: 'نقشهٔ دزدی‌شدهٔ دریاها' },
     giver: {
       x: 19, y: 17,
+      remember: { ep: '6.3', t: { en: 'Hello, traveler! My friend Teacher Karim wrote to me. You got his village census sheet back from the Ink Thief. Now the planners can see his 120 children!', es: '¡Hola, viajero! Mi amigo el Maestro Karim me escribió. Recuperaste la hoja del censo de su pueblo del Ladrón de Tinta. ¡Ahora los planificadores pueden ver a sus 120 niños!', fa: 'سلام، مسافر! دوستم معلم کریم برایم نامه نوشت. تو ورق سرشماری قریهٔ او را از دزد رنگ پس گرفتی. حالا برنامه‌ریزها ۱۲۰ طفلِ او را می‌بینند!' } },
       name: { en: 'Teacher Zhou Lan', es: 'Maestra Zhou Lan', fa: 'معلم ژو لان' },
       role: { en: 'Village school teacher', es: 'Maestra de la escuela del pueblo', fa: 'معلم مکتب ده' },
       look: { skin: 1, hair: '#1c1612', shirt: '#2e8b7a', pants: '#3a3a4a', style: 'bun' },

@@ -5060,6 +5060,14 @@ window.EPISODE = {
   start: [8, 4],
 
   tools: ['axe', 'sickle'],
+  finds: [
+    { clueAt: [10, 12], at: [6, 11], decor: 'vase',
+      clue: { en: 'Mesopotamia means "the land between the rivers." Find the wheat field between the two rivers that is farthest north. Stand on its north-west corner square.', es: 'Mesopotamia quiere decir "la tierra entre los ríos". Busca el campo de trigo entre los dos ríos que está más al norte. Párate en su cuadro de la esquina noroeste.', fa: 'بین‌النهرین یعنی «سرزمین میان دریاها». کشتزار گندمی را که میان دو دریا است و از همه بیشتر در شمال است پیدا کن. روی خانهٔ کنج شمال‌غربی آن بایست.' },
+      text: { en: 'You found the land between the rivers! A clay pot was hiding in the wheat. More than 5,000 years ago, people in Mesopotamia wrote on clay tablets. It is one of the oldest kinds of writing.', es: '¡Encontraste la tierra entre los ríos! Una vasija de barro estaba escondida en el trigo. Hace más de 5000 años, la gente de Mesopotamia escribía en tablillas de barro. Es una de las formas de escritura más antiguas.', fa: 'تو سرزمین میان دریاها را پیدا کردی! یک کوزهٔ گلی در گندم پنهان بود. بیش از ۵۰۰۰ سال پیش، مردم بین‌النهرین روی لوحه‌های گلی می‌نوشتند. این یکی از کهن‌ترین نوع‌های نوشتن است.' } },
+    { clueAt: [26, 8], at: [29, 6], decor: 'flower',
+      clue: { en: 'From this note, walk 2 steps north, then 3 steps east. Look in the temple garden.', es: 'Desde esta nota, camina 2 pasos al norte y luego 3 pasos al este. Busca en el jardín del templo.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۳ قدم به شرق. در باغچهٔ معبد ببین.' },
+      text: { en: 'You followed compass directions! North is up and east is to the right. A flower was growing in the garden soil. People tell stories of the Hanging Gardens of Babylon, an old city on the Euphrates River in Iraq.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Una flor crecía en la tierra del jardín. La gente cuenta historias de los Jardines Colgantes de Babilonia, una ciudad antigua junto al río Éufrates, en Irak.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. یک گل در خاک باغچه روییده بود. مردم قصه‌های باغ‌های معلق بابل را می‌گویند. بابل یک شهر کهن کنار دریای فرات در عراق است.' } }
+  ],
   // only the Canoe (Episode 2.3) reaches the tiny island in the dam lake
   secret: { tool: 'canoe', at: [4, 4],
     text: { en: 'The canoe reached a tiny island in the dam lake! The Atatürk Dam on the Euphrates made one of the biggest lakes in all of Türkiye.',
@@ -5141,6 +5149,7 @@ window.EPISODE = {
       name: { en: 'Nourah', es: 'Nourah', fa: 'نوره' },
       role: { en: 'Water engineer from Saudi Arabia', es: 'Ingeniera de agua de Arabia Saudita', fa: 'انجنیر آب از عربستان سعودی' },
       look: { skin: 2, hair: '#1a1a1a', shirt: '#1f6f8b', robe: true },
+      remember: { ep: '4.3', t: { en: 'I heard about you from my friend Nomvula in South Africa! You traded her sugar for a new water pump. Her sugarcane fields have water again.', es: '¡Mi amiga Nomvula, de Sudáfrica, me habló de ti! Cambiaste su azúcar por una bomba de agua nueva. Sus campos de caña de azúcar tienen agua otra vez.', fa: 'از دوستم نومولا در افریقای جنوبی در بارهٔ تو شنیدم! تو بورهٔ او را با یک پمپ آب نو عوض کردی. کشتزارهای نیشکر او دوباره آب دارند.' } },
       lines: [
         { en: 'Marhaba! That means hello in Arabic. I am Nourah, from Saudi Arabia. Much of my country is desert. The Rub\' al Khali, or Empty Quarter, is the largest sand desert on Earth.',
           es: '¡Marhaba! Así se dice hola en árabe. Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto. El Rub al-Jali, o Cuarto Vacío, es el desierto de arena más grande de la Tierra.',

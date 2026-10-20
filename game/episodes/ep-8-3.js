@@ -79,7 +79,7 @@ window.EPISODE = {
     {
       x: 21, y: 3,
       name: { en: 'Rosa', es: 'Rosa', fa: 'روزا' },
-      remember: { ep: '1.1', t: { en: 'Look at you now! I remember you in Mapmaker\'s Valley. You put the village signposts back, found Grandpa Tomas\'s compass and won your very first atlas page.', es: '¡Mírate ahora! Te recuerdo en el Valle del Cartógrafo. Volviste a poner los letreros del pueblo, encontraste la brújula del abuelo Tomás y ganaste tu primera página del atlas.', fa: 'حالا خودت را ببین! تو را در درهٔ نقشه‌کش به یاد دارم. تابلوهای ده را دوباره سر جایشان گذاشتی، قطب‌نمای پدرکلان توماس را پیدا کردی و اولین صفحهٔ اطلس خود را بردی.' } },
+      remember: { ep: '1.1', t: { en: 'Look at you now! You put the village signposts back, found Grandpa Tomas\'s compass and won your very first atlas page.', es: '¡Mírate ahora! Volviste a poner los letreros del pueblo, encontraste la brújula del abuelo Tomás y ganaste tu primera página del atlas.', fa: 'حالا خودت را ببین! تابلوهای ده را دوباره سر جایشان گذاشتی، قطب‌نمای پدرکلان توماس را پیدا کردی و اولین صفحهٔ اطلس خود را بردی.' } },
       role: { en: 'Mapmaker and host of the Council', es: 'Cartógrafa y anfitriona del Consejo', fa: 'نقشه‌کش و میزبان شورا' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#c0392b' },
       lines: [

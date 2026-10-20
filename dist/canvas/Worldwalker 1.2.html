@@ -5063,6 +5063,15 @@ window.EPISODE = {
   start: [3, 5],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [25, 10], at: [29, 13], decor: 'gem',
+      clue: { en: 'From this note, walk 3 steps south, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! On this map south is down and east is to the right. Most maps put north at the top. A shiny gem was in the grass.', es: '¡Seguiste las direcciones de la brújula! En este mapa el sur está abajo y el este a la derecha. Casi todos los mapas ponen el norte arriba. Había una gema brillante en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! در این نقشه جنوب پایین و شرق طرف راست است. بیشتر نقشه‌ها شمال را بالا می‌گذارند. یک سنگ قیمتی براق در سبزه بود.' } },
+    { clueAt: [13, 8], at: [11, 10], decor: 'flower',
+      clue: { en: 'The Wheat Belt is a [[formal region|formal region]]: every field in it grows wheat. Find where it ends. Go to the most southern row of wheat. At its east end, step one square south, off the wheat.', es: 'El Cinturón del Trigo es una [[formal region|región formal]]: todos sus campos tienen trigo. Busca dónde termina. Ve a la fila de trigo que está más al sur. En su punta este, da un paso al sur, fuera del trigo.', fa: 'کمربند گندم یک [[formal region|منطقهٔ رسمی]] است: در همهٔ زمین‌هایش گندم می‌روید. پیدا کن که کجا تمام می‌شود. به جنوبی‌ترین ردیف گندم برو. در سرِ شرقیِ آن، یک خانه به جنوب برو، بیرون از گندم.' },
+      text: { en: 'You found the edge of the Wheat Belt! A formal region ends where the thing it shares stops. Kansas, in the United States, grows more wheat than almost any other state. A wild flower grew at the edge.', es: '¡Encontraste el borde del Cinturón del Trigo! Una región formal termina donde se acaba lo que comparte. Kansas, en Estados Unidos, cultiva más trigo que casi cualquier otro estado. Una flor silvestre crecía en el borde.', fa: 'تو کنارهٔ کمربند گندم را پیدا کردی! یک منطقهٔ رسمی جایی تمام می‌شود که چیزِ مشترکش تمام شود. کانزاس در امریکا از تقریباً هر ایالت دیگر بیشتر گندم می‌کارد. یک گل وحشی در کناره روییده بود.' } }
+  ],
 
   words: {
     region: { en: 'a group of places that share something', es: 'un grupo de lugares que comparten algo', fa: 'گروهی از جاها که یک چیز مشترک دارند' },

@@ -5058,6 +5058,15 @@ window.EPISODE = {
   start: [3, 6],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [4, 7], at: [11, 4], decor: 'vase',
+      clue: { en: 'Use the map key: the town well is a stone box with a little wooden roof. In a drought, water is precious. Stand one step east of the well.', es: 'Usa la leyenda: el pozo del pueblo es una caja de piedra con un techito de madera. En una sequía, el agua vale mucho. Párate un paso al este del pozo.', fa: 'از راهنمای نقشه استفاده کن: چاه قریه یک قطی سنگی با یک سقف کوچک چوبی است. در خشک‌سالی، آب خیلی قیمت دارد. یک قدم شرقِ چاه بایست.' },
+      text: { en: 'You read the map key! In a long drought, wells can go dry. That can push families to move away. A clay water jar was by the well.', es: '¡Leíste la leyenda! En una sequía larga, los pozos se pueden secar. Eso puede empujar a las familias a irse. Había una jarra de barro junto al pozo.', fa: 'تو راهنمای نقشه را خواندی! در خشک‌سالی طولانی، چاه‌ها شاید خشک شوند. این می‌تواند خانواده‌ها را به رفتن وادار کند. یک کوزهٔ گلی کنار چاه بود.' } },
+    { clueAt: [16, 7], at: [20, 10], decor: 'drum',
+      clue: { en: 'From this note, walk 3 steps south, then 4 steps east, toward the city. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este, hacia la ciudad. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق، به طرف شهر. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and east is to the right. When people move, they bring their music. Cumbia music started in Colombia, and now people dance to it in cities all over Latin America. A little drum was hiding here.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Cuando la gente se muda, lleva su música. La cumbia nació en Colombia, y ahora se baila en ciudades de toda América Latina. Un tamborcito estaba escondido aquí.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. وقتی مردم جابه‌جا می‌شوند، موسیقی خود را هم می‌برند. موسیقی کومبیا در کلمبیا شروع شد و حالا مردم در شهرهای سراسر امریکای لاتین با آن می‌رقصند. یک دهل کوچک اینجا پنهان بود.' } }
+  ],
   // only the Compass Rose (Episode 1.3) opens the little gate behind the village houses
   secret: { tool: 'compass', at: [1, 1],
     text: { en: 'The Compass Rose opened the gate behind the houses! In the chest is a picture of orange butterflies. Every fall, millions of monarch butterflies fly up to 4,800 kilometers from Canada and the United States to the mountains of Mexico.',
@@ -5136,6 +5145,7 @@ window.EPISODE = {
       x: 22, y: 17,
       name: { en: 'Yesenia', es: 'Yesenia', fa: 'یسنیا' },
       role: { en: 'Cook at her own food stand', es: 'Cocinera en su propio puesto de comida', fa: 'آشپز در دکان غذای خودش' },
+      remember: { ep: '2.2', t: { en: 'Hello again, friend! I left the banana farm in Ecuador to work here. Back home they still talk about the bananas you carried up the mountain for Taita Inti\'s granddaughter!', es: '¡Hola otra vez, amigo! Dejé la finca de bananos en Ecuador para trabajar aquí. ¡En mi tierra todavía hablan de los bananos que subiste a la montaña para la nieta de Taita Inti!', fa: 'سلام دوباره، دوست من! من فارم کیله را در اکوادور ترک کردم تا اینجا کار کنم. در وطن هنوز هم از کیله‌هایی گپ می‌زنند که تو برای نواسهٔ تایتا اینتی به بالای کوه بردی!' } },
       look: { skin: 4, hair: '#2a1a12', shirt: '#e0782b', pants: '#3a3a3a' },
       lines: [
         { en: 'I came to this city for work. Now I cook at my own food stand. New workers bring new foods, music and languages. They open shops. The city grows, and the buses get more crowded too.',

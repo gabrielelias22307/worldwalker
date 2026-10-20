@@ -5061,6 +5061,15 @@ window.EPISODE = {
   start: [2, 19],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [16, 14], at: [19, 19], decor: 'shell',
+      clue: { en: 'From this note, walk 5 steps south, then 3 steps east. Something is hidden there.', es: 'Desde esta nota, camina 5 pasos al sur y luego 3 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۵ قدم به جنوب برو، بعد ۳ قدم به شرق. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions down to the coast! Ecuador sits on the equator. Its name is the Spanish word for equator. A sea shell lay on the sand.', es: '¡Seguiste las direcciones de la brújula hasta la costa! Ecuador está sobre la línea del ecuador. Su nombre es la palabra en español para ecuador. Había una concha en la arena.', fa: 'تو جهت‌های قطب‌نما را تا ساحل دنبال کردی! اکوادور روی خط استوا است. نامش در زبان هسپانوی یعنی «استوا». یک صدف روی ریگ بود.' } },
+    { clueAt: [1, 18], at: [5, 4], decor: 'drum',
+      clue: { en: 'The road zig-zags up the mountain, from the hot coast to the cold land. Follow it all the way up. Stand on the last road square at its top end.', es: 'El camino sube la montaña en zigzag, desde la costa caliente hasta la tierra fría. Síguelo hasta arriba. Párate en el último cuadro del camino, en su punta de arriba.', fa: 'سرک به شکل زیگزاگ از ساحل گرم تا زمین سرد از کوه بالا می‌رود. آن را تا آخر بالا دنبال کن. روی آخرین خانهٔ سرک در سرِ بالاییِ آن بایست.' },
+      text: { en: 'You climbed to the top of the road! Up here in the [[tierra fria|tierra fría]], farmers grow potatoes. Potatoes first came from the Andes Mountains. Someone left a small drum here. Drums are played at many Andean festivals.', es: '¡Subiste hasta el final del camino! Aquí arriba, en la [[tierra fria|tierra fría]], los agricultores siembran papas. Las papas vienen de la cordillera de los Andes. Alguien dejó aquí un tambor pequeño. En muchas fiestas andinas se tocan tambores.', fa: 'تو تا آخر سرک بالا رفتی! این بالا در [[tierra fria|تیرا فریا]] دهقان‌ها کچالو می‌کارند. کچالو اول از کوه‌های اندیز آمد. کسی این جا یک دهل کوچک گذاشته. در بسیاری از جشن‌های اندیز دهل می‌نوازند.' } }
+  ],
   // only the Compass Rose (Episode 1.3) opens the little gate in the snow
   secret: { tool: 'compass', at: [14, 1],
     text: { en: 'The Compass Rose opened the snowy gate! In the chest is a climber\'s note. The tallest mountain in the Andes is Aconcagua in Argentina. It is almost 7,000 meters high, the tallest in all of the Americas.',
@@ -5111,6 +5120,7 @@ window.EPISODE = {
       x: 24, y: 12,
       name: { en: 'Don Julián', es: 'Don Julián', fa: 'دون خولیان' },
       role: { en: 'Coffee grower', es: 'Cafetero', fa: 'دهقان قهوه' },
+      remember: { ep: '2.1', t: { en: 'Hello! Captain Marie from the Great Lakes told me about you. You found Nokomis\'s drifting canoe, and you picked a great spot by the water for a new city!', es: '¡Hola! La capitana Marie, de los Grandes Lagos, me habló de ti. ¡Encontraste la canoa a la deriva de Nokomis y elegiste un gran lugar junto al agua para una ciudad nueva!', fa: 'سلام! کپتان ماری از جهیل‌های بزرگ دربارهٔ تو به من گفت. تو قایق سرگردانِ نوکومیس را پیدا کردی و یک جای خوب کنار آب برای شهر تازه انتخاب کردی!' } },
       look: { skin: 2, hair: '#4a3a2a', shirt: '#ffffff', pants: '#5a4630' },
       lines: [
         { en: 'Buenos días! My coffee farm sits in the [[tierra templada|tierra templada]], the mild land in the middle of the mountain. The days are warm and the nights are cool.',

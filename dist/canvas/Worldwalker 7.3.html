@@ -5058,6 +5058,16 @@ window.EPISODE = {
   start: [3, 8],
 
   tools: ['axe', 'sickle'],
+
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [11, 8], at: [10, 4], decor: 'gem',
+      clue: { en: 'From this note, walk 4 steps north, then 1 step west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al norte y luego 1 paso al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به شمال برو، بعد ۱ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! North is up and west is to the left. A shiny gem was in the mine. Mines dig raw materials out of the ground, like the copper in the wires of a phone.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el oeste a la izquierda. Había una gema brillante en la mina. Las minas sacan materias primas de la tierra, como el cobre de los cables de un teléfono.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و غرب طرف چپ است. یک جواهر براق در معدن بود. معدن‌ها مواد خام را از زیر زمین بیرون می‌کشند، مثل مسِ داخل سیم‌های یک تلیفون.' } },
+    { clueAt: [6, 20], at: [26, 9], decor: 'coinold',
+      clue: { en: 'Follow the supply chain! Copper rides the train east from the mine. Find the spot where the railway stops going east and turns south. Stand on that corner square.', es: '¡Sigue la cadena de suministro! El cobre viaja en tren al este desde la mina. Busca el lugar donde la vía del tren deja de ir al este y gira al sur. Párate en ese cuadro de la esquina.', fa: 'زنجیرهٔ تأمین را دنبال کن! مس با ریل از معدن به طرف شرق می‌رود. جایی را پیدا کن که خط آهن دیگر به شرق نمی‌رود و به طرف جنوب دور می‌خورد. روی همان خانهٔ کنج بایست.' },
+      text: { en: 'You found the railway corner! Trains can carry heavy loads, like copper, a long way over land. From here the train runs south to the port. An old coin was by the tracks.', es: '¡Encontraste la esquina de la vía! Los trenes pueden llevar cargas pesadas, como el cobre, muy lejos por tierra. Desde aquí el tren va al sur hasta el puerto. Había una moneda antigua junto a la vía.', fa: 'تو کنج خط آهن را پیدا کردی! ریل می‌تواند بارهای سنگین، مثل مس، را از راه خشکه تا جای دور ببرد. از این جا ریل به طرف جنوب تا بندر می‌رود. یک سکهٔ کهنه کنار خط آهن بود.' } }
+  ],
   // only the Rail Pass (Episode 3.3) opens the gate to the old mine track in the northern hills
   secret: { tool: 'rail', at: [14, 1],
     text: { en: 'The Rail Pass opened the old mine track! A note in the chest says one tiny phone chip can hold billions of parts. Many of the best chips in the world are made in Taiwan.',
@@ -5135,6 +5145,7 @@ window.EPISODE = {
     },
     {
       x: 25, y: 16,
+      remember: { ep: '7.2', t: { en: 'Hello! My cousin Ms. Park is a city planner. She says you found her red flag at the river mouth. A city there can trade by river and by sea, just like our port!', es: '¡Hola! Mi prima la Sra. Park es planificadora de ciudades. Dice que encontraste su bandera roja en la desembocadura del río. ¡Una ciudad allí puede comerciar por el río y por el mar, igual que nuestro puerto!', fa: 'سلام! دخترخاله‌ام خانم پارک طراح شهر است. او می‌گوید تو بیرق سرخ او را در دهانهٔ دریا پیدا کردی. یک شهر در آن جا می‌تواند از راه دریا و بحر تجارت کند، درست مثل بندر ما!' } },
       name: { en: 'Min-jun', es: 'Min-jun', fa: 'مین‌جون' },
       role: { en: 'Crane operator at the port', es: 'Operador de grúa del puerto', fa: 'کارگر جرثقیل در بندر' },
       look: { skin: 1, hair: '#202020', shirt: '#e67e22', pants: '#2b3a55' },

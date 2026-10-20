@@ -5058,6 +5058,16 @@ window.EPISODE = {
   start: [9, 7],
 
   tools: ['axe', 'sickle'],
+
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [12, 4], at: [19, 14], decor: 'feather',
+      clue: { en: 'Boats need a dock to stop. Find the dock on the river, just north of the house with the red roof. It is not the dock that goes out into the sea. Stand on its most western square.', es: 'Los botes necesitan un muelle para parar. Busca el muelle en el río, justo al norte de la casa del techo rojo. No es el muelle que entra en el mar. Párate en su cuadro más al oeste.', fa: 'کشتی‌ها برای ایستادن به اسکله ضرورت دارند. اسکله را روی دریا پیدا کن، درست شمالِ خانه‌ای که بام سرخ دارد. اسکله‌ای نیست که داخل بحر می‌رود. روی غربی‌ترین خانهٔ آن بایست.' },
+      text: { en: 'You found the river dock! Boats stop here to load rice and other goods. Many cities grew up next to rivers, because boats make trade easy. A feather was on the dock.', es: '¡Encontraste el muelle del río! Los botes paran aquí para cargar arroz y otros productos. Muchas ciudades crecieron junto a los ríos, porque los botes hacen fácil el comercio. Había una pluma en el muelle.', fa: 'تو اسکلهٔ دریا را پیدا کردی! کشتی‌ها این جا می‌ایستند تا برنج و چیزهای دیگر را بار کنند. خیلی از شهرها کنار دریاها بزرگ شدند، چون کشتی‌ها تجارت را آسان می‌کنند. یک پر روی اسکله بود.' } },
+    { clueAt: [6, 20], at: [13, 19], decor: 'flower',
+      clue: { en: 'From this note, walk 7 steps east, then 1 step north. Something is hidden there.', es: 'Desde esta nota, camina 7 pasos al este y luego 1 paso al norte. Algo está escondido allí.', fa: 'از این یادداشت، ۷ قدم به شرق برو، بعد ۱ قدم به شمال. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! East is to the right and north is up. A flower grew between the rice paddies. Flat land near a river is a good site for farms that feed a city.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el norte arriba. Una flor creció entre los arrozales. La tierra plana cerca de un río es un buen sitio para granjas que alimentan a una ciudad.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و شمال بالا است. یک گل میان شالی‌زارها روییده بود. زمین هموار نزدیک دریا جای خوبی برای زمین‌های زراعتی است که غذای یک شهر را می‌دهند.' } }
+  ],
   // only the Canoe (Episode 2.3) reaches the little island where the river bends toward the sea
   secret: { tool: 'canoe', at: [14, 12],
     text: { en: 'The canoe reached the river island! A note in the chest says Shanghai sits where the Yangtze River meets the sea. Its port moves more containers than any other port in the world.',

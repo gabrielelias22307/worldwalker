@@ -5061,6 +5061,16 @@ window.EPISODE = {
   start: [2, 5],
 
   tools: ['axe', 'sickle'],
+
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [29, 2], at: [27, 6], decor: 'drum',
+      clue: { en: 'From this note, walk 4 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
+      text: { en: 'You followed compass directions! South is down and west is to the left. A small drum was hiding by the village road. In India, about 2 of every 3 people live in villages, not in cities.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. Un tambor pequeño estaba escondido junto al camino del pueblo. En la India, unas 2 de cada 3 personas viven en pueblos, no en ciudades.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. یک دهل کوچک کنار سرک قریه پنهان بود. در هند، از هر ۳ نفر تقریباً ۲ نفر در قریه‌ها زندگی می‌کنند، نه در شهرها.' } },
+    { clueAt: [7, 14], at: [11, 19], decor: 'vase',
+      clue: { en: 'Crowded cities need lots of water. Find the only well in the old city lanes. Stand on the square just north of it.', es: 'Las ciudades llenas de gente necesitan mucha agua. Busca el único pozo en los callejones viejos de la ciudad. Párate en el cuadro justo al norte del pozo.', fa: 'شهرهای پرجمعیت به آب زیاد ضرورت دارند. تنها چاه را در کوچه‌های کهنهٔ شهر پیدا کن. روی خانه‌ای که درست شمالِ آن است بایست.' },
+      text: { en: 'You found the city well! In crowded old neighborhoods, many families often share one well or water tap. An old clay vase was by the well. Today more than half of all people in the world live in cities.', es: '¡Encontraste el pozo de la ciudad! En los barrios viejos y llenos de gente, muchas familias a menudo comparten un pozo o un grifo. Había un jarrón viejo de barro junto al pozo. Hoy más de la mitad de las personas del mundo viven en ciudades.', fa: 'تو چاه شهر را پیدا کردی! در محله‌های کهنه و پرجمعیت، اکثراً چند فامیل از یک چاه یا یک نل آب استفاده می‌کنند. یک گلدان کهنهٔ گلی کنار چاه بود. امروز بیشتر از نیمِ مردم جهان در شهرها زندگی می‌کنند.' } }
+  ],
   // only the canoe (Episode 2.3) reaches the little river bank in the east
   secret: { tool: 'canoe', at: [30, 12],
     text: { en: 'The canoe found the hidden river bank! Afghanistan is more than four times bigger than Bangladesh. But Bangladesh has about four times as many people.',

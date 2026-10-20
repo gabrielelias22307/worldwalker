@@ -5063,6 +5063,15 @@ window.EPISODE = {
   start: [3, 2],
 
   tools: ['axe', 'sickle'],
+  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
+  finds: [
+    { clueAt: [2, 9], at: [6, 8], decor: 'drum',
+      clue: { en: 'From this note, walk 1 step north, then 4 steps east. You will reach the bank of the Mekong River.', es: 'Desde esta nota, camina 1 paso al norte y luego 4 pasos al este. Llegarás a la orilla del río Mekong.', fa: 'از این یادداشت، ۱ قدم به شمال برو، بعد ۴ قدم به شرق. به کنار دریای میکانگ می‌رسی.' },
+      text: { en: 'You followed the compass to the Mekong! North is up and east is to the right. More than 2,000 years ago, people in what is now Vietnam made big bronze drums. A small drum was hidden in the grass.', es: '¡Seguiste la brújula hasta el Mekong! El norte está arriba y el este a la derecha. Hace más de 2,000 años, la gente de lo que hoy es Vietnam hacía grandes tambores de bronce. Un tambor pequeño estaba escondido en el pasto.', fa: 'تو قطب‌نما را تا میکانگ دنبال کردی! شمال بالا و شرق طرف راست است. بیش از ۲۰۰۰ سال پیش، مردم در جایی که امروز ویتنام است دهل‌های بزرگ برنجی می‌ساختند. یک دهل کوچک در سبزه پنهان بود.' } },
+    { clueAt: [2, 12], at: [6, 15], decor: 'gem',
+      clue: { en: 'Farmers grow rice on terraces on the slopes of the volcano. Find the volcano on this island. Stand on the terrace square straight south of its peak, right below the mountain.', es: 'Los agricultores cultivan arroz en terrazas en las laderas del volcán. Busca el volcán de esta isla. Párate en el cuadro de terraza que está justo al sur de su cima, debajo de la montaña.', fa: 'دهقانان روی زمین‌های زینه‌ای در دامنهٔ آتشفشان برنج می‌کارند. آتشفشان این جزیره را پیدا کن. روی خانهٔ زینه‌ای بایست که درست جنوبِ قلهٔ آن، زیر کوه است.' },
+      text: { en: 'You found the terrace right below the peak! Ash from volcanoes makes the soil rich, so farmers on Java grow rice on the slopes, step by step. A shiny stone from the volcano was in the rice.', es: '¡Encontraste la terraza justo debajo de la cima! La ceniza de los volcanes hace que la tierra sea rica, por eso los agricultores de Java cultivan arroz en las laderas, escalón por escalón. Una piedra brillante del volcán estaba en el arroz.', fa: 'تو زمین زینه‌ای درست زیر قله را پیدا کردی! خاکستر آتشفشان خاک را حاصل‌خیز می‌کند، پس دهقانان جاوه زینه به زینه در دامنه‌ها برنج می‌کارند. یک سنگ براق آتشفشان در برنج بود.' } }
+  ],
   // only the canoe (Episode 2.3) reaches the tiny island in the northeast sea
   secret: { tool: 'canoe', at: [28, 2],
     text: { en: 'The canoe found the tiny island! Indonesia has more active volcanoes than any other country, about 130 of them.',
@@ -5113,6 +5122,7 @@ window.EPISODE = {
       x: 2, y: 15,
       name: { en: 'Siti', es: 'Siti', fa: 'سیتی' },
       role: { en: 'Rice farmer on Java', es: 'Agricultora de arroz en Java', fa: 'دهقان برنج در جاوه' },
+      remember: { ep: '6.1', t: { en: 'Hello! My friend Lakshmi grows rice by the Ganges. She wrote to me that you found Nani Kamala\'s rain gauge in the river. Now the farmers know when the monsoon rain comes. Thank you!', es: '¡Hola! Mi amiga Lakshmi cultiva arroz junto al Ganges. Me escribió que encontraste el pluviómetro de la abuela Kamala en el río. Ahora los agricultores saben cuándo llega la lluvia del monzón. ¡Gracias!', fa: 'سلام! دوستم لکشمی کنار گنگا برنج می‌کارد. او برایم نوشت که تو باران‌سنج مادرکلان کمالا را در دریا پیدا کردی. حالا دهقانان می‌دانند باران موسمی کی می‌آید. تشکر!' } },
       look: { skin: 3, hair: '#120e0a', shirt: '#3a9a5a', pants: '#6a3a2a', robe: true },
       lines: [
         { en: 'Selamat datang! Welcome to Java, one island of Indonesia. Indonesia has more than seventeen thousand islands! A big group of islands like this is an [[archipelago|archipelago]].',
