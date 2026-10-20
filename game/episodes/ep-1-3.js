@@ -41,6 +41,8 @@ window.EPISODE = {
   ],
   start: [10, 4],
 
+  tools: ['axe', 'sickle'],
+
   words: {
     resource: { en: 'anything people use to make or do something', es: 'cualquier cosa que la gente usa para hacer o producir algo', fa: 'هر چیزی که مردم برای ساختن یا انجام کاری به کار می‌برند' },
     'natural resource': { en: 'something useful that comes from the earth, like water, soil, trees, oil or metals', es: 'algo útil que viene de la tierra, como agua, suelo, árboles, petróleo o metales', fa: 'چیز مفیدی که از زمین می‌آید، مثل آب، خاک، درخت، تیل یا فلز' },
@@ -149,7 +151,7 @@ window.EPISODE = {
       fa: 'بازار دره · هیچ جا همهٔ منابع لازم را ندارد. چیزی را که زیاد داریم می‌فروشیم و چیزی را که نداریم می‌خریم. این [[trade|تجارت]] است.' } }
   ],
 
-  /* the quest: Rahim the toolmaker (gold !) -> Ingrid the woodcutter -> trade with Rosa at the mine -> back to Rahim */
+  /* the quest: Rahim the toolmaker (gold !) -> Ingrid the woodcutter -> trade with Marisol at the mine -> back to Rahim */
   quest: {
     stat: 'mov',
     title: { en: 'Iron for the Plows', es: 'Hierro para los arados', fa: 'آهن برای قلبه‌ها' },
@@ -182,16 +184,16 @@ window.EPISODE = {
         { en: 'Iron? Only the mine in the north-east mountains has it. Iron is a [[natural resource|natural resource]]. Resources are spread unevenly. My woods have lots of trees, but no iron at all.',
           es: '¿Hierro? Solo la mina de las montañas del noreste lo tiene. El hierro es un [[natural resource|recurso natural]]. Los recursos están repartidos de forma desigual. Mi bosque tiene muchos árboles, pero nada de hierro.',
           fa: 'آهن؟ فقط معدن کوه‌های شمال شرق آن را دارد. آهن یک [[natural resource|منبع طبیعی]] است. منابع نابرابر پخش شده‌اند. جنگل من درخت زیاد دارد، اما هیچ آهن ندارد.' },
-        { en: 'Go to Rosa, the trader by the railway at the mine. The miners have plenty of rock and iron. But almost no trees grow on the mountain. Offer Rosa what the miners lack!',
-          es: 'Ve con Rosa, la comerciante junto a la vía del tren en la mina. Los mineros tienen mucha roca y mucho hierro. Pero en la montaña casi no crecen árboles. ¡Ofrécele a Rosa lo que les falta a los mineros!',
-          fa: 'پیش روزا برو، تاجری که کنار خط آهن در معدن است. معدنچی‌ها سنگ و آهن زیاد دارند. اما در کوه تقریباً هیچ درختی نمی‌روید. به روزا چیزی را پیشنهاد کن که معدنچی‌ها ندارند!' }
+        { en: 'Go to Marisol, the trader by the railway at the mine. The miners have plenty of rock and iron. But almost no trees grow on the mountain. Offer Marisol what the miners lack!',
+          es: 'Ve con Marisol, la comerciante junto a la vía del tren en la mina. Los mineros tienen mucha roca y mucho hierro. Pero en la montaña casi no crecen árboles. ¡Ofrécele a Marisol lo que les falta a los mineros!',
+          fa: 'پیش ماریسول برو، تاجری که کنار خط آهن در معدن است. معدنچی‌ها سنگ و آهن زیاد دارند. اما در کوه تقریباً هیچ درختی نمی‌روید. به ماریسول چیزی را پیشنهاد کن که معدنچی‌ها ندارند!' }
       ]
     },
     action: {
       type: 'trade',
       trader: {
         x: 26, y: 4,
-        name: { en: 'Rosa', es: 'Rosa', fa: 'روزا' },
+        name: { en: 'Marisol', es: 'Marisol', fa: 'ماریسول' },
         role: { en: 'Mine trader', es: 'Comerciante de la mina', fa: 'تاجر معدن' },
         look: { skin: 3, hair: '#3a2416', shirt: '#7a4fa3', pants: '#3a3a3a', style: 'bun' },
         lines: [
@@ -200,7 +202,7 @@ window.EPISODE = {
             fa: 'به معدن خوش آمدی! ما بیشتر از آنچه به کار ببریم آهن می‌کنیم. اما کوه نمی‌تواند هر چیزی را که لازم داریم به ما بدهد.' }
         ]
       },
-      q: { en: 'What will you offer Rosa for a load of iron?', es: '¿Qué le ofreces a Rosa a cambio de una carga de hierro?', fa: 'در بدل یک بار آهن، به روزا چه پیشنهاد می‌کنی؟' },
+      q: { en: 'What will you offer Marisol for a load of iron?', es: '¿Qué le ofreces a Marisol a cambio de una carga de hierro?', fa: 'در بدل یک بار آهن، به ماریسول چه پیشنهاد می‌کنی؟' },
       choices: [
         { ok: true, t: { en: 'Logs from the Timber Woods', es: 'Troncos del Bosque de Madera', fa: 'کنده‌های چوب از جنگل چوب' },
           why: { en: 'Good trade! The woods have plenty of trees, and the mountain has almost none. Miners use logs to hold up their tunnels. Each side gets what it lacks.', es: '¡Buen trato! El bosque tiene muchos árboles y la montaña casi ninguno. Los mineros usan troncos para sostener sus túneles. Cada lado recibe lo que le falta.', fa: 'معاملهٔ خوب! جنگل درخت زیاد دارد و کوه تقریباً هیچ ندارد. معدنچی‌ها با کنده‌های چوب سقف تونل‌ها را نگه می‌دارند. هر طرف چیزی را که ندارد می‌گیرد.' } },
@@ -218,7 +220,9 @@ window.EPISODE = {
 
   challenge: {
     at: [20, 13],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // each group has a marked area: natural by the pond and fields, human by the market where people work, capital under the factory
+    zones: [{ bin: 'nat', x: 6, y: 17, w: 3, h: 2 }, { bin: 'hum', x: 26, y: 17, w: 3, h: 2 }, { bin: 'cap', x: 16, y: 14, w: 4, h: 1 }],
     stat: 'hei',
     title: { en: 'Natural, human or capital?', es: '¿Natural, humano o de capital?', fa: 'طبیعی، انسانی یا سرمایه‌ای؟' },
     intro: { en: 'The Grump dumped the valley\'s resources in one big pile. Put each card in the right group.',

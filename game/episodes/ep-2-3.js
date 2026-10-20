@@ -17,7 +17,7 @@ window.EPISODE = {
   map: [
     'TTTTTTTTTTTTTTTTUUJUUJUUJUUJUUJU',
     'T.RRR..QQQ..RRR....UU..JJJ..UUUU',
-    'T.hdh..hdh..hdh....UU..JJJ..UUUU',
+    'TGhdh..hdh..hdh....UU..JJJ..UUUU',
     'T............,......UU..XX..UU.U',
     'T.mmm.....O......x..UU..XX..UU.U',
     'T::::::::::::::::::::::::::::::U',
@@ -39,6 +39,13 @@ window.EPISODE = {
     'TTTTTTTTTTTTTTTT================'
   ],
   start: [3, 6],
+
+  tools: ['axe', 'sickle'],
+  // only the Compass Rose (Episode 1.3) opens the little gate behind the village houses
+  secret: { tool: 'compass', at: [1, 1],
+    text: { en: 'The Compass Rose opened the gate behind the houses! In the chest is a picture of orange butterflies. Every fall, millions of monarch butterflies fly up to 4,800 kilometers from Canada and the United States to the mountains of Mexico.',
+      es: '¡La rosa de los vientos abrió la puerta detrás de las casas! En el cofre hay un dibujo de mariposas anaranjadas. Cada otoño, millones de mariposas monarca vuelan hasta 4.800 kilómetros desde Canadá y Estados Unidos hasta las montañas de México.',
+      fa: 'قطب‌نما دروازهٔ پشت خانه‌ها را باز کرد! در صندوق عکس شاپرک‌های نارنجی است. هر خزان، میلیون‌ها شاپرک مونارک تا ۴۸۰۰ کیلومتر از کانادا و ایالات متحدهٔ امریکا تا کوه‌های مکسیکو پرواز می‌کنند.' } },
 
   words: {
     migration: { en: 'moving from one place to another to live', es: 'mudarse de un lugar a otro para vivir', fa: 'رفتن از یک جا به جای دیگر برای زندگی' },
@@ -81,7 +88,7 @@ window.EPISODE = {
     },
     {
       x: 18, y: 4,
-      name: { en: 'Lucía', es: 'Lucía', fa: 'لوسیا' },
+      name: { en: 'Valeria', es: 'Valeria', fa: 'والریا' },
       role: { en: 'Bus driver', es: 'Chofer de bus', fa: 'رانندهٔ بس' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2f6fd6', pants: '#22324f' },
       lines: [
@@ -213,7 +220,9 @@ window.EPISODE = {
 
   challenge: {
     at: [13, 3],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // push notes go to the dry, drought-hit fields of the home village (west); pull notes go to the city between the factory and the tall buildings (east), where the bus goes
+    zones: [{ bin: 'push', x: 8, y: 8, w: 3, h: 2 }, { bin: 'pull', x: 22, y: 3, w: 2, h: 2 }, { bin: 'pull', x: 22, y: 6, w: 2, h: 2 }],
     stat: 'mov',
     title: { en: 'Push or pull?', es: '¿Expulsión o atracción?', fa: 'رانش یا کشش؟' },
     intro: { en: 'The Grump mixed up the travelers\' reasons. Sort each card. Does it push people away from home, or pull them toward a new place?',

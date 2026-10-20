@@ -19,8 +19,8 @@ window.EPISODE = {
      rows 1-4 tierra helada (high grass g, then snow n and snowy peaks A). */
   map: [
     'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA',
-    'AAnnnAAnnnnnnAAAnnnnnnnAAnnnnAAA',
-    'AnnnnnnnninnnnnnnnnnnnnnnninnnnA',
+    'AAnnnAAnnnnnnAnAnnnnnnnAAnnnnAAA',
+    'AnnnnnnnninnnnGnnnnnnnnnnninnnnA',
     'AnnnAnnnxnnnnnnnnnnnnnnAnnnnnnnA',
     'K"ggg:::::::::::::::::::::::"ggK',
     'Kvvvv.wwwww.QQQ.vvvvv.wwwww:vvvK',
@@ -42,6 +42,13 @@ window.EPISODE = {
     '~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~'
   ],
   start: [2, 19],
+
+  tools: ['axe', 'sickle'],
+  // only the Compass Rose (Episode 1.3) opens the little gate in the snow
+  secret: { tool: 'compass', at: [14, 1],
+    text: { en: 'The Compass Rose opened the snowy gate! In the chest is a climber\'s note. The tallest mountain in the Andes is Aconcagua in Argentina. It is almost 7,000 meters high, the tallest in all of the Americas.',
+      es: '¡La rosa de los vientos abrió la puerta de nieve! En el cofre hay una nota de una escaladora. La montaña más alta de los Andes es el Aconcagua, en Argentina. Mide casi 7.000 metros: es la más alta de toda América.',
+      fa: 'قطب‌نما دروازهٔ برفی را باز کرد! در صندوق یادداشت یک کوهنورد است. بلندترین کوه اندیز، آکونکاگوا در ارجنتاین است. بلندی آن نزدیک به ۷۰۰۰ متر است و بلندترین کوه در تمام قارهٔ امریکا است.' } },
 
   words: {
     altitude: { en: 'how high a place is above sea level', es: 'qué tan alto está un lugar sobre el nivel del mar', fa: 'اینکه یک جا چقدر از سطح بحر بلندتر است' },
@@ -221,7 +228,9 @@ window.EPISODE = {
 
   challenge: {
     at: [11, 10],
-    type: 'sort',
+    type: 'carry', // in the world; the card version (sort) is the fallback
+    // each crop goes to its height band on the mountain: frozen land up in the snow, cold land by the potato and wheat fields, mild land in the coffee, hot land down by the bananas and sugarcane
+    zones: [{ bin: 'helada', x: 10, y: 2, w: 3, h: 1 }, { bin: 'fria', x: 3, y: 6, w: 3, h: 1 }, { bin: 'templada', x: 7, y: 12, w: 3, h: 1 }, { bin: 'caliente', x: 4, y: 15, w: 3, h: 1 }],
     style: 'bands',
     stat: 'hei',
     title: { en: 'What grows at each height?', es: '¿Qué crece en cada altura?', fa: 'در هر ارتفاع چه می‌روید؟' },
