@@ -371,3 +371,12 @@ canvas{filter:var(--vivid)}
 
 /* the bubble's tail points at Christopher, wherever the bubble sits above or below him */
 .cbubble:not(.side-l):not(.side-r)::after{left:var(--tx,calc(50% - 7px))}
+
+/* the tool that fits what the hero faces glows; a tool picked for you pops */
+.toolbar .tslot.fit{outline:2px dashed var(--gold);animation:fitglow 1s ease-in-out infinite}
+@keyframes fitglow{50%{outline-color:#fff}}
+.toolbar .tslot.auto{animation:autopop .5s ease-out}
+@keyframes autopop{30%{transform:scale(1.25)}}
+
+.dpad .padchris{grid-column:1;grid-row:1;background:#fff3c4;color:var(--ink)}
+.dpad .padgoals{grid-column:3;grid-row:1;font-size:18px}

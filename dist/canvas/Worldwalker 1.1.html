@@ -379,6 +379,15 @@ canvas{filter:var(--vivid)}
 /* the bubble's tail points at Christopher, wherever the bubble sits above or below him */
 .cbubble:not(.side-l):not(.side-r)::after{left:var(--tx,calc(50% - 7px))}
 
+/* the tool that fits what the hero faces glows; a tool picked for you pops */
+.toolbar .tslot.fit{outline:2px dashed var(--gold);animation:fitglow 1s ease-in-out infinite}
+@keyframes fitglow{50%{outline-color:#fff}}
+.toolbar .tslot.auto{animation:autopop .5s ease-out}
+@keyframes autopop{30%{transform:scale(1.25)}}
+
+.dpad .padchris{grid-column:1;grid-row:1;background:#fff3c4;color:var(--ink)}
+.dpad .padgoals{grid-column:3;grid-row:1;font-size:18px}
+
 </style>
 </head>
 <body>
@@ -1453,7 +1462,7 @@ window.WW_CONFIG.MODE = 'canvas';
     gotTool: { en: 'New tool for your bag', es: 'Nueva herramienta para tu bolsa', fa: 'ابزار تازه برای کوله‌ات' },
     tapWord: { en: 'Tap a yellow word to see what it means.', es: 'Toca una palabra amarilla para ver qué significa.', fa: 'روی کلمهٔ زرد بزن تا معنایش را ببینی.' },
     clickStart: { en: 'Click the game, then use the arrow keys', es: 'Haz clic en el juego y usa las flechas', fa: 'روی بازی کلیک کن، بعد از کلیدهای جهت استفاده کن' },
-    controls: { en: 'Arrows or WASD: walk · walk into people to talk · Space: use your tool (★ throws a star) · 1–5: pick a tool · C: Christopher', es: 'Flechas o WASD: caminar · camina hacia las personas para hablar · Espacio: usa tu herramienta (★ lanza una estrella) · 1–5: elige herramienta · C: Christopher', fa: 'کلیدهای جهت یا WASD: راه رفتن · برای گپ زدن به طرف مردم برو · Space: از ابزارت استفاده کن (★ ستاره پرتاب می‌کند) · ۱ تا ۵: ابزار را انتخاب کن · C: کریستوفر' },
+    controls: { en: 'Arrows or WASD: walk (a quick tap turns) · walk into people to talk · Space: talk, or use the tool that fits what you face (it picks itself) · 1–5: pick a tool · C: Christopher · Q: goals', es: 'Flechas o WASD: caminar (un toque rápido gira) · camina hacia las personas para hablar · Espacio: hablar, o usar la herramienta que sirve para lo que miras (se elige sola) · 1–5: elegir herramienta · C: Christopher · Q: metas', fa: 'کلیدهای جهت یا WASD: راه رفتن (یک فشار کوتاه می‌چرخاند) · برای گپ زدن به طرف مردم برو · Space: گپ بزن، یا ابزاری که برای چیز روبرویت مناسب است (خودش انتخاب می‌شود) · ۱ تا ۵: انتخاب ابزار · C: کریستوفر · Q: هدف‌ها' },
     /* Christopher (christopher.js) */
     chrisName: { en: 'Christopher', es: 'Christopher', fa: 'کریستوفر' },
     chrisJob: { en: 'Christopher is your living compass: he points the way, tells you what to do next, and trades hints for coins.', es: 'Christopher es tu brújula viva: te señala el camino, te dice qué hacer después y cambia pistas por monedas.', fa: 'کریستوفر قطب‌نمای زندهٔ توست: راه را نشان می‌دهد، می‌گوید بعد چه کنی، و در برابر سکه کمک می‌دهد.' },
@@ -3647,7 +3656,7 @@ window.WW_CONFIG.MODE = 'canvas';
   const CHOP = { T: ['wood', 2, '%', 180], P: ['wood', 2, '%', 180], a: ['wood', 2, '%', 180], Y: ['wood', 1, '.', 150] };
   const CUT = { '"': ['fiber', 1, '.', 60] };
   const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign'];
-  let sel = 'star', regrow = [], told = {}, bar = null;
+  let sel = 'star', regrow = [], told = {}, bar = null, lastFit = null;
 
   X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
 
@@ -3684,7 +3693,7 @@ window.WW_CONFIG.MODE = 'canvas';
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
       const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
-      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T(tk)}`;
+      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : '') + (lastFit === k && sel !== k ? ' fit' : ''); b.title = `${i + 1} · ${T(tk)}`; b.dataset.k = k;
       b.setAttribute('aria-label', T(tk));
       b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
       const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
@@ -3698,8 +3707,18 @@ window.WW_CONFIG.MODE = 'canvas';
     const held = X.heldSign();
     if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
-  X.pick = k => {
+  // which tool fits the tile you face (null: none)
+  X.fitTool = (x, y, e) => {
+    const g = G(), ch = g.tileAt(x, y), [W, H] = g.size, border = x <= 0 || y <= 0 || x >= W - 1 || y >= H - 1;
+    if (e && e.kind === 'crop') return 'sickle';
+    if (CHOP[ch] && !border && !(WW.ep.keep || []).some(p => p[0] === x && p[1] === y)) return 'axe';
+    if (CUT[ch]) return 'sickle';
+    if (ch === 'o' && !e && X.have('seed') > 0) return 'seed';
+    return null;
+  };
+  X.pick = (k, auto) => {
     if (!X.on()) return;
+    if (auto) { sel = k; X.render(); const b = bar && bar.querySelector('.tslot.on'); if (b) { b.classList.add('auto'); setTimeout(() => b.classList.remove('auto'), 600); } return; }
     if (k === 'sign') {
       const r = WW.run; if (!(r.signs || []).some(s => !s.placed)) return;
       if (sel === 'sign') { // pressing 5 again: hold the next signpost
@@ -3787,7 +3806,13 @@ window.WW_CONFIG.MODE = 'canvas';
   /* grow back after a while (never while you stand there) */
   X.tick = (now) => {
     const g = G(); if (!g.player) return;
-    if (bar) bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
+    if (bar) {
+      bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
+      // a soft glow on the tool that fits what the hero faces (the axe at a tree, the sickle at tall grass)
+      const d = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[g.player.dir] || [0, 1];
+      const fx = g.player.x + d[0], fy = g.player.y + d[1], fit = sel === 'sign' ? null : X.fitTool(fx, fy, g.entAt(fx, fy));
+      if (fit !== lastFit) { lastFit = fit; bar.querySelectorAll('.tslot').forEach(b => b.classList.toggle('fit', !!fit && b.dataset.k === fit && sel !== fit)); }
+    }
     regrow = regrow.filter(r => {
       if (now < r.at) return true;
       if ((g.player.x === r.x && g.player.y === r.y) || g.entAt(r.x, r.y)) { r.at = now + 3000; return true; }
@@ -4549,6 +4574,7 @@ window.WW_CONFIG.MODE = 'canvas';
           </div>
         </div>
         <div class="dpad" id="ww-dpad" aria-label="arrows">
+          <button data-d="chris" class="padchris" aria-label="Christopher">🧭</button><button data-d="goals" class="padgoals" aria-label="goals">☰</button>
           <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
           <button data-d="act" class="act" aria-label="use">●</button>
           <button data-d="right" aria-label="right">▶</button><button data-d="down" aria-label="down">▼</button>
@@ -4797,14 +4823,28 @@ window.WW_CONFIG.MODE = 'canvas';
     player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
     if (sx !== tx || sy !== ty) { trans = { from: [sx, sy], to: [tx, ty], t0: now, d: [dx, dy] }; }
   }
+  /* Space (or ●) never surprises: a person, a note or a sign always comes first, whatever tool is picked; then a broken
+     bridge or a gate; then the tool that fits what you face (it switches for you); then a star */
   function actFacing() {
     if (WW.paused) return;
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
     if (e && e.kind === 'post') return WW.tools.post(e);
     if (e && !PASS.includes(e.kind) && e.kind !== 'boss') return interact(e);
-    if (WW.tools.on() && WW.tools.act(tx, ty, e)) return; // the axe, sickle, seeds or a signpost
+    if (!walkable(tx, ty) && !e && (WW.tools.bump(tx, ty) || WW.world.bump(tx, ty))) return;
+    if (WW.tools.on()) {
+      const fit = WW.tools.fitTool(tx, ty, e), sel = WW.tools.selected();
+      // the right tool for what you face: the axe for a small tree, the sickle for tall grass or a crop, seeds for soil
+      if (fit && fit !== sel && ['star', 'axe', 'sickle'].includes(sel) && !foeAhead()) WW.tools.pick(fit, true);
+      if (WW.tools.act(tx, ty, e)) return;
+    }
     throwStar();
+  }
+  // is a bad guy (or the Grump) in the line of fire? then Space throws a star, even at a tree
+  function foeAhead() {
+    const [dx, dy] = DIRS[player.dir];
+    for (let i = 1; i <= 7; i++) { const x = player.x + dx * i, y = player.y + dy * i; if (WW.solid(tileAt(x, y)) && i > 1) return false; if (ents.some(o => (o.kind === 'smudge' || o.kind === 'boss') && !o.gone && o.visible !== false && o.x === x && o.y === y)) return true; }
+    return false;
   }
 
   /* ---------------- throwing stars (Space): they knock out Grumplings and sting the Grump ---------------- */
@@ -4860,8 +4900,10 @@ window.WW_CONFIG.MODE = 'canvas';
 
   // a quick tap of a new direction only turns the hero (to face grass or soil without stepping on it); holding walks
   const TURN_MS = 110;
+  let queued = null;
   function press(d) {
     held = d;
+    if (player && player.dir === d) queued = d; // already facing it: even a very quick tap is one step
     heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
     if (player && !player.moving && !WW.paused) player.dir = d;
   }
@@ -4886,7 +4928,7 @@ window.WW_CONFIG.MODE = 'canvas';
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else press(d); };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') WW.chris.talk(); else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
@@ -5009,7 +5051,8 @@ window.WW_CONFIG.MODE = 'canvas';
     if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
-      if (held && now - heldSince >= TURN_MS) tryStep(held, now);
+      if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
+      else if (queued && !held) { tryStep(queued, now); queued = null; }
       else if (clickTarget) {
         const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
         if (!dx && !dy) clickTarget = null;

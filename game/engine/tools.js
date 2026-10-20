@@ -13,7 +13,7 @@
   const CHOP = { T: ['wood', 2, '%', 180], P: ['wood', 2, '%', 180], a: ['wood', 2, '%', 180], Y: ['wood', 1, '.', 150] };
   const CUT = { '"': ['fiber', 1, '.', 60] };
   const SLOTS = ['star', 'axe', 'sickle', 'seed', 'sign'];
-  let sel = 'star', regrow = [], told = {}, bar = null;
+  let sel = 'star', regrow = [], told = {}, bar = null, lastFit = null;
 
   X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
 
@@ -50,7 +50,7 @@
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
       const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
-      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : ''); b.title = `${i + 1} · ${T(tk)}`;
+      const b = document.createElement('button'); b.className = 'tslot' + (sel === k ? ' on' : '') + (lastFit === k && sel !== k ? ' fit' : ''); b.title = `${i + 1} · ${T(tk)}`; b.dataset.k = k;
       b.setAttribute('aria-label', T(tk));
       b.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2));
       const n = k === 'seed' ? X.have('seed') : k === 'sign' ? signs : null;
@@ -64,8 +64,18 @@
     const held = X.heldSign();
     if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };
-  X.pick = k => {
+  // which tool fits the tile you face (null: none)
+  X.fitTool = (x, y, e) => {
+    const g = G(), ch = g.tileAt(x, y), [W, H] = g.size, border = x <= 0 || y <= 0 || x >= W - 1 || y >= H - 1;
+    if (e && e.kind === 'crop') return 'sickle';
+    if (CHOP[ch] && !border && !(WW.ep.keep || []).some(p => p[0] === x && p[1] === y)) return 'axe';
+    if (CUT[ch]) return 'sickle';
+    if (ch === 'o' && !e && X.have('seed') > 0) return 'seed';
+    return null;
+  };
+  X.pick = (k, auto) => {
     if (!X.on()) return;
+    if (auto) { sel = k; X.render(); const b = bar && bar.querySelector('.tslot.on'); if (b) { b.classList.add('auto'); setTimeout(() => b.classList.remove('auto'), 600); } return; }
     if (k === 'sign') {
       const r = WW.run; if (!(r.signs || []).some(s => !s.placed)) return;
       if (sel === 'sign') { // pressing 5 again: hold the next signpost
@@ -153,7 +163,13 @@
   /* grow back after a while (never while you stand there) */
   X.tick = (now) => {
     const g = G(); if (!g.player) return;
-    if (bar) bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
+    if (bar) {
+      bar.classList.toggle('top', g.player.y % 11 >= 9); // the hero walks near the bottom: the bar hops to the top
+      // a soft glow on the tool that fits what the hero faces (the axe at a tree, the sickle at tall grass)
+      const d = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[g.player.dir] || [0, 1];
+      const fx = g.player.x + d[0], fy = g.player.y + d[1], fit = sel === 'sign' ? null : X.fitTool(fx, fy, g.entAt(fx, fy));
+      if (fit !== lastFit) { lastFit = fit; bar.querySelectorAll('.tslot').forEach(b => b.classList.toggle('fit', !!fit && b.dataset.k === fit && sel !== fit)); }
+    }
     regrow = regrow.filter(r => {
       if (now < r.at) return true;
       if ((g.player.x === r.x && g.player.y === r.y) || g.entAt(r.x, r.y)) { r.at = now + 3000; return true; }

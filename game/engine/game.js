@@ -46,6 +46,7 @@
           </div>
         </div>
         <div class="dpad" id="ww-dpad" aria-label="arrows">
+          <button data-d="chris" class="padchris" aria-label="Christopher">🧭</button><button data-d="goals" class="padgoals" aria-label="goals">☰</button>
           <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
           <button data-d="act" class="act" aria-label="use">●</button>
           <button data-d="right" aria-label="right">▶</button><button data-d="down" aria-label="down">▼</button>
@@ -294,14 +295,28 @@
     player.from = [player.x, player.y]; player.x = nx; player.y = ny; player.moving = now;
     if (sx !== tx || sy !== ty) { trans = { from: [sx, sy], to: [tx, ty], t0: now, d: [dx, dy] }; }
   }
+  /* Space (or ●) never surprises: a person, a note or a sign always comes first, whatever tool is picked; then a broken
+     bridge or a gate; then the tool that fits what you face (it switches for you); then a star */
   function actFacing() {
     if (WW.paused) return;
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
     if (e && e.kind === 'post') return WW.tools.post(e);
     if (e && !PASS.includes(e.kind) && e.kind !== 'boss') return interact(e);
-    if (WW.tools.on() && WW.tools.act(tx, ty, e)) return; // the axe, sickle, seeds or a signpost
+    if (!walkable(tx, ty) && !e && (WW.tools.bump(tx, ty) || WW.world.bump(tx, ty))) return;
+    if (WW.tools.on()) {
+      const fit = WW.tools.fitTool(tx, ty, e), sel = WW.tools.selected();
+      // the right tool for what you face: the axe for a small tree, the sickle for tall grass or a crop, seeds for soil
+      if (fit && fit !== sel && ['star', 'axe', 'sickle'].includes(sel) && !foeAhead()) WW.tools.pick(fit, true);
+      if (WW.tools.act(tx, ty, e)) return;
+    }
     throwStar();
+  }
+  // is a bad guy (or the Grump) in the line of fire? then Space throws a star, even at a tree
+  function foeAhead() {
+    const [dx, dy] = DIRS[player.dir];
+    for (let i = 1; i <= 7; i++) { const x = player.x + dx * i, y = player.y + dy * i; if (WW.solid(tileAt(x, y)) && i > 1) return false; if (ents.some(o => (o.kind === 'smudge' || o.kind === 'boss') && !o.gone && o.visible !== false && o.x === x && o.y === y)) return true; }
+    return false;
   }
 
   /* ---------------- throwing stars (Space): they knock out Grumplings and sting the Grump ---------------- */
@@ -357,8 +372,10 @@
 
   // a quick tap of a new direction only turns the hero (to face grass or soil without stepping on it); holding walks
   const TURN_MS = 110;
+  let queued = null;
   function press(d) {
     held = d;
+    if (player && player.dir === d) queued = d; // already facing it: even a very quick tap is one step
     heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
     if (player && !player.moving && !WW.paused) player.dir = d;
   }
@@ -383,7 +400,7 @@
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else press(d); };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') WW.chris.talk(); else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
@@ -506,7 +523,8 @@
     if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
-      if (held && now - heldSince >= TURN_MS) tryStep(held, now);
+      if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
+      else if (queued && !held) { tryStep(queued, now); queued = null; }
       else if (clickTarget) {
         const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
         if (!dx && !dy) clickTarget = null;

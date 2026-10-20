@@ -9,7 +9,8 @@
 ## What students do in one episode (20–30 minutes)
 
 1. Sign in with **first name**, **class code** (like `GEO-3B`) and a **4-digit secret number**, and pick a look. Next time they just press Continue.
-2. Walk the map (arrow keys or WASD; on-screen arrows on touch screens; or click where to walk).
+2. Walk the map (arrow keys or WASD; on-screen arrows on touch screens; or click or tap where to walk). A quick tap of a new direction only turns the hero, so students can face tall grass or soil without stepping on it. The game fits the window on a Chromebook, inside Canvas and on a phone, with no scrolling.
+   **Space never surprises:** facing a person, it always talks, whatever tool is picked. Facing a small tree, tall grass or farm soil, it picks the right tool by itself (the tool glows in the tool bar first) and uses it; if a bad guy is in the way, it throws a star instead. On touch screens the ● button does the same, 🧭 asks Christopher, and ☰ shows the goals.
    **Space** (or the ● button on touch screens) talks to the person you face; anywhere else it throws a **star** ★. Stars knock out the Grump's helpers for a few seconds (+1 coin each, up to 5 per episode) and sting the big Grump, but only right answers in its trial break its cloud shield.
 
    **The Grump's helpers** (1–3 on every map; 2 in realms 1–2, more later): the **Grumpling** wanders and sometimes rages and charges; the **Ink Bat** is fast and flies over water and trees; the **Mud Blob** is slow but follows you and takes 2 stars; the **Dust Devil** zooms in straight lines and bounces off walls. Touching any of them costs a heart. Each realm has its own mix (dust devils in the deserts, bats near forests and water).
