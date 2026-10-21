@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,8 @@ sol: 'WG.12',
 title: { en: 'Population and Development', es: 'Población y desarrollo', fa: 'نفوس و انکشاف' },
 place: { en: 'Monsoon Crossroads', es: 'Cruce del Monzón', fa: 'چهارراه موسمی' },
 intro: [
-{ en: 'Christopher: "The Grump smeared every number in Monsoon Crossroads! Now people think one number tells the whole story. Talk to the census worker, the doctor and the city planner. Then fix the compass stone."',
-es: 'Christopher: "¡El Gruñón manchó todos los números del Cruce del Monzón! Ahora la gente cree que un solo número cuenta toda la historia. Habla con la encuestadora del censo, la doctora y la planificadora de la ciudad. Luego arregla la piedra de la brújula."',
-fa: 'کریستوفر: «غرغرو همهٔ عددهای چهارراه موسمی را خراب کرد! حالا مردم فکر می‌کنند یک عدد تمام قصه را می‌گوید. با کارمند سرشماری، داکتر و برنامه‌ریز شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+{ en: 'The Grump smeared every number here! Now people think one number tells the whole story.', es: '¡El Gruñón manchó todos los números de aquí! Ahora la gente cree que un solo número cuenta toda la historia.', fa: 'غرغرو همهٔ عددهای این‌جا را خراب کرد! حالا مردم فکر می‌کنند یک عدد تمام قصه را می‌گوید.' },
+{ en: 'Meet the census worker, doctor and city planner. Then fix the compass stone.', es: 'Habla con la encuestadora del censo, la doctora y la planificadora. Luego arregla la piedra de la brújula.', fa: 'با کارمند سرشماری، داکتر و برنامه‌ریز شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
 ],
 map: [
 'UUUUUUUUUUUUUUUUTTpTTTTpTTTTpTTT',
@@ -5377,10 +5497,10 @@ fa: 'قریه مکتب دارد و هر طفل می‌تواند پیاده به
 finds: [
 { clueAt: [29, 2], at: [27, 6], decor: 'drum',
 clue: { en: 'From this note, walk 4 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
-text: { en: 'You followed compass directions! South is down and west is to the left. A small drum was hiding by the village road. In India, about 2 of every 3 people live in villages, not in cities.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. Un tambor pequeño estaba escondido junto al camino del pueblo. En la India, unas 2 de cada 3 personas viven en pueblos, no en ciudades.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. یک دهل کوچک کنار سرک قریه پنهان بود. در هند، از هر ۳ نفر تقریباً ۲ نفر در قریه‌ها زندگی می‌کنند، نه در شهرها.' } },
+text: { en: 'You found a small drum by the village road! In India, about 2 of every 3 people live in villages.', es: '¡Encontraste un tambor pequeño junto al camino del pueblo! En la India, unas 2 de cada 3 personas viven en pueblos.', fa: 'تو یک دهل کوچک کنار سرک قریه پیدا کردی! در هند، از هر ۳ نفر تقریباً ۲ نفر در قریه‌ها زندگی می‌کنند.' } },
 { clueAt: [7, 14], at: [11, 19], decor: 'vase',
-clue: { en: 'Crowded cities need lots of water. Find the only well in the old city lanes. Stand on the square just north of it.', es: 'Las ciudades llenas de gente necesitan mucha agua. Busca el único pozo en los callejones viejos de la ciudad. Párate en el cuadro justo al norte del pozo.', fa: 'شهرهای پرجمعیت به آب زیاد ضرورت دارند. تنها چاه را در کوچه‌های کهنهٔ شهر پیدا کن. روی خانه‌ای که درست شمالِ آن است بایست.' },
-text: { en: 'You found the city well! In crowded old neighborhoods, many families often share one well or water tap. An old clay vase was by the well. Today more than half of all people in the world live in cities.', es: '¡Encontraste el pozo de la ciudad! En los barrios viejos y llenos de gente, muchas familias a menudo comparten un pozo o un grifo. Había un jarrón viejo de barro junto al pozo. Hoy más de la mitad de las personas del mundo viven en ciudades.', fa: 'تو چاه شهر را پیدا کردی! در محله‌های کهنه و پرجمعیت، اکثراً چند فامیل از یک چاه یا یک نل آب استفاده می‌کنند. یک گلدان کهنهٔ گلی کنار چاه بود. امروز بیشتر از نیمِ مردم جهان در شهرها زندگی می‌کنند.' } }
+clue: { en: 'Crowded cities need lots of water. Find the only well in the old lanes. Stand just north of it.', es: 'Las ciudades llenas de gente necesitan mucha agua. Busca el único pozo de las calles viejas. Párate justo al norte.', fa: 'شهرهای پرجمعیت به آب زیاد ضرورت دارند. تنها چاه کوچه‌های کهنه را پیدا کن. درست شمالِ آن بایست.' },
+text: { en: 'In crowded lanes, many families share one well. Today, more than half the world\'s people live in cities.', es: 'En las calles llenas, muchas familias comparten un pozo. Hoy, más de la mitad de la gente del mundo vive en ciudades.', fa: 'در کوچه‌های پرجمعیت، چند فامیل از یک چاه استفاده می‌کنند. امروز بیشتر از نیمِ مردم جهان در شهرها زندگی می‌کنند.' } }
 ],
 secret: { tool: 'key', at: [30, 12],
 text: { en: 'You opened the village water tank! Clean water keeps families healthy. In many villages, children walk a long way every day to carry water, so a tank or tap near home means more time for school.',
@@ -5407,15 +5527,10 @@ name: { en: 'Ananya', es: 'Ananya', fa: 'اننیا' },
 role: { en: 'Census worker', es: 'Encuestadora del censo', fa: 'کارمند سرشماری' },
 look: { skin: 3, hair: '#1b1410', shirt: '#d6762f', pants: '#3a2f5a' },
 lines: [
-{ en: 'Hello! I work on the [[census|census]]. I count every person in the country. Then I turn the numbers into pictures. One picture is a [[population pyramid|population pyramid]]. It shows how many people are in each age group.',
-es: '¡Hola! Trabajo en el [[census|censo]]. Cuento a cada persona del país. Luego convierto los números en dibujos. Un dibujo es una [[population pyramid|pirámide de población]]. Muestra cuántas personas hay en cada grupo de edad.',
-fa: 'سلام! من در [[census|سرشماری]] کار می‌کنم. هر نفر کشور را می‌شمارم. بعد عددها را به تصویر تبدیل می‌کنم. یک تصویر [[population pyramid|هرم نفوس]] است. نشان می‌دهد در هر گروه سنی چند نفر هستند.' },
-{ en: 'Children are at the bottom of the pyramid. Old people are at the top. A wide bottom means many babies and children. That country will need many new schools soon. A wide top means many older people. That country needs more nurses and doctors.',
-es: 'Los niños están abajo en la pirámide. Las personas mayores están arriba. Una base ancha significa muchos bebés y niños. Ese país necesitará muchas escuelas nuevas pronto. Una parte de arriba ancha significa muchas personas mayores. Ese país necesita más enfermeras y doctores.',
-fa: 'اطفال در پایین هرم هستند. کلان‌سالان در بالا هستند. پایین پهن یعنی نوزادان و اطفال زیاد. آن کشور به زودی به مکتب‌های نو زیاد ضرورت دارد. بالای پهن یعنی کلان‌سالان زیاد. آن کشور به نرس و داکتر بیشتر ضرورت دارد.' },
-{ en: 'A [[line graph|line graph]] shows change over time. The line for world [[population|population]] climbs and climbs. In 1950 there were about 2.5 billion people. In 2022 there were more than 8 billion!',
-es: 'Una [[line graph|gráfica de líneas]] muestra el cambio con el tiempo. La línea de la [[population|población]] del mundo sube y sube. En 1950 había unos 2,500 millones de personas. ¡En 2022 había más de 8,000 millones!',
-fa: '[[line graph|گراف خطی]] تغییر را با گذشت زمان نشان می‌دهد. خط [[population|نفوس]] جهان بالا و بالا می‌رود. در سال ۱۹۵۰ حدود ۲.۵ میلیارد نفر بودند. در سال ۲۰۲۲ بیشتر از ۸ میلیارد نفر شدند!' }
+{ en: 'Hello! I count every person for the [[census|census]]. A [[population pyramid|population pyramid]] shows each age group.', es: '¡Hola! Cuento a cada persona para el [[census|censo]]. Una [[population pyramid|pirámide de población]] muestra cada grupo de edad.', fa: 'سلام! من هر نفر را برای [[census|سرشماری]] می‌شمارم. [[population pyramid|هرم نفوس]] هر گروه سنی را نشان می‌دهد.' },
+{ en: 'Children are at the bottom. A wide bottom means a country needs many new schools.', es: 'Los niños están abajo. Una base ancha significa que el país necesita muchas escuelas nuevas.', fa: 'اطفال در پایین هستند. پایین پهن یعنی کشور به مکتب‌های نو زیاد ضرورت دارد.' },
+{ en: 'Old people are at the top. A wide top needs more nurses and doctors.', es: 'Las personas mayores están arriba. Una parte de arriba ancha necesita más enfermeras y doctores.', fa: 'کلان‌سالان در بالا هستند. بالای پهن به نرس و داکتر بیشتر ضرورت دارد.' },
+{ en: 'My [[line graph|line graph]] shows world [[population|population]]: 2.5 billion in 1950, over 8 billion in 2022!', es: 'Mi [[line graph|gráfica de líneas]] muestra la [[population|población]] del mundo: 2,500 millones en 1950, ¡más de 8,000 millones en 2022!', fa: '[[line graph|گراف خطی]] من [[population|نفوس]] جهان را نشان می‌دهد: ۲.۵ میلیارد در ۱۹۵۰، بیشتر از ۸ میلیارد در ۲۰۲۲!' }
 ],
 ask: {
 stat: 'reg',
@@ -5436,22 +5551,20 @@ name: { en: 'Dr. Nusrat', es: 'Dra. Nusrat', fa: 'داکتر نصرت' },
 role: { en: 'Doctor at the village clinic', es: 'Doctora de la clínica del pueblo', fa: 'داکتر کلینیک قریه' },
 look: { skin: 3, hair: '#120d0a', shirt: '#f4f4f4', pants: '#2f6fd6', robe: true },
 lines: [
-{ en: 'Welcome to our village clinic. [[life expectancy|Life expectancy]] is how long a baby born today can expect to live, on average. Clean water, good food, vaccines and nearby clinics all help people live longer.',
-es: 'Bienvenido a la clínica del pueblo. La [[life expectancy|esperanza de vida]] es cuánto puede esperar vivir, en promedio, un bebé que nace hoy. El agua limpia, la buena comida, las vacunas y las clínicas cercanas ayudan a vivir más.',
-fa: 'به کلینیک قریهٔ ما خوش آمدی. [[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند. آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.' },
-{ en: 'Our country has one life expectancy number. But it hides a gap. In the big city, the hospital is a short walk away. Here in the village, the nearest hospital is two hours away by boat and bus.',
-es: 'Nuestro país tiene un solo número de esperanza de vida. Pero ese número esconde una diferencia. En la ciudad grande, el hospital está a pocos pasos. Aquí en el pueblo, el hospital más cercano está a dos horas en lancha y autobús.',
-fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند. در شهر بزرگ، شفاخانه چند قدم دور است. اینجا در قریه، نزدیک‌ترین شفاخانه دو ساعت با کشتی و بس فاصله دارد.' }
+{ en: '[[life expectancy|Life expectancy]] is how long a baby born today can expect to live, on average.', es: 'La [[life expectancy|esperanza de vida]] es cuánto puede esperar vivir, en promedio, un bebé que nace hoy.', fa: '[[life expectancy|اوسط عمر]] یعنی نوزادی که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند.' },
+{ en: 'Clean water, good food, vaccines and nearby clinics all help people live longer.', es: 'El agua limpia, la buena comida, las vacunas y las clínicas cercanas ayudan a vivir más.', fa: 'آب پاک، غذای خوب، واکسین و کلینیک نزدیک کمک می‌کنند مردم بیشتر زندگی کنند.' },
+{ en: 'Our country has one life expectancy number. But it hides a gap.', es: 'Nuestro país tiene un solo número de esperanza de vida. Pero esconde una diferencia.', fa: 'کشور ما یک عدد برای اوسط عمر دارد. اما این عدد یک فرق را پنهان می‌کند.' },
+{ en: 'City people walk to the hospital. Ours is two hours away by boat and bus.', es: 'En la ciudad, la gente camina al hospital. El nuestro está a dos horas en lancha y autobús.', fa: 'مردم شهر پیاده به شفاخانه می‌روند. شفاخانهٔ ما دو ساعت با کشتی و بس دور است.' }
 ],
 ask: {
 stat: 'hei',
 q: { en: 'Which change would most likely help people in this village live longer?', es: '¿Qué cambio ayudaría más a que la gente de este pueblo viva más años?', fa: 'کدام تغییر به احتمال زیاد کمک می‌کند مردم این قریه بیشتر زندگی کنند؟' },
 choices: [
-{ ok: true, t: { en: 'Clean water and a clinic open every day', es: 'Agua limpia y una clínica abierta todos los días', fa: 'آب پاک و کلینیکی که هر روز باز باشد' },
+{ ok: true, t: { en: 'Clean water and a clinic every day', es: 'Agua limpia y una clínica todos los días', fa: 'آب پاک و کلینیکی که هر روز باز است' },
 why: { en: 'Clean water stops sickness, and a clinic helps sick people fast.', es: 'El agua limpia evita enfermedades y una clínica ayuda rápido a los enfermos.', fa: 'آب پاک جلوی مریضی را می‌گیرد و کلینیک به مریض‌ها زود کمک می‌کند.' } },
 { t: { en: 'A taller tower in the city', es: 'Una torre más alta en la ciudad', fa: 'یک تعمیر بلندتر در شهر' },
 why: { en: 'A tower far away does not bring health care to the village.', es: 'Una torre lejana no trae salud al pueblo.', fa: 'یک تعمیر دور، خدمات صحی را به قریه نمی‌آورد.' } },
-{ t: { en: 'A new way to count the people', es: 'Una nueva forma de contar a la gente', fa: 'یک روش نو برای شمردن مردم' },
+{ t: { en: 'A new way to count all the people here', es: 'Una nueva forma de contar a toda la gente de aquí', fa: 'یک روش نو برای شمردن همهٔ مردم این‌جا' },
 why: { en: 'Counting people helps us plan, but it does not make anyone healthier by itself.', es: 'Contar a la gente ayuda a planear, pero por sí solo no hace a nadie más sano.', fa: 'شمردن مردم برای برنامه کمک می‌کند، اما به تنهایی کسی را صحتمند نمی‌سازد.' } }
 ]
 }
@@ -5462,23 +5575,18 @@ name: { en: 'Maricel', es: 'Maricel', fa: 'ماریسل' },
 role: { en: 'City planner', es: 'Planificadora de la ciudad', fa: 'برنامه‌ریز شهر' },
 look: { skin: 2, hair: '#2a1a12', shirt: '#2f9e8f', pants: '#2b2b3a' },
 lines: [
-{ en: 'I plan roads, water pipes and schools for this city. People tell me, "Our city\'s [[average|average]] income is high!" But look around. The towers up north are full of rich offices. These old lanes are full of families who earn much less.',
-es: 'Yo planeo calles, tubos de agua y escuelas para esta ciudad. La gente me dice: "¡El ingreso [[average|promedio]] de nuestra ciudad es alto!" Pero mira a tu alrededor. Las torres del norte están llenas de oficinas ricas. Estas calles viejas están llenas de familias que ganan mucho menos.',
-fa: 'من برای این شهر سرک، نل آب و مکتب پلان می‌کنم. مردم می‌گویند: «عاید [[average|اوسط]] شهر ما بلند است!» اما به اطراف ببین. تعمیرهای بلند شمال پر از دفترهای پولدار است. این کوچه‌های کهنه پر از فامیل‌هایی است که خیلی کمتر پول می‌گیرند.' },
-{ en: 'Here is the trick. Nine workers earn $20,000 a year. One worker earns $800,000. The average is $98,000! That sounds great. But nine of the ten workers earn far less. One very big number pulls the average up.',
-es: 'Este es el truco. Nueve trabajadores ganan $20,000 al año. Un trabajador gana $800,000. ¡El promedio es $98,000! Suena muy bien. Pero nueve de los diez ganan mucho menos. Un número muy grande sube el promedio.',
-fa: 'فریب اینجاست. نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک کارگر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر می‌شود! خوب معلوم می‌شود. اما نُه نفر از ده نفر خیلی کمتر می‌گیرند. یک عدد بسیار بزرگ اوسط را بالا می‌برد.' },
-{ en: 'So a good geographer asks a second question: how is the money [[distributed|distributed]]? Is it shared by many people, or held by a few?',
-es: 'Por eso un buen geógrafo hace una segunda pregunta: ¿cómo está [[distributed|repartido]] el dinero? ¿Lo comparten muchas personas o lo tienen unas pocas?',
-fa: 'پس یک جغرافیه‌دان خوب سوال دوم را می‌پرسد: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد تقسیم شده، یا دست چند نفر است؟' }
+{ en: 'I plan this city. Our [[average|average]] income is high, but these old lanes are poor.', es: 'Yo planeo esta ciudad. Nuestro ingreso [[average|promedio]] es alto, pero estas calles viejas son pobres.', fa: 'من این شهر را پلان می‌کنم. عاید [[average|اوسط]] ما بلند است، اما این کوچه‌های کهنه فقیر هستند.' },
+{ en: 'Nine workers earn $20,000 a year. One earns $800,000. The average is $98,000!', es: 'Nueve trabajadores ganan $20,000 al año. Uno gana $800,000. ¡El promedio es $98,000!', fa: 'نُه کارگر سالانه ۲۰٬۰۰۰ دالر می‌گیرند. یک نفر ۸۰۰٬۰۰۰ دالر می‌گیرد. اوسط ۹۸٬۰۰۰ دالر است!' },
+{ en: 'Nine of the ten earn far less! One very big number pulls the average up.', es: '¡Nueve de los diez ganan mucho menos! Un número muy grande sube el promedio.', fa: 'نُه نفر از ده نفر خیلی کمتر می‌گیرند! یک عدد بسیار بزرگ اوسط را بالا می‌برد.' },
+{ en: 'So ask: how is money [[distributed|distributed]]? Shared by many, or held by a few?', es: 'Entonces pregunta: ¿cómo está [[distributed|repartido]] el dinero? ¿Lo comparten muchos o lo tienen pocos?', fa: 'پس بپرس: پول چطور [[distributed|پخش شده]] است؟ میان مردم زیاد، یا دست چند نفر؟' }
 ],
 ask: {
 stat: 'pla',
 q: { en: 'A leader looks only at the city\'s average income. What is she most likely to miss?', es: 'Una líder mira solo el ingreso promedio de la ciudad. ¿Qué es lo más probable que no vea?', fa: 'یک رهبر فقط به عاید اوسط شهر نگاه می‌کند. به احتمال زیاد چه چیزی را نمی‌بیند؟' },
 choices: [
-{ ok: true, t: { en: 'Neighborhoods that are much poorer than the average', es: 'Barrios mucho más pobres que el promedio', fa: 'محله‌هایی که خیلی فقیرتر از اوسط هستند' },
+{ ok: true, t: { en: 'Neighborhoods much poorer than the average', es: 'Barrios mucho más pobres que el promedio', fa: 'محله‌هایی خیلی فقیرتر از اوسط' },
 why: { en: 'The average sits between rich and poor places and shows neither one.', es: 'El promedio queda entre los lugares ricos y pobres y no muestra ninguno.', fa: 'اوسط میان جاهای پولدار و فقیر قرار دارد و هیچ‌کدام را نشان نمی‌دهد.' } },
-{ t: { en: 'How many people live in the city', es: 'Cuántas personas viven en la ciudad', fa: 'چند نفر در شهر زندگی می‌کنند' },
+{ t: { en: 'How many people live in the whole city today', es: 'Cuántas personas viven hoy en toda la ciudad', fa: 'امروز چند نفر در تمام شهر زندگی می‌کنند' },
 why: { en: 'That is a different number. The average income hides the gap between neighborhoods.', es: 'Ese es otro número. El ingreso promedio esconde la diferencia entre barrios.', fa: 'آن یک عدد دیگر است. عاید اوسط فرق میان محله‌ها را پنهان می‌کند.' } },
 { t: { en: 'The name of the city', es: 'El nombre de la ciudad', fa: 'نام شهر' },
 why: { en: 'She knows the name. What the average hides is how different the neighborhoods are.', es: 'Ella sabe el nombre. Lo que el promedio esconde es qué tan diferentes son los barrios.', fa: 'او نام شهر را می‌داند. چیزی که اوسط پنهان می‌کند فرق محله‌هاست.' } }
@@ -5487,9 +5595,7 @@ why: { en: 'She knows the name. What the average hides is how different the neig
 }
 ],
 signs: [
-{ x: 13, y: 4, text: { en: 'CITY BOARD · "Our [[average|average]] income is one of the highest in the land!" · Someone wrote below in small letters: "Average for WHO?"',
-es: 'TABLERO DE LA CIUDAD · "¡Nuestro ingreso [[average|promedio]] es uno de los más altos del país!" · Alguien escribió abajo en letras pequeñas: "¿Promedio de QUIÉN?"',
-fa: 'تختهٔ شهر · «عاید [[average|اوسط]] ما یکی از بلندترین‌ها در کشور است!» · کسی زیرش با حرف‌های کوچک نوشته: «اوسطِ چه کسی؟»' } },
+{ x: 13, y: 4, text: { en: 'CITY BOARD · "Our [[average|average]] income is one of the highest!" · Someone wrote below: "Average for WHO?"', es: 'TABLERO DE LA CIUDAD · "¡Nuestro ingreso [[average|promedio]] es de los más altos!" · Alguien escribió abajo: "¿Promedio de QUIÉN?"', fa: 'تختهٔ شهر · «عاید [[average|اوسط]] ما از بلندترین‌ها است!» · کسی زیرش نوشته: «اوسطِ چه کسی؟»' } },
 { x: 24, y: 6, text: { en: 'VILLAGE BOARD · Clinic open 3 days a week · Nearest hospital: 2 hours by boat and bus · School: 1 hour walk',
 es: 'TABLERO DEL PUEBLO · Clínica abierta 3 días a la semana · Hospital más cercano: 2 horas en lancha y autobús · Escuela: 1 hora a pie',
 fa: 'تختهٔ قریه · کلینیک ۳ روز در هفته باز است · نزدیک‌ترین شفاخانه: ۲ ساعت با کشتی و بس · مکتب: ۱ ساعت پیاده' } }
@@ -5503,19 +5609,15 @@ name: { en: 'Teacher Karim', es: 'Maestro Karim', fa: 'معلم کریم' },
 role: { en: 'Village schoolteacher', es: 'Maestro del pueblo', fa: 'معلم مکتب قریه' },
 look: { skin: 4, hair: '#141010', shirt: '#f0f0e8', pants: '#4a5a3a', style: 'short' },
 lines: [
-{ en: 'Help! Our village filled in its [[census|census]] sheet. It counts every person here: 120 children and 80 adults. The Ink Thief grabbed it and ran!',
-es: '¡Ayuda! Nuestro pueblo llenó su hoja del [[census|censo]]. Cuenta a cada persona de aquí: 120 niños y 80 adultos. ¡El Ladrón de Tinta la agarró y salió corriendo!',
-fa: 'کمک! قریهٔ ما ورق [[census|سرشماری]] خود را پر کرد. هر نفر این‌جا را می‌شمارد: ۱۲۰ کودک و ۸۰ بزرگسال. دزد رنگ آن را گرفت و فرار کرد!' },
-{ en: 'Without the count, the planners will think our village is small. Then no one will build the new classroom we need. Tuan the boat driver saw the thief. He waits by the river in the south-east.',
-es: 'Sin el conteo, los planificadores van a creer que nuestro pueblo es pequeño. Entonces nadie va a construir el salón nuevo que necesitamos. Tuan, el lanchero, vio al ladrón. Espera junto al río, en el sureste.',
-fa: 'بدون این شمارش، برنامه‌ریزها فکر می‌کنند قریهٔ ما کوچک است. آن وقت هیچ کس صنف تازه‌ای را که ضرورت داریم نمی‌سازد. توان، قایقران، دزد را دید. او کنار دریا در جنوب شرق منتظر است.' }
+{ en: 'Help! Our village filled in its [[census|census]] sheet: 120 children and 80 adults.', es: '¡Ayuda! Nuestro pueblo llenó su hoja del [[census|censo]]: 120 niños y 80 adultos.', fa: 'کمک! قریهٔ ما ورق [[census|سرشماری]] خود را پر کرد: ۱۲۰ کودک و ۸۰ بزرگسال.' },
+{ en: 'The Ink Thief grabbed it and ran!', es: '¡El Ladrón de Tinta la agarró y salió corriendo!', fa: 'دزد رنگ آن را گرفت و فرار کرد!' },
+{ en: 'Without the count, planners will think we are small. No one will build our classroom.', es: 'Sin el conteo, los planificadores creerán que somos pocos. Nadie construirá nuestro salón.', fa: 'بدون شمارش، برنامه‌ریزها فکر می‌کنند ما کم هستیم. هیچ کس صنف ما را نمی‌سازد.' },
+{ en: 'Tuan the boat driver saw the thief. He waits by the river in the south-east.', es: 'Tuan, el lanchero, vio al ladrón. Espera junto al río, en el sureste.', fa: 'توان، قایقران، دزد را دید. او کنار دریا در جنوب شرق منتظر است.' }
 ],
 wait: { en: 'Tuan waits by the river in the south-east, near the rice fields.',
 es: 'Tuan espera junto al río en el sureste, cerca de los campos de arroz.',
 fa: 'توان کنار دریا در جنوب شرق، نزدیک کشتزارهای برنج، منتظر است.' },
-thanks: { en: 'Our census sheet! Now the planners will see 120 children here, not zero. Every place must be counted, or its needs stay hidden.',
-es: '¡Nuestra hoja del censo! Ahora los planificadores verán 120 niños aquí, no cero. Hay que contar cada lugar, o sus necesidades se quedan escondidas.',
-fa: 'ورق سرشماری ما! حالا برنامه‌ریزها ۱۲۰ کودک را این‌جا می‌بینند، نه صفر. هر جا باید شمرده شود، وگرنه ضرورت‌هایش پنهان می‌ماند.' }
+thanks: { en: 'Our census sheet! Now planners will see 120 children here. Every place must be counted.', es: '¡Nuestra hoja del censo! Ahora los planificadores verán 120 niños aquí. Hay que contar cada lugar.', fa: 'ورق سرشماری ما! حالا برنامه‌ریزها ۱۲۰ کودک را این‌جا می‌بینند. هر جا باید شمرده شود.' }
 },
 contact: {
 x: 26, y: 18,
@@ -5523,12 +5625,10 @@ name: { en: 'Tuan', es: 'Tuan', fa: 'توان' },
 role: { en: 'Boat driver', es: 'Lanchero', fa: 'قایقران' },
 look: { skin: 1, hair: '#1a1612', shirt: '#c84a2a', pants: '#2a3a4a', style: 'short', hat: '#e0c070' },
 lines: [
-{ en: 'I take sick people to the city hospital by boat. It is a long trip. This morning I saw the Ink Thief run west on the main road. It held a paper full of numbers.',
-es: 'Llevo a los enfermos al hospital de la ciudad en mi lancha. Es un viaje largo. Esta mañana vi al Ladrón de Tinta correr al oeste por la calle principal. Llevaba un papel lleno de números.',
-fa: 'من مریض‌ها را با قایق به شفاخانهٔ شهر می‌برم. سفر درازی است. امروز صبح دیدم دزد رنگ از سرک عمومی به طرف غرب دوید. یک ورق پر از عدد در دستش بود.' },
-{ en: 'Then it tore the sheet into 3 pieces and hid them! Each piece is in a place that tells a story about people and numbers. Listen to its riddles and walk to the right place. Then catch the thief!',
-es: '¡Después rompió la hoja en 3 pedazos y los escondió! Cada pedazo está en un lugar que cuenta algo sobre la gente y los números. Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
-fa: 'بعد ورق را سه تکه کرد و تکه‌ها را پنهان کرد! هر تکه در جایی است که دربارهٔ مردم و عددها چیزی می‌گوید. به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
+{ en: 'I take sick people to the city hospital by boat. It is a long trip.', es: 'Llevo a los enfermos al hospital de la ciudad en mi lancha. Es un viaje largo.', fa: 'من مریض‌ها را با قایق به شفاخانهٔ شهر می‌برم. سفر درازی است.' },
+{ en: 'This morning I saw the Ink Thief run west on the main road.', es: 'Esta mañana vi al Ladrón de Tinta correr al oeste por la calle principal.', fa: 'امروز صبح دیدم دزد رنگ از سرک عمومی به طرف غرب دوید.' },
+{ en: 'It tore the sheet into 3 pieces and hid them in places that tell stories.', es: 'Rompió la hoja en 3 pedazos y los escondió en lugares que cuentan historias.', fa: 'ورق را سه تکه کرد و تکه‌ها را در جاهایی پنهان کرد که قصه می‌گویند.' },
+{ en: 'Listen to its riddles, walk to the right places, and then catch the thief!', es: '¡Escucha sus acertijos, camina a los lugares correctos y luego atrapa al ladrón!', fa: 'به چیستان‌هایش گوش بده، به جاهای درست برو و بعد دزد را بگیر!' }
 ]
 },
 action: {
@@ -5536,34 +5636,24 @@ type: 'chase',
 at: [10, 6],
 hops: [[10, 9], [3, 6]],
 name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-taunt: { en: 'The Ink Thief laughs: "Hee hee! Why count a little village? I tore the census sheet into 3 pieces and hid them. Follow my riddles, if you can!"',
-es: 'El Ladrón de Tinta se ríe: "¡Ji ji! ¿Para qué contar un pueblito? Rompí la hoja del censo en 3 pedazos y los escondí. ¡Sigue mis acertijos, si puedes!"',
-fa: 'دزد رنگ می‌خندد: «هی هی! چرا یک قریهٔ کوچک را بشماری؟ ورق سرشماری را سه تکه کردم و پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+taunt: { en: 'Hee hee! Why count a little village? I tore the census sheet into 3 pieces. Follow my riddles!', es: '¡Ji ji! ¿Para qué contar un pueblito? Rompí la hoja del censo en 3 pedazos. ¡Sigue mis acertijos!', fa: 'هی هی! چرا یک قریهٔ کوچک را بشماری؟ ورق سرشماری را سه تکه کردم. چیستان‌هایم را دنبال کن!' },
 clues: [
-{ t: { en: 'Piece 1 is in the place I wanted to leave out of the [[census|census]]: the small village with the clinic, far from the city hospital.',
-es: 'El pedazo 1 está en el lugar que yo quería dejar fuera del [[census|censo]]: el pueblo pequeño con la clínica, lejos del hospital de la ciudad.',
-fa: 'تکهٔ ۱ در جایی است که می‌خواستم از [[census|سرشماری]] بیرون بماند: قریهٔ کوچک با کلینیک، دور از شفاخانهٔ شهر.' },
+{ t: { en: 'Piece 1 is where I wanted no [[census|census]]: the small village with the clinic, far from the hospital.', es: 'El pedazo 1 está donde yo no quería [[census|censo]]: el pueblo pequeño con la clínica, lejos del hospital.', fa: 'تکهٔ ۱ جایی است که نمی‌خواستم [[census|سرشماری]] شود: قریهٔ کوچک با کلینیک، دور از شفاخانه.' },
 zones: [{ x: 16, y: 1, w: 15, h: 8 }],
 noBy: [{ x: 17, y: 12, w: 8, h: 7, t: { en: 'These are rice paddies. Few people live in the fields. The village homes and the clinic are to the north.', es: 'Estos son arrozales. Poca gente vive en los campos. Las casas del pueblo y la clínica están al norte.', fa: 'این‌ها کشتزارهای برنج است. مردم کمی در کشتزارها زندگی می‌کنند. خانه‌های قریه و کلینیک در شمال است.' } },
 { x: 1, y: 1, w: 14, h: 10, t: { en: 'This is the big city. It is already counted, and its hospital is close. The thief wanted to leave out the small village.', es: 'Esta es la ciudad grande. Ya está contada, y su hospital está cerca. El ladrón quería dejar fuera al pueblo pequeño.', fa: 'این شهر بزرگ است. قبلاً شمرده شده و شفاخانه‌اش نزدیک است. دزد می‌خواست قریهٔ کوچک بیرون بماند.' } }],
-found: { en: 'Piece 1 was in the village! If a village is not counted, planners do not send it enough teachers, clinics or clean water. Its needs stay hidden.', es: '¡El pedazo 1 estaba en el pueblo! Si un pueblo no se cuenta, los planificadores no le mandan suficientes maestros, clínicas ni agua limpia. Sus necesidades quedan escondidas.', fa: 'تکهٔ ۱ در قریه بود! اگر یک قریه شمرده نشود، برنامه‌ریزها به آن معلم، کلینیک و آب پاک کافی نمی‌فرستند. ضرورت‌هایش پنهان می‌ماند.' } },
-{ t: { en: 'Piece 2: many young people left the villages to find jobs. Go where the [[population|population]] grows fast: the crowded city lanes, full of homes side by side.',
-es: 'Pedazo 2: muchos jóvenes dejaron los pueblos para buscar trabajo. Ve adonde la [[population|población]] crece rápido: las calles llenas de la ciudad, con casas una al lado de otra.',
-fa: 'تکهٔ ۲: بسیاری از جوانان قریه‌ها را برای پیدا کردن کار ترک کردند. جایی برو که [[population|نفوس]] زود زیاد می‌شود: کوچه‌های پرجمعیت شهر، پر از خانه‌های پهلوی هم.' },
+found: { en: 'Piece 1! A village not counted gets too few teachers, clinics and clean water.', es: '¡Pedazo 1! Un pueblo que no se cuenta recibe muy pocos maestros, clínicas y agua limpia.', fa: 'تکهٔ ۱! قریه‌ای که شمرده نشود معلم، کلینیک و آب پاک کافی نمی‌گیرد.' } },
+{ t: { en: 'Piece 2: young people left villages for jobs. Go where [[population|population]] grows fast: the crowded city lanes.', es: 'Pedazo 2: los jóvenes dejaron los pueblos para buscar trabajo. Ve adonde la [[population|población]] crece rápido: las calles llenas de la ciudad.', fa: 'تکهٔ ۲: جوانان برای کار قریه‌ها را ترک کردند. جایی برو که [[population|نفوس]] زود زیاد می‌شود: کوچه‌های پرجمعیت شهر.' },
 zones: [{ x: 1, y: 11, w: 15, h: 10 }],
 noBy: [{ x: 1, y: 1, w: 14, h: 10, t: { en: 'These tall towers are offices, not homes. The families live in the crowded old lanes to the south.', es: 'Estas torres altas son oficinas, no casas. Las familias viven en las calles viejas y llenas, al sur.', fa: 'این تعمیرهای بلند دفتر هستند، نه خانه. فامیل‌ها در کوچه‌های کهنه و پرجمعیت جنوب زندگی می‌کنند.' } },
 { x: 17, y: 12, w: 8, h: 7, t: { en: 'The young people left these fields. Fewer people work here now. The city is where they went.', es: 'Los jóvenes dejaron estos campos. Ahora menos gente trabaja aquí. Se fueron a la ciudad.', fa: 'جوانان این کشتزارها را ترک کردند. حالا مردم کمتری این جا کار می‌کنند. آن‌ها به شهر رفتند.' } }],
-found: { en: 'Piece 2 was in the old lanes! When young people move here, the city grows. A growing city needs more homes, buses, water and schools.', es: '¡El pedazo 2 estaba en las calles viejas! Cuando los jóvenes se mudan aquí, la ciudad crece. Una ciudad que crece necesita más casas, autobuses, agua y escuelas.', fa: 'تکهٔ ۲ در کوچه‌های کهنه بود! وقتی جوانان این جا می‌آیند، شهر بزرگ می‌شود. شهری که بزرگ می‌شود به خانه، بس، آب و مکتب بیشتر ضرورت دارد.' } },
-{ t: { en: 'Piece 3 is where the big pay is: the rich offices that pull the city\'s [[average|average]] income up. Find the tall towers.',
-es: 'El pedazo 3 está donde están los sueldos grandes: las oficinas ricas que suben el ingreso [[average|promedio]] de la ciudad. Busca las torres altas.',
-fa: 'تکهٔ ۳ جایی است که معاش‌های بزرگ است: دفترهای پولدار که عاید [[average|اوسط]] شهر را بالا می‌برند. تعمیرهای بلند را پیدا کن.' },
+found: { en: 'Piece 2! As young people move in, the city needs more homes, buses, water, schools.', es: '¡Pedazo 2! Cuando llegan los jóvenes, la ciudad necesita más casas, autobuses, agua y escuelas.', fa: 'تکهٔ ۲! وقتی جوانان می‌آیند، شهر به خانه، بس، آب و مکتب بیشتر ضرورت دارد.' } },
+{ t: { en: 'Piece 3 is by the rich offices that pull the [[average|average]] income up. Find the tall towers.', es: 'El pedazo 3 está junto a las oficinas ricas que suben el ingreso [[average|promedio]]. Busca las torres altas.', fa: 'تکهٔ ۳ کنار دفترهای پولدار است که عاید [[average|اوسط]] را بالا می‌برند. تعمیرهای بلند را پیدا کن.' },
 zones: [{ x: 1, y: 1, w: 14, h: 10 }],
 noBy: [{ x: 1, y: 11, w: 15, h: 10, t: { en: 'Most families in these lanes earn much less than the average. They do not pull it up.', es: 'La mayoría de las familias de estas calles gana mucho menos que el promedio. Ellas no lo suben.', fa: 'بیشتر فامیل‌های این کوچه‌ها خیلی کمتر از اوسط پول می‌گیرند. آن‌ها اوسط را بالا نمی‌برند.' } }],
-found: { en: 'Piece 3 was by the towers! A few very big incomes here pull the average up. So the average hides the poorer lanes just to the south.', es: '¡El pedazo 3 estaba junto a las torres! Unos pocos ingresos muy grandes aquí suben el promedio. Así el promedio esconde las calles más pobres, justo al sur.', fa: 'تکهٔ ۳ کنار تعمیرهای بلند بود! چند عاید بسیار بزرگ این جا اوسط را بالا می‌برد. پس اوسط کوچه‌های فقیرتر را که درست در جنوب است پنهان می‌کند.' } }
+found: { en: 'Piece 3! A few huge incomes lift the average and hide the poor lanes.', es: '¡Pedazo 3! Unos pocos sueldos enormes suben el promedio y esconden las calles pobres.', fa: 'تکهٔ ۳! چند عاید بسیار بزرگ اوسط را بالا می‌برند و کوچه‌های فقیر را پنهان می‌کنند.' } }
 ],
-win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the census sheet is whole again, and every number is still there!',
-es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: la hoja del censo está completa otra vez, ¡y todos los números siguen ahí!',
-fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: ورق سرشماری دوباره کامل است و همهٔ عددها سر جایشان هستند!' },
+win: { en: 'Got you! The thief drops the 3 pieces and runs off. The census sheet is whole again!', es: '¡Te atrapé! El ladrón suelta los 3 pedazos y huye. ¡La hoja del censo está completa otra vez!', fa: 'گرفتمت! دزد سه تکه را می‌اندازد و فرار می‌کند. ورق سرشماری دوباره کامل است!' },
 item: { icon: '📋', name: { en: 'The village census sheet', es: 'La hoja del censo del pueblo', fa: 'ورق سرشماری قریه' } }
 }
 },
@@ -5622,25 +5712,25 @@ questions: [
 choices: [{ en: 'How many people are in each age group', es: 'Cuántas personas hay en cada grupo de edad', fa: 'در هر گروه سنی چند نفر هستند' }, { en: 'How much a country produces in a year', es: 'Cuánto produce un país en un año', fa: 'یک کشور در یک سال چقدر تولید می‌کند' }, { en: 'Where the cities are on a map', es: 'Dónde están las ciudades en un mapa', fa: 'شهرها در نقشه کجا هستند' }, { en: 'How much rain falls in each season', es: 'Cuánta lluvia cae en cada estación', fa: 'در هر فصل چقدر باران می‌بارد' }], answer: 0,
 why: { en: 'A population pyramid shows each age group, young at the bottom and old at the top.', es: 'Una pirámide de población muestra cada grupo de edad: jóvenes abajo y mayores arriba.', fa: 'هرم نفوس هر گروه سنی را نشان می‌دهد: جوانان پایین و کلان‌سالان بالا.' } },
 { q: { en: 'What is life expectancy?', es: '¿Qué es la esperanza de vida?', fa: 'اوسط عمر چیست؟' },
-choices: [{ en: 'How long a person born today can expect to live, on average', es: 'Cuánto puede esperar vivir, en promedio, una persona que nace hoy', fa: 'یک نفر که امروز به دنیا می‌آید به طور اوسط چند سال زندگی می‌کند' }, { en: 'The share of adults who can read and write', es: 'La parte de los adultos que saben leer y escribir', fa: 'حصهٔ بزرگسالانی که خواندن و نوشتن می‌دانند' }, { en: 'The number of babies born each year', es: 'El número de bebés que nacen cada año', fa: 'تعداد نوزادانی که هر سال به دنیا می‌آیند' }, { en: 'The total money a country earns in a year', es: 'Todo el dinero que gana un país en un año', fa: 'همهٔ پولی که یک کشور در یک سال به دست می‌آورد' }], answer: 0,
+choices: [{ en: 'How long a newborn can expect to live, on average', es: 'Cuánto puede esperar vivir, en promedio, un recién nacido', fa: 'یک نوزاد به طور اوسط چند سال زندگی می‌کند' }, { en: 'The share of adults who can read and write', es: 'La parte de los adultos que saben leer y escribir', fa: 'حصهٔ بزرگسالانی که خواندن و نوشتن می‌دانند' }, { en: 'The number of babies born in a country each year', es: 'El número de bebés que nacen en un país cada año', fa: 'تعداد نوزادانی که هر سال در یک کشور به دنیا می‌آیند' }, { en: 'The total money a country earns in a year', es: 'Todo el dinero que gana un país en un año', fa: 'همهٔ پولی که یک کشور در یک سال به دست می‌آورد' }], answer: 0,
 why: { en: 'Life expectancy is an average number of years for a whole group.', es: 'La esperanza de vida es un número promedio de años para todo un grupo.', fa: 'اوسط عمر یک عدد اوسط از سال‌ها برای تمام یک گروه است.' } },
 { q: { en: 'A country\'s population pyramid has a very wide bottom. What will it most likely need soon?', es: 'La pirámide de población de un país tiene una base muy ancha. ¿Qué necesitará pronto, lo más probable?', fa: 'هرم نفوس یک کشور پایین بسیار پهن دارد. به احتمال زیاد به زودی به چه ضرورت دارد؟' },
 choices: [{ en: 'Many new schools', es: 'Muchas escuelas nuevas', fa: 'مکتب‌های نو زیاد' }, { en: 'More nurses for older patients', es: 'Más enfermeras para pacientes mayores', fa: 'نرس‌های بیشتر برای مریضان کلان‌سال' }, { en: 'Fewer farms and less food', es: 'Menos granjas y menos comida', fa: 'زمین زراعتی کمتر و غذای کمتر' }, { en: 'A smaller army', es: 'Un ejército más pequeño', fa: 'یک اردوی کوچک‌تر' }], answer: 0,
 why: { en: 'A wide bottom means many children, and children need schools.', es: 'Una base ancha significa muchos niños, y los niños necesitan escuelas.', fa: 'پایین پهن یعنی اطفال زیاد، و اطفال به مکتب ضرورت دارند.' } },
 { q: { en: 'What is per capita GDP?', es: '¿Qué es el PIB per cápita?', fa: 'تولید سرانه (GDP سرانه) چیست؟' },
-choices: [{ en: 'Everything a country produces in a year, divided by its number of people', es: 'Todo lo que un país produce en un año, dividido entre su número de personas', fa: 'همهٔ تولید یک کشور در یک سال، تقسیم بر تعداد مردمش' }, { en: 'The share of adults who can read and write', es: 'La parte de los adultos que saben leer y escribir', fa: 'حصهٔ بزرگسالانی که خواندن و نوشتن می‌دانند' }, { en: 'The number of years children spend in school', es: 'El número de años que los niños pasan en la escuela', fa: 'تعداد سال‌هایی که اطفال در مکتب می‌گذرانند' }, { en: 'The average number of years people live', es: 'El número promedio de años que vive la gente', fa: 'تعداد اوسط سال‌هایی که مردم زندگی می‌کنند' }], answer: 0,
+choices: [{ en: 'All a country makes in a year, split by its people', es: 'Todo lo que un país produce en un año, dividido entre su gente', fa: 'همهٔ تولید یک کشور در یک سال، تقسیم بر مردمش' }, { en: 'The share of adults in a country who can read and write', es: 'La parte de los adultos de un país que saben leer y escribir', fa: 'حصهٔ بزرگسالان یک کشور که خواندن و نوشتن می‌دانند' }, { en: 'The number of years children spend in school', es: 'El número de años que los niños pasan en la escuela', fa: 'تعداد سال‌هایی که اطفال در مکتب می‌گذرانند' }, { en: 'The average number of years people live', es: 'El número promedio de años que vive la gente', fa: 'تعداد اوسط سال‌هایی که مردم زندگی می‌کنند' }], answer: 0,
 why: { en: 'Per capita means "for each person." It is the country\'s output split evenly by its people.', es: 'Per cápita significa "por cada persona". Es lo que produce el país repartido en partes iguales entre su gente.', fa: 'سرانه یعنی «برای هر نفر». تولید کشور است که برابر میان مردمش تقسیم شده.' } },
 { q: { en: 'Nine workers earn $20,000 a year and one earns $800,000. The average is $98,000. What does this show?', es: 'Nueve trabajadores ganan $20,000 al año y uno gana $800,000. El promedio es $98,000. ¿Qué muestra esto?', fa: 'نُه کارگر سالانه ۲۰٬۰۰۰ دالر و یک نفر ۸۰۰٬۰۰۰ دالر می‌گیرند. اوسط ۹۸٬۰۰۰ دالر است. این چه چیزی را نشان می‌دهد؟' },
-choices: [{ en: 'One very large number can pull an average away from most of the group', es: 'Un número muy grande puede alejar el promedio de la mayoría del grupo', fa: 'یک عدد بسیار بزرگ می‌تواند اوسط را از بیشتر گروه دور کند' }, { en: 'Averages are always wrong and should never be used', es: 'Los promedios siempre están mal y nunca se deben usar', fa: 'اوسط همیشه غلط است و هرگز نباید استفاده شود' }, { en: 'Every worker in that room earns about the same', es: 'Cada trabajador de ese cuarto gana más o menos lo mismo', fa: 'هر کارگر در آن اتاق تقریباً یک‌قدر پول می‌گیرد' }, { en: 'Adding numbers is harder than dividing them', es: 'Sumar números es más difícil que dividirlos', fa: 'جمع کردن عددها از تقسیم سخت‌تر است' }], answer: 0,
+choices: [{ en: 'One huge wage pulls the average above most workers', es: 'Un sueldo enorme sube el promedio por encima de la mayoría', fa: 'یک معاش بسیار بزرگ اوسط را بالاتر از بیشتر کارگران می‌برد' }, { en: 'Averages are always wrong and should never be used', es: 'Los promedios siempre están mal y nunca se deben usar', fa: 'اوسط همیشه غلط است و هرگز نباید استفاده شود' }, { en: 'Every worker in that room earns about the same amount', es: 'Cada trabajador de ese cuarto gana más o menos la misma cantidad', fa: 'هر کارگر در آن اتاق تقریباً یک اندازه پول می‌گیرد' }, { en: 'Adding numbers is harder than dividing them', es: 'Sumar números es más difícil que dividirlos', fa: 'جمع کردن عددها از تقسیم سخت‌تر است' }], answer: 0,
 why: { en: 'The one big wage pulls the average up. Nine of the ten earn far less than $98,000.', es: 'El sueldo enorme sube el promedio. Nueve de los diez ganan mucho menos de $98,000.', fa: 'یک معاش بزرگ اوسط را بالا می‌برد. نُه نفر از ده نفر خیلی کمتر از ۹۸٬۰۰۰ دالر می‌گیرند.' } },
 { q: { en: 'A country has a high per capita GDP because it sells a lot of oil. What does that number prove about its schools?', es: 'Un país tiene un PIB per cápita alto porque vende mucho petróleo. ¿Qué prueba ese número sobre sus escuelas?', fa: 'یک کشور تولید سرانهٔ بلند دارد چون نفت زیاد می‌فروشد. این عدد دربارهٔ مکتب‌هایش چه چیزی را ثابت می‌کند؟' },
-choices: [{ en: 'Nothing. One number alone cannot tell you about the schools.', es: 'Nada. Un solo número no te dice nada de las escuelas.', fa: 'هیچ چیز. یک عدد به تنهایی دربارهٔ مکتب‌ها چیزی نمی‌گوید.' }, { en: 'It proves the schools are strong.', es: 'Prueba que las escuelas son buenas.', fa: 'ثابت می‌کند مکتب‌ها قوی هستند.' }, { en: 'It proves the schools are weak.', es: 'Prueba que las escuelas son malas.', fa: 'ثابت می‌کند مکتب‌ها ضعیف هستند.' }, { en: 'It proves the schools are average.', es: 'Prueba que las escuelas son regulares.', fa: 'ثابت می‌کند مکتب‌ها متوسط هستند.' }], answer: 0,
+choices: [{ en: 'Nothing. One number cannot tell you about schools.', es: 'Nada. Un solo número no habla de las escuelas.', fa: 'هیچ چیز. یک عدد تنها دربارهٔ مکتب‌ها چیزی نمی‌گوید.' }, { en: 'It proves that the schools there must be strong.', es: 'Prueba que las escuelas de ahí deben ser buenas.', fa: 'ثابت می‌کند که مکتب‌های آن‌جا حتماً قوی هستند.' }, { en: 'It proves that the schools there must be weak.', es: 'Prueba que las escuelas de ahí deben ser malas.', fa: 'ثابت می‌کند که مکتب‌های آن‌جا حتماً ضعیف هستند.' }, { en: 'It proves that the schools there are just average.', es: 'Prueba que las escuelas de ahí son solo regulares.', fa: 'ثابت می‌کند که مکتب‌های آن‌جا فقط متوسط هستند.' }], answer: 0,
 why: { en: 'Geographers read several numbers together, like literacy rate and life expectancy, before they judge.', es: 'Los geógrafos leen varios números juntos, como la alfabetización y la esperanza de vida, antes de juzgar.', fa: 'جغرافیه‌دان‌ها پیش از قضاوت چند عدد را با هم می‌خوانند، مثل سواد و اوسط عمر.' } },
 { q: { en: 'Which three things does the Human Development Index (HDI) put together?', es: '¿Qué tres cosas junta el Índice de Desarrollo Humano (IDH)?', fa: 'شاخص انکشاف بشری کدام سه چیز را با هم یکجا می‌کند؟' },
-choices: [{ en: 'Life expectancy, education and income', es: 'Esperanza de vida, educación e ingreso', fa: 'اوسط عمر، تعلیم و عاید' }, { en: 'Rain, heat and wind', es: 'Lluvia, calor y viento', fa: 'باران، گرمی و باد' }, { en: 'Cities, roads and ports', es: 'Ciudades, calles y puertos', fa: 'شهرها، سرک‌ها و بندرها' }, { en: 'Army, police and courts', es: 'Ejército, policía y tribunales', fa: 'اردو، پولیس و محکمه‌ها' }], answer: 0,
+choices: [{ en: 'Life expectancy, education and income', es: 'Esperanza de vida, educación e ingreso', fa: 'اوسط عمر، تعلیم و عاید' }, { en: 'Rainfall, summer heat and wind speed', es: 'Lluvia, calor del verano y velocidad del viento', fa: 'باران، گرمی تابستان و سرعت باد' }, { en: 'Big cities, paved roads and sea ports', es: 'Ciudades grandes, calles pavimentadas y puertos', fa: 'شهرهای بزرگ، سرک‌های پخته و بندرها' }, { en: 'Army size, police and the courts', es: 'Tamaño del ejército, policía y tribunales', fa: 'اندازهٔ اردو، پولیس و محکمه‌ها' }], answer: 0,
 why: { en: 'The HDI mixes how long people live, how long they go to school and how much they earn.', es: 'El IDH mezcla cuánto vive la gente, cuánto tiempo va a la escuela y cuánto gana.', fa: 'این شاخص یکجا می‌کند که مردم چند سال زندگی می‌کنند، چند سال مکتب می‌روند و چقدر عاید دارند.' } },
 { q: { en: 'Two countries have the same HDI score. Why can daily life still feel very different in them?', es: 'Dos países tienen el mismo IDH. ¿Por qué la vida diaria puede sentirse muy diferente en ellos?', fa: 'دو کشور یک نمرهٔ شاخص انکشاف بشری دارند. چرا زندگی روزمره در آن‌ها هنوز می‌تواند خیلی فرق کند؟' },
-choices: [{ en: 'Safety, clean air and free time are not counted in the score', es: 'La seguridad, el aire limpio y el tiempo libre no se cuentan en el índice', fa: 'امنیت، هوای پاک و وقت آزاد در این نمره حساب نمی‌شوند' }, { en: 'HDI scores are picked at random each year', es: 'Los puntajes del IDH se eligen al azar cada año', fa: 'نمره‌ها هر سال تصادفی انتخاب می‌شوند' }, { en: 'The HDI counts income only', es: 'El IDH solo cuenta el ingreso', fa: 'این شاخص فقط عاید را حساب می‌کند' }, { en: 'One country must have more people', es: 'Un país debe tener más gente', fa: 'یک کشور حتماً مردم بیشتر دارد' }], answer: 0,
+choices: [{ en: 'The score leaves out safety, clean air and free time', es: 'El índice no cuenta la seguridad, el aire limpio ni el tiempo libre', fa: 'این نمره امنیت، هوای پاک و وقت آزاد را حساب نمی‌کند' }, { en: 'HDI scores are just picked at random every single year', es: 'Los puntajes del IDH se eligen al azar cada año, sin más', fa: 'نمره‌ها هر سال فقط تصادفی انتخاب می‌شوند' }, { en: 'The HDI counts only income and nothing else', es: 'El IDH solo cuenta el ingreso y nada más', fa: 'این شاخص فقط عاید را حساب می‌کند و دیگر هیچ' }, { en: 'One of the countries must have many more people', es: 'Uno de los países debe tener mucha más gente', fa: 'یکی از کشورها حتماً مردم خیلی بیشتر دارد' }], answer: 0,
 why: { en: 'Standard of living is what money buys. Quality of life is how life feels, and the HDI does not count all of it.', es: 'El nivel de vida es lo que compra el dinero. La calidad de vida es cómo se siente la vida, y el IDH no lo cuenta todo.', fa: 'سطح زندگی چیزی است که پول می‌خرد. کیفیت زندگی این است که زندگی چطور حس می‌شود، و این شاخص همه را حساب نمی‌کند.' } }
 ]
 },

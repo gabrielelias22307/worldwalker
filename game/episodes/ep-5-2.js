@@ -8,9 +8,12 @@ window.EPISODE = {
   title: { en: 'Culture and Cultural Diffusion', es: 'Cultura y difusión cultural', fa: 'فرهنگ و پخش فرهنگی' },
   place: { en: 'Kashan and Dubai', es: 'Kashán y Dubái', fa: 'کاشان و دبی' },
   intro: [
-    { en: 'Christopher: "The Wall Grump put up walls across the water! Now ideas cannot travel, and the word map is scrambled. Talk to the tea seller, the gardener and the city guide. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón Muro levantó muros sobre el agua! Ahora las ideas no pueden viajar y el mapa de palabras está revuelto. Habla con el vendedor de té, la jardinera y la guía de la ciudad. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغروی دیوار روی آب دیوار ساخت! حالا فکرها نمی‌توانند سفر کنند و نقشهٔ کلمه‌ها به هم خورده است. با چای‌فروش، باغبان و رهنمای شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Wall Grump put up walls across the water! Now ideas cannot travel.',
+      es: '¡El Gruñón Muro levantó muros sobre el agua! Ahora las ideas no pueden viajar.',
+      fa: 'غرغروی دیوار روی آب دیوار ساخت! حالا فکرها نمی‌توانند سفر کنند.' },
+    { en: 'Talk to the tea seller, the gardener and the city guide. Then fix the stone.',
+      es: 'Habla con el vendedor de té, la jardinera y la guía de la ciudad. Luego arregla la piedra.',
+      fa: 'با چای‌فروش، باغبان و رهنمای شهر گپ بزن. بعد سنگ را درست کن.' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -66,10 +69,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [7, 15], at: [11, 18], decor: 'coinold',
       clue: { en: 'From this note, walk 3 steps south, then 4 steps east. Something old is hidden in the sand.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este. Algo antiguo está escondido en la arena.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق. چیزی کهنه در ریگ پنهان است.' },
-      text: { en: 'You followed the compass! South is down and east is to the right. An old coin was in the sand. Until 1966, people in Dubai paid with the Gulf rupee, money that came from India.', es: '¡Seguiste la brújula! El sur está abajo y el este a la derecha. Había una moneda antigua en la arena. Hasta 1966, en Dubái se pagaba con la rupia del Golfo, un dinero que venía de la India.', fa: 'تو قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. یک سکهٔ کهنه در ریگ بود. تا سال ۱۹۶۶ مردم دبی با روپیهٔ خلیج پول می‌دادند، پولی که از هند می‌آمد.' } },
+      text: { en: 'An old coin! Until 1966, Dubai paid with the Gulf rupee, money that came from India.', es: '¡Una moneda antigua! Hasta 1966, en Dubái se pagaba con la rupia del Golfo, un dinero que venía de la India.', fa: 'یک سکهٔ کهنه! تا سال ۱۹۶۶ مردم دبی با روپیهٔ خلیج پول می‌دادند، پولی که از هند می‌آمد.' } },
     { clueAt: [14, 7], at: [8, 8], decor: 'vase',
-      clue: { en: 'In dry Kashan, a qanat brings water from the mountains to the courtyard well. Find the well. Stand on the flower square just east of it.', es: 'En la seca Kashán, un qanat trae agua de las montañas al pozo del patio. Busca el pozo. Párate en el cuadro de flores que está justo al este.', fa: 'در کاشان خشک، کاریز آب را از کوه‌ها به چاه حویلی می‌آورد. چاه را پیدا کن. روی خانهٔ گل‌دار که درست طرف شرق آن است بایست.' },
-      text: { en: 'You found the spot east of the well! East is to the right on this map. Some qanats are more than 2,000 years old. A clay water vase was waiting by the well.', es: '¡Encontraste el lugar al este del pozo! En este mapa, el este está a la derecha. Algunos qanats tienen más de 2,000 años. Un jarrón de barro para el agua esperaba junto al pozo.', fa: 'تو جای شرقِ چاه را پیدا کردی! در این نقشه شرق طرف راست است. بعضی کاریزها بیش از ۲۰۰۰ سال عمر دارند. یک کوزهٔ گِلی آب کنار چاه منتظر بود.' } }
+      clue: { en: 'In dry Kashan, a qanat fills the courtyard well. Stand on the flower square just east of it.', es: 'En la seca Kashán, un qanat llena el pozo del patio. Párate en el cuadro de flores justo al este.', fa: 'در کاشان خشک، کاریز چاه حویلی را پر می‌کند. روی خانهٔ گل‌دار درست طرف شرق آن بایست.' },
+      text: { en: 'East is to the right. A clay water vase! Some qanats are more than 2,000 years old.', es: 'El este está a la derecha. ¡Un jarrón de barro para el agua! Algunos qanats tienen más de 2,000 años.', fa: 'شرق طرف راست است. یک کوزهٔ گِلی آب! بعضی کاریزها بیش از ۲۰۰۰ سال عمر دارند.' } }
   ],
   // only the Water Gourd (Episode 4.3) opens the hot desert corner past Dubai
   secret: { tool: 'gourd', at: [30, 20],
@@ -97,21 +100,30 @@ window.EPISODE = {
       role: { en: 'Tea seller in the bazaar', es: 'Vendedor de té en el bazar', fa: 'چای‌فروش در بازار' },
       look: { skin: 1, hair: '#2a1d14', shirt: '#7a4a2a', pants: '#3a3a44' },
       lines: [
-        { en: 'Salaam! Welcome to the old bazaar of Kashan, in Iran. Look around: carpets, spices, tea and music. All of it is [[culture|culture]]. Culture is the way of life a group of people shares.',
-          es: '¡Salam! Bienvenido al viejo bazar de Kashán, en Irán. Mira a tu alrededor: alfombras, especias, té y música. Todo eso es [[culture|cultura]]. La cultura es la forma de vida que comparte un grupo de personas.',
-          fa: 'سلام! به بازار کهنهٔ کاشان در ایران خوش آمدی. به اطراف نگاه کن: قالین، ادویه، چای و موسیقی. همهٔ این‌ها [[culture|فرهنگ]] است. فرهنگ شیوهٔ زندگی است که یک گروه مردم با هم دارند.' },
-        { en: 'Each piece of a culture is a [[culture trait|culture trait]]. A food, a word or a game can be a trait. Traits do not stay home. Tea first grew in China. Traders carried it west on the [[silk road|Silk Road]].',
-          es: 'Cada parte de una cultura es un [[culture trait|rasgo cultural]]. Una comida, una palabra o un juego pueden ser un rasgo. Los rasgos no se quedan en casa. El té creció primero en China. Los comerciantes lo llevaron al oeste por la [[silk road|Ruta de la Seda]].',
-          fa: 'هر جزء فرهنگ یک [[culture trait|ویژگی فرهنگی]] است. یک غذا، یک کلمه یا یک بازی می‌تواند یک ویژگی باشد. ویژگی‌ها در خانه نمی‌مانند. چای اول در چین سبز شد. تاجران آن را از [[silk road|راه ابریشم]] به غرب آوردند.' },
-        { en: 'When a trait spreads from one group to another, it is [[cultural diffusion|cultural diffusion]]. It only needs people to meet, trade or travel. Chess began in India. Traders carried it to Persia, and then to Europe.',
-          es: 'Cuando un rasgo pasa de un grupo a otro, es [[cultural diffusion|difusión cultural]]. Solo hace falta que la gente se encuentre, comercie o viaje. El ajedrez empezó en la India. Los comerciantes lo llevaron a Persia y luego a Europa.',
-          fa: 'وقتی یک ویژگی از یک گروه به گروه دیگر پخش می‌شود، آن را [[cultural diffusion|پخش فرهنگی]] می‌گوییم. فقط لازم است مردم همدیگر را ببینند، تجارت کنند یا سفر کنند. شطرنج در هند شروع شد. تاجران آن را به فارس و بعد به اروپا بردند.' }
+        { en: 'Salaam! Welcome to the old bazaar of Kashan, Iran. See the carpets, spices and tea?',
+          es: '¡Salam! Bienvenido al viejo bazar de Kashán, Irán. ¿Ves las alfombras, las especias y el té?',
+          fa: 'سلام! به بازار کهنهٔ کاشان، ایران، خوش آمدی. قالین‌ها، ادویه و چای را می‌بینی؟' },
+        { en: 'All of it is [[culture|culture]]: the way of life a group of people shares.',
+          es: 'Todo eso es [[culture|cultura]]: la forma de vida que comparte un grupo de personas.',
+          fa: 'همهٔ این‌ها [[culture|فرهنگ]] است: شیوهٔ زندگی که یک گروه مردم با هم دارند.' },
+        { en: 'Each piece of a culture, like a food, word or game, is a [[culture trait|culture trait]].',
+          es: 'Cada parte de una cultura, como una comida, una palabra o un juego, es un [[culture trait|rasgo cultural]].',
+          fa: 'هر جزء فرهنگ، مثل یک غذا، کلمه یا بازی، یک [[culture trait|ویژگی فرهنگی]] است.' },
+        { en: 'Traits travel. Tea first grew in China. Traders carried it west on the [[silk road|Silk Road]].',
+          es: 'Los rasgos viajan. El té creció primero en China. Los comerciantes lo llevaron al oeste por la [[silk road|Ruta de la Seda]].',
+          fa: 'ویژگی‌ها سفر می‌کنند. چای اول در چین سبز شد. تاجران آن را از [[silk road|راه ابریشم]] به غرب آوردند.' },
+        { en: 'A trait spreading between groups is [[cultural diffusion|cultural diffusion]]. People just meet, trade or travel.',
+          es: 'Un rasgo que pasa entre grupos es [[cultural diffusion|difusión cultural]]. Basta con que la gente se encuentre, comercie o viaje.',
+          fa: 'پخش یک ویژگی میان گروه‌ها [[cultural diffusion|پخش فرهنگی]] است. کافی است مردم همدیگر را ببینند، تجارت یا سفر کنند.' },
+        { en: 'Chess began in India. Traders carried it to Persia, and then to Europe.',
+          es: 'El ajedrez empezó en la India. Los comerciantes lo llevaron a Persia y luego a Europa.',
+          fa: 'شطرنج در هند شروع شد. تاجران آن را به فارس و بعد به اروپا بردند.' }
       ],
       ask: {
         stat: 'mov',
         q: { en: 'What is cultural diffusion?', es: '¿Qué es la difusión cultural?', fa: 'پخش فرهنگی چیست؟' },
         choices: [
-          { ok: true, t: { en: 'The spread of a culture trait from one group to another', es: 'La propagación de un rasgo cultural de un grupo a otro', fa: 'پخش شدن یک ویژگی فرهنگی از یک گروه به گروه دیگر' },
+          { ok: true, t: { en: 'A trait spreading to another group', es: 'Un rasgo que pasa a otro grupo', fa: 'رسیدن یک ویژگی به گروه دیگر' },
             why: { en: 'Yes. Tea and chess spread when people met and traded.', es: 'Sí. El té y el ajedrez se propagaron cuando la gente se encontró y comerció.', fa: 'بلی. چای و شطرنج وقتی پخش شدند که مردم همدیگر را دیدند و تجارت کردند.' } },
           { t: { en: 'A group keeping its culture exactly the same forever', es: 'Un grupo que mantiene su cultura igual para siempre', fa: 'گروهی که فرهنگ خود را برای همیشه بدون تغییر نگه می‌دارد' },
             why: { en: 'Diffusion is about change and spreading, not staying the same.', es: 'La difusión trata de cambiar y propagarse, no de quedarse igual.', fa: 'پخش فرهنگی دربارهٔ تغییر و پخش شدن است، نه یکسان ماندن.' } },
@@ -126,22 +138,31 @@ window.EPISODE = {
       role: { en: 'Gardener of the Persian garden', es: 'Jardinera del jardín persa', fa: 'باغبان باغ ایرانی' },
       look: { skin: 2, hair: '#1e1612', shirt: '#2f8a5a', pants: '#35304a', robe: true },
       lines: [
-        { en: 'This is a Persian garden. Its water channels should make a cross that cuts it into four parts, but one channel is not dug yet. But Kashan sits next to a dry desert. Where does the water come from? Across Iran, people dug a [[qanat|qanat]]: a long tunnel under the ground that brings water from the mountains.',
-          es: 'Este es un jardín persa. Sus canales de agua deben formar una cruz que lo divide en cuatro partes, pero falta cavar un canal. Pero Kashán está junto a un desierto seco. ¿De dónde viene el agua? En todo Irán, la gente cavó un [[qanat|qanat]]: un túnel largo bajo la tierra que trae agua de las montañas.',
-          fa: 'این یک باغ ایرانی است. جوی‌های آبش باید یک صلیب بسازند که آن را چهار بخش کند، اما یک جوی هنوز کنده نشده. اما کاشان کنار یک بیابان خشک است. آب از کجا می‌آید؟ در سراسر ایران مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب را از کوه‌ها می‌آورد.' },
-        { en: 'Qanats are very old. The idea spread from Iran to many dry lands. In Afghanistan people call them karez! Even the English word "paradise" comes from an old Persian word for a walled garden like this one.',
-          es: 'Los qanats son muy antiguos. La idea pasó de Irán a muchas tierras secas. ¡En Afganistán los llaman karez! Hasta la palabra "paraíso" viene de una palabra persa antigua para un jardín con muros como este.',
-          fa: 'کاریزها خیلی کهنه هستند. این فکر از ایران به بسیاری از سرزمین‌های خشک پخش شد. در ایران به آن قنات می‌گویند و در افغانستان کاریز! حتی کلمهٔ انگلیسی «پارادایس» (بهشت) از یک کلمهٔ کهنهٔ فارسی برای باغ دیوارداری مثل همین باغ آمده است.' }
+        { en: 'This is a Persian garden. Its water channels should cut it into four parts.',
+          es: 'Este es un jardín persa. Sus canales de agua deben dividirlo en cuatro partes.',
+          fa: 'این یک باغ ایرانی است. جوی‌های آبش باید آن را چهار بخش کنند.' },
+        { en: 'But one channel is not dug yet. And Kashan sits next to a dry desert!',
+          es: 'Pero falta cavar un canal. ¡Y Kashán está junto a un desierto seco!',
+          fa: 'اما یک جوی هنوز کنده نشده. و کاشان کنار یک بیابان خشک است!' },
+        { en: 'So people dug a [[qanat|qanat]]: a long tunnel underground that brings mountain water.',
+          es: 'Por eso la gente cavó un [[qanat|qanat]]: un túnel largo bajo la tierra que trae agua de las montañas.',
+          fa: 'پس مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب کوه‌ها را می‌آورد.' },
+        { en: 'Qanats are very old. The idea spread to dry lands like Afghanistan, where they\'re karez.',
+          es: 'Los qanats son muy antiguos. La idea pasó a tierras secas como Afganistán, donde se llaman karez.',
+          fa: 'کاریزها خیلی کهنه هستند. این فکر به سرزمین‌های خشک مثل افغانستان پخش شد. در ایران قنات می‌گویند و در افغانستان کاریز!' },
+        { en: 'Even "paradise" comes from an old Persian word for a walled garden.',
+          es: 'Hasta "paraíso" viene de una palabra persa antigua para un jardín con muros.',
+          fa: 'حتی کلمهٔ انگلیسی «پارادایس» (بهشت) از یک کلمهٔ کهنهٔ فارسی برای باغ دیواردار آمده است.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Why did people in dry parts of Iran dig qanats?', es: '¿Por qué la gente de las partes secas de Irán cavó qanats?', fa: 'چرا مردم در بخش‌های خشک ایران کاریز کندند؟' },
         choices: [
-          { ok: true, t: { en: 'To bring water from the mountains to their towns and farms', es: 'Para traer agua de las montañas a sus pueblos y granjas', fa: 'تا آب را از کوه‌ها به شهرها و کشتزارهای خود بیاورند' },
+          { ok: true, t: { en: 'To bring mountain water to dry towns', es: 'Para traer agua de montaña a pueblos secos', fa: 'تا آب کوه را به شهرهای خشک بیاورند' },
             why: { en: 'Right. People changed the land so they could live in a dry place.', es: 'Correcto. La gente cambió la tierra para poder vivir en un lugar seco.', fa: 'درست است. مردم زمین را تغییر دادند تا بتوانند در یک جای خشک زندگی کنند.' } },
-          { t: { en: 'To hide from the wind', es: 'Para esconderse del viento', fa: 'تا از باد پنهان شوند' },
+          { t: { en: 'To hide from the hot desert wind and sun', es: 'Para esconderse del viento y el sol del desierto', fa: 'تا از باد و آفتاب گرم بیابان پنهان شوند' },
             why: { en: 'A qanat carries water, not people.', es: 'Un qanat lleva agua, no personas.', fa: 'کاریز آب را می‌برد، نه مردم را.' } },
-          { t: { en: 'To make roads for camels', es: 'Para hacer caminos para los camellos', fa: 'تا برای شترها راه بسازند' },
+          { t: { en: 'To make shady roads for camel trains', es: 'Para hacer caminos con sombra para los camellos', fa: 'تا برای کاروان شترها راه سایه‌دار بسازند' },
             why: { en: 'The tunnel is under the ground and full of water. It is not a road.', es: 'El túnel está bajo la tierra y lleno de agua. No es un camino.', fa: 'تونل زیر زمین و پر از آب است. سرک نیست.' } }
         ]
       }
@@ -152,25 +173,34 @@ window.EPISODE = {
       role: { en: 'City guide in Dubai', es: 'Guía de la ciudad en Dubái', fa: 'رهنمای شهر در دبی' },
       look: { skin: 3, hair: '#120d0a', shirt: '#2a5fae', pants: '#1f2a44', robe: true },
       lines: [
-        { en: 'Welcome to Dubai, in the United Arab Emirates! You can read a street like a page. Everything people built on the land is the [[cultural landscape|cultural landscape]]: towers, shops, signs and houses of worship.',
-          es: '¡Bienvenido a Dubái, en los Emiratos Árabes Unidos! Puedes leer una calle como una página. Todo lo que la gente construyó sobre la tierra es el [[cultural landscape|paisaje cultural]]: torres, tiendas, letreros y lugares de culto.',
-          fa: 'به دبی در امارات متحدهٔ عربی خوش آمدی! می‌توانی یک سرک را مثل یک صفحه بخوانی. هر چیزی که مردم روی زمین ساخته‌اند [[cultural landscape|منظرهٔ فرهنگی]] است: برج‌ها، دکان‌ها، تابلوها و عبادتگاه‌ها.' },
-        { en: 'Look at the signs. Most are in Arabic and English. Most people who live in Dubai were born in other countries, like India, Pakistan and the Philippines. So you see their languages and foods here too.',
-          es: 'Mira los letreros. La mayoría están en árabe e inglés. La mayoría de la gente que vive en Dubái nació en otros países, como la India, Pakistán y Filipinas. Por eso también ves sus idiomas y sus comidas aquí.',
-          fa: 'به تابلوها نگاه کن. بیشتر آن‌ها به عربی و انگلیسی هستند. بیشتر مردمی که در دبی زندگی می‌کنند در کشورهای دیگر مثل هند، پاکستان و فیلیپین به دنیا آمده‌اند. پس زبان‌ها و غذاهای آن‌ها را هم این‌جا می‌بینی.' },
-        { en: 'Old Dubai has houses with tall [[windcatcher|windcatchers]] on the roof. Traders from Iran built many of them over 100 years ago. They carried the idea across the water. That is cultural diffusion you can touch!',
-          es: 'El Dubái antiguo tiene casas con [[windcatcher|torres de viento]] altas en el techo. Comerciantes de Irán construyeron muchas hace más de 100 años. Llevaron la idea a través del agua. ¡Es difusión cultural que puedes tocar!',
-          fa: 'دبی کهنه خانه‌هایی با [[windcatcher|بادگیر]] بلند روی بام دارد. تاجران ایرانی بسیاری از آن‌ها را بیش از ۱۰۰ سال پیش ساختند. آن‌ها این فکر را از آن طرف آب آوردند. این پخش فرهنگی است که می‌توانی لمسش کنی!' }
+        { en: 'Welcome to Dubai, United Arab Emirates! You can read a street like a page.',
+          es: '¡Bienvenido a Dubái, Emiratos Árabes Unidos! Puedes leer una calle como una página.',
+          fa: 'به دبی، امارات متحدهٔ عربی، خوش آمدی! می‌توانی یک سرک را مثل یک صفحه بخوانی.' },
+        { en: 'Towers, shops, signs and houses of worship: that is the [[cultural landscape|cultural landscape]].',
+          es: 'Torres, tiendas, letreros y lugares de culto: eso es el [[cultural landscape|paisaje cultural]].',
+          fa: 'برج‌ها، دکان‌ها، تابلوها و عبادتگاه‌ها: این [[cultural landscape|منظرهٔ فرهنگی]] است.' },
+        { en: 'Most signs are in Arabic and English. Most people here were born in other countries.',
+          es: 'La mayoría de los letreros están en árabe e inglés. La mayoría de la gente aquí nació en otros países.',
+          fa: 'بیشتر تابلوها به عربی و انگلیسی هستند. بیشتر مردم این‌جا در کشورهای دیگر به دنیا آمده‌اند.' },
+        { en: 'They came from India, Pakistan and the Philippines. You see their languages and foods too.',
+          es: 'Vinieron de la India, Pakistán y Filipinas. También ves sus idiomas y sus comidas.',
+          fa: 'آن‌ها از هند، پاکستان و فیلیپین آمدند. زبان‌ها و غذاهای آن‌ها را هم می‌بینی.' },
+        { en: 'Old Dubai houses have tall [[windcatcher|windcatchers]]. Traders from Iran built many, over 100 years ago.',
+          es: 'Las casas del Dubái antiguo tienen [[windcatcher|torres de viento]] altas. Comerciantes de Irán construyeron muchas hace más de 100 años.',
+          fa: 'خانه‌های دبی کهنه [[windcatcher|بادگیر]] بلند دارند. تاجران ایرانی بسیاری از آن‌ها را بیش از ۱۰۰ سال پیش ساختند.' },
+        { en: 'They carried the idea across the water. That is cultural diffusion you can touch!',
+          es: 'Llevaron la idea a través del agua. ¡Es difusión cultural que puedes tocar!',
+          fa: 'آن‌ها این فکر را از آن طرف آب آوردند. این پخش فرهنگی است که می‌توانی لمسش کنی!' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'The shop signs on one street are in Arabic, English, Urdu and Tagalog. What does that tell you?', es: 'Los letreros de una calle están en árabe, inglés, urdu y tagalo. ¿Qué te dice eso?', fa: 'تابلوهای دکان‌ها در یک سرک به عربی، انگلیسی، اردو و تاگالوگ هستند. این به تو چه می‌گوید؟' },
         choices: [
-          { ok: true, t: { en: 'People from many cultures live and shop on that street', es: 'Gente de muchas culturas vive y compra en esa calle', fa: 'مردمی از فرهنگ‌های زیاد در آن سرک زندگی و خرید می‌کنند' },
+          { ok: true, t: { en: 'People from many cultures use that street', es: 'Gente de muchas culturas usa esa calle', fa: 'مردم از فرهنگ‌های زیاد از آن سرک استفاده می‌کنند' },
             why: { en: 'Yes. The languages on signs show who uses the street.', es: 'Sí. Los idiomas de los letreros muestran quién usa la calle.', fa: 'بلی. زبان تابلوها نشان می‌دهد چه کسانی از آن سرک استفاده می‌کنند.' } },
-          { t: { en: 'The street was built in one day', es: 'La calle se construyó en un día', fa: 'آن سرک در یک روز ساخته شد' },
+          { t: { en: 'The whole street was built in a single day', es: 'Toda la calle se construyó en un solo día', fa: 'تمام آن سرک در یک روز ساخته شد' },
             why: { en: 'Signs show who shops there, not how fast it was built.', es: 'Los letreros muestran quién compra ahí, no qué tan rápido se construyó.', fa: 'تابلوها نشان می‌دهند چه کسی آن‌جا خرید می‌کند، نه این‌که چقدر زود ساخته شد.' } },
-          { t: { en: 'Nobody lives near that street', es: 'Nadie vive cerca de esa calle', fa: 'هیچ کس نزدیک آن سرک زندگی نمی‌کند' },
+          { t: { en: 'Nobody lives or works near that street', es: 'Nadie vive ni trabaja cerca de esa calle', fa: 'هیچ کس نزدیک آن سرک زندگی یا کار نمی‌کند' },
             why: { en: 'Shops put up signs for the people who come there.', es: 'Las tiendas ponen letreros para la gente que llega ahí.', fa: 'دکان‌ها برای مردمی که آن‌جا می‌آیند تابلو می‌گذارند.' } }
         ]
       }
@@ -178,12 +208,12 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 10, y: 12, text: { en: 'DHOW HARBOR · Wooden boats called dhows have sailed between Iran and the UAE for hundreds of years. They carry spices, cloth and rice. A [[trade route|trade route]] carries new ideas along with the goods.',
-      es: 'PUERTO DE DHOWS · Los barcos de madera llamados dhows navegan entre Irán y los Emiratos desde hace cientos de años. Llevan especias, tela y arroz. Una [[trade route|ruta comercial]] lleva ideas nuevas junto con las mercancías.',
-      fa: 'بندر جهازهای چوبی · کشتی‌های چوبی به نام «داو» صدها سال است که میان ایران و امارات سفر می‌کنند. ادویه، تکه و برنج می‌برند. یک [[trade route|راه تجارتی]] همراه کالاها فکرهای تازه را هم می‌برد.' } },
-    { x: 29, y: 18, text: { en: 'FOOD STREET · Pizza from Italy · tacos from Mexico · biryani from South Asia · sushi from Japan · tea from China. One street, food from all over the world.',
-      es: 'CALLE DE COMIDA · Pizza de Italia · tacos de México · biryani del sur de Asia · sushi de Japón · té de China. Una sola calle, comida de todo el mundo.',
-      fa: 'سرک غذا · پیتزا از ایتالیا · تاکو از مکزیک · بریانی از جنوب آسیا · سوشی از جاپان · چای از چین. یک سرک، غذا از سراسر جهان.' } }
+    { x: 10, y: 12, text: { en: 'DHOW HARBOR · Wooden dhows have carried spices, cloth and rice between Iran and the UAE for centuries.',
+                            es: 'PUERTO DE DHOWS · Los dhows de madera llevan especias, tela y arroz entre Irán y los Emiratos desde hace siglos.',
+                            fa: 'بندر جهازهای چوبی · کشتی‌های چوبی «داو» صدها سال است که ادویه، تکه و برنج را میان ایران و امارات می‌برند.' } },
+    { x: 29, y: 18, text: { en: 'FOOD STREET · Pizza from Italy · tacos from Mexico · biryani from South Asia · sushi from Japan · tea from China.',
+                            es: 'CALLE DE COMIDA · Pizza de Italia · tacos de México · biryani del sur de Asia · sushi de Japón · té de China.',
+                            fa: 'سرک غذا · پیتزا از ایتالیا · تاکو از مکزیک · بریانی از جنوب آسیا · سوشی از جاپان · چای از چین.' } }
   ],
 
   /* the quest: Priya the sweet maker in Dubai (gold !) -> Babak the rose picker in the Persian garden -> trade for rosewater in the Kashan bazaar -> back to Priya */
@@ -196,19 +226,25 @@ window.EPISODE = {
       role: { en: 'Sweet maker in old Dubai', es: 'Pastelera en el Dubái antiguo', fa: 'شیرینی‌پز در دبی کهنه' },
       look: { skin: 3, hair: '#140e0a', shirt: '#e0457b', pants: '#4a2a5a', style: 'long' },
       lines: [
-        { en: 'Hello! My family came to Dubai from India. I make sweets called gulab jamun. But the Grump\'s wall stopped the boats, and I have no rosewater left!',
-          es: '¡Hola! Mi familia llegó a Dubái desde la India. Hago unos dulces llamados gulab jamun. ¡Pero el muro del Gruñón detuvo los barcos y ya no tengo agua de rosas!',
-          fa: 'سلام! خانوادهٔ من از هند به دبی آمد. من شیرینی‌ای به نام گلاب جامن می‌پزم. اما دیوار غرغرو کشتی‌ها را بند کرد و دیگر گلاب ندارم!' },
-        { en: 'The best rosewater comes from Kashan, across the water in Iran. Please take my basket of goods from the harbor. Babak, who picks roses in the Persian garden, can help you.',
-          es: 'La mejor agua de rosas viene de Kashán, al otro lado del agua, en Irán. Por favor, lleva mi canasta con productos del puerto. Babak, que recoge rosas en el jardín persa, te puede ayudar.',
-          fa: 'بهترین گلاب از کاشان می‌آید، آن طرف آب در ایران. لطفاً سبد کالاهای بندر مرا با خود ببر. بابک، که در باغ ایرانی گل می‌چیند، می‌تواند کمکت کند.' }
+        { en: 'Hello! My family came to Dubai from India. I make sweets called gulab jamun.',
+          es: '¡Hola! Mi familia llegó a Dubái desde la India. Hago unos dulces llamados gulab jamun.',
+          fa: 'سلام! خانوادهٔ من از هند به دبی آمد. من شیرینی‌ای به نام گلاب جامن می‌پزم.' },
+        { en: 'But the Grump\'s wall stopped the boats, and I have no rosewater left!',
+          es: '¡Pero el muro del Gruñón detuvo los barcos y ya no tengo agua de rosas!',
+          fa: 'اما دیوار غرغرو کشتی‌ها را بند کرد و دیگر گلاب ندارم!' },
+        { en: 'The best rosewater comes from Kashan, across the water in Iran.',
+          es: 'La mejor agua de rosas viene de Kashán, al otro lado del agua, en Irán.',
+          fa: 'بهترین گلاب از کاشان می‌آید، آن طرف آب در ایران.' },
+        { en: 'Take my basket of goods from the harbor. Babak, in the Persian garden, can help.',
+          es: 'Lleva mi canasta con productos del puerto. Babak, en el jardín persa, te puede ayudar.',
+          fa: 'سبد کالاهای مرا از بندر ببر. بابک، در باغ ایرانی، می‌تواند کمکت کند.' }
       ],
-      wait: { en: 'Cross the water to the north. The Persian garden is in the north-east, behind a wall.',
-        es: 'Cruza el agua hacia el norte. El jardín persa está en el noreste, detrás de un muro.',
-        fa: 'از آب به طرف شمال بگذر. باغ ایرانی در شمال شرق است، پشت یک دیوار.' },
-      thanks: { en: 'Rosewater from Kashan! Thank you! Did you know? "Gulab" means rosewater. It comes from Persian: "gol" is rose and "ab" is water. The word crossed the sea with the [[trade route|traders]].',
-        es: '¡Agua de rosas de Kashán! ¡Gracias! ¿Sabías? "Gulab" significa agua de rosas. Viene del persa: "gol" es rosa y "ab" es agua. La palabra cruzó el mar con los comerciantes, por una [[trade route|ruta comercial]].',
-        fa: 'گلاب کاشان! تشکر! می‌دانستی؟ کلمهٔ «گلاب» در زبان هندی هم هست. از فارسی آمده: «گل» و «آب». این کلمه همراه تاجران از یک [[trade route|راه تجارتی]] از بحر گذشت.' }
+      wait: { en: 'Cross the water to the north. The Persian garden is north-east, behind a wall.',
+              es: 'Cruza el agua hacia el norte. El jardín persa está al noreste, detrás de un muro.',
+              fa: 'از آب به طرف شمال بگذر. باغ ایرانی در شمال شرق است، پشت یک دیوار.' },
+      thanks: { en: 'Thanks! "Gulab" is Persian: "gol" (rose) + "ab" (water). It came by [[trade route|trade route]].',
+                es: '¡Gracias! "Gulab" es persa: "gol" (rosa) + "ab" (agua). Llegó por una [[trade route|ruta comercial]].',
+                fa: 'تشکر! «گلاب» فارسی است: «گل» + «آب». این کلمه از یک [[trade route|راه تجارتی]] به هند رسید.' }
     },
     contact: {
       x: 21, y: 7,
@@ -216,12 +252,18 @@ window.EPISODE = {
       role: { en: 'Rose picker in the Persian garden', es: 'Recolector de rosas del jardín persa', fa: 'گل‌چین در باغ ایرانی' },
       look: { skin: 1, hair: '#3a2a1e', shirt: '#c94a5a', pants: '#3a4a3a', hat: '#d8c9a0' },
       lines: [
-        { en: 'Every spring we pick pink roses near Kashan. We boil the petals to make rosewater. People in many countries use it in sweets.',
-          es: 'Cada primavera recogemos rosas rosadas cerca de Kashán. Hervimos los pétalos para hacer agua de rosas. Gente de muchos países la usa en dulces.',
-          fa: 'هر بهار ما نزدیک کاشان گل گلابی می‌چینیم. برگ‌های گل را می‌جوشانیم تا گلاب بسازیم. مردم در کشورهای زیاد از آن در شیرینی استفاده می‌کنند.' },
-        { en: 'Hamid sells our rosewater in the bazaar, at the east end of the stalls. He only trades for things Kashan does not have. Remember: Kashan is far from the sea.',
-          es: 'Hamid vende nuestra agua de rosas en el bazar, al final de los puestos, del lado este. Solo cambia cosas que Kashán no tiene. Recuerda: Kashán está lejos del mar.',
-          fa: 'حمید گلاب ما را در بازار می‌فروشد، در آخر دکان‌ها طرف شرق. او فقط چیزهایی را می‌گیرد که کاشان ندارد. یادت باشد: کاشان از بحر دور است.' }
+        { en: 'Every spring we pick pink roses and boil the petals to make rosewater.',
+          es: 'Cada primavera recogemos rosas rosadas y hervimos los pétalos para hacer agua de rosas.',
+          fa: 'هر بهار ما گل گلابی می‌چینیم و برگ‌های گل را می‌جوشانیم تا گلاب بسازیم.' },
+        { en: 'People in many countries use it in sweets.',
+          es: 'Gente de muchos países la usa en dulces.',
+          fa: 'مردم در کشورهای زیاد از آن در شیرینی استفاده می‌کنند.' },
+        { en: 'Hamid sells rosewater at the bazaar\'s east end. He trades only for things Kashan lacks.',
+          es: 'Hamid vende agua de rosas al este del bazar. Solo cambia por cosas que Kashán no tiene.',
+          fa: 'حمید گلاب را در آخر شرقی بازار می‌فروشد. او فقط چیزهایی را می‌گیرد که کاشان ندارد.' },
+        { en: 'Remember: Kashan is far from the sea. Find Hamid at the bazaar\'s east end.',
+          es: 'Recuerda: Kashán está lejos del mar. Busca a Hamid al este del bazar.',
+          fa: 'یادت باشد: کاشان از بحر دور است. حمید را در آخر شرقی بازار پیدا کن.' }
       ]
     },
     action: {
@@ -232,9 +274,9 @@ window.EPISODE = {
         role: { en: 'Rosewater seller', es: 'Vendedor de agua de rosas', fa: 'گلاب‌فروش' },
         look: { skin: 2, hair: '#9a948a', shirt: '#4a6a8a', pants: '#2a2a30', robe: true },
         lines: [
-          { en: 'Rosewater, the best in Iran! A trade is fair when each side gets something it does not have at home.',
-            es: '¡Agua de rosas, la mejor de Irán! Un cambio es justo cuando cada lado recibe algo que no tiene en casa.',
-            fa: 'گلاب، بهترین گلاب ایران! یک معامله وقتی عادلانه است که هر طرف چیزی بگیرد که در خانه ندارد.' }
+          { en: 'Rosewater, the best in Iran! A fair trade gives each side something it lacks.',
+            es: '¡Agua de rosas, la mejor de Irán! Un cambio justo da a cada lado algo que le falta.',
+            fa: 'گلاب، بهترین گلاب ایران! معاملهٔ عادلانه به هر طرف چیزی می‌دهد که ندارد.' }
         ]
       },
       q: { en: 'What will you give Hamid for a bottle of rosewater?', es: '¿Qué le das a Hamid por una botella de agua de rosas?', fa: 'برای یک بوتل گلاب به حمید چه می‌دهی؟' },
@@ -290,28 +332,28 @@ window.EPISODE = {
     win: { en: 'The wall crumbles. Ideas fly free, and atlas page 5.2 lands in your hands!', es: 'El muro se derrumba. Las ideas vuelan libres, ¡y la página 5.2 del atlas cae en tus manos!', fa: 'دیوار فرو می‌ریزد. فکرها آزاد پرواز می‌کنند و صفحهٔ ۵.۲ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What is cultural diffusion?', es: '¿Qué es la difusión cultural?', fa: 'پخش فرهنگی چیست؟' },
-        choices: [{ en: 'The spread of a culture trait from one group to another', es: 'La propagación de un rasgo cultural de un grupo a otro', fa: 'پخش شدن یک ویژگی فرهنگی از یک گروه به گروه دیگر' }, { en: 'Two cultures fighting over land', es: 'Dos culturas peleando por tierra', fa: 'جنگ دو فرهنگ بر سر زمین' }, { en: 'A culture that never changes', es: 'Una cultura que nunca cambia', fa: 'فرهنگی که هرگز تغییر نمی‌کند' }, { en: 'People moving from a village to a city', es: 'Gente que se muda de un pueblo a una ciudad', fa: 'رفتن مردم از قریه به شهر' }], answer: 0,
+        choices: [{ en: 'A trait spreading to another group', es: 'Un rasgo que pasa a otro grupo', fa: 'رسیدن یک ویژگی به گروه دیگر' }, { en: 'Two cultures fighting over land', es: 'Dos culturas peleando por tierra', fa: 'جنگ دو فرهنگ بر سر زمین' }, { en: 'A culture that never changes', es: 'Una cultura que nunca cambia', fa: 'فرهنگی که هرگز تغییر نمی‌کند' }, { en: 'People moving from a village to a city', es: 'Gente que se muda de un pueblo a una ciudad', fa: 'رفتن مردم از قریه به شهر' }], answer: 0,
         why: { en: 'Cultural diffusion is when a food, word, game or idea spreads to a new group of people.', es: 'La difusión cultural es cuando una comida, palabra, juego o idea llega a un nuevo grupo de personas.', fa: 'پخش فرهنگی یعنی یک غذا، کلمه، بازی یا فکر به یک گروه تازهٔ مردم برسد.' } },
       { q: { en: 'Chess began in which place?', es: '¿Dónde empezó el ajedrez?', fa: 'شطرنج در کجا شروع شد؟' },
         choices: [{ en: 'India', es: 'La India', fa: 'هند' }, { en: 'Brazil', es: 'Brasil', fa: 'برازیل' }, { en: 'England', es: 'Inglaterra', fa: 'انگلستان' }, { en: 'Japan', es: 'Japón', fa: 'جاپان' }], answer: 0,
         why: { en: 'Chess began in India. Traders carried it to Persia, and then to Europe.', es: 'El ajedrez empezó en la India. Los comerciantes lo llevaron a Persia y luego a Europa.', fa: 'شطرنج در هند شروع شد. تاجران آن را به فارس و بعد به اروپا بردند.' } },
       { q: { en: 'Where did people first grow and drink coffee?', es: '¿Dónde se cultivó y se bebió café por primera vez?', fa: 'مردم اول در کجا قهوه کشت کردند و نوشیدند؟' },
-        choices: [{ en: 'Ethiopia and Yemen', es: 'Etiopía y Yemen', fa: 'ایتوپیا و یمن' }, { en: 'France and Spain', es: 'Francia y España', fa: 'فرانسه و هسپانیه' }, { en: 'Canada', es: 'Canadá', fa: 'کانادا' }, { en: 'Australia', es: 'Australia', fa: 'آسترالیا' }], answer: 0,
+        choices: [{ en: 'Ethiopia and Yemen', es: 'Etiopía y Yemen', fa: 'ایتوپیا و یمن' }, { en: 'France and Spain', es: 'Francia y España', fa: 'فرانسه و هسپانیه' }, { en: 'Canada and the United States', es: 'Canadá y Estados Unidos', fa: 'کانادا و امریکا' }, { en: 'Australia', es: 'Australia', fa: 'آسترالیا' }], answer: 0,
         why: { en: 'Coffee came from Ethiopia and Yemen. Traders carried it across the world.', es: 'El café vino de Etiopía y Yemen. Los comerciantes lo llevaron por todo el mundo.', fa: 'قهوه از ایتوپیا و یمن آمد. تاجران آن را به سراسر جهان بردند.' } },
       { q: { en: 'The digits 0 to 9 were developed in ___. Arabic-speaking scholars carried them to Europe.', es: 'Los dígitos del 0 al 9 se desarrollaron en ___. Sabios que hablaban árabe los llevaron a Europa.', fa: 'رقم‌های ۰ تا ۹ در ___ ساخته شدند. دانشمندان عربی‌زبان آن‌ها را به اروپا بردند.' },
         choices: [{ en: 'India', es: 'la India', fa: 'هند' }, { en: 'Italy', es: 'Italia', fa: 'ایتالیا' }, { en: 'Mexico', es: 'México', fa: 'مکزیک' }, { en: 'Russia', es: 'Rusia', fa: 'روسیه' }], answer: 0,
         why: { en: 'The digits came from India. Arabic-speaking scholars passed them on to Europe.', es: 'Los dígitos vinieron de la India. Sabios que hablaban árabe los pasaron a Europa.', fa: 'رقم‌ها از هند آمدند. دانشمندان عربی‌زبان آن‌ها را به اروپا رساندند.' } },
       { q: { en: 'What is a cultural landscape?', es: '¿Qué es un paisaje cultural?', fa: 'منظرهٔ فرهنگی چیست؟' },
-        choices: [{ en: 'Everything people built on the land: buildings, signs, shops', es: 'Todo lo que la gente construyó sobre la tierra: edificios, letreros, tiendas', fa: 'هر چیزی که مردم روی زمین ساخته‌اند: ساختمان، تابلو، دکان' }, { en: 'The rivers and hills that nature made', es: 'Los ríos y cerros que hizo la naturaleza', fa: 'دریاها و تپه‌هایی که طبیعت ساخته' }, { en: 'The weather of a place', es: 'El clima de un lugar', fa: 'هوای یک جا' }, { en: 'A painting of a forest', es: 'Una pintura de un bosque', fa: 'نقاشی یک جنگل' }], answer: 0,
+        choices: [{ en: 'Everything people built on the land', es: 'Todo lo que la gente construyó en la tierra', fa: 'هر چیزی که مردم روی زمین ساخته‌اند' }, { en: 'The rivers, hills and forests that nature made', es: 'Los ríos, cerros y bosques que hizo la naturaleza', fa: 'دریاها، تپه‌ها و جنگل‌هایی که طبیعت ساخته' }, { en: 'The weather of a place', es: 'El clima de un lugar', fa: 'هوای یک جا' }, { en: 'A painting of a forest', es: 'Una pintura de un bosque', fa: 'نقاشی یک جنگل' }], answer: 0,
         why: { en: 'Nature made the hills and rivers. People made the cultural landscape on top.', es: 'La naturaleza hizo los cerros y los ríos. La gente hizo encima el paisaje cultural.', fa: 'طبیعت تپه‌ها و دریاها را ساخت. مردم منظرهٔ فرهنگی را روی آن ساختند.' } },
       { q: { en: 'Which one is an institution?', es: '¿Cuál es una institución?', fa: 'کدام یک نهاد است؟' },
         choices: [{ en: 'A school', es: 'Una escuela', fa: 'مکتب' }, { en: 'A mountain', es: 'Una montaña', fa: 'کوه' }, { en: 'A cup of tea', es: 'Una taza de té', fa: 'یک پیاله چای' }, { en: 'A sunny day', es: 'Un día soleado', fa: 'یک روز آفتابی' }], answer: 0,
         why: { en: 'An [[institution|institution]] is an organized part of a culture, like a school, a court or a place of worship.', es: 'Una [[institution|institución]] es una parte organizada de una cultura, como una escuela, un tribunal o un lugar de culto.', fa: '[[institution|نهاد]] یک بخش منظم فرهنگ است، مثل مکتب، محکمه یا عبادتگاه.' } },
       { q: { en: 'How did phones and the internet change cultural diffusion?', es: '¿Cómo cambiaron los teléfonos e internet la difusión cultural?', fa: 'تیلفون و انترنت پخش فرهنگی را چطور تغییر دادند؟' },
-        choices: [{ en: 'A song or recipe can travel around the world in one day', es: 'Una canción o receta puede dar la vuelta al mundo en un día', fa: 'یک آهنگ یا دستور پخت در یک روز دور جهان سفر می‌کند' }, { en: 'Ideas now take months to travel by camel', es: 'Ahora las ideas tardan meses en viajar en camello', fa: 'حالا فکرها ماه‌ها با شتر سفر می‌کنند' }, { en: 'Ideas stopped spreading', es: 'Las ideas dejaron de propagarse', fa: 'فکرها دیگر پخش نمی‌شوند' }, { en: 'Only food can spread now', es: 'Ahora solo la comida se puede propagar', fa: 'حالا فقط غذا پخش می‌شود' }], answer: 0,
+        choices: [{ en: 'A song can travel the world in one day', es: 'Una canción puede dar la vuelta al mundo en un día', fa: 'یک آهنگ در یک روز دور جهان سفر می‌کند' }, { en: 'Ideas now take months to travel by camel', es: 'Ahora las ideas tardan meses en viajar en camello', fa: 'حالا فکرها ماه‌ها با شتر سفر می‌کنند' }, { en: 'Ideas stopped spreading', es: 'Las ideas dejaron de propagarse', fa: 'فکرها دیگر پخش نمی‌شوند' }, { en: 'Only food can spread now', es: 'Ahora solo la comida se puede propagar', fa: 'حالا فقط غذا پخش می‌شود' }], answer: 0,
         why: { en: 'Old diffusion took months by camel or ship. Today an idea can cross the world in a single day.', es: 'Antes la difusión tardaba meses en camello o barco. Hoy una idea puede cruzar el mundo en un solo día.', fa: 'پخش فرهنگی قدیم با شتر یا کشتی ماه‌ها طول می‌کشید. امروز یک فکر در یک روز از جهان می‌گذرد.' } },
       { q: { en: 'An Afghan family in Virginia eats pizza and also celebrates Nowruz. What does this show?', es: 'Una familia afgana en Virginia come pizza y también celebra Nowruz. ¿Qué muestra esto?', fa: 'یک خانوادهٔ افغان در ویرجینیا پیتزا می‌خورد و نوروز را هم جشن می‌گیرد. این چه چیزی را نشان می‌دهد؟' },
-        choices: [{ en: 'People can add new traits and still keep their own culture', es: 'La gente puede sumar rasgos nuevos y aun así mantener su cultura', fa: 'مردم می‌توانند ویژگی‌های تازه اضافه کنند و فرهنگ خود را هم نگه دارند' }, { en: 'The family has lost its culture', es: 'La familia perdió su cultura', fa: 'خانواده فرهنگ خود را از دست داده است' }, { en: 'Pizza is an Afghan food', es: 'La pizza es una comida afgana', fa: 'پیتزا غذای افغانی است' }, { en: 'Nowruz began in Italy', es: 'Nowruz empezó en Italia', fa: 'نوروز در ایتالیا شروع شد' }], answer: 0,
+        choices: [{ en: 'They add new traits and keep their own', es: 'Suman rasgos nuevos y mantienen los suyos', fa: 'ویژگی تازه می‌گیرند و مال خود را هم نگه می‌دارند' }, { en: 'The family has lost its own Afghan culture', es: 'La familia perdió su propia cultura afgana', fa: 'خانواده فرهنگ افغانی خود را از دست داده است' }, { en: 'Pizza is a traditional Afghan food', es: 'La pizza es una comida afgana tradicional', fa: 'پیتزا یک غذای قدیمی افغانی است' }, { en: 'Nowruz began in Italy', es: 'Nowruz empezó en Italia', fa: 'نوروز در ایتالیا شروع شد' }], answer: 0,
         why: { en: 'Diffusion adds new threads. It does not erase a family\'s [[cultural identity|cultural identity]]. People can carry more than one.', es: 'La difusión suma hilos nuevos. No borra la [[cultural identity|identidad cultural]] de una familia. La gente puede tener más de una.', fa: 'پخش فرهنگی تارهای تازه اضافه می‌کند. [[cultural identity|هویت فرهنگی]] خانواده را پاک نمی‌کند. مردم می‌توانند بیش از یکی داشته باشند.' } }
     ]
   },

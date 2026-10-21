@@ -9,9 +9,8 @@ window.EPISODE = {
   title: { en: 'Manufacturing, Trade and Supply Chains', es: 'Fábricas, comercio y cadenas de suministro', fa: 'تولید، تجارت و زنجیرهٔ تأمین' },
   place: { en: 'Harbor of a Thousand Parts', es: 'Puerto de las Mil Piezas', fa: 'بندر هزار پرزه' },
   intro: [
-    { en: 'Christopher: "The Grump jammed the supply chain! Phones are stuck halfway, and the stores are empty. Talk to the chip engineer, the factory line leader and the crane operator. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón trabó la cadena de suministro! Los teléfonos están atascados a medio camino y las tiendas están vacías. Habla con la ingeniera de chips, la jefa de línea de la fábrica y el operador de grúa. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند. با انجنیر چِپ، سرپرست خط فابریکه و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump jammed the supply chain! Phones are stuck halfway, and the stores are empty.', es: '¡El Gruñón trabó la cadena de suministro! Los teléfonos están atascados y las tiendas, vacías.', fa: 'غرغرو زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند.' },
+    { en: 'Talk to the chip engineer, line leader and crane operator. Then fix the stone.', es: 'Habla con la ingeniera de chips, la jefa de línea y el operador de grúa. Luego arregla la piedra.', fa: 'با انجنیر چِپ، سرپرست خط و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   map: [
@@ -62,10 +61,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [11, 8], at: [10, 4], decor: 'gem',
       clue: { en: 'From this note, walk 4 steps north, then 1 step west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al norte y luego 1 paso al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به شمال برو، بعد ۱ قدم به غرب. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! North is up and west is to the left. A shiny gem was in the mine. Mines dig raw materials out of the ground, like the copper in the wires of a phone.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el oeste a la izquierda. Había una gema brillante en la mina. Las minas sacan materias primas de la tierra, como el cobre de los cables de un teléfono.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و غرب طرف چپ است. یک جواهر براق در معدن بود. معدن‌ها مواد خام را از زیر زمین بیرون می‌کشند، مثل مسِ داخل سیم‌های یک تلیفون.' } },
+      text: { en: 'North is up, west is left. A gem hid in the mine! Mines dig copper for phone wires.', es: 'El norte está arriba y el oeste a la izquierda. ¡Había una gema en la mina! Las minas sacan cobre para los cables.', fa: 'شمال بالا و غرب طرف چپ است. یک جواهر در معدن پنهان بود! معدن‌ها مس را برای سیم مبایل بیرون می‌کشند.' } },
     { clueAt: [6, 20], at: [26, 9], decor: 'coinold',
-      clue: { en: 'Follow the supply chain! Copper rides the train east from the mine. Find the spot where the railway stops going east and turns south. Stand on that corner square.', es: '¡Sigue la cadena de suministro! El cobre viaja en tren al este desde la mina. Busca el lugar donde la vía del tren deja de ir al este y gira al sur. Párate en ese cuadro de la esquina.', fa: 'زنجیرهٔ تأمین را دنبال کن! مس با ریل از معدن به طرف شرق می‌رود. جایی را پیدا کن که خط آهن دیگر به شرق نمی‌رود و به طرف جنوب دور می‌خورد. روی همان خانهٔ کنج بایست.' },
-      text: { en: 'You found the railway corner! Trains can carry heavy loads, like copper, a long way over land. From here the train runs south to the port. An old coin was by the tracks.', es: '¡Encontraste la esquina de la vía! Los trenes pueden llevar cargas pesadas, como el cobre, muy lejos por tierra. Desde aquí el tren va al sur hasta el puerto. Había una moneda antigua junto a la vía.', fa: 'تو کنج خط آهن را پیدا کردی! ریل می‌تواند بارهای سنگین، مثل مس، را از راه خشکه تا جای دور ببرد. از این جا ریل به طرف جنوب تا بندر می‌رود. یک سکهٔ کهنه کنار خط آهن بود.' } }
+      clue: { en: 'Copper rides the train east from the mine. Stand on the corner where the railway turns south.', es: 'El cobre viaja en tren al este desde la mina. Párate en la esquina donde la vía gira al sur.', fa: 'مس با ریل از معدن به شرق می‌رود. در کنجی بایست که خط آهن به طرف جنوب دور می‌خورد.' },
+      text: { en: 'The railway corner! Trains carry heavy loads like copper far over land. An old coin lay here.', es: '¡La esquina de la vía! Los trenes llevan cargas pesadas como el cobre muy lejos por tierra. Aquí había una moneda antigua.', fa: 'کنج خط آهن! ریل بارهای سنگین مثل مس را از راه خشکه تا جای دور می‌برد. یک سکهٔ کهنه این جا بود.' } }
   ],
   // only the Rail Pass (Episode 3.3) opens the gate to the old mine track in the northern hills
   secret: { tool: 'rail', at: [14, 1],
@@ -90,21 +89,16 @@ window.EPISODE = {
       role: { en: 'Chip engineer', es: 'Ingeniera de chips', fa: 'انجنیر چِپ' },
       look: { skin: 1, hair: '#1a1a1a', shirt: '#eef3f8', pants: '#9fb6cc', robe: true },
       lines: [
-        { en: 'Welcome to the chip factory! I make [[semiconductor|semiconductors]]. They are tiny chips that control electricity inside phones, cars and computers. Without them, your phone cannot do anything.',
-          es: '¡Bienvenido a la fábrica de chips! Yo hago [[semiconductor|semiconductores]]. Son chips diminutos que controlan la electricidad dentro de teléfonos, carros y computadoras. Sin ellos, tu teléfono no puede hacer nada.',
-          fa: 'به فابریکهٔ چِپ خوش آمدی! من [[semiconductor|نیمه‌هادی]] می‌سازم. این‌ها چِپ‌های بسیار کوچک هستند که برق را در داخل مبایل، موتر و کمپیوتر کنترول می‌کنند. بدون آن‌ها مبایل تو هیچ کاری کرده نمی‌تواند.' },
-        { en: 'Roughly nine in ten of the world\'s most advanced chips are made in Taiwan, where I live. One new chip factory costs billions of dollars. That is far more than a normal office building!',
-          es: 'Cerca de nueve de cada diez de los chips más avanzados del mundo se hacen en Taiwán, donde yo vivo. Una fábrica nueva de chips cuesta miles de millones de dólares. ¡Mucho más que un edificio de oficinas normal!',
-          fa: 'تقریباً نُه از هر ده چِپ پیشرفتهٔ جهان در تایوان ساخته می‌شود، جایی که من زندگی می‌کنم. یک فابریکهٔ نو چِپ میلیاردها دالر قیمت دارد. این خیلی بیشتر از یک تعمیر عادی دفتر است!' },
-        { en: 'But no country makes an advanced chip all alone. Machines from the Netherlands print the tiny circuits with light. Japan sends special pure chemicals. South Korea makes huge amounts of memory chips.',
-          es: 'Pero ningún país hace un chip avanzado solo. Máquinas de los Países Bajos imprimen los circuitos diminutos con luz. Japón manda químicos especiales muy puros. Corea del Sur hace enormes cantidades de chips de memoria.',
-          fa: 'اما هیچ کشوری چِپ پیشرفته را تنها نمی‌سازد. ماشین‌های هالند مدارهای بسیار کوچک را با نور چاپ می‌کنند. جاپان مواد کیمیایی خاص و بسیار پاک می‌فرستد. کوریای جنوبی مقدار بسیار زیاد چِپ حافظه می‌سازد.' }
+        { en: 'Welcome! I make [[semiconductor|semiconductors]]: tiny chips that control electricity in phones, cars and computers.', es: '¡Bienvenido! Hago [[semiconductor|semiconductores]]: chips diminutos que controlan la electricidad en teléfonos, carros y computadoras.', fa: 'خوش آمدی! من [[semiconductor|نیمه‌هادی]] می‌سازم: چِپ‌های کوچک که برق را در مبایل، موتر و کمپیوتر کنترول می‌کنند.' },
+        { en: 'Roughly nine in ten of the world\'s most advanced chips are made here, in Taiwan.', es: 'Cerca de nueve de cada diez de los chips más avanzados del mundo se hacen aquí, en Taiwán.', fa: 'تقریباً نُه از هر ده چِپ پیشرفتهٔ جهان اینجا، در تایوان، ساخته می‌شود.' },
+        { en: 'One factory costs billions of dollars. No country does it alone: Japan sends pure chemicals.', es: 'Una fábrica cuesta miles de millones de dólares. Ningún país lo hace solo: Japón manda químicos puros.', fa: 'یک فابریکه میلیاردها دالر قیمت دارد. هیچ کشوری این کار را تنها نمی‌کند: جاپان مواد کیمیایی پاک می‌فرستد.' },
+        { en: 'Machines from the Netherlands print circuits with light. South Korea makes lots of memory chips.', es: 'Máquinas de los Países Bajos imprimen circuitos con luz. Corea del Sur hace muchísimos chips de memoria.', fa: 'ماشین‌های هالند مدارها را با نور چاپ می‌کنند. کوریای جنوبی چِپ حافظهٔ بسیار زیاد می‌سازد.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'What is a semiconductor?', es: '¿Qué es un semiconductor?', fa: 'نیمه‌هادی چیست؟' },
         choices: [
-          { ok: true, t: { en: 'A tiny chip that controls electricity inside machines', es: 'Un chip diminuto que controla la electricidad dentro de las máquinas', fa: 'یک چِپ بسیار کوچک که برق را در داخل ماشین‌ها کنترول می‌کند' },
+          { ok: true, t: { en: 'A tiny chip that controls electricity', es: 'Un chip diminuto que controla la electricidad', fa: 'یک چِپ کوچک که برق را کنترول می‌کند' },
             why: { en: 'Phones, cars and computers all need these chips to work.', es: 'Los teléfonos, carros y computadoras necesitan estos chips para funcionar.', fa: 'مبایل، موتر و کمپیوتر همه برای کار به این چِپ‌ها ضرورت دارند.' } },
           { t: { en: 'A steel box that moves goods by ship', es: 'Una caja de acero que lleva productos en barco', fa: 'یک صندوق فولادی که کالا را با کشتی می‌برد' },
             why: { en: 'That is a container. A semiconductor is a tiny chip.', es: 'Eso es un contenedor. Un semiconductor es un chip diminuto.', fa: 'آن کانتینر است. نیمه‌هادی یک چِپ کوچک است.' } },
@@ -119,21 +113,16 @@ window.EPISODE = {
       role: { en: 'Factory line leader', es: 'Jefa de línea de la fábrica', fa: 'سرپرست خط فابریکه' },
       look: { skin: 2, hair: '#161616', shirt: '#2f6fd6', pants: '#3a3a3a' },
       lines: [
-        { en: 'On my line, we put phones together. This is called [[assembly|assembly]]. The screen, the battery, the camera and the chips all arrive here from different places.',
-          es: 'En mi línea armamos teléfonos. Esto se llama [[assembly|ensamblaje]]. La pantalla, la batería, la cámara y los chips llegan aquí desde lugares diferentes.',
-          fa: 'در خط من، مبایل‌ها را یکجا می‌کنیم. این کار [[assembly|یکجا کردن پرزه‌ها]] نام دارد. صفحه، بتری، کمره و چِپ‌ها همه از جاهای مختلف اینجا می‌رسند.' },
-        { en: 'It all starts with [[raw material|raw materials]]. Mines in places like Chile, Australia and the Congo dig up metals like copper, lithium and cobalt. Then come the chips, then my factory, then the ship. All of these steps together make a [[supply chain|supply chain]].',
-          es: 'Todo empieza con las [[raw material|materias primas]]. Minas en lugares como Chile, Australia y el Congo sacan metales como cobre, litio y cobalto. Luego vienen los chips, luego mi fábrica, luego el barco. Todos estos pasos juntos forman una [[supply chain|cadena de suministro]].',
-          fa: 'همه چیز با [[raw material|مواد خام]] شروع می‌شود. معدن‌ها در جاهایی مثل چیلی، آسترالیا و کانگو فلزهایی مثل مس، لیتیم و کوبالت بیرون می‌کشند. بعد چِپ‌ها، بعد فابریکهٔ من، بعد کشتی. همهٔ این قدم‌ها با هم یک [[supply chain|زنجیرهٔ تأمین]] می‌سازند.' },
-        { en: 'Each place does what it does best and trades for the rest. That is [[specialization|specialization]]. Our factory puts together millions of phones for [[export|export]] to other countries.',
-          es: 'Cada lugar hace lo que mejor sabe hacer y comercia para conseguir lo demás. Eso es la [[specialization|especialización]]. Nuestra fábrica arma millones de teléfonos para [[export|exportar]] a otros países.',
-          fa: 'هر جا کاری را می‌کند که بهتر از همه بلد است و باقی را با تجارت به دست می‌آورد. این [[specialization|تخصص]] است. فابریکهٔ ما میلیون‌ها مبایل را برای [[export|صادرات]] به کشورهای دیگر یکجا می‌کند.' }
+        { en: 'My line does [[assembly|assembly]]. Screens, batteries, cameras and chips arrive here from different places.', es: 'Mi línea hace [[assembly|ensamblaje]]. Pantallas, baterías, cámaras y chips llegan aquí de lugares diferentes.', fa: 'خط من کار [[assembly|یکجا کردن پرزه‌ها]] را می‌کند. صفحه، بتری، کمره و چِپ از جاهای مختلف اینجا می‌رسند.' },
+        { en: 'Mines in Chile, Australia and the Congo dig [[raw material|raw materials]]: copper, lithium, cobalt.', es: 'Minas en Chile, Australia y el Congo sacan [[raw material|materias primas]]: cobre, litio y cobalto.', fa: 'معدن‌ها در چیلی، آسترالیا و کانگو [[raw material|مواد خام]] بیرون می‌کشند: مس، لیتیم و کوبالت.' },
+        { en: 'Mines, chips, my line, ships: a [[supply chain|supply chain]]! Millions of our phones are for [[export|export]].', es: 'Minas, chips, mi línea, barcos: ¡una [[supply chain|cadena de suministro]]! Millones de nuestros teléfonos son para [[export|exportar]].', fa: 'معدن، چِپ، خط من، کشتی: یک [[supply chain|زنجیرهٔ تأمین]]! میلیون‌ها مبایل ما برای [[export|صادرات]] است.' },
+        { en: 'Each place does what it does best and trades for the rest. That is [[specialization|specialization]].', es: 'Cada lugar hace lo que mejor sabe hacer y comercia por lo demás. Eso es la [[specialization|especialización]].', fa: 'هر جا کاری را می‌کند که بهتر بلد است و باقی را با تجارت می‌گیرد. این [[specialization|تخصص]] است.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'What is specialization?', es: '¿Qué es la especialización?', fa: 'تخصص چیست؟' },
         choices: [
-          { ok: true, t: { en: 'When a place makes what it does best and trades for the rest', es: 'Cuando un lugar hace lo que mejor sabe hacer y comercia para conseguir lo demás', fa: 'وقتی یک جا چیزی را می‌سازد که بهتر بلد است و باقی را با تجارت می‌گیرد' },
+          { ok: true, t: { en: 'Making what you do best and trading for the rest', es: 'Hacer lo que mejor sabes y comerciar por lo demás', fa: 'ساختن چیزی که بهتر بلدی و گرفتن باقی با تجارت' },
             why: { en: 'Taiwan makes chips, the Netherlands makes chip machines, and they trade.', es: 'Taiwán hace chips, los Países Bajos hacen máquinas para chips, y comercian.', fa: 'تایوان چِپ می‌سازد، هالند ماشین چِپ، و با هم تجارت می‌کنند.' } },
           { t: { en: 'Making every part of a product inside one country', es: 'Hacer todas las piezas de un producto dentro de un solo país', fa: 'ساختن همهٔ پرزه‌های یک کالا در داخل یک کشور' },
             why: { en: 'That is the opposite. Specialization means each place does one part well.', es: 'Eso es lo contrario. Especialización es que cada lugar haga bien una parte.', fa: 'این برعکس است. تخصص یعنی هر جا یک بخش را خوب انجام دهد.' } },
@@ -149,15 +138,10 @@ window.EPISODE = {
       role: { en: 'Crane operator at the port', es: 'Operador de grúa del puerto', fa: 'کارگر جرثقیل در بندر' },
       look: { skin: 1, hair: '#202020', shirt: '#e67e22', pants: '#2b3a55' },
       lines: [
-        { en: 'I lift [[container|containers]] onto ships with my crane. A container is a big steel box. It can go by ship, by train and by truck, and nobody has to open it on the way.',
-          es: 'Con mi grúa subo [[container|contenedores]] a los barcos. Un contenedor es una gran caja de acero. Puede ir en barco, en tren y en camión, y nadie tiene que abrirlo en el camino.',
-          fa: 'من با جرثقیلم [[container|کانتینرها]] را روی کشتی بالا می‌کنم. کانتینر یک صندوق بزرگ فولادی است. می‌تواند با کشتی، ریل و لاری برود، و کسی در راه آن را باز نمی‌کند.' },
-        { en: 'The biggest ships carry thousands of containers at once. A phone packed here may sail across the Pacific Ocean for weeks. Then it goes to a warehouse, then to a store, then to you.',
-          es: 'Los barcos más grandes llevan miles de contenedores a la vez. Un teléfono empacado aquí puede navegar por el océano Pacífico durante semanas. Luego va a un almacén, luego a una tienda y luego a ti.',
-          fa: 'بزرگ‌ترین کشتی‌ها هزاران کانتینر را یکجا می‌برند. مبایلی که اینجا بسته‌بندی می‌شود ممکن است هفته‌ها در بحر آرام سفر کند. بعد به گدام، بعد به دکان، بعد به دست تو می‌رسد.' },
-        { en: 'When one link breaks, the whole chain feels it. In 2021, many nearly finished cars sat waiting in parking lots. Why? One small chip was missing! Car prices went up far away, even for used cars in Virginia.',
-          es: 'Cuando se rompe un eslabón, toda la cadena lo siente. En 2021, muchos carros casi terminados esperaban en estacionamientos. ¿Por qué? ¡Faltaba un chip pequeño! Los precios de los carros subieron lejos de aquí, hasta los de carros usados en Virginia.',
-          fa: 'وقتی یک حلقه می‌شکند، تمام زنجیر آن را حس می‌کند. در سال ۲۰۲۱، بسیاری از موترهای تقریباً تکمیل‌شده در پارکینگ‌ها منتظر ماندند. چرا؟ یک چِپ کوچک کم بود! قیمت موترها در جاهای دور بالا رفت، حتی موترهای دست دوم در ویرجینیا.' }
+        { en: 'My crane lifts [[container|containers]]: steel boxes that go by ship, train and truck, unopened.', es: 'Mi grúa sube [[container|contenedores]]: cajas de acero que van en barco, tren y camión, sin abrirse.', fa: 'جرثقیل من [[container|کانتینرها]] را بالا می‌کند: صندوق‌های فولادی که بسته با کشتی، ریل و لاری می‌روند.' },
+        { en: 'The biggest ships carry thousands at once! A phone sails the Pacific for weeks.', es: '¡Los barcos más grandes llevan miles a la vez! Un teléfono navega por el Pacífico durante semanas.', fa: 'بزرگ‌ترین کشتی‌ها هزاران کانتینر را یکجا می‌برند! یک مبایل هفته‌ها در بحر آرام سفر می‌کند.' },
+        { en: 'Then a warehouse, a store, you. If one link breaks, the whole chain feels it.', es: 'Luego un almacén, una tienda y tú. Si se rompe un eslabón, toda la cadena lo siente.', fa: 'بعد گدام، دکان، و تو. اگر یک حلقه بشکند، تمام زنجیر آن را حس می‌کند.' },
+        { en: 'In 2021, nearly finished cars waited for one missing chip. Prices rose, even in Virginia!', es: 'En 2021, carros casi terminados esperaban por un chip que faltaba. ¡Los precios subieron, hasta en Virginia!', fa: 'در سال ۲۰۲۱، موترهای تقریباً تکمیل‌شده برای یک چِپ کم منتظر ماندند. قیمت‌ها بالا رفت، حتی در ویرجینیا!' }
       ],
       ask: {
         stat: 'mov',
@@ -175,9 +159,7 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 12, y: 6, text: { en: 'MINE · [[raw material|Raw materials]] start here. Metals like copper, lithium and cobalt come from mines in many countries, like Chile, Australia and the Democratic Republic of the Congo.',
-      es: 'MINA · Las [[raw material|materias primas]] empiezan aquí. Metales como el cobre, el litio y el cobalto vienen de minas en muchos países, como Chile, Australia y la República Democrática del Congo.',
-      fa: 'معدن · [[raw material|مواد خام]] از اینجا شروع می‌شوند. فلزهایی مثل مس، لیتیم و کوبالت از معدن‌های کشورهای زیاد می‌آیند، مثل چیلی، آسترالیا و جمهوری دموکراتیک کانگو.' } },
+    { x: 12, y: 6, text: { en: 'MINE · [[raw material|Raw materials]] start here. Copper, lithium and cobalt come from mines in Chile, Australia and the Congo.', es: 'MINA · Las [[raw material|materias primas]] empiezan aquí. El cobre, el litio y el cobalto vienen de minas en Chile, Australia y el Congo.', fa: 'معدن · [[raw material|مواد خام]] از اینجا شروع می‌شوند. مس، لیتیم و کوبالت از معدن‌های چیلی، آسترالیا و کانگو می‌آیند.' } },
     { x: 25, y: 14, text: { en: 'PORT · Ships, trains and trucks all carry the same [[container|containers]]. Goods change ride, but the box stays closed.',
       es: 'PUERTO · Barcos, trenes y camiones llevan los mismos [[container|contenedores]]. Los productos cambian de transporte, pero la caja sigue cerrada.',
       fa: 'بندر · کشتی، ریل و لاری همه همان [[container|کانتینرها]] را می‌برند. کالا وسیلهٔ سفر را عوض می‌کند، اما صندوق بسته می‌ماند.' } }
@@ -193,19 +175,11 @@ window.EPISODE = {
       role: { en: 'Retired miner', es: 'Minero jubilado', fa: 'کارگر متقاعد معدن' },
       look: { skin: 3, hair: '#cfc8bc', shirt: '#5b6e3a', pants: '#3a3226', hat: '#8a6a3a' },
       lines: [
-        { en: 'Hello, young traveler! My granddaughter moved to the big city by the port. I want a phone so I can call her.',
-          es: '¡Hola, joven viajero! Mi nieta se mudó a la gran ciudad junto al puerto. Quiero un teléfono para poder llamarla.',
-          fa: 'سلام، مسافر جوان! نواسه‌ام به شهر بزرگ کنار بندر رفت. یک مبایل می‌خواهم تا به او زنگ بزنم.' },
-        { en: 'But our mine town has no phone factory. Rizal, the train driver, knows every stop on the line. Please ask him!',
-          es: 'Pero nuestro pueblo minero no tiene fábrica de teléfonos. Rizal, el conductor del tren, conoce cada parada de la línea. ¡Pregúntale, por favor!',
-          fa: 'اما شهرک معدنی ما فابریکهٔ مبایل ندارد. ریزال، رانندهٔ ریل، هر ایستگاه این خط را می‌شناسد. لطفاً از او بپرس!' }
+        { en: 'Hello! My granddaughter lives in the port city. I want a phone to call her.', es: '¡Hola! Mi nieta vive en la ciudad del puerto. Quiero un teléfono para llamarla.', fa: 'سلام! نواسه‌ام در شهر بندری زندگی می‌کند. یک مبایل می‌خواهم تا به او زنگ بزنم.' },
+        { en: 'Our town has no phone factory. Rizal, the train driver, knows every stop. Ask him!', es: 'Nuestro pueblo no tiene fábrica de teléfonos. Rizal, el conductor del tren, conoce cada parada. ¡Pregúntale!', fa: 'شهرک ما فابریکهٔ مبایل ندارد. ریزال، رانندهٔ ریل، هر ایستگاه را می‌شناسد. از او بپرس!' }
       ],
-      wait: { en: 'Rizal is east of here. Follow the railway east until you see the chip factory fence.',
-        es: 'Rizal está al este de aquí. Sigue la vía del tren hacia el este hasta ver la cerca de la fábrica de chips.',
-        fa: 'ریزال در شرق اینجا است. خط ریل را به طرف شرق دنبال کن تا جنگلهٔ فابریکهٔ چِپ را ببینی.' },
-      thanks: { en: 'A phone! Now I can call my granddaughter. And copper from our own mine helped make it. Thank you!',
-        es: '¡Un teléfono! Ahora puedo llamar a mi nieta. Y el cobre de nuestra propia mina ayudó a hacerlo. ¡Gracias!',
-        fa: 'یک مبایل! حالا می‌توانم به نواسه‌ام زنگ بزنم. و مس معدن خود ما در ساختن آن کمک کرد. تشکر!' }
+      wait: { en: 'Rizal is east of here. Follow the railway east to the chip factory fence.', es: 'Rizal está al este. Sigue la vía del tren al este hasta la cerca de la fábrica de chips.', fa: 'ریزال در شرق اینجا است. خط ریل را به شرق دنبال کن تا جنگلهٔ فابریکهٔ چِپ.' },
+      thanks: { en: 'A phone! Now I can call my granddaughter. Copper from our mine helped make it!', es: '¡Un teléfono! Ahora puedo llamar a mi nieta. ¡El cobre de nuestra mina ayudó a hacerlo!', fa: 'یک مبایل! حالا می‌توانم به نواسه‌ام زنگ بزنم. مس معدن ما در ساختن آن کمک کرد!' }
     },
     contact: {
       x: 22, y: 10,
@@ -213,12 +187,9 @@ window.EPISODE = {
       role: { en: 'Train driver', es: 'Conductor del tren', fa: 'رانندهٔ ریل' },
       look: { skin: 4, hair: '#141010', shirt: '#2d5f9a', pants: '#2a2a2a', hat: '#2d5f9a' },
       lines: [
-        { en: 'My train carries copper from your mine to the factories. Each place makes what it does best and trades for the rest. That is [[specialization|specialization]].',
-          es: 'Mi tren lleva cobre de tu mina a las fábricas. Cada lugar hace lo que mejor sabe hacer y comercia para conseguir lo demás. Eso es [[specialization|especialización]].',
-          fa: 'ریل من مس را از معدن شما به فابریکه‌ها می‌برد. هر جا چیزی را می‌سازد که بهتر بلد است و باقی را با تجارت به دست می‌آورد. این [[specialization|تخصص]] است.' },
-        { en: 'Ms. Lan trades phones by the assembly factories in the south-west. Offer her what your mine town has plenty of!',
-          es: 'La Sra. Lan cambia teléfonos junto a las fábricas de ensamblaje del suroeste. ¡Ofrécele lo que tu pueblo minero tiene de sobra!',
-          fa: 'خانم لان کنار فابریکه‌های اسمبل در جنوب غرب مبایل تبادله می‌کند. به او چیزی را پیشنهاد کن که شهرک معدنی شما زیاد دارد!' }
+        { en: 'My train carries copper from your mine to the factories.', es: 'Mi tren lleva cobre de tu mina a las fábricas.', fa: 'ریل من مس را از معدن شما به فابریکه‌ها می‌برد.' },
+        { en: 'Each place makes what it does best and trades for the rest. That is [[specialization|specialization]].', es: 'Cada lugar hace lo que mejor sabe hacer y comercia por lo demás. Eso es [[specialization|especialización]].', fa: 'هر جا چیزی را می‌سازد که بهتر بلد است و باقی را با تجارت می‌گیرد. این [[specialization|تخصص]] است.' },
+        { en: 'Ms. Lan trades phones in the south-west. Bring her what your town has plenty of!', es: 'La Sra. Lan cambia teléfonos en el suroeste. ¡Llévale lo que tu pueblo tiene de sobra!', fa: 'خانم لان در جنوب غرب مبایل تبادله می‌کند. برایش چیزی ببر که شهرک شما زیاد دارد!' }
       ]
     },
     action: {
@@ -286,13 +257,13 @@ window.EPISODE = {
     win: { en: 'The knots come loose, and the ships sail again. Atlas page 7.3 floats into your hands!', es: 'Los nudos se sueltan y los barcos navegan otra vez. ¡La página 7.3 del atlas cae en tus manos!', fa: 'گره‌ها باز می‌شوند و کشتی‌ها دوباره حرکت می‌کنند. صفحهٔ ۷.۳ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What is a supply chain?', es: '¿Qué es una cadena de suministro?', fa: 'زنجیرهٔ تأمین چیست؟' },
-        choices: [{ en: 'All the steps and places needed to make and deliver a product', es: 'Todos los pasos y lugares para hacer y entregar un producto', fa: 'همهٔ قدم‌ها و جاهایی که برای ساختن و رساندن یک کالا لازم است' }, { en: 'A chain of stores owned by one company', es: 'Una cadena de tiendas de una sola empresa', fa: 'یک سلسله دکان که مال یک شرکت است' }, { en: 'A line of trucks waiting at a port', es: 'Una fila de camiones esperando en un puerto', fa: 'یک صف لاری که در بندر منتظر است' }, { en: 'The money a country earns from exports', es: 'El dinero que gana un país con sus exportaciones', fa: 'پولی که یک کشور از صادرات به دست می‌آورد' }], answer: 0,
+        choices: [{ en: 'Every step from the mine to your hand', es: 'Cada paso desde la mina hasta tu mano', fa: 'هر قدم از معدن تا دست تو' }, { en: 'A chain of stores owned by one company', es: 'Una cadena de tiendas de una sola empresa', fa: 'یک سلسله دکان که مال یک شرکت است' }, { en: 'A line of trucks waiting at a port', es: 'Una fila de camiones esperando en un puerto', fa: 'یک صف لاری که در بندر منتظر است' }, { en: 'The money a country earns from exports', es: 'El dinero que gana un país con sus exportaciones', fa: 'پولی که یک کشور از صادرات به دست می‌آورد' }], answer: 0,
         why: { en: 'From the mine to your hand, every step is a link in the supply chain.', es: 'Desde la mina hasta tu mano, cada paso es un eslabón de la cadena.', fa: 'از معدن تا دست تو، هر قدم یک حلقه در زنجیرهٔ تأمین است.' } },
       { q: { en: 'What is specialization?', es: '¿Qué es la especialización?', fa: 'تخصص چیست؟' },
-        choices: [{ en: 'When a place makes what it does best and trades for the rest', es: 'Cuando un lugar hace lo que mejor sabe hacer y comercia para lo demás', fa: 'وقتی یک جا چیزی را می‌سازد که بهتر بلد است و باقی را با تجارت می‌گیرد' }, { en: 'Making every part of a product inside one country', es: 'Hacer todas las piezas de un producto en un solo país', fa: 'ساختن همهٔ پرزه‌های یک کالا در یک کشور' }, { en: 'Selling a product for more than it cost', es: 'Vender un producto por más de lo que costó', fa: 'فروختن کالا به قیمتی بیشتر از مصرفش' }, { en: 'Training workers to do many different jobs', es: 'Entrenar trabajadores para muchos trabajos diferentes', fa: 'تربیه کردن کارگران برای کارهای مختلف زیاد' }], answer: 0,
+        choices: [{ en: 'Making what you do best and trading for the rest', es: 'Hacer lo que mejor sabes y comerciar por lo demás', fa: 'ساختن چیزی که بهتر بلدی و گرفتن باقی با تجارت' }, { en: 'Making every part of a product inside one country', es: 'Hacer todas las piezas de un producto en un solo país', fa: 'ساختن همهٔ پرزه‌های یک کالا در یک کشور' }, { en: 'Selling a product for more than it cost', es: 'Vender un producto por más de lo que costó', fa: 'فروختن کالا به قیمتی بیشتر از مصرفش' }, { en: 'Training workers to do many different jobs', es: 'Entrenar trabajadores para muchos trabajos diferentes', fa: 'تربیه کردن کارگران برای کارهای مختلف زیاد' }], answer: 0,
         why: { en: 'Each place focuses on its best step, then trades.', es: 'Cada lugar se enfoca en su mejor paso y luego comercia.', fa: 'هر جا روی بهترین قدم خود تمرکز می‌کند، بعد تجارت می‌کند.' } },
       { q: { en: 'What is a semiconductor?', es: '¿Qué es un semiconductor?', fa: 'نیمه‌هادی چیست؟' },
-        choices: [{ en: 'A tiny chip that controls electricity inside machines and devices', es: 'Un chip diminuto que controla la electricidad dentro de máquinas y aparatos', fa: 'یک چِپ کوچک که برق را در داخل ماشین‌ها و دستگاه‌ها کنترول می‌کند' }, { en: 'A ship that carries cars across the ocean', es: 'Un barco que lleva carros por el océano', fa: 'کشتی‌ای که موترها را از بحر می‌برد' }, { en: 'A steel box that moves goods by ship', es: 'Una caja de acero que lleva productos en barco', fa: 'یک صندوق فولادی که کالا را با کشتی می‌برد' }, { en: 'A factory that puts together finished phones', es: 'Una fábrica que arma teléfonos terminados', fa: 'فابریکه‌ای که مبایل‌های تکمیل‌شده را یکجا می‌کند' }], answer: 0,
+        choices: [{ en: 'A tiny chip that controls electricity', es: 'Un chip diminuto que controla la electricidad', fa: 'یک چِپ کوچک که برق را کنترول می‌کند' }, { en: 'A ship that carries cars across the ocean', es: 'Un barco que lleva carros por el océano', fa: 'کشتی‌ای که موترها را از بحر می‌برد' }, { en: 'A steel box that moves goods by ship', es: 'Una caja de acero que lleva productos en barco', fa: 'یک صندوق فولادی که کالا را با کشتی می‌برد' }, { en: 'A factory that puts together finished phones', es: 'Una fábrica que arma teléfonos terminados', fa: 'فابریکه‌ای که مبایل‌های تکمیل‌شده را یکجا می‌کند' }], answer: 0,
         why: { en: 'Semiconductors are the chips that let phones, cars and computers work.', es: 'Los semiconductores son los chips que hacen funcionar teléfonos, carros y computadoras.', fa: 'نیمه‌هادی‌ها چِپ‌هایی هستند که مبایل، موتر و کمپیوتر را به کار می‌اندازند.' } },
       { q: { en: 'Where are roughly nine in ten of the world\'s most advanced chips made?', es: '¿Dónde se hacen cerca de nueve de cada diez de los chips más avanzados del mundo?', fa: 'تقریباً نُه از هر ده چِپ پیشرفتهٔ جهان کجا ساخته می‌شود؟' },
         choices: [{ en: 'Taiwan', es: 'Taiwán', fa: 'تایوان' }, { en: 'Mongolia', es: 'Mongolia', fa: 'مغولستان' }, { en: 'Chile', es: 'Chile', fa: 'چیلی' }, { en: 'Canada', es: 'Canadá', fa: 'کانادا' }], answer: 0,
@@ -307,7 +278,7 @@ window.EPISODE = {
         choices: [{ en: 'One small chip was missing', es: 'Faltaba un chip pequeño', fa: 'یک چِپ کوچک کم بود' }, { en: 'Steel ran out around the world', es: 'Se acabó el acero en el mundo', fa: 'فولاد در دنیا تمام شد' }, { en: 'A storm closed every port', es: 'Una tormenta cerró todos los puertos', fa: 'طوفان همهٔ بندرها را بست' }, { en: 'Car buyers had stopped shopping', es: 'Los compradores dejaron de comprar', fa: 'خریداران دیگر خرید نمی‌کردند' }], answer: 0,
         why: { en: 'One missing link in a supply chain can stop a whole product.', es: 'Un eslabón que falta en la cadena puede detener todo un producto.', fa: 'یک حلقهٔ کم در زنجیرهٔ تأمین می‌تواند تمام یک کالا را ایستاد کند.' } },
       { q: { en: 'What is a shipping container?', es: '¿Qué es un contenedor de carga?', fa: 'کانتینر باربری چیست؟' },
-        choices: [{ en: 'A steel box that moves goods by ship, train and truck', es: 'Una caja de acero que lleva productos en barco, tren y camión', fa: 'یک صندوق فولادی که کالا را با کشتی، ریل و لاری می‌برد' }, { en: 'A tiny chip inside a phone', es: 'Un chip diminuto dentro de un teléfono', fa: 'یک چِپ کوچک در داخل مبایل' }, { en: 'A store that sells phones', es: 'Una tienda que vende teléfonos', fa: 'دکانی که مبایل می‌فروشد' }, { en: 'A mine for metals', es: 'Una mina de metales', fa: 'معدن فلز' }], answer: 0,
+        choices: [{ en: 'A steel box that moves goods by ship, train and truck', es: 'Una caja de acero que lleva productos en barco, tren y camión', fa: 'یک صندوق فولادی که کالا را با کشتی، ریل و لاری می‌برد' }, { en: 'A tiny chip that controls the electricity in a phone', es: 'Un chip diminuto que controla la electricidad de un teléfono', fa: 'یک چِپ کوچک که برق مبایل را کنترول می‌کند' }, { en: 'A store near the port that sells new phones', es: 'Una tienda junto al puerto que vende teléfonos', fa: 'دکانی کنار بندر که مبایل نو می‌فروشد' }, { en: 'A mine that digs copper and lithium from hills', es: 'Una mina que saca cobre y litio de las colinas', fa: 'معدنی که مس و لیتیم را از تپه‌ها می‌کَند' }], answer: 0,
         why: { en: 'The same box can ride a ship, a train and a truck without being opened.', es: 'La misma caja puede ir en barco, tren y camión sin abrirse.', fa: 'همان صندوق بدون باز شدن می‌تواند با کشتی، ریل و لاری برود.' } }
     ]
   },

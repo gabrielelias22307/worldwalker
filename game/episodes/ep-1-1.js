@@ -7,9 +7,8 @@ window.EPISODE = {
   title: { en: 'Intro to Maps', es: 'Introducción a los mapas', fa: 'آشنایی با نقشه‌ها' },
   place: { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
   intro: [
-    { en: 'Christopher: "The Grump blew through Mapmaker\'s Valley! Every sign is blurry and people are lost. Talk to the mapmaker, the captain and the teacher. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón pasó por el Valle del Cartógrafo! Todos los letreros están borrosos y la gente está perdida. Habla con la cartógrafa, la capitana y el maestro. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند. با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump blew through Mapmaker\'s Valley! Every sign is blurry and people are lost.', es: '¡El Gruñón pasó por el Valle del Cartógrafo! Los letreros están borrosos y la gente está perdida.', fa: 'غرغرو از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند.' },
+    { en: 'Talk to the mapmaker, the captain and the teacher. Then fix the compass stone.', es: 'Habla con la cartógrafa, la capitana y el maestro. Luego arregla la piedra de la brújula.', fa: 'با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md
@@ -46,12 +45,8 @@ window.EPISODE = {
       { en: 'Hi! I am Christopher, your living compass. My needle always knows which way is north.',
         es: '¡Hola! Soy Christopher, tu brújula viva. Mi aguja siempre sabe dónde está el norte.',
         fa: 'سلام! من کریستوفر هستم، قطب‌نمای زندهٔ تو. عقربه‌ام همیشه می‌داند شمال کجاست.' },
-      { en: 'I fly with you and point the way. Press C (or tap 🧭) any time, and I will tell you what to do next.',
-        es: 'Vuelo contigo y te señalo el camino. Pulsa C (o toca 🧭) cuando quieras y te diré qué hacer después.',
-        fa: 'من با تو پرواز می‌کنم و راه را نشان می‌دهم. هر وقت C را بزنی (یا 🧭 را لمس کنی)، می‌گویم بعد چه کنی.' },
-      { en: 'Stuck? I trade hints for coins. Your tool bar is below the map: 2 is the axe, 3 is the sickle. Let us go!',
-        es: '¿Atascado? Cambio pistas por monedas. Tu barra de herramientas está debajo del mapa: 2 es el hacha, 3 es la hoz. ¡Vamos!',
-        fa: 'گیر کردی؟ در برابر سکه کمک می‌دهم. ابزارهایت زیر نقشه است: ۲ تبر است، ۳ داس است. برویم!' }
+      { en: 'I fly with you. Press C (or tap 🧭) to ask me what to do next.', es: 'Vuelo contigo. Pulsa C (o toca 🧭) para preguntarme qué hacer después.', fa: 'من با تو پرواز می‌کنم. C را بزن (یا 🧭 را لمس کن) تا بگویم بعد چه کنی.' },
+      { en: 'Stuck? I trade hints for coins. Key 2 is the axe, key 3 the sickle.', es: '¿Atascado? Cambio pistas por monedas. La tecla 2 es el hacha, la 3 la hoz.', fa: 'گیر کردی؟ در برابر سکه کمک می‌دهم. دکمهٔ ۲ تبر است و ۳ داس.' }
     ]
   },
 
@@ -59,10 +54,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [13, 6], at: [11, 9], decor: 'feather',
       clue: { en: 'From this note, walk 3 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! On this map south is down and west is to the left. A feather was hiding in the grass.', es: '¡Seguiste las direcciones de la brújula! En este mapa el sur está abajo y el oeste a la izquierda. Una pluma estaba escondida en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! در این نقشه جنوب پایین و غرب طرف چپ است. یک پر در سبزه پنهان بود.' } },
+      text: { en: 'You followed compass directions! On this map, south is down and west is left. A feather was hiding here.', es: '¡Seguiste las direcciones de la brújula! En este mapa el sur está abajo y el oeste a la izquierda. Aquí había una pluma escondida.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! در این نقشه جنوب پایین و غرب طرف چپ است. یک پر این جا پنهان بود.' } },
     { clueAt: [5, 7], at: [23, 8], decor: 'shell',
-      clue: { en: 'Use the map key: blue is water and brown boards are a dock. Stand on the dock square that touches the river.', es: 'Usa la leyenda: el azul es agua y las tablas cafés son un muelle. Párate en el cuadro del muelle que toca el río.', fa: 'از راهنمای نقشه استفاده کن: آبی آب است و تخته‌های قهوه‌ای اسکله است. روی خانهٔ اسکله که به دریا می‌رسد بایست.' },
-      text: { en: 'You read the map key! Map symbols mean the same thing to everyone who reads the key. A sea shell was on the dock.', es: '¡Leíste la leyenda! Los símbolos del mapa significan lo mismo para todos los que leen la leyenda. Había una concha en el muelle.', fa: 'تو راهنمای نقشه را خواندی! نشانه‌های نقشه برای هر کسی که راهنما را بخواند یک معنا دارند. یک صدف روی اسکله بود.' } }
+      clue: { en: 'Use the map key: blue is water, brown boards are a dock. Stand on the dock square touching the river.', es: 'Usa la leyenda: el azul es agua y las tablas cafés son un muelle. Párate en el cuadro del muelle que toca el río.', fa: 'از راهنمای نقشه استفاده کن: آبی آب است و تخته‌های قهوه‌ای اسکله است. روی خانهٔ اسکله که به دریا می‌رسد بایست.' },
+      text: { en: 'You read the map key! Symbols mean the same thing to everyone. A shell was on the dock.', es: '¡Leíste la leyenda! Los símbolos significan lo mismo para todos. Había una concha en el muelle.', fa: 'تو راهنمای نقشه را خواندی! نشانه‌ها برای همه یک معنا دارند. یک صدف روی اسکله بود.' } }
   ],
 
   /* the tool bar: chop small trees and bushes for wood, cut tall grass for fiber (and sometimes seeds) */
@@ -120,12 +115,10 @@ window.EPISODE = {
       role: { en: 'Mapmaker', es: 'Cartógrafa', fa: 'نقشه‌کش' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#c0392b' },
       lines: [
-        { en: 'Welcome to Mapmaker\'s Valley! I draw maps for a living. But you carry a map that nobody printed: a [[mental map|mental map]]. It is the map of a place inside your own head.',
-          es: '¡Bienvenido al Valle del Cartógrafo! Yo dibujo mapas. Pero tú llevas un mapa que nadie imprimió: un [[mental map|mapa mental]]. Es el mapa de un lugar dentro de tu cabeza.',
-          fa: 'به درهٔ نقشه‌کش خوش آمدی! من نقشه می‌کشم. اما تو نقشه‌ای داری که کسی چاپ نکرده: یک [[mental map|نقشهٔ ذهنی]]. این نقشهٔ یک جا در ذهن خودت است.' },
-        { en: 'Your mental map is sharp where you go often, like your street and your school. It is blank where you have never been. Two friends in the same city will draw two different mental maps.',
-          es: 'Tu mapa mental es claro donde vas seguido, como tu calle y tu escuela. Está en blanco donde nunca has ido. Dos amigos de la misma ciudad dibujarán dos mapas mentales diferentes.',
-          fa: 'نقشهٔ ذهنی تو جایی که زیاد می‌روی، مثل کوچه و مکتبت، روشن است. جایی که هرگز نرفته‌ای خالی است. دو دوست در یک شهر دو نقشهٔ ذهنی متفاوت می‌کشند.' }
+        { en: 'Welcome! I draw maps. But you carry a map nobody printed: a [[mental map|mental map]].', es: '¡Bienvenido! Yo dibujo mapas. Pero tú llevas un mapa que nadie imprimió: un [[mental map|mapa mental]].', fa: 'خوش آمدی! من نقشه می‌کشم. اما تو نقشه‌ای داری که کسی چاپ نکرده: یک [[mental map|نقشهٔ ذهنی]].' },
+        { en: 'It is the map of a place that you keep in your head.', es: 'Es el mapa de un lugar que guardas en tu cabeza.', fa: 'این نقشهٔ یک جا است که در ذهن خود نگه می‌داری.' },
+        { en: 'It is sharp where you go often. It is blank where you have never been.', es: 'Es claro donde vas seguido. Está en blanco donde nunca has ido.', fa: 'جایی که زیاد می‌روی روشن است. جایی که هرگز نرفته‌ای خالی است.' },
+        { en: 'So two friends in the same city draw two different mental maps.', es: 'Por eso dos amigos de la misma ciudad dibujan dos mapas mentales diferentes.', fa: 'پس دو دوست در یک شهر دو نقشهٔ ذهنی متفاوت می‌کشند.' }
       ],
       ask: {
         stat: 'loc',
@@ -133,9 +126,9 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A map of a place that you keep in your head', es: 'Un mapa de un lugar que guardas en tu cabeza', fa: 'نقشهٔ یک جا که در ذهنت نگه می‌داری' },
             why: { en: 'Nobody printed it. You built it by moving around.', es: 'Nadie lo imprimió. Lo construiste al moverte.', fa: 'کسی آن را چاپ نکرده. خودت با رفت‌وآمد آن را ساختی.' } },
-          { t: { en: 'A map that shows only roads', es: 'Un mapa que muestra solo carreteras', fa: 'نقشه‌ای که فقط سرک‌ها را نشان می‌دهد' },
+          { t: { en: 'A printed map that shows only the main roads', es: 'Un mapa impreso que muestra solo las carreteras principales', fa: 'نقشهٔ چاپی که فقط سرک‌های عمده را نشان می‌دهد' },
             why: { en: 'A mental map can hold anything you remember, not only roads.', es: 'Un mapa mental puede tener todo lo que recuerdas, no solo carreteras.', fa: 'نقشهٔ ذهنی هر چیزی را که به یاد داری نگه می‌دارد، نه فقط سرک‌ها.' } },
-          { t: { en: 'A map made by a whole country', es: 'Un mapa hecho por todo un país', fa: 'نقشه‌ای که یک کشور کامل ساخته' },
+          { t: { en: 'A map that a whole country makes together', es: 'Un mapa que hace todo un país junto', fa: 'نقشه‌ای که یک کشور کامل با هم می‌سازد' },
             why: { en: 'A mental map belongs to one person.', es: 'Un mapa mental es de una sola persona.', fa: 'نقشهٔ ذهنی مال یک نفر است.' } }
         ]
       }
@@ -146,12 +139,10 @@ window.EPISODE = {
       role: { en: 'Boat captain', es: 'Capitana de barco', fa: 'کپتان کشتی' },
       look: { skin: 4, hair: '#1b1410', shirt: '#2f6fd6', pants: '#22324f' },
       lines: [
-        { en: 'In the middle of the ocean, I cannot say "turn left at the big tree"! Sailors use [[latitude|latitude]] and [[longitude|longitude]]. These lines make a grid around the whole Earth.',
-          es: '¡En medio del océano no puedo decir "gira a la izquierda en el árbol grande"! Los marineros usamos la [[latitude|latitud]] y la [[longitude|longitud]]. Estas líneas forman una cuadrícula alrededor de la Tierra.',
-          fa: 'در وسط بحر نمی‌توانم بگویم «کنار درخت بزرگ به چپ برو»! ملاحان از [[latitude|عرض جغرافیایی]] و [[longitude|طول جغرافیایی]] استفاده می‌کنند. این خط‌ها دور تمام زمین یک شبکه می‌سازند.' },
-        { en: 'A grid address like 40°N, 74°W is an [[absolute location|absolute location]]. It is exact and it does not change. "Next to the river" is a [[relative location|relative location]]. It tells where a place is by what is near it.',
-          es: 'Una dirección en la cuadrícula como 40°N, 74°O es una [[absolute location|ubicación absoluta]]. Es exacta y no cambia. "Junto al río" es una [[relative location|ubicación relativa]]. Dice dónde está un lugar por lo que tiene cerca.',
-          fa: 'آدرسی مثل ۴۰ درجه شمالی، ۷۴ درجه غربی یک [[absolute location|موقعیت مطلق]] است. دقیق است و تغییر نمی‌کند. «کنار دریا» یک [[relative location|موقعیت نسبی]] است. جای یک مکان را با چیزهای نزدیکش می‌گوید.' }
+        { en: 'At sea, I cannot say "turn left at the big tree"!', es: '¡En el mar no puedo decir "gira a la izquierda en el árbol grande"!', fa: 'در بحر نمی‌توانم بگویم «کنار درخت بزرگ به چپ برو»!' },
+        { en: 'Sailors use [[latitude|latitude]] and [[longitude|longitude]]: lines that make a grid around the Earth.', es: 'Los marineros usamos la [[latitude|latitud]] y la [[longitude|longitud]]: líneas que forman una cuadrícula alrededor de la Tierra.', fa: 'ملاحان از [[latitude|عرض جغرافیایی]] و [[longitude|طول جغرافیایی]] استفاده می‌کنند: خط‌هایی که دور زمین شبکه می‌سازند.' },
+        { en: '40°N, 74°W is an [[absolute location|absolute location]]. It is exact and does not change.', es: '40°N, 74°O es una [[absolute location|ubicación absoluta]]. Es exacta y no cambia.', fa: '۴۰ درجه شمالی، ۷۴ درجه غربی یک [[absolute location|موقعیت مطلق]] است. دقیق است و تغییر نمی‌کند.' },
+        { en: '"Next to the river" is a [[relative location|relative location]]. It tells what is near.', es: '"Junto al río" es una [[relative location|ubicación relativa]]. Dice qué hay cerca.', fa: '«کنار دریا» یک [[relative location|موقعیت نسبی]] است. می‌گوید چه چیزی نزدیک است.' }
       ],
       ask: {
         stat: 'loc',
@@ -172,22 +163,20 @@ window.EPISODE = {
       role: { en: 'Teacher at the valley school', es: 'Maestro de la escuela del valle', fa: 'معلم مکتب دره' },
       look: { skin: 1, hair: '#4a2c1a', shirt: '#3fa34d' },
       lines: [
-        { en: 'The Earth is round like a ball. A paper map is flat. You cannot flatten a ball without stretching it. The way a mapmaker flattens the Earth is called a [[projection|projection]].',
-          es: 'La Tierra es redonda como una pelota. Un mapa de papel es plano. No puedes aplanar una pelota sin estirarla. La forma en que un cartógrafo aplana la Tierra se llama [[projection|proyección]].',
-          fa: 'زمین مثل توپ گرد است. نقشهٔ کاغذی هموار است. نمی‌شود توپ را بدون کش کردن هموار کرد. روشی که نقشه‌کش زمین را هموار می‌کند [[projection|پروجکشن]] نام دارد.' },
-        { en: 'On many world maps, Greenland looks as big as Africa. It is not! Africa is about 14 times bigger. Every map is a choice. The mapmaker picks what goes in the middle, what gets a name, and what is left out.',
-          es: 'En muchos mapas del mundo, Groenlandia parece tan grande como África. ¡No lo es! África es unas 14 veces más grande. Cada mapa es una elección. El cartógrafo decide qué va en el centro, qué lleva nombre y qué se deja fuera.',
-          fa: 'در بسیاری از نقشه‌های جهان، گرینلند به بزرگی افریقا دیده می‌شود. اما نیست! افریقا حدود ۱۴ برابر بزرگ‌تر است. هر نقشه یک انتخاب است. نقشه‌کش انتخاب می‌کند چه چیز در وسط باشد، چه چیز نام بگیرد و چه چیز بیرون بماند.' }
+        { en: 'A paper map is flat. You cannot flatten the round Earth without stretching it.', es: 'Un mapa de papel es plano. No puedes aplanar la Tierra redonda sin estirarla.', fa: 'نقشهٔ کاغذی هموار است. نمی‌شود زمین گرد را بدون کش کردن هموار کرد.' },
+        { en: 'Flat maps stretch land near the poles. This way of flattening is a [[projection|projection]].', es: 'Los mapas planos estiran la tierra cerca de los polos. Esta forma de aplanar es una [[projection|proyección]].', fa: 'نقشه‌های هموار زمین نزدیک قطب‌ها را کش می‌کنند. این روش هموار کردن [[projection|پروجکشن]] است.' },
+        { en: 'On many maps, Greenland looks as big as Africa. But Africa is 14 times bigger!', es: 'En muchos mapas, Groenlandia parece tan grande como África. ¡Pero África es 14 veces más grande!', fa: 'در بسیاری از نقشه‌ها گرینلند به بزرگی افریقا دیده می‌شود. اما افریقا ۱۴ برابر بزرگ‌تر است!' },
+        { en: 'Every map is a choice. The mapmaker picks what goes in or stays out.', es: 'Cada mapa es una elección. El cartógrafo decide qué entra o queda fuera.', fa: 'هر نقشه یک انتخاب است. نقشه‌کش انتخاب می‌کند چه چیز داخل باشد یا بیرون بماند.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'Why does Greenland look too big on many flat world maps?', es: '¿Por qué Groenlandia se ve demasiado grande en muchos mapas planos?', fa: 'چرا گرینلند در بسیاری نقشه‌های هموار بیش از حد بزرگ دیده می‌شود؟' },
         choices: [
-          { ok: true, t: { en: 'Flattening the round Earth stretches land near the poles', es: 'Aplanar la Tierra redonda estira la tierra cerca de los polos', fa: 'هموار کردن زمین گرد، زمین‌های نزدیک قطب‌ها را کش می‌کند' },
+          { ok: true, t: { en: 'Flat maps stretch the land near the poles', es: 'Los mapas planos estiran la tierra cerca de los polos', fa: 'نقشه‌های هموار زمین نزدیک قطب‌ها را کش می‌کنند' },
             why: { en: 'The farther from the equator, the more many maps stretch the land.', es: 'Mientras más lejos del ecuador, más estiran la tierra muchos mapas.', fa: 'هر چه از خط استوا دورتر، بسیاری نقشه‌ها زمین را بیشتر کش می‌کنند.' } },
-          { t: { en: 'Greenland grew bigger in the last 100 years', es: 'Groenlandia creció en los últimos 100 años', fa: 'گرینلند در ۱۰۰ سال گذشته بزرگ‌تر شد' },
+          { t: { en: 'Greenland grew a lot bigger in the last 100 years', es: 'Groenlandia creció mucho en los últimos 100 años', fa: 'گرینلند در ۱۰۰ سال گذشته خیلی بزرگ‌تر شد' },
             why: { en: 'Land does not grow like that. The map stretches it.', es: 'La tierra no crece así. El mapa la estira.', fa: 'زمین این‌طور بزرگ نمی‌شود. نقشه آن را کش می‌کند.' } },
-          { t: { en: 'Mapmakers never measured Greenland', es: 'Los cartógrafos nunca midieron Groenlandia', fa: 'نقشه‌کش‌ها هرگز گرینلند را اندازه نکردند' },
+          { t: { en: 'Mapmakers never measured Greenland with real tools', es: 'Los cartógrafos nunca midieron Groenlandia con herramientas reales', fa: 'نقشه‌کش‌ها هرگز گرینلند را با وسایل درست اندازه نکردند' },
             why: { en: 'Greenland has been measured. The stretching comes from the flat map.', es: 'Groenlandia sí se midió. El estiramiento viene del mapa plano.', fa: 'گرینلند اندازه شده است. کش آمدن از نقشهٔ هموار است.' } }
         ]
       }
@@ -195,12 +184,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 6, y: 6, text: { en: 'MAP KEY · blue = water · green = grass and forest · brown = path · red and blue roofs = houses. A [[map key|map key]] tells you what each color and symbol means.',
-      es: 'LEYENDA · azul = agua · verde = pasto y bosque · café = camino · techos rojos y azules = casas. Una [[map key|leyenda]] dice qué significa cada color y símbolo.',
-      fa: 'راهنمای نقشه · آبی = آب · سبز = سبزه و جنگل · قهوه‌ای = راه · بام سرخ و آبی = خانه. [[map key|راهنمای نقشه]] معنای هر رنگ و نشانه را می‌گوید.' } },
-    { x: 18, y: 4, text: { en: 'COMPASS ROSE · North is up on this map. East is toward the river. A [[compass rose|compass rose]] shows the [[cardinal directions|cardinal directions]]: north, south, east and west.',
-      es: 'ROSA DE LOS VIENTOS · El norte está arriba en este mapa. El este está hacia el río. Una [[compass rose|rosa de los vientos]] muestra las [[cardinal directions|direcciones cardinales]]: norte, sur, este y oeste.',
-      fa: 'گل باد · در این نقشه شمال بالا است. شرق به طرف دریا است. [[compass rose|گل باد]] [[cardinal directions|جهت‌های اصلی]] را نشان می‌دهد: شمال، جنوب، شرق و غرب.' } }
+    { x: 6, y: 6, text: { en: 'MAP KEY · blue = water · green = grass, trees · brown = path · roofs = houses. A [[map key|map key]] explains colors and symbols.', es: 'LEYENDA · azul = agua · verde = pasto, árboles · café = camino · techos = casas. Una [[map key|leyenda]] explica colores y símbolos.', fa: 'راهنمای نقشه · آبی = آب · سبز = سبزه، درخت · قهوه‌ای = راه · بام = خانه. [[map key|راهنمای نقشه]] رنگ‌ها و نشانه‌ها را توضیح می‌دهد.' } },
+    { x: 18, y: 4, text: { en: 'COMPASS ROSE · North is up. East is toward the river. A [[compass rose|compass rose]] shows the [[cardinal directions|cardinal directions]].', es: 'ROSA DE LOS VIENTOS · El norte está arriba. El este está hacia el río. Una [[compass rose|rosa de los vientos]] muestra las [[cardinal directions|direcciones cardinales]].', fa: 'گل باد · شمال بالا است. شرق به طرف دریا است. [[compass rose|گل باد]] [[cardinal directions|جهت‌های اصلی]] را نشان می‌دهد.' } }
   ],
 
   /* the quest: Grandpa Tomas (gold !) -> Lena the shepherd -> find the compass by its relative location -> back to Tomas */
@@ -213,19 +198,13 @@ window.EPISODE = {
       role: { en: 'Village elder', es: 'Anciano del pueblo', fa: 'ریش‌سفید ده' },
       look: { skin: 3, hair: '#d8d4cc', shirt: '#8a5a2b', pants: '#3a3a3a' },
       lines: [
-        { en: 'Oh, traveler! The Grump\'s wind blew my old brass compass out of my window. My legs are too tired to look for it.',
-          es: '¡Ay, viajero! El viento del Gruñón sacó mi vieja brújula de latón por la ventana. Mis piernas están muy cansadas para buscarla.',
-          fa: 'آه، مسافر! باد غرغرو قطب‌نمای برنجی کهنه‌ام را از کلکین بیرون برد. پاهایم برای پالیدن آن خیلی خسته است.' },
-        { en: 'Lena the shepherd saw where it landed. She is in the south-west corner of the valley. Will you ask her?',
-          es: 'Lena, la pastora, vio dónde cayó. Está en la esquina suroeste del valle. ¿Le preguntas?',
-          fa: 'لینا، چوپان، دید که کجا افتاد. او در گوشهٔ جنوب غربی دره است. از او می‌پرسی؟' }
+        { en: 'Oh, traveler! The Grump\'s wind blew my old brass compass out my window.', es: '¡Ay, viajero! El viento del Gruñón sacó mi vieja brújula de latón por la ventana.', fa: 'آه، مسافر! باد غرغرو قطب‌نمای برنجی کهنه‌ام را از کلکین بیرون برد.' },
+        { en: 'My legs are too tired to look for it.', es: 'Mis piernas están muy cansadas para buscarla.', fa: 'پاهایم برای پالیدن آن خیلی خسته است.' },
+        { en: 'Lena the shepherd saw where it landed.', es: 'Lena, la pastora, vio dónde cayó.', fa: 'لینا، چوپان، دید که کجا افتاد.' },
+        { en: 'She is in the south-west corner of the valley. Will you ask her?', es: 'Está en la esquina suroeste del valle. ¿Le preguntas?', fa: 'او در گوشهٔ جنوب غربی دره است. از او می‌پرسی؟' }
       ],
-      wait: { en: 'Lena is in the south-west corner. On this map south is down and west is to the left.',
-        es: 'Lena está en la esquina suroeste. En este mapa el sur está abajo y el oeste a la izquierda.',
-        fa: 'لینا در گوشهٔ جنوب غربی است. در این نقشه جنوب پایین و غرب طرف چپ است.' },
-      thanks: { en: 'My compass! The needle still points north. Thank you! You found it just by following directions.',
-        es: '¡Mi brújula! La aguja todavía apunta al norte. ¡Gracias! La encontraste solo siguiendo direcciones.',
-        fa: 'قطب‌نمای من! عقربه‌اش هنوز به شمال نشان می‌دهد. تشکر! تو آن را فقط با دنبال کردن جهت‌ها پیدا کردی.' }
+      wait: { en: 'Lena is in the south-west corner: down and to the left on this map.', es: 'Lena está en la esquina suroeste: abajo y a la izquierda en este mapa.', fa: 'لینا در گوشهٔ جنوب غربی است: در این نقشه پایین و طرف چپ.' },
+      thanks: { en: 'My compass! The needle still points north. Thank you! You just followed directions.', es: '¡Mi brújula! La aguja todavía apunta al norte. ¡Gracias! Solo seguiste direcciones.', fa: 'قطب‌نمای من! عقربه‌اش هنوز به شمال است. تشکر! تو فقط جهت‌ها را دنبال کردی.' }
     },
     contact: {
       x: 6, y: 19,
@@ -233,21 +212,16 @@ window.EPISODE = {
       role: { en: 'Shepherd', es: 'Pastora', fa: 'چوپان' },
       look: { skin: 4, hair: '#1b1410', shirt: '#d98e2b', pants: '#4a3a2a', style: 'long' },
       lines: [
-        { en: 'Yes, I saw it fly! I do not know its exact numbers, so I will give you a [[relative location|relative location]]. I will tell you what it is near.',
-          es: '¡Sí, la vi volar! No sé sus números exactos, así que te daré una [[relative location|ubicación relativa]]. Te diré qué tiene cerca.',
-          fa: 'بله، دیدم که پرید! عددهای دقیقش را نمی‌دانم، پس یک [[relative location|موقعیت نسبی]] می‌گویم. می‌گویم نزدیک چه چیزی است.' },
-        { en: 'Cross the south bridge to the east side of the river. Then walk two steps south along the riverbank. Look for the shine!',
-          es: 'Cruza el puente del sur hacia el lado este del río. Luego camina dos pasos al sur por la orilla. ¡Busca el brillo!',
-          fa: 'از پل جنوبی به طرف شرق دریا برو. بعد دو قدم به جنوب در کنار دریا راه برو. دنبال برق آن بگرد!' }
+        { en: 'Yes, I saw it fly! I do not know its exact numbers.', es: '¡Sí, la vi volar! No sé sus números exactos.', fa: 'بله، دیدم که پرید! عددهای دقیقش را نمی‌دانم.' },
+        { en: 'So I will give you a [[relative location|relative location]]: what it is near.', es: 'Así que te daré una [[relative location|ubicación relativa]]: lo que tiene cerca.', fa: 'پس یک [[relative location|موقعیت نسبی]] می‌گویم: نزدیک چه چیزی است.' },
+        { en: 'Cross the south bridge, then go two steps south by the river. Find the shine!', es: 'Cruza el puente del sur y camina dos pasos al sur junto al río. ¡Busca el brillo!', fa: 'از پل جنوبی بگذر، بعد دو قدم به جنوب کنار دریا برو. برق آن را پیدا کن!' }
       ]
     },
     action: {
       type: 'find',
       at: [23, 18],
       hint: { en: 'east of the river, 2 steps south of the south bridge', es: 'al este del río, 2 pasos al sur del puente del sur', fa: 'شرق دریا، ۲ قدم جنوبِ پل جنوبی' },
-      found: { en: 'There it is, shining in the grass by the river! You followed a [[relative location|relative location]]: across the bridge, then south along the river.',
-        es: '¡Ahí está, brillando en el pasto junto al río! Seguiste una [[relative location|ubicación relativa]]: cruzar el puente y luego ir al sur por el río.',
-        fa: 'آنجاست، در سبزه کنار دریا برق می‌زند! تو یک [[relative location|موقعیت نسبی]] را دنبال کردی: از پل گذشتی، بعد به جنوب کنار دریا رفتی.' },
+      found: { en: 'There it is, shining by the river! You followed a [[relative location|relative location]]: over the bridge, then south.', es: '¡Ahí está, brillando junto al río! Seguiste una [[relative location|ubicación relativa]]: cruzar el puente y luego ir al sur.', fa: 'آنجاست، کنار دریا برق می‌زند! تو یک [[relative location|موقعیت نسبی]] را دنبال کردی: از پل گذشتی، بعد به جنوب رفتی.' },
       item: { icon: '🧭', name: { en: "Grandpa's compass", es: 'La brújula del abuelo', fa: 'قطب‌نمای پدرکلان' } }
     }
   },
@@ -305,7 +279,7 @@ window.EPISODE = {
         choices: [{ en: 'North', es: 'Norte', fa: 'شمال' }, { en: 'South', es: 'Sur', fa: 'جنوب' }, { en: 'East', es: 'Este', fa: 'شرق' }, { en: 'West', es: 'Oeste', fa: 'غرب' }], answer: 0,
         why: { en: 'Most maps put north at the top. The compass rose tells you for sure.', es: 'La mayoría de los mapas ponen el norte arriba. La rosa de los vientos lo confirma.', fa: 'بیشتر نقشه‌ها شمال را بالا می‌گذارند. گل باد آن را مطمئن نشان می‌دهد.' } },
       { q: { en: 'What tells you what the colors and symbols on a map mean?', es: '¿Qué te dice lo que significan los colores y símbolos de un mapa?', fa: 'چه چیز معنای رنگ‌ها و نشانه‌های نقشه را می‌گوید؟' },
-        choices: [{ en: 'The map key (legend)', es: 'La leyenda', fa: 'راهنمای نقشه' }, { en: 'The scale bar', es: 'La barra de escala', fa: 'خط مقیاس' }, { en: 'The title', es: 'El título', fa: 'عنوان' }, { en: 'The compass rose', es: 'La rosa de los vientos', fa: 'گل باد' }], answer: 0,
+        choices: [{ en: 'The map key (legend)', es: 'La leyenda', fa: 'راهنمای نقشه' }, { en: 'The scale bar', es: 'La barra de escala', fa: 'خط مقیاس' }, { en: 'The title at the top', es: 'El título de arriba', fa: 'عنوان بالای نقشه' }, { en: 'The compass rose', es: 'La rosa de los vientos', fa: 'گل باد' }], answer: 0,
         why: { en: 'The map key, also called the legend, explains each symbol and color.', es: 'La leyenda explica cada símbolo y color.', fa: 'راهنمای نقشه معنای هر نشانه و رنگ را توضیح می‌دهد.' } },
       { q: { en: 'Lines of latitude tell how far north or south you are from the ___.', es: 'Las líneas de latitud dicen qué tan al norte o al sur estás del ___.', fa: 'خط‌های عرض جغرافیایی نشان می‌دهند چقدر شمال یا جنوبِ ___ هستی.' },
         choices: [{ en: 'equator', es: 'ecuador', fa: 'خط استوا' }, { en: 'prime meridian', es: 'meridiano de Greenwich', fa: 'نصف‌النهار مبدأ' }, { en: 'North Pole', es: 'Polo Norte', fa: 'قطب شمال' }, { en: 'map key', es: 'leyenda', fa: 'راهنمای نقشه' }], answer: 0,
@@ -317,13 +291,13 @@ window.EPISODE = {
         choices: [{ en: 'Next to the train station', es: 'Junto a la estación de tren', fa: 'کنار ایستگاه قطار' }, { en: '38°N, 77°W', es: '38°N, 77°O', fa: '۳۸ درجه شمالی، ۷۷ درجه غربی' }, { en: '0° latitude, 0° longitude', es: '0° de latitud, 0° de longitud', fa: '۰ درجه عرض، ۰ درجه طول' }, { en: '1601 Main Street', es: 'Calle Main 1601', fa: 'سرک مین ۱۶۰۱' }], answer: 0,
         why: { en: '"Next to the train station" describes a place by what is near it.', es: '"Junto a la estación" describe un lugar por lo que tiene cerca.', fa: '«کنار ایستگاه قطار» جا را با چیز نزدیکش می‌گوید.' } },
       { q: { en: 'Why does every map leave some things out?', es: '¿Por qué todo mapa deja fuera algunas cosas?', fa: 'چرا هر نقشه بعضی چیزها را بیرون می‌گذارد؟' },
-        choices: [{ en: 'A map that showed everything would be too crowded to use', es: 'Un mapa que mostrara todo sería imposible de usar', fa: 'نقشه‌ای که همه چیز را نشان دهد آن‌قدر شلوغ است که به کار نمی‌آید' }, { en: 'Mapmakers run out of ink', es: 'A los cartógrafos se les acaba la tinta', fa: 'رنگ نقشه‌کش‌ها تمام می‌شود' }, { en: 'Some places have no shape', es: 'Algunos lugares no tienen forma', fa: 'بعضی جاها شکل ندارند' }, { en: 'A law says maps must be small', es: 'Una ley dice que los mapas deben ser pequeños', fa: 'قانون می‌گوید نقشه باید کوچک باشد' }], answer: 0,
+        choices: [{ en: 'A map of everything would be too crowded', es: 'Un mapa con todo estaría demasiado lleno', fa: 'نقشهٔ همه چیز خیلی شلوغ می‌شود' }, { en: 'Mapmakers always run out of ink and paper', es: 'A los cartógrafos siempre se les acaba la tinta y el papel', fa: 'رنگ و کاغذ نقشه‌کش‌ها همیشه تمام می‌شود' }, { en: 'Some places have no shape', es: 'Algunos lugares no tienen forma', fa: 'بعضی جاها شکل ندارند' }, { en: 'A law says maps must be small', es: 'Una ley dice que los mapas deben ser pequeños', fa: 'قانون می‌گوید نقشه باید کوچک باشد' }], answer: 0,
         why: { en: 'The mapmaker chooses what matters for the map\'s job and leaves the rest out.', es: 'El cartógrafo elige lo que importa para el mapa y deja fuera el resto.', fa: 'نقشه‌کش آنچه برای کار نقشه مهم است را انتخاب می‌کند و باقی را بیرون می‌گذارد.' } },
       { q: { en: 'Two friends in the same city draw very different mental maps. What is the most likely reason?', es: 'Dos amigos de la misma ciudad dibujan mapas mentales muy diferentes. ¿Cuál es la razón más probable?', fa: 'دو دوست در یک شهر نقشه‌های ذهنی بسیار متفاوت می‌کشند. محتمل‌ترین دلیل چیست؟' },
-        choices: [{ en: 'They spend time in different parts of the city', es: 'Pasan tiempo en partes diferentes de la ciudad', fa: 'آن‌ها در بخش‌های مختلف شهر وقت می‌گذرانند' }, { en: 'One of them drew it wrong', es: 'Uno de ellos lo dibujó mal', fa: 'یکی از آن‌ها اشتباه کشید' }, { en: 'Mental maps change every day', es: 'Los mapas mentales cambian cada día', fa: 'نقشه‌های ذهنی هر روز تغییر می‌کنند' }, { en: 'One copied a printed map', es: 'Uno copió un mapa impreso', fa: 'یکی از نقشهٔ چاپی کاپی کرد' }], answer: 0,
+        choices: [{ en: 'They go to different parts of the city', es: 'Van a partes diferentes de la ciudad', fa: 'آن‌ها به بخش‌های مختلف شهر می‌روند' }, { en: 'One of them drew it wrong', es: 'Uno de ellos lo dibujó mal', fa: 'یکی از آن‌ها اشتباه کشید' }, { en: 'Mental maps change completely every single day', es: 'Los mapas mentales cambian por completo cada día', fa: 'نقشه‌های ذهنی هر روز کاملاً تغییر می‌کنند' }, { en: 'One of them copied a printed map of the city', es: 'Uno de ellos copió un mapa impreso de la ciudad', fa: 'یکی از آن‌ها از نقشهٔ چاپی شهر کاپی کرد' }], answer: 0,
         why: { en: 'Each person draws the city they actually use. Neither map is wrong.', es: 'Cada persona dibuja la ciudad que usa. Ningún mapa está mal.', fa: 'هر کس شهری را می‌کشد که خودش استفاده می‌کند. هیچ کدام غلط نیست.' } },
       { q: { en: 'Why do flat maps stretch some places?', es: '¿Por qué los mapas planos estiran algunos lugares?', fa: 'چرا نقشه‌های هموار بعضی جاها را کش می‌کنند؟' },
-        choices: [{ en: 'A round Earth cannot lie flat without stretching', es: 'Una Tierra redonda no puede quedar plana sin estirarse', fa: 'زمین گرد بدون کش آمدن هموار نمی‌شود' }, { en: 'Printers make mistakes', es: 'Las impresoras se equivocan', fa: 'چاپگرها اشتباه می‌کنند' }, { en: 'The poles keep moving', es: 'Los polos se mueven', fa: 'قطب‌ها حرکت می‌کنند' }, { en: 'Paper shrinks after printing', es: 'El papel se encoge al imprimir', fa: 'کاغذ بعد از چاپ جمع می‌شود' }], answer: 0,
+        choices: [{ en: 'A ball cannot lie flat without stretching', es: 'Una pelota no puede quedar plana sin estirarse', fa: 'توپ بدون کش آمدن هموار نمی‌شود' }, { en: 'Printers make mistakes on every map they print', es: 'Las impresoras se equivocan en cada mapa', fa: 'چاپگرها در هر نقشه اشتباه می‌کنند' }, { en: 'The poles keep moving', es: 'Los polos se mueven', fa: 'قطب‌ها حرکت می‌کنند' }, { en: 'Paper shrinks a little after it is printed', es: 'El papel se encoge un poco después de imprimir', fa: 'کاغذ بعد از چاپ کمی جمع می‌شود' }], answer: 0,
         why: { en: 'Every flat map has to stretch the round Earth somewhere. That is a projection.', es: 'Todo mapa plano tiene que estirar la Tierra en algún lugar. Eso es una proyección.', fa: 'هر نقشهٔ هموار باید زمین گرد را جایی کش کند. این همان پروجکشن است.' } }
     ]
   },

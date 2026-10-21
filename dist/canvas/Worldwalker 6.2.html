@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,8 @@ sol: 'WG.9',
 title: { en: 'Southeast Asia: Islands and the Ring of Fire', es: 'Sudeste asiático: islas y el Cinturón de Fuego', fa: 'جنوب شرق آسیا: جزیره‌ها و حلقهٔ آتش' },
 place: { en: 'The Mekong and the Islands', es: 'El Mekong y las islas', fa: 'میکانگ و جزیره‌ها' },
 intro: [
-{ en: 'Christopher: "The Quake Grump is shaking the islands apart! Talk to the boat seller, the rice farmer and the volcano watcher. Then fix the compass stone on the little island."',
-es: 'Christopher: "¡El Gruñón Temblor está sacudiendo las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán. Luego arregla la piedra de la brújula en la islita."',
-fa: 'کریستوفر: «غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن. بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.»' }
+{ en: 'The Quake Grump shakes the islands! Meet the boat seller, rice farmer and volcano watcher.', es: '¡El Gruñón Temblor sacude las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán.', fa: 'غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن.' },
+{ en: 'Then fix the compass stone on the little island.', es: 'Luego arregla la piedra de la brújula en la islita.', fa: 'بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.' }
 ],
 map: [
 'jjjjjjj~~jjjjj~~================',
@@ -5377,10 +5497,10 @@ fa: 'خانهٔ نو امن است، دور از آتشفشان. میلیون‌
 finds: [
 { clueAt: [2, 9], at: [6, 8], decor: 'drum',
 clue: { en: 'From this note, walk 1 step north, then 4 steps east. You will reach the bank of the Mekong River.', es: 'Desde esta nota, camina 1 paso al norte y luego 4 pasos al este. Llegarás a la orilla del río Mekong.', fa: 'از این یادداشت، ۱ قدم به شمال برو، بعد ۴ قدم به شرق. به کنار دریای میکانگ می‌رسی.' },
-text: { en: 'You followed the compass to the Mekong! North is up and east is to the right. More than 2,000 years ago, people in what is now Vietnam made big bronze drums. A small drum was hidden in the grass.', es: '¡Seguiste la brújula hasta el Mekong! El norte está arriba y el este a la derecha. Hace más de 2,000 años, la gente de lo que hoy es Vietnam hacía grandes tambores de bronce. Un tambor pequeño estaba escondido en el pasto.', fa: 'تو قطب‌نما را تا میکانگ دنبال کردی! شمال بالا و شرق طرف راست است. بیش از ۲۰۰۰ سال پیش، مردم در جایی که امروز ویتنام است دهل‌های بزرگ برنجی می‌ساختند. یک دهل کوچک در سبزه پنهان بود.' } },
+text: { en: 'You followed the compass! Over 2,000 years ago, people in Vietnam made bronze drums like this one.', es: '¡Seguiste la brújula! Hace más de 2,000 años, la gente de Vietnam hacía tambores de bronce como este.', fa: 'تو قطب‌نما را دنبال کردی! بیش از ۲۰۰۰ سال پیش، مردم ویتنام دهل‌های برنجی مثل این می‌ساختند.' } },
 { clueAt: [2, 12], at: [6, 15], decor: 'gem',
-clue: { en: 'Farmers grow rice on terraces on the slopes of the volcano. Find the volcano on this island. Stand on the terrace square straight south of its peak, right below the mountain.', es: 'Los agricultores cultivan arroz en terrazas en las laderas del volcán. Busca el volcán de esta isla. Párate en el cuadro de terraza que está justo al sur de su cima, debajo de la montaña.', fa: 'دهقانان روی زمین‌های زینه‌ای در دامنهٔ آتشفشان برنج می‌کارند. آتشفشان این جزیره را پیدا کن. روی خانهٔ زینه‌ای بایست که درست جنوبِ قلهٔ آن، زیر کوه است.' },
-text: { en: 'You found the terrace right below the peak! Ash from volcanoes makes the soil rich, so farmers on Java grow rice on the slopes, step by step. A shiny stone from the volcano was in the rice.', es: '¡Encontraste la terraza justo debajo de la cima! La ceniza de los volcanes hace que la tierra sea rica, por eso los agricultores de Java cultivan arroz en las laderas, escalón por escalón. Una piedra brillante del volcán estaba en el arroz.', fa: 'تو زمین زینه‌ای درست زیر قله را پیدا کردی! خاکستر آتشفشان خاک را حاصل‌خیز می‌کند، پس دهقانان جاوه زینه به زینه در دامنه‌ها برنج می‌کارند. یک سنگ براق آتشفشان در برنج بود.' } }
+clue: { en: 'Farmers grow rice on the volcano\'s slopes. Stand on the terrace square straight south of its peak.', es: 'Los agricultores cultivan arroz en las laderas del volcán. Párate en el cuadro de terraza justo al sur de su cima.', fa: 'دهقانان در دامنهٔ آتشفشان برنج می‌کارند. روی خانهٔ زینه‌ای بایست که درست جنوبِ قلهٔ آن است.' },
+text: { en: 'Volcanic ash makes rich soil, so Java\'s farmers grow rice on the slopes. A shiny volcano stone was here!', es: 'La ceniza volcánica da suelo rico, por eso los agricultores de Java cultivan arroz en las laderas. ¡Aquí había una piedra brillante del volcán!', fa: 'خاکستر آتشفشان خاک پربار می‌سازد، پس دهقانان جاوه در دامنه‌ها برنج می‌کارند. یک سنگ براق آتشفشان این‌جا بود!' } }
 ],
 secret: { tool: 'canoe', at: [28, 2],
 text: { en: 'The canoe found the tiny island! Indonesia has more active volcanoes than any other country, about 130 of them.',
@@ -5402,15 +5522,10 @@ name: { en: 'Linh', es: 'Linh', fa: 'لین' },
 role: { en: 'Boat seller on the Mekong', es: 'Vendedora en bote del Mekong', fa: 'فروشندهٔ قایقی در میکانگ' },
 look: { skin: 1, hair: '#14100c', shirt: '#d8c040', pants: '#2a4a3a' },
 lines: [
-{ en: 'Xin chào! I sell fruit from my boat on the Mekong River. The Mekong is the longest river in Mainland Southeast Asia. It starts in the mountains of China and reaches the sea in Vietnam.',
-es: '¡Xin chào! Vendo fruta desde mi bote en el río Mekong. El Mekong es el río más largo del sudeste asiático continental. Nace en las montañas de China y llega al mar en Vietnam.',
-fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم. میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از کوه‌های چین شروع می‌شود و در ویتنام به بحر می‌رسد.' },
-{ en: 'Southeast Asia has two parts. [[mainland southeast asia|Mainland Southeast Asia]] is joined to the rest of Asia. It has five countries: Myanmar, Thailand, Laos, Cambodia and Vietnam.',
-es: 'El sudeste asiático tiene dos partes. El [[mainland southeast asia|sudeste asiático continental]] está unido al resto de Asia. Tiene cinco países: Myanmar, Tailandia, Laos, Camboya y Vietnam.',
-fa: 'جنوب شرق آسیا دو بخش دارد. [[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به باقی آسیا وصل است. پنج کشور دارد: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' },
-{ en: 'The other part is out in the sea: [[maritime southeast asia|Island (Maritime) Southeast Asia]]. Walk east on the wooden walkway, or south over the long bridge. You will see how much water lies between the islands!',
-es: 'La otra parte está en el mar: el [[maritime southeast asia|sudeste asiático insular (marítimo)]]. Camina al este por la pasarela de madera o al sur por el puente largo. ¡Verás cuánta agua hay entre las islas!',
-fa: 'بخش دیگر در بحر است: [[maritime southeast asia|جنوب شرق آسیای جزیره‌ای (بحری)]]. از راه چوبی به طرف شرق یا از پل دراز به طرف جنوب برو. می‌بینی میان جزیره‌ها چقدر آب است!' }
+{ en: 'Xin chào! I sell fruit from my boat on the Mekong River.', es: '¡Xin chào! Vendo fruta desde mi bote en el río Mekong.', fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم.' },
+{ en: 'It is the longest river in Mainland Southeast Asia. It runs from China to Vietnam.', es: 'Es el río más largo del sudeste asiático continental. Va desde China hasta Vietnam.', fa: 'میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از چین تا ویتنام می‌رود.' },
+{ en: '[[mainland southeast asia|Mainland Southeast Asia]] is joined to Asia: Myanmar, Thailand, Laos, Cambodia and Vietnam.', es: 'El [[mainland southeast asia|sudeste asiático continental]] está unido a Asia: Myanmar, Tailandia, Laos, Camboya y Vietnam.', fa: '[[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به آسیا وصل است: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' },
+{ en: '[[maritime southeast asia|Maritime (Island) Southeast Asia]] is in the sea. Walk east, or cross the bridge south!', es: 'El [[maritime southeast asia|sudeste asiático marítimo (insular)]] está en el mar. ¡Camina al este o cruza el puente al sur!', fa: '[[maritime southeast asia|جنوب شرق آسیای بحری (جزیره‌ای)]] در بحر است. به طرف شرق برو، یا از پل به طرف جنوب!' }
 ],
 ask: {
 stat: 'loc',
@@ -5432,25 +5547,20 @@ role: { en: 'Rice farmer on Java', es: 'Agricultora de arroz en Java', fa: 'ده
 remember: { ep: '6.1', t: { en: 'Hello! My friend Lakshmi grows rice by the Ganges. She wrote to me that you found Nani Kamala\'s rain gauge in the river. Now the farmers know when the monsoon rain comes. Thank you!', es: '¡Hola! Mi amiga Lakshmi cultiva arroz junto al Ganges. Me escribió que encontraste el pluviómetro de la abuela Kamala en el río. Ahora los agricultores saben cuándo llega la lluvia del monzón. ¡Gracias!', fa: 'سلام! دوستم لکشمی کنار گنگا برنج می‌کارد. او برایم نوشت که تو باران‌سنج مادرکلان کمالا را در دریا پیدا کردی. حالا دهقانان می‌دانند باران موسمی کی می‌آید. تشکر!' } },
 look: { skin: 3, hair: '#120e0a', shirt: '#3a9a5a', pants: '#6a3a2a', robe: true },
 lines: [
-{ en: 'Selamat datang! Welcome to Java, one island of Indonesia. Indonesia has more than seventeen thousand islands! A big group of islands like this is an [[archipelago|archipelago]].',
-es: '¡Selamat datang! Bienvenido a Java, una isla de Indonesia. ¡Indonesia tiene más de diecisiete mil islas! Un grupo grande de islas como este es un [[archipelago|archipiélago]].',
-fa: 'سلامت داتانگ! به جاوه، یکی از جزیره‌های اندونیزیا، خوش آمدی. اندونیزیا بیش از هفده هزار جزیره دارد! گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.' },
-{ en: 'See the volcano above my farm? Its ash fell on this land long ago. Over many years, ash breaks down into [[fertile|fertile]] soil. It is full of the minerals plants need.',
-es: '¿Ves el volcán arriba de mi granja? Su ceniza cayó sobre esta tierra hace mucho. Con muchos años, la ceniza se convierte en suelo [[fertile|fértil]]. Está lleno de los minerales que necesitan las plantas.',
-fa: 'آتشفشان بالای کشتزار مرا می‌بینی؟ خاکسترش مدت‌ها پیش روی این زمین ریخت. در طول سال‌ها، خاکستر به خاک [[fertile|حاصلخیز]] تبدیل می‌شود. پر از موادی است که گیاه لازم دارد.' },
-{ en: 'We cut [[terrace|terraces]] into the steep slopes, like giant steps. Each step holds water, so rice can grow on the mountain. This rich soil helps feed one of the most crowded places on Earth.',
-es: 'Cortamos [[terrace|terrazas]] en las laderas empinadas, como escalones gigantes. Cada escalón guarda agua, así que el arroz puede crecer en la montaña. Este suelo rico ayuda a alimentar a uno de los lugares más poblados del planeta.',
-fa: 'ما در دامنه‌های سرازیر [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ. هر زینه آب را نگه می‌دارد، پس برنج روی کوه می‌روید. این خاک پربار کمک می‌کند یکی از پرجمعیت‌ترین جاهای زمین نان بخورد.' }
+{ en: 'Selamat datang! Welcome to Java, an island of Indonesia.', es: '¡Selamat datang! Bienvenido a Java, una isla de Indonesia.', fa: 'سلامت داتانگ! به جاوه، یک جزیرهٔ اندونیزیا، خوش آمدی.' },
+{ en: 'Indonesia has more than 17,000 islands. A big group like this is an [[archipelago|archipelago]].', es: 'Indonesia tiene más de 17,000 islas. Un grupo grande así es un [[archipelago|archipiélago]].', fa: 'اندونیزیا بیش از ۱۷۰۰۰ جزیره دارد. گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.' },
+{ en: 'Ash from the volcano above my farm makes [[fertile|fertile]] soil, full of minerals for plants.', es: 'La ceniza del volcán arriba de mi granja hace un suelo [[fertile|fértil]], lleno de minerales para las plantas.', fa: 'خاکستر آتشفشان بالای کشتزارم خاک را [[fertile|حاصلخیز]] می‌کند، پر از موادی که گیاه لازم دارد.' },
+{ en: 'We cut [[terrace|terraces]], like giant steps that hold water. Rice grows here and feeds millions.', es: 'Cortamos [[terrace|terrazas]], como escalones gigantes que guardan agua. Aquí crece arroz que alimenta a millones.', fa: 'ما [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ که آب را نگه می‌دارند. برنج این‌جا میلیون‌ها نفر را نان می‌دهد.' }
 ],
 ask: {
 stat: 'hei',
-q: { en: 'Java sits on the Ring of Fire, and it is very crowded. Why do so many people farm there?', es: 'Java está en el Cinturón de Fuego y tiene muchísima gente. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه روی حلقهٔ آتش است و بسیار پرجمعیت است. چرا این‌قدر مردم آن‌جا کشاورزی می‌کنند؟' },
+q: { en: 'Java is on the Ring of Fire, and very crowded. Why do so many people farm there?', es: 'Java está en el Cinturón de Fuego y tiene muchísima gente. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه روی حلقهٔ آتش است و بسیار پرجمعیت است. چرا این‌قدر مردم آن‌جا کشت می‌کنند؟' },
 choices: [
-{ ok: true, t: { en: 'Volcanic ash makes the soil rich, so farms grow a lot of food', es: 'La ceniza volcánica hace rico el suelo, así que las granjas producen mucha comida', fa: 'خاکستر آتشفشان خاک را پربار می‌کند، پس کشتزارها غذای زیاد می‌دهند' },
+{ ok: true, t: { en: 'Volcanic ash makes the soil rich for growing food', es: 'La ceniza volcánica hace el suelo rico para cultivar comida', fa: 'خاکستر آتشفشان خاک را برای کشت غذا پربار می‌کند' },
 why: { en: 'Right. People weigh the danger against the good soil.', es: 'Correcto. La gente compara el peligro con el buen suelo.', fa: 'درست است. مردم خطر را با خاک خوب مقایسه می‌کنند.' } },
 { t: { en: 'The island has no volcanoes and no earthquakes', es: 'La isla no tiene volcanes ni terremotos', fa: 'جزیره هیچ آتشفشان و زلزله ندارد' },
 why: { en: 'Java has many volcanoes. It sits right on the Ring of Fire.', es: 'Java tiene muchos volcanes. Está justo en el Cinturón de Fuego.', fa: 'جاوه آتشفشان‌های زیادی دارد. درست روی حلقهٔ آتش است.' } },
-{ t: { en: 'Volcano soil is poor, so land is cheap', es: 'El suelo del volcán es pobre, así que la tierra es barata', fa: 'خاک آتشفشان ضعیف است، پس زمین ارزان است' },
+{ t: { en: 'Volcano soil is poor, so the land there is very cheap', es: 'El suelo del volcán es pobre, así que la tierra ahí es muy barata', fa: 'خاک آتشفشان ضعیف است، پس زمین آن‌جا بسیار ارزان است' },
 why: { en: 'It is the opposite: volcanic soil is very fertile.', es: 'Es al revés: el suelo volcánico es muy fértil.', fa: 'برعکس است: خاک آتشفشانی بسیار حاصلخیز است.' } }
 ]
 }
@@ -5461,15 +5571,10 @@ name: { en: 'Ramon', es: 'Ramón', fa: 'رامون' },
 role: { en: 'Volcano watcher in the Philippines', es: 'Vigilante de volcanes en Filipinas', fa: 'نگهبان آتشفشان در فیلیپین' },
 look: { skin: 2, hair: '#1c1612', shirt: '#e05a2a', pants: '#24304a' },
 lines: [
-{ en: 'Mabuhay! I watch this volcano for a living. The Philippines has more than seven thousand islands. We sit on the [[ring of fire|Ring of Fire]], a band around the edge of the Pacific Ocean.',
-es: '¡Mabuhay! Mi trabajo es vigilar este volcán. Filipinas tiene más de siete mil islas. Estamos en el [[ring of fire|Cinturón de Fuego]], una franja alrededor del borde del océano Pacífico.',
-fa: 'مابوهای! کار من نگهبانی همین آتشفشان است. فیلیپین بیش از هفت هزار جزیره دارد. ما روی [[ring of fire|حلقهٔ آتش]] هستیم، کمربندی دور کنارهٔ اقیانوس آرام.' },
-{ en: 'The Earth\'s outer shell is broken into huge [[plate|plates]], like a cracked eggshell. Along the Ring of Fire, plates meet and grind. That shakes the ground with earthquakes and lets melted rock rise up into volcanoes.',
-es: 'La capa exterior de la Tierra está rota en enormes [[plate|placas]], como una cáscara de huevo rajada. En el Cinturón de Fuego, las placas se encuentran y se rozan. Eso sacude el suelo con terremotos y deja subir roca derretida a los volcanes.',
-fa: 'پوستهٔ بیرونی زمین به [[plate|صفحه‌های]] بزرگ شکسته است، مثل پوست تخم‌مرغ کفیده. در حلقهٔ آتش، صفحه‌ها به هم می‌رسند و به هم ساییده می‌شوند. این کار زمین را با زلزله تکان می‌دهد و سنگ ذوب‌شده را به آتشفشان‌ها بالا می‌آورد.' },
-{ en: 'We cannot stop the danger, but we can make it smaller. Sensors watch the volcano day and night. Warnings move people out before an eruption, and drills teach children where to go.',
-es: 'No podemos detener el peligro, pero sí hacerlo más pequeño. Unos sensores vigilan el volcán día y noche. Las alertas sacan a la gente antes de una erupción, y los simulacros enseñan a los niños adónde ir.',
-fa: 'ما نمی‌توانیم خطر را متوقف کنیم، اما می‌توانیم آن را کوچک‌تر کنیم. دستگاه‌ها شب و روز آتشفشان را می‌پایند. هشدارها مردم را پیش از فوران بیرون می‌برند و تمرین‌ها به کودکان یاد می‌دهند کجا بروند.' }
+{ en: 'Mabuhay! I watch this volcano. The Philippines has more than 7,000 islands.', es: '¡Mabuhay! Yo vigilo este volcán. Filipinas tiene más de 7,000 islas.', fa: 'مابوهای! من این آتشفشان را نگهبانی می‌کنم. فیلیپین بیش از ۷۰۰۰ جزیره دارد.' },
+{ en: 'We are on the [[ring of fire|Ring of Fire]]. It circles the edge of the Pacific Ocean.', es: 'Estamos en el [[ring of fire|Cinturón de Fuego]]. Rodea el borde del océano Pacífico.', fa: 'ما روی [[ring of fire|حلقهٔ آتش]] هستیم. این حلقه دور کنارهٔ اقیانوس آرام است.' },
+{ en: 'Earth\'s shell is broken into huge [[plate|plates]]. Where they grind, we get earthquakes and volcanoes.', es: 'La capa de la Tierra está rota en enormes [[plate|placas]]. Donde se rozan, hay terremotos y volcanes.', fa: 'پوستهٔ زمین به [[plate|صفحه‌های]] بزرگ شکسته است. جایی که به هم ساییده می‌شوند، زلزله و آتشفشان است.' },
+{ en: 'Sensors watch day and night. Before an eruption, warnings and drills show where to go.', es: 'Unos sensores vigilan día y noche. Antes de una erupción, las alertas y los simulacros muestran adónde ir.', fa: 'دستگاه‌ها شب و روز می‌پایند. پیش از فوران، هشدارها و تمرین‌ها نشان می‌دهند کجا بروند.' }
 ],
 ask: {
 stat: 'pla',
@@ -5486,9 +5591,7 @@ why: { en: 'The Ring of Fire is a band around the Pacific Ocean.', es: 'El Cintu
 }
 ],
 signs: [
-{ x: 12, y: 8, text: { en: 'SEA ROUTE · Ships carry rice, rubber and palm oil from Southeast Asia. Many pass through the Strait of Malacca, a narrow sea path near Singapore that links the Indian Ocean and the Pacific Ocean.',
-es: 'RUTA DEL MAR · Los barcos llevan arroz, caucho y aceite de palma del sudeste asiático. Muchos pasan por el estrecho de Malaca, un paso de mar angosto cerca de Singapur que une el océano Índico y el océano Pacífico.',
-fa: 'راه بحری · کشتی‌ها برنج، رابر و روغن نخل را از جنوب شرق آسیا می‌برند. بسیاری از تنگهٔ مالاکا می‌گذرند، یک راه باریک بحری نزدیک سنگاپور که اقیانوس هند را به اقیانوس آرام وصل می‌کند.' } },
+{ x: 12, y: 8, text: { en: 'SEA ROUTE · Ships carry rice, rubber and palm oil through the Strait of Malacca, between the Indian and Pacific Oceans.', es: 'RUTA DEL MAR · Los barcos llevan arroz, caucho y aceite de palma por el estrecho de Malaca, entre el océano Índico y el Pacífico.', fa: 'راه بحری · کشتی‌ها برنج، رابر و روغن نخل را از تنگهٔ مالاکا، میان اقیانوس هند و اقیانوس آرام، می‌برند.' } },
 { x: 24, y: 18, text: { en: 'VOLCANO SAFETY · Green = calm. Yellow = watch closely. Red = leave now. Know your way out, and practice it with your family.',
 es: 'SEGURIDAD DEL VOLCÁN · Verde = calma. Amarillo = vigilar de cerca. Rojo = salir ya. Conoce tu camino de salida y practícalo con tu familia.',
 fa: 'ایمنی آتشفشان · سبز = آرام. زرد = با دقت بپا. سرخ = همین حالا برو. راه بیرون رفتن خود را بدان و با خانواده‌ات تمرین کن.' } }
@@ -5502,19 +5605,13 @@ name: { en: 'Ibu Dewi', es: 'Doña Dewi', fa: 'بی‌بی دیوی' },
 role: { en: 'Cook on the little island', es: 'Cocinera de la islita', fa: 'آشپز جزیرهٔ کوچک' },
 look: { skin: 4, hair: '#16100c', shirt: '#e0607a', pants: '#2a3a5a', style: 'bun' },
 lines: [
-{ en: 'Welcome to our little island! We have lots of fish and coconuts here. But look: only sand and palm trees. There is no flat, wet land to grow rice.',
-es: '¡Bienvenido a nuestra islita! Aquí tenemos mucho pescado y muchos cocos. Pero mira: solo arena y palmeras. No hay tierra plana y húmeda para sembrar arroz.',
-fa: 'به جزیرهٔ کوچک ما خوش آمدی! این‌جا ماهی و نارگیل زیاد داریم. اما ببین: فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای کشت برنج نیست.' },
-{ en: 'The Quake Grump sank our rice boat, and the festival is soon! Lola Nena farms on the island to the south. Take the long bridge south and ask her.',
-es: '¡El Gruñón Temblor hundió nuestro bote de arroz, y la fiesta es pronto! Lola Nena cultiva en la isla del sur. Toma el puente largo hacia el sur y pregúntale.',
-fa: 'غرغروی زلزله قایق برنج ما را غرق کرد و جشن نزدیک است! لولا ننا در جزیرهٔ جنوبی کشت می‌کند. از پل دراز به طرف جنوب برو و از او بپرس.' }
+{ en: 'Welcome to our little island! We have lots of fish and coconuts.', es: '¡Bienvenido a nuestra islita! Tenemos mucho pescado y muchos cocos.', fa: 'به جزیرهٔ کوچک ما خوش آمدی! ما ماهی و نارگیل زیاد داریم.' },
+{ en: 'But there is only sand and palm trees. No flat, wet land for rice.', es: 'Pero solo hay arena y palmeras. No hay tierra plana y húmeda para el arroz.', fa: 'اما فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای برنج نیست.' },
+{ en: 'The Quake Grump sank our rice boat, and the festival is soon!', es: '¡El Gruñón Temblor hundió nuestro bote de arroz, y la fiesta es pronto!', fa: 'غرغروی زلزله قایق برنج ما را غرق کرد و جشن نزدیک است!' },
+{ en: 'Ask Lola Nena, who farms the island to the south. Take the long bridge!', es: 'Pregúntale a Lola Nena, que cultiva en la isla del sur. ¡Toma el puente largo!', fa: 'از لولا ننا بپرس که در جزیرهٔ جنوبی کشت می‌کند. از پل دراز برو!' }
 ],
-wait: { en: 'Lola Nena is on the island to the south, up on the rice [[terrace|terraces]]. Take the long bridge south.',
-es: 'Lola Nena está en la isla del sur, arriba en las [[terrace|terrazas]] de arroz. Toma el puente largo hacia el sur.',
-fa: 'لولا ننا در جزیرهٔ جنوبی، بالای [[terrace|زمین‌های زینه‌ای]] برنج است. از پل دراز به طرف جنوب برو.' },
-thanks: { en: 'Rice for the festival! Thank you! Our island has plenty of fish. The mainland has plenty of rice. Trade lets each place share what it has extra.',
-es: '¡Arroz para la fiesta! ¡Gracias! Nuestra isla tiene mucho pescado. El continente tiene mucho arroz. El comercio deja que cada lugar comparta lo que le sobra.',
-fa: 'برنج برای جشن! تشکر! جزیرهٔ ما ماهی زیاد دارد. خشکه برنج زیاد دارد. تجارت به هر جا کمک می‌کند آنچه را اضافه دارد با دیگران شریک کند.' }
+wait: { en: 'Lola Nena is on the rice [[terrace|terraces]], south across the long bridge.', es: 'Lola Nena está en las [[terrace|terrazas]] de arroz, al sur, cruzando el puente largo.', fa: 'لولا ننا روی [[terrace|زمین‌های زینه‌ای]] برنج است، جنوب، آن طرف پل دراز.' },
+thanks: { en: 'Thank you! We have extra fish, the mainland has extra rice. Trade lets us share.', es: '¡Gracias! Nosotros tenemos pescado de sobra y el continente tiene arroz de sobra. El comercio nos deja compartir.', fa: 'تشکر! ما ماهی اضافه داریم، خشکه برنج اضافه دارد. تجارت به ما کمک می‌کند شریک کنیم.' }
 },
 contact: {
 x: 26, y: 15,
@@ -5522,12 +5619,9 @@ name: { en: 'Lola Nena', es: 'Lola Nena', fa: 'لولا ننا' },
 role: { en: 'Rice terrace farmer', es: 'Agricultora de terrazas de arroz', fa: 'دهقان زمین‌های زینه‌ای برنج' },
 look: { skin: 2, hair: '#cfc8bd', shirt: '#2a8ac0', pants: '#5a3a2a', style: 'bun', hat: '#d8b060' },
 lines: [
-{ en: 'We grow rice on these [[terrace|terraces]]. But the steps on the mountain are small. They grow just enough rice for our own village.',
-es: 'Cultivamos arroz en estas [[terrace|terrazas]]. Pero los escalones de la montaña son pequeños. Dan solo el arroz justo para nuestro pueblo.',
-fa: 'ما در این [[terrace|زمین‌های زینه‌ای]] برنج می‌کاریم. اما زینه‌های کوه کوچک هستند. فقط برای ده خود ما برنج کافی می‌دهند.' },
-{ en: 'Big, flat river plains grow much more. Go to the rice trader by the Mekong, on the [[mainland southeast asia|mainland]] in the north-west. Offer what the little island has plenty of.',
-es: 'Las llanuras grandes y planas de los ríos dan mucho más. Ve con el comerciante de arroz junto al Mekong, en el [[mainland southeast asia|continente]], al noroeste. Ofrécele lo que la islita tiene de sobra.',
-fa: 'دشت‌های بزرگ و هموار کنار دریا خیلی بیشتر برنج می‌دهند. نزد تاجر برنج کنار میکانگ برو، در [[mainland southeast asia|خشکه]] در شمال غرب. چیزی را پیشنهاد کن که جزیرهٔ کوچک زیاد دارد.' }
+{ en: 'We grow rice on these [[terrace|terraces]]. But the steps on the mountain are small.', es: 'Cultivamos arroz en estas [[terrace|terrazas]]. Pero los escalones de la montaña son pequeños.', fa: 'ما در این [[terrace|زمین‌های زینه‌ای]] برنج می‌کاریم. اما زینه‌های کوه کوچک هستند.' },
+{ en: 'They grow just enough rice for our village. Flat river plains grow much more.', es: 'Dan solo el arroz justo para nuestro pueblo. Las llanuras planas de los ríos dan mucho más.', fa: 'فقط برای قریهٔ ما برنج کافی می‌دهند. دشت‌های هموار کنار دریا خیلی بیشتر می‌دهند.' },
+{ en: 'Find the Mekong rice trader on the [[mainland southeast asia|mainland]], north-west. Offer what your island has extra.', es: 'Busca al comerciante de arroz del Mekong en el [[mainland southeast asia|continente]], al noroeste. Ofrécele lo que le sobra a tu isla.', fa: 'تاجر برنج میکانگ را در [[mainland southeast asia|خشکه]]، شمال غرب، پیدا کن. چیزی را پیشنهاد کن که جزیره‌ات اضافه دارد.' }
 ]
 },
 action: {
@@ -5538,9 +5632,8 @@ name: { en: 'Uncle Bao', es: 'Don Bao', fa: 'کاکا بائو' },
 role: { en: 'Rice trader on the Mekong', es: 'Comerciante de arroz del Mekong', fa: 'تاجر برنج میکانگ' },
 look: { skin: 1, hair: '#2a2420', shirt: '#3a6a3a', pants: '#2a2a2a', style: 'short', hat: '#d8c890' },
 lines: [
-{ en: 'The Mekong floods these flat fields every year. It leaves rich mud behind. So we grow more rice than we can eat!',
-es: 'El Mekong inunda estos campos planos cada año. Deja lodo rico. ¡Por eso cultivamos más arroz del que podemos comer!',
-fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد. به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
+{ en: 'The Mekong floods these flat fields every year. It leaves rich mud behind.', es: 'El Mekong inunda estos campos planos cada año. Deja lodo rico.', fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد.' },
+{ en: 'So we grow more rice than we can eat!', es: '¡Por eso cultivamos más arroz del que podemos comer!', fa: 'به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
 ]
 },
 q: { en: 'I will give you a big sack of rice. What will you bring me for it?', es: 'Te daré un saco grande de arroz. ¿Qué me traes a cambio?', fa: 'یک بوجی کلان برنج به تو می‌دهم. در عوض آن چه برایم می‌آوری؟' },
@@ -5606,16 +5699,16 @@ why: { en: 'Singapore is an island at the tip of the Malay Peninsula, by the Str
 choices: [{ en: 'Soil full of the minerals plants need', es: 'Suelo lleno de los minerales que necesitan las plantas', fa: 'خاکی پر از موادی که گیاه لازم دارد' }, { en: 'Soil that is very dry and full of sand', es: 'Suelo muy seco y lleno de arena', fa: 'خاکی که بسیار خشک و پر از ریگ است' }, { en: 'Soil washed away by floods', es: 'Suelo que se llevaron las inundaciones', fa: 'خاکی که سیلاب برده است' }, { en: 'Soil that stays frozen most of the year', es: 'Suelo que está congelado casi todo el año', fa: 'خاکی که بیشتر سال یخ‌زده است' }], answer: 0,
 why: { en: '[[fertile|Fertile]] soil helps crops grow well. Volcanic ash makes soil fertile.', es: 'El suelo [[fertile|fértil]] ayuda a que los cultivos crezcan bien. La ceniza volcánica lo hace fértil.', fa: 'خاک [[fertile|حاصلخیز]] به خوب روییدن کشت کمک می‌کند. خاکستر آتشفشان خاک را حاصلخیز می‌کند.' } },
 { q: { en: 'Java is very crowded and full of volcanoes. Why do so many people farm there?', es: 'Java tiene mucha gente y muchos volcanes. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه بسیار پرجمعیت و پر از آتشفشان است. چرا این‌قدر مردم آن‌جا کشاورزی می‌کنند؟' },
-choices: [{ en: 'Volcanic ash makes the soil rich, so farms grow a great deal of food', es: 'La ceniza volcánica hace rico el suelo, así que las granjas producen muchísima comida', fa: 'خاکستر آتشفشان خاک را پربار می‌کند، پس کشتزارها غذای بسیار زیاد می‌دهند' }, { en: 'The island has no earthquakes and no volcanoes', es: 'La isla no tiene terremotos ni volcanes', fa: 'جزیره هیچ زلزله و آتشفشان ندارد' }, { en: 'The government makes people live near volcanoes', es: 'El gobierno obliga a la gente a vivir cerca de volcanes', fa: 'حکومت مردم را مجبور می‌کند نزدیک آتشفشان زندگی کنند' }, { en: 'Java is the only land Indonesia has', es: 'Java es la única tierra que tiene Indonesia', fa: 'جاوه تنها زمینی است که اندونیزیا دارد' }], answer: 0,
+choices: [{ en: 'Volcanic ash makes the soil rich for growing food', es: 'La ceniza volcánica hace el suelo rico para cultivar comida', fa: 'خاکستر آتشفشان خاک را برای کشت غذا پربار می‌کند' }, { en: 'The island has no earthquakes and no volcanoes', es: 'La isla no tiene terremotos ni volcanes', fa: 'جزیره هیچ زلزله و آتشفشان ندارد' }, { en: 'The government makes people live near the volcanoes', es: 'El gobierno obliga a la gente a vivir cerca de los volcanes', fa: 'حکومت مردم را مجبور می‌کند نزدیک آتشفشان‌ها زندگی کنند' }, { en: 'Java is the only land Indonesia has', es: 'Java es la única tierra que tiene Indonesia', fa: 'جاوه تنها زمینی است که اندونیزیا دارد' }], answer: 0,
 why: { en: 'People weigh a real danger against real benefits: rich soil grows more rice.', es: 'La gente compara un peligro real con beneficios reales: el suelo rico produce más arroz.', fa: 'مردم یک خطر واقعی را با فایده‌های واقعی مقایسه می‌کنند: خاک پربار برنج بیشتر می‌دهد.' } },
 { q: { en: 'What is an archipelago?', es: '¿Qué es un archipiélago?', fa: 'مجمع‌الجزایر چیست؟' },
-choices: [{ en: 'A large group of islands close together', es: 'Un grupo grande de islas cercanas', fa: 'گروه بزرگی از جزیره‌های نزدیک به هم' }, { en: 'A band of volcanoes around an ocean', es: 'Una franja de volcanes alrededor de un océano', fa: 'کمربندی از آتشفشان دور یک اقیانوس' }, { en: 'A wind that changes with the season', es: 'Un viento que cambia con la estación', fa: 'بادی که با فصل تغییر می‌کند' }, { en: 'A high area of land with a flat top', es: 'Una zona alta de tierra con la cima plana', fa: 'یک زمین بلند با سر هموار' }], answer: 0,
+choices: [{ en: 'A large group of islands close together', es: 'Un grupo grande de islas cercanas', fa: 'گروه بزرگی از جزیره‌های نزدیک به هم' }, { en: 'A band of volcanoes around an ocean', es: 'Una franja de volcanes alrededor de un océano', fa: 'کمربندی از آتشفشان دور یک اقیانوس' }, { en: 'A wind that changes with the season', es: 'Un viento que cambia con la estación', fa: 'بادی که با فصل تغییر می‌کند' }, { en: 'A high, wide area of land with a flat top', es: 'Una zona alta y ancha de tierra con la cima plana', fa: 'یک زمین بلند و پهن با سر هموار' }], answer: 0,
 why: { en: 'Indonesia and the Philippines are both [[archipelago|archipelagos]].', es: 'Indonesia y Filipinas son [[archipelago|archipiélagos]].', fa: 'اندونیزیا و فیلیپین هر دو [[archipelago|مجمع‌الجزایر]] هستند.' } },
 { q: { en: 'How does Japan make earthquakes less dangerous?', es: '¿Cómo hace Japón que los terremotos sean menos peligrosos?', fa: 'جاپان چطور زلزله را کم‌خطرتر می‌کند؟' },
-choices: [{ en: 'It builds schools and offices that sway instead of cracking', es: 'Construye escuelas y oficinas que se mecen en vez de romperse', fa: 'مکتب‌ها و دفترهایی می‌سازد که به جای کفیدن تاب می‌خورند' }, { en: 'It moves every city away from the coast', es: 'Muda todas las ciudades lejos de la costa', fa: 'همهٔ شهرها را از ساحل دور می‌برد' }, { en: 'It stops all farming near volcanoes', es: 'Prohíbe toda la agricultura cerca de volcanes', fa: 'همهٔ کشاورزی نزدیک آتشفشان را منع می‌کند' }, { en: 'It closes its ports in the rainy season', es: 'Cierra sus puertos en la temporada de lluvias', fa: 'بندرهای خود را در فصل باران می‌بندد' }], answer: 0,
+choices: [{ en: 'Its buildings sway in a quake instead of cracking', es: 'Sus edificios se mecen en un terremoto en vez de romperse', fa: 'ساختمان‌هایش در زلزله به جای کفیدن تاب می‌خورند' }, { en: 'It moves every big city far away from the coast', es: 'Muda todas las ciudades grandes lejos de la costa', fa: 'همهٔ شهرهای بزرگ را از ساحل دور می‌برد' }, { en: 'It stops all farming on the slopes of volcanoes', es: 'Prohíbe toda la agricultura en las laderas de los volcanes', fa: 'همهٔ کشت را در دامنهٔ آتشفشان‌ها منع می‌کند' }, { en: 'It closes its ports in the rainy season', es: 'Cierra sus puertos en la temporada de lluvias', fa: 'بندرهای خود را در فصل باران می‌بندد' }], answer: 0,
 why: { en: 'Buildings that bend and sway are less likely to fall. Warnings and drills help too.', es: 'Los edificios que se doblan y se mecen tienen menos riesgo de caerse. Las alertas y los simulacros también ayudan.', fa: 'ساختمان‌هایی که خم می‌شوند و تاب می‌خورند کمتر فرو می‌ریزند. هشدارها و تمرین‌ها هم کمک می‌کنند.' } },
 { q: { en: 'A mapmaker groups Indonesia, the Philippines and Malaysia together. What is that group called?', es: 'Un cartógrafo agrupa a Indonesia, Filipinas y Malasia. ¿Cómo se llama ese grupo?', fa: 'یک نقشه‌کش اندونیزیا، فیلیپین و مالیزیا را در یک گروه می‌گذارد. نام آن گروه چیست؟' },
-choices: [{ en: 'Maritime (Island) Southeast Asia', es: 'Sudeste asiático marítimo (insular)', fa: 'جنوب شرق آسیای بحری (جزیره‌ای)' }, { en: 'Mainland Southeast Asia', es: 'Sudeste asiático continental', fa: 'خشکهٔ جنوب شرق آسیا' }, { en: 'The Indian subcontinent', es: 'El subcontinente indio', fa: 'نیم‌قارهٔ هند' }, { en: 'The Ring of Fire', es: 'El Cinturón de Fuego', fa: 'حلقهٔ آتش' }], answer: 0,
+choices: [{ en: 'Maritime (Island) Southeast Asia', es: 'Sudeste asiático marítimo (insular)', fa: 'جنوب شرق آسیای بحری (جزیره‌ای)' }, { en: 'Mainland Southeast Asia, joined to Asia', es: 'Sudeste asiático continental, unido a Asia', fa: 'خشکهٔ جنوب شرق آسیا، وصل به آسیا' }, { en: 'The Indian subcontinent of South Asia', es: 'El subcontinente indio, en Asia del Sur', fa: 'نیم‌قارهٔ هند در جنوب آسیا' }, { en: 'The Ring of Fire', es: 'El Cinturón de Fuego', fa: 'حلقهٔ آتش' }], answer: 0,
 why: { en: '"Maritime" means "of the sea". Malaysia has land on the mainland and on Borneo, but mapmakers often put it in this group.', es: '"Marítimo" significa "del mar". Malasia tiene tierra en el continente y en Borneo, pero los cartógrafos suelen ponerla en este grupo.', fa: '«بحری» یعنی «مربوط به بحر». مالیزیا هم روی خشکه و هم در بورنئو زمین دارد، اما نقشه‌کش‌ها اکثراً آن را در همین گروه می‌گذارند.' } }
 ]
 },

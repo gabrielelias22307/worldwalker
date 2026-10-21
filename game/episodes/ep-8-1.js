@@ -8,9 +8,8 @@ window.EPISODE = {
   title: { en: 'Australia and the Pacific', es: 'Australia y el Pacífico', fa: 'آسترالیا و اقیانوس آرام' },
   place: { en: 'Harbor City and the Far Islands', es: 'Ciudad del Puerto y las Islas Lejanas', fa: 'شهر بندر و جزیره‌های دور' },
   intro: [
-    { en: 'Christopher: "The Grump rolled across the last realm! Now the Outback, the coast and the islands are all mixed up. Talk to the ranger, the ferry captain and the reef scientist. Then fix the compass stone in the Outback town."',
-      es: 'Christopher: "¡El Gruñón pasó por el último reino! Ahora el Outback, la costa y las islas están todos mezclados. Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra de la brújula en el pueblo del Outback."',
-      fa: 'کریستوفر: «غرغرو از آخرین سرزمین گذشت! حالا اوت‌بک، ساحل و جزیره‌ها همه با هم مخلوط شده‌اند. با محافظ پارک، کپتان کشتی و دانشمند صخرهٔ مرجانی گپ بزن. بعد سنگ قطب‌نما را در قریهٔ اوت‌بک درست کن.»' }
+    { en: 'The Grump rolled through! The Outback, the coast and the islands are mixed up.', es: '¡El Gruñón pasó por aquí! El Outback, la costa y las islas están mezclados.', fa: 'غرغرو از اینجا گذشت! اوت‌بک، ساحل و جزیره‌ها با هم مخلوط شده‌اند.' },
+    { en: 'Talk to the ranger, ferry captain and reef scientist. Then fix the Outback stone.', es: 'Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra del Outback.', fa: 'با محافظ پارک، کپتان کشتی و دانشمند مرجان گپ بزن. بعد سنگ اوت‌بک را درست کن.' }
   ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
@@ -64,11 +63,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [13, 16], at: [10, 14], decor: 'fossil',
-      clue: { en: 'Use the map key: find the well in the little Outback town. Stand on the square just east of the well.', es: 'Usa la leyenda: busca el pozo del pueblito del Outback. Párate en el cuadro que está justo al este del pozo.', fa: 'از راهنمای نقشه استفاده کن: چاه را در قریهٔ کوچک اوت‌بک پیدا کن. روی خانه‌ای بایست که درست به طرف شرقِ چاه است.' },
-      text: { en: 'You read the map key! Water is precious in the dry Outback. Many farms pump it up from deep under the ground, from the Great Artesian Basin. It is one of the largest stores of underground water in the world. A fossil was lying by the well.', es: '¡Leíste la leyenda! El agua es muy valiosa en el Outback seco. Muchas granjas la sacan con bombas desde muy abajo de la tierra, de la Gran Cuenca Artesiana. Es una de las reservas de agua subterránea más grandes del mundo. Había un fósil junto al pozo.', fa: 'تو راهنمای نقشه را خواندی! آب در اوت‌بک خشک بسیار قیمتی است. بسیاری از فارم‌ها آب را با پمپ از عمق زیر زمین بیرون می‌کشند، از حوزهٔ بزرگ آرتزین. این یکی از بزرگ‌ترین ذخیره‌های آب زیرزمینی در جهان است. یک فسیل کنار چاه افتاده بود.' } },
+      clue: { en: 'Use the map key: find the well in the little Outback town. Stand just east of it.', es: 'Usa la leyenda: busca el pozo del pueblito del Outback. Párate justo al este de él.', fa: 'از راهنمای نقشه استفاده کن: چاه قریهٔ کوچک اوت‌بک را پیدا کن. درست به طرف شرق آن بایست.' },
+      text: { en: 'Water is precious here. Farms pump it from deep underground, from the Great Artesian Basin. A fossil!', es: 'El agua aquí es valiosa. Las granjas la sacan de muy abajo, de la Gran Cuenca Artesiana. ¡Un fósil!', fa: 'آب اینجا قیمتی است. فارم‌ها آن را از عمق زمین، از حوزهٔ بزرگ آرتزین، پمپ می‌کنند. یک فسیل!' } },
     { clueAt: [41, 14], at: [43, 18], decor: 'shell',
       clue: { en: 'From this note, walk 2 steps east, then 4 steps south. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al este y luego 4 pasos al sur. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شرق برو، بعد ۴ قدم به جنوب. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! East is to the right and south is down. You walked along the ring of the atoll, next to the calm lagoon. A sea shell was in the sand.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el sur abajo. Caminaste por el anillo del atolón, junto a la laguna tranquila. Había una concha en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و جنوب پایین است. تو روی حلقهٔ اتول، کنار آب آرام وسط آن، راه رفتی. یک صدف در ریگ بود.' } }
+      text: { en: 'East is right and south is down. You walked the atoll ring, by the calm lagoon. A shell!', es: 'El este está a la derecha y el sur abajo. Caminaste por el anillo del atolón, junto a la laguna. ¡Una concha!', fa: 'شرق طرف راست و جنوب پایین است. تو روی حلقهٔ اتول، کنار آب آرام، راه رفتی. یک صدف!' } }
   ],
   // only the Monsoon Cloak (Episode 6.3) walks through the tropical storm to the volcanic island's north beach
   secret: { tool: 'cloak', at: [39, 1],
@@ -97,12 +96,10 @@ window.EPISODE = {
       role: { en: 'Harbor ferry captain', es: 'Capitana del ferry del puerto', fa: 'کپتان کشتی مسافربری بندر' },
       look: { skin: 1, hair: '#1b1410', shirt: '#2f6fd6', pants: '#22324f' },
       lines: [
-        { en: 'Welcome to Harbor City! It is like Sydney, the biggest city in Australia. Sydney is built around a huge natural [[harbor|harbor]] on the [[coast|coast]]. Every day my ferry carries people to work across the water.',
-          es: '¡Bienvenido a Ciudad del Puerto! Es como Sídney, la ciudad más grande de Australia. Sídney está construida alrededor de un enorme [[harbor|puerto]] natural en la [[coast|costa]]. Cada día mi ferry lleva gente al trabajo por el agua.',
-          fa: 'به شهر بندر خوش آمدی! این شهر مثل سیدنی است، بزرگ‌ترین شهر آسترالیا. سیدنی دور یک [[harbor|بندر]] طبیعی بسیار بزرگ در [[coast|ساحل]] ساخته شده. هر روز کشتی من مردم را از روی آب به کار می‌برد.' },
-        { en: 'More than 8 out of 10 Australians live near the coast. Why? The coast gets more rain. The middle of the country, the [[outback|Outback]], is very dry. Farming is hard there, so very few people live there.',
-          es: 'Más de 8 de cada 10 australianos viven cerca de la costa. ¿Por qué? La costa recibe más lluvia. El centro del país, el [[outback|Outback]], es muy seco. Es difícil cultivar allí, así que vive muy poca gente.',
-          fa: 'بیشتر از ۸ نفر از هر ۱۰ نفر آسترالیایی نزدیک ساحل زندگی می‌کنند. چرا؟ ساحل باران بیشتر دارد. میانهٔ کشور، یعنی [[outback|اوت‌بک]]، بسیار خشک است. دهقانی آنجا سخت است، پس مردم بسیار کم آنجا زندگی می‌کنند.' }
+        { en: 'Welcome to Harbor City! It is like Sydney, the biggest city in Australia.', es: '¡Bienvenido a Ciudad del Puerto! Es como Sídney, la ciudad más grande de Australia.', fa: 'به شهر بندر خوش آمدی! این شهر مثل سیدنی است، بزرگ‌ترین شهر آسترالیا.' },
+        { en: 'Sydney wraps around a huge natural [[harbor|harbor]] on the [[coast|coast]]. My ferry crosses it.', es: 'Sídney rodea un enorme [[harbor|puerto]] natural en la [[coast|costa]]. Mi ferry lo cruza.', fa: 'سیدنی دور یک [[harbor|بندر]] طبیعی بزرگ در [[coast|ساحل]] ساخته شده. کشتی من از آن می‌گذرد.' },
+        { en: 'Over 8 in 10 Australians live near the coast. Why? It gets more rain.', es: 'Más de 8 de cada 10 australianos viven cerca de la costa. ¿Por qué? Llueve más.', fa: 'بیشتر از ۸ از هر ۱۰ آسترالیایی نزدیک ساحل زندگی می‌کنند. چرا؟ باران بیشتر دارد.' },
+        { en: 'The middle, the [[outback|Outback]], is very dry. Farming is hard, so few people live there.', es: 'El centro, el [[outback|Outback]], es muy seco. Es difícil cultivar, así que vive poca gente allí.', fa: 'میانهٔ کشور، یعنی [[outback|اوت‌بک]]، بسیار خشک است. دهقانی سخت است، پس مردم کم آنجا زندگی می‌کنند.' }
       ],
       ask: {
         stat: 'loc',
@@ -123,25 +120,20 @@ window.EPISODE = {
       role: { en: 'Aboriginal park ranger', es: 'Guardaparques aborigen', fa: 'محافظ پارک از مردم بومی آسترالیا' },
       look: { skin: 5, hair: '#1b1410', shirt: '#7a8a3a', pants: '#5a4630', hat: '#6b4a2a' },
       lines: [
-        { en: 'G\'day! I am a ranger. I look after this land with my community. That giant red rock is like Uluru. Aboriginal Australians have lived here for tens of thousands of years. Uluru is a sacred place, so visitors may not climb it.',
-          es: '¡Hola! Soy guardaparques. Cuido esta tierra con mi comunidad. Esa enorme roca roja es como Uluru. Los aborígenes australianos han vivido aquí por decenas de miles de años. Uluru es un lugar sagrado, por eso los visitantes no pueden escalarlo.',
-          fa: 'سلام! من محافظ پارک هستم. با مردم خود از این زمین مراقبت می‌کنم. آن سنگ سرخ بسیار بزرگ مثل اولورو است. مردم بومی آسترالیا ده‌ها هزار سال اینجا زندگی کرده‌اند. اولورو یک جای مقدس است، پس مهمانان اجازه ندارند از آن بالا شوند.' },
-        { en: 'Australia is the driest continent where people live. Out here in the [[outback|Outback]], towns are small and [[remote|remote]]. A hospital can be hundreds of kilometers away. So doctors fly out to sick people in small planes.',
-          es: 'Australia es el continente habitado más seco. Aquí en el [[outback|Outback]], los pueblos son pequeños y [[remote|remotos]]. Un hospital puede estar a cientos de kilómetros. Por eso los doctores vuelan a ver a los enfermos en avionetas.',
-          fa: 'آسترالیا خشک‌ترین قاره‌ای است که مردم در آن زندگی می‌کنند. اینجا در [[outback|اوت‌بک]]، قریه‌ها کوچک و [[remote|دورافتاده]] هستند. شفاخانه شاید صدها کیلومتر دور باشد. برای همین داکترها با طیاره‌های کوچک نزد مریضان پرواز می‌کنند.' },
-        { en: 'This dry land is still rich. Big mines in Western Australia dig iron ore. Ships carry it to steel mills in East Asia, mostly in China. Iron ore is one of Australia\'s biggest [[export|exports]].',
-          es: 'Esta tierra seca igual es rica. Grandes minas en Australia Occidental sacan mineral de hierro. Los barcos lo llevan a fábricas de acero en Asia Oriental, sobre todo en China. El mineral de hierro es una de las mayores [[export|exportaciones]] de Australia.',
-          fa: 'این زمین خشک باز هم ثروتمند است. معدن‌های بزرگ در غرب آسترالیا سنگ آهن بیرون می‌کشند. کشتی‌ها آن را به فابریکه‌های فولاد در آسیای شرقی، بیشتر در چین، می‌برند. سنگ آهن یکی از بزرگ‌ترین [[export|صادرات]] آسترالیا است.' }
+        { en: 'G\'day! That red rock is like Uluru, a sacred place. Visitors may not climb it.', es: '¡Hola! Esa roca roja es como Uluru, un lugar sagrado. Los visitantes no pueden escalarla.', fa: 'سلام! آن سنگ سرخ مثل اولورو است، یک جای مقدس. مهمانان اجازه ندارند از آن بالا شوند.' },
+        { en: 'Aboriginal Australians have lived here for tens of thousands of years.', es: 'Los aborígenes australianos viven aquí desde hace decenas de miles de años.', fa: 'مردم بومی آسترالیا ده‌ها هزار سال است که اینجا زندگی می‌کنند.' },
+        { en: 'This is the driest continent where people live. [[outback|Outback]] towns are small and [[remote|remote]].', es: 'Este es el continente habitado más seco. Los pueblos del [[outback|Outback]] son pequeños y [[remote|remotos]].', fa: 'این خشک‌ترین قارهٔ مسکون است. قریه‌های [[outback|اوت‌بک]] کوچک و [[remote|دورافتاده]] هستند.' },
+        { en: 'Mines dig iron ore. These [[export|exports]] sail to steel mills in East Asia, mostly China.', es: 'Las minas sacan hierro. Estas [[export|exportaciones]] van a fábricas de acero en Asia Oriental, sobre todo China.', fa: 'معدن‌ها سنگ آهن می‌کَنند. این [[export|صادرات]] به فابریکه‌های فولاد آسیای شرقی، بیشتر چین، می‌رود.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'What is the Outback like?', es: '¿Cómo es el Outback?', fa: 'اوت‌بک چگونه است؟' },
         choices: [
-          { ok: true, t: { en: 'Very dry, with few people and towns far apart', es: 'Muy seco, con poca gente y pueblos muy separados', fa: 'بسیار خشک، با مردم کم و قریه‌های دور از هم' },
+          { ok: true, t: { en: 'Very dry, with few people and far-apart towns', es: 'Muy seco, con poca gente y pueblos lejanos', fa: 'بسیار خشک، با مردم کم و قریه‌های دور' },
             why: { en: 'Little rain falls there, so only small towns can grow.', es: 'Allí llueve poco, así que solo crecen pueblos pequeños.', fa: 'آنجا باران کم می‌بارد، پس فقط قریه‌های کوچک ساخته می‌شوند.' } },
-          { t: { en: 'Wet and full of big crowded cities', es: 'Húmedo y lleno de ciudades grandes y llenas de gente', fa: 'مرطوب و پر از شهرهای بزرگ و پرجمعیت' },
+          { t: { en: 'Wet and green, full of big crowded cities', es: 'Húmedo y verde, lleno de ciudades grandes', fa: 'مرطوب و سبز، پر از شهرهای بزرگ و پرجمعیت' },
             why: { en: 'The big cities are on the coast. The Outback is dry and empty.', es: 'Las ciudades grandes están en la costa. El Outback es seco y vacío.', fa: 'شهرهای بزرگ در ساحل هستند. اوت‌بک خشک و خالی است.' } },
-          { t: { en: 'Covered in snow most of the year', es: 'Cubierto de nieve casi todo el año', fa: 'بیشتر سال پوشیده از برف' },
+          { t: { en: 'Cold and covered in snow most of the year', es: 'Frío y cubierto de nieve casi todo el año', fa: 'سرد و بیشتر سال زیر برف' },
             why: { en: 'The Outback is hot and dry desert and scrub, not snow.', es: 'El Outback es desierto caliente y seco, con arbustos, no nieve.', fa: 'اوت‌بک ریگستان گرم و خشک با بوته‌ها است، نه برف.' } }
         ]
       }
@@ -152,25 +144,20 @@ window.EPISODE = {
       role: { en: 'Reef scientist from Tuvalu', es: 'Científica del arrecife de Tuvalu', fa: 'دانشمند صخرهٔ مرجانی از تووالو' },
       look: { skin: 3, hair: '#1b1410', shirt: '#1aa39a', pants: '#2b4a6b' },
       lines: [
-        { en: 'Talofa! My home is an [[atoll|atoll]], like the islands of Tuvalu. It is a ring of low coral land around a calm lagoon. The island you crossed is a [[high island|high island]]. A volcano made it, so it has hills and deep soil. Our soil is thin and sandy.',
-          es: '¡Talofa! Mi hogar es un [[atoll|atolón]], como las islas de Tuvalu. Es un anillo de tierra baja de coral alrededor de una laguna tranquila. La isla que cruzaste es una [[high island|isla alta]]. La hizo un volcán, por eso tiene cerros y tierra profunda. Nuestra tierra es delgada y arenosa.',
-          fa: 'تالوفا! خانهٔ من یک [[atoll|اتول]] است، مثل جزیره‌های تووالو. یک حلقه از زمین پست مرجانی دور یک آب آرام است. جزیره‌ای که از آن گذشتی یک [[high island|جزیرهٔ بلند]] است. آتشفشان آن را ساخته، پس تپه و خاک عمیق دارد. خاک ما نازک و ریگی است.' },
-        { en: 'I study the [[coral reef|coral reef]]. Tiny animals called coral build it. The reef is a home for fish, and it breaks big waves before they hit land. But when the sea gets too warm, coral turns white and can die.',
-          es: 'Yo estudio el [[coral reef|arrecife de coral]]. Lo construyen animales muy pequeños llamados corales. El arrecife es el hogar de los peces y rompe las olas grandes antes de que lleguen a la tierra. Pero cuando el mar se calienta demasiado, el coral se pone blanco y puede morir.',
-          fa: 'من [[coral reef|صخرهٔ مرجانی]] را مطالعه می‌کنم. جانوران بسیار کوچکی به نام مرجان آن را می‌سازند. این صخره خانهٔ ماهی‌ها است و موج‌های بزرگ را پیش از رسیدن به خشکه می‌شکند. اما وقتی بحر بیش از حد گرم شود، مرجان سفید می‌شود و ممکن است بمیرد.' },
-        { en: 'Rising seas are a real danger for atoll nations like Tuvalu and Kiribati. Our land is only a few meters above the waves. One strong storm can push salt water across the whole island. Our leaders ask bigger countries to help slow the rising seas.',
-          es: 'El mar que sube es un peligro real para países de atolones como Tuvalu y Kiribati. Nuestra tierra está solo unos pocos metros sobre las olas. Una tormenta fuerte puede empujar agua salada por toda la isla. Nuestros líderes piden a los países más grandes que ayuden a frenar la subida del mar.',
-          fa: 'بالا آمدن آب بحر برای کشورهای اتولی مثل تووالو و کیریباتی خطر واقعی است. زمین ما فقط چند متر بالاتر از موج‌ها است. یک توفان قوی می‌تواند آب شور را روی تمام جزیره ببرد. رهبران ما از کشورهای بزرگ‌تر می‌خواهند که در کند کردن بالا آمدن بحر کمک کنند.' }
+        { en: 'Talofa! My home is an [[atoll|atoll]]: a low ring of coral around a calm lagoon.', es: '¡Talofa! Mi hogar es un [[atoll|atolón]]: un anillo bajo de coral alrededor de una laguna tranquila.', fa: 'تالوفا! خانهٔ من یک [[atoll|اتول]] است: یک حلقهٔ پست مرجانی دور یک آب آرام.' },
+        { en: 'A volcano made the [[high island|high island]] you crossed. It has hills and deep soil.', es: 'Un volcán hizo la [[high island|isla alta]] que cruzaste. Tiene cerros y tierra profunda.', fa: 'آتشفشان [[high island|جزیرهٔ بلند]] را که از آن گذشتی ساخته. تپه و خاک عمیق دارد.' },
+        { en: 'The [[coral reef|reef]] shelters fish and breaks waves. Hot seas turn coral white; it can die.', es: 'El [[coral reef|arrecife]] protege a los peces y rompe las olas. El mar caliente blanquea el coral; puede morir.', fa: '[[coral reef|صخرهٔ مرجانی]] خانهٔ ماهی‌ها است و موج‌ها را می‌شکند. بحر گرم مرجان را سفید می‌کند؛ ممکن است بمیرد.' },
+        { en: 'Atolls like Tuvalu are a few meters above the sea. Rising seas could flood them!', es: 'Atolones como Tuvalu están a pocos metros sobre el mar. ¡El mar que sube podría inundarlos!', fa: 'اتول‌هایی مثل تووالو فقط چند متر بالاتر از بحر هستند. بالا آمدن بحر می‌تواند آن‌ها را زیر آب کند!' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Why are rising seas so dangerous for atoll nations like Tuvalu?', es: '¿Por qué el mar que sube es tan peligroso para países de atolones como Tuvalu?', fa: 'چرا بالا آمدن بحر برای کشورهای اتولی مثل تووالو این‌قدر خطرناک است؟' },
         choices: [
-          { ok: true, t: { en: 'Their land sits only a few meters above the ocean', es: 'Su tierra está solo unos pocos metros sobre el océano', fa: 'زمین آن‌ها فقط چند متر بالاتر از بحر است' },
+          { ok: true, t: { en: 'Their land is only a few meters above the sea', es: 'Su tierra está solo unos metros sobre el mar', fa: 'زمین آن‌ها فقط چند متر بالاتر از بحر است' },
             why: { en: 'Low land floods easily. A little more sea can cover a lot of island.', es: 'La tierra baja se inunda fácilmente. Un poco más de mar puede cubrir mucha isla.', fa: 'زمین پست زود زیر آب می‌رود. کمی آب بیشتر بحر می‌تواند بخش بزرگی از جزیره را بپوشاند.' } },
-          { t: { en: 'They are too far from the equator', es: 'Están demasiado lejos del ecuador', fa: 'آن‌ها از خط استوا بسیار دور هستند' },
+          { t: { en: 'They are much too far from the equator', es: 'Están demasiado lejos del ecuador', fa: 'از خط استوا بسیار دور هستند' },
             why: { en: 'Tuvalu is close to the equator. The danger is how low the land is.', es: 'Tuvalu está cerca del ecuador. El peligro es lo baja que es la tierra.', fa: 'تووالو نزدیک خط استوا است. خطر از پست بودن زمین است.' } },
-          { t: { en: 'Their tall mountains block the rain', es: 'Sus montañas altas bloquean la lluvia', fa: 'کوه‌های بلند آن‌ها جلوی باران را می‌گیرند' },
+          { t: { en: 'Their tall mountains block all of the rain', es: 'Sus montañas altas bloquean toda la lluvia', fa: 'کوه‌های بلند آن‌ها جلو همهٔ باران را می‌گیرند' },
             why: { en: 'Atolls have no mountains at all. They are flat and low.', es: 'Los atolones no tienen montañas. Son planos y bajos.', fa: 'اتول‌ها هیچ کوهی ندارند. هموار و پست هستند.' } }
         ]
       }
@@ -178,12 +165,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 27, y: 7, text: { en: 'HARBOR CITY · Sydney is Australia\'s biggest city, but it is not the [[capital|capital]]. The capital is Canberra, a planned city inland. Leaders chose it as a middle choice between the rival cities Sydney and Melbourne.',
-      es: 'CIUDAD DEL PUERTO · Sídney es la ciudad más grande de Australia, pero no es la [[capital|capital]]. La capital es Canberra, una ciudad planeada tierra adentro. Los líderes la eligieron como punto medio entre las ciudades rivales Sídney y Melbourne.',
-      fa: 'شهر بندر · سیدنی بزرگ‌ترین شهر آسترالیا است، اما [[capital|پایتخت]] نیست. پایتخت کانبرا است، یک شهر برنامه‌ریزی‌شده دور از ساحل. رهبران آن را به عنوان راه میانه بین دو شهر رقیب، سیدنی و ملبورن، انتخاب کردند.' } },
-    { x: 40, y: 7, text: { en: 'READING THE OCEAN · Pacific islands are in three groups: Melanesia, Micronesia and Polynesia. Long ago, Pacific sailors crossed the ocean with no compass. They read the stars, waves, clouds and birds. This is called [[wayfinding|wayfinding]]. In 1976 the canoe Hōkūleʻa sailed about 2,400 miles (3,900 km) from Hawaii to Tahiti this way.',
-      es: 'LEER EL OCÉANO · Las islas del Pacífico están en tres grupos: Melanesia, Micronesia y Polinesia. Hace mucho tiempo, los navegantes del Pacífico cruzaban el océano sin brújula. Leían las estrellas, las olas, las nubes y los pájaros. Esto se llama [[wayfinding|navegación tradicional]]. En 1976 la canoa Hōkūleʻa navegó unas 2,400 millas (3,900 km) de Hawái a Tahití de esta forma.',
-      fa: 'خواندن بحر · جزیره‌های اقیانوس آرام سه گروه هستند: ملانزی، میکرونزی و پولینزی. در زمان‌های قدیم، ملاحان اقیانوس آرام بدون قطب‌نما از بحر می‌گذشتند. آن‌ها ستاره‌ها، موج‌ها، ابرها و پرنده‌ها را می‌خواندند. این را [[wayfinding|راه‌یابی]] می‌گویند. در سال ۱۹۷۶ قایق هوکوله این‌طور حدود ۳۹۰۰ کیلومتر از هاوایی تا تاهیتی رفت.' } }
+    { x: 27, y: 7, text: { en: 'HARBOR CITY · The [[capital|capital]] is not Sydney. It is Canberra, a planned inland city between rivals Sydney and Melbourne.', es: 'CIUDAD DEL PUERTO · La [[capital|capital]] no es Sídney. Es Canberra, una ciudad planeada tierra adentro, entre las rivales Sídney y Melbourne.', fa: 'شهر بندر · [[capital|پایتخت]] سیدنی نیست. کانبرا است، یک شهر برنامه‌ریزی‌شده دور از ساحل، بین دو شهر رقیب سیدنی و ملبورن.' } },
+    { x: 40, y: 7, text: { en: 'READING THE OCEAN · Three island groups: Melanesia, Micronesia, Polynesia. Sailors crossed by [[wayfinding|wayfinding]]: reading stars, waves, clouds, birds.', es: 'LEER EL OCÉANO · Tres grupos de islas: Melanesia, Micronesia, Polinesia. Los navegantes cruzaban con [[wayfinding|navegación tradicional]]: leían estrellas, olas, nubes y pájaros.', fa: 'خواندن بحر · سه گروه جزیره: ملانزی، میکرونزی، پولینزی. ملاحان با [[wayfinding|راه‌یابی]] می‌گذشتند: ستاره، موج، ابر و پرنده را می‌خواندند.' } }
   ],
 
   /* the quest: Dr. Priya Nair (gold !) -> Tess the cattle worker in the Outback town -> find the medicine bag by a landmark -> back to Priya */
@@ -196,19 +179,11 @@ window.EPISODE = {
       role: { en: 'Flying Doctor', es: 'Doctora voladora', fa: 'داکتر پرنده' },
       look: { skin: 3, hair: '#1b1410', shirt: '#e8eef5', pants: '#2b3a5a', style: 'bun' },
       lines: [
-        { en: 'Help! I am a Flying Doctor. I fly my small plane from Harbor City to sick people in the [[outback|Outback]]. Towns there are very far apart.',
-          es: '¡Ayuda! Soy doctora voladora. Vuelo en mi avioneta desde Ciudad del Puerto para ver a enfermos en el [[outback|Outback]]. Allí los pueblos están muy lejos unos de otros.',
-          fa: 'کمک! من داکتر پرنده هستم. با طیارهٔ کوچکم از شهر بندر نزد مریضان در [[outback|اوت‌بک]] پرواز می‌کنم. قریه‌های آنجا از هم بسیار دور هستند.' },
-        { en: 'The Grump\'s wind shook my plane, and my medicine bag fell out! Tess saw where it landed. She is in the little Outback town, far to the south-west. Will you ask her?',
-          es: '¡El viento del Gruñón sacudió mi avioneta y se cayó mi maletín de medicinas! Tess vio dónde cayó. Está en el pueblito del Outback, lejos hacia el suroeste. ¿Le preguntas?',
-          fa: 'باد غرغرو طیاره‌ام را تکان داد و بکس دواهایم افتاد! تِس دید که کجا افتاد. او در قریهٔ کوچک اوت‌بک است، دور به طرف جنوب غرب. از او می‌پرسی؟' }
+        { en: 'Help! I am a Flying Doctor. I fly to sick people in far [[outback|Outback]] towns.', es: '¡Ayuda! Soy doctora voladora. Vuelo a ver enfermos en pueblos lejanos del [[outback|Outback]].', fa: 'کمک! من داکتر پرنده هستم. نزد مریضان در قریه‌های دور [[outback|اوت‌بک]] پرواز می‌کنم.' },
+        { en: 'Wind shook my plane, and my medicine bag fell! Tess saw it. She is south-west.', es: '¡El viento sacudió mi avioneta y se cayó mi maletín! Tess lo vio. Está al suroeste.', fa: 'باد طیاره‌ام را تکان داد و بکس دواهایم افتاد! تِس آن را دید. او در جنوب غرب است.' }
       ],
-      wait: { en: 'Tess is in the little Outback town. Go west, then south. Look for the houses by the long road.',
-        es: 'Tess está en el pueblito del Outback. Ve al oeste y luego al sur. Busca las casas junto al camino largo.',
-        fa: 'تِس در قریهٔ کوچک اوت‌بک است. به غرب برو، بعد به جنوب. خانه‌های کنار سرک دراز را پیدا کن.' },
-      thanks: { en: 'My bag! Now I can fly the medicine to a [[remote|remote]] farm. Out there, the nearest hospital is hundreds of kilometers away. Thank you!',
-        es: '¡Mi maletín! Ahora puedo llevar las medicinas volando a una granja [[remote|remota]]. Allá, el hospital más cercano está a cientos de kilómetros. ¡Gracias!',
-        fa: 'بکس من! حالا می‌توانم دواها را با طیاره به یک فارم [[remote|دورافتاده]] ببرم. آنجا نزدیک‌ترین شفاخانه صدها کیلومتر دور است. تشکر!' }
+      wait: { en: 'Tess is in the little Outback town. Go west, then south, to the long road.', es: 'Tess está en el pueblito del Outback. Ve al oeste y luego al sur, hasta el camino largo.', fa: 'تِس در قریهٔ کوچک اوت‌بک است. به غرب برو، بعد به جنوب، تا سرک دراز.' },
+      thanks: { en: 'My bag! Now I can fly medicine to a [[remote|remote]] farm, far from hospitals.', es: '¡Mi maletín! Ahora puedo llevar medicinas a una granja [[remote|remota]], lejos de los hospitales.', fa: 'بکس من! حالا می‌توانم دوا را به یک فارم [[remote|دورافتاده]]، دور از شفاخانه‌ها، ببرم.' }
     },
     contact: {
       x: 4, y: 16,
@@ -216,21 +191,15 @@ window.EPISODE = {
       role: { en: 'Cattle station worker', es: 'Trabajadora de una estancia ganadera', fa: 'کارگر فارم گاوداری' },
       look: { skin: 0, hair: '#b5502a', shirt: '#4a7a9a', pants: '#5a4630', style: 'long', hat: '#8a6a3a' },
       lines: [
-        { en: 'Yes, I saw the bag fall! Out here in the [[outback|Outback]], there are no street names. We give directions by big landmarks, like rocks and creeks.',
-          es: '¡Sí, vi caer el maletín! Aquí en el [[outback|Outback]] no hay nombres de calles. Damos direcciones con lugares grandes que todos conocen, como rocas y arroyos.',
-          fa: 'بله، دیدم که بکس افتاد! اینجا در [[outback|اوت‌بک]] نام سرک وجود ندارد. ما با نشانه‌های بزرگ، مثل سنگ‌ها و جوی‌ها، راه را نشان می‌دهیم.' },
-        { en: 'Walk north to the big red rock. Go around to its north-east corner, at the top right. The bag is lying in the red sand there.',
-          es: 'Camina al norte hasta la gran roca roja. Rodéala hasta su esquina noreste, arriba a la derecha. El maletín está allí, en la arena roja.',
-          fa: 'به شمال تا سنگ سرخ بزرگ برو. دور آن تا گوشهٔ شمال شرقی‌اش برو، یعنی بالا طرف راست. بکس آنجا در ریگ سرخ افتاده است.' }
+        { en: 'I saw it fall! The [[outback|Outback]] has no street names. We use landmarks, like rocks.', es: '¡Lo vi caer! El [[outback|Outback]] no tiene nombres de calles. Usamos lugares conocidos, como rocas.', fa: 'دیدم که افتاد! در [[outback|اوت‌بک]] نام سرک نیست. ما از نشانه‌ها، مثل سنگ‌ها، کار می‌گیریم.' },
+        { en: 'Walk north to the big red rock. The bag is at its north-east corner.', es: 'Camina al norte hasta la gran roca roja. El maletín está en su esquina noreste.', fa: 'به شمال تا سنگ سرخ بزرگ برو. بکس در گوشهٔ شمال شرقی آن است.' }
       ]
     },
     action: {
       type: 'find',
       at: [11, 3],
       hint: { en: 'north-east corner of the big red rock', es: 'esquina noreste de la gran roca roja', fa: 'گوشهٔ شمال شرقیِ سنگ سرخ بزرگ' },
-      found: { en: 'There it is, in the red sand by the rock! You found it with a landmark and a direction. No address needed.',
-        es: '¡Ahí está, en la arena roja junto a la roca! Lo encontraste con un lugar conocido y un punto cardinal. No necesitaste ninguna dirección de calle.',
-        fa: 'آنجاست، در ریگ سرخ کنار سنگ! تو آن را با یک نشانه و یک جهت پیدا کردی. به آدرس هیچ ضرورت نبود.' },
+      found: { en: 'There it is, by the rock! You found it with a landmark and a direction. No address!', es: '¡Ahí está, junto a la roca! Lo encontraste con un lugar conocido y un punto cardinal. ¡Sin dirección!', fa: 'آنجاست، کنار سنگ! تو آن را با یک نشانه و یک جهت پیدا کردی. بدون آدرس!' },
       item: { icon: '🩺', name: { en: 'The medicine bag', es: 'El maletín de medicinas', fa: 'بکس دواها' } }
     }
   },
@@ -293,7 +262,7 @@ window.EPISODE = {
     win: { en: 'The tide goes out. Atlas page 8.1 floats up from the water and into your hands!', es: 'La marea baja. ¡La página 8.1 del atlas sale del agua y llega a tus manos!', fa: 'آب بحر پس می‌رود. صفحهٔ ۸.۱ اطلس از آب بیرون می‌آید و به دستت می‌رسد!' },
     questions: [
       { q: { en: 'What is an atoll?', es: '¿Qué es un atolón?', fa: 'اتول چیست؟' },
-        choices: [{ en: 'A ring-shaped island or reef built around a sunken volcano', es: 'Una isla o arrecife en forma de anillo alrededor de un volcán hundido', fa: 'جزیره یا صخرهٔ حلقه‌مانند دور یک آتشفشان غرق‌شده' }, { en: 'A tall volcano rising straight out of the sea', es: 'Un volcán alto que sale directo del mar', fa: 'آتشفشان بلندی که مستقیم از بحر بالا آمده' }, { en: 'A deep channel between two islands', es: 'Un canal profundo entre dos islas', fa: 'یک آبراه عمیق بین دو جزیره' }, { en: 'A dry plain in the middle of a continent', es: 'Una llanura seca en el centro de un continente', fa: 'یک دشت خشک در وسط یک قاره' }], answer: 0,
+        choices: [{ en: 'A low ring of coral around a calm lagoon', es: 'Un anillo bajo de coral alrededor de una laguna', fa: 'یک حلقهٔ پست مرجانی دور یک آب آرام' }, { en: 'A tall volcano rising straight out of the sea', es: 'Un volcán alto que sale directo del mar', fa: 'آتشفشان بلندی که مستقیم از بحر بالا آمده' }, { en: 'A deep channel between two islands', es: 'Un canal profundo entre dos islas', fa: 'یک آبراه عمیق بین دو جزیره' }, { en: 'A dry plain in the middle of a continent', es: 'Una llanura seca en el centro de un continente', fa: 'یک دشت خشک در وسط یک قاره' }], answer: 0,
         why: { en: 'An atoll is a low ring of coral land with a calm lagoon in the middle.', es: 'Un atolón es un anillo bajo de tierra de coral con una laguna tranquila en el medio.', fa: 'اتول یک حلقهٔ پست از زمین مرجانی است که در وسطش آب آرام است.' } },
       { q: { en: 'What are the three groups of Pacific islands called?', es: '¿Cómo se llaman los tres grupos de islas del Pacífico?', fa: 'سه گروه جزیره‌های اقیانوس آرام چه نام دارند؟' },
         choices: [{ en: 'Melanesia, Micronesia and Polynesia', es: 'Melanesia, Micronesia y Polinesia', fa: 'ملانزی، میکرونزی و پولینزی' }, { en: 'Indonesia, Micronesia and Australia', es: 'Indonesia, Micronesia y Australia', fa: 'اندونزیا، میکرونزی و آسترالیا' }, { en: 'Polynesia, Tasmania and Melanesia', es: 'Polinesia, Tasmania y Melanesia', fa: 'پولینزی، تاسمانیا و ملانزی' }, { en: 'Hawaii, Fiji and Papua New Guinea', es: 'Hawái, Fiyi y Papúa Nueva Guinea', fa: 'هاوایی، فیجی و پاپوا گینهٔ نو' }], answer: 0,
@@ -302,19 +271,19 @@ window.EPISODE = {
         choices: [{ en: 'driest', es: 'seco', fa: 'خشک‌ترین' }, { en: 'wettest', es: 'lluvioso', fa: 'مرطوب‌ترین' }, { en: 'coldest', es: 'frío', fa: 'سردترین' }, { en: 'most crowded', es: 'poblado', fa: 'پرجمعیت‌ترین' }], answer: 0,
         why: { en: 'Much of the middle of Australia gets very little rain most years.', es: 'Gran parte del centro de Australia recibe muy poca lluvia casi todos los años.', fa: 'بخش بزرگی از میانهٔ آسترالیا بیشتر سال‌ها باران بسیار کم دارد.' } },
       { q: { en: 'How is a high island different from a low island?', es: '¿En qué se diferencia una isla alta de una isla baja?', fa: 'جزیرهٔ بلند با جزیرهٔ پست چه فرقی دارد؟' },
-        choices: [{ en: 'A volcano built it, so it has hills, streams and deep soil', es: 'La hizo un volcán, así que tiene cerros, arroyos y tierra profunda', fa: 'آتشفشان آن را ساخته، پس تپه، جوی و خاک عمیق دارد' }, { en: 'It always has more tourists', es: 'Siempre tiene más turistas', fa: 'همیشه سیاحان بیشتر دارد' }, { en: 'It sits closer to the equator', es: 'Está más cerca del ecuador', fa: 'به خط استوا نزدیک‌تر است' }, { en: 'It sits farther north', es: 'Está más al norte', fa: 'بیشتر به طرف شمال است' }], answer: 0,
+        choices: [{ en: 'A volcano built it, so it has hills and deep soil', es: 'La hizo un volcán, así que tiene cerros y tierra profunda', fa: 'آتشفشان آن را ساخته، پس تپه و خاک عمیق دارد' }, { en: 'It always has more tourists and bigger hotels', es: 'Siempre tiene más turistas y hoteles más grandes', fa: 'همیشه سیاحان بیشتر و هوتل‌های بزرگ‌تر دارد' }, { en: 'It sits much closer to the equator than atolls', es: 'Está mucho más cerca del ecuador que los atolones', fa: 'از اتول‌ها به خط استوا بسیار نزدیک‌تر است' }, { en: 'It sits farther north, in colder water', es: 'Está más al norte, en agua más fría', fa: 'بیشتر به طرف شمال، در آب سردتر، است' }], answer: 0,
         why: { en: 'High islands come from volcanoes. Low islands, like atolls, have thin sandy soil and few streams.', es: 'Las islas altas vienen de volcanes. Las islas bajas, como los atolones, tienen tierra delgada y arenosa y pocos arroyos.', fa: 'جزیره‌های بلند از آتشفشان ساخته می‌شوند. جزیره‌های پست، مثل اتول‌ها، خاک نازک ریگی و جوی‌های کم دارند.' } },
       { q: { en: 'Which city is Australia\'s capital?', es: '¿Cuál es la capital de Australia?', fa: 'پایتخت آسترالیا کدام شهر است؟' },
         choices: [{ en: 'Canberra', es: 'Canberra', fa: 'کانبرا' }, { en: 'Sydney', es: 'Sídney', fa: 'سیدنی' }, { en: 'Melbourne', es: 'Melbourne', fa: 'ملبورن' }, { en: 'Perth', es: 'Perth', fa: 'پرت' }], answer: 0,
         why: { en: 'Sydney is the biggest city, but Canberra, a planned inland city, is the capital.', es: 'Sídney es la ciudad más grande, pero Canberra, una ciudad planeada en el interior, es la capital.', fa: 'سیدنی بزرگ‌ترین شهر است، اما کانبرا، یک شهر برنامه‌ریزی‌شده در داخل خشکه، پایتخت است.' } },
       { q: { en: 'Where does most of Australia\'s iron ore go?', es: '¿A dónde va la mayor parte del mineral de hierro de Australia?', fa: 'بیشتر سنگ آهن آسترالیا به کجا می‌رود؟' },
-        choices: [{ en: 'To steel mills in East Asia, mostly China', es: 'A fábricas de acero en Asia Oriental, sobre todo China', fa: 'به فابریکه‌های فولاد در آسیای شرقی، بیشتر چین' }, { en: 'To countries in Europe', es: 'A países de Europa', fa: 'به کشورهای اروپا' }, { en: 'It all stays in the Outback', es: 'Todo se queda en el Outback', fa: 'همه‌اش در اوت‌بک می‌ماند' }, { en: 'To small Pacific islands', es: 'A pequeñas islas del Pacífico', fa: 'به جزیره‌های کوچک اقیانوس آرام' }], answer: 0,
+        choices: [{ en: 'To steel mills in East Asia, mostly China', es: 'A fábricas de acero en Asia Oriental, sobre todo China', fa: 'به فابریکه‌های فولاد در آسیای شرقی، بیشتر چین' }, { en: 'To car factories in Europe and Africa', es: 'A fábricas de carros en Europa y África', fa: 'به فابریکه‌های موتر در اروپا و افریقا' }, { en: 'It all stays in Outback towns to build houses', es: 'Todo se queda en el Outback para hacer casas', fa: 'همه‌اش در قریه‌های اوت‌بک برای خانه‌سازی می‌ماند' }, { en: 'To small Pacific islands far out at sea', es: 'A pequeñas islas del Pacífico lejos en el mar', fa: 'به جزیره‌های کوچک اقیانوس آرام در دور بحر' }], answer: 0,
         why: { en: 'Ships carry iron ore across the ocean to East Asia. China buys much of it to make steel.', es: 'Los barcos llevan el mineral de hierro por el océano a Asia Oriental. China compra mucho para hacer acero.', fa: 'کشتی‌ها سنگ آهن را از بحر به آسیای شرقی می‌برند. چین بخش زیادی از آن را برای ساختن فولاد می‌خرد.' } },
       { q: { en: 'Many Pacific islands sell just one or two things, like fish or dried coconut. Why is that a risk?', es: 'Muchas islas del Pacífico venden solo una o dos cosas, como pescado o coco seco. ¿Por qué es un riesgo?', fa: 'بسیاری از جزیره‌های اقیانوس آرام فقط یک یا دو چیز می‌فروشند، مثل ماهی یا نارگیل خشک. چرا این خطر دارد؟' },
-        choices: [{ en: 'If the price of that one thing drops, the whole island feels it', es: 'Si baja el precio de esa cosa, toda la isla lo siente', fa: 'اگر قیمت همان یک چیز پایین بیاید، تمام جزیره ضرر می‌بیند' }, { en: 'One product is harder to load onto a ship', es: 'Un solo producto es más difícil de subir a un barco', fa: 'بار کردن یک جنس در کشتی سخت‌تر است' }, { en: 'Buyers get bored of the same product', es: 'Los compradores se aburren del mismo producto', fa: 'خریداران از یک جنس خسته می‌شوند' }, { en: 'Fish cannot travel on ships', es: 'El pescado no puede viajar en barco', fa: 'ماهی را نمی‌شود با کشتی برد' }], answer: 0,
+        choices: [{ en: 'If its price drops, the whole island loses money', es: 'Si su precio baja, toda la isla pierde dinero', fa: 'اگر قیمتش پایین بیاید، تمام جزیره ضرر می‌کند' }, { en: 'One product is much harder to load onto a ship', es: 'Un solo producto es mucho más difícil de subir a un barco', fa: 'بار کردن یک جنس در کشتی بسیار سخت‌تر است' }, { en: 'Buyers in other countries get bored of it', es: 'Los compradores de otros países se aburren', fa: 'خریداران کشورهای دیگر از آن خسته می‌شوند' }, { en: 'Fish and coconut cannot travel on ships', es: 'El pescado y el coco no pueden ir en barco', fa: 'ماهی و نارگیل را نمی‌شود با کشتی برد' }], answer: 0,
         why: { en: 'When an island depends on one thing, a low price means many people lose money. That is why many islands also turn to [[tourism|tourism]].', es: 'Cuando una isla depende de una sola cosa, un precio bajo hace que mucha gente pierda dinero. Por eso muchas islas también recurren al [[tourism|turismo]].', fa: 'وقتی یک جزیره به یک چیز وابسته است، قیمت پایین یعنی بسیاری از مردم پول از دست می‌دهند. برای همین بسیاری از جزیره‌ها به [[tourism|سیاحت]] هم رو می‌آورند.' } },
       { q: { en: 'How did Pacific sailors cross the ocean long ago, with no compass?', es: '¿Cómo cruzaban el océano los navegantes del Pacífico hace mucho tiempo, sin brújula?', fa: 'ملاحان اقیانوس آرام در زمان‌های قدیم بدون قطب‌نما چطور از بحر می‌گذشتند؟' },
-        choices: [{ en: 'They read the stars, waves, clouds and birds', es: 'Leían las estrellas, las olas, las nubes y los pájaros', fa: 'ستاره‌ها، موج‌ها، ابرها و پرنده‌ها را می‌خواندند' }, { en: 'They followed roads on the sea floor', es: 'Seguían caminos en el fondo del mar', fa: 'سرک‌های کف بحر را دنبال می‌کردند' }, { en: 'They only sailed where they could see land', es: 'Solo navegaban donde podían ver tierra', fa: 'فقط جایی می‌رفتند که خشکه را می‌دیدند' }, { en: 'They waited for a big ship to pull them', es: 'Esperaban que un barco grande los jalara', fa: 'منتظر می‌ماندند تا کشتی بزرگی آن‌ها را بکشد' }], answer: 0,
+        choices: [{ en: 'They read the stars, waves, clouds and birds', es: 'Leían las estrellas, las olas, las nubes y los pájaros', fa: 'ستاره‌ها، موج‌ها، ابرها و پرنده‌ها را می‌خواندند' }, { en: 'They followed long stone roads on the sea floor', es: 'Seguían largos caminos de piedra en el fondo del mar', fa: 'سرک‌های دراز سنگی را در کف بحر دنبال می‌کردند' }, { en: 'They only sailed where they could see land', es: 'Solo navegaban donde podían ver tierra', fa: 'فقط جایی می‌رفتند که خشکه را می‌دیدند' }, { en: 'They waited for a big ship to pull them', es: 'Esperaban que un barco grande los jalara', fa: 'منتظر می‌ماندند تا کشتی بزرگی آن‌ها را بکشد' }], answer: 0,
         why: { en: 'That skill is called [[wayfinding|wayfinding]]. The canoe Hōkūleʻa used it to sail from Hawaii to Tahiti in 1976.', es: 'Esa habilidad se llama [[wayfinding|navegación tradicional]]. La canoa Hōkūleʻa la usó para ir de Hawái a Tahití en 1976.', fa: 'این مهارت [[wayfinding|راه‌یابی]] نام دارد. قایق هوکوله در سال ۱۹۷۶ با آن از هاوایی تا تاهیتی رفت.' } }
     ]
   },

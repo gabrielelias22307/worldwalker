@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,8 @@ sol: 'WG.3',
 title: { en: 'United States and Canada', es: 'Estados Unidos y Canadá', fa: 'امریکا و کانادا' },
 place: { en: 'The Great Lakes Port', es: 'El Puerto de los Grandes Lagos', fa: 'بندر جهیل‌های بزرگ' },
 intro: [
-{ en: 'Christopher: "Welcome to the Americas! The Grump muddied the water routes, and now the ships and trains are stuck. Talk to the ship captain, the wheat farmer and the barge pilot. Then use the compass stone to pick the best spot for a new city."',
-es: 'Christopher: "¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua y ahora los barcos y los trenes están atascados. Habla con la capitana, el agricultor de trigo y el piloto de la barcaza. Luego usa la piedra de la brújula para elegir el mejor lugar para una ciudad nueva."',
-fa: 'کریستوفر: «به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد و حالا کشتی‌ها و قطارها گیر مانده‌اند. با کپتان کشتی، دهقان گندم و رانندهٔ کشتی باری گپ بزن. بعد با سنگ قطب‌نما بهترین جا را برای یک شهر تازه انتخاب کن.»' }
+{ en: 'Welcome to the Americas! The Grump muddied the water routes. Ships and trains are stuck.', es: '¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua. Los barcos y los trenes están atascados.', fa: 'به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد. کشتی‌ها و قطارها گیر مانده‌اند.' },
+{ en: 'Talk to the captain, the farmer and the barge pilot. Then pick a city spot.', es: 'Habla con la capitana, el agricultor y el piloto de la barcaza. Luego elige un lugar para una ciudad.', fa: 'با کپتان، دهقان و رانندهٔ کشتی باری گپ بزن. بعد یک جا برای شهر انتخاب کن.' }
 ],
 map: [
 'PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP',
@@ -5379,10 +5499,10 @@ fa: 'اسکله آماده است! قطار، جهیل و دریا با هم ک�
 finds: [
 { clueAt: [19, 13], at: [22, 17], decor: 'feather',
 clue: { en: 'From this note, walk 4 steps south, then 3 steps east. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 3 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۳ قدم به شرق. چیزی آن جا پنهان است.' },
-text: { en: 'You followed compass directions! South is down and east is to the right. Four of the five Great Lakes touch the border between the United States and Canada. A bird feather was in the grass.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Cuatro de los cinco Grandes Lagos tocan la frontera entre Estados Unidos y Canadá. Había una pluma de pájaro en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر پرنده در سبزه بود.' } },
+text: { en: 'You followed compass directions! Four of the five Great Lakes touch the U.S.–Canada border. A feather was here.', es: '¡Seguiste las direcciones de la brújula! Cuatro de los cinco Grandes Lagos tocan la frontera entre EE. UU. y Canadá. Aquí había una pluma.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر این جا بود.' } },
 { clueAt: [15, 11], at: [24, 15], decor: 'coinold',
-clue: { en: 'Grain from the [[prairie|prairie]] rides the train, then a barge on the big river. Find the barge dock on the river that flows south. Stand on the dock square where the dirt road meets the river.', es: 'El grano de la [[prairie|pradera]] viaja en tren y luego en una barcaza por el río grande. Busca el muelle de barcazas en el río que corre hacia el sur. Párate en el cuadro del muelle donde el camino de tierra llega al río.', fa: 'غله از [[prairie|دشت]] با ریل می‌رود، بعد با یک کشتیِ باری روی دریای بزرگ. اسکلهٔ کشتی‌های باری را روی دریایی پیدا کن که به طرف جنوب می‌رود. روی خانهٔ اسکله بایست که سرکِ خاکی به دریا می‌رسد.' },
-text: { en: 'You found the barge dock! A barge is a flat boat that carries heavy loads like grain. One barge can carry as much grain as many big trucks. An old coin was between the boards.', es: '¡Encontraste el muelle de barcazas! Una barcaza es un bote plano que lleva cargas pesadas, como grano. Una sola barcaza lleva tanto grano como muchos camiones grandes. Había una moneda antigua entre las tablas.', fa: 'تو اسکلهٔ کشتی‌های باری را پیدا کردی! کشتیِ باری یک قایق هموار است که بارهای سنگین مثل غله را می‌برد. یک کشتیِ باری به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه بین تخته‌ها بود.' } }
+clue: { en: '[[prairie|Prairie]] grain rides a train, then a barge. Find the barge dock on the south-flowing river, where the dirt road meets it.', es: 'El grano de la [[prairie|pradera]] va en tren y luego en barcaza. Busca el muelle en el río que corre al sur, donde llega el camino de tierra.', fa: 'غلهٔ [[prairie|دشت]] با ریل می‌رود، بعد با کشتیِ باری. اسکله را روی دریایی که به جنوب می‌رود پیدا کن، جایی که سرکِ خاکی می‌رسد.' },
+text: { en: 'You found the barge dock! One flat barge carries as much grain as many big trucks. An old coin was here.', es: '¡Encontraste el muelle! Una barcaza plana lleva tanto grano como muchos camiones grandes. Aquí había una moneda antigua.', fa: 'تو اسکله را پیدا کردی! یک کشتیِ باریِ هموار به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه این جا بود.' } }
 ],
 secret: { tool: 'compass', at: [24, 1],
 text: { en: 'The Compass Rose found the hidden path! In the chest is an old map. It says the five Great Lakes hold about one fifth of all the fresh lake water on Earth.',
@@ -5405,23 +5525,22 @@ name: { en: 'Captain Marie', es: 'Capitana Marie', fa: 'کپتان ماری' },
 role: { en: 'Ship captain from Quebec', es: 'Capitana de barco de Quebec', fa: 'کپتان کشتی از کیوبک' },
 look: { skin: 0, hair: '#8a5a2a', shirt: '#22324f', pants: '#22324f' },
 lines: [
-{ en: 'Bonjour! I am Captain Marie, from Quebec in Canada. Look around. Most of the biggest cities in the United States and Canada sit next to water. Many sit on a [[harbor|harbor]], a calm place where big ships can dock.',
-es: '¡Bonjour! Soy la capitana Marie, de Quebec, en Canadá. Mira a tu alrededor. La mayoría de las ciudades más grandes de Estados Unidos y Canadá están junto al agua. Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde los barcos grandes pueden atracar.',
-fa: 'بونژور! من کپتان ماری از کیوبک در کانادا هستم. به اطراف نگاه کن. بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند. بسیاری از آن‌ها روی یک [[harbor|بندرگاه]] ساخته شده‌اند، جای آرامی که کشتی‌های بزرگ می‌توانند لنگر بیندازند.' },
-{ en: 'This lake is like the Great Lakes: five huge lakes between the United States and Canada. They work like an inland sea. Ships cross them loaded with iron ore and grain.',
-es: 'Este lago es como los Grandes Lagos: cinco lagos enormes entre Estados Unidos y Canadá. Funcionan como un mar en el medio del continente. Los barcos los cruzan cargados de mineral de hierro y granos.',
-fa: 'این جهیل مثل جهیل‌های بزرگ است: پنج جهیل بسیار بزرگ میان امریکا و کانادا. مثل یک بحر در وسط خشکه کار می‌کنند. کشتی‌ها پر از سنگ آهن و غله از آن‌ها می‌گذرند.' },
-{ en: 'From the lakes, ships follow the St. Lawrence River out to the Atlantic Ocean. Lake Superior sits about 180 meters above the sea, so the [[seaway|Seaway]] lowers ships step by step through locks.',
-es: 'Desde los lagos, los barcos siguen el río San Lorenzo hasta el océano Atlántico. El lago Superior está a unos 180 metros sobre el mar, así que la [[seaway|Vía Marítima]] baja los barcos paso a paso con esclusas.',
-fa: 'کشتی‌ها از جهیل‌ها راه دریای سنت لارنس را تا بحر اطلس می‌گیرند. جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است، پس [[seaway|راه آبی سنت لارنس]] کشتی‌ها را با دروازه‌های آبی زینه به زینه پایین می‌برد.' }
+{ en: 'Bonjour! I am Captain Marie, from Quebec in Canada.', es: '¡Bonjour! Soy la capitana Marie, de Quebec, en Canadá.', fa: 'بونژور! من کپتان ماری از کیوبک در کانادا هستم.' },
+{ en: 'Most of the biggest cities in the United States and Canada sit next to water.', es: 'La mayoría de las ciudades más grandes de Estados Unidos y Canadá están junto al agua.', fa: 'بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند.' },
+{ en: 'Many sit on a [[harbor|harbor]], a calm place where big ships dock.', es: 'Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde atracan barcos grandes.', fa: 'بسیاری روی یک [[harbor|بندرگاه]] هستند، جای آرامی که کشتی‌های بزرگ لنگر می‌اندازند.' },
+{ en: 'This lake is like the Great Lakes: five huge lakes between the United States and Canada.', es: 'Este lago es como los Grandes Lagos: cinco lagos enormes entre Estados Unidos y Canadá.', fa: 'این جهیل مثل جهیل‌های بزرگ است: پنج جهیل بسیار بزرگ میان امریکا و کانادا.' },
+{ en: 'They work like an inland sea. Ships cross them loaded with iron ore and grain.', es: 'Funcionan como un mar tierra adentro. Los barcos los cruzan cargados de mineral de hierro y granos.', fa: 'مثل یک بحر در وسط خشکه کار می‌کنند. کشتی‌ها پر از سنگ آهن و غله از آن‌ها می‌گذرند.' },
+{ en: 'From the lakes, ships follow the St. Lawrence River out to the Atlantic Ocean.', es: 'Desde los lagos, los barcos siguen el río San Lorenzo hasta el océano Atlántico.', fa: 'کشتی‌ها از جهیل‌ها راه دریای سنت لارنس را تا بحر اطلس می‌گیرند.' },
+{ en: 'Lake Superior sits about 180 meters above the sea.', es: 'El lago Superior está a unos 180 metros sobre el mar.', fa: 'جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است.' },
+{ en: 'So the [[seaway|Seaway]] lowers ships step by step through locks.', es: 'Por eso la [[seaway|Vía Marítima]] baja los barcos paso a paso con esclusas.', fa: 'پس [[seaway|راه آبی سنت لارنس]] کشتی‌ها را با دروازه‌های آبی زینه به زینه پایین می‌برد.' }
 ],
 ask: {
 stat: 'loc',
 q: { en: 'Why did so many cities grow next to harbors, lakes and rivers?', es: '¿Por qué tantas ciudades crecieron junto a puertos, lagos y ríos?', fa: 'چرا این‌قدر زیاد شهرها کنار بندرگاه، جهیل و دریا بزرگ شدند؟' },
 choices: [
-{ ok: true, t: { en: 'Boats moved heavy goods much more cheaply than wagons', es: 'Los barcos movían cargas pesadas mucho más barato que las carretas', fa: 'کشتی‌ها بار سنگین را خیلی ارزان‌تر از گادی می‌بردند' },
+{ ok: true, t: { en: 'Boats moved heavy goods more cheaply than wagons', es: 'Los barcos movían cargas pesadas más barato que las carretas', fa: 'کشتی‌ها بار سنگین را ارزان‌تر از گادی می‌بردند' },
 why: { en: 'Yes! Water was the road. One boat could carry what many wagons could not.', es: '¡Sí! El agua era el camino. Un barco llevaba lo que muchas carretas no podían.', fa: 'بله! آب همان سرک بود. یک کشتی باری را می‌برد که گادی‌های زیاد نمی‌توانستند.' } },
-{ t: { en: 'Land away from water could not be farmed', es: 'La tierra lejos del agua no se podía sembrar', fa: 'زمین دور از آب قابل زراعت نبود' },
+{ t: { en: 'Land far away from water could never be farmed', es: 'La tierra lejos del agua nunca se podía sembrar', fa: 'زمین دور از آب هرگز قابل زراعت نبود' },
 why: { en: 'The prairies are far from the sea and full of farms. The reason was moving goods.', es: 'Las praderas están lejos del mar y llenas de granjas. La razón era mover productos.', fa: 'دشت‌ها از بحر دور هستند و پر از فارم. دلیل اصلی بردن اجناس بود.' } },
 { t: { en: 'Governments ordered every town to be built at a port', es: 'Los gobiernos ordenaron construir cada pueblo en un puerto', fa: 'حکومت‌ها دستور دادند هر شهرک در بندر ساخته شود' },
 why: { en: 'Nobody ordered it. Towns grew where boats could stop, load and unload.', es: 'Nadie lo ordenó. Los pueblos crecieron donde los barcos podían parar, cargar y descargar.', fa: 'کسی دستور نداد. شهرک‌ها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند و بار بزنند و خالی کنند.' } }
@@ -5434,25 +5553,26 @@ name: { en: 'Harpreet', es: 'Harpreet', fa: 'هرپریت' },
 role: { en: 'Wheat farmer on the prairie', es: 'Agricultor de trigo en la pradera', fa: 'دهقان گندم در دشت' },
 look: { skin: 2, hair: '#1b1410', shirt: '#e07a2a', pants: '#3a4a6a' },
 lines: [
-{ en: 'Hello! Welcome to my farm. Between the Rocky Mountains in the west and the Appalachian Mountains in the east lies a huge flat middle. In the United States it is the Great Plains. In Canada it is the [[prairie|prairies]].',
-es: '¡Hola! Bienvenido a mi granja. Entre las Montañas Rocosas al oeste y los montes Apalaches al este hay un enorme centro plano. En Estados Unidos se llaman las Grandes Llanuras. En Canadá se llaman las [[prairie|praderas]].',
-fa: 'سلام! به فارم من خوش آمدی. میان کوه‌های راکی در غرب و کوه‌های اپالاچی در شرق یک میانهٔ هموار بسیار بزرگ است. در امریکا نامش دشت‌های بزرگ است. در کانادا نامش [[prairie|دشت‌ها (پریری)]] است.' },
-{ en: 'Farmers here grow wheat, corn and soybeans on rich land. But a farm is far from the sea. Long ago, a wagon carried only a little, and roads turned to mud. Moving heavy grain over land was slow and expensive.',
-es: 'Aquí los agricultores siembran trigo, maíz y soya en tierra rica. Pero una granja está lejos del mar. Hace mucho, una carreta llevaba muy poco y los caminos se volvían lodo. Mover granos pesados por tierra era lento y caro.',
-fa: 'دهقانان اینجا روی زمین حاصل‌خیز گندم، جواری و سویا می‌کارند. اما فارم از بحر دور است. در گذشته، یک گادی بار کمی می‌برد و سرک‌ها گل می‌شد. بردن غلهٔ سنگین از راه خشکه آهسته و قیمت بود.' },
-{ en: 'Today a truck brings my wheat to the grain elevator by the railway. Then a train hauls it to a [[port|port]] on a lake or on the coast. Each step moves it onto cheaper transport, and water is the cheapest of all.',
-es: 'Hoy un camión lleva mi trigo al elevador de granos junto al ferrocarril. Luego un tren lo lleva a un [[port|puerto]] en un lago o en la costa. Cada paso lo pasa a un transporte más barato, y el agua es lo más barato de todo.',
-fa: 'امروز یک لاری گندم مرا به انبار غله کنار خط آهن می‌برد. بعد قطار آن را به یک [[port|بندر]] کنار جهیل یا ساحل می‌برد. هر قدم آن را به وسیلهٔ ارزان‌تر می‌رساند، و آب از همه ارزان‌تر است.' }
+{ en: 'Hello! Between the Rocky Mountains and the Appalachian Mountains lies a huge flat middle.', es: '¡Hola! Entre las Montañas Rocosas y los montes Apalaches hay un enorme centro plano.', fa: 'سلام! میان کوه‌های راکی و کوه‌های اپالاچی یک میانهٔ هموار بسیار بزرگ است.' },
+{ en: 'The Rockies are in the west. The Appalachians are in the east.', es: 'Las Rocosas están al oeste. Los Apalaches están al este.', fa: 'کوه‌های راکی در غرب است. کوه‌های اپالاچی در شرق است.' },
+{ en: 'In the United States it is called the Great Plains.', es: 'En Estados Unidos se llaman las Grandes Llanuras.', fa: 'در امریکا نامش دشت‌های بزرگ است.' },
+{ en: 'In Canada it is called the [[prairie|prairies]].', es: 'En Canadá se llaman las [[prairie|praderas]].', fa: 'در کانادا نامش [[prairie|دشت‌ها (پریری)]] است.' },
+{ en: 'Farmers here grow wheat, corn and soybeans on rich land. But farms are far from the sea.', es: 'Aquí los agricultores siembran trigo, maíz y soya en tierra rica. Pero las granjas están lejos del mar.', fa: 'دهقانان اینجا روی زمین حاصل‌خیز گندم، جواری و سویا می‌کارند. اما فارم‌ها از بحر دور هستند.' },
+{ en: 'Long ago, a wagon carried only a little, and roads turned to mud.', es: 'Hace mucho, una carreta llevaba muy poco y los caminos se volvían lodo.', fa: 'در گذشته، یک گادی بار کمی می‌برد و سرک‌ها گل می‌شد.' },
+{ en: 'Moving heavy grain over land was slow and expensive.', es: 'Mover granos pesados por tierra era lento y caro.', fa: 'بردن غلهٔ سنگین از راه خشکه آهسته و قیمت بود.' },
+{ en: 'Today a truck brings my wheat to the grain elevator by the railway.', es: 'Hoy un camión lleva mi trigo al elevador de granos junto al ferrocarril.', fa: 'امروز یک لاری گندم مرا به انبار غله کنار خط آهن می‌برد.' },
+{ en: 'Then a train hauls it to a [[port|port]] on a lake or on the coast.', es: 'Luego un tren lo lleva a un [[port|puerto]] en un lago o en la costa.', fa: 'بعد قطار آن را به یک [[port|بندر]] کنار جهیل یا ساحل می‌برد.' },
+{ en: 'Each step uses cheaper transport, and water is the cheapest of all.', es: 'Cada paso usa un transporte más barato, y el agua es lo más barato de todo.', fa: 'هر قدم وسیلهٔ ارزان‌تر است، و آب از همه ارزان‌تر است.' }
 ],
 ask: {
 stat: 'hei',
 q: { en: 'A truck brings wheat to a grain elevator beside a railway. What happens to the wheat next?', es: 'Un camión lleva trigo a un elevador de granos junto al ferrocarril. ¿Qué pasa después con el trigo?', fa: 'یک لاری گندم را به انبار غله کنار خط آهن می‌آورد. بعد از آن به گندم چه می‌شود؟' },
 choices: [
-{ ok: true, t: { en: 'A train hauls it to a port on a lake or on the coast', es: 'Un tren lo lleva a un puerto en un lago o en la costa', fa: 'قطار آن را به یک بندر کنار جهیل یا ساحل می‌برد' },
+{ ok: true, t: { en: 'A train hauls it to a lake or ocean port', es: 'Un tren lo lleva a un puerto de lago o de mar', fa: 'قطار آن را به یک بندر جهیل یا بحر می‌برد' },
 why: { en: 'Right. The grain keeps moving toward the water, where shipping is cheapest.', es: 'Correcto. El grano sigue avanzando hacia el agua, donde enviarlo es más barato.', fa: 'درست. غله به طرف آب پیش می‌رود، جایی که بردن آن از همه ارزان‌تر است.' } },
-{ t: { en: 'It is planted again in the field', es: 'Se vuelve a sembrar en el campo', fa: 'دوباره در زمین کاشته می‌شود' },
+{ t: { en: 'It goes back to the field to be planted again', es: 'Vuelve al campo para sembrarse otra vez', fa: 'دوباره به زمین می‌رود تا کاشته شود' },
 why: { en: 'The wheat has been harvested. It is on its way to be sold.', es: 'El trigo ya se cosechó. Va camino a venderse.', fa: 'گندم درو شده است. در راه فروش است.' } },
-{ t: { en: 'A ship picks it up right at the farm', es: 'Un barco lo recoge en la granja', fa: 'کشتی آن را از خود فارم می‌گیرد' },
+{ t: { en: 'A big ship picks it up right at the farm', es: 'Un barco grande lo recoge en la misma granja', fa: 'یک کشتی بزرگ آن را از خود فارم می‌گیرد' },
 why: { en: 'The farm is far from the water. A train must carry it to the port first.', es: 'La granja está lejos del agua. Primero un tren debe llevarlo al puerto.', fa: 'فارم از آب دور است. اول قطار باید آن را به بندر ببرد.' } }
 ]
 }
@@ -5463,15 +5583,14 @@ name: { en: 'Darnell', es: 'Darnell', fa: 'دارنل' },
 role: { en: 'River barge pilot', es: 'Piloto de barcaza de río', fa: 'رانندهٔ کشتی باری دریا' },
 look: { skin: 5, hair: '#120c08', shirt: '#c0392b', pants: '#2a3a5a' },
 lines: [
-{ en: 'Hey there! I pilot a barge on this big river. A river only helps trade if it is [[navigable|navigable]]. That means it is deep and wide enough for large boats.',
-es: '¡Hola! Yo manejo una barcaza en este río grande. Un río solo ayuda al comercio si es [[navigable|navegable]]. Eso quiere decir que es lo bastante profundo y ancho para barcos grandes.',
-fa: 'سلام! من در این دریای بزرگ کشتی باری می‌رانم. یک دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد. یعنی آن‌قدر عمیق و پهن باشد که کشتی‌های بزرگ از آن بگذرند.' },
-{ en: 'The Mississippi River is navigable for hundreds of miles. Barges carry farm goods down it toward the Gulf of Mexico. A single boat can carry a heavy load for far less money than wagons or trucks.',
-es: 'El río Misisipi es navegable por cientos de millas. Las barcazas llevan productos del campo río abajo hacia el golfo de México. Un solo barco puede llevar una carga pesada por mucho menos dinero que carretas o camiones.',
-fa: 'دریای میسی‌سی‌پی صدها میل قابل کشتیرانی است. کشتی‌های باری اجناس فارم‌ها را از آن به طرف خلیج مکسیکو می‌برند. یک کشتی می‌تواند بار سنگین را خیلی ارزان‌تر از گادی یا لاری ببرد.' },
-{ en: 'Cities grew where boats could stop, load and unload. Alexandria, Virginia grew on the Potomac River, at the point where ocean ships could still reach. Its old brick warehouses near the water still stand today.',
-es: 'Las ciudades crecieron donde los barcos podían parar, cargar y descargar. Alexandria, Virginia, creció en el río Potomac, en el punto hasta donde todavía llegaban los barcos del océano. Sus viejos almacenes de ladrillo junto al agua siguen en pie.',
-fa: 'شهرها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند، بار بزنند و خالی کنند. الکساندریا در ویرجینیا کنار دریای پوتومک بزرگ شد، همان جایی که کشتی‌های بحری هنوز می‌رسیدند. گدام‌های خشتی کهنهٔ آن کنار آب هنوز ایستاده‌اند.' }
+{ en: 'Hey there! I pilot a barge on this big river.', es: '¡Hola! Yo manejo una barcaza en este río grande.', fa: 'سلام! من در این دریای بزرگ کشتی باری می‌رانم.' },
+{ en: 'A river helps trade only if it is [[navigable|navigable]]: deep and wide for big boats.', es: 'Un río solo ayuda al comercio si es [[navigable|navegable]]: profundo y ancho para barcos grandes.', fa: 'دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد: عمیق و پهن برای کشتی‌های بزرگ.' },
+{ en: 'The Mississippi River is navigable for hundreds of miles.', es: 'El río Misisipi es navegable por cientos de millas.', fa: 'دریای میسی‌سی‌پی صدها میل قابل کشتیرانی است.' },
+{ en: 'Barges carry farm goods down it toward the Gulf of Mexico.', es: 'Las barcazas llevan productos del campo río abajo hacia el golfo de México.', fa: 'کشتی‌های باری اجناس فارم‌ها را از آن به طرف خلیج مکسیکو می‌برند.' },
+{ en: 'One boat carries a heavy load for far less money than wagons or trucks.', es: 'Un solo barco lleva una carga pesada por mucho menos dinero que carretas o camiones.', fa: 'یک کشتی بار سنگین را خیلی ارزان‌تر از گادی یا لاری می‌برد.' },
+{ en: 'Cities grew where boats could stop, load and unload.', es: 'Las ciudades crecieron donde los barcos podían parar, cargar y descargar.', fa: 'شهرها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند، بار بزنند و خالی کنند.' },
+{ en: 'Alexandria, Virginia grew on the Potomac River, as far as ocean ships could reach.', es: 'Alexandria, Virginia, creció en el río Potomac, hasta donde llegaban los barcos del océano.', fa: 'الکساندریا در ویرجینیا کنار دریای پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند.' },
+{ en: 'Its old brick warehouses near the water still stand today.', es: 'Sus viejos almacenes de ladrillo junto al agua siguen en pie.', fa: 'گدام‌های خشتی کهنهٔ آن کنار آب هنوز ایستاده‌اند.' }
 ],
 ask: {
 stat: 'mov',
@@ -5479,21 +5598,17 @@ q: { en: 'What does navigable mean when it describes a river?', es: '¿Qué sign
 choices: [
 { ok: true, t: { en: 'It is deep and wide enough for large boats', es: 'Es lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن است که کشتی‌های بزرگ بگذرند' },
 why: { en: 'Yes. The Mississippi is navigable, so barges carry goods for hundreds of miles.', es: 'Sí. El Misisipi es navegable, así que las barcazas llevan productos por cientos de millas.', fa: 'بله. میسی‌سی‌پی قابل کشتیرانی است، پس کشتی‌های باری اجناس را صدها میل می‌برند.' } },
-{ t: { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' },
+{ t: { en: 'It runs right beside a very large city', es: 'Pasa justo al lado de una ciudad muy grande', fa: 'درست از کنار یک شهر بسیار بزرگ می‌گذرد' },
 why: { en: 'Big cities often sit on navigable rivers, but the word describes the water itself.', es: 'Las ciudades grandes suelen estar en ríos navegables, pero la palabra describe el agua.', fa: 'شهرهای بزرگ اغلب کنار دریاهای قابل کشتیرانی هستند، اما این کلمه خود آب را توصیف می‌کند.' } },
-{ t: { en: 'It is drawn and named on most maps', es: 'Aparece dibujado y con nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها کشیده شده و نام دارد' },
+{ t: { en: 'It is drawn and named on most world maps', es: 'Aparece dibujado y con nombre en casi todos los mapas del mundo', fa: 'در بیشتر نقشه‌های جهان کشیده شده و نام دارد' },
 why: { en: 'A name on a map tells you nothing about how deep the water is.', es: 'Un nombre en un mapa no dice nada sobre la profundidad del agua.', fa: 'نام روی نقشه چیزی دربارهٔ عمق آب نمی‌گوید.' } }
 ]
 }
 }
 ],
 signs: [
-{ x: 10, y: 10, text: { en: 'CANADA FACT · Most Canadians live within about 100 miles of the United States border. The far north is too cold for farms and big cities, so people, ports and factories crowd into the south.',
-es: 'DATO DE CANADÁ · La mayoría de los canadienses vive a menos de unas 100 millas de la frontera con Estados Unidos. El extremo norte es demasiado frío para granjas y ciudades grandes, así que la gente, los puertos y las fábricas se juntan en el sur.',
-fa: 'معلومات کانادا · بیشتر مردم کانادا در فاصلهٔ حدود ۱۰۰ میلی سرحد امریکا زندگی می‌کنند. شمال دور برای فارم و شهرهای بزرگ خیلی سرد است، پس مردم، بندرها و فابریکه‌ها در جنوب جمع شده‌اند.' } },
-{ x: 22, y: 12, text: { en: 'THE BIG RIVER · This river is [[navigable|navigable]] for hundreds of miles to the south. Barges carry grain down it. The Mississippi River works the same way.',
-es: 'EL RÍO GRANDE · Este río es [[navigable|navegable]] por cientos de millas hacia el sur. Las barcazas llevan granos río abajo. El río Misisipi funciona igual.',
-fa: 'دریای بزرگ · این دریا تا صدها میل به طرف جنوب [[navigable|قابل کشتیرانی]] است. کشتی‌های باری غله را از آن می‌برند. دریای میسی‌سی‌پی هم همین‌طور است.' } }
+{ x: 10, y: 10, text: { en: 'CANADA FACT · Most Canadians live within 100 miles of the U.S. border. The cold north has few farms or cities.', es: 'DATO DE CANADÁ · La mayoría de los canadienses vive a menos de 100 millas de la frontera con EE. UU. El norte frío tiene pocas granjas o ciudades.', fa: 'معلومات کانادا · بیشتر مردم کانادا در ۱۰۰ میلی سرحد امریکا زندگی می‌کنند. شمال سرد فارم و شهر کم دارد.' } },
+{ x: 22, y: 12, text: { en: 'THE BIG RIVER · This river is [[navigable|navigable]] for hundreds of miles. Barges carry grain down it, like the Mississippi.', es: 'EL RÍO GRANDE · Este río es [[navigable|navegable]] por cientos de millas. Las barcazas llevan granos, como en el Misisipi.', fa: 'دریای بزرگ · این دریا صدها میل [[navigable|قابل کشتیرانی]] است. کشتی‌های باری غله می‌برند، مثل میسی‌سی‌پی.' } }
 ],
 quest: {
 stat: 'mov',
@@ -5504,19 +5619,15 @@ name: { en: 'Nokomis', es: 'Nokomis', fa: 'نوکومیس' },
 role: { en: 'Canoe maker', es: 'Fabricante de canoas', fa: 'قایق‌ساز' },
 look: { skin: 3, hair: '#d8d4cc', shirt: '#2a7a6a', pants: '#3a3a3a', style: 'long' },
 lines: [
-{ en: 'Boozhoo! That means hello in my language, Ojibwe. I carved a little birchbark canoe for my grandson. The Grump\'s wind blew it off the dock and into the lake!',
-es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe. Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Gruñón la sacó del muelle y la tiró al lago!',
-fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام. من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد غرغرو آن را از بندر به داخل جهیل برد!' },
-{ en: 'Wen the fisher knows how water moves. She fishes on the big river in the south-east. Will you ask her where my canoe went?',
-es: 'Wen, la pescadora, sabe cómo se mueve el agua. Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?',
-fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند. او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' }
+{ en: 'Boozhoo! That means hello in my language, Ojibwe.', es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe.', fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام.' },
+{ en: 'I carved a little birchbark canoe for my grandson.', es: 'Tallé una canoa pequeña de corteza de abedul para mi nieto.', fa: 'من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم.' },
+{ en: 'The Grump\'s wind blew it off the dock and into the lake!', es: '¡El viento del Gruñón la sacó del muelle y la tiró al lago!', fa: 'باد غرغرو آن را از بندر به داخل جهیل برد!' },
+{ en: 'Wen the fisher knows how water moves.', es: 'Wen, la pescadora, sabe cómo se mueve el agua.', fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند.' },
+{ en: 'She fishes on the big river in the south-east. Will you ask her where my canoe went?', es: 'Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?', fa: 'او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' },
+{ en: 'Will you ask her where my canoe went?', es: '¿Le preguntas a dónde se fue mi canoa?', fa: 'از او می‌پرسی که قایق من کجا رفت؟' }
 ],
-wait: { en: 'Wen is by the big river in the south-east. On this map south is down and east is to the right.',
-es: 'Wen está junto al río grande, en el sureste. En este mapa el sur está abajo y el este a la derecha.',
-fa: 'وِن کنار دریای بزرگ در جنوب شرق است. در این نقشه جنوب پایین و شرق طرف راست است.' },
-thanks: { en: 'My canoe! The lake water carried it east, toward the ocean. Big ships follow that same water road. Miigwech, thank you!',
-es: '¡Mi canoa! El agua del lago la llevó hacia el este, rumbo al océano. Los barcos grandes siguen ese mismo camino de agua. ¡Miigwech, gracias!',
-fa: 'قایق من! آب جهیل آن را به طرف شرق، به سوی بحر برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ، تشکر!' }
+wait: { en: 'Wen is by the big river in the south-east: down and right on this map.', es: 'Wen está junto al río grande, en el sureste: abajo y a la derecha en este mapa.', fa: 'وِن کنار دریای بزرگ در جنوب شرق است: در این نقشه پایین و طرف راست.' },
+thanks: { en: 'My canoe! The water carried it east. Big ships follow that same water road. Miigwech!', es: '¡Mi canoa! El agua la llevó hacia el este. Los barcos grandes siguen ese camino de agua. ¡Miigwech!', fa: 'قایق من! آب آن را به شرق برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ!' }
 },
 contact: {
 x: 21, y: 18,
@@ -5524,21 +5635,17 @@ name: { en: 'Wen', es: 'Wen', fa: 'وِن' },
 role: { en: 'River fisher', es: 'Pescadora de río', fa: 'ماهیگیر دریا' },
 look: { skin: 1, hair: '#1b1410', shirt: '#d98e2b', pants: '#2a3a5a', hat: '#c8a870' },
 lines: [
-{ en: 'Water always flows downhill. This lake empties into a river on its east side. That river flows east, all the way to the ocean. The St. Lawrence River does the same for the Great Lakes.',
-es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este. Ese río corre hacia el este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.',
-fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد. آن دریا به طرف شرق تا بحر جاری است. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
-{ en: 'So the canoe floated [[downstream|downstream]], to the east. Find the bridge over that river in the north-east. Cross it to the north bank. Then walk two steps east along the water.',
-es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este. Busca el puente sobre ese río en el noreste. Crúzalo hasta la orilla norte. Luego camina dos pasos al este junto al agua.',
-fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت. پلی را که در شمال شرق روی آن دریا است پیدا کن. از آن به ساحل شمالی برو. بعد دو قدم به طرف شرق در کنار آب راه برو.' }
+{ en: 'Water always flows downhill. This lake empties into a river on its east side.', es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este.', fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد.' },
+{ en: 'That river flows east to the ocean. The St. Lawrence River does the same for the Great Lakes.', es: 'Ese río corre al este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.', fa: 'آن دریا به شرق تا بحر می‌رود. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
+{ en: 'So the canoe floated [[downstream|downstream]], to the east.', es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este.', fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت.' },
+{ en: 'Cross the north-east bridge to the north bank. Then walk two steps east along the water.', es: 'Cruza el puente del noreste hasta la orilla norte. Luego camina dos pasos al este junto al agua.', fa: 'از پل شمال شرق به ساحل شمالی برو. بعد دو قدم به شرق در کنار آب برو.' }
 ]
 },
 action: {
 type: 'find',
 at: [28, 2],
 hint: { en: 'north bank, 2 steps east of the north-east bridge', es: 'orilla norte, 2 pasos al este del puente del noreste', fa: 'ساحل شمالی، ۲ قدم شرقِ پل شمال شرق' },
-found: { en: 'There it is, caught in the reeds on the riverbank! The lake drains into the river, and the river carries everything [[downstream|downstream]], east to the ocean.',
-es: '¡Ahí está, atrapada entre las cañas de la orilla! El lago desagua en el río, y el río lleva todo [[downstream|río abajo]], hacia el este, hasta el océano.',
-fa: 'آنجاست، میان نی‌های کنار دریا گیر مانده! جهیل به دریا می‌ریزد و دریا همه چیز را به [[downstream|پایین دریا]]، به طرف شرق تا بحر، می‌برد.' },
+found: { en: 'There it is, in the reeds! The river carries everything [[downstream|downstream]], east to the ocean.', es: '¡Ahí está, entre las cañas! El río lleva todo [[downstream|río abajo]], hacia el este, hasta el océano.', fa: 'آنجاست، میان نی‌ها! دریا همه چیز را به [[downstream|پایین دریا]]، به طرف شرق تا بحر، می‌برد.' },
 item: { icon: '🛶', name: { en: 'The little birchbark canoe', es: 'La canoa pequeña de corteza', fa: 'قایق کوچک پوست توس' } }
 }
 },
@@ -5596,28 +5703,28 @@ taunt: { en: 'Splat! I turned every road to mud. Your goods will never move agai
 win: { en: 'The mud washes away down the river. Atlas page 2.1 floats down into your hands!', es: 'El lodo se va río abajo. ¡La página 2.1 del atlas cae en tus manos!', fa: 'گل با دریا شسته می‌شود. صفحهٔ ۲.۱ اطلس به دستت می‌افتد!' },
 questions: [
 { q: { en: 'What is a harbor?', es: '¿Qué es un puerto natural?', fa: 'بندرگاه چیست؟' },
-choices: [{ en: 'A sheltered part of the coast where large ships can dock safely', es: 'Una parte protegida de la costa donde los barcos grandes atracan seguros', fa: 'بخش محفوظ ساحل که کشتی‌های بزرگ با امنیت لنگر می‌اندازند' }, { en: 'A deep river that carries farm goods far inland', es: 'Un río profundo que lleva productos del campo tierra adentro', fa: 'دریای عمیقی که اجناس فارم را تا دور در خشکه می‌برد' }, { en: 'A flat area of rich soil for wheat and corn', es: 'Un área plana de tierra rica para trigo y maíz', fa: 'یک ساحهٔ هموار با خاک خوب برای گندم و جواری' }, { en: 'A group of five lakes with lots of fresh water', es: 'Un grupo de cinco lagos con mucha agua dulce', fa: 'گروه پنج جهیل با آب شیرین زیاد' }], answer: 0,
+choices: [{ en: 'A calm part of the coast where big ships dock', es: 'Una parte tranquila de la costa donde atracan barcos grandes', fa: 'بخش آرام ساحل که کشتی‌های بزرگ لنگر می‌اندازند' }, { en: 'A deep river that carries farm goods far inland', es: 'Un río profundo que lleva productos del campo tierra adentro', fa: 'دریای عمیقی که اجناس فارم را تا دور در خشکه می‌برد' }, { en: 'A flat area of rich soil for wheat and corn', es: 'Un área plana de tierra rica para trigo y maíz', fa: 'یک ساحهٔ هموار با خاک خوب برای گندم و جواری' }, { en: 'A group of five lakes with lots of fresh water', es: 'Un grupo de cinco lagos con mucha agua dulce', fa: 'گروه پنج جهیل با آب شیرین زیاد' }], answer: 0,
 why: { en: 'New York, Boston and Vancouver all grew around harbors like this.', es: 'Nueva York, Boston y Vancouver crecieron alrededor de puertos así.', fa: 'نیویارک، بوستون و ونکوور همه دور بندرگاه‌هایی مثل این بزرگ شدند.' } },
 { q: { en: 'What does navigable mean when it describes a river?', es: '¿Qué significa navegable cuando describe un río?', fa: 'قابل کشتیرانی برای یک دریا یعنی چه؟' },
-choices: [{ en: 'Deep and wide enough for large boats', es: 'Lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند' }, { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' }, { en: 'It stays unfrozen all winter', es: 'No se congela en todo el invierno', fa: 'در تمام زمستان یخ نمی‌زند' }, { en: 'It is named on most maps', es: 'Tiene nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها نام دارد' }], answer: 0,
+choices: [{ en: 'Deep and wide enough for large boats', es: 'Lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند' }, { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' }, { en: 'It never freezes over, even in winter', es: 'Nunca se congela, ni siquiera en invierno', fa: 'هرگز یخ نمی‌زند، حتی در زمستان' }, { en: 'It is named on most maps', es: 'Tiene nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها نام دارد' }], answer: 0,
 why: { en: 'The Mississippi is navigable, so boats carry farm goods hundreds of miles.', es: 'El Misisipi es navegable, así que los barcos llevan productos por cientos de millas.', fa: 'میسی‌سی‌پی قابل کشتیرانی است، پس کشتی‌ها اجناس فارم را صدها میل می‌برند.' } },
 { q: { en: 'In the 1700s a town stood far from any river or harbor. What problem would it most likely have?', es: 'En los años 1700 un pueblo estaba lejos de todo río o puerto. ¿Qué problema tendría seguramente?', fa: 'در سال‌های ۱۷۰۰ یک شهرک از هر دریا و بندرگاه دور بود. به احتمال زیاد چه مشکلی داشت؟' },
-choices: [{ en: 'Moving heavy goods to sell would cost a lot of money', es: 'Mover cargas pesadas para vender costaría mucho dinero', fa: 'بردن بار سنگین برای فروش پول زیاد می‌خواست' }, { en: 'Its farmers would have poorer soil', es: 'Sus agricultores tendrían tierra más pobre', fa: 'دهقانانش خاک ضعیف‌تری داشتند' }, { en: 'Its winters would be much colder', es: 'Sus inviernos serían mucho más fríos', fa: 'زمستانش خیلی سردتر بود' }, { en: 'Its people would have nothing to drink', es: 'Su gente no tendría nada que beber', fa: 'مردمش چیزی برای نوشیدن نداشتند' }], answer: 0,
+choices: [{ en: 'Moving heavy goods to sell would cost a lot', es: 'Mover cargas pesadas para vender costaría mucho', fa: 'بردن بار سنگین برای فروش پول زیاد می‌خواست' }, { en: 'Its farmers would have much poorer soil', es: 'Sus agricultores tendrían tierra mucho más pobre', fa: 'دهقانانش خاک بسیار ضعیف‌تری داشتند' }, { en: 'Its winters would be much colder', es: 'Sus inviernos serían mucho más fríos', fa: 'زمستانش خیلی سردتر بود' }, { en: 'Its people would have nothing at all to drink', es: 'Su gente no tendría nada que beber', fa: 'مردمش هیچ چیزی برای نوشیدن نداشتند' }], answer: 0,
 why: { en: 'A wagon carried little and roads turned to mud. One boat did the same work for far less.', es: 'Una carreta llevaba poco y los caminos se volvían lodo. Un barco hacía el mismo trabajo por mucho menos.', fa: 'گادی بار کمی می‌برد و سرک‌ها گل می‌شد. یک کشتی همان کار را خیلی ارزان‌تر می‌کرد.' } },
 { q: { en: 'A ship carries iron ore from a port on Lake Superior out to the Atlantic Ocean. What does it pass through?', es: 'Un barco lleva mineral de hierro desde un puerto del lago Superior hasta el océano Atlántico. ¿Por dónde pasa?', fa: 'یک کشتی سنگ آهن را از بندری کنار جهیل سوپریور به بحر اطلس می‌برد. از کجا می‌گذرد؟' },
 choices: [{ en: 'A chain of locks that lower it step by step', es: 'Una cadena de esclusas que lo bajan paso a paso', fa: 'یک رشته دروازهٔ آبی که آن را زینه به زینه پایین می‌برد' }, { en: 'A tunnel under the Rocky Mountains', es: 'Un túnel bajo las Montañas Rocosas', fa: 'یک تونل زیر کوه‌های راکی' }, { en: 'A canal across the middle of the Great Plains', es: 'Un canal por el medio de las Grandes Llanuras', fa: 'یک کانال از وسط دشت‌های بزرگ' }, { en: 'A mountain pass in the Appalachians', es: 'Un paso de montaña en los Apalaches', fa: 'یک کوتل در کوه‌های اپالاچی' }], answer: 0,
 why: { en: 'Lake Superior sits about 180 meters above the sea, so the Seaway steps ships down to the ocean.', es: 'El lago Superior está a unos 180 metros sobre el mar, así que la Vía Marítima baja los barcos hasta el océano.', fa: 'جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است، پس راه آبی کشتی‌ها را زینه به زینه تا بحر پایین می‌برد.' } },
 { q: { en: 'Almost everyone in Canada lives in a thin strip in the south. What best explains that?', es: 'Casi toda la gente de Canadá vive en una franja delgada en el sur. ¿Qué lo explica mejor?', fa: 'تقریباً همهٔ مردم کانادا در یک نوار باریک در جنوب زندگی می‌کنند. بهترین توضیح چیست؟' },
-choices: [{ en: 'The south has milder winters, better soil and shipping routes', es: 'El sur tiene inviernos más suaves, mejor tierra y rutas de barcos', fa: 'جنوب زمستان ملایم‌تر، خاک بهتر و راه‌های کشتیرانی دارد' }, { en: 'The government moved every family out of the north', es: 'El gobierno sacó a todas las familias del norte', fa: 'حکومت همهٔ خانواده‌ها را از شمال بیرون کرد' }, { en: 'The north is covered by mountains too steep to climb', es: 'El norte está cubierto de montañas imposibles de subir', fa: 'شمال پر از کوه‌هایی است که بالا رفتن از آن‌ها ناممکن است' }, { en: 'The north of Canada belongs to the United States', es: 'El norte de Canadá pertenece a Estados Unidos', fa: 'شمال کانادا مال امریکا است' }], answer: 0,
+choices: [{ en: 'The south has milder winters and better soil', es: 'El sur tiene inviernos más suaves y mejor tierra', fa: 'جنوب زمستان ملایم‌تر و خاک بهتر دارد' }, { en: 'The government moved every family out of the north', es: 'El gobierno sacó a todas las familias del norte', fa: 'حکومت همهٔ خانواده‌ها را از شمال بیرون کرد' }, { en: 'The north is covered by mountains too steep to climb', es: 'El norte está cubierto de montañas imposibles de subir', fa: 'شمال پر از کوه‌هایی است که بالا رفتن از آن‌ها ناممکن است' }, { en: 'The north of Canada belongs to the United States', es: 'El norte de Canadá pertenece a Estados Unidos', fa: 'شمال کانادا مال امریکا است' }], answer: 0,
 why: { en: 'The far north is very cold. People, ports and factories crowd into the warmer south.', es: 'El extremo norte es muy frío. La gente, los puertos y las fábricas se juntan en el sur, más cálido.', fa: 'شمال دور بسیار سرد است. مردم، بندرها و فابریکه‌ها در جنوب گرم‌تر جمع شده‌اند.' } },
 { q: { en: 'Which pair names the capital cities of the two countries?', es: '¿Qué pareja nombra las capitales de los dos países?', fa: 'کدام جفت پایتخت‌های دو کشور را نام می‌برد؟' },
 choices: [{ en: 'Washington, D.C. (United States) and Ottawa (Canada)', es: 'Washington, D.C. (Estados Unidos) y Ottawa (Canadá)', fa: 'واشنگتن دی‌سی (امریکا) و اوتاوا (کانادا)' }, { en: 'New York City (United States) and Toronto (Canada)', es: 'Nueva York (Estados Unidos) y Toronto (Canadá)', fa: 'نیویارک (امریکا) و تورنتو (کانادا)' }, { en: 'New York City (United States) and Ottawa (Canada)', es: 'Nueva York (Estados Unidos) y Ottawa (Canadá)', fa: 'نیویارک (امریکا) و اوتاوا (کانادا)' }, { en: 'Washington, D.C. (United States) and Toronto (Canada)', es: 'Washington, D.C. (Estados Unidos) y Toronto (Canadá)', fa: 'واشنگتن دی‌سی (امریکا) و تورنتو (کانادا)' }], answer: 0,
 why: { en: 'New York City and Toronto are the largest cities, not the capitals.', es: 'Nueva York y Toronto son las ciudades más grandes, no las capitales.', fa: 'نیویارک و تورنتو بزرگ‌ترین شهرها هستند، نه پایتخت.' } },
 { q: { en: 'Which two mountain chains run through both the United States and Canada?', es: '¿Qué dos cadenas de montañas pasan por Estados Unidos y Canadá?', fa: 'کدام دو رشته‌کوه از هم امریکا و هم کانادا می‌گذرند؟' },
-choices: [{ en: 'The Rocky Mountains in the west and the Appalachians in the east', es: 'Las Montañas Rocosas al oeste y los Apalaches al este', fa: 'کوه‌های راکی در غرب و اپالاچی در شرق' }, { en: 'The Andes in the west and the Alps in the east', es: 'Los Andes al oeste y los Alpes al este', fa: 'اندیز در غرب و آلپ در شرق' }, { en: 'The Himalayas in the west and the Rockies in the east', es: 'El Himalaya al oeste y las Rocosas al este', fa: 'هیمالیا در غرب و راکی در شرق' }, { en: 'The Great Plains in the west and the prairies in the east', es: 'Las Grandes Llanuras al oeste y las praderas al este', fa: 'دشت‌های بزرگ در غرب و پریری در شرق' }], answer: 0,
+choices: [{ en: 'The Rockies in the west, Appalachians in the east', es: 'Las Rocosas al oeste y los Apalaches al este', fa: 'کوه‌های راکی در غرب، اپالاچی در شرق' }, { en: 'The Andes in the west and the Alps in the east', es: 'Los Andes al oeste y los Alpes al este', fa: 'اندیز در غرب و آلپ در شرق' }, { en: 'The Himalayas in the west and the Rockies in the east', es: 'El Himalaya al oeste y las Rocosas al este', fa: 'هیمالیا در غرب و راکی در شرق' }, { en: 'The Great Plains in the west and the prairies in the east', es: 'Las Grandes Llanuras al oeste y las praderas al este', fa: 'دشت‌های بزرگ در غرب و پریری در شرق' }], answer: 0,
 why: { en: 'The Rockies rise in the west and the Appalachians run along the east. The flat plains lie between them.', es: 'Las Rocosas se levantan al oeste y los Apalaches van por el este. Las llanuras están en medio.', fa: 'راکی در غرب بلند می‌شود و اپالاچی در شرق امتداد دارد. دشت‌های هموار میان آن‌هاست.' } },
 { q: { en: 'Street signs in Montreal often show French words first. What fact about Canada does this show?', es: 'Los letreros de las calles de Montreal suelen mostrar primero el francés. ¿Qué dato de Canadá muestra esto?', fa: 'تابلوهای سرک در مونترآل اغلب اول کلمه‌های فرانسوی را نشان می‌دهند. این کدام حقیقت کانادا را نشان می‌دهد؟' },
-choices: [{ en: 'Canada has two official languages, English and French', es: 'Canadá tiene dos idiomas oficiales, inglés y francés', fa: 'کانادا دو زبان رسمی دارد، انگلیسی و فرانسوی' }, { en: 'Canada has a very long border with the United States', es: 'Canadá tiene una frontera muy larga con Estados Unidos', fa: 'کانادا با امریکا سرحد بسیار دراز دارد' }, { en: 'Most Canadians live near the border', es: 'La mayoría de los canadienses vive cerca de la frontera', fa: 'بیشتر مردم کانادا نزدیک سرحد زندگی می‌کنند' }, { en: 'Canada is a very large country', es: 'Canadá es un país muy grande', fa: 'کانادا کشور بسیار بزرگ است' }], answer: 0,
+choices: [{ en: 'Canada has two official languages', es: 'Canadá tiene dos idiomas oficiales', fa: 'کانادا دو زبان رسمی دارد' }, { en: 'Canada has a very long border with the United States', es: 'Canadá tiene una frontera muy larga con Estados Unidos', fa: 'کانادا با امریکا سرحد بسیار دراز دارد' }, { en: 'Most Canadians live near the border', es: 'La mayoría de los canadienses vive cerca de la frontera', fa: 'بیشتر مردم کانادا نزدیک سرحد زندگی می‌کنند' }, { en: 'Canada is a very large country', es: 'Canadá es un país muy grande', fa: 'کانادا کشور بسیار بزرگ است' }], answer: 0,
 why: { en: 'Most of Canada speaks English, but the province of Quebec mostly speaks French.', es: 'Casi todo Canadá habla inglés, pero la provincia de Quebec habla sobre todo francés.', fa: 'بیشتر کانادا انگلیسی گپ می‌زند، اما ولایت کیوبک بیشتر فرانسوی گپ می‌زند.' } }
 ]
 },

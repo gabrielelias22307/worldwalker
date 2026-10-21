@@ -9,9 +9,12 @@ window.EPISODE = {
   title: { en: 'Land, Water and Oil', es: 'Tierra, agua y petróleo', fa: 'زمین، آب و نفت' },
   place: { en: 'Temple of the Twin Rivers', es: 'Templo de los Ríos Gemelos', fa: 'معبد دو دریا' },
   intro: [
-    { en: 'Christopher: "The Grump dried up the twin rivers! Talk to the engineer in Türkiye\'s mountains, the farmer in Iraq and the water engineer from Saudi Arabia. Then solve the puzzle in the river temple."',
-      es: 'Christopher: "¡El Gruñón secó los ríos gemelos! Habla con la ingeniera en las montañas de Turquía, el agricultor en Irak y la ingeniera de agua de Arabia Saudita. Luego resuelve el acertijo en el templo del río."',
-      fa: 'کریستوفر: «غرغرو دو دریا را خشک کرد! با انجنیر در کوه‌های ترکیه، دهقان در عراق و انجنیر آب از عربستان سعودی گپ بزن. بعد معمای معبد دریا را حل کن.»' }
+    { en: 'The Grump dried up the twin rivers! Talk to the engineer in Türkiye\'s mountains.',
+      es: '¡El Gruñón secó los ríos gemelos! Habla con la ingeniera en las montañas de Turquía.',
+      fa: 'غرغرو دو دریا را خشک کرد! با انجنیر در کوه‌های ترکیه گپ بزن.' },
+    { en: 'Meet the farmer in Iraq and the Saudi water engineer. Then solve the temple puzzle.',
+      es: 'Conoce al agricultor en Irak y a la ingeniera de agua saudita. Luego resuelve el acertijo del templo.',
+      fa: 'با دهقان در عراق و انجنیر آب عربستان سعودی هم گپ بزن. بعد معمای معبد را حل کن.' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Top-left: Türkiye's mountains, river springs and a dam. Top-right: the temple (door on its west wall).
@@ -60,11 +63,11 @@ window.EPISODE = {
   ],
   finds: [
     { clueAt: [10, 12], at: [6, 11], decor: 'vase',
-      clue: { en: 'Mesopotamia means "the land between the rivers." Find the wheat field between the two rivers that is farthest north. Stand on its north-west corner square.', es: 'Mesopotamia quiere decir "la tierra entre los ríos". Busca el campo de trigo entre los dos ríos que está más al norte. Párate en su cuadro de la esquina noroeste.', fa: 'بین‌النهرین یعنی «سرزمین میان دریاها». کشتزار گندمی را که میان دو دریا است و از همه بیشتر در شمال است پیدا کن. روی خانهٔ کنج شمال‌غربی آن بایست.' },
-      text: { en: 'You found the land between the rivers! A clay pot was hiding in the wheat. More than 5,000 years ago, people in Mesopotamia wrote on clay tablets. It is one of the oldest kinds of writing.', es: '¡Encontraste la tierra entre los ríos! Una vasija de barro estaba escondida en el trigo. Hace más de 5000 años, la gente de Mesopotamia escribía en tablillas de barro. Es una de las formas de escritura más antiguas.', fa: 'تو سرزمین میان دریاها را پیدا کردی! یک کوزهٔ گلی در گندم پنهان بود. بیش از ۵۰۰۰ سال پیش، مردم بین‌النهرین روی لوحه‌های گلی می‌نوشتند. این یکی از کهن‌ترین نوع‌های نوشتن است.' } },
+      clue: { en: 'Mesopotamia means "the land between the rivers." Find the farthest-north wheat field there. Stand on its north-west corner.', es: 'Mesopotamia quiere decir "la tierra entre los ríos". Busca ahí el campo de trigo más al norte. Párate en su esquina noroeste.', fa: 'بین‌النهرین یعنی «سرزمین میان دریاها». شمالی‌ترین کشتزار گندم آن‌جا را پیدا کن. روی کنج شمال‌غربی آن بایست.' },
+      text: { en: 'A clay pot! Over 5,000 years ago, people here wrote on clay tablets, one of the oldest kinds of writing.', es: '¡Una vasija de barro! Hace más de 5000 años, aquí se escribía en tablillas de barro, una de las escrituras más antiguas.', fa: 'یک کوزهٔ گلی! بیش از ۵۰۰۰ سال پیش، مردم این‌جا روی لوحه‌های گلی می‌نوشتند، یکی از کهن‌ترین نوع‌های نوشتن.' } },
     { clueAt: [26, 8], at: [29, 6], decor: 'flower',
       clue: { en: 'From this note, walk 2 steps north, then 3 steps east. Look in the temple garden.', es: 'Desde esta nota, camina 2 pasos al norte y luego 3 pasos al este. Busca en el jardín del templo.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۳ قدم به شرق. در باغچهٔ معبد ببین.' },
-      text: { en: 'You followed compass directions! North is up and east is to the right. A flower was growing in the garden soil. People tell stories of the Hanging Gardens of Babylon, an old city on the Euphrates River in Iraq.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Una flor crecía en la tierra del jardín. La gente cuenta historias de los Jardines Colgantes de Babilonia, una ciudad antigua junto al río Éufrates, en Irak.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. یک گل در خاک باغچه روییده بود. مردم قصه‌های باغ‌های معلق بابل را می‌گویند. بابل یک شهر کهن کنار دریای فرات در عراق است.' } }
+      text: { en: 'North is up, east is right. A garden flower! Babylon\'s Hanging Gardens were on the Euphrates, in Iraq.', es: 'El norte está arriba y el este a la derecha. ¡Una flor del jardín! Los Jardines Colgantes de Babilonia estaban junto al Éufrates, en Irak.', fa: 'شمال بالا و شرق طرف راست است. یک گل باغچه! باغ‌های معلق بابل کنار دریای فرات، در عراق، بودند.' } }
   ],
   // only the Water Gourd (Episode 4.3) opens the gate into the dry desert: it carries water for the crossing
   secret: { tool: 'gourd', at: [9, 20],
@@ -90,15 +93,18 @@ window.EPISODE = {
       role: { en: 'Dam engineer in Türkiye', es: 'Ingeniera de represas en Turquía', fa: 'انجنیر بند در ترکیه' },
       look: { skin: 1, hair: '#3a2a1a', shirt: '#c0392b', pants: '#2c3e50' },
       lines: [
-        { en: 'Merhaba! That means hello in Turkish. I am Elif, an engineer. Snow falls on these mountains in winter. In spring it melts and feeds two great rivers: the Tigris and the Euphrates.',
-          es: '¡Merhaba! Así se dice hola en turco. Soy Elif, ingeniera. En invierno cae nieve en estas montañas. En primavera se derrite y alimenta dos grandes ríos: el Tigris y el Éufrates.',
-          fa: 'مرحبا! این به زبان ترکی یعنی سلام. من الیف هستم، یک انجنیر. در زمستان روی این کوه‌ها برف می‌بارد. در بهار برف آب می‌شود و دو دریای بزرگ را پر می‌کند: دجله و فرات.' },
-        { en: 'Here we are [[upstream|upstream]], close to where the rivers start. The rivers flow south through Syria and Iraq. Places closer to where a river ends are [[downstream|downstream]].',
-          es: 'Aquí estamos [[upstream|río arriba]], cerca de donde nacen los ríos. Los ríos corren al sur por Siria e Irak. Los lugares más cerca de donde termina un río están [[downstream|río abajo]].',
-          fa: 'ما این‌جا در [[upstream|بالای دریا]] هستیم، نزدیک جایی که دریاها شروع می‌شوند. دریاها به طرف جنوب از سوریه و عراق می‌گذرند. جاهایی که به آخر دریا نزدیک‌تر هستند [[downstream|پایین دریا]] هستند.' },
-        { en: 'Türkiye built big [[dam|dams]], like the Atatürk Dam on the Euphrates. A dam holds water back. It makes electricity and saves water for dry months. But it also changes how much water flows to the next country.',
-          es: 'Turquía construyó grandes [[dam|represas]], como la represa Atatürk en el Éufrates. Una represa detiene el agua. Produce electricidad y guarda agua para los meses secos. Pero también cambia cuánta agua llega al siguiente país.',
-          fa: 'ترکیه [[dam|بندهای]] بزرگ ساخت، مثل بند اتاترک روی دریای فرات. بند آب را نگه می‌دارد. برق تولید می‌کند و آب را برای ماه‌های خشک ذخیره می‌کند. اما این را هم تغییر می‌دهد که چقدر آب به کشور بعدی برسد.' }
+        { en: 'Merhaba, that is hello in Turkish! I am Elif. Snow melts here each spring.',
+          es: '¡Merhaba, así se dice hola en turco! Soy Elif. Aquí la nieve se derrite cada primavera.',
+          fa: 'مرحبا، این به ترکی یعنی سلام! من الیف هستم. این‌جا برف هر بهار آب می‌شود.' },
+        { en: 'The melting snow feeds two great rivers: the Tigris and the Euphrates.',
+          es: 'La nieve derretida alimenta dos grandes ríos: el Tigris y el Éufrates.',
+          fa: 'برف آب‌شده دو دریای بزرگ را پر می‌کند: دجله و فرات.' },
+        { en: 'We are [[upstream|upstream]], near where they start. They flow south to Syria and Iraq, [[downstream|downstream]].',
+          es: 'Estamos [[upstream|río arriba]], cerca de donde nacen. Corren al sur hacia Siria e Irak, [[downstream|río abajo]].',
+          fa: 'ما در [[upstream|بالای دریا]] هستیم، نزدیک جایی که شروع می‌شوند. دریاها به جنوب تا سوریه و عراق، [[downstream|پایین دریا]]، می‌روند.' },
+        { en: '[[dam|Dams]] like Atatürk save water for dry months and make power, but send less downstream.',
+          es: 'Las [[dam|represas]] como la Atatürk guardan agua para los meses secos y dan electricidad, pero mandan menos río abajo.',
+          fa: '[[dam|بندها]] مثل بند اتاترک آب را برای ماه‌های خشک نگه می‌دارند و برق می‌سازند، اما آب کمتری به پایین دریا می‌فرستند.' }
       ],
       ask: {
         stat: 'loc',
@@ -108,8 +114,8 @@ window.EPISODE = {
             why: { en: 'Türkiye\'s mountains are upstream, where the Tigris and Euphrates begin.', es: 'Las montañas de Turquía están río arriba, donde nacen el Tigris y el Éufrates.', fa: 'کوه‌های ترکیه در بالای دریا هستند، جایی که دجله و فرات شروع می‌شوند.' } },
           { t: { en: 'Closer to where a river ends', es: 'Más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' },
             why: { en: 'That is downstream.', es: 'Eso es río abajo.', fa: 'این پایین دریا است.' } },
-          { t: { en: 'The deepest part of a river', es: 'La parte más profunda de un río', fa: 'عمیق‌ترین قسمت دریا' },
-            why: { en: 'Upstream is about where, not how deep.', es: 'Río arriba habla de dónde, no de qué tan profundo.', fa: 'بالای دریا دربارهٔ جای آن است، نه عمق آن.' } }
+          { t: { en: 'The fastest, deepest part of a river', es: 'La parte más rápida y profunda de un río', fa: 'تیزترین و عمیق‌ترین قسمت دریا' },
+            why: { en: 'Upstream is about where, not how deep or fast.', es: 'Río arriba habla de dónde, no de qué tan profundo o rápido.', fa: 'بالای دریا دربارهٔ جای آن است، نه عمق یا تیزی آن.' } }
         ]
       }
     },
@@ -119,15 +125,18 @@ window.EPISODE = {
       role: { en: 'Wheat and date farmer in Iraq', es: 'Agricultor de trigo y dátiles en Irak', fa: 'دهقان گندم و خرما در عراق' },
       look: { skin: 2, hair: '#222222', shirt: '#e8e2d0', robe: true },
       lines: [
-        { en: 'Salaam! I am Abbas. My family grows wheat and dates by the river in Iraq. The land between the Tigris and the Euphrates is part of the [[fertile crescent|Fertile Crescent]], a curved strip of good farmland.',
-          es: '¡Salam! Soy Abbas. Mi familia cultiva trigo y dátiles junto al río en Irak. La tierra entre el Tigris y el Éufrates es parte de la [[fertile crescent|Media Luna Fértil]], una franja curva de buena tierra de cultivo.',
-          fa: 'سلام! من عباس هستم. خانوادهٔ من کنار دریا در عراق گندم و خرما می‌کارد. زمین میان دجله و فرات بخشی از [[fertile crescent|هلال حاصلخیز]] است، یک نوار خمیده از زمین خوب زراعتی.' },
-        { en: 'Thousands of years ago, farmers here dug canals to bring river water to their fields. Some of the first cities and the first writing began here, in ancient Mesopotamia.',
-          es: 'Hace miles de años, los agricultores de aquí cavaron canales para llevar agua del río a sus campos. Algunas de las primeras ciudades y la primera escritura nacieron aquí, en la antigua Mesopotamia.',
-          fa: 'هزاران سال پیش، دهقانان این‌جا کانال کندند تا آب دریا را به کشتزارهای خود ببرند. بعضی از اولین شهرها و اولین نوشتن در همین‌جا، در بین‌النهرین کهن، شروع شد.' },
-        { en: 'We are far [[downstream|downstream]]. When dams upstream hold water back, less reaches our fields. Countries that share a river can sign a [[treaty|treaty]] to split the water, or they can end up arguing about it.',
-          es: 'Nosotros estamos muy [[downstream|río abajo]]. Cuando las represas de río arriba detienen el agua, llega menos a nuestros campos. Los países que comparten un río pueden firmar un [[treaty|tratado]] para repartir el agua, o pueden terminar peleando por ella.',
-          fa: 'ما خیلی [[downstream|پایین دریا]] هستیم. وقتی بندهای بالای دریا آب را نگه می‌دارند، آب کمتری به کشتزارهای ما می‌رسد. کشورهایی که یک دریا را شریک هستند می‌توانند یک [[treaty|معاهده]] امضا کنند تا آب را تقسیم کنند، یا ممکن است سر آن جنجال کنند.' }
+        { en: 'Salaam! I am Abbas. My family farms wheat and dates far [[downstream|downstream]] in Iraq.',
+          es: '¡Salam! Soy Abbas. Mi familia cultiva trigo y dátiles muy [[downstream|río abajo]], en Irak.',
+          fa: 'سلام! من عباس هستم. خانواده‌ام خیلی [[downstream|پایین دریا]] در عراق گندم و خرما می‌کارد.' },
+        { en: 'Land between the rivers is in the [[fertile crescent|Fertile Crescent]], a curved strip of good farmland.',
+          es: 'La tierra entre los ríos es parte de la [[fertile crescent|Media Luna Fértil]], una franja curva de buena tierra de cultivo.',
+          fa: 'زمین میان دو دریا بخشی از [[fertile crescent|هلال حاصلخیز]] است، یک نوار خمیده از زمین خوب زراعتی.' },
+        { en: 'Farmers here dug canals long ago. The first cities and writing began here, in Mesopotamia.',
+          es: 'Hace mucho, los agricultores cavaron canales aquí. Las primeras ciudades y la escritura nacieron aquí, en Mesopotamia.',
+          fa: 'دهقانان خیلی وقت پیش این‌جا کانال کندند. اولین شهرها و نوشتن همین‌جا، در بین‌النهرین، شروع شد.' },
+        { en: 'Upstream dams mean less water for us. Countries can sign a [[treaty|treaty]] to share it.',
+          es: 'Las represas de río arriba nos dejan menos agua. Los países pueden firmar un [[treaty|tratado]] para repartirla.',
+          fa: 'بندهای بالای دریا آب کمتری برای ما می‌گذارند. کشورها می‌توانند یک [[treaty|معاهده]] امضا کنند تا آب را تقسیم کنند.' }
       ],
       ask: {
         stat: 'hei',
@@ -149,15 +158,18 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1a1a1a', shirt: '#1f6f8b', robe: true },
       remember: { ep: '4.3', t: { en: 'I heard about you from my friend Nomvula in South Africa! You traded her sugar for a new water pump. Her sugarcane fields have water again.', es: '¡Mi amiga Nomvula, de Sudáfrica, me habló de ti! Cambiaste su azúcar por una bomba de agua nueva. Sus campos de caña de azúcar tienen agua otra vez.', fa: 'از دوستم نومولا در افریقای جنوبی در بارهٔ تو شنیدم! تو بورهٔ او را با یک پمپ آب نو عوض کردی. کشتزارهای نیشکر او دوباره آب دارند.' } },
       lines: [
-        { en: 'Marhaba! That means hello in Arabic. I am Nourah, from Saudi Arabia. Much of my country is desert. The Rub\' al Khali, or Empty Quarter, is the largest sand desert on Earth.',
-          es: '¡Marhaba! Así se dice hola en árabe. Soy Nourah, de Arabia Saudita. Gran parte de mi país es desierto. El Rub al-Jali, o Cuarto Vacío, es el desierto de arena más grande de la Tierra.',
-          fa: 'مرحبا! این به زبان عربی یعنی سلام. من نوره هستم، از عربستان سعودی. بیشتر کشور من بیابان است. ربع‌الخالی، یعنی «ربع خالی»، بزرگ‌ترین بیابان ریگی روی زمین است.' },
-        { en: 'Saudi Arabia has no rivers that flow all year. That is [[water scarcity|water scarcity]]. Long ago, towns grew around an [[oasis|oasis]], a spring in the desert where palm trees grow.',
-          es: 'Arabia Saudita no tiene ríos que corran todo el año. Eso es [[water scarcity|escasez de agua]]. Hace mucho, los pueblos crecieron alrededor de un [[oasis|oasis]], un manantial en el desierto donde crecen palmeras.',
-          fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد. این [[water scarcity|کم‌آبی]] است. در گذشته، شهرک‌ها دور یک [[oasis|واحه]] ساخته می‌شدند، یعنی چشمه‌ای در بیابان که درخت خرما در آن می‌روید.' },
-        { en: 'Under the sand is oil. Oil money built roads, airports and big cities. I work at a plant that does [[desalination|desalination]]: it turns seawater into fresh water. Saudi Arabia makes more fresh water from the sea than any other country.',
-          es: 'Bajo la arena hay petróleo. El dinero del petróleo construyó carreteras, aeropuertos y ciudades grandes. Trabajo en una planta de [[desalination|desalinización]]: convierte agua de mar en agua dulce. Arabia Saudita hace más agua dulce del mar que cualquier otro país.',
-          fa: 'زیر ریگ نفت است. پول نفت سرک‌ها، میدان‌های هوایی و شهرهای بزرگ را ساخت. من در یک کارخانهٔ [[desalination|شیرین‌سازی آب]] کار می‌کنم: آب بحر را به آب شیرین تبدیل می‌کند. عربستان سعودی از هر کشور دیگر بیشتر از بحر آب شیرین می‌سازد.' }
+        { en: 'Marhaba! I am Nourah. My land has the Empty Quarter, Earth\'s largest sand desert.',
+          es: '¡Marhaba! Soy Nourah. Mi tierra tiene el Cuarto Vacío, el desierto de arena más grande de la Tierra.',
+          fa: 'مرحبا! من نوره هستم. سرزمین من ربع خالی را دارد، بزرگ‌ترین بیابان ریگی روی زمین.' },
+        { en: 'No river flows all year here: [[water scarcity|water scarcity]]. Towns grew by an [[oasis|oasis]] spring.',
+          es: 'Aquí ningún río corre todo el año: [[water scarcity|escasez de agua]]. Los pueblos crecieron junto a un manantial de [[oasis|oasis]].',
+          fa: 'این‌جا هیچ دریایی تمام سال جاری نیست: [[water scarcity|کم‌آبی]]. شهرک‌ها کنار چشمهٔ [[oasis|واحه]] ساخته شدند.' },
+        { en: 'Under the sand is oil. Oil money built roads, airports and big cities.',
+          es: 'Bajo la arena hay petróleo. El dinero del petróleo construyó carreteras, aeropuertos y ciudades grandes.',
+          fa: 'زیر ریگ نفت است. پول نفت سرک‌ها، میدان‌های هوایی و شهرهای بزرگ را ساخت.' },
+        { en: 'I work in [[desalination|desalination]], turning seawater into fresh water. We make the most on Earth.',
+          es: 'Trabajo en [[desalination|desalinización]]: convierto agua de mar en agua dulce. Somos el país que más produce.',
+          fa: 'من در [[desalination|شیرین‌سازی آب]] کار می‌کنم: آب بحر را آب شیرین می‌سازیم. ما از همه کشورها بیشتر می‌سازیم.' }
       ],
       ask: {
         stat: 'pla',
@@ -178,9 +190,9 @@ window.EPISODE = {
     { x: 6, y: 3, text: { en: 'TÜRKIYE · MOUNTAINS · The Tigris and the Euphrates start here. ↓ [[downstream|Downstream]]: Syria, then Iraq, then the Persian Gulf.',
       es: 'TURQUÍA · MONTAÑAS · Aquí nacen el Tigris y el Éufrates. ↓ [[downstream|Río abajo]]: Siria, luego Irak, luego el golfo Pérsico.',
       fa: 'ترکیه · کوه‌ها · دجله و فرات از این‌جا شروع می‌شوند. ↓ [[downstream|پایین دریا]]: سوریه، بعد عراق، بعد خلیج فارس.' } },
-    { x: 27, y: 20, text: { en: 'PERSIAN GULF · Many of Saudi Arabia\'s biggest oil fields sit near this coast. Ships carry the oil all over the world.',
-      es: 'GOLFO PÉRSICO · Muchos de los campos de petróleo más grandes de Arabia Saudita están cerca de esta costa. Los barcos llevan el petróleo a todo el mundo.',
-      fa: 'خلیج فارس · بسیاری از بزرگ‌ترین میدان‌های نفت عربستان سعودی نزدیک این ساحل هستند. کشتی‌ها نفت را به سراسر جهان می‌برند.' } }
+    { x: 27, y: 20, text: { en: 'PERSIAN GULF · Many of Saudi Arabia\'s biggest oil fields are near this coast. Ships carry the oil worldwide.',
+                            es: 'GOLFO PÉRSICO · Muchos de los grandes campos de petróleo de Arabia Saudita están cerca de esta costa. Los barcos llevan el petróleo a todo el mundo.',
+                            fa: 'خلیج فارس · بسیاری از بزرگ‌ترین میدان‌های نفت عربستان سعودی نزدیک این ساحل هستند. کشتی‌ها نفت را به سراسر جهان می‌برند.' } }
   ],
 
   /* the quest: Salem the camel herder (gold !) -> Zainab and her old clay map in the temple -> find the hidden oasis spring -> back to Salem */
@@ -193,19 +205,25 @@ window.EPISODE = {
       role: { en: 'Camel herder in the desert', es: 'Pastor de camellos en el desierto', fa: 'شتربان در بیابان' },
       look: { skin: 4, hair: '#1a1410', shirt: '#f2efe6', pants: '#6a5a44', robe: true, hat: '#c9c2b0' },
       lines: [
-        { en: 'Help, traveler! The Grump\'s sandstorm covered the old path to the [[oasis|oasis]]. My camels are thirsty, and my water jar is empty.',
-          es: '¡Ayuda, viajero! La tormenta de arena del Gruñón tapó el viejo camino al [[oasis|oasis]]. Mis camellos tienen sed y mi jarra de agua está vacía.',
-          fa: 'کمک، مسافر! توفان ریگ غرغرو راه کهنهٔ [[oasis|واحه]] را پوشاند. شترهایم تشنه هستند و کوزهٔ آبم خالی است.' },
-        { en: 'In the desert, there are no rivers. An oasis spring is the only water for many days. Zainab in the river temple has an old map. Will you ask her?',
-          es: 'En el desierto no hay ríos. Un manantial de oasis es la única agua en muchos días. Zainab, en el templo del río, tiene un mapa viejo. ¿Le preguntas?',
-          fa: 'در بیابان دریا نیست. چشمهٔ واحه برای چند روز تنها آب است. زینب در معبد دریا یک نقشهٔ کهنه دارد. از او می‌پرسی؟' }
+        { en: 'Help, traveler! The Grump\'s sandstorm covered the old path to the [[oasis|oasis]].',
+          es: '¡Ayuda, viajero! La tormenta de arena del Gruñón tapó el viejo camino al [[oasis|oasis]].',
+          fa: 'کمک، مسافر! توفان ریگ غرغرو راه کهنهٔ [[oasis|واحه]] را پوشاند.' },
+        { en: 'My camels are thirsty, and my water jar is empty.',
+          es: 'Mis camellos tienen sed y mi jarra de agua está vacía.',
+          fa: 'شترهایم تشنه هستند و کوزهٔ آبم خالی است.' },
+        { en: 'The desert has no rivers. An oasis spring is the only water for days.',
+          es: 'El desierto no tiene ríos. Un manantial de oasis es la única agua en muchos días.',
+          fa: 'بیابان دریا ندارد. چشمهٔ واحه برای چند روز تنها آب است.' },
+        { en: 'Zainab in the river temple has an old map. Will you ask her?',
+          es: 'Zainab, en el templo del río, tiene un mapa viejo. ¿Le preguntas?',
+          fa: 'زینب در معبد دریا یک نقشهٔ کهنه دارد. از او می‌پرسی؟' }
       ],
-      wait: { en: 'Zainab is in the river temple, to the north. Its door is on the west wall.',
-        es: 'Zainab está en el templo del río, al norte. Su puerta está en la pared oeste.',
-        fa: 'زینب در معبد دریا است، طرف شمال. دروازه‌اش در دیوار غربی است.' },
-      thanks: { en: 'Cool, fresh water! Thank you. Now my camels can drink. In a dry land, people, palms and animals all gather around the water.',
-        es: '¡Agua fresca y limpia! Gracias. Ahora mis camellos pueden beber. En una tierra seca, la gente, las palmeras y los animales se juntan alrededor del agua.',
-        fa: 'آب سرد و تازه! تشکر. حالا شترهایم می‌توانند آب بنوشند. در زمین خشک، مردم، درختان خرما و حیوانات همه دور آب جمع می‌شوند.' }
+      wait: { en: 'Zainab is in the river temple, to the north. Its door is on the west.',
+              es: 'Zainab está en el templo del río, al norte. Su puerta está al oeste.',
+              fa: 'زینب در معبد دریا است، طرف شمال. دروازه‌اش طرف غرب است.' },
+      thanks: { en: 'Fresh water, thank you! In a dry land, people, palms and animals gather at water.',
+                es: '¡Agua fresca, gracias! En una tierra seca, la gente, las palmeras y los animales se reúnen alrededor del agua.',
+                fa: 'آب تازه، تشکر! در زمین خشک، مردم، درختان خرما و حیوانات دور آب جمع می‌شوند.' }
     },
     contact: {
       x: 28, y: 7,
@@ -213,21 +231,27 @@ window.EPISODE = {
       role: { en: 'Keeper of old clay maps', es: 'Guardiana de mapas viejos de barro', fa: 'نگهبان نقشه‌های کهنهٔ گِلی' },
       look: { skin: 1, hair: '#2a1d14', shirt: '#7a3f8f', pants: '#3a3040', style: 'bun' },
       lines: [
-        { en: 'Long ago, people here drew maps on clay. This old map shows the [[oasis|oasis]]. Desert towns always grew next to a spring like this one.',
-          es: 'Hace mucho, la gente de aquí dibujaba mapas en barro. Este mapa viejo muestra el [[oasis|oasis]]. Los pueblos del desierto siempre crecían junto a un manantial como este.',
-          fa: 'خیلی وقت پیش، مردم این‌جا نقشه را روی گِل می‌کشیدند. این نقشهٔ کهنه [[oasis|واحه]] را نشان می‌دهد. شهرک‌های بیابان همیشه کنار چنین چشمه‌ای بزرگ می‌شدند.' },
-        { en: 'Cross the river to the south. Walk west to the palm trees in the far south-west corner. Find the well under the palms. Then take two steps east.',
-          es: 'Cruza el río hacia el sur. Camina al oeste hasta las palmeras en la esquina suroeste. Busca el pozo bajo las palmeras. Luego da dos pasos al este.',
-          fa: 'از دریا به طرف جنوب بگذر. به طرف غرب تا درختان خرما در گوشهٔ جنوب غربی برو. چاه زیر درختان خرما را پیدا کن. بعد دو قدم به طرف شرق برو.' }
+        { en: 'Long ago, people here drew maps on clay. This old map shows the [[oasis|oasis]].',
+          es: 'Hace mucho, la gente de aquí dibujaba mapas en barro. Este mapa viejo muestra el [[oasis|oasis]].',
+          fa: 'خیلی وقت پیش، مردم این‌جا نقشه را روی گِل می‌کشیدند. این نقشهٔ کهنه [[oasis|واحه]] را نشان می‌دهد.' },
+        { en: 'Desert towns always grew next to a spring like this one.',
+          es: 'Los pueblos del desierto siempre crecían junto a un manantial como este.',
+          fa: 'شهرک‌های بیابان همیشه کنار چنین چشمه‌ای بزرگ می‌شدند.' },
+        { en: 'Cross the river to the south, then walk west to the palm trees.',
+          es: 'Cruza el río hacia el sur y luego camina al oeste hasta las palmeras.',
+          fa: 'از دریا به طرف جنوب بگذر، بعد به طرف غرب تا درختان خرما برو.' },
+        { en: 'Find the well under the palms in the far south-west. Then go two steps east.',
+          es: 'Busca el pozo bajo las palmeras, en el lejano suroeste. Luego da dos pasos al este.',
+          fa: 'چاه زیر درختان خرما را در دور جنوب غربی پیدا کن. بعد دو قدم به طرف شرق برو.' }
       ]
     },
     action: {
       type: 'find',
       at: [5, 20],
       hint: { en: 'far south-west, 2 steps east of the well', es: 'lejos al suroeste, 2 pasos al este del pozo', fa: 'دور در جنوب غرب، ۲ قدم شرقِ چاه' },
-      found: { en: 'Water bubbles up out of the sand! This is the [[oasis|oasis]] spring. You fill Salem\'s jar with cool water.',
-        es: '¡El agua brota de la arena! Este es el manantial del [[oasis|oasis]]. Llenas la jarra de Salem con agua fresca.',
-        fa: 'آب از میان ریگ می‌جوشد! این چشمهٔ [[oasis|واحه]] است. کوزهٔ سالم را با آب سرد پر می‌کنی.' },
+      found: { en: 'Water bubbles up out of the sand! This is the [[oasis|oasis]] spring. You fill Salem\'s jar.',
+               es: '¡El agua brota de la arena! Este es el manantial del [[oasis|oasis]]. Llenas la jarra de Salem.',
+               fa: 'آب از میان ریگ می‌جوشد! این چشمهٔ [[oasis|واحه]] است. کوزهٔ سالم را پر می‌کنی.' },
       item: { icon: '🏺', name: { en: 'Jar of oasis water', es: 'Jarra de agua del oasis', fa: 'کوزهٔ آب واحه' } }
     }
   },
@@ -285,16 +309,16 @@ window.EPISODE = {
         choices: [{ en: 'Closer to where a river ends', es: 'Más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' }, { en: 'Closer to where a river starts', es: 'Más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' }, { en: 'Under the riverbed', es: 'Debajo del fondo del río', fa: 'زیر کف دریا' }, { en: 'Across the river', es: 'Al otro lado del río', fa: 'آن طرف دریا' }], answer: 0,
         why: { en: 'Iraq is downstream on the Tigris and Euphrates, close to where they reach the Gulf.', es: 'Irak está río abajo en el Tigris y el Éufrates, cerca de donde llegan al golfo.', fa: 'عراق در پایین دجله و فرات است، نزدیک جایی که به خلیج می‌رسند.' } },
       { q: { en: 'What is the Fertile Crescent?', es: '¿Qué es la Media Luna Fértil?', fa: 'هلال حاصلخیز چیست؟' },
-        choices: [{ en: 'A curved strip of good farmland between two rivers', es: 'Una franja curva de buena tierra de cultivo entre dos ríos', fa: 'نوار خمیده‌ای از زمین خوب زراعتی میان دو دریا' }, { en: 'A desert shaped like the moon', es: 'Un desierto con forma de luna', fa: 'بیابانی به شکل مهتاب' }, { en: 'A chain of snowy mountains', es: 'Una cadena de montañas con nieve', fa: 'یک سلسلهٔ کوه‌های برفی' }, { en: 'An oil field near the sea', es: 'Un campo de petróleo cerca del mar', fa: 'یک میدان نفت نزدیک بحر' }], answer: 0,
+        choices: [{ en: 'Curved farmland between two rivers', es: 'Tierra de cultivo curva entre dos ríos', fa: 'زمین زراعتی خمیده میان دو دریا' }, { en: 'A sandy desert shaped like the moon', es: 'Un desierto de arena con forma de luna', fa: 'بیابان ریگی به شکل مهتاب' }, { en: 'A chain of snowy mountains', es: 'Una cadena de montañas con nieve', fa: 'یک سلسلهٔ کوه‌های برفی' }, { en: 'An oil field near the sea', es: 'Un campo de petróleo cerca del mar', fa: 'یک میدان نفت نزدیک بحر' }], answer: 0,
         why: { en: 'Rich soil and river water let early farmers grow food between the Tigris and Euphrates.', es: 'La tierra rica y el agua del río dejaron que los primeros agricultores cultivaran entre el Tigris y el Éufrates.', fa: 'خاک خوب و آب دریا به دهقانان اولیه اجازه داد میان دجله و فرات غذا بکارند.' } },
       { q: { en: 'Why did cities in this dry region grow up along rivers?', es: '¿Por qué las ciudades de esta región seca crecieron junto a los ríos?', fa: 'چرا شهرهای این منطقهٔ خشک کنار دریاها بزرگ شدند؟' },
         choices: [{ en: 'A river was the only steady water supply', es: 'Un río era la única fuente de agua segura', fa: 'دریا تنها منبع همیشگی آب بود' }, { en: 'Rivers kept the cities cool in winter', es: 'Los ríos mantenían frescas las ciudades en invierno', fa: 'دریاها شهرها را در زمستان خنک نگه می‌داشتند' }, { en: 'Rivers marked the borders of countries', es: 'Los ríos marcaban las fronteras de los países', fa: 'دریاها سرحد کشورها را نشان می‌دادند' }, { en: 'Oil is always found next to rivers', es: 'El petróleo siempre está junto a los ríos', fa: 'نفت همیشه کنار دریا پیدا می‌شود' }], answer: 0,
         why: { en: 'In a dry land, the green land follows the water.', es: 'En una tierra seca, la tierra verde sigue al agua.', fa: 'در زمین خشک، زمین سبز دنبال آب می‌رود.' } },
       { q: { en: 'What is desalination?', es: '¿Qué es la desalinización?', fa: 'شیرین‌سازی آب چیست؟' },
-        choices: [{ en: 'Turning seawater into fresh water', es: 'Convertir agua de mar en agua dulce', fa: 'تبدیل آب بحر به آب شیرین' }, { en: 'Pumping oil out of the ground', es: 'Sacar petróleo de la tierra', fa: 'کشیدن نفت از زیر زمین' }, { en: 'Building a dam across a river', es: 'Construir una represa en un río', fa: 'ساختن بند روی دریا' }, { en: 'Adding salt to food', es: 'Echarle sal a la comida', fa: 'نمک زدن به غذا' }], answer: 0,
+        choices: [{ en: 'Turning seawater into fresh water', es: 'Convertir agua de mar en agua dulce', fa: 'تبدیل آب بحر به آب شیرین' }, { en: 'Pumping oil out of the ground', es: 'Sacar petróleo de la tierra', fa: 'کشیدن نفت از زیر زمین' }, { en: 'Building a tall dam across a river', es: 'Construir una represa alta en un río', fa: 'ساختن یک بند بلند روی دریا' }, { en: 'Adding salt to food', es: 'Echarle sal a la comida', fa: 'نمک زدن به غذا' }], answer: 0,
         why: { en: 'Desalination takes the salt out of seawater. It costs a lot of energy.', es: 'La desalinización le quita la sal al agua de mar. Usa mucha energía.', fa: 'شیرین‌سازی نمک را از آب بحر می‌گیرد. انرژی زیاد مصرف می‌کند.' } },
       { q: { en: 'What is the largest sand desert on Earth?', es: '¿Cuál es el desierto de arena más grande de la Tierra?', fa: 'بزرگ‌ترین بیابان ریگی روی زمین کدام است؟' },
-        choices: [{ en: 'The Rub\' al Khali (Empty Quarter)', es: 'El Rub al-Jali (Cuarto Vacío)', fa: 'ربع‌الخالی (ربع خالی)' }, { en: 'The Gobi Desert', es: 'El desierto de Gobi', fa: 'بیابان گوبی' }, { en: 'The Kalahari Desert', es: 'El desierto de Kalahari', fa: 'بیابان کالاهاری' }, { en: 'The Mojave Desert', es: 'El desierto de Mojave', fa: 'بیابان موهاوی' }], answer: 0,
+        choices: [{ en: 'The Empty Quarter', es: 'El Cuarto Vacío', fa: 'ربع خالی' }, { en: 'The Gobi Desert', es: 'El desierto de Gobi', fa: 'بیابان گوبی' }, { en: 'The Kalahari Desert', es: 'El desierto de Kalahari', fa: 'بیابان کالاهاری' }, { en: 'The Mojave Desert', es: 'El desierto de Mojave', fa: 'بیابان موهاوی' }], answer: 0,
         why: { en: 'The Rub\' al Khali, on the Arabian Peninsula, is the largest sand desert on Earth.', es: 'El Rub al-Jali, en la península arábiga, es el desierto de arena más grande de la Tierra.', fa: 'ربع‌الخالی، در شبه‌جزیرهٔ عربستان، بزرگ‌ترین بیابان ریگی روی زمین است.' } },
       { q: { en: 'Two countries share one river. What can they sign to share the water fairly?', es: 'Dos países comparten un río. ¿Qué pueden firmar para repartir el agua de forma justa?', fa: 'دو کشور یک دریا را شریک هستند. برای تقسیم عادلانهٔ آب چه چیزی می‌توانند امضا کنند؟' },
         choices: [{ en: 'A treaty', es: 'Un tratado', fa: 'یک معاهده' }, { en: 'A map key', es: 'Una leyenda de mapa', fa: 'راهنمای نقشه' }, { en: 'A weather report', es: 'Un reporte del clima', fa: 'گزارش هوا' }, { en: 'A train ticket', es: 'Un boleto de tren', fa: 'تکت قطار' }], answer: 0,

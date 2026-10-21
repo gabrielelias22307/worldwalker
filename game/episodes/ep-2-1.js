@@ -9,9 +9,8 @@ window.EPISODE = {
   title: { en: 'United States and Canada', es: 'Estados Unidos y Canadá', fa: 'امریکا و کانادا' },
   place: { en: 'The Great Lakes Port', es: 'El Puerto de los Grandes Lagos', fa: 'بندر جهیل‌های بزرگ' },
   intro: [
-    { en: 'Christopher: "Welcome to the Americas! The Grump muddied the water routes, and now the ships and trains are stuck. Talk to the ship captain, the wheat farmer and the barge pilot. Then use the compass stone to pick the best spot for a new city."',
-      es: 'Christopher: "¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua y ahora los barcos y los trenes están atascados. Habla con la capitana, el agricultor de trigo y el piloto de la barcaza. Luego usa la piedra de la brújula para elegir el mejor lugar para una ciudad nueva."',
-      fa: 'کریستوفر: «به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد و حالا کشتی‌ها و قطارها گیر مانده‌اند. با کپتان کشتی، دهقان گندم و رانندهٔ کشتی باری گپ بزن. بعد با سنگ قطب‌نما بهترین جا را برای یک شهر تازه انتخاب کن.»' }
+    { en: 'Welcome to the Americas! The Grump muddied the water routes. Ships and trains are stuck.', es: '¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua. Los barcos y los trenes están atascados.', fa: 'به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد. کشتی‌ها و قطارها گیر مانده‌اند.' },
+    { en: 'Talk to the captain, the farmer and the barge pilot. Then pick a city spot.', es: 'Habla con la capitana, el agricultor y el piloto de la barcaza. Luego elige un lugar para una ciudad.', fa: 'با کپتان، دهقان و رانندهٔ کشتی باری گپ بزن. بعد یک جا برای شهر انتخاب کن.' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Water is the road: every route here leads to the docks. */
@@ -66,10 +65,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [19, 13], at: [22, 17], decor: 'feather',
       clue: { en: 'From this note, walk 4 steps south, then 3 steps east. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 3 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۳ قدم به شرق. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! South is down and east is to the right. Four of the five Great Lakes touch the border between the United States and Canada. A bird feather was in the grass.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Cuatro de los cinco Grandes Lagos tocan la frontera entre Estados Unidos y Canadá. Había una pluma de pájaro en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر پرنده در سبزه بود.' } },
+      text: { en: 'You followed compass directions! Four of the five Great Lakes touch the U.S.–Canada border. A feather was here.', es: '¡Seguiste las direcciones de la brújula! Cuatro de los cinco Grandes Lagos tocan la frontera entre EE. UU. y Canadá. Aquí había una pluma.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر این جا بود.' } },
     { clueAt: [15, 11], at: [24, 15], decor: 'coinold',
-      clue: { en: 'Grain from the [[prairie|prairie]] rides the train, then a barge on the big river. Find the barge dock on the river that flows south. Stand on the dock square where the dirt road meets the river.', es: 'El grano de la [[prairie|pradera]] viaja en tren y luego en una barcaza por el río grande. Busca el muelle de barcazas en el río que corre hacia el sur. Párate en el cuadro del muelle donde el camino de tierra llega al río.', fa: 'غله از [[prairie|دشت]] با ریل می‌رود، بعد با یک کشتیِ باری روی دریای بزرگ. اسکلهٔ کشتی‌های باری را روی دریایی پیدا کن که به طرف جنوب می‌رود. روی خانهٔ اسکله بایست که سرکِ خاکی به دریا می‌رسد.' },
-      text: { en: 'You found the barge dock! A barge is a flat boat that carries heavy loads like grain. One barge can carry as much grain as many big trucks. An old coin was between the boards.', es: '¡Encontraste el muelle de barcazas! Una barcaza es un bote plano que lleva cargas pesadas, como grano. Una sola barcaza lleva tanto grano como muchos camiones grandes. Había una moneda antigua entre las tablas.', fa: 'تو اسکلهٔ کشتی‌های باری را پیدا کردی! کشتیِ باری یک قایق هموار است که بارهای سنگین مثل غله را می‌برد. یک کشتیِ باری به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه بین تخته‌ها بود.' } }
+      clue: { en: '[[prairie|Prairie]] grain rides a train, then a barge. Find the barge dock on the south-flowing river, where the dirt road meets it.', es: 'El grano de la [[prairie|pradera]] va en tren y luego en barcaza. Busca el muelle en el río que corre al sur, donde llega el camino de tierra.', fa: 'غلهٔ [[prairie|دشت]] با ریل می‌رود، بعد با کشتیِ باری. اسکله را روی دریایی که به جنوب می‌رود پیدا کن، جایی که سرکِ خاکی می‌رسد.' },
+      text: { en: 'You found the barge dock! One flat barge carries as much grain as many big trucks. An old coin was here.', es: '¡Encontraste el muelle! Una barcaza plana lleva tanto grano como muchos camiones grandes. Aquí había una moneda antigua.', fa: 'تو اسکله را پیدا کردی! یک کشتیِ باریِ هموار به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه این جا بود.' } }
   ],
   // only the Compass Rose (Episode 1.3) opens the little gate by the lake
   secret: { tool: 'compass', at: [24, 1],
@@ -95,23 +94,22 @@ window.EPISODE = {
       role: { en: 'Ship captain from Quebec', es: 'Capitana de barco de Quebec', fa: 'کپتان کشتی از کیوبک' },
       look: { skin: 0, hair: '#8a5a2a', shirt: '#22324f', pants: '#22324f' },
       lines: [
-        { en: 'Bonjour! I am Captain Marie, from Quebec in Canada. Look around. Most of the biggest cities in the United States and Canada sit next to water. Many sit on a [[harbor|harbor]], a calm place where big ships can dock.',
-          es: '¡Bonjour! Soy la capitana Marie, de Quebec, en Canadá. Mira a tu alrededor. La mayoría de las ciudades más grandes de Estados Unidos y Canadá están junto al agua. Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde los barcos grandes pueden atracar.',
-          fa: 'بونژور! من کپتان ماری از کیوبک در کانادا هستم. به اطراف نگاه کن. بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند. بسیاری از آن‌ها روی یک [[harbor|بندرگاه]] ساخته شده‌اند، جای آرامی که کشتی‌های بزرگ می‌توانند لنگر بیندازند.' },
-        { en: 'This lake is like the Great Lakes: five huge lakes between the United States and Canada. They work like an inland sea. Ships cross them loaded with iron ore and grain.',
-          es: 'Este lago es como los Grandes Lagos: cinco lagos enormes entre Estados Unidos y Canadá. Funcionan como un mar en el medio del continente. Los barcos los cruzan cargados de mineral de hierro y granos.',
-          fa: 'این جهیل مثل جهیل‌های بزرگ است: پنج جهیل بسیار بزرگ میان امریکا و کانادا. مثل یک بحر در وسط خشکه کار می‌کنند. کشتی‌ها پر از سنگ آهن و غله از آن‌ها می‌گذرند.' },
-        { en: 'From the lakes, ships follow the St. Lawrence River out to the Atlantic Ocean. Lake Superior sits about 180 meters above the sea, so the [[seaway|Seaway]] lowers ships step by step through locks.',
-          es: 'Desde los lagos, los barcos siguen el río San Lorenzo hasta el océano Atlántico. El lago Superior está a unos 180 metros sobre el mar, así que la [[seaway|Vía Marítima]] baja los barcos paso a paso con esclusas.',
-          fa: 'کشتی‌ها از جهیل‌ها راه دریای سنت لارنس را تا بحر اطلس می‌گیرند. جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است، پس [[seaway|راه آبی سنت لارنس]] کشتی‌ها را با دروازه‌های آبی زینه به زینه پایین می‌برد.' }
+        { en: 'Bonjour! I am Captain Marie, from Quebec in Canada.', es: '¡Bonjour! Soy la capitana Marie, de Quebec, en Canadá.', fa: 'بونژور! من کپتان ماری از کیوبک در کانادا هستم.' },
+        { en: 'Most of the biggest cities in the United States and Canada sit next to water.', es: 'La mayoría de las ciudades más grandes de Estados Unidos y Canadá están junto al agua.', fa: 'بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند.' },
+        { en: 'Many sit on a [[harbor|harbor]], a calm place where big ships dock.', es: 'Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde atracan barcos grandes.', fa: 'بسیاری روی یک [[harbor|بندرگاه]] هستند، جای آرامی که کشتی‌های بزرگ لنگر می‌اندازند.' },
+        { en: 'This lake is like the Great Lakes: five huge lakes between the United States and Canada.', es: 'Este lago es como los Grandes Lagos: cinco lagos enormes entre Estados Unidos y Canadá.', fa: 'این جهیل مثل جهیل‌های بزرگ است: پنج جهیل بسیار بزرگ میان امریکا و کانادا.' },
+        { en: 'They work like an inland sea. Ships cross them loaded with iron ore and grain.', es: 'Funcionan como un mar tierra adentro. Los barcos los cruzan cargados de mineral de hierro y granos.', fa: 'مثل یک بحر در وسط خشکه کار می‌کنند. کشتی‌ها پر از سنگ آهن و غله از آن‌ها می‌گذرند.' },
+        { en: 'From the lakes, ships follow the St. Lawrence River out to the Atlantic Ocean.', es: 'Desde los lagos, los barcos siguen el río San Lorenzo hasta el océano Atlántico.', fa: 'کشتی‌ها از جهیل‌ها راه دریای سنت لارنس را تا بحر اطلس می‌گیرند.' },
+        { en: 'Lake Superior sits about 180 meters above the sea.', es: 'El lago Superior está a unos 180 metros sobre el mar.', fa: 'جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است.' },
+        { en: 'So the [[seaway|Seaway]] lowers ships step by step through locks.', es: 'Por eso la [[seaway|Vía Marítima]] baja los barcos paso a paso con esclusas.', fa: 'پس [[seaway|راه آبی سنت لارنس]] کشتی‌ها را با دروازه‌های آبی زینه به زینه پایین می‌برد.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Why did so many cities grow next to harbors, lakes and rivers?', es: '¿Por qué tantas ciudades crecieron junto a puertos, lagos y ríos?', fa: 'چرا این‌قدر زیاد شهرها کنار بندرگاه، جهیل و دریا بزرگ شدند؟' },
         choices: [
-          { ok: true, t: { en: 'Boats moved heavy goods much more cheaply than wagons', es: 'Los barcos movían cargas pesadas mucho más barato que las carretas', fa: 'کشتی‌ها بار سنگین را خیلی ارزان‌تر از گادی می‌بردند' },
+          { ok: true, t: { en: 'Boats moved heavy goods more cheaply than wagons', es: 'Los barcos movían cargas pesadas más barato que las carretas', fa: 'کشتی‌ها بار سنگین را ارزان‌تر از گادی می‌بردند' },
             why: { en: 'Yes! Water was the road. One boat could carry what many wagons could not.', es: '¡Sí! El agua era el camino. Un barco llevaba lo que muchas carretas no podían.', fa: 'بله! آب همان سرک بود. یک کشتی باری را می‌برد که گادی‌های زیاد نمی‌توانستند.' } },
-          { t: { en: 'Land away from water could not be farmed', es: 'La tierra lejos del agua no se podía sembrar', fa: 'زمین دور از آب قابل زراعت نبود' },
+          { t: { en: 'Land far away from water could never be farmed', es: 'La tierra lejos del agua nunca se podía sembrar', fa: 'زمین دور از آب هرگز قابل زراعت نبود' },
             why: { en: 'The prairies are far from the sea and full of farms. The reason was moving goods.', es: 'Las praderas están lejos del mar y llenas de granjas. La razón era mover productos.', fa: 'دشت‌ها از بحر دور هستند و پر از فارم. دلیل اصلی بردن اجناس بود.' } },
           { t: { en: 'Governments ordered every town to be built at a port', es: 'Los gobiernos ordenaron construir cada pueblo en un puerto', fa: 'حکومت‌ها دستور دادند هر شهرک در بندر ساخته شود' },
             why: { en: 'Nobody ordered it. Towns grew where boats could stop, load and unload.', es: 'Nadie lo ordenó. Los pueblos crecieron donde los barcos podían parar, cargar y descargar.', fa: 'کسی دستور نداد. شهرک‌ها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند و بار بزنند و خالی کنند.' } }
@@ -124,25 +122,26 @@ window.EPISODE = {
       role: { en: 'Wheat farmer on the prairie', es: 'Agricultor de trigo en la pradera', fa: 'دهقان گندم در دشت' },
       look: { skin: 2, hair: '#1b1410', shirt: '#e07a2a', pants: '#3a4a6a' },
       lines: [
-        { en: 'Hello! Welcome to my farm. Between the Rocky Mountains in the west and the Appalachian Mountains in the east lies a huge flat middle. In the United States it is the Great Plains. In Canada it is the [[prairie|prairies]].',
-          es: '¡Hola! Bienvenido a mi granja. Entre las Montañas Rocosas al oeste y los montes Apalaches al este hay un enorme centro plano. En Estados Unidos se llaman las Grandes Llanuras. En Canadá se llaman las [[prairie|praderas]].',
-          fa: 'سلام! به فارم من خوش آمدی. میان کوه‌های راکی در غرب و کوه‌های اپالاچی در شرق یک میانهٔ هموار بسیار بزرگ است. در امریکا نامش دشت‌های بزرگ است. در کانادا نامش [[prairie|دشت‌ها (پریری)]] است.' },
-        { en: 'Farmers here grow wheat, corn and soybeans on rich land. But a farm is far from the sea. Long ago, a wagon carried only a little, and roads turned to mud. Moving heavy grain over land was slow and expensive.',
-          es: 'Aquí los agricultores siembran trigo, maíz y soya en tierra rica. Pero una granja está lejos del mar. Hace mucho, una carreta llevaba muy poco y los caminos se volvían lodo. Mover granos pesados por tierra era lento y caro.',
-          fa: 'دهقانان اینجا روی زمین حاصل‌خیز گندم، جواری و سویا می‌کارند. اما فارم از بحر دور است. در گذشته، یک گادی بار کمی می‌برد و سرک‌ها گل می‌شد. بردن غلهٔ سنگین از راه خشکه آهسته و قیمت بود.' },
-        { en: 'Today a truck brings my wheat to the grain elevator by the railway. Then a train hauls it to a [[port|port]] on a lake or on the coast. Each step moves it onto cheaper transport, and water is the cheapest of all.',
-          es: 'Hoy un camión lleva mi trigo al elevador de granos junto al ferrocarril. Luego un tren lo lleva a un [[port|puerto]] en un lago o en la costa. Cada paso lo pasa a un transporte más barato, y el agua es lo más barato de todo.',
-          fa: 'امروز یک لاری گندم مرا به انبار غله کنار خط آهن می‌برد. بعد قطار آن را به یک [[port|بندر]] کنار جهیل یا ساحل می‌برد. هر قدم آن را به وسیلهٔ ارزان‌تر می‌رساند، و آب از همه ارزان‌تر است.' }
+        { en: 'Hello! Between the Rocky Mountains and the Appalachian Mountains lies a huge flat middle.', es: '¡Hola! Entre las Montañas Rocosas y los montes Apalaches hay un enorme centro plano.', fa: 'سلام! میان کوه‌های راکی و کوه‌های اپالاچی یک میانهٔ هموار بسیار بزرگ است.' },
+        { en: 'The Rockies are in the west. The Appalachians are in the east.', es: 'Las Rocosas están al oeste. Los Apalaches están al este.', fa: 'کوه‌های راکی در غرب است. کوه‌های اپالاچی در شرق است.' },
+        { en: 'In the United States it is called the Great Plains.', es: 'En Estados Unidos se llaman las Grandes Llanuras.', fa: 'در امریکا نامش دشت‌های بزرگ است.' },
+        { en: 'In Canada it is called the [[prairie|prairies]].', es: 'En Canadá se llaman las [[prairie|praderas]].', fa: 'در کانادا نامش [[prairie|دشت‌ها (پریری)]] است.' },
+        { en: 'Farmers here grow wheat, corn and soybeans on rich land. But farms are far from the sea.', es: 'Aquí los agricultores siembran trigo, maíz y soya en tierra rica. Pero las granjas están lejos del mar.', fa: 'دهقانان اینجا روی زمین حاصل‌خیز گندم، جواری و سویا می‌کارند. اما فارم‌ها از بحر دور هستند.' },
+        { en: 'Long ago, a wagon carried only a little, and roads turned to mud.', es: 'Hace mucho, una carreta llevaba muy poco y los caminos se volvían lodo.', fa: 'در گذشته، یک گادی بار کمی می‌برد و سرک‌ها گل می‌شد.' },
+        { en: 'Moving heavy grain over land was slow and expensive.', es: 'Mover granos pesados por tierra era lento y caro.', fa: 'بردن غلهٔ سنگین از راه خشکه آهسته و قیمت بود.' },
+        { en: 'Today a truck brings my wheat to the grain elevator by the railway.', es: 'Hoy un camión lleva mi trigo al elevador de granos junto al ferrocarril.', fa: 'امروز یک لاری گندم مرا به انبار غله کنار خط آهن می‌برد.' },
+        { en: 'Then a train hauls it to a [[port|port]] on a lake or on the coast.', es: 'Luego un tren lo lleva a un [[port|puerto]] en un lago o en la costa.', fa: 'بعد قطار آن را به یک [[port|بندر]] کنار جهیل یا ساحل می‌برد.' },
+        { en: 'Each step uses cheaper transport, and water is the cheapest of all.', es: 'Cada paso usa un transporte más barato, y el agua es lo más barato de todo.', fa: 'هر قدم وسیلهٔ ارزان‌تر است، و آب از همه ارزان‌تر است.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'A truck brings wheat to a grain elevator beside a railway. What happens to the wheat next?', es: 'Un camión lleva trigo a un elevador de granos junto al ferrocarril. ¿Qué pasa después con el trigo?', fa: 'یک لاری گندم را به انبار غله کنار خط آهن می‌آورد. بعد از آن به گندم چه می‌شود؟' },
         choices: [
-          { ok: true, t: { en: 'A train hauls it to a port on a lake or on the coast', es: 'Un tren lo lleva a un puerto en un lago o en la costa', fa: 'قطار آن را به یک بندر کنار جهیل یا ساحل می‌برد' },
+          { ok: true, t: { en: 'A train hauls it to a lake or ocean port', es: 'Un tren lo lleva a un puerto de lago o de mar', fa: 'قطار آن را به یک بندر جهیل یا بحر می‌برد' },
             why: { en: 'Right. The grain keeps moving toward the water, where shipping is cheapest.', es: 'Correcto. El grano sigue avanzando hacia el agua, donde enviarlo es más barato.', fa: 'درست. غله به طرف آب پیش می‌رود، جایی که بردن آن از همه ارزان‌تر است.' } },
-          { t: { en: 'It is planted again in the field', es: 'Se vuelve a sembrar en el campo', fa: 'دوباره در زمین کاشته می‌شود' },
+          { t: { en: 'It goes back to the field to be planted again', es: 'Vuelve al campo para sembrarse otra vez', fa: 'دوباره به زمین می‌رود تا کاشته شود' },
             why: { en: 'The wheat has been harvested. It is on its way to be sold.', es: 'El trigo ya se cosechó. Va camino a venderse.', fa: 'گندم درو شده است. در راه فروش است.' } },
-          { t: { en: 'A ship picks it up right at the farm', es: 'Un barco lo recoge en la granja', fa: 'کشتی آن را از خود فارم می‌گیرد' },
+          { t: { en: 'A big ship picks it up right at the farm', es: 'Un barco grande lo recoge en la misma granja', fa: 'یک کشتی بزرگ آن را از خود فارم می‌گیرد' },
             why: { en: 'The farm is far from the water. A train must carry it to the port first.', es: 'La granja está lejos del agua. Primero un tren debe llevarlo al puerto.', fa: 'فارم از آب دور است. اول قطار باید آن را به بندر ببرد.' } }
         ]
       }
@@ -153,15 +152,14 @@ window.EPISODE = {
       role: { en: 'River barge pilot', es: 'Piloto de barcaza de río', fa: 'رانندهٔ کشتی باری دریا' },
       look: { skin: 5, hair: '#120c08', shirt: '#c0392b', pants: '#2a3a5a' },
       lines: [
-        { en: 'Hey there! I pilot a barge on this big river. A river only helps trade if it is [[navigable|navigable]]. That means it is deep and wide enough for large boats.',
-          es: '¡Hola! Yo manejo una barcaza en este río grande. Un río solo ayuda al comercio si es [[navigable|navegable]]. Eso quiere decir que es lo bastante profundo y ancho para barcos grandes.',
-          fa: 'سلام! من در این دریای بزرگ کشتی باری می‌رانم. یک دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد. یعنی آن‌قدر عمیق و پهن باشد که کشتی‌های بزرگ از آن بگذرند.' },
-        { en: 'The Mississippi River is navigable for hundreds of miles. Barges carry farm goods down it toward the Gulf of Mexico. A single boat can carry a heavy load for far less money than wagons or trucks.',
-          es: 'El río Misisipi es navegable por cientos de millas. Las barcazas llevan productos del campo río abajo hacia el golfo de México. Un solo barco puede llevar una carga pesada por mucho menos dinero que carretas o camiones.',
-          fa: 'دریای میسی‌سی‌پی صدها میل قابل کشتیرانی است. کشتی‌های باری اجناس فارم‌ها را از آن به طرف خلیج مکسیکو می‌برند. یک کشتی می‌تواند بار سنگین را خیلی ارزان‌تر از گادی یا لاری ببرد.' },
-        { en: 'Cities grew where boats could stop, load and unload. Alexandria, Virginia grew on the Potomac River, at the point where ocean ships could still reach. Its old brick warehouses near the water still stand today.',
-          es: 'Las ciudades crecieron donde los barcos podían parar, cargar y descargar. Alexandria, Virginia, creció en el río Potomac, en el punto hasta donde todavía llegaban los barcos del océano. Sus viejos almacenes de ladrillo junto al agua siguen en pie.',
-          fa: 'شهرها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند، بار بزنند و خالی کنند. الکساندریا در ویرجینیا کنار دریای پوتومک بزرگ شد، همان جایی که کشتی‌های بحری هنوز می‌رسیدند. گدام‌های خشتی کهنهٔ آن کنار آب هنوز ایستاده‌اند.' }
+        { en: 'Hey there! I pilot a barge on this big river.', es: '¡Hola! Yo manejo una barcaza en este río grande.', fa: 'سلام! من در این دریای بزرگ کشتی باری می‌رانم.' },
+        { en: 'A river helps trade only if it is [[navigable|navigable]]: deep and wide for big boats.', es: 'Un río solo ayuda al comercio si es [[navigable|navegable]]: profundo y ancho para barcos grandes.', fa: 'دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد: عمیق و پهن برای کشتی‌های بزرگ.' },
+        { en: 'The Mississippi River is navigable for hundreds of miles.', es: 'El río Misisipi es navegable por cientos de millas.', fa: 'دریای میسی‌سی‌پی صدها میل قابل کشتیرانی است.' },
+        { en: 'Barges carry farm goods down it toward the Gulf of Mexico.', es: 'Las barcazas llevan productos del campo río abajo hacia el golfo de México.', fa: 'کشتی‌های باری اجناس فارم‌ها را از آن به طرف خلیج مکسیکو می‌برند.' },
+        { en: 'One boat carries a heavy load for far less money than wagons or trucks.', es: 'Un solo barco lleva una carga pesada por mucho menos dinero que carretas o camiones.', fa: 'یک کشتی بار سنگین را خیلی ارزان‌تر از گادی یا لاری می‌برد.' },
+        { en: 'Cities grew where boats could stop, load and unload.', es: 'Las ciudades crecieron donde los barcos podían parar, cargar y descargar.', fa: 'شهرها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند، بار بزنند و خالی کنند.' },
+        { en: 'Alexandria, Virginia grew on the Potomac River, as far as ocean ships could reach.', es: 'Alexandria, Virginia, creció en el río Potomac, hasta donde llegaban los barcos del océano.', fa: 'الکساندریا در ویرجینیا کنار دریای پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند.' },
+        { en: 'Its old brick warehouses near the water still stand today.', es: 'Sus viejos almacenes de ladrillo junto al agua siguen en pie.', fa: 'گدام‌های خشتی کهنهٔ آن کنار آب هنوز ایستاده‌اند.' }
       ],
       ask: {
         stat: 'mov',
@@ -169,9 +167,9 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'It is deep and wide enough for large boats', es: 'Es lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن است که کشتی‌های بزرگ بگذرند' },
             why: { en: 'Yes. The Mississippi is navigable, so barges carry goods for hundreds of miles.', es: 'Sí. El Misisipi es navegable, así que las barcazas llevan productos por cientos de millas.', fa: 'بله. میسی‌سی‌پی قابل کشتیرانی است، پس کشتی‌های باری اجناس را صدها میل می‌برند.' } },
-          { t: { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' },
+          { t: { en: 'It runs right beside a very large city', es: 'Pasa justo al lado de una ciudad muy grande', fa: 'درست از کنار یک شهر بسیار بزرگ می‌گذرد' },
             why: { en: 'Big cities often sit on navigable rivers, but the word describes the water itself.', es: 'Las ciudades grandes suelen estar en ríos navegables, pero la palabra describe el agua.', fa: 'شهرهای بزرگ اغلب کنار دریاهای قابل کشتیرانی هستند، اما این کلمه خود آب را توصیف می‌کند.' } },
-          { t: { en: 'It is drawn and named on most maps', es: 'Aparece dibujado y con nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها کشیده شده و نام دارد' },
+          { t: { en: 'It is drawn and named on most world maps', es: 'Aparece dibujado y con nombre en casi todos los mapas del mundo', fa: 'در بیشتر نقشه‌های جهان کشیده شده و نام دارد' },
             why: { en: 'A name on a map tells you nothing about how deep the water is.', es: 'Un nombre en un mapa no dice nada sobre la profundidad del agua.', fa: 'نام روی نقشه چیزی دربارهٔ عمق آب نمی‌گوید.' } }
         ]
       }
@@ -179,12 +177,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 10, y: 10, text: { en: 'CANADA FACT · Most Canadians live within about 100 miles of the United States border. The far north is too cold for farms and big cities, so people, ports and factories crowd into the south.',
-      es: 'DATO DE CANADÁ · La mayoría de los canadienses vive a menos de unas 100 millas de la frontera con Estados Unidos. El extremo norte es demasiado frío para granjas y ciudades grandes, así que la gente, los puertos y las fábricas se juntan en el sur.',
-      fa: 'معلومات کانادا · بیشتر مردم کانادا در فاصلهٔ حدود ۱۰۰ میلی سرحد امریکا زندگی می‌کنند. شمال دور برای فارم و شهرهای بزرگ خیلی سرد است، پس مردم، بندرها و فابریکه‌ها در جنوب جمع شده‌اند.' } },
-    { x: 22, y: 12, text: { en: 'THE BIG RIVER · This river is [[navigable|navigable]] for hundreds of miles to the south. Barges carry grain down it. The Mississippi River works the same way.',
-      es: 'EL RÍO GRANDE · Este río es [[navigable|navegable]] por cientos de millas hacia el sur. Las barcazas llevan granos río abajo. El río Misisipi funciona igual.',
-      fa: 'دریای بزرگ · این دریا تا صدها میل به طرف جنوب [[navigable|قابل کشتیرانی]] است. کشتی‌های باری غله را از آن می‌برند. دریای میسی‌سی‌پی هم همین‌طور است.' } }
+    { x: 10, y: 10, text: { en: 'CANADA FACT · Most Canadians live within 100 miles of the U.S. border. The cold north has few farms or cities.', es: 'DATO DE CANADÁ · La mayoría de los canadienses vive a menos de 100 millas de la frontera con EE. UU. El norte frío tiene pocas granjas o ciudades.', fa: 'معلومات کانادا · بیشتر مردم کانادا در ۱۰۰ میلی سرحد امریکا زندگی می‌کنند. شمال سرد فارم و شهر کم دارد.' } },
+    { x: 22, y: 12, text: { en: 'THE BIG RIVER · This river is [[navigable|navigable]] for hundreds of miles. Barges carry grain down it, like the Mississippi.', es: 'EL RÍO GRANDE · Este río es [[navigable|navegable]] por cientos de millas. Las barcazas llevan granos, como en el Misisipi.', fa: 'دریای بزرگ · این دریا صدها میل [[navigable|قابل کشتیرانی]] است. کشتی‌های باری غله می‌برند، مثل میسی‌سی‌پی.' } }
   ],
 
   /* the quest: Nokomis (gold !) -> Wen the fisher -> find the toy canoe downstream, east of the lake -> back to Nokomis */
@@ -197,19 +191,15 @@ window.EPISODE = {
       role: { en: 'Canoe maker', es: 'Fabricante de canoas', fa: 'قایق‌ساز' },
       look: { skin: 3, hair: '#d8d4cc', shirt: '#2a7a6a', pants: '#3a3a3a', style: 'long' },
       lines: [
-        { en: 'Boozhoo! That means hello in my language, Ojibwe. I carved a little birchbark canoe for my grandson. The Grump\'s wind blew it off the dock and into the lake!',
-          es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe. Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Gruñón la sacó del muelle y la tiró al lago!',
-          fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام. من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد غرغرو آن را از بندر به داخل جهیل برد!' },
-        { en: 'Wen the fisher knows how water moves. She fishes on the big river in the south-east. Will you ask her where my canoe went?',
-          es: 'Wen, la pescadora, sabe cómo se mueve el agua. Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?',
-          fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند. او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' }
+        { en: 'Boozhoo! That means hello in my language, Ojibwe.', es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe.', fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام.' },
+        { en: 'I carved a little birchbark canoe for my grandson.', es: 'Tallé una canoa pequeña de corteza de abedul para mi nieto.', fa: 'من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم.' },
+        { en: 'The Grump\'s wind blew it off the dock and into the lake!', es: '¡El viento del Gruñón la sacó del muelle y la tiró al lago!', fa: 'باد غرغرو آن را از بندر به داخل جهیل برد!' },
+        { en: 'Wen the fisher knows how water moves.', es: 'Wen, la pescadora, sabe cómo se mueve el agua.', fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند.' },
+        { en: 'She fishes on the big river in the south-east. Will you ask her where my canoe went?', es: 'Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?', fa: 'او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' },
+        { en: 'Will you ask her where my canoe went?', es: '¿Le preguntas a dónde se fue mi canoa?', fa: 'از او می‌پرسی که قایق من کجا رفت؟' }
       ],
-      wait: { en: 'Wen is by the big river in the south-east. On this map south is down and east is to the right.',
-        es: 'Wen está junto al río grande, en el sureste. En este mapa el sur está abajo y el este a la derecha.',
-        fa: 'وِن کنار دریای بزرگ در جنوب شرق است. در این نقشه جنوب پایین و شرق طرف راست است.' },
-      thanks: { en: 'My canoe! The lake water carried it east, toward the ocean. Big ships follow that same water road. Miigwech, thank you!',
-        es: '¡Mi canoa! El agua del lago la llevó hacia el este, rumbo al océano. Los barcos grandes siguen ese mismo camino de agua. ¡Miigwech, gracias!',
-        fa: 'قایق من! آب جهیل آن را به طرف شرق، به سوی بحر برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ، تشکر!' }
+      wait: { en: 'Wen is by the big river in the south-east: down and right on this map.', es: 'Wen está junto al río grande, en el sureste: abajo y a la derecha en este mapa.', fa: 'وِن کنار دریای بزرگ در جنوب شرق است: در این نقشه پایین و طرف راست.' },
+      thanks: { en: 'My canoe! The water carried it east. Big ships follow that same water road. Miigwech!', es: '¡Mi canoa! El agua la llevó hacia el este. Los barcos grandes siguen ese camino de agua. ¡Miigwech!', fa: 'قایق من! آب آن را به شرق برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ!' }
     },
     contact: {
       x: 21, y: 18,
@@ -217,21 +207,17 @@ window.EPISODE = {
       role: { en: 'River fisher', es: 'Pescadora de río', fa: 'ماهیگیر دریا' },
       look: { skin: 1, hair: '#1b1410', shirt: '#d98e2b', pants: '#2a3a5a', hat: '#c8a870' },
       lines: [
-        { en: 'Water always flows downhill. This lake empties into a river on its east side. That river flows east, all the way to the ocean. The St. Lawrence River does the same for the Great Lakes.',
-          es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este. Ese río corre hacia el este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.',
-          fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد. آن دریا به طرف شرق تا بحر جاری است. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
-        { en: 'So the canoe floated [[downstream|downstream]], to the east. Find the bridge over that river in the north-east. Cross it to the north bank. Then walk two steps east along the water.',
-          es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este. Busca el puente sobre ese río en el noreste. Crúzalo hasta la orilla norte. Luego camina dos pasos al este junto al agua.',
-          fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت. پلی را که در شمال شرق روی آن دریا است پیدا کن. از آن به ساحل شمالی برو. بعد دو قدم به طرف شرق در کنار آب راه برو.' }
+        { en: 'Water always flows downhill. This lake empties into a river on its east side.', es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este.', fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد.' },
+        { en: 'That river flows east to the ocean. The St. Lawrence River does the same for the Great Lakes.', es: 'Ese río corre al este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.', fa: 'آن دریا به شرق تا بحر می‌رود. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
+        { en: 'So the canoe floated [[downstream|downstream]], to the east.', es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este.', fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت.' },
+        { en: 'Cross the north-east bridge to the north bank. Then walk two steps east along the water.', es: 'Cruza el puente del noreste hasta la orilla norte. Luego camina dos pasos al este junto al agua.', fa: 'از پل شمال شرق به ساحل شمالی برو. بعد دو قدم به شرق در کنار آب برو.' }
       ]
     },
     action: {
       type: 'find',
       at: [28, 2],
       hint: { en: 'north bank, 2 steps east of the north-east bridge', es: 'orilla norte, 2 pasos al este del puente del noreste', fa: 'ساحل شمالی، ۲ قدم شرقِ پل شمال شرق' },
-      found: { en: 'There it is, caught in the reeds on the riverbank! The lake drains into the river, and the river carries everything [[downstream|downstream]], east to the ocean.',
-        es: '¡Ahí está, atrapada entre las cañas de la orilla! El lago desagua en el río, y el río lleva todo [[downstream|río abajo]], hacia el este, hasta el océano.',
-        fa: 'آنجاست، میان نی‌های کنار دریا گیر مانده! جهیل به دریا می‌ریزد و دریا همه چیز را به [[downstream|پایین دریا]]، به طرف شرق تا بحر، می‌برد.' },
+      found: { en: 'There it is, in the reeds! The river carries everything [[downstream|downstream]], east to the ocean.', es: '¡Ahí está, entre las cañas! El río lleva todo [[downstream|río abajo]], hacia el este, hasta el océano.', fa: 'آنجاست، میان نی‌ها! دریا همه چیز را به [[downstream|پایین دریا]]، به طرف شرق تا بحر، می‌برد.' },
       item: { icon: '🛶', name: { en: 'The little birchbark canoe', es: 'La canoa pequeña de corteza', fa: 'قایق کوچک پوست توس' } }
     }
   },
@@ -293,28 +279,28 @@ window.EPISODE = {
     win: { en: 'The mud washes away down the river. Atlas page 2.1 floats down into your hands!', es: 'El lodo se va río abajo. ¡La página 2.1 del atlas cae en tus manos!', fa: 'گل با دریا شسته می‌شود. صفحهٔ ۲.۱ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What is a harbor?', es: '¿Qué es un puerto natural?', fa: 'بندرگاه چیست؟' },
-        choices: [{ en: 'A sheltered part of the coast where large ships can dock safely', es: 'Una parte protegida de la costa donde los barcos grandes atracan seguros', fa: 'بخش محفوظ ساحل که کشتی‌های بزرگ با امنیت لنگر می‌اندازند' }, { en: 'A deep river that carries farm goods far inland', es: 'Un río profundo que lleva productos del campo tierra adentro', fa: 'دریای عمیقی که اجناس فارم را تا دور در خشکه می‌برد' }, { en: 'A flat area of rich soil for wheat and corn', es: 'Un área plana de tierra rica para trigo y maíz', fa: 'یک ساحهٔ هموار با خاک خوب برای گندم و جواری' }, { en: 'A group of five lakes with lots of fresh water', es: 'Un grupo de cinco lagos con mucha agua dulce', fa: 'گروه پنج جهیل با آب شیرین زیاد' }], answer: 0,
+        choices: [{ en: 'A calm part of the coast where big ships dock', es: 'Una parte tranquila de la costa donde atracan barcos grandes', fa: 'بخش آرام ساحل که کشتی‌های بزرگ لنگر می‌اندازند' }, { en: 'A deep river that carries farm goods far inland', es: 'Un río profundo que lleva productos del campo tierra adentro', fa: 'دریای عمیقی که اجناس فارم را تا دور در خشکه می‌برد' }, { en: 'A flat area of rich soil for wheat and corn', es: 'Un área plana de tierra rica para trigo y maíz', fa: 'یک ساحهٔ هموار با خاک خوب برای گندم و جواری' }, { en: 'A group of five lakes with lots of fresh water', es: 'Un grupo de cinco lagos con mucha agua dulce', fa: 'گروه پنج جهیل با آب شیرین زیاد' }], answer: 0,
         why: { en: 'New York, Boston and Vancouver all grew around harbors like this.', es: 'Nueva York, Boston y Vancouver crecieron alrededor de puertos así.', fa: 'نیویارک، بوستون و ونکوور همه دور بندرگاه‌هایی مثل این بزرگ شدند.' } },
       { q: { en: 'What does navigable mean when it describes a river?', es: '¿Qué significa navegable cuando describe un río?', fa: 'قابل کشتیرانی برای یک دریا یعنی چه؟' },
-        choices: [{ en: 'Deep and wide enough for large boats', es: 'Lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند' }, { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' }, { en: 'It stays unfrozen all winter', es: 'No se congela en todo el invierno', fa: 'در تمام زمستان یخ نمی‌زند' }, { en: 'It is named on most maps', es: 'Tiene nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها نام دارد' }], answer: 0,
+        choices: [{ en: 'Deep and wide enough for large boats', es: 'Lo bastante profundo y ancho para barcos grandes', fa: 'آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند' }, { en: 'It runs beside a very large city', es: 'Pasa junto a una ciudad muy grande', fa: 'از کنار یک شهر بسیار بزرگ می‌گذرد' }, { en: 'It never freezes over, even in winter', es: 'Nunca se congela, ni siquiera en invierno', fa: 'هرگز یخ نمی‌زند، حتی در زمستان' }, { en: 'It is named on most maps', es: 'Tiene nombre en casi todos los mapas', fa: 'در بیشتر نقشه‌ها نام دارد' }], answer: 0,
         why: { en: 'The Mississippi is navigable, so boats carry farm goods hundreds of miles.', es: 'El Misisipi es navegable, así que los barcos llevan productos por cientos de millas.', fa: 'میسی‌سی‌پی قابل کشتیرانی است، پس کشتی‌ها اجناس فارم را صدها میل می‌برند.' } },
       { q: { en: 'In the 1700s a town stood far from any river or harbor. What problem would it most likely have?', es: 'En los años 1700 un pueblo estaba lejos de todo río o puerto. ¿Qué problema tendría seguramente?', fa: 'در سال‌های ۱۷۰۰ یک شهرک از هر دریا و بندرگاه دور بود. به احتمال زیاد چه مشکلی داشت؟' },
-        choices: [{ en: 'Moving heavy goods to sell would cost a lot of money', es: 'Mover cargas pesadas para vender costaría mucho dinero', fa: 'بردن بار سنگین برای فروش پول زیاد می‌خواست' }, { en: 'Its farmers would have poorer soil', es: 'Sus agricultores tendrían tierra más pobre', fa: 'دهقانانش خاک ضعیف‌تری داشتند' }, { en: 'Its winters would be much colder', es: 'Sus inviernos serían mucho más fríos', fa: 'زمستانش خیلی سردتر بود' }, { en: 'Its people would have nothing to drink', es: 'Su gente no tendría nada que beber', fa: 'مردمش چیزی برای نوشیدن نداشتند' }], answer: 0,
+        choices: [{ en: 'Moving heavy goods to sell would cost a lot', es: 'Mover cargas pesadas para vender costaría mucho', fa: 'بردن بار سنگین برای فروش پول زیاد می‌خواست' }, { en: 'Its farmers would have much poorer soil', es: 'Sus agricultores tendrían tierra mucho más pobre', fa: 'دهقانانش خاک بسیار ضعیف‌تری داشتند' }, { en: 'Its winters would be much colder', es: 'Sus inviernos serían mucho más fríos', fa: 'زمستانش خیلی سردتر بود' }, { en: 'Its people would have nothing at all to drink', es: 'Su gente no tendría nada que beber', fa: 'مردمش هیچ چیزی برای نوشیدن نداشتند' }], answer: 0,
         why: { en: 'A wagon carried little and roads turned to mud. One boat did the same work for far less.', es: 'Una carreta llevaba poco y los caminos se volvían lodo. Un barco hacía el mismo trabajo por mucho menos.', fa: 'گادی بار کمی می‌برد و سرک‌ها گل می‌شد. یک کشتی همان کار را خیلی ارزان‌تر می‌کرد.' } },
       { q: { en: 'A ship carries iron ore from a port on Lake Superior out to the Atlantic Ocean. What does it pass through?', es: 'Un barco lleva mineral de hierro desde un puerto del lago Superior hasta el océano Atlántico. ¿Por dónde pasa?', fa: 'یک کشتی سنگ آهن را از بندری کنار جهیل سوپریور به بحر اطلس می‌برد. از کجا می‌گذرد؟' },
         choices: [{ en: 'A chain of locks that lower it step by step', es: 'Una cadena de esclusas que lo bajan paso a paso', fa: 'یک رشته دروازهٔ آبی که آن را زینه به زینه پایین می‌برد' }, { en: 'A tunnel under the Rocky Mountains', es: 'Un túnel bajo las Montañas Rocosas', fa: 'یک تونل زیر کوه‌های راکی' }, { en: 'A canal across the middle of the Great Plains', es: 'Un canal por el medio de las Grandes Llanuras', fa: 'یک کانال از وسط دشت‌های بزرگ' }, { en: 'A mountain pass in the Appalachians', es: 'Un paso de montaña en los Apalaches', fa: 'یک کوتل در کوه‌های اپالاچی' }], answer: 0,
         why: { en: 'Lake Superior sits about 180 meters above the sea, so the Seaway steps ships down to the ocean.', es: 'El lago Superior está a unos 180 metros sobre el mar, así que la Vía Marítima baja los barcos hasta el océano.', fa: 'جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است، پس راه آبی کشتی‌ها را زینه به زینه تا بحر پایین می‌برد.' } },
       { q: { en: 'Almost everyone in Canada lives in a thin strip in the south. What best explains that?', es: 'Casi toda la gente de Canadá vive en una franja delgada en el sur. ¿Qué lo explica mejor?', fa: 'تقریباً همهٔ مردم کانادا در یک نوار باریک در جنوب زندگی می‌کنند. بهترین توضیح چیست؟' },
-        choices: [{ en: 'The south has milder winters, better soil and shipping routes', es: 'El sur tiene inviernos más suaves, mejor tierra y rutas de barcos', fa: 'جنوب زمستان ملایم‌تر، خاک بهتر و راه‌های کشتیرانی دارد' }, { en: 'The government moved every family out of the north', es: 'El gobierno sacó a todas las familias del norte', fa: 'حکومت همهٔ خانواده‌ها را از شمال بیرون کرد' }, { en: 'The north is covered by mountains too steep to climb', es: 'El norte está cubierto de montañas imposibles de subir', fa: 'شمال پر از کوه‌هایی است که بالا رفتن از آن‌ها ناممکن است' }, { en: 'The north of Canada belongs to the United States', es: 'El norte de Canadá pertenece a Estados Unidos', fa: 'شمال کانادا مال امریکا است' }], answer: 0,
+        choices: [{ en: 'The south has milder winters and better soil', es: 'El sur tiene inviernos más suaves y mejor tierra', fa: 'جنوب زمستان ملایم‌تر و خاک بهتر دارد' }, { en: 'The government moved every family out of the north', es: 'El gobierno sacó a todas las familias del norte', fa: 'حکومت همهٔ خانواده‌ها را از شمال بیرون کرد' }, { en: 'The north is covered by mountains too steep to climb', es: 'El norte está cubierto de montañas imposibles de subir', fa: 'شمال پر از کوه‌هایی است که بالا رفتن از آن‌ها ناممکن است' }, { en: 'The north of Canada belongs to the United States', es: 'El norte de Canadá pertenece a Estados Unidos', fa: 'شمال کانادا مال امریکا است' }], answer: 0,
         why: { en: 'The far north is very cold. People, ports and factories crowd into the warmer south.', es: 'El extremo norte es muy frío. La gente, los puertos y las fábricas se juntan en el sur, más cálido.', fa: 'شمال دور بسیار سرد است. مردم، بندرها و فابریکه‌ها در جنوب گرم‌تر جمع شده‌اند.' } },
       { q: { en: 'Which pair names the capital cities of the two countries?', es: '¿Qué pareja nombra las capitales de los dos países?', fa: 'کدام جفت پایتخت‌های دو کشور را نام می‌برد؟' },
         choices: [{ en: 'Washington, D.C. (United States) and Ottawa (Canada)', es: 'Washington, D.C. (Estados Unidos) y Ottawa (Canadá)', fa: 'واشنگتن دی‌سی (امریکا) و اوتاوا (کانادا)' }, { en: 'New York City (United States) and Toronto (Canada)', es: 'Nueva York (Estados Unidos) y Toronto (Canadá)', fa: 'نیویارک (امریکا) و تورنتو (کانادا)' }, { en: 'New York City (United States) and Ottawa (Canada)', es: 'Nueva York (Estados Unidos) y Ottawa (Canadá)', fa: 'نیویارک (امریکا) و اوتاوا (کانادا)' }, { en: 'Washington, D.C. (United States) and Toronto (Canada)', es: 'Washington, D.C. (Estados Unidos) y Toronto (Canadá)', fa: 'واشنگتن دی‌سی (امریکا) و تورنتو (کانادا)' }], answer: 0,
         why: { en: 'New York City and Toronto are the largest cities, not the capitals.', es: 'Nueva York y Toronto son las ciudades más grandes, no las capitales.', fa: 'نیویارک و تورنتو بزرگ‌ترین شهرها هستند، نه پایتخت.' } },
       { q: { en: 'Which two mountain chains run through both the United States and Canada?', es: '¿Qué dos cadenas de montañas pasan por Estados Unidos y Canadá?', fa: 'کدام دو رشته‌کوه از هم امریکا و هم کانادا می‌گذرند؟' },
-        choices: [{ en: 'The Rocky Mountains in the west and the Appalachians in the east', es: 'Las Montañas Rocosas al oeste y los Apalaches al este', fa: 'کوه‌های راکی در غرب و اپالاچی در شرق' }, { en: 'The Andes in the west and the Alps in the east', es: 'Los Andes al oeste y los Alpes al este', fa: 'اندیز در غرب و آلپ در شرق' }, { en: 'The Himalayas in the west and the Rockies in the east', es: 'El Himalaya al oeste y las Rocosas al este', fa: 'هیمالیا در غرب و راکی در شرق' }, { en: 'The Great Plains in the west and the prairies in the east', es: 'Las Grandes Llanuras al oeste y las praderas al este', fa: 'دشت‌های بزرگ در غرب و پریری در شرق' }], answer: 0,
+        choices: [{ en: 'The Rockies in the west, Appalachians in the east', es: 'Las Rocosas al oeste y los Apalaches al este', fa: 'کوه‌های راکی در غرب، اپالاچی در شرق' }, { en: 'The Andes in the west and the Alps in the east', es: 'Los Andes al oeste y los Alpes al este', fa: 'اندیز در غرب و آلپ در شرق' }, { en: 'The Himalayas in the west and the Rockies in the east', es: 'El Himalaya al oeste y las Rocosas al este', fa: 'هیمالیا در غرب و راکی در شرق' }, { en: 'The Great Plains in the west and the prairies in the east', es: 'Las Grandes Llanuras al oeste y las praderas al este', fa: 'دشت‌های بزرگ در غرب و پریری در شرق' }], answer: 0,
         why: { en: 'The Rockies rise in the west and the Appalachians run along the east. The flat plains lie between them.', es: 'Las Rocosas se levantan al oeste y los Apalaches van por el este. Las llanuras están en medio.', fa: 'راکی در غرب بلند می‌شود و اپالاچی در شرق امتداد دارد. دشت‌های هموار میان آن‌هاست.' } },
       { q: { en: 'Street signs in Montreal often show French words first. What fact about Canada does this show?', es: 'Los letreros de las calles de Montreal suelen mostrar primero el francés. ¿Qué dato de Canadá muestra esto?', fa: 'تابلوهای سرک در مونترآل اغلب اول کلمه‌های فرانسوی را نشان می‌دهند. این کدام حقیقت کانادا را نشان می‌دهد؟' },
-        choices: [{ en: 'Canada has two official languages, English and French', es: 'Canadá tiene dos idiomas oficiales, inglés y francés', fa: 'کانادا دو زبان رسمی دارد، انگلیسی و فرانسوی' }, { en: 'Canada has a very long border with the United States', es: 'Canadá tiene una frontera muy larga con Estados Unidos', fa: 'کانادا با امریکا سرحد بسیار دراز دارد' }, { en: 'Most Canadians live near the border', es: 'La mayoría de los canadienses vive cerca de la frontera', fa: 'بیشتر مردم کانادا نزدیک سرحد زندگی می‌کنند' }, { en: 'Canada is a very large country', es: 'Canadá es un país muy grande', fa: 'کانادا کشور بسیار بزرگ است' }], answer: 0,
+        choices: [{ en: 'Canada has two official languages', es: 'Canadá tiene dos idiomas oficiales', fa: 'کانادا دو زبان رسمی دارد' }, { en: 'Canada has a very long border with the United States', es: 'Canadá tiene una frontera muy larga con Estados Unidos', fa: 'کانادا با امریکا سرحد بسیار دراز دارد' }, { en: 'Most Canadians live near the border', es: 'La mayoría de los canadienses vive cerca de la frontera', fa: 'بیشتر مردم کانادا نزدیک سرحد زندگی می‌کنند' }, { en: 'Canada is a very large country', es: 'Canadá es un país muy grande', fa: 'کانادا کشور بسیار بزرگ است' }], answer: 0,
         why: { en: 'Most of Canada speaks English, but the province of Quebec mostly speaks French.', es: 'Casi todo Canadá habla inglés, pero la provincia de Quebec habla sobre todo francés.', fa: 'بیشتر کانادا انگلیسی گپ می‌زند، اما ولایت کیوبک بیشتر فرانسوی گپ می‌زند.' } }
     ]
   },

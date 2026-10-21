@@ -9,9 +9,8 @@ window.EPISODE = {
   title: { en: 'Resources & Work', es: 'Recursos y trabajo', fa: 'منابع و کار' },
   place: { en: "Mapmaker's Valley", es: 'Valle del Cartógrafo', fa: 'درهٔ نقشه‌کش' },
   intro: [
-    { en: 'Christopher: "The Grump mixed up everything people use to make things! The bakery has no flour and the mine is quiet. Talk to the miner, the baker and the farmer. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón revolvió todo lo que la gente usa para hacer cosas! La panadería no tiene harina y la mina está en silencio. Habla con el minero, la panadera y la agricultora. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو همهٔ چیزهایی را که مردم برای ساختن به کار می‌برند به هم زد! نانوایی آرد ندارد و معدن خاموش است. با معدنچی، نانوا و دهقان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump mixed up everything people use to make things! The bakery has no flour.', es: '¡El Gruñón revolvió todo lo que la gente usa para hacer cosas! La panadería no tiene harina.', fa: 'غرغرو همهٔ چیزهایی را که مردم برای ساختن به کار می‌برند به هم زد! نانوایی آرد ندارد.' },
+    { en: 'Talk to the miner, the baker and the farmer. Then fix the compass stone.', es: 'Habla con el minero, la panadera y la agricultora. Luego arregla la piedra de la brújula.', fa: 'با معدنچی، نانوا و دهقان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   /* 32 x 22 = 2 x 2 screens. Each corner shows a different kind of work. */
@@ -67,10 +66,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [20, 9], at: [24, 12], decor: 'vase',
       clue: { en: 'From this note, walk 3 steps south, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! South is down and east is to the right. A small clay vase was by the road. Clay is a natural resource: potters dig it out of the ground.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Había un jarrón de barro junto al camino. El barro es un recurso natural: los alfareros lo sacan de la tierra.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. یک گلدان کوچک گِلی کنار سرک بود. گِل یک منبع طبیعی است: کوزه‌گرها آن را از زمین می‌کَنند.' } },
+      text: { en: 'You followed compass directions! A clay vase was by the road. Clay is a natural resource dug from the ground.', es: '¡Seguiste las direcciones de la brújula! Había un jarrón de barro junto al camino. El barro es un recurso natural que se saca de la tierra.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! یک گلدان گِلی کنار سرک بود. گِل یک منبع طبیعی است که از زمین کنده می‌شود.' } },
     { clueAt: [12, 4], at: [24, 5], decor: 'fossil',
-      clue: { en: 'Iron ore is a [[natural resource|natural resource]]. Miners dig it out of the mountains. Follow the railway track down from the mine. Stand on the dark stone square just below the end of the track.', es: 'El mineral de hierro es un [[natural resource|recurso natural]]. Los mineros lo sacan de las montañas. Sigue la vía del tren hacia abajo desde la mina. Párate en el cuadro de piedra oscura justo debajo del final de la vía.', fa: 'سنگ آهن یک [[natural resource|منبع طبیعی]] است. معدنچی‌ها آن را از کوه‌ها بیرون می‌آورند. خط ریل را از معدن به طرف پایین دنبال کن. روی خانهٔ سنگیِ تیره درست زیرِ آخرِ خط ریل بایست.' },
-      text: { en: 'You found where the mine carts stop! Iron ore is a rock with iron in it. Factories melt it to make iron and steel. A fossil was in the stone.', es: '¡Encontraste dónde paran los carritos de la mina! El mineral de hierro es una roca que tiene hierro. Las fábricas lo derriten para hacer hierro y acero. Había un fósil en la piedra.', fa: 'تو جایی را پیدا کردی که واگون‌های معدن می‌ایستند! سنگ آهن سنگی است که در آن آهن است. فابریکه‌ها آن را ذوب می‌کنند تا آهن و فولاد بسازند. یک فسیل در سنگ بود.' } }
+      clue: { en: 'Miners dig iron ore, a [[natural resource|natural resource]]. Follow the railway down from the mine. Stand just below its end.', es: 'Los mineros sacan mineral de hierro, un [[natural resource|recurso natural]]. Sigue la vía del tren hacia abajo desde la mina. Párate justo debajo del final.', fa: 'معدنچی‌ها سنگ آهن را می‌کَنند که یک [[natural resource|منبع طبیعی]] است. خط ریل را از معدن به پایین دنبال کن. درست زیرِ آخرِ آن بایست.' },
+      text: { en: 'You found where the mine carts stop! Factories melt iron ore to make steel. A fossil was in the stone.', es: '¡Encontraste dónde paran los carritos de la mina! Las fábricas derriten el mineral de hierro para hacer acero. Había un fósil en la piedra.', fa: 'تو جایی را پیدا کردی که واگون‌های معدن می‌ایستند! فابریکه‌ها سنگ آهن را ذوب می‌کنند تا فولاد بسازند. یک فسیل در سنگ بود.' } }
   ],
 
   words: {
@@ -89,23 +88,23 @@ window.EPISODE = {
       role: { en: 'Miner', es: 'Minero', fa: 'معدنچی' },
       look: { skin: 5, hair: '#120c08', shirt: '#e0a030', pants: '#3a3a4a' },
       lines: [
-        { en: 'Hello! I dig in this mine. Rocks, metals, oil, water, soil and trees all come from the earth. They are [[natural resource|natural resources]].',
-          es: '¡Hola! Yo trabajo en esta mina. Las rocas, los metales, el petróleo, el agua, el suelo y los árboles vienen de la tierra. Son [[natural resource|recursos naturales]].',
-          fa: 'سلام! من در این معدن کار می‌کنم. سنگ، فلز، تیل، آب، خاک و درخت همه از زمین می‌آیند. این‌ها [[natural resource|منابع طبیعی]] هستند.' },
-        { en: 'No two places hold the same natural resources. Huge oil fields sit under the desert in Saudi Arabia. The Democratic Republic of the Congo holds a large share of the world\'s cobalt.',
-          es: 'No hay dos lugares con los mismos recursos naturales. Hay enormes campos de petróleo bajo el desierto de Arabia Saudita. La República Democrática del Congo tiene gran parte del cobalto del mundo.',
-          fa: 'هیچ دو جایی منابع طبیعی یکسان ندارند. زیر ریگستان عربستان سعودی ساحه‌های بزرگ تیل است. جمهوری دموکراتیک کانگو بخش بزرگی از کوبالت جهان را دارد.' },
-        { en: 'Cobalt is a metal used inside batteries for phones and cars. Towns, roads and worker camps grew up around those mines. That is [[land use|land use]]: how people use the land.',
-          es: 'El cobalto es un metal que se usa en las baterías de teléfonos y carros. Alrededor de esas minas crecieron pueblos, caminos y campamentos de trabajadores. Eso es el [[land use|uso del suelo]]: cómo la gente usa la tierra.',
-          fa: 'کوبالت فلزی است که در بتری موبایل و موتر به کار می‌رود. دور آن معدن‌ها شهرک، سرک و کمپ کارگران ساخته شد. این [[land use|استفاده از زمین]] است: اینکه مردم زمین را چطور به کار می‌برند.' }
+        { en: 'Hello! I dig in this mine. Rocks, metals and oil come from the earth.', es: '¡Hola! Yo trabajo en esta mina. Las rocas, los metales y el petróleo vienen de la tierra.', fa: 'سلام! من در این معدن کار می‌کنم. سنگ، فلز و تیل از زمین می‌آیند.' },
+        { en: 'So do water, soil and trees.', es: 'También el agua, el suelo y los árboles.', fa: 'آب، خاک و درخت هم همین‌طور.' },
+        { en: 'They are [[natural resource|natural resources]].', es: 'Son [[natural resource|recursos naturales]].', fa: 'این‌ها [[natural resource|منابع طبیعی]] هستند.' },
+        { en: 'No two places have the same natural resources.', es: 'No hay dos lugares con los mismos recursos naturales.', fa: 'هیچ دو جایی منابع طبیعی یکسان ندارند.' },
+        { en: 'Huge oil fields lie under the desert in Saudi Arabia.', es: 'Hay enormes campos de petróleo bajo el desierto de Arabia Saudita.', fa: 'زیر ریگستان عربستان سعودی ساحه‌های بزرگ تیل است.' },
+        { en: 'The Democratic Republic of the Congo has a large share of the world\'s cobalt.', es: 'La República Democrática del Congo tiene gran parte del cobalto del mundo.', fa: 'جمهوری دموکراتیک کانگو بخش بزرگی از کوبالت جهان را دارد.' },
+        { en: 'Cobalt is a metal used inside batteries for phones and cars.', es: 'El cobalto es un metal que se usa en las baterías de teléfonos y carros.', fa: 'کوبالت فلزی است که در بتری موبایل و موتر به کار می‌رود.' },
+        { en: 'Towns, roads and worker camps grew up around those mines.', es: 'Alrededor de esas minas crecieron pueblos, caminos y campamentos de trabajadores.', fa: 'دور آن معدن‌ها شهرک، سرک و کمپ کارگران ساخته شد.' },
+        { en: 'That is [[land use|land use]]: how people use the land.', es: 'Eso es el [[land use|uso del suelo]]: cómo la gente usa la tierra.', fa: 'این [[land use|استفاده از زمین]] است: اینکه مردم زمین را چطور به کار می‌برند.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Why can\'t every country build oil wells like Saudi Arabia?', es: '¿Por qué no todos los países pueden construir pozos de petróleo como Arabia Saudita?', fa: 'چرا هر کشور نمی‌تواند مثل عربستان سعودی چاه تیل بسازد؟' },
         choices: [
-          { ok: true, t: { en: 'Not every country has oil under its ground', es: 'No todos los países tienen petróleo bajo su suelo', fa: 'هر کشور زیر زمین خود تیل ندارد' },
+          { ok: true, t: { en: 'Not every country has oil underground', es: 'No todos los países tienen petróleo bajo tierra', fa: 'هر کشور زیر زمین تیل ندارد' },
             why: { en: 'Right. Natural resources are spread unevenly, so each place builds around what it has.', es: 'Correcto. Los recursos naturales están repartidos de forma desigual, así que cada lugar se organiza con lo que tiene.', fa: 'درست. منابع طبیعی نابرابر پخش شده‌اند، پس هر جا با آنچه دارد کار می‌کند.' } },
-          { t: { en: 'Other countries do not use oil', es: 'Los otros países no usan petróleo', fa: 'کشورهای دیگر تیل به کار نمی‌برند' },
+          { t: { en: 'Other countries do not use any oil', es: 'Los otros países no usan nada de petróleo', fa: 'کشورهای دیگر هیچ تیل به کار نمی‌برند' },
             why: { en: 'Almost every country uses oil. Many have to buy it from other places.', es: 'Casi todos los países usan petróleo. Muchos tienen que comprarlo a otros lugares.', fa: 'تقریباً هر کشور تیل به کار می‌برد. بسیاری باید آن را از جاهای دیگر بخرند.' } },
           { t: { en: 'Oil wells only work in a desert', es: 'Los pozos de petróleo solo funcionan en el desierto', fa: 'چاه تیل فقط در ریگستان کار می‌کند' },
             why: { en: 'Wells are dug wherever oil is found, even under the sea. The key is having the oil.', es: 'Los pozos se hacen donde haya petróleo, hasta bajo el mar. Lo importante es tener el petróleo.', fa: 'چاه هر جا که تیل پیدا شود کنده می‌شود، حتی زیر بحر. مهم داشتن تیل است.' } }
@@ -118,15 +117,13 @@ window.EPISODE = {
       role: { en: 'Baker', es: 'Panadera', fa: 'نانوا' },
       look: { skin: 1, hair: '#2a1a12', shirt: '#b03a5a', pants: '#3a2a3a', robe: true },
       lines: [
-        { en: 'Salaam! Smell that bread? My bakery needs three kinds of [[resource|resources]]. First, wheat for my flour. Wheat grows from the earth, so it is a [[natural resource|natural resource]].',
-          es: '¡Salam! ¿Hueles ese pan? Mi panadería necesita tres tipos de [[resource|recursos]]. Primero, trigo para mi harina. El trigo crece de la tierra, así que es un [[natural resource|recurso natural]].',
-          fa: 'سلام! بوی نان را حس می‌کنی؟ نانوایی من سه نوع [[resource|منبع]] لازم دارد. اول، گندم برای آرد. گندم از زمین می‌روید، پس [[natural resource|منبع طبیعی]] است.' },
-        { en: 'Second, me! I know how to shape the dough. People and their skills are [[human resource|human resources]]. A trained nurse or a skilled driver is a human resource too.',
-          es: 'Segundo, ¡yo! Sé cómo darle forma a la masa. Las personas y sus habilidades son [[human resource|recursos humanos]]. Una enfermera preparada o un buen chofer también son recursos humanos.',
-          fa: 'دوم، خودم! من می‌دانم خمیر را چطور شکل بدهم. مردم و مهارت‌هایشان [[human resource|منابع انسانی]] هستند. یک نرس آموزش‌دیده یا یک دریور ماهر هم منبع انسانی است.' },
-        { en: 'Third, my oven. People built it to help make bread. That makes it a [[capital resource|capital resource]]. Take away the wheat, the baker or the oven, and the bakery stops.',
-          es: 'Tercero, mi horno. La gente lo construyó para ayudar a hacer pan. Eso lo hace un [[capital resource|recurso de capital]]. Si quitas el trigo, la panadera o el horno, la panadería se detiene.',
-          fa: 'سوم، تنور من. مردم آن را ساختند تا در پختن نان کمک کند. پس [[capital resource|منبع سرمایه‌ای]] است. اگر گندم، نانوا یا تنور را برداری، نانوایی از کار می‌ماند.' }
+        { en: 'Salaam! Smell that bread? My bakery needs three kinds of [[resource|resources]].', es: '¡Salam! ¿Hueles ese pan? Mi panadería necesita tres tipos de [[resource|recursos]].', fa: 'سلام! بوی نان را حس می‌کنی؟ نانوایی من سه نوع [[resource|منبع]] لازم دارد.' },
+        { en: 'First, wheat for flour. It grows from the earth: a [[natural resource|natural resource]].', es: 'Primero, trigo para la harina. Crece de la tierra: es un [[natural resource|recurso natural]].', fa: 'اول، گندم برای آرد. از زمین می‌روید: یک [[natural resource|منبع طبیعی]] است.' },
+        { en: 'Second, me! I know how to shape the dough.', es: 'Segundo, ¡yo! Sé cómo darle forma a la masa.', fa: 'دوم، خودم! من می‌دانم خمیر را چطور شکل بدهم.' },
+        { en: 'People and their skills are [[human resource|human resources]], like a nurse or a skilled driver.', es: 'Las personas y sus habilidades son [[human resource|recursos humanos]], como una enfermera o un buen chofer.', fa: 'مردم و مهارت‌هایشان [[human resource|منابع انسانی]] هستند، مثل یک نرس یا یک دریور ماهر.' },
+        { en: 'Third, my oven. People built it to help make bread.', es: 'Tercero, mi horno. La gente lo construyó para ayudar a hacer pan.', fa: 'سوم، تنور من. مردم آن را ساختند تا در پختن نان کمک کند.' },
+        { en: 'That makes it a [[capital resource|capital resource]].', es: 'Eso lo hace un [[capital resource|recurso de capital]].', fa: 'پس [[capital resource|منبع سرمایه‌ای]] است.' },
+        { en: 'Take away the wheat, the baker or the oven, and the bakery stops.', es: 'Si quitas el trigo, la panadera o el horno, la panadería se detiene.', fa: 'اگر گندم، نانوا یا تنور را برداری، نانوایی از کار می‌ماند.' }
       ],
       ask: {
         stat: 'pla',
@@ -148,25 +145,23 @@ window.EPISODE = {
       remember: { ep: '1.1', t: { en: 'Hello again! Lena the shepherd told me you found Grandpa Tomas\'s lost compass. He checks it every morning now. He says thank you!', es: '¡Hola otra vez! Lena, la pastora, me contó que encontraste la brújula perdida del abuelo Tomás. Ahora la mira cada mañana. ¡Te manda las gracias!', fa: 'سلام دوباره! لینا چوپان به من گفت که تو قطب‌نمای گم‌شدهٔ پدرکلان توماس را پیدا کردی. حالا هر صبح به آن نگاه می‌کند. او از تو تشکر می‌کند!' } },
       look: { skin: 4, hair: '#1b1410', shirt: '#3fa34d', pants: '#5a4630' },
       lines: [
-        { en: 'Good soil is a resource too, not only metal or oil. My family came from Brazil. Brazil has some of the richest farmland on Earth.',
-          es: 'La buena tierra también es un recurso, no solo el metal o el petróleo. Mi familia vino de Brasil. Brasil tiene algunas de las tierras de cultivo más ricas del mundo.',
-          fa: 'خاک خوب هم یک منبع است، نه فقط فلز یا تیل. خانوادهٔ من از برازیل آمده. برازیل یکی از حاصل‌خیزترین زمین‌های زراعتی جهان را دارد.' },
-        { en: 'Some of that farmland pushes into the edge of the Amazon Rainforest. Farmers need the space to feed their families. Scientists want the forest left alone, because the trees hold carbon and many kinds of animals.',
-          es: 'Parte de esas tierras de cultivo entra en el borde de la selva amazónica. Los agricultores necesitan el espacio para alimentar a sus familias. Los científicos quieren que el bosque se quede como está, porque los árboles guardan carbono y muchos tipos de animales.',
-          fa: 'بخشی از آن زمین‌های زراعتی به کنارهٔ جنگل بارانی آمازون می‌رسد. دهقانان برای نان خانواده‌شان به این زمین ضرورت دارند. دانشمندان می‌خواهند جنگل دست نخورده بماند، چون درختان کاربن و انواع زیادی از حیوانات را نگه می‌دارند.' },
-        { en: 'Both sides have a real reason. So every resource comes with a question about [[land use|land use]]: who decides what the land becomes?',
-          es: 'Los dos lados tienen una razón real. Por eso cada recurso trae una pregunta sobre el [[land use|uso del suelo]]: ¿quién decide en qué se convierte la tierra?',
-          fa: 'هر دو طرف دلیل واقعی دارند. پس هر منبع یک سوال دربارهٔ [[land use|استفاده از زمین]] با خود دارد: چه کسی تصمیم می‌گیرد زمین چه شود؟' }
+        { en: 'Good soil is a resource too, not only metal or oil.', es: 'La buena tierra también es un recurso, no solo el metal o el petróleo.', fa: 'خاک خوب هم یک منبع است، نه فقط فلز یا تیل.' },
+        { en: 'My family came from Brazil. Brazil has some of the richest farmland on Earth.', es: 'Mi familia vino de Brasil. Brasil tiene algunas de las tierras de cultivo más ricas del mundo.', fa: 'خانوادهٔ من از برازیل آمده. برازیل یکی از حاصل‌خیزترین زمین‌های زراعتی جهان را دارد.' },
+        { en: 'Some of that farmland pushes into the edge of the Amazon Rainforest.', es: 'Parte de esas tierras de cultivo entra en el borde de la selva amazónica.', fa: 'بخشی از آن زمین‌های زراعتی به کنارهٔ جنگل بارانی آمازون می‌رسد.' },
+        { en: 'Farmers need the space to feed their families.', es: 'Los agricultores necesitan el espacio para alimentar a sus familias.', fa: 'دهقانان برای نان خانواده‌شان به این زمین ضرورت دارند.' },
+        { en: 'Scientists want the forest left alone. The trees hold carbon and many kinds of animals.', es: 'Los científicos quieren que el bosque se quede como está. Los árboles guardan carbono y muchos tipos de animales.', fa: 'دانشمندان می‌خواهند جنگل دست نخورده بماند. درختان کاربن و انواع زیادی از حیوانات را نگه می‌دارند.' },
+        { en: 'Both sides have a real reason.', es: 'Los dos lados tienen una razón real.', fa: 'هر دو طرف دلیل واقعی دارند.' },
+        { en: 'Every resource brings a [[land use|land use]] question: who decides what the land becomes?', es: 'Cada recurso trae una pregunta sobre el [[land use|uso del suelo]]: ¿quién decide en qué se convierte la tierra?', fa: 'هر منبع یک سوال دربارهٔ [[land use|استفاده از زمین]] دارد: چه کسی تصمیم می‌گیرد زمین چه شود؟' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Why do people disagree about clearing land at the edge of the Amazon Rainforest?', es: '¿Por qué la gente no se pone de acuerdo sobre despejar tierra en el borde de la selva amazónica?', fa: 'چرا مردم سر پاک کردن زمین در کنارهٔ جنگل بارانی آمازون موافق نیستند؟' },
         choices: [
-          { ok: true, t: { en: 'Farmers need the land, and scientists want to protect the forest', es: 'Los agricultores necesitan la tierra y los científicos quieren proteger el bosque', fa: 'دهقانان به زمین ضرورت دارند و دانشمندان می‌خواهند جنگل را حفظ کنند' },
+          { ok: true, t: { en: 'Farmers need land; scientists want the forest saved', es: 'Los agricultores necesitan tierra; los científicos quieren salvar el bosque', fa: 'دهقانان زمین لازم دارند؛ دانشمندان می‌خواهند جنگل بماند' },
             why: { en: 'Yes. Both sides can point to a real reason for their view.', es: 'Sí. Los dos lados tienen una razón real para pensar así.', fa: 'بله. هر دو طرف برای نظر خود دلیل واقعی دارند.' } },
-          { t: { en: 'The soil there is too poor to farm', es: 'La tierra allí es demasiado pobre para sembrar', fa: 'خاک آنجا برای زراعت خیلی ضعیف است' },
+          { t: { en: 'The soil there is far too poor for any kind of farm', es: 'La tierra allí es demasiado pobre para cualquier tipo de granja', fa: 'خاک آنجا برای هیچ نوع فارمی خوب نیست' },
             why: { en: 'Ana said Brazil has some of the richest farmland on Earth. That is why farms spread.', es: 'Ana dijo que Brasil tiene tierras muy ricas. Por eso las granjas se extienden.', fa: 'آنا گفت برازیل زمین بسیار خوب دارد. به همین خاطر فارم‌ها پخش می‌شوند.' } },
-          { t: { en: 'Nobody uses the land near the Amazon', es: 'Nadie usa la tierra cerca del Amazonas', fa: 'هیچ کس زمین نزدیک آمازون را به کار نمی‌برد' },
+          { t: { en: 'Nobody ever uses the land near the Amazon', es: 'Nadie usa nunca la tierra cerca del Amazonas', fa: 'هیچ کس هرگز زمین نزدیک آمازون را به کار نمی‌برد' },
             why: { en: 'Many people use it, for farms, for cattle and for study. That is why they disagree.', es: 'Mucha gente la usa, para sembrar, para el ganado y para estudiar. Por eso no están de acuerdo.', fa: 'بسیاری آن را به کار می‌برند، برای زراعت، مالداری و تحقیق. به همین خاطر موافق نیستند.' } }
         ]
       }
@@ -177,9 +172,7 @@ window.EPISODE = {
     { x: 4, y: 4, text: { en: 'TIMBER WOODS · The trees are a [[natural resource|natural resource]]. The woodcutter is a [[human resource|human resource]]. The saw is a [[capital resource|capital resource]].',
       es: 'BOSQUE DE MADERA · Los árboles son un [[natural resource|recurso natural]]. El leñador es un [[human resource|recurso humano]]. La sierra es un [[capital resource|recurso de capital]].',
       fa: 'جنگل چوب · درختان [[natural resource|منبع طبیعی]] هستند. چوب‌بُر [[human resource|منبع انسانی]] است. اره [[capital resource|منبع سرمایه‌ای]] است.' } },
-    { x: 25, y: 16, text: { en: 'VALLEY MARKET · No place has every resource it needs. We sell what we have plenty of and buy what we lack. That is [[trade|trade]].',
-      es: 'MERCADO DEL VALLE · Ningún lugar tiene todos los recursos que necesita. Vendemos lo que nos sobra y compramos lo que nos falta. Eso es el [[trade|comercio]].',
-      fa: 'بازار دره · هیچ جا همهٔ منابع لازم را ندارد. چیزی را که زیاد داریم می‌فروشیم و چیزی را که نداریم می‌خریم. این [[trade|تجارت]] است.' } }
+    { x: 25, y: 16, text: { en: 'VALLEY MARKET · No place has every resource. We sell what we have plenty of and buy what we lack: [[trade|trade]].', es: 'MERCADO DEL VALLE · Ningún lugar tiene todos los recursos. Vendemos lo que nos sobra y compramos lo que nos falta: el [[trade|comercio]].', fa: 'بازار دره · هیچ جا همهٔ منابع را ندارد. چیزی را که زیاد داریم می‌فروشیم و چیزی را که نداریم می‌خریم: [[trade|تجارت]].' } }
   ],
 
   /* the quest: Rahim the toolmaker (gold !) -> Ingrid the woodcutter -> trade with Marisol at the mine -> back to Rahim */
@@ -192,19 +185,16 @@ window.EPISODE = {
       role: { en: 'Toolmaker', es: 'Fabricante de herramientas', fa: 'ابزارساز' },
       look: { skin: 2, hair: '#1b1410', shirt: '#6b4f3a', pants: '#2e2e2e', style: 'short', hat: '#3a3a3a' },
       lines: [
-        { en: 'Hello! I am the toolmaker. I make plows, saws and hammers. Tools are [[capital resource|capital resources]]. People make them to help make other things.',
-          es: '¡Hola! Soy el fabricante de herramientas. Hago arados, sierras y martillos. Las herramientas son [[capital resource|recursos de capital]]. La gente las hace para ayudar a hacer otras cosas.',
-          fa: 'سلام! من ابزارساز هستم. قلبه، اره و چکش می‌سازم. ابزارها [[capital resource|منابع سرمایه‌ای]] هستند. مردم آن‌ها را می‌سازند تا در ساختن چیزهای دیگر کمک کنند.' },
-        { en: 'But the Grump rusted all my iron, and the farmers need new plows! Ingrid the woodcutter knows where to get iron. She is in the Timber Woods, in the north-west. Will you ask her?',
-          es: 'Pero el Gruñón oxidó todo mi hierro, ¡y los agricultores necesitan arados nuevos! Ingrid, la leñadora, sabe dónde conseguir hierro. Está en el Bosque de Madera, en el noroeste. ¿Le preguntas?',
-          fa: 'اما غرغرو همهٔ آهنم را زنگ‌زده کرد، و دهقانان قلبهٔ نو لازم دارند! اینگرید چوب‌بُر می‌داند آهن را از کجا پیدا کنیم. او در جنگل چوب، در شمال غرب است. از او می‌پرسی؟' }
+        { en: 'Hello! I am the toolmaker. I make plows, saws and hammers.', es: '¡Hola! Soy el fabricante de herramientas. Hago arados, sierras y martillos.', fa: 'سلام! من ابزارساز هستم. قلبه، اره و چکش می‌سازم.' },
+        { en: 'Tools are [[capital resource|capital resources]]. People make them to help make other things.', es: 'Las herramientas son [[capital resource|recursos de capital]]. La gente las hace para ayudar a hacer otras cosas.', fa: 'ابزارها [[capital resource|منابع سرمایه‌ای]] هستند. مردم آن‌ها را می‌سازند تا در ساختن چیزهای دیگر کمک کنند.' },
+        { en: 'But the Grump rusted all my iron, and the farmers need new plows!', es: 'Pero el Gruñón oxidó todo mi hierro, ¡y los agricultores necesitan arados nuevos!', fa: 'اما غرغرو همهٔ آهنم را زنگ‌زده کرد، و دهقانان قلبهٔ نو لازم دارند!' },
+        { en: 'Ingrid the woodcutter knows where to get iron.', es: 'Ingrid, la leñadora, sabe dónde conseguir hierro.', fa: 'اینگرید چوب‌بُر می‌داند آهن را از کجا پیدا کنیم.' },
+        { en: 'She is in the Timber Woods, in the north-west. Will you ask her?', es: 'Está en el Bosque de Madera, en el noroeste. ¿Le preguntas?', fa: 'او در جنگل چوب، در شمال غرب است. از او می‌پرسی؟' }
       ],
       wait: { en: 'Ingrid is in the Timber Woods, in the north-west. Look west of the woodcutter\'s cabin.',
         es: 'Ingrid está en el Bosque de Madera, en el noroeste. Búscala al oeste de la cabaña del leñador.',
         fa: 'اینگرید در جنگل چوب، در شمال غرب است. در غرب کلبهٔ چوب‌بُر بپال.' },
-      thanks: { en: 'Iron! Now I can make plows for the farmers. The mine had plenty of iron. The woods had plenty of trees. Each side gave what it had and got what it lacked. That is [[trade|trade]]!',
-        es: '¡Hierro! Ahora puedo hacer arados para los agricultores. La mina tenía mucho hierro. El bosque tenía muchos árboles. Cada lado dio lo que tenía y recibió lo que le faltaba. ¡Eso es el [[trade|comercio]]!',
-        fa: 'آهن! حالا می‌توانم برای دهقانان قلبه بسازم. معدن آهن زیاد داشت. جنگل درخت زیاد داشت. هر طرف چیزی را که داشت داد و چیزی را که نداشت گرفت. این [[trade|تجارت]] است!' }
+      thanks: { en: 'Iron! Each side gave what it had and got what it lacked. That is [[trade|trade]]!', es: '¡Hierro! Cada lado dio lo que tenía y recibió lo que le faltaba. ¡Eso es el [[trade|comercio]]!', fa: 'آهن! هر طرف چیزی را که داشت داد و چیزی را که نداشت گرفت. این [[trade|تجارت]] است!' }
     },
     contact: {
       x: 5, y: 5,
@@ -212,12 +202,11 @@ window.EPISODE = {
       role: { en: 'Woodcutter', es: 'Leñadora', fa: 'چوب‌بُر' },
       look: { skin: 0, hair: '#c8a060', shirt: '#9c2f2f', pants: '#3a4a3a', style: 'long' },
       lines: [
-        { en: 'Iron? Only the mine in the north-east mountains has it. Iron is a [[natural resource|natural resource]]. Resources are spread unevenly. My woods have lots of trees, but no iron at all.',
-          es: '¿Hierro? Solo la mina de las montañas del noreste lo tiene. El hierro es un [[natural resource|recurso natural]]. Los recursos están repartidos de forma desigual. Mi bosque tiene muchos árboles, pero nada de hierro.',
-          fa: 'آهن؟ فقط معدن کوه‌های شمال شرق آن را دارد. آهن یک [[natural resource|منبع طبیعی]] است. منابع نابرابر پخش شده‌اند. جنگل من درخت زیاد دارد، اما هیچ آهن ندارد.' },
-        { en: 'Go to Marisol, the trader by the railway at the mine. The miners have plenty of rock and iron. But almost no trees grow on the mountain. Offer Marisol what the miners lack!',
-          es: 'Ve con Marisol, la comerciante junto a la vía del tren en la mina. Los mineros tienen mucha roca y mucho hierro. Pero en la montaña casi no crecen árboles. ¡Ofrécele a Marisol lo que les falta a los mineros!',
-          fa: 'پیش ماریسول برو، تاجری که کنار خط آهن در معدن است. معدنچی‌ها سنگ و آهن زیاد دارند. اما در کوه تقریباً هیچ درختی نمی‌روید. به ماریسول چیزی را پیشنهاد کن که معدنچی‌ها ندارند!' }
+        { en: 'Iron? Only the mine in the north-east mountains has it.', es: '¿Hierro? Solo la mina de las montañas del noreste lo tiene.', fa: 'آهن؟ فقط معدن کوه‌های شمال شرق آن را دارد.' },
+        { en: 'Iron is a [[natural resource|natural resource]]. Resources are spread unevenly.', es: 'El hierro es un [[natural resource|recurso natural]]. Los recursos están repartidos de forma desigual.', fa: 'آهن یک [[natural resource|منبع طبیعی]] است. منابع نابرابر پخش شده‌اند.' },
+        { en: 'My woods have lots of trees, but no iron at all.', es: 'Mi bosque tiene muchos árboles, pero nada de hierro.', fa: 'جنگل من درخت زیاد دارد، اما هیچ آهن ندارد.' },
+        { en: 'The miners have iron, but almost no trees grow on the mountain.', es: 'Los mineros tienen hierro, pero en la montaña casi no crecen árboles.', fa: 'معدنچی‌ها آهن دارند، اما در کوه تقریباً درخت نمی‌روید.' },
+        { en: 'Go to Marisol, the trader by the mine railway. Offer what the miners lack!', es: 'Ve con Marisol, la comerciante junto a la vía de la mina. ¡Ofrécele lo que les falta a los mineros!', fa: 'پیش ماریسول، تاجر کنار خط آهن معدن برو. چیزی را پیشنهاد کن که معدنچی‌ها ندارند!' }
       ]
     },
     action: {
@@ -228,9 +217,8 @@ window.EPISODE = {
         role: { en: 'Mine trader', es: 'Comerciante de la mina', fa: 'تاجر معدن' },
         look: { skin: 3, hair: '#3a2416', shirt: '#7a4fa3', pants: '#3a3a3a', style: 'bun' },
         lines: [
-          { en: 'Welcome to the mine! We dig more iron than we can ever use. But the mountain cannot give us everything we need.',
-            es: '¡Bienvenido a la mina! Sacamos más hierro del que podemos usar. Pero la montaña no nos puede dar todo lo que necesitamos.',
-            fa: 'به معدن خوش آمدی! ما بیشتر از آنچه به کار ببریم آهن می‌کنیم. اما کوه نمی‌تواند هر چیزی را که لازم داریم به ما بدهد.' }
+          { en: 'Welcome to the mine! We dig more iron than we can ever use.', es: '¡Bienvenido a la mina! Sacamos más hierro del que podemos usar.', fa: 'به معدن خوش آمدی! ما بیشتر از آنچه به کار ببریم آهن می‌کنیم.' },
+          { en: 'But the mountain cannot give us everything we need.', es: 'Pero la montaña no nos puede dar todo lo que necesitamos.', fa: 'اما کوه نمی‌تواند هر چیزی را که لازم داریم به ما بدهد.' }
         ]
       },
       q: { en: 'What will you offer Marisol for a load of iron?', es: '¿Qué le ofreces a Marisol a cambio de una carga de hierro?', fa: 'در بدل یک بار آهن، به ماریسول چه پیشنهاد می‌کنی؟' },
@@ -297,10 +285,10 @@ window.EPISODE = {
     win: { en: 'The rust flakes away and every tool shines. Atlas page 1.3 floats down into your hands!', es: 'El óxido se cae y cada herramienta brilla. ¡La página 1.3 del atlas cae en tus manos!', fa: 'زنگ می‌ریزد و هر ابزار برق می‌زند. صفحهٔ ۱.۳ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'Which one is a natural resource?', es: '¿Cuál es un recurso natural?', fa: 'کدام یک منبع طبیعی است؟' },
-        choices: [{ en: 'Trees in a forest', es: 'Los árboles de un bosque', fa: 'درختان یک جنگل' }, { en: 'A truck', es: 'Un camión', fa: 'یک لاری' }, { en: 'A factory', es: 'Una fábrica', fa: 'یک فابریکه' }, { en: 'A teacher', es: 'Un maestro', fa: 'یک معلم' }], answer: 0,
+        choices: [{ en: 'Forest trees', es: 'Árboles del bosque', fa: 'درختان جنگل' }, { en: 'A dump truck', es: 'Un camión de carga', fa: 'یک لاری باربری' }, { en: 'A big factory', es: 'Una fábrica grande', fa: 'یک فابریکهٔ بزرگ' }, { en: 'A teacher', es: 'Un maestro', fa: 'یک معلم' }], answer: 0,
         why: { en: 'Trees come from the earth. A truck and a factory are capital. A teacher is a human resource.', es: 'Los árboles vienen de la tierra. El camión y la fábrica son de capital. El maestro es un recurso humano.', fa: 'درخت از زمین می‌آید. لاری و فابریکه سرمایه‌ای هستند. معلم منبع انسانی است.' } },
       { q: { en: 'Which one is a human resource?', es: '¿Cuál es un recurso humano?', fa: 'کدام یک منبع انسانی است؟' },
-        choices: [{ en: 'The baker who makes the bread', es: 'La panadera que hace el pan', fa: 'نانوایی که نان می‌پزد' }, { en: 'The wheat in the field', es: 'El trigo del campo', fa: 'گندم در زمین' }, { en: 'The oven in the shop', es: 'El horno de la tienda', fa: 'تنور در دکان' }, { en: 'The water in the river', es: 'El agua del río', fa: 'آب دریا' }], answer: 0,
+        choices: [{ en: 'The baker who makes the bread', es: 'La panadera que hace el pan', fa: 'نانوایی که نان می‌پزد' }, { en: 'The wheat growing in the field', es: 'El trigo que crece en el campo', fa: 'گندمی که در زمین می‌روید' }, { en: 'The oven in the shop', es: 'El horno de la tienda', fa: 'تنور در دکان' }, { en: 'The water in the river', es: 'El agua del río', fa: 'آب دریا' }], answer: 0,
         why: { en: 'Human resources are the people who do the work, with their skills.', es: 'Los recursos humanos son las personas que hacen el trabajo, con sus habilidades.', fa: 'منابع انسانی مردمی هستند که با مهارت خود کار می‌کنند.' } },
       { q: { en: 'Which one is a capital resource?', es: '¿Cuál es un recurso de capital?', fa: 'کدام یک منبع سرمایه‌ای است؟' },
         choices: [{ en: 'The oven in a bakery', es: 'El horno de una panadería', fa: 'تنور یک نانوایی' }, { en: 'The soil in a field', es: 'El suelo de un campo', fa: 'خاک یک زمین' }, { en: 'The rain that falls', es: 'La lluvia que cae', fa: 'بارانی که می‌بارد' }, { en: 'The gold in the ground', es: 'El oro bajo la tierra', fa: 'طلا در زیر زمین' }], answer: 0,
@@ -312,13 +300,13 @@ window.EPISODE = {
         choices: [{ en: 'What counts as a resource can change over time', es: 'Lo que cuenta como recurso puede cambiar con el tiempo', fa: 'اینکه چه چیز منبع حساب شود با گذشت زمان تغییر می‌کند' }, { en: 'Oil is the only resource that ever changed in value', es: 'El petróleo es el único recurso que cambió de valor', fa: 'تیل تنها منبعی است که ارزشش تغییر کرد' }, { en: 'Natural resources are worth more than capital resources', es: 'Los recursos naturales valen más que los de capital', fa: 'منابع طبیعی از منابع سرمایه‌ای با ارزش‌ترند' }, { en: 'Machines matter more than the people who run them', es: 'Las máquinas importan más que las personas que las usan', fa: 'ماشین‌ها از مردمی که آن‌ها را می‌رانند مهم‌ترند' }], answer: 0,
         why: { en: 'A new tool, the engine, made oil useful. So what counts as a resource can change.', es: 'Una nueva herramienta, el motor, hizo útil el petróleo. Así que lo que cuenta como recurso puede cambiar.', fa: 'یک ابزار تازه، یعنی انجن، تیل را مفید ساخت. پس اینکه چه چیز منبع است تغییر می‌کند.' } },
       { q: { en: 'What does land use mean?', es: '¿Qué significa uso del suelo?', fa: 'استفاده از زمین یعنی چه؟' },
-        choices: [{ en: 'How people use land, such as for farming, building or mining', es: 'Cómo la gente usa la tierra, por ejemplo para sembrar, construir o hacer minas', fa: 'اینکه مردم زمین را چطور به کار می‌برند، مثل زراعت، ساختمان یا معدن' }, { en: 'How much rain falls on the land', es: 'Cuánta lluvia cae sobre la tierra', fa: 'چقدر باران روی زمین می‌بارد' }, { en: 'How much a piece of land costs', es: 'Cuánto cuesta un terreno', fa: 'یک قطعه زمین چند قیمت دارد' }, { en: 'How high the land is above the sea', es: 'Qué tan alta está la tierra sobre el mar', fa: 'زمین چقدر از بحر بلندتر است' }], answer: 0,
+        choices: [{ en: 'How people use land: farms, buildings, mines', es: 'Cómo la gente usa la tierra: granjas, edificios, minas', fa: 'مردم زمین را چطور به کار می‌برند: فارم، ساختمان، معدن' }, { en: 'How much rain falls on the land', es: 'Cuánta lluvia cae sobre la tierra', fa: 'چقدر باران روی زمین می‌بارد' }, { en: 'How much money a piece of land costs to buy', es: 'Cuánto dinero cuesta comprar un terreno', fa: 'خریدن یک قطعه زمین چند پول قیمت دارد' }, { en: 'How high the land is above the level of the sea', es: 'Qué tan alta está la tierra sobre el nivel del mar', fa: 'زمین چقدر از سطح بحر بلندتر است' }], answer: 0,
         why: { en: 'Land use is what people do with the land: farms, towns, mines or forests.', es: 'El uso del suelo es lo que la gente hace con la tierra: granjas, pueblos, minas o bosques.', fa: 'استفاده از زمین یعنی مردم با زمین چه می‌کنند: فارم، شهرک، معدن یا جنگل.' } },
       { q: { en: 'How did oil change land use in Saudi Arabia?', es: '¿Cómo cambió el petróleo el uso del suelo en Arabia Saudita?', fa: 'تیل استفاده از زمین را در عربستان سعودی چطور تغییر داد؟' },
-        choices: [{ en: 'Wells, pipelines and refineries now cover land that was open desert', es: 'Pozos, oleoductos y refinerías cubren ahora tierra que era desierto abierto', fa: 'حالا چاه، نل تیل و پالایشگاه زمینی را پوشانده که پیش‌تر ریگستان خالی بود' }, { en: 'The desert turned into a rainforest', es: 'El desierto se convirtió en selva', fa: 'ریگستان به جنگل بارانی تبدیل شد' }, { en: 'Everyone moved away from the desert', es: 'Todos se fueron del desierto', fa: 'همه از ریگستان رفتند' }, { en: 'Farms of wheat replaced the sand everywhere', es: 'Granjas de trigo reemplazaron la arena en todas partes', fa: 'فارم‌های گندم در همه جا جای ریگ را گرفتند' }], answer: 0,
+        choices: [{ en: 'Oil wells and pipelines now cover the desert', es: 'Pozos y oleoductos cubren ahora el desierto', fa: 'حالا چاه‌های تیل و نل‌ها ریگستان را پوشانده‌اند' }, { en: 'The whole desert turned into a green rainforest', es: 'Todo el desierto se convirtió en una selva verde', fa: 'تمام ریگستان به یک جنگل بارانی سبز تبدیل شد' }, { en: 'Everyone moved away from the desert', es: 'Todos se fueron del desierto', fa: 'همه از ریگستان رفتند' }, { en: 'Farms of wheat replaced the sand everywhere', es: 'Granjas de trigo reemplazaron la arena en todas partes', fa: 'فارم‌های گندم در همه جا جای ریگ را گرفتند' }], answer: 0,
         why: { en: 'The desert did not change. What people built on it did.', es: 'El desierto no cambió. Lo que la gente construyó encima sí.', fa: 'ریگستان تغییر نکرد. چیزی که مردم رویش ساختند تغییر کرد.' } },
       { q: { en: 'Cobalt from the Democratic Republic of the Congo goes inside what?', es: '¿Dentro de qué va el cobalto de la República Democrática del Congo?', fa: 'کوبالت جمهوری دموکراتیک کانگو در داخل چه چیز می‌رود؟' },
-        choices: [{ en: 'Batteries for phones and cars', es: 'Baterías de teléfonos y carros', fa: 'بتری موبایل و موتر' }, { en: 'Loaves of bread', es: 'Panes', fa: 'نان' }, { en: 'Wooden chairs', es: 'Sillas de madera', fa: 'چوکی چوبی' }, { en: 'Cotton shirts', es: 'Camisas de algodón', fa: 'پیراهن نخی' }], answer: 0,
+        choices: [{ en: 'Batteries for phones and cars', es: 'Baterías de teléfonos y carros', fa: 'بتری موبایل و موتر' }, { en: 'Loaves of bread and cakes', es: 'Panes y pasteles', fa: 'نان و کیک' }, { en: 'Wooden chairs and dining tables', es: 'Sillas y mesas de comedor de madera', fa: 'چوکی و میز نان‌خوری چوبی' }, { en: 'Cotton shirts and socks', es: 'Camisas y medias de algodón', fa: 'پیراهن و جوراب نخی' }], answer: 0,
         why: { en: 'Cobalt is a metal used in batteries. Demand for batteries keeps those mines growing.', es: 'El cobalto es un metal que se usa en baterías. La demanda de baterías hace crecer esas minas.', fa: 'کوبالت فلزی است که در بتری به کار می‌رود. تقاضا برای بتری آن معدن‌ها را بزرگ‌تر می‌کند.' } }
     ]
   },

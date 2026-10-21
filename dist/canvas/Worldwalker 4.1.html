@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,12 @@ sol: 'WG.7',
 title: { en: 'Land, Climate and Vegetation', es: 'Tierra, clima y vegetación', fa: 'زمین، اقلیم و نباتات' },
 place: { en: 'From Sahara to Rainforest', es: 'Del Sahara a la selva', fa: 'از صحرا تا جنگل بارانی' },
 intro: [
-{ en: 'Christopher: "The Grump blew dust all over Nigeria and Kenya! Now the land bands are mixed up. Talk to the herder, the ranger and the forest scientist. Then fix the compass stone."',
-es: 'Christopher: "¡El Gruñón sopló polvo por todo Nigeria y Kenia! Ahora las franjas de tierra están revueltas. Habla con la pastora, la guardaparques y el científico del bosque. Luego arregla la piedra de la brújula."',
-fa: 'کریستوفر: «غرغرو در سراسر نیجریه و کینیا گرد و خاک پاشید! حالا نوارهای زمین با هم مخلوط شده‌اند. با مالدار، نگهبان پارک و دانشمند جنگل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+{ en: 'The Grump blew dust over Nigeria and Kenya! Now the land bands are mixed up.',
+es: '¡El Gruñón sopló polvo sobre Nigeria y Kenia! Ahora las franjas de tierra están revueltas.',
+fa: 'غرغرو روی نیجریه و کینیا گرد و خاک پاشید! حالا نوارهای زمین مخلوط شده‌اند.' },
+{ en: 'Talk to the herder, the ranger and the forest scientist. Then fix the compass stone.',
+es: 'Habla con la pastora, la guardaparques y el científico del bosque. Luego arregla la piedra de la brújula.',
+fa: 'با مالدار، نگهبان پارک و دانشمند جنگل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
 ],
 map: [
 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr',
@@ -5376,10 +5500,10 @@ done: { en: 'The Green Wall is closed! In real life, countries across Africa are
 finds: [
 { clueAt: [8, 4], at: [12, 1], decor: 'fossil',
 clue: { en: 'From this note, walk 3 steps north, then 4 steps east. Something is hidden in the Sahara sand.', es: 'Desde esta nota, camina 3 pasos al norte y luego 4 pasos al este. Algo está escondido en la arena del Sahara.', fa: 'از این یادداشت، ۳ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی در ریگ صحرا پنهان است.' },
-text: { en: 'You followed compass directions! North is up, toward the Sahara. You found a fossil. Millions of years ago, a sea covered part of the Sahara. In Egypt, people found fossils of whales in the desert!', es: '¡Seguiste las direcciones de la brújula! El norte está arriba, hacia el Sahara. Encontraste un fósil. Hace millones de años, un mar cubría parte del Sahara. ¡En Egipto encontraron fósiles de ballenas en el desierto!', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا است، به طرف صحرا. تو یک فسیل پیدا کردی. میلیون‌ها سال پیش، یک بحر قسمتی از صحرا را پوشانده بود. در مصر، مردم فسیل نهنگ‌ها را در بیابان پیدا کردند!' } },
+text: { en: 'North is up, toward the Sahara! Long ago, a sea covered part of it. Here is a fossil.', es: '¡El norte está arriba, hacia el Sahara! Hace mucho, un mar cubría parte de él. Aquí hay un fósil.', fa: 'شمال بالا است، به طرف صحرا! خیلی وقت پیش، یک بحر قسمتی از آن را پوشانده بود. این یک فسیل است.' } },
 { clueAt: [11, 14], at: [23, 17], decor: 'feather',
-clue: { en: 'The land gets wetter as you go south. Follow the road that passes the Mount Kenya sign south. Stand on its last road square, where rainforest trees grow on its west side and its east side.', es: 'La tierra se vuelve más húmeda hacia el sur. Sigue hacia el sur el camino que pasa junto al letrero del monte Kenia. Párate en su último cuadro de camino, donde crecen árboles de selva al oeste y al este.', fa: 'هر چه به جنوب بروی، زمین مرطوب‌تر می‌شود. سرکی را که از کنار تابلوی کوه کینیا می‌گذرد به طرف جنوب دنبال کن. روی آخرین خانهٔ سرک بایست، جایی که درختان جنگل بارانی در غرب و شرق آن روییده‌اند.' },
-text: { en: 'You found the place where the savanna ends and the rainforest begins! A grey feather lay on the road. African grey parrots live in the rainforests of West and Central Africa.', es: '¡Encontraste el lugar donde termina la sabana y empieza la selva! Una pluma gris estaba en el camino. Los loros grises africanos viven en las selvas de África occidental y central.', fa: 'تو جایی را پیدا کردی که علفزار تمام می‌شود و جنگل بارانی شروع می‌شود! یک پر خاکستری روی سرک بود. طوطی‌های خاکستری افریقایی در جنگل‌های بارانی غرب و مرکز افریقا زندگی می‌کنند.' } }
+clue: { en: 'Follow the road by the Mount Kenya sign south. Stop on its last square, with rainforest on both sides.', es: 'Sigue al sur el camino junto al letrero del monte Kenia. Párate en su último cuadro, con selva a los dos lados.', fa: 'سرک کنار تابلوی کوه کینیا را به جنوب دنبال کن. روی آخرین خانه‌اش بایست، با جنگل بارانی در دو طرف.' },
+text: { en: 'A grey parrot feather! Here the savanna ends and the rainforest begins. Grey parrots live in these rainforests.', es: '¡Una pluma de loro gris! Aquí termina la sabana y empieza la selva. Los loros grises viven en estas selvas.', fa: 'یک پر طوطی خاکستری! این‌جا ساوانا تمام می‌شود و جنگل بارانی شروع می‌شود. طوطی‌های خاکستری در این جنگل‌ها زندگی می‌کنند.' } }
 ],
 secret: { tool: 'compass', at: [28, 13],
 text: { en: 'The Compass Rose found a hidden path up Mount Kenya! In the chest is a note. It says Mount Kenya is very close to the equator, but it has snow and small glaciers on top.',
@@ -5404,23 +5528,26 @@ name: { en: 'Aisha', es: 'Aisha', fa: 'عایشه' },
 role: { en: 'Farmer and cattle herder', es: 'Agricultora y pastora de ganado', fa: 'دهقان و مالدار' },
 look: { skin: 4, hair: '#2a8c6e', shirt: '#e07b39', robe: true },
 lines: [
-{ en: 'Sannu! That means hello in Hausa. I am Aisha. My family farms and keeps cattle here in the [[sahel|Sahel]] of northern Nigeria. The Sahel is a belt of dry grassland just south of the [[sahara|Sahara]], the largest hot desert on Earth.',
-es: '¡Sannu! Así se dice hola en hausa. Soy Aisha. Mi familia cultiva y cría ganado aquí, en el [[sahel|Sahel]] del norte de Nigeria. El Sahel es una franja de pasto seco justo al sur del [[sahara|Sahara]], el desierto caliente más grande de la Tierra.',
-fa: 'سنّو! این به زبان هوسا یعنی سلام. من عایشه هستم. خانوادهٔ من این‌جا در [[sahel|ساحل]] شمال نیجریه کشت می‌کند و گاو نگه می‌دارد. ساحل نوار علفزار خشک است، درست در جنوب [[sahara|صحرا]]، بزرگ‌ترین بیابان گرم روی زمین.' },
-{ en: 'We get one short rainy season each year. The rest of the year is long and dry. We plant millet when the rain comes. We harvest before the dry months arrive.',
-es: 'Tenemos una sola temporada de lluvias corta cada año. El resto del año es largo y seco. Sembramos mijo cuando llega la lluvia. Cosechamos antes de que lleguen los meses secos.',
-fa: 'ما هر سال فقط یک فصل بارانی کوتاه داریم. باقی سال دراز و خشک است. وقتی باران می‌آید، ارزن می‌کاریم. پیش از ماه‌های خشک حاصل را جمع می‌کنیم.' },
-{ en: 'Look north. Sand is creeping into old fields. That is [[desertification|desertification]]. The rain fails, animals eat the grass down to bare soil, and people cut trees for firewood. Now we plant long rows of trees. Their roots hold the soil.',
-es: 'Mira al norte. La arena se mete en los campos viejos. Eso es la [[desertification|desertificación]]. La lluvia falla, los animales comen el pasto hasta dejar la tierra pelada y la gente corta árboles para leña. Ahora sembramos filas largas de árboles. Sus raíces sujetan la tierra.',
-fa: 'به طرف شمال نگاه کن. ریگ آهسته به کشتزارهای کهنه می‌آید. این [[desertification|بیابان‌زایی]] است. باران نمی‌بارد، حیوانات علف را تا خاک لُچ می‌خورند و مردم درخت را برای هیزم می‌بُرند. حالا ما قطارهای دراز درخت می‌کاریم. ریشه‌های آن‌ها خاک را نگه می‌دارند.' }
+{ en: 'Sannu means hello in Hausa! I am Aisha. Here we get one short rainy season.',
+es: '¡Sannu quiere decir hola en hausa! Soy Aisha. Aquí tenemos una sola temporada corta de lluvias.',
+fa: 'سنّو به زبان هوسا یعنی سلام! من عایشه هستم. این‌جا فقط یک فصل بارانی کوتاه داریم.' },
+{ en: 'The [[sahel|Sahel]] is dry grassland south of the [[sahara|Sahara]]. We plant millet when rain comes.',
+es: 'El [[sahel|Sahel]] es pasto seco al sur del [[sahara|Sahara]]. Sembramos mijo cuando llega la lluvia.',
+fa: '[[sahel|ساحل]] علفزار خشک در جنوب [[sahara|صحرا]] است. وقتی باران می‌آید، ارزن می‌کاریم.' },
+{ en: 'Sand creeps in: [[desertification|desertification]]. Rain fails, animals eat grass bare, people cut firewood.',
+es: 'La arena avanza: [[desertification|desertificación]]. La lluvia falla, los animales dejan la tierra pelada, la gente corta leña.',
+fa: 'ریگ پیش می‌آید: [[desertification|بیابان‌زایی]]. باران نمی‌بارد، حیوانات علف را تا خاک لُچ می‌خورند، مردم هیزم می‌بُرند.' },
+{ en: 'Now we plant long rows of trees. Their roots hold the soil.',
+es: 'Ahora sembramos filas largas de árboles. Sus raíces sujetan la tierra.',
+fa: 'حالا قطارهای دراز درخت می‌کاریم. ریشه‌هایشان خاک را نگه می‌دارند.' }
 ],
 ask: {
 stat: 'hei',
 q: { en: 'What is one cause of desertification in the Sahel?', es: '¿Cuál es una causa de la desertificación en el Sahel?', fa: 'یک علت بیابان‌زایی در ساحل چیست؟' },
 choices: [
-{ ok: true, t: { en: 'Animals eat the grass down to bare soil', es: 'Los animales comen el pasto hasta dejar la tierra pelada', fa: 'حیوانات علف را تا خاک لُچ می‌خورند' },
+{ ok: true, t: { en: 'Too many animals eat all the grass', es: 'Demasiados animales se comen todo el pasto', fa: 'حیوانات زیاد همهٔ علف را می‌خورند' },
 why: { en: 'Bare soil blows away in the wind. Then the land cannot grow food.', es: 'La tierra pelada se la lleva el viento. Luego la tierra no puede dar comida.', fa: 'خاک لُچ را باد می‌برد. بعد زمین دیگر غذا نمی‌دهد.' } },
-{ t: { en: 'People plant long rows of trees', es: 'La gente siembra filas largas de árboles', fa: 'مردم قطارهای دراز درخت می‌کارند' },
+{ t: { en: 'People plant long rows of new trees', es: 'La gente siembra filas largas de árboles nuevos', fa: 'مردم قطارهای دراز درخت نو می‌کارند' },
 why: { en: 'Trees do the opposite. Their roots hold the soil and slow the wind.', es: 'Los árboles hacen lo contrario. Sus raíces sujetan la tierra y frenan el viento.', fa: 'درخت‌ها برعکس کار می‌کنند. ریشه‌ها خاک را نگه می‌دارند و باد را آهسته می‌کنند.' } },
 { t: { en: 'A long rainy season every year', es: 'Una temporada de lluvias larga cada año', fa: 'یک فصل بارانی دراز در هر سال' },
 why: { en: 'More rain helps grass grow. Rain that fails is the problem.', es: 'Más lluvia ayuda a que crezca el pasto. El problema es cuando la lluvia falla.', fa: 'باران بیشتر به رشد علف کمک می‌کند. مشکل وقتی است که باران نمی‌بارد.' } }
@@ -5433,25 +5560,28 @@ name: { en: 'Wanjiru', es: 'Wanjiru', fa: 'وانجیرو' },
 role: { en: 'Wildlife ranger in Kenya', es: 'Guardaparques en Kenia', fa: 'نگهبان حیات وحش در کینیا' },
 look: { skin: 5, hair: '#141414', shirt: '#6b7d3a', pants: '#4a4a3a' },
 lines: [
-{ en: 'Jambo! That means hello in Swahili. I am Wanjiru, a wildlife ranger in Kenya. This is the [[savanna|savanna]]: wide grassland with trees spread far apart. Giraffes eat from the flat-topped acacia trees. Zebras and lions live here too.',
-es: '¡Jambo! Así se dice hola en suajili. Soy Wanjiru, guardaparques en Kenia. Esta es la [[savanna|sabana]]: una pradera ancha con árboles muy separados. Las jirafas comen de las acacias de copa plana. Aquí también viven cebras y leones.',
-fa: 'جامبو! این به زبان سواحیلی یعنی سلام. من وانجیرو هستم، نگهبان حیات وحش در کینیا. این‌جا [[savanna|ساوانا]] است: علفزار پهن با درختانی که از هم دور هستند. زرافه‌ها از درختان اکاسیا که سر هموار دارند می‌خورند. گوره‌خر و شیر هم این‌جا زندگی می‌کنند.' },
-{ en: 'The savanna has a wet season and a dry season. In the dry season the grass turns gold. Then the animals walk far to find water.',
-es: 'La sabana tiene una época de lluvias y una época seca. En la época seca el pasto se pone dorado. Entonces los animales caminan lejos para encontrar agua.',
-fa: 'ساوانا یک فصل بارانی و یک فصل خشک دارد. در فصل خشک علف زرد طلایی می‌شود. آن وقت حیوانات راه دور می‌روند تا آب پیدا کنند.' },
-{ en: 'Now look east at Mount Kenya. It sits almost on the [[equator|equator]], but it has snow and ice on top! The reason is [[elevation|elevation]]. The higher you climb, the colder the air gets.',
-es: 'Ahora mira al este, al monte Kenia. Está casi sobre el [[equator|ecuador]], ¡pero tiene nieve y hielo arriba! La razón es la [[elevation|elevación]]. Mientras más alto subes, más frío es el aire.',
-fa: 'حالا به طرف شرق، به کوه کینیا نگاه کن. تقریباً روی [[equator|خط استوا]] است، اما سرش برف و یخ دارد! دلیلش [[elevation|ارتفاع]] است. هر چه بالاتر بروی، هوا سردتر می‌شود.' }
+{ en: 'Jambo, that is hello in Swahili! I am Wanjiru. This is the [[savanna|savanna]] of Kenya.',
+es: '¡Jambo! Así se dice hola en suajili. Soy Wanjiru. Esta es la [[savanna|sabana]] de Kenia.',
+fa: 'جامبو! این به زبان سواحیلی یعنی سلام. من وانجیرو هستم. این‌جا [[savanna|ساوانا]] کینیا است.' },
+{ en: 'Wide grassland, trees far apart. Giraffes eat from flat-topped acacias. Zebras and lions live here.',
+es: 'Pradera ancha, árboles separados. Las jirafas comen de acacias de copa plana. Aquí viven cebras y leones.',
+fa: 'علفزار پهن، درختان دور از هم. زرافه‌ها از اکاسیاهای سر هموار می‌خورند. گوره‌خر و شیر هم این‌جا هستند.' },
+{ en: 'Wet season, then dry season: the grass turns gold and animals walk far for water.',
+es: 'Época de lluvias, luego época seca: el pasto se pone dorado y los animales caminan lejos por agua.',
+fa: 'فصل بارانی، بعد فصل خشک: علف طلایی می‌شود و حیوانات برای آب راه دور می‌روند.' },
+{ en: 'Mount Kenya is near the [[equator|equator]], but it has snow! High [[elevation|elevation]] means cold air.',
+es: '¡El monte Kenia está cerca del [[equator|ecuador]], pero tiene nieve! La [[elevation|elevación]] alta trae aire frío.',
+fa: 'کوه کینیا نزدیک [[equator|خط استوا]] است، اما برف دارد! [[elevation|ارتفاع]] زیاد یعنی هوای سرد.' }
 ],
 ask: {
 stat: 'pla',
 q: { en: 'Why can there be snow on Mount Kenya, so close to the equator?', es: '¿Por qué puede haber nieve en el monte Kenia, tan cerca del ecuador?', fa: 'چرا روی کوه کینیا، که این‌قدر نزدیک خط استوا است، برف هست؟' },
 choices: [
-{ ok: true, t: { en: 'It is very high, and the air gets colder as you go up', es: 'Es muy alto, y el aire se enfría mientras subes', fa: 'خیلی بلند است و هر چه بالا بروی هوا سردتر می‌شود' },
+{ ok: true, t: { en: 'It is so high that the air up there is cold', es: 'Es tan alto que allá arriba el aire es frío', fa: 'آن‌قدر بلند است که هوای بالا سرد است' },
 why: { en: 'Elevation changes climate. High places are cold, even near the equator.', es: 'La elevación cambia el clima. Los lugares altos son fríos, aun cerca del ecuador.', fa: 'ارتفاع اقلیم را تغییر می‌دهد. جاهای بلند سرد هستند، حتی نزدیک خط استوا.' } },
 { t: { en: 'The equator is the coldest place on Earth', es: 'El ecuador es el lugar más frío de la Tierra', fa: 'خط استوا سردترین جای زمین است' },
 why: { en: 'Low land near the equator is usually hot. The snow is there because the mountain is so high.', es: 'La tierra baja cerca del ecuador suele ser caliente. La nieve está ahí porque la montaña es muy alta.', fa: 'زمین پست نزدیک خط استوا معمولاً گرم است. برف آن‌جا است چون کوه خیلی بلند است.' } },
-{ t: { en: 'Snow falls all over Kenya every winter', es: 'Cae nieve en toda Kenia cada invierno', fa: 'هر زمستان در تمام کینیا برف می‌بارد' },
+{ t: { en: 'Snow falls all over Kenya every single winter', es: 'Cae nieve en toda Kenia todos los inviernos', fa: 'هر زمستان در تمام کینیا برف زیاد می‌بارد' },
 why: { en: 'Most of Kenya never gets snow. Only the highest peaks do.', es: 'Casi toda Kenia nunca tiene nieve. Solo los picos más altos.', fa: 'بیشتر کینیا هرگز برف نمی‌بیند. فقط بلندترین قله‌ها برف دارند.' } }
 ]
 }
@@ -5462,19 +5592,22 @@ name: { en: 'Dr. Chinedu', es: 'Dr. Chinedu', fa: 'داکتر چینِدو' },
 role: { en: 'Forest scientist in Nigeria', es: 'Científico del bosque en Nigeria', fa: 'دانشمند جنگل در نیجریه' },
 look: { skin: 3, hair: '#1b1410', shirt: '#2f8f5b', pants: '#3b3b3b' },
 lines: [
-{ en: 'Welcome to the [[rainforest|rainforest]] of southern Nigeria! I study the trees here. Close to the equator it is hot, and rain falls in most months of the year. The trees grow so tall and thick that little sunlight reaches the ground.',
-es: '¡Bienvenido a la [[rainforest|selva tropical]] del sur de Nigeria! Yo estudio los árboles de aquí. Cerca del ecuador hace calor y llueve casi todos los meses del año. Los árboles crecen tan altos y tupidos que llega poca luz al suelo.',
-fa: 'به [[rainforest|جنگل بارانی]] جنوب نیجریه خوش آمدی! من درخت‌های این‌جا را مطالعه می‌کنم. نزدیک خط استوا هوا گرم است و در بیشتر ماه‌های سال باران می‌بارد. درخت‌ها آن‌قدر بلند و انبوه می‌شوند که نور کمی به زمین می‌رسد.' },
-{ en: 'Did you see the pattern on your walk? Going south from the Sahara, the land gets wetter and greener: desert, then Sahel, then savanna, then rainforest. Each band has its own [[climate|climate]] and [[vegetation|vegetation]].',
-es: '¿Viste el patrón en tu camino? Yendo al sur desde el Sahara, la tierra se vuelve más húmeda y más verde: desierto, luego Sahel, luego sabana, luego selva. Cada franja tiene su propio [[climate|clima]] y su propia [[vegetation|vegetación]].',
-fa: 'در راه این نقشه را دیدی؟ از صحرا که به طرف جنوب بروی، زمین مرطوب‌تر و سبزتر می‌شود: بیابان، بعد ساحل، بعد ساوانا، بعد جنگل بارانی. هر نوار [[climate|اقلیم]] و [[vegetation|نباتات]] خودش را دارد.' },
-{ en: 'My home city is Lagos, on the Atlantic coast. It is one of the largest cities in Africa. In Kenya, Nairobi sits inland on a high [[plateau|plateau]]. It is a center for business and technology.',
-es: 'Mi ciudad es Lagos, en la costa del Atlántico. Es una de las ciudades más grandes de África. En Kenia, Nairobi está tierra adentro, sobre una [[plateau|meseta]] alta. Es un centro de negocios y tecnología.',
-fa: 'شهر من لاگوس است، در ساحل اقیانوس اطلس. یکی از بزرگ‌ترین شهرهای افریقا است. در کینیا، نایروبی دور از بحر روی یک [[plateau|فلات]] بلند است. نایروبی مرکز تجارت و تکنالوژی است.' }
+{ en: 'Welcome to Nigeria\'s [[rainforest|rainforest]]! Near the equator it is hot, with rain most months.',
+es: '¡Bienvenido a la [[rainforest|selva tropical]] de Nigeria! Cerca del ecuador hace calor y llueve casi todos los meses.',
+fa: 'به [[rainforest|جنگل بارانی]] نیجریه خوش آمدی! نزدیک خط استوا هوا گرم است و بیشتر ماه‌ها باران می‌بارد.' },
+{ en: 'Trees grow so tall and thick that little sunlight reaches the ground.',
+es: 'Los árboles crecen tan altos y tupidos que llega poca luz al suelo.',
+fa: 'درخت‌ها آن‌قدر بلند و انبوه می‌شوند که نور کمی به زمین می‌رسد.' },
+{ en: 'South gets wetter: desert, Sahel, savanna, rainforest. Each has its own [[climate|climate]] and [[vegetation|vegetation]].',
+es: 'Al sur es más húmedo: desierto, Sahel, sabana, selva. Cada uno tiene su [[climate|clima]] y su [[vegetation|vegetación]].',
+fa: 'به جنوب مرطوب‌تر می‌شود: بیابان، ساحل، ساوانا، جنگل بارانی. هر کدام [[climate|اقلیم]] و [[vegetation|نباتات]] خود را دارد.' },
+{ en: 'Lagos is on the Atlantic. Nairobi, a business and tech city, sits on a [[plateau|plateau]].',
+es: 'Lagos está en el Atlántico. Nairobi, ciudad de negocios y tecnología, está en una [[plateau|meseta]] alta.',
+fa: 'لاگوس کنار اقیانوس اطلس است. نایروبی، شهر تجارت و تکنالوژی، روی یک [[plateau|فلات]] بلند است.' }
 ],
 ask: {
 stat: 'reg',
-q: { en: 'You walk from the Sahara south to the coast of Nigeria. In what order do you pass the bands?', es: 'Caminas desde el Sahara hacia el sur, hasta la costa de Nigeria. ¿En qué orden pasas las franjas?', fa: 'از صحرا به طرف جنوب تا ساحل نیجریه راه می‌روی. نوارها را به چه ترتیبی می‌بینی؟' },
+q: { en: 'Walk south from the Sahara to the coast of Nigeria. In what order do you pass the bands?', es: 'Camina al sur desde el Sahara hasta la costa de Nigeria. ¿En qué orden pasas las franjas?', fa: 'از صحرا به طرف جنوب تا ساحل نیجریه برو. نوارها را به چه ترتیبی می‌بینی؟' },
 choices: [
 { ok: true, t: { en: 'Desert → Sahel → savanna → rainforest', es: 'Desierto → Sahel → sabana → selva', fa: 'بیابان ← ساحل ← ساوانا ← جنگل بارانی' },
 why: { en: 'Each step south is wetter and greener. The rainforest comes last, near the coast.', es: 'Cada paso al sur es más húmedo y más verde. La selva viene al final, cerca de la costa.', fa: 'هر قدم به طرف جنوب مرطوب‌تر و سبزتر است. جنگل بارانی در آخر، نزدیک ساحل، می‌آید.' } },
@@ -5487,12 +5620,12 @@ why: { en: 'The land gets wetter step by step. It does not jump from desert to r
 }
 ],
 signs: [
-{ x: 6, y: 4, text: { en: 'SAHARA ↑ north: the largest hot desert on Earth. SAHEL ↓ south: dry grassland. The [[sahel|Sahel]] stretches all the way across Africa, from west to east.',
-es: 'SAHARA ↑ norte: el desierto caliente más grande de la Tierra. SAHEL ↓ sur: pasto seco. El [[sahel|Sahel]] cruza toda África, de oeste a este.',
-fa: 'صحرا ↑ شمال: بزرگ‌ترین بیابان گرم روی زمین. ساحل ↓ جنوب: علفزار خشک. [[sahel|ساحل]] از غرب تا شرق در سراسر افریقا کشیده شده است.' } },
-{ x: 24, y: 15, text: { en: 'MOUNT KENYA · about 5,200 meters high · snow and ice on top, very close to the [[equator|equator]]. Higher [[elevation|elevation]] means colder air.',
-es: 'MONTE KENIA · unos 5,200 metros de alto · nieve y hielo arriba, muy cerca del [[equator|ecuador]]. Más [[elevation|elevación]] significa aire más frío.',
-fa: 'کوه کینیا · حدود ۵٬۲۰۰ متر بلندی · برف و یخ در سرش، خیلی نزدیک [[equator|خط استوا]]. [[elevation|ارتفاع]] بیشتر یعنی هوای سردتر.' } }
+{ x: 6, y: 4, text: { en: 'SAHARA ↑ north: the largest hot desert on Earth. [[sahel|SAHEL]] ↓ south: dry grassland across Africa, west to east.',
+es: 'SAHARA ↑ norte: el desierto caliente más grande de la Tierra. [[sahel|SAHEL]] ↓ sur: pasto seco que cruza África de oeste a este.',
+fa: 'صحرا ↑ شمال: بزرگ‌ترین بیابان گرم روی زمین. [[sahel|ساحل]] ↓ جنوب: علفزار خشک در سراسر افریقا، از غرب تا شرق.' } },
+{ x: 24, y: 15, text: { en: 'MOUNT KENYA · about 5,200 meters high · snow on top, near the [[equator|equator]]. Higher [[elevation|elevation]] means colder air.',
+es: 'MONTE KENIA · unos 5,200 metros de alto · nieve arriba, cerca del [[equator|ecuador]]. Más [[elevation|elevación]] significa aire más frío.',
+fa: 'کوه کینیا · حدود ۵٬۲۰۰ متر بلندی · برف در سرش، نزدیک [[equator|خط استوا]]. [[elevation|ارتفاع]] بیشتر یعنی هوای سردتر.' } }
 ],
 quest: {
 stat: 'hei',
@@ -5503,19 +5636,25 @@ name: { en: 'Hadiza', es: 'Hadiza', fa: 'حدیزه' },
 role: { en: 'Tree planter in the Sahel', es: 'Sembradora de árboles en el Sahel', fa: 'درخت‌کار در ساحل' },
 look: { skin: 2, hair: '#2a1a12', shirt: '#4f9a3c', pants: '#5a4a32', robe: true },
 lines: [
-{ en: 'Sannu, friend! I am Hadiza. I plant trees along the dry edge of the [[sahel|Sahel]]. Our trees make a long green wall. Their roots hold the soil and slow [[desertification|desertification]].',
-es: '¡Sannu, amigo! Soy Hadiza. Siembro árboles en el borde seco del [[sahel|Sahel]]. Nuestros árboles forman un muro verde muy largo. Sus raíces sujetan la tierra y frenan la [[desertification|desertificación]].',
-fa: 'سنّو، دوست من! من حدیزه هستم. در لبهٔ خشک [[sahel|ساحل]] درخت می‌کارم. درخت‌های ما یک دیوار سبز دراز می‌سازند. ریشه‌های آن‌ها خاک را نگه می‌دارند و [[desertification|بیابان‌زایی]] را آهسته می‌کنند.' },
-{ en: 'But the Grump\'s dust storm blew away all my seeds. I need seeds from a tree that can live through a long dry season. Mr. Otieno, the beekeeper, knows every tree in the [[savanna|savanna]]. He is south-west of here. Will you ask him?',
-es: 'Pero la tormenta de polvo del Gruñón se llevó todas mis semillas. Necesito semillas de un árbol que aguante una época seca larga. El señor Otieno, el apicultor, conoce cada árbol de la [[savanna|sabana]]. Está al suroeste de aquí. ¿Le preguntas?',
-fa: 'اما طوفان گرد و خاک غرغرو همهٔ تخم‌هایم را برد. تخم درختی را می‌خواهم که در یک فصل خشک دراز زنده بماند. آقای اوتینو، زنبوردار، هر درخت [[savanna|ساوانا]] را می‌شناسد. او در جنوب غرب این‌جا است. از او می‌پرسی؟' }
+{ en: 'Sannu, friend! I am Hadiza. I plant trees on the dry edge of the [[sahel|Sahel]].',
+es: '¡Sannu, amigo! Soy Hadiza. Siembro árboles en el borde seco del [[sahel|Sahel]].',
+fa: 'سنّو، دوست من! من حدیزه هستم. در لبهٔ خشک [[sahel|ساحل]] درخت می‌کارم.' },
+{ en: 'Our trees make a green wall. Their roots hold soil and slow [[desertification|desertification]].',
+es: 'Nuestros árboles forman un muro verde. Sus raíces sujetan la tierra y frenan la [[desertification|desertificación]].',
+fa: 'درخت‌های ما یک دیوار سبز می‌سازند. ریشه‌هایشان خاک را نگه می‌دارند و [[desertification|بیابان‌زایی]] را آهسته می‌کنند.' },
+{ en: 'The Grump\'s storm took my seeds! I need a tree that lives through dry seasons.',
+es: '¡La tormenta del Gruñón se llevó mis semillas! Necesito un árbol que aguante las épocas secas.',
+fa: 'طوفان غرغرو تخم‌هایم را برد! درختی می‌خواهم که در فصل‌های خشک زنده بماند.' },
+{ en: 'Ask Mr. Otieno the beekeeper. He knows every [[savanna|savanna]] tree. He is south-west.',
+es: 'Pregúntale al señor Otieno, el apicultor. Conoce cada árbol de la [[savanna|sabana]]. Está al suroeste.',
+fa: 'از آقای اوتینو زنبوردار بپرس. او هر درخت [[savanna|ساوانا]] را می‌شناسد. در جنوب غرب است.' }
 ],
-wait: { en: 'Mr. Otieno is south-west of here. Walk south until the dry yellow grass turns green. Then go west.',
-es: 'El señor Otieno está al suroeste de aquí. Camina al sur hasta que el pasto seco y amarillo se vuelva verde. Luego ve al oeste.',
-fa: 'آقای اوتینو در جنوب غرب این‌جا است. به طرف جنوب برو تا علف خشک و زرد سبز شود. بعد به طرف غرب برو.' },
-thanks: { en: 'Acacia pods! The acacia has long roots that reach deep water. That is how it lives through the dry season. I will plant these seeds in the Sahel to hold the soil. Thank you!',
-es: '¡Vainas de acacia! La acacia tiene raíces largas que llegan al agua profunda. Así vive durante la época seca. Sembraré estas semillas en el Sahel para sujetar la tierra. ¡Gracias!',
-fa: 'غلاف‌های اکاسیا! اکاسیا ریشه‌های دراز دارد که به آب عمیق می‌رسند. این‌طور در فصل خشک زنده می‌ماند. این تخم‌ها را در ساحل می‌کارم تا خاک را نگه دارند. تشکر!' }
+wait: { en: 'Mr. Otieno is south-west. Walk south until the dry yellow grass turns green, then west.',
+es: 'El señor Otieno está al suroeste. Camina al sur hasta que el pasto seco y amarillo se vuelva verde, luego al oeste.',
+fa: 'آقای اوتینو در جنوب غرب است. به جنوب برو تا علف خشک و زرد سبز شود، بعد به غرب.' },
+thanks: { en: 'Acacia pods! Their long roots reach deep water, so acacias live through the dry season.',
+es: '¡Vainas de acacia! Sus raíces largas llegan al agua profunda, así que las acacias viven en la época seca.',
+fa: 'غلاف‌های اکاسیا! ریشه‌های درازشان به آب عمیق می‌رسند، پس اکاسیا در فصل خشک زنده می‌ماند.' }
 },
 contact: {
 x: 14, y: 12,
@@ -5523,21 +5662,27 @@ name: { en: 'Mr. Otieno', es: 'Sr. Otieno', fa: 'آقای اوتینو' },
 role: { en: 'Beekeeper in the savanna', es: 'Apicultor de la sabana', fa: 'زنبوردار در ساوانا' },
 look: { skin: 5, hair: '#1b1410', shirt: '#c9822b', pants: '#3a3a2a', hat: '#e8d9a8' },
 lines: [
-{ en: 'Hello! My bees love the acacia tree. It grows here in the [[savanna|savanna]]. Its roots go very deep, so it stays alive in the dry season.',
-es: '¡Hola! A mis abejas les encanta la acacia. Crece aquí en la [[savanna|sabana]]. Sus raíces son muy profundas, por eso sigue viva en la época seca.',
-fa: 'سلام! زنبورهای من درخت اکاسیا را خیلی دوست دارند. این درخت این‌جا در [[savanna|ساوانا]] می‌روید. ریشه‌هایش خیلی عمیق است، برای همین در فصل خشک زنده می‌ماند.' },
-{ en: 'Walk east to the road that runs south. Follow it south to the Mount Kenya sign. Then walk four steps west. You will stand next to a lone acacia. Its seed pods lie in the grass.',
-es: 'Camina al este hasta el camino que va al sur. Síguelo al sur hasta el letrero del monte Kenia. Luego camina cuatro pasos al oeste. Estarás junto a una acacia sola. Sus vainas están en el pasto.',
-fa: 'به طرف شرق تا راهی برو که به جنوب می‌رود. آن را به طرف جنوب تا تابلوی کوه کینیا دنبال کن. بعد چهار قدم به طرف غرب برو. کنار یک درخت اکاسیای تنها می‌ایستی. غلاف‌های تخمش در میان علف افتاده‌اند.' }
+{ en: 'Hello! My bees love the acacia tree. It grows here in the [[savanna|savanna]].',
+es: '¡Hola! A mis abejas les encanta la acacia. Crece aquí en la [[savanna|sabana]].',
+fa: 'سلام! زنبورهای من درخت اکاسیا را دوست دارند. این درخت این‌جا در [[savanna|ساوانا]] می‌روید.' },
+{ en: 'Its roots go very deep, so it stays alive in the dry season.',
+es: 'Sus raíces son muy profundas, por eso sigue viva en la época seca.',
+fa: 'ریشه‌هایش خیلی عمیق است، برای همین در فصل خشک زنده می‌ماند.' },
+{ en: 'A lone acacia stands near the road. Its seed pods lie in the grass.',
+es: 'Hay una acacia sola cerca del camino. Sus vainas están en el pasto.',
+fa: 'یک درخت اکاسیای تنها نزدیک سرک است. غلاف‌های تخمش در میان علف افتاده‌اند.' },
+{ en: 'Take the east road south to the Mount Kenya sign. Then walk four steps west.',
+es: 'Toma el camino del este hacia el sur hasta el letrero del monte Kenia. Luego camina cuatro pasos al oeste.',
+fa: 'سرک شرقی را به طرف جنوب تا تابلوی کوه کینیا بگیر. بعد چهار قدم به غرب برو.' }
 ]
 },
 action: {
 type: 'find',
 at: [19, 15],
 hint: { en: '4 steps west of the road at the Mount Kenya sign', es: '4 pasos al oeste del camino, en el letrero del monte Kenia', fa: '۴ قدم غربِ راه، کنار تابلوی کوه کینیا' },
-found: { en: 'Here are the acacia seed pods, in the grass! You followed the road south, then went west. The acacia grows in the [[savanna|savanna]], where there is a wet season and a dry season.',
-es: '¡Aquí están las vainas de acacia, en el pasto! Seguiste el camino al sur y luego fuiste al oeste. La acacia crece en la [[savanna|sabana]], donde hay una época de lluvias y una época seca.',
-fa: 'غلاف‌های تخم اکاسیا این‌جا در میان علف هستند! راه را به طرف جنوب دنبال کردی، بعد به غرب رفتی. اکاسیا در [[savanna|ساوانا]] می‌روید، جایی که یک فصل بارانی و یک فصل خشک دارد.' },
+found: { en: 'Acacia pods! You went south on the road, then west. Acacias grow in the [[savanna|savanna]].',
+es: '¡Vainas de acacia! Fuiste al sur por el camino y luego al oeste. Las acacias crecen en la [[savanna|sabana]].',
+fa: 'غلاف‌های اکاسیا! در سرک به جنوب رفتی، بعد به غرب. اکاسیا در [[savanna|ساوانا]] می‌روید.' },
 item: { icon: '🌱', name: { en: 'Acacia seed pods', es: 'Vainas de acacia', fa: 'غلاف‌های تخم اکاسیا' } }
 }
 },
@@ -5581,16 +5726,16 @@ taunt: { en: 'Whoosh! I blew sand over every band. Can you still tell the desert
 win: { en: 'The dust settles. Atlas page 4.1 floats down into your hands!', es: 'El polvo se asienta. ¡La página 4.1 del atlas cae en tus manos!', fa: 'گرد و خاک می‌نشیند. صفحهٔ ۴.۱ اطلس به دستت می‌افتد!' },
 questions: [
 { q: { en: 'Where is the Sahel?', es: '¿Dónde está el Sahel?', fa: 'ساحل کجاست؟' },
-choices: [{ en: 'A dry grassland belt on the southern edge of the Sahara', es: 'Una franja de pasto seco en el borde sur del Sahara', fa: 'نوار علفزار خشک در لبهٔ جنوبی صحرا' }, { en: 'A mountain range in the middle of the Sahara', es: 'Una cordillera en el medio del Sahara', fa: 'یک سلسله‌کوه در وسط صحرا' }, { en: 'A wet forest on the coast of Nigeria', es: 'Un bosque húmedo en la costa de Nigeria', fa: 'یک جنگل مرطوب در ساحل نیجریه' }, { en: 'A desert north of the Sahara', es: 'Un desierto al norte del Sahara', fa: 'یک بیابان در شمال صحرا' }], answer: 0,
+choices: [{ en: 'Dry grassland just south of the Sahara', es: 'Pasto seco justo al sur del Sahara', fa: 'علفزار خشک درست جنوب صحرا' }, { en: 'A mountain range in the middle of the Sahara', es: 'Una cordillera en el medio del Sahara', fa: 'یک سلسله‌کوه در وسط صحرا' }, { en: 'A wet forest on the coast of Nigeria', es: 'Un bosque húmedo en la costa de Nigeria', fa: 'یک جنگل مرطوب در ساحل نیجریه' }, { en: 'A desert north of the Sahara', es: 'Un desierto al norte del Sahara', fa: 'یک بیابان در شمال صحرا' }], answer: 0,
 why: { en: 'The Sahel is the dry grassland just south of the Sahara. It stretches across Africa from west to east.', es: 'El Sahel es el pasto seco justo al sur del Sahara. Cruza África de oeste a este.', fa: 'ساحل علفزار خشک درست در جنوب صحرا است. از غرب تا شرق افریقا کشیده شده است.' } },
 { q: { en: 'What does desertification mean?', es: '¿Qué significa desertificación?', fa: 'بیابان‌زایی یعنی چه؟' },
-choices: [{ en: 'Land that people could use turning into desert', es: 'Tierra que la gente podía usar que se vuelve desierto', fa: 'تبدیل شدن زمین قابل استفاده به بیابان' }, { en: 'Farming in a desert with water from wells', es: 'Cultivar en un desierto con agua de pozos', fa: 'کشت در بیابان با آب چاه' }, { en: 'Moving away from a desert to a city', es: 'Mudarse de un desierto a una ciudad', fa: 'کوچ کردن از بیابان به شهر' }, { en: 'A year with extra rain in the desert', es: 'Un año con lluvia extra en el desierto', fa: 'سالی با باران بیشتر در بیابان' }], answer: 0,
+choices: [{ en: 'Usable land slowly turning into desert', es: 'Tierra útil que poco a poco se vuelve desierto', fa: 'زمین قابل استفاده که آهسته بیابان می‌شود' }, { en: 'Farming in a desert with water from wells', es: 'Cultivar en un desierto con agua de pozos', fa: 'کشت در بیابان با آب چاه' }, { en: 'Moving away from a desert to a city', es: 'Mudarse de un desierto a una ciudad', fa: 'کوچ کردن از بیابان به شهر' }, { en: 'A year with extra rain in the desert', es: 'Un año con lluvia extra en el desierto', fa: 'سالی با باران بیشتر در بیابان' }], answer: 0,
 why: { en: 'Desertification is usable land slowly becoming desert.', es: 'La desertificación es tierra útil que poco a poco se vuelve desierto.', fa: 'بیابان‌زایی یعنی زمین قابل استفاده آهسته آهسته بیابان شود.' } },
 { q: { en: 'Which of these helps cause desertification?', es: '¿Cuál de estas cosas ayuda a causar la desertificación?', fa: 'کدام یک از این‌ها باعث بیابان‌زایی می‌شود؟' },
 choices: [{ en: 'Cutting trees for firewood', es: 'Cortar árboles para leña', fa: 'بریدن درخت برای هیزم' }, { en: 'Planting rows of trees', es: 'Sembrar filas de árboles', fa: 'کاشتن قطار درخت' }, { en: 'Letting the grass grow back', es: 'Dejar que el pasto vuelva a crecer', fa: 'گذاشتن که علف دوباره بروید' }, { en: 'Rain that comes on time', es: 'Lluvia que llega a tiempo', fa: 'بارانی که به وقتش می‌بارد' }], answer: 0,
 why: { en: 'With fewer trees, few roots hold the soil. Then wind and rain carry it away.', es: 'Con menos árboles, pocas raíces sujetan la tierra. Luego el viento y la lluvia se la llevan.', fa: 'با درخت کمتر، ریشهٔ کمی خاک را نگه می‌دارد. بعد باد و باران آن را می‌برند.' } },
 { q: { en: 'Why is there snow on Mount Kenya, near the equator?', es: '¿Por qué hay nieve en el monte Kenia, cerca del ecuador?', fa: 'چرا روی کوه کینیا، نزدیک خط استوا، برف هست؟' },
-choices: [{ en: 'Its high elevation makes the air cold', es: 'Su gran elevación hace que el aire sea frío', fa: 'ارتفاع زیادش هوا را سرد می‌کند' }, { en: 'It is near the North Pole', es: 'Está cerca del Polo Norte', fa: 'نزدیک قطب شمال است' }, { en: 'Wind brings snow from the Sahara', es: 'El viento trae nieve del Sahara', fa: 'باد از صحرا برف می‌آورد' }, { en: 'The rainforest makes it cold', es: 'La selva lo hace frío', fa: 'جنگل بارانی آن را سرد می‌کند' }], answer: 0,
+choices: [{ en: 'High elevation makes the air cold', es: 'La gran elevación enfría el aire', fa: 'ارتفاع زیاد هوا را سرد می‌کند' }, { en: 'It is very close to the North Pole', es: 'Está muy cerca del Polo Norte', fa: 'خیلی نزدیک قطب شمال است' }, { en: 'Wind brings snow from the Sahara', es: 'El viento trae nieve del Sahara', fa: 'باد از صحرا برف می‌آورد' }, { en: 'The rainforest makes it cold', es: 'La selva lo hace frío', fa: 'جنگل بارانی آن را سرد می‌کند' }], answer: 0,
 why: { en: 'The higher you go, the colder the air. Mount Kenya is about 5,200 meters high.', es: 'Mientras más alto, más frío es el aire. El monte Kenia mide unos 5,200 metros.', fa: 'هر چه بالاتر بروی، هوا سردتر است. کوه کینیا حدود ۵٬۲۰۰ متر بلندی دارد.' } },
 { q: { en: 'As you travel south from the Sahara toward the coast of Nigeria, the land gets…', es: 'Mientras viajas al sur desde el Sahara hacia la costa de Nigeria, la tierra se vuelve…', fa: 'وقتی از صحرا به طرف ساحل نیجریه به جنوب سفر می‌کنی، زمین…' },
 choices: [{ en: 'wetter and greener', es: 'más húmeda y más verde', fa: 'مرطوب‌تر و سبزتر می‌شود' }, { en: 'drier and sandier', es: 'más seca y con más arena', fa: 'خشک‌تر و ریگی‌تر می‌شود' }, { en: 'colder and snowier', es: 'más fría y con más nieve', fa: 'سردتر و برفی‌تر می‌شود' }, { en: 'exactly the same', es: 'exactamente igual', fa: 'هیچ فرقی نمی‌کند' }], answer: 0,
@@ -5602,7 +5747,7 @@ why: { en: 'Lagos is on the Atlantic coast. Nairobi, Kano and Niamey are all far
 choices: [{ en: 'equator', es: 'ecuador', fa: 'خط استوا' }, { en: 'Sahara', es: 'Sahara', fa: 'صحرا' }, { en: 'North Pole', es: 'Polo Norte', fa: 'قطب شمال' }, { en: 'tops of mountains', es: 'las cimas de las montañas', fa: 'سر کوه‌ها' }], answer: 0,
 why: { en: 'Near the equator it is hot and wet most of the year, so rainforests grow there.', es: 'Cerca del ecuador hace calor y llueve casi todo el año, por eso ahí crecen las selvas.', fa: 'نزدیک خط استوا بیشتر سال گرم و بارانی است، برای همین جنگل بارانی آن‌جا می‌روید.' } },
 { q: { en: 'What can a village in the Sahel do to slow the desert?', es: '¿Qué puede hacer un pueblo del Sahel para frenar el desierto?', fa: 'یک قریه در ساحل برای آهسته کردن بیابان چه کار می‌تواند بکند؟' },
-choices: [{ en: 'Plant long rows of trees to hold the soil', es: 'Sembrar filas largas de árboles para sujetar la tierra', fa: 'قطارهای دراز درخت بکارد تا خاک را نگه دارد' }, { en: 'Let animals eat all the grass', es: 'Dejar que los animales coman todo el pasto', fa: 'بگذارد حیوانات همهٔ علف را بخورند' }, { en: 'Cut more trees for firewood', es: 'Cortar más árboles para leña', fa: 'درخت‌های بیشتری برای هیزم ببُرد' }, { en: 'Move the Sahara to the north', es: 'Mover el Sahara hacia el norte', fa: 'صحرا را به طرف شمال ببرد' }], answer: 0,
+choices: [{ en: 'Plant rows of trees to hold the soil', es: 'Sembrar filas de árboles para sujetar la tierra', fa: 'قطار درخت بکارد تا خاک را نگه دارد' }, { en: 'Let the cattle eat all the grass there', es: 'Dejar que el ganado coma todo el pasto', fa: 'بگذارد گاوها همهٔ علف آن‌جا را بخورند' }, { en: 'Cut down more trees for firewood', es: 'Cortar más árboles para hacer leña', fa: 'درخت‌های بیشتری برای هیزم ببُرد' }, { en: 'Move the Sahara to the north', es: 'Mover el Sahara hacia el norte', fa: 'صحرا را به طرف شمال ببرد' }], answer: 0,
 why: { en: 'Tree roots hold the soil, and rows of trees slow the wind.', es: 'Las raíces sujetan la tierra, y las filas de árboles frenan el viento.', fa: 'ریشهٔ درخت خاک را نگه می‌دارد و قطار درخت‌ها باد را آهسته می‌کند.' } }
 ]
 },

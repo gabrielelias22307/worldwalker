@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,12 @@ sol: 'WG.7',
 title: { en: 'Resources, Economy and Trade', es: 'Recursos, economía y comercio', fa: 'منابع، اقتصاد و تجارت' },
 place: { en: 'From the Mine to Durban', es: 'De la mina a Durban', fa: 'از معدن تا دوربان' },
 intro: [
-{ en: 'Christopher: "The Grump broke the trade chain in South Africa! Ore is stuck at the mine and ships wait at the port. Talk to the engineer, the bank worker and the crane driver. Then fix the compass stone."',
-es: 'Christopher: "¡El Gruñón rompió la cadena de comercio en Sudáfrica! El mineral está atascado en la mina y los barcos esperan en el puerto. Habla con la ingeniera, el empleado del banco y la operadora de grúa. Luego arregla la piedra de la brújula."',
-fa: 'کریستوفر: «غرغرو زنجیر تجارت را در افریقای جنوبی شکست! سنگ معدنی در معدن مانده و کشتی‌ها در بندر انتظار می‌کشند. با انجنیر، کارمند بانک و راننده جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+{ en: 'The Grump broke South Africa\'s trade chain! Ore is stuck. Ships wait at the port.',
+es: '¡El Gruñón rompió la cadena de comercio de Sudáfrica! El mineral está atascado. Los barcos esperan en el puerto.',
+fa: 'غرغرو زنجیر تجارت افریقای جنوبی را شکست! سنگ معدنی گیر مانده. کشتی‌ها در بندر منتظر هستند.' },
+{ en: 'Talk to the engineer, the banker and the crane driver. Then fix the compass stone.',
+es: 'Habla con la ingeniera, el banquero y la operadora de grúa. Luego arregla la piedra de la brújula.',
+fa: 'با انجنیر، کارمند بانک و رانندهٔ جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
 ],
 map: [
 'KKKKKKKKKKKKKKKKTTTTTTTTTTTT~===',
@@ -5374,10 +5498,10 @@ done: { en: 'The railway is whole again! Trains carry the minerals from the mine
 finds: [
 { clueAt: [6, 6], at: [8, 2], decor: 'gem',
 clue: { en: 'From this note, walk 4 steps north, then 2 steps east. Look near the mine.', es: 'Desde esta nota, camina 4 pasos al norte y luego 2 pasos al este. Busca cerca de la mina.', fa: 'از این یادداشت، ۴ قدم به شمال برو، بعد ۲ قدم به شرق. نزدیک معدن را ببین.' },
-text: { en: 'You followed compass directions! North is up and east is to the right. You found a sparkling gem. The biggest diamond ever found, the Cullinan Diamond, came from a mine in South Africa in 1905.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Encontraste una piedra preciosa brillante. El diamante más grande jamás encontrado, el Cullinan, salió de una mina de Sudáfrica en 1905.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. تو یک سنگ قیمتی درخشان پیدا کردی. بزرگ‌ترین الماسی که تا حال پیدا شده، الماس کالینان، در سال ۱۹۰۵ از یک معدن در افریقای جنوبی بیرون آمد.' } },
+text: { en: 'North is up, east is right! A gem! The biggest diamond ever, the Cullinan, came from here.', es: '¡El norte arriba, el este a la derecha! ¡Una gema! El diamante más grande, el Cullinan, salió de aquí.', fa: 'شمال بالا، شرق راست! یک سنگ قیمتی! بزرگ‌ترین الماس، کالینان، از این‌جا بیرون آمد.' } },
 { clueAt: [23, 9], at: [26, 17], decor: 'coinold',
-clue: { en: 'Trains carry goods from the mine to the port. Follow the railway east, then south. At the end it turns east one last time and stops at a dock. Stand on the dock square right at the end of the tracks.', es: 'Los trenes llevan productos de la mina al puerto. Sigue la vía del tren al este y luego al sur. Al final, gira al este una última vez y termina en un muelle. Párate en el cuadro del muelle justo al final de las vías.', fa: 'ریل‌ها مال را از معدن به بندر می‌برند. خط ریل را به طرف شرق، بعد به طرف جنوب دنبال کن. در آخر، یک بار دیگر به طرف شرق دور می‌خورد و کنار یک اسکله تمام می‌شود. روی خانهٔ اسکله که درست در آخر خط ریل است بایست.' },
-text: { en: 'You followed the railway to the port! Here goods leave the train and go onto ships. An old gold coin lay on the dock. South Africa began making a gold coin called the Krugerrand in 1967.', es: '¡Seguiste la vía del tren hasta el puerto! Aquí los productos bajan del tren y suben a los barcos. Había una moneda de oro antigua en el muelle. Sudáfrica empezó a hacer una moneda de oro llamada Krugerrand en 1967.', fa: 'تو خط ریل را تا بندر دنبال کردی! این‌جا مال از ریل پایین می‌شود و به کشتی‌ها می‌رود. یک سکهٔ کهنهٔ طلا روی اسکله بود. افریقای جنوبی در سال ۱۹۶۷ ساختن یک سکهٔ طلا به نام کروگررند را شروع کرد.' } }
+clue: { en: 'Follow the railway east, then south, then east to a dock. Stand at the end of the tracks.', es: 'Sigue la vía del tren al este, luego al sur, luego al este hasta un muelle. Párate al final de las vías.', fa: 'خط ریل را به شرق، بعد جنوب، بعد شرق تا یک اسکله دنبال کن. در آخر خط ریل بایست.' },
+text: { en: 'Here goods go from train to ship. An old gold coin! South Africa made Krugerrand coins from 1967.', es: 'Aquí los productos pasan del tren al barco. ¡Una moneda de oro! Sudáfrica hace monedas Krugerrand desde 1967.', fa: 'این‌جا جنس از ریل به کشتی می‌رود. یک سکهٔ طلا! افریقای جنوبی از ۱۹۶۷ سکهٔ کروگررند می‌سازد.' } }
 ],
 secret: { tool: 'rail', at: [26, 1],
 text: { en: 'The Rail Pass opened the old rail gate! In the chest is a miner\'s note. It says South Africa digs up more platinum than any other country on Earth.',
@@ -5400,23 +5524,26 @@ name: { en: 'Thandiwe', es: 'Thandiwe', fa: 'تاندیوه' },
 role: { en: 'Mining engineer', es: 'Ingeniera de minas', fa: 'انجنیر معدن' },
 look: { skin: 4, hair: '#1b1410', shirt: '#f39c12', pants: '#2c3e50' },
 lines: [
-{ en: 'Sawubona! That means hello in Zulu. I am Thandiwe, a mining engineer. The ground in South Africa holds valuable [[mineral|minerals]], like gold, platinum and chrome. They are [[natural resource|natural resources]].',
-es: '¡Sawubona! Así se dice hola en zulú. Soy Thandiwe, ingeniera de minas. La tierra de Sudáfrica guarda [[mineral|minerales]] valiosos, como oro, platino y cromo. Son [[natural resource|recursos naturales]].',
-fa: 'ساوبونا! این به زبان زولو یعنی سلام. من تاندیوه هستم، انجنیر معدن. زمین افریقای جنوبی [[mineral|معدنیات]] قیمتی دارد، مثل طلا، پلاتین و کروم. این‌ها [[natural resource|منابع طبیعی]] هستند.' },
-{ en: 'In 1886, people found gold right here. Thousands came to dig, and a city grew up fast around the mines. That city is Johannesburg. Its Zulu name, eGoli, means "place of gold."',
-es: 'En 1886, la gente encontró oro justo aquí. Miles vinieron a excavar, y una ciudad creció rápido alrededor de las minas. Esa ciudad es Johannesburgo. Su nombre en zulú, eGoli, significa "lugar del oro".',
-fa: 'در سال ۱۸۸۶ مردم درست همین‌جا طلا پیدا کردند. هزاران نفر برای کندن آمدند و یک شهر به زودی دور معدن‌ها ساخته شد. آن شهر ژوهانسبرگ است. نام زولوی آن، اِگولی، یعنی «جای طلا».' },
-{ en: 'South Africa also has most of the world\'s platinum. Car factories use it in parts that clean the smoke from engines. We mine chrome too. Chrome keeps steel shiny, so steel pots and spoons do not rust.',
-es: 'Sudáfrica también tiene la mayor parte del platino del mundo. Las fábricas de carros lo usan en piezas que limpian el humo de los motores. También sacamos cromo. El cromo mantiene el acero brillante, así las ollas y cucharas de acero no se oxidan.',
-fa: 'افریقای جنوبی بیشتر پلاتین جهان را هم دارد. فابریکه‌های موتر از آن در پرزه‌هایی استفاده می‌کنند که دود انجن را پاک می‌کند. ما کروم هم استخراج می‌کنیم. کروم فولاد را براق نگه می‌دارد، پس دیگ و قاشق فولادی زنگ نمی‌زنند.' }
+{ en: 'Sawubona! I am Thandiwe. Our gold, platinum and chrome are [[natural resource|natural resources]].',
+es: '¡Sawubona! Soy Thandiwe. Nuestro oro, platino y cromo son [[natural resource|recursos naturales]].',
+fa: 'ساوبونا! من تاندیوه هستم. طلا، پلاتین و کروم ما [[natural resource|منابع طبیعی]] هستند.' },
+{ en: 'These [[mineral|minerals]] lie in the ground. Gold was found here in 1886.',
+es: 'Estos [[mineral|minerales]] están bajo la tierra. Aquí se encontró oro en 1886.',
+fa: 'این [[mineral|معدنیات]] در زیر زمین هستند. در سال ۱۸۸۶ این‌جا طلا پیدا شد.' },
+{ en: 'Thousands came, and Johannesburg grew fast. Its Zulu name, eGoli, means "place of gold."',
+es: 'Llegaron miles, y Johannesburgo creció rápido. Su nombre en zulú, eGoli, significa "lugar del oro".',
+fa: 'هزاران نفر آمدند و ژوهانسبرگ زود بزرگ شد. نام زولوی آن، اِگولی، یعنی «جای طلا».' },
+{ en: 'We have most of the world\'s platinum, for cleaner engines. Chrome keeps steel from rust.',
+es: 'Tenemos casi todo el platino del mundo, para motores más limpios. El cromo protege el acero del óxido.',
+fa: 'بیشتر پلاتین جهان پیش ما است، برای انجن‌های پاک‌تر. کروم فولاد را از زنگ نگه می‌دارد.' }
 ],
 ask: {
 stat: 'hei',
 q: { en: 'Why did Johannesburg grow so fast?', es: '¿Por qué Johannesburgo creció tan rápido?', fa: 'چرا ژوهانسبرگ این‌قدر زود بزرگ شد؟' },
 choices: [
-{ ok: true, t: { en: 'Gold was found there in 1886, and people came to work in the mines', es: 'Allí se encontró oro en 1886, y la gente llegó a trabajar en las minas', fa: 'در سال ۱۸۸۶ آن‌جا طلا پیدا شد و مردم برای کار در معدن آمدند' },
+{ ok: true, t: { en: 'Gold was found there, so miners came', es: 'Allí se encontró oro, y llegaron mineros', fa: 'آن‌جا طلا پیدا شد، پس کارگران معدن آمدند' },
 why: { en: 'A natural resource pulled people in, and a city grew around it.', es: 'Un recurso natural atrajo a la gente, y una ciudad creció a su alrededor.', fa: 'یک منبع طبیعی مردم را کشاند و شهری دور آن ساخته شد.' } },
-{ t: { en: 'It sits on a busy ocean port', es: 'Está en un puerto muy activo del océano', fa: 'کنار یک بندر پرکار بحر است' },
+{ t: { en: 'It sits beside a busy ocean port', es: 'Está junto a un puerto muy activo del océano', fa: 'کنار یک بندر پرکار بحر است' },
 why: { en: 'Johannesburg is far inland. Durban is the port.', es: 'Johannesburgo está lejos del mar. Durban es el puerto.', fa: 'ژوهانسبرگ از بحر دور است. بندر، دوربان است.' } },
 { t: { en: 'It was built for rice farming by a big river', es: 'Se construyó para cultivar arroz junto a un río grande', fa: 'برای کشت شالی کنار یک دریای بزرگ ساخته شد' },
 why: { en: 'Johannesburg did not grow from farming. It grew from gold.', es: 'Johannesburgo no creció por la agricultura. Creció por el oro.', fa: 'ژوهانسبرگ از کشت و کار بزرگ نشد. از طلا بزرگ شد.' } }
@@ -5429,23 +5556,26 @@ name: { en: 'Sipho', es: 'Sipho', fa: 'سیپو' },
 role: { en: 'Bank worker in Johannesburg', es: 'Empleado de banco en Johannesburgo', fa: 'کارمند بانک در ژوهانسبرگ' },
 look: { skin: 5, hair: '#111111', shirt: '#3e5c9a', pants: '#222222' },
 lines: [
-{ en: 'Hello! I am Sipho. I work at a bank in Johannesburg. The city started with gold. Now it is a big center for banking and trade in Africa.',
-es: '¡Hola! Soy Sipho. Trabajo en un banco en Johannesburgo. La ciudad empezó con el oro. Ahora es un gran centro de bancos y comercio en África.',
-fa: 'سلام! من سیپو هستم. در یک بانک در ژوهانسبرگ کار می‌کنم. این شهر با طلا شروع شد. حالا یک مرکز بزرگ بانک و تجارت در افریقا است.' },
-{ en: 'Here is the hard part. Selling [[raw material|raw materials]] earns some money. But the most money is made where they become [[finished product|finished products]], like phones and cars. Many of those are made in other countries and [[import|imported]].',
-es: 'Aquí viene lo difícil. Vender [[raw material|materias primas]] da algo de dinero. Pero el mayor dinero se gana donde se convierten en [[finished product|productos terminados]], como teléfonos y carros. Muchos de esos se hacen en otros países y se [[import|importan]].',
-fa: 'قسمت سخت این است. فروختن [[raw material|مواد خام]] کمی پول می‌آورد. اما بیشترین پول جایی به دست می‌آید که این مواد به [[finished product|جنس آماده]]، مثل موبایل و موتر، تبدیل می‌شوند. بسیاری از آن‌ها در کشورهای دیگر ساخته و [[import|وارد]] می‌شوند.' },
-{ en: 'Other countries sell a [[cash crop|cash crop]], a crop grown mostly to sell. Ghana and Ivory Coast sell cocoa. Ethiopia and Kenya sell coffee. If the world price of that one crop falls, the whole country feels it.',
-es: 'Otros países venden un [[cash crop|cultivo comercial]], un cultivo que se siembra más que nada para vender. Ghana y Costa de Marfil venden cacao. Etiopía y Kenia venden café. Si el precio mundial de ese cultivo baja, todo el país lo siente.',
-fa: 'کشورهای دیگر یک [[cash crop|کشت تجارتی]] می‌فروشند، یعنی کشتی که بیشتر برای فروش است. گانا و ساحل عاج کاکائو می‌فروشند. ایتوپیا و کینیا قهوه می‌فروشند. اگر قیمت جهانی همان یک کشت پایین بیاید، تمام کشور آن را حس می‌کند.' }
+{ en: 'Hello! I am Sipho, a banker. Gold built Johannesburg. Now it is a banking center.',
+es: '¡Hola! Soy Sipho, banquero. El oro construyó Johannesburgo. Ahora es un centro de bancos.',
+fa: 'سلام! من سیپو، کارمند بانک هستم. طلا ژوهانسبرگ را ساخت. حالا مرکز بانک‌ها است.' },
+{ en: '[[raw material|Raw materials]] earn some money. [[finished product|Finished products]], often made abroad, earn the most.',
+es: 'Las [[raw material|materias primas]] dan algo de dinero. Los [[finished product|productos terminados]], muchas veces hechos afuera, dan más.',
+fa: '[[raw material|مواد خام]] کمی پول می‌آورد. [[finished product|جنس آماده]]، که اکثراً در خارج ساخته می‌شود، بیشترین پول را می‌آورد.' },
+{ en: 'Ghana and Ivory Coast sell cocoa, a [[cash crop|cash crop]]. Ethiopia and Kenya sell coffee.',
+es: 'Ghana y Costa de Marfil venden cacao, un [[cash crop|cultivo comercial]]. Etiopía y Kenia venden café.',
+fa: 'گانا و ساحل عاج کاکائو می‌فروشند، یک [[cash crop|کشت تجارتی]]. ایتوپیا و کینیا قهوه می‌فروشند.' },
+{ en: 'If the world price of that crop falls, the whole country earns less.',
+es: 'Si el precio mundial de ese cultivo baja, todo el país gana menos.',
+fa: 'اگر قیمت جهانی آن کشت پایین بیاید، تمام کشور کمتر پول می‌گیرد.' }
 ],
 ask: {
 stat: 'reg',
 q: { en: 'Why is it risky for a country to sell mostly one product?', es: '¿Por qué es arriesgado que un país venda casi solo un producto?', fa: 'چرا برای یک کشور خطرناک است که بیشتر فقط یک جنس بفروشد؟' },
 choices: [
-{ ok: true, t: { en: 'If its world price drops, farmers and the government both earn less', es: 'Si su precio mundial baja, los agricultores y el gobierno ganan menos', fa: 'اگر قیمت جهانی آن پایین بیاید، هم دهقانان و هم دولت کمتر پول می‌گیرند' },
+{ ok: true, t: { en: 'If its price falls, everyone earns less', es: 'Si su precio baja, todos ganan menos', fa: 'اگر قیمتش پایین بیاید، همه کمتر پول می‌گیرند' },
 why: { en: 'With only one product, one bad price hurts everyone at once.', es: 'Con un solo producto, un mal precio hace daño a todos a la vez.', fa: 'با یک جنس، یک قیمت بد به همه یک‌باره ضرر می‌زند.' } },
-{ t: { en: 'That product will soon stop growing', es: 'Ese producto pronto dejará de crecer', fa: 'آن جنس به زودی دیگر نمی‌روید' },
+{ t: { en: 'That product will soon stop growing there', es: 'Ese producto pronto dejará de crecer allí', fa: 'آن جنس به زودی دیگر آن‌جا نمی‌روید' },
 why: { en: 'The crop still grows. The risk is the price, not the plant.', es: 'El cultivo sigue creciendo. El riesgo es el precio, no la planta.', fa: 'کشت هنوز می‌روید. خطر از قیمت است، نه از نبات.' } },
 { t: { en: 'Other countries are not allowed to buy it', es: 'Otros países no pueden comprarlo', fa: 'کشورهای دیگر اجازه ندارند آن را بخرند' },
 why: { en: 'Other countries do buy it. The problem is that the price can change.', es: 'Otros países sí lo compran. El problema es que el precio puede cambiar.', fa: 'کشورهای دیگر آن را می‌خرند. مشکل این است که قیمت می‌تواند تغییر کند.' } }
@@ -5458,21 +5588,24 @@ name: { en: 'Ayanda', es: 'Ayanda', fa: 'آیاندا' },
 role: { en: 'Crane operator at the port of Durban', es: 'Operadora de grúa en el puerto de Durban', fa: 'رانندهٔ جرثقیل در بندر دوربان' },
 look: { skin: 3, hair: '#2b1d14', shirt: '#16a085', pants: '#2c3e50' },
 lines: [
-{ en: 'Welcome to Durban, on the Indian Ocean! I am Ayanda. I drive one of the giant cranes at this [[port|port]]. It is one of the busiest ports in Africa.',
-es: '¡Bienvenido a Durban, en el océano Índico! Soy Ayanda. Manejo una de las grúas gigantes de este [[port|puerto]]. Es uno de los puertos más activos de África.',
-fa: 'به دوربان، کنار اقیانوس هند، خوش آمدی! من آیاندا هستم. یکی از جرثقیل‌های بزرگ این [[port|بندر]] را می‌رانم. این یکی از پرکارترین بندرهای افریقا است.' },
-{ en: 'Trains bring ore, sugar, fruit and new cars to the docks. My crane loads them onto ships. Those are [[export|exports]]: goods sold and sent to other countries.',
-es: 'Los trenes traen mineral, azúcar, fruta y carros nuevos a los muelles. Mi grúa los sube a los barcos. Esas son [[export|exportaciones]]: productos que se venden y se envían a otros países.',
-fa: 'قطارها سنگ معدنی، بوره، میوه و موترهای نو را به لنگرگاه می‌آورند. جرثقیل من آن‌ها را در کشتی بار می‌کند. این‌ها [[export|صادرات]] هستند: جنس‌هایی که فروخته و به کشورهای دیگر فرستاده می‌شوند.' },
-{ en: 'Ships also bring things in, like phones, machines and medicine. Those are [[import|imports]]. A port connects a whole country to the world.',
-es: 'Los barcos también traen cosas, como teléfonos, máquinas y medicinas. Esas son [[import|importaciones]]. Un puerto conecta a todo un país con el mundo.',
-fa: 'کشتی‌ها چیزهایی هم با خود می‌آورند، مثل موبایل، ماشین‌آلات و دوا. این‌ها [[import|واردات]] هستند. یک بندر تمام کشور را به جهان وصل می‌کند.' }
+{ en: 'Welcome to Durban, on the Indian Ocean! I am Ayanda. I drive a giant crane.',
+es: '¡Bienvenido a Durban, en el océano Índico! Soy Ayanda. Manejo una grúa gigante.',
+fa: 'به دوربان در کنار بحر هند خوش آمدی! من آیاندا هستم. یک جرثقیل بسیار بزرگ را می‌رانم.' },
+{ en: 'Durban is a busy [[port|port]]. Trains bring ore, sugar, fruit and cars to my crane.',
+es: 'Durban es un [[port|puerto]] muy activo. Los trenes traen mineral, azúcar, fruta y carros a mi grúa.',
+fa: 'دوربان یک [[port|بندر]] پرکار است. قطارها سنگ معدنی، بوره، میوه و موتر را به جرثقیل من می‌آورند.' },
+{ en: 'I load them onto ships. Those are [[export|exports]]: goods sold to other countries.',
+es: 'Yo los subo a los barcos. Esas son [[export|exportaciones]]: productos que se venden a otros países.',
+fa: 'من آن‌ها را به کشتی بار می‌کنم. این‌ها [[export|صادرات]] هستند: جنس‌هایی که به کشورهای دیگر فروخته می‌شوند.' },
+{ en: 'Ships bring in phones, machines and medicine: [[import|imports]]. Ports connect countries to the world.',
+es: 'Los barcos traen teléfonos, máquinas y medicinas: [[import|importaciones]]. Los puertos conectan a los países con el mundo.',
+fa: 'کشتی‌ها موبایل، ماشین و دوا می‌آورند: [[import|واردات]]. بندرها کشورها را به جهان وصل می‌کنند.' }
 ],
 ask: {
 stat: 'mov',
 q: { en: 'What is an export?', es: '¿Qué es una exportación?', fa: 'صادرات چیست؟' },
 choices: [
-{ ok: true, t: { en: 'A good that is sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' },
+{ ok: true, t: { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' },
 why: { en: 'Exports go out. Imports come in.', es: 'Las exportaciones salen. Las importaciones entran.', fa: 'صادرات بیرون می‌رود. واردات داخل می‌آید.' } },
 { t: { en: 'A good that is bought from another country', es: 'Un producto que se compra a otro país', fa: 'جنسی که از کشور دیگر خریده می‌شود' },
 why: { en: 'That is an import. It comes in.', es: 'Esa es una importación. Entra al país.', fa: 'این واردات است. داخل می‌آید.' } },
@@ -5483,12 +5616,12 @@ why: { en: 'An export travels to another country.', es: 'Una exportación viaja 
 }
 ],
 signs: [
-{ x: 8, y: 8, text: { en: 'eGOLI · JOHANNESBURG · Gold was found here in 1886. A small mining camp grew into one of the biggest cities in Africa.',
-es: 'eGOLI · JOHANNESBURGO · Aquí se encontró oro en 1886. Un pequeño campamento minero se volvió una de las ciudades más grandes de África.',
-fa: 'اِگولی · ژوهانسبرگ · در سال ۱۸۸۶ این‌جا طلا پیدا شد. یک کمپ کوچک معدن به یکی از بزرگ‌ترین شهرهای افریقا تبدیل شد.' } },
-{ x: 23, y: 12, text: { en: 'PORT OF DURBAN ⚓ · Indian Ocean · Ships leave here for Asia, Europe and the Americas. Sugarcane grows on the green hills nearby.',
-es: 'PUERTO DE DURBAN ⚓ · Océano Índico · De aquí salen barcos a Asia, Europa y las Américas. En las colinas verdes de cerca crece la caña de azúcar.',
-fa: 'بندر دوربان ⚓ · اقیانوس هند · کشتی‌ها از این‌جا به آسیا، اروپا و امریکا می‌روند. نیشکر روی تپه‌های سبز نزدیک می‌روید.' } }
+{ x: 8, y: 8, text: { en: 'eGOLI · JOHANNESBURG · Gold was found here in 1886. A mining camp grew into a huge African city.',
+es: 'eGOLI · JOHANNESBURGO · Aquí se encontró oro en 1886. Un campamento minero se volvió una enorme ciudad africana.',
+fa: 'اِگولی · ژوهانسبرگ · در سال ۱۸۸۶ این‌جا طلا پیدا شد. یک کمپ معدن به یک شهر بزرگ افریقایی تبدیل شد.' } },
+{ x: 23, y: 12, text: { en: 'PORT OF DURBAN ⚓ · Indian Ocean · Ships sail to Asia, Europe and the Americas. Sugarcane grows nearby.',
+es: 'PUERTO DE DURBAN ⚓ · Océano Índico · Los barcos van a Asia, Europa y América. Cerca crece caña de azúcar.',
+fa: 'بندر دوربان ⚓ · بحر هند · کشتی‌ها به آسیا، اروپا و امریکا می‌روند. نزدیک این‌جا نیشکر می‌روید.' } }
 ],
 quest: {
 stat: 'mov',
@@ -5499,19 +5632,25 @@ name: { en: 'Nomvula', es: 'Nomvula', fa: 'نومولا' },
 role: { en: 'Sugarcane farmer', es: 'Agricultora de caña de azúcar', fa: 'دهقان نیشکر' },
 look: { skin: 5, hair: '#1b1410', shirt: '#27ae60', pants: '#5d4037', style: 'bun' },
 lines: [
-{ en: 'Sawubona! I am Nomvula. I grow sugarcane on these green hills near Durban. The rain and warm weather here are good for cane. We grow more sugar than we can eat.',
-es: '¡Sawubona! Soy Nomvula. Cultivo caña de azúcar en estas colinas verdes cerca de Durban. La lluvia y el clima cálido de aquí son buenos para la caña. Producimos más azúcar de la que podemos comer.',
-fa: 'ساوبونا! من نومولا هستم. روی این تپه‌های سبز نزدیک دوربان نیشکر می‌کارم. باران و هوای گرم این‌جا برای نیشکر خوب است. ما بیشتر از آن‌چه می‌خوریم بوره تولید می‌کنیم.' },
-{ en: 'But our water pump broke, and new pumps come in on ships. Johan drives the trains, west of here. He knows the traders at the port. Will you ask him?',
-es: 'Pero nuestra bomba de agua se rompió, y las bombas nuevas llegan en barco. Johan maneja los trenes, al oeste de aquí. Conoce a los comerciantes del puerto. ¿Le preguntas?',
-fa: 'اما پمپ آب ما خراب شد و پمپ‌های نو با کشتی می‌آیند. یوهان در غرب این‌جا قطار می‌راند. او تاجران بندر را می‌شناسد. از او می‌پرسی؟' }
+{ en: 'Sawubona! I am Nomvula. I grow sugarcane on these green hills near Durban.',
+es: '¡Sawubona! Soy Nomvula. Cultivo caña de azúcar en estas colinas verdes cerca de Durban.',
+fa: 'ساوبونا! من نومولا هستم. روی این تپه‌های سبز نزدیک دوربان نیشکر می‌کارم.' },
+{ en: 'Rain and warm weather help cane grow. We grow more sugar than we eat.',
+es: 'La lluvia y el calor ayudan a la caña. Cultivamos más azúcar de la que comemos.',
+fa: 'باران و هوای گرم به نیشکر کمک می‌کند. ما بیشتر از خوراک خود بوره داریم.' },
+{ en: 'But our water pump broke, and new pumps come in on ships.',
+es: 'Pero nuestra bomba de agua se rompió, y las bombas nuevas llegan en barco.',
+fa: 'اما پمپ آب ما خراب شد، و پمپ‌های نو با کشتی می‌آیند.' },
+{ en: 'Johan drives trains, west of here. He knows the port traders. Please ask him!',
+es: 'Johan maneja trenes, al oeste de aquí. Conoce a los comerciantes del puerto. ¡Pregúntale, por favor!',
+fa: 'یوهان در غرب این‌جا قطار می‌راند. او تاجران بندر را می‌شناسد. لطفاً از او بپرس!' }
 ],
 wait: { en: 'Johan works by the railway, west of here. Follow the tracks west.',
 es: 'Johan trabaja junto a la vía del tren, al oeste de aquí. Sigue las vías hacia el oeste.',
 fa: 'یوهان کنار خط آهن در غرب این‌جا کار می‌کند. خط آهن را به طرف غرب دنبال کن.' },
-thanks: { en: 'A new water pump! Now our fields can drink again. We sent out sugar, our [[export|export]]. We got a pump, an [[import|import]]. That is trade!',
-es: '¡Una bomba de agua nueva! Ahora nuestros campos pueden beber otra vez. Mandamos azúcar, nuestra [[export|exportación]]. Recibimos una bomba, una [[import|importación]]. ¡Eso es comercio!',
-fa: 'یک پمپ آب نو! حالا کشتزارهای ما دوباره آب می‌خورند. ما بوره را فرستادیم، که [[export|صادرات]] ما است. یک پمپ گرفتیم، که [[import|واردات]] است. این تجارت است!' }
+thanks: { en: 'A new pump! Sugar went out, an [[export|export]]. A pump came in, an [[import|import]]. Trade!',
+es: '¡Una bomba nueva! Salió azúcar, una [[export|exportación]]. Entró una bomba, una [[import|importación]]. ¡Comercio!',
+fa: 'پمپ نو! بوره بیرون رفت، یک [[export|صادرات]]. پمپ داخل آمد، یک [[import|واردات]]. تجارت!' }
 },
 contact: {
 x: 12, y: 8,
@@ -5519,12 +5658,15 @@ name: { en: 'Johan', es: 'Johan', fa: 'یوهان' },
 role: { en: 'Train driver', es: 'Maquinista de tren', fa: 'رانندهٔ قطار' },
 look: { skin: 0, hair: '#c8a165', shirt: '#2c3e50', pants: '#34495e', hat: '#7f8c8d' },
 lines: [
-{ en: 'Hi, I am Johan. I drive trains on this railway. Every day my train carries ore, fruit and sugar east to the [[port|port]] of Durban.',
-es: 'Hola, soy Johan. Manejo trenes en esta vía. Cada día mi tren lleva mineral, fruta y azúcar al este, al [[port|puerto]] de Durban.',
-fa: 'سلام، من یوهان هستم. در این خط آهن قطار می‌رانم. هر روز قطار من سنگ معدنی، میوه و بوره را به طرف شرق، به [[port|بندر]] دوربان می‌برد.' },
-{ en: 'A ship trader named Mei Lin waits by the south warehouses, near the docks. She sells water pumps. Offer her something this land has a lot of, and her country needs.',
-es: 'Una comerciante de barco llamada Mei Lin espera junto a las bodegas del sur, cerca de los muelles. Ella vende bombas de agua. Ofrécele algo que esta tierra tiene en abundancia y que su país necesita.',
-fa: 'یک تاجر کشتی به نام می‌لین کنار گدام‌های جنوبی، نزدیک لنگرگاه، انتظار می‌کشد. او پمپ آب می‌فروشد. چیزی به او پیشنهاد کن که این سرزمین زیاد دارد و کشور او به آن نیاز دارد.' }
+{ en: 'Hi, I am Johan. My train carries ore, fruit and sugar east to the [[port|port]].',
+es: 'Hola, soy Johan. Mi tren lleva mineral, fruta y azúcar al este, hasta el [[port|puerto]].',
+fa: 'سلام، من یوهان هستم. قطار من سنگ معدنی، میوه و بوره را به شرق تا [[port|بندر]] می‌برد.' },
+{ en: 'Mei Lin sells water pumps by the south warehouses, near the docks.',
+es: 'Mei Lin vende bombas de agua junto a las bodegas del sur, cerca de los muelles.',
+fa: 'می‌لین کنار گدام‌های جنوبی، نزدیک اسکله‌ها، پمپ آب می‌فروشد.' },
+{ en: 'Offer her something this land has a lot of, and her country needs.',
+es: 'Ofrécele algo que esta tierra tiene de sobra y que su país necesita.',
+fa: 'به او چیزی پیشنهاد کن که این سرزمین زیاد دارد و کشورش ضرورت دارد.' }
 ]
 },
 action: {
@@ -5535,9 +5677,12 @@ name: { en: 'Mei Lin', es: 'Mei Lin', fa: 'می‌لین' },
 role: { en: 'Ship trader from China', es: 'Comerciante de barco de China', fa: 'تاجر کشتی از چین' },
 look: { skin: 1, hair: '#111111', shirt: '#d35400', pants: '#2c3e50', style: 'long' },
 lines: [
-{ en: 'Ni hao! That means hello in Chinese. My ship brings water pumps and machines from factories in China. I take South African goods back home.',
-es: '¡Ni hao! Así se dice hola en chino. Mi barco trae bombas de agua y máquinas de fábricas de China. Llevo productos de Sudáfrica de vuelta a casa.',
-fa: 'نی هاو! این به زبان چینی یعنی سلام. کشتی من پمپ آب و ماشین‌آلات را از فابریکه‌های چین می‌آورد. من جنس‌های افریقای جنوبی را به کشورم می‌برم.' }
+{ en: 'Ni hao means hello in Chinese! My ship brings pumps and machines from China.',
+es: '¡Ni hao quiere decir hola en chino! Mi barco trae bombas y máquinas de China.',
+fa: 'نی هاو به زبان چینی یعنی سلام! کشتی من پمپ و ماشین از چین می‌آورد.' },
+{ en: 'I take South African goods back home.',
+es: 'Me llevo productos de Sudáfrica a mi país.',
+fa: 'جنس‌های افریقای جنوبی را به وطنم می‌برم.' }
 ]
 },
 q: { en: 'What will you trade me for one water pump?', es: '¿Qué me das a cambio de una bomba de agua?', fa: 'در بدل یک پمپ آب به من چه می‌دهی؟' },
@@ -5605,16 +5750,16 @@ why: { en: 'A cash crop, like cocoa or coffee, is grown to sell, not to eat at h
 choices: [{ en: 'Ghana and Ivory Coast', es: 'Ghana y Costa de Marfil', fa: 'گانا و ساحل عاج' }, { en: 'Ethiopia and Kenya', es: 'Etiopía y Kenia', fa: 'ایتوپیا و کینیا' }, { en: 'Botswana and Zambia', es: 'Botsuana y Zambia', fa: 'بوتسوانا و زامبیا' }, { en: 'Saudi Arabia and Türkiye', es: 'Arabia Saudita y Turquía', fa: 'عربستان سعودی و ترکیه' }], answer: 0,
 why: { en: 'Ghana and Ivory Coast grow cocoa. Ethiopia and Kenya are known for coffee.', es: 'Ghana y Costa de Marfil cultivan cacao. Etiopía y Kenia son conocidas por el café.', fa: 'گانا و ساحل عاج کاکائو می‌کارند. ایتوپیا و کینیا به قهوه مشهور هستند.' } },
 { q: { en: 'Why can a country rich in minerals still have many poor people?', es: '¿Por qué un país rico en minerales todavía puede tener mucha gente pobre?', fa: 'چرا کشوری که معدنیات زیاد دارد باز هم مردم فقیر زیاد دارد؟' },
-choices: [{ en: 'Most money is made where raw materials become finished products, often in other countries', es: 'El mayor dinero se gana donde las materias primas se vuelven productos terminados, muchas veces en otros países', fa: 'بیشترین پول جایی به دست می‌آید که مواد خام به جنس آماده تبدیل می‌شوند، اکثراً در کشورهای دیگر' }, { en: 'Minerals have no value at all', es: 'Los minerales no valen nada', fa: 'معدنیات هیچ ارزشی ندارند' }, { en: 'Nobody in the world buys minerals', es: 'Nadie en el mundo compra minerales', fa: 'هیچ‌کس در جهان معدنیات نمی‌خرد' }, { en: 'Mines make the land rich in rain', es: 'Las minas hacen que llueva más', fa: 'معدن‌ها باران را بیشتر می‌کنند' }], answer: 0,
+choices: [{ en: 'The big money is in finished products made abroad', es: 'El gran dinero está en productos terminados hechos afuera', fa: 'پول اصلی در جنس آماده‌ای است که در خارج ساخته می‌شود' }, { en: 'Minerals are worth nothing at all to anyone', es: 'Los minerales no valen nada para nadie', fa: 'معدنیات برای هیچ‌کس هیچ ارزشی ندارند' }, { en: 'Nobody in the whole world wants to buy minerals', es: 'Nadie en todo el mundo quiere comprar minerales', fa: 'هیچ‌کس در تمام جهان نمی‌خواهد معدنیات بخرد' }, { en: 'Mining makes it rain much more on the land', es: 'La minería hace que llueva mucho más en la tierra', fa: 'معدن‌کاری باران زمین را خیلی بیشتر می‌کند' }], answer: 0,
 why: { en: 'Selling raw rock earns less than making and selling the finished product.', es: 'Vender roca sin procesar da menos que hacer y vender el producto terminado.', fa: 'فروختن سنگ خام کمتر از ساختن و فروختن جنس آماده پول می‌آورد.' } },
 { q: { en: 'What is an import?', es: '¿Qué es una importación?', fa: 'واردات چیست؟' },
-choices: [{ en: 'A good bought and brought in from another country', es: 'Un producto que se compra y se trae de otro país', fa: 'جنسی که از کشور دیگر خریده و آورده می‌شود' }, { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' }, { en: 'A mineral that stays in the ground', es: 'Un mineral que se queda en la tierra', fa: 'معدنی که در زیر زمین می‌ماند' }, { en: 'A train that never leaves the mine', es: 'Un tren que nunca sale de la mina', fa: 'قطاری که هرگز از معدن بیرون نمی‌رود' }], answer: 0,
+choices: [{ en: 'A good bought from another country', es: 'Un producto que se compra a otro país', fa: 'جنسی که از کشور دیگر خریده می‌شود' }, { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' }, { en: 'A mineral that stays in the ground', es: 'Un mineral que se queda en la tierra', fa: 'معدنی که در زیر زمین می‌ماند' }, { en: 'A train that never leaves the mine', es: 'Un tren que nunca sale de la mina', fa: 'قطاری که هرگز از معدن بیرون نمی‌رود' }], answer: 0,
 why: { en: 'Imports come in from other countries. Exports go out.', es: 'Las importaciones entran desde otros países. Las exportaciones salen.', fa: 'واردات از کشورهای دیگر داخل می‌آید. صادرات بیرون می‌رود.' } },
 { q: { en: 'Why is a port like Durban important to South Africa?', es: '¿Por qué un puerto como Durban es importante para Sudáfrica?', fa: 'چرا بندری مثل دوربان برای افریقای جنوبی مهم است؟' },
-choices: [{ en: 'Ships carry exports out and imports in', es: 'Los barcos sacan exportaciones y traen importaciones', fa: 'کشتی‌ها صادرات را بیرون و واردات را داخل می‌برند' }, { en: 'It is where gold was first found', es: 'Es donde se encontró oro por primera vez', fa: 'جایی است که اول بار طلا پیدا شد' }, { en: 'It is the highest city in Africa', es: 'Es la ciudad más alta de África', fa: 'بلندترین شهر افریقا است' }, { en: 'Trains cannot reach it', es: 'Los trenes no pueden llegar', fa: 'قطار به آن‌جا نمی‌رسد' }], answer: 0,
+choices: [{ en: 'Ships carry exports out and imports in', es: 'Los barcos sacan exportaciones y traen importaciones', fa: 'کشتی‌ها صادرات را بیرون و واردات را داخل می‌برند' }, { en: 'It is where South Africa first found gold', es: 'Es donde Sudáfrica encontró oro por primera vez', fa: 'جایی است که افریقای جنوبی اول بار طلا یافت' }, { en: 'It is the highest city in Africa', es: 'Es la ciudad más alta de África', fa: 'بلندترین شهر افریقا است' }, { en: 'Trains cannot reach it', es: 'Los trenes no pueden llegar', fa: 'قطار به آن‌جا نمی‌رسد' }], answer: 0,
 why: { en: 'A port connects a country to the world by sea.', es: 'Un puerto conecta a un país con el mundo por mar.', fa: 'بندر یک کشور را از راه بحر به جهان وصل می‌کند.' } },
 { q: { en: 'Why does a steel pot sell for much more than the chrome ore inside it?', es: '¿Por qué una olla de acero se vende por mucho más que el mineral de cromo que tiene?', fa: 'چرا یک دیگ فولادی خیلی قیمتی‌تر از سنگ کرومی است که در آن به کار رفته؟' },
-choices: [{ en: 'Workers and factories added work to turn the ore into something people use', es: 'Trabajadores y fábricas pusieron trabajo para convertir el mineral en algo que la gente usa', fa: 'کارگران و فابریکه‌ها کار کردند تا سنگ را به چیزی تبدیل کنند که مردم استفاده می‌کنند' }, { en: 'The pot is heavier than the ore', es: 'La olla pesa más que el mineral', fa: 'دیگ از سنگ سنگین‌تر است' }, { en: 'Ore is free to dig up', es: 'Sacar mineral es gratis', fa: 'کندن سنگ معدنی مفت است' }, { en: 'Stores pay nothing for pots', es: 'Las tiendas no pagan nada por las ollas', fa: 'دوکان‌ها برای دیگ هیچ پول نمی‌دهند' }], answer: 0,
+choices: [{ en: 'Work turned the ore into something useful', es: 'El trabajo convirtió el mineral en algo útil', fa: 'کار، سنگ را به چیز مفید تبدیل کرد' }, { en: 'The pot is much heavier than the ore inside', es: 'La olla pesa mucho más que el mineral que tiene', fa: 'دیگ خیلی سنگین‌تر از سنگ داخل آن است' }, { en: 'Ore is free for anyone to dig up', es: 'Sacar mineral es gratis para todos', fa: 'کندن سنگ معدنی برای همه مفت است' }, { en: 'Stores pay nothing for pots', es: 'Las tiendas no pagan nada por las ollas', fa: 'دوکان‌ها برای دیگ هیچ پول نمی‌دهند' }], answer: 0,
 why: { en: 'Each step in the chain adds work and value. The finished product is worth the most.', es: 'Cada paso de la cadena suma trabajo y valor. El producto terminado es el que más vale.', fa: 'هر قدم زنجیر کار و ارزش اضافه می‌کند. جنس آماده از همه قیمتی‌تر است.' } }
 ]
 },

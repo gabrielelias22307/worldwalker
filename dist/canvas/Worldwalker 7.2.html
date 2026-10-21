@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,8 @@ sol: 'WG.10 · WG.15',
 title: { en: 'Cities, Site and Situation', es: 'Ciudades, sitio y situación', fa: 'شهرها، محل و موقعیت' },
 place: { en: 'The City on the River', es: 'La ciudad del río', fa: 'شهر کنار دریا' },
 intro: [
-{ en: 'Christopher: "The Grump washed away the plans for a new city! The people need a good place to build. Talk to the road keeper at the pass, the rice farmer and the harbor pilot. Then climb the hill to the compass stone and choose a spot."',
-es: 'Christopher: "¡El Gruñón borró los planos de una ciudad nueva! La gente necesita un buen lugar para construir. Habla con el guardián del camino en el paso, la agricultora de arroz y el capitán del puerto. Luego sube la colina hasta la piedra de la brújula y elige un lugar."',
-fa: 'کریستوفر: «غرغرو نقشه‌های یک شهر نو را شست و برد! مردم به یک جای خوب برای ساختن ضرورت دارند. با نگهبان راه در کوتل، دهقان برنج و رهنمای بندر گپ بزن. بعد از تپه بالا برو تا سنگ قطب‌نما و یک جا را انتخاب کن.»' }
+{ en: 'The Grump washed away the new city\'s plans! Help the people find a good place.', es: '¡El Gruñón borró los planos de la ciudad nueva! Ayuda a la gente a encontrar un buen lugar.', fa: 'غرغرو نقشه‌های شهر نو را شست و برد! به مردم کمک کن یک جای خوب پیدا کنند.' },
+{ en: 'Meet the road keeper, rice farmer and harbor pilot. Then climb to the compass stone.', es: 'Habla con el guardián del camino, la agricultora de arroz y el capitán del puerto. Luego sube a la piedra de la brújula.', fa: 'با نگهبان راه، دهقان برنج و رهنمای بندر گپ بزن. بعد تا سنگ قطب‌نما بالا برو.' }
 ],
 map: [
 'AAMAAMATTTTTT~~TTTTTTTTTTTTTTTTT',
@@ -5377,11 +5497,11 @@ fa: 'شهر در دهانهٔ دریا ایستاده است! محل آن زمی
 ],
 finds: [
 { clueAt: [12, 4], at: [19, 14], decor: 'feather',
-clue: { en: 'Boats need a dock to stop. Find the dock on the river, just north of the house with the red roof. It is not the dock that goes out into the sea. Stand on its most western square.', es: 'Los botes necesitan un muelle para parar. Busca el muelle en el río, justo al norte de la casa del techo rojo. No es el muelle que entra en el mar. Párate en su cuadro más al oeste.', fa: 'کشتی‌ها برای ایستادن به اسکله ضرورت دارند. اسکله را روی دریا پیدا کن، درست شمالِ خانه‌ای که بام سرخ دارد. اسکله‌ای نیست که داخل بحر می‌رود. روی غربی‌ترین خانهٔ آن بایست.' },
-text: { en: 'You found the river dock! Boats stop here to load rice and other goods. Many cities grew up next to rivers, because boats make trade easy. A feather was on the dock.', es: '¡Encontraste el muelle del río! Los botes paran aquí para cargar arroz y otros productos. Muchas ciudades crecieron junto a los ríos, porque los botes hacen fácil el comercio. Había una pluma en el muelle.', fa: 'تو اسکلهٔ دریا را پیدا کردی! کشتی‌ها این جا می‌ایستند تا برنج و چیزهای دیگر را بار کنند. خیلی از شهرها کنار دریاها بزرگ شدند، چون کشتی‌ها تجارت را آسان می‌کنند. یک پر روی اسکله بود.' } },
+clue: { en: 'Find the river dock just north of the red-roofed house, not the sea dock. Stand on its western end.', es: 'Busca el muelle del río justo al norte de la casa de techo rojo, no el del mar. Párate en su punta oeste.', fa: 'اسکلهٔ دریا را درست شمالِ خانهٔ بام‌سرخ پیدا کن، نه اسکلهٔ بحر. روی سر غربی آن بایست.' },
+text: { en: 'You found the river dock and a feather! Many cities grew by rivers, because boats make trade easy.', es: '¡Encontraste el muelle del río y una pluma! Muchas ciudades crecieron junto a ríos, porque los botes facilitan el comercio.', fa: 'تو اسکلهٔ دریا و یک پر را پیدا کردی! بسیاری از شهرها کنار دریاها رشد کردند، چون کشتی تجارت را آسان می‌کند.' } },
 { clueAt: [6, 20], at: [13, 19], decor: 'flower',
 clue: { en: 'From this note, walk 7 steps east, then 1 step north. Something is hidden there.', es: 'Desde esta nota, camina 7 pasos al este y luego 1 paso al norte. Algo está escondido allí.', fa: 'از این یادداشت، ۷ قدم به شرق برو، بعد ۱ قدم به شمال. چیزی آن جا پنهان است.' },
-text: { en: 'You followed compass directions! East is to the right and north is up. A flower grew between the rice paddies. Flat land near a river is a good site for farms that feed a city.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el norte arriba. Una flor creció entre los arrozales. La tierra plana cerca de un río es un buen sitio para granjas que alimentan a una ciudad.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و شمال بالا است. یک گل میان شالی‌زارها روییده بود. زمین هموار نزدیک دریا جای خوبی برای زمین‌های زراعتی است که غذای یک شهر را می‌دهند.' } }
+text: { en: 'A flower grew in the rice paddies! Flat land by a river is a good site for farms.', es: '¡Una flor creció en los arrozales! La tierra plana junto a un río es un buen sitio para granjas.', fa: 'یک گل در شالی‌زارها روییده بود! زمین هموار کنار دریا جای خوبی برای کشتزار است.' } }
 ],
 secret: { tool: 'rail', at: [10, 20],
 text: { en: 'You lifted the barrier at the freight yard! Trains and river boats carry goods between the port of Shanghai and cities far inland. Good links like these give a city a great situation.',
@@ -5402,15 +5522,10 @@ name: { en: 'Mr. Huang', es: 'Sr. Huang', fa: 'آقای هوانگ' },
 role: { en: 'Road keeper at the pass', es: 'Guardián del camino en el paso', fa: 'نگهبان راه در کوتل' },
 look: { skin: 1, hair: '#3a3a3a', shirt: '#7a4b2a', pants: '#3a3a3a' },
 lines: [
-{ en: 'Welcome to the [[mountain pass|mountain pass]]! This is the only road between two valleys. Every trader must pass through here. That is this place\'s [[situation|situation]]: what it connects to.',
-es: '¡Bienvenido al [[mountain pass|paso de montaña]]! Este es el único camino entre dos valles. Todo comerciante debe pasar por aquí. Esa es la [[situation|situación]] de este lugar: con qué se conecta.',
-fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است. هر تاجر باید از اینجا بگذرد. این [[situation|موقعیت]] این جا است: اینکه به چه چیزها وصل است.' },
-{ en: 'Now look at the ground. Rocky, cold and narrow. Almost no farmland. That is its [[site|site]]: the land itself. Great situation, hard site!',
-es: 'Ahora mira el suelo. Rocoso, frío y angosto. Casi no hay tierra para cultivar. Ese es su [[site|sitio]]: la tierra misma. ¡Gran situación, sitio difícil!',
-fa: 'حالا به زمین ببین. سنگلاخ، سرد و باریک. تقریباً زمین زراعتی ندارد. این [[site|محل]] آن است: خود زمین. موقعیت عالی، محل سخت!' },
-{ en: 'Here is a secret. These rocks will look the same in a thousand years. But a situation can change in ten. If someone digs a tunnel in another valley, the traders will stop coming here.',
-es: 'Te cuento un secreto. Estas rocas se verán igual en mil años. Pero una situación puede cambiar en diez. Si alguien cava un túnel en otro valle, los comerciantes dejarán de venir.',
-fa: 'یک راز بگویم. این سنگ‌ها تا هزار سال همین‌طور می‌مانند. اما موقعیت می‌تواند در ده سال تغییر کند. اگر کسی در درهٔ دیگر تونل بکند، تاجران دیگر اینجا نمی‌آیند.' }
+{ en: 'Welcome to the [[mountain pass|mountain pass]]! It is the only road between two valleys.', es: '¡Bienvenido al [[mountain pass|paso de montaña]]! Es el único camino entre dos valles.', fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است.' },
+{ en: 'Every trader passes here. That is its [[situation|situation]]: what it connects to.', es: 'Todo comerciante pasa por aquí. Esa es su [[situation|situación]]: con qué se conecta.', fa: 'هر تاجر از این‌جا می‌گذرد. این [[situation|موقعیت]] آن است: اینکه به چه وصل است.' },
+{ en: 'The ground is rocky, cold and narrow. That is its [[site|site]]: the land itself.', es: 'El suelo es rocoso, frío y angosto. Ese es su [[site|sitio]]: la tierra misma.', fa: 'زمین سنگلاخ، سرد و باریک است. این [[site|محل]] آن است: خود زمین.' },
+{ en: 'Rocks stay the same. But if a tunnel opens elsewhere, traders stop coming here.', es: 'Las rocas siguen igual. Pero si abren un túnel en otro lado, los comerciantes dejan de venir.', fa: 'سنگ‌ها همان‌طور می‌مانند. اما اگر جای دیگر تونل باز شود، تاجران دیگر این‌جا نمی‌آیند.' }
 ],
 ask: {
 stat: 'loc',
@@ -5431,25 +5546,20 @@ name: { en: 'Mei', es: 'Mei', fa: 'مِی' },
 role: { en: 'Rice farmer', es: 'Agricultora de arroz', fa: 'دهقان برنج' },
 look: { skin: 1, hair: '#1b1b1b', shirt: '#c0392b', pants: '#2f3a5a' },
 lines: [
-{ en: 'I grow rice on this flat [[plain|plain]]. Every year the river drops rich soil on my fields. Flat land, fresh water and rich soil make a strong [[site|site]] for a city.',
-es: 'Yo cultivo arroz en esta [[plain|llanura]] plana. Cada año el río deja tierra fértil en mis campos. La tierra plana, el agua dulce y el suelo fértil hacen un buen [[site|sitio]] para una ciudad.',
-fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را روی کشتزارهایم می‌گذارد. زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.' },
-{ en: 'But in the rainy season, the river floods. Then the hilltop is the safe, dry place. Up there, though, you must carry water all the way up the hill.',
-es: 'Pero en la temporada de lluvias el río se desborda. Entonces la colina es el lugar seguro y seco. Aunque allá arriba hay que subir el agua cargando.',
-fa: 'اما در فصل باران، دریا سیلاب می‌شود. آن وقت سر تپه جای مصون و خشک است. اما آن بالا باید آب را تا سر تپه ببری.' },
-{ en: 'My rice goes to the town to be sold. The farms, villages and mines around a city that send it goods are its [[hinterland|hinterland]]. A big hinterland can help a city grow into a busy trade center.',
-es: 'Mi arroz va al pueblo para venderse. Las granjas, pueblos y minas alrededor de una ciudad que le mandan productos son su [[hinterland|hinterland]] o zona de influencia. Un hinterland grande puede ayudar a una ciudad a volverse un centro de comercio.',
-fa: 'برنج من برای فروش به شهر می‌رود. کشتزارها، قریه‌ها و معدن‌های اطراف یک شهر که برایش کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. یک پس‌کرانهٔ بزرگ می‌تواند شهر را یک مرکز پرکار تجارت بسازد.' }
+{ en: 'I grow rice on this flat [[plain|plain]]. Every year the river drops rich soil here.', es: 'Yo cultivo arroz en esta [[plain|llanura]] plana. Cada año el río deja tierra fértil aquí.', fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را این‌جا می‌گذارد.' },
+{ en: 'Flat land, fresh water and rich soil make a strong [[site|site]] for a city.', es: 'La tierra plana, el agua dulce y el suelo fértil hacen un buen [[site|sitio]] para una ciudad.', fa: 'زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.' },
+{ en: 'In the rainy season the river floods. The hilltop stays dry, but far from water.', es: 'En la temporada de lluvias el río se desborda. La colina queda seca, pero lejos del agua.', fa: 'در فصل باران دریا سیلاب می‌شود. سر تپه خشک می‌ماند، اما از آب دور است.' },
+{ en: 'Farms that send a city goods are its [[hinterland|hinterland]]. A big one helps trade grow.', es: 'Las granjas que mandan productos a una ciudad son su [[hinterland|hinterland]]. Uno grande hace crecer el comercio.', fa: 'کشتزارهایی که برای شهر کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. پس‌کرانهٔ بزرگ تجارت را زیاد می‌کند.' }
 ],
 ask: {
 stat: 'hei',
 q: { en: 'Which one is part of a city\'s SITE?', es: '¿Cuál es parte del SITIO de una ciudad?', fa: 'کدام یک بخشی از محل یک شهر است؟' },
 choices: [
-{ ok: true, t: { en: 'Flat, rich soil that floods in the rainy season', es: 'Suelo plano y fértil que se inunda en la temporada de lluvias', fa: 'خاک هموار و حاصلخیز که در فصل باران سیلاب می‌شود' },
+{ ok: true, t: { en: 'Rich, flat soil that floods', es: 'Suelo fértil y plano que se inunda', fa: 'خاک حاصلخیز و هموار که سیلاب می‌شود' },
 why: { en: 'Soil, flatness and floods are about the land itself. That is site.', es: 'El suelo, lo plano y las inundaciones son de la tierra misma. Eso es el sitio.', fa: 'خاک، هموار بودن و سیلاب دربارهٔ خود زمین هستند. این محل است.' } },
-{ t: { en: 'The road to the next valley', es: 'El camino al siguiente valle', fa: 'راهی که به درهٔ بعدی می‌رود' },
+{ t: { en: 'The road over to the next valley', es: 'El camino hacia el siguiente valle', fa: 'راهی که به درهٔ بعدی می‌رود' },
 why: { en: 'A road is a connection to other places. That is situation.', es: 'Un camino es una conexión con otros lugares. Eso es la situación.', fa: 'راه یک وصل به جاهای دیگر است. این موقعیت است.' } },
-{ t: { en: 'Ships coming from ports across the sea', es: 'Barcos que llegan de puertos al otro lado del mar', fa: 'کشتی‌هایی که از بندرهای آن طرف بحر می‌آیند' },
+{ t: { en: 'Ships from ports across the sea', es: 'Barcos de puertos al otro lado del mar', fa: 'کشتی‌ها از بندرهای آن طرف بحر' },
 why: { en: 'Ships link the city to other places. That is situation.', es: 'Los barcos unen la ciudad con otros lugares. Eso es la situación.', fa: 'کشتی‌ها شهر را به جاهای دیگر وصل می‌کنند. این موقعیت است.' } }
 ]
 }
@@ -5460,37 +5570,28 @@ name: { en: 'Captain Park', es: 'Capitán Park', fa: 'کپتان پارک' },
 role: { en: 'Harbor pilot', es: 'Piloto del puerto', fa: 'رهنمای بندر' },
 look: { skin: 1, hair: '#202020', shirt: '#1f4e8c', pants: '#22324f' },
 lines: [
-{ en: 'I guide ships at the [[river mouth|river mouth]]. Here the river meets the sea. Boats go up the river to the farm towns. Ships sail out to ports across the sea. That is a great [[situation|situation]]!',
-es: 'Yo guío barcos en la [[river mouth|desembocadura]]. Aquí el río llega al mar. Los botes suben por el río a los pueblos agrícolas. Los barcos salen a puertos al otro lado del mar. ¡Esa es una gran [[situation|situación]]!',
-fa: 'من کشتی‌ها را در [[river mouth|دهانهٔ دریا]] رهنمایی می‌کنم. اینجا دریا به بحر می‌رسد. قایق‌ها از دریا بالا تا قریه‌های زراعتی می‌روند. کشتی‌ها به بندرهای آن طرف بحر می‌روند. این یک [[situation|موقعیت]] عالی است!' },
-{ en: 'Many of the biggest cities in East Asia grew where a river meets the sea. Shanghai sits near the mouth of the Yangtze River. Rice and goods come down the river, and ships carry them away.',
-es: 'Muchas de las ciudades más grandes del este de Asia crecieron donde un río llega al mar. Shanghái está cerca de la desembocadura del río Yangtsé. El arroz y los productos bajan por el río y los barcos se los llevan.',
-fa: 'بسیاری از بزرگ‌ترین شهرهای شرق آسیا جایی رشد کردند که دریا به بحر می‌رسد. شانگهای نزدیک دهانهٔ دریای یانگتسی است. برنج و کالا از دریا پایین می‌آیند و کشتی‌ها آن‌ها را می‌برند.' },
-{ en: 'Alexandria, Virginia is like this too! Its site is deep water on the Potomac River. First it was a busy port. Today it is a city next to the nation\'s capital. The site stayed the same. The situation changed.',
-es: '¡Alexandria, Virginia, también es así! Su sitio es agua profunda en el río Potomac. Primero fue un puerto muy activo. Hoy es una ciudad junto a la capital del país. El sitio quedó igual. La situación cambió.',
-fa: 'الکساندریا، ویرجینیا هم همین‌طور است! محل آن آب عمیق در دریای پوتومک است. اول یک بندر پرکار بود. امروز شهری کنار پایتخت کشور است. محل همان ماند. موقعیت تغییر کرد.' }
+{ en: 'At this [[river mouth|river mouth]], boats go upriver and ships sail to far ports. Great [[situation|situation]]!', es: 'En esta [[river mouth|desembocadura]], los botes suben el río y los barcos van a puertos lejanos. ¡Gran [[situation|situación]]!', fa: 'در این [[river mouth|دهانهٔ دریا]]، قایق‌ها از دریا بالا می‌روند و کشتی‌ها به بندرهای دور می‌روند. [[situation|موقعیت]] عالی!' },
+{ en: 'Many big East Asian cities grew at river mouths, like Shanghai at the Yangtze.', es: 'Muchas grandes ciudades del este de Asia crecieron en desembocaduras, como Shanghái en el Yangtsé.', fa: 'بسیاری از شهرهای بزرگ شرق آسیا در دهانهٔ دریاها رشد کردند، مثل شانگهای کنار یانگتسی.' },
+{ en: 'Alexandria, Virginia, too! Its site: deep water on the Potomac. It was a busy port.', es: '¡Alexandria, Virginia, también! Su sitio: agua profunda en el Potomac. Fue un puerto muy activo.', fa: 'الکساندریا، ویرجینیا هم! محل آن: آب عمیق در دریای پوتومک. یک بندر پرکار بود.' },
+{ en: 'Today it is next to the capital. Same site, new situation.', es: 'Hoy está junto a la capital. El mismo sitio, una situación nueva.', fa: 'امروز کنار پایتخت است. همان محل، موقعیت نو.' }
 ],
 ask: {
 stat: 'mov',
 q: { en: 'Which one is part of a city\'s SITUATION?', es: '¿Cuál es parte de la SITUACIÓN de una ciudad?', fa: 'کدام یک بخشی از موقعیت یک شهر است؟' },
 choices: [
-{ ok: true, t: { en: 'The river and sea routes that reach other ports', es: 'Las rutas de río y mar que llegan a otros puertos', fa: 'راه‌های دریا و بحر که به بندرهای دیگر می‌رسند' },
+{ ok: true, t: { en: 'Sea routes to other ports', es: 'Rutas de mar a otros puertos', fa: 'راه‌های بحری به بندرهای دیگر' },
 why: { en: 'Routes connect the city to other places. That is situation.', es: 'Las rutas conectan la ciudad con otros lugares. Eso es la situación.', fa: 'راه‌ها شهر را به جاهای دیگر وصل می‌کنند. این موقعیت است.' } },
 { t: { en: 'The flat soil under the town', es: 'El suelo plano debajo del pueblo', fa: 'خاک هموار زیر شهر' },
 why: { en: 'Soil is the land itself. That is site.', es: 'El suelo es la tierra misma. Eso es el sitio.', fa: 'خاک خود زمین است. این محل است.' } },
-{ t: { en: 'The hill the old fort was built on', es: 'La colina donde construyeron el viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن ساخته شد' },
+{ t: { en: 'The hill under the old fort', es: 'La colina bajo el viejo fuerte', fa: 'تپهٔ زیر قلعهٔ کهنه' },
 why: { en: 'A hill is part of the ground. That is site.', es: 'Una colina es parte del suelo. Eso es el sitio.', fa: 'تپه بخشی از زمین است. این محل است.' } }
 ]
 }
 }
 ],
 signs: [
-{ x: 11, y: 7, text: { en: 'SURVEY POST · Three places for the new city: A · River mouth (south-east, where the river meets the sea) · B · Hilltop (north-east, up the path) · C · Mountain pass (west).',
-es: 'PUESTO DE ESTUDIO · Tres lugares para la ciudad nueva: A · Desembocadura (sureste, donde el río llega al mar) · B · Colina (noreste, subiendo el sendero) · C · Paso de montaña (oeste).',
-fa: 'پایگاه سروی · سه جا برای شهر نو: الف · دهانهٔ دریا (جنوب شرق، جایی که دریا به بحر می‌رسد) · ب · سر تپه (شمال شرق، از راه بالا برو) · ج · کوتل (غرب).' } },
-{ x: 24, y: 5, text: { en: 'HILLTOP B · High and dry. You can see the whole plain, the river and the sea from here. But the water is far below.',
-es: 'COLINA B · Alta y seca. Desde aquí se ve toda la llanura, el río y el mar. Pero el agua está muy abajo.',
-fa: 'سر تپه ب · بلند و خشک. از اینجا تمام دشت، دریا و بحر دیده می‌شود. اما آب خیلی پایین است.' } }
+{ x: 11, y: 7, text: { en: 'SURVEY POST · New city: A · River mouth (south-east) · B · Hilltop (north-east, up the path) · C · Mountain pass (west).', es: 'PUESTO DE ESTUDIO · Ciudad nueva: A · Desembocadura (sureste) · B · Colina (noreste, subiendo el sendero) · C · Paso de montaña (oeste).', fa: 'پایگاه سروی · شهر نو: الف · دهانهٔ دریا (جنوب شرق) · ب · سر تپه (شمال شرق، از راه بالا) · ج · کوتل (غرب).' } },
+{ x: 24, y: 5, text: { en: 'HILLTOP B · High and dry. You can see the plain, river and sea. But the water is far below.', es: 'COLINA B · Alta y seca. Se ve la llanura, el río y el mar. Pero el agua está muy abajo.', fa: 'سر تپه ب · بلند و خشک. دشت، دریا و بحر دیده می‌شود. اما آب خیلی پایین است.' } }
 ],
 quest: {
 stat: 'loc',
@@ -5501,19 +5602,12 @@ name: { en: 'Ms. Park', es: 'Sra. Park', fa: 'خانم پارک' },
 role: { en: 'City planner', es: 'Planificadora de la ciudad', fa: 'طراح شهر' },
 look: { skin: 1, hair: '#1a1410', shirt: '#c0392b', pants: '#2f3b4a', style: 'short' },
 lines: [
-{ en: 'Oh no! The Grump\'s wind took my red flag. I put it on my favorite spot for the new city. Now I cannot find it!',
-es: '¡Ay, no! El viento del Gruñón se llevó mi bandera roja. La puse en mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!',
-fa: 'وای نه! باد غرغرو بیرق سرخم را برد. آن را در جای دلخواهم برای شهر نو گذاشته بودم. حالا پیدایش نمی‌کنم!' },
-{ en: 'Hana flies her kite on the hilltop in the north-east. From up there she sees everything. Will you ask her?',
-es: 'Hana vuela su cometa en la colina del noreste. Desde allá arriba lo ve todo. ¿Le preguntas?',
-fa: 'هانا در بالای تپه در شمال شرق گُدی‌پران بازی می‌کند. از آن بالا همه چیز را می‌بیند. از او می‌پرسی؟' }
+{ en: 'Oh no! The Grump\'s wind took my red flag!', es: '¡Ay, no! ¡El viento del Gruñón se llevó mi bandera roja!', fa: 'وای نه! باد غرغرو بیرق سرخم را برد!' },
+{ en: 'It marked my favorite spot for the new city. Now I cannot find it!', es: 'Marcaba mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!', fa: 'جای دلخواهم را برای شهر نو نشان می‌داد. حالا پیدایش نمی‌کنم!' },
+{ en: 'Hana flies her kite on the north-east hilltop. She sees everything. Will you ask her?', es: 'Hana vuela su cometa en la colina del noreste. Lo ve todo. ¿Le preguntas?', fa: 'هانا بالای تپهٔ شمال شرق گُدی‌پران بازی می‌کند. همه چیز را می‌بیند. از او می‌پرسی؟' }
 ],
-wait: { en: 'Hana is on the hilltop. Walk north to the road. Cross the bridge to the east. Then climb the path up the hill.',
-es: 'Hana está en la colina. Camina al norte hasta el camino. Cruza el puente hacia el este. Luego sube por el sendero de la colina.',
-fa: 'هانا بالای تپه است. به طرف شمال تا سرک برو. از پل به طرف شرق بگذر. بعد از راه باریک بالای تپه برو.' },
-thanks: { en: 'My flag! The [[river mouth|river mouth]] links the river and the sea, so boats can reach the whole world. That is a great [[situation|situation]] for a city. Thank you!',
-es: '¡Mi bandera! La [[river mouth|desembocadura]] une el río y el mar, así que los barcos llegan a todo el mundo. Esa es una gran [[situation|situación]] para una ciudad. ¡Gracias!',
-fa: 'بیرق من! [[river mouth|دهانهٔ دریا]] دریا و بحر را به هم وصل می‌کند، پس کشتی‌ها به تمام دنیا می‌رسند. این یک [[situation|موقعیت]] عالی برای یک شهر است. تشکر!' }
+wait: { en: 'Hana is on the hilltop. Go north, cross the bridge east, then climb.', es: 'Hana está en la colina. Ve al norte, cruza el puente al este y luego sube.', fa: 'هانا بالای تپه است. به شمال برو، از پل به شرق بگذر، بعد بالا برو.' },
+thanks: { en: 'My flag! The [[river mouth|river mouth]] links river and sea. A great [[situation|situation]]! Thank you!', es: '¡Mi bandera! La [[river mouth|desembocadura]] une el río y el mar. ¡Una gran [[situation|situación]]! ¡Gracias!', fa: 'بیرق من! [[river mouth|دهانهٔ دریا]] دریا و بحر را وصل می‌کند. یک [[situation|موقعیت]] عالی! تشکر!' }
 },
 contact: {
 x: 21, y: 4,
@@ -5521,21 +5615,16 @@ name: { en: 'Hana', es: 'Hana', fa: 'هانا' },
 role: { en: 'Kite flyer', es: 'Niña de la cometa', fa: 'گُدی‌پران‌باز' },
 look: { skin: 2, hair: '#2a1d14', shirt: '#f2c94c', pants: '#3b5b8a', style: 'long' },
 lines: [
-{ en: 'Yes! From this high hill I can see the whole [[plain|plain]]. I saw a red flag fly down the river toward the sea.',
-es: '¡Sí! Desde esta colina alta veo toda la [[plain|llanura]]. Vi una bandera roja volar río abajo hacia el mar.',
-fa: 'بله! از این تپهٔ بلند تمام [[plain|دشت هموار]] را می‌بینم. دیدم یک بیرق سرخ در امتداد دریا به طرف بحر پرید.' },
-{ en: 'It landed at the [[river mouth|river mouth]], where the river meets the sea. Walk south along the beach to the very last sand, right next to the sea.',
-es: 'Cayó en la [[river mouth|desembocadura]], donde el río llega al mar. Camina al sur por la playa hasta la última arena, justo al lado del mar.',
-fa: 'در [[river mouth|دهانهٔ دریا]] افتاد، جایی که دریا به بحر می‌رسد. در کنار ساحل به طرف جنوب تا آخرین ریگ برو، درست کنار بحر.' }
+{ en: 'Yes! From this high hill I can see the whole [[plain|plain]].', es: '¡Sí! Desde esta colina alta veo toda la [[plain|llanura]].', fa: 'بله! از این تپهٔ بلند تمام [[plain|دشت هموار]] را می‌بینم.' },
+{ en: 'A red flag flew down to the [[river mouth|river mouth]], where the river meets the sea.', es: 'Una bandera roja voló hasta la [[river mouth|desembocadura]], donde el río llega al mar.', fa: 'یک بیرق سرخ تا [[river mouth|دهانهٔ دریا]] پرید، جایی که دریا به بحر می‌رسد.' },
+{ en: 'Walk south along the beach to the very last sand, right next to the sea.', es: 'Camina al sur por la playa hasta la última arena, justo al lado del mar.', fa: 'در کنار ساحل به طرف جنوب تا آخرین ریگ برو، درست کنار بحر.' }
 ]
 },
 action: {
 type: 'find',
 at: [23, 20],
 hint: { en: 'south end of the beach, next to the sea', es: 'el extremo sur de la playa, junto al mar', fa: 'آخر جنوبی ساحل، کنار بحر' },
-found: { en: 'There it is, flapping in the sand! You are at the [[river mouth|river mouth]]. The river and the sea both meet here.',
-es: '¡Ahí está, ondeando en la arena! Estás en la [[river mouth|desembocadura]]. Aquí se juntan el río y el mar.',
-fa: 'آنجاست، در ریگ‌ها تکان می‌خورد! تو در [[river mouth|دهانهٔ دریا]] هستی. دریا و بحر هر دو اینجا به هم می‌رسند.' },
+found: { en: 'There it is! You are at the [[river mouth|river mouth]], where the river and sea meet.', es: '¡Ahí está! Estás en la [[river mouth|desembocadura]], donde se juntan el río y el mar.', fa: 'آنجاست! تو در [[river mouth|دهانهٔ دریا]] هستی، جایی که دریا و بحر به هم می‌رسند.' },
 item: { icon: '🚩', name: { en: "Ms. Park's planning flag", es: 'La bandera del plan de la Sra. Park', fa: 'بیرق نقشهٔ خانم پارک' } }
 }
 },
@@ -5596,19 +5685,19 @@ taunt: { en: 'Splash! I will wash away every city plan. Site, situation, who car
 win: { en: 'The water goes back into the river. Atlas page 7.2 floats into your hands!', es: 'El agua vuelve al río. ¡La página 7.2 del atlas cae en tus manos!', fa: 'آب دوباره به دریا برمی‌گردد. صفحهٔ ۷.۲ اطلس به دستت می‌افتد!' },
 questions: [
 { q: { en: 'What does site mean?', es: '¿Qué significa sitio?', fa: 'محل یعنی چه؟' },
-choices: [{ en: 'The physical ground a city was built on', es: 'El suelo donde se construyó una ciudad', fa: 'زمینی که شهر روی آن ساخته شده' }, { en: 'The other cities a place can reach', es: 'Las otras ciudades a las que se puede llegar', fa: 'شهرهای دیگری که از یک جا می‌شود رسید' }, { en: 'The number of people in a city', es: 'El número de personas de una ciudad', fa: 'تعداد مردم یک شهر' }, { en: 'The main job most people do', es: 'El trabajo principal de la mayoría', fa: 'کار اصلی بیشتر مردم' }], answer: 0,
+choices: [{ en: 'The ground a city is built on', es: 'El suelo donde está una ciudad', fa: 'زمینی که شهر روی آن است' }, { en: 'The other cities a place can reach', es: 'Las otras ciudades a las que se puede llegar', fa: 'شهرهای دیگری که از یک جا می‌شود رسید' }, { en: 'The number of people in a city', es: 'El número de personas de una ciudad', fa: 'تعداد مردم یک شهر' }, { en: 'The main job most people do', es: 'El trabajo principal de la mayoría', fa: 'کار اصلی بیشتر مردم' }], answer: 0,
 why: { en: 'Site is the land itself: a harbor, a hill, a river crossing.', es: 'El sitio es la tierra misma: un puerto natural, una colina, un cruce de río.', fa: 'محل خود زمین است: یک بندر، یک تپه، یک گذرگاه دریا.' } },
 { q: { en: 'Which of these is part of a city\'s situation?', es: '¿Cuál de estos es parte de la situación de una ciudad?', fa: 'کدام یک بخشی از موقعیت یک شهر است؟' },
-choices: [{ en: 'The rail line that reaches other cities', es: 'La línea de tren que llega a otras ciudades', fa: 'خط ریل که به شهرهای دیگر می‌رسد' }, { en: 'The hill the old fort was built on', es: 'La colina del viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن است' }, { en: 'The deep water next to the docks', es: 'El agua profunda junto a los muelles', fa: 'آب عمیق کنار اسکله‌ها' }, { en: 'The flat dry land above the flood line', es: 'La tierra plana y seca sobre la línea de inundación', fa: 'زمین هموار و خشک بالاتر از خط سیلاب' }], answer: 0,
+choices: [{ en: 'A rail line to other cities', es: 'Una línea de tren a otras ciudades', fa: 'خط ریل به شهرهای دیگر' }, { en: 'The hill the old fort was built on', es: 'La colina del viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن است' }, { en: 'The deep water next to the docks', es: 'El agua profunda junto a los muelles', fa: 'آب عمیق کنار اسکله‌ها' }, { en: 'The flat dry land above the flood line', es: 'La tierra plana y seca sobre la línea de inundación', fa: 'زمین هموار و خشک بالاتر از خط سیلاب' }], answer: 0,
 why: { en: 'A rail line connects the city to other places. The other three are the ground itself.', es: 'Una línea de tren conecta la ciudad con otros lugares. Las otras tres son el suelo mismo.', fa: 'خط ریل شهر را به جاهای دیگر وصل می‌کند. سه تای دیگر خود زمین هستند.' } },
 { q: { en: 'What is a hinterland?', es: '¿Qué es un hinterland?', fa: 'پس‌کرانه چیست؟' },
-choices: [{ en: 'The region around a city that depends on it and sends it goods', es: 'La zona alrededor de una ciudad que depende de ella y le manda productos', fa: 'ساحهٔ اطراف شهر که به آن وابسته است و برایش کالا می‌فرستد' }, { en: 'The oldest part of downtown', es: 'La parte más vieja del centro', fa: 'کهنه‌ترین بخش مرکز شهر' }, { en: 'The border between two cities', es: 'La frontera entre dos ciudades', fa: 'سرحد میان دو شهر' }, { en: 'Land the city plans to build on next', es: 'La tierra donde la ciudad piensa construir después', fa: 'زمینی که شهر می‌خواهد بعداً رویش بسازد' }], answer: 0,
+choices: [{ en: 'Nearby land that sends a city goods', es: 'Tierra cercana que manda productos a una ciudad', fa: 'زمین نزدیک که برای شهر کالا می‌فرستد' }, { en: 'The oldest part of the downtown area', es: 'La parte más vieja del centro de la ciudad', fa: 'کهنه‌ترین بخش مرکز شهر' }, { en: 'The border line between two cities', es: 'La línea de frontera entre dos ciudades', fa: 'خط سرحد میان دو شهر' }, { en: 'Land the city plans to build on next', es: 'La tierra donde la ciudad piensa construir después', fa: 'زمینی که شهر می‌خواهد بعداً رویش بسازد' }], answer: 0,
 why: { en: 'Farms, mines and small towns in the hinterland send goods to the city.', es: 'Las granjas, minas y pueblos del hinterland mandan productos a la ciudad.', fa: 'کشتزارها، معدن‌ها و قریه‌های پس‌کرانه به شهر کالا می‌فرستند.' } },
 { q: { en: 'A city has a very large hinterland. What often happens to it?', es: 'Una ciudad tiene un hinterland muy grande. ¿Qué le pasa muchas veces?', fa: 'یک شهر پس‌کرانهٔ بسیار بزرگ دارد. اکثراً چه می‌شود؟' },
-choices: [{ en: 'It grows into a busy trade center', es: 'Se vuelve un centro de comercio muy activo', fa: 'یک مرکز پرکار تجارت می‌شود' }, { en: 'It shrinks into a quiet village', es: 'Se encoge hasta ser un pueblo tranquilo', fa: 'کوچک شده یک قریهٔ آرام می‌شود' }, { en: 'Its site moves to new land', es: 'Su sitio se mueve a otra tierra', fa: 'محلش به زمین نو می‌رود' }, { en: 'It stops trading with anyone', es: 'Deja de comerciar con todos', fa: 'با هیچ‌کس تجارت نمی‌کند' }], answer: 0,
+choices: [{ en: 'It becomes a busy trade center', es: 'Se vuelve un centro de comercio activo', fa: 'یک مرکز پرکار تجارت می‌شود' }, { en: 'It shrinks into a quiet village', es: 'Se encoge hasta ser un pueblo tranquilo', fa: 'کوچک شده یک قریهٔ آرام می‌شود' }, { en: 'Its site moves to new land', es: 'Su sitio se mueve a otra tierra', fa: 'محلش به زمین نو می‌رود' }, { en: 'It stops trading with anyone', es: 'Deja de comerciar con todos', fa: 'با هیچ‌کس تجارت نمی‌کند' }], answer: 0,
 why: { en: 'More farms and towns sending goods means more trade passing through the city.', es: 'Más granjas y pueblos mandando productos significa más comercio pasando por la ciudad.', fa: 'کشتزار و قریهٔ بیشتر که کالا می‌فرستند یعنی تجارت بیشتر از شهر می‌گذرد.' } },
 { q: { en: 'What is the site of Alexandria, Virginia?', es: '¿Cuál es el sitio de Alexandria, Virginia?', fa: 'محل الکساندریا، ویرجینیا چیست؟' },
-choices: [{ en: 'A deep-water spot on the Potomac River', es: 'Un lugar de agua profunda en el río Potomac', fa: 'یک جای آب عمیق در دریای پوتومک' }, { en: 'A dry plain far above a flood line', es: 'Una llanura seca muy por encima de la línea de inundación', fa: 'یک دشت خشک خیلی بالاتر از خط سیلاب' }, { en: 'A crossing between two large lakes', es: 'Un cruce entre dos lagos grandes', fa: 'یک گذرگاه میان دو جهیل بزرگ' }, { en: 'A hilltop above a mountain pass', es: 'Una colina sobre un paso de montaña', fa: 'سر یک تپه بالای کوتل' }], answer: 0,
+choices: [{ en: 'Deep water on the Potomac River', es: 'Agua profunda en el río Potomac', fa: 'آب عمیق در دریای پوتومک' }, { en: 'A dry plain far above a flood line', es: 'Una llanura seca muy por encima de la línea de inundación', fa: 'یک دشت خشک خیلی بالاتر از خط سیلاب' }, { en: 'A crossing between two large lakes', es: 'Un cruce entre dos lagos grandes', fa: 'یک گذرگاه میان دو جهیل بزرگ' }, { en: 'A hilltop above a mountain pass', es: 'Una colina sobre un paso de montaña', fa: 'سر یک تپه بالای کوتل' }], answer: 0,
 why: { en: 'Deep water let large ships reach Alexandria\'s docks directly.', es: 'El agua profunda dejaba que los barcos grandes llegaran directo a los muelles de Alexandria.', fa: 'آب عمیق به کشتی‌های بزرگ اجازه می‌داد مستقیم به اسکله‌های الکساندریا برسند.' } },
 { q: { en: 'Alexandria\'s ground never moved, but its jobs changed from shipping flour to government and services. What changed?', es: 'El suelo de Alexandria nunca se movió, pero sus trabajos cambiaron de enviar harina a gobierno y servicios. ¿Qué cambió?', fa: 'زمین الکساندریا هرگز تغییر نکرد، اما کارهایش از صادر کردن آرد به کار دولتی و خدمات تغییر کرد. چه چیز تغییر کرد؟' },
 choices: [{ en: 'Its situation', es: 'Su situación', fa: 'موقعیتش' }, { en: 'Its site', es: 'Su sitio', fa: 'محلش' }, { en: 'The depth of its river', es: 'La profundidad de su río', fa: 'عمق دریایش' }, { en: 'The soil in its hinterland', es: 'El suelo de su hinterland', fa: 'خاک پس‌کرانه‌اش' }], answer: 0,
@@ -5617,7 +5706,7 @@ why: { en: 'Being next to the nation\'s capital is about connections. That is si
 choices: [{ en: 'The town\'s situation', es: 'La situación del pueblo', fa: 'موقعیت شهرک' }, { en: 'The town\'s site', es: 'El sitio del pueblo', fa: 'محل شهرک' }, { en: 'The town\'s flood line', es: 'La línea de inundación del pueblo', fa: 'خط سیلاب شهرک' }, { en: 'The town\'s hinterland disappeared', es: 'El hinterland del pueblo desapareció', fa: 'پس‌کرانهٔ شهرک از بین رفت' }], answer: 0,
 why: { en: 'A highway is a new connection. The ground under the town is the same.', es: 'Una carretera es una conexión nueva. El suelo del pueblo es el mismo.', fa: 'شاهراه یک وصل نو است. زمین زیر شهرک همان است.' } },
 { q: { en: 'Many towns started as a fort, then became a market town, then a factory town. Why does a town\'s job keep changing?', es: 'Muchos pueblos empezaron como fuerte, luego fueron pueblo de mercado y luego pueblo de fábricas. ¿Por qué cambia el trabajo de un pueblo?', fa: 'بسیاری از شهرک‌ها اول قلعه بودند، بعد شهرک بازار، بعد شهرک فابریکه شدند. چرا کار یک شهرک تغییر می‌کند؟' },
-choices: [{ en: 'Its situation changes, so its work changes too', es: 'Su situación cambia, así que su trabajo también', fa: 'موقعیتش تغییر می‌کند، پس کارش هم تغییر می‌کند' }, { en: 'The ground under the town keeps shifting', es: 'El suelo debajo del pueblo se sigue moviendo', fa: 'زمین زیر شهرک همیشه حرکت می‌کند' }, { en: 'Every fort must become a factory', es: 'Todo fuerte debe volverse fábrica', fa: 'هر قلعه باید فابریکه شود' }, { en: 'Towns must change their name every 100 years', es: 'Los pueblos deben cambiar de nombre cada 100 años', fa: 'شهرک‌ها باید هر ۱۰۰ سال نام خود را تغییر دهند' }], answer: 0,
+choices: [{ en: 'Its situation changes, so its work does', es: 'Su situación cambia, y su trabajo también', fa: 'موقعیتش تغییر می‌کند، پس کارش هم' }, { en: 'The ground under the town keeps shifting', es: 'El suelo debajo del pueblo se sigue moviendo', fa: 'زمین زیر شهرک همیشه حرکت می‌کند' }, { en: 'Every fort must become a factory', es: 'Todo fuerte debe volverse fábrica', fa: 'هر قلعه باید فابریکه شود' }, { en: 'Towns must change their name every 100 years', es: 'Los pueblos deben cambiar de nombre cada 100 años', fa: 'شهرک‌ها باید هر ۱۰۰ سال نام خود را تغییر دهند' }], answer: 0,
 why: { en: 'New roads, markets and factories change what a town connects to, and the jobs follow.', es: 'Los caminos, mercados y fábricas nuevos cambian con qué se conecta un pueblo, y los trabajos cambian también.', fa: 'راه‌ها، بازارها و فابریکه‌های نو تغییر می‌دهند که شهرک به چه وصل است، و کارها هم تغییر می‌کنند.' } }
 ]
 },

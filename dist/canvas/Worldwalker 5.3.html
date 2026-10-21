@@ -361,6 +361,40 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+@media (min-width:1280px){.ww-frame{max-width:none}}
 
 </style>
 </head>
@@ -1513,6 +1547,11 @@ findFound: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش ک�
 findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
 findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
 why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
 helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
 free: { en: 'free', es: 'gratis', fa: 'رایگان' },
 tool_build: { en: 'Build: put each piece where it belongs', es: 'Construir: pon cada pieza donde va', fa: 'ساختن: هر تکه را جای درستش بگذار' },
@@ -1581,6 +1620,9 @@ episode: { en: 'Episode', es: 'Episodio', fa: 'قسمت' },
 realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
 teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
 playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
 story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
 };
 WW.T = k => WW.L(WW.S[k]);
@@ -1732,6 +1774,7 @@ WW.plain = t => L(t).replace(/\[\[([^|\]]+)\|([^\]]+)\]\]/g, '$2').replace(/\[\[
 const $ = id => document.getElementById(id);
 const ui = WW.ui = { stack: [] };
 ui.open = (opts) => {
+if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip();
 const ov = $('ww-ov');
 const h = { opts, close() { ui.close(h); }, render() { draw(); } };
 function draw() {
@@ -1809,15 +1852,16 @@ const el = $('ww-hud'); if (!el || !WW.ep) return;
 const run = WW.run || {}, max = WW.heartsMax();
 let h = '<div class="hud-left">';
 for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
 h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
 h += '<div class="hud-right">';
 WW.THEMES.forEach(th => {
 const v = WW.save.stats[th.k] || 0;
-h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
 });
 h += '</div>';
 el.innerHTML = h;
+el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
 const bar = $('ww-bar');
 if (bar) {
 bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -1829,6 +1873,7 @@ lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
 lab('ww-b-full', '⛶', T('full'));
 lab('ww-b-help', '?', T('helpKeys'));
 lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+lab('ww-b-gear', '⚙', T('settings'));
 }
 };
 ui.quest = () => {
@@ -1848,6 +1893,13 @@ el.setAttribute('dir', WW.dir());
 ui.questSteps = steps;
 const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
 };
+ui.nowCard = () => {
+const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+};
+setInterval(() => ui.nowCard(), 700);
 ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
 return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
 let qTimer = 0;
@@ -1864,6 +1916,15 @@ const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
 WW.sprite(x, name, 0, 0, { pal, scale });
 return c;
 };
+const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+WW.speak = (text) => {
+if (!WW.canSpeak()) return false;
+try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+};
+try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
 ui.talk = (npc, onDone) => {
 let page = 0, stage = 'read', picked = null;
 const lines = npc.lines || [];
@@ -1877,7 +1938,10 @@ const head = document.createElement('div'); head.className = 'talk-head';
 head.appendChild(face);
 head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
 const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-x.onclick = () => h.close(); head.appendChild(x);
+x.onclick = () => h.close();
+const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+if (sp) head.appendChild(sp);
+head.appendChild(x);
 box.appendChild(head);
 const body = document.createElement('div'); body.className = 'talk-body';
 box.appendChild(body);
@@ -1907,8 +1971,9 @@ b.onclick = () => {
 picked = i;
 if (ch.ok) {
 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -1964,7 +2029,7 @@ wrap.appendChild(rows);
 box.appendChild(wrap);
 }
 ui.start = (onGo) => {
-let msg = '', newHero = !WW.save.name;
+let msg = '', newHero = !WW.save.name, openPart = '';
 ui.open({
 cls: 'startov',
 render(box, h) {
@@ -1993,10 +2058,6 @@ form.innerHTML = `<h3>${esc(T('signIn'))}</h3>
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
 box.appendChild(form);
-const lk = document.createElement('div'); lk.className = 'lookbox';
-lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-lookPicker(lk, h);
-box.appendChild(lk);
 const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
 form.querySelectorAll('input').forEach(i => (i.oninput = keep));
 form.querySelectorAll('input').forEach((i, k, all) => (i.onkeydown = e => { if (e.key !== 'Enter') return; e.preventDefault(); if (all[k + 1]) all[k + 1].focus(); else playBtn.click(); }));
@@ -2010,14 +2071,25 @@ go();
 acts.appendChild(playBtn);
 box.appendChild(acts);
 if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
+const more = document.createElement('div'); more.className = 'si-more';
+const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+more.append(lkB, cdB); box.appendChild(more);
+if (openPart === 'look') {
+const lk = document.createElement('div'); lk.className = 'lookbox';
+lookPicker(lk, h);
+box.appendChild(lk);
+}
+if (openPart === 'code') {
 const pc = document.createElement('div'); pc.className = 'codein';
 pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
 pc.appendChild(btn(T('useCode'), 'ghost', () => {
 const d = WW.readCode($('si-code').value);
 if (!d) { msg = T('badCode'); return h.render(); }
-keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
+keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
 }));
 box.appendChild(pc);
+}
 }
 });
 async function go() {
@@ -2035,17 +2107,12 @@ const ep = WW.ep;
 const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
 box.appendChild(pip);
 box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
 const acts = document.createElement('div'); acts.className = 'acts center';
-acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+acts.appendChild(go);
 box.appendChild(acts);
+setTimeout(() => go.focus && go.focus(), 30);
 }
 });
 };
@@ -2171,23 +2238,13 @@ const st = r.stars;
 box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
 const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
 const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
 starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
 box.appendChild(starter);
 const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
 ta.oninput = () => { r.reflection = ta.value; };
 box.appendChild(ta);
-const sv = document.createElement('div'); sv.className = 'savebox';
-sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-box.appendChild(sv);
 box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
 const acts = document.createElement('div'); acts.className = 'acts';
 acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -2202,8 +2259,19 @@ if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (l
 } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
 nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
 box.appendChild(nav);
+const sv = document.createElement('div'); sv.className = 'savebox';
+sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+(sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+`<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+box.appendChild(sv);
+if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
 }
 });
+{ const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; }
 if (sheet === 'saving') {
 WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
 }
@@ -2571,8 +2639,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3135,10 +3203,10 @@ r.chase = (r.chase || 0) + 1; r.chaseBand = null;
 WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
 WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
 const next = a.clues[r.chase];
-if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' });
 else {
 const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
 }
 WW.ui.quest();
 return;
@@ -3162,7 +3230,7 @@ return true;
 }
 function showAction(ents) {
 const a = WW.ep.quest.action;
-if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3329,7 +3397,7 @@ function el() {
 if (!bubble || !bubble.isConnected) {
 bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
 $('ww-stage').appendChild(bubble);
-bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
 }
 return bubble;
 }
@@ -3337,21 +3405,29 @@ C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.d
 C.showing = () => !!(bubble && bubble.style.display === 'block');
 let aim = null;
 C.say = (text, buttons, opt) => {
+if (!(opt && opt.chain)) chainQ = [];
+if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; }
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
 b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+{ const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
 buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
 b.appendChild(row);
 }
+if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
 b.style.display = 'block'; said = text;
 const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
 WW.sfx('blip');
 C.place();
 };
+let chainQ = [], chainOpt = null;
+C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+C.chaining = () => chainQ.length > 0;
 C.place = () => {
 if (!C.showing()) return;
 const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
@@ -3399,24 +3475,26 @@ if (!tag || !tag.isConnected) { tag = document.createElement('div'); tag.classNa
 tag.textContent = T('chrisName'); tag.style.display = 'block';
 tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
 } else if (tag) tag.style.display = 'none';
+if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
 if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
 };
-let lines = [], li = 0, after = null;
-C.meet = (ls, done) => {
-lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+let lines = [], li = 0, after = null, meetOpt = {};
+C.meet = (ls, done, opt = {}) => {
+lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+if (!lines.length) return C.end();
+if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
 };
 C.next = (first) => {
 if (!C.scene) return;
 if (!first) li++;
 if (li >= lines.length) return C.end();
-C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
 };
 C.end = () => {
-C.scene = false; C.hide(); WW.paused = false;
-WW.save.metChris = true; WW.store();
+C.scene = false; C.hide();
+if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
 if (WW.game.pip) WW.game.pip.fly = null;
 const d = after; after = null; d && d();
 WW.toastPump && WW.toastPump();
@@ -3472,6 +3550,7 @@ return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
+if (C.chainNext()) return;
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
 const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -3545,6 +3624,7 @@ F.scr = [sx, sy];
 if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
 const seatX = hcx - 14 * F.side, seatY = hcy - 9;
 F.ax = seatX; F.ay = seatY;
+if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000);
 if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
 const sig = goalSig(), act = activitySig();
 if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
@@ -4687,11 +4767,12 @@ root.innerHTML = `
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -4713,6 +4794,10 @@ $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen'
 $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
 if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
 $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+$('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+$('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {
@@ -4726,7 +4811,9 @@ fr.style.setProperty('--gw', w + 'px');
 const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
 fr.classList.toggle('narrow', narrow);
 const bar = $('ww-tools');
-if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); }
+const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
 if (WW.chris) WW.chris.place();
 };
 window.addEventListener('resize', G.fit);
@@ -4741,6 +4828,14 @@ else window.open(location.href, '_blank');
 }
 const G = WW.game = {};
 let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
+WW.answered = (ok, first) => {
+const r = WW.run; if (!r) return;
+if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+if (!first) return;
+r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+WW.gain(null, 0, 1, T('firstTry'), true);
+WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+};
 WW.gain = (stat, n, coins, why, quiet) => {
 const before = stat ? WW.tier(stat) : 0;
 if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -4829,15 +4924,15 @@ WW.music.play('realm' + ep.realm);
 WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
 };
 function meetChris() {
-const m = WW.ep.christopher && WW.ep.christopher.meet;
-if (m && !WW.save.metChris) WW.chris.meet(m);
+const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
 }
 function previewJump(where) {
 const ep = WW.ep, r = WW.run;
 const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
 if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
 $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
 ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -5119,9 +5214,12 @@ if (e.kind === 'scrap') WW.sprite(c, 'page', px(e) + 1, py(e) + 2, { bob: true, 
 if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
 if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
 if (e.kind === 'stone') {
-const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
 if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+c.globalAlpha = 1;
+if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
 }
 });
 WW.world.drawFog(c, sx, sy, t);
@@ -5221,6 +5319,7 @@ const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
 const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
 pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
 WW.chris.drawMark(c, sx, sy, now);
+drawGoal(c, sx, sy, hx, hy, now);
 WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -5231,6 +5330,28 @@ drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
 if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
 c.restore();
+}
+G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+function drawGoal(c, sx, sy, hx, hy, now) {
+if (WW.paused || (WW.chris && WW.chris.scene)) return;
+const g = G.goal(); if (!g) return;
+const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+const tri = (x, y, dx, dy) => {
+const px = -dy, py = dx;
+c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+};
+const [gsx, gsy] = screenOf(g[0], g[1]);
+if (gsx === sx && gsy === sy) {
+const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return;
+tri(x, Math.max(6, y), 0, 1);
+} else {
+const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+}
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
@@ -5328,9 +5449,12 @@ sol: 'WG.8',
 title: { en: 'Borders, Resources and Cooperation', es: 'Fronteras, recursos y cooperación', fa: 'سرحدها، منابع و همکاری' },
 place: { en: 'The Jordan River', es: 'El río Jordán', fa: 'دریای اردن' },
 intro: [
-{ en: 'Christopher: "The Drought Grump is drinking up the Jordan River! It wants the neighbors to fight over every drop. Talk to the engineer, the water planner and the farmer. Then lead the water council at the compass stone."',
-es: 'Christopher: "¡El Gruñón Sequía se está bebiendo el río Jordán! Quiere que los vecinos peleen por cada gota. Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua en la piedra de la brújula."',
-fa: 'کریستوفر: «غرغروی خشکسالی آب دریای اردن را می‌نوشد! می‌خواهد همسایه‌ها بر سر هر قطره دعوا کنند. با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را کنار سنگ قطب‌نما رهبری کن.»' }
+{ en: 'The Drought Grump is drinking up the Jordan River! It wants neighbors to fight over water.',
+es: '¡El Gruñón Sequía se está bebiendo el río Jordán! Quiere que los vecinos peleen por el agua.',
+fa: 'غرغروی خشکسالی آب دریای اردن را می‌نوشد! می‌خواهد همسایه‌ها بر سر آب دعوا کنند.' },
+{ en: 'Talk to the engineer, the water planner and the farmer. Then lead the water council.',
+es: 'Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua.',
+fa: 'با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را رهبری کن.' }
 ],
 map: [
 '=~MMMMMAA~~AAMMMMMMMMMMMMMMMMMMM',
@@ -5376,11 +5500,11 @@ fa: 'یک کانال، دو شهرک، و هر دو آب می‌گیرند. در
 ],
 finds: [
 { clueAt: [15, 9], at: [11, 8], decor: 'flower',
-clue: { en: 'The Yarmouk River flows in from the east and joins the Jordan River. Stand on the land square that touches both rivers: south of the Yarmouk and east of the Jordan.', es: 'El río Yarmuk llega desde el este y se une al río Jordán. Párate en el cuadro de tierra que toca los dos ríos: al sur del Yarmuk y al este del Jordán.', fa: 'دریای یرموک از طرف شرق می‌آید و با دریای اردن یکی می‌شود. روی خانهٔ خشکه‌ای بایست که به هر دو دریا می‌رسد: جنوبِ یرموک و شرقِ اردن.' },
-text: { en: 'You found where two rivers meet! A river that flows into a bigger river is called a tributary. The Yarmouk is the biggest tributary of the Jordan. Wildflowers grow by the water.', es: '¡Encontraste donde se juntan dos ríos! Un río que desemboca en un río más grande se llama afluente. El Yarmuk es el afluente más grande del Jordán. Junto al agua crecen flores silvestres.', fa: 'تو جایی را پیدا کردی که دو دریا به هم می‌رسند! دریایی که به یک دریای بزرگ‌تر می‌ریزد، شاخهٔ آن دریا است. یرموک بزرگ‌ترین شاخهٔ دریای اردن است. گل‌های خودرو کنار آب می‌رویند.' } },
+clue: { en: 'The Yarmouk flows in from the east. Stand on the land square south of it and east of the Jordan.', es: 'El Yarmuk llega desde el este. Párate en el cuadro de tierra al sur del Yarmuk y al este del Jordán.', fa: 'یرموک از شرق می‌آید. روی خانهٔ خشکهٔ جنوبِ یرموک و شرقِ اردن بایست.' },
+text: { en: 'Two rivers meet here! The Yarmouk is the Jordan\'s biggest tributary, a river flowing into a bigger one.', es: '¡Aquí se juntan dos ríos! El Yarmuk es el afluente más grande del Jordán: un río que entra en otro más grande.', fa: 'دو دریا این‌جا به هم می‌رسند! یرموک بزرگ‌ترین شاخهٔ اردن است، دریایی که به دریای بزرگ‌تر می‌ریزد.' } },
 { clueAt: [21, 2], at: [19, 5], decor: 'fossil',
 clue: { en: 'From this note, walk 3 steps south, then 2 steps west. Look in the dry grass.', es: 'Desde esta nota, camina 3 pasos al sur y luego 2 pasos al oeste. Busca en el pasto seco.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۲ قدم به غرب. در علف خشک بپال.' },
-text: { en: 'You followed the compass! South is down and west is to the left. A fossil sea shell was in the dry grass. Millions of years ago, a sea covered this land.', es: '¡Seguiste la brújula! El sur está abajo y el oeste a la izquierda. Había un fósil de concha marina en el pasto seco. Hace millones de años, un mar cubría esta tierra.', fa: 'تو قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. فسیل یک صدف بحری در علف خشک بود. ملیون‌ها سال پیش، یک بحر این زمین را پوشانده بود.' } }
+text: { en: 'South is down, west is left. A fossil sea shell! Millions of years ago, a sea covered this land.', es: 'El sur está abajo, el oeste a la izquierda. ¡Un fósil de concha marina! Hace millones de años, un mar cubría esta tierra.', fa: 'جنوب پایین و غرب طرف چپ است. فسیل یک صدف بحری! ملیون‌ها سال پیش، بحر این زمین را پوشانده بود.' } }
 ],
 secret: { tool: 'canoe', at: [9, 3],
 text: { en: 'The canoe found a tiny island in the lake! The Sea of Galilee is the lowest freshwater lake on Earth. It is about 210 meters below sea level.',
@@ -5402,18 +5526,24 @@ name: { en: 'Maya', es: 'Maya', fa: 'مایا' },
 role: { en: 'Engineer at the desalination plant', es: 'Ingeniera de la planta desalinizadora', fa: 'انجنیر در فابریکهٔ آب‌شیرین‌کن' },
 look: { skin: 2, hair: '#4a2a18', shirt: '#e0a020', pants: '#2c3e5a' },
 lines: [
-{ en: 'Welcome to the Levant, at the east end of the Mediterranean Sea. Look around. Rain falls only in winter, and summers are long and dry. Fresh water here is [[scarce|scarce]].',
-es: 'Bienvenido al Levante, en el extremo este del mar Mediterráneo. Mira a tu alrededor. Solo llueve en invierno y los veranos son largos y secos. Aquí el agua dulce es [[scarce|escasa]].',
-fa: 'به شام (لِوانت) در شرق بحیرهٔ مدیترانه خوش آمدی. به اطراف نگاه کن. باران فقط در زمستان می‌بارد و تابستان‌ها دراز و خشک هستند. آب شیرین این‌جا [[scarce|کمیاب]] است.' },
-{ en: 'But the sea never runs dry! My plant does [[desalination|desalination]]. It takes the salt out of seawater to make fresh water. The hard part: it needs lots of energy, and it leaves very salty water behind.',
-es: '¡Pero el mar nunca se seca! Mi planta hace [[desalination|desalinización]]. Le quita la sal al agua de mar para hacer agua dulce. Lo difícil: necesita mucha energía y deja atrás agua muy salada.',
-fa: 'اما بحر هرگز خشک نمی‌شود! فابریکهٔ من [[desalination|آب بحر را شیرین می‌کند]]. نمک را از آب بحر می‌گیرد تا آب شیرین بسازد. مشکل این است: انرژی زیاد لازم دارد و آب بسیار شور از آن باقی می‌ماند.' }
+{ en: 'Welcome to the Levant, at the east end of the Mediterranean Sea.',
+es: 'Bienvenido al Levante, en el extremo este del mar Mediterráneo.',
+fa: 'به شام (لِوانت) در شرق بحیرهٔ مدیترانه خوش آمدی.' },
+{ en: 'Rain falls only in winter. Summers are long and dry. Fresh water is [[scarce|scarce]].',
+es: 'Solo llueve en invierno. Los veranos son largos y secos. El agua dulce es [[scarce|escasa]].',
+fa: 'باران فقط در زمستان می‌بارد. تابستان‌ها دراز و خشک هستند. آب شیرین [[scarce|کمیاب]] است.' },
+{ en: 'But the sea never runs dry! My plant takes salt out of seawater: [[desalination|desalination]].',
+es: '¡Pero el mar nunca se seca! Mi planta le quita la sal al agua de mar: [[desalination|desalinización]].',
+fa: 'اما بحر هرگز خشک نمی‌شود! فابریکهٔ من نمک را از آب بحر می‌گیرد: [[desalination|شیرین کردن آب بحر]].' },
+{ en: 'The hard part: it needs lots of energy and leaves very salty water behind.',
+es: 'Lo difícil: necesita mucha energía y deja atrás agua muy salada.',
+fa: 'مشکل این است: انرژی زیاد لازم دارد و آب بسیار شور از آن باقی می‌ماند.' }
 ],
 ask: {
 stat: 'pla',
 q: { en: 'Why is fresh water so precious in the Levant?', es: '¿Por qué el agua dulce es tan valiosa en el Levante?', fa: 'چرا آب شیرین در شام این‌قدر قیمتی است؟' },
 choices: [
-{ ok: true, t: { en: 'Little rain falls, so fresh water is scarce', es: 'Llueve poco, así que el agua dulce es escasa', fa: 'باران کم می‌بارد، پس آب شیرین کمیاب است' },
+{ ok: true, t: { en: 'Little rain falls, so water is scarce', es: 'Llueve poco, así que el agua escasea', fa: 'باران کم می‌بارد، پس آب کمیاب است' },
 why: { en: 'Yes. Rain comes only in winter, and summers are long and dry.', es: 'Sí. Solo llueve en invierno y los veranos son largos y secos.', fa: 'بلی. باران فقط در زمستان می‌آید و تابستان‌ها دراز و خشک هستند.' } },
 { t: { en: 'It rains every day, so water is everywhere', es: 'Llueve todos los días, así que hay agua por todas partes', fa: 'هر روز باران می‌بارد، پس آب همه جا است' },
 why: { en: 'The Levant is dry. Rain falls only in winter.', es: 'El Levante es seco. Solo llueve en invierno.', fa: 'شام خشک است. باران فقط در زمستان می‌بارد.' } },
@@ -5429,25 +5559,40 @@ role: { en: 'Water planner', es: 'Planificadora del agua', fa: 'برنامه‌�
 remember: { ep: '5.1', t: { en: 'Hello! Elif, the dam engineer in Türkiye, told me about you. You set the dam and the canal so all three farms on the river got water. That is real sharing!', es: '¡Hola! Elif, la ingeniera de represas de Turquía, me habló de ti. Ajustaste la represa y el canal para que las tres granjas del río recibieran agua. ¡Eso sí es compartir!', fa: 'سلام! الیف، انجنیر بند در ترکیه، دربارهٔ تو به من گفت. تو بند و کانال را طوری تنظیم کردی که هر سه کشتزار کنار دریا آب گرفتند. این شریک کردن واقعی است!' } },
 look: { skin: 3, hair: '#2a1a12', shirt: '#2a7fa8', pants: '#3a2f45', robe: true },
 lines: [
-{ en: 'Rivers do not stop at borders. The Jordan River and its branches touch several neighbors: Lebanon, Syria, Jordan, Israel and the Palestinians. A resource that crosses borders is [[transboundary|transboundary]].',
-es: 'Los ríos no se detienen en las fronteras. El río Jordán y sus ramas tocan a varios vecinos: Líbano, Siria, Jordania, Israel y los palestinos. Un recurso que cruza fronteras es [[transboundary|transfronterizo]].',
-fa: 'دریاها در سرحد نمی‌ایستند. دریای اردن و شاخه‌هایش به چند همسایه می‌رسند: لبنان، سوریه، اردن، اسرائیل و فلسطینی‌ها. منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.' },
-{ en: 'Neighbors who share a river can argue, or they can work together. A [[border dispute|border dispute]] is an argument over where a line should be. But neighbors can also sign a [[treaty|treaty]]: a written agreement with clear rules.',
-es: 'Los vecinos que comparten un río pueden discutir o pueden trabajar juntos. Una [[border dispute|disputa fronteriza]] es una discusión sobre dónde debe estar una línea. Pero los vecinos también pueden firmar un [[treaty|tratado]]: un acuerdo escrito con reglas claras.',
-fa: 'همسایه‌هایی که یک دریا را شریک دارند می‌توانند دعوا کنند یا با هم کار کنند. [[border dispute|اختلاف سرحدی]] دعوا بر سر جای یک خط است. اما همسایه‌ها می‌توانند یک [[treaty|معاهده]] هم امضا کنند: یک توافق نوشته‌شده با قاعده‌های روشن.' },
-{ en: 'In 1994, Jordan and Israel signed a peace treaty. Part of it set rules for sharing water from the Jordan and Yarmouk rivers. Scientists can also share weather data and river reports. Sharing takes trust, and trust takes work.',
-es: 'En 1994, Jordania e Israel firmaron un tratado de paz. Una parte puso reglas para compartir el agua de los ríos Jordán y Yarmuk. Los científicos también pueden compartir datos del clima e informes del río. Compartir necesita confianza, y la confianza cuesta trabajo.',
-fa: 'در سال ۱۹۹۴، اردن و اسرائیل یک معاهدهٔ صلح امضا کردند. بخشی از آن قاعده‌هایی برای شریک شدن آب دریای اردن و دریای یرموک گذاشت. دانشمندان هم می‌توانند معلومات هوا و گزارش‌های دریا را شریک کنند. شریک شدن اعتماد می‌خواهد و اعتماد زحمت می‌خواهد.' }
+{ en: 'Rivers do not stop at borders. The Jordan River touches several neighbors.',
+es: 'Los ríos no se detienen en las fronteras. El río Jordán toca a varios vecinos.',
+fa: 'دریاها در سرحد نمی‌ایستند. دریای اردن به چند همسایه می‌رسد.' },
+{ en: 'Lebanon, Syria, Jordan, Israel and the Palestinians all share its water.',
+es: 'Líbano, Siria, Jordania, Israel y los palestinos comparten su agua.',
+fa: 'لبنان، سوریه، اردن، اسرائیل و فلسطینی‌ها همه آب آن را شریک هستند.' },
+{ en: 'A resource that crosses borders is [[transboundary|transboundary]].',
+es: 'Un recurso que cruza fronteras es [[transboundary|transfronterizo]].',
+fa: 'منبعی که از سرحد می‌گذرد [[transboundary|فراسرحدی]] است.' },
+{ en: 'Neighbors who share a river can argue, or they can work together.',
+es: 'Los vecinos que comparten un río pueden discutir o pueden trabajar juntos.',
+fa: 'همسایه‌هایی که یک دریا را شریک دارند می‌توانند دعوا کنند یا با هم کار کنند.' },
+{ en: 'A [[border dispute|border dispute]] is an argument over where a border line should be.',
+es: 'Una [[border dispute|disputa fronteriza]] es una discusión sobre dónde debe estar una frontera.',
+fa: '[[border dispute|اختلاف سرحدی]] دعوا بر سر جای خط سرحد است.' },
+{ en: 'Or neighbors can sign a [[treaty|treaty]]: a written agreement with clear rules.',
+es: 'O los vecinos pueden firmar un [[treaty|tratado]]: un acuerdo escrito con reglas claras.',
+fa: 'یا همسایه‌ها می‌توانند یک [[treaty|معاهده]] امضا کنند: یک توافق نوشته‌شده با قاعده‌های روشن.' },
+{ en: 'In 1994, Jordan and Israel signed a peace treaty. It set rules for sharing river water.',
+es: 'En 1994, Jordania e Israel firmaron un tratado de paz. Puso reglas para compartir el agua del río.',
+fa: 'در سال ۱۹۹۴، اردن و اسرائیل یک معاهدهٔ صلح امضا کردند. برای شریک شدن آب دریا قاعده گذاشت.' },
+{ en: 'Scientists can share weather data and river reports. Sharing takes trust, and trust takes work.',
+es: 'Los científicos pueden compartir datos del clima e informes del río. Compartir necesita confianza, y la confianza cuesta trabajo.',
+fa: 'دانشمندان معلومات هوا و گزارش دریا را شریک می‌کنند. شریک شدن اعتماد می‌خواهد و اعتماد زحمت می‌خواهد.' }
 ],
 ask: {
 stat: 'reg',
 q: { en: 'Which one is a transboundary resource?', es: '¿Cuál es un recurso transfronterizo?', fa: 'کدام یک منبع فراسرحدی است؟' },
 choices: [
-{ ok: true, t: { en: 'A river that flows through two or more countries', es: 'Un río que pasa por dos o más países', fa: 'دریایی که از دو یا چند کشور می‌گذرد' },
+{ ok: true, t: { en: 'A river that flows through two countries', es: 'Un río que pasa por dos países', fa: 'دریایی که از دو کشور می‌گذرد' },
 why: { en: 'Right. The river crosses borders, so its water is a shared problem.', es: 'Correcto. El río cruza fronteras, así que su agua es un problema compartido.', fa: 'درست است. دریا از سرحدها می‌گذرد، پس آبش یک مسئلهٔ مشترک است.' } },
-{ t: { en: 'A well in one family\'s yard', es: 'Un pozo en el patio de una familia', fa: 'یک چاه در حویلی یک خانواده' },
+{ t: { en: 'A well in the yard of one family\'s house', es: 'Un pozo en el patio de la casa de una familia', fa: 'یک چاه در حویلی خانهٔ یک خانواده' },
 why: { en: 'That well stays inside one place. It does not cross a border.', es: 'Ese pozo está en un solo lugar. No cruza una frontera.', fa: 'آن چاه در یک جا می‌ماند. از سرحد نمی‌گذرد.' } },
-{ t: { en: 'A tree in a city park', es: 'Un árbol en un parque de la ciudad', fa: 'یک درخت در پارک شهر' },
+{ t: { en: 'A big old tree in a small city park', es: 'Un árbol viejo en un parque pequeño', fa: 'یک درخت کهنه در یک پارک کوچک شهر' },
 why: { en: 'A tree stays in one spot inside one country.', es: 'Un árbol se queda en un lugar dentro de un país.', fa: 'درخت در یک جا داخل یک کشور می‌ماند.' } }
 ]
 }
@@ -5458,15 +5603,24 @@ name: { en: 'Yousef', es: 'Yousef', fa: 'یوسف' },
 role: { en: 'Farmer in the Jordan Valley', es: 'Agricultor del valle del Jordán', fa: 'دهقان درهٔ اردن' },
 look: { skin: 3, hair: '#3a2a20', shirt: '#b5523a', pants: '#4a3a2a' },
 lines: [
-{ en: 'My family grows tomatoes and dates here in the Jordan Valley. The river flows south, down to the Dead Sea. It is the lowest place on land on Earth.',
-es: 'Mi familia cultiva tomates y dátiles aquí en el valle del Jordán. El río corre hacia el sur, hasta el mar Muerto. Es el lugar más bajo en tierra firme del planeta.',
-fa: 'خانوادهٔ من این‌جا در درهٔ اردن بادنجان رومی و خرما کشت می‌کند. دریا به طرف جنوب تا بحیرهٔ مرده می‌رود. آن‌جا پایین‌ترین جای خشکهٔ زمین است.' },
-{ en: 'So many farms and cities take water from the river that only a little reaches the end. The Dead Sea is shrinking every year. You can see its old shore far from the water now.',
-es: 'Tantas granjas y ciudades sacan agua del río que solo un poco llega al final. El mar Muerto se encoge cada año. Ahora puedes ver su orilla vieja lejos del agua.',
-fa: 'این‌قدر کشتزارها و شهرها از دریا آب می‌گیرند که فقط کمی به آخر آن می‌رسد. بحیرهٔ مرده هر سال کوچک‌تر می‌شود. حالا ساحل کهنه‌اش را دور از آب می‌بینی.' },
-{ en: 'I use [[drip irrigation|drip irrigation]]. Thin tubes drip water right at each plant\'s roots. Less water is lost to the hot sun, so more can stay in the river.',
-es: 'Yo uso [[drip irrigation|riego por goteo]]. Unos tubos delgados dejan caer gotas justo en las raíces de cada planta. Se pierde menos agua con el sol caliente, así que más puede quedarse en el río.',
-fa: 'من از [[drip irrigation|آبیاری قطره‌ای]] استفاده می‌کنم. نل‌های باریک آب را قطره‌قطره به ریشهٔ هر بوته می‌رسانند. آب کمتری زیر آفتاب گرم از بین می‌رود، پس آب بیشتری در دریا می‌ماند.' }
+{ en: 'My family grows tomatoes and dates here in the Jordan Valley.',
+es: 'Mi familia cultiva tomates y dátiles aquí en el valle del Jordán.',
+fa: 'خانوادهٔ من این‌جا در درهٔ اردن بادنجان رومی و خرما کشت می‌کند.' },
+{ en: 'The river flows south to the Dead Sea, the lowest land on Earth.',
+es: 'El río corre al sur hasta el mar Muerto, la tierra más baja del planeta.',
+fa: 'دریا به طرف جنوب تا بحیرهٔ مرده می‌رود، پایین‌ترین خشکهٔ زمین.' },
+{ en: 'Farms and cities take so much river water that only a little reaches the end.',
+es: 'Las granjas y ciudades sacan tanta agua del río que solo un poco llega al final.',
+fa: 'کشتزارها و شهرها این‌قدر آب دریا را می‌گیرند که فقط کمی به آخر آن می‌رسد.' },
+{ en: 'The Dead Sea shrinks every year. Its old shore is now far from the water.',
+es: 'El mar Muerto se encoge cada año. Su orilla vieja ahora está lejos del agua.',
+fa: 'بحیرهٔ مرده هر سال کوچک‌تر می‌شود. ساحل کهنه‌اش حالا دور از آب است.' },
+{ en: 'I use [[drip irrigation|drip irrigation]]: thin tubes drip water right at the roots.',
+es: 'Uso [[drip irrigation|riego por goteo]]: tubos delgados dejan caer agua justo en las raíces.',
+fa: 'من [[drip irrigation|آبیاری قطره‌ای]] می‌کنم: نل‌های باریک آب را درست به ریشه می‌رسانند.' },
+{ en: 'Less water is lost to the hot sun, so more stays in the river.',
+es: 'Se pierde menos agua con el sol caliente, así que más se queda en el río.',
+fa: 'آب کمتری زیر آفتاب گرم از بین می‌رود، پس آب بیشتری در دریا می‌ماند.' }
 ],
 ask: {
 stat: 'loc',
@@ -5483,12 +5637,12 @@ why: { en: 'The Nile is in Africa. It does not meet the Jordan.', es: 'El Nilo e
 }
 ],
 signs: [
-{ x: 13, y: 4, text: { en: 'THE LAKE · Sea of Galilee (Lake Tiberias). A freshwater lake. The Jordan River flows in from the snowy mountains in the north and flows out to the south.',
-es: 'EL LAGO · Mar de Galilea (lago Tiberíades). Un lago de agua dulce. El río Jordán entra desde las montañas nevadas del norte y sale hacia el sur.',
-fa: 'جهیل · جهیل طبریه (جلیل). یک جهیل آب شیرین. دریای اردن از کوه‌های برفی شمال به آن می‌ریزد و به طرف جنوب بیرون می‌رود.' } },
-{ x: 14, y: 16, text: { en: 'OLD SHORE · Long ago, the Dead Sea came up to this sign. Now the water is far away. Less river water arrives every year.',
-es: 'ORILLA VIEJA · Hace mucho tiempo, el mar Muerto llegaba hasta este letrero. Ahora el agua está lejos. Cada año llega menos agua del río.',
-fa: 'ساحل کهنه · مدت‌ها پیش، بحیرهٔ مرده تا این تابلو می‌رسید. حالا آب دور است. هر سال آب کمتری از دریا می‌رسد.' } }
+{ x: 13, y: 4, text: { en: 'THE LAKE · Sea of Galilee, a freshwater lake. The Jordan flows in from the north and out to the south.',
+es: 'EL LAGO · Mar de Galilea, un lago de agua dulce. El Jordán entra por el norte y sale por el sur.',
+fa: 'جهیل · جهیل طبریه، یک جهیل آب شیرین. دریای اردن از شمال به آن می‌ریزد و به جنوب بیرون می‌رود.' } },
+{ x: 14, y: 16, text: { en: 'OLD SHORE · The Dead Sea once came up to this sign. Less river water arrives every year.',
+es: 'ORILLA VIEJA · El mar Muerto antes llegaba hasta este letrero. Cada año llega menos agua del río.',
+fa: 'ساحل کهنه · بحیرهٔ مرده زمانی تا این تابلو می‌رسید. هر سال آب کمتری از دریا می‌رسد.' } }
 ],
 quest: {
 stat: 'reg',
@@ -5499,19 +5653,25 @@ name: { en: 'Rania', es: 'Rania', fa: 'رانیا' },
 role: { en: 'River scientist', es: 'Científica del río', fa: 'دانشمند دریا' },
 look: { skin: 2, hair: '#2a1a10', shirt: '#3a8a6a', pants: '#2c3445', robe: true },
 lines: [
-{ en: 'Oh no! I am Rania. Every week I measure the water in the Yarmouk River. Then I share my river report with all the neighbors.',
-es: '¡Ay, no! Soy Rania. Cada semana mido el agua del río Yarmuk. Luego comparto mi informe del río con todos los vecinos.',
-fa: 'وای نه! من رانیا هستم. هر هفته آب دریای یرموک را اندازه می‌کنم. بعد گزارش دریا را با همهٔ همسایه‌ها شریک می‌کنم.' },
-{ en: 'The Ink Thief grabbed my report and ran! Without it, nobody knows how much water there is to share. Sami the fisher was at the lake. Did he see it?',
-es: '¡El Ladrón de Tinta agarró mi informe y salió corriendo! Sin él, nadie sabe cuánta agua hay para compartir. Sami, el pescador, estaba en el lago. ¿Lo habrá visto?',
-fa: 'دزد رنگ گزارش مرا گرفت و فرار کرد! بدون آن، هیچ کس نمی‌داند چقدر آب برای تقسیم هست. سامی ماهیگیر کنار جهیل بود. آیا او آن را دید؟' }
+{ en: 'Oh no! I am Rania. Every week I measure the water in the Yarmouk River.',
+es: '¡Ay, no! Soy Rania. Cada semana mido el agua del río Yarmuk.',
+fa: 'وای نه! من رانیا هستم. هر هفته آب دریای یرموک را اندازه می‌کنم.' },
+{ en: 'Then I share my river report with all the neighbors.',
+es: 'Luego comparto mi informe del río con todos los vecinos.',
+fa: 'بعد گزارش دریا را با همهٔ همسایه‌ها شریک می‌کنم.' },
+{ en: 'The Ink Thief grabbed my report! Now nobody knows how much water there is to share.',
+es: '¡El Ladrón de Tinta agarró mi informe! Ahora nadie sabe cuánta agua hay para compartir.',
+fa: 'دزد رنگ گزارش مرا گرفت! حالا هیچ کس نمی‌داند چقدر آب برای تقسیم هست.' },
+{ en: 'Sami the fisher was at the lake. Did he see it?',
+es: 'Sami, el pescador, estaba en el lago. ¿Lo habrá visto?',
+fa: 'سامی ماهیگیر کنار جهیل بود. آیا او آن را دید؟' }
 ],
-wait: { en: 'Sami is at the lake in the north-west. Cross the bridge to the north, then walk west.',
-es: 'Sami está en el lago, al noroeste. Cruza el puente hacia el norte y luego camina al oeste.',
-fa: 'سامی کنار جهیل در شمال غرب است. از پل به طرف شمال بگذر، بعد به طرف غرب برو.' },
-thanks: { en: 'My river report! Now every neighbor can see the same numbers. When people share facts, they trust each other more. That makes [[cooperation|cooperation]] easier.',
-es: '¡Mi informe del río! Ahora todos los vecinos pueden ver los mismos números. Cuando la gente comparte datos, confía más en los demás. Eso hace más fácil la [[cooperation|cooperación]].',
-fa: 'گزارش دریای من! حالا هر همسایه همان عددها را می‌بیند. وقتی مردم معلومات را شریک می‌کنند، بیشتر به هم اعتماد می‌کنند. این [[cooperation|همکاری]] را آسان‌تر می‌کند.' }
+wait: { en: 'Sami is at the lake, north-west. Cross the bridge north, then walk west.',
+es: 'Sami está en el lago, al noroeste. Cruza el puente al norte y luego camina al oeste.',
+fa: 'سامی کنار جهیل در شمال غرب است. از پل به شمال بگذر، بعد به غرب برو.' },
+thanks: { en: 'My report! Shared facts build trust, and trust makes [[cooperation|cooperation]] easier.',
+es: '¡Mi informe! Los datos compartidos crean confianza, y la confianza facilita la [[cooperation|cooperación]].',
+fa: 'گزارش من! معلومات مشترک اعتماد می‌سازد و اعتماد [[cooperation|همکاری]] را آسان‌تر می‌کند.' }
 },
 contact: {
 x: 14, y: 5,
@@ -5519,12 +5679,18 @@ name: { en: 'Sami', es: 'Sami', fa: 'سامی' },
 role: { en: 'Fisher on the lake', es: 'Pescador del lago', fa: 'ماهیگیر جهیل' },
 look: { skin: 5, hair: '#151010', shirt: '#d9a441', pants: '#3a4a5a', hat: '#5a6a7a' },
 lines: [
-{ en: 'Yes, I saw it! A blob of ink with Rania\'s papers. The Jordan River is [[transboundary|transboundary]]. It crosses borders, so her report matters to everyone.',
-es: '¡Sí, lo vi! Una mancha de tinta con los papeles de Rania. El río Jordán es [[transboundary|transfronterizo]]. Cruza fronteras, así que su informe les importa a todos.',
-fa: 'بلی، دیدمش! یک غرغروی رنگ با کاغذهای رانیا. دریای اردن [[transboundary|فراسرحدی]] است. از سرحدها می‌گذرد، پس گزارش رانیا برای همه مهم است.' },
-{ en: 'It tore the report into 3 pieces and hid them near the water. Listen to its riddles and walk to the right places. Then catch the thief!',
-es: 'Rompió el informe en 3 pedazos y los escondió cerca del agua. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
-fa: 'گزارش را سه تکه کرد و تکه‌ها را نزدیک آب پنهان کرد. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
+{ en: 'Yes, I saw it! A blob of ink with Rania\'s papers.',
+es: '¡Sí, lo vi! Una mancha de tinta con los papeles de Rania.',
+fa: 'بلی، دیدمش! یک غرغروی رنگ با کاغذهای رانیا.' },
+{ en: 'The Jordan is [[transboundary|transboundary]]. It crosses borders, so her report matters to everyone.',
+es: 'El Jordán es [[transboundary|transfronterizo]]. Cruza fronteras, así que su informe les importa a todos.',
+fa: 'دریای اردن [[transboundary|فراسرحدی]] است. از سرحدها می‌گذرد، پس گزارش او برای همه مهم است.' },
+{ en: 'It tore the report into 3 pieces and hid them near the water.',
+es: 'Rompió el informe en 3 pedazos y los escondió cerca del agua.',
+fa: 'گزارش را سه تکه کرد و تکه‌ها را نزدیک آب پنهان کرد.' },
+{ en: 'Follow its riddles to the right places. Then catch the thief!',
+es: 'Sigue sus acertijos hasta los lugares correctos. ¡Después atrapa al ladrón!',
+fa: 'چیستان‌هایش را تا جاهای درست دنبال کن. بعد دزد را بگیر!' }
 ]
 },
 action: {
@@ -5532,32 +5698,32 @@ type: 'chase',
 at: [20, 18],
 hops: [[25, 17], [28, 19]],
 name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the river report into 3 pieces and hid them along the river. Follow my riddles, if you can!"',
-es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el informe del río en 3 pedazos y los escondí a lo largo del río. ¡Sigue mis acertijos, si puedes!"',
-fa: 'دزد رنگ می‌خندد: «هی هی! گزارش دریا را سه تکه کردم و در کنار دریا پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+taunt: { en: 'The Ink Thief laughs: "I tore the river report into 3 pieces! Follow my riddles!"',
+es: 'El Ladrón de Tinta se ríe: "¡Rompí el informe del río en 3 pedazos! ¡Sigue mis acertijos!"',
+fa: 'دزد رنگ می‌خندد: «گزارش دریا را سه تکه کردم! چیستان‌هایم را دنبال کن!»' },
 clues: [
-{ t: { en: 'Fresh water is [[scarce|scarce]] here, but the sea is full of salty water. Piece 1 is where people take the salt out of seawater.',
-es: 'Aquí el agua dulce es [[scarce|escasa]], pero el mar está lleno de agua salada. El pedazo 1 está donde la gente le quita la sal al agua de mar.',
-fa: 'آب شیرین این جا [[scarce|کمیاب]] است، اما بحر پر از آب شور است. تکهٔ ۱ جایی است که مردم نمک را از آب بحر می‌گیرند.' },
+{ t: { en: 'Fresh water is [[scarce|scarce]], but the sea is full. Piece 1 is where seawater loses its salt.',
+es: 'El agua dulce es [[scarce|escasa]], pero el mar está lleno. El pedazo 1 está donde el agua de mar pierde la sal.',
+fa: 'آب شیرین [[scarce|کمیاب]] است، اما بحر پر است. تکهٔ ۱ جایی است که آب بحر نمکش را از دست می‌دهد.' },
 zones: [{ x: 1, y: 1, w: 6, h: 6 }],
 noBy: [{ x: 2, y: 15, w: 14, h: 6, t: { en: 'The Dead Sea is salty, but nobody makes fresh water here, and it is shrinking. Look for the plant by the big sea in the west.', es: 'El mar Muerto es salado, pero aquí nadie hace agua dulce, y se está encogiendo. Busca la planta junto al mar grande del oeste.', fa: 'بحیرهٔ مرده شور است، اما این جا کسی آب شیرین نمی‌سازد، و کوچک‌تر می‌شود. فابریکه را کنار بحر بزرگ در غرب پیدا کن.' } }],
-found: { en: 'Piece 1 was at the [[desalination|desalination]] plant! Rain falls only in winter, so fresh water is the scarce resource here. The sea is full, but its water is salty.', es: '¡El pedazo 1 estaba en la planta de [[desalination|desalinización]]! Solo llueve en invierno, así que aquí el agua dulce es el recurso escaso. El mar está lleno, pero su agua es salada.', fa: 'تکهٔ ۱ در فابریکهٔ [[desalination|آب‌شیرین‌کن]] بود! باران فقط در زمستان می‌بارد، پس این جا آب شیرین منبع کمیاب است. بحر پر است، اما آبش شور است.' } },
-{ t: { en: 'A town near the start of a river takes most of the water. Who has a problem? Piece 2 is at the far end of the river, where less water arrives every year.',
-es: 'Un pueblo cerca del inicio de un río toma casi toda el agua. ¿Quién tiene un problema? El pedazo 2 está al final del río, donde cada año llega menos agua.',
-fa: 'یک شهرک نزدیک شروع دریا بیشتر آب را می‌گیرد. کی مشکل پیدا می‌کند؟ تکهٔ ۲ در آخر دریا است، جایی که هر سال آب کمتری می‌رسد.' },
+found: { en: 'Piece 1, at the [[desalination|desalination]] plant! The sea is full, but salty.', es: '¡El pedazo 1, en la planta de [[desalination|desalinización]]! El mar está lleno, pero es salado.', fa: 'تکهٔ ۱، در فابریکهٔ [[desalination|آب‌شیرین‌کن]]! بحر پر است، اما شور است.' } },
+{ t: { en: 'A town at a river\'s start takes most water. Piece 2 is at the far end, where less arrives.',
+es: 'Un pueblo al inicio del río toma casi toda el agua. El pedazo 2 está al final, donde llega menos.',
+fa: 'یک شهرک در شروع دریا بیشتر آب را می‌گیرد. تکهٔ ۲ در آخر دریا است، جایی که آب کمتری می‌رسد.' },
 zones: [{ x: 2, y: 15, w: 14, h: 6 }],
 noBy: [{ x: 11, y: 1, w: 5, h: 6, t: { en: 'This lake is near the start of the river. There is still plenty of water here. Follow the river south to where it ends.', es: 'Este lago está cerca del inicio del río. Aquí todavía hay mucha agua. Sigue el río hacia el sur hasta donde termina.', fa: 'این جهیل نزدیک شروع دریا است. این جا هنوز آب زیاد است. دریا را به طرف جنوب تا آخرش دنبال کن.' } }],
-found: { en: 'Piece 2 was on the old shore of the Dead Sea! Water flows down the river. If places up the river take too much, places farther down get less.', es: '¡El pedazo 2 estaba en la orilla vieja del mar Muerto! El agua baja por el río. Si los lugares de río arriba toman demasiado, los de más abajo reciben menos.', fa: 'تکهٔ ۲ در ساحل کهنهٔ بحیرهٔ مرده بود! آب به طرف پایین دریا می‌رود. اگر جاهای بالای دریا زیاد بگیرند، جاهای پایین‌تر کمتر می‌گیرند.' } },
-{ t: { en: 'Piece 3 is where the neighbors meet to share river reports and plan for dry years together. Find the old well in the town south of the Yarmouk River.',
-es: 'El pedazo 3 está donde los vecinos se reúnen para compartir informes del río y planear juntos para los años secos. Busca el pozo viejo en el pueblo al sur del río Yarmuk.',
-fa: 'تکهٔ ۳ جایی است که همسایه‌ها جمع می‌شوند تا گزارش‌های دریا را شریک کنند و با هم برای سال‌های خشک برنامه بریزند. چاه کهنه را در شهرک جنوب دریای یرموک پیدا کن.' },
+found: { en: 'Piece 2, on the Dead Sea\'s old shore! If upstream takes too much, downstream gets less.', es: '¡El pedazo 2, en la orilla vieja del mar Muerto! Si río arriba toman demasiado, río abajo recibe menos.', fa: 'تکهٔ ۲، در ساحل کهنهٔ بحیرهٔ مرده! اگر بالای دریا زیاد بگیرد، پایین دریا کمتر می‌گیرد.' } },
+{ t: { en: 'Piece 3 is where neighbors share river reports: the old well in the town south of the Yarmouk.',
+es: 'El pedazo 3 está donde los vecinos comparten informes: el pozo viejo del pueblo al sur del Yarmuk.',
+fa: 'تکهٔ ۳ جایی است که همسایه‌ها گزارش دریا را شریک می‌کنند: چاه کهنه در شهرک جنوب یرموک.' },
 zones: [{ x: 20, y: 12, w: 10, h: 5 }],
 noBy: [{ x: 23, y: 1, w: 8, h: 5, t: { en: 'This is the north town. It is only one of the neighbors. All the neighbors meet at the old well in the south town, across the Yarmouk River.', es: 'Este es el pueblo del norte. Es solo uno de los vecinos. Todos los vecinos se reúnen en el pozo viejo del pueblo del sur, al otro lado del río Yarmuk.', fa: 'این شهرک شمالی است. فقط یکی از همسایه‌ها است. همهٔ همسایه‌ها کنار چاه کهنه در شهرک جنوبی، آن طرف دریای یرموک، جمع می‌شوند.' } }],
-found: { en: 'Piece 3 was at the old well! When neighbors share facts, everyone can plan for dry years and floods. Shared facts also build trust, and trust makes [[cooperation|cooperation]] easier.', es: '¡El pedazo 3 estaba en el pozo viejo! Cuando los vecinos comparten datos, todos pueden prepararse para años secos e inundaciones. Los datos compartidos también crean confianza, y la confianza hace más fácil la [[cooperation|cooperación]].', fa: 'تکهٔ ۳ کنار چاه کهنه بود! وقتی همسایه‌ها معلومات را شریک می‌کنند، همه می‌توانند برای سال‌های خشک و سیلاب آماده شوند. معلومات مشترک اعتماد هم می‌سازد، و اعتماد [[cooperation|همکاری]] را آسان‌تر می‌کند.' } }
+found: { en: 'Piece 3, at the old well! Shared facts help neighbors plan for dry years and floods.', es: '¡El pedazo 3, en el pozo viejo! Los datos compartidos ayudan a planear para años secos e inundaciones.', fa: 'تکهٔ ۳، کنار چاه کهنه! معلومات مشترک به همسایه‌ها کمک می‌کند برای سال‌های خشک و سیلاب آماده شوند.' } }
 ],
-win: { en: 'Got you! The Ink Thief gives back the pieces and melts into a puddle of ink. All 3 pieces fit together: Rania\'s river report is whole again.',
-es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y se derrite en un charco de tinta. Los 3 pedazos encajan: el informe del río de Rania está completo otra vez.',
-fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و آب می‌شود و یک چاله رنگ می‌ماند. هر سه تکه با هم جور می‌شوند: گزارش دریای رانیا دوباره کامل است.' },
+win: { en: 'Got you! The thief melts into ink. All 3 pieces fit: Rania\'s report is whole again.',
+es: '¡Te atrapé! El ladrón se derrite en tinta. Los 3 pedazos encajan: el informe de Rania está completo.',
+fa: 'گرفتمت! دزد آب می‌شود و رنگ می‌ماند. هر سه تکه جور می‌شوند: گزارش رانیا دوباره کامل است.' },
 item: { icon: '📜', name: { en: 'Rania\'s river report', es: 'El informe del río de Rania', fa: 'گزارش دریای رانیا' } }
 }
 },
@@ -5614,28 +5780,28 @@ taunt: { en: 'Slurp! Every drop is mine. Let the neighbors fight while I drink!'
 win: { en: 'The Grump dries up and blows away. Atlas page 5.3 floats down, and the Water Key glows in your hand!', es: 'El Gruñón se seca y se lo lleva el viento. Cae la página 5.3 del atlas, ¡y la Llave del agua brilla en tu mano!', fa: 'غرغرو خشک می‌شود و باد آن را می‌برد. صفحهٔ ۵.۳ اطلس پایین می‌آید و کلید آب در دستت می‌درخشد!' },
 questions: [
 { q: { en: 'What does transboundary mean?', es: '¿Qué significa transfronterizo?', fa: 'فراسرحدی یعنی چه؟' },
-choices: [{ en: 'Crossing from one country into another', es: 'Que cruza de un país a otro', fa: 'از یک کشور به کشور دیگر گذشتن' }, { en: 'Staying inside one city', es: 'Que se queda dentro de una ciudad', fa: 'داخل یک شهر ماندن' }, { en: 'Found only under the sea', es: 'Que solo está bajo el mar', fa: 'فقط زیر بحر پیدا شدن' }, { en: 'Owned by one family', es: 'Que es de una sola familia', fa: 'مال یک خانواده بودن' }], answer: 0,
+choices: [{ en: 'Crossing from one country to another', es: 'Que cruza de un país a otro', fa: 'از یک کشور به کشور دیگر گذشتن' }, { en: 'Staying inside one city', es: 'Que se queda dentro de una ciudad', fa: 'داخل یک شهر ماندن' }, { en: 'Found only deep under the salty sea', es: 'Que solo está bajo el mar salado', fa: 'فقط در عمق بحر شور پیدا شدن' }, { en: 'Owned by just one family or farmer', es: 'Que es de una sola familia o agricultor', fa: 'مال فقط یک خانواده یا دهقان بودن' }], answer: 0,
 why: { en: 'A [[transboundary|transboundary]] resource, like a river, crosses borders.', es: 'Un recurso [[transboundary|transfronterizo]], como un río, cruza fronteras.', fa: 'یک منبع [[transboundary|فراسرحدی]]، مثل دریا، از سرحدها می‌گذرد.' } },
 { q: { en: 'Ethiopia built a huge dam on the Blue Nile. Why does Egypt worry?', es: 'Etiopía construyó una gran represa en el Nilo Azul. ¿Por qué se preocupa Egipto?', fa: 'ایتوپیا یک بند بزرگ روی نیل آبی ساخت. چرا مصر نگران است؟' },
-choices: [{ en: 'Egypt gets most of its fresh water from the Nile', es: 'Egipto recibe la mayor parte de su agua dulce del Nilo', fa: 'مصر بیشتر آب شیرین خود را از نیل می‌گیرد' }, { en: 'Egypt has too much rain', es: 'Egipto tiene demasiada lluvia', fa: 'مصر باران بسیار زیاد دارد' }, { en: 'The dam is in Egypt', es: 'La represa está en Egipto', fa: 'بند در مصر است' }, { en: 'Egypt sells the dam\'s electricity', es: 'Egipto vende la electricidad de la represa', fa: 'مصر برق بند را می‌فروشد' }], answer: 0,
+choices: [{ en: 'Egypt gets most of its water from the Nile', es: 'Egipto saca casi toda su agua del Nilo', fa: 'مصر بیشتر آب خود را از نیل می‌گیرد' }, { en: 'Egypt already gets far too much rain', es: 'Egipto ya recibe demasiada lluvia', fa: 'مصر همین حالا باران بسیار زیاد دارد' }, { en: 'The new dam is on Egypt\'s own land', es: 'La represa nueva está en tierra egipcia', fa: 'بند تازه در خاک خود مصر است' }, { en: 'Egypt sells the dam\'s electricity', es: 'Egipto vende la electricidad de la represa', fa: 'مصر برق بند را می‌فروشد' }], answer: 0,
 why: { en: 'Egypt depends on the Nile. It fears the dam will slow the water that reaches it.', es: 'Egipto depende del Nilo. Teme que la represa reduzca el agua que le llega.', fa: 'مصر به نیل وابسته است. می‌ترسد بند آبی را که به آن می‌رسد کم کند.' } },
 { q: { en: 'What is OPEC?', es: '¿Qué es la OPEP?', fa: 'اوپک چیست؟' },
-choices: [{ en: 'A group of oil-exporting countries that meet about how much oil to sell', es: 'Un grupo de países que exportan petróleo y se reúnen para decidir cuánto vender', fa: 'گروهی از کشورهای صادرکنندهٔ تیل که دربارهٔ مقدار فروش تیل جلسه می‌کنند' }, { en: 'A river in Iraq', es: 'Un río de Irak', fa: 'یک دریا در عراق' }, { en: 'A desalination plant', es: 'Una planta desalinizadora', fa: 'یک فابریکهٔ آب‌شیرین‌کن' }, { en: 'A border wall', es: 'Un muro fronterizo', fa: 'یک دیوار سرحدی' }], answer: 0,
+choices: [{ en: 'A group of countries that sell oil', es: 'Un grupo de países que venden petróleo', fa: 'گروهی از کشورهایی که تیل می‌فروشند' }, { en: 'A long river that flows through Iraq', es: 'Un río largo que pasa por Irak', fa: 'یک دریای دراز که از عراق می‌گذرد' }, { en: 'A plant that makes seawater fresh', es: 'Una planta que hace dulce el agua de mar', fa: 'فابریکه‌ای که آب بحر را شیرین می‌کند' }, { en: 'A tall wall built along a border', es: 'Un muro alto en una frontera', fa: 'یک دیوار بلند در کنار سرحد' }], answer: 0,
 why: { en: 'OPEC members, like Saudi Arabia, Iraq and Kuwait, meet to decide how much oil to sell.', es: 'Los miembros de la OPEP, como Arabia Saudita, Irak y Kuwait, se reúnen para decidir cuánto petróleo vender.', fa: 'عضوهای اوپک، مثل عربستان سعودی، عراق و کویت، جلسه می‌کنند تا مقدار فروش تیل را تعیین کنند.' } },
 { q: { en: 'What is a border dispute?', es: '¿Qué es una disputa fronteriza?', fa: 'اختلاف سرحدی چیست؟' },
-choices: [{ en: 'An argument over exactly where a border line should be', es: 'Una discusión sobre dónde debe estar exactamente una frontera', fa: 'دعوا بر سر این‌که خط سرحد دقیقاً کجا باشد' }, { en: 'A party at the border', es: 'Una fiesta en la frontera', fa: 'یک جشن در سرحد' }, { en: 'A map with no borders', es: 'Un mapa sin fronteras', fa: 'نقشه‌ای بدون سرحد' }, { en: 'A river that changes color', es: 'Un río que cambia de color', fa: 'دریایی که رنگش تغییر می‌کند' }], answer: 0,
+choices: [{ en: 'An argument over where a border goes', es: 'Una discusión sobre dónde va una frontera', fa: 'دعوا بر سر جای خط سرحد' }, { en: 'A big party held right at the border', es: 'Una gran fiesta justo en la frontera', fa: 'یک جشن بزرگ درست در سرحد' }, { en: 'A map that shows no borders at all', es: 'Un mapa que no muestra ninguna frontera', fa: 'نقشه‌ای که هیچ سرحدی نشان نمی‌دهد' }, { en: 'A river that changes color', es: 'Un río que cambia de color', fa: 'دریایی که رنگش تغییر می‌کند' }], answer: 0,
 why: { en: 'A [[border dispute|border dispute]] can be about land, water or oil under the ground.', es: 'Una [[border dispute|disputa fronteriza]] puede ser por tierra, agua o petróleo bajo el suelo.', fa: '[[border dispute|اختلاف سرحدی]] می‌تواند دربارهٔ زمین، آب یا تیل زیر زمین باشد.' } },
 { q: { en: 'Why is the Dead Sea shrinking?', es: '¿Por qué se encoge el mar Muerto?', fa: 'چرا بحیرهٔ مرده کوچک می‌شود؟' },
-choices: [{ en: 'People take so much river water that little reaches it', es: 'La gente saca tanta agua del río que poca llega hasta él', fa: 'مردم این‌قدر آب از دریا می‌گیرند که کمی به آن می‌رسد' }, { en: 'Too much rain falls on it', es: 'Le cae demasiada lluvia', fa: 'باران زیاد روی آن می‌بارد' }, { en: 'Fish drink the water', es: 'Los peces se beben el agua', fa: 'ماهی‌ها آب را می‌نوشند' }, { en: 'It is moving to another country', es: 'Se está mudando a otro país', fa: 'به کشور دیگری می‌رود' }], answer: 0,
+choices: [{ en: 'People use the river water first', es: 'La gente usa primero el agua del río', fa: 'مردم اول آب دریا را مصرف می‌کنند' }, { en: 'Too much rain falls on it each year', es: 'Le cae demasiada lluvia cada año', fa: 'هر سال باران بسیار زیاد روی آن می‌بارد' }, { en: 'Fish and birds drink up its water', es: 'Los peces y las aves se beben su agua', fa: 'ماهی‌ها و پرنده‌ها آبش را می‌نوشند' }, { en: 'It is moving to another country', es: 'Se está mudando a otro país', fa: 'به کشور دیگری می‌رود' }], answer: 0,
 why: { en: 'Farms and cities use most of the Jordan River\'s water before it reaches the Dead Sea.', es: 'Las granjas y ciudades usan la mayor parte del agua del Jordán antes de que llegue al mar Muerto.', fa: 'کشتزارها و شهرها بیشتر آب دریای اردن را پیش از رسیدن به بحیرهٔ مرده مصرف می‌کنند.' } },
 { q: { en: 'What does a desalination plant do?', es: '¿Qué hace una planta desalinizadora?', fa: 'فابریکهٔ آب‌شیرین‌کن چه کار می‌کند؟' },
-choices: [{ en: 'Takes salt out of seawater to make fresh water', es: 'Le quita la sal al agua de mar para hacer agua dulce', fa: 'نمک را از آب بحر می‌گیرد تا آب شیرین بسازد' }, { en: 'Adds salt to rivers', es: 'Le pone sal a los ríos', fa: 'به دریاها نمک اضافه می‌کند' }, { en: 'Pumps oil from the ground', es: 'Saca petróleo de la tierra', fa: 'از زمین تیل می‌کشد' }, { en: 'Makes rain fall', es: 'Hace que llueva', fa: 'باران می‌باراند' }], answer: 0,
+choices: [{ en: 'Takes the salt out of seawater', es: 'Le quita la sal al agua de mar', fa: 'نمک را از آب بحر می‌گیرد' }, { en: 'Adds salt to rivers and lakes', es: 'Le pone sal a ríos y lagos', fa: 'به دریاها و جهیل‌ها نمک اضافه می‌کند' }, { en: 'Pumps oil up from under the ground', es: 'Saca petróleo de debajo de la tierra', fa: 'از زیر زمین تیل می‌کشد' }, { en: 'Makes rain fall', es: 'Hace que llueva', fa: 'باران می‌باراند' }], answer: 0,
 why: { en: '[[desalination|Desalination]] turns salty seawater into fresh water. It uses a lot of energy.', es: 'La [[desalination|desalinización]] convierte el agua salada del mar en agua dulce. Usa mucha energía.', fa: '[[desalination|شیرین کردن آب بحر]] آب شور را به آب شیرین تبدیل می‌کند. انرژی زیاد مصرف می‌کند.' } },
 { q: { en: 'Which one shows neighbors working together on water?', es: '¿Cuál muestra a vecinos trabajando juntos por el agua?', fa: 'کدام یک همکاری همسایه‌ها را بر سر آب نشان می‌دهد؟' },
-choices: [{ en: 'They sign a treaty and share river reports', es: 'Firman un tratado y comparten informes del río', fa: 'معاهده امضا می‌کنند و گزارش‌های دریا را شریک می‌کنند' }, { en: 'Each one pumps as fast as it can', es: 'Cada uno bombea lo más rápido que puede', fa: 'هر کدام هر قدر زود که بتواند آب می‌کشد' }, { en: 'They stop talking to each other', es: 'Dejan de hablarse', fa: 'با هم گپ نمی‌زنند' }, { en: 'They hide their water numbers', es: 'Esconden sus datos del agua', fa: 'عددهای آب خود را پنهان می‌کنند' }], answer: 0,
+choices: [{ en: 'They sign a treaty and share reports', es: 'Firman un tratado y comparten informes', fa: 'معاهده امضا می‌کنند و گزارش شریک می‌کنند' }, { en: 'Each one pumps water as fast as it can', es: 'Cada uno bombea agua lo más rápido que puede', fa: 'هر کدام هر قدر زود که بتواند آب می‌کشد' }, { en: 'They stop talking to each other', es: 'Dejan de hablarse', fa: 'با هم گپ نمی‌زنند' }, { en: 'They hide their water numbers', es: 'Esconden sus datos del agua', fa: 'عددهای آب خود را پنهان می‌کنند' }], answer: 0,
 why: { en: 'A [[treaty|treaty]] sets clear rules, and shared reports build trust. That is [[cooperation|cooperation]].', es: 'Un [[treaty|tratado]] pone reglas claras y los informes compartidos crean confianza. Eso es [[cooperation|cooperación]].', fa: '[[treaty|معاهده]] قاعده‌های روشن می‌گذارد و گزارش‌های مشترک اعتماد می‌سازد. این [[cooperation|همکاری]] است.' } },
 { q: { en: 'Why does drip irrigation save water?', es: '¿Por qué el riego por goteo ahorra agua?', fa: 'چرا آبیاری قطره‌ای آب را صرفه می‌کند؟' },
-choices: [{ en: 'It puts water right at the plant\'s roots', es: 'Pone el agua justo en las raíces de la planta', fa: 'آب را درست به ریشهٔ بوته می‌رساند' }, { en: 'It floods the whole field', es: 'Inunda todo el campo', fa: 'تمام کشتزار را زیر آب می‌کند' }, { en: 'It only works at night in the rain', es: 'Solo funciona de noche bajo la lluvia', fa: 'فقط شب و زیر باران کار می‌کند' }, { en: 'It uses seawater', es: 'Usa agua de mar', fa: 'از آب بحر استفاده می‌کند' }], answer: 0,
+choices: [{ en: 'It puts water right at the roots', es: 'Pone el agua justo en las raíces', fa: 'آب را درست به ریشه می‌رساند' }, { en: 'It floods the whole field with water', es: 'Inunda todo el campo con agua', fa: 'تمام کشتزار را زیر آب می‌کند' }, { en: 'It only works at night in the rain', es: 'Solo funciona de noche bajo la lluvia', fa: 'فقط شب و زیر باران کار می‌کند' }, { en: 'It uses seawater', es: 'Usa agua de mar', fa: 'از آب بحر استفاده می‌کند' }], answer: 0,
 why: { en: 'Water goes straight to the roots, so less is lost to the hot sun.', es: 'El agua va directo a las raíces, así que se pierde menos con el sol caliente.', fa: 'آب مستقیم به ریشه می‌رود، پس کمتر زیر آفتاب گرم از بین می‌رود.' } }
 ]
 },
