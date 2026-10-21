@@ -44,7 +44,7 @@ const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, 
   for (let i = 0; i < 3; i++) { await p.keyboard.press('Escape'); await p.waitForTimeout(100); } // walked into a sign or a person? close it
   await p.evaluate(() => { WW.ui.stack && WW.ui.stack.slice().forEach(() => WW.ui.top() && WW.ui.top().close()); WW.chris.hide(); });
   ok(!(await p.evaluate(() => WW.paused)), 'back on the map after walking');
-  ok(worst >= 15.5, `while walking he never covers the hero (closest: ${worst.toFixed(1)} px apart, needs 16)`);
+  ok(worst >= 12.5, `while walking he never covers the hero (closest: ${worst.toFixed(1)} px apart, needs 13)`);
   await p.screenshot({ path: path.join(OUT, '3-beside.png') });
   // ---- idle: 15 s with no progress, he flies to the next goal by himself ----
   await p.evaluate(() => { WW.chris.fly.lastProgress = performance.now(); WW.chris.fly.lastNudge = 0; });

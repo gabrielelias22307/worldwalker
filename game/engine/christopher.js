@@ -270,7 +270,7 @@
     F.scr = [sx, sy];
     if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
     // his seat beside the hero, behind the way they face, a bit above (the bubble hangs from here, so it doesn't wobble)
-    const seatX = hcx - 17 * F.side, seatY = hcy - 9;
+    const seatX = hcx - 14 * F.side, seatY = hcy - 9;
     F.ax = seatX; F.ay = seatY;
     // progress and idle
     if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
@@ -297,10 +297,10 @@
     if (!WW.calm) { tx += Math.cos(now / 900) * 5; ty += Math.sin(now / 640) * 3; } // a small drift around his seat
     if (F.mode === 'go' || F.mode === 'hover') {
       let px, py, off = false;
-      if (onScreen(F.at, sx, sy)) { [px, py] = center(F.at, sx, sy); py -= 20; if (py < 24) { py += 20; px += px > 200 ? -21 : 21; } } // near the top edge: hover beside it, so his "!" stays on screen
+      if (onScreen(F.at, sx, sy)) { [px, py] = center(F.at, sx, sy); py -= 15; if (py < 18) { py += 15; px += px > 200 ? -16 : 16; } } // near the top edge: hover beside it, so his "!" stays on screen
       else { // off this screen: wait at the edge on that side, pointing the way
         const [cx, cy] = center(F.at, sx, sy), dx = cx - hcx, dy = cy - hcy, k = Math.min((dx ? (dx > 0 ? 242 - hcx : hcx - 14) / Math.abs(dx) : 1e9), (dy ? (dy > 0 ? 162 - hcy : hcy - 14) / Math.abs(dy) : 1e9));
-        px = hcx + dx * k; py = Math.max(24, hcy + dy * k); off = true;
+        px = hcx + dx * k; py = Math.max(18, hcy + dy * k); off = true;
       }
       F.off = off;
       if (F.mode === 'go') { tx = px; ty = py; ease = 150; if (Math.hypot(F.x - px, F.y - py) < 4) { F.mode = 'hover'; F.until = now + F.hold; } }
@@ -316,8 +316,8 @@
     F.trail = F.trail.filter(p => now - p.t < 420).slice(-14);
     // never on top of the hero (or what he points at)
     let dx = F.x - hcx, dy = F.y - hcy;
-    if (Math.abs(dx) < 16 && Math.abs(dy) < 16) { if (Math.abs(dy) >= Math.abs(dx) * 1.2) F.y = hcy + (dy < 0 ? -16 : 16); else F.x = hcx + (dx < 0 ? -16 : 16); }
-    if (F.mode === 'hover' && !F.off && onScreen(F.at, sx, sy)) { const [ax, ay] = center(F.at, sx, sy); if (Math.abs(F.x - ax) < 16 && Math.abs(F.y - ay) < 15) { if (ay - 15 >= 22) F.y = ay - 15; else F.x = ax + (F.x < ax ? -16 : 16); } }
+    if (Math.abs(dx) < 13 && Math.abs(dy) < 13) { if (Math.abs(dy) >= Math.abs(dx) * 1.2) F.y = hcy + (dy < 0 ? -13 : 13); else F.x = hcx + (dx < 0 ? -13 : 13); }
+    if (F.mode === 'hover' && !F.off && onScreen(F.at, sx, sy)) { const [ax, ay] = center(F.at, sx, sy); if (Math.abs(F.x - ax) < 13 && Math.abs(F.y - ay) < 13) { if (ay - 13 >= 18) F.y = ay - 13; else F.x = ax + (F.x < ax ? -13 : 13); } }
     // a loop-de-loop when he calls out
     let lx = 0, ly = 0;
     const lq = (now - F.loopT) / 650;
@@ -347,9 +347,9 @@
 
   // his wings, the right one (the left is its mirror): # white, c his color
   const WINGS = [
-    ['.....##.', '...####.', '..###cc.', '.###cc..', '##cc....', '#c......', '........'],
-    ['........', '..####..', '.######.', '#####ccc', '.##cccc.', '..cc....', '........'],
-    ['........', '#.......', '##c.....', '.##cc...', '..##cc..', '...###c.', '.....##.']];
+    ['...##', '..###', '.##c.', '##c..', 'c....'],
+    ['.....', '.###.', '####c', '.#cc.', '.....'],
+    ['#....', '##c..', '.##c.', '..##c', '...##']];
   // tiny pixel letters for "!" and "?"
   const GLYPH = { '!': ['.#.', '.#.', '.#.', '...', '.#.'], '?': ['##.', '..#', '.#.', '...', '.#.'] };
   /* draw him: (x, y) = the top-left of his 16 × 16 box */
@@ -362,7 +362,7 @@
     F.trail.forEach(p => { const a = 1 - (t - p.t) / 420; c.fillStyle = col[0]; c.globalAlpha = a * 0.9; c.fillRect(Math.round(p.x), Math.round(p.y), 1, 1); if (a > 0.6) c.fillRect(Math.round(p.x) - 1, Math.round(p.y), 3, 1); });
     c.globalAlpha = 1;
     // his light: a soft halo, brighter when he calls out
-    const rad = 12 + k * 2 + call * 5;
+    const rad = 8 + k * 1.5 + call * 4;
     const gr = c.createRadialGradient(cx, cy + bob, 2, cx, cy + bob, rad);
     gr.addColorStop(0, col[0] + 'cc'); gr.addColorStop(0.45, col[1] + Math.round(0x55 + call * 0x50).toString(16)); gr.addColorStop(1, col[1] + '00');
     c.fillStyle = gr; c.beginPath(); c.arc(cx, cy + bob, rad, 0, 7); c.fill();
@@ -371,7 +371,7 @@
     // wings: three frames (up, middle, down), white and a little see-through, his color at the tips
     const fr = calm ? 1 : [0, 1, 2, 1][Math.floor(t / (F.mode === 'follow' ? 90 : 55)) % 4];
     const wing = (s) => {
-      const rows = WINGS[fr], dy = droop ? 2 : 0, px = (q, r) => [s > 0 ? 4 + q : -5 - q, r - 8 + dy];
+      const rows = WINGS[fr], dy = droop ? 2 : 0, px = (q, r) => [s > 0 ? 3 + q : -4 - q, r - 5 + dy];
       const on = new Set(); rows.forEach((row, r) => [...row].forEach((ch, q) => ch !== '.' && on.add(q + ',' + r)));
       c.fillStyle = 'rgba(34,32,46,.6)';
       on.forEach(k => { const [q, r] = k.split(',').map(Number); [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => { if (!on.has((q + a) + ',' + (r + b)) && q + a >= 0) { const [x, y] = px(q + a, r + b); c.fillRect(x, y, 1, 1); } }); });
@@ -379,22 +379,22 @@
     };
     wing(-1); wing(1);
     // body: a small round light with a dark rim, his color, and a compass needle inside
-    const R = [[-2, 2, -5], [-4, 4, -4], [-5, 5, -3], [-5, 5, -2], [-6, 6, -1], [-6, 6, 0], [-5, 5, 1], [-5, 5, 2], [-4, 4, 3], [-2, 2, 4]];
+    const R = [[-1, 1, -4], [-3, 3, -3], [-4, 4, -2], [-4, 4, -1], [-4, 4, 0], [-4, 4, 1], [-3, 3, 2], [-1, 1, 3]];
     c.fillStyle = '#22202e'; R.forEach(([a, b, yy]) => c.fillRect(a - 1, yy - 1, b - a + 2, 3));
     R.forEach(([a, b, yy]) => { c.fillStyle = col[1]; c.fillRect(a, yy, b - a, 1); });
     R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
     // eyes (blink now and then)
     const blink = !calm && (t % 3200) < 120;
-    c.fillStyle = '#22202e'; if (droop) { c.fillRect(-3, -2, 2, 1); c.fillRect(1, -2, 2, 1); } else { c.fillRect(-3, -3, 1, blink ? 1 : 2); c.fillRect(2, -3, 1, blink ? 1 : 2); }
+    c.fillStyle = '#22202e'; if (droop) { c.fillRect(-2, -1, 1, 1); c.fillRect(1, -1, 1, 1); } else { c.fillRect(-2, -2, 1, blink ? 1 : 2); c.fillRect(1, -2, 1, blink ? 1 : 2); }
     // the needle (red end points at what he shows)
     const nx = Math.cos(F.needle), ny = Math.sin(F.needle);
-    for (let i = 1; i <= 3; i++) { c.fillStyle = '#e04848'; c.fillRect(Math.round(nx * i) - 0, Math.round(1 + ny * i), 1, 1); c.fillStyle = '#2f6fd6'; c.fillRect(Math.round(-nx * i), Math.round(1 - ny * i), 1, 1); }
+    for (let i = 1; i <= 2; i++) { c.fillStyle = '#e04848'; c.fillRect(Math.round(nx * i), Math.round(1 + ny * i), 1, 1); c.fillStyle = '#2f6fd6'; c.fillRect(Math.round(-nx * i), Math.round(1 - ny * i), 1, 1); }
     c.fillStyle = '#22202e'; c.fillRect(0, 1, 1, 1);
     c.restore();
     // "!" = he has something to tell you · "?" = ask him (C or 🧭)
     const g = F.bang || call > 0 ? '!' : F.ask ? '?' : null;
     if (g) {
-      const bx = Math.round(cx) - 3, by = Math.round(y + bob) - 12 - (calm ? 0 : Math.round(Math.abs(Math.sin(t / 180)) * 2));
+      const bx = Math.round(cx) - 3, by = Math.round(y + bob) - 6 - (calm ? 0 : Math.round(Math.abs(Math.sin(t / 180)) * 2));
       c.fillStyle = '#22202e'; c.fillRect(bx - 1, by - 1, 7, 9); c.fillStyle = g === '!' ? col[1] : '#fffbe8'; c.fillRect(bx, by, 5, 7);
       c.fillStyle = '#22202e'; GLYPH[g].forEach((row, r) => [...row].forEach((ch, q) => ch === '#' && c.fillRect(bx + 1 + q, by + 1 + r, 1, 1)));
     }
