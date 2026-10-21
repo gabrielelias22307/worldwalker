@@ -20,14 +20,14 @@ window.EPISODE = {
     'ruusuuuuuurruuuuuuuuuuuruusuuuur',
     'ruuuuuuuuuuuusuuusuuuuuruuuuusur',
     'rsssssxssssssssssssssssssssssssr',
-    'aggggggggagggggggaggggggggggagga',
+    'aaagaa:aaagaaagaaaga:aaagaaaga:a',
     'agggggggggggggOgggggggggggggggga',
     'agg::::::::::::::::::::::::::gga',
-    'aggggggg:o1o1oggggggggg:ggggggga',
-    'agaggggg:1o1o1ggggggagg:gggggaga',
+    'agYggggg:o1o1oggggggggg:ggggggga',
+    'agaggYgg:1o1o1ggggggagg:gggggaga',
     'aggggggg:ggggaggggggggg:ggggggga',
     'a...""..:.....a.....a..:.......a',
-    'a..a....:."".....""....:...AA..a',
+    'a..aY...:."".....""....:...AA..a',
     'a"....".:...a..........:..MAnG.a',
     'a.......:..............:.MMMMMMa',
     'a....a..:....""...a....:x.MMM..a',
@@ -41,6 +41,22 @@ window.EPISODE = {
   start: [4, 6],
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): fill the gaps in the Green Wall, where the Sahara sand meets the Sahel's dry grass */
+  build: [
+    { id: 'greenwall', kind: 'place', board: [2, 6], tile: 'a', ok: [[3, 5], [10, 5], [14, 5], [18, 5], [24, 5], [28, 5]], cost: { wood: 1 },
+      name: { en: 'The Great Green Wall', es: 'La Gran Muralla Verde', fa: 'دیوار بزرگ سبز' },
+      ask: { en: 'The Sahara is spreading south into the [[sahel|Sahel]]. That is [[desertification|desertification]]. Hadiza\'s acacia trees make a green wall where the sand meets the dry grass. Plant an acacia in each gap in that line of trees. Leave the three paths open for the herders.',
+        es: 'El Sahara avanza hacia el sur, hacia el [[sahel|Sahel]]. Eso es la [[desertification|desertificación]]. Las acacias de Hadiza forman un muro verde donde la arena se junta con el pasto seco. Planta una acacia en cada hueco de esa fila de árboles. Deja abiertos los tres caminos para los pastores.',
+        fa: 'صحرا به طرف جنوب، به داخل [[sahel|ساحل]] پیش می‌آید. این [[desertification|بیابان‌زایی]] است. درختان اکاسیای حدیزه جایی که ریگ به علف خشک می‌رسد یک دیوار سبز می‌سازند. در هر شکاف آن ردیف درخت یک اکاسیا بکار. سه راه را برای مالداران باز بگذار.' },
+      why: { en: 'Right in the wall, at the edge of the sand! Its roots hold the soil.', es: '¡Justo en el muro, en el borde de la arena! Sus raíces sujetan la tierra.', fa: 'درست در دیوار، در لبهٔ ریگ! ریشه‌هایش خاک را نگه می‌دارند.' },
+      wrong: { en: 'This is the Sahel, but not the wall. Plant in the gaps of the tree line, where the sand meets the dry grass.', es: 'Esto es el Sahel, pero no el muro. Planta en los huecos de la fila de árboles, donde la arena se junta con el pasto seco.', fa: 'این ساحل است، اما دیوار نیست. در شکاف‌های ردیف درختان بکار، جایی که ریگ به علف خشک می‌رسد.' },
+      wrongBy: [
+        { x: 1, y: 1, w: 30, h: 4, t: { en: 'This is the Sahara sand. It is too dry here, so a young tree dies. Plant just south, in the gaps of the tree line.', es: 'Esto es la arena del Sahara. Aquí es muy seco y un árbol joven se muere. Planta un poco más al sur, en los huecos de la fila de árboles.', fa: 'این ریگ صحرا است. این جا خیلی خشک است و درخت جوان می‌میرد. کمی جنوب‌تر، در شکاف‌های ردیف درختان بکار.' } },
+        { x: 1, y: 11, w: 30, h: 6, t: { en: 'This is the green savanna. It gets more rain. The wall belongs farther north, where the desert is spreading.', es: 'Esto es la sabana verde. Recibe más lluvia. El muro va más al norte, donde avanza el desierto.', fa: 'این علفزار سبز است. باران بیشتر می‌گیرد. دیوار جای شمال‌تر است، جایی که بیابان پیش می‌آید.' } },
+        { x: 1, y: 17, w: 30, h: 4, t: { en: 'There is already a forest here. It rains almost every month. The wall belongs where the desert is spreading, far to the north.', es: 'Aquí ya hay un bosque. Llueve casi todos los meses. El muro va donde avanza el desierto, muy al norte.', fa: 'این جا از قبل جنگل است. تقریباً هر ماه باران می‌بارد. دیوار جای است که بیابان پیش می‌آید، دور در شمال.' } }
+      ],
+      done: { en: 'The Green Wall is closed! In real life, countries across Africa are planting a wall of trees across the Sahel. The trees hold the soil and slow the desert.', es: '¡El Muro Verde está cerrado! En la vida real, países de toda África plantan un muro de árboles a lo largo del Sahel. Los árboles sujetan la tierra y frenan el desierto.', fa: 'دیوار سبز بسته شد! در زندگی واقعی، کشورهای زیادی در افریقا در سراسر ساحل یک دیوار درخت می‌کارند. درختان خاک را نگه می‌دارند و بیابان را آهسته می‌کنند.' } }
+  ],
   finds: [
     { clueAt: [8, 4], at: [12, 1], decor: 'fossil',
       clue: { en: 'From this note, walk 3 steps north, then 4 steps east. Something is hidden in the Sahara sand.', es: 'Desde esta nota, camina 3 pasos al norte y luego 4 pasos al este. Algo está escondido en la arena del Sahara.', fa: 'از این یادداشت، ۳ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی در ریگ صحرا پنهان است.' },

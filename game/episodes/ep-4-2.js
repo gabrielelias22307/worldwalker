@@ -41,6 +41,20 @@ window.EPISODE = {
   start: [3, 6],
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): new homes for families who moved to the city, on the empty land by the river port */
+  build: [
+    { id: 'home', kind: 'place', board: [28, 8], tile: 'J', ok: [[24, 6], [25, 6], [26, 6]], cost: { wood: 1 },
+      name: { en: 'New homes by the port', es: 'Casas nuevas junto al puerto', fa: 'خانه‌های نو کنار بندر' },
+      ask: { en: 'Three families just came from farm villages to find work. That is [[urbanization|urbanization]]. The jobs are at the river port and the market, because the Congo River is the city\'s road. Build their three homes in a row on the empty land just east of the east dock, right beside the river road.',
+        es: 'Tres familias acaban de llegar de pueblos del campo para buscar trabajo. Eso es la [[urbanization|urbanización]]. Los trabajos están en el puerto del río y en el mercado, porque el río Congo es la carretera de la ciudad. Construye sus tres casas en fila en el terreno vacío justo al este del muelle del este, al lado del camino del río.',
+        fa: 'سه خانواده تازه از قریه‌ها برای پیدا کردن کار آمده‌اند. این [[urbanization|شهرنشینی]] است. کارها در بندر دریا و بازار هستند، چون دریای کانگو سرکِ شهر است. سه خانهٔ آن‌ها را در یک ردیف در زمین خالی درست شرق بندر شرقی، کنار سرک دریا بساز.' },
+      why: { en: 'Good spot! From here it is a short walk to the boats and the market.', es: '¡Buen lugar! Desde aquí se camina poco hasta los barcos y el mercado.', fa: 'جای خوب! از این جا تا کشتی‌ها و بازار راه کوتاه است.' },
+      wrong: { en: 'Not here. Build on the empty land just east of the east dock, beside the river road. Keep the homes in one row.', es: 'Aquí no. Construye en el terreno vacío justo al este del muelle del este, junto al camino del río. Pon las casas en una sola fila.', fa: 'این جا نه. در زمین خالی درست شرق بندر شرقی، کنار سرک دریا بساز. خانه‌ها را در یک ردیف بساز.' },
+      wrongBy: [
+        { x: 1, y: 15, w: 14, h: 6, t: { en: 'This is far from the river. The families came for work, and the work is at the port and the market. Build near them.', es: 'Esto está lejos del río. Las familias vinieron a trabajar, y el trabajo está en el puerto y el mercado. Construye cerca de ellos.', fa: 'این جا از دریا دور است. خانواده‌ها برای کار آمده‌اند، و کار در بندر و بازار است. نزدیک آن‌ها بساز.' } }
+      ],
+      done: { en: 'The families have homes by the port! Cities like Kinshasa grow because people move in for jobs. Kinshasa grew up on the Congo River, because the river is a road for boats and trade.', es: '¡Las familias tienen casas junto al puerto! Ciudades como Kinshasa crecen porque la gente llega por trabajo. Kinshasa creció junto al río Congo, porque el río es una carretera para barcos y comercio.', fa: 'خانواده‌ها کنار بندر خانه دارند! شهرهایی مثل کینشاسا بزرگ می‌شوند چون مردم برای کار به آن‌ها می‌آیند. کینشاسا کنار دریای کانگو بزرگ شد، چون دریا سرکی برای کشتی‌ها و تجارت است.' } }
+  ],
   finds: [
     { clueAt: [11, 6], at: [4, 2], decor: 'shell',
       clue: { en: 'Use the map key: brown boards are a dock. Brazzaville is just across the river. Go to the dock on the west side of the city. Stand on its north-west corner square.', es: 'Usa la leyenda: las tablas cafés son un muelle. Brazzaville está justo al otro lado del río. Ve al muelle del lado oeste de la ciudad. Párate en su cuadro de la esquina noroeste.', fa: 'از راهنمای نقشه استفاده کن: تخته‌های قهوه‌ای اسکله است. برازاویل درست آن طرف دریا است. به اسکلهٔ طرف غرب شهر برو. روی خانهٔ کنج شمال‌غربی آن بایست.' },

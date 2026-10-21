@@ -25,12 +25,12 @@ window.EPISODE = {
     'K:::::::::::::.....K........kss=',
     'K...----------------------..~===',
     'K.......x................|..~===',
-    'K................eeeeee..|K.~===',
-    'K................eeeeee..|..~===',
+    'K................eeeeee...K.~===',
+    'K................eeeeee.....~===',
     'K.UU.:.UU..:JJJ.........:|~~~===',
     'K.UUT:.UUT.:JJJ..XXX..Tx:|~~~===',
     'K:::::::::::::::.XXX....:|kkkk==',
-    'K.JJ.:.JJJ.:UU..........:|~~~===',
+    'K.JJ.:.JJJ.:UU..........:.~~~===',
     'K.JJ.:.JJJ.:UU..::::::::::~~~===',
     'KT..T:....T:..T.........:|~~~===',
     'K:::::::::::::::........:-kkkk==',
@@ -42,6 +42,20 @@ window.EPISODE = {
   start: [2, 9],
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): lay the missing rails so the line links the mine to the port of Durban */
+  build: [
+    { id: 'railway', kind: 'place', board: [23, 10], tile: '|', ok: [[25, 9], [25, 10], [25, 14], [25, 15]], cost: { wood: 1 },
+      name: { en: 'The railway to Durban', es: 'El tren a Durban', fa: 'خط آهن تا دوربان' },
+      ask: { en: 'The Grump pulled rails out of the railway! The [[mineral|minerals]] from the mine must get to the [[port|port]] of Durban, so ships can [[export|export]] them. Follow the tracks east, then south. Lay a new rail in each gap, so the line runs from the mine all the way to the docks.',
+        es: '¡El Gruñón arrancó rieles de la vía del tren! Los [[mineral|minerales]] de la mina tienen que llegar al [[port|puerto]] de Durban, para que los barcos los [[export|exporten]]. Sigue la vía al este y luego al sur. Pon un riel nuevo en cada hueco, para que la línea vaya desde la mina hasta los muelles.',
+        fa: 'غرغرو ریل‌ها را از خط آهن کشید! [[mineral|معدنیات]] از معدن باید به [[port|بندر]] دوربان برسند تا کشتی‌ها آن‌ها را [[export|صادر]] کنند. خط را به طرف شرق، بعد جنوب دنبال کن. در هر شکاف یک ریل نو بگذار تا خط از معدن تا بندر برسد.' },
+      why: { en: 'The rail fits! The line is one step closer to the port.', es: '¡El riel encaja! La línea está un paso más cerca del puerto.', fa: 'ریل جا افتاد! خط یک قدم به بندر نزدیک‌تر شد.' },
+      wrong: { en: 'This rail does not join the line. A train can only go where the tracks connect. Put the rails in the gaps between the mine and the docks.', es: 'Este riel no se une a la línea. Un tren solo puede ir donde la vía está unida. Pon los rieles en los huecos entre la mina y los muelles.', fa: 'این ریل به خط وصل نمی‌شود. قطار فقط جایی می‌رود که خط وصل باشد. ریل‌ها را در شکاف‌های بین معدن و بندر بگذار.' },
+      wrongBy: [
+        { x: 1, y: 11, w: 23, h: 10, t: { en: 'This is the city, not the railway line. The minerals must go to the port on the coast. Fill the gaps in the tracks to the east.', es: 'Esto es la ciudad, no la vía del tren. Los minerales tienen que ir al puerto en la costa. Llena los huecos de la vía, al este.', fa: 'این شهر است، نه خط آهن. معدنیات باید به بندر در ساحل بروند. شکاف‌های خط را در شرق پر کن.' } }
+      ],
+      done: { en: 'The railway is whole again! Trains carry the minerals from the mine to Durban. Then ships export them to other countries, and South Africa earns money from trade.', es: '¡La vía del tren está completa otra vez! Los trenes llevan los minerales de la mina a Durban. Luego los barcos los exportan a otros países, y Sudáfrica gana dinero con el comercio.', fa: 'خط آهن دوباره کامل شد! قطارها معدنیات را از معدن به دوربان می‌برند. بعد کشتی‌ها آن‌ها را به کشورهای دیگر صادر می‌کنند و افریقای جنوبی از تجارت پول به دست می‌آورد.' } }
+  ],
   finds: [
     { clueAt: [6, 6], at: [8, 2], decor: 'gem',
       clue: { en: 'From this note, walk 4 steps north, then 2 steps east. Look near the mine.', es: 'Desde esta nota, camina 4 pasos al norte y luego 2 pasos al este. Busca cerca de la mina.', fa: 'از این یادداشت، ۴ قدم به شمال برو، بعد ۲ قدم به شرق. نزدیک معدن را ببین.' },
