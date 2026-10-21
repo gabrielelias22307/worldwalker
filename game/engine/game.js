@@ -285,7 +285,29 @@
 
   /* ---------------- moving ---------------- */
   const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
-  const stepMs = () => 150 - 18 * WW.tier('mov'); // Movement power: quicker steps
+  const stepMs = () => ride ? 70 : 150 - 18 * WW.tier('mov'); // Movement power: quicker steps; the train is quicker still
+  /* ---- riding the train (FUN-PASS-2 Part E): with the Rail Pass (or the episode's own ticket, train: true), a step along
+     the tracks starts a ride; the train carries you along the rails and stops at a stop, a crossing, the end of the line,
+     or anything in the way. Press another way to get off. ---- */
+  let ride = null, rideTold = false;
+  const RAIL = '-|';
+  const ticket = () => WW.hasTool('rail') || !!(WW.ep && WW.ep.train);
+  function rideNext() { // the one rail square to go to next, or null
+    const p = player, here = tileAt(p.x, p.y); if (!RAIL.includes(here)) return null;
+    const opts = Object.entries(DIRS).filter(([, [dx, dy]]) => { const nx = p.x + dx, ny = p.y + dy; return !(ride && nx === ride.px && ny === ride.py) && RAIL.includes(tileAt(nx, ny)); });
+    if (opts.length !== 1) return null; // a crossing or the end of the line
+    const [d, [dx, dy]] = opts[0], nx = p.x + dx, ny = p.y + dy;
+    if (entAt(nx, ny) && !PASS.includes(entAt(nx, ny).kind)) return null; // a stop (or someone) is right there: get off
+    const stopBeside = Object.values(DIRS).some(([ax, ay]) => { const o = entAt(p.x + ax, p.y + ay); return o && o.kind === 'stop'; }); // a route stop is a station
+    if (stopBeside && ride && ride.steps > 0) return null; // a station: stop here
+    return d;
+  }
+  function rideStep(now) {
+    const d = rideNext();
+    if (!d) { if (ride && ride.steps) { WW.sfx('blip'); } ride = null; return; }
+    ride.px = player.x; ride.py = player.y; ride.steps++;
+    tryStep(d, now);
+  }
   function tryStep(d, now) {
     if (player.moving || trans || WW.paused) return;
     player.dir = d;
@@ -379,6 +401,7 @@
   const TURN_MS = 110;
   let queued = null;
   function press(d) {
+    if (ride && d !== player.dir) ride = null; // pressed another way: off the train
     held = d;
     if (player && player.dir === d) queued = d; // already facing it: even a very quick tap is one step
     heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
@@ -526,10 +549,19 @@
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
     // movement timing
-    if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+    if (player.moving && now - player.moving >= stepMs()) {
+      const from = player.from;
+      player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup();
+      // stepped along the rails: all aboard
+      if (!ride && from && RAIL.includes(tileAt(player.x, player.y)) && RAIL.includes(tileAt(from[0], from[1]))) {
+        if (ticket()) { ride = { px: from[0], py: from[1], steps: 0 }; WW.sfx('gate'); if (!rideTold) { rideTold = true; WW.chris.say(T(WW.hasTool('rail') ? 'trainGo' : 'trainTicket')); } }
+        else if (!rideTold && WW.TOOLS.some(t => t.id === 'rail' && WW.epIndex(t.ep) < WW.epIndex(WW.ep.id))) { rideTold = true; WW.chris.say(T('trainNeed')); }
+      }
+    }
     const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
     if (!player.moving && !trans && !WW.paused) {
-      if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
+      if (ride) rideStep(now);
+      else if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
       else if (queued && !held) { tryStep(queued, now); queued = null; }
       else if (clickTarget) {
         const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
@@ -636,12 +668,18 @@
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
     WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
     WW.world.boat(c, Math.round(x), Math.round(y), tileAt(player.x, player.y));
+    if (ride) { // a little train car under the hero
+      const X = Math.round(x), Y = Math.round(y);
+      c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 5, 18, 10); c.fillStyle = '#c0392b'; c.fillRect(X, Y + 6, 16, 6); c.fillStyle = '#f2c14e'; c.fillRect(X, Y + 8, 16, 1);
+      c.fillStyle = '#22202e'; c.fillRect(X + 2, Y + 13, 3, 3); c.fillRect(X + 11, Y + 13, 3, 3);
+    }
     WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 
   /* ---------------- hooks for the automatic play-tests ---------------- */
   WW.dbg = {
-    teleport(x, y) { player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; clickTarget = null; held = null; },
+    riding() { return !!ride; },
+    teleport(x, y) { ride = null; player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; clickTarget = null; held = null; },
     face(d) { player.dir = d; },
     act() { actFacing(); },
     bumpInto(x, y) { // stand next to (x,y) on a walkable tile and interact

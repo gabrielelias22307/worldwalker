@@ -324,6 +324,28 @@
   tiles.G = (c, x, y, gx, gy, t, m) => {
     under(c, x, y, gx, gy, m);
     const tl = WW.ep && WW.ep.secret && WW.TOOLS.find(o => o.id === WW.ep.secret.tool), open = tl && WW.hasTool(tl.id);
+    const id = tl && tl.id;
+    if (id === 'cloak') { // a curtain of heavy monsoon rain (the cloak walks you through it)
+      const k = WW.calm ? 0 : Math.floor((t || 0) / 90);
+      c.fillStyle = open ? 'rgba(90,120,170,.25)' : 'rgba(60,80,130,.6)'; c.fillRect(x, y, 16, 16);
+      c.fillStyle = open ? 'rgba(200,220,255,.5)' : '#c8dcff';
+      for (let i = 0; i < 6; i++) { const rx = (i * 5 + k * 2) % 16, ry = (i * 7 + k * 5) % 16; c.fillRect(x + rx, y + ry, 1, 4); }
+      return;
+    }
+    if (id === 'key') { // a canal sluice gate with a lock (the Water Key opens it)
+      c.fillStyle = '#5a5f66'; c.fillRect(x, y + 1, 3, 15); c.fillRect(x + 13, y + 1, 3, 15); c.fillStyle = '#22202e'; c.fillRect(x, y, 16, 2);
+      if (open) { c.fillStyle = '#3a8dde'; c.fillRect(x + 3, y + 4, 10, 12); c.fillStyle = '#8fc3ff'; c.fillRect(x + 4, y + 6, 3, 1); c.fillRect(x + 8, y + 10, 3, 1); return; }
+      c.fillStyle = '#7a5a3a'; c.fillRect(x + 3, y + 2, 10, 13); c.fillStyle = '#5b3a1e'; c.fillRect(x + 3, y + 6, 10, 1); c.fillRect(x + 3, y + 10, 10, 1);
+      c.fillStyle = '#3a8dde'; c.fillRect(x + 3, y + 15, 10, 1);
+      c.fillStyle = '#f2c14e'; c.fillRect(x + 6, y + 7, 4, 3); c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 8, 2, 1);
+      return;
+    }
+    if (id === 'rail') { // a red-and-white barrier across the tracks (the Rail Pass lifts it)
+      c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 3, 3, 12);
+      if (open) { c.fillStyle = '#e04848'; c.fillRect(x + 2, y, 2, 6); return; }
+      for (let i = 0; i < 6; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#e04848'; c.fillRect(x + 3 + i * 2, y + 6, 2, 3); }
+      return;
+    }
     c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 2, 2, 13); c.fillRect(x + 13, y + 2, 2, 13);
     c.fillStyle = '#6d4424'; c.fillRect(x + 1, y + 2, 1, 13); c.fillRect(x + 13, y + 2, 1, 13);
     if (open) { c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + 4, 2, 10); c.fillRect(x + 11, y + 4, 2, 10); return; }

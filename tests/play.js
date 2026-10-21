@@ -406,6 +406,19 @@ const CANVAS = process.argv.includes('--canvas');
           if (/undefined|\[\[/.test(raw)) throw new Error('quest bar shows raw text');
         });
       }
+      // FUN-PASS-2 Part E: with a ticket (train: true) or the Rail Pass, a step along the tracks rides the train to the next station
+      if (ep.train || (ep.map.some(r => /--/.test(r)) && ['3.2', '4.3', '7.3'].includes(id))) await step('ride the train', async () => {
+        await page.evaluate(() => { WW.save.episodes['3.3'] = WW.save.episodes['3.3'] || { done: true, stars: 1 }; });
+        const start = await page.evaluate(() => { const g = WW.game, [W, H] = g.size; for (let y = 1; y < H - 1; y++) for (let x = 2; x < W - 6; x++) if ('-'.includes(g.tileAt(x, y)) && '-'.includes(g.tileAt(x + 1, y)) && '-'.includes(g.tileAt(x + 2, y)) && '-'.includes(g.tileAt(x + 3, y)) && !g.entAt(x + 1, y)) { WW.dbg.teleport(x, y); WW.dbg.face('right'); return [x, y]; } return null; });
+        if (!start) throw new Error('no straight track to ride');
+        await page.keyboard.down('ArrowRight'); await page.waitForTimeout(200); await page.keyboard.up('ArrowRight');
+        await page.waitForFunction(() => WW.dbg.riding(), null, { timeout: 2000 });
+        await page.waitForTimeout(250); await shot('5t-train');
+        await page.waitForFunction(() => !WW.dbg.riding(), null, { timeout: 15000 });
+        const end = await page.evaluate(() => [WW.dbg.player.x, WW.dbg.player.y]);
+        if (end[0] - start[0] < 3) throw new Error('the train went only ' + (end[0] - start[0]) + ' squares');
+        await page.evaluate(() => WW.chris.hide());
+      });
       const c = ep.challenge;
       await step('challenge (' + c.type + ')', async () => {
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.at);

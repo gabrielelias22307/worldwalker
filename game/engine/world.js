@@ -49,7 +49,7 @@
     if (Wd.fogAt(x, y)) { const b = G().ents.find(e => e.kind === 'boss'); if (b) G().interact(b); return true; }
     if (G().tileAt(x, y) !== 'G') return false;
     const t = tool(); if (!t) return false;
-    WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
+    WW.chris.say(T(WW.S['gate_' + t.id] ? 'gate_' + t.id : 'gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
     return true;
   };
 
