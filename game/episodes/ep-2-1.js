@@ -67,8 +67,8 @@ window.EPISODE = {
       clue: { en: 'From this note, walk 4 steps south, then 3 steps east. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 3 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۳ قدم به شرق. چیزی آن جا پنهان است.' },
       text: { en: 'You followed compass directions! Four of the five Great Lakes touch the U.S.–Canada border. A feather was here.', es: '¡Seguiste las direcciones de la brújula! Cuatro de los cinco Grandes Lagos tocan la frontera entre EE. UU. y Canadá. Aquí había una pluma.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! چهار تا از پنج جهیل بزرگ به سرحد امریکا و کانادا می‌رسند. یک پر این جا بود.' } },
     { clueAt: [15, 11], at: [24, 15], decor: 'coinold',
-      clue: { en: '[[prairie|Prairie]] grain rides a train, then a barge. Find the barge dock on the south-flowing river, where the dirt road meets it.', es: 'El grano de la [[prairie|pradera]] va en tren y luego en barcaza. Busca el muelle en el río que corre al sur, donde llega el camino de tierra.', fa: 'غلهٔ [[prairie|دشت]] با ریل می‌رود، بعد با کشتیِ باری. اسکله را روی دریایی که به جنوب می‌رود پیدا کن، جایی که سرکِ خاکی می‌رسد.' },
-      text: { en: 'You found the barge dock! One flat barge carries as much grain as many big trucks. An old coin was here.', es: '¡Encontraste el muelle! Una barcaza plana lleva tanto grano como muchos camiones grandes. Aquí había una moneda antigua.', fa: 'تو اسکله را پیدا کردی! یک کشتیِ باریِ هموار به اندازهٔ چندین لاری بزرگ غله می‌برد. یک سکهٔ کهنه این جا بود.' } }
+      clue: { en: '[[prairie|Prairie]] grain goes by train, then barge. Find the barge dock where the dirt road meets the south-flowing river.', es: 'El grano de la [[prairie|pradera]] va en tren y luego en barcaza. Busca el muelle donde el camino de tierra llega al río que corre al sur.', fa: 'غلهٔ [[prairie|دشت]] با ریل می‌رود، بعد با کشتیِ باری. اسکله را جایی پیدا کن که سرکِ خاکی به دریای جنوب‌رو می‌رسد.' },
+      text: { en: 'You found the barge dock! One flat barge carries as much grain as many trucks. An old coin was here.', es: '¡Encontraste el muelle! Una barcaza plana lleva tanto grano como muchos camiones. Aquí había una moneda antigua.', fa: 'تو اسکله را پیدا کردی! یک کشتیِ باریِ هموار به اندازهٔ چندین لاری غله می‌برد. یک سکهٔ کهنه این جا بود.' } }
   ],
   // only the Compass Rose (Episode 1.3) opens the little gate by the lake
   secret: { tool: 'compass', at: [24, 1],
@@ -94,10 +94,10 @@ window.EPISODE = {
       role: { en: 'Ship captain from Quebec', es: 'Capitana de barco de Quebec', fa: 'کپتان کشتی از کیوبک' },
       look: { skin: 0, hair: '#8a5a2a', shirt: '#22324f', pants: '#22324f' },
       lines: [
-        { en: 'Bonjour! I am Captain Marie, from Quebec. Most big U.S. and Canadian cities sit by water.', es: '¡Bonjour! Soy la capitana Marie, de Quebec. Casi todas las grandes ciudades de EE. UU. y Canadá están junto al agua.', fa: 'بونژور! من کپتان ماری از کیوبک هستم. بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند.' },
-        { en: 'Many sit on a [[harbor|harbor]], a calm place where big ships dock.', es: 'Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde atracan barcos grandes.', fa: 'بسیاری روی یک [[harbor|بندرگاه]] هستند، جای آرامی که کشتی‌های بزرگ لنگر می‌اندازند.' },
-        { en: 'The five Great Lakes, between the U.S. and Canada, are like an inland sea for ore and grain ships.', es: 'Los cinco Grandes Lagos, entre EE. UU. y Canadá, son como un mar interior para barcos de mineral y granos.', fa: 'پنج جهیل بزرگ، میان امریکا و کانادا، برای کشتی‌های سنگ آهن و غله مثل یک بحر داخلی است.' },
-        { en: 'Lake Superior is 180 meters above the sea. The [[seaway|Seaway]] locks lower ships to the Atlantic.', es: 'El lago Superior está 180 metros sobre el mar. Las esclusas de la [[seaway|Vía Marítima]] bajan los barcos hasta el Atlántico.', fa: 'جهیل سوپریور ۱۸۰ متر از بحر بلندتر است. دروازه‌های آبی [[seaway|راه آبی سنت لارنس]] کشتی‌ها را تا اطلس پایین می‌برند.' }
+        { en: 'Bonjour! I am Marie from Quebec. Big cities grow by a [[harbor|harbor]], where ships dock.', es: '¡Bonjour! Soy Marie, de Quebec. Las grandes ciudades crecen junto a un [[harbor|puerto natural]], donde atracan los barcos.', fa: 'بونژور! من ماری از کیوبک هستم. شهرهای بزرگ کنار یک [[harbor|بندرگاه]] بزرگ می‌شوند، جایی که کشتی‌ها لنگر می‌اندازند.' },
+        { en: 'The five Great Lakes, between the U.S. and Canada, work like an inland sea.', es: 'Los cinco Grandes Lagos, entre EE. UU. y Canadá, funcionan como un mar interior.', fa: 'پنج جهیل بزرگ، میان امریکا و کانادا، مثل یک بحر در وسط خشکه کار می‌کنند.' },
+        { en: 'Ships carry iron ore and grain down the St. Lawrence River to the Atlantic.', es: 'Los barcos llevan mineral de hierro y granos por el río San Lorenzo hasta el Atlántico.', fa: 'کشتی‌ها سنگ آهن و غله را از راه دریای سنت لارنس تا بحر اطلس می‌برند.' },
+        { en: 'Lake Superior is 180 meters above the sea. [[seaway|Seaway]] locks lower ships step by step.', es: 'El lago Superior está a 180 metros sobre el mar. Las esclusas de la [[seaway|Vía Marítima]] bajan los barcos paso a paso.', fa: 'جهیل سوپریور ۱۸۰ متر از بحر بلندتر است. دروازه‌های آبی [[seaway|راه آبی سنت لارنس]] کشتی‌ها را زینه به زینه پایین می‌برند.' }
       ],
       ask: {
         stat: 'loc',
@@ -118,10 +118,10 @@ window.EPISODE = {
       role: { en: 'Wheat farmer on the prairie', es: 'Agricultor de trigo en la pradera', fa: 'دهقان گندم در دشت' },
       look: { skin: 2, hair: '#1b1410', shirt: '#e07a2a', pants: '#3a4a6a' },
       lines: [
-        { en: 'Hello! A huge flat middle lies between the Rockies (west) and the Appalachians (east).', es: '¡Hola! Un enorme centro plano está entre las Rocosas (oeste) y los Apalaches (este).', fa: 'سلام! یک میانهٔ هموار بسیار بزرگ میان کوه‌های راکی (غرب) و اپالاچی (شرق) است.' },
-        { en: 'It is the Great Plains in the U.S. and the [[prairie|prairies]] in Canada. We grow wheat, corn and soybeans.', es: 'Son las Grandes Llanuras en EE. UU. y las [[prairie|praderas]] en Canadá. Sembramos trigo, maíz y soya.', fa: 'در امریکا دشت‌های بزرگ و در کانادا [[prairie|دشت‌ها (پریری)]] نام دارد. ما گندم، جواری و سویا می‌کاریم.' },
-        { en: 'Farms are far from the sea. Long ago, moving heavy grain by wagon was slow and costly.', es: 'Las granjas están lejos del mar. Hace mucho, mover granos pesados en carreta era lento y caro.', fa: 'فارم‌ها از بحر دور هستند. در گذشته، بردن غلهٔ سنگین با گادی آهسته و قیمت بود.' },
-        { en: 'Now a train hauls my wheat to a [[port|port]]. Water transport is the cheapest of all.', es: 'Ahora un tren lleva mi trigo a un [[port|puerto]]. El transporte por agua es el más barato de todos.', fa: 'حالا قطار گندم مرا به یک [[port|بندر]] می‌برد. بردن از راه آب از همه ارزان‌تر است.' }
+        { en: 'Hello! Between the Rockies (west) and Appalachians (east) lies a huge flat middle.', es: '¡Hola! Entre las Rocosas (oeste) y los Apalaches (este) hay un enorme centro plano.', fa: 'سلام! میان کوه‌های راکی (غرب) و اپالاچی (شرق) یک میانهٔ هموار بسیار بزرگ است.' },
+        { en: 'Great Plains in the U.S., [[prairie|prairies]] in Canada. We grow wheat, corn, soybeans.', es: 'Grandes Llanuras en EE. UU., [[prairie|praderas]] en Canadá. Sembramos trigo, maíz y soya.', fa: 'در امریکا دشت‌های بزرگ، در کانادا [[prairie|دشت‌ها (پریری)]]. ما گندم، جواری و سویا می‌کاریم.' },
+        { en: 'We are far from the sea. Long ago, wagons moved grain slowly and expensively.', es: 'Estamos lejos del mar. Hace mucho, las carretas movían el grano despacio y caro.', fa: 'ما از بحر دور هستیم. در گذشته، گادی‌ها غله را آهسته و قیمت می‌بردند.' },
+        { en: 'Now a truck takes it to the grain elevator, then a train to a [[port|port]].', es: 'Ahora un camión lo lleva al elevador de granos y luego un tren a un [[port|puerto]].', fa: 'حالا لاری آن را به انبار غله می‌برد، بعد قطار به یک [[port|بندر]].' }
       ],
       ask: {
         stat: 'hei',
@@ -142,14 +142,10 @@ window.EPISODE = {
       role: { en: 'River barge pilot', es: 'Piloto de barcaza de río', fa: 'رانندهٔ کشتی باری دریا' },
       look: { skin: 5, hair: '#120c08', shirt: '#c0392b', pants: '#2a3a5a' },
       lines: [
-        { en: 'Hey there! I pilot a barge on this big river.', es: '¡Hola! Yo manejo una barcaza en este río grande.', fa: 'سلام! من در این دریای بزرگ کشتی باری می‌رانم.' },
-        { en: 'A river helps trade only if it is [[navigable|navigable]]: deep and wide for big boats.', es: 'Un río solo ayuda al comercio si es [[navigable|navegable]]: profundo y ancho para barcos grandes.', fa: 'دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد: عمیق و پهن برای کشتی‌های بزرگ.' },
-        { en: 'The Mississippi River is navigable for hundreds of miles.', es: 'El río Misisipi es navegable por cientos de millas.', fa: 'دریای میسی‌سی‌پی صدها میل قابل کشتیرانی است.' },
-        { en: 'Barges carry farm goods down it toward the Gulf of Mexico.', es: 'Las barcazas llevan productos del campo río abajo hacia el golfo de México.', fa: 'کشتی‌های باری اجناس فارم‌ها را از آن به طرف خلیج مکسیکو می‌برند.' },
-        { en: 'One boat carries a heavy load for far less money than wagons or trucks.', es: 'Un solo barco lleva una carga pesada por mucho menos dinero que carretas o camiones.', fa: 'یک کشتی بار سنگین را خیلی ارزان‌تر از گادی یا لاری می‌برد.' },
-        { en: 'Cities grew where boats could stop, load and unload.', es: 'Las ciudades crecieron donde los barcos podían parar, cargar y descargar.', fa: 'شهرها جایی بزرگ شدند که کشتی‌ها می‌توانستند بایستند، بار بزنند و خالی کنند.' },
-        { en: 'Alexandria, Virginia grew on the Potomac River, as far as ocean ships could reach.', es: 'Alexandria, Virginia, creció en el río Potomac, hasta donde llegaban los barcos del océano.', fa: 'الکساندریا در ویرجینیا کنار دریای پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند.' },
-        { en: 'Its old brick warehouses near the water still stand today.', es: 'Sus viejos almacenes de ladrillo junto al agua siguen en pie.', fa: 'گدام‌های خشتی کهنهٔ آن کنار آب هنوز ایستاده‌اند.' }
+        { en: 'Hey! I pilot a barge. A river helps trade only if it is [[navigable|navigable]].', es: '¡Hola! Manejo una barcaza. Un río solo ayuda al comercio si es [[navigable|navegable]].', fa: 'سلام! من کشتی باری می‌رانم. دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد.' },
+        { en: 'That means deep and wide enough for large boats, like the Mississippi River.', es: 'Eso quiere decir lo bastante profundo y ancho para barcos grandes, como el río Misisipi.', fa: 'یعنی آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند، مثل دریای میسی‌سی‌پی.' },
+        { en: 'Barges carry farm goods to the Gulf of Mexico, far cheaper than wagons or trucks.', es: 'Las barcazas llevan productos del campo al golfo de México, mucho más barato que carretas o camiones.', fa: 'کشتی‌های باری اجناس فارم را تا خلیج مکسیکو خیلی ارزان‌تر از گادی یا لاری می‌برند.' },
+        { en: 'Alexandria grew on the Potomac, as far up as ocean ships reached. Its warehouses still stand.', es: 'Alexandria creció en el Potomac, hasta donde llegaban los barcos del océano. Sus almacenes siguen en pie.', fa: 'الکساندریا کنار پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند. گدام‌هایش هنوز ایستاده‌اند.' }
       ],
       ask: {
         stat: 'mov',
@@ -182,11 +178,9 @@ window.EPISODE = {
       look: { skin: 3, hair: '#d8d4cc', shirt: '#2a7a6a', pants: '#3a3a3a', style: 'long' },
       lines: [
         { en: 'Boozhoo! That means hello in my language, Ojibwe.', es: '¡Boozhoo! Eso quiere decir hola en mi idioma, el ojibwe.', fa: 'بوژو! این در زبان من، اوجیبوی، یعنی سلام.' },
-        { en: 'I carved a little birchbark canoe for my grandson.', es: 'Tallé una canoa pequeña de corteza de abedul para mi nieto.', fa: 'من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم.' },
-        { en: 'The Grump\'s wind blew it off the dock and into the lake!', es: '¡El viento del Gruñón la sacó del muelle y la tiró al lago!', fa: 'باد غرغرو آن را از بندر به داخل جهیل برد!' },
-        { en: 'Wen the fisher knows how water moves.', es: 'Wen, la pescadora, sabe cómo se mueve el agua.', fa: 'وِن ماهیگیر می‌داند آب چطور حرکت می‌کند.' },
-        { en: 'She fishes on the big river in the south-east. Will you ask her where my canoe went?', es: 'Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?', fa: 'او در دریای بزرگ در جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' },
-        { en: 'Will you ask her where my canoe went?', es: '¿Le preguntas a dónde se fue mi canoa?', fa: 'از او می‌پرسی که قایق من کجا رفت؟' }
+        { en: 'I carved a little birchbark canoe for my grandson. The Grump\'s wind blew it away!', es: 'Tallé una canoa pequeña de corteza de abedul para mi nieto. ¡El viento del Gruñón se la llevó!', fa: 'من برای نواسه‌ام یک قایق کوچک از پوست درخت توس تراشیدم. باد غرغرو آن را برد!' },
+        { en: 'It fell off the dock into the lake. Wen the fisher knows how water moves.', es: 'Se cayó del muelle al lago. Wen, la pescadora, sabe cómo se mueve el agua.', fa: 'از بندر به داخل جهیل افتاد. وِن ماهیگیر می‌داند آب چطور حرکت می‌کند.' },
+        { en: 'She fishes on the big river, south-east. Will you ask her where my canoe went?', es: 'Pesca en el río grande del sureste. ¿Le preguntas a dónde se fue mi canoa?', fa: 'او در دریای بزرگ جنوب شرق ماهی می‌گیرد. از او می‌پرسی که قایق من کجا رفت؟' }
       ],
       wait: { en: 'Wen is by the big river in the south-east: down and right on this map.', es: 'Wen está junto al río grande, en el sureste: abajo y a la derecha en este mapa.', fa: 'وِن کنار دریای بزرگ در جنوب شرق است: در این نقشه پایین و طرف راست.' },
       thanks: { en: 'My canoe! The water carried it east. Big ships follow that same water road. Miigwech!', es: '¡Mi canoa! El agua la llevó hacia el este. Los barcos grandes siguen ese camino de agua. ¡Miigwech!', fa: 'قایق من! آب آن را به شرق برد. کشتی‌های بزرگ هم همین راه آبی را می‌روند. میگوِچ!' }
@@ -198,9 +192,9 @@ window.EPISODE = {
       look: { skin: 1, hair: '#1b1410', shirt: '#d98e2b', pants: '#2a3a5a', hat: '#c8a870' },
       lines: [
         { en: 'Water always flows downhill. This lake empties into a river on its east side.', es: 'El agua siempre corre hacia abajo. Este lago se vacía en un río por su lado este.', fa: 'آب همیشه به طرف پایین جاری است. این جهیل از طرف شرق خود به یک دریا می‌ریزد.' },
-        { en: 'That river flows east to the ocean. The St. Lawrence River does the same for the Great Lakes.', es: 'Ese río corre al este hasta el océano. El río San Lorenzo hace lo mismo con los Grandes Lagos.', fa: 'آن دریا به شرق تا بحر می‌رود. دریای سنت لارنس هم برای جهیل‌های بزرگ همین کار را می‌کند.' },
+        { en: 'That river flows east to the ocean, like the St. Lawrence from the Great Lakes.', es: 'Ese río corre al este hasta el océano, como el San Lorenzo desde los Grandes Lagos.', fa: 'آن دریا به شرق تا بحر می‌رود، مثل سنت لارنس از جهیل‌های بزرگ.' },
         { en: 'So the canoe floated [[downstream|downstream]], to the east.', es: 'Así que la canoa flotó [[downstream|río abajo]], hacia el este.', fa: 'پس قایق به [[downstream|پایین دریا]]، به طرف شرق، رفت.' },
-        { en: 'Cross the north-east bridge to the north bank. Then walk two steps east along the water.', es: 'Cruza el puente del noreste hasta la orilla norte. Luego camina dos pasos al este junto al agua.', fa: 'از پل شمال شرق به ساحل شمالی برو. بعد دو قدم به شرق در کنار آب برو.' }
+        { en: 'Cross the north-east bridge to the north bank. Walk two steps east by the water.', es: 'Cruza el puente del noreste hasta la orilla norte. Camina dos pasos al este junto al agua.', fa: 'از پل شمال شرق به ساحل شمالی برو. دو قدم به شرق در کنار آب برو.' }
       ]
     },
     action: {
