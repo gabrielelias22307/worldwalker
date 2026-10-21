@@ -47,6 +47,21 @@ window.EPISODE = {
       fa: 'قایق به جزیرهٔ کوچک در خلیج رسید! در صندوق یک نقشهٔ کهنهٔ بحر است. می‌گوید بریتانیای کبیر بزرگ‌ترین جزیرهٔ اروپا است.' } },
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): a harbor pier in the sheltered bay: Europe's peninsulas and bays make trade by sea easy */
+  build: [
+    { id: 'pier', kind: 'place', board: [11, 15], tile: 'k', over: '~', ok: [[8, 15], [9, 15], [9, 16], [9, 17]], cost: { wood: 1 },
+      name: { en: 'Harbor pier', es: 'Muelle del puerto', fa: 'اسکلهٔ بندر' },
+      ask: { en: 'Europe has a long coast with many [[peninsula|peninsulas]] and bays, so trade by sea is easy. A bay has land around it, so big storm waves stay out. Build a pier in the quiet bay just west of this sign. Put the pieces on the water next to the sand, in the corner of the bay.',
+        es: 'Europa tiene una costa larga con muchas [[peninsula|penínsulas]] y bahías, así que comerciar por mar es fácil. Una bahía tiene tierra alrededor, así que las olas grandes de las tormentas no entran. Construye un muelle en la bahía tranquila, justo al oeste de este letrero. Pon las piezas en el agua junto a la arena, en la esquina de la bahía.',
+        fa: 'اروپا ساحل درازی با [[peninsula|شبه‌جزیره‌ها]] و خلیج‌های زیاد دارد، پس تجارت از راه بحر آسان است. دور خلیج خشکه است، پس موج‌های بزرگ توفان داخل نمی‌آیند. در خلیج آرام، درست در غرب این لوحه، یک اسکله بساز. تکه‌ها را روی آب کنار ریگ، در کنج خلیج بگذار.' },
+      why: { en: 'Calm water in the bay. Ships can tie up here safely!', es: 'Agua tranquila en la bahía. ¡Los barcos pueden amarrar aquí sin peligro!', fa: 'آب آرام در خلیج. کشتی‌ها این جا با امنیت لنگر می‌اندازند!' },
+      wrong: { en: 'Not here. Build the pier on the water in the corner of the quiet bay, right next to the sand, west of the sign.', es: 'Aquí no. Construye el muelle en el agua, en la esquina de la bahía tranquila, junto a la arena, al oeste del letrero.', fa: 'این جا نه. اسکله را روی آب در کنج خلیج آرام، درست کنار ریگ، در غرب لوحه بساز.' },
+      wrongBy: [
+        { x: 11, y: 4, w: 11, h: 15, t: { en: 'This is dry land, far from the sea. Ships cannot reach it. A pier goes on the water in a bay.', es: 'Esto es tierra seca, lejos del mar. Los barcos no llegan aquí. Un muelle va en el agua de una bahía.', fa: 'این جا خشکه است، دور از بحر. کشتی‌ها به این جا نمی‌رسند. اسکله روی آب در یک خلیج ساخته می‌شود.' } },
+        { x: 0, y: 3, w: 3, h: 18, t: { en: 'This is the open sea. Storm waves would smash the pier. In a bay, land keeps the water calm.', es: 'Este es el mar abierto. Las olas de las tormentas romperían el muelle. En una bahía, la tierra mantiene el agua tranquila.', fa: 'این جا بحر باز است. موج‌های توفان اسکله را می‌شکنند. در خلیج، خشکه آب را آرام نگه می‌دارد.' } }
+      ],
+      done: { en: 'The harbor is ready! Europe has many peninsulas and bays, so most places are close to the sea. Ships carry goods from port to port.', es: '¡El puerto está listo! Europa tiene muchas penínsulas y bahías, así que casi todos los lugares están cerca del mar. Los barcos llevan mercancías de puerto en puerto.', fa: 'بندر آماده است! اروپا شبه‌جزیره‌ها و خلیج‌های زیاد دارد، پس بیشتر جاها نزدیک بحر هستند. کشتی‌ها مال را از بندر به بندر می‌برند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [11, 12], at: [15, 10], decor: 'shell',

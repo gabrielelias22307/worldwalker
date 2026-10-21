@@ -18,17 +18,17 @@ window.EPISODE = {
     'PzzzzzzzzzKMzzzzzzzznnzzzzzzzzzzzzzrzzzzzznzzz~=',
     'PzzznnzzzzMMzzzzzrzzzzzzzzzzzznnzzzzzzzzzzzzrz~=',
     'PzzzzzzznzMMzzzzzznzzzzzzzzrznzzzzzzzznzzzzzzz~=',
-    'P..x......MMnnnnnnnPnnnnnnnPPnPnnnnnPnPnPnnnPn~=',
+    'P..x..T...MMnnnnnnnPnnnnnnnPPnPnnnnnPnPnPnnnPn~=',
     'PRRR.QQQ..MMPPPnnnnPPJJnRRRPPnnPPnnnnPnPnRRRnP~=',
     'Phdh.hdh..MMPQQQnnnPPJJnhdhnPnPnPQQQPnPnnhdhnn~=',
     'P.........MMnhdhnPnnnnnnnnnnPnPnPhdhmmnPnnnnnn~=',
     'P.........MMxnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnk=',
     'P---------------------------------------------k=',
-    'P.........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',
+    'PT........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',
     'P.wwwwww..MMPPnnPPnPPPPPPnnPPPnPnnnnnnn~~~~Pnn~=',
     'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~s~PnPn~=',
     'Pwwwwwwww.MMnPnnPPnPPnPPnPnnPnnPnnnnn~~~~nnPn~~=',
-    'P.wwwww...KKnPnnnnnPnPnnnPnnnPPnPnnn~~~~nnPnn~~=',
+    'P.wwwww.Y.KKnPnnnnnPnPnnnPnnnPPnPnnn~~~~nnPnn~~=',
     'Pgggggggggggggggggggggggggggggggggg~~~~gggggggg=',
     'Pggggggggggggggggggggggggggrgggggg~~~ggggggAAAA=',
     'PgggrgggggggggggggggggggggggggggggggggggAAAAAAA=',
@@ -45,6 +45,22 @@ window.EPISODE = {
       fa: 'قایق کوچک به یک جزیره در جهیل بایکال رسید! در صندوق یک یادداشت است. می‌گوید بایکال عمیق‌ترین جهیل روی زمین است. عمق آن بیشتر از ۱۶۰۰ متر است.' } },
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): a wooden house for a new town beside the Irkutsk station: in Siberia, towns grew along the railway */
+  build: [
+    { id: 'railtown', kind: 'place', board: [33, 10], tile: 'h', ok: [[34, 10, 'R'], [35, 10, 'R'], [36, 10, 'R'], [34, 11], [35, 11, 'd'], [36, 11]], cost: { wood: 1 },
+      name: { en: 'A new railway town', es: 'Un pueblo nuevo junto al tren', fa: 'شهرک نو کنار خط آهن' },
+      ask: { en: 'Siberia is huge and cold. Out here, towns grew up along the Trans-Siberian Railway, because the train brings food, goods and people. Build a wooden house for a new town right beside the Irkutsk station. Put the pieces on the six snow squares just east of this sign, between the tracks and the forest. Not on the tracks!',
+        es: 'Siberia es enorme y fría. Aquí los pueblos crecieron junto al ferrocarril Transiberiano, porque el tren trae comida, mercancías y gente. Construye una casa de madera para un pueblo nuevo justo al lado de la estación de Irkutsk. Pon las piezas en los seis cuadros de nieve justo al este de este letrero, entre las vías y el bosque. ¡No sobre las vías!',
+        fa: 'سیبری بسیار بزرگ و سرد است. این جا شهرک‌ها کنار خط آهن ترانس‌سیبری بزرگ شدند، چون قطار غذا، مال و مردم می‌آورد. برای یک شهرک نو، درست کنار ایستگاه ایرکوتسک یک خانهٔ چوبی بساز. تکه‌ها را روی شش خانهٔ برفی درست در شرق این لوحه بگذار، میان خط آهن و جنگل. نه روی خط آهن!' },
+      why: { en: 'Right beside the station! The train will bring this town what it needs.', es: '¡Justo al lado de la estación! El tren le traerá a este pueblo lo que necesita.', fa: 'درست کنار ایستگاه! قطار هر چه این شهرک لازم دارد می‌آورد.' },
+      wrong: { en: 'Not here. Build the house right beside the Irkutsk station: on the snow just east of the sign, south of the tracks.', es: 'Aquí no. Construye la casa justo al lado de la estación de Irkutsk: en la nieve, justo al este del letrero, al sur de las vías.', fa: 'این جا نه. خانه را درست کنار ایستگاه ایرکوتسک بساز: روی برف، درست در شرق لوحه، در جنوب خط آهن.' },
+      wrongBy: [
+        { x: 1, y: 1, w: 45, h: 3, t: { en: 'This is the frozen tundra, far from the railway. The ground is frozen all year and no train comes here, so very few people live this far north.', es: 'Esta es la tundra helada, lejos del ferrocarril. El suelo está congelado todo el año y ningún tren llega aquí, así que muy poca gente vive tan al norte.', fa: 'این جا توندرای یخ‌زده است، دور از خط آهن. زمین تمام سال یخ‌زده است و هیچ قطاری این جا نمی‌آید، پس مردم بسیار کمی این قدر در شمال زندگی می‌کنند.' } },
+        { x: 1, y: 9, w: 45, h: 1, t: { en: 'Not on the tracks! The train must get through. Build beside the railway, not on it.', es: '¡No sobre las vías! El tren tiene que pasar. Construye al lado del ferrocarril, no encima.', fa: 'نه روی خط آهن! قطار باید بگذرد. کنار خط آهن بساز، نه روی آن.' } },
+        { x: 12, y: 12, w: 24, h: 3, t: { en: 'This is deep in the taiga forest, far from the station. Towns grew where the train stops.', es: 'Esto está en lo profundo del bosque de la taiga, lejos de la estación. Los pueblos crecieron donde para el tren.', fa: 'این جا در عمق جنگل تایگا است، دور از ایستگاه. شهرک‌ها جایی بزرگ شدند که قطار می‌ایستد.' } }
+      ],
+      done: { en: 'A new town grows beside the station! Most of Siberia is empty, but towns line the Trans-Siberian Railway. The train links them to Moscow and the Pacific.', es: '¡Un pueblo nuevo crece junto a la estación! Casi toda Siberia está vacía, pero hay pueblos a lo largo del Transiberiano. El tren los une con Moscú y el Pacífico.', fa: 'یک شهرک نو کنار ایستگاه بزرگ می‌شود! بیشتر سیبری خالی است، اما شهرک‌ها در امتداد خط آهن ترانس‌سیبری هستند. قطار آن‌ها را به مسکو و اقیانوس آرام وصل می‌کند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [7, 10], at: [12, 10], decor: 'gem',

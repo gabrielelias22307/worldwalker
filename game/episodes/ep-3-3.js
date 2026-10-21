@@ -19,15 +19,15 @@ window.EPISODE = {
     'KgggggggggggggggxggJJJgXXgggAAAA',
     'K-----------------------------AA',
     'Kgggxggggggg:ggg:gggggggggggAAAA',
-    'KgWWWWWWWWgg:ggg:gggggggggggAAAA',
+    'KgWWWWWWWWgg:ggg:ggYgggYggggAAAA',
     'KgWssssssWgg:ggg:gggggggggggAAAA',
     'KgWssOsssWgQQQgQQQgggggggggg~~AA',
     'KgWssssssWghdhghdhggggggggg~~.AA',
     'KgWssssssWssssssssssgoooogg~~.AA',
     'KgWWW::WWWsmmsmmsmmsgo2o2g~~ggAA',
-    'Kgggg::gggssssssssssgoo2og~~ggAA',
+    'Kgggg::gggssssssssssgoo2og~~gTAA',
     'Kgggg::gggssssssssssgo2oo~~gggAA',
-    'Kgggg::gggsmmsmmsmms:oooooooggAA',
+    'Kgggg::gggsmmsmmsmms:ooooooogTAA',
     'Kgggg::gggssssssssss:gggggggggAA',
     'K:::::::::::::::::::::::::::::AA',
     'KsssssssssssssrsssssssssssssssAA',
@@ -40,6 +40,20 @@ window.EPISODE = {
   start: [8, 4],
 
   tools: ['axe', 'sickle'],
+  /* build (FUN-PASS-2): market stalls at the crossroads: trade grows where routes meet */
+  build: [
+    { id: 'stalls', kind: 'place', board: [9, 14], tile: 'm', ok: [[4, 14], [7, 14], [4, 16], [7, 16]], cost: { wood: 1 },
+      name: { en: 'Market stalls', es: 'Puestos del mercado', fa: 'دکان‌های بازار' },
+      ask: { en: 'On the [[silk road|Silk Road]], markets grew where trade routes meet, because every trader passes there. Build four market stalls at the crossroads, where the road from the caravanserai gate meets the old caravan road. Put one stall on each corner, next to the roads. Keep the roads open!',
+        es: 'En la [[silk road|Ruta de la Seda]], los mercados crecieron donde se juntan las rutas de comercio, porque todos los comerciantes pasan por allí. Construye cuatro puestos de mercado en el cruce, donde el camino de la puerta del caravasar se junta con el viejo camino de caravanas. Pon un puesto en cada esquina, junto a los caminos. ¡Deja los caminos libres!',
+        fa: 'در [[silk road|راه ابریشم]]، بازارها جایی بزرگ شدند که راه‌های تجارت به هم می‌رسند، چون هر تاجر از آن جا می‌گذرد. در چهارراه، جایی که سرک دروازهٔ کاروانسرا به سرک قدیمی کاروان می‌رسد، چهار دکان بازار بساز. در هر کنج یک دکان بگذار، کنار سرک‌ها. سرک‌ها را باز بگذار!' },
+      why: { en: 'Right at the crossroads! Traders from every road will stop here.', es: '¡Justo en el cruce! Aquí pararán comerciantes de todos los caminos.', fa: 'درست در چهارراه! تاجران از هر سرک این جا می‌ایستند.' },
+      wrong: { en: 'Not at the crossroads. Put each stall on a corner where the two roads meet: next to the road, not on it.', es: 'No está en el cruce. Pon cada puesto en una esquina donde se juntan los dos caminos: junto al camino, no encima.', fa: 'این جا چهارراه نیست. هر دکان را در کنجی بگذار که دو سرک به هم می‌رسند: کنار سرک، نه روی آن.' },
+      wrongBy: [
+        { x: 1, y: 17, w: 29, h: 4, t: { en: 'Out in the empty desert, far from the roads. No traders pass here, so nobody would buy.', es: 'En el desierto vacío, lejos de los caminos. Aquí no pasan comerciantes, así que nadie compraría.', fa: 'در صحرای خالی، دور از سرک‌ها. هیچ تاجری از این جا نمی‌گذرد، پس کسی چیزی نمی‌خرد.' } }
+      ],
+      done: { en: 'The market is open! Routes bring people, goods and money together. That is why cities like Samarkand grew rich right where trade routes met.', es: '¡El mercado está abierto! Las rutas juntan gente, mercancías y dinero. Por eso ciudades como Samarcanda se hicieron ricas justo donde se juntaban las rutas de comercio.', fa: 'بازار باز است! راه‌ها مردم، مال و پول را یکجا می‌کنند. برای همین شهرهایی مثل سمرقند درست جایی ثروتمند شدند که راه‌های تجارت به هم می‌رسیدند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [8, 12], at: [6, 7], decor: 'coinold',

@@ -96,7 +96,7 @@ const CANVAS = process.argv.includes('--canvas');
           if (!/edge of the map/.test(await page.textContent('.cbubble'))) throw new Error('no reason given for the border tree');
         }
         // chop 5 trees and bushes for 8+ wood
-        const trees = find('TY', true).filter(([x, y]) => !(ep.keep || []).some(p => p[0] === x && p[1] === y))
+        const trees = find('TPaY', true).filter(([x, y]) => !(ep.keep || []).some(p => p[0] === x && p[1] === y))
           .sort((a, b) => Math.abs(a[0] - ep.start[0]) + Math.abs(a[1] - ep.start[1]) - Math.abs(b[0] - ep.start[0]) - Math.abs(b[1] - ep.start[1]));
         let chopped = 0;
         for (const [x, y] of trees) {
