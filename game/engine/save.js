@@ -93,6 +93,7 @@
     qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
     qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
     qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
+    grumpBack: { en: 'Right! The Grump backs away. Walk after it and answer again!', es: '¡Correcto! El Gruñón retrocede. ¡Camina tras él y responde otra vez!', fa: 'درست! غرغرو عقب می‌رود. دنبالش برو و دوباره جواب بده!' },
     qChase: { en: 'find piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
     qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
     qGoods: { en: 'pick up the right goods on the map', es: 'recoge en el mapa lo que sirve para el trato', fa: 'جنس درست را روی نقشه بردار' },

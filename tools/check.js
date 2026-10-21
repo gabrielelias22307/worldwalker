@@ -268,6 +268,15 @@ function checkEpisode(file) {
     } else errs.push(`${w}: kind must be repair, signpost or place`);
   });
 
+  // the Grump's fog rings need room: a ring is skipped when the hero is already that close, and then its question is asked
+  // with no walking in between (FUN-PASS-2: never more than two question panels in a row)
+  if (ep.boss && ep.challenge) {
+    const need = ep.boss.need || 3, dist = new Map([[ep.boss.at.join(','), 0]]), q = [ep.boss.at];
+    while (q.length) { const [x, y] = q.shift(), d = dist.get(x + ',' + y); for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (dist.has(k) || solid(nx, ny)) continue; dist.set(k, d + 1); q.push([nx, ny]); } }
+    const [cx, cy] = ep.challenge.at, near = Math.min(...[[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => dist.get((cx + dx) + ',' + (cy + dy)) ?? 99));
+    if (near <= need) errs.push(`the Grump (${ep.boss.at}) is only ${near} steps from the compass stone: it needs more than ${need}, so every fog ring is there`);
+  }
+
   // a chase clue is answered by walking into its zones: each needs ground you can reach, and must not overlap its wrong areas
   if (qa && qa.type === 'chase') (qa.clues || []).forEach((c, i) => {
     const inside = z => { const out = []; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) out.push(x + ',' + y); return out; };

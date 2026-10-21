@@ -242,13 +242,28 @@
     WW.bossTrial(WW.ep.boss, onWin, f.st);
   };
   function clearRing() {
-    const f = WW.run.fog, g = G(); if (!f || f.cleared >= f.rings.length) return;
+    const f = WW.run.fog, g = G(); if (!f) return;
+    if (f.cleared >= f.rings.length) return backAway();
     const ring = f.rings[f.cleared++];
     ring.forEach(([x, y]) => f.set.delete(x + ',' + y));
     // a short pause while the fog lifts
     WW.paused = true; WW.sfx('gate'); g.shake();
     ring.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, i % 2 ? 'poof' : 'gold'), WW.calm ? 0 : Math.min(500, i * 25)));
     setTimeout(() => { WW.paused = false; WW.chris.say(f.cleared < f.rings.length ? T('fogMore').replace('{n}', (WW.ep.boss.need || 3) - (f.st.broken || 0)) : T('fogLast')); }, WW.calm ? 100 : 650);
+  }
+  // no ring was left (the hero was already close): the Grump backs away a few steps, so the student walks between questions
+  function backAway() {
+    const g = G(), b = g.ents.find(e => e.kind === 'boss'), p = g.player, [W, H] = g.size;
+    const dist = new Map([[p.x + ',' + p.y, 0]]), q = [[p.x, p.y]];
+    while (q.length) { const [x, y] = q.shift(), d = dist.get(x + ',' + y); if (d >= 6) continue; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (nx < 1 || ny < 1 || nx >= W - 1 || ny >= H - 1 || dist.has(k) || !g.walkable(nx, ny)) continue; dist.set(k, d + 1); q.push([nx, ny]); } }
+    const sx = Math.floor(p.x / 16), sy = Math.floor(p.y / 11); // stay on the hero's screen
+    const spots = [...dist].filter(([k, d]) => { const [x, y] = k.split(',').map(Number); return d >= 3 && d <= 5 && Math.floor(x / 16) === sx && Math.floor(y / 11) === sy && !g.entAt(x, y); })
+      .map(([k, d]) => { const [x, y] = k.split(',').map(Number); return { x, y, s: d * 10 + Math.abs(x - p.x) + Math.abs(y - p.y) + ((x - p.x) * (b.x - p.x) + (y - p.y) * (b.y - p.y) > 0 ? 8 : 0) }; }) // farther, and on the Grump's side
+      .sort((m, n) => n.s - m.s);
+    if (!spots.length || !b) return;
+    WW.paused = true; WW.fx.burst(b.x, b.y, 'poof'); WW.sfx('bad');
+    b.x = spots[0].x; b.y = spots[0].y;
+    setTimeout(() => { WW.fx.burst(b.x, b.y, 'purple'); WW.paused = false; WW.chris.say(T('grumpBack'), null, { at: [b.x, b.y] }); }, WW.calm ? 100 : 450);
   }
   Wd.drawFog = (c, sx, sy, t) => {
     const f = WW.run && WW.run.fog; if (!f || !f.set.size) return;

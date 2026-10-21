@@ -150,7 +150,7 @@
   C.nextStep = () => {
     const ep = WW.ep, r = WW.run, g = WW.game, near = list => list.sort((a, b) => Math.abs(a.x - g.player.x) + Math.abs(a.y - g.player.y) - Math.abs(b.x - g.player.x) - Math.abs(b.y - g.player.y))[0];
     let text, at = null;
-    if (r.bossDone) { at = ep.boss.at; text = T('nsPage'); }
+    if (r.bossDone) { at = WW.game.bossAt(); text = T('nsPage'); }
     else {
       const left = g.ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
       if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
@@ -160,7 +160,7 @@
         const clue = WW.quest.clue();
         text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : clue ? `🧩 ${T('chaseNext')} ${WW.L(clue.t)}` : WW.quest.bar().replace(/^📜\s*/, '');
       } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
-      else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
+      else { at = WW.game.bossAt(); text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
     }
     // a broken bridge in the way? say so first
     const fix = at && WW.tools && WW.tools.blockingRepair ? WW.tools.blockingRepair(at, reachable) : null;

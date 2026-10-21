@@ -44,7 +44,7 @@ const CANVAS = process.argv.includes('--canvas');
               t.__q = true; window.__qpanels++;
               // in a row: question panels with no walking between them (the hero is on the same square)
               const p = WW.dbg.player, at = p.x + ',' + p.y;
-              window.__qrow = window.__qat === at ? window.__qrow + 1 : 1; window.__qat = at; window.__qmost = Math.max(window.__qmost || 0, window.__qrow);
+              window.__qrow = window.__qat === at ? window.__qrow + 1 : 1; window.__qat = at; (window.__qlog = window.__qlog || []).push(at + ' ' + ((ov.querySelector('h2, h3, .q') || {}).textContent || '').slice(0, 50)); window.__qmost = Math.max(window.__qmost || 0, window.__qrow);
             }
           }).observe(document.getElementById('ww-ov'), { childList: true, subtree: true });
         });
@@ -593,7 +593,7 @@ const CANVAS = process.argv.includes('--canvas');
           const key = { up: 'ArrowUp', down: 'ArrowDown', left: 'ArrowLeft', right: 'ArrowRight' }[dir];
           await page.keyboard.down(key); await page.waitForSelector('.bossov'); await page.keyboard.up(key);
         } else {
-          await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.boss.at);
+          await page.evaluate(() => WW.dbg.bumpInto(...WW.game.bossAt()));
           await page.waitForSelector('.bossov');
         }
         await shot('7-boss');
@@ -602,7 +602,7 @@ const CANVAS = process.argv.includes('--canvas');
           if (!(await page.locator('.bossov').count())) { // a right answer cleared a ring of fog: walk into the Grump again
             await page.waitForFunction(() => !WW.paused); cleared++;
             if (cleared === 1) { await page.waitForTimeout(200); await shot('7b-fog-cleared'); }
-            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.boss.at); await page.waitForSelector('.bossov');
+            await page.evaluate(() => WW.dbg.bumpInto(...WW.game.bossAt())); await page.waitForSelector('.bossov');
           }
           if (await page.locator('#ww-ov .pbtn.gold.big').count()) break;
           const qi = await page.evaluate(() => +document.querySelector('#ww-ov .ov-box').dataset.q);
@@ -620,8 +620,9 @@ const CANVAS = process.argv.includes('--canvas');
         await clickGold(); await page.waitForFunction(() => !WW.paused);
         await page.waitForTimeout(400); await shot('8b-page');
         const goal = await page.evaluate(() => WW.dbg.goal);
-        if (!goal || goal.join() !== ep.boss.at.join()) throw new Error('the goal after the Grump is not the page');
-        await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), ep.boss.at);
+        const bossAt = await page.evaluate(() => WW.game.bossAt());
+        if (!goal || goal.join() !== bossAt.join()) throw new Error('the goal after the Grump is not the page');
+        await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), bossAt);
         await page.waitForSelector('.finov');
         const fin = await page.textContent('#ww-ov');
         if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');
@@ -647,6 +648,7 @@ const CANVAS = process.argv.includes('--canvas');
     if (!ok) failed++;
     const qp = await page.evaluate(() => window.__qpanels).catch(() => '?'), qrow = await page.evaluate(() => window.__qmost || 0).catch(() => '?');
     console.log(`Episode ${id}: ${ok ? 'PLAYED THROUGH ✓' : 'PROBLEM ✗'} · question panels: ${qp} · most in a row: ${qrow}${qrow > 2 ? ' (more than 2!)' : ''}`);
+    if (qrow > 2) console.log('   question panels: ' + (await page.evaluate(() => window.__qlog.join(' | '))));
     steps.filter(s => !ok || s.startsWith('✗')).forEach(s => console.log('   ' + s));
     errs.forEach(e => console.log('   ' + e));
     await page.close();

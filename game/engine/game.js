@@ -198,11 +198,13 @@
     r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
     r.challengeDone = true; G.onChallengeDone();
-    if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
+    if (where === 'boss') { WW.dbg.bumpInto(...G.bossAt()); return; }
     ents.forEach(e => { if (e.kind === 'scrap') { e.gone = true; r.scraps.add(e.id); } if (e.kind === 'boss') e.gone = true; });
     finishEpisode();
   }
 
+  // where the Grump is now (it backs away when the hero is too close for a ring of fog)
+  G.bossAt = () => { const b = ents.find(e => e.kind === 'boss'); return b ? [b.x, b.y] : WW.ep.boss.at; };
   G.onChallengeDone = () => {
     const b = ents.find(e => e.kind === 'boss'); b.visible = true;
     WW.world.fogSetup();
@@ -217,7 +219,7 @@
     r.bossDone = true;
     WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
     WW.sheetSync();
-    ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
+    const [ax, ay] = G.bossAt(); ents.push({ kind: 'atlas', x: ax, y: ay });
     WW.fx.lift();
     WW.music.play('win', 'realm' + ep.realm);
     WW.ui.quest();
@@ -592,7 +594,7 @@
   /* the goal right now (for the Location power's arrow and for the dimness) */
   G.goal = () => {
     const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
-    if (r.bossDone) return r.claimed ? null : ep.boss.at;
+    if (r.bossDone) return r.claimed ? null : G.bossAt();
     const left = ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
     if (left.length) { const n = near(left); return [n.x, n.y]; }
     if (WW.quest.on() && !WW.quest.done()) {
@@ -602,7 +604,7 @@
       return WW.quest.target(); // a secret spot or a chase clue is found by thinking, not the arrow
     }
     if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
-    return r.challengeDone ? ep.boss.at : ep.challenge.at;
+    return r.challengeDone ? G.bossAt() : ep.challenge.at;
   };
   G.progress = () => { // 0..1: how much of the episode is done (the land's color comes back with it)
     const r = WW.run, ep = WW.ep;
