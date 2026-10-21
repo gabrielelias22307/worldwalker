@@ -242,20 +242,20 @@ window.EPISODE = {
             fa: 'سلام، دوست! خانوادهٔ من در غانا کاکائو می‌کارد. دانهٔ زیاد داریم. برای یک بوجی کلان به من چه می‌دهی؟' }
         ]
       },
-      q: { en: 'What is the best thing to offer Akosua for her cocoa beans?', es: '¿Qué es lo mejor que puedes ofrecerle a Akosua por sus granos de cacao?', fa: 'بهترین چیزی که در بدل دانه‌های کاکائوی آکوسوا می‌توانی پیشنهاد کنی چیست؟' },
+      q: { en: 'Bring me something my hot land does not grow well. Then the beans are yours!', es: 'Tráeme algo que mi tierra caliente no cultive bien. ¡Y los granos son tuyos!', fa: 'چیزی برایم بیاور که زمین گرم من خوب نمی‌رویاند. بعد دانه‌ها از تو!' },
       choices: [
-        { ok: true, t: { en: 'A sack of wheat flour from the European farms', es: 'Un saco de harina de trigo de las granjas de Europa', fa: 'یک بوجی آرد گندم از فارم‌های اروپا' },
-          why: { en: 'Yes! Wheat grows well in Europe\'s cool fields. Ghana is hot and wet, so it buys most of its wheat. Each side gives what it has plenty of. That is [[trade|trade]].',
-            es: '¡Sí! El trigo crece bien en los campos frescos de Europa. Ghana es caliente y húmeda, así que compra casi todo su trigo. Cada lado da lo que tiene en abundancia. Eso es el [[trade|comercio]].',
-            fa: 'بله! گندم در کشتزارهای سرد اروپا خوب می‌روید. غانا گرم و مرطوب است، پس بیشتر گندمش را می‌خرد. هر طرف چیزی را می‌دهد که زیاد دارد. این [[trade|تجارت]] است.' } },
-        { t: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' },
-          why: { en: 'Akosua already grows plenty of cocoa. Nobody trades for something they already have a lot of.',
-            es: 'Akosua ya cultiva mucho cacao. Nadie cambia algo por lo que ya tiene en abundancia.',
-            fa: 'آکوسوا خودش کاکائوی زیاد می‌کارد. هیچ‌کس چیزی را که زیاد دارد در بدل نمی‌گیرد.' } },
-        { t: { en: 'A basket of mangoes', es: 'Una canasta de mangos', fa: 'یک سبد انبه' },
-          why: { en: 'Mangoes grow in hot places like Ghana. Akosua can get them at home, so she does not need yours.',
-            es: 'Los mangos crecen en lugares calientes como Ghana. Akosua los consigue en su país, así que no necesita los tuyos.',
-            fa: 'انبه در جاهای گرم مثل غانا می‌روید. آکوسوا آن را در وطن خود پیدا می‌کند، پس به انبهٔ تو ضرورت ندارد.' } }
+        { ok: true, at: [11, 9], icon: '🌾', t: { en: 'A sack of wheat flour from the European farms', es: 'Un saco de harina de trigo de las granjas de Europa', fa: 'یک بوجی آرد گندم از فارم‌های اروپا' },
+          why: { en: 'Yes! Wheat grows well in Europe\'s cool fields. Ghana is hot and wet, so we buy most of our wheat. Each side gives what it has plenty of. That is [[trade|trade]].',
+            es: '¡Sí! El trigo crece bien en los campos frescos de Europa. Ghana es caliente y húmeda, así que compramos casi todo nuestro trigo. Cada lado da lo que tiene en abundancia. Eso es el [[trade|comercio]].',
+            fa: 'بله! گندم در کشتزارهای سرد اروپا خوب می‌روید. غانا گرم و مرطوب است، پس ما بیشتر گندم خود را می‌خریم. هر طرف چیزی را می‌دهد که زیاد دارد. این [[trade|تجارت]] است.' } },
+        { at: [26, 16], icon: '🫘', t: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' },
+          why: { en: 'Those are my own cocoa beans! I already grow plenty. Nobody trades for something they already have a lot of.',
+            es: '¡Esos son mis propios granos de cacao! Ya cultivo mucho. Nadie cambia algo por lo que ya tiene en abundancia.',
+            fa: 'این‌ها دانه‌های کاکائوی خود من است! من همین حالا زیاد می‌کارم. هیچ‌کس چیزی را که زیاد دارد در بدل نمی‌گیرد.' } },
+        { at: [17, 13], icon: '🥭', t: { en: 'A basket of mangoes', es: 'Una canasta de mangos', fa: 'یک سبد انبه' },
+          why: { en: 'Mangoes grow in hot places like Ghana. I can get them at home, so I do not need these.',
+            es: 'Los mangos crecen en lugares calientes como Ghana. Los consigo en mi país, así que no necesito estos.',
+            fa: 'انبه در جاهای گرم مثل غانا می‌روید. من آن را در وطن خود پیدا می‌کنم، پس به این‌ها ضرورت ندارم.' } }
       ],
       item: { icon: '🍫', name: { en: 'A bag of cocoa beans', es: 'Una bolsa de granos de cacao', fa: 'یک بوجی دانهٔ کاکائو' } }
     }

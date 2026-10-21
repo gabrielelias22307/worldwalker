@@ -234,14 +234,14 @@ window.EPISODE = {
             fa: 'خوش آمدی! فابریکهٔ من مبایل‌ها را اسمبل می‌کند. برای ساختن آن‌ها به فلز از جاهای زیاد ضرورت داریم.' }
         ]
       },
-      q: { en: 'Your mine town wants one phone. What will you trade me for it?', es: 'Tu pueblo minero quiere un teléfono. ¿Qué me das a cambio?', fa: 'شهرک معدنی شما یک مبایل می‌خواهد. در بدلش به من چه می‌دهی؟' },
+      q: { en: 'Your mine town wants one phone. What will you bring me for it?', es: 'Tu pueblo minero quiere un teléfono. ¿Qué me traes a cambio?', fa: 'شهرک معدنی شما یک مبایل می‌خواهد. در بدلش برایم چه می‌آوری؟' },
       choices: [
-        { ok: true, t: { en: 'A cart of copper from the mine', es: 'Un carrito de cobre de la mina', fa: 'یک گادی مس از معدن' },
-          why: { en: 'The mine has plenty of copper. The factory needs this [[raw material|raw material]] to make phones. Both sides win.', es: 'La mina tiene cobre de sobra. La fábrica necesita esta [[raw material|materia prima]] para hacer teléfonos. Los dos ganan.', fa: 'معدن مس زیاد دارد. فابریکه برای ساختن مبایل به این [[raw material|مادهٔ خام]] ضرورت دارد. هر دو طرف فایده می‌کنند.' } },
-        { t: { en: 'Bags of rice from the mine town', es: 'Sacos de arroz del pueblo minero', fa: 'بوجی‌های برنج از شهرک معدنی' },
-          why: { en: 'The mine is in rocky hills with no rice fields. The town has no rice to spare.', es: 'La mina está en cerros rocosos sin arrozales. El pueblo no tiene arroz de sobra.', fa: 'معدن در تپه‌های سنگلاخ است و شالیزار ندارد. شهرک برنج اضافه ندارد.' } },
-        { t: { en: 'The miners\' only digging machine', es: 'La única máquina de excavar de los mineros', fa: 'تنها ماشین کندن کارگران معدن' },
-          why: { en: 'Without it, the miners cannot work. Trade what you have plenty of, not what you need.', es: 'Sin ella, los mineros no pueden trabajar. Cambia lo que tienes de sobra, no lo que necesitas.', fa: 'بدون آن، کارگران معدن کار کرده نمی‌توانند. چیزی را تبادله کن که زیاد داری، نه چیزی که ضرورت داری.' } }
+        { ok: true, at: [4, 3], icon: '🛒', t: { en: 'A cart of copper from the mine', es: 'Un carrito de cobre de la mina', fa: 'یک گادی مس از معدن' },
+          why: { en: 'Copper! Your mine has plenty of it. My factory needs this [[raw material|raw material]] to make phones. Both sides win.', es: '¡Cobre! Tu mina tiene de sobra. Mi fábrica necesita esta [[raw material|materia prima]] para hacer teléfonos. Los dos ganan.', fa: 'مس! معدن شما مس زیاد دارد. فابریکهٔ من برای ساختن مبایل به این [[raw material|مادهٔ خام]] ضرورت دارد. هر دو طرف فایده می‌کنند.' } },
+        { at: [12, 13], icon: '📦', t: { en: 'A box of phones from the factory', es: 'Una caja de teléfonos de la fábrica', fa: 'یک کارتن مبایل از فابریکه' },
+          why: { en: 'Those phones are from my own factory! I make plenty of them. Bring me something my factory does not have.', es: '¡Esos teléfonos son de mi propia fábrica! Hago muchísimos. Tráeme algo que mi fábrica no tenga.', fa: 'این مبایل‌ها از فابریکهٔ خود من است! من زیاد می‌سازم. چیزی بیاور که فابریکهٔ من ندارد.' } },
+        { at: [10, 3], icon: '⚙️', t: { en: 'The miners\' only digging machine', es: 'La única máquina de excavar de los mineros', fa: 'تنها ماشین کندن کارگران معدن' },
+          why: { en: 'Without it, the miners cannot work. Then nobody digs copper! Trade what you have plenty of, not what you need.', es: 'Sin ella, los mineros no pueden trabajar. ¡Y nadie saca cobre! Cambia lo que tienes de sobra, no lo que necesitas.', fa: 'بدون آن، کارگران معدن کار کرده نمی‌توانند. بعد هیچ کس مس نمی‌کَند! چیزی را تبادله کن که زیاد داری، نه چیزی که ضرورت داری.' } }
       ],
       item: { icon: '📱', name: { en: 'A phone for Grandpa Ganbold', es: 'Un teléfono para el abuelo Ganbold', fa: 'یک مبایل برای پدرکلان گانبولد' } }
     }

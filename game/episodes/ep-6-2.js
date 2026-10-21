@@ -239,14 +239,14 @@ window.EPISODE = {
             fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد. به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
         ]
       },
-      q: { en: 'I will give you a big sack of rice. What will you give me for it?', es: 'Te daré un saco grande de arroz. ¿Qué me das a cambio?', fa: 'یک بوجی کلان برنج به تو می‌دهم. در عوض آن چه به من می‌دهی؟' },
+      q: { en: 'I will give you a big sack of rice. What will you bring me for it?', es: 'Te daré un saco grande de arroz. ¿Qué me traes a cambio?', fa: 'یک بوجی کلان برنج به تو می‌دهم. در عوض آن چه برایم می‌آوری؟' },
       choices: [
-        { ok: true, t: { en: 'Dried fish and coconuts from the little island', es: 'Pescado seco y cocos de la islita', fa: 'ماهی خشک و نارگیل از جزیرهٔ کوچک' },
-          why: { en: 'Good trade! The island has plenty of fish and coconuts. The mainland has plenty of rice. Each side gives what it has extra.', es: '¡Buen trato! La isla tiene mucho pescado y cocos. El continente tiene mucho arroz. Cada lado da lo que le sobra.', fa: 'معاملهٔ خوب! جزیره ماهی و نارگیل زیاد دارد. خشکه برنج زیاد دارد. هر طرف چیزی را می‌دهد که اضافه دارد.' } },
-        { t: { en: 'A sack of rice', es: 'Un saco de arroz', fa: 'یک بوجی برنج' },
-          why: { en: 'I already have more rice than I need! And the island has no rice to give.', es: '¡Ya tengo más arroz del que necesito! Y la isla no tiene arroz para dar.', fa: 'من همین حالا بیشتر از ضرورتم برنج دارم! جزیره هم برنجی برای دادن ندارد.' } },
-        { t: { en: 'Warm wool coats', es: 'Abrigos de lana', fa: 'کرتی‌های گرم پشمی' },
-          why: { en: 'Southeast Asia is near the equator. It is hot all year, so nobody here needs wool coats.', es: 'El sudeste asiático está cerca del ecuador. Hace calor todo el año, así que aquí nadie necesita abrigos de lana.', fa: 'جنوب شرق آسیا نزدیک خط استوا است. تمام سال گرم است، پس این‌جا کسی به کرتی پشمی ضرورت ندارد.' } }
+        { ok: true, at: [21, 7], icon: '🐟', t: { en: 'Dried fish and coconuts from the little island', es: 'Pescado seco y cocos de la islita', fa: 'ماهی خشک و نارگیل از جزیرهٔ کوچک' },
+          why: { en: 'Good trade! Your little island has plenty of fish and coconuts. My Mekong fields have plenty of rice. Each side gives what it has extra.', es: '¡Buen trato! Tu islita tiene mucho pescado y cocos. Mis campos del Mekong tienen mucho arroz. Cada lado da lo que le sobra.', fa: 'معاملهٔ خوب! جزیرهٔ کوچک شما ماهی و نارگیل زیاد دارد. کشتزارهای میکانگ من برنج زیاد دارد. هر طرف چیزی را می‌دهد که اضافه دارد.' } },
+        { at: [10, 8], icon: '🍚', t: { en: 'A sack of rice from the Mekong fields', es: 'Un saco de arroz de los campos del Mekong', fa: 'یک بوجی برنج از کشتزارهای میکانگ' },
+          why: { en: 'That rice is from my own fields! I already have more rice than I need.', es: '¡Ese arroz es de mis propios campos! Ya tengo más arroz del que necesito.', fa: 'این برنج از کشتزارهای خود من است! من همین حالا بیشتر از ضرورتم برنج دارم.' } },
+        { at: [20, 15], icon: '🌾', t: { en: 'A basket of rice from the terraces', es: 'Una canasta de arroz de las terrazas', fa: 'یک سبد برنج از زمین‌های زینه‌ای' },
+          why: { en: 'That rice feeds Lola Nena\'s village. The small [[terrace|terraces]] grow just enough for them. And I have plenty of rice! Bring what your island has extra.', es: 'Ese arroz alimenta al pueblo de Lola Nena. Las [[terrace|terrazas]] pequeñas dan solo lo justo para ellos. ¡Y yo tengo mucho arroz! Trae lo que a tu isla le sobra.', fa: 'این برنج نان ده لولا ننا است. [[terrace|زمین‌های زینه‌ای]] کوچک فقط برای خودشان کافی می‌دهند. و من برنج زیاد دارم! چیزی را بیاور که جزیره‌ات اضافه دارد.' } }
       ],
       item: { icon: '🍚', name: { en: 'A sack of Mekong rice', es: 'Un saco de arroz del Mekong', fa: 'یک بوجی برنج میکانگ' } }
     }
