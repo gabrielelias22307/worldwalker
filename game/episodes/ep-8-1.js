@@ -19,8 +19,8 @@ window.EPISODE = {
      East: open ocean. A long ferry dock reaches a high volcanic island, and a second dock reaches a low atoll. */
   map: [
     'rrrrrrrrrrrrrrrrTTTTTTTTTTTTpppp================',
-    'rsssgsssssssgsssgg.......T..ss~~~~~~~ssssss~~~~=',
-    'rssasssssssssgssg..UU:UU:UU.ss~~~~~~ss.pp..s~~~=',
+    'rsssgsssssssgsssgg.......T..ss~~~~~~pssssssp~~~=',
+    'rssasssssssssgssg..UU:UU:UU.ss~~~~~~GGGGGGGG~~~=',
     'rssssssssssssassg..UU:UU:UU.ss~~~~~ss..KVK.ss~~=',
     'rsgssMMMMMMsssgsg..:::::::::sskkkkkkk...,..ss~~=',
     'rssssMMMMMMsssssg..UU:UU:UU.ss~~~~~ss.QQQ.pss~~=',
@@ -70,11 +70,11 @@ window.EPISODE = {
       clue: { en: 'From this note, walk 2 steps east, then 4 steps south. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al este y luego 4 pasos al sur. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شرق برو، بعد ۴ قدم به جنوب. چیزی آن جا پنهان است.' },
       text: { en: 'You followed compass directions! East is to the right and south is down. You walked along the ring of the atoll, next to the calm lagoon. A sea shell was in the sand.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el sur abajo. Caminaste por el anillo del atolón, junto a la laguna tranquila. Había una concha en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و جنوب پایین است. تو روی حلقهٔ اتول، کنار آب آرام وسط آن، راه رفتی. یک صدف در ریگ بود.' } }
   ],
-  // only the Canoe (Episode 2.3) paddles across the atoll's lagoon to the tiny island in the middle
-  secret: { tool: 'canoe', at: [39, 16],
-    text: { en: 'Your canoe crossed the calm lagoon to a tiny island! The note in the chest says the highest land in Tuvalu is less than 5 meters above the sea.',
-      es: '¡Tu canoa cruzó la laguna tranquila hasta una isla pequeñita! La nota del cofre dice que la tierra más alta de Tuvalu está a menos de 5 metros sobre el mar.',
-      fa: 'قایق کوچک تو از آب آرام وسط اتول گذشت و به یک جزیرهٔ خیلی کوچک رسید! یادداشت داخل صندوق می‌گوید بلندترین جای تووالو کمتر از ۵ متر از سطح بحر بلند است.' } },
+  // only the Monsoon Cloak (Episode 6.3) walks through the tropical storm to the volcanic island's north beach
+  secret: { tool: 'cloak', at: [39, 1],
+    text: { en: 'Your cloak kept you dry in the tropical storm! High volcanic islands like this one catch rain clouds, so they have forests, streams and rich soil. Low atolls get much less fresh water.',
+      es: '¡Tu capa te mantuvo seco en la tormenta tropical! Las islas volcánicas altas como esta atrapan las nubes de lluvia, por eso tienen bosques, arroyos y suelo fértil. Los atolones bajos reciben mucha menos agua dulce.',
+      fa: 'بارانی موسمی تو را در طوفان استوایی خشک نگه داشت! جزیره‌های آتشفشانی بلند مثل این جزیره ابرهای باران را می‌گیرند، برای همین جنگل، جوی آب و خاک حاصلخیز دارند. اتول‌های پست آب شیرین خیلی کمتر دارند.' } },
 
   words: {
     coast: { en: 'the land along the edge of the sea', es: 'la tierra a la orilla del mar', fa: 'زمین کنار بحر' },

@@ -33,9 +33,9 @@ window.EPISODE = {
     'MMMMM..qqq:qq.qqqqqRR.sskkk=====',
     'MMMM...qqq:qq.qqqqqhd.ss~=======',
     'MMM....qqq::::::::::::ss~=======',
-    'MMM....qqqqqq.qqqqq..sss~=======',
-    'MM.....qqqqqq.qqqqq..sss~=======',
-    'MM...................sss~=======',
+    'MMM....qFFGFF.qqqqq..sss~=======',
+    'MM.....qF.|.F.qqqqq..sss~=======',
+    'MM......F.|.F........sss~=======',
     'MTTTTTTTTTTTTTTTTTTTTTTT~======='
   ],
   start: [9, 7],
@@ -70,11 +70,11 @@ window.EPISODE = {
       clue: { en: 'From this note, walk 7 steps east, then 1 step north. Something is hidden there.', es: 'Desde esta nota, camina 7 pasos al este y luego 1 paso al norte. Algo está escondido allí.', fa: 'از این یادداشت، ۷ قدم به شرق برو، بعد ۱ قدم به شمال. چیزی آن جا پنهان است.' },
       text: { en: 'You followed compass directions! East is to the right and north is up. A flower grew between the rice paddies. Flat land near a river is a good site for farms that feed a city.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el norte arriba. Una flor creció entre los arrozales. La tierra plana cerca de un río es un buen sitio para granjas que alimentan a una ciudad.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و شمال بالا است. یک گل میان شالی‌زارها روییده بود. زمین هموار نزدیک دریا جای خوبی برای زمین‌های زراعتی است که غذای یک شهر را می‌دهند.' } }
   ],
-  // only the Canoe (Episode 2.3) reaches the little island where the river bends toward the sea
-  secret: { tool: 'canoe', at: [14, 12],
-    text: { en: 'The canoe reached the river island! A note in the chest says Shanghai sits where the Yangtze River meets the sea. Its port moves more containers than any other port in the world.',
-      es: '¡La canoa llegó a la isla del río! Una nota en el cofre dice que Shanghái está donde el río Yangtsé llega al mar. Su puerto mueve más contenedores que cualquier otro puerto del mundo.',
-      fa: 'قایق کوچک به جزیرهٔ دریا رسید! یک یادداشت در صندوق می‌گوید شانگهای در جایی است که دریای یانگتسی به بحر می‌رسد. بندر آن از هر بندر دیگر دنیا کانتینر بیشتری جابجا می‌کند.' } },
+  // only the Rail Pass (Episode 3.3) lifts the barrier where the freight track leaves the road for the freight yard by the rice paddies
+  secret: { tool: 'rail', at: [10, 20],
+    text: { en: 'You lifted the barrier at the freight yard! Trains and river boats carry goods between the port of Shanghai and cities far inland. Good links like these give a city a great situation.',
+      es: '¡Levantaste la barrera del patio de carga! Los trenes y los barcos del río llevan mercancías entre el puerto de Shanghái y ciudades lejos del mar. Conexiones así le dan a una ciudad una gran situación.',
+      fa: 'تو مانع ایستگاه بار را بالا کردی! قطارها و کشتی‌های دریا مال‌ها را بین بندر شانگهای و شهرهای دور از بحر می‌برند. همین راه‌های خوب به یک شهر موقعیت عالی می‌دهند.' } },
 
   words: {
     site: { en: 'the land a city sits on: flat or high, wet or dry, rich soil or rock', es: 'la tierra donde está una ciudad: plana o alta, húmeda o seca, suelo fértil o roca', fa: 'زمینی که شهر روی آن است: هموار یا بلند، تر یا خشک، خاک حاصلخیز یا سنگ' },
