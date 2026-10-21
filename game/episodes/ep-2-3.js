@@ -185,7 +185,7 @@ window.EPISODE = {
       fa: 'ایستگاه بس · کار در شهر: آشپز، معمار، نرس، راننده. کارگر لازم است! کار یک [[pull factor|عامل کشش]] است.' } }
   ],
 
-  /* the quest: Doña Marta (gold !) -> Nadège the mail carrier -> beat the Ink Thief by the river -> back to Marta with Diego's letter */
+  /* the quest: Doña Marta (gold !) -> Nadège the mail carrier -> follow the Ink Thief's riddles to a push factor, a pull factor and the short road between them, then catch it -> back to Marta with Diego's letter */
   quest: {
     stat: 'mov',
     title: { en: 'The Stolen Letter', es: 'La carta robada', fa: 'نامهٔ دزدی‌شده' },
@@ -218,29 +218,43 @@ window.EPISODE = {
         { en: 'Oh no, Diego\'s letter! I carry letters both ways on this road. Workers in the city write home, and families write back. Letters like these keep a family [[network|network]] strong.',
           es: '¡Ay no, la carta de Diego! Yo llevo cartas en las dos direcciones por este camino. Los trabajadores de la ciudad escriben a casa y las familias contestan. Cartas así mantienen fuerte la [[network|red]] de una familia.',
           fa: 'وای، نامهٔ دیگو! من در این راه نامه‌ها را به هر دو طرف می‌برم. کارگران در شهر به خانه نامه می‌نویسند و خانواده‌ها جواب می‌دهند. این نامه‌ها [[network|شبکهٔ]] خانواده را قوی نگه می‌دارند.' },
-        { en: 'A thief in a black ink mask ran south, down to the river. Find the Ink Thief on the riverbank in the south-east. Answer its questions to get the letter back!',
-          es: 'Un ladrón con una máscara de tinta negra corrió al sur, hasta el río. Busca al Ladrón de Tinta en la orilla del río, en el sureste. ¡Contesta sus preguntas para recuperar la carta!',
-          fa: 'یک دزد با نقاب سیاه به طرف جنوب، تا دریا دوید. دزد رنگ را کنار دریا در جنوب شرق پیدا کن. به سوال‌هایش جواب بده تا نامه را پس بگیری!' }
+        { en: 'I saw a thief in a black ink mask! It tore the letter into 3 pieces and hid them along the Long Road. Listen to its riddles and walk to the right places. Then catch the thief!',
+          es: '¡Vi a un ladrón con una máscara de tinta negra! Rompió la carta en 3 pedazos y los escondió por el Camino Largo. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
+          fa: 'یک دزد با نقاب سیاه را دیدم! نامه را سه تکه کرد و تکه‌ها را در راه دراز پنهان کرد. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
-      at: [17, 18],
+      type: 'chase',
+      at: [4, 9],
+      hops: [[14, 8], [11, 10]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Hee hee! I took the letter. Now nobody knows why Diego moved. Do YOU know?', es: '¡Ji ji! Me llevé la carta. Ahora nadie sabe por qué se mudó Diego. ¿TÚ lo sabes?', fa: 'هی هی! نامه را بردم. حالا هیچ کس نمی‌داند دیگو چرا رفت. تو می‌دانی؟' },
-      win: { en: 'The Ink Thief drops the letter and runs away! The envelope is a little wet, but you can still read it.', es: '¡El Ladrón de Tinta suelta la carta y sale corriendo! El sobre está un poco mojado, pero todavía se puede leer.', fa: 'دزد رنگ نامه را می‌اندازد و فرار می‌کند! پاکت کمی تر شده، اما هنوز خوانده می‌شود.' },
-      need: 2,
-      questions: [
-        { q: { en: 'Diego left a dry farm town for a hospital job in the city. Which one is a pull factor for him?', es: 'Diego dejó un pueblo seco del campo por un trabajo en un hospital de la ciudad. ¿Cuál es un factor de atracción para él?', fa: 'دیگو یک قریهٔ خشک را برای کار در شفاخانهٔ شهر ترک کرد. کدام یک برای او عامل کشش است؟' },
-          choices: [{ en: 'The hospital job in the city', es: 'El trabajo en el hospital de la ciudad', fa: 'کار در شفاخانهٔ شهر' }, { en: 'The dry fields at home', es: 'Los campos secos en casa', fa: 'زمین‌های خشک در خانه' }, { en: 'The rain that comes too late', es: 'La lluvia que llega muy tarde', fa: 'بارانی که خیلی دیر می‌آید' }, { en: 'The empty school in his town', es: 'La escuela vacía de su pueblo', fa: 'مکتب خالی قریه‌اش' }], answer: 0,
-          why: { en: 'The job is in the new place and makes it look better, so it pulls. The other three are pushes from home.', es: 'El trabajo está en el lugar nuevo y lo hace ver mejor, así que atrae. Las otras tres son expulsiones desde casa.', fa: 'کار در جای نو است و آن را بهتر نشان می‌دهد، پس می‌کشد. سه تای دیگر رانش از خانه هستند.' } },
-        { q: { en: 'Most people who move do not go very far. Which move is the most common?', es: 'La mayoría de la gente que se muda no va muy lejos. ¿Qué mudanza es la más común?', fa: 'بیشتر کسانی که جابه‌جا می‌شوند خیلی دور نمی‌روند. کدام سفر از همه عام‌تر است؟' },
-          choices: [{ en: 'From a farm town to a city in the same country', es: 'De un pueblo del campo a una ciudad del mismo país', fa: 'از یک قریه به شهری در همان کشور' }, { en: 'From one continent to another continent', es: 'De un continente a otro continente', fa: 'از یک قاره به قارهٔ دیگر' }, { en: 'From a city to an island far out at sea', es: 'De una ciudad a una isla lejos en el mar', fa: 'از یک شهر به جزیره‌ای دور در بحر' }, { en: 'From the coast to the North Pole', es: 'De la costa al Polo Norte', fa: 'از ساحل به قطب شمال' }], answer: 0,
-          why: { en: 'Short moves are the most common, like Diego\'s move from the farm town to the city.', es: 'Las mudanzas cortas son las más comunes, como la de Diego del pueblo a la ciudad.', fa: 'سفرهای کوتاه از همه عام‌تر هستند، مثل رفتن دیگو از قریه به شهر.' } },
-        { q: { en: '"There are no jobs in my home town." What kind of cause of migration is this?', es: '"No hay trabajo en mi pueblo." ¿Qué tipo de causa de migración es esta?', fa: '«در قریهٔ من کار نیست.» این کدام نوع علت مهاجرت است؟' },
-          choices: [{ en: 'Economic', es: 'Económica', fa: 'اقتصادی' }, { en: 'Environmental', es: 'Ambiental', fa: 'محیطی' }, { en: 'Political', es: 'Política', fa: 'سیاسی' }, { en: 'Sociocultural', es: 'Sociocultural', fa: 'اجتماعی و فرهنگی' }], answer: 0,
-          why: { en: 'Jobs and money are economic causes. A drought or a flood would be environmental.', es: 'El trabajo y el dinero son causas económicas. Una sequía o una inundación serían ambientales.', fa: 'کار و پول علت‌های اقتصادی هستند. خشک‌سالی یا سیلاب علت محیطی است.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore Diego\'s letter into 3 pieces and hid them along the Long Road. Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí la carta de Diego en 3 pedazos y los escondí por el Camino Largo. ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! نامهٔ دیگو را سه تکه کردم و در راه دراز پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is at a [[push factor|push factor]]: a place that makes people want to leave. The rain came too late there, and the fields dried up.',
+            es: 'El pedazo 1 está en un [[push factor|factor de expulsión]]: un lugar que hace que la gente quiera irse. Allí la lluvia llegó muy tarde y los campos se secaron.',
+            fa: 'تکهٔ ۱ در یک [[push factor|عامل رانش]] است: جایی که مردم را به رفتن وادار می‌کند. آن جا باران خیلی دیر آمد و زمین‌ها خشک شدند.' },
+          zones: [{ x: 1, y: 8, w: 14, h: 13 }],
+          noBy: [{ x: 17, y: 1, w: 14, h: 4, t: { en: 'This is the city, with lots of jobs. Jobs pull people in. A push factor is a problem back home that makes people leave.', es: 'Esta es la ciudad, con mucho trabajo. El trabajo atrae a la gente. Un factor de expulsión es un problema en casa que hace que la gente se vaya.', fa: 'این جا شهر است، با کار زیاد. کار مردم را می‌کشد. عامل رانش مشکلی در خانه است که مردم را به رفتن وادار می‌کند.' } }],
+          found: { en: 'Piece 1 was in the dry fields! A [[drought|drought]] killed the crops. That push factor made Diego\'s family think about moving.', es: '¡El pedazo 1 estaba en los campos secos! Una [[drought|sequía]] mató los cultivos. Ese factor de expulsión hizo que la familia de Diego pensara en mudarse.', fa: 'تکهٔ ۱ در زمین‌های خشک بود! یک [[drought|خشک‌سالی]] کشت‌ها را از بین برد. آن عامل رانش خانوادهٔ دیگو را به فکر رفتن انداخت.' } },
+        { t: { en: 'Piece 2 is at a [[pull factor|pull factor]]: a place that makes a new home look better. Find the sign that says "Help wanted!"',
+            es: 'El pedazo 2 está en un [[pull factor|factor de atracción]]: un lugar que hace que un hogar nuevo se vea mejor. ¡Busca el letrero que dice "Se busca personal"!',
+            fa: 'تکهٔ ۲ در یک [[pull factor|عامل کشش]] است: جایی که یک خانهٔ نو را بهتر نشان می‌دهد. لوحه‌ای را پیدا کن که می‌گوید «کارگر لازم است!»' },
+          zones: [{ x: 15, y: 1, w: 16, h: 4 }],
+          noBy: [{ x: 1, y: 8, w: 14, h: 13, t: { en: 'These dry fields push people away. A pull factor is in the new place, like a job in the city.', es: 'Estos campos secos alejan a la gente. Un factor de atracción está en el lugar nuevo, como un trabajo en la ciudad.', fa: 'این زمین‌های خشک مردم را دور می‌رانند. عامل کشش در جای نو است، مثل کار در شهر.' } },
+            { x: 1, y: 1, w: 14, h: 4, t: { en: 'This is the farm town, Diego\'s old home. A pull factor is in the new place he moved to.', es: 'Este es el pueblo del campo, el hogar de Diego. Un factor de atracción está en el lugar nuevo adonde se mudó.', fa: 'این قریهٔ دهقانی، خانهٔ قبلی دیگو است. عامل کشش در جای نویی است که او به آن رفت.' } }],
+          found: { en: 'Piece 2 was at the bus stop! City jobs, like Diego\'s job at the hospital, pull people in. Jobs and money are economic reasons to move.', es: '¡El pedazo 2 estaba en la parada del bus! Los trabajos de la ciudad, como el de Diego en el hospital, atraen a la gente. El trabajo y el dinero son razones económicas para mudarse.', fa: 'تکهٔ ۲ در ایستگاه بس بود! کار در شهر، مثل کار دیگو در شفاخانه، مردم را می‌کشد. کار و پول دلیل‌های اقتصادی برای رفتن هستند.' } },
+        { t: { en: 'Piece 3 is by the sign on the Long Road that tells how far most people move. Do they cross the sea, or go a short way?',
+            es: 'El pedazo 3 está junto al letrero del Camino Largo que dice qué tan lejos se muda la mayoría de la gente. ¿Cruzan el mar o van un poco lejos?',
+            fa: 'تکهٔ ۳ کنار لوحه‌ای در راه دراز است که می‌گوید بیشتر مردم چقدر دور می‌روند. از بحر می‌گذرند، یا راه کوتاهی می‌روند؟' },
+          zones: [{ x: 5, y: 6, w: 11, h: 2 }],
+          noBy: [{ x: 16, y: 16, w: 15, h: 3, t: { en: 'This river leads to the sea. A trip across the sea to another land is a long move. Most people who move go only a short way.', es: 'Este río lleva al mar. Un viaje por el mar a otra tierra es una mudanza larga. La mayoría de la gente que se muda va solo un poco lejos.', fa: 'این دریا به بحر می‌رسد. سفر از راه بحر به سرزمین دیگر یک کوچ دراز است. بیشتر کسانی که جابه‌جا می‌شوند فقط راه کوتاهی می‌روند.' } }],
+          found: { en: 'Piece 3 was by the farm town sign! Most people who move go only a short way, like Diego from the farm town to a city in the same country.', es: '¡El pedazo 3 estaba junto al letrero del pueblo! La mayoría de la gente que se muda va solo un poco lejos, como Diego, del pueblo a una ciudad del mismo país.', fa: 'تکهٔ ۳ کنار لوحهٔ قریه بود! بیشتر کسانی که جابه‌جا می‌شوند راه کوتاهی می‌روند، مثل دیگو که از قریه به شهری در همان کشور رفت.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: Diego\'s letter is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: la carta de Diego está completa otra vez.',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: نامهٔ دیگو دوباره کامل است.' },
       item: { icon: '✉️', name: { en: 'Diego\'s letter', es: 'La carta de Diego', fa: 'نامهٔ دیگو' } }
     }
   },

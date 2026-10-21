@@ -176,7 +176,7 @@ window.EPISODE = {
       fa: 'دریای کانگو · دومین دریای دراز افریقا و عمیق‌ترین دریای جهان. کشتی‌ها از این‌جا مردم و بار را تا جاهای دور می‌برند.' } }
   ],
 
-  /* the quest: Ilunga the rumba guitarist (gold !) -> Bijou the radio host -> beat the Ink Thief on the wide street downtown -> back to Ilunga */
+  /* the quest: Ilunga the rumba guitarist (gold !) -> Bijou the radio host -> follow the Ink Thief's riddles to the market, the empty land by the port and downtown, then catch it -> back to Ilunga */
   quest: {
     stat: 'pla',
     title: { en: 'The Stolen Song Book', es: 'El cancionero robado', fa: 'کتاب آهنگ دزدی‌شده' },
@@ -209,33 +209,42 @@ window.EPISODE = {
         { en: 'Hello! On my radio show I speak Lingala, French and Swahili. In Kinshasa, many people use two or three languages every day. Each [[ethnic group|ethnic group]] brings its own words and music.',
           es: '¡Hola! En mi programa de radio hablo lingala, francés y suajili. En Kinshasa, mucha gente usa dos o tres idiomas cada día. Cada [[ethnic group|grupo étnico]] trae sus propias palabras y su música.',
           fa: 'سلام! در برنامهٔ رادیوی خود به لینگالا، فرانسوی و سواحیلی گپ می‌زنم. در کینشاسا بسیاری مردم هر روز دو یا سه زبان را به کار می‌برند. هر [[ethnic group|قوم]] کلمه‌ها و موسیقی خودش را می‌آورد.' },
-        { en: 'I saw the Ink Thief! It ran east into downtown. It is hiding on the wide street between the tall buildings. Answer its questions about [[culture|culture]] and cities to win the book back.',
-          es: '¡Vi al Ladrón de Tinta! Corrió al este, hacia el centro. Se esconde en la calle ancha entre los edificios altos. Responde sus preguntas sobre [[culture|cultura]] y ciudades para recuperar el cancionero.',
-          fa: 'دزد رنگ را دیدم! به طرف شرق، به مرکز شهر دوید. در سرک پهن میان ساختمان‌های بلند پنهان شده است. به سوال‌هایش دربارهٔ [[culture|فرهنگ]] و شهرها جواب بده تا کتاب را پس بگیری.' }
+        { en: 'I saw the Ink Thief! It tore the song book into 3 pieces and hid them around the city. Listen to its riddles about [[culture|culture]] and cities, and walk to the right places. Then catch it!',
+          es: '¡Vi al Ladrón de Tinta! Rompió el cancionero en 3 pedazos y los escondió por la ciudad. Escucha sus acertijos sobre [[culture|cultura]] y ciudades, y camina a los lugares correctos. ¡Después atrápalo!',
+          fa: 'دزد رنگ را دیدم! کتاب آهنگ را سه تکه کرد و تکه‌ها را در شهر پنهان کرد. به چیستان‌هایش دربارهٔ [[culture|فرهنگ]] و شهرها گوش بده و به جاهای درست برو. بعد آن را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
-      at: [26, 15],
+      type: 'chase',
+      at: [29, 16],
+      hops: [[20, 16], [25, 15]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Hee hee! I splashed ink on every song. Now nobody can sing them!',
-        es: '¡Ji ji! Manché de tinta cada canción. ¡Ahora nadie puede cantarlas!',
-        fa: 'هی هی! روی همهٔ آهنگ‌ها رنگ پاشیدم. حالا هیچ‌کس نمی‌تواند آن‌ها را بخواند!' },
-      win: { en: 'The Ink Thief drops the song book and runs away!',
-        es: '¡El Ladrón de Tinta suelta el cancionero y huye!',
-        fa: 'دزد رنگ کتاب آهنگ را می‌اندازد و فرار می‌کند!' },
-      need: 2,
-      questions: [
-        { q: { en: 'What is an ethnic group?', es: '¿Qué es un grupo étnico?', fa: 'قوم چیست؟' },
-          choices: [{ en: 'People who share a language, history and customs', es: 'Personas que comparten idioma, historia y costumbres', fa: 'مردمی که زبان، تاریخ و رسم‌های مشترک دارند' }, { en: 'People who live on the same street', es: 'Personas que viven en la misma calle', fa: 'مردمی که در یک سرک زندگی می‌کنند' }, { en: 'People who have the same job', es: 'Personas que tienen el mismo trabajo', fa: 'مردمی که یک کار دارند' }, { en: 'People who are the same age', es: 'Personas que tienen la misma edad', fa: 'مردمی که هم‌سن هستند' }], answer: 0,
-          why: { en: 'An ethnic group shares a language, a history and customs. DR Congo has many ethnic groups.', es: 'Un grupo étnico comparte idioma, historia y costumbres. RD Congo tiene muchos grupos étnicos.', fa: 'یک قوم زبان، تاریخ و رسم‌های مشترک دارد. کانگو قوم‌های زیادی دارد.' } },
-        { q: { en: 'Bijou speaks Lingala at home, French at work and Swahili with friends. What does this show?', es: 'Bijou habla lingala en casa, francés en el trabajo y suajili con sus amigos. ¿Qué muestra esto?', fa: 'بیژو در خانه لینگالا، در کار فرانسوی و با دوستانش سواحیلی گپ می‌زند. این چه چیز را نشان می‌دهد؟' },
-          choices: [{ en: 'Many people in DR Congo speak more than one language', es: 'Mucha gente en RD Congo habla más de un idioma', fa: 'بسیاری مردم در کانگو بیش از یک زبان گپ می‌زنند' }, { en: 'Lingala is used only at work', es: 'El lingala se usa solo en el trabajo', fa: 'لینگالا فقط در کار به کار می‌رود' }, { en: 'Nobody in Kinshasa speaks French', es: 'Nadie en Kinshasa habla francés', fa: 'هیچ‌کس در کینشاسا فرانسوی گپ نمی‌زند' }, { en: 'Everyone in Africa speaks Swahili', es: 'Todos en África hablan suajili', fa: 'همه در افریقا سواحیلی گپ می‌زنند' }], answer: 0,
-          why: { en: 'DR Congo has more than 200 languages. Many people use two or three of them every day.', es: 'RD Congo tiene más de 200 idiomas. Mucha gente usa dos o tres cada día.', fa: 'کانگو بیش از ۲۰۰ زبان دارد. بسیاری مردم هر روز دو یا سه زبان را به کار می‌برند.' } },
-        { q: { en: 'Thousands of new people move to Kinshasa every week. What problem can this cause?', es: 'Miles de personas nuevas llegan a Kinshasa cada semana. ¿Qué problema puede causar esto?', fa: 'هر هفته هزاران نفر تازه به کینشاسا می‌آیند. این می‌تواند چه مشکلی پیدا کند؟' },
-          choices: [{ en: 'Not enough homes, buses and clean water for everyone', es: 'No hay suficientes casas, buses y agua limpia para todos', fa: 'خانه، بس و آب پاک برای همه کافی نیست' }, { en: 'The Congo River gets shorter', es: 'El río Congo se vuelve más corto', fa: 'دریای کانگو کوتاه‌تر می‌شود' }, { en: 'The city stops having music', es: 'La ciudad se queda sin música', fa: 'شهر دیگر موسیقی ندارد' }, { en: 'The weather turns cold', es: 'El clima se vuelve frío', fa: 'هوا سرد می‌شود' }], answer: 0,
-          why: { en: 'When a city grows very fast, it is hard to build homes, roads and water pipes fast enough.', es: 'Cuando una ciudad crece muy rápido, es difícil construir casas, calles y tuberías de agua a tiempo.', fa: 'وقتی یک شهر خیلی زود بزرگ می‌شود، ساختن خانه، سرک و نل آب به همان اندازه زود سخت است.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the song book into 3 pieces and hid them around the city. Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el cancionero en 3 pedazos y los escondí por la ciudad. ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! کتاب آهنگ را سه تکه کردم و در شهر پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is where people from many [[ethnic group|ethnic groups]] meet every day. They buy fish and cassava, and you hear Lingala, French and Swahili all around.',
+            es: 'El pedazo 1 está donde gente de muchos [[ethnic group|grupos étnicos]] se encuentra cada día. Compran pescado y yuca, y se oye lingala, francés y suajili por todas partes.',
+            fa: 'تکهٔ ۱ جایی است که مردم از [[ethnic group|قوم‌های]] زیاد هر روز همدیگر را می‌بینند. ماهی و کاساوا می‌خرند، و از هر طرف لینگالا، فرانسوی و سواحیلی شنیده می‌شود.' },
+          zones: [{ x: 1, y: 6, w: 14, h: 4 }],
+          noBy: [{ x: 16, y: 12, w: 15, h: 9, t: { en: 'These tall buildings are offices and banks. People work inside, but they do not meet here to buy and sell. Look for the market stalls.', es: 'Estos edificios altos son oficinas y bancos. La gente trabaja adentro, pero no se reúne aquí a comprar y vender. Busca los puestos del mercado.', fa: 'این ساختمان‌های بلند دفتر و بانک هستند. مردم داخل آن‌ها کار می‌کنند، اما برای خرید و فروش این جا جمع نمی‌شوند. دکان‌های بازار را پیدا کن.' } }],
+          found: { en: 'Piece 1 was in the market! Each ethnic group shares a language, a history and customs. In Kinshasa, many groups meet here, and many people speak two or three languages.', es: '¡El pedazo 1 estaba en el mercado! Cada grupo étnico comparte idioma, historia y costumbres. En Kinshasa, muchos grupos se encuentran aquí, y mucha gente habla dos o tres idiomas.', fa: 'تکهٔ ۱ در بازار بود! هر قوم زبان، تاریخ و رسم‌های مشترک دارد. در کینشاسا قوم‌های زیادی این جا همدیگر را می‌بینند، و بسیاری مردم دو یا سه زبان گپ می‌زنند.' } },
+        { t: { en: 'Every week thousands of new people move to Kinshasa for jobs. That is [[urbanization|urbanization]]. Piece 2 is on the empty land by the river port, where there are no homes for them yet.',
+            es: 'Cada semana miles de personas nuevas llegan a Kinshasa por trabajo. Eso es la [[urbanization|urbanización]]. El pedazo 2 está en el terreno vacío junto al puerto del río, donde todavía no hay casas para ellas.',
+            fa: 'هر هفته هزاران نفر تازه برای کار به کینشاسا می‌آیند. این [[urbanization|شهرنشینی]] است. تکهٔ ۲ در زمین خالی کنار بندر دریا است، جایی که هنوز برای آن‌ها خانه نیست.' },
+          zones: [{ x: 17, y: 6, w: 14, h: 4 }],
+          noBy: [{ x: 1, y: 15, w: 14, h: 6, t: { en: 'These homes are already full of families. The new people need homes on empty land, near the jobs at the port.', es: 'Estas casas ya están llenas de familias. La gente nueva necesita casas en un terreno vacío, cerca de los trabajos del puerto.', fa: 'این خانه‌ها پر از خانواده‌ها هستند. مردم تازه به خانه در زمین خالی، نزدیک کارهای بندر، ضرورت دارند.' } }],
+          found: { en: 'Piece 2 was on the empty land! When a city grows very fast, it is hard to build enough homes, buses and water pipes for everyone.', es: '¡El pedazo 2 estaba en el terreno vacío! Cuando una ciudad crece muy rápido, es difícil construir suficientes casas, buses y tuberías de agua para todos.', fa: 'تکهٔ ۲ در زمین خالی بود! وقتی یک شهر خیلی زود بزرگ می‌شود، ساختن خانه، بس و نل آب به اندازهٔ همه سخت است.' } },
+        { t: { en: 'Piece 3 is where people use the [[official language|official language]] at work: in the offices downtown, among the tall buildings.',
+            es: 'El pedazo 3 está donde la gente usa el [[official language|idioma oficial]] en el trabajo: en las oficinas del centro, entre los edificios altos.',
+            fa: 'تکهٔ ۳ جایی است که مردم در کار [[official language|زبان رسمی]] را به کار می‌برند: در دفترهای مرکز شهر، میان ساختمان‌های بلند.' },
+          zones: [{ x: 16, y: 12, w: 15, h: 9 }],
+          noBy: [{ x: 1, y: 6, w: 14, h: 4, t: { en: 'In the market, most people speak Lingala, the language of the street. The official language is for laws, schools and offices.', es: 'En el mercado, casi todos hablan lingala, el idioma de la calle. El idioma oficial es para las leyes, las escuelas y las oficinas.', fa: 'در بازار بیشتر مردم لینگالا، زبان کوچه، گپ می‌زنند. زبان رسمی برای قانون، مکتب و اداره است.' } }],
+          found: { en: 'Piece 3 was downtown! French is the official language of DR Congo. Bijou speaks Lingala at home, French at work and Swahili with friends.', es: '¡El pedazo 3 estaba en el centro! El francés es el idioma oficial de RD Congo. Bijou habla lingala en casa, francés en el trabajo y suajili con sus amigos.', fa: 'تکهٔ ۳ در مرکز شهر بود! فرانسوی زبان رسمی کانگو است. بیژو در خانه لینگالا، در کار فرانسوی و با دوستانش سواحیلی گپ می‌زند.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the song book is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el cancionero está completo otra vez.',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: کتاب آهنگ دوباره کامل است.' },
       item: { icon: '📖', name: { en: "Ilunga's song book", es: 'El cancionero de Ilunga', fa: 'کتاب آهنگ ایلونگا' } }
     }
   },

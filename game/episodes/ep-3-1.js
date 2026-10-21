@@ -180,7 +180,7 @@ window.EPISODE = {
       fa: 'درّهٔ الپ · در زمستان با برف بسته است. خیلی وقت پیش، تاجران تا تابستان صبر می‌کردند تا از کوه‌ها بگذرند.' } }
   ],
 
-  /* the quest: Pilot Daan (gold !) -> Inês the fisher on the peninsula -> beat the Ink Thief in the wheat east of the river -> back to Daan */
+  /* the quest: Pilot Daan (gold !) -> Inês the fisher on the peninsula -> follow the Ink Thief's riddles to the Rhine's mouth, the flat plain and the peninsula, then catch it -> back to Daan */
   quest: {
     stat: 'mov',
     title: { en: 'The Stolen Sea Chart', es: 'La carta náutica robada', fa: 'نقشهٔ بحری دزدی‌شده' },
@@ -213,33 +213,43 @@ window.EPISODE = {
         { en: 'Yes, I saw it! A little thief with ink all over its hands. It ran east, past the port, toward the river.',
           es: '¡Sí, lo vi! Un ladroncito con las manos llenas de tinta. Corrió al este, pasó el puerto y fue hacia el río.',
           fa: 'بله، دیدمش! یک دزد کوچک که دست‌هایش پر از رنگ بود. به طرف شرق دوید، از بندر گذشت و به طرف دریا رفت.' },
-        { en: 'Cross the south bridge to the east side of the river. The thief is hiding in the wheat field there. Answer its questions to win back the chart!',
-          es: 'Cruza el puente del sur hacia el lado este del río. El ladrón se esconde en el campo de trigo de allí. ¡Responde sus preguntas para recuperar la carta!',
-          fa: 'از پل جنوبی به طرف شرق دریا برو. دزد در کشتزار گندم آنجا پنهان است. به سوال‌هایش جواب بده تا نقشه را پس بگیری!' }
+        { en: 'On the way, it tore the chart into 3 pieces and hid them! Each piece is by a different kind of land or water. Listen to its riddles and walk to the right places. Then catch the thief!',
+          es: '¡En el camino, rompió la carta en 3 pedazos y los escondió! Cada pedazo está junto a un tipo distinto de tierra o de agua. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
+          fa: 'در راه، نقشه را سه تکه کرد و تکه‌ها را پنهان کرد! هر تکه کنار یک نوع دیگر خشکه یا آب است. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
-      at: [29, 15],
+      type: 'chase',
+      at: [13, 11],
+      hops: [[6, 11], [12, 15]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Hee hee! This chart is mine now. Answer my questions about Europe, or I keep it!',
-        es: '¡Ji ji! Esta carta ahora es mía. ¡Responde mis preguntas sobre Europa o me la quedo!',
-        fa: 'هی هی! این نقشه حالا مال من است. به سوال‌هایم دربارهٔ اروپا جواب بده، وگرنه آن را نگه می‌دارم!' },
-      win: { en: 'The thief drops the sea chart and runs off in a puff of ink!',
-        es: '¡El ladrón suelta la carta náutica y huye en una nube de tinta!',
-        fa: 'دزد نقشهٔ بحری را می‌اندازد و در یک ابر رنگ فرار می‌کند!' },
-      need: 2,
-      questions: [
-        { q: { en: 'A narrow strip of water joins two bigger seas. What is it called?', es: 'Una franja angosta de agua une dos mares más grandes. ¿Cómo se llama?', fa: 'یک نوار باریک آب دو بحر بزرگ‌تر را به هم وصل می‌کند. نامش چیست؟' },
-          choices: [{ en: 'A strait', es: 'Un estrecho', fa: 'تنگه' }, { en: 'A peninsula', es: 'Una península', fa: 'شبه‌جزیره' }, { en: 'A fjord', es: 'Un fiordo', fa: 'فیورد' }, { en: 'A glacier', es: 'Un glaciar', fa: 'یخچال' }], answer: 0,
-          why: { en: 'A strait joins two seas. The Strait of Gibraltar joins the Atlantic Ocean to the Mediterranean Sea.', es: 'Un estrecho une dos mares. El estrecho de Gibraltar une el océano Atlántico con el mar Mediterráneo.', fa: 'تنگه دو بحر را وصل می‌کند. تنگهٔ جبل‌الطارق اقیانوس اطلس را به بحیرهٔ مدیترانه وصل می‌کند.' } },
-        { q: { en: 'The Rhine River starts in the Alps. Which way does it flow?', es: 'El río Rin nace en los Alpes. ¿Hacia dónde corre?', fa: 'دریای راین از کوه‌های الپ شروع می‌شود. به کدام طرف جاری است؟' },
-          choices: [{ en: 'North, to the North Sea', es: 'Al norte, hasta el mar del Norte', fa: 'به طرف شمال، تا بحر شمال' }, { en: 'South, to the Mediterranean Sea', es: 'Al sur, hasta el mar Mediterráneo', fa: 'به طرف جنوب، تا بحیرهٔ مدیترانه' }, { en: 'East, to the Black Sea', es: 'Al este, hasta el mar Negro', fa: 'به طرف شرق، تا بحیرهٔ سیاه' }, { en: 'West, to the Atlantic Ocean', es: 'Al oeste, hasta el océano Atlántico', fa: 'به طرف غرب، تا اقیانوس اطلس' }], answer: 0,
-          why: { en: 'The Rhine flows north to the North Sea. The Danube is the river that flows east to the Black Sea.', es: 'El Rin corre al norte, hasta el mar del Norte. El Danubio es el río que corre al este, hasta el mar Negro.', fa: 'راین به طرف شمال تا بحر شمال جاری است. دانوب دریایی است که به طرف شرق تا بحیرهٔ سیاه می‌رود.' } },
-        { q: { en: 'North of the Alps lies the wide North European Plain. Why do so many farms, roads and cities spread across it?', es: 'Al norte de los Alpes está la ancha llanura del norte de Europa. ¿Por qué hay tantas granjas, carreteras y ciudades en ella?', fa: 'شمال کوه‌های الپ دشت پهن شمال اروپا است. چرا این‌قدر زمین کشت، سرک و شهر در آن است؟' },
-          choices: [{ en: 'It is flat and easy to cross', es: 'Es plana y fácil de cruzar', fa: 'هموار است و گذشتن از آن آسان است' }, { en: 'It is covered in ice all year', es: 'Está cubierta de hielo todo el año', fa: 'تمام سال زیر یخ است' }, { en: 'It is the highest land in Europe', es: 'Es la tierra más alta de Europa', fa: 'بلندترین زمین اروپا است' }, { en: 'It has no rivers at all', es: 'No tiene ningún río', fa: 'هیچ دریا ندارد' }], answer: 0,
-          why: { en: 'Flat land is easy to farm, build on and travel across. So people and cities spread over the plain.', es: 'La tierra plana es fácil de cultivar, de construir y de cruzar. Por eso la gente y las ciudades se extienden por la llanura.', fa: 'زمین هموار برای کشت، ساختمان و سفر آسان است. پس مردم و شهرها در دشت پخش شده‌اند.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the sea chart into 3 pieces and hid them around the coast. Follow my riddles about Europe, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí la carta náutica en 3 pedazos y los escondí por la costa. ¡Sigue mis acertijos sobre Europa, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! نقشهٔ بحری را سه تکه کردم و در ساحل پنهان کردم. اگر می‌توانی، چیستان‌هایم را دربارهٔ اروپا دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is where the Rhine River ends. The Rhine starts in the Alps and flows north. Find the place where it meets the sea.',
+            es: 'El pedazo 1 está donde termina el río Rin. El Rin nace en los Alpes y corre hacia el norte. Busca el lugar donde llega al mar.',
+            fa: 'تکهٔ ۱ جایی است که دریای راین تمام می‌شود. راین از کوه‌های الپ شروع می‌شود و به طرف شمال می‌رود. جایی را پیدا کن که به بحر می‌رسد.' },
+          zones: [{ x: 17, y: 3, w: 12, h: 3 }],
+          noBy: [{ x: 17, y: 17, w: 11, h: 2, t: { en: 'This is where the Rhine starts, at the ice in the Alps. It flows north, away from here. Follow it to its end at the sea.', es: 'Aquí nace el Rin, en el hielo de los Alpes. Corre hacia el norte, lejos de aquí. Síguelo hasta donde termina, en el mar.', fa: 'راین از این جا، از یخ کوه‌های الپ، شروع می‌شود. به طرف شمال، دور از این جا می‌رود. آن را تا آخرش در بحر دنبال کن.' } }],
+          found: { en: 'Piece 1 was at the mouth of the Rhine! The river flows north from the Alps to the North Sea. Barges carry goods up the river from this port.', es: '¡El pedazo 1 estaba en la desembocadura del Rin! El río corre al norte, desde los Alpes hasta el mar del Norte. Las barcazas llevan mercancías río arriba desde este puerto.', fa: 'تکهٔ ۱ در دهانهٔ راین بود! این دریا از کوه‌های الپ به طرف شمال تا بحر شمال می‌رود. کشتی‌های باری از این بندر مال را بالای دریا می‌برند.' } },
+        { t: { en: 'Piece 2 is on the flat plain north of the Alps. Flat land is easy to farm, so look for the wide wheat fields.',
+            es: 'El pedazo 2 está en la llanura plana al norte de los Alpes. La tierra plana es fácil de cultivar, así que busca los campos anchos de trigo.',
+            fa: 'تکهٔ ۲ در دشت هموار شمال کوه‌های الپ است. کشت در زمین هموار آسان است، پس کشتزارهای پهن گندم را پیدا کن.' },
+          zones: [{ x: 17, y: 15, w: 5, h: 2 }, { x: 24, y: 15, w: 7, h: 2 }],
+          noBy: [{ x: 10, y: 17, w: 22, h: 4, t: { en: 'These are the Alps: high, steep and snowy. They are hard to farm and hard to cross. A plain is low and flat.', es: 'Estos son los Alpes: altos, empinados y con nieve. Es difícil cultivarlos y cruzarlos. Una llanura es baja y plana.', fa: 'این‌ها کوه‌های الپ هستند: بلند، سراشیب و برفی. کشت در آن‌ها و گذشتن از آن‌ها سخت است. دشت پست و هموار است.' } }],
+          found: { en: 'Piece 2 was in the wheat! The North European Plain is flat and easy to cross. So farms, roads and cities spread all over it.', es: '¡El pedazo 2 estaba en el trigo! La llanura del norte de Europa es plana y fácil de cruzar. Por eso las granjas, las carreteras y las ciudades se extienden por toda ella.', fa: 'تکهٔ ۲ در گندم بود! دشت شمال اروپا هموار است و گذشتن از آن آسان است. پس کشتزارها، سرک‌ها و شهرها در همه جای آن پخش شده‌اند.' } },
+        { t: { en: 'Piece 3 is on land with water on three sides: a [[peninsula|peninsula]]. Spain is one. At its tip, a narrow [[strait|strait]] joins two seas.',
+            es: 'El pedazo 3 está en una tierra con agua por tres lados: una [[peninsula|península]]. España es una. En su punta, un [[strait|estrecho]] angosto une dos mares.',
+            fa: 'تکهٔ ۳ در خشکه‌ای است که از سه طرف آب دارد: یک [[peninsula|شبه‌جزیره]]. اسپانیا یکی از آن‌هاست. در نوک آن، یک [[strait|تنگهٔ]] باریک دو بحر را وصل می‌کند.' },
+          zones: [{ x: 3, y: 11, w: 7, h: 4 }],
+          noBy: [{ x: 5, y: 3, w: 12, h: 4, t: { en: 'The port town has the sea on only one side, the north. A peninsula has water on three sides.', es: 'El pueblo del puerto tiene el mar de un solo lado, el norte. Una península tiene agua por tres lados.', fa: 'شهرک بندر فقط از یک طرف، شمال، بحر دارد. شبه‌جزیره از سه طرف آب دارد.' } },
+            { x: 11, y: 8, w: 5, h: 6, t: { en: 'There is no sea next to this land. A peninsula sticks out into the sea. Keep going west.', es: 'No hay mar junto a esta tierra. Una península se mete en el mar. Sigue hacia el oeste.', fa: 'کنار این زمین بحر نیست. شبه‌جزیره در داخل بحر پیش می‌رود. به طرف غرب برو.' } }],
+          found: { en: 'Piece 3 was on Peninsula Point! Water on three sides. Europe has many peninsulas, so almost no place is far from the sea.', es: '¡El pedazo 3 estaba en la Punta de la Península! Agua por tres lados. Europa tiene muchas penínsulas, así que casi ningún lugar está lejos del mar.', fa: 'تکهٔ ۳ در نوک شبه‌جزیره بود! از سه طرف آب. اروپا شبه‌جزیره‌های زیادی دارد، پس تقریباً هیچ جا از بحر دور نیست.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the sea chart is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: la carta náutica está completa otra vez.',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ بحری دوباره کامل است.' },
       item: { icon: '🗺️', name: { en: "Daan's sea chart", es: 'La carta náutica de Daan', fa: 'نقشهٔ بحری دان' } }
     }
   },

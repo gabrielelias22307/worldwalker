@@ -185,7 +185,7 @@ window.EPISODE = {
       fa: 'ساحل کهنه · مدت‌ها پیش، بحیرهٔ مرده تا این تابلو می‌رسید. حالا آب دور است. هر سال آب کمتری از دریا می‌رسد.' } }
   ],
 
-  /* the quest: Rania the river scientist (gold !) -> Sami the fisher at the lake -> beat the Ink Thief on the old Dead Sea shore -> back to Rania */
+  /* the quest: Rania the river scientist (gold !) -> Sami the fisher at the lake -> follow the Ink Thief's riddles to the desalination plant, the Dead Sea shore and the old well, then catch it -> back to Rania */
   quest: {
     stat: 'reg',
     title: { en: 'The Stolen River Report', es: 'El informe del río robado', fa: 'گزارش دزدیده‌شدهٔ دریا' },
@@ -218,33 +218,42 @@ window.EPISODE = {
         { en: 'Yes, I saw it! A blob of ink with Rania\'s papers. The Jordan River is [[transboundary|transboundary]]. It crosses borders, so her report matters to everyone.',
           es: '¡Sí, lo vi! Una mancha de tinta con los papeles de Rania. El río Jordán es [[transboundary|transfronterizo]]. Cruza fronteras, así que su informe les importa a todos.',
           fa: 'بلی، دیدمش! یک غرغروی رنگ با کاغذهای رانیا. دریای اردن [[transboundary|فراسرحدی]] است. از سرحدها می‌گذرد، پس گزارش رانیا برای همه مهم است.' },
-        { en: 'It ran south along the river, past the farms, to the old shore of the Dead Sea. It hides on the east side. Answer two of its questions right, and it will drop the report.',
-          es: 'Corrió al sur por el río, pasó las granjas y llegó a la orilla vieja del mar Muerto. Se esconde del lado este. Responde bien dos de sus preguntas y soltará el informe.',
-          fa: 'به طرف جنوب کنار دریا دوید، از کشتزارها گذشت و به ساحل کهنهٔ بحیرهٔ مرده رسید. در طرف شرق پنهان است. دو سؤالش را درست جواب بده، گزارش را می‌اندازد.' }
+        { en: 'It tore the report into 3 pieces and hid them near the water. Listen to its riddles and walk to the right places. Then catch the thief!',
+          es: 'Rompió el informe en 3 pedazos y los escondió cerca del agua. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
+          fa: 'گزارش را سه تکه کرد و تکه‌ها را نزدیک آب پنهان کرد. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
+      type: 'chase',
       at: [20, 18],
+      hops: [[25, 17], [28, 19]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Mine! If nobody knows how much water there is, the neighbors will argue. Unless you can answer my questions!',
-        es: '¡Es mío! Si nadie sabe cuánta agua hay, los vecinos van a discutir. ¡A menos que respondas mis preguntas!',
-        fa: 'مال من است! اگر هیچ کس نداند چقدر آب هست، همسایه‌ها دعوا می‌کنند. مگر این‌که سؤال‌هایم را جواب بدهی!' },
-      win: { en: 'Splat! The Ink Thief melts into a puddle. Rania\'s river report falls onto the sand.',
-        es: '¡Splat! El Ladrón de Tinta se derrite en un charco. El informe del río de Rania cae sobre la arena.',
-        fa: 'شلپ! دزد رنگ آب می‌شود و یک چاله رنگ می‌ماند. گزارش دریای رانیا روی ریگ می‌افتد.' },
-      need: 2,
-      questions: [
-        { q: { en: 'A river flows from one country into the next. A town near the start of the river takes most of the water. Who has a problem?', es: 'Un río pasa de un país al siguiente. Un pueblo cerca del inicio del río toma casi toda el agua. ¿Quién tiene un problema?', fa: 'یک دریا از یک کشور به کشور بعدی می‌رود. یک شهرک نزدیک شروع دریا بیشتر آب را می‌گیرد. کی مشکل پیدا می‌کند؟' },
-          choices: [{ en: 'The towns farther down the river', es: 'Los pueblos más abajo en el río', fa: 'شهرک‌هایی که پایین‌تر کنار دریا هستند' }, { en: 'Nobody, because rivers always refill', es: 'Nadie, porque los ríos siempre se llenan otra vez', fa: 'هیچ کس، چون دریا همیشه دوباره پر می‌شود' }, { en: 'Only the fish in the sea', es: 'Solo los peces del mar', fa: 'فقط ماهی‌های بحر' }, { en: 'The town that took the water', es: 'El pueblo que tomó el agua', fa: 'شهرکی که آب را گرفت' }], answer: 0,
-          why: { en: 'Water flows down the river. If one place takes too much, places farther down get less.', es: 'El agua baja por el río. Si un lugar toma demasiado, los lugares de más abajo reciben menos.', fa: 'آب به طرف پایین دریا می‌رود. اگر یک جا زیاد بگیرد، جاهای پایین‌تر کمتر می‌گیرند.' } },
-        { q: { en: 'Why do neighbors share river reports and rain numbers?', es: '¿Por qué los vecinos comparten informes del río y datos de lluvia?', fa: 'چرا همسایه‌ها گزارش دریا و عددهای باران را شریک می‌کنند؟' },
-          choices: [{ en: 'So everyone can plan for dry years and floods', es: 'Para que todos puedan prepararse para años secos e inundaciones', fa: 'تا همه برای سال‌های خشک و سیلاب آماده شوند' }, { en: 'So one country can keep the water a secret', es: 'Para que un país pueda guardar el agua en secreto', fa: 'تا یک کشور آب را پنهان نگه دارد' }, { en: 'To make the river flow faster', es: 'Para que el río corra más rápido', fa: 'تا دریا تیزتر جاری شود' }, { en: 'Because reports make it rain', es: 'Porque los informes hacen llover', fa: 'چون گزارش باران می‌آورد' }], answer: 0,
-          why: { en: 'Shared facts help every neighbor plan. They also build trust.', es: 'Los datos compartidos ayudan a cada vecino a planear. También crean confianza.', fa: 'معلومات مشترک به هر همسایه کمک می‌کند پلان کند. اعتماد هم می‌سازد.' } },
-        { q: { en: 'Which resource is scarce in the Levant?', es: '¿Qué recurso es escaso en el Levante?', fa: 'کدام منبع در شام کم است؟' },
-          choices: [{ en: 'Fresh water', es: 'El agua dulce', fa: 'آب شیرین' }, { en: 'Sunshine', es: 'El sol', fa: 'آفتاب' }, { en: 'Salty seawater', es: 'El agua salada del mar', fa: 'آب شور بحر' }, { en: 'Sand', es: 'La arena', fa: 'ریگ' }], answer: 0,
-          why: { en: 'The sun shines most of the year, and the sea is full. But fresh water is [[scarce|scarce]].', es: 'El sol brilla casi todo el año y el mar está lleno. Pero el agua dulce es [[scarce|escasa]].', fa: 'آفتاب بیشتر سال می‌تابد و بحر پر است. اما آب شیرین [[scarce|کمیاب]] است.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the river report into 3 pieces and hid them along the river. Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el informe del río en 3 pedazos y los escondí a lo largo del río. ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! گزارش دریا را سه تکه کردم و در کنار دریا پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Fresh water is [[scarce|scarce]] here, but the sea is full of salty water. Piece 1 is where people take the salt out of seawater.',
+            es: 'Aquí el agua dulce es [[scarce|escasa]], pero el mar está lleno de agua salada. El pedazo 1 está donde la gente le quita la sal al agua de mar.',
+            fa: 'آب شیرین این جا [[scarce|کمیاب]] است، اما بحر پر از آب شور است. تکهٔ ۱ جایی است که مردم نمک را از آب بحر می‌گیرند.' },
+          zones: [{ x: 1, y: 1, w: 6, h: 6 }],
+          noBy: [{ x: 2, y: 15, w: 14, h: 6, t: { en: 'The Dead Sea is salty, but nobody makes fresh water here, and it is shrinking. Look for the plant by the big sea in the west.', es: 'El mar Muerto es salado, pero aquí nadie hace agua dulce, y se está encogiendo. Busca la planta junto al mar grande del oeste.', fa: 'بحیرهٔ مرده شور است، اما این جا کسی آب شیرین نمی‌سازد، و کوچک‌تر می‌شود. فابریکه را کنار بحر بزرگ در غرب پیدا کن.' } }],
+          found: { en: 'Piece 1 was at the [[desalination|desalination]] plant! Rain falls only in winter, so fresh water is the scarce resource here. The sea is full, but its water is salty.', es: '¡El pedazo 1 estaba en la planta de [[desalination|desalinización]]! Solo llueve en invierno, así que aquí el agua dulce es el recurso escaso. El mar está lleno, pero su agua es salada.', fa: 'تکهٔ ۱ در فابریکهٔ [[desalination|آب‌شیرین‌کن]] بود! باران فقط در زمستان می‌بارد، پس این جا آب شیرین منبع کمیاب است. بحر پر است، اما آبش شور است.' } },
+        { t: { en: 'A town near the start of a river takes most of the water. Who has a problem? Piece 2 is at the far end of the river, where less water arrives every year.',
+            es: 'Un pueblo cerca del inicio de un río toma casi toda el agua. ¿Quién tiene un problema? El pedazo 2 está al final del río, donde cada año llega menos agua.',
+            fa: 'یک شهرک نزدیک شروع دریا بیشتر آب را می‌گیرد. کی مشکل پیدا می‌کند؟ تکهٔ ۲ در آخر دریا است، جایی که هر سال آب کمتری می‌رسد.' },
+          zones: [{ x: 2, y: 15, w: 14, h: 6 }],
+          noBy: [{ x: 11, y: 1, w: 5, h: 6, t: { en: 'This lake is near the start of the river. There is still plenty of water here. Follow the river south to where it ends.', es: 'Este lago está cerca del inicio del río. Aquí todavía hay mucha agua. Sigue el río hacia el sur hasta donde termina.', fa: 'این جهیل نزدیک شروع دریا است. این جا هنوز آب زیاد است. دریا را به طرف جنوب تا آخرش دنبال کن.' } }],
+          found: { en: 'Piece 2 was on the old shore of the Dead Sea! Water flows down the river. If places up the river take too much, places farther down get less.', es: '¡El pedazo 2 estaba en la orilla vieja del mar Muerto! El agua baja por el río. Si los lugares de río arriba toman demasiado, los de más abajo reciben menos.', fa: 'تکهٔ ۲ در ساحل کهنهٔ بحیرهٔ مرده بود! آب به طرف پایین دریا می‌رود. اگر جاهای بالای دریا زیاد بگیرند، جاهای پایین‌تر کمتر می‌گیرند.' } },
+        { t: { en: 'Piece 3 is where the neighbors meet to share river reports and plan for dry years together. Find the old well in the town south of the Yarmouk River.',
+            es: 'El pedazo 3 está donde los vecinos se reúnen para compartir informes del río y planear juntos para los años secos. Busca el pozo viejo en el pueblo al sur del río Yarmuk.',
+            fa: 'تکهٔ ۳ جایی است که همسایه‌ها جمع می‌شوند تا گزارش‌های دریا را شریک کنند و با هم برای سال‌های خشک برنامه بریزند. چاه کهنه را در شهرک جنوب دریای یرموک پیدا کن.' },
+          zones: [{ x: 20, y: 12, w: 10, h: 5 }],
+          noBy: [{ x: 23, y: 1, w: 8, h: 5, t: { en: 'This is the north town. It is only one of the neighbors. All the neighbors meet at the old well in the south town, across the Yarmouk River.', es: 'Este es el pueblo del norte. Es solo uno de los vecinos. Todos los vecinos se reúnen en el pozo viejo del pueblo del sur, al otro lado del río Yarmuk.', fa: 'این شهرک شمالی است. فقط یکی از همسایه‌ها است. همهٔ همسایه‌ها کنار چاه کهنه در شهرک جنوبی، آن طرف دریای یرموک، جمع می‌شوند.' } }],
+          found: { en: 'Piece 3 was at the old well! When neighbors share facts, everyone can plan for dry years and floods. Shared facts also build trust, and trust makes [[cooperation|cooperation]] easier.', es: '¡El pedazo 3 estaba en el pozo viejo! Cuando los vecinos comparten datos, todos pueden prepararse para años secos e inundaciones. Los datos compartidos también crean confianza, y la confianza hace más fácil la [[cooperation|cooperación]].', fa: 'تکهٔ ۳ کنار چاه کهنه بود! وقتی همسایه‌ها معلومات را شریک می‌کنند، همه می‌توانند برای سال‌های خشک و سیلاب آماده شوند. معلومات مشترک اعتماد هم می‌سازد، و اعتماد [[cooperation|همکاری]] را آسان‌تر می‌کند.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and melts into a puddle of ink. All 3 pieces fit together: Rania\'s river report is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y se derrite en un charco de tinta. Los 3 pedazos encajan: el informe del río de Rania está completo otra vez.',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و آب می‌شود و یک چاله رنگ می‌ماند. هر سه تکه با هم جور می‌شوند: گزارش دریای رانیا دوباره کامل است.' },
       item: { icon: '📜', name: { en: 'Rania\'s river report', es: 'El informe del río de Rania', fa: 'گزارش دریای رانیا' } }
     }
   },
