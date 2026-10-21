@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4965,6 +4969,23 @@ map: [
 ],
 start: [9, 7],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'city', kind: 'place', board: [18, 20], tile: 'h', ok: [[19, 18, 'R'], [20, 18, 'R'], [21, 18, 'R'], [19, 19, 'h'], [20, 19, 'd'], [21, 19, 'h']], cost: { wood: 1 },
+name: { en: 'The new city', es: 'La ciudad nueva', fa: 'شهر نو' },
+ask: { en: 'A big city needs a good [[site|site]] (flat land and fresh water) and a good [[situation|situation]] (a river and the sea to trade on). Build the first houses at the [[river mouth|river mouth]], by the harbor, just south of the road.',
+es: 'Una ciudad grande necesita un buen [[site|sitio]] (tierra plana y agua dulce) y una buena [[situation|situación]] (un río y el mar para comerciar). Construye las primeras casas en la [[river mouth|desembocadura]], junto al puerto, justo al sur del camino.',
+fa: 'یک شهر بزرگ به [[site|محل]] خوب (زمین هموار و آب شیرین) و [[situation|موقعیت]] خوب (دریا و بحر برای تجارت) ضرورت دارد. اولین خانه‌ها را در [[river mouth|دهانهٔ دریا]]، کنار بندر، درست جنوبِ سرک بساز.' },
+why: { en: 'Flat land by the river and the harbor. A good site and a good situation!', es: '¡Tierra plana junto al río y al puerto! Un buen sitio y una buena situación.', fa: 'زمین هموار کنار دریا و بندر. محل خوب و موقعیت خوب!' },
+wrong: { en: 'Not here. The houses go on the flat land at the river mouth, by the harbor, just south of the road.', es: 'Aquí no. Las casas van en la tierra plana de la desembocadura, junto al puerto, justo al sur del camino.', fa: 'این جا نه. خانه‌ها در زمین هموار دهانهٔ دریا، کنار بندر، درست جنوبِ سرک می‌روند.' },
+wrongBy: [
+{ x: 20, y: 2, w: 8, h: 4, t: { en: 'The hilltop is safe from floods, but it is far from water. People must carry water and goods up the hill, so the city grows slowly.', es: 'La colina está a salvo de inundaciones, pero lejos del agua. Hay que subir el agua y los productos, así que la ciudad crece despacio.', fa: 'سر تپه از سیلاب مصون است، اما از آب دور است. مردم باید آب و کالا را بالا ببرند، پس شهر آهسته رشد می‌کند.' } },
+{ x: 1, y: 4, w: 12, h: 4, t: { en: 'The mountain pass is narrow, rocky and cold. There is very little farmland to feed a big city.', es: 'El paso de montaña es angosto, rocoso y frío. Hay muy poca tierra para cultivar y alimentar una ciudad grande.', fa: 'کوتل باریک، سنگلاخ و سرد است. زمین زراعتی بسیار کم است که غذای یک شهر بزرگ را بدهد.' } },
+{ x: 15, y: 8, w: 7, h: 3, t: { en: 'Keep the rice paddies! These farms feed the city. Build the houses by the harbor instead.', es: '¡No toques los arrozales! Estas granjas alimentan a la ciudad. Construye las casas junto al puerto.', fa: 'شالیزارها را نگه دار! این زمین‌ها غذای شهر را می‌دهند. خانه‌ها را کنار بندر بساز.' } }
+],
+done: { en: 'The city stands at the river mouth! Its site is flat land with fresh water. Its situation is great: boats bring rice down the river, and ships sail to other ports. That is why big cities like Shanghai grow where a river meets the sea.',
+es: '¡La ciudad está en la desembocadura! Su sitio es tierra plana con agua dulce. Su situación es muy buena: los botes bajan arroz por el río y los barcos van a otros puertos. Por eso las ciudades grandes como Shanghái crecen donde un río llega al mar.',
+fa: 'شهر در دهانهٔ دریا ایستاده است! محل آن زمین هموار با آب شیرین است. موقعیت آن عالی است: قایق‌ها برنج را از دریا پایین می‌آورند و کشتی‌ها به بندرهای دیگر می‌روند. به همین خاطر شهرهای بزرگ مثل شانگهای در جایی رشد می‌کنند که دریا به بحر می‌رسد.' } }
+],
 finds: [
 { clueAt: [12, 4], at: [19, 14], decor: 'feather',
 clue: { en: 'Boats need a dock to stop. Find the dock on the river, just north of the house with the red roof. It is not the dock that goes out into the sea. Stand on its most western square.', es: 'Los botes necesitan un muelle para parar. Busca el muelle en el río, justo al norte de la casa del techo rojo. No es el muelle que entra en el mar. Párate en su cuadro más al oeste.', fa: 'کشتی‌ها برای ایستادن به اسکله ضرورت دارند. اسکله را روی دریا پیدا کن، درست شمالِ خانه‌ای که بام سرخ دارد. اسکله‌ای نیست که داخل بحر می‌رود. روی غربی‌ترین خانهٔ آن بایست.' },

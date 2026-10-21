@@ -44,6 +44,23 @@ window.EPISODE = {
   start: [22, 10],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): new homes on the green coast by Harbor City, not in the dry Outback (most Australians live near the coast) */
+  build: [
+    { id: 'homes', kind: 'place', board: [17, 9], tile: 'h', ok: [[18, 7, 'R'], [19, 7, 'R'], [20, 7, 'R'], [18, 8, 'h'], [19, 8, 'd'], [20, 8, 'h']], cost: { wood: 1 },
+      name: { en: 'New homes', es: 'Casas nuevas', fa: 'خانه‌های نو' },
+      ask: { en: 'A new family is moving to Australia. Where do most Australians live? Build their home on the green [[coast|coast]], next to Harbor City, where there is rain, water and work.',
+        es: 'Una familia nueva se muda a Australia. ¿Dónde vive la mayoría de los australianos? Construye su casa en la [[coast|costa]] verde, junto a Ciudad Puerto, donde hay lluvia, agua y trabajo.',
+        fa: 'یک خانوادهٔ نو به آسترالیا می‌آید. بیشتر آسترالیایی‌ها کجا زندگی می‌کنند؟ خانهٔ آن‌ها را در [[coast|ساحل]] سبز، کنار شهر بندر بساز، جایی که باران، آب و کار هست.' },
+      why: { en: 'On the green coast, by the city. Rain, water and jobs are close!', es: '¡En la costa verde, junto a la ciudad! La lluvia, el agua y el trabajo están cerca.', fa: 'در ساحل سبز، کنار شهر. باران، آب و کار نزدیک است!' },
+      wrong: { en: 'Not here. Build the home on the coast, right next to Harbor City, just west of the tall buildings.', es: 'Aquí no. Construye la casa en la costa, junto a Ciudad Puerto, justo al oeste de los edificios altos.', fa: 'این جا نه. خانه را در ساحل، درست کنار شهر بندر، کمی غربِ تعمیرهای بلند بساز.' },
+      wrongBy: [
+        { x: 1, y: 1, w: 15, h: 20, t: { en: 'This is the Outback. It is too dry and too far from the city. Very few people live out here.', es: 'Este es el Outback. Es demasiado seco y está muy lejos de la ciudad. Aquí vive muy poca gente.', fa: 'این جا اوت‌بک است. خیلی خشک است و از شهر خیلی دور. مردم بسیار کم این جا زندگی می‌کنند.' } }
+      ],
+      done: { en: 'The new home is built by the coast! More than 8 out of 10 Australians live near the coast. It gets more rain, and the big cities and jobs are there. The dry Outback has very few people.',
+        es: '¡La casa nueva está junto a la costa! Más de 8 de cada 10 australianos viven cerca de la costa. Allí llueve más, y allí están las ciudades grandes y el trabajo. El Outback seco tiene muy poca gente.',
+        fa: 'خانهٔ نو کنار ساحل ساخته شد! بیشتر از ۸ نفر از هر ۱۰ آسترالیایی نزدیک ساحل زندگی می‌کنند. آن جا باران بیشتر است و شهرهای بزرگ و کار آن جا هستند. اوتبک خشک مردم بسیار کم دارد.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [13, 16], at: [10, 14], decor: 'fossil',

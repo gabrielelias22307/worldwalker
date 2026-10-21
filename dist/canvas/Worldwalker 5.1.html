@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4945,11 +4949,11 @@ map: [
 'MMMM~MMnnMM~MMMMD2222~~~~~fffffD',
 'MMM.~.x....~..MMD2222ffWWffffffD',
 'M..~.~.....~.M..Dffffff~~fffoooD',
-'M..~~~.P...~....dffffff~~W~~o1oD',
+'M..~~~.T...~....dffffff~~W~~o1oD',
 'M..WWW.....~....Dffffff~~fffoooD',
 'M...~......b....Dffffff~~ffffffD',
-'M.P.~......~.P..Dffffff~~ffffffD',
-'M...b....P.~....Do1ooo1oooo1oooD',
+'M.T.~......~.P..Dffffff~~ffffffD',
+'M...b....T.~....Do1ooo1oooo1oooD',
 'M...~......~....DDDDDDDDDDDDDDDD',
 'r...~.www..~sssssssssssssss~~~~r',
 'r...~.www..~............sss~===r',
@@ -4965,6 +4969,20 @@ map: [
 ],
 start: [8, 4],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'canal', kind: 'place', board: [10, 14], tile: '~', ok: [[5, 13], [6, 13], [7, 13], [8, 13]], cost: { wood: 1 },
+name: { en: 'Irrigation canal', es: 'Canal de riego', fa: 'جوی آبیاری' },
+ask: { en: 'Long ago, farmers in the [[fertile crescent|Fertile Crescent]] dug canals. A canal carries river water to the fields. Dig a canal that starts at the river on the west and runs east, between the two wheat fields. Use wood for the canal gates.',
+es: 'Hace mucho tiempo, los agricultores de la [[fertile crescent|Media Luna Fértil]] cavaban canales. Un canal lleva el agua del río a los campos. Cava un canal que empiece en el río del oeste y vaya al este, entre los dos campos de trigo. Usa madera para las compuertas.',
+fa: 'خیلی وقت پیش، دهقانان [[fertile crescent|هلال حاصل‌خیز]] جوی می‌کندند. جوی آب دریا را به کشتزارها می‌برد. یک جوی بکن که از دریای غرب شروع شود و به طرف شرق، میان دو کشتزار گندم برود. برای دروازه‌های جوی از چوب کار بگیر.' },
+why: { en: 'Good: the river water flows on, toward the wheat.', es: 'Bien: el agua del río sigue hacia el trigo.', fa: 'خوب: آب دریا به طرف گندم پیش می‌رود.' },
+wrong: { en: 'Not here. A canal starts at the river and runs to the fields. Dig east from the west river, between the two wheat fields.', es: 'Aquí no. Un canal empieza en el río y va a los campos. Cava hacia el este desde el río del oeste, entre los dos campos de trigo.', fa: 'این جا نه. جوی از دریا شروع می‌شود و به کشتزارها می‌رود. از دریای غرب به طرف شرق، میان دو کشتزار گندم بکن.' },
+wrongBy: [
+{ x: 1, y: 18, w: 26, h: 3, t: { en: 'This is the desert, south of the river. A canal here would never reach the wheat fields.', es: 'Esto es el desierto, al sur del río. Un canal aquí nunca llegaría a los campos de trigo.', fa: 'این جا بیابان است، جنوبِ دریا. جوی در این جا هیچ وقت به کشتزارهای گندم نمی‌رسد.' } },
+{ x: 9, y: 14, w: 15, h: 3, t: { en: 'Too far from the west river. The water must come from the river, so start the canal right next to it.', es: 'Muy lejos del río del oeste. El agua tiene que venir del río, así que empieza el canal justo a su lado.', fa: 'از دریای غرب خیلی دور است. آب باید از دریا بیاید، پس جوی را درست کنار آن شروع کن.' } }
+],
+done: { en: 'River water now reaches both wheat fields. Canals like this turned dry land into the farms of the Fertile Crescent, between the Tigris and the Euphrates.', es: 'El agua del río ya llega a los dos campos de trigo. Canales así convirtieron la tierra seca en las granjas de la Media Luna Fértil, entre el Tigris y el Éufrates.', fa: 'حالا آب دریا به هر دو کشتزار گندم می‌رسد. جوی‌هایی مثل این زمین خشک را به کشتزارهای هلال حاصل‌خیز، میان دجله و فرات، تبدیل کردند.' } }
+],
 finds: [
 { clueAt: [10, 12], at: [6, 11], decor: 'vase',
 clue: { en: 'Mesopotamia means "the land between the rivers." Find the wheat field between the two rivers that is farthest north. Stand on its north-west corner square.', es: 'Mesopotamia quiere decir "la tierra entre los ríos". Busca el campo de trigo entre los dos ríos que está más al norte. Párate en su cuadro de la esquina noroeste.', fa: 'بین‌النهرین یعنی «سرزمین میان دریاها». کشتزار گندمی را که میان دو دریا است و از همه بیشتر در شمال است پیدا کن. روی خانهٔ کنج شمال‌غربی آن بایست.' },

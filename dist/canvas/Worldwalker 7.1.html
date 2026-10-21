@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4943,14 +4947,14 @@ map: [
 'AAAAAAAAAAAAAAAATTTTTTTTTTTTTTTT================',
 'AsssssssssssssKK..K..KK..K.KK.K.~~====~MMMMMMMM=',
 'AsusssusssusssWWWWWWWWW.WWWWWWWW~~====...MMAMMM=',
-'Assusssussssssss.....:..........~~=.p~...MAVAMM=',
+'Assusssussssssss.....:...T...T..~~=.p~...MAVAMM=',
 'Asssssssssssussswwwww:wwwwwwwwww~~===~...MAAAMM=',
 'AssssussrMMssusswwwww:wwwwwwwwww~~===~U..MMMMMM=',
 'AsssussssMA~~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
 'AssrssssssMs~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
 'Asssssssssssgsss..,..:x........x~~~==~.QQMMMMMM=',
 'Aggggggggggggggg::::::::::::::::kkkkkk.hdMMMMMM=',
-'Aggggggggggggggg.wwww:......UUUU~~~==~....qMMMM=',
+'Aggggggggggggggg.wwww:.T.T..UUUU~~~==~....qMMMM=',
 'AMMzAAzzzMMAzzzMwwwww:.RRR.fUUUU~~~==~...qqMMMM=',
 'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~s~==~...qqMMMM=',
 'Azzzzzzzzzzzzzzzqqqqq:qqqqJUfUUU~~~==~...qqMMMM=',
@@ -4965,6 +4969,42 @@ map: [
 ],
 start: [18, 9],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'terraces', kind: 'place', board: [38, 4], tile: 't', ok: [[39, 4], [40, 4], [39, 5], [40, 5]], cost: { wood: 1 },
+name: { en: 'Tea terraces', es: 'Terrazas de té', fa: 'زینه‌های چای' },
+ask: { en: 'Japan has very little flat land, and the flat land is full of cities and rice. So farmers cut [[terrace|terraces]], flat steps, into the hills. Build tea terraces on the hill slope below Mount Fuji, next to the mountains.',
+es: 'Japón tiene muy poca tierra plana, y esa tierra está llena de ciudades y arroz. Por eso los agricultores cortan [[terrace|terrazas]], escalones planos, en las colinas. Construye terrazas de té en la ladera debajo del monte Fuji, junto a las montañas.',
+fa: 'جاپان زمین هموار بسیار کم دارد، و زمین هموار پر از شهرها و برنج است. پس دهقانان در تپه‌ها [[terrace|زینه‌ها]]، پله‌های هموار، می‌کنند. زینه‌های چای را در دامنهٔ تپه زیر کوه فوجی، کنار کوه‌ها بساز.' },
+why: { en: 'A flat step on the hill slope. Now tea can grow here!', es: '¡Un escalón plano en la ladera! Ahora aquí puede crecer el té.', fa: 'یک پلهٔ هموار در دامنهٔ تپه. حالا چای این جا می‌روید!' },
+wrong: { en: 'Not here. Terraces go on the hill slope below Mount Fuji, next to the mountains.', es: 'Aquí no. Las terrazas van en la ladera debajo del monte Fuji, junto a las montañas.', fa: 'این جا نه. زینه‌ها در دامنهٔ تپه زیر کوه فوجی، کنار کوه‌ها می‌روند.' },
+wrongBy: [
+{ x: 16, y: 3, w: 16, h: 18, t: { en: 'This land is already flat! Do not cut steps here. The flat plain is for rice fields and cities.', es: '¡Esta tierra ya es plana! No hagas escalones aquí. La llanura plana es para arrozales y ciudades.', fa: 'این زمین از قبل هموار است! این جا پله نکن. دشت هموار برای شالیزارها و شهرها است.' } },
+{ x: 1, y: 1, w: 15, h: 20, t: { en: 'Too high, cold and dry out here in the west. Tea needs rain on warm hills near the sea.', es: 'Aquí en el oeste es demasiado alto, frío y seco. El té necesita lluvia en colinas tibias cerca del mar.', fa: 'این جا در غرب خیلی بلند، سرد و خشک است. چای باران روی تپه‌های گرم نزدیک بحر را لازم دارد.' } }
+],
+done: { en: 'The tea terraces are built! In Japan and China, farmers turn steep hills into flat steps. Flat land is so precious that people save it for rice and cities.', es: '¡Las terrazas de té están listas! En Japón y China, los agricultores convierten las colinas empinadas en escalones planos. La tierra plana es tan valiosa que la guardan para el arroz y las ciudades.', fa: 'زینه‌های چای ساخته شد! در جاپان و چین، دهقانان تپه‌های سراشیب را پله‌های هموار می‌سازند. زمین هموار آن‌قدر قیمتی است که مردم آن را برای برنج و شهرها نگه می‌دارند.' } }
+],
+plant: {
+basket: [20, 8],
+ask: { en: 'Rice needs flat land by the river, where water can stand. Tea grows on hills, where the rain runs off.', es: 'El arroz necesita tierra plana junto al río, donde el agua se queda. El té crece en las colinas, donde la lluvia baja.', fa: 'برنج زمین هموار کنار دریا را لازم دارد، جایی که آب می‌ماند. چای روی تپه‌ها می‌روید، جایی که باران جاری می‌شود.' },
+crops: [
+{ id: 'rice', icon: '🌾', name: { en: 'rice', es: 'arroz', fa: 'برنج' }, zones: [{ x: 16, y: 13, w: 16, h: 2 }, { x: 16, y: 17, w: 16, h: 4 }],
+ok: { en: 'Rice on the flat, wet plain by the Yangtze. It will grow!', es: 'Arroz en la llanura plana y húmeda junto al Yangtsé. ¡Va a crecer!', fa: 'برنج در دشت هموار و تر کنار یانگتسی. می‌روید!' },
+no: { en: 'Rice needs flat, wet land by the river: the paddies by the Yangtze.', es: 'El arroz necesita tierra plana y húmeda junto al río: los arrozales junto al Yangtsé.', fa: 'برنج زمین هموار و تر کنار دریا را لازم دارد: شالیزارهای کنار یانگتسی.' },
+noBy: [
+{ x: 1, y: 1, w: 15, h: 9, t: { en: 'Too dry: this is the Gobi Desert. Rice needs lots of water.', es: 'Demasiado seco: este es el desierto de Gobi. El arroz necesita mucha agua.', fa: 'خیلی خشک: این دشت گوبی است. برنج آب زیاد لازم دارد.' } },
+{ x: 1, y: 10, w: 15, h: 11, t: { en: 'Too high and cold: this is the Tibetan Plateau. Rice grows down on the warm plain.', es: 'Demasiado alto y frío: esta es la meseta del Tíbet. El arroz crece abajo, en la llanura tibia.', fa: 'خیلی بلند و سرد: این فلات تبت است. برنج پایین، در دشت گرم می‌روید.' } },
+{ x: 16, y: 3, w: 16, h: 3, t: { en: 'The north is cooler and drier. Farmers here grow wheat. Rice grows in the wet south, by the Yangtze.', es: 'El norte es más fresco y seco. Aquí los agricultores siembran trigo. El arroz crece en el sur húmedo, junto al Yangtsé.', fa: 'شمال سردتر و خشک‌تر است. دهقانان این جا گندم می‌کارند. برنج در جنوب تر، کنار یانگتسی می‌روید.' } },
+{ x: 38, y: 2, w: 3, h: 7, t: { en: 'Too steep: on a hill slope the water runs away. Rice needs flat land where water can stand.', es: 'Demasiado empinado: en una ladera el agua se va. El arroz necesita tierra plana donde el agua se quede.', fa: 'خیلی سراشیب: در دامنهٔ تپه آب می‌رود. برنج زمین هموار لازم دارد که آب در آن بماند.' } }
+] },
+{ id: 'tea', icon: '🍵', name: { en: 'tea', es: 'té', fa: 'چای' }, zones: [{ x: 39, y: 4, w: 2, h: 4 }], tiles: 't',
+ok: { en: 'Tea on the hill slope: the rain runs off and the roots stay dry. It will grow!', es: 'Té en la ladera: la lluvia baja y las raíces quedan secas. ¡Va a crecer!', fa: 'چای در دامنهٔ تپه: باران جاری می‌شود و ریشه‌ها خشک می‌مانند. می‌روید!' },
+no: { en: 'Tea grows on hill slopes and terraces, like the slope below Mount Fuji.', es: 'El té crece en laderas y terrazas, como la ladera debajo del monte Fuji.', fa: 'چای در دامنه‌های تپه و زینه‌ها می‌روید، مثل دامنهٔ زیر کوه فوجی.' },
+noBy: [
+{ x: 1, y: 1, w: 15, h: 20, t: { en: 'Too high, cold and dry out here in the west. Tea needs rain on warm hills.', es: 'Aquí en el oeste es demasiado alto, frío y seco. El té necesita lluvia en colinas tibias.', fa: 'این جا در غرب خیلی بلند، سرد و خشک است. چای باران روی تپه‌های گرم لازم دارد.' } },
+{ x: 16, y: 3, w: 16, h: 18, t: { en: 'On the flat plain the water stands, and tea roots get too wet. The flat land is for rice.', es: 'En la llanura plana el agua se queda, y las raíces del té se mojan demasiado. La tierra plana es para el arroz.', fa: 'در دشت هموار آب می‌ماند و ریشه‌های چای خیلی تر می‌شوند. زمین هموار برای برنج است.' } }
+] }
+]
+},
 finds: [
 { clueAt: [18, 3], at: [6, 16], decor: 'fossil',
 clue: { en: 'Both great rivers start high in the west and flow east to the sea. Go up to the plateau and find where the southern river begins. Stand on the land square just south of its most western water square.', es: 'Los dos grandes ríos nacen en lo alto del oeste y corren al este hasta el mar. Sube a la meseta y busca dónde empieza el río del sur. Párate en el cuadro de tierra justo al sur de su cuadro de agua más al oeste.', fa: 'هر دو دریای بزرگ از بلندی‌های غرب شروع می‌شوند و به طرف شرق تا بحر می‌روند. به سطح مرتفع برو و پیدا کن دریای جنوبی از کجا شروع می‌شود. روی خانهٔ خشکه که درست جنوبِ غربی‌ترین خانهٔ آبِ آن است بایست.' },

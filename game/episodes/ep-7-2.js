@@ -42,6 +42,25 @@ window.EPISODE = {
 
   tools: ['axe', 'sickle'],
 
+  /* build (FUN-PASS-2): the new city's houses on the best site, at the river mouth by the harbor (site + situation) */
+  build: [
+    { id: 'city', kind: 'place', board: [18, 20], tile: 'h', ok: [[19, 18, 'R'], [20, 18, 'R'], [21, 18, 'R'], [19, 19, 'h'], [20, 19, 'd'], [21, 19, 'h']], cost: { wood: 1 },
+      name: { en: 'The new city', es: 'La ciudad nueva', fa: 'شهر نو' },
+      ask: { en: 'A big city needs a good [[site|site]] (flat land and fresh water) and a good [[situation|situation]] (a river and the sea to trade on). Build the first houses at the [[river mouth|river mouth]], by the harbor, just south of the road.',
+        es: 'Una ciudad grande necesita un buen [[site|sitio]] (tierra plana y agua dulce) y una buena [[situation|situación]] (un río y el mar para comerciar). Construye las primeras casas en la [[river mouth|desembocadura]], junto al puerto, justo al sur del camino.',
+        fa: 'یک شهر بزرگ به [[site|محل]] خوب (زمین هموار و آب شیرین) و [[situation|موقعیت]] خوب (دریا و بحر برای تجارت) ضرورت دارد. اولین خانه‌ها را در [[river mouth|دهانهٔ دریا]]، کنار بندر، درست جنوبِ سرک بساز.' },
+      why: { en: 'Flat land by the river and the harbor. A good site and a good situation!', es: '¡Tierra plana junto al río y al puerto! Un buen sitio y una buena situación.', fa: 'زمین هموار کنار دریا و بندر. محل خوب و موقعیت خوب!' },
+      wrong: { en: 'Not here. The houses go on the flat land at the river mouth, by the harbor, just south of the road.', es: 'Aquí no. Las casas van en la tierra plana de la desembocadura, junto al puerto, justo al sur del camino.', fa: 'این جا نه. خانه‌ها در زمین هموار دهانهٔ دریا، کنار بندر، درست جنوبِ سرک می‌روند.' },
+      wrongBy: [
+        { x: 20, y: 2, w: 8, h: 4, t: { en: 'The hilltop is safe from floods, but it is far from water. People must carry water and goods up the hill, so the city grows slowly.', es: 'La colina está a salvo de inundaciones, pero lejos del agua. Hay que subir el agua y los productos, así que la ciudad crece despacio.', fa: 'سر تپه از سیلاب مصون است، اما از آب دور است. مردم باید آب و کالا را بالا ببرند، پس شهر آهسته رشد می‌کند.' } },
+        { x: 1, y: 4, w: 12, h: 4, t: { en: 'The mountain pass is narrow, rocky and cold. There is very little farmland to feed a big city.', es: 'El paso de montaña es angosto, rocoso y frío. Hay muy poca tierra para cultivar y alimentar una ciudad grande.', fa: 'کوتل باریک، سنگلاخ و سرد است. زمین زراعتی بسیار کم است که غذای یک شهر بزرگ را بدهد.' } },
+        { x: 15, y: 8, w: 7, h: 3, t: { en: 'Keep the rice paddies! These farms feed the city. Build the houses by the harbor instead.', es: '¡No toques los arrozales! Estas granjas alimentan a la ciudad. Construye las casas junto al puerto.', fa: 'شالیزارها را نگه دار! این زمین‌ها غذای شهر را می‌دهند. خانه‌ها را کنار بندر بساز.' } }
+      ],
+      done: { en: 'The city stands at the river mouth! Its site is flat land with fresh water. Its situation is great: boats bring rice down the river, and ships sail to other ports. That is why big cities like Shanghai grow where a river meets the sea.',
+        es: '¡La ciudad está en la desembocadura! Su sitio es tierra plana con agua dulce. Su situación es muy buena: los botes bajan arroz por el río y los barcos van a otros puertos. Por eso las ciudades grandes como Shanghái crecen donde un río llega al mar.',
+        fa: 'شهر در دهانهٔ دریا ایستاده است! محل آن زمین هموار با آب شیرین است. موقعیت آن عالی است: قایق‌ها برنج را از دریا پایین می‌آورند و کشتی‌ها به بندرهای دیگر می‌روند. به همین خاطر شهرهای بزرگ مثل شانگهای در جایی رشد می‌کنند که دریا به بحر می‌رسد.' } }
+  ],
+
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [12, 4], at: [19, 14], decor: 'feather',

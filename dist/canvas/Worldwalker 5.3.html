@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4948,12 +4952,12 @@ map: [
 '=~sXs.."~~"..,..gg:gggrgggggg"gM',
 '=kkss.o1o~~o1o..gg:ggggggrgggggM',
 '=~ss.o1o.~~~~~~~~~B~~~~~~~~~B~~~',
-'=~s.,o1o.~~.o1o.gg:ggggggggggaMM',
+'=~s.,o1o.~~.o1o.gg:ggggggggggTMM',
 '=~ss.o2o.~~.o2o.gg:ggrgggggggggM',
-'=~s..o1o.bb.o1o.gg:ggggggggggaMM',
+'=~s..o1o.bb.o1o.gg:ggggggggggTMM',
 '=~s..o1o.~~.o1o.gg:gggggggggrggM',
 '=~ss.oo2.~~.2oo.gg:::::::::ggggM',
-'=~s.w.ww.~~.www.ggrgggJJJJ:gggaM',
+'=~s.w.ww.~~.www.ggrgggJJJJ:gggTM',
 '=~ss.www.bb.ww..gggggg:::::ggggM',
 '=~ss.....~~.....sggggggg:O:ggrgM',
 '=~sss.ssu~~ussxssssgggggg:gggggM',
@@ -4965,6 +4969,22 @@ map: [
 ],
 start: [14, 2],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'canal', kind: 'place', board: [22, 6], tile: '~', ok: [[24, 6], [24, 5], [24, 8], [24, 9], [24, 10], [24, 11]], cost: { wood: 1 },
+name: { en: 'The shared canal', es: 'El canal compartido', fa: 'کانال مشترک' },
+ask: { en: 'Water is [[scarce|scarce]] here. One town is north of the Yarmouk River and one is south. Build one canal that both towns share. It goes in a straight line from the river: north to the road of the north town, and south to the road of the south town.',
+es: 'Aquí el agua es [[scarce|escasa]]. Un pueblo está al norte del río Yarmuk y otro al sur. Construye un canal que compartan los dos pueblos. Va en línea recta desde el río: al norte hasta el camino del pueblo del norte, y al sur hasta el camino del pueblo del sur.',
+fa: 'آب این جا [[scarce|کم]] است. یک شهرک در شمال دریای یرموک است و یکی در جنوب. یک کانال بساز که هر دو شهرک با هم شریک باشند. از دریا در یک خط راست می‌رود: به شمال تا سرک شهرک شمالی، و به جنوب تا سرک شهرک جنوبی.' },
+why: { en: 'Yes: the canal takes river water toward the towns.', es: 'Sí: el canal lleva el agua del río hacia los pueblos.', fa: 'بله: کانال آب دریا را به طرف شهرک‌ها می‌برد.' },
+wrong: { en: 'Not here. Sharing means both towns get water. Build one straight line from the river, north to one town\'s road and south to the other.', es: 'Aquí no. Compartir quiere decir que los dos pueblos reciben agua. Haz una línea recta desde el río, al norte hasta el camino de un pueblo y al sur hasta el del otro.', fa: 'این جا نه. شریک بودن یعنی هر دو شهرک آب بگیرند. از دریا یک خط راست بساز، به شمال تا سرک یک شهرک و به جنوب تا سرک شهرک دیگر.' },
+wrongBy: [
+{ x: 2, y: 1, w: 7, h: 19, t: { en: 'This is across the Jordan, far from both towns. The shared canal starts at the Yarmouk River, between the two towns.', es: 'Esto está al otro lado del Jordán, lejos de los dos pueblos. El canal compartido empieza en el río Yarmuk, entre los dos pueblos.', fa: 'این جا آن طرف اردن است، دور از هر دو شهرک. کانال مشترک از دریای یرموک، میان دو شهرک، شروع می‌شود.' } },
+{ x: 26, y: 8, w: 5, h: 4, t: { en: 'A canal here takes water to the empty dry grass, and to only one town. Sharing means both towns get water.', es: 'Un canal aquí lleva agua al pasto seco vacío, y a un solo pueblo. Compartir quiere decir que los dos pueblos reciben agua.', fa: 'کانال در این جا آب را به علف خشک خالی و فقط به یک شهرک می‌برد. شریک بودن یعنی هر دو شهرک آب بگیرند.' } }
+],
+done: { en: 'One canal, two towns, and both get water. The Yarmouk River crosses a border. When neighbors share it and plan together, that is [[cooperation|cooperation]].',
+es: 'Un canal, dos pueblos, y los dos reciben agua. El río Yarmuk cruza una frontera. Cuando los vecinos lo comparten y planean juntos, eso es [[cooperation|cooperación]].',
+fa: 'یک کانال، دو شهرک، و هر دو آب می‌گیرند. دریای یرموک از یک سرحد می‌گذرد. وقتی همسایه‌ها آن را شریک می‌شوند و با هم برنامه می‌ریزند، این [[cooperation|همکاری]] است.' } }
+],
 finds: [
 { clueAt: [15, 9], at: [11, 8], decor: 'flower',
 clue: { en: 'The Yarmouk River flows in from the east and joins the Jordan River. Stand on the land square that touches both rivers: south of the Yarmouk and east of the Jordan.', es: 'El río Yarmuk llega desde el este y se une al río Jordán. Párate en el cuadro de tierra que toca los dos ríos: al sur del Yarmuk y al este del Jordán.', fa: 'دریای یرموک از طرف شرق می‌آید و با دریای اردن یکی می‌شود. روی خانهٔ خشکه‌ای بایست که به هر دو دریا می‌رسد: جنوبِ یرموک و شرقِ اردن.' },

@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4968,6 +4972,22 @@ map: [
 ],
 start: [24, 9],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'bridge', kind: 'place', board: [28, 12], tile: 'B', over: '~', ok: [[26, 13], [26, 14], [26, 15], [26, 16]], cost: { wood: 1 },
+name: { en: 'The friendship bridge', es: 'El puente de la amistad', fa: 'پل دوستی' },
+ask: { en: 'The Silver River is a [[natural border|natural border]] between North Bank and South Bank. A border does not have to keep neighbors apart. Help them build a bridge together, across the river, between the two towns.',
+es: 'El río Plateado es una [[natural border|frontera natural]] entre Orilla Norte y Orilla Sur. Una frontera no tiene que separar a los vecinos. Ayúdalos a construir un puente juntos, sobre el río, entre los dos pueblos.',
+fa: 'دریای نقره‌ای یک [[natural border|سرحد طبیعی]] بین ساحل شمالی و ساحل جنوبی است. سرحد لازم نیست همسایه‌ها را از هم دور نگه دارد. کمک کن تا با هم یک پل روی دریا، بین دو قریه بسازند.' },
+why: { en: 'Right between the two towns. Now the neighbors can visit and trade!', es: '¡Justo entre los dos pueblos! Ahora los vecinos pueden visitarse y comerciar.', fa: 'درست بین دو قریه. حالا همسایه‌ها می‌توانند به دیدن هم بروند و تجارت کنند!' },
+wrong: { en: 'Not here. The bridge goes over the river, between the North Bank town and the South Bank town, just east of the main bridge.', es: 'Aquí no. El puente va sobre el río, entre el pueblo de Orilla Norte y el de Orilla Sur, justo al este del puente principal.', fa: 'این جا نه. پل روی دریا می‌رود، بین قریهٔ ساحل شمالی و قریهٔ ساحل جنوبی، کمی شرقِ پل بزرگ.' },
+wrongBy: [
+{ x: 1, y: 11, w: 15, h: 6, t: { en: 'Too far west. A bridge here would not join the two towns.', es: 'Demasiado al oeste. Un puente aquí no uniría los dos pueblos.', fa: 'خیلی به طرف غرب. پل این جا دو قریه را به هم وصل نمی‌کند.' } },
+{ x: 31, y: 11, w: 16, h: 6, t: { en: 'Too far east, near the sea. A bridge here would not join the two towns.', es: 'Demasiado al este, cerca del mar. Un puente aquí no uniría los dos pueblos.', fa: 'خیلی به طرف شرق، نزدیک بحر. پل این جا دو قریه را به هم وصل نمی‌کند.' } }
+],
+done: { en: 'The friendship bridge is built! The river is still the border, but now it joins the neighbors instead of keeping them apart. When neighbors work together, both sides win.',
+es: '¡El puente de la amistad está listo! El río sigue siendo la frontera, pero ahora une a los vecinos en vez de separarlos. Cuando los vecinos trabajan juntos, los dos ganan.',
+fa: 'پل دوستی ساخته شد! دریا هنوز سرحد است، اما حالا همسایه‌ها را به هم وصل می‌کند، نه اینکه از هم دور نگه دارد. وقتی همسایه‌ها با هم کار کنند، هر دو طرف برنده می‌شوند.' } }
+],
 finds: [
 { clueAt: [4, 12], at: [8, 13], decor: 'flower',
 clue: { en: 'Rivers are often borders between countries. Find the bridge farthest west on the river. Stand on the land square just north of it.', es: 'Los ríos muchas veces son fronteras entre países. Busca el puente que está más al oeste en el río. Párate en el cuadro de tierra justo al norte de él.', fa: 'دریاها اکثراً سرحد میان کشورها هستند. پلی را پیدا کن که از همه غربی‌تر روی دریا است. روی خانهٔ خشکه بایست که درست شمالِ آن پل است.' },

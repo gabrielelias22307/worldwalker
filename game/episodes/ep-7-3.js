@@ -42,6 +42,22 @@ window.EPISODE = {
 
   tools: ['axe', 'sickle'],
 
+  /* build (FUN-PASS-2): a new factory between the railway and the harbor, where the parts arrive (situation) */
+  build: [
+    { id: 'factory', kind: 'place', board: [25, 10], tile: 'X', ok: [[27, 9], [27, 10], [27, 11], [27, 12]], cost: { wood: 1 },
+      name: { en: 'The new factory', es: 'La fábrica nueva', fa: 'فابریکهٔ نو' },
+      ask: { en: 'A phone is made from parts that come from many countries. That is a [[supply chain|supply chain]]. Build a new [[assembly|assembly]] factory where the parts arrive fast: between the railway and the harbor.',
+        es: 'Un teléfono se hace con piezas que vienen de muchos países. Eso es una [[supply chain|cadena de suministro]]. Construye una fábrica nueva de [[assembly|ensamblaje]] donde las piezas llegan rápido: entre el tren y el puerto.',
+        fa: 'یک مبایل از پرزه‌هایی ساخته می‌شود که از کشورهای زیاد می‌آیند. این یک [[supply chain|زنجیرهٔ تأمین]] است. یک فابریکهٔ نو [[assembly|اسمبل]] را جایی بساز که پرزه‌ها زود می‌رسند: بین خط آهن و بندر.' },
+      why: { en: 'Right by the ships and the train. The parts arrive fast!', es: '¡Junto a los barcos y el tren! Las piezas llegan rápido.', fa: 'درست کنار کشتی‌ها و ریل. پرزه‌ها زود می‌رسند!' },
+      wrong: { en: 'Not here. The factory goes between the railway and the harbor, where the parts arrive.', es: 'Aquí no. La fábrica va entre el tren y el puerto, donde llegan las piezas.', fa: 'این جا نه. فابریکه بین خط آهن و بندر می‌رود، جایی که پرزه‌ها می‌رسند.' },
+      wrongBy: [
+        { x: 1, y: 10, w: 13, h: 11, t: { en: 'Too far from the harbor. The parts come by ship, so they would take too long to get here.', es: 'Demasiado lejos del puerto. Las piezas llegan en barco, así que tardarían mucho en llegar aquí.', fa: 'از بندر خیلی دور است. پرزه‌ها با کشتی می‌آیند، پس رسیدن آن‌ها به این جا خیلی وقت می‌گیرد.' } },
+        { x: 1, y: 1, w: 15, h: 8, t: { en: 'These are the hills by the mine. The parts arrive at the harbor, far away, and there is no flat land for a big factory.', es: 'Estas son las colinas de la mina. Las piezas llegan al puerto, lejos de aquí, y no hay tierra plana para una fábrica grande.', fa: 'این‌ها تپه‌های کنار معدن است. پرزه‌ها به بندر می‌رسند که دور است، و زمین هموار برای یک فابریکهٔ بزرگ نیست.' } }
+      ],
+      done: { en: 'The factory is built! Ships bring the parts to the harbor, and the train carries the new phones away. Factories grow where goods can come and go fast: that is a good situation.', es: '¡La fábrica está lista! Los barcos traen las piezas al puerto y el tren se lleva los teléfonos nuevos. Las fábricas crecen donde los productos llegan y salen rápido: esa es una buena situación.', fa: 'فابریکه ساخته شد! کشتی‌ها پرزه‌ها را به بندر می‌آورند و ریل مبایل‌های نو را می‌برد. فابریکه‌ها جایی رشد می‌کنند که کالا زود بیاید و برود: این یک موقعیت خوب است.' } }
+  ],
+
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [11, 8], at: [10, 4], decor: 'gem',

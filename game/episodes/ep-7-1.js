@@ -19,14 +19,14 @@ window.EPISODE = {
     'AAAAAAAAAAAAAAAATTTTTTTTTTTTTTTT================',
     'AsssssssssssssKK..K..KK..K.KK.K.~~====~MMMMMMMM=',
     'AsusssusssusssWWWWWWWWW.WWWWWWWW~~====...MMAMMM=',
-    'Assusssussssssss.....:..........~~=.p~...MAVAMM=',
+    'Assusssussssssss.....:...T...T..~~=.p~...MAVAMM=',
     'Asssssssssssussswwwww:wwwwwwwwww~~===~...MAAAMM=',
     'AssssussrMMssusswwwww:wwwwwwwwww~~===~U..MMMMMM=',
     'AsssussssMA~~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
     'AssrssssssMs~~~~~~~~~B~~~~~~~~~~~~~==~...MMMMMM=',
     'Asssssssssssgsss..,..:x........x~~~==~.QQMMMMMM=',
     'Aggggggggggggggg::::::::::::::::kkkkkk.hdMMMMMM=',
-    'Aggggggggggggggg.wwww:......UUUU~~~==~....qMMMM=',
+    'Aggggggggggggggg.wwww:.T.T..UUUU~~~==~....qMMMM=',
     'AMMzAAzzzMMAzzzMwwwww:.RRR.fUUUU~~~==~...qqMMMM=',
     'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~s~==~...qqMMMM=',
     'Azzzzzzzzzzzzzzzqqqqq:qqqqJUfUUU~~~==~...qqMMMM=',
@@ -42,6 +42,45 @@ window.EPISODE = {
   start: [18, 9],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): tea terraces on the hill slope below Mount Fuji. Flat land is for rice and people; hills get terraces */
+  build: [
+    { id: 'terraces', kind: 'place', board: [38, 4], tile: 't', ok: [[39, 4], [40, 4], [39, 5], [40, 5]], cost: { wood: 1 },
+      name: { en: 'Tea terraces', es: 'Terrazas de té', fa: 'زینه‌های چای' },
+      ask: { en: 'Japan has very little flat land, and the flat land is full of cities and rice. So farmers cut [[terrace|terraces]], flat steps, into the hills. Build tea terraces on the hill slope below Mount Fuji, next to the mountains.',
+        es: 'Japón tiene muy poca tierra plana, y esa tierra está llena de ciudades y arroz. Por eso los agricultores cortan [[terrace|terrazas]], escalones planos, en las colinas. Construye terrazas de té en la ladera debajo del monte Fuji, junto a las montañas.',
+        fa: 'جاپان زمین هموار بسیار کم دارد، و زمین هموار پر از شهرها و برنج است. پس دهقانان در تپه‌ها [[terrace|زینه‌ها]]، پله‌های هموار، می‌کنند. زینه‌های چای را در دامنهٔ تپه زیر کوه فوجی، کنار کوه‌ها بساز.' },
+      why: { en: 'A flat step on the hill slope. Now tea can grow here!', es: '¡Un escalón plano en la ladera! Ahora aquí puede crecer el té.', fa: 'یک پلهٔ هموار در دامنهٔ تپه. حالا چای این جا می‌روید!' },
+      wrong: { en: 'Not here. Terraces go on the hill slope below Mount Fuji, next to the mountains.', es: 'Aquí no. Las terrazas van en la ladera debajo del monte Fuji, junto a las montañas.', fa: 'این جا نه. زینه‌ها در دامنهٔ تپه زیر کوه فوجی، کنار کوه‌ها می‌روند.' },
+      wrongBy: [
+        { x: 16, y: 3, w: 16, h: 18, t: { en: 'This land is already flat! Do not cut steps here. The flat plain is for rice fields and cities.', es: '¡Esta tierra ya es plana! No hagas escalones aquí. La llanura plana es para arrozales y ciudades.', fa: 'این زمین از قبل هموار است! این جا پله نکن. دشت هموار برای شالیزارها و شهرها است.' } },
+        { x: 1, y: 1, w: 15, h: 20, t: { en: 'Too high, cold and dry out here in the west. Tea needs rain on warm hills near the sea.', es: 'Aquí en el oeste es demasiado alto, frío y seco. El té necesita lluvia en colinas tibias cerca del mar.', fa: 'این جا در غرب خیلی بلند، سرد و خشک است. چای باران روی تپه‌های گرم نزدیک بحر را لازم دارد.' } }
+      ],
+      done: { en: 'The tea terraces are built! In Japan and China, farmers turn steep hills into flat steps. Flat land is so precious that people save it for rice and cities.', es: '¡Las terrazas de té están listas! En Japón y China, los agricultores convierten las colinas empinadas en escalones planos. La tierra plana es tan valiosa que la guardan para el arroz y las ciudades.', fa: 'زینه‌های چای ساخته شد! در جاپان و چین، دهقانان تپه‌های سراشیب را پله‌های هموار می‌سازند. زمین هموار آن‌قدر قیمتی است که مردم آن را برای برنج و شهرها نگه می‌دارند.' } }
+  ],
+  /* planting teaches the land: rice only on the flat, wet plain by the rivers; tea only on the hill slopes and terraces */
+  plant: {
+    basket: [20, 8],
+    ask: { en: 'Rice needs flat land by the river, where water can stand. Tea grows on hills, where the rain runs off.', es: 'El arroz necesita tierra plana junto al río, donde el agua se queda. El té crece en las colinas, donde la lluvia baja.', fa: 'برنج زمین هموار کنار دریا را لازم دارد، جایی که آب می‌ماند. چای روی تپه‌ها می‌روید، جایی که باران جاری می‌شود.' },
+    crops: [
+      { id: 'rice', icon: '🌾', name: { en: 'rice', es: 'arroz', fa: 'برنج' }, zones: [{ x: 16, y: 13, w: 16, h: 2 }, { x: 16, y: 17, w: 16, h: 4 }],
+        ok: { en: 'Rice on the flat, wet plain by the Yangtze. It will grow!', es: 'Arroz en la llanura plana y húmeda junto al Yangtsé. ¡Va a crecer!', fa: 'برنج در دشت هموار و تر کنار یانگتسی. می‌روید!' },
+        no: { en: 'Rice needs flat, wet land by the river: the paddies by the Yangtze.', es: 'El arroz necesita tierra plana y húmeda junto al río: los arrozales junto al Yangtsé.', fa: 'برنج زمین هموار و تر کنار دریا را لازم دارد: شالیزارهای کنار یانگتسی.' },
+        noBy: [
+          { x: 1, y: 1, w: 15, h: 9, t: { en: 'Too dry: this is the Gobi Desert. Rice needs lots of water.', es: 'Demasiado seco: este es el desierto de Gobi. El arroz necesita mucha agua.', fa: 'خیلی خشک: این دشت گوبی است. برنج آب زیاد لازم دارد.' } },
+          { x: 1, y: 10, w: 15, h: 11, t: { en: 'Too high and cold: this is the Tibetan Plateau. Rice grows down on the warm plain.', es: 'Demasiado alto y frío: esta es la meseta del Tíbet. El arroz crece abajo, en la llanura tibia.', fa: 'خیلی بلند و سرد: این فلات تبت است. برنج پایین، در دشت گرم می‌روید.' } },
+          { x: 16, y: 3, w: 16, h: 3, t: { en: 'The north is cooler and drier. Farmers here grow wheat. Rice grows in the wet south, by the Yangtze.', es: 'El norte es más fresco y seco. Aquí los agricultores siembran trigo. El arroz crece en el sur húmedo, junto al Yangtsé.', fa: 'شمال سردتر و خشک‌تر است. دهقانان این جا گندم می‌کارند. برنج در جنوب تر، کنار یانگتسی می‌روید.' } },
+          { x: 38, y: 2, w: 3, h: 7, t: { en: 'Too steep: on a hill slope the water runs away. Rice needs flat land where water can stand.', es: 'Demasiado empinado: en una ladera el agua se va. El arroz necesita tierra plana donde el agua se quede.', fa: 'خیلی سراشیب: در دامنهٔ تپه آب می‌رود. برنج زمین هموار لازم دارد که آب در آن بماند.' } }
+        ] },
+      { id: 'tea', icon: '🍵', name: { en: 'tea', es: 'té', fa: 'چای' }, zones: [{ x: 39, y: 4, w: 2, h: 4 }], tiles: 't',
+        ok: { en: 'Tea on the hill slope: the rain runs off and the roots stay dry. It will grow!', es: 'Té en la ladera: la lluvia baja y las raíces quedan secas. ¡Va a crecer!', fa: 'چای در دامنهٔ تپه: باران جاری می‌شود و ریشه‌ها خشک می‌مانند. می‌روید!' },
+        no: { en: 'Tea grows on hill slopes and terraces, like the slope below Mount Fuji.', es: 'El té crece en laderas y terrazas, como la ladera debajo del monte Fuji.', fa: 'چای در دامنه‌های تپه و زینه‌ها می‌روید، مثل دامنهٔ زیر کوه فوجی.' },
+        noBy: [
+          { x: 1, y: 1, w: 15, h: 20, t: { en: 'Too high, cold and dry out here in the west. Tea needs rain on warm hills.', es: 'Aquí en el oeste es demasiado alto, frío y seco. El té necesita lluvia en colinas tibias.', fa: 'این جا در غرب خیلی بلند، سرد و خشک است. چای باران روی تپه‌های گرم لازم دارد.' } },
+          { x: 16, y: 3, w: 16, h: 18, t: { en: 'On the flat plain the water stands, and tea roots get too wet. The flat land is for rice.', es: 'En la llanura plana el agua se queda, y las raíces del té se mojan demasiado. La tierra plana es para el arroz.', fa: 'در دشت هموار آب می‌ماند و ریشه‌های چای خیلی تر می‌شوند. زمین هموار برای برنج است.' } }
+        ] }
+    ]
+  },
 
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [

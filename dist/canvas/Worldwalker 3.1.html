@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4969,6 +4973,20 @@ text: { en: 'The canoe reached the tiny island in the bay! In the chest is an ol
 es: '¡La canoa llegó a la islita de la bahía! En el cofre hay un mapa viejo del mar. Dice que Gran Bretaña es la isla más grande de Europa.',
 fa: 'قایق به جزیرهٔ کوچک در خلیج رسید! در صندوق یک نقشهٔ کهنهٔ بحر است. می‌گوید بریتانیای کبیر بزرگ‌ترین جزیرهٔ اروپا است.' } },
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'pier', kind: 'place', board: [11, 15], tile: 'k', over: '~', ok: [[8, 15], [9, 15], [9, 16], [9, 17]], cost: { wood: 1 },
+name: { en: 'Harbor pier', es: 'Muelle del puerto', fa: 'اسکلهٔ بندر' },
+ask: { en: 'Europe has a long coast with many [[peninsula|peninsulas]] and bays, so trade by sea is easy. A bay has land around it, so big storm waves stay out. Build a pier in the quiet bay just west of this sign. Put the pieces on the water next to the sand, in the corner of the bay.',
+es: 'Europa tiene una costa larga con muchas [[peninsula|penínsulas]] y bahías, así que comerciar por mar es fácil. Una bahía tiene tierra alrededor, así que las olas grandes de las tormentas no entran. Construye un muelle en la bahía tranquila, justo al oeste de este letrero. Pon las piezas en el agua junto a la arena, en la esquina de la bahía.',
+fa: 'اروپا ساحل درازی با [[peninsula|شبه‌جزیره‌ها]] و خلیج‌های زیاد دارد، پس تجارت از راه بحر آسان است. دور خلیج خشکه است، پس موج‌های بزرگ توفان داخل نمی‌آیند. در خلیج آرام، درست در غرب این لوحه، یک اسکله بساز. تکه‌ها را روی آب کنار ریگ، در کنج خلیج بگذار.' },
+why: { en: 'Calm water in the bay. Ships can tie up here safely!', es: 'Agua tranquila en la bahía. ¡Los barcos pueden amarrar aquí sin peligro!', fa: 'آب آرام در خلیج. کشتی‌ها این جا با امنیت لنگر می‌اندازند!' },
+wrong: { en: 'Not here. Build the pier on the water in the corner of the quiet bay, right next to the sand, west of the sign.', es: 'Aquí no. Construye el muelle en el agua, en la esquina de la bahía tranquila, junto a la arena, al oeste del letrero.', fa: 'این جا نه. اسکله را روی آب در کنج خلیج آرام، درست کنار ریگ، در غرب لوحه بساز.' },
+wrongBy: [
+{ x: 11, y: 4, w: 11, h: 15, t: { en: 'This is dry land, far from the sea. Ships cannot reach it. A pier goes on the water in a bay.', es: 'Esto es tierra seca, lejos del mar. Los barcos no llegan aquí. Un muelle va en el agua de una bahía.', fa: 'این جا خشکه است، دور از بحر. کشتی‌ها به این جا نمی‌رسند. اسکله روی آب در یک خلیج ساخته می‌شود.' } },
+{ x: 0, y: 3, w: 3, h: 18, t: { en: 'This is the open sea. Storm waves would smash the pier. In a bay, land keeps the water calm.', es: 'Este es el mar abierto. Las olas de las tormentas romperían el muelle. En una bahía, la tierra mantiene el agua tranquila.', fa: 'این جا بحر باز است. موج‌های توفان اسکله را می‌شکنند. در خلیج، خشکه آب را آرام نگه می‌دارد.' } }
+],
+done: { en: 'The harbor is ready! Europe has many peninsulas and bays, so most places are close to the sea. Ships carry goods from port to port.', es: '¡El puerto está listo! Europa tiene muchas penínsulas y bahías, así que casi todos los lugares están cerca del mar. Los barcos llevan mercancías de puerto en puerto.', fa: 'بندر آماده است! اروپا شبه‌جزیره‌ها و خلیج‌های زیاد دارد، پس بیشتر جاها نزدیک بحر هستند. کشتی‌ها مال را از بندر به بندر می‌برند.' } }
+],
 finds: [
 { clueAt: [11, 12], at: [15, 10], decor: 'shell',
 clue: { en: 'From this note, walk 2 steps north, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al norte y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },

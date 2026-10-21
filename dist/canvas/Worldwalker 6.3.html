@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4949,7 +4953,7 @@ map: [
 'UllllllllllllJJ...1o2o..x.:....T',
 'UlUUlUUlJJlUlll..o1o2o....:..p.T',
 'UlUUlUUlJJlUlll...........:..,.T',
-'Ullllllllllllll..p...,....:....T',
+'Ullllllllllllll.Tp...,....:...TT',
 'Ulll:llllllll.............:....T',
 'W...:.....................:.~~~T',
 'WRRR:QQQ:RRR:QQ..qqqqqqqq.:.~~.T',
@@ -4959,12 +4963,28 @@ map: [
 'W...:...:...:....qqqq.RRR...~~.T',
 'WQQQ:RRR:QQQ:RR..qqqq.hdh...~~.T',
 'Whdh:hdh:hdh:hd..qqqq.......~~.T',
-'W...........................~~.T',
+'W........................T..~~.T',
 'W..,.......O.......,.....p..~~.T',
 'WWWWWWWWWWWWWWWWTTTTTTTTTTTT~~TT'
 ],
 start: [2, 5],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'school', kind: 'place', board: [21, 11], tile: 'h', ok: [[22, 9, 'R'], [23, 9, 'R'], [24, 9, 'R'], [22, 10], [23, 10], [24, 10]], cost: { wood: 1 },
+name: { en: 'A village school', es: 'Una escuela para el pueblo', fa: 'یک مکتب برای قریه' },
+ask: { en: 'The village has no school. The nearest one is in the city, too far to walk. Build a school in the middle of the village, between the homes in the north and the south. Put the roof on top and the walls below.',
+es: 'El pueblo no tiene escuela. La más cercana está en la ciudad, demasiado lejos para ir caminando. Construye una escuela en el medio del pueblo, entre las casas del norte y las del sur. Pon el techo arriba y las paredes abajo.',
+fa: 'قریه مکتب ندارد. نزدیک‌ترین مکتب در شهر است و پیاده رفتن تا آن جا خیلی دور است. یک مکتب در وسط قریه، میان خانه‌های شمال و جنوب بساز. بام را بالا و دیوارها را پایین بگذار.' },
+why: { en: 'Good: close to the homes. Children can walk here.', es: 'Bien: cerca de las casas. Los niños pueden venir caminando.', fa: 'خوب: نزدیک خانه‌ها. اطفال می‌توانند پیاده این جا بیایند.' },
+wrong: { en: 'Not here. The school goes in the middle of the village, between the homes, where children from all the homes can walk to it.', es: 'Aquí no. La escuela va en el medio del pueblo, entre las casas, donde los niños de todas las casas pueden llegar caminando.', fa: 'این جا نه. مکتب در وسط قریه، میان خانه‌ها می‌رود، جایی که اطفال همهٔ خانه‌ها پیاده به آن برسند.' },
+wrongBy: [
+{ x: 1, y: 1, w: 14, h: 20, t: { en: 'This is the city, far from the village homes. It is too far for the village children to walk every day.', es: 'Esto es la ciudad, lejos de las casas del pueblo. Está demasiado lejos para que los niños del pueblo caminen cada día.', fa: 'این جا شهر است، دور از خانه‌های قریه. برای اطفال قریه خیلی دور است که هر روز پیاده بیایند.' } },
+{ x: 27, y: 11, w: 4, h: 10, t: { en: 'This is the edge of the village, by the river. It is too far to walk every day for most children.', es: 'Esto es la orilla del pueblo, junto al río. Está demasiado lejos para que la mayoría de los niños caminen cada día.', fa: 'این جا کنار قریه، پهلوی دریا است. برای بیشتر اطفال خیلی دور است که هر روز پیاده بیایند.' } }
+],
+done: { en: 'The village has a school, and every child can walk to it. When more children go to school, they can get better jobs and stay healthier. That is [[development|development]].',
+es: 'El pueblo tiene escuela, y todos los niños pueden llegar caminando. Cuando más niños van a la escuela, pueden tener mejores trabajos y más salud. Eso es [[development|desarrollo]].',
+fa: 'قریه مکتب دارد و هر طفل می‌تواند پیاده به آن برود. وقتی اطفال بیشتر به مکتب می‌روند، کارهای بهتر پیدا می‌کنند و صحتمندتر می‌مانند. این [[development|انکشاف]] است.' } }
+],
 finds: [
 { clueAt: [29, 2], at: [27, 6], decor: 'drum',
 clue: { en: 'From this note, walk 4 steps south, then 2 steps west. Something is hidden there.', es: 'Desde esta nota, camina 4 pasos al sur y luego 2 pasos al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۴ قدم به جنوب برو، بعد ۲ قدم به غرب. چیزی آن جا پنهان است.' },

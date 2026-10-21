@@ -30,7 +30,8 @@ const D = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
   // walk next to (tx, ty) and face it, by planning a route on the map and pressing arrows
   async function walkTo(tx, ty, onto = false) {
     for (let tries = 0; tries < 6; tries++) {
-      const plan = await p.evaluate(([tx, ty, onto]) => {
+      const plan = await p.evaluate(([tx, ty, onto, around]) => {
+        const busy = new Set(around ? WW.dbg.ents.filter(e => !e.gone && e.visible !== false && !(e.x === tx && e.y === ty)).map(e => e.x + ',' + e.y) : []); // go around people and notes
         const g = WW.game, [W, H] = g.size, s = [g.player.x, g.player.y], key = (x, y) => x + ',' + y;
         const goal = onto ? [[tx, ty]] : [[tx + 1, ty, 'left'], [tx - 1, ty, 'right'], [tx, ty + 1, 'up'], [tx, ty - 1, 'down']];
         const prev = new Map([[key(...s), null]]), q = [s];
@@ -40,12 +41,13 @@ const D = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
           if (hit) { const path = []; let k = key(x, y); while (prev.get(k)) { const [px, py, d] = prev.get(k); path.unshift(d); k = key(px, py); } return { path, face: hit[2] || null }; }
           for (const [d, [dx, dy]] of Object.entries({ up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] })) {
             const nx = x + dx, ny = y + dy, k = key(nx, ny);
-            if (nx < 0 || ny < 0 || nx >= W || ny >= H || prev.has(k) || !g.walkable(nx, ny)) continue;
+            if (nx < 0 || ny < 0 || nx >= W || ny >= H || prev.has(k) || !g.walkable(nx, ny) || busy.has(k)) continue;
             prev.set(k, [x, y, d]); q.push([nx, ny]);
           }
         }
         return null;
-      }, [tx, ty, onto]);
+      }, [tx, ty, onto, tries < 3]);
+      if (!plan && tries < 3) { tries = 2; continue; } // no way around: go through
       if (!plan) throw new Error(`no route to (${tx},${ty})`);
       let blocked = false;
       for (let i = 0; i < plan.path.length; i++) {

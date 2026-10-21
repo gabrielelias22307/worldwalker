@@ -176,7 +176,7 @@ const CANVAS = process.argv.includes('--canvas');
         await page.evaluate(() => WW.dbg.act());
         const say = await page.textContent('.cbubble');
         if (!/❌/.test(say)) throw new Error('a wrong spot was not explained: ' + say);
-        if (band && !say.includes(band.t.en.slice(0, 20))) throw new Error('the wrong area did not give its own reason: ' + say);
+        if (band && !say.includes(band.t.en.replace(/\[\[[^|\]]*\|([^\]]*)\]\]/g, '$1').slice(0, 20))) throw new Error('the wrong area did not give its own reason: ' + say);
         if (!(await page.evaluate(([x, y]) => WW.dbg.ents.some(e => e.kind === 'piece' && !e.gone && e.x === x && e.y === y), wrong))) throw new Error('no red piece on the wrong spot');
         await page.evaluate(() => WW.dbg.act()); // pick it up
         if (await page.evaluate(() => WW.dbg.ents.some(e => e.kind === 'piece' && !e.gone))) throw new Error('could not pick the wrong piece up');

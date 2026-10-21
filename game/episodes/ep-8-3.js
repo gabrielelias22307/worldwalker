@@ -48,6 +48,24 @@ window.EPISODE = {
   start: [24, 9],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): the two neighbors build a bridge together over the border river, between their two towns */
+  build: [
+    { id: 'bridge', kind: 'place', board: [28, 12], tile: 'B', over: '~', ok: [[26, 13], [26, 14], [26, 15], [26, 16]], cost: { wood: 1 },
+      name: { en: 'The friendship bridge', es: 'El puente de la amistad', fa: 'پل دوستی' },
+      ask: { en: 'The Silver River is a [[natural border|natural border]] between North Bank and South Bank. A border does not have to keep neighbors apart. Help them build a bridge together, across the river, between the two towns.',
+        es: 'El río Plateado es una [[natural border|frontera natural]] entre Orilla Norte y Orilla Sur. Una frontera no tiene que separar a los vecinos. Ayúdalos a construir un puente juntos, sobre el río, entre los dos pueblos.',
+        fa: 'دریای نقره‌ای یک [[natural border|سرحد طبیعی]] بین ساحل شمالی و ساحل جنوبی است. سرحد لازم نیست همسایه‌ها را از هم دور نگه دارد. کمک کن تا با هم یک پل روی دریا، بین دو قریه بسازند.' },
+      why: { en: 'Right between the two towns. Now the neighbors can visit and trade!', es: '¡Justo entre los dos pueblos! Ahora los vecinos pueden visitarse y comerciar.', fa: 'درست بین دو قریه. حالا همسایه‌ها می‌توانند به دیدن هم بروند و تجارت کنند!' },
+      wrong: { en: 'Not here. The bridge goes over the river, between the North Bank town and the South Bank town, just east of the main bridge.', es: 'Aquí no. El puente va sobre el río, entre el pueblo de Orilla Norte y el de Orilla Sur, justo al este del puente principal.', fa: 'این جا نه. پل روی دریا می‌رود، بین قریهٔ ساحل شمالی و قریهٔ ساحل جنوبی، کمی شرقِ پل بزرگ.' },
+      wrongBy: [
+        { x: 1, y: 11, w: 15, h: 6, t: { en: 'Too far west. A bridge here would not join the two towns.', es: 'Demasiado al oeste. Un puente aquí no uniría los dos pueblos.', fa: 'خیلی به طرف غرب. پل این جا دو قریه را به هم وصل نمی‌کند.' } },
+        { x: 31, y: 11, w: 16, h: 6, t: { en: 'Too far east, near the sea. A bridge here would not join the two towns.', es: 'Demasiado al este, cerca del mar. Un puente aquí no uniría los dos pueblos.', fa: 'خیلی به طرف شرق، نزدیک بحر. پل این جا دو قریه را به هم وصل نمی‌کند.' } }
+      ],
+      done: { en: 'The friendship bridge is built! The river is still the border, but now it joins the neighbors instead of keeping them apart. When neighbors work together, both sides win.',
+        es: '¡El puente de la amistad está listo! El río sigue siendo la frontera, pero ahora une a los vecinos en vez de separarlos. Cuando los vecinos trabajan juntos, los dos ganan.',
+        fa: 'پل دوستی ساخته شد! دریا هنوز سرحد است، اما حالا همسایه‌ها را به هم وصل می‌کند، نه اینکه از هم دور نگه دارد. وقتی همسایه‌ها با هم کار کنند، هر دو طرف برنده می‌شوند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [4, 12], at: [8, 13], decor: 'flower',

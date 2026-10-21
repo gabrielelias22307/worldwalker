@@ -16,7 +16,7 @@ window.EPISODE = {
 
   /* 48 x 22 tiles = 3 x 2 screens.
      Top row of screens: Europe's market port (west) · the desert with the canal (middle) · Asia's factory port (east).
-     The sea road joins them; in the desert it squeezes into a one-tile canal. Bottom right: the narrow strait between jungle lands.
+     The sea road joins them; in the desert it squeezes into a one-tile canal (the Grump filled 4 tiles with sand: the canal build digs them out). Bottom right: the narrow strait between jungle lands.
      Bottom: farms in Europe, Africa's dry grassland, and the long sea road around Africa's southern cape. */
   map: [
     'TTTTTTTTTTTTTTTTrrrrrrrrrrrrrrrrTTTTTTTTTTTTTTTT',
@@ -25,7 +25,7 @@ window.EPISODE = {
     'T.m.m.m.........uussssxsuussssuu...GF......,...T',
     'T::::::::::::::::::::::::::::::::::::::::::::::T',
     'T......k...k....ssuussssssuussss..k....k....k..T',
-    '~~~B~~~k~~~k~~~~~~~~~~~~B~~~~~~~~~k~~~~k~~~~k~~=',
+    '~~~B~~~k~~~k~~~~~~~~~~~~B~ssss~~~~k~~~~k~~~~k~~=',
     '~~~B~~~~~~~~~~~~suusssssssssuuss~~~~~~~~~~~~~~~=',
     '~~~B~~~~~~~~~~~~ssuussssssuussus.....p~~..p..jj=',
     'T..:..........,.suussssuussssuus.......~~.....j=',
@@ -45,6 +45,24 @@ window.EPISODE = {
   start: [19, 4],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): dig the canal open again across the narrow strip of land, so ships do not sail around Africa */
+  build: [
+    { id: 'canal', kind: 'place', board: [25, 8], tile: '~', ok: [[26, 6], [27, 6], [28, 6], [29, 6]], cost: { wood: 1 },
+      name: { en: 'The canal', es: 'El canal', fa: 'کانال' },
+      ask: { en: 'The Grump filled part of the [[canal|canal]] with sand! Now ships from Asia must sail all the way around Africa. People dug this canal across the narrowest strip of land between two seas. Dig it again: put the water back where the sand fills the canal.',
+        es: '¡El Gruñón llenó parte del [[canal|canal]] con arena! Ahora los barcos de Asia deben dar toda la vuelta a África. La gente cavó este canal en la franja de tierra más angosta entre dos mares. Cávalo otra vez: pon el agua donde la arena tapa el canal.',
+        fa: 'غرغرو قسمتی از [[canal|کانال]] را با ریگ پر کرد! حالا کشتی‌های آسیا باید دور تمام افریقا بروند. مردم این کانال را از باریک‌ترین نوار زمین بین دو بحر کندند. دوباره آن را بکن: آب را جایی بگذار که ریگ کانال را بسته است.' },
+      why: { en: 'Dug! The narrow strip is short, so the work is quick.', es: '¡Cavado! La franja angosta es corta, así que el trabajo es rápido.', fa: 'کنده شد! نوار باریک کوتاه است، پس کار زود تمام می‌شود.' },
+      wrong: { en: 'Not here. Dig where the sand fills the canal, in the narrow strip between the two seas.', es: 'Aquí no. Cava donde la arena tapa el canal, en la franja angosta entre los dos mares.', fa: 'این جا نه. جایی را بکن که ریگ کانال را بسته است، در نوار باریک بین دو بحر.' },
+      wrongBy: [
+        { x: 16, y: 9, w: 15, h: 9, t: { en: 'The land is very wide here. A canal across it would take much longer to dig. Dig across the narrow strip in the canal.', es: 'Aquí la tierra es muy ancha. Un canal aquí tardaría mucho más en cavarse. Cava en la franja angosta del canal.', fa: 'زمین این جا خیلی پهن است. کندن کانال از این جا خیلی بیشتر وقت می‌گیرد. نوار باریک در کانال را بکن.' } },
+        { x: 1, y: 9, w: 15, h: 9, t: { en: 'This is the farmland of Europe, far from the canal. A canal here would join no seas.', es: 'Estas son las granjas de Europa, lejos del canal. Un canal aquí no uniría ningún mar.', fa: 'این زمین‌های زراعتی اروپا است، دور از کانال. کانال این جا هیچ بحری را وصل نمی‌کند.' } }
+      ],
+      done: { en: 'The canal is open again! Ships save about 10 days at sea. People dig canals across the narrowest land, like the Suez Canal and the Panama Canal. These narrow places are [[chokepoint|chokepoints]]: a lot of world trade must pass through them.',
+        es: '¡El canal está abierto otra vez! Los barcos ahorran unos 10 días en el mar. La gente cava canales en la tierra más angosta, como el Canal de Suez y el Canal de Panamá. Estos lugares estrechos son [[chokepoint|puntos de estrangulamiento]]: mucho comercio mundial debe pasar por ellos.',
+        fa: 'کانال دوباره باز است! کشتی‌ها حدود ۱۰ روز در بحر صرفه‌جویی می‌کنند. مردم کانال‌ها را از باریک‌ترین زمین می‌کنند، مثل کانال سوئز و کانال پاناما. این جاهای باریک [[chokepoint|گلوگاه]] هستند: تجارت زیاد جهان باید از آن‌ها بگذرد.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [28, 5], at: [24, 7], decor: 'coinold',

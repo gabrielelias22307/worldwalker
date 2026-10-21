@@ -4127,6 +4127,8 @@ F.KINDS = ['board', 'basket', 'piece'];
 F.on = () => !!(WW.ep && WW.ep.plant);
 const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
 const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+const tileOf = (b, p) => p[2] || b.tile;
+const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 F.ents = (ep) => {
 const out = [];
 (ep.build || []).filter(b => b.kind === 'place' && b.board).forEach(b => out.push({ kind: 'board', x: b.board[0], y: b.board[1], b }));
@@ -4136,7 +4138,7 @@ return out;
 F.setup = (ep) => {
 const r = WW.run;
 r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile)));
+places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p))));
 if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
 badge();
 };
@@ -4174,7 +4176,7 @@ F.crops = () => (WW.ep.plant && WW.ep.plant.crops) || [];
 F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
 F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
 F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
 const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
 F.plant = (x, y, e) => {
 const c = F.current(), g = G();
@@ -4217,7 +4219,7 @@ const cost = Object.entries(b.cost || {}).map(([k, n]) => `${n} ${T('item_' + k)
 box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
 (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
 const a = document.createElement('div'); a.className = 'acts';
-if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
 a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
 box.appendChild(a);
 }
@@ -4225,29 +4227,30 @@ box.appendChild(a);
 }
 F.place = (x, y, e) => {
 const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
 if (!r.kit.prepaid) {
 const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
 if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
 Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
 } else r.kit.prepaid--;
-const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
 if (right) {
-g.setTile(x, y, b.tile); r.kit.left--;
+g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
 WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
 if (r.kit.left <= 0) return finish(b);
 WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
 } else {
 g.ents.push({ kind: 'piece', x, y, b });
 WW.sfx('bad'); g.shake();
-WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
 }
 X().render();
 return true;
 };
 F.pickPiece = (e) => {
 e.gone = true; const r = WW.run;
-if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
 r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
 };
 function finish(b) {
@@ -4918,9 +4921,10 @@ collect(i) { const e = ents.find(e => e.kind === 'scrap' && e.id === i); this.te
 get ents() { return ents; }, get player() { return player; },
 noSmudges() { G.noSmudges = true; },
 use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-useOn(tiles) {
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+useOn(tiles, over) {
+const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
 return null;
 }
 };
@@ -4945,14 +4949,14 @@ map: [
 'ruusuuuuuurruuuuuuuuuuuruusuuuur',
 'ruuuuuuuuuuuusuuusuuuuuruuuuusur',
 'rsssssxssssssssssssssssssssssssr',
-'aggggggggagggggggaggggggggggagga',
+'aaagaa:aaagaaagaaaga:aaagaaaga:a',
 'agggggggggggggOgggggggggggggggga',
 'agg::::::::::::::::::::::::::gga',
-'aggggggg:o1o1oggggggggg:ggggggga',
-'agaggggg:1o1o1ggggggagg:gggggaga',
+'agYggggg:o1o1oggggggggg:ggggggga',
+'agaggYgg:1o1o1ggggggagg:gggggaga',
 'aggggggg:ggggaggggggggg:ggggggga',
 'a...""..:.....a.....a..:.......a',
-'a..a....:."".....""....:...AA..a',
+'a..aY...:."".....""....:...AA..a',
 'a"....".:...a..........:..MAnG.a',
 'a.......:..............:.MMMMMMa',
 'a....a..:....""...a....:x.MMM..a',
@@ -4965,6 +4969,21 @@ map: [
 ],
 start: [4, 6],
 tools: ['axe', 'sickle'],
+build: [
+{ id: 'greenwall', kind: 'place', board: [2, 6], tile: 'a', ok: [[3, 5], [10, 5], [14, 5], [18, 5], [24, 5], [28, 5]], cost: { wood: 1 },
+name: { en: 'The Great Green Wall', es: 'La Gran Muralla Verde', fa: 'دیوار بزرگ سبز' },
+ask: { en: 'The Sahara is spreading south into the [[sahel|Sahel]]. That is [[desertification|desertification]]. Hadiza\'s acacia trees make a green wall where the sand meets the dry grass. Plant an acacia in each gap in that line of trees. Leave the three paths open for the herders.',
+es: 'El Sahara avanza hacia el sur, hacia el [[sahel|Sahel]]. Eso es la [[desertification|desertificación]]. Las acacias de Hadiza forman un muro verde donde la arena se junta con el pasto seco. Planta una acacia en cada hueco de esa fila de árboles. Deja abiertos los tres caminos para los pastores.',
+fa: 'صحرا به طرف جنوب، به داخل [[sahel|ساحل]] پیش می‌آید. این [[desertification|بیابان‌زایی]] است. درختان اکاسیای حدیزه جایی که ریگ به علف خشک می‌رسد یک دیوار سبز می‌سازند. در هر شکاف آن ردیف درخت یک اکاسیا بکار. سه راه را برای مالداران باز بگذار.' },
+why: { en: 'Right in the wall, at the edge of the sand! Its roots hold the soil.', es: '¡Justo en el muro, en el borde de la arena! Sus raíces sujetan la tierra.', fa: 'درست در دیوار، در لبهٔ ریگ! ریشه‌هایش خاک را نگه می‌دارند.' },
+wrong: { en: 'This is the Sahel, but not the wall. Plant in the gaps of the tree line, where the sand meets the dry grass.', es: 'Esto es el Sahel, pero no el muro. Planta en los huecos de la fila de árboles, donde la arena se junta con el pasto seco.', fa: 'این ساحل است، اما دیوار نیست. در شکاف‌های ردیف درختان بکار، جایی که ریگ به علف خشک می‌رسد.' },
+wrongBy: [
+{ x: 1, y: 1, w: 30, h: 4, t: { en: 'This is the Sahara sand. It is too dry here, so a young tree dies. Plant just south, in the gaps of the tree line.', es: 'Esto es la arena del Sahara. Aquí es muy seco y un árbol joven se muere. Planta un poco más al sur, en los huecos de la fila de árboles.', fa: 'این ریگ صحرا است. این جا خیلی خشک است و درخت جوان می‌میرد. کمی جنوب‌تر، در شکاف‌های ردیف درختان بکار.' } },
+{ x: 1, y: 11, w: 30, h: 6, t: { en: 'This is the green savanna. It gets more rain. The wall belongs farther north, where the desert is spreading.', es: 'Esto es la sabana verde. Recibe más lluvia. El muro va más al norte, donde avanza el desierto.', fa: 'این علفزار سبز است. باران بیشتر می‌گیرد. دیوار جای شمال‌تر است، جایی که بیابان پیش می‌آید.' } },
+{ x: 1, y: 17, w: 30, h: 4, t: { en: 'There is already a forest here. It rains almost every month. The wall belongs where the desert is spreading, far to the north.', es: 'Aquí ya hay un bosque. Llueve casi todos los meses. El muro va donde avanza el desierto, muy al norte.', fa: 'این جا از قبل جنگل است. تقریباً هر ماه باران می‌بارد. دیوار جای است که بیابان پیش می‌آید، دور در شمال.' } }
+],
+done: { en: 'The Green Wall is closed! In real life, countries across Africa are planting a wall of trees across the Sahel. The trees hold the soil and slow the desert.', es: '¡El Muro Verde está cerrado! En la vida real, países de toda África plantan un muro de árboles a lo largo del Sahel. Los árboles sujetan la tierra y frenan el desierto.', fa: 'دیوار سبز بسته شد! در زندگی واقعی، کشورهای زیادی در افریقا در سراسر ساحل یک دیوار درخت می‌کارند. درختان خاک را نگه می‌دارند و بیابان را آهسته می‌کنند.' } }
+],
 finds: [
 { clueAt: [8, 4], at: [12, 1], decor: 'fossil',
 clue: { en: 'From this note, walk 3 steps north, then 4 steps east. Something is hidden in the Sahara sand.', es: 'Desde esta nota, camina 3 pasos al norte y luego 4 pasos al este. Algo está escondido en la arena del Sahara.', fa: 'از این یادداشت، ۳ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی در ریگ صحرا پنهان است.' },
