@@ -418,3 +418,46 @@ canvas{filter:var(--vivid)}
 .cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
 .cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
 .cbubble[data-kind] .cb-name{color:var(--cb)}
+/* PLAYTEST-3: the one-sentence opening card, and the "walk on" mark in Christopher's welcome */
+.introov .say.one{font-size:20px;line-height:1.4;margin:14px 0 6px}
+.cbubble .cb-more{font-size:11px;opacity:.65;text-align:end;margin-top:2px}
+/* PLAYTEST-3: ⚙ holds Music, Sound, Keys and help, the arrow pad and Full screen */
+.ww-bar .gear{position:relative;display:inline-flex}
+.ww-bar .gearmenu{display:none;position:absolute;right:0;top:calc(100% + 4px);z-index:20;flex-direction:column;gap:4px;background:#0b0a14;border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:6px;min-width:170px}
+.ww-bar .gearmenu.on{display:flex}
+.ww-bar .gearmenu button{text-align:start;width:100%;min-height:36px}
+.ww-bar .gearmenu .lbl{display:inline!important}
+[dir=rtl] .ww-bar .gearmenu,.ww-frame[dir=rtl] .gearmenu{right:auto;left:0}
+/* the five theme bars: a word under each, tap one for its name and number */
+.meter{background:none;border:0;padding:0 2px;color:inherit;cursor:pointer;font:inherit}
+.meter .mcol{display:inline-flex;flex-direction:column;align-items:center;gap:1px}
+.meter .mlab{font-family:var(--read);font-size:10px;color:var(--muted);line-height:1;white-space:nowrap;max-width:64px;overflow:hidden;text-overflow:ellipsis}
+@media (max-width:1100px){.meter .mlab{display:none}}
+/* a bigger quest line: the goal right now is the most important words on the screen */
+.quest{font-size:16px;padding:5px 10px}
+.quest .qnow{color:#fff3b0}
+@media (max-width:520px){.quest{font-size:15px}}
+/* phones: bigger top buttons for thumbs, and a bigger arrow pad in the space under the map */
+@media (pointer:coarse){.ww-bar button{min-height:40px;min-width:40px;font-size:15px}.ww-bar .langs button{min-width:40px}}
+.ww-frame.narrow .dpad{grid-template-columns:repeat(3,72px);grid-template-rows:repeat(3,60px);gap:6px;margin:auto auto 10px}
+.ww-frame.narrow .dpad button{font-size:26px}
+/* PLAYTEST-3: the Now card in the empty side of a wide screen */
+.nowcard{display:none;position:absolute;top:0;z-index:3;background:#0b0a14;color:var(--text);border:3px solid #000;outline:2px solid var(--line);border-radius:6px;padding:10px 12px;font-size:14px;line-height:1.45}
+.nowcard.on{display:block}
+.nowcard .nc-h{font-family:var(--pix);font-size:11px;color:var(--gold);margin-bottom:6px}
+.nowcard .nc-goal{font-size:17px;font-weight:700;color:#fff3b0;margin-bottom:6px}
+.nowcard .nc-next{font-size:14px;color:#fff;margin-bottom:8px;padding:6px 8px;background:#1d1b2e;border-radius:4px}
+.nowcard ol{margin:0;padding-inline-start:20px;color:var(--muted)}.nowcard .qdone{color:#7cc451}.nowcard .qnow{color:#fff;font-weight:700}
+.nowcard .nc-scr{margin-top:6px;font-size:13px;color:#c9b064}
+/* PLAYTEST-3: 🔊 read aloud */
+.speak{background:#fff3c4;border:2px solid var(--ink);border-radius:6px;font-size:16px;line-height:1;padding:4px 6px;cursor:pointer;margin-inline-start:auto;margin-inline-end:6px}
+.cbubble .cb-name{display:flex;align-items:center;gap:6px}
+.cbubble .speak{font-size:12px;padding:2px 4px;margin-inline-end:0}
+.hud-streak{color:#ffb24a;margin-left:8px}
+/* PLAYTEST-3: a sideways phone: the tool bar stands in the left margin, beside the map (never over it) */
+.ww-frame.side .stage>.toolbar{position:absolute;left:4px;top:4px;transform:none;margin:0;flex-direction:column;flex-wrap:nowrap;gap:4px;padding:4px;z-index:5;max-height:calc(100% - 8px);overflow:auto;width:max-content}
+.ww-frame.side .stage>.toolbar .tslot{width:40px;height:40px}
+.ww-frame.side .stage>.toolbar .tbag{flex-direction:column;gap:4px;margin:0;font-size:12px}
+.ww-frame.side .stage>.toolbar .tcarry{display:none}
+/* PLAYTEST-3: on a wide screen (a Chromebook) the frame uses the whole width, so the Now card has room beside the map */
+@media (min-width:1280px){.ww-frame{max-width:none}}

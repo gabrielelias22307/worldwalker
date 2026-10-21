@@ -59,9 +59,9 @@ const look = () => {
     await p.locator('#ww-ov .pbtn.gold.big').click();
     if (await p.evaluate(() => !!(WW.ep.christopher && WW.ep.christopher.meet))) {
       await p.waitForSelector('.cbubble.meet', { state: 'visible' }); await p.waitForTimeout(1200);
-      for (let k = 0; k < 4 && await p.evaluate(() => WW.chris.scene); k++) {
+      for (let k = 0; k < 8 && await p.evaluate(() => WW.chris.scene); k++) {
         r = await p.evaluate(look); screens.push({ name: 'meet ' + (k + 1), ...r }); if (!k) await shot('3-meet');
-        await p.locator('.cbubble .pbtn').first().click().catch(() => p.keyboard.press('c')); await p.waitForTimeout(250);
+        await p.locator('.cbubble').click().catch(() => p.keyboard.press('c')); await p.waitForTimeout(250);
       }
     }
     await p.waitForFunction(() => !WW.paused); await p.waitForTimeout(400);
@@ -90,8 +90,10 @@ const look = () => {
     }
     out.back = { clicks: back, words: backWords };
     // time to the first step: skipper vs careful reader
-    const clicks = screens.filter(x => x.name !== 'map').length;
-    const words = screens.filter(x => x.name !== 'map').reduce((a, x) => a + x.words + (x.name.startsWith('meet') ? x.bubbleWords : 0), 0);
+    // screens that stop the student (a panel, or Christopher's welcome while it still paused the game)
+    const block = x => x.name !== 'map' && (!x.name.startsWith('meet') || x.paused);
+    const clicks = screens.filter(block).length;
+    const words = screens.filter(block).reduce((a, x) => a + x.words + (x.name.startsWith('meet') ? x.bubbleWords : 0), 0);
     out.toMove = { clicks, words, skipS: Math.round(TYPE_S + clicks * SKIP_S), readS: Math.round(TYPE_S + clicks * SKIP_S + words / WPM * 60) };
     await ctx.close();
     return out;

@@ -356,8 +356,8 @@
           b.disabled = picked != null;
           b.onclick = () => {
             picked = i;
-            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
-            else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+            if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); WW.answered(true, !(boss.missedList || WW.run.missed).includes(qi)); keep(); }
+            else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
             h.render();
           };
           list.appendChild(b);

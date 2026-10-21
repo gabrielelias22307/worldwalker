@@ -19,7 +19,7 @@
     if (!bubble || !bubble.isConnected) {
       bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
       $('ww-stage').appendChild(bubble); // in the stage, so on a phone it can sit under the map
-      bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else C.hide(); });
+      bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
     }
     return bubble;
   }
@@ -30,22 +30,32 @@
   /* opt.at: [x, y] — the place he is talking about; the bubble sits on the other side so it never covers it */
   let aim = null;
   C.say = (text, buttons, opt) => {
+    if (!(opt && opt.chain)) chainQ = []; // a new message: any waiting second half is dropped
+    if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; } // something real happens: his welcome gives way
     aim = (opt && opt.at) || null;
     const b = el(); b.setAttribute('dir', WW.dir());
     b.classList.toggle('meet', C.scene);
     b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
     b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+    { const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
     if (buttons && buttons.length) {
       const row = document.createElement('div'); row.className = 'cb-acts';
       buttons.forEach(o => { const x = WW.btn(o.label, 'cb ' + (o.kind || ''), e => { e.stopPropagation(); o.fn(); }); row.appendChild(x); });
       b.appendChild(row);
     }
+    if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
     b.style.display = 'block'; said = text;
     const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
     WW.sfx('blip');
     C.place();
   };
 
+  /* PLAYTEST-3: say two (or more) short bubbles one after the other: the next shows when the student walks 3 steps
+     or taps the bubble (or presses C / Enter), instead of one long block */
+  let chainQ = [], chainOpt = null;
+  C.chain = (texts, opt = {}) => { const [first, ...rest] = texts.filter(Boolean); C.say(first, null, Object.assign({}, opt, { more: rest.length > 0, chain: true })); chainQ = rest; chainOpt = opt; };
+  C.chainNext = () => { if (!chainQ.length) return false; const t = chainQ.shift(); C.say(t, null, Object.assign({}, chainOpt, { more: chainQ.length > 0, chain: true })); return true; };
+  C.chaining = () => chainQ.length > 0;
   /* keep the bubble over his head (called every frame) */
   C.place = () => {
     if (!C.showing()) return;
@@ -97,27 +107,33 @@
       tag.textContent = T('chrisName'); tag.style.display = 'block';
       tag.style.left = (bx + px) + 'px'; tag.style.top = (by + py + 24 * scale) + 'px';
     } else if (tag) tag.style.display = 'none';
+    // a two-part message: 3 steps on and he says the next part
+    if (!C.scene && chainQ.length && saidAt && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.chainNext(); return; }
+    // his welcome: 3 steps on and he says the next line
+    if (C.scene && saidAt && performance.now() - meetT > 400 && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) >= 3) { C.next(); return; }
     // walked away: the bubble goes (no timer)
     if (!C.scene && saidAt && !bubble.querySelector('button') && Math.abs(g.player.x - saidAt[0]) + Math.abs(g.player.y - saidAt[1]) > 6) C.hide();
   };
 
-  /* ---------------- meeting him ---------------- */
-  let lines = [], li = 0, after = null;
-  C.meet = (ls, done) => {
-    lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
-    const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
-    if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
-    setTimeout(() => C.next(true), WW.calm ? 50 : 900);
+  /* ---------------- his welcome (PLAYTEST-3: while you walk, no Next buttons) ----------------
+     C.meet(lines, done, opt): he says each line in his bubble while the student already walks. Walking 3 steps,
+     tapping the bubble, Enter or C moves on to the next line. opt.flyIn: he flies in from off-screen (the first meeting). */
+  let lines = [], li = 0, after = null, meetOpt = {};
+  C.meet = (ls, done, opt = {}) => {
+    lines = ls; li = 0; after = done; meetOpt = opt; C.scene = true; meetT = performance.now();
+    if (!lines.length) return C.end();
+    if (opt.flyIn !== false && C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
+    setTimeout(() => C.next(true), WW.calm || opt.flyIn === false ? 50 : 900);
   };
   C.next = (first) => {
     if (!C.scene) return;
     if (!first) li++;
     if (li >= lines.length) return C.end();
-    C.say(lines[li], [{ label: (li < lines.length - 1 ? T('next') : T('cont')) + ' ▶', kind: 'gold', fn: () => C.next() }]);
+    C.say(lines[li], null, { kind: 'gold', more: li < lines.length - 1, scene: true });
   };
   C.end = () => {
-    C.scene = false; C.hide(); WW.paused = false;
-    WW.save.metChris = true; WW.store();
+    C.scene = false; C.hide();
+    if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); }
     if (WW.game.pip) WW.game.pip.fly = null;
     const d = after; after = null; d && d();
     WW.toastPump && WW.toastPump();
@@ -179,6 +195,7 @@
   /* C: talk to him */
   C.talk = () => {
     if (C.scene) return C.next();
+    if (C.chainNext()) return;
     if (WW.paused) return;
     if (C.showing() && said === 'next') return C.hide();
     const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
@@ -273,6 +290,7 @@
     const seatX = hcx - 14 * F.side, seatY = hcy - 9;
     F.ax = seatX; F.ay = seatY;
     // progress and idle
+    if (C.scene || WW.paused) F.lastProgress = Math.max(F.lastProgress, now - F.idleMs + 4000); // a panel or his welcome: wait a bit after it
     if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
       const sig = goalSig(), act = activitySig();
       if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }

@@ -65,10 +65,11 @@ const CANVAS = process.argv.includes('--canvas');
           const say = await page.textContent('.cbubble');
           if (!/living compass/.test(say)) throw new Error('Christopher did not say who he is: ' + say);
           await shot('2a-meet-christopher');
-          for (let k = 0; k < 3; k++) { await page.keyboard.press('c'); await page.waitForTimeout(120); }
+          for (let k = 0; k < 8 && await page.evaluate(() => WW.chris.scene); k++) { await page.keyboard.press('c'); await page.waitForTimeout(120); }
           if (await page.evaluate(() => WW.chris.scene)) throw new Error('the meeting did not end after his lines');
           if (!(await page.evaluate(() => WW.save.metChris))) throw new Error('meeting Christopher was not saved');
         }
+        await page.evaluate(() => WW.chris.skip()); // the episode's opening lines (he says them while you walk)
         await page.waitForFunction(() => !WW.paused);
         await page.evaluate(() => WW.dbg.noSmudges());
         await page.waitForTimeout(300);

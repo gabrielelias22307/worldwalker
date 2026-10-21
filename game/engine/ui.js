@@ -14,6 +14,7 @@
 
   /* ---------------- overlay ---------------- */
   ui.open = (opts) => {
+    if (WW.chris && WW.chris.scene && WW.chris.skip) WW.chris.skip(); // a panel opens: his welcome is over
     const ov = $('ww-ov');
     const h = { opts, close() { ui.close(h); }, render() { draw(); } };
     function draw() {
@@ -101,15 +102,17 @@
     const run = WW.run || {}, max = WW.heartsMax();
     let h = '<div class="hud-left">';
     for (let i = 0; i < max; i++) h += `<span class="hrt ${i < (run.hearts ?? max) ? '' : 'empty'}">♥</span>`;
-    h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span></div>`;
+    h += `<span class="hud-coin" title="${esc(T('coins'))}">● ${WW.save.coins || 0}</span>${(run.streak || 0) >= 2 ? `<span class="hud-streak" title="${esc(T('inARow'))}">🔥 ${run.streak}</span>` : ''}</div>`;
     h += `<div class="hud-mid">${esc(WW.ep.id)} · ${esc(WW.plain(WW.ep.title))}</div>`;
     h += '<div class="hud-right">';
     WW.THEMES.forEach(th => {
       const v = WW.save.stats[th.k] || 0;
-      h += `<span class="meter" title="${esc(L(th.full))}: ${v}"><i>${th.icon}</i><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span></span>`;
+      h += `<button class="meter" data-k="${th.k}" title="${esc(L(th.name))} (${esc(L(th.full))}): ${v}" aria-label="${esc(L(th.name))}: ${v}"><i>${th.icon}</i><span class="mcol"><span class="track"><b style="width:${Math.min(100, v / 30 * 100)}%;background:${th.col}"></b></span><span class="mlab">${esc(L(th.name))}</span></span></button>`;
     });
     h += '</div>';
     el.innerHTML = h;
+    // tap a theme bar: its name, what it means and the number
+    el.querySelectorAll('.meter').forEach(b => (b.onclick = () => { const th = WW.THEMES.find(t => t.k === b.dataset.k); WW.toast(`${th.icon} <b>${esc(L(th.name))}</b> · ${esc(L(th.full))}: ${WW.save.stats[th.k] || 0}`, th.col); }));
     const bar = $('ww-bar');
     if (bar) {
       bar.querySelectorAll('[data-lang]').forEach(b => b.classList.toggle('on', b.dataset.lang === WW.lang));
@@ -121,6 +124,7 @@
       lab('ww-b-full', '⛶', T('full'));
       lab('ww-b-help', '?', T('helpKeys'));
       lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+      lab('ww-b-gear', '⚙', T('settings'));
     }
   };
   ui.quest = () => {
@@ -141,6 +145,14 @@
     ui.questSteps = steps;
     const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
   };
+  // PLAYTEST-3: the Now card (wide screens): the goal right now, where to go, and the list
+  ui.nowCard = () => {
+    const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
+    const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
+    const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+    if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
+  };
+  setInterval(() => ui.nowCard(), 700);
   // the whole goal list, over the top of the map (tap the quest bar, or press Q)
   ui.questList = () => { const steps = ui.questSteps || []; const now = steps.findIndex(([, ok]) => !ok);
     return `<ol>${steps.map(([t, ok], i) => `<li class="${ok ? 'qdone' : i === now ? 'qnow' : ''}">${ok ? '✓ ' : i === now ? '▶ ' : ''}${esc(t)}</li>`).join('')}</ol>`; };
@@ -161,6 +173,19 @@
     return c;
   };
 
+  /* ---------------- 🔊 read aloud (PLAYTEST-3) ----------------
+     The browser's own voices (speechSynthesis). The button only shows when this computer has a voice for the language:
+     many Chromebooks have no Dari voice, and an English voice reading Dari letters would only confuse. */
+  const VOICE = { en: ['en'], es: ['es'], fa: ['fa', 'prs', 'ps'] };
+  WW.voiceFor = (lang = WW.lang) => { try { const vs = speechSynthesis.getVoices(); return vs.find(v => VOICE[lang].some(p => v.lang.toLowerCase().startsWith(p))) || null; } catch (e) { return null; } };
+  WW.canSpeak = (lang = WW.lang) => !!(window.speechSynthesis && WW.voiceFor(lang));
+  WW.speak = (text) => {
+    if (!WW.canSpeak()) return false;
+    try { speechSynthesis.cancel(); const u = new SpeechSynthesisUtterance(String(text).replace(/[🧭🧩📜✅❌▶🚶]/gu, '')); const v = WW.voiceFor(); u.voice = v; u.lang = v.lang; u.rate = 0.9; speechSynthesis.speak(u); return true; } catch (e) { return false; }
+  };
+  try { if (window.speechSynthesis) speechSynthesis.onvoiceschanged = () => { const t = ui.top(); if (t && t.opts.cls === 'talkov') t.render(); }; } catch (e) { }
+  WW.speakBtn = (getText) => { if (!WW.canSpeak()) return null; const b = document.createElement('button'); b.className = 'speak'; b.textContent = '🔊'; b.title = T('readAloud'); b.setAttribute('aria-label', T('readAloud')); b.onclick = e => { e.stopPropagation(); WW.speak(getText()); }; return b; };
+
   /* ---------------- talking to a person ---------------- */
   ui.talk = (npc, onDone) => {
     let page = 0, stage = 'read', picked = null;
@@ -176,7 +201,10 @@
         head.insertAdjacentHTML('beforeend', `<div><div class="who">${esc(L(npc.name))}</div><div class="role">${esc(L(npc.role))}</div></div>`);
         // ✕ leaves the talk at any time; the person stays not-talked-to until the student finishes
         const x = document.createElement('button'); x.className = 'talkx'; x.textContent = '✕'; x.title = T('leave'); x.setAttribute('aria-label', T('leave'));
-        x.onclick = () => h.close(); head.appendChild(x);
+        x.onclick = () => h.close();
+        const sp = WW.speakBtn(() => [...box.querySelectorAll('.talk-body .say, .talk-body .choices button, .talk-body .fb')].map(e => e.innerText).join('. '));
+        if (sp) head.appendChild(sp);
+        head.appendChild(x);
         box.appendChild(head);
         const body = document.createElement('div'); body.className = 'talk-body';
         box.appendChild(body);
@@ -206,8 +234,9 @@
               picked = i;
               if (ch.ok) {
                 WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
+                if (!WW.run.asked.has(npc.id)) WW.answered(true, !(WW.run.tries[npc.id] > 0));
                 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-              } else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+              } else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.answered(false); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
               h.render();
             };
             list.appendChild(b);
@@ -269,7 +298,7 @@
 
   /* ---------------- start screen ---------------- */
   ui.start = (onGo) => {
-    let msg = '', newHero = !WW.save.name;
+    let msg = '', newHero = !WW.save.name, openPart = '';
     ui.open({
       cls: 'startov',
       render(box, h) {
@@ -298,10 +327,7 @@
           <label>${esc(T('classCode'))}<input id="si-cls" maxlength="12" autocomplete="off" value="${esc(s.cls || '')}" placeholder="GEO-3B"></label>
           <label>${esc(T('secret'))}<input id="si-pin" maxlength="4" inputmode="numeric" autocomplete="off" type="password" value="${esc(s.pin || '')}"></label>`;
         box.appendChild(form);
-        const lk = document.createElement('div'); lk.className = 'lookbox';
-        lk.innerHTML = `<h3>${esc(T('pickLook'))}</h3>`;
-        lookPicker(lk, h);
-        box.appendChild(lk);
+        // PLAYTEST-3: Play sits right under the three boxes; the look and the Passport Code fold away below it
         const keep = () => { s.name = $('si-name').value.trim(); s.cls = $('si-cls').value.trim().toUpperCase(); s.pin = $('si-pin').value.trim(); WW.store(); };
         form.querySelectorAll('input').forEach(i => (i.oninput = keep));
         // Enter in a box goes to the next box, and from the last one it starts the game
@@ -316,14 +342,25 @@
         acts.appendChild(playBtn);
         box.appendChild(acts);
         if (msg) box.insertAdjacentHTML('beforeend', `<p class="err">${esc(msg)}</p>`);
-        const pc = document.createElement('div'); pc.className = 'codein';
-        pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
-        pc.appendChild(btn(T('useCode'), 'ghost', () => {
-          const d = WW.readCode($('si-code').value);
-          if (!d) { msg = T('badCode'); return h.render(); }
-          keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); h.render();
-        }));
-        box.appendChild(pc);
+        const more = document.createElement('div'); more.className = 'si-more';
+        const lkB = btn('🎨 ' + T('pickLook'), 'ghost small', () => { openPart = openPart === 'look' ? '' : 'look'; h.render(); });
+        const cdB = btn('📘 ' + T('haveCodeShort'), 'ghost small', () => { openPart = openPart === 'code' ? '' : 'code'; h.render(); });
+        more.append(lkB, cdB); box.appendChild(more);
+        if (openPart === 'look') {
+          const lk = document.createElement('div'); lk.className = 'lookbox';
+          lookPicker(lk, h);
+          box.appendChild(lk);
+        }
+        if (openPart === 'code') {
+          const pc = document.createElement('div'); pc.className = 'codein';
+          pc.innerHTML = `<label>${esc(T('haveCode'))}<input id="si-code" placeholder="WW-XXXXX-XXXXX-XXXXX" autocomplete="off"></label>`;
+          pc.appendChild(btn(T('useCode'), 'ghost', () => {
+            const d = WW.readCode($('si-code').value);
+            if (!d) { msg = T('badCode'); return h.render(); }
+            keep(); WW.merge(d); s.look = d.look; WW.store(); msg = T('codeOk'); openPart = ''; h.render();
+          }));
+          box.appendChild(pc);
+        }
       }
     });
     async function go() {
@@ -342,18 +379,14 @@
         const ep = WW.ep;
         const pip = WW.spriteCanvas('pip', null, 4); pip.className = 'pipface';
         box.appendChild(pip);
+        // PLAYTEST-3: one sentence and Start. The goals live in ☰ and the Now card; Christopher says the rest on the map.
         box.insertAdjacentHTML('beforeend', `<div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(ep.place))}</div><h2>${esc(L(ep.title))}</h2>
-          ${ep.id === '1.1' ? `<p class="say">${esc(T('story'))}</p>` : ''}
-          <p class="small chrisjob">🧭 ${esc(T('chrisJob'))} ${esc(T('chrisKey'))}</p>
-          ${(ep.intro || []).map(p => `<p class="say">${WW.rich(p)}</p>`).join('')}
-          <div class="goals"><b>🏁 ${esc(T('goals'))} ${esc(ep.id)}</b><ol>
-            <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
-            <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
-            <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
+          <p class="say one">${esc((ep.id === '1.1' && !WW.save.metChris ? T('storyOne') : T('introOne')).replace('{p}', L(ep.place)))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts center';
-        acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
+        const go = btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); });
+        acts.appendChild(go);
         box.appendChild(acts);
+        setTimeout(() => go.focus && go.focus(), 30);
       }
     });
   };
@@ -490,23 +523,14 @@
         box.innerHTML = `<div class="fin-head"><div class="pagebig"></div><div><div class="epn">${esc(T('episode'))} ${esc(ep.id)}</div>
           <h2>${esc(T('done'))}</h2><div class="stars">${'★'.repeat(st)}<span class="dim">${'★'.repeat(3 - st)}</span></div><div class="small">${esc(T('starWhy'))}</div></div></div>`;
         const pg = WW.spriteCanvas('page', null, 4); box.querySelector('.pagebig').appendChild(pg);
-        if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
-        const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
-        const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
-        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
-        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>
-          <h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
+        // PLAYTEST-3: the reflection and "Turn in your work" come first (students who stop scrolling still turn in); rewards after
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('oneQ'))}</h3><p class="say">${WW.rich(ep.reflect.q)}</p>`);
         const starter = document.createElement('button'); starter.className = 'starter'; starter.innerHTML = esc(L(ep.reflect.starter)) + '…';
         starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
         box.appendChild(starter);
         const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
         ta.oninput = () => { r.reflection = ta.value; };
         box.appendChild(ta);
-        const sv = document.createElement('div'); sv.className = 'savebox';
-        sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
-          (sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
-          `<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
-        box.appendChild(sv);
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
         const acts = document.createElement('div'); acts.className = 'acts';
         acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
@@ -521,8 +545,19 @@
         } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
         nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
         box.appendChild(nav);
+        const sv = document.createElement('div'); sv.className = 'savebox';
+        sv.innerHTML = `<div class="ok">${esc(T('savedHere'))}</div>` +
+          (sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
+          `<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
+        box.appendChild(sv);
+        if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
+        const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
+        const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('earned'))}</h3><ul class="earned">${earned}<li>● <b>+${coins} ${esc(T('coins'))}</b></li></ul>`);
+        box.insertAdjacentHTML('beforeend', `<h3>${esc(T('learned'))}</h3><ul class="learned">${(ep.learned || []).map(l => `<li>${WW.rich(l)}</li>`).join('')}</ul>`);
       }
     });
+    { const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; } // behind the panel: never over the typing box
     if (sheet === 'saving') {
       WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
     }

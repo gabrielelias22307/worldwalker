@@ -34,11 +34,12 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>WORLDWALKER</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
             <div id="ww-qpop" class="qpop" role="status"></div>
@@ -60,6 +61,11 @@
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
     if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
     $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
+    // PLAYTEST-3: Music, Sound, Keys and help, the arrow pad and Full screen live in one ⚙ menu
+    const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
+    $('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
+    $('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
+    document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
     $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
     $('ww-quest').onclick = () => WW.ui.questPop();
     // the map takes all the height that is left, keeping its 16 × 11 shape
@@ -76,7 +82,10 @@
       const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
       fr.classList.toggle('narrow', narrow);
       const bar = $('ww-tools');
-      if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
+      if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); } // a sideways phone: the tool bar stands beside the map, not on it
+      // PLAYTEST-3: the Now card fills the empty side of a wide screen (a Chromebook): the goal, who to find, the list
+      const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
+      if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
       if (WW.chris) WW.chris.place();
     };
     window.addEventListener('resize', G.fit);
@@ -95,6 +104,15 @@
   let stars = [], lastShot = 0, zapped = 0, toldShield = false, lastFrame = 0, map, W, H, ents, player, pip, trans = null, held = null, heldSince = 0, lastStep = 0, inv = 0, shakeT = 0;
 
   // add to a power and/or coins, say why, and announce a new power level when one unlocks
+  /* PLAYTEST-3: reading pays. A right answer on the first try: +1 coin, "First try!", and a streak; a miss resets the streak */
+  WW.answered = (ok, first) => {
+    const r = WW.run; if (!r) return;
+    if (!ok) { r.streak = 0; WW.ui.hud(); return; }
+    if (!first) return;
+    r.streak = (r.streak || 0) + 1; r.bestStreak = Math.max(r.bestStreak || 0, r.streak);
+    WW.gain(null, 0, 1, T('firstTry'), true);
+    WW.toast(`⚡ <b>${esc(T('firstTry'))}</b> +1 ●${r.streak > 1 ? ` · 🔥 ${r.streak} ${esc(T('inARow'))}` : ''}`, '#c08a1e');
+  };
   WW.gain = (stat, n, coins, why, quiet) => {
     const before = stat ? WW.tier(stat) : 0;
     if (stat) WW.save.stats[stat] = (WW.save.stats[stat] || 0) + n;
@@ -189,9 +207,10 @@
     WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
   };
   // the first time a hero plays an episode with christopher.meet, he flies in and says who he is
+  // PLAYTEST-3: then (every episode) he says the episode's opening lines in his bubble while you walk
   function meetChris() {
-    const m = WW.ep.christopher && WW.ep.christopher.meet;
-    if (m && !WW.save.metChris) WW.chris.meet(m);
+    const m = WW.ep.christopher && WW.ep.christopher.meet, first = !!(m && !WW.save.metChris);
+    WW.chris.meet([...(first ? m : []), ...(WW.ep.intro || [])], null, { flyIn: first, meet: first });
   }
 
   function previewJump(where) {
@@ -199,7 +218,7 @@
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; if (m) WW.chris.meet(m); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -509,9 +528,13 @@
       if (e.kind === 'crop' || e.kind === 'post') WW.tools.drawEnt(c, e, px(e), py(e), t);
       if (WW.farm.KINDS.includes(e.kind)) WW.farm.drawEnt(c, e, px(e), py(e), t);
       if (e.kind === 'stone') {
-        const glow = WW.run.challengeDone ? 0 : (Math.sin(t / 300) + 1) / 2;
+        // PLAYTEST-3: it only glows once it is ready (all people talked to, the quest done); before that it rests, with a little lock
+        const ready = G.stoneReady(), glow = WW.run.challengeDone || !ready ? 0 : (Math.sin(t / 300) + 1) / 2;
+        if (!ready && !WW.run.challengeDone) { c.globalAlpha = .55; }
         if (glow) { c.fillStyle = `rgba(242,193,78,${.15 + glow * .25})`; c.fillRect(px(e) - 2, py(e) - 2, 20, 20); }
-        WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : '#f2c14e', r: '#e04848', n: '#2f6fd6' } });
+        WW.sprite(c, 'stone', px(e), py(e), { pal: { W: '#9aa3ad', G: '#5e636b', y: WW.run.challengeDone ? '#3fa34d' : ready ? '#f2c14e' : '#b9a77a', r: '#e04848', n: '#2f6fd6' } });
+        c.globalAlpha = 1;
+        if (!ready && !WW.run.challengeDone) { const X = px(e) + 11, Y = py(e) - 3; c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 2, 7, 6); c.fillRect(X, Y - 1, 5, 4); c.fillStyle = '#c9ced6'; c.fillRect(X, Y + 3, 5, 4); c.fillStyle = '#22202e'; c.fillRect(X + 1, Y, 3, 3); c.fillStyle = '#c9ced6'; c.fillRect(X + 2, Y + 1, 1, 2); }
       }
     });
     WW.world.drawFog(c, sx, sy, t);
@@ -618,6 +641,7 @@
         const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
         pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8; // his bubble hangs from his seat beside the hero (it doesn't wobble)
         WW.chris.drawMark(c, sx, sy, now);
+        drawGoal(c, sx, sy, hx, hy, now);
         WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
       }
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
@@ -628,6 +652,29 @@
     WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
     if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
     c.restore();
+  }
+  /* PLAYTEST-3: one clear "go here": a gold arrow bobs over the goal right now (or waits at the edge of the screen, pointing) */
+  G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
+  function drawGoal(c, sx, sy, hx, hy, now) {
+    if (WW.paused || (WW.chris && WW.chris.scene)) return;
+    const g = G.goal(); if (!g) return;
+    const b = WW.calm ? 0 : Math.round(Math.sin(now / 220) * 2);
+    const tri = (x, y, dx, dy) => { // a chunky arrow pointing (dx, dy)
+      const px = -dy, py = dx;
+      c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(x + dx * 6, y + dy * 6); c.lineTo(x - dx * 3 + px * 6, y - dy * 3 + py * 6); c.lineTo(x - dx * 3 - px * 6, y - dy * 3 - py * 6); c.fill();
+      c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
+    };
+    const [gsx, gsy] = screenOf(g[0], g[1]);
+    if (gsx === sx && gsy === sy) {
+      const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
+      if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return; // right there: no arrow needed
+      tri(x, Math.max(6, y), 0, 1);
+    } else { // on another screen: an arrow at the edge, pointing that way
+      const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+      const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
+      const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+      const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
+    }
   }
   /* the goal right now (for the Location power's arrow and for the dimness) */
   G.goal = () => {

@@ -15,8 +15,8 @@ let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); i
     await p.goto(url); await p.evaluate(() => localStorage.clear()); await p.goto(url);
     await p.tap('#si-name'); await p.keyboard.type('Touchy');
     await p.tap('#ww-ov .pbtn.gold.big'); await p.waitForSelector('.introov'); await p.tap('#ww-ov .pbtn.gold.big');
-    for (let i = 0; i < 4 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble .cb-acts .pbtn'); await p.tap('.cbubble .cb-acts .pbtn'); await p.waitForTimeout(150); }
-    ok(!(await p.evaluate(() => WW.chris.scene)), 'meeting Christopher: tapping Next in his bubble');
+    for (let i = 0; i < 8 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble', { state: 'visible' }); await p.tap('.cbubble'); await p.waitForTimeout(150); }
+    ok(!(await p.evaluate(() => WW.chris.scene)), 'meeting Christopher: tapping his bubble moves on (no Next buttons)');
     await p.evaluate(() => WW.dbg.noSmudges());
     // nothing covers the map
     const r = await p.evaluate(() => { const a = document.getElementById('ww-screen').getBoundingClientRect(), d = document.getElementById('ww-dpad').getBoundingClientRect(), t = document.getElementById('ww-tools').getBoundingClientRect(); const ov = (x, y) => x.left < y.right && y.left < x.right && x.top < y.bottom && y.top < x.bottom; return { pad: ov(a, d), tools: ov(a, t), padShown: d.height > 0, inWin: d.bottom <= innerHeight }; });

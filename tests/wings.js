@@ -34,7 +34,7 @@ const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, 
   await p.waitForSelector('.cbubble.meet', { state: 'visible' });
   await p.waitForTimeout(250); await p.screenshot({ path: path.join(OUT, '1-flies-in.png') });
   await p.waitForTimeout(900); await p.screenshot({ path: path.join(OUT, '2-meet.png') });
-  for (let k = 0; k < 4 && await p.evaluate(() => WW.chris.scene); k++) { await p.locator('.cbubble .pbtn').first().click(); await p.waitForTimeout(150); }
+  for (let k = 0; k < 8 && await p.evaluate(() => WW.chris.scene); k++) { await p.locator('.cbubble').click(); await p.waitForTimeout(150); }
   await p.waitForFunction(() => !WW.paused);
   // walk around for 3 seconds: he is never on top of the hero
   let worst = 99;
@@ -98,7 +98,7 @@ const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, 
   // ---- reduced motion: no flights, no orbit ----
   console.log('1.1 with reduced motion (WW.calm)');
   { const { p, errs } = await open(b, { width: 1366, height: 768 }, { calm: true });
-    for (let k = 0; k < 6 && await p.evaluate(() => WW.chris.scene); k++) { await p.waitForTimeout(150); await p.locator('.cbubble .pbtn').first().click().catch(() => {}); }
+    for (let k = 0; k < 8 && await p.evaluate(() => WW.chris.scene); k++) { await p.waitForTimeout(150); await p.locator('.cbubble').click().catch(() => {}); }
     await p.waitForFunction(() => !WW.paused);
     ok(await p.evaluate(() => WW.calm), 'reduced motion is on');
     const a = await state(p); await p.waitForTimeout(1500); const b2 = await state(p);
@@ -114,7 +114,7 @@ const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, 
   for (const [name, vp, touch] of [['canvas', { width: 654, height: 820 }], ['phone', { width: 390, height: 844 }, true]]) {
     console.log('1.1 ' + name);
     const { p, errs } = await open(b, vp, { touch });
-    for (let k = 0; k < 6 && await p.evaluate(() => WW.chris.scene); k++) { await p.waitForTimeout(200); await p.locator('.cbubble .pbtn').first().click().catch(() => {}); }
+    for (let k = 0; k < 8 && await p.evaluate(() => WW.chris.scene); k++) { await p.waitForTimeout(200); await p.locator('.cbubble').click().catch(() => {}); }
     await p.waitForFunction(() => !WW.paused);
     await p.evaluate(() => { WW.chris.fly.idleMs = 1200; WW.chris.fly.lastProgress = performance.now(); WW.chris.fly.lastNudge = 0; });
     let s; for (let i = 0; i < 30; i++) { await p.waitForTimeout(200); s = await state(p); if (s.mode === 'hover') break; }

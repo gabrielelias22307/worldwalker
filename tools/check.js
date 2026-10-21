@@ -1,5 +1,6 @@
 // node tools/check.js [ep-1-1.js ...]   checks episode files: map, places you can reach, 3 languages, questions, challenge
 const fs = require('fs'), path = require('path'), vm = require('vm');
+const READING = process.argv.includes('--reading'); // PLAYTEST-3: also check reading length and answers
 const G = path.join(__dirname, '..', 'game');
 // load the art so we know every tile letter and which ones are solid
 const ctx = { window: {}, console, Math, performance: { now: () => 0 } };
@@ -343,6 +344,38 @@ function checkEpisode(file) {
     if (!(qq.answer >= 0 && qq.answer < (qq.choices || []).length)) errs.push(`boss q${i} answer index is wrong`);
     if (!qq.why) errs.push(`boss q${i} needs a why`);
   });
+
+  /* ---- reading (PLAYTEST-3): short boxes, answers you can't guess by length. Notes only with --reading ---- */
+  if (READING) {
+    const strip = s => String(s || '').replace(/\[\[[^|\]]*\|([^\]]*)\]\]/g, '$1').replace(/\[\[([^\]]*)\]\]/g, '$1');
+    const nw = o => strip(o && o.en).split(/\s+/).filter(w => /[A-Za-z0-9]/.test(w)).length;
+    const box = (o, where, max = 15) => { if (o && o.en && nw(o) > max) warns.push(`reading: ${where} has ${nw(o)} words (at most ${max})`); };
+    (ep.intro || []).forEach((o, i) => box(o, `intro[${i}]`));
+    ((ep.christopher || {}).meet || []).forEach((o, i) => box(o, `christopher.meet[${i}]`));
+    (ep.npcs || []).forEach((n, i) => { (n.lines || []).forEach((o, k) => box(o, `${strip(n.name.en || n.name)} line ${k + 1}`)); if (n.ask) { box(n.ask.q, `${strip(n.name.en || n.name)} question`, 18); n.ask.choices.forEach((c, k) => box(c.why, `${strip(n.name.en || n.name)} answer ${k + 1} why`, 20)); } });
+    if (qu) {
+      ['giver', 'contact'].forEach(w => ((qu[w] || {}).lines || []).forEach((o, k) => box(o, `quest ${w} line ${k + 1}`)));
+      ['wait', 'thanks'].forEach(w => box((qu.giver || {})[w], `quest giver ${w}`));
+      if (qa) {
+        ['hint', 'found', 'taunt', 'win', 'q'].forEach(w => box(qa[w], `quest ${w}`, 18));
+        ((qa.trader || {}).lines || []).forEach((o, k) => box(o, `trader line ${k + 1}`));
+        (qa.clues || []).forEach((c, k) => { box(c.t, `chase clue ${k + 1}`, 18); box(c.found, `chase clue ${k + 1} found`); });
+      }
+    }
+    (ep.signs || []).forEach((sg, i) => box(sg.text, `sign ${i + 1}`, 20));
+    (ep.finds || []).forEach((f, i) => { box(f.clue, `find ${i + 1} clue`, 20); box(f.text, `find ${i + 1} text`, 20); });
+    // the right answer should not give itself away by being the longest
+    const sets = [];
+    (ep.npcs || []).forEach(n => n.ask && sets.push([strip(n.name.en || n.name) + ' question', n.ask.choices.map(c => c.t || c), n.ask.choices.findIndex(c => c.ok)]));
+    (b.questions || []).forEach((q, i) => sets.push([`Grump q${i + 1}`, q.choices, q.answer]));
+    if (qa && qa.questions) qa.questions.forEach((q, i) => sets.push([`thief q${i + 1}`, q.choices, q.answer]));
+    let longest = 0;
+    sets.forEach(([where, ch, ok]) => {
+      const L = ch.map(c => strip(c && c.en !== undefined ? c.en : c).length), mx = Math.max(...L), others = L.filter((_, i) => i !== ok);
+      if (L[ok] === mx && others.every(l => l < mx)) { longest++; if (L[ok] > 1.15 * Math.max(...others)) warns.push(`reading: ${where}: the right answer is clearly the longest (${L[ok]} letters vs ${Math.max(...others)})`); }
+    });
+    if (sets.length && longest / sets.length > 0.4) warns.push(`reading: the right answer is the longest in ${longest} of ${sets.length} questions (keep it to about a third)`);
+  }
   if ((b.need || 3) > (b.questions || []).length - 2) errs.push('boss.need is too big for the number of questions');
   ['name', 'win', 'taunt', 'appear'].forEach(k => { if (!b[k]) errs.push('boss.' + k + ' missing'); });
 
@@ -404,8 +437,9 @@ function checkEpisode(file) {
 }
 
 if (require.main === module) {
-const files = process.argv.slice(2).length ? process.argv.slice(2).map(f => path.resolve(f.includes('/') ? f : path.join(G, 'episodes', f)))
-  : fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => path.join(G, 'episodes', f));
+const args = process.argv.slice(2).filter(a => a !== '--reading');
+const files = args.length ? args.map(f => path.resolve(f.includes('/') ? f : path.join(G, 'episodes', f)))
+    : fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => path.join(G, 'episodes', f));
 let bad = 0;
 for (const f of files) {
   const { errs, warns } = checkEpisode(f);

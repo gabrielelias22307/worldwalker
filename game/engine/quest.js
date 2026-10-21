@@ -129,10 +129,10 @@
       WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
       WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
       const next = a.clues[r.chase];
-      if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+      if (next) WW.chris.chain([`🧩 ${L(c.found)}`, `${T('chaseNext')} ${L(next.t)}`], { kind: 'blue' }); // PLAYTEST-3: two short bubbles, not one long one
       else { // every piece: the thief shows itself
         const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
-        WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+        WW.chris.chain([`🧩 ${L(c.found)}`, T('chaseCatch').replace('{n}', plainT(a.name))], { at: [f.x, f.y], kind: 'red' });
       }
       WW.ui.quest();
       return;
@@ -157,7 +157,7 @@
 
   function showAction(ents) {
     const a = WW.ep.quest.action;
-    if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
+    if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.chain([L(a.taunt), `${T('chaseNext')} ${L(a.clues[0].t)}`], { kind: 'blue' }); }
     if (a.type === 'fight') {
       const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
       WW.fx.burst(f.x, f.y, 'purple');

@@ -99,7 +99,7 @@ async function play(b, id) {
     await tap('#ww-ov .pbtn.gold.big'); await p.waitForSelector('.introov');
     await checkPanel('intro'); await shot('1-intro');
     await tap('#ww-ov .pbtn.gold.big');
-    for (let i = 0; i < 5 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble .cb-acts .pbtn'); await p.tap('.cbubble .cb-acts .pbtn'); await p.waitForTimeout(150); }
+    for (let i = 0; i < 8 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble', { state: 'visible' }); await p.tap('.cbubble'); await p.waitForTimeout(150); }
     ok(true, 'signed in, read the intro and met Christopher with taps');
     await shot('2-map');
     await p.evaluate(() => WW.dbg.noSmudges());

@@ -89,7 +89,7 @@ const D = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
     await p.waitForSelector('.introov', { timeout: 4000 }); ok(true, 'signed in with the keyboard');
     await p.keyboard.press('Enter'); await p.waitForTimeout(400);
     ok(await p.evaluate(() => WW.chris.scene), 'Christopher flies in');
-    for (let i = 0; i < 4 && await p.evaluate(() => WW.chris.scene); i++) { await p.keyboard.press('Enter'); await p.waitForTimeout(200); }
+    for (let i = 0; i < 8 && await p.evaluate(() => WW.chris.scene); i++) { await p.keyboard.press('Enter'); await p.waitForTimeout(200); }
     ok(!(await p.evaluate(() => WW.chris.scene)) && !(await st()).paused, 'Enter goes through his lines');
     const E = await ep();
     // C: what next?

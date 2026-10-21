@@ -275,6 +275,11 @@
     findDone: { en: 'You already found this one.', es: 'Ya encontraste este.', fa: 'این را قبلاً پیدا کردی.' },
     findDecor: { en: '{d} for your camp!', es: '¡{d} para tu campamento!', fa: '{d} برای اردوگاهت!' },
     why_find: { en: 'clue solved', es: 'pista resuelta', fa: 'نشانه حل شد' },
+    firstTry: { en: 'First try!', es: '¡Al primer intento!', fa: 'بار اول درست!' },
+    inARow: { en: 'in a row', es: 'seguidas', fa: 'پشت سر هم' },
+    readAloud: { en: 'Read it to me', es: 'Léemelo', fa: 'برایم بخوان' },
+    nowCard: { en: 'Now', es: 'Ahora', fa: 'حالا' },
+    settings: { en: 'Settings', es: 'Ajustes', fa: 'تنظیمات' },
     helpKeys: { en: 'Keys and help', es: 'Teclas y ayuda', fa: 'کلیدها و کمک' },
     free: { en: 'free', es: 'gratis', fa: 'رایگان' },
     /* building in place and planting (farm.js) */
@@ -344,6 +349,9 @@
     realm: { en: 'Realm', es: 'Reino', fa: 'سرزمین' },
     teacherCode: { en: 'Teacher code', es: 'Código del maestro', fa: 'کد معلم' },
     playOffline: { en: 'Play without saving online', es: 'Jugar sin guardar en línea', fa: 'بازی بدون ذخیرهٔ آنلاین' },
+    storyOne: { en: 'The Grump tore the Great Atlas. Win back its pages, one place at a time!', es: '¡El Gruñón rompió el Gran Atlas! Recupera sus páginas, un lugar a la vez.', fa: 'غرغرو اطلس بزرگ را پاره کرد! صفحه‌هایش را جا به جا پس بگیر.' },
+    haveCodeShort: { en: 'Have a Passport Code?', es: '¿Tienes un código de pasaporte?', fa: 'کد پاسپورت داری؟' },
+    introOne: { en: 'Win back the atlas page for {p}!', es: '¡Recupera la página del atlas de {p}!', fa: 'صفحهٔ اطلس {p} را پس بگیر!' },
     story: { en: 'The Grump tore the Great Atlas into 24 pages and blew them across the world. Places are fading from people\'s memory. You are a Worldwalker apprentice. With Christopher, your living compass, win the pages back by learning each place.', es: 'El Gruñón rompió el Gran Atlas en 24 páginas y las sopló por todo el mundo. Los lugares se borran de la memoria de la gente. Eres aprendiz de Caminante del Mundo. Con Christopher, tu brújula viva, recupera las páginas aprendiendo cada lugar.', fa: 'غرغرو اطلس بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در سراسر جهان پراکنده ساخت. جاها از یاد مردم پاک می‌شوند. تو شاگرد جهان‌گرد هستی. با کریستوفر، قطب‌نمای زنده‌ات، با شناختن هر جا صفحه‌ها را پس بگیر.' }
   };
   WW.T = k => WW.L(WW.S[k]);
