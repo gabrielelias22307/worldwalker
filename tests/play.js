@@ -40,7 +40,12 @@ const CANVAS = process.argv.includes('--canvas');
           window.__qpanels = 0;
           new MutationObserver(() => {
             const t = WW.ui.top(); const ov = document.getElementById('ww-ov');
-            if (t && !t.__q && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) { t.__q = true; window.__qpanels++; }
+            if (t && !t.__q && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) {
+              t.__q = true; window.__qpanels++;
+              // in a row: question panels with no walking between them (the hero is on the same square)
+              const p = WW.dbg.player, at = p.x + ',' + p.y;
+              window.__qrow = window.__qat === at ? window.__qrow + 1 : 1; window.__qat = at; window.__qmost = Math.max(window.__qmost || 0, window.__qrow);
+            }
           }).observe(document.getElementById('ww-ov'), { childList: true, subtree: true });
         });
         // reward pop-ups: count how many show at once, and whether one ever shows over an open panel
@@ -640,8 +645,8 @@ const CANVAS = process.argv.includes('--canvas');
     } catch (e) { /* recorded in steps */ }
     const ok = steps.every(s => s.startsWith('✓')) && !errs.length;
     if (!ok) failed++;
-    const qp = await page.evaluate(() => window.__qpanels).catch(() => '?');
-    console.log(`Episode ${id}: ${ok ? 'PLAYED THROUGH ✓' : 'PROBLEM ✗'} · question panels: ${qp}`);
+    const qp = await page.evaluate(() => window.__qpanels).catch(() => '?'), qrow = await page.evaluate(() => window.__qmost || 0).catch(() => '?');
+    console.log(`Episode ${id}: ${ok ? 'PLAYED THROUGH ✓' : 'PROBLEM ✗'} · question panels: ${qp} · most in a row: ${qrow}${qrow > 2 ? ' (more than 2!)' : ''}`);
     steps.filter(s => !ok || s.startsWith('✗')).forEach(s => console.log('   ' + s));
     errs.forEach(e => console.log('   ' + e));
     await page.close();
