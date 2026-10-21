@@ -109,7 +109,7 @@
     const a = WW.ep.quest.action, r = WW.run;
     if (a.type === 'fight') return a.at;
     if (a.type === 'chase') { const c = Q.clue(); if (!c) { const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); return f ? [f.x, f.y] : a.at; } if (!hint) return null; const z = c.zones[0]; return [z.x + (z.w >> 1), z.y + (z.h >> 1)]; }
-    if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
+    if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const p = WW.game.player, d = o => Math.abs(o.x - p.x) + Math.abs(o.y - p.y), g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone).sort((m, n) => d(m) - d(n)); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; } // the nearest good, so the hint never gives the answer away
     return null;
   };
   Q.carryLine = () => {
@@ -238,7 +238,7 @@
     const R = (a, b, w, h, col) => { c.fillStyle = col; c.fillRect(x + a, y + b, w, h); };
     if (icon === '🪵') { [[2, 9], [6, 9], [10, 9], [4, 5], [8, 5]].forEach(([a, b]) => { R(a - 1, b - 1, 6, 6, '#22202e'); R(a, b, 4, 4, '#8b5a2b'); R(a + 1, b + 1, 2, 2, '#d9a066'); }); }
     else if (icon === '🛒') { R(1, 5, 14, 8, '#22202e'); R(2, 6, 12, 5, '#7a7f87'); R(3, 3, 3, 3, '#5a4a44'); R(6, 2, 4, 4, '#8a6a5a'); R(10, 3, 3, 3, '#5a4a44'); R(3, 12, 3, 3, '#22202e'); R(10, 12, 3, 3, '#22202e'); }
-    else if (icon === '🪨') { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
+    else if (['🪨', '🍚', '🌾'].includes(icon)) { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
     else { R(2, 4, 12, 11, '#22202e'); R(3, 5, 10, 9, '#c79a5b'); R(3, 9, 10, 1, '#8b5a2b'); R(7, 5, 1, 9, '#8b5a2b'); }
   }
 

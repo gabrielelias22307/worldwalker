@@ -233,18 +233,18 @@ window.EPISODE = {
       },
       q: { en: 'What will you trade me for one water pump?', es: '¿Qué me das a cambio de una bomba de agua?', fa: 'در بدل یک پمپ آب به من چه می‌دهی؟' },
       choices: [
-        { ok: true, t: { en: 'A sack of sugar from Nomvula\'s farm', es: 'Un saco de azúcar de la finca de Nomvula', fa: 'یک بوجی بوره از کشتزار نومولا' },
+        { ok: true, at: [20, 3], icon: '🪨', t: { en: 'A sack of sugar from Nomvula\'s farm', es: 'Un saco de azúcar de la finca de Nomvula', fa: 'یک بوجی بوره از کشتزار نومولا' },
           why: { en: 'Good trade! The warm, rainy hills near Durban grow lots of sugarcane. Sugar is an [[export|export]] here, and my country needs more than it grows.',
             es: '¡Buen trato! Las colinas cálidas y lluviosas cerca de Durban dan mucha caña de azúcar. El azúcar es una [[export|exportación]] de aquí, y mi país necesita más de la que produce.',
             fa: 'معاملهٔ خوب! تپه‌های گرم و بارانی نزدیک دوربان نیشکر زیاد می‌دهند. بوره این‌جا [[export|صادرات]] است و کشور من بیشتر از آن‌چه تولید می‌کند به آن نیاز دارد.' } },
-        { t: { en: 'A bag of rice', es: 'Una bolsa de arroz', fa: 'یک خلطه برنج' },
-          why: { en: 'South Africa grows very little rice. It buys rice from other countries, so rice is an [[import|import]] here. Do not trade away what you have to buy.',
-            es: 'Sudáfrica cultiva muy poco arroz. Lo compra a otros países, así que aquí el arroz es una [[import|importación]]. No cambies lo que tienes que comprar.',
-            fa: 'افریقای جنوبی برنج بسیار کم می‌کارد. برنج را از کشورهای دیگر می‌خرد، پس برنج این‌جا [[import|واردات]] است. چیزی را که خودت می‌خری، در بدل چیز دیگر نده.' } },
-        { t: { en: 'A new phone', es: 'Un teléfono nuevo', fa: 'یک موبایل نو' },
-          why: { en: 'Most phones here come in on ships, just like my pumps. I want something this land makes a lot of.',
-            es: 'Casi todos los teléfonos de aquí llegan en barco, igual que mis bombas. Yo quiero algo que esta tierra produce en abundancia.',
-            fa: 'بیشتر موبایل‌های این‌جا با کشتی می‌آیند، درست مثل پمپ‌های من. من چیزی می‌خواهم که این سرزمین زیاد تولید می‌کند.' } }
+        { at: [25, 19], icon: '🪨', t: { en: 'A bag of rice', es: 'Una bolsa de arroz', fa: 'یک خلطه برنج' },
+          why: { en: 'This rice just came off a ship! South Africa grows very little rice. It buys rice from other countries, so rice is an [[import|import]] here. Do not trade away what you have to buy.',
+            es: '¡Este arroz acaba de bajar de un barco! Sudáfrica cultiva muy poco arroz. Lo compra a otros países, así que aquí el arroz es una [[import|importación]]. No cambies lo que tienes que comprar.',
+            fa: 'این برنج همین حالا از کشتی پایین شده! افریقای جنوبی برنج بسیار کم می‌کارد. برنج را از کشورهای دیگر می‌خرد، پس برنج این‌جا [[import|واردات]] است. چیزی را که خودت می‌خری، در بدل چیز دیگر نده.' } },
+        { at: [25, 18], icon: '📱', t: { en: 'A new phone', es: 'Un teléfono nuevo', fa: 'یک موبایل نو' },
+          why: { en: 'This phone just came off a ship! Most phones here come in on ships, just like my pumps. I want something this land makes a lot of.',
+            es: '¡Este teléfono acaba de bajar de un barco! Casi todos los teléfonos de aquí llegan en barco, igual que mis bombas. Yo quiero algo que esta tierra produce en abundancia.',
+            fa: 'این موبایل همین حالا از کشتی پایین شده! بیشتر موبایل‌های این‌جا با کشتی می‌آیند، درست مثل پمپ‌های من. من چیزی می‌خواهم که این سرزمین زیاد تولید می‌کند.' } }
       ],
       item: { icon: '⚙️', name: { en: 'A new water pump', es: 'Una bomba de agua nueva', fa: 'یک پمپ آب نو' } }
     }

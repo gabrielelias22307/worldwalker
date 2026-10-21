@@ -226,21 +226,21 @@ window.EPISODE = {
         role: { en: 'Silk trader from China', es: 'Comerciante de seda de China', fa: 'تاجر ابریشم از چین' },
         look: { skin: 1, hair: '#141010', shirt: '#2f6fd6', pants: '#2b2b3a' },
         lines: [
-          { en: 'Ni hao! I came west on the freight train from China. I brought fine silk thread to trade.',
-            es: '¡Ni hao! Vine al oeste en el tren de carga desde China. Traje hilo de seda fino para comerciar.',
-            fa: 'نی هاو! با قطار باری از چین به طرف غرب آمدم. تار ابریشمی خوب برای سودا آورده‌ام.' }
+          { en: 'Ni hao! I came west on the freight train from China. I brought fine silk thread to trade. This land is [[landlocked|landlocked]], so goods come by train and by camel, not by ship.',
+            es: '¡Ni hao! Vine al oeste en el tren de carga desde China. Traje hilo de seda fino para comerciar. Esta tierra está [[landlocked|sin salida al mar]], así que las cosas llegan en tren y en camello, no en barco.',
+            fa: 'نی هاو! با قطار باری از چین به طرف غرب آمدم. تار ابریشمی خوب برای سودا آورده‌ام. این سرزمین [[landlocked|محاط به خشکه]] است، پس جنس‌ها با قطار و شتر می‌آیند، نه با کشتی.' }
         ]
       },
       q: { en: 'Back home in China, we make plenty of silk. What will you give me for this thread?',
         es: 'En mi tierra, China, hacemos mucha seda. ¿Qué me das por este hilo?',
         fa: 'در وطن ما، چین، ابریشم زیاد می‌سازیم. در بدل این تار به من چه می‌دهی؟' },
       choices: [
-        { ok: true, t: { en: 'Sweet melons and dried apricots from the oasis farms', es: 'Melones dulces y albaricoques secos de las granjas del oasis', fa: 'خربوزهٔ شیرین و زردآلوی خشک از زمین‌های واحه' },
-          why: { en: 'The oasis farms here grow plenty of fruit. Mr. Li cannot easily get it at home. Each side gets something new.', es: 'Las granjas del oasis de aquí dan mucha fruta. El señor Li no la consigue fácil en su tierra. Cada lado recibe algo nuevo.', fa: 'زمین‌های واحهٔ اینجا میوهٔ زیاد می‌دهند. آقای لی آن را در وطنش آسان پیدا نمی‌کند. هر طرف چیز نو می‌گیرد.' } },
-        { t: { en: 'A roll of silk cloth', es: 'Un rollo de tela de seda', fa: 'یک توپ تکهٔ ابریشمی' },
-          why: { en: 'China already makes plenty of silk. Mr. Li does not need more of what he sells.', es: 'China ya hace mucha seda. El señor Li no necesita más de lo que él vende.', fa: 'چین خودش ابریشم زیاد می‌سازد. آقای لی به چیزی که خودش می‌فروشد ضرورت ندارد.' } },
-        { t: { en: 'A basket of fresh fish from the sea', es: 'Una canasta de pescado fresco del mar', fa: 'یک سبد ماهی تازهٔ بحر' },
-          why: { en: 'This land is [[landlocked|landlocked]]. The sea is very far away, so there are no fresh sea fish to trade.', es: 'Esta tierra está [[landlocked|sin salida al mar]]. El mar está muy lejos, así que no hay pescado fresco del mar para cambiar.', fa: 'این سرزمین [[landlocked|محاط به خشکه]] است. بحر خیلی دور است، پس ماهی تازهٔ بحر برای سودا نیست.' } }
+        { ok: true, at: [22, 11], icon: '🍈', t: { en: 'Sweet melons and dried apricots from the oasis farms', es: 'Melones dulces y albaricoques secos de las granjas del oasis', fa: 'خربوزهٔ شیرین و زردآلوی خشک از زمین‌های واحه' },
+          why: { en: 'Sweet fruit from the oasis! Your farms grow plenty of it, and I cannot easily get it at home. Here is your silk thread. Each side gets something new.', es: '¡Fruta dulce del oasis! Sus granjas dan mucha, y yo no la consigo fácil en mi tierra. Aquí tienes tu hilo de seda. Cada lado recibe algo nuevo.', fa: 'میوهٔ شیرین واحه! زمین‌های شما میوهٔ زیاد می‌دهند، و من آن را در وطنم آسان پیدا نمی‌کنم. بگیر، این تار ابریشمی تو. هر طرف چیز نو می‌گیرد.' } },
+        { at: [25, 2], icon: '🧣', t: { en: 'A roll of silk cloth', es: 'Un rollo de tela de seda', fa: 'یک توپ تکهٔ ابریشمی' },
+          why: { en: 'That silk came on my own train! China already makes plenty of silk. I do not need more of what I sell.', es: '¡Esa seda llegó en mi propio tren! China ya hace mucha seda. No necesito más de lo que vendo.', fa: 'این ابریشم با قطار خود من آمده! چین خودش ابریشم زیاد می‌سازد. من به چیزی که خودم می‌فروشم ضرورت ندارم.' } },
+        { at: [22, 17], icon: '🪨', t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
+          why: { en: 'Sand? It is everywhere in this desert, and China has big deserts too. Nobody carries sand on a long trip!', es: '¿Arena? Hay por todas partes en este desierto, y China también tiene grandes desiertos. ¡Nadie lleva arena en un viaje largo!', fa: 'ریگ؟ در این بیابان همه جا ریگ است، و چین هم بیابان‌های بزرگ دارد. هیچ کس در یک سفر دور ریگ نمی‌برد!' } }
       ],
       item: { icon: '🧵', name: { en: 'Silk thread', es: 'Hilo de seda', fa: 'تار ابریشمی' } }
     }

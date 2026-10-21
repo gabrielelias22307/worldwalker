@@ -239,11 +239,11 @@ window.EPISODE = {
       },
       q: { en: 'What will you give Hamid for a bottle of rosewater?', es: '¿Qué le das a Hamid por una botella de agua de rosas?', fa: 'برای یک بوتل گلاب به حمید چه می‌دهی؟' },
       choices: [
-        { ok: true, t: { en: 'Pearls and dried fish from the Gulf', es: 'Perlas y pescado seco del golfo', fa: 'مروارید و ماهی خشک از خلیج' },
-          why: { en: 'Yes! Kashan is far from the sea, so sea goods are rare here. Dubai has plenty of them.', es: '¡Sí! Kashán está lejos del mar, así que aquí casi no hay productos del mar. Dubái tiene muchos.', fa: 'بلی! کاشان از بحر دور است، پس چیزهای بحری این‌جا کم است. دبی از آن‌ها زیاد دارد.' } },
-        { t: { en: 'A handwoven carpet', es: 'Una alfombra tejida a mano', fa: 'یک قالین دست‌باف' },
-          why: { en: 'Kashan is famous for its own carpets. The bazaar is full of them.', es: 'Kashán es famosa por sus propias alfombras. El bazar está lleno de ellas.', fa: 'کاشان به خاطر قالین‌های خودش مشهور است. بازار پر از قالین است.' } },
-        { t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
+        { ok: true, at: [4, 11], icon: '🐟', t: { en: 'Pearls and dried fish from the Gulf', es: 'Perlas y pescado seco del golfo', fa: 'مروارید و ماهی خشک از خلیج' },
+          why: { en: 'Yes! Kashan is far from the sea, so sea goods are rare here. Dubai has plenty of them. Here is your rosewater.', es: '¡Sí! Kashán está lejos del mar, así que aquí casi no hay productos del mar. Dubái tiene muchos. Aquí tienes tu agua de rosas.', fa: 'بلی! کاشان از بحر دور است، پس چیزهای بحری این‌جا کم است. دبی از آن‌ها زیاد دارد. بگیر، این گلاب تو.' } },
+        { at: [16, 8], icon: '🧶', t: { en: 'A handwoven carpet', es: 'Una alfombra tejida a mano', fa: 'یک قالین دست‌باف' },
+          why: { en: 'This carpet was made right here! Kashan is famous for its own carpets. The bazaar is full of them.', es: '¡Esta alfombra se hizo aquí mismo! Kashán es famosa por sus propias alfombras. El bazar está lleno de ellas.', fa: 'این قالین همین‌جا بافته شده! کاشان به خاطر قالین‌های خودش مشهور است. بازار پر از قالین است.' } },
+        { at: [3, 7], icon: '🪨', t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
           why: { en: 'Kashan sits next to a desert. There is sand everywhere here!', es: 'Kashán está junto a un desierto. ¡Aquí hay arena por todas partes!', fa: 'کاشان کنار یک بیابان است. این‌جا همه جا ریگ است!' } }
       ],
       item: { icon: '🌹', name: { en: 'Bottle of Kashan rosewater', es: 'Botella de agua de rosas de Kashán', fa: 'بوتل گلاب کاشان' } }

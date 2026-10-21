@@ -254,12 +254,12 @@ window.EPISODE = {
       },
       q: { en: 'You want a bunch of bananas? What will you trade me for it?', es: '¿Quieres un racimo de bananos? ¿Qué me das a cambio?', fa: 'یک خوشه کیله می‌خواهی؟ در بدل آن به من چه می‌دهی؟' },
       choices: [
-        { ok: true, t: { en: 'A sack of potatoes from the cold land', es: 'Un saco de papas de la tierra fría', fa: 'یک بوجی کچالو از زمین سرد' },
-          why: { en: 'Yes! Potatoes like the cold, so they do not grow well on the hot coast. Nelly has none, so she wants them.', es: '¡Sí! A la papa le gusta el frío, así que no crece bien en la costa caliente. Nelly no tiene, así que las quiere.', fa: 'بله! کچالو سرما را دوست دارد، پس در ساحل گرم خوب نمی‌روید. نلی کچالو ندارد، پس آن را می‌خواهد.' } },
-        { t: { en: 'A bundle of sugarcane', es: 'Un atado de caña de azúcar', fa: 'یک بسته نیشکر' },
-          why: { en: 'Sugarcane grows all around Nelly on the hot coast. She already has plenty.', es: 'La caña crece por todas partes en la costa caliente. Nelly ya tiene mucha.', fa: 'نیشکر در همه جای ساحل گرم، اطراف نلی، می‌روید. او خودش زیاد دارد.' } },
-        { t: { en: 'A bunch of ripe bananas', es: 'Un racimo de bananos maduros', fa: 'یک خوشه کیلهٔ پخته' },
-          why: { en: 'Nelly sells bananas! Trading bananas for bananas makes no sense.', es: '¡Nelly vende bananos! Cambiar bananos por bananos no tiene sentido.', fa: 'نلی کیله می‌فروشد! کیله در بدل کیله معنا ندارد.' } }
+        { ok: true, at: [18, 6], icon: '🪨', t: { en: 'A sack of potatoes from the cold land', es: 'Un saco de papas de la tierra fría', fa: 'یک بوجی کچالو از زمین سرد' },
+          why: { en: 'Yes! Potatoes like the cold, so they do not grow well here on the hot coast. I have none, so I want them! Here are your bananas.', es: '¡Sí! A la papa le gusta el frío, así que no crece bien aquí en la costa caliente. Yo no tengo, ¡así que las quiero! Aquí tienes tus bananos.', fa: 'بله! کچالو سرما را دوست دارد، پس اینجا در ساحل گرم خوب نمی‌روید. من کچالو ندارم، پس آن را می‌خواهم! بگیر، این کیله‌های تو.' } },
+        { at: [19, 15], icon: '🎋', t: { en: 'A bundle of sugarcane', es: 'Un atado de caña de azúcar', fa: 'یک بسته نیشکر' },
+          why: { en: 'Sugarcane grows all around me on the hot coast. I already have plenty.', es: 'La caña crece por todas partes a mi alrededor en la costa caliente. Ya tengo mucha.', fa: 'نیشکر در همه جای ساحل گرم، اطراف من، می‌روید. من خودم زیاد دارم.' } },
+        { at: [25, 16], icon: '🍌', t: { en: 'A bunch of ripe bananas', es: 'Un racimo de bananos maduros', fa: 'یک خوشه کیلهٔ پخته' },
+          why: { en: 'I sell bananas! Trading bananas for bananas makes no sense.', es: '¡Yo vendo bananos! Cambiar bananos por bananos no tiene sentido.', fa: 'من کیله می‌فروشم! کیله در بدل کیله معنا ندارد.' } }
       ],
       item: { icon: '🍌', name: { en: 'A bunch of bananas', es: 'Un racimo de bananos', fa: 'یک خوشه کیله' } }
     }
