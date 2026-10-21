@@ -9,12 +9,8 @@ window.EPISODE = {
   title: { en: 'Borders and Working Together', es: 'Fronteras y cooperación', fa: 'سرحدها و همکاری' },
   place: { en: 'The Council of Realms', es: 'El Consejo de los Reinos', fa: 'شورای سرزمین‌ها' },
   intro: [
-    { en: 'Christopher: "This is it, the last page! People from all eight realms have come to the Council Hall to rebuild the Great Atlas. But the Great Grump is turning neighbors against each other."',
-      es: 'Christopher: "¡Llegamos a la última página! Gente de los ocho reinos vino al Salón del Consejo para reconstruir el Gran Atlas. Pero el Gran Gruñón está poniendo a los vecinos en contra unos de otros."',
-      fa: 'کریستوفر: «این آخرین صفحه است! مردم از هر هشت سرزمین به تالار شورا آمده‌اند تا اطلس بزرگ را دوباره بسازند. اما غرغروی بزرگ همسایه‌ها را با هم دشمن می‌کند.»' },
-    { en: 'Christopher: "Talk to the four guests. Then go to the compass stone in the hall and help two neighbors settle their river fight."',
-      es: 'Christopher: "Habla con los cuatro invitados. Luego ve a la piedra de la brújula en el salón y ayuda a dos vecinos a resolver su pelea por el río."',
-      fa: 'کریستوفر: «با چهار مهمان گپ بزن. بعد به سنگ قطب‌نما در تالار برو و به دو همسایه کمک کن تا دعوای دریا را حل کنند.»' }
+    { en: 'The last page! People from all eight realms came to rebuild the Great Atlas.', es: '¡La última página! Gente de los ocho reinos vino a reconstruir el Gran Atlas.', fa: 'آخرین صفحه! مردم هر هشت سرزمین آمده‌اند تا اطلس بزرگ را دوباره بسازند.' },
+    { en: 'The Great Grump turns neighbors against each other. Talk to the guests, then the stone.', es: 'El Gran Gruñón pone a los vecinos en contra. Habla con los invitados y luego ve a la piedra.', fa: 'غرغروی بزرگ همسایه‌ها را دشمن هم می‌کند. با مهمانان گپ بزن، بعد نزد سنگ برو.' }
   ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
@@ -69,11 +65,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [4, 12], at: [8, 13], decor: 'flower',
-      clue: { en: 'Rivers are often borders between countries. Find the bridge farthest west on the river. Stand on the land square just north of it.', es: 'Los ríos muchas veces son fronteras entre países. Busca el puente que está más al oeste en el río. Párate en el cuadro de tierra justo al norte de él.', fa: 'دریاها اکثراً سرحد میان کشورها هستند. پلی را پیدا کن که از همه غربی‌تر روی دریا است. روی خانهٔ خشکه بایست که درست شمالِ آن پل است.' },
-      text: { en: 'You found the border river! A river is a natural border that is easy to see on a map. The Rio Grande forms part of the border between the United States and Mexico. A flower was growing on the river bank.', es: '¡Encontraste el río frontera! Un río es una frontera natural fácil de ver en un mapa. El río Bravo, o Río Grande, forma parte de la frontera entre Estados Unidos y México. Había una flor en la orilla del río.', fa: 'تو دریای سرحدی را پیدا کردی! دریا یک سرحد طبیعی است که روی نقشه آسان دیده می‌شود. دریای ریو گرانده بخشی از سرحد میان ایالات متحدهٔ امریکا و مکسیکو است. یک گل در کنار دریا روییده بود.' } },
+      clue: { en: 'Rivers are often borders. Find the bridge farthest west on the river. Stand just north of it.', es: 'Los ríos suelen ser fronteras. Busca el puente más al oeste del río. Párate justo al norte de él.', fa: 'دریاها اکثراً سرحد هستند. غربی‌ترین پل دریا را پیدا کن. درست شمالِ آن بایست.' },
+      text: { en: 'A river is a natural border, easy to see on maps, like the Rio Grande. A flower!', es: 'Un río es una frontera natural, fácil de ver en los mapas, como el río Bravo. ¡Una flor!', fa: 'دریا یک سرحد طبیعی است که روی نقشه آسان دیده می‌شود، مثل ریو گرانده. یک گل!' } },
     { clueAt: [32, 2], at: [35, 7], decor: 'gem',
       clue: { en: 'From this note, walk 3 steps east, then 5 steps south. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al este y luego 5 pasos al sur. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به شرق برو، بعد ۵ قدم به جنوب. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! East is to the right and south is down. In deserts, many borders are straight lines drawn on a map. Much of the border between Egypt and Sudan follows one line of latitude. A shiny gem was hidden in the sand.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el sur abajo. En los desiertos, muchas fronteras son líneas rectas dibujadas en un mapa. Gran parte de la frontera entre Egipto y Sudán sigue una línea de latitud. Una gema brillante estaba escondida en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و جنوب پایین است. در ریگستان‌ها، بسیاری از سرحدها خط‌های راستی هستند که روی نقشه کشیده شده‌اند. بخش بزرگی از سرحد میان مصر و سودان یک خط عرض جغرافیایی را دنبال می‌کند. یک جواهر درخشان در ریگ پنهان بود.' } }
+      text: { en: 'East is right, south is down. Much of the Egypt–Sudan border follows one line of latitude. A gem!', es: 'El este está a la derecha y el sur abajo. Gran parte de la frontera Egipto–Sudán sigue una línea de latitud. ¡Una gema!', fa: 'شرق راست و جنوب پایین است. بیشتر سرحد مصر و سودان یک خط عرض جغرافیایی را دنبال می‌کند. یک جواهر!' } }
   ],
   // only the Sail (Episode 8.2) crosses the deep water to the little island in the east sea
   secret: { tool: 'sail', at: [45, 18],
@@ -101,21 +97,16 @@ window.EPISODE = {
       role: { en: 'Mapmaker and host of the Council', es: 'Cartógrafa y anfitriona del Consejo', fa: 'نقشه‌کش و میزبان شورا' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#c0392b' },
       lines: [
-        { en: 'Welcome to the Council Hall! You know me: Rosa, from Mapmaker\'s Valley, where your journey began. Guests from all eight realms are here. Together we will put the last page back into the Great Atlas.',
-          es: '¡Bienvenido al Salón del Consejo! Ya me conoces: soy Rosa, del Valle del Cartógrafo, donde empezó tu viaje. Aquí hay invitados de los ocho reinos. Juntos vamos a poner la última página en el Gran Atlas.',
-          fa: 'به تالار شورا خوش آمدی! مرا می‌شناسی: روزا، از درهٔ نقشه‌کش، جایی که سفرت شروع شد. مهمانان هر هشت سرزمین اینجا هستند. با هم آخرین صفحه را دوباره در اطلس بزرگ می‌گذاریم.' },
-        { en: 'Every country sits inside lines called [[border|borders]]. Most borders are calm. Trucks and trains cross them every day. But when neighbors disagree, they need good ways to work together.',
-          es: 'Cada país está dentro de líneas llamadas [[border|fronteras]]. La mayoría de las fronteras son tranquilas. Camiones y trenes las cruzan todos los días. Pero cuando los vecinos no están de acuerdo, necesitan buenas formas de trabajar juntos.',
-          fa: 'هر کشور داخل خط‌هایی به نام [[border|سرحد]] است. بیشتر سرحدها آرام هستند. موترهای باربری و قطارها هر روز از آن‌ها می‌گذرند. اما وقتی همسایه‌ها موافق نیستند، به راه‌های خوب برای همکاری نیاز دارند.' },
-        { en: 'Countries also work together in groups. The [[united nations|United Nations]] has 193 member countries. A [[trade bloc|trade bloc]], like the European Union, helps its members trade more easily.',
-          es: 'Los países también trabajan juntos en grupos. Las [[united nations|Naciones Unidas]] tienen 193 países miembros. Un [[trade bloc|bloque comercial]], como la Unión Europea, ayuda a sus miembros a comerciar más fácilmente.',
-          fa: 'کشورها در گروه‌ها هم با هم کار می‌کنند. [[united nations|سازمان ملل متحد]] ۱۹۳ کشور عضو دارد. یک [[trade bloc|گروه تجارتی]]، مثل اتحادیهٔ اروپا، به اعضای خود کمک می‌کند آسان‌تر تجارت کنند.' }
+        { en: 'Welcome to the Council Hall! It is me, Rosa, from Mapmaker\'s Valley.', es: '¡Bienvenido al Salón del Consejo! Soy yo, Rosa, del Valle del Cartógrafo.', fa: 'به تالار شورا خوش آمدی! من هستم، روزا، از درهٔ نقشه‌کش.' },
+        { en: 'Guests from all eight realms are here. Together we will finish the Great Atlas.', es: 'Aquí hay invitados de los ocho reinos. Juntos terminaremos el Gran Atlas.', fa: 'مهمانان هر هشت سرزمین اینجا هستند. با هم اطلس بزرگ را تمام می‌کنیم.' },
+        { en: 'Countries sit inside [[border|borders]]. Most are calm, but neighbors who disagree must work together.', es: 'Los países están dentro de [[border|fronteras]]. Casi todas son tranquilas, pero los vecinos que no están de acuerdo deben cooperar.', fa: 'کشورها داخل [[border|سرحدها]] هستند. بیشتر آرام‌اند، اما همسایه‌هایی که موافق نیستند باید همکاری کنند.' },
+        { en: 'The [[united nations|United Nations]] has 193 members. A [[trade bloc|trade bloc]], like the EU, eases trade.', es: 'La [[united nations|ONU]] tiene 193 miembros. Un [[trade bloc|bloque comercial]], como la Unión Europea, facilita el comercio.', fa: '[[united nations|سازمان ملل متحد]] ۱۹۳ عضو دارد. یک [[trade bloc|گروه تجارتی]]، مثل اتحادیهٔ اروپا، تجارت را آسان می‌کند.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'Why do countries join groups like the United Nations?', es: '¿Por qué los países se unen a grupos como las Naciones Unidas?', fa: 'چرا کشورها به گروه‌هایی مثل سازمان ملل متحد می‌پیوندند؟' },
         choices: [
-          { ok: true, t: { en: 'To talk and work together on shared problems', es: 'Para hablar y trabajar juntos en problemas que comparten', fa: 'تا دربارهٔ مشکلات مشترک گپ بزنند و با هم کار کنند' },
+          { ok: true, t: { en: 'To work together on shared problems', es: 'Para trabajar juntos en problemas comunes', fa: 'تا روی مشکلات مشترک با هم کار کنند' },
             why: { en: 'Groups give countries a place to meet, talk and solve problems together.', es: 'Los grupos dan a los países un lugar para reunirse, hablar y resolver problemas juntos.', fa: 'گروه‌ها به کشورها جایی برای دیدار، گپ زدن و حل مشکلات با هم می‌دهند.' } },
           { t: { en: 'To erase all the borders in the world', es: 'Para borrar todas las fronteras del mundo', fa: 'تا همهٔ سرحدهای جهان را پاک کنند' },
             why: { en: 'Member countries keep their own borders. They work together across them.', es: 'Los países miembros mantienen sus fronteras. Trabajan juntos a través de ellas.', fa: 'کشورهای عضو سرحدهای خود را نگه می‌دارند. از دو طرف سرحد با هم کار می‌کنند.' } },
@@ -130,21 +121,16 @@ window.EPISODE = {
       role: { en: 'Mountain guide from Chile', es: 'Guía de montaña de Chile', fa: 'رهنمای کوه از چیلی' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#d64545', pants: '#3a3a3a', hat: '#2f6fd6' },
       lines: [
-        { en: '¡Hola! I guide hikers in the Andes Mountains. The Andes form part of the border between Chile and Argentina. That is a [[natural border|natural border]]. It follows a mountain range, a river or a coastline.',
-          es: '¡Hola! Guío a excursionistas en la cordillera de los Andes. Los Andes forman parte de la frontera entre Chile y Argentina. Esa es una [[natural border|frontera natural]]. Sigue una cordillera, un río o una costa.',
-          fa: 'اولا! من رهنمای کوه‌پیمایان در کوه‌های اندیز هستم. اندیز بخشی از سرحد بین چیلی و ارجنتاین است. این یک [[natural border|سرحد طبیعی]] است. از یک رشته‌کوه، دریا یا ساحل پیروی می‌کند.' },
-        { en: 'There are more. The Rio Grande, a river, forms a long part of the border between the United States and Mexico. Some of the Great Lakes are part of the border with Canada. Japan is an island country, so its coastline is a border on every side.',
-          es: 'Hay más. El río Bravo (Rio Grande) forma una parte larga de la frontera entre Estados Unidos y México. Algunos de los Grandes Lagos son parte de la frontera con Canadá. Japón es un país de islas, así que su costa es una frontera por todos lados.',
-          fa: 'بیشتر هم هست. دریای ریو گرانده بخش درازی از سرحد بین ایالات متحده و مکسیکو است. بعضی از جهیل‌های بزرگ بخشی از سرحد با کانادا هستند. جاپان کشور جزیره‌ای است، پس ساحلش از هر طرف سرحد است.' },
-        { en: 'Natural borders are easy to see on a map. But nature does not always draw a clean line. A river can change its path over the years, and a mountain top can be hard to measure.',
-          es: 'Las fronteras naturales son fáciles de ver en un mapa. Pero la naturaleza no siempre dibuja una línea limpia. Un río puede cambiar su camino con los años, y la cima de una montaña puede ser difícil de medir.',
-          fa: 'سرحدهای طبیعی روی نقشه آسان دیده می‌شوند. اما طبیعت همیشه یک خط پاک نمی‌کشد. یک دریا ممکن است در طول سال‌ها راهش را تغییر دهد و اندازه کردن سر کوه ممکن است سخت باشد.' }
+        { en: '¡Hola! I guide hikers in the Andes. They are part of the Chile–Argentina border.', es: '¡Hola! Guío excursionistas en los Andes. Son parte de la frontera entre Chile y Argentina.', fa: 'اولا! من رهنمای کوه‌پیمایان در اندیز هستم. اندیز بخشی از سرحد چیلی و ارجنتاین است.' },
+        { en: 'A [[natural border|natural border]] follows a mountain range, a river or a coastline.', es: 'Una [[natural border|frontera natural]] sigue una cordillera, un río o una costa.', fa: '[[natural border|سرحد طبیعی]] از یک رشته‌کوه، دریا یا ساحل پیروی می‌کند.' },
+        { en: 'The Rio Grande is part of the US–Mexico border. Some Great Lakes border Canada.', es: 'El río Bravo es parte de la frontera entre EE. UU. y México. Algunos Grandes Lagos son frontera con Canadá.', fa: 'دریای ریو گرانده بخشی از سرحد امریکا و مکسیکو است. بعضی جهیل‌های بزرگ سرحد کانادا هستند.' },
+        { en: 'Japan\'s coast is its border. Rivers can move, and mountain tops are hard to measure.', es: 'La costa de Japón es su frontera. Los ríos se mueven y las cimas son difíciles de medir.', fa: 'ساحل جاپان سرحد آن است. دریا ممکن است راهش را تغییر دهد و اندازه کردن سر کوه سخت است.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'Which one is a natural border?', es: '¿Cuál es una frontera natural?', fa: 'کدام یک سرحد طبیعی است؟' },
         choices: [
-          { ok: true, t: { en: 'The Andes Mountains between Chile and Argentina', es: 'La cordillera de los Andes entre Chile y Argentina', fa: 'کوه‌های اندیز بین چیلی و ارجنتاین' },
+          { ok: true, t: { en: 'The Andes between Chile and Argentina', es: 'Los Andes entre Chile y Argentina', fa: 'اندیز بین چیلی و ارجنتاین' },
             why: { en: 'It follows a mountain range, so it is natural.', es: 'Sigue una cordillera, así que es natural.', fa: 'از یک رشته‌کوه پیروی می‌کند، پس طبیعی است.' } },
           { t: { en: 'A straight line drawn with a ruler on a map', es: 'Una línea recta dibujada con una regla en un mapa', fa: 'یک خط راست که با خط‌کش روی نقشه کشیده شده' },
             why: { en: 'A straight line drawn by people is a geometric border.', es: 'Una línea recta dibujada por personas es una frontera geométrica.', fa: 'خط راستی که مردم کشیده‌اند سرحد هندسی است.' } },
@@ -159,25 +145,20 @@ window.EPISODE = {
       role: { en: 'History teacher from Ghana', es: 'Maestro de historia de Ghana', fa: 'معلم تاریخ از غانا' },
       look: { skin: 5, hair: '#1b1410', shirt: '#2e8b57', pants: '#3b2f2f' },
       lines: [
-        { en: 'Akwaaba! I teach history in Ghana. Look at a map of Africa. Many borders are straight lines. A straight border drawn by people is a [[geometric border|geometric border]]. It does not follow any river or mountain.',
-          es: '¡Akwaaba! Enseño historia en Ghana. Mira un mapa de África. Muchas fronteras son líneas rectas. Una frontera recta dibujada por personas es una [[geometric border|frontera geométrica]]. No sigue ningún río ni montaña.',
-          fa: 'اکوابا! من در غانا تاریخ درس می‌دهم. به نقشهٔ افریقا نگاه کن. بسیاری از سرحدها خط راست هستند. سرحد راستی که مردم کشیده‌اند [[geometric border|سرحد هندسی]] است. از هیچ دریا یا کوهی پیروی نمی‌کند.' },
-        { en: 'European countries drew many of those lines in the late 1800s, sometimes with only a ruler and a map. They did not always think about the people already living there. Some families and villages ended up split between two countries.',
-          es: 'Países europeos dibujaron muchas de esas líneas a fines del siglo XIX, a veces solo con una regla y un mapa. No siempre pensaron en la gente que ya vivía allí. Algunas familias y pueblos quedaron divididos entre dos países.',
-          fa: 'کشورهای اروپایی بسیاری از این خط‌ها را در اواخر دههٔ ۱۸۰۰ کشیدند، گاهی فقط با یک خط‌کش و یک نقشه. آن‌ها همیشه به مردمی که از قبل آنجا زندگی می‌کردند فکر نکردند. بعضی خانواده‌ها و قریه‌ها بین دو کشور تقسیم شدند.' },
-        { en: 'Sometimes two countries do not agree on where a border is. That is a [[boundary dispute|boundary dispute]]. Old maps, history and resources can all start one. For example, China and India both claim some land high in the Himalaya Mountains.',
-          es: 'A veces dos países no están de acuerdo sobre dónde está una frontera. Eso es una [[boundary dispute|disputa fronteriza]]. Mapas viejos, la historia y los recursos pueden empezar una. Por ejemplo, China e India reclaman tierras en lo alto de las montañas del Himalaya.',
-          fa: 'گاهی دو کشور دربارهٔ جای یک سرحد موافق نیستند. این یک [[boundary dispute|اختلاف سرحدی]] است. نقشه‌های کهنه، تاریخ و منابع می‌توانند آن را شروع کنند. مثلاً چین و هند هر دو بعضی زمین‌های بلند در کوه‌های هیمالیا را از خود می‌دانند.' }
+        { en: 'Akwaaba! I teach history in Ghana. Many borders on a map of Africa are straight.', es: '¡Akwaaba! Enseño historia en Ghana. Muchas fronteras en un mapa de África son rectas.', fa: 'اکوابا! من در غانا تاریخ درس می‌دهم. بسیاری از سرحدهای روی نقشهٔ افریقا راست هستند.' },
+        { en: 'A straight line drawn by people, not following nature, is a [[geometric border|geometric border]].', es: 'Una línea recta dibujada por la gente, sin seguir la naturaleza, es una [[geometric border|frontera geométrica]].', fa: 'خط راستی که مردم کشیده‌اند و از طبیعت پیروی نمی‌کند [[geometric border|سرحد هندسی]] است.' },
+        { en: 'In the late 1800s, Europeans drew many with a ruler. Some villages were split.', es: 'A fines del siglo XIX, los europeos dibujaron muchas con regla. Algunas aldeas quedaron partidas.', fa: 'در اواخر دههٔ ۱۸۰۰، اروپایی‌ها بسیاری را با خط‌کش کشیدند. بعضی قریه‌ها تقسیم شدند.' },
+        { en: 'Old maps, history or resources can start a [[boundary dispute|boundary dispute]], like China and India\'s.', es: 'Mapas viejos, la historia o los recursos pueden causar una [[boundary dispute|disputa fronteriza]], como la de China e India.', fa: 'نقشه‌های کهنه، تاریخ یا منابع می‌توانند [[boundary dispute|اختلاف سرحدی]] شروع کنند، مثل چین و هند.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Why do some borders in Africa cut through villages and family land?', es: '¿Por qué algunas fronteras en África cruzan pueblos y tierras de familias?', fa: 'چرا بعضی سرحدها در افریقا از وسط قریه‌ها و زمین خانواده‌ها می‌گذرند؟' },
         choices: [
-          { ok: true, t: { en: 'People far away drew straight lines without thinking about who lived there', es: 'Gente lejana dibujó líneas rectas sin pensar en quién vivía allí', fa: 'مردمی از جای دور خط‌های راست کشیدند بدون فکر به کسانی که آنجا زندگی می‌کردند' },
+          { ok: true, t: { en: 'Faraway people drew lines without asking them', es: 'Gente lejana trazó líneas sin preguntarles', fa: 'مردم دور بدون پرسیدن از آن‌ها خط کشیدند' },
             why: { en: 'The lines were drawn on maps in Europe, not by the people living on the land.', es: 'Las líneas se dibujaron en mapas en Europa, no por la gente que vivía en esa tierra.', fa: 'این خط‌ها در اروپا روی نقشه کشیده شدند، نه به دست مردمی که روی آن زمین زندگی می‌کردند.' } },
-          { t: { en: 'The villages moved after the borders were drawn', es: 'Los pueblos se movieron después de que se dibujaron las fronteras', fa: 'قریه‌ها بعد از کشیدن سرحدها جا عوض کردند' },
+          { t: { en: 'The villages moved after the lines were drawn', es: 'Las aldeas se mudaron después de las líneas', fa: 'قریه‌ها بعد از کشیدن خط‌ها جا عوض کردند' },
             why: { en: 'The villages were already there. The lines were drawn across them.', es: 'Los pueblos ya estaban allí. Las líneas se dibujaron encima de ellos.', fa: 'قریه‌ها از قبل آنجا بودند. خط‌ها از روی آن‌ها کشیده شدند.' } },
-          { t: { en: 'Rivers pushed the villages across the line', es: 'Los ríos empujaron los pueblos al otro lado de la línea', fa: 'دریاها قریه‌ها را به آن طرف خط بردند' },
+          { t: { en: 'Floods pushed the villages across the line', es: 'Las inundaciones movieron las aldeas al otro lado', fa: 'سیلاب قریه‌ها را به آن طرف خط برد' },
             why: { en: 'These are geometric borders. They do not follow rivers at all.', es: 'Estas son fronteras geométricas. No siguen ríos.', fa: 'این‌ها سرحدهای هندسی هستند. اصلاً از دریاها پیروی نمی‌کنند.' } }
         ]
       }
@@ -188,25 +169,20 @@ window.EPISODE = {
       role: { en: 'River scientist from Vietnam', es: 'Científica de ríos de Vietnam', fa: 'دانشمند دریا از ویتنام' },
       look: { skin: 1, hair: '#1b1410', shirt: '#f2c14e', pants: '#2b4a6b' },
       lines: [
-        { en: 'Xin chào! I study the Mekong River. It flows through several countries. Laos, Thailand, Cambodia and Vietnam all depend on it for fish and for farm water. Rivers do not stop at a border sign. A dam [[upstream|upstream]] changes the water for everyone below.',
-          es: '¡Xin chào! Estudio el río Mekong. Pasa por varios países. Laos, Tailandia, Camboya y Vietnam dependen de él para pescar y para regar sus cultivos. Los ríos no se detienen en un letrero de frontera. Una represa [[upstream|río arriba]] cambia el agua para todos los de abajo.',
-          fa: 'سین چائو! من دریای میکانگ را مطالعه می‌کنم. این دریا از چند کشور می‌گذرد. لائوس، تایلند، کمبودیا و ویتنام برای ماهی و آب کشت به آن وابسته‌اند. دریاها کنار تابلوی سرحد نمی‌ایستند. یک بند آب در [[upstream|بالای دریا]] آب را برای همهٔ پایینی‌ها تغییر می‌دهد.' },
-        { en: 'So in 1995 these countries formed the Mekong River Commission. They share water data and plan together. It does not stop every argument, but it gives them a table to sit at. A [[treaty|treaty]], a written agreement between countries, can do the same.',
-          es: 'Por eso en 1995 estos países formaron la Comisión del Río Mekong. Comparten datos del agua y planean juntos. No detiene todas las discusiones, pero les da una mesa donde sentarse. Un [[treaty|tratado]], un acuerdo escrito entre países, puede hacer lo mismo.',
-          fa: 'برای همین در سال ۱۹۹۵ این کشورها کمیسیون دریای میکانگ را ساختند. آن‌ها معلومات آب را با هم شریک می‌کنند و با هم پلان می‌سازند. این همهٔ اختلاف‌ها را ختم نمی‌کند، اما به آن‌ها میزی برای نشستن می‌دهد. یک [[treaty|معاهده]]، یعنی توافق نوشته‌شده بین کشورها، هم همین کار را می‌کند.' },
-        { en: 'In 1960 India and Pakistan signed the Indus Waters Treaty. The World Bank, a [[neutral|neutral]] helper, helped them agree. It held for more than sixty years, even when the two countries fought. But the Aral Sea had no strong agreement. Its rivers were sent to cotton fields, and the sea lost most of its water.',
-          es: 'En 1960 India y Pakistán firmaron el Tratado de las Aguas del Indo. El Banco Mundial, un ayudante [[neutral|neutral]], los ayudó a ponerse de acuerdo. Duró más de sesenta años, incluso cuando los dos países pelearon. Pero el mar de Aral no tenía un acuerdo fuerte. Sus ríos se usaron para campos de algodón, y el mar perdió casi toda su agua.',
-          fa: 'در سال ۱۹۶۰ هند و پاکستان معاهدهٔ آب‌های سند را امضا کردند. بانک جهانی، یک کمک‌کنندهٔ [[neutral|بی‌طرف]]، به آن‌ها کمک کرد تا موافقه کنند. این معاهده بیشتر از شصت سال پابرجا ماند، حتی وقتی دو کشور جنگیدند. اما بحیرهٔ ارال توافق محکمی نداشت. دریاهای آن به کشتزارهای پخته برده شدند و بحیره بیشتر آبش را از دست داد.' }
+        { en: 'Xin chào! I study the Mekong. Laos, Thailand, Cambodia and Vietnam need its water.', es: '¡Xin chào! Estudio el Mekong. Laos, Tailandia, Camboya y Vietnam necesitan su agua.', fa: 'سین چائو! من میکانگ را مطالعه می‌کنم. لائوس، تایلند، کمبودیا و ویتنام به آب آن ضرورت دارند.' },
+        { en: 'Rivers ignore borders. A dam [[upstream|upstream]] changes the water for everyone below.', es: 'Los ríos no respetan fronteras. Una represa [[upstream|río arriba]] cambia el agua para todos abajo.', fa: 'دریاها سرحد نمی‌شناسند. یک بند در [[upstream|بالای دریا]] آب را برای همهٔ پایینی‌ها تغییر می‌دهد.' },
+        { en: 'In 1995 they formed the Mekong River Commission to share data. A [[treaty|treaty]] helps too.', es: 'En 1995 formaron la Comisión del Río Mekong para compartir datos. Un [[treaty|tratado]] también ayuda.', fa: 'در ۱۹۹۵ کمیسیون دریای میکانگ را ساختند تا معلومات شریک کنند. [[treaty|معاهده]] هم کمک می‌کند.' },
+        { en: 'A [[neutral|neutral]] World Bank helped make the 1960 Indus Waters Treaty. It held 60+ years.', es: 'El Banco Mundial, [[neutral|neutral]], ayudó con el Tratado del Indo de 1960. Duró más de 60 años.', fa: 'بانک جهانی [[neutral|بی‌طرف]] در معاهدهٔ ۱۹۶۰ آب‌های سند کمک کرد. بیشتر از ۶۰ سال پابرجا ماند.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'What happened to the Aral Sea?', es: '¿Qué le pasó al mar de Aral?', fa: 'بر سر بحیرهٔ ارال چه آمد؟' },
         choices: [
-          { ok: true, t: { en: 'Its rivers were sent to water cotton fields, and it lost most of its water', es: 'Sus ríos se usaron para regar campos de algodón, y perdió casi toda su agua', fa: 'دریاهایش برای آبیاری کشتزارهای پخته برده شدند و بیشتر آبش را از دست داد' },
+          { ok: true, t: { en: 'Its rivers went to cotton farms, so it shrank', es: 'Sus ríos fueron al algodón y se encogió', fa: 'دریاهایش به کشتزار پخته رفت و کوچک شد' },
             why: { en: 'With no strong agreement to protect it, the sea shrank over many years.', es: 'Sin un acuerdo fuerte que lo protegiera, el mar se encogió durante muchos años.', fa: 'بدون یک توافق محکم برای حفاظت، بحیره در طول سال‌ها کوچک شد.' } },
-          { t: { en: 'It froze over and never thawed', es: 'Se congeló y nunca se descongeló', fa: 'یخ بست و دیگر آب نشد' },
+          { t: { en: 'It froze over one winter and never thawed', es: 'Se congeló un invierno y nunca se derritió', fa: 'یک زمستان یخ بست و دیگر آب نشد' },
             why: { en: 'The sea shrank because people took its river water, not because of ice.', es: 'El mar se encogió porque la gente tomó el agua de sus ríos, no por el hielo.', fa: 'بحیره کوچک شد چون مردم آب دریاهایش را گرفتند، نه به خاطر یخ.' } },
-          { t: { en: 'A treaty split it evenly between two countries', es: 'Un tratado lo dividió por igual entre dos países', fa: 'یک معاهده آن را مساوی بین دو کشور تقسیم کرد' },
+          { t: { en: 'A treaty split it evenly between two countries', es: 'Un tratado lo dividió igual entre dos países', fa: 'یک معاهده آن را مساوی بین دو کشور تقسیم کرد' },
             why: { en: 'There was no strong agreement. That is part of why it was lost.', es: 'No hubo un acuerdo fuerte. Eso es parte de por qué se perdió.', fa: 'توافق محکمی نبود. این بخشی از دلیل از دست رفتنش است.' } }
         ]
       }
@@ -214,12 +190,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 27, y: 2, text: { en: 'THE GREAT ATLAS · 24 pages, one for every place you have walked, from Mapmaker\'s Valley to the far Pacific islands. 23 pages are home again. One page is still missing.',
-      es: 'EL GRAN ATLAS · 24 páginas, una por cada lugar que recorriste, desde el Valle del Cartógrafo hasta las lejanas islas del Pacífico. 23 páginas ya volvieron. Todavía falta una.',
-      fa: 'اطلس بزرگ · ۲۴ صفحه، یکی برای هر جایی که رفتی، از درهٔ نقشه‌کش تا جزیره‌های دور اقیانوس آرام. ۲۳ صفحه دوباره سر جایشان هستند. هنوز یک صفحه کم است.' } },
-    { x: 22, y: 13, text: { en: 'SILVER RIVER · This river is the [[border|border]] between two neighbors, North Bank and South Bank. Both use its water for farms, drinking and fishing. The river does not belong to just one side.',
-      es: 'RÍO PLATEADO · Este río es la [[border|frontera]] entre dos vecinos, Orilla Norte y Orilla Sur. Los dos usan su agua para cultivos, para beber y para pescar. El río no es de un solo lado.',
-      fa: 'دریای نقره‌ای · این دریا [[border|سرحد]] بین دو همسایه است، ساحل شمالی و ساحل جنوبی. هر دو از آب آن برای کشت، نوشیدن و ماهیگیری استفاده می‌کنند. این دریا مال فقط یک طرف نیست.' } }
+    { x: 27, y: 2, text: { en: 'THE GREAT ATLAS · 24 pages, one for every place you walked. 23 are home. One is still missing.', es: 'EL GRAN ATLAS · 24 páginas, una por cada lugar que recorriste. 23 ya están. Todavía falta una.', fa: 'اطلس بزرگ · ۲۴ صفحه، یکی برای هر جایی که رفتی. ۲۳ صفحه سر جایشان هستند. هنوز یکی کم است.' } },
+    { x: 22, y: 13, text: { en: 'SILVER RIVER · This river is the [[border|border]] between North Bank and South Bank. Both sides share its water.', es: 'RÍO PLATEADO · Este río es la [[border|frontera]] entre la Orilla Norte y la Orilla Sur. Los dos lados comparten su agua.', fa: 'دریای نقره‌ای · این دریا [[border|سرحد]] بین ساحل شمالی و ساحل جنوبی است. هر دو طرف در آب آن شریک هستند.' } }
   ],
 
   /* the quest: Farida on the South Bank (gold !) -> Mateo the surveyor in the mountains -> follow the Ink Thief's riddles to a geometric border, upstream and a natural border, then catch it -> back to Farida */
@@ -232,19 +204,15 @@ window.EPISODE = {
       role: { en: 'Farmer on the South Bank', es: 'Agricultora de la Orilla Sur', fa: 'دهقان در ساحل جنوبی' },
       look: { skin: 3, hair: '#2b1d14', shirt: '#3f8f6f', pants: '#4a3a2a', robe: true, hat: '#d9a441' },
       lines: [
-        { en: 'Please help! North Bank and South Bank made a map together. It shows our [[border|border]]: a line down the middle of the Silver River. Both sides signed it.',
-          es: '¡Ayuda, por favor! La Orilla Norte y la Orilla Sur hicieron un mapa juntas. Muestra nuestra [[border|frontera]]: una línea por el medio del Río Plateado. Los dos lados lo firmaron.',
-          fa: 'لطفاً کمک کن! ساحل شمالی و ساحل جنوبی با هم یک نقشه ساختند. این نقشه [[border|سرحد]] ما را نشان می‌دهد: یک خط در وسط دریای نقره‌ای. هر دو طرف آن را امضا کردند.' },
-        { en: 'An Ink Thief stole the map! It wants to smear the line so the neighbors fight. Mateo, the mapmaker, saw it run. He is in the mountains to the north-west. Will you ask him?',
-          es: '¡Un Ladrón de Tinta robó el mapa! Quiere borrar la línea para que los vecinos peleen. Mateo, el cartógrafo, lo vio correr. Está en las montañas, al noroeste. ¿Le preguntas?',
-          fa: 'یک دزد رنگ نقشه را دزدید! می‌خواهد خط را خراب کند تا همسایه‌ها جنگ کنند. ماتئو، نقشه‌کش، دید که کجا دوید. او در کوه‌ها به طرف شمال غرب است. از او می‌پرسی؟' }
+        { en: 'Please help! North Bank and South Bank made a map of our [[border|border]] together.', es: '¡Ayuda, por favor! La Orilla Norte y la Orilla Sur hicieron juntas un mapa de nuestra [[border|frontera]].', fa: 'لطفاً کمک کن! ساحل شمالی و ساحل جنوبی با هم نقشهٔ [[border|سرحد]] ما را ساختند.' },
+        { en: 'The line runs down the middle of the Silver River. Both sides signed it.', es: 'La línea va por el medio del Río Plateado. Los dos lados la firmaron.', fa: 'خط از وسط دریای نقره‌ای می‌گذرد. هر دو طرف آن را امضا کردند.' },
+        { en: 'An Ink Thief stole it! It wants to smear the line so the neighbors fight.', es: '¡Un Ladrón de Tinta lo robó! Quiere borrar la línea para que los vecinos peleen.', fa: 'یک دزد رنگ آن را دزدید! می‌خواهد خط را خراب کند تا همسایه‌ها جنگ کنند.' },
+        { en: 'Mateo the mapmaker saw it run. Ask him in the north-west mountains!', es: 'Mateo, el cartógrafo, lo vio correr. ¡Pregúntale en las montañas del noroeste!', fa: 'ماتئوی نقشه‌کش دید که کجا دوید. در کوه‌های شمال غرب از او بپرس!' }
       ],
       wait: { en: 'Mateo is in the mountains to the north-west. Cross the west bridge, then walk north.',
         es: 'Mateo está en las montañas, al noroeste. Cruza el puente del oeste y luego camina al norte.',
         fa: 'ماتئو در کوه‌ها به طرف شمال غرب است. از پل غربی بگذر، بعد به شمال برو.' },
-      thanks: { en: 'Our map is back, and the line is clear! Now both banks can read the same border. Clear borders help neighbors live in peace. Thank you!',
-        es: '¡Nuestro mapa volvió y la línea está clara! Ahora las dos orillas pueden leer la misma frontera. Las fronteras claras ayudan a los vecinos a vivir en paz. ¡Gracias!',
-        fa: 'نقشهٔ ما برگشت و خط روشن است! حالا هر دو ساحل می‌توانند یک سرحد را بخوانند. سرحدهای روشن به همسایه‌ها کمک می‌کنند که در صلح زندگی کنند. تشکر!' }
+      thanks: { en: 'Our map is back! Clear borders help neighbors live in peace. Thank you!', es: '¡Volvió nuestro mapa! Las fronteras claras ayudan a los vecinos a vivir en paz. ¡Gracias!', fa: 'نقشهٔ ما برگشت! سرحدهای روشن به همسایه‌ها کمک می‌کنند در صلح زندگی کنند. تشکر!' }
     },
     contact: {
       x: 12, y: 5,
@@ -252,12 +220,9 @@ window.EPISODE = {
       role: { en: 'Land surveyor from Peru', es: 'Topógrafo de Perú', fa: 'اندازه‌گیر زمین از پیرو' },
       look: { skin: 3, hair: '#1b1410', shirt: '#c8742a', pants: '#3a3a3a', hat: '#7a2f2f' },
       lines: [
-        { en: 'I measure land and mark borders. Yes, the Ink Thief ran past me, laughing! It held a map with a river on it.',
-          es: 'Yo mido la tierra y marco fronteras. ¡Sí, el Ladrón de Tinta pasó corriendo y riéndose! Llevaba un mapa con un río.',
-          fa: 'من زمین را اندازه می‌گیرم و سرحدها را نشانی می‌کنم. بله، دزد رنگ خنده‌کنان از کنارم دوید! یک نقشه با یک دریا در دستش بود.' },
-        { en: 'Then it tore the map into 3 pieces and hid them! Each piece is by a different kind of [[border|border]]. Listen to its riddles and walk to the right place. Then catch the thief!',
-          es: '¡Después rompió el mapa en 3 pedazos y los escondió! Cada pedazo está junto a un tipo distinto de [[border|frontera]]. Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
-          fa: 'بعد نقشه را سه تکه کرد و تکه‌ها را پنهان کرد! هر تکه کنار یک نوع دیگر [[border|سرحد]] است. به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
+        { en: 'I mark borders. The Ink Thief ran past me, laughing, with a river map!', es: 'Marco fronteras. ¡El Ladrón de Tinta pasó riéndose, con un mapa de un río!', fa: 'من سرحد نشانی می‌کنم. دزد رنگ خنده‌کنان با یک نقشهٔ دریا از کنارم دوید!' },
+        { en: 'It tore the map into 3 pieces, each by a different kind of [[border|border]].', es: 'Rompió el mapa en 3 pedazos, cada uno junto a un tipo distinto de [[border|frontera]].', fa: 'نقشه را سه تکه کرد، هر تکه کنار یک نوع دیگر [[border|سرحد]].' },
+        { en: 'Follow its riddles to each piece. Then catch the thief!', es: 'Sigue sus acertijos hasta cada pedazo. ¡Después atrapa al ladrón!', fa: 'چیستان‌هایش را تا هر تکه دنبال کن. بعد دزد را بگیر!' }
       ]
     },
     action: {
@@ -265,33 +230,23 @@ window.EPISODE = {
       at: [4, 3],
       hops: [[9, 9], [3, 7]],
       name: { en: 'The Border Ink Thief', es: 'El Ladrón de Tinta de la Frontera', fa: 'دزد رنگِ سرحد' },
-      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the border map into 3 pieces and hid them. Without the map, who knows where North Bank ends? Follow my riddles, if you can!"',
-        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el mapa de la frontera en 3 pedazos y los escondí. Sin el mapa, ¿quién sabrá dónde termina la Orilla Norte? ¡Sigue mis acertijos, si puedes!"',
-        fa: 'دزد رنگ می‌خندد: «هی هی! نقشهٔ سرحد را سه تکه کردم و پنهان کردم. بدون نقشه، کی می‌داند ساحل شمالی کجا تمام می‌شود؟ اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      taunt: { en: '"Hee hee! I tore the border map into 3 pieces. Who knows where North Bank ends now?"', es: '"¡Ji ji! Rompí el mapa de la frontera en 3 pedazos. ¿Quién sabe ahora dónde termina la Orilla Norte?"', fa: '«هی هی! نقشهٔ سرحد را سه تکه کردم. حالا کی می‌داند ساحل شمالی کجا تمام می‌شود؟»' },
       clues: [
-        { t: { en: 'Piece 1 is by a [[geometric border|geometric border]]: a long, straight line that people drew with a ruler, across empty sand.',
-            es: 'El pedazo 1 está junto a una [[geometric border|frontera geométrica]]: una línea larga y recta que la gente dibujó con una regla, a través de arena vacía.',
-            fa: 'تکهٔ ۱ کنار یک [[geometric border|سرحد هندسی]] است: یک خط دراز و راست که مردم با خط‌کش کشیدند، در میان ریگ خالی.' },
+        { t: { en: 'Piece 1 is by a [[geometric border|geometric border]]: a straight line people drew across empty sand.', es: 'El pedazo 1 está junto a una [[geometric border|frontera geométrica]]: una línea recta que la gente trazó por la arena vacía.', fa: 'تکهٔ ۱ کنار یک [[geometric border|سرحد هندسی]] است: خط راستی که مردم در ریگ خالی کشیدند.' },
           zones: [{ x: 31, y: 1, w: 15, h: 10 }],
           noBy: [{ x: 16, y: 11, w: 15, h: 3, t: { en: 'The river is a border too, but nature made it. That is a natural border. A geometric border is a straight line people drew, out in the sand.', es: 'El río también es una frontera, pero la hizo la naturaleza. Esa es una frontera natural. Una frontera geométrica es una línea recta que dibujó la gente, allá en la arena.', fa: 'دریا هم سرحد است، اما طبیعت آن را ساخته. این سرحد طبیعی است. سرحد هندسی یک خط راست است که مردم کشیدند، آن جا در ریگ.' } }],
-          found: { en: 'Piece 1 was in the desert! Few people live in deserts, so people often drew straight lines on the map. Much of the border between Egypt and Sudan is one straight line.', es: '¡El pedazo 1 estaba en el desierto! En los desiertos vive poca gente, así que muchas veces se dibujaron líneas rectas en el mapa. Gran parte de la frontera entre Egipto y Sudán es una sola línea recta.', fa: 'تکهٔ ۱ در ریگستان بود! در ریگستان‌ها مردم کم زندگی می‌کنند، پس اکثراً خط‌های راست روی نقشه کشیده شد. بیشتر سرحد بین مصر و سودان یک خط راست است.' } },
-        { t: { en: 'Piece 2 is [[upstream|upstream]] on the Silver River. The river flows east to the sea. Go the other way, toward the place the river comes from.',
-            es: 'El pedazo 2 está [[upstream|río arriba]] en el Río Plateado. El río corre al este, hacia el mar. Ve hacia el otro lado, hacia donde viene el río.',
-            fa: 'تکهٔ ۲ در [[upstream|بالای دریا]] است، در دریای نقره‌ای. دریا به طرف شرق تا بحر می‌رود. به طرف دیگر برو، به طرف جایی که دریا از آن جا می‌آید.' },
+          found: { en: 'In the desert! Few people live here, so straight lines were drawn, like Egypt–Sudan.', es: '¡En el desierto! Aquí vive poca gente, así que se trazaron líneas rectas, como Egipto–Sudán.', fa: 'در ریگستان! مردم کم اینجا زندگی می‌کنند، پس خط راست کشیده شد، مثل مصر و سودان.' } },
+        { t: { en: 'Piece 2 is [[upstream|upstream]] on the Silver River. It flows east, so go toward where it starts.', es: 'El pedazo 2 está [[upstream|río arriba]] en el Río Plateado. Corre al este, así que ve hacia donde empieza.', fa: 'تکهٔ ۲ در [[upstream|بالای دریا]] است، در دریای نقره‌ای. دریا به شرق می‌رود، پس به طرف سرچشمه‌اش برو.' },
           zones: [{ x: 1, y: 11, w: 8, h: 10 }],
           noBy: [{ x: 31, y: 11, w: 10, h: 3, t: { en: 'This is downstream, where the river meets the sea. Upstream is the other way, far to the west.', es: 'Esto es río abajo, donde el río llega al mar. Río arriba es hacia el otro lado, lejos al oeste.', fa: 'این جا پایین دریا است، جایی که دریا به بحر می‌رسد. بالای دریا به طرف دیگر است، دور در غرب.' } },
             { x: 31, y: 16, w: 9, h: 5, t: { en: 'This is the river mouth, where the river ends at the sea. That is downstream. Walk west, toward where the river begins.', es: 'Esta es la desembocadura, donde el río termina en el mar. Eso es río abajo. Camina al oeste, hacia donde empieza el río.', fa: 'این دهن دریا است، جایی که دریا در بحر تمام می‌شود. این پایین دریا است. به طرف غرب برو، به طرف جایی که دریا شروع می‌شود.' } }],
-          found: { en: 'Piece 2 was upstream, in the west! If people up here build a big dam, the water changes for everyone downstream. So neighbors must talk first and make a [[treaty|treaty]].', es: '¡El pedazo 2 estaba río arriba, en el oeste! Si aquí arriba se construye una represa grande, el agua cambia para todos los que están río abajo. Por eso los vecinos deben hablar primero y hacer un [[treaty|tratado]].', fa: 'تکهٔ ۲ در بالای دریا، در غرب بود! اگر مردم این جا یک بند بزرگ بسازند، آب برای همهٔ مردم پایین دریا تغییر می‌کند. پس همسایه‌ها باید اول گپ بزنند و یک [[treaty|معاهده]] بسازند.' } },
-        { t: { en: 'Piece 3 is by a [[natural border|natural border]] that runs along the top of a long mountain range. Find the snowy peaks.',
-            es: 'El pedazo 3 está junto a una [[natural border|frontera natural]] que va por la cima de una larga cordillera. Busca los picos nevados.',
-            fa: 'تکهٔ ۳ کنار یک [[natural border|سرحد طبیعی]] است که از سر یک سلسله‌کوه دراز می‌گذرد. قله‌های برفی را پیدا کن.' },
+          found: { en: 'Upstream! A dam here changes water downstream, so neighbors need a [[treaty|treaty]].', es: '¡Río arriba! Una represa aquí cambia el agua río abajo, así que los vecinos necesitan un [[treaty|tratado]].', fa: 'بالای دریا! یک بند اینجا آب پایین دریا را تغییر می‌دهد، پس همسایه‌ها به [[treaty|معاهده]] ضرورت دارند.' } },
+        { t: { en: 'Piece 3 is by a [[natural border|natural border]] along a long mountain range. Find the snowy peaks.', es: 'El pedazo 3 está junto a una [[natural border|frontera natural]] por una larga cordillera. Busca los picos nevados.', fa: 'تکهٔ ۳ کنار یک [[natural border|سرحد طبیعی]] در امتداد یک سلسله‌کوه دراز است. قله‌های برفی را پیدا کن.' },
           zones: [{ x: 1, y: 1, w: 15, h: 10 }],
           noBy: [{ x: 31, y: 1, w: 15, h: 10, t: { en: 'There are no mountains in this sand. A border here is a straight line drawn by people. Look for the snowy peaks in the west.', es: 'En esta arena no hay montañas. Una frontera aquí es una línea recta dibujada por la gente. Busca los picos nevados en el oeste.', fa: 'در این ریگ کوه نیست. سرحد این جا یک خط راست است که مردم کشیدند. قله‌های برفی را در غرب پیدا کن.' } }],
-          found: { en: 'Piece 3 was in the mountains! A border along a mountain range follows nature, so it is a natural border. The Andes are part of the border between Chile and Argentina.', es: '¡El pedazo 3 estaba en las montañas! Una frontera por una cordillera sigue la naturaleza, así que es una frontera natural. Los Andes son parte de la frontera entre Chile y Argentina.', fa: 'تکهٔ ۳ در کوه‌ها بود! سرحدی که از یک سلسله‌کوه می‌گذرد طبیعت را دنبال می‌کند، پس سرحد طبیعی است. کوه‌های اندیز بخشی از سرحد بین چیلی و ارجنتاین هستند.' } }
+          found: { en: 'The mountains! A border on a mountain range is natural, like the Andes.', es: '¡Las montañas! Una frontera en una cordillera es natural, como los Andes.', fa: 'کوه‌ها! سرحدی که روی سلسله‌کوه است طبیعی است، مثل اندیز.' } }
       ],
-      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the border map is whole again, and the line is still clear!',
-        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el mapa de la frontera está completo otra vez, ¡y la línea sigue clara!',
-        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ سرحد دوباره کامل است و خط هنوز روشن است!' },
+      win: { en: 'Got you! The thief drops the pieces and vanishes in ink. The map is whole again!', es: '¡Te atrapé! El ladrón suelta los pedazos y desaparece en tinta. ¡El mapa está completo otra vez!', fa: 'گرفتمت! دزد تکه‌ها را می‌اندازد و در رنگ گم می‌شود. نقشه دوباره کامل است!' },
       item: { icon: '🗺️', name: { en: 'The Silver River border map', es: 'El mapa de la frontera del Río Plateado', fa: 'نقشهٔ سرحد دریای نقره‌ای' } }
     }
   },
@@ -358,28 +313,28 @@ window.EPISODE = {
       fa: 'غرغروی بزرگ به بارانی از نور تبدیل می‌شود. صفحهٔ ۲۴ به خانه برمی‌گردد و اطلس بزرگ دوباره کامل است! هر سرزمین، دریا و راه دوباره روی نقشه است. تشکر، جهان‌گرد. جهان بزرگ است و حالا تو می‌دانی چطور آن را بخوانی.' },
     questions: [
       { q: { en: 'What is a natural border?', es: '¿Qué es una frontera natural?', fa: 'سرحد طبیعی چیست؟' },
-        choices: [{ en: 'A border that follows a river, a mountain range or a coastline', es: 'Una frontera que sigue un río, una cordillera o una costa', fa: 'سرحدی که از دریا، رشته‌کوه یا ساحل پیروی می‌کند' }, { en: 'A border drawn with a ruler on a map', es: 'Una frontera dibujada con regla en un mapa', fa: 'سرحدی که با خط‌کش روی نقشه کشیده شده' }, { en: 'A border that two countries still argue about', es: 'Una frontera que dos países todavía discuten', fa: 'سرحدی که دو کشور هنوز بر سرش اختلاف دارند' }, { en: 'A border guarded by soldiers', es: 'Una frontera vigilada por soldados', fa: 'سرحدی که عسکرها از آن نگهبانی می‌کنند' }], answer: 0,
+        choices: [{ en: 'One that follows a river, mountains or a coast', es: 'Una que sigue un río, montañas o una costa', fa: 'سرحدی که از دریا، کوه یا ساحل پیروی می‌کند' }, { en: 'One drawn with a ruler on a map', es: 'Una trazada con regla en un mapa', fa: 'سرحدی که با خط‌کش روی نقشه کشیده شده' }, { en: 'One that two countries still argue about', es: 'Una que dos países todavía discuten', fa: 'سرحدی که دو کشور هنوز بر سرش اختلاف دارند' }, { en: 'One guarded day and night by soldiers', es: 'Una vigilada día y noche por soldados', fa: 'سرحدی که عسکرها شب و روز نگهبانی می‌کنند' }], answer: 0,
         why: { en: 'Natural borders follow things in nature, like the Andes or the Rio Grande.', es: 'Las fronteras naturales siguen cosas de la naturaleza, como los Andes o el río Bravo.', fa: 'سرحدهای طبیعی از چیزهای طبیعت پیروی می‌کنند، مثل اندیز یا ریو گرانده.' } },
       { q: { en: 'What is a geometric border?', es: '¿Qué es una frontera geométrica?', fa: 'سرحد هندسی چیست؟' },
         choices: [{ en: 'A straight line drawn by people', es: 'Una línea recta dibujada por personas', fa: 'خط راستی که مردم کشیده‌اند' }, { en: 'A border that follows a mountain ridge', es: 'Una frontera que sigue la cima de una montaña', fa: 'سرحدی که از تیغهٔ کوه پیروی می‌کند' }, { en: 'A border along a seacoast', es: 'Una frontera a lo largo de una costa', fa: 'سرحدی در امتداد ساحل بحر' }, { en: 'A border that moves every few years', es: 'Una frontera que se mueve cada pocos años', fa: 'سرحدی که هر چند سال جا عوض می‌کند' }], answer: 0,
         why: { en: 'Geometric borders are straight lines. Many borders in Africa are like this.', es: 'Las fronteras geométricas son líneas rectas. Muchas fronteras de África son así.', fa: 'سرحدهای هندسی خط راست هستند. بسیاری از سرحدهای افریقا این‌طور هستند.' } },
       { q: { en: 'What is a boundary dispute?', es: '¿Qué es una disputa fronteriza?', fa: 'اختلاف سرحدی چیست؟' },
-        choices: [{ en: 'Two countries arguing over the same land', es: 'Dos países que discuten por la misma tierra', fa: 'دو کشور که بر سر یک زمین اختلاف دارند' }, { en: 'A treaty that ends a war', es: 'Un tratado que termina una guerra', fa: 'معاهده‌ای که جنگ را ختم می‌کند' }, { en: 'A tax charged at a border crossing', es: 'Un impuesto que se cobra al cruzar una frontera', fa: 'مالیه‌ای که هنگام گذشتن از سرحد گرفته می‌شود' }, { en: 'A fence built along a river', es: 'Una cerca construida junto a un río', fa: 'کتاره‌ای که کنار دریا ساخته شده' }], answer: 0,
+        choices: [{ en: 'Two countries arguing over land', es: 'Dos países que discuten por tierra', fa: 'دو کشور که بر سر زمین اختلاف دارند' }, { en: 'A treaty that ends a long war', es: 'Un tratado que termina una guerra larga', fa: 'معاهده‌ای که یک جنگ دراز را ختم می‌کند' }, { en: 'A tax charged at a border crossing', es: 'Un impuesto que se cobra en la frontera', fa: 'مالیه‌ای که هنگام گذشتن از سرحد گرفته می‌شود' }, { en: 'A tall fence built along a river', es: 'Una cerca alta junto a un río', fa: 'کتارهٔ بلندی که کنار دریا ساخته شده' }], answer: 0,
         why: { en: 'In a boundary dispute, two countries do not agree on where the border is.', es: 'En una disputa fronteriza, dos países no están de acuerdo sobre dónde está la frontera.', fa: 'در اختلاف سرحدی، دو کشور دربارهٔ جای سرحد موافق نیستند.' } },
       { q: { en: 'What is a treaty?', es: '¿Qué es un tratado?', fa: 'معاهده چیست؟' },
-        choices: [{ en: 'A written agreement between countries', es: 'Un acuerdo escrito entre países', fa: 'توافق نوشته‌شده بین کشورها' }, { en: 'A meeting that happens once a year', es: 'Una reunión que pasa una vez al año', fa: 'جلسه‌ای که سالی یک بار برگزار می‌شود' }, { en: 'A wall built along a border', es: 'Un muro construido en una frontera', fa: 'دیواری که کنار سرحد ساخته شده' }, { en: 'A map that shows where a border runs', es: 'Un mapa que muestra por dónde va una frontera', fa: 'نقشه‌ای که نشان می‌دهد سرحد از کجا می‌گذرد' }], answer: 0,
+        choices: [{ en: 'A written deal between countries', es: 'Un acuerdo escrito entre países', fa: 'توافق نوشته‌شده بین کشورها' }, { en: 'A meeting that happens once a year', es: 'Una reunión que pasa una vez al año', fa: 'جلسه‌ای که سالی یک بار برگزار می‌شود' }, { en: 'A wall built along a border', es: 'Un muro construido en una frontera', fa: 'دیواری که کنار سرحد ساخته شده' }, { en: 'A map that shows where a border runs', es: 'Un mapa que muestra por dónde va una frontera', fa: 'نقشه‌ای که نشان می‌دهد سرحد از کجا می‌گذرد' }], answer: 0,
         why: { en: 'A treaty is written down and signed. It can say how countries share water or land.', es: 'Un tratado se escribe y se firma. Puede decir cómo los países comparten agua o tierra.', fa: 'معاهده نوشته و امضا می‌شود. می‌تواند بگوید کشورها چطور آب یا زمین را شریک شوند.' } },
       { q: { en: 'Why did Laos, Thailand, Cambodia and Vietnam form the Mekong River Commission in 1995?', es: '¿Por qué Laos, Tailandia, Camboya y Vietnam formaron la Comisión del Río Mekong en 1995?', fa: 'چرا لائوس، تایلند، کمبودیا و ویتنام در سال ۱۹۹۵ کمیسیون دریای میکانگ را ساختند؟' },
         choices: [{ en: 'To share water data and plan together', es: 'Para compartir datos del agua y planear juntos', fa: 'تا معلومات آب را شریک کنند و با هم پلان بسازند' }, { en: 'To close the river to foreign ships', es: 'Para cerrar el río a barcos extranjeros', fa: 'تا دریا را به روی کشتی‌های خارجی ببندند' }, { en: 'To divide the river into private parts', es: 'Para dividir el río en partes privadas', fa: 'تا دریا را به بخش‌های شخصی تقسیم کنند' }, { en: 'To build one dam they would all own', es: 'Para construir una sola represa de todos', fa: 'تا یک بند آب بسازند که مال همه باشد' }], answer: 0,
         why: { en: 'The commission gives the countries a table to sit at and share what they know.', es: 'La comisión les da a los países una mesa donde sentarse y compartir lo que saben.', fa: 'این کمیسیون به کشورها میزی برای نشستن و شریک کردن دانسته‌هایشان می‌دهد.' } },
       { q: { en: 'What is surprising about the Indus Waters Treaty?', es: '¿Qué tiene de sorprendente el Tratado de las Aguas del Indo?', fa: 'چه چیز معاهدهٔ آب‌های سند تعجب‌آور است؟' },
-        choices: [{ en: 'It held for more than sixty years, even when India and Pakistan fought', es: 'Duró más de sesenta años, incluso cuando India y Pakistán pelearon', fa: 'بیشتر از شصت سال پابرجا ماند، حتی وقتی هند و پاکستان جنگیدند' }, { en: 'It was signed by every country in the world', es: 'Lo firmaron todos los países del mundo', fa: 'همهٔ کشورهای جهان آن را امضا کردند' }, { en: 'It gave all the water to one country', es: 'Le dio toda el agua a un solo país', fa: 'تمام آب را به یک کشور داد' }, { en: 'It was never written down', es: 'Nunca se escribió', fa: 'هرگز نوشته نشد' }], answer: 0,
+        choices: [{ en: 'It lasted 60+ years, even through wars', es: 'Duró más de 60 años, aun con guerras', fa: 'بیشتر از ۶۰ سال، حتی در جنگ‌ها، دوام کرد' }, { en: 'Every country in the world signed it', es: 'Todos los países del mundo lo firmaron', fa: 'همهٔ کشورهای جهان آن را امضا کردند' }, { en: 'It gave all of the water to India', es: 'Le dio toda el agua a India', fa: 'تمام آب را به هند داد' }, { en: 'It was never written down on paper', es: 'Nunca se escribió en papel', fa: 'هرگز روی کاغذ نوشته نشد' }], answer: 0,
         why: { en: 'With help from the World Bank, the treaty held longer than many treaties in calmer places.', es: 'Con ayuda del Banco Mundial, el tratado duró más que muchos tratados en lugares más tranquilos.', fa: 'با کمک بانک جهانی، این معاهده از بسیاری معاهده‌ها در جاهای آرام‌تر بیشتر دوام کرد.' } },
       { q: { en: 'What happened to the Aral Sea?', es: '¿Qué le pasó al mar de Aral?', fa: 'بر سر بحیرهٔ ارال چه آمد؟' },
-        choices: [{ en: 'Rivers that fed it were sent to water cotton fields', es: 'Los ríos que lo alimentaban se usaron para regar campos de algodón', fa: 'دریاهایی که به آن آب می‌دادند به کشتزارهای پخته برده شدند' }, { en: 'An earthquake opened a channel to the ocean', es: 'Un terremoto abrió un canal hacia el océano', fa: 'یک زلزله راهی به سوی بحر باز کرد' }, { en: 'It froze over and never thawed', es: 'Se congeló y nunca se descongeló', fa: 'یخ بست و دیگر آب نشد' }, { en: 'A treaty split it evenly', es: 'Un tratado lo dividió por igual', fa: 'یک معاهده آن را مساوی تقسیم کرد' }], answer: 0,
+        choices: [{ en: 'Its rivers were used for cotton fields', es: 'Sus ríos se usaron para el algodón', fa: 'دریاهایش برای کشتزار پخته استفاده شد' }, { en: 'An earthquake opened a channel to the ocean', es: 'Un terremoto abrió un canal hacia el océano', fa: 'یک زلزله راهی به سوی بحر باز کرد' }, { en: 'It froze over and never thawed', es: 'Se congeló y nunca se descongeló', fa: 'یخ بست و دیگر آب نشد' }, { en: 'A treaty split it evenly in two', es: 'Un tratado lo dividió igual en dos', fa: 'یک معاهده آن را مساوی دو تکه کرد' }], answer: 0,
         why: { en: 'No strong agreement protected the sea, so it lost most of its water.', es: 'Ningún acuerdo fuerte protegió el mar, así que perdió casi toda su agua.', fa: 'هیچ توافق محکمی از بحیره حفاظت نکرد، پس بیشتر آبش را از دست داد.' } },
       { q: { en: 'Two countries share one river. Why do they need to work together?', es: 'Dos países comparten un río. ¿Por qué necesitan trabajar juntos?', fa: 'دو کشور در یک دریا شریک هستند. چرا باید با هم کار کنند؟' },
-        choices: [{ en: 'The river keeps flowing across the border, so what one side does changes the other', es: 'El río sigue corriendo a través de la frontera, así que lo que hace un lado cambia al otro', fa: 'دریا از سرحد می‌گذرد، پس کار یک طرف طرف دیگر را تغییر می‌دهد' }, { en: 'Rivers stop flowing at the border', es: 'Los ríos dejan de correr en la frontera', fa: 'دریاها کنار سرحد از جریان می‌ایستند' }, { en: 'Only one country can ever use a river', es: 'Solo un país puede usar un río', fa: 'فقط یک کشور می‌تواند از دریا استفاده کند' }, { en: 'Rivers are not useful for farms', es: 'Los ríos no sirven para los cultivos', fa: 'دریاها برای کشت به درد نمی‌خورند' }], answer: 0,
+        choices: [{ en: 'What one side does changes the other', es: 'Lo que hace un lado cambia al otro', fa: 'کار یک طرف طرف دیگر را تغییر می‌دهد' }, { en: 'Rivers stop flowing at the border line', es: 'Los ríos dejan de correr en la frontera', fa: 'دریاها کنار خط سرحد از جریان می‌ایستند' }, { en: 'Only one country can ever use a river', es: 'Solo un país puede usar un río', fa: 'فقط یک کشور می‌تواند از دریا استفاده کند' }, { en: 'Rivers are not useful for farms', es: 'Los ríos no sirven para los cultivos', fa: 'دریاها برای کشت به درد نمی‌خورند' }], answer: 0,
         why: { en: 'Rivers do not stop for a border sign. A dam upstream changes the water downstream.', es: 'Los ríos no se detienen por un letrero de frontera. Una represa río arriba cambia el agua río abajo.', fa: 'دریاها برای تابلوی سرحد نمی‌ایستند. بند آب در بالای دریا آب پایین را تغییر می‌دهد.' } }
     ]
   },
