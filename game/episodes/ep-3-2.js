@@ -38,6 +38,7 @@ window.EPISODE = {
     'PKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK'
   ],
   start: [5, 8],
+  train: true, // this trip comes with a train ticket: step along the tracks and the train carries you (before the Rail Pass in 3.3)
 
   secret: { tool: 'canoe', at: [40, 12],
     text: { en: 'The canoe reached an island in Lake Baikal! In the chest is a note. It says Baikal is the deepest lake on Earth. It is more than 1,600 meters deep.',
