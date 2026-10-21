@@ -3567,10 +3567,10 @@ let tx = seatX, ty = seatY, ease = 110;
 if (!WW.calm) { tx += Math.cos(now / 900) * 5; ty += Math.sin(now / 640) * 3; }
 if (F.mode === 'go' || F.mode === 'hover') {
 let px, py, off = false;
-if (onScreen(F.at, sx, sy)) { [px, py] = center(F.at, sx, sy); py -= 20; }
+if (onScreen(F.at, sx, sy)) { [px, py] = center(F.at, sx, sy); py -= 20; if (py < 24) { py += 20; px += px > 200 ? -21 : 21; } }
 else {
 const [cx, cy] = center(F.at, sx, sy), dx = cx - hcx, dy = cy - hcy, k = Math.min((dx ? (dx > 0 ? 242 - hcx : hcx - 14) / Math.abs(dx) : 1e9), (dy ? (dy > 0 ? 162 - hcy : hcy - 14) / Math.abs(dy) : 1e9));
-px = hcx + dx * k; py = hcy + dy * k; off = true;
+px = hcx + dx * k; py = Math.max(24, hcy + dy * k); off = true;
 }
 F.off = off;
 if (F.mode === 'go') { tx = px; ty = py; ease = 150; if (Math.hypot(F.x - px, F.y - py) < 4) { F.mode = 'hover'; F.until = now + F.hold; } }
@@ -3586,7 +3586,7 @@ if (sp > 0.03) F.trail.push({ x: F.x + (Math.random() - 0.5) * 6, y: F.y + 4 + (
 F.trail = F.trail.filter(p => now - p.t < 420).slice(-14);
 let dx = F.x - hcx, dy = F.y - hcy;
 if (Math.abs(dx) < 16 && Math.abs(dy) < 16) { if (Math.abs(dy) >= Math.abs(dx) * 1.2) F.y = hcy + (dy < 0 ? -16 : 16); else F.x = hcx + (dx < 0 ? -16 : 16); }
-if (F.mode === 'hover' && !F.off && onScreen(F.at, sx, sy)) { const [ax, ay] = center(F.at, sx, sy); if (Math.abs(F.x - ax) < 14 && Math.abs(F.y - ay) < 15) F.y = ay - 15; }
+if (F.mode === 'hover' && !F.off && onScreen(F.at, sx, sy)) { const [ax, ay] = center(F.at, sx, sy); if (Math.abs(F.x - ax) < 16 && Math.abs(F.y - ay) < 15) { if (ay - 15 >= 22) F.y = ay - 15; else F.x = ax + (F.x < ax ? -16 : 16); } }
 let lx = 0, ly = 0;
 const lq = (now - F.loopT) / 650;
 if (lq >= 0 && lq < 1 && !WW.calm) { lx = Math.sin(lq * Math.PI * 2) * 7; ly = -(1 - Math.cos(lq * Math.PI * 2)) * 6; }
