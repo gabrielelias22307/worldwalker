@@ -1,10 +1,13 @@
 /* WORLDWALKER engine · building in place and planting that teaches (FUN-PASS-2, Part C)
-   build: [{ id, kind: 'place', board: [x, y], tile: 'F', ok: [[x, y], ...], cost: { wood: 1 } (each piece),
-            name, ask, why (said at a right spot), wrong (why a spot is wrong), done }]
+   build: [{ id, kind: 'place', board: [x, y], tile: 'F', ok: [[x, y], [x, y, 'R'], ...], cost: { wood: 1 } (each piece),
+            name, ask, why (said at a right spot), wrong (why a spot is wrong), done,
+            wrongBy: [{ x, y, w, h, t }] (optional: its own reason for a wrong area), over: '~' (optional: pieces can go on these tiles) }]
+     A spot with a third letter gets that tile (a roof, a wall); the others get tile.
      Walk into the build board, take the kit (tool 6), and put each piece where it belongs (Space). A right spot builds it;
      a wrong spot leaves a red piece and says why — face it and press Space to pick it up (nothing is lost). When every piece
      is in, the build is saved (it stays built on replays).
-   plant: { basket: [x, y], crops: [{ id, icon, name, zones: [{ x, y, w, h }], ok, no, noBy: [{ x, y, w, h, t }], rain: true, dry }] }
+   plant: { basket: [x, y], crops: [{ id, icon, name, zones: [{ x, y, w, h }], tiles: 'tq', ok, no, noBy: [{ x, y, w, h, t }], rain: true, dry }] }
+     tiles: the crop also grows on these map letters (like terraces 't' the student built).
      The basket gives seeds of each crop. A seed grows only in its zones (and, with rain: true, only while the summer monsoon
      rain falls). Anywhere else it sprouts, wilts with a one-line reason, and the seed comes back.
    seasons: { dry: 40, wet: 40 } — the monsoon comes and goes (seconds); rain on the map while it is wet. */
@@ -17,6 +20,8 @@
   F.on = () => !!(WW.ep && WW.ep.plant);
   const places = () => (WW.ep.build || []).filter(b => b.kind === 'place');
   const built = id => ((WW.save.built || {})[WW.ep.id] || []).includes(id);
+  const tileOf = (b, p) => p[2] || b.tile;
+  const leftOf = b => b.ok.filter(p => G().tileAt(p[0], p[1]) !== tileOf(b, p)).length;
 
   /* ---------------- set up ---------------- */
   F.ents = (ep) => {
@@ -28,7 +33,7 @@
   F.setup = (ep) => {
     const r = WW.run;
     r.kit = null; r.crop = 0; r.wet = false; r.told = {};
-    places().filter(b => built(b.id)).forEach(b => b.ok.forEach(([x, y]) => G().setTile(x, y, b.tile))); // built before: still built
+    places().filter(b => built(b.id)).forEach(b => b.ok.forEach(p => G().setTile(p[0], p[1], tileOf(b, p)))); // built before: still built
     if (ep.seasons) { r.wet = false; r.seasonAt = performance.now() + ep.seasons.dry * 1000; WW.fx.setSky && WW.fx.setSky('clear'); }
     badge();
   };
@@ -72,7 +77,7 @@
   F.current = () => F.crops()[WW.run.crop % Math.max(1, F.crops().length)];
   F.seedCount = () => { const c = F.current(); return c ? X().have('seed:' + c.id) : 0; };
   F.nextCrop = () => { WW.run.crop = (WW.run.crop + 1) % F.crops().length; };
-  const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+  const inZone = (c, x, y) => (c.zones || []).some(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h) || (!!c.tiles && c.tiles.includes(G().tileAt(x, y)));
   const ground = ch => !WW.solid(ch) && !':-|~=bBkdlZG%'.includes(ch);
   F.plant = (x, y, e) => {
     const c = F.current(), g = G();
@@ -117,7 +122,7 @@
         box.innerHTML = `<h3>🔨 ${esc(L(b.name))}</h3><p class="say">${WW.rich(done ? b.done : b.ask)}</p>` +
           (done ? '' : `<p class="small"><b>${esc(T('costs'))}:</b> ${esc(cost)} ${esc(T('perPiece'))} · ${b.ok.length} ${esc(T('pieces'))} · ${esc(T('youHave'))}: ${X().have('wood')} ${esc(T('item_wood'))}, ${X().have('fiber')} ${esc(T('item_fiber'))}</p>`);
         const a = document.createElement('div'); a.className = 'acts';
-        if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: b.ok.filter(([x, y]) => G().tileAt(x, y) !== b.tile).length, prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
+        if (!done && !(r.kit && r.kit.id === b.id)) a.appendChild(WW.btn('🔨 ' + esc(T('takeKit')), 'gold', () => { r.kit = { id: b.id, left: leftOf(b), prepaid: 0 }; h.close(); X().pick('build', true); WW.chris.say(T('kitHow')); }));
         a.appendChild(WW.btn(T('close'), done || (r.kit && r.kit.id === b.id) ? 'gold' : 'ghost', () => h.close()));
         box.appendChild(a);
       }
@@ -125,29 +130,30 @@
   }
   F.place = (x, y, e) => {
     const b = F.kit(), r = WW.run, g = G(); if (!b) return false;
-    if (e || !g.walkable(x, y) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
+    if (e || !(g.walkable(x, y) || (b.over && b.over.includes(g.tileAt(x, y)))) || (x === g.player.x && y === g.player.y)) { WW.chris.say(T('sgBlocked')); WW.sfx('bad'); return true; }
     if (!r.kit.prepaid) { // each piece costs wood (or fiber) the first time it goes down
       const lack = Object.entries(b.cost || {}).filter(([k, n]) => X().have(k) < n);
       if (lack.length) { WW.chris.say(T('pieceNeed').replace('{c}', Object.entries(b.cost).map(([k, n]) => `${n} ${T('item_' + k)}`).join(' + ')) + ' ' + lack.map(([k]) => T('how_' + k)).join(' ')); WW.sfx('bad'); return true; }
       Object.entries(b.cost || {}).forEach(([k, n]) => X().use(k, n));
     } else r.kit.prepaid--;
-    const right = b.ok.some(p => p[0] === x && p[1] === y) && g.tileAt(x, y) !== b.tile;
+    const spot = b.ok.find(p => p[0] === x && p[1] === y), right = spot && g.tileAt(x, y) !== tileOf(b, spot);
     if (right) {
-      g.setTile(x, y, b.tile); r.kit.left--;
+      g.setTile(x, y, tileOf(b, spot)); r.kit.left--;
       WW.fx.burst(x, y, 'gold'); WW.sfx('chop'); g.shake();
       if (r.kit.left <= 0) return finish(b);
       WW.chris.say(`✅ ${L(b.why)} ${T('piecesLeft').replace('{n}', r.kit.left)}`, null, { at: [x, y] });
     } else {
       g.ents.push({ kind: 'piece', x, y, b });
       WW.sfx('bad'); g.shake();
-      WW.chris.say(`❌ ${L(b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
+      const band = (b.wrongBy || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+      WW.chris.say(`❌ ${L(band ? band.t : b.wrong)} ${T('pickPiece')}`, null, { at: [x, y] });
     }
     X().render();
     return true;
   };
   F.pickPiece = (e) => { // a piece in the wrong spot comes back to your hands (already paid for)
     e.gone = true; const r = WW.run;
-    if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: e.b.ok.filter(([x, y]) => G().tileAt(x, y) !== e.b.tile).length, prepaid: 0 };
+    if (!r.kit || r.kit.id !== e.b.id) r.kit = { id: e.b.id, left: leftOf(e.b), prepaid: 0 };
     r.kit.prepaid++; X().pick('build', true); WW.sfx('blip'); WW.chris.say(T('piecePicked')); X().render();
   };
   function finish(b) {

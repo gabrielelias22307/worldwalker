@@ -664,9 +664,10 @@
     get ents() { return ents; }, get player() { return player; },
     noSmudges() { G.noSmudges = true; },
     use(x, y) { const e = entAt(x, y); return WW.tools.act(x, y, e); },
-    useOn(tiles) { // face the first free tile in the list and use the tool on it (play-tests)
-      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
-      for (const [x, y] of tiles) if (walkable(x, y) && !entAt(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
+    useOn(tiles, over) { // face the first free tile in the list and use the tool on it (play-tests; over: other tiles allowed, like water)
+      const open = (x, y) => (walkable(x, y) || (over || '').includes(tileAt(x, y))) && !entAt(x, y);
+      for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y, tiles)) { actFacing(); return [x, y]; }
+      for (const [x, y] of tiles) if (open(x, y) && this.faceFrom(x, y)) { actFacing(); return [x, y]; }
       return null;
     }
   };

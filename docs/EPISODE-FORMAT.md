@@ -113,7 +113,12 @@ A wrong spot says which way the right one is (or, on the grid, which square this
 { id: 'fence', kind: 'place', board: [1, 4], tile: 'F', ok: [[5, 1], [5, 3], [16, 1], [16, 3]], cost: { wood: 1 } /* each piece */,
   name: {..}, ask: {..} /* the big idea and what to build */, why: {..} /* a right spot */, wrong: {..} /* why a spot is wrong */, done: {..} }
 ```
-`tools/check.js` checks that every piece spot is open ground you can reach, and that once it is built (a fence is solid) every person, the stone and every scrap can still be reached.
+Optional:
+- A spot with a third letter gets its own tile: `ok: [[10, 4, 'R'], [11, 4, 'R'], [10, 5], [11, 5]]` with `tile: 'h'` builds a roof row over a wall row (a sawmill, a school).
+- `over: '~'` lets pieces go on those tiles too (water, for a dock `k` or a bridge `b`). The student stands on the shore and faces the water.
+- `wrongBy: [{ x, y, w, h, t: {..} }]` gives a wrong area its own reason ("too dry, a young tree dies here"), used before `wrong`.
+
+`tools/check.js` checks that every piece spot is open ground (or an `over` tile next to ground) you can reach, that no `wrongBy` area covers a right spot, and that once it is built (a fence is solid) every person, the stone and every scrap can still be reached.
 
 ## Planting that teaches (`plant`, `seasons`)
 
@@ -123,6 +128,7 @@ plant: { basket: [2, 18], ask: {..}, crops: [
   { id: 'coffee', icon: '☕', name: {..}, zones: [{ x: 1, y: 8, w: 30, h: 5 }], ok: {..}, no: {..},
     noBy: [{ x: 0, y: 0, w: 32, h: 8, t: {..} /* why it wilts in this band: too cold up here */ }] },
   { id: 'rice', icon: '🌾', name: {..}, rain: true, dry: {..} /* why it wilts with no rain */, zones: [...], ok: {..}, no: {..} } ] },
+// tiles: 't' — the crop also grows on these map letters (7.1: tea on the terraces the student built)
 seasons: { dry: 35, wet: 45 }   // seconds: the monsoon comes and goes; rain falls on the map and a badge shows the season
 ```
 

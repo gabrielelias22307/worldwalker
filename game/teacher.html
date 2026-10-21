@@ -390,7 +390,7 @@
     if (ep.tools || ep.build || ep.plant) {
       h += `<section class="part"><h2>🪓 ${esc(HT('pBuild'))}</h2>${ep.tools ? `<p>${esc(HT('toolsOn'))}</p>` : ''}`;
       (ep.build || []).filter(b => b.kind === 'place').forEach(b => {
-        h += `<div class="tbox"><h3>🔨 ${esc(L(b.name))}</h3><div class="muted">${esc(HT('cost'))}: ${esc(costTxt(b.cost))} × ${b.ok.length} · (${b.ok.map(p => p.join(', ')).join(') (')})</div><div class="say">${rich(b.ask)}</div><p class="muted"><b>✗</b> ${rich(b.wrong)}</p></div>`;
+        h += `<div class="tbox"><h3>🔨 ${esc(L(b.name))}</h3><div class="muted">${esc(HT('cost'))}: ${esc(costTxt(b.cost))} × ${b.ok.length} · (${b.ok.map(p => p.slice(0, 2).join(', ')).join(') (')})</div><div class="say">${rich(b.ask)}</div><p class="muted"><b>✗</b> ${rich(b.wrong)}</p>${(b.wrongBy || []).map(z => `<p class="muted"><b>✗</b> ${rich(z.t)}</p>`).join('')}</div>`;
       });
       if (ep.plant) h += `<div class="tbox"><h3>🧺 ${ep.plant.crops.map(c => c.icon + ' ' + esc(L(c.name))).join(' · ')}</h3>${ep.plant.crops.map(c => `<p><b>${c.icon} ${esc(L(c.name))}</b>${c.rain ? ' 🌧️' : ''}: ${rich(c.ok)}<br><span class="muted">✗ ${rich(c.no)}${c.dry ? ' · ' + rich(c.dry) : ''}</span></p>`).join('')}</div>`;
       (ep.build || []).filter(b => b.kind === 'repair').forEach(b => {

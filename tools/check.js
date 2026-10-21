@@ -231,11 +231,20 @@ function checkEpisode(file) {
       if (!b.name || !b.ask || !b.why || !b.wrong || !b.done) errs.push(`${w}: a place build needs name, ask, why, wrong and done`);
       if (!WW.tiles[b.tile]) errs.push(`${w}: tile "${b.tile}" is not a map letter`);
       if (!(b.ok || []).length) errs.push(`${w}: a place build needs ok: [[x, y], ...]`);
-      (b.ok || []).forEach(p => { if (!at(p, w)) return; const k = p.join(','); if (solid(p[0], p[1]) || blockers.has(k)) errs.push(`${w}: piece spot (${k}) is not open ground`); else if (!seen.has(k)) errs.push(`${w}: piece spot (${k}) cannot be reached`); });
+      const nearSeen = ([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => seen.has((x + dx) + ',' + (y + dy)));
+      (b.ok || []).forEach(p => {
+        if (!at(p, w)) return; const k = p.slice(0, 2).join(',');
+        if (p[2] && !WW.tiles[p[2]]) errs.push(`${w}: tile "${p[2]}" at (${k}) is not a map letter`);
+        if (blockers.has(k)) errs.push(`${w}: piece spot (${k}) has something on it`);
+        else if (b.over && b.over.includes(tile(p[0], p[1]))) { if (!nearSeen(p)) errs.push(`${w}: piece spot (${k}) cannot be reached`); }
+        else if (solid(p[0], p[1])) errs.push(`${w}: piece spot (${k}) is not open ground${b.over ? ' or ' + b.over : ''}`);
+        else if (!seen.has(k)) errs.push(`${w}: piece spot (${k}) cannot be reached`);
+      });
+      (b.wrongBy || []).forEach((z, j) => { if (!z.t || !z.t.en || !z.t.es || !z.t.fa) errs.push(`${w}: wrongBy ${j} needs t in 3 languages`); if ((b.ok || []).some(p => p[0] >= z.x && p[1] >= z.y && p[0] < z.x + z.w && p[1] < z.y + z.h)) errs.push(`${w}: wrongBy ${j} covers a right spot`); });
       if (!b.board) errs.push(`${w}: a place build needs board: [x, y]`); else if (!nextTo(b.board)) errs.push(`${w}: the build board cannot be reached`);
       // once it is built, everything a student needs must still be reachable (a fence must never wall anyone in)
-      if (WW.solid(b.tile)) {
-        const walls = new Set((b.ok || []).map(p => p.join(',')));
+      if ((b.ok || []).some(p => WW.solid(p[2] || b.tile))) {
+        const walls = new Set((b.ok || []).filter(p => WW.solid(p[2] || b.tile)).map(p => p.slice(0, 2).join(',')));
         const s2 = new Set([ep.start.join(',')]), q2 = [ep.start];
         while (q2.length) { const [x, y] = q2.shift(); for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (s2.has(k) || walls.has(k) || (solid(nx, ny) && !fixedAll.has(k)) || block.has(k)) continue; s2.add(k); q2.push([nx, ny]); } }
         const near2 = ([x, y]) => [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => s2.has((x + dx) + ',' + (y + dy)));

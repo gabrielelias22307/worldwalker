@@ -169,21 +169,24 @@ const CANVAS = process.argv.includes('--canvas');
         await page.locator('#ww-ov .pbtn.gold').click(); await page.waitForFunction(() => !WW.paused);
         if (await page.evaluate(() => WW.tools.selected()) !== 'build') throw new Error('taking the kit did not pick the build tool');
         // a wrong spot first: it says why, leaves a red piece, and the piece can be picked up again
-        const wrong = await page.evaluate(ok => { const g = WW.game, [W, H] = g.size, okS = new Set(ok.map(p => p.join())); for (let d = 3; d < 12; d++) for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) { if (Math.abs(x - ok[0][0]) + Math.abs(y - ok[0][1]) !== d || okS.has(x + ',' + y) || !g.walkable(x, y) || g.entAt(x, y)) continue; if (WW.dbg.faceFrom(x, y, ok)) return [x, y]; } return null; }, b.ok);
+        const band = (b.wrongBy || [])[0]; // a wrong area with its own reason: try a spot there
+        const wrong = band ? await page.evaluate(([z, ok]) => { const g = WW.game; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) if (g.walkable(x, y) && !g.entAt(x, y) && WW.dbg.faceFrom(x, y, ok)) return [x, y]; return null; }, [band, b.ok]) :
+          await page.evaluate(ok => { const g = WW.game, [W, H] = g.size, okS = new Set(ok.map(p => p.slice(0, 2).join())); for (let d = 3; d < 12; d++) for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) { if (Math.abs(x - ok[0][0]) + Math.abs(y - ok[0][1]) !== d || okS.has(x + ',' + y) || !g.walkable(x, y) || g.entAt(x, y)) continue; if (WW.dbg.faceFrom(x, y, ok)) return [x, y]; } return null; }, b.ok);
         if (!wrong) throw new Error('no wrong spot to try');
         await page.evaluate(() => WW.dbg.act());
         const say = await page.textContent('.cbubble');
         if (!/❌/.test(say)) throw new Error('a wrong spot was not explained: ' + say);
+        if (band && !say.includes(band.t.en.slice(0, 20))) throw new Error('the wrong area did not give its own reason: ' + say);
         if (!(await page.evaluate(([x, y]) => WW.dbg.ents.some(e => e.kind === 'piece' && !e.gone && e.x === x && e.y === y), wrong))) throw new Error('no red piece on the wrong spot');
         await page.evaluate(() => WW.dbg.act()); // pick it up
         if (await page.evaluate(() => WW.dbg.ents.some(e => e.kind === 'piece' && !e.gone))) throw new Error('could not pick the wrong piece up');
         for (let i = 0; i < b.ok.length; i++) {
-          if (!(await page.evaluate(t => WW.dbg.useOn(t), [b.ok[i]]))) throw new Error('could not reach piece spot ' + b.ok[i]);
+          if (!(await page.evaluate(t => WW.dbg.useOn(...t), [[b.ok[i]], b.over || '']))) throw new Error('could not reach piece spot ' + b.ok[i]);
           if (i === 1) { await page.waitForTimeout(300); await shot('c-build-piece'); }
         }
         await page.waitForFunction(() => !WW.paused, null, { timeout: 4000 });
         if (!(await page.evaluate(id => (WW.save.built[WW.ep.id] || []).includes(id), b.id))) throw new Error('the build was not finished and saved');
-        if (!(await page.evaluate(b => b.ok.every(([x, y]) => WW.game.tileAt(x, y) === b.tile), b))) throw new Error('the pieces are not on the map');
+        if (!(await page.evaluate(b => b.ok.every(p => WW.game.tileAt(p[0], p[1]) === (p[2] || b.tile)), b))) throw new Error('the pieces are not on the map');
         await page.waitForTimeout(800); await shot('c-build-done');
       });
       if (ep.plant) await step('planting: ' + ep.plant.crops.map(c => c.id).join(', '), async () => {
