@@ -9,9 +9,12 @@ window.EPISODE = {
   title: { en: 'Resources, Economy and Trade', es: 'Recursos, economía y comercio', fa: 'منابع، اقتصاد و تجارت' },
   place: { en: 'From the Mine to Durban', es: 'De la mina a Durban', fa: 'از معدن تا دوربان' },
   intro: [
-    { en: 'Christopher: "The Grump broke the trade chain in South Africa! Ore is stuck at the mine and ships wait at the port. Talk to the engineer, the bank worker and the crane driver. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón rompió la cadena de comercio en Sudáfrica! El mineral está atascado en la mina y los barcos esperan en el puerto. Habla con la ingeniera, el empleado del banco y la operadora de grúa. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو زنجیر تجارت را در افریقای جنوبی شکست! سنگ معدنی در معدن مانده و کشتی‌ها در بندر انتظار می‌کشند. با انجنیر، کارمند بانک و راننده جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump broke South Africa\'s trade chain! Ore is stuck. Ships wait at the port.',
+      es: '¡El Gruñón rompió la cadena de comercio de Sudáfrica! El mineral está atascado. Los barcos esperan en el puerto.',
+      fa: 'غرغرو زنجیر تجارت افریقای جنوبی را شکست! سنگ معدنی گیر مانده. کشتی‌ها در بندر منتظر هستند.' },
+    { en: 'Talk to the engineer, the banker and the crane driver. Then fix the compass stone.',
+      es: 'Habla con la ingeniera, el banquero y la operadora de grúa. Luego arregla la piedra de la brújula.',
+      fa: 'با انجنیر، کارمند بانک و رانندهٔ جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Mine top-left, city bottom-left, railway across the top and down the east, port and ocean on the right. */
@@ -59,10 +62,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [6, 6], at: [8, 2], decor: 'gem',
       clue: { en: 'From this note, walk 4 steps north, then 2 steps east. Look near the mine.', es: 'Desde esta nota, camina 4 pasos al norte y luego 2 pasos al este. Busca cerca de la mina.', fa: 'از این یادداشت، ۴ قدم به شمال برو، بعد ۲ قدم به شرق. نزدیک معدن را ببین.' },
-      text: { en: 'You followed compass directions! North is up and east is to the right. You found a sparkling gem. The biggest diamond ever found, the Cullinan Diamond, came from a mine in South Africa in 1905.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Encontraste una piedra preciosa brillante. El diamante más grande jamás encontrado, el Cullinan, salió de una mina de Sudáfrica en 1905.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. تو یک سنگ قیمتی درخشان پیدا کردی. بزرگ‌ترین الماسی که تا حال پیدا شده، الماس کالینان، در سال ۱۹۰۵ از یک معدن در افریقای جنوبی بیرون آمد.' } },
+      text: { en: 'North is up, east is right! A gem! The biggest diamond ever, the Cullinan, came from here.', es: '¡El norte arriba, el este a la derecha! ¡Una gema! El diamante más grande, el Cullinan, salió de aquí.', fa: 'شمال بالا، شرق راست! یک سنگ قیمتی! بزرگ‌ترین الماس، کالینان، از این‌جا بیرون آمد.' } },
     { clueAt: [23, 9], at: [26, 17], decor: 'coinold',
-      clue: { en: 'Trains carry goods from the mine to the port. Follow the railway east, then south. At the end it turns east one last time and stops at a dock. Stand on the dock square right at the end of the tracks.', es: 'Los trenes llevan productos de la mina al puerto. Sigue la vía del tren al este y luego al sur. Al final, gira al este una última vez y termina en un muelle. Párate en el cuadro del muelle justo al final de las vías.', fa: 'ریل‌ها مال را از معدن به بندر می‌برند. خط ریل را به طرف شرق، بعد به طرف جنوب دنبال کن. در آخر، یک بار دیگر به طرف شرق دور می‌خورد و کنار یک اسکله تمام می‌شود. روی خانهٔ اسکله که درست در آخر خط ریل است بایست.' },
-      text: { en: 'You followed the railway to the port! Here goods leave the train and go onto ships. An old gold coin lay on the dock. South Africa began making a gold coin called the Krugerrand in 1967.', es: '¡Seguiste la vía del tren hasta el puerto! Aquí los productos bajan del tren y suben a los barcos. Había una moneda de oro antigua en el muelle. Sudáfrica empezó a hacer una moneda de oro llamada Krugerrand en 1967.', fa: 'تو خط ریل را تا بندر دنبال کردی! این‌جا مال از ریل پایین می‌شود و به کشتی‌ها می‌رود. یک سکهٔ کهنهٔ طلا روی اسکله بود. افریقای جنوبی در سال ۱۹۶۷ ساختن یک سکهٔ طلا به نام کروگررند را شروع کرد.' } }
+      clue: { en: 'Follow the railway east, then south, then east to a dock. Stand at the end of the tracks.', es: 'Sigue la vía del tren al este, luego al sur, luego al este hasta un muelle. Párate al final de las vías.', fa: 'خط ریل را به شرق، بعد جنوب، بعد شرق تا یک اسکله دنبال کن. در آخر خط ریل بایست.' },
+      text: { en: 'Here goods go from train to ship. An old gold coin! South Africa made Krugerrand coins from 1967.', es: 'Aquí los productos pasan del tren al barco. ¡Una moneda de oro! Sudáfrica hace monedas Krugerrand desde 1967.', fa: 'این‌جا جنس از ریل به کشتی می‌رود. یک سکهٔ طلا! افریقای جنوبی از ۱۹۶۷ سکهٔ کروگررند می‌سازد.' } }
   ],
   // only the Rail Pass (Episode 3.3) opens the old rail gate in the north-east hills
   secret: { tool: 'rail', at: [26, 1],
@@ -88,23 +91,26 @@ window.EPISODE = {
       role: { en: 'Mining engineer', es: 'Ingeniera de minas', fa: 'انجنیر معدن' },
       look: { skin: 4, hair: '#1b1410', shirt: '#f39c12', pants: '#2c3e50' },
       lines: [
-        { en: 'Sawubona! That means hello in Zulu. I am Thandiwe, a mining engineer. The ground in South Africa holds valuable [[mineral|minerals]], like gold, platinum and chrome. They are [[natural resource|natural resources]].',
-          es: '¡Sawubona! Así se dice hola en zulú. Soy Thandiwe, ingeniera de minas. La tierra de Sudáfrica guarda [[mineral|minerales]] valiosos, como oro, platino y cromo. Son [[natural resource|recursos naturales]].',
-          fa: 'ساوبونا! این به زبان زولو یعنی سلام. من تاندیوه هستم، انجنیر معدن. زمین افریقای جنوبی [[mineral|معدنیات]] قیمتی دارد، مثل طلا، پلاتین و کروم. این‌ها [[natural resource|منابع طبیعی]] هستند.' },
-        { en: 'In 1886, people found gold right here. Thousands came to dig, and a city grew up fast around the mines. That city is Johannesburg. Its Zulu name, eGoli, means "place of gold."',
-          es: 'En 1886, la gente encontró oro justo aquí. Miles vinieron a excavar, y una ciudad creció rápido alrededor de las minas. Esa ciudad es Johannesburgo. Su nombre en zulú, eGoli, significa "lugar del oro".',
-          fa: 'در سال ۱۸۸۶ مردم درست همین‌جا طلا پیدا کردند. هزاران نفر برای کندن آمدند و یک شهر به زودی دور معدن‌ها ساخته شد. آن شهر ژوهانسبرگ است. نام زولوی آن، اِگولی، یعنی «جای طلا».' },
-        { en: 'South Africa also has most of the world\'s platinum. Car factories use it in parts that clean the smoke from engines. We mine chrome too. Chrome keeps steel shiny, so steel pots and spoons do not rust.',
-          es: 'Sudáfrica también tiene la mayor parte del platino del mundo. Las fábricas de carros lo usan en piezas que limpian el humo de los motores. También sacamos cromo. El cromo mantiene el acero brillante, así las ollas y cucharas de acero no se oxidan.',
-          fa: 'افریقای جنوبی بیشتر پلاتین جهان را هم دارد. فابریکه‌های موتر از آن در پرزه‌هایی استفاده می‌کنند که دود انجن را پاک می‌کند. ما کروم هم استخراج می‌کنیم. کروم فولاد را براق نگه می‌دارد، پس دیگ و قاشق فولادی زنگ نمی‌زنند.' }
+        { en: 'Sawubona! I am Thandiwe. Our gold, platinum and chrome are [[natural resource|natural resources]].',
+          es: '¡Sawubona! Soy Thandiwe. Nuestro oro, platino y cromo son [[natural resource|recursos naturales]].',
+          fa: 'ساوبونا! من تاندیوه هستم. طلا، پلاتین و کروم ما [[natural resource|منابع طبیعی]] هستند.' },
+        { en: 'These [[mineral|minerals]] lie in the ground. Gold was found here in 1886.',
+          es: 'Estos [[mineral|minerales]] están bajo la tierra. Aquí se encontró oro en 1886.',
+          fa: 'این [[mineral|معدنیات]] در زیر زمین هستند. در سال ۱۸۸۶ این‌جا طلا پیدا شد.' },
+        { en: 'Thousands came, and Johannesburg grew fast. Its Zulu name, eGoli, means "place of gold."',
+          es: 'Llegaron miles, y Johannesburgo creció rápido. Su nombre en zulú, eGoli, significa "lugar del oro".',
+          fa: 'هزاران نفر آمدند و ژوهانسبرگ زود بزرگ شد. نام زولوی آن، اِگولی، یعنی «جای طلا».' },
+        { en: 'We have most of the world\'s platinum, for cleaner engines. Chrome keeps steel from rust.',
+          es: 'Tenemos casi todo el platino del mundo, para motores más limpios. El cromo protege el acero del óxido.',
+          fa: 'بیشتر پلاتین جهان پیش ما است، برای انجن‌های پاک‌تر. کروم فولاد را از زنگ نگه می‌دارد.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Why did Johannesburg grow so fast?', es: '¿Por qué Johannesburgo creció tan rápido?', fa: 'چرا ژوهانسبرگ این‌قدر زود بزرگ شد؟' },
         choices: [
-          { ok: true, t: { en: 'Gold was found there in 1886, and people came to work in the mines', es: 'Allí se encontró oro en 1886, y la gente llegó a trabajar en las minas', fa: 'در سال ۱۸۸۶ آن‌جا طلا پیدا شد و مردم برای کار در معدن آمدند' },
+          { ok: true, t: { en: 'Gold was found there, so miners came', es: 'Allí se encontró oro, y llegaron mineros', fa: 'آن‌جا طلا پیدا شد، پس کارگران معدن آمدند' },
             why: { en: 'A natural resource pulled people in, and a city grew around it.', es: 'Un recurso natural atrajo a la gente, y una ciudad creció a su alrededor.', fa: 'یک منبع طبیعی مردم را کشاند و شهری دور آن ساخته شد.' } },
-          { t: { en: 'It sits on a busy ocean port', es: 'Está en un puerto muy activo del océano', fa: 'کنار یک بندر پرکار بحر است' },
+          { t: { en: 'It sits beside a busy ocean port', es: 'Está junto a un puerto muy activo del océano', fa: 'کنار یک بندر پرکار بحر است' },
             why: { en: 'Johannesburg is far inland. Durban is the port.', es: 'Johannesburgo está lejos del mar. Durban es el puerto.', fa: 'ژوهانسبرگ از بحر دور است. بندر، دوربان است.' } },
           { t: { en: 'It was built for rice farming by a big river', es: 'Se construyó para cultivar arroz junto a un río grande', fa: 'برای کشت شالی کنار یک دریای بزرگ ساخته شد' },
             why: { en: 'Johannesburg did not grow from farming. It grew from gold.', es: 'Johannesburgo no creció por la agricultura. Creció por el oro.', fa: 'ژوهانسبرگ از کشت و کار بزرگ نشد. از طلا بزرگ شد.' } }
@@ -117,23 +123,26 @@ window.EPISODE = {
       role: { en: 'Bank worker in Johannesburg', es: 'Empleado de banco en Johannesburgo', fa: 'کارمند بانک در ژوهانسبرگ' },
       look: { skin: 5, hair: '#111111', shirt: '#3e5c9a', pants: '#222222' },
       lines: [
-        { en: 'Hello! I am Sipho. I work at a bank in Johannesburg. The city started with gold. Now it is a big center for banking and trade in Africa.',
-          es: '¡Hola! Soy Sipho. Trabajo en un banco en Johannesburgo. La ciudad empezó con el oro. Ahora es un gran centro de bancos y comercio en África.',
-          fa: 'سلام! من سیپو هستم. در یک بانک در ژوهانسبرگ کار می‌کنم. این شهر با طلا شروع شد. حالا یک مرکز بزرگ بانک و تجارت در افریقا است.' },
-        { en: 'Here is the hard part. Selling [[raw material|raw materials]] earns some money. But the most money is made where they become [[finished product|finished products]], like phones and cars. Many of those are made in other countries and [[import|imported]].',
-          es: 'Aquí viene lo difícil. Vender [[raw material|materias primas]] da algo de dinero. Pero el mayor dinero se gana donde se convierten en [[finished product|productos terminados]], como teléfonos y carros. Muchos de esos se hacen en otros países y se [[import|importan]].',
-          fa: 'قسمت سخت این است. فروختن [[raw material|مواد خام]] کمی پول می‌آورد. اما بیشترین پول جایی به دست می‌آید که این مواد به [[finished product|جنس آماده]]، مثل موبایل و موتر، تبدیل می‌شوند. بسیاری از آن‌ها در کشورهای دیگر ساخته و [[import|وارد]] می‌شوند.' },
-        { en: 'Other countries sell a [[cash crop|cash crop]], a crop grown mostly to sell. Ghana and Ivory Coast sell cocoa. Ethiopia and Kenya sell coffee. If the world price of that one crop falls, the whole country feels it.',
-          es: 'Otros países venden un [[cash crop|cultivo comercial]], un cultivo que se siembra más que nada para vender. Ghana y Costa de Marfil venden cacao. Etiopía y Kenia venden café. Si el precio mundial de ese cultivo baja, todo el país lo siente.',
-          fa: 'کشورهای دیگر یک [[cash crop|کشت تجارتی]] می‌فروشند، یعنی کشتی که بیشتر برای فروش است. گانا و ساحل عاج کاکائو می‌فروشند. ایتوپیا و کینیا قهوه می‌فروشند. اگر قیمت جهانی همان یک کشت پایین بیاید، تمام کشور آن را حس می‌کند.' }
+        { en: 'Hello! I am Sipho, a banker. Gold built Johannesburg. Now it is a banking center.',
+          es: '¡Hola! Soy Sipho, banquero. El oro construyó Johannesburgo. Ahora es un centro de bancos.',
+          fa: 'سلام! من سیپو، کارمند بانک هستم. طلا ژوهانسبرگ را ساخت. حالا مرکز بانک‌ها است.' },
+        { en: '[[raw material|Raw materials]] earn some money. [[finished product|Finished products]], often made abroad, earn the most.',
+          es: 'Las [[raw material|materias primas]] dan algo de dinero. Los [[finished product|productos terminados]], muchas veces hechos afuera, dan más.',
+          fa: '[[raw material|مواد خام]] کمی پول می‌آورد. [[finished product|جنس آماده]]، که اکثراً در خارج ساخته می‌شود، بیشترین پول را می‌آورد.' },
+        { en: 'Ghana and Ivory Coast sell cocoa, a [[cash crop|cash crop]]. Ethiopia and Kenya sell coffee.',
+          es: 'Ghana y Costa de Marfil venden cacao, un [[cash crop|cultivo comercial]]. Etiopía y Kenia venden café.',
+          fa: 'گانا و ساحل عاج کاکائو می‌فروشند، یک [[cash crop|کشت تجارتی]]. ایتوپیا و کینیا قهوه می‌فروشند.' },
+        { en: 'If the world price of that crop falls, the whole country earns less.',
+          es: 'Si el precio mundial de ese cultivo baja, todo el país gana menos.',
+          fa: 'اگر قیمت جهانی آن کشت پایین بیاید، تمام کشور کمتر پول می‌گیرد.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'Why is it risky for a country to sell mostly one product?', es: '¿Por qué es arriesgado que un país venda casi solo un producto?', fa: 'چرا برای یک کشور خطرناک است که بیشتر فقط یک جنس بفروشد؟' },
         choices: [
-          { ok: true, t: { en: 'If its world price drops, farmers and the government both earn less', es: 'Si su precio mundial baja, los agricultores y el gobierno ganan menos', fa: 'اگر قیمت جهانی آن پایین بیاید، هم دهقانان و هم دولت کمتر پول می‌گیرند' },
+          { ok: true, t: { en: 'If its price falls, everyone earns less', es: 'Si su precio baja, todos ganan menos', fa: 'اگر قیمتش پایین بیاید، همه کمتر پول می‌گیرند' },
             why: { en: 'With only one product, one bad price hurts everyone at once.', es: 'Con un solo producto, un mal precio hace daño a todos a la vez.', fa: 'با یک جنس، یک قیمت بد به همه یک‌باره ضرر می‌زند.' } },
-          { t: { en: 'That product will soon stop growing', es: 'Ese producto pronto dejará de crecer', fa: 'آن جنس به زودی دیگر نمی‌روید' },
+          { t: { en: 'That product will soon stop growing there', es: 'Ese producto pronto dejará de crecer allí', fa: 'آن جنس به زودی دیگر آن‌جا نمی‌روید' },
             why: { en: 'The crop still grows. The risk is the price, not the plant.', es: 'El cultivo sigue creciendo. El riesgo es el precio, no la planta.', fa: 'کشت هنوز می‌روید. خطر از قیمت است، نه از نبات.' } },
           { t: { en: 'Other countries are not allowed to buy it', es: 'Otros países no pueden comprarlo', fa: 'کشورهای دیگر اجازه ندارند آن را بخرند' },
             why: { en: 'Other countries do buy it. The problem is that the price can change.', es: 'Otros países sí lo compran. El problema es que el precio puede cambiar.', fa: 'کشورهای دیگر آن را می‌خرند. مشکل این است که قیمت می‌تواند تغییر کند.' } }
@@ -146,21 +155,24 @@ window.EPISODE = {
       role: { en: 'Crane operator at the port of Durban', es: 'Operadora de grúa en el puerto de Durban', fa: 'رانندهٔ جرثقیل در بندر دوربان' },
       look: { skin: 3, hair: '#2b1d14', shirt: '#16a085', pants: '#2c3e50' },
       lines: [
-        { en: 'Welcome to Durban, on the Indian Ocean! I am Ayanda. I drive one of the giant cranes at this [[port|port]]. It is one of the busiest ports in Africa.',
-          es: '¡Bienvenido a Durban, en el océano Índico! Soy Ayanda. Manejo una de las grúas gigantes de este [[port|puerto]]. Es uno de los puertos más activos de África.',
-          fa: 'به دوربان، کنار اقیانوس هند، خوش آمدی! من آیاندا هستم. یکی از جرثقیل‌های بزرگ این [[port|بندر]] را می‌رانم. این یکی از پرکارترین بندرهای افریقا است.' },
-        { en: 'Trains bring ore, sugar, fruit and new cars to the docks. My crane loads them onto ships. Those are [[export|exports]]: goods sold and sent to other countries.',
-          es: 'Los trenes traen mineral, azúcar, fruta y carros nuevos a los muelles. Mi grúa los sube a los barcos. Esas son [[export|exportaciones]]: productos que se venden y se envían a otros países.',
-          fa: 'قطارها سنگ معدنی، بوره، میوه و موترهای نو را به لنگرگاه می‌آورند. جرثقیل من آن‌ها را در کشتی بار می‌کند. این‌ها [[export|صادرات]] هستند: جنس‌هایی که فروخته و به کشورهای دیگر فرستاده می‌شوند.' },
-        { en: 'Ships also bring things in, like phones, machines and medicine. Those are [[import|imports]]. A port connects a whole country to the world.',
-          es: 'Los barcos también traen cosas, como teléfonos, máquinas y medicinas. Esas son [[import|importaciones]]. Un puerto conecta a todo un país con el mundo.',
-          fa: 'کشتی‌ها چیزهایی هم با خود می‌آورند، مثل موبایل، ماشین‌آلات و دوا. این‌ها [[import|واردات]] هستند. یک بندر تمام کشور را به جهان وصل می‌کند.' }
+        { en: 'Welcome to Durban, on the Indian Ocean! I am Ayanda. I drive a giant crane.',
+          es: '¡Bienvenido a Durban, en el océano Índico! Soy Ayanda. Manejo una grúa gigante.',
+          fa: 'به دوربان در کنار بحر هند خوش آمدی! من آیاندا هستم. یک جرثقیل بسیار بزرگ را می‌رانم.' },
+        { en: 'Durban is a busy [[port|port]]. Trains bring ore, sugar, fruit and cars to my crane.',
+          es: 'Durban es un [[port|puerto]] muy activo. Los trenes traen mineral, azúcar, fruta y carros a mi grúa.',
+          fa: 'دوربان یک [[port|بندر]] پرکار است. قطارها سنگ معدنی، بوره، میوه و موتر را به جرثقیل من می‌آورند.' },
+        { en: 'I load them onto ships. Those are [[export|exports]]: goods sold to other countries.',
+          es: 'Yo los subo a los barcos. Esas son [[export|exportaciones]]: productos que se venden a otros países.',
+          fa: 'من آن‌ها را به کشتی بار می‌کنم. این‌ها [[export|صادرات]] هستند: جنس‌هایی که به کشورهای دیگر فروخته می‌شوند.' },
+        { en: 'Ships bring in phones, machines and medicine: [[import|imports]]. Ports connect countries to the world.',
+          es: 'Los barcos traen teléfonos, máquinas y medicinas: [[import|importaciones]]. Los puertos conectan a los países con el mundo.',
+          fa: 'کشتی‌ها موبایل، ماشین و دوا می‌آورند: [[import|واردات]]. بندرها کشورها را به جهان وصل می‌کنند.' }
       ],
       ask: {
         stat: 'mov',
         q: { en: 'What is an export?', es: '¿Qué es una exportación?', fa: 'صادرات چیست؟' },
         choices: [
-          { ok: true, t: { en: 'A good that is sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' },
+          { ok: true, t: { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' },
             why: { en: 'Exports go out. Imports come in.', es: 'Las exportaciones salen. Las importaciones entran.', fa: 'صادرات بیرون می‌رود. واردات داخل می‌آید.' } },
           { t: { en: 'A good that is bought from another country', es: 'Un producto que se compra a otro país', fa: 'جنسی که از کشور دیگر خریده می‌شود' },
             why: { en: 'That is an import. It comes in.', es: 'Esa es una importación. Entra al país.', fa: 'این واردات است. داخل می‌آید.' } },
@@ -172,12 +184,12 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 8, y: 8, text: { en: 'eGOLI · JOHANNESBURG · Gold was found here in 1886. A small mining camp grew into one of the biggest cities in Africa.',
-      es: 'eGOLI · JOHANNESBURGO · Aquí se encontró oro en 1886. Un pequeño campamento minero se volvió una de las ciudades más grandes de África.',
-      fa: 'اِگولی · ژوهانسبرگ · در سال ۱۸۸۶ این‌جا طلا پیدا شد. یک کمپ کوچک معدن به یکی از بزرگ‌ترین شهرهای افریقا تبدیل شد.' } },
-    { x: 23, y: 12, text: { en: 'PORT OF DURBAN ⚓ · Indian Ocean · Ships leave here for Asia, Europe and the Americas. Sugarcane grows on the green hills nearby.',
-      es: 'PUERTO DE DURBAN ⚓ · Océano Índico · De aquí salen barcos a Asia, Europa y las Américas. En las colinas verdes de cerca crece la caña de azúcar.',
-      fa: 'بندر دوربان ⚓ · اقیانوس هند · کشتی‌ها از این‌جا به آسیا، اروپا و امریکا می‌روند. نیشکر روی تپه‌های سبز نزدیک می‌روید.' } }
+    { x: 8, y: 8, text: { en: 'eGOLI · JOHANNESBURG · Gold was found here in 1886. A mining camp grew into a huge African city.',
+      es: 'eGOLI · JOHANNESBURGO · Aquí se encontró oro en 1886. Un campamento minero se volvió una enorme ciudad africana.',
+      fa: 'اِگولی · ژوهانسبرگ · در سال ۱۸۸۶ این‌جا طلا پیدا شد. یک کمپ معدن به یک شهر بزرگ افریقایی تبدیل شد.' } },
+    { x: 23, y: 12, text: { en: 'PORT OF DURBAN ⚓ · Indian Ocean · Ships sail to Asia, Europe and the Americas. Sugarcane grows nearby.',
+      es: 'PUERTO DE DURBAN ⚓ · Océano Índico · Los barcos van a Asia, Europa y América. Cerca crece caña de azúcar.',
+      fa: 'بندر دوربان ⚓ · بحر هند · کشتی‌ها به آسیا، اروپا و امریکا می‌روند. نزدیک این‌جا نیشکر می‌روید.' } }
   ],
 
   /* the quest: Nomvula the cane farmer (gold !) -> Johan the train driver -> trade sugar for a water pump at the port -> back to Nomvula */
@@ -190,19 +202,25 @@ window.EPISODE = {
       role: { en: 'Sugarcane farmer', es: 'Agricultora de caña de azúcar', fa: 'دهقان نیشکر' },
       look: { skin: 5, hair: '#1b1410', shirt: '#27ae60', pants: '#5d4037', style: 'bun' },
       lines: [
-        { en: 'Sawubona! I am Nomvula. I grow sugarcane on these green hills near Durban. The rain and warm weather here are good for cane. We grow more sugar than we can eat.',
-          es: '¡Sawubona! Soy Nomvula. Cultivo caña de azúcar en estas colinas verdes cerca de Durban. La lluvia y el clima cálido de aquí son buenos para la caña. Producimos más azúcar de la que podemos comer.',
-          fa: 'ساوبونا! من نومولا هستم. روی این تپه‌های سبز نزدیک دوربان نیشکر می‌کارم. باران و هوای گرم این‌جا برای نیشکر خوب است. ما بیشتر از آن‌چه می‌خوریم بوره تولید می‌کنیم.' },
-        { en: 'But our water pump broke, and new pumps come in on ships. Johan drives the trains, west of here. He knows the traders at the port. Will you ask him?',
-          es: 'Pero nuestra bomba de agua se rompió, y las bombas nuevas llegan en barco. Johan maneja los trenes, al oeste de aquí. Conoce a los comerciantes del puerto. ¿Le preguntas?',
-          fa: 'اما پمپ آب ما خراب شد و پمپ‌های نو با کشتی می‌آیند. یوهان در غرب این‌جا قطار می‌راند. او تاجران بندر را می‌شناسد. از او می‌پرسی؟' }
+        { en: 'Sawubona! I am Nomvula. I grow sugarcane on these green hills near Durban.',
+          es: '¡Sawubona! Soy Nomvula. Cultivo caña de azúcar en estas colinas verdes cerca de Durban.',
+          fa: 'ساوبونا! من نومولا هستم. روی این تپه‌های سبز نزدیک دوربان نیشکر می‌کارم.' },
+        { en: 'Rain and warm weather help cane grow. We grow more sugar than we eat.',
+          es: 'La lluvia y el calor ayudan a la caña. Cultivamos más azúcar de la que comemos.',
+          fa: 'باران و هوای گرم به نیشکر کمک می‌کند. ما بیشتر از خوراک خود بوره داریم.' },
+        { en: 'But our water pump broke, and new pumps come in on ships.',
+          es: 'Pero nuestra bomba de agua se rompió, y las bombas nuevas llegan en barco.',
+          fa: 'اما پمپ آب ما خراب شد، و پمپ‌های نو با کشتی می‌آیند.' },
+        { en: 'Johan drives trains, west of here. He knows the port traders. Please ask him!',
+          es: 'Johan maneja trenes, al oeste de aquí. Conoce a los comerciantes del puerto. ¡Pregúntale, por favor!',
+          fa: 'یوهان در غرب این‌جا قطار می‌راند. او تاجران بندر را می‌شناسد. لطفاً از او بپرس!' }
       ],
       wait: { en: 'Johan works by the railway, west of here. Follow the tracks west.',
         es: 'Johan trabaja junto a la vía del tren, al oeste de aquí. Sigue las vías hacia el oeste.',
         fa: 'یوهان کنار خط آهن در غرب این‌جا کار می‌کند. خط آهن را به طرف غرب دنبال کن.' },
-      thanks: { en: 'A new water pump! Now our fields can drink again. We sent out sugar, our [[export|export]]. We got a pump, an [[import|import]]. That is trade!',
-        es: '¡Una bomba de agua nueva! Ahora nuestros campos pueden beber otra vez. Mandamos azúcar, nuestra [[export|exportación]]. Recibimos una bomba, una [[import|importación]]. ¡Eso es comercio!',
-        fa: 'یک پمپ آب نو! حالا کشتزارهای ما دوباره آب می‌خورند. ما بوره را فرستادیم، که [[export|صادرات]] ما است. یک پمپ گرفتیم، که [[import|واردات]] است. این تجارت است!' }
+      thanks: { en: 'A new pump! Sugar went out, an [[export|export]]. A pump came in, an [[import|import]]. Trade!',
+        es: '¡Una bomba nueva! Salió azúcar, una [[export|exportación]]. Entró una bomba, una [[import|importación]]. ¡Comercio!',
+        fa: 'پمپ نو! بوره بیرون رفت، یک [[export|صادرات]]. پمپ داخل آمد، یک [[import|واردات]]. تجارت!' }
     },
     contact: {
       x: 12, y: 8,
@@ -210,12 +228,15 @@ window.EPISODE = {
       role: { en: 'Train driver', es: 'Maquinista de tren', fa: 'رانندهٔ قطار' },
       look: { skin: 0, hair: '#c8a165', shirt: '#2c3e50', pants: '#34495e', hat: '#7f8c8d' },
       lines: [
-        { en: 'Hi, I am Johan. I drive trains on this railway. Every day my train carries ore, fruit and sugar east to the [[port|port]] of Durban.',
-          es: 'Hola, soy Johan. Manejo trenes en esta vía. Cada día mi tren lleva mineral, fruta y azúcar al este, al [[port|puerto]] de Durban.',
-          fa: 'سلام، من یوهان هستم. در این خط آهن قطار می‌رانم. هر روز قطار من سنگ معدنی، میوه و بوره را به طرف شرق، به [[port|بندر]] دوربان می‌برد.' },
-        { en: 'A ship trader named Mei Lin waits by the south warehouses, near the docks. She sells water pumps. Offer her something this land has a lot of, and her country needs.',
-          es: 'Una comerciante de barco llamada Mei Lin espera junto a las bodegas del sur, cerca de los muelles. Ella vende bombas de agua. Ofrécele algo que esta tierra tiene en abundancia y que su país necesita.',
-          fa: 'یک تاجر کشتی به نام می‌لین کنار گدام‌های جنوبی، نزدیک لنگرگاه، انتظار می‌کشد. او پمپ آب می‌فروشد. چیزی به او پیشنهاد کن که این سرزمین زیاد دارد و کشور او به آن نیاز دارد.' }
+        { en: 'Hi, I am Johan. My train carries ore, fruit and sugar east to the [[port|port]].',
+          es: 'Hola, soy Johan. Mi tren lleva mineral, fruta y azúcar al este, hasta el [[port|puerto]].',
+          fa: 'سلام، من یوهان هستم. قطار من سنگ معدنی، میوه و بوره را به شرق تا [[port|بندر]] می‌برد.' },
+        { en: 'Mei Lin sells water pumps by the south warehouses, near the docks.',
+          es: 'Mei Lin vende bombas de agua junto a las bodegas del sur, cerca de los muelles.',
+          fa: 'می‌لین کنار گدام‌های جنوبی، نزدیک اسکله‌ها، پمپ آب می‌فروشد.' },
+        { en: 'Offer her something this land has a lot of, and her country needs.',
+          es: 'Ofrécele algo que esta tierra tiene de sobra y que su país necesita.',
+          fa: 'به او چیزی پیشنهاد کن که این سرزمین زیاد دارد و کشورش ضرورت دارد.' }
       ]
     },
     action: {
@@ -226,9 +247,12 @@ window.EPISODE = {
         role: { en: 'Ship trader from China', es: 'Comerciante de barco de China', fa: 'تاجر کشتی از چین' },
         look: { skin: 1, hair: '#111111', shirt: '#d35400', pants: '#2c3e50', style: 'long' },
         lines: [
-          { en: 'Ni hao! That means hello in Chinese. My ship brings water pumps and machines from factories in China. I take South African goods back home.',
-            es: '¡Ni hao! Así se dice hola en chino. Mi barco trae bombas de agua y máquinas de fábricas de China. Llevo productos de Sudáfrica de vuelta a casa.',
-            fa: 'نی هاو! این به زبان چینی یعنی سلام. کشتی من پمپ آب و ماشین‌آلات را از فابریکه‌های چین می‌آورد. من جنس‌های افریقای جنوبی را به کشورم می‌برم.' }
+          { en: 'Ni hao means hello in Chinese! My ship brings pumps and machines from China.',
+            es: '¡Ni hao quiere decir hola en chino! Mi barco trae bombas y máquinas de China.',
+            fa: 'نی هاو به زبان چینی یعنی سلام! کشتی من پمپ و ماشین از چین می‌آورد.' },
+          { en: 'I take South African goods back home.',
+            es: 'Me llevo productos de Sudáfrica a mi país.',
+            fa: 'جنس‌های افریقای جنوبی را به وطنم می‌برم.' }
         ]
       },
       q: { en: 'What will you trade me for one water pump?', es: '¿Qué me das a cambio de una bomba de agua?', fa: 'در بدل یک پمپ آب به من چه می‌دهی؟' },
@@ -300,16 +324,16 @@ window.EPISODE = {
         choices: [{ en: 'Ghana and Ivory Coast', es: 'Ghana y Costa de Marfil', fa: 'گانا و ساحل عاج' }, { en: 'Ethiopia and Kenya', es: 'Etiopía y Kenia', fa: 'ایتوپیا و کینیا' }, { en: 'Botswana and Zambia', es: 'Botsuana y Zambia', fa: 'بوتسوانا و زامبیا' }, { en: 'Saudi Arabia and Türkiye', es: 'Arabia Saudita y Turquía', fa: 'عربستان سعودی و ترکیه' }], answer: 0,
         why: { en: 'Ghana and Ivory Coast grow cocoa. Ethiopia and Kenya are known for coffee.', es: 'Ghana y Costa de Marfil cultivan cacao. Etiopía y Kenia son conocidas por el café.', fa: 'گانا و ساحل عاج کاکائو می‌کارند. ایتوپیا و کینیا به قهوه مشهور هستند.' } },
       { q: { en: 'Why can a country rich in minerals still have many poor people?', es: '¿Por qué un país rico en minerales todavía puede tener mucha gente pobre?', fa: 'چرا کشوری که معدنیات زیاد دارد باز هم مردم فقیر زیاد دارد؟' },
-        choices: [{ en: 'Most money is made where raw materials become finished products, often in other countries', es: 'El mayor dinero se gana donde las materias primas se vuelven productos terminados, muchas veces en otros países', fa: 'بیشترین پول جایی به دست می‌آید که مواد خام به جنس آماده تبدیل می‌شوند، اکثراً در کشورهای دیگر' }, { en: 'Minerals have no value at all', es: 'Los minerales no valen nada', fa: 'معدنیات هیچ ارزشی ندارند' }, { en: 'Nobody in the world buys minerals', es: 'Nadie en el mundo compra minerales', fa: 'هیچ‌کس در جهان معدنیات نمی‌خرد' }, { en: 'Mines make the land rich in rain', es: 'Las minas hacen que llueva más', fa: 'معدن‌ها باران را بیشتر می‌کنند' }], answer: 0,
+        choices: [{ en: 'The big money is in finished products made abroad', es: 'El gran dinero está en productos terminados hechos afuera', fa: 'پول اصلی در جنس آماده‌ای است که در خارج ساخته می‌شود' }, { en: 'Minerals are worth nothing at all to anyone', es: 'Los minerales no valen nada para nadie', fa: 'معدنیات برای هیچ‌کس هیچ ارزشی ندارند' }, { en: 'Nobody in the whole world wants to buy minerals', es: 'Nadie en todo el mundo quiere comprar minerales', fa: 'هیچ‌کس در تمام جهان نمی‌خواهد معدنیات بخرد' }, { en: 'Mining makes it rain much more on the land', es: 'La minería hace que llueva mucho más en la tierra', fa: 'معدن‌کاری باران زمین را خیلی بیشتر می‌کند' }], answer: 0,
         why: { en: 'Selling raw rock earns less than making and selling the finished product.', es: 'Vender roca sin procesar da menos que hacer y vender el producto terminado.', fa: 'فروختن سنگ خام کمتر از ساختن و فروختن جنس آماده پول می‌آورد.' } },
       { q: { en: 'What is an import?', es: '¿Qué es una importación?', fa: 'واردات چیست؟' },
-        choices: [{ en: 'A good bought and brought in from another country', es: 'Un producto que se compra y se trae de otro país', fa: 'جنسی که از کشور دیگر خریده و آورده می‌شود' }, { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' }, { en: 'A mineral that stays in the ground', es: 'Un mineral que se queda en la tierra', fa: 'معدنی که در زیر زمین می‌ماند' }, { en: 'A train that never leaves the mine', es: 'Un tren que nunca sale de la mina', fa: 'قطاری که هرگز از معدن بیرون نمی‌رود' }], answer: 0,
+        choices: [{ en: 'A good bought from another country', es: 'Un producto que se compra a otro país', fa: 'جنسی که از کشور دیگر خریده می‌شود' }, { en: 'A good sold and sent to another country', es: 'Un producto que se vende y se envía a otro país', fa: 'جنسی که فروخته و به کشور دیگر فرستاده می‌شود' }, { en: 'A mineral that stays in the ground', es: 'Un mineral que se queda en la tierra', fa: 'معدنی که در زیر زمین می‌ماند' }, { en: 'A train that never leaves the mine', es: 'Un tren que nunca sale de la mina', fa: 'قطاری که هرگز از معدن بیرون نمی‌رود' }], answer: 0,
         why: { en: 'Imports come in from other countries. Exports go out.', es: 'Las importaciones entran desde otros países. Las exportaciones salen.', fa: 'واردات از کشورهای دیگر داخل می‌آید. صادرات بیرون می‌رود.' } },
       { q: { en: 'Why is a port like Durban important to South Africa?', es: '¿Por qué un puerto como Durban es importante para Sudáfrica?', fa: 'چرا بندری مثل دوربان برای افریقای جنوبی مهم است؟' },
-        choices: [{ en: 'Ships carry exports out and imports in', es: 'Los barcos sacan exportaciones y traen importaciones', fa: 'کشتی‌ها صادرات را بیرون و واردات را داخل می‌برند' }, { en: 'It is where gold was first found', es: 'Es donde se encontró oro por primera vez', fa: 'جایی است که اول بار طلا پیدا شد' }, { en: 'It is the highest city in Africa', es: 'Es la ciudad más alta de África', fa: 'بلندترین شهر افریقا است' }, { en: 'Trains cannot reach it', es: 'Los trenes no pueden llegar', fa: 'قطار به آن‌جا نمی‌رسد' }], answer: 0,
+        choices: [{ en: 'Ships carry exports out and imports in', es: 'Los barcos sacan exportaciones y traen importaciones', fa: 'کشتی‌ها صادرات را بیرون و واردات را داخل می‌برند' }, { en: 'It is where South Africa first found gold', es: 'Es donde Sudáfrica encontró oro por primera vez', fa: 'جایی است که افریقای جنوبی اول بار طلا یافت' }, { en: 'It is the highest city in Africa', es: 'Es la ciudad más alta de África', fa: 'بلندترین شهر افریقا است' }, { en: 'Trains cannot reach it', es: 'Los trenes no pueden llegar', fa: 'قطار به آن‌جا نمی‌رسد' }], answer: 0,
         why: { en: 'A port connects a country to the world by sea.', es: 'Un puerto conecta a un país con el mundo por mar.', fa: 'بندر یک کشور را از راه بحر به جهان وصل می‌کند.' } },
       { q: { en: 'Why does a steel pot sell for much more than the chrome ore inside it?', es: '¿Por qué una olla de acero se vende por mucho más que el mineral de cromo que tiene?', fa: 'چرا یک دیگ فولادی خیلی قیمتی‌تر از سنگ کرومی است که در آن به کار رفته؟' },
-        choices: [{ en: 'Workers and factories added work to turn the ore into something people use', es: 'Trabajadores y fábricas pusieron trabajo para convertir el mineral en algo que la gente usa', fa: 'کارگران و فابریکه‌ها کار کردند تا سنگ را به چیزی تبدیل کنند که مردم استفاده می‌کنند' }, { en: 'The pot is heavier than the ore', es: 'La olla pesa más que el mineral', fa: 'دیگ از سنگ سنگین‌تر است' }, { en: 'Ore is free to dig up', es: 'Sacar mineral es gratis', fa: 'کندن سنگ معدنی مفت است' }, { en: 'Stores pay nothing for pots', es: 'Las tiendas no pagan nada por las ollas', fa: 'دوکان‌ها برای دیگ هیچ پول نمی‌دهند' }], answer: 0,
+        choices: [{ en: 'Work turned the ore into something useful', es: 'El trabajo convirtió el mineral en algo útil', fa: 'کار، سنگ را به چیز مفید تبدیل کرد' }, { en: 'The pot is much heavier than the ore inside', es: 'La olla pesa mucho más que el mineral que tiene', fa: 'دیگ خیلی سنگین‌تر از سنگ داخل آن است' }, { en: 'Ore is free for anyone to dig up', es: 'Sacar mineral es gratis para todos', fa: 'کندن سنگ معدنی برای همه مفت است' }, { en: 'Stores pay nothing for pots', es: 'Las tiendas no pagan nada por las ollas', fa: 'دوکان‌ها برای دیگ هیچ پول نمی‌دهند' }], answer: 0,
         why: { en: 'Each step in the chain adds work and value. The finished product is worth the most.', es: 'Cada paso de la cadena suma trabajo y valor. El producto terminado es el que más vale.', fa: 'هر قدم زنجیر کار و ارزش اضافه می‌کند. جنس آماده از همه قیمتی‌تر است.' } }
     ]
   },
