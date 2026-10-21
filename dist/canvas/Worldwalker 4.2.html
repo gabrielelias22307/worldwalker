@@ -1294,7 +1294,8 @@ qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
 qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
 qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
 qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
-qChase: { en: 'find map piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
+grumpBack: { en: 'Right! The Grump backs away. Walk after it and answer again!', es: '¡Correcto! El Gruñón retrocede. ¡Camina tras él y responde otra vez!', fa: 'درست! غرغرو عقب می‌رود. دنبالش برو و دوباره جواب بده!' },
+qChase: { en: 'find piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
 qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
 qGoods: { en: 'pick up the right goods on the map', es: 'recoge en el mapa lo que sirve para el trato', fa: 'جنس درست را روی نقشه بردار' },
 qBring: { en: 'bring it to {n}', es: 'llévaselo a {n}', fa: 'آن را پیش {n} ببر' },
@@ -3065,7 +3066,7 @@ Q.target = (hint) => {
 const a = WW.ep.quest.action, r = WW.run;
 if (a.type === 'fight') return a.at;
 if (a.type === 'chase') { const c = Q.clue(); if (!c) { const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); return f ? [f.x, f.y] : a.at; } if (!hint) return null; const z = c.zones[0]; return [z.x + (z.w >> 1), z.y + (z.h >> 1)]; }
-if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
+if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const p = WW.game.player, d = o => Math.abs(o.x - p.x) + Math.abs(o.y - p.y), g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone).sort((m, n) => d(m) - d(n)); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
 return null;
 };
 Q.carryLine = () => {
@@ -3183,7 +3184,7 @@ function drawGood(c, icon, x, y) {
 const R = (a, b, w, h, col) => { c.fillStyle = col; c.fillRect(x + a, y + b, w, h); };
 if (icon === '🪵') { [[2, 9], [6, 9], [10, 9], [4, 5], [8, 5]].forEach(([a, b]) => { R(a - 1, b - 1, 6, 6, '#22202e'); R(a, b, 4, 4, '#8b5a2b'); R(a + 1, b + 1, 2, 2, '#d9a066'); }); }
 else if (icon === '🛒') { R(1, 5, 14, 8, '#22202e'); R(2, 6, 12, 5, '#7a7f87'); R(3, 3, 3, 3, '#5a4a44'); R(6, 2, 4, 4, '#8a6a5a'); R(10, 3, 3, 3, '#5a4a44'); R(3, 12, 3, 3, '#22202e'); R(10, 12, 3, 3, '#22202e'); }
-else if (icon === '🪨') { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
+else if (['🪨', '🍚', '🌾'].includes(icon)) { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
 else { R(2, 4, 12, 11, '#22202e'); R(3, 5, 10, 9, '#c79a5b'); R(3, 9, 10, 1, '#8b5a2b'); R(7, 5, 1, 9, '#8b5a2b'); }
 }
 Q.bar = () => {
@@ -3394,7 +3395,7 @@ return false;
 C.nextStep = () => {
 const ep = WW.ep, r = WW.run, g = WW.game, near = list => list.sort((a, b) => Math.abs(a.x - g.player.x) + Math.abs(a.y - g.player.y) - Math.abs(b.x - g.player.x) - Math.abs(b.y - g.player.y))[0];
 let text, at = null;
-if (r.bossDone) { at = ep.boss.at; text = T('nsPage'); }
+if (r.bossDone) { at = WW.game.bossAt(); text = T('nsPage'); }
 else {
 const left = g.ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
 if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
@@ -3404,7 +3405,7 @@ at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.
 const clue = WW.quest.clue();
 text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : clue ? `🧩 ${T('chaseNext')} ${WW.L(clue.t)}` : WW.quest.bar().replace(/^📜\s*/, '');
 } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
-else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
+else { at = WW.game.bossAt(); text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
 }
 const fix = at && WW.tools && WW.tools.blockingRepair ? WW.tools.blockingRepair(at, reachable) : null;
 if (fix) return { text: fix.text, at: fix.at };
@@ -4037,12 +4038,26 @@ f.st.onCrack = () => clearRing();
 WW.bossTrial(WW.ep.boss, onWin, f.st);
 };
 function clearRing() {
-const f = WW.run.fog, g = G(); if (!f || f.cleared >= f.rings.length) return;
+const f = WW.run.fog, g = G(); if (!f) return;
+if (f.cleared >= f.rings.length) return backAway();
 const ring = f.rings[f.cleared++];
 ring.forEach(([x, y]) => f.set.delete(x + ',' + y));
 WW.paused = true; WW.sfx('gate'); g.shake();
 ring.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, i % 2 ? 'poof' : 'gold'), WW.calm ? 0 : Math.min(500, i * 25)));
 setTimeout(() => { WW.paused = false; WW.chris.say(f.cleared < f.rings.length ? T('fogMore').replace('{n}', (WW.ep.boss.need || 3) - (f.st.broken || 0)) : T('fogLast')); }, WW.calm ? 100 : 650);
+}
+function backAway() {
+const g = G(), b = g.ents.find(e => e.kind === 'boss'), p = g.player, [W, H] = g.size;
+const dist = new Map([[p.x + ',' + p.y, 0]]), q = [[p.x, p.y]];
+while (q.length) { const [x, y] = q.shift(), d = dist.get(x + ',' + y); if (d >= 6) continue; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (nx < 1 || ny < 1 || nx >= W - 1 || ny >= H - 1 || dist.has(k) || !g.walkable(nx, ny)) continue; dist.set(k, d + 1); q.push([nx, ny]); } }
+const sx = Math.floor(p.x / 16), sy = Math.floor(p.y / 11);
+const spots = [...dist].filter(([k, d]) => { const [x, y] = k.split(',').map(Number); return d >= 3 && d <= 5 && Math.floor(x / 16) === sx && Math.floor(y / 11) === sy && !g.entAt(x, y); })
+.map(([k, d]) => { const [x, y] = k.split(',').map(Number); return { x, y, s: d * 10 + Math.abs(x - p.x) + Math.abs(y - p.y) + ((x - p.x) * (b.x - p.x) + (y - p.y) * (b.y - p.y) > 0 ? 8 : 0) }; })
+.sort((m, n) => n.s - m.s);
+if (!spots.length || !b) return;
+WW.paused = true; WW.fx.burst(b.x, b.y, 'poof'); WW.sfx('bad');
+b.x = spots[0].x; b.y = spots[0].y;
+setTimeout(() => { WW.fx.burst(b.x, b.y, 'purple'); WW.paused = false; WW.chris.say(T('grumpBack'), null, { at: [b.x, b.y] }); }, WW.calm ? 100 : 450);
 }
 Wd.drawFog = (c, sx, sy, t) => {
 const f = WW.run && WW.run.fog; if (!f || !f.set.size) return;
@@ -4602,10 +4617,11 @@ ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
 r.challengeDone = true; G.onChallengeDone();
-if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
+if (where === 'boss') { WW.dbg.bumpInto(...G.bossAt()); return; }
 ents.forEach(e => { if (e.kind === 'scrap') { e.gone = true; r.scraps.add(e.id); } if (e.kind === 'boss') e.gone = true; });
 finishEpisode();
 }
+G.bossAt = () => { const b = ents.find(e => e.kind === 'boss'); return b ? [b.x, b.y] : WW.ep.boss.at; };
 G.onChallengeDone = () => {
 const b = ents.find(e => e.kind === 'boss'); b.visible = true;
 WW.world.fogSetup();
@@ -4618,7 +4634,7 @@ const r = WW.run, ep = WW.ep;
 r.bossDone = true;
 WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
 WW.sheetSync();
-ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
+const [ax, ay] = G.bossAt(); ents.push({ kind: 'atlas', x: ax, y: ay });
 WW.fx.lift();
 WW.music.play('win', 'realm' + ep.realm);
 WW.ui.quest();
@@ -4965,7 +4981,7 @@ c.restore();
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
-if (r.bossDone) return r.claimed ? null : ep.boss.at;
+if (r.bossDone) return r.claimed ? null : G.bossAt();
 const left = ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
 if (left.length) { const n = near(left); return [n.x, n.y]; }
 if (WW.quest.on() && !WW.quest.done()) {
@@ -4975,7 +4991,7 @@ if (st === 1) return [q.contact.x, q.contact.y];
 return WW.quest.target();
 }
 if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
-return r.challengeDone ? ep.boss.at : ep.challenge.at;
+return r.challengeDone ? G.bossAt() : ep.challenge.at;
 };
 G.progress = () => {
 const r = WW.run, ep = WW.ep;
@@ -5244,33 +5260,42 @@ lines: [
 { en: 'Hello! On my radio show I speak Lingala, French and Swahili. In Kinshasa, many people use two or three languages every day. Each [[ethnic group|ethnic group]] brings its own words and music.',
 es: '¡Hola! En mi programa de radio hablo lingala, francés y suajili. En Kinshasa, mucha gente usa dos o tres idiomas cada día. Cada [[ethnic group|grupo étnico]] trae sus propias palabras y su música.',
 fa: 'سلام! در برنامهٔ رادیوی خود به لینگالا، فرانسوی و سواحیلی گپ می‌زنم. در کینشاسا بسیاری مردم هر روز دو یا سه زبان را به کار می‌برند. هر [[ethnic group|قوم]] کلمه‌ها و موسیقی خودش را می‌آورد.' },
-{ en: 'I saw the Ink Thief! It ran east into downtown. It is hiding on the wide street between the tall buildings. Answer its questions about [[culture|culture]] and cities to win the book back.',
-es: '¡Vi al Ladrón de Tinta! Corrió al este, hacia el centro. Se esconde en la calle ancha entre los edificios altos. Responde sus preguntas sobre [[culture|cultura]] y ciudades para recuperar el cancionero.',
-fa: 'دزد رنگ را دیدم! به طرف شرق، به مرکز شهر دوید. در سرک پهن میان ساختمان‌های بلند پنهان شده است. به سوال‌هایش دربارهٔ [[culture|فرهنگ]] و شهرها جواب بده تا کتاب را پس بگیری.' }
+{ en: 'I saw the Ink Thief! It tore the song book into 3 pieces and hid them around the city. Listen to its riddles about [[culture|culture]] and cities, and walk to the right places. Then catch it!',
+es: '¡Vi al Ladrón de Tinta! Rompió el cancionero en 3 pedazos y los escondió por la ciudad. Escucha sus acertijos sobre [[culture|cultura]] y ciudades, y camina a los lugares correctos. ¡Después atrápalo!',
+fa: 'دزد رنگ را دیدم! کتاب آهنگ را سه تکه کرد و تکه‌ها را در شهر پنهان کرد. به چیستان‌هایش دربارهٔ [[culture|فرهنگ]] و شهرها گوش بده و به جاهای درست برو. بعد آن را بگیر!' }
 ]
 },
 action: {
-type: 'fight',
-at: [26, 15],
+type: 'chase',
+at: [29, 16],
+hops: [[20, 16], [25, 15]],
 name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-taunt: { en: 'Hee hee! I splashed ink on every song. Now nobody can sing them!',
-es: '¡Ji ji! Manché de tinta cada canción. ¡Ahora nadie puede cantarlas!',
-fa: 'هی هی! روی همهٔ آهنگ‌ها رنگ پاشیدم. حالا هیچ‌کس نمی‌تواند آن‌ها را بخواند!' },
-win: { en: 'The Ink Thief drops the song book and runs away!',
-es: '¡El Ladrón de Tinta suelta el cancionero y huye!',
-fa: 'دزد رنگ کتاب آهنگ را می‌اندازد و فرار می‌کند!' },
-need: 2,
-questions: [
-{ q: { en: 'What is an ethnic group?', es: '¿Qué es un grupo étnico?', fa: 'قوم چیست؟' },
-choices: [{ en: 'People who share a language, history and customs', es: 'Personas que comparten idioma, historia y costumbres', fa: 'مردمی که زبان، تاریخ و رسم‌های مشترک دارند' }, { en: 'People who live on the same street', es: 'Personas que viven en la misma calle', fa: 'مردمی که در یک سرک زندگی می‌کنند' }, { en: 'People who have the same job', es: 'Personas que tienen el mismo trabajo', fa: 'مردمی که یک کار دارند' }, { en: 'People who are the same age', es: 'Personas que tienen la misma edad', fa: 'مردمی که هم‌سن هستند' }], answer: 0,
-why: { en: 'An ethnic group shares a language, a history and customs. DR Congo has many ethnic groups.', es: 'Un grupo étnico comparte idioma, historia y costumbres. RD Congo tiene muchos grupos étnicos.', fa: 'یک قوم زبان، تاریخ و رسم‌های مشترک دارد. کانگو قوم‌های زیادی دارد.' } },
-{ q: { en: 'Bijou speaks Lingala at home, French at work and Swahili with friends. What does this show?', es: 'Bijou habla lingala en casa, francés en el trabajo y suajili con sus amigos. ¿Qué muestra esto?', fa: 'بیژو در خانه لینگالا، در کار فرانسوی و با دوستانش سواحیلی گپ می‌زند. این چه چیز را نشان می‌دهد؟' },
-choices: [{ en: 'Many people in DR Congo speak more than one language', es: 'Mucha gente en RD Congo habla más de un idioma', fa: 'بسیاری مردم در کانگو بیش از یک زبان گپ می‌زنند' }, { en: 'Lingala is used only at work', es: 'El lingala se usa solo en el trabajo', fa: 'لینگالا فقط در کار به کار می‌رود' }, { en: 'Nobody in Kinshasa speaks French', es: 'Nadie en Kinshasa habla francés', fa: 'هیچ‌کس در کینشاسا فرانسوی گپ نمی‌زند' }, { en: 'Everyone in Africa speaks Swahili', es: 'Todos en África hablan suajili', fa: 'همه در افریقا سواحیلی گپ می‌زنند' }], answer: 0,
-why: { en: 'DR Congo has more than 200 languages. Many people use two or three of them every day.', es: 'RD Congo tiene más de 200 idiomas. Mucha gente usa dos o tres cada día.', fa: 'کانگو بیش از ۲۰۰ زبان دارد. بسیاری مردم هر روز دو یا سه زبان را به کار می‌برند.' } },
-{ q: { en: 'Thousands of new people move to Kinshasa every week. What problem can this cause?', es: 'Miles de personas nuevas llegan a Kinshasa cada semana. ¿Qué problema puede causar esto?', fa: 'هر هفته هزاران نفر تازه به کینشاسا می‌آیند. این می‌تواند چه مشکلی پیدا کند؟' },
-choices: [{ en: 'Not enough homes, buses and clean water for everyone', es: 'No hay suficientes casas, buses y agua limpia para todos', fa: 'خانه، بس و آب پاک برای همه کافی نیست' }, { en: 'The Congo River gets shorter', es: 'El río Congo se vuelve más corto', fa: 'دریای کانگو کوتاه‌تر می‌شود' }, { en: 'The city stops having music', es: 'La ciudad se queda sin música', fa: 'شهر دیگر موسیقی ندارد' }, { en: 'The weather turns cold', es: 'El clima se vuelve frío', fa: 'هوا سرد می‌شود' }], answer: 0,
-why: { en: 'When a city grows very fast, it is hard to build homes, roads and water pipes fast enough.', es: 'Cuando una ciudad crece muy rápido, es difícil construir casas, calles y tuberías de agua a tiempo.', fa: 'وقتی یک شهر خیلی زود بزرگ می‌شود، ساختن خانه، سرک و نل آب به همان اندازه زود سخت است.' } }
+taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the song book into 3 pieces and hid them around the city. Follow my riddles, if you can!"',
+es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el cancionero en 3 pedazos y los escondí por la ciudad. ¡Sigue mis acertijos, si puedes!"',
+fa: 'دزد رنگ می‌خندد: «هی هی! کتاب آهنگ را سه تکه کردم و در شهر پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+clues: [
+{ t: { en: 'Piece 1 is where people from many [[ethnic group|ethnic groups]] meet every day. They buy fish and cassava, and you hear Lingala, French and Swahili all around.',
+es: 'El pedazo 1 está donde gente de muchos [[ethnic group|grupos étnicos]] se encuentra cada día. Compran pescado y yuca, y se oye lingala, francés y suajili por todas partes.',
+fa: 'تکهٔ ۱ جایی است که مردم از [[ethnic group|قوم‌های]] زیاد هر روز همدیگر را می‌بینند. ماهی و کاساوا می‌خرند، و از هر طرف لینگالا، فرانسوی و سواحیلی شنیده می‌شود.' },
+zones: [{ x: 1, y: 6, w: 14, h: 4 }],
+noBy: [{ x: 16, y: 12, w: 15, h: 9, t: { en: 'These tall buildings are offices and banks. People work inside, but they do not meet here to buy and sell. Look for the market stalls.', es: 'Estos edificios altos son oficinas y bancos. La gente trabaja adentro, pero no se reúne aquí a comprar y vender. Busca los puestos del mercado.', fa: 'این ساختمان‌های بلند دفتر و بانک هستند. مردم داخل آن‌ها کار می‌کنند، اما برای خرید و فروش این جا جمع نمی‌شوند. دکان‌های بازار را پیدا کن.' } }],
+found: { en: 'Piece 1 was in the market! Each ethnic group shares a language, a history and customs. In Kinshasa, many groups meet here, and many people speak two or three languages.', es: '¡El pedazo 1 estaba en el mercado! Cada grupo étnico comparte idioma, historia y costumbres. En Kinshasa, muchos grupos se encuentran aquí, y mucha gente habla dos o tres idiomas.', fa: 'تکهٔ ۱ در بازار بود! هر قوم زبان، تاریخ و رسم‌های مشترک دارد. در کینشاسا قوم‌های زیادی این جا همدیگر را می‌بینند، و بسیاری مردم دو یا سه زبان گپ می‌زنند.' } },
+{ t: { en: 'Every week thousands of new people move to Kinshasa for jobs. That is [[urbanization|urbanization]]. Piece 2 is on the empty land by the river port, where there are no homes for them yet.',
+es: 'Cada semana miles de personas nuevas llegan a Kinshasa por trabajo. Eso es la [[urbanization|urbanización]]. El pedazo 2 está en el terreno vacío junto al puerto del río, donde todavía no hay casas para ellas.',
+fa: 'هر هفته هزاران نفر تازه برای کار به کینشاسا می‌آیند. این [[urbanization|شهرنشینی]] است. تکهٔ ۲ در زمین خالی کنار بندر دریا است، جایی که هنوز برای آن‌ها خانه نیست.' },
+zones: [{ x: 17, y: 6, w: 14, h: 4 }],
+noBy: [{ x: 1, y: 15, w: 14, h: 6, t: { en: 'These homes are already full of families. The new people need homes on empty land, near the jobs at the port.', es: 'Estas casas ya están llenas de familias. La gente nueva necesita casas en un terreno vacío, cerca de los trabajos del puerto.', fa: 'این خانه‌ها پر از خانواده‌ها هستند. مردم تازه به خانه در زمین خالی، نزدیک کارهای بندر، ضرورت دارند.' } }],
+found: { en: 'Piece 2 was on the empty land! When a city grows very fast, it is hard to build enough homes, buses and water pipes for everyone.', es: '¡El pedazo 2 estaba en el terreno vacío! Cuando una ciudad crece muy rápido, es difícil construir suficientes casas, buses y tuberías de agua para todos.', fa: 'تکهٔ ۲ در زمین خالی بود! وقتی یک شهر خیلی زود بزرگ می‌شود، ساختن خانه، بس و نل آب به اندازهٔ همه سخت است.' } },
+{ t: { en: 'Piece 3 is where people use the [[official language|official language]] at work: in the offices downtown, among the tall buildings.',
+es: 'El pedazo 3 está donde la gente usa el [[official language|idioma oficial]] en el trabajo: en las oficinas del centro, entre los edificios altos.',
+fa: 'تکهٔ ۳ جایی است که مردم در کار [[official language|زبان رسمی]] را به کار می‌برند: در دفترهای مرکز شهر، میان ساختمان‌های بلند.' },
+zones: [{ x: 16, y: 12, w: 15, h: 9 }],
+noBy: [{ x: 1, y: 6, w: 14, h: 4, t: { en: 'In the market, most people speak Lingala, the language of the street. The official language is for laws, schools and offices.', es: 'En el mercado, casi todos hablan lingala, el idioma de la calle. El idioma oficial es para las leyes, las escuelas y las oficinas.', fa: 'در بازار بیشتر مردم لینگالا، زبان کوچه، گپ می‌زنند. زبان رسمی برای قانون، مکتب و اداره است.' } }],
+found: { en: 'Piece 3 was downtown! French is the official language of DR Congo. Bijou speaks Lingala at home, French at work and Swahili with friends.', es: '¡El pedazo 3 estaba en el centro! El francés es el idioma oficial de RD Congo. Bijou habla lingala en casa, francés en el trabajo y suajili con sus amigos.', fa: 'تکهٔ ۳ در مرکز شهر بود! فرانسوی زبان رسمی کانگو است. بیژو در خانه لینگالا، در کار فرانسوی و با دوستانش سواحیلی گپ می‌زند.' } }
 ],
+win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the song book is whole again.',
+es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el cancionero está completo otra vez.',
+fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: کتاب آهنگ دوباره کامل است.' },
 item: { icon: '📖', name: { en: "Ilunga's song book", es: 'El cancionero de Ilunga', fa: 'کتاب آهنگ ایلونگا' } }
 }
 },

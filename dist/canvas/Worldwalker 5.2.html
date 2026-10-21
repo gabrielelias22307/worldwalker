@@ -1294,7 +1294,8 @@ qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
 qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
 qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
 qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
-qChase: { en: 'find map piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
+grumpBack: { en: 'Right! The Grump backs away. Walk after it and answer again!', es: '¡Correcto! El Gruñón retrocede. ¡Camina tras él y responde otra vez!', fa: 'درست! غرغرو عقب می‌رود. دنبالش برو و دوباره جواب بده!' },
+qChase: { en: 'find piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
 qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
 qGoods: { en: 'pick up the right goods on the map', es: 'recoge en el mapa lo que sirve para el trato', fa: 'جنس درست را روی نقشه بردار' },
 qBring: { en: 'bring it to {n}', es: 'llévaselo a {n}', fa: 'آن را پیش {n} ببر' },
@@ -3065,7 +3066,7 @@ Q.target = (hint) => {
 const a = WW.ep.quest.action, r = WW.run;
 if (a.type === 'fight') return a.at;
 if (a.type === 'chase') { const c = Q.clue(); if (!c) { const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); return f ? [f.x, f.y] : a.at; } if (!hint) return null; const z = c.zones[0]; return [z.x + (z.w >> 1), z.y + (z.h >> 1)]; }
-if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
+if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const p = WW.game.player, d = o => Math.abs(o.x - p.x) + Math.abs(o.y - p.y), g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone).sort((m, n) => d(m) - d(n)); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
 return null;
 };
 Q.carryLine = () => {
@@ -3183,7 +3184,7 @@ function drawGood(c, icon, x, y) {
 const R = (a, b, w, h, col) => { c.fillStyle = col; c.fillRect(x + a, y + b, w, h); };
 if (icon === '🪵') { [[2, 9], [6, 9], [10, 9], [4, 5], [8, 5]].forEach(([a, b]) => { R(a - 1, b - 1, 6, 6, '#22202e'); R(a, b, 4, 4, '#8b5a2b'); R(a + 1, b + 1, 2, 2, '#d9a066'); }); }
 else if (icon === '🛒') { R(1, 5, 14, 8, '#22202e'); R(2, 6, 12, 5, '#7a7f87'); R(3, 3, 3, 3, '#5a4a44'); R(6, 2, 4, 4, '#8a6a5a'); R(10, 3, 3, 3, '#5a4a44'); R(3, 12, 3, 3, '#22202e'); R(10, 12, 3, 3, '#22202e'); }
-else if (icon === '🪨') { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
+else if (['🪨', '🍚', '🌾'].includes(icon)) { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
 else { R(2, 4, 12, 11, '#22202e'); R(3, 5, 10, 9, '#c79a5b'); R(3, 9, 10, 1, '#8b5a2b'); R(7, 5, 1, 9, '#8b5a2b'); }
 }
 Q.bar = () => {
@@ -3394,7 +3395,7 @@ return false;
 C.nextStep = () => {
 const ep = WW.ep, r = WW.run, g = WW.game, near = list => list.sort((a, b) => Math.abs(a.x - g.player.x) + Math.abs(a.y - g.player.y) - Math.abs(b.x - g.player.x) - Math.abs(b.y - g.player.y))[0];
 let text, at = null;
-if (r.bossDone) { at = ep.boss.at; text = T('nsPage'); }
+if (r.bossDone) { at = WW.game.bossAt(); text = T('nsPage'); }
 else {
 const left = g.ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
 if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
@@ -3404,7 +3405,7 @@ at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.
 const clue = WW.quest.clue();
 text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : clue ? `🧩 ${T('chaseNext')} ${WW.L(clue.t)}` : WW.quest.bar().replace(/^📜\s*/, '');
 } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
-else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
+else { at = WW.game.bossAt(); text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
 }
 const fix = at && WW.tools && WW.tools.blockingRepair ? WW.tools.blockingRepair(at, reachable) : null;
 if (fix) return { text: fix.text, at: fix.at };
@@ -4037,12 +4038,26 @@ f.st.onCrack = () => clearRing();
 WW.bossTrial(WW.ep.boss, onWin, f.st);
 };
 function clearRing() {
-const f = WW.run.fog, g = G(); if (!f || f.cleared >= f.rings.length) return;
+const f = WW.run.fog, g = G(); if (!f) return;
+if (f.cleared >= f.rings.length) return backAway();
 const ring = f.rings[f.cleared++];
 ring.forEach(([x, y]) => f.set.delete(x + ',' + y));
 WW.paused = true; WW.sfx('gate'); g.shake();
 ring.forEach(([x, y], i) => setTimeout(() => WW.fx.burst(x, y, i % 2 ? 'poof' : 'gold'), WW.calm ? 0 : Math.min(500, i * 25)));
 setTimeout(() => { WW.paused = false; WW.chris.say(f.cleared < f.rings.length ? T('fogMore').replace('{n}', (WW.ep.boss.need || 3) - (f.st.broken || 0)) : T('fogLast')); }, WW.calm ? 100 : 650);
+}
+function backAway() {
+const g = G(), b = g.ents.find(e => e.kind === 'boss'), p = g.player, [W, H] = g.size;
+const dist = new Map([[p.x + ',' + p.y, 0]]), q = [[p.x, p.y]];
+while (q.length) { const [x, y] = q.shift(), d = dist.get(x + ',' + y); if (d >= 6) continue; for (const [dx, dy] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) { const nx = x + dx, ny = y + dy, k = nx + ',' + ny; if (nx < 1 || ny < 1 || nx >= W - 1 || ny >= H - 1 || dist.has(k) || !g.walkable(nx, ny)) continue; dist.set(k, d + 1); q.push([nx, ny]); } }
+const sx = Math.floor(p.x / 16), sy = Math.floor(p.y / 11);
+const spots = [...dist].filter(([k, d]) => { const [x, y] = k.split(',').map(Number); return d >= 3 && d <= 5 && Math.floor(x / 16) === sx && Math.floor(y / 11) === sy && !g.entAt(x, y); })
+.map(([k, d]) => { const [x, y] = k.split(',').map(Number); return { x, y, s: d * 10 + Math.abs(x - p.x) + Math.abs(y - p.y) + ((x - p.x) * (b.x - p.x) + (y - p.y) * (b.y - p.y) > 0 ? 8 : 0) }; })
+.sort((m, n) => n.s - m.s);
+if (!spots.length || !b) return;
+WW.paused = true; WW.fx.burst(b.x, b.y, 'poof'); WW.sfx('bad');
+b.x = spots[0].x; b.y = spots[0].y;
+setTimeout(() => { WW.fx.burst(b.x, b.y, 'purple'); WW.paused = false; WW.chris.say(T('grumpBack'), null, { at: [b.x, b.y] }); }, WW.calm ? 100 : 450);
 }
 Wd.drawFog = (c, sx, sy, t) => {
 const f = WW.run && WW.run.fog; if (!f || !f.set.size) return;
@@ -4602,10 +4617,11 @@ ep.npcs.forEach(n => r.talked.add(n.id));
 r.quest = 4;
 if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
 r.challengeDone = true; G.onChallengeDone();
-if (where === 'boss') { WW.dbg.bumpInto(ep.boss.at[0], ep.boss.at[1]); return; }
+if (where === 'boss') { WW.dbg.bumpInto(...G.bossAt()); return; }
 ents.forEach(e => { if (e.kind === 'scrap') { e.gone = true; r.scraps.add(e.id); } if (e.kind === 'boss') e.gone = true; });
 finishEpisode();
 }
+G.bossAt = () => { const b = ents.find(e => e.kind === 'boss'); return b ? [b.x, b.y] : WW.ep.boss.at; };
 G.onChallengeDone = () => {
 const b = ents.find(e => e.kind === 'boss'); b.visible = true;
 WW.world.fogSetup();
@@ -4618,7 +4634,7 @@ const r = WW.run, ep = WW.ep;
 r.bossDone = true;
 WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
 WW.sheetSync();
-ents.push({ kind: 'atlas', x: ep.boss.at[0], y: ep.boss.at[1] });
+const [ax, ay] = G.bossAt(); ents.push({ kind: 'atlas', x: ax, y: ay });
 WW.fx.lift();
 WW.music.play('win', 'realm' + ep.realm);
 WW.ui.quest();
@@ -4965,7 +4981,7 @@ c.restore();
 }
 G.goal = () => {
 const r = WW.run, ep = WW.ep, near = list => list.sort((a, b) => Math.abs(a.x - player.x) + Math.abs(a.y - player.y) - Math.abs(b.x - player.x) - Math.abs(b.y - player.y))[0];
-if (r.bossDone) return r.claimed ? null : ep.boss.at;
+if (r.bossDone) return r.claimed ? null : G.bossAt();
 const left = ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
 if (left.length) { const n = near(left); return [n.x, n.y]; }
 if (WW.quest.on() && !WW.quest.done()) {
@@ -4975,7 +4991,7 @@ if (st === 1) return [q.contact.x, q.contact.y];
 return WW.quest.target();
 }
 if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
-return r.challengeDone ? ep.boss.at : ep.challenge.at;
+return r.challengeDone ? G.bossAt() : ep.challenge.at;
 };
 G.progress = () => {
 const r = WW.run, ep = WW.ep;
@@ -5269,11 +5285,11 @@ fa: 'گلاب، بهترین گلاب ایران! یک معامله وقتی ع�
 },
 q: { en: 'What will you give Hamid for a bottle of rosewater?', es: '¿Qué le das a Hamid por una botella de agua de rosas?', fa: 'برای یک بوتل گلاب به حمید چه می‌دهی؟' },
 choices: [
-{ ok: true, t: { en: 'Pearls and dried fish from the Gulf', es: 'Perlas y pescado seco del golfo', fa: 'مروارید و ماهی خشک از خلیج' },
-why: { en: 'Yes! Kashan is far from the sea, so sea goods are rare here. Dubai has plenty of them.', es: '¡Sí! Kashán está lejos del mar, así que aquí casi no hay productos del mar. Dubái tiene muchos.', fa: 'بلی! کاشان از بحر دور است، پس چیزهای بحری این‌جا کم است. دبی از آن‌ها زیاد دارد.' } },
-{ t: { en: 'A handwoven carpet', es: 'Una alfombra tejida a mano', fa: 'یک قالین دست‌باف' },
-why: { en: 'Kashan is famous for its own carpets. The bazaar is full of them.', es: 'Kashán es famosa por sus propias alfombras. El bazar está lleno de ellas.', fa: 'کاشان به خاطر قالین‌های خودش مشهور است. بازار پر از قالین است.' } },
-{ t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
+{ ok: true, at: [4, 11], icon: '🐟', t: { en: 'Pearls and dried fish from the Gulf', es: 'Perlas y pescado seco del golfo', fa: 'مروارید و ماهی خشک از خلیج' },
+why: { en: 'Yes! Kashan is far from the sea, so sea goods are rare here. Dubai has plenty of them. Here is your rosewater.', es: '¡Sí! Kashán está lejos del mar, así que aquí casi no hay productos del mar. Dubái tiene muchos. Aquí tienes tu agua de rosas.', fa: 'بلی! کاشان از بحر دور است، پس چیزهای بحری این‌جا کم است. دبی از آن‌ها زیاد دارد. بگیر، این گلاب تو.' } },
+{ at: [16, 8], icon: '🧶', t: { en: 'A handwoven carpet', es: 'Una alfombra tejida a mano', fa: 'یک قالین دست‌باف' },
+why: { en: 'This carpet was made right here! Kashan is famous for its own carpets. The bazaar is full of them.', es: '¡Esta alfombra se hizo aquí mismo! Kashán es famosa por sus propias alfombras. El bazar está lleno de ellas.', fa: 'این قالین همین‌جا بافته شده! کاشان به خاطر قالین‌های خودش مشهور است. بازار پر از قالین است.' } },
+{ at: [3, 7], icon: '🪨', t: { en: 'A bag of desert sand', es: 'Una bolsa de arena del desierto', fa: 'یک خلته ریگ بیابان' },
 why: { en: 'Kashan sits next to a desert. There is sand everywhere here!', es: 'Kashán está junto a un desierto. ¡Aquí hay arena por todas partes!', fa: 'کاشان کنار یک بیابان است. این‌جا همه جا ریگ است!' } }
 ],
 item: { icon: '🌹', name: { en: 'Bottle of Kashan rosewater', es: 'Botella de agua de rosas de Kashán', fa: 'بوتل گلاب کاشان' } }
