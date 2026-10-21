@@ -208,7 +208,7 @@ window.EPISODE = {
       fa: 'اسکلهٔ کشتی · شرق، آن طرف بحر: جزیره‌های جاپان. غرب: دشت دریاها، کوه‌های بلند و دشت گوبی.' } }
   ],
 
-  /* the quest: Teacher Zhou Lan (gold !) -> Batu the camel herder in the Gobi -> beat the Ink Thief where the rivers begin -> back to Zhou Lan */
+  /* the quest: Teacher Zhou Lan (gold !) -> Batu the camel herder in the Gobi -> follow the Ink Thief's riddles to the plateau, the desert and the islands, then catch it -> back to Zhou Lan */
   quest: {
     stat: 'loc',
     title: { en: 'The Stolen River Map', es: 'El mapa de ríos robado', fa: 'نقشهٔ دزدی‌شدهٔ دریاها' },
@@ -239,36 +239,45 @@ window.EPISODE = {
       role: { en: 'Camel herder', es: 'Pastor de camellos', fa: 'شترچران' },
       look: { skin: 3, hair: '#20180f', shirt: '#a0522d', pants: '#4a3b2a', hat: '#6b4a2a' },
       lines: [
-        { en: 'Yes, I saw a dark, inky thing with a map! It ran past my camels. Rivers do not start in this dry desert, so it did not stay here.',
-          es: '¡Sí, vi una cosa oscura de tinta con un mapa! Pasó corriendo junto a mis camellos. Los ríos no nacen en este desierto seco, así que no se quedó aquí.',
-          fa: 'بله، یک چیز تاریک رنگی را با یک نقشه دیدم! از کنار شترهایم دوید. دریاها در این دشت خشک شروع نمی‌شوند، پس اینجا نماند.' },
-        { en: 'It ran south, up onto the high Tibetan [[plateau|Plateau]]. Look in the far south-west, where the southern river begins.',
-          es: 'Corrió al sur, hacia arriba, a la alta [[plateau|meseta]] del Tíbet. Busca lejos en el suroeste, donde nace el río del sur.',
-          fa: 'به طرف جنوب، بالای [[plateau|فلات]] بلند تبت دوید. دور در جنوب غرب بگرد، جایی که دریای جنوبی شروع می‌شود.' }
+        { en: 'Yes, I saw a dark, inky thing with a map! It ran past my camels, laughing!',
+          es: '¡Sí, vi una cosa oscura de tinta con un mapa! ¡Pasó corriendo y riendo junto a mis camellos!',
+          fa: 'بله، یک چیز تاریک رنگی را با یک نقشه دیدم! خندان از کنار شترهایم دوید!' },
+        { en: 'It tore the map into 3 pieces and hid them all over the land! Listen to its riddles and walk to the right place. Then catch the thief!',
+          es: '¡Rompió el mapa en 3 pedazos y los escondió por todas partes! Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
+          fa: 'نقشه را سه تکه کرد و تکه‌ها را همه جا پنهان کرد! به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
-      at: [4, 17],
+      type: 'chase',
+      at: [44, 19],
+      hops: [[41, 10], [39, 18]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Drip, drip! I will cover every river with ink. Answer my questions about the land, or the map stays black!',
-        es: '¡Plic, plic! Voy a cubrir cada río con tinta. ¡Responde mis preguntas sobre la tierra o el mapa se queda negro!',
-        fa: 'چک، چک! هر دریا را با رنگ می‌پوشانم. به سوال‌هایم دربارهٔ زمین جواب بده، وگرنه نقشه سیاه می‌ماند!' },
-      win: { en: 'The ink drips away. The thief drops the river map and runs off!',
-        es: 'La tinta se escurre. ¡El ladrón suelta el mapa de ríos y se va corriendo!',
-        fa: 'رنگ می‌چکد و می‌رود. دزد نقشهٔ دریاها را می‌اندازد و فرار می‌کند!' },
-      need: 2,
-      questions: [
-        { q: { en: 'Where do the Yellow River and the Yangtze begin?', es: '¿Dónde nacen el río Amarillo y el Yangtsé?', fa: 'دریای زرد و یانگتسی از کجا شروع می‌شوند؟' },
-          choices: [{ en: 'High in the mountains of western China', es: 'Arriba, en las montañas del oeste de China', fa: 'بالا در کوه‌های غرب چین' }, { en: 'In the Gobi Desert', es: 'En el desierto de Gobi', fa: 'در دشت گوبی' }, { en: 'At the sea near Shanghai', es: 'En el mar cerca de Shanghái', fa: 'در بحر نزدیک شانگهای' }, { en: 'On the islands of Japan', es: 'En las islas de Japón', fa: 'در جزیره‌های جاپان' }], answer: 0,
-          why: { en: 'Both rivers start high in the west. Then they flow downhill, east to the sea.', es: 'Los dos ríos nacen en lo alto del oeste. Luego bajan hacia el este hasta el mar.', fa: 'هر دو دریا از بلندی‌های غرب شروع می‌شوند. بعد به طرف پایین، به شرق تا بحر می‌روند.' } },
-        { q: { en: 'Why do very few people live in the Gobi Desert?', es: '¿Por qué vive muy poca gente en el desierto de Gobi?', fa: 'چرا مردم بسیار کم در دشت گوبی زندگی می‌کنند؟' },
-          choices: [{ en: 'It is too dry to grow much food', es: 'Es demasiado seco para cultivar mucha comida', fa: 'برای کشت غذای زیاد خیلی خشک است' }, { en: 'It is under the sea', es: 'Está bajo el mar', fa: 'زیر بحر است' }, { en: 'It is full of big cities', es: 'Está lleno de ciudades grandes', fa: 'پر از شهرهای بزرگ است' }, { en: 'It is covered with rice paddies', es: 'Está cubierto de arrozales', fa: 'با شالیزارها پوشیده است' }], answer: 0,
-          why: { en: 'A desert gets very little rain. Without water, farms cannot grow food.', es: 'Un desierto recibe muy poca lluvia. Sin agua, las granjas no pueden dar comida.', fa: 'دشت خشک باران بسیار کم دارد. بدون آب، کشتزارها غذا نمی‌دهند.' } },
-        { q: { en: 'Japan is an archipelago. What does that mean?', es: 'Japón es un archipiélago. ¿Qué significa eso?', fa: 'جاپان یک مجمع‌الجزایر است. این یعنی چه؟' },
-          choices: [{ en: 'It is a chain of islands', es: 'Es una cadena de islas', fa: 'یک زنجیره از جزیره‌ها است' }, { en: 'It is one big flat plain', es: 'Es una gran llanura plana', fa: 'یک دشت هموار بزرگ است' }, { en: 'It is a large desert', es: 'Es un gran desierto', fa: 'یک دشت خشک بزرگ است' }, { en: 'It is a high plateau', es: 'Es una meseta alta', fa: 'یک فلات بلند است' }], answer: 0,
-          why: { en: 'Japan has four main islands and thousands of small ones.', es: 'Japón tiene cuatro islas principales y miles de islas pequeñas.', fa: 'جاپان چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک دارد.' } }
+      taunt: { en: 'The Ink Thief laughs: "Drip, drip! I tore the river map into 3 pieces and hid them all over East Asia. Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Plic, plic! Rompí el mapa de ríos en 3 pedazos y los escondí por todo el este de Asia. ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «چک، چک! نقشهٔ دریاها را سه تکه کردم و در تمام شرق آسیا پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is where China\'s two great rivers begin. Rivers start high up, where the snow melts. Go to the high, cold [[plateau|plateau]] in the south-west.',
+            es: 'El pedazo 1 está donde nacen los dos grandes ríos de China. Los ríos nacen arriba, donde se derrite la nieve. Ve a la [[plateau|meseta]] alta y fría del suroeste.',
+            fa: 'تکهٔ ۱ جایی است که دو دریای بزرگ چین شروع می‌شوند. دریاها از بلندی شروع می‌شوند، جایی که برف آب می‌شود. به [[plateau|فلات]] بلند و سرد در جنوب غرب برو.' },
+          zones: [{ x: 1, y: 11, w: 15, h: 10 }],
+          noBy: [{ x: 16, y: 13, w: 16, h: 8, t: { en: 'Here the river is wide and slow. It is near the end of its trip to the sea. Rivers begin far up in the west.', es: 'Aquí el río es ancho y lento. Está cerca del final de su viaje al mar. Los ríos nacen lejos, arriba en el oeste.', fa: 'این جا دریا پهن و آرام است. نزدیک آخر سفرش به بحر است. دریاها دور در بلندی‌های غرب شروع می‌شوند.' } }],
+          found: { en: 'Piece 1 was on the Tibetan Plateau! Both great rivers start up here in the high west. Then they flow downhill, east to the sea.', es: '¡El pedazo 1 estaba en la meseta del Tíbet! Los dos grandes ríos nacen aquí arriba, en el oeste alto. Luego bajan hacia el este hasta el mar.', fa: 'تکهٔ ۱ در فلات تبت بود! هر دو دریای بزرگ این جا در غرب بلند شروع می‌شوند. بعد به طرف پایین، به شرق تا بحر می‌روند.' } },
+        { t: { en: 'Piece 2 is where very few people live, because it is too dry to grow food. Find the sand.',
+            es: 'El pedazo 2 está donde vive muy poca gente, porque es demasiado seco para cultivar comida. Busca la arena.',
+            fa: 'تکهٔ ۲ جایی است که مردم بسیار کم زندگی می‌کنند، چون برای کشت غذا خیلی خشک است. ریگ را پیدا کن.' },
+          zones: [{ x: 1, y: 1, w: 15, h: 8 }],
+          noBy: [{ x: 16, y: 3, w: 16, h: 3, t: { en: 'These are wheat fields. There is enough water to farm here, so many people live here. Look for land that is too dry for any farm.', es: 'Estos son campos de trigo. Aquí hay agua para cultivar, así que vive mucha gente. Busca tierra demasiado seca para cualquier granja.', fa: 'این‌ها زمین‌های گندم است. این جا آب برای زراعت هست، پس مردم زیاد زندگی می‌کنند. زمینی را پیدا کن که برای هیچ کشتی آب ندارد.' } }],
+          found: { en: 'Piece 2 was in the Gobi Desert! A desert gets very little rain. Without water, farms cannot grow food, so very few people live here.', es: '¡El pedazo 2 estaba en el desierto de Gobi! Un desierto recibe muy poca lluvia. Sin agua, las granjas no dan comida, así que vive muy poca gente aquí.', fa: 'تکهٔ ۲ در دشت گوبی بود! دشت خشک باران بسیار کم دارد. بدون آب، کشتزارها غذا نمی‌دهند، پس مردم بسیار کم این جا زندگی می‌کنند.' } },
+        { t: { en: 'Piece 3 is on an [[archipelago|archipelago]]: a chain of islands across the sea, with a snowy volcano. Cross the sea to find it.',
+            es: 'El pedazo 3 está en un [[archipelago|archipiélago]]: una cadena de islas al otro lado del mar, con un volcán nevado. Cruza el mar para encontrarlo.',
+            fa: 'تکهٔ ۳ در یک [[archipelago|مجمع‌الجزایر]] است: زنجیره‌ای از جزیره‌ها آن طرف بحر، با یک آتشفشان برفی. از بحر بگذر تا پیدایش کنی.' },
+          zones: [{ x: 38, y: 1, w: 9, h: 20 }],
+          noBy: [{ x: 26, y: 10, w: 6, h: 5, t: { en: 'This big city is on the mainland of China, not on an island. Take the ferry pier east across the sea.', es: 'Esta ciudad grande está en el continente de China, no en una isla. Toma el muelle del ferry al este, cruzando el mar.', fa: 'این شهر بزرگ روی خشکهٔ چین است، نه روی جزیره. از اسکلهٔ کشتی به طرف شرق از بحر بگذر.' } }],
+          found: { en: 'Piece 3 was in Japan! Japan is an archipelago: four main islands and thousands of small ones. The mountains leave little flat land, so people crowd onto the coast.', es: '¡El pedazo 3 estaba en Japón! Japón es un archipiélago: cuatro islas principales y miles de islas pequeñas. Las montañas dejan poca tierra plana, así que la gente se junta en la costa.', fa: 'تکهٔ ۳ در جاپان بود! جاپان یک مجمع‌الجزایر است: چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک. کوه‌ها زمین هموار کم می‌گذارند، پس مردم در ساحل جمع می‌شوند.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the river map is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el mapa de ríos está completo otra vez.',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ دریاها دوباره کامل است.' },
       item: { icon: '🗺️', name: { en: "Teacher Zhou's river map", es: 'El mapa de ríos de la maestra Zhou', fa: 'نقشهٔ دریاهای معلم ژو' } }
     }
   },

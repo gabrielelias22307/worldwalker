@@ -93,7 +93,7 @@
     qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
     qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
     qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
-    qChase: { en: 'find map piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
+    qChase: { en: 'find piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
     qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
     qGoods: { en: 'pick up the right goods on the map', es: 'recoge en el mapa lo que sirve para el trato', fa: 'جنس درست را روی نقشه بردار' },
     qBring: { en: 'bring it to {n}', es: 'llévaselo a {n}', fa: 'آن را پیش {n} ببر' },

@@ -222,7 +222,7 @@ window.EPISODE = {
       fa: 'دریای نقره‌ای · این دریا [[border|سرحد]] بین دو همسایه است، ساحل شمالی و ساحل جنوبی. هر دو از آب آن برای کشت، نوشیدن و ماهیگیری استفاده می‌کنند. این دریا مال فقط یک طرف نیست.' } }
   ],
 
-  /* the quest: Farida on the South Bank (gold !) -> Mateo the surveyor in the mountains -> beat the Ink Thief in the desert -> back to Farida */
+  /* the quest: Farida on the South Bank (gold !) -> Mateo the surveyor in the mountains -> follow the Ink Thief's riddles to a geometric border, upstream and a natural border, then catch it -> back to Farida */
   quest: {
     stat: 'reg',
     title: { en: 'The Stolen Border Map', es: 'El mapa robado de la frontera', fa: 'نقشهٔ دزدیده‌شدهٔ سرحد' },
@@ -255,33 +255,43 @@ window.EPISODE = {
         { en: 'I measure land and mark borders. Yes, the Ink Thief ran past me, laughing! It held a map with a river on it.',
           es: 'Yo mido la tierra y marco fronteras. ¡Sí, el Ladrón de Tinta pasó corriendo y riéndose! Llevaba un mapa con un río.',
           fa: 'من زمین را اندازه می‌گیرم و سرحدها را نشانی می‌کنم. بله، دزد رنگ خنده‌کنان از کنارم دوید! یک نقشه با یک دریا در دستش بود.' },
-        { en: 'It ran east, past the Council Hall, into the desert. The thief hates clear answers. Name each kind of [[border|border]] the right way, and it will drop the map.',
-          es: 'Corrió al este, pasó el Salón del Consejo y entró al desierto. El ladrón odia las respuestas claras. Nombra bien cada tipo de [[border|frontera]] y soltará el mapa.',
-          fa: 'به شرق دوید، از کنار تالار شورا گذشت و داخل ریگستان رفت. دزد از جواب‌های روشن بدش می‌آید. هر نوع [[border|سرحد]] را درست نام ببر، آن وقت نقشه را می‌اندازد.' }
+        { en: 'Then it tore the map into 3 pieces and hid them! Each piece is by a different kind of [[border|border]]. Listen to its riddles and walk to the right place. Then catch the thief!',
+          es: '¡Después rompió el mapa en 3 pedazos y los escondió! Cada pedazo está junto a un tipo distinto de [[border|frontera]]. Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
+          fa: 'بعد نقشه را سه تکه کرد و تکه‌ها را پنهان کرد! هر تکه کنار یک نوع دیگر [[border|سرحد]] است. به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
-      at: [44, 5],
+      type: 'chase',
+      at: [4, 3],
+      hops: [[9, 9], [3, 7]],
       name: { en: 'The Border Ink Thief', es: 'El Ladrón de Tinta de la Frontera', fa: 'دزد رنگِ سرحد' },
-      taunt: { en: 'Hee hee! One smear and the line is gone. Then who knows where North Bank ends?',
-        es: '¡Ji ji! Una mancha y la línea desaparece. ¿Y entonces quién sabrá dónde termina la Orilla Norte?',
-        fa: 'هی هی! با یک غرغرو خط گم می‌شود. بعد کی می‌داند ساحل شمالی کجا تمام می‌شود؟' },
-      win: { en: 'The Ink Thief drops the map and runs away. The border line is still clear!',
-        es: '¡El Ladrón de Tinta suelta el mapa y huye! La línea de la frontera sigue clara.',
-        fa: 'دزد رنگ نقشه را می‌اندازد و فرار می‌کند. خط سرحد هنوز روشن است!' },
-      need: 2,
-      questions: [
-        { q: { en: 'On a map, a border runs along the top of a long mountain range. What kind of border is it?', es: 'En un mapa, una frontera va por la cima de una larga cordillera. ¿Qué tipo de frontera es?', fa: 'روی یک نقشه، یک سرحد از سر یک سلسله‌کوه دراز می‌گذرد. این چه نوع سرحد است؟' },
-          choices: [{ en: 'A natural border', es: 'Una frontera natural', fa: 'سرحد طبیعی' }, { en: 'A geometric border', es: 'Una frontera geométrica', fa: 'سرحد هندسی' }, { en: 'A trade bloc', es: 'Un bloque comercial', fa: 'گروه تجارتی' }, { en: 'A treaty', es: 'Un tratado', fa: 'معاهده' }], answer: 0,
-          why: { en: 'It follows mountains, a part of nature. So it is a [[natural border|natural border]].', es: 'Sigue las montañas, que son parte de la naturaleza. Por eso es una [[natural border|frontera natural]].', fa: 'این سرحد کوه‌ها را دنبال می‌کند که بخشی از طبیعت هستند. پس [[natural border|سرحد طبیعی]] است.' } },
-        { q: { en: 'A border is a long, straight line across a desert. It does not follow any river or hill. What kind of border is it?', es: 'Una frontera es una línea larga y recta que cruza un desierto. No sigue ningún río ni cerro. ¿Qué tipo de frontera es?', fa: 'یک سرحد یک خط دراز و راست در یک ریگستان است. هیچ دریا یا تپه‌ای را دنبال نمی‌کند. این چه نوع سرحد است؟' },
-          choices: [{ en: 'A geometric border', es: 'Una frontera geométrica', fa: 'سرحد هندسی' }, { en: 'A natural border', es: 'Una frontera natural', fa: 'سرحد طبیعی' }, { en: 'A coastline', es: 'Una costa', fa: 'خط ساحل' }, { en: 'A river border', es: 'Una frontera de río', fa: 'سرحد دریایی' }], answer: 0,
-          why: { en: 'People drew that straight line with a ruler. It is a [[geometric border|geometric border]].', es: 'La gente dibujó esa línea recta con una regla. Es una [[geometric border|frontera geométrica]].', fa: 'مردم آن خط راست را با خط‌کش کشیدند. این یک [[geometric border|سرحد هندسی]] است.' } },
-        { q: { en: 'A country is [[upstream|upstream]] on a river. It wants to build a big dam. What should it do first?', es: 'Un país está [[upstream|río arriba]]. Quiere construir una represa grande. ¿Qué debería hacer primero?', fa: 'یک کشور در [[upstream|بالای دریا]] است. می‌خواهد یک بند بزرگ بسازد. اول باید چه کند؟' },
-          choices: [{ en: 'Talk with the countries downstream and agree on a plan', es: 'Hablar con los países río abajo y acordar un plan', fa: 'با کشورهای پایین دریا گپ بزند و روی یک پلان موافقه کند' }, { en: 'Build it fast before anyone notices', es: 'Construirla rápido antes de que alguien se dé cuenta', fa: 'آن را زود بسازد پیش از اینکه کسی بفهمد' }, { en: 'Move the border to the other side of the river', es: 'Mover la frontera al otro lado del río', fa: 'سرحد را به آن طرف دریا ببرد' }, { en: 'Close the border to all trucks', es: 'Cerrar la frontera a todos los camiones', fa: 'سرحد را به روی همهٔ لاری‌ها ببندد' }], answer: 0,
-          why: { en: 'A dam upstream changes the water for everyone below. Talking first, maybe with a [[treaty|treaty]], keeps the peace.', es: 'Una represa río arriba cambia el agua para todos los que están abajo. Hablar primero, quizás con un [[treaty|tratado]], mantiene la paz.', fa: 'بندی که در بالای دریا ساخته شود، آب را برای همهٔ مردم پایین تغییر می‌دهد. اول گپ زدن، شاید با یک [[treaty|معاهده]]، صلح را نگه می‌دارد.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the border map into 3 pieces and hid them. Without the map, who knows where North Bank ends? Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el mapa de la frontera en 3 pedazos y los escondí. Sin el mapa, ¿quién sabrá dónde termina la Orilla Norte? ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! نقشهٔ سرحد را سه تکه کردم و پنهان کردم. بدون نقشه، کی می‌داند ساحل شمالی کجا تمام می‌شود؟ اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is by a [[geometric border|geometric border]]: a long, straight line that people drew with a ruler, across empty sand.',
+            es: 'El pedazo 1 está junto a una [[geometric border|frontera geométrica]]: una línea larga y recta que la gente dibujó con una regla, a través de arena vacía.',
+            fa: 'تکهٔ ۱ کنار یک [[geometric border|سرحد هندسی]] است: یک خط دراز و راست که مردم با خط‌کش کشیدند، در میان ریگ خالی.' },
+          zones: [{ x: 31, y: 1, w: 15, h: 10 }],
+          noBy: [{ x: 16, y: 11, w: 15, h: 3, t: { en: 'The river is a border too, but nature made it. That is a natural border. A geometric border is a straight line people drew, out in the sand.', es: 'El río también es una frontera, pero la hizo la naturaleza. Esa es una frontera natural. Una frontera geométrica es una línea recta que dibujó la gente, allá en la arena.', fa: 'دریا هم سرحد است، اما طبیعت آن را ساخته. این سرحد طبیعی است. سرحد هندسی یک خط راست است که مردم کشیدند، آن جا در ریگ.' } }],
+          found: { en: 'Piece 1 was in the desert! Few people live in deserts, so people often drew straight lines on the map. Much of the border between Egypt and Sudan is one straight line.', es: '¡El pedazo 1 estaba en el desierto! En los desiertos vive poca gente, así que muchas veces se dibujaron líneas rectas en el mapa. Gran parte de la frontera entre Egipto y Sudán es una sola línea recta.', fa: 'تکهٔ ۱ در ریگستان بود! در ریگستان‌ها مردم کم زندگی می‌کنند، پس اکثراً خط‌های راست روی نقشه کشیده شد. بیشتر سرحد بین مصر و سودان یک خط راست است.' } },
+        { t: { en: 'Piece 2 is [[upstream|upstream]] on the Silver River. The river flows east to the sea. Go the other way, toward the place the river comes from.',
+            es: 'El pedazo 2 está [[upstream|río arriba]] en el Río Plateado. El río corre al este, hacia el mar. Ve hacia el otro lado, hacia donde viene el río.',
+            fa: 'تکهٔ ۲ در [[upstream|بالای دریا]] است، در دریای نقره‌ای. دریا به طرف شرق تا بحر می‌رود. به طرف دیگر برو، به طرف جایی که دریا از آن جا می‌آید.' },
+          zones: [{ x: 1, y: 11, w: 8, h: 10 }],
+          noBy: [{ x: 31, y: 11, w: 10, h: 3, t: { en: 'This is downstream, where the river meets the sea. Upstream is the other way, far to the west.', es: 'Esto es río abajo, donde el río llega al mar. Río arriba es hacia el otro lado, lejos al oeste.', fa: 'این جا پایین دریا است، جایی که دریا به بحر می‌رسد. بالای دریا به طرف دیگر است، دور در غرب.' } },
+            { x: 31, y: 16, w: 9, h: 5, t: { en: 'This is the river mouth, where the river ends at the sea. That is downstream. Walk west, toward where the river begins.', es: 'Esta es la desembocadura, donde el río termina en el mar. Eso es río abajo. Camina al oeste, hacia donde empieza el río.', fa: 'این دهن دریا است، جایی که دریا در بحر تمام می‌شود. این پایین دریا است. به طرف غرب برو، به طرف جایی که دریا شروع می‌شود.' } }],
+          found: { en: 'Piece 2 was upstream, in the west! If people up here build a big dam, the water changes for everyone downstream. So neighbors must talk first and make a [[treaty|treaty]].', es: '¡El pedazo 2 estaba río arriba, en el oeste! Si aquí arriba se construye una represa grande, el agua cambia para todos los que están río abajo. Por eso los vecinos deben hablar primero y hacer un [[treaty|tratado]].', fa: 'تکهٔ ۲ در بالای دریا، در غرب بود! اگر مردم این جا یک بند بزرگ بسازند، آب برای همهٔ مردم پایین دریا تغییر می‌کند. پس همسایه‌ها باید اول گپ بزنند و یک [[treaty|معاهده]] بسازند.' } },
+        { t: { en: 'Piece 3 is by a [[natural border|natural border]] that runs along the top of a long mountain range. Find the snowy peaks.',
+            es: 'El pedazo 3 está junto a una [[natural border|frontera natural]] que va por la cima de una larga cordillera. Busca los picos nevados.',
+            fa: 'تکهٔ ۳ کنار یک [[natural border|سرحد طبیعی]] است که از سر یک سلسله‌کوه دراز می‌گذرد. قله‌های برفی را پیدا کن.' },
+          zones: [{ x: 1, y: 1, w: 15, h: 10 }],
+          noBy: [{ x: 31, y: 1, w: 15, h: 10, t: { en: 'There are no mountains in this sand. A border here is a straight line drawn by people. Look for the snowy peaks in the west.', es: 'En esta arena no hay montañas. Una frontera aquí es una línea recta dibujada por la gente. Busca los picos nevados en el oeste.', fa: 'در این ریگ کوه نیست. سرحد این جا یک خط راست است که مردم کشیدند. قله‌های برفی را در غرب پیدا کن.' } }],
+          found: { en: 'Piece 3 was in the mountains! A border along a mountain range follows nature, so it is a natural border. The Andes are part of the border between Chile and Argentina.', es: '¡El pedazo 3 estaba en las montañas! Una frontera por una cordillera sigue la naturaleza, así que es una frontera natural. Los Andes son parte de la frontera entre Chile y Argentina.', fa: 'تکهٔ ۳ در کوه‌ها بود! سرحدی که از یک سلسله‌کوه می‌گذرد طبیعت را دنبال می‌کند، پس سرحد طبیعی است. کوه‌های اندیز بخشی از سرحد بین چیلی و ارجنتاین هستند.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the border map is whole again, and the line is still clear!',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el mapa de la frontera está completo otra vez, ¡y la línea sigue clara!',
+        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ سرحد دوباره کامل است و خط هنوز روشن است!' },
       item: { icon: '🗺️', name: { en: 'The Silver River border map', es: 'El mapa de la frontera del Río Plateado', fa: 'نقشهٔ سرحد دریای نقره‌ای' } }
     }
   },
