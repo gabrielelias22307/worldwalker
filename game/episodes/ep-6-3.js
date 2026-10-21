@@ -27,7 +27,7 @@ window.EPISODE = {
     'UllllllllllllJJ...1o2o..x.:....T',
     'UlUUlUUlJJlUlll..o1o2o....:..p.T',
     'UlUUlUUlJJlUlll...........:..,.T',
-    'Ullllllllllllll..p...,....:....T',
+    'Ullllllllllllll.Tp...,....:...TT',
     'Ulll:llllllll.............:....T',
     'W...:.....................:.~~~T',
     'WRRR:QQQ:RRR:QQ..qqqqqqqq.:.~~.T',
@@ -37,13 +37,30 @@ window.EPISODE = {
     'W...:...:...:....qqqq.RRR...~~.T',
     'WQQQ:RRR:QQQ:RR..qqqq.hdh...~~.T',
     'Whdh:hdh:hdh:hd..qqqq.......~~.T',
-    'W...........................~~.T',
+    'W........................T..~~.T',
     'W..,.......O.......,.....p..~~.T',
     'WWWWWWWWWWWWWWWWTTTTTTTTTTTT~~TT'
   ],
   start: [2, 5],
 
   tools: ['axe', 'sickle'],
+  /* build: a school in the village, close to the homes, so children can walk there every day (schools help development) */
+  build: [
+    { id: 'school', kind: 'place', board: [21, 11], tile: 'h', ok: [[22, 9, 'R'], [23, 9, 'R'], [24, 9, 'R'], [22, 10], [23, 10], [24, 10]], cost: { wood: 1 },
+      name: { en: 'A village school', es: 'Una escuela para el pueblo', fa: 'یک مکتب برای قریه' },
+      ask: { en: 'The village has no school. The nearest one is in the city, too far to walk. Build a school in the middle of the village, between the homes in the north and the south. Put the roof on top and the walls below.',
+        es: 'El pueblo no tiene escuela. La más cercana está en la ciudad, demasiado lejos para ir caminando. Construye una escuela en el medio del pueblo, entre las casas del norte y las del sur. Pon el techo arriba y las paredes abajo.',
+        fa: 'قریه مکتب ندارد. نزدیک‌ترین مکتب در شهر است و پیاده رفتن تا آن جا خیلی دور است. یک مکتب در وسط قریه، میان خانه‌های شمال و جنوب بساز. بام را بالا و دیوارها را پایین بگذار.' },
+      why: { en: 'Good: close to the homes. Children can walk here.', es: 'Bien: cerca de las casas. Los niños pueden venir caminando.', fa: 'خوب: نزدیک خانه‌ها. اطفال می‌توانند پیاده این جا بیایند.' },
+      wrong: { en: 'Not here. The school goes in the middle of the village, between the homes, where children from all the homes can walk to it.', es: 'Aquí no. La escuela va en el medio del pueblo, entre las casas, donde los niños de todas las casas pueden llegar caminando.', fa: 'این جا نه. مکتب در وسط قریه، میان خانه‌ها می‌رود، جایی که اطفال همهٔ خانه‌ها پیاده به آن برسند.' },
+      wrongBy: [
+        { x: 1, y: 1, w: 14, h: 20, t: { en: 'This is the city, far from the village homes. It is too far for the village children to walk every day.', es: 'Esto es la ciudad, lejos de las casas del pueblo. Está demasiado lejos para que los niños del pueblo caminen cada día.', fa: 'این جا شهر است، دور از خانه‌های قریه. برای اطفال قریه خیلی دور است که هر روز پیاده بیایند.' } },
+        { x: 27, y: 11, w: 4, h: 10, t: { en: 'This is the edge of the village, by the river. It is too far to walk every day for most children.', es: 'Esto es la orilla del pueblo, junto al río. Está demasiado lejos para que la mayoría de los niños caminen cada día.', fa: 'این جا کنار قریه، پهلوی دریا است. برای بیشتر اطفال خیلی دور است که هر روز پیاده بیایند.' } }
+      ],
+      done: { en: 'The village has a school, and every child can walk to it. When more children go to school, they can get better jobs and stay healthier. That is [[development|development]].',
+        es: 'El pueblo tiene escuela, y todos los niños pueden llegar caminando. Cuando más niños van a la escuela, pueden tener mejores trabajos y más salud. Eso es [[development|desarrollo]].',
+        fa: 'قریه مکتب دارد و هر طفل می‌تواند پیاده به آن برود. وقتی اطفال بیشتر به مکتب می‌روند، کارهای بهتر پیدا می‌کنند و صحتمندتر می‌مانند. این [[development|انکشاف]] است.' } }
+  ],
 
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [

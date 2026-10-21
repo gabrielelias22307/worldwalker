@@ -22,11 +22,11 @@ window.EPISODE = {
     'MMMM~MMnnMM~MMMMD2222~~~~~fffffD',
     'MMM.~.x....~..MMD2222ffWWffffffD',
     'M..~.~.....~.M..Dffffff~~fffoooD',
-    'M..~~~.P...~....dffffff~~W~~o1oD',
+    'M..~~~.T...~....dffffff~~W~~o1oD',
     'M..WWW.....~....Dffffff~~fffoooD',
     'M...~......b....Dffffff~~ffffffD',
-    'M.P.~......~.P..Dffffff~~ffffffD',
-    'M...b....P.~....Do1ooo1oooo1oooD',
+    'M.T.~......~.P..Dffffff~~ffffffD',
+    'M...b....T.~....Do1ooo1oooo1oooD',
     'M...~......~....DDDDDDDDDDDDDDDD',
     'r...~.www..~sssssssssssssss~~~~r',
     'r...~.www..~............sss~===r',
@@ -43,6 +43,21 @@ window.EPISODE = {
   start: [8, 4],
 
   tools: ['axe', 'sickle'],
+  /* build: an irrigation canal from the Euphrates to the dry land between the two wheat fields (the Fertile Crescent) */
+  build: [
+    { id: 'canal', kind: 'place', board: [10, 14], tile: '~', ok: [[5, 13], [6, 13], [7, 13], [8, 13]], cost: { wood: 1 },
+      name: { en: 'Irrigation canal', es: 'Canal de riego', fa: 'جوی آبیاری' },
+      ask: { en: 'Long ago, farmers in the [[fertile crescent|Fertile Crescent]] dug canals. A canal carries river water to the fields. Dig a canal that starts at the river on the west and runs east, between the two wheat fields. Use wood for the canal gates.',
+        es: 'Hace mucho tiempo, los agricultores de la [[fertile crescent|Media Luna Fértil]] cavaban canales. Un canal lleva el agua del río a los campos. Cava un canal que empiece en el río del oeste y vaya al este, entre los dos campos de trigo. Usa madera para las compuertas.',
+        fa: 'خیلی وقت پیش، دهقانان [[fertile crescent|هلال حاصل‌خیز]] جوی می‌کندند. جوی آب دریا را به کشتزارها می‌برد. یک جوی بکن که از دریای غرب شروع شود و به طرف شرق، میان دو کشتزار گندم برود. برای دروازه‌های جوی از چوب کار بگیر.' },
+      why: { en: 'Good: the river water flows on, toward the wheat.', es: 'Bien: el agua del río sigue hacia el trigo.', fa: 'خوب: آب دریا به طرف گندم پیش می‌رود.' },
+      wrong: { en: 'Not here. A canal starts at the river and runs to the fields. Dig east from the west river, between the two wheat fields.', es: 'Aquí no. Un canal empieza en el río y va a los campos. Cava hacia el este desde el río del oeste, entre los dos campos de trigo.', fa: 'این جا نه. جوی از دریا شروع می‌شود و به کشتزارها می‌رود. از دریای غرب به طرف شرق، میان دو کشتزار گندم بکن.' },
+      wrongBy: [
+        { x: 1, y: 18, w: 26, h: 3, t: { en: 'This is the desert, south of the river. A canal here would never reach the wheat fields.', es: 'Esto es el desierto, al sur del río. Un canal aquí nunca llegaría a los campos de trigo.', fa: 'این جا بیابان است، جنوبِ دریا. جوی در این جا هیچ وقت به کشتزارهای گندم نمی‌رسد.' } },
+        { x: 9, y: 14, w: 15, h: 3, t: { en: 'Too far from the west river. The water must come from the river, so start the canal right next to it.', es: 'Muy lejos del río del oeste. El agua tiene que venir del río, así que empieza el canal justo a su lado.', fa: 'از دریای غرب خیلی دور است. آب باید از دریا بیاید، پس جوی را درست کنار آن شروع کن.' } }
+      ],
+      done: { en: 'River water now reaches both wheat fields. Canals like this turned dry land into the farms of the Fertile Crescent, between the Tigris and the Euphrates.', es: 'El agua del río ya llega a los dos campos de trigo. Canales así convirtieron la tierra seca en las granjas de la Media Luna Fértil, entre el Tigris y el Éufrates.', fa: 'حالا آب دریا به هر دو کشتزار گندم می‌رسد. جوی‌هایی مثل این زمین خشک را به کشتزارهای هلال حاصل‌خیز، میان دجله و فرات، تبدیل کردند.' } }
+  ],
   finds: [
     { clueAt: [10, 12], at: [6, 11], decor: 'vase',
       clue: { en: 'Mesopotamia means "the land between the rivers." Find the wheat field between the two rivers that is farthest north. Stand on its north-west corner square.', es: 'Mesopotamia quiere decir "la tierra entre los ríos". Busca el campo de trigo entre los dos ríos que está más al norte. Párate en su cuadro de la esquina noroeste.', fa: 'بین‌النهرین یعنی «سرزمین میان دریاها». کشتزار گندمی را که میان دو دریا است و از همه بیشتر در شمال است پیدا کن. روی خانهٔ کنج شمال‌غربی آن بایست.' },

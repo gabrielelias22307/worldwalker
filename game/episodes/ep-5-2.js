@@ -21,12 +21,12 @@ window.EPISODE = {
   map: [
     'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM',
     'MsJJJssJJJssJJJssWWWWWWWWWWWWWsM',
-    'MsJJJssJJJssJJJssWT,,,,~,,,,TWsM',
-    'MssssssssssssssssW,,T,,~,,T,,WsM',
+    'MsJJJssJJJssJJJssWT,,,,,,,,,TWsM',
+    'MssssssssssssssssW,,T,,,,,T,,WsM',
     'MsmmmsmmmmsmmmmssW~B~~~~~~~B~WsM',
     'M:::::::::::::::::::,,,b,,,,,WsM',
-    'MsmmmsmmmmsmmmmssW,,T,,~,,T,,WsM',
-    'Mssssssssssss:sssWT,,,,~,,,,TWsM',
+    'MsmmmsmmmmsmmmmssW,,T,,,,,T,,WsM',
+    'Mssssssssssss:sssWT,,,,,,,,,TWsM',
     'MsJJJs,O,sJJJ:sssWWWWWWWWWWWWWsM',
     '~~~~~~~~~~~~~B~~~~~~~~~~~~~~~~B~',
     '=============B================B=',
@@ -45,6 +45,23 @@ window.EPISODE = {
   start: [4, 16],
 
   tools: ['axe', 'sickle'],
+  /* build: finish the cross of water in the Persian garden (chahar bagh), an idea that spread from Iran to India, Spain and Dubai */
+  build: [
+    { id: 'garden', kind: 'place', board: [16, 3], tile: '~', ok: [[23, 2], [23, 3], [23, 6], [23, 7]], cost: { wood: 1 },
+      name: { en: 'Water channels of the Persian garden', es: 'Canales del jardín persa', fa: 'جوی‌های باغ ایرانی' },
+      ask: { en: 'A Persian garden has water channels in the shape of a cross. They cut the garden into four parts. This garden has only the east-west channel. Dig the north-south channel: a straight line through the middle, from the bridge to the north wall and to the south wall.',
+        es: 'Un jardín persa tiene canales de agua en forma de cruz. Cortan el jardín en cuatro partes. Este jardín solo tiene el canal de este a oeste. Cava el canal de norte a sur: una línea recta por el medio, desde el puente hasta el muro del norte y hasta el muro del sur.',
+        fa: 'باغ ایرانی جوی‌های آب به شکل صلیب دارد. آن‌ها باغ را به چهار بخش تقسیم می‌کنند. این باغ فقط جوی شرق به غرب را دارد. جوی شمال به جنوب را بکن: یک خط راست از وسط، از پل تا دیوار شمال و تا دیوار جنوب.' },
+      why: { en: 'Right on the line of the cross!', es: '¡Justo en la línea de la cruz!', fa: 'درست روی خط صلیب!' },
+      wrong: { en: 'Off the line. The channel runs straight down the middle, north and south of the little bridge.', es: 'Fuera de la línea. El canal va recto por el medio, al norte y al sur del puentecito.', fa: 'بیرون از خط. جوی راست از وسط می‌رود، شمال و جنوبِ پل کوچک.' },
+      wrongBy: [
+        { x: 18, y: 2, w: 5, h: 6, t: { en: 'Too far west. The cross is in the middle, so the four parts are the same size. Dig in line with the little bridge.', es: 'Muy al oeste. La cruz está en el medio, para que las cuatro partes sean del mismo tamaño. Cava en línea con el puentecito.', fa: 'زیاد به طرف غرب. صلیب در وسط است تا چهار بخش هم‌اندازه باشند. هم‌خط با پل کوچک بکن.' } },
+        { x: 24, y: 2, w: 5, h: 6, t: { en: 'Too far east. The cross is in the middle, so the four parts are the same size. Dig in line with the little bridge.', es: 'Muy al este. La cruz está en el medio, para que las cuatro partes sean del mismo tamaño. Cava en línea con el puentecito.', fa: 'زیاد به طرف شرق. صلیب در وسط است تا چهار بخش هم‌اندازه باشند. هم‌خط با پل کوچک بکن.' } }
+      ],
+      done: { en: 'Now water cuts the garden into four parts. This kind of garden started in Persia (Iran). The idea spread to India, Spain and Dubai: that is [[cultural diffusion|cultural diffusion]].',
+        es: 'Ahora el agua corta el jardín en cuatro partes. Este tipo de jardín nació en Persia (Irán). La idea llegó a la India, a España y a Dubái: eso es [[cultural diffusion|difusión cultural]].',
+        fa: 'حالا آب باغ را به چهار بخش تقسیم می‌کند. این نوع باغ در فارس (ایران) شروع شد. این فکر به هند، اسپانیا و دبی رسید: این [[cultural diffusion|پخش فرهنگی]] است.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [7, 15], at: [11, 18], decor: 'coinold',
@@ -109,9 +126,9 @@ window.EPISODE = {
       role: { en: 'Gardener of the Persian garden', es: 'Jardinera del jardín persa', fa: 'باغبان باغ ایرانی' },
       look: { skin: 2, hair: '#1e1612', shirt: '#2f8a5a', pants: '#35304a', robe: true },
       lines: [
-        { en: 'This is a Persian garden. Water channels cut it into four parts. But Kashan sits next to a dry desert. Where does the water come from? Across Iran, people dug a [[qanat|qanat]]: a long tunnel under the ground that brings water from the mountains.',
-          es: 'Este es un jardín persa. Canales de agua lo dividen en cuatro partes. Pero Kashán está junto a un desierto seco. ¿De dónde viene el agua? En todo Irán, la gente cavó un [[qanat|qanat]]: un túnel largo bajo la tierra que trae agua de las montañas.',
-          fa: 'این یک باغ ایرانی است. جوی‌های آب آن را چهار بخش می‌کنند. اما کاشان کنار یک بیابان خشک است. آب از کجا می‌آید؟ در سراسر ایران مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب را از کوه‌ها می‌آورد.' },
+        { en: 'This is a Persian garden. Its water channels should make a cross that cuts it into four parts, but one channel is not dug yet. But Kashan sits next to a dry desert. Where does the water come from? Across Iran, people dug a [[qanat|qanat]]: a long tunnel under the ground that brings water from the mountains.',
+          es: 'Este es un jardín persa. Sus canales de agua deben formar una cruz que lo divide en cuatro partes, pero falta cavar un canal. Pero Kashán está junto a un desierto seco. ¿De dónde viene el agua? En todo Irán, la gente cavó un [[qanat|qanat]]: un túnel largo bajo la tierra que trae agua de las montañas.',
+          fa: 'این یک باغ ایرانی است. جوی‌های آبش باید یک صلیب بسازند که آن را چهار بخش کند، اما یک جوی هنوز کنده نشده. اما کاشان کنار یک بیابان خشک است. آب از کجا می‌آید؟ در سراسر ایران مردم [[qanat|کاریز]] کندند: تونل درازی زیر زمین که آب را از کوه‌ها می‌آورد.' },
         { en: 'Qanats are very old. The idea spread from Iran to many dry lands. In Afghanistan people call them karez! Even the English word "paradise" comes from an old Persian word for a walled garden like this one.',
           es: 'Los qanats son muy antiguos. La idea pasó de Irán a muchas tierras secas. ¡En Afganistán los llaman karez! Hasta la palabra "paraíso" viene de una palabra persa antigua para un jardín con muros como este.',
           fa: 'کاریزها خیلی کهنه هستند. این فکر از ایران به بسیاری از سرزمین‌های خشک پخش شد. در ایران به آن قنات می‌گویند و در افغانستان کاریز! حتی کلمهٔ انگلیسی «پارادایس» (بهشت) از یک کلمهٔ کهنهٔ فارسی برای باغ دیوارداری مثل همین باغ آمده است.' }

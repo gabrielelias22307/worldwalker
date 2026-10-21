@@ -27,8 +27,8 @@ window.EPISODE = {
     'j.hdh..bb..hdhskkkkks,,.,ss~~~~=',
     'jj....q~~q....s~=~~ss,.,sskksp~=',
     'j,qqqqq~~qqqqqs~=~~~sps.ss~~ss~=',
-    'j.qqqqq~~qqqqps~=~~~~ssss~~~~~~=',
-    'jp.....~~...xss~=~~~~~~B~~~~~~~=',
+    'jTqqqqq~~qqqqps~=~~~~ssss~~~~~~=',
+    'jpT....~~...xss~=~~~~~~B~~~~~~~=',
     'pssss~~~~~~ssps~=~~~~~~B~~~~~~~=',
     '~~~~B~~~~~~~~~~~=~~~~~~B~~~~~~~=',
     '~~~~B~~~~~~~~~~~~~~~~~~B~~~~~~~=',
@@ -36,7 +36,7 @@ window.EPISODE = {
     '~sttMMVMMtts~~~~~~~ssMMVMMss~~~=',
     '~stttMMMttts~~~~~~psMMMMMMMsp~~=',
     '~s.tttttttt.s~~~~~stttMMMttts~~=',
-    '~s.qqq:qqqq.sbbbbbss..ttt...ss~=',
+    '~s.qqq:qqqqTsbbbbbss..ttt...ss~=',
     '~sRRR.:.QQQ.s~~~~~s.RRR..QQQ.s~=',
     '~shdh.:.hdh.s~~~~~s.hdh.xhdh.s~=',
     '~pss..:...ssp~~~~~ps.....O...p~=',
@@ -46,6 +46,23 @@ window.EPISODE = {
   start: [3, 2],
 
   tools: ['axe', 'sickle'],
+  /* build: a new home on the island, on the safe south coast, far from the volcano (the Ring of Fire) */
+  build: [
+    { id: 'home', kind: 'place', board: [5, 20], tile: 'h', ok: [[7, 19, 'R'], [8, 19, 'R'], [7, 20], [8, 20]], cost: { wood: 1 },
+      name: { en: 'A safe home on the island', es: 'Una casa segura en la isla', fa: 'یک خانهٔ امن در جزیره' },
+      ask: { en: 'This island is on the [[ring of fire|Ring of Fire]]. The ash from the volcano makes the soil [[fertile|fertile]], so farmers grow rice on its slopes. But people build their homes far from the volcano. Build a new home on the south coast, next to the village, on the sand by the sea. Roof on top, walls below.',
+        es: 'Esta isla está en el [[ring of fire|Cinturón de Fuego]]. La ceniza del volcán hace que la tierra sea [[fertile|fértil]], y por eso se cultiva arroz en sus laderas. Pero la gente construye sus casas lejos del volcán. Construye una casa nueva en la costa sur, junto al pueblo, en la arena al lado del mar. El techo arriba y las paredes abajo.',
+        fa: 'این جزیره روی [[ring of fire|حلقهٔ آتش]] است. خاکستر آتشفشان خاک را [[fertile|حاصل‌خیز]] می‌سازد، پس دهقانان روی دامنه‌های آن برنج می‌کارند. اما مردم خانه‌های خود را دور از آتشفشان می‌سازند. یک خانهٔ نو در ساحل جنوب، کنار قریه، روی ریگ کنار بحر بساز. بام بالا، دیوارها پایین.' },
+      why: { en: 'Good: far from the volcano, next to the village and the sea.', es: 'Bien: lejos del volcán, junto al pueblo y el mar.', fa: 'خوب: دور از آتشفشان، کنار قریه و بحر.' },
+      wrong: { en: 'Not here. The new home goes on the south coast of the island, on the sand next to the village, far from the volcano.', es: 'Aquí no. La casa nueva va en la costa sur de la isla, en la arena junto al pueblo, lejos del volcán.', fa: 'این جا نه. خانهٔ نو در ساحل جنوب جزیره، روی ریگ کنار قریه، دور از آتشفشان می‌رود.' },
+      wrongBy: [
+        { x: 2, y: 13, w: 9, h: 3, t: { en: 'Too close to the volcano! Lava and ash reach here. Farms can be on the slopes, but homes go far away.', es: '¡Muy cerca del volcán! La lava y la ceniza llegan hasta aquí. Puede haber cultivos en las laderas, pero las casas van lejos.', fa: 'به آتشفشان خیلی نزدیک است! لاوا و خاکستر تا این جا می‌رسند. کشت می‌تواند روی دامنه باشد، اما خانه‌ها دور می‌روند.' } },
+        { x: 19, y: 13, w: 10, h: 3, t: { en: 'Too close to the volcano! Lava and ash reach here. Farms can be on the slopes, but homes go far away.', es: '¡Muy cerca del volcán! La lava y la ceniza llegan hasta aquí. Puede haber cultivos en las laderas, pero las casas van lejos.', fa: 'به آتشفشان خیلی نزدیک است! لاوا و خاکستر تا این جا می‌رسند. کشت می‌تواند روی دامنه باشد، اما خانه‌ها دور می‌روند.' } }
+      ],
+      done: { en: 'The new home is safe, far from the volcano. Millions of people live on the Ring of Fire. The ash makes rich soil, but people must live a safe distance away.',
+        es: 'La casa nueva está segura, lejos del volcán. Millones de personas viven en el Cinturón de Fuego. La ceniza da tierra rica, pero la gente debe vivir a una distancia segura.',
+        fa: 'خانهٔ نو امن است، دور از آتشفشان. میلیون‌ها نفر روی حلقهٔ آتش زندگی می‌کنند. خاکستر خاک پرمایه می‌سازد، اما مردم باید در فاصلهٔ امن زندگی کنند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [2, 9], at: [6, 8], decor: 'drum',

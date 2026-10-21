@@ -28,12 +28,12 @@ window.EPISODE = {
     '=~sXs.."~~"..,..gg:gggrgggggg"gM',
     '=kkss.o1o~~o1o..gg:ggggggrgggggM',
     '=~ss.o1o.~~~~~~~~~B~~~~~~~~~B~~~',
-    '=~s.,o1o.~~.o1o.gg:ggggggggggaMM',
+    '=~s.,o1o.~~.o1o.gg:ggggggggggTMM',
     '=~ss.o2o.~~.o2o.gg:ggrgggggggggM',
-    '=~s..o1o.bb.o1o.gg:ggggggggggaMM',
+    '=~s..o1o.bb.o1o.gg:ggggggggggTMM',
     '=~s..o1o.~~.o1o.gg:gggggggggrggM',
     '=~ss.oo2.~~.2oo.gg:::::::::ggggM',
-    '=~s.w.ww.~~.www.ggrgggJJJJ:gggaM',
+    '=~s.w.ww.~~.www.ggrgggJJJJ:gggTM',
     '=~ss.www.bb.ww..gggggg:::::ggggM',
     '=~ss.....~~.....sggggggg:O:ggrgM',
     '=~sss.ssu~~ussxssssgggggg:gggggM',
@@ -46,6 +46,23 @@ window.EPISODE = {
   start: [14, 2],
 
   tools: ['axe', 'sickle'],
+  /* build: one shared canal from the Yarmouk River to BOTH towns (north and south of the river) — cooperation over a scarce resource */
+  build: [
+    { id: 'canal', kind: 'place', board: [22, 6], tile: '~', ok: [[24, 6], [24, 5], [24, 8], [24, 9], [24, 10], [24, 11]], cost: { wood: 1 },
+      name: { en: 'The shared canal', es: 'El canal compartido', fa: 'کانال مشترک' },
+      ask: { en: 'Water is [[scarce|scarce]] here. One town is north of the Yarmouk River and one is south. Build one canal that both towns share. It goes in a straight line from the river: north to the road of the north town, and south to the road of the south town.',
+        es: 'Aquí el agua es [[scarce|escasa]]. Un pueblo está al norte del río Yarmuk y otro al sur. Construye un canal que compartan los dos pueblos. Va en línea recta desde el río: al norte hasta el camino del pueblo del norte, y al sur hasta el camino del pueblo del sur.',
+        fa: 'آب این جا [[scarce|کم]] است. یک شهرک در شمال دریای یرموک است و یکی در جنوب. یک کانال بساز که هر دو شهرک با هم شریک باشند. از دریا در یک خط راست می‌رود: به شمال تا سرک شهرک شمالی، و به جنوب تا سرک شهرک جنوبی.' },
+      why: { en: 'Yes: the canal takes river water toward the towns.', es: 'Sí: el canal lleva el agua del río hacia los pueblos.', fa: 'بله: کانال آب دریا را به طرف شهرک‌ها می‌برد.' },
+      wrong: { en: 'Not here. Sharing means both towns get water. Build one straight line from the river, north to one town\'s road and south to the other.', es: 'Aquí no. Compartir quiere decir que los dos pueblos reciben agua. Haz una línea recta desde el río, al norte hasta el camino de un pueblo y al sur hasta el del otro.', fa: 'این جا نه. شریک بودن یعنی هر دو شهرک آب بگیرند. از دریا یک خط راست بساز، به شمال تا سرک یک شهرک و به جنوب تا سرک شهرک دیگر.' },
+      wrongBy: [
+        { x: 2, y: 1, w: 7, h: 19, t: { en: 'This is across the Jordan, far from both towns. The shared canal starts at the Yarmouk River, between the two towns.', es: 'Esto está al otro lado del Jordán, lejos de los dos pueblos. El canal compartido empieza en el río Yarmuk, entre los dos pueblos.', fa: 'این جا آن طرف اردن است، دور از هر دو شهرک. کانال مشترک از دریای یرموک، میان دو شهرک، شروع می‌شود.' } },
+        { x: 26, y: 8, w: 5, h: 4, t: { en: 'A canal here takes water to the empty dry grass, and to only one town. Sharing means both towns get water.', es: 'Un canal aquí lleva agua al pasto seco vacío, y a un solo pueblo. Compartir quiere decir que los dos pueblos reciben agua.', fa: 'کانال در این جا آب را به علف خشک خالی و فقط به یک شهرک می‌برد. شریک بودن یعنی هر دو شهرک آب بگیرند.' } }
+      ],
+      done: { en: 'One canal, two towns, and both get water. The Yarmouk River crosses a border. When neighbors share it and plan together, that is [[cooperation|cooperation]].',
+        es: 'Un canal, dos pueblos, y los dos reciben agua. El río Yarmuk cruza una frontera. Cuando los vecinos lo comparten y planean juntos, eso es [[cooperation|cooperación]].',
+        fa: 'یک کانال، دو شهرک، و هر دو آب می‌گیرند. دریای یرموک از یک سرحد می‌گذرد. وقتی همسایه‌ها آن را شریک می‌شوند و با هم برنامه می‌ریزند، این [[cooperation|همکاری]] است.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [15, 9], at: [11, 8], decor: 'flower',
