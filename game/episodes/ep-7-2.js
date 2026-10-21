@@ -9,9 +9,8 @@ window.EPISODE = {
   title: { en: 'Cities, Site and Situation', es: 'Ciudades, sitio y situación', fa: 'شهرها، محل و موقعیت' },
   place: { en: 'The City on the River', es: 'La ciudad del río', fa: 'شهر کنار دریا' },
   intro: [
-    { en: 'Christopher: "The Grump washed away the plans for a new city! The people need a good place to build. Talk to the road keeper at the pass, the rice farmer and the harbor pilot. Then climb the hill to the compass stone and choose a spot."',
-      es: 'Christopher: "¡El Gruñón borró los planos de una ciudad nueva! La gente necesita un buen lugar para construir. Habla con el guardián del camino en el paso, la agricultora de arroz y el capitán del puerto. Luego sube la colina hasta la piedra de la brújula y elige un lugar."',
-      fa: 'کریستوفر: «غرغرو نقشه‌های یک شهر نو را شست و برد! مردم به یک جای خوب برای ساختن ضرورت دارند. با نگهبان راه در کوتل، دهقان برنج و رهنمای بندر گپ بزن. بعد از تپه بالا برو تا سنگ قطب‌نما و یک جا را انتخاب کن.»' }
+    { en: 'The Grump washed away the new city\'s plans! Help the people find a good place.', es: '¡El Gruñón borró los planos de la ciudad nueva! Ayuda a la gente a encontrar un buen lugar.', fa: 'غرغرو نقشه‌های شهر نو را شست و برد! به مردم کمک کن یک جای خوب پیدا کنند.' },
+    { en: 'Meet the road keeper, rice farmer and harbor pilot. Then climb to the compass stone.', es: 'Habla con el guardián del camino, la agricultora de arroz y el capitán del puerto. Luego sube a la piedra de la brújula.', fa: 'با نگهبان راه، دهقان برنج و رهنمای بندر گپ بزن. بعد تا سنگ قطب‌نما بالا برو.' }
   ],
 
   map: [
@@ -64,11 +63,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [12, 4], at: [19, 14], decor: 'feather',
-      clue: { en: 'Boats need a dock to stop. Find the dock on the river, just north of the house with the red roof. It is not the dock that goes out into the sea. Stand on its most western square.', es: 'Los botes necesitan un muelle para parar. Busca el muelle en el río, justo al norte de la casa del techo rojo. No es el muelle que entra en el mar. Párate en su cuadro más al oeste.', fa: 'کشتی‌ها برای ایستادن به اسکله ضرورت دارند. اسکله را روی دریا پیدا کن، درست شمالِ خانه‌ای که بام سرخ دارد. اسکله‌ای نیست که داخل بحر می‌رود. روی غربی‌ترین خانهٔ آن بایست.' },
-      text: { en: 'You found the river dock! Boats stop here to load rice and other goods. Many cities grew up next to rivers, because boats make trade easy. A feather was on the dock.', es: '¡Encontraste el muelle del río! Los botes paran aquí para cargar arroz y otros productos. Muchas ciudades crecieron junto a los ríos, porque los botes hacen fácil el comercio. Había una pluma en el muelle.', fa: 'تو اسکلهٔ دریا را پیدا کردی! کشتی‌ها این جا می‌ایستند تا برنج و چیزهای دیگر را بار کنند. خیلی از شهرها کنار دریاها بزرگ شدند، چون کشتی‌ها تجارت را آسان می‌کنند. یک پر روی اسکله بود.' } },
+      clue: { en: 'Find the river dock just north of the red-roofed house, not the sea dock. Stand on its western end.', es: 'Busca el muelle del río justo al norte de la casa de techo rojo, no el del mar. Párate en su punta oeste.', fa: 'اسکلهٔ دریا را درست شمالِ خانهٔ بام‌سرخ پیدا کن، نه اسکلهٔ بحر. روی سر غربی آن بایست.' },
+      text: { en: 'You found the river dock and a feather! Many cities grew by rivers, because boats make trade easy.', es: '¡Encontraste el muelle del río y una pluma! Muchas ciudades crecieron junto a ríos, porque los botes facilitan el comercio.', fa: 'تو اسکلهٔ دریا و یک پر را پیدا کردی! بسیاری از شهرها کنار دریاها رشد کردند، چون کشتی تجارت را آسان می‌کند.' } },
     { clueAt: [6, 20], at: [13, 19], decor: 'flower',
       clue: { en: 'From this note, walk 7 steps east, then 1 step north. Something is hidden there.', es: 'Desde esta nota, camina 7 pasos al este y luego 1 paso al norte. Algo está escondido allí.', fa: 'از این یادداشت، ۷ قدم به شرق برو، بعد ۱ قدم به شمال. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! East is to the right and north is up. A flower grew between the rice paddies. Flat land near a river is a good site for farms that feed a city.', es: '¡Seguiste las direcciones de la brújula! El este está a la derecha y el norte arriba. Una flor creció entre los arrozales. La tierra plana cerca de un río es un buen sitio para granjas que alimentan a una ciudad.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شرق طرف راست و شمال بالا است. یک گل میان شالی‌زارها روییده بود. زمین هموار نزدیک دریا جای خوبی برای زمین‌های زراعتی است که غذای یک شهر را می‌دهند.' } }
+      text: { en: 'A flower grew in the rice paddies! Flat land by a river is a good site for farms.', es: '¡Una flor creció en los arrozales! La tierra plana junto a un río es un buen sitio para granjas.', fa: 'یک گل در شالی‌زارها روییده بود! زمین هموار کنار دریا جای خوبی برای کشتزار است.' } }
   ],
   // only the Rail Pass (Episode 3.3) lifts the barrier where the freight track leaves the road for the freight yard by the rice paddies
   secret: { tool: 'rail', at: [10, 20],
@@ -92,15 +91,10 @@ window.EPISODE = {
       role: { en: 'Road keeper at the pass', es: 'Guardián del camino en el paso', fa: 'نگهبان راه در کوتل' },
       look: { skin: 1, hair: '#3a3a3a', shirt: '#7a4b2a', pants: '#3a3a3a' },
       lines: [
-        { en: 'Welcome to the [[mountain pass|mountain pass]]! This is the only road between two valleys. Every trader must pass through here. That is this place\'s [[situation|situation]]: what it connects to.',
-          es: '¡Bienvenido al [[mountain pass|paso de montaña]]! Este es el único camino entre dos valles. Todo comerciante debe pasar por aquí. Esa es la [[situation|situación]] de este lugar: con qué se conecta.',
-          fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است. هر تاجر باید از اینجا بگذرد. این [[situation|موقعیت]] این جا است: اینکه به چه چیزها وصل است.' },
-        { en: 'Now look at the ground. Rocky, cold and narrow. Almost no farmland. That is its [[site|site]]: the land itself. Great situation, hard site!',
-          es: 'Ahora mira el suelo. Rocoso, frío y angosto. Casi no hay tierra para cultivar. Ese es su [[site|sitio]]: la tierra misma. ¡Gran situación, sitio difícil!',
-          fa: 'حالا به زمین ببین. سنگلاخ، سرد و باریک. تقریباً زمین زراعتی ندارد. این [[site|محل]] آن است: خود زمین. موقعیت عالی، محل سخت!' },
-        { en: 'Here is a secret. These rocks will look the same in a thousand years. But a situation can change in ten. If someone digs a tunnel in another valley, the traders will stop coming here.',
-          es: 'Te cuento un secreto. Estas rocas se verán igual en mil años. Pero una situación puede cambiar en diez. Si alguien cava un túnel en otro valle, los comerciantes dejarán de venir.',
-          fa: 'یک راز بگویم. این سنگ‌ها تا هزار سال همین‌طور می‌مانند. اما موقعیت می‌تواند در ده سال تغییر کند. اگر کسی در درهٔ دیگر تونل بکند، تاجران دیگر اینجا نمی‌آیند.' }
+        { en: 'Welcome to the [[mountain pass|mountain pass]]! It is the only road between two valleys.', es: '¡Bienvenido al [[mountain pass|paso de montaña]]! Es el único camino entre dos valles.', fa: 'به [[mountain pass|کوتل]] خوش آمدی! این تنها راه میان دو دره است.' },
+        { en: 'Every trader passes here. That is its [[situation|situation]]: what it connects to.', es: 'Todo comerciante pasa por aquí. Esa es su [[situation|situación]]: con qué se conecta.', fa: 'هر تاجر از این‌جا می‌گذرد. این [[situation|موقعیت]] آن است: اینکه به چه وصل است.' },
+        { en: 'The ground is rocky, cold and narrow. That is its [[site|site]]: the land itself.', es: 'El suelo es rocoso, frío y angosto. Ese es su [[site|sitio]]: la tierra misma.', fa: 'زمین سنگلاخ، سرد و باریک است. این [[site|محل]] آن است: خود زمین.' },
+        { en: 'Rocks stay the same. But if a tunnel opens elsewhere, traders stop coming here.', es: 'Las rocas siguen igual. Pero si abren un túnel en otro lado, los comerciantes dejan de venir.', fa: 'سنگ‌ها همان‌طور می‌مانند. اما اگر جای دیگر تونل باز شود، تاجران دیگر این‌جا نمی‌آیند.' }
       ],
       ask: {
         stat: 'loc',
@@ -121,25 +115,20 @@ window.EPISODE = {
       role: { en: 'Rice farmer', es: 'Agricultora de arroz', fa: 'دهقان برنج' },
       look: { skin: 1, hair: '#1b1b1b', shirt: '#c0392b', pants: '#2f3a5a' },
       lines: [
-        { en: 'I grow rice on this flat [[plain|plain]]. Every year the river drops rich soil on my fields. Flat land, fresh water and rich soil make a strong [[site|site]] for a city.',
-          es: 'Yo cultivo arroz en esta [[plain|llanura]] plana. Cada año el río deja tierra fértil en mis campos. La tierra plana, el agua dulce y el suelo fértil hacen un buen [[site|sitio]] para una ciudad.',
-          fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را روی کشتزارهایم می‌گذارد. زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.' },
-        { en: 'But in the rainy season, the river floods. Then the hilltop is the safe, dry place. Up there, though, you must carry water all the way up the hill.',
-          es: 'Pero en la temporada de lluvias el río se desborda. Entonces la colina es el lugar seguro y seco. Aunque allá arriba hay que subir el agua cargando.',
-          fa: 'اما در فصل باران، دریا سیلاب می‌شود. آن وقت سر تپه جای مصون و خشک است. اما آن بالا باید آب را تا سر تپه ببری.' },
-        { en: 'My rice goes to the town to be sold. The farms, villages and mines around a city that send it goods are its [[hinterland|hinterland]]. A big hinterland can help a city grow into a busy trade center.',
-          es: 'Mi arroz va al pueblo para venderse. Las granjas, pueblos y minas alrededor de una ciudad que le mandan productos son su [[hinterland|hinterland]] o zona de influencia. Un hinterland grande puede ayudar a una ciudad a volverse un centro de comercio.',
-          fa: 'برنج من برای فروش به شهر می‌رود. کشتزارها، قریه‌ها و معدن‌های اطراف یک شهر که برایش کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. یک پس‌کرانهٔ بزرگ می‌تواند شهر را یک مرکز پرکار تجارت بسازد.' }
+        { en: 'I grow rice on this flat [[plain|plain]]. Every year the river drops rich soil here.', es: 'Yo cultivo arroz en esta [[plain|llanura]] plana. Cada año el río deja tierra fértil aquí.', fa: 'من در این [[plain|دشت هموار]] برنج می‌کارم. هر سال دریا خاک حاصلخیز را این‌جا می‌گذارد.' },
+        { en: 'Flat land, fresh water and rich soil make a strong [[site|site]] for a city.', es: 'La tierra plana, el agua dulce y el suelo fértil hacen un buen [[site|sitio]] para una ciudad.', fa: 'زمین هموار، آب شیرین و خاک حاصلخیز یک [[site|محل]] خوب برای شهر است.' },
+        { en: 'In the rainy season the river floods. The hilltop stays dry, but far from water.', es: 'En la temporada de lluvias el río se desborda. La colina queda seca, pero lejos del agua.', fa: 'در فصل باران دریا سیلاب می‌شود. سر تپه خشک می‌ماند، اما از آب دور است.' },
+        { en: 'Farms that send a city goods are its [[hinterland|hinterland]]. A big one helps trade grow.', es: 'Las granjas que mandan productos a una ciudad son su [[hinterland|hinterland]]. Uno grande hace crecer el comercio.', fa: 'کشتزارهایی که برای شهر کالا می‌فرستند [[hinterland|پس‌کرانهٔ]] آن هستند. پس‌کرانهٔ بزرگ تجارت را زیاد می‌کند.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Which one is part of a city\'s SITE?', es: '¿Cuál es parte del SITIO de una ciudad?', fa: 'کدام یک بخشی از محل یک شهر است؟' },
         choices: [
-          { ok: true, t: { en: 'Flat, rich soil that floods in the rainy season', es: 'Suelo plano y fértil que se inunda en la temporada de lluvias', fa: 'خاک هموار و حاصلخیز که در فصل باران سیلاب می‌شود' },
+          { ok: true, t: { en: 'Rich, flat soil that floods', es: 'Suelo fértil y plano que se inunda', fa: 'خاک حاصلخیز و هموار که سیلاب می‌شود' },
             why: { en: 'Soil, flatness and floods are about the land itself. That is site.', es: 'El suelo, lo plano y las inundaciones son de la tierra misma. Eso es el sitio.', fa: 'خاک، هموار بودن و سیلاب دربارهٔ خود زمین هستند. این محل است.' } },
-          { t: { en: 'The road to the next valley', es: 'El camino al siguiente valle', fa: 'راهی که به درهٔ بعدی می‌رود' },
+          { t: { en: 'The road over to the next valley', es: 'El camino hacia el siguiente valle', fa: 'راهی که به درهٔ بعدی می‌رود' },
             why: { en: 'A road is a connection to other places. That is situation.', es: 'Un camino es una conexión con otros lugares. Eso es la situación.', fa: 'راه یک وصل به جاهای دیگر است. این موقعیت است.' } },
-          { t: { en: 'Ships coming from ports across the sea', es: 'Barcos que llegan de puertos al otro lado del mar', fa: 'کشتی‌هایی که از بندرهای آن طرف بحر می‌آیند' },
+          { t: { en: 'Ships from ports across the sea', es: 'Barcos de puertos al otro lado del mar', fa: 'کشتی‌ها از بندرهای آن طرف بحر' },
             why: { en: 'Ships link the city to other places. That is situation.', es: 'Los barcos unen la ciudad con otros lugares. Eso es la situación.', fa: 'کشتی‌ها شهر را به جاهای دیگر وصل می‌کنند. این موقعیت است.' } }
         ]
       }
@@ -150,25 +139,20 @@ window.EPISODE = {
       role: { en: 'Harbor pilot', es: 'Piloto del puerto', fa: 'رهنمای بندر' },
       look: { skin: 1, hair: '#202020', shirt: '#1f4e8c', pants: '#22324f' },
       lines: [
-        { en: 'I guide ships at the [[river mouth|river mouth]]. Here the river meets the sea. Boats go up the river to the farm towns. Ships sail out to ports across the sea. That is a great [[situation|situation]]!',
-          es: 'Yo guío barcos en la [[river mouth|desembocadura]]. Aquí el río llega al mar. Los botes suben por el río a los pueblos agrícolas. Los barcos salen a puertos al otro lado del mar. ¡Esa es una gran [[situation|situación]]!',
-          fa: 'من کشتی‌ها را در [[river mouth|دهانهٔ دریا]] رهنمایی می‌کنم. اینجا دریا به بحر می‌رسد. قایق‌ها از دریا بالا تا قریه‌های زراعتی می‌روند. کشتی‌ها به بندرهای آن طرف بحر می‌روند. این یک [[situation|موقعیت]] عالی است!' },
-        { en: 'Many of the biggest cities in East Asia grew where a river meets the sea. Shanghai sits near the mouth of the Yangtze River. Rice and goods come down the river, and ships carry them away.',
-          es: 'Muchas de las ciudades más grandes del este de Asia crecieron donde un río llega al mar. Shanghái está cerca de la desembocadura del río Yangtsé. El arroz y los productos bajan por el río y los barcos se los llevan.',
-          fa: 'بسیاری از بزرگ‌ترین شهرهای شرق آسیا جایی رشد کردند که دریا به بحر می‌رسد. شانگهای نزدیک دهانهٔ دریای یانگتسی است. برنج و کالا از دریا پایین می‌آیند و کشتی‌ها آن‌ها را می‌برند.' },
-        { en: 'Alexandria, Virginia is like this too! Its site is deep water on the Potomac River. First it was a busy port. Today it is a city next to the nation\'s capital. The site stayed the same. The situation changed.',
-          es: '¡Alexandria, Virginia, también es así! Su sitio es agua profunda en el río Potomac. Primero fue un puerto muy activo. Hoy es una ciudad junto a la capital del país. El sitio quedó igual. La situación cambió.',
-          fa: 'الکساندریا، ویرجینیا هم همین‌طور است! محل آن آب عمیق در دریای پوتومک است. اول یک بندر پرکار بود. امروز شهری کنار پایتخت کشور است. محل همان ماند. موقعیت تغییر کرد.' }
+        { en: 'At this [[river mouth|river mouth]], boats go upriver and ships sail to far ports. Great [[situation|situation]]!', es: 'En esta [[river mouth|desembocadura]], los botes suben el río y los barcos van a puertos lejanos. ¡Gran [[situation|situación]]!', fa: 'در این [[river mouth|دهانهٔ دریا]]، قایق‌ها از دریا بالا می‌روند و کشتی‌ها به بندرهای دور می‌روند. [[situation|موقعیت]] عالی!' },
+        { en: 'Many big East Asian cities grew at river mouths, like Shanghai at the Yangtze.', es: 'Muchas grandes ciudades del este de Asia crecieron en desembocaduras, como Shanghái en el Yangtsé.', fa: 'بسیاری از شهرهای بزرگ شرق آسیا در دهانهٔ دریاها رشد کردند، مثل شانگهای کنار یانگتسی.' },
+        { en: 'Alexandria, Virginia, too! Its site: deep water on the Potomac. It was a busy port.', es: '¡Alexandria, Virginia, también! Su sitio: agua profunda en el Potomac. Fue un puerto muy activo.', fa: 'الکساندریا، ویرجینیا هم! محل آن: آب عمیق در دریای پوتومک. یک بندر پرکار بود.' },
+        { en: 'Today it is next to the capital. Same site, new situation.', es: 'Hoy está junto a la capital. El mismo sitio, una situación nueva.', fa: 'امروز کنار پایتخت است. همان محل، موقعیت نو.' }
       ],
       ask: {
         stat: 'mov',
         q: { en: 'Which one is part of a city\'s SITUATION?', es: '¿Cuál es parte de la SITUACIÓN de una ciudad?', fa: 'کدام یک بخشی از موقعیت یک شهر است؟' },
         choices: [
-          { ok: true, t: { en: 'The river and sea routes that reach other ports', es: 'Las rutas de río y mar que llegan a otros puertos', fa: 'راه‌های دریا و بحر که به بندرهای دیگر می‌رسند' },
+          { ok: true, t: { en: 'Sea routes to other ports', es: 'Rutas de mar a otros puertos', fa: 'راه‌های بحری به بندرهای دیگر' },
             why: { en: 'Routes connect the city to other places. That is situation.', es: 'Las rutas conectan la ciudad con otros lugares. Eso es la situación.', fa: 'راه‌ها شهر را به جاهای دیگر وصل می‌کنند. این موقعیت است.' } },
           { t: { en: 'The flat soil under the town', es: 'El suelo plano debajo del pueblo', fa: 'خاک هموار زیر شهر' },
             why: { en: 'Soil is the land itself. That is site.', es: 'El suelo es la tierra misma. Eso es el sitio.', fa: 'خاک خود زمین است. این محل است.' } },
-          { t: { en: 'The hill the old fort was built on', es: 'La colina donde construyeron el viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن ساخته شد' },
+          { t: { en: 'The hill under the old fort', es: 'La colina bajo el viejo fuerte', fa: 'تپهٔ زیر قلعهٔ کهنه' },
             why: { en: 'A hill is part of the ground. That is site.', es: 'Una colina es parte del suelo. Eso es el sitio.', fa: 'تپه بخشی از زمین است. این محل است.' } }
         ]
       }
@@ -176,12 +160,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 11, y: 7, text: { en: 'SURVEY POST · Three places for the new city: A · River mouth (south-east, where the river meets the sea) · B · Hilltop (north-east, up the path) · C · Mountain pass (west).',
-      es: 'PUESTO DE ESTUDIO · Tres lugares para la ciudad nueva: A · Desembocadura (sureste, donde el río llega al mar) · B · Colina (noreste, subiendo el sendero) · C · Paso de montaña (oeste).',
-      fa: 'پایگاه سروی · سه جا برای شهر نو: الف · دهانهٔ دریا (جنوب شرق، جایی که دریا به بحر می‌رسد) · ب · سر تپه (شمال شرق، از راه بالا برو) · ج · کوتل (غرب).' } },
-    { x: 24, y: 5, text: { en: 'HILLTOP B · High and dry. You can see the whole plain, the river and the sea from here. But the water is far below.',
-      es: 'COLINA B · Alta y seca. Desde aquí se ve toda la llanura, el río y el mar. Pero el agua está muy abajo.',
-      fa: 'سر تپه ب · بلند و خشک. از اینجا تمام دشت، دریا و بحر دیده می‌شود. اما آب خیلی پایین است.' } }
+    { x: 11, y: 7, text: { en: 'SURVEY POST · New city: A · River mouth (south-east) · B · Hilltop (north-east, up the path) · C · Mountain pass (west).', es: 'PUESTO DE ESTUDIO · Ciudad nueva: A · Desembocadura (sureste) · B · Colina (noreste, subiendo el sendero) · C · Paso de montaña (oeste).', fa: 'پایگاه سروی · شهر نو: الف · دهانهٔ دریا (جنوب شرق) · ب · سر تپه (شمال شرق، از راه بالا) · ج · کوتل (غرب).' } },
+    { x: 24, y: 5, text: { en: 'HILLTOP B · High and dry. You can see the plain, river and sea. But the water is far below.', es: 'COLINA B · Alta y seca. Se ve la llanura, el río y el mar. Pero el agua está muy abajo.', fa: 'سر تپه ب · بلند و خشک. دشت، دریا و بحر دیده می‌شود. اما آب خیلی پایین است.' } }
   ],
 
   /* the quest: Ms. Park the city planner (gold !) -> Hana the kite flyer on the hilltop -> find the flag at the river mouth -> back to Ms. Park */
@@ -194,19 +174,12 @@ window.EPISODE = {
       role: { en: 'City planner', es: 'Planificadora de la ciudad', fa: 'طراح شهر' },
       look: { skin: 1, hair: '#1a1410', shirt: '#c0392b', pants: '#2f3b4a', style: 'short' },
       lines: [
-        { en: 'Oh no! The Grump\'s wind took my red flag. I put it on my favorite spot for the new city. Now I cannot find it!',
-          es: '¡Ay, no! El viento del Gruñón se llevó mi bandera roja. La puse en mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!',
-          fa: 'وای نه! باد غرغرو بیرق سرخم را برد. آن را در جای دلخواهم برای شهر نو گذاشته بودم. حالا پیدایش نمی‌کنم!' },
-        { en: 'Hana flies her kite on the hilltop in the north-east. From up there she sees everything. Will you ask her?',
-          es: 'Hana vuela su cometa en la colina del noreste. Desde allá arriba lo ve todo. ¿Le preguntas?',
-          fa: 'هانا در بالای تپه در شمال شرق گُدی‌پران بازی می‌کند. از آن بالا همه چیز را می‌بیند. از او می‌پرسی؟' }
+        { en: 'Oh no! The Grump\'s wind took my red flag!', es: '¡Ay, no! ¡El viento del Gruñón se llevó mi bandera roja!', fa: 'وای نه! باد غرغرو بیرق سرخم را برد!' },
+        { en: 'It marked my favorite spot for the new city. Now I cannot find it!', es: 'Marcaba mi lugar favorito para la ciudad nueva. ¡Ahora no la encuentro!', fa: 'جای دلخواهم را برای شهر نو نشان می‌داد. حالا پیدایش نمی‌کنم!' },
+        { en: 'Hana flies her kite on the north-east hilltop. She sees everything. Will you ask her?', es: 'Hana vuela su cometa en la colina del noreste. Lo ve todo. ¿Le preguntas?', fa: 'هانا بالای تپهٔ شمال شرق گُدی‌پران بازی می‌کند. همه چیز را می‌بیند. از او می‌پرسی؟' }
       ],
-      wait: { en: 'Hana is on the hilltop. Walk north to the road. Cross the bridge to the east. Then climb the path up the hill.',
-        es: 'Hana está en la colina. Camina al norte hasta el camino. Cruza el puente hacia el este. Luego sube por el sendero de la colina.',
-        fa: 'هانا بالای تپه است. به طرف شمال تا سرک برو. از پل به طرف شرق بگذر. بعد از راه باریک بالای تپه برو.' },
-      thanks: { en: 'My flag! The [[river mouth|river mouth]] links the river and the sea, so boats can reach the whole world. That is a great [[situation|situation]] for a city. Thank you!',
-        es: '¡Mi bandera! La [[river mouth|desembocadura]] une el río y el mar, así que los barcos llegan a todo el mundo. Esa es una gran [[situation|situación]] para una ciudad. ¡Gracias!',
-        fa: 'بیرق من! [[river mouth|دهانهٔ دریا]] دریا و بحر را به هم وصل می‌کند، پس کشتی‌ها به تمام دنیا می‌رسند. این یک [[situation|موقعیت]] عالی برای یک شهر است. تشکر!' }
+      wait: { en: 'Hana is on the hilltop. Go north, cross the bridge east, then climb.', es: 'Hana está en la colina. Ve al norte, cruza el puente al este y luego sube.', fa: 'هانا بالای تپه است. به شمال برو، از پل به شرق بگذر، بعد بالا برو.' },
+      thanks: { en: 'My flag! The [[river mouth|river mouth]] links river and sea. A great [[situation|situation]]! Thank you!', es: '¡Mi bandera! La [[river mouth|desembocadura]] une el río y el mar. ¡Una gran [[situation|situación]]! ¡Gracias!', fa: 'بیرق من! [[river mouth|دهانهٔ دریا]] دریا و بحر را وصل می‌کند. یک [[situation|موقعیت]] عالی! تشکر!' }
     },
     contact: {
       x: 21, y: 4,
@@ -214,21 +187,16 @@ window.EPISODE = {
       role: { en: 'Kite flyer', es: 'Niña de la cometa', fa: 'گُدی‌پران‌باز' },
       look: { skin: 2, hair: '#2a1d14', shirt: '#f2c94c', pants: '#3b5b8a', style: 'long' },
       lines: [
-        { en: 'Yes! From this high hill I can see the whole [[plain|plain]]. I saw a red flag fly down the river toward the sea.',
-          es: '¡Sí! Desde esta colina alta veo toda la [[plain|llanura]]. Vi una bandera roja volar río abajo hacia el mar.',
-          fa: 'بله! از این تپهٔ بلند تمام [[plain|دشت هموار]] را می‌بینم. دیدم یک بیرق سرخ در امتداد دریا به طرف بحر پرید.' },
-        { en: 'It landed at the [[river mouth|river mouth]], where the river meets the sea. Walk south along the beach to the very last sand, right next to the sea.',
-          es: 'Cayó en la [[river mouth|desembocadura]], donde el río llega al mar. Camina al sur por la playa hasta la última arena, justo al lado del mar.',
-          fa: 'در [[river mouth|دهانهٔ دریا]] افتاد، جایی که دریا به بحر می‌رسد. در کنار ساحل به طرف جنوب تا آخرین ریگ برو، درست کنار بحر.' }
+        { en: 'Yes! From this high hill I can see the whole [[plain|plain]].', es: '¡Sí! Desde esta colina alta veo toda la [[plain|llanura]].', fa: 'بله! از این تپهٔ بلند تمام [[plain|دشت هموار]] را می‌بینم.' },
+        { en: 'A red flag flew down to the [[river mouth|river mouth]], where the river meets the sea.', es: 'Una bandera roja voló hasta la [[river mouth|desembocadura]], donde el río llega al mar.', fa: 'یک بیرق سرخ تا [[river mouth|دهانهٔ دریا]] پرید، جایی که دریا به بحر می‌رسد.' },
+        { en: 'Walk south along the beach to the very last sand, right next to the sea.', es: 'Camina al sur por la playa hasta la última arena, justo al lado del mar.', fa: 'در کنار ساحل به طرف جنوب تا آخرین ریگ برو، درست کنار بحر.' }
       ]
     },
     action: {
       type: 'find',
       at: [23, 20],
       hint: { en: 'south end of the beach, next to the sea', es: 'el extremo sur de la playa, junto al mar', fa: 'آخر جنوبی ساحل، کنار بحر' },
-      found: { en: 'There it is, flapping in the sand! You are at the [[river mouth|river mouth]]. The river and the sea both meet here.',
-        es: '¡Ahí está, ondeando en la arena! Estás en la [[river mouth|desembocadura]]. Aquí se juntan el río y el mar.',
-        fa: 'آنجاست، در ریگ‌ها تکان می‌خورد! تو در [[river mouth|دهانهٔ دریا]] هستی. دریا و بحر هر دو اینجا به هم می‌رسند.' },
+      found: { en: 'There it is! You are at the [[river mouth|river mouth]], where the river and sea meet.', es: '¡Ahí está! Estás en la [[river mouth|desembocadura]], donde se juntan el río y el mar.', fa: 'آنجاست! تو در [[river mouth|دهانهٔ دریا]] هستی، جایی که دریا و بحر به هم می‌رسند.' },
       item: { icon: '🚩', name: { en: "Ms. Park's planning flag", es: 'La bandera del plan de la Sra. Park', fa: 'بیرق نقشهٔ خانم پارک' } }
     }
   },
@@ -293,19 +261,19 @@ window.EPISODE = {
     win: { en: 'The water goes back into the river. Atlas page 7.2 floats into your hands!', es: 'El agua vuelve al río. ¡La página 7.2 del atlas cae en tus manos!', fa: 'آب دوباره به دریا برمی‌گردد. صفحهٔ ۷.۲ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What does site mean?', es: '¿Qué significa sitio?', fa: 'محل یعنی چه؟' },
-        choices: [{ en: 'The physical ground a city was built on', es: 'El suelo donde se construyó una ciudad', fa: 'زمینی که شهر روی آن ساخته شده' }, { en: 'The other cities a place can reach', es: 'Las otras ciudades a las que se puede llegar', fa: 'شهرهای دیگری که از یک جا می‌شود رسید' }, { en: 'The number of people in a city', es: 'El número de personas de una ciudad', fa: 'تعداد مردم یک شهر' }, { en: 'The main job most people do', es: 'El trabajo principal de la mayoría', fa: 'کار اصلی بیشتر مردم' }], answer: 0,
+        choices: [{ en: 'The ground a city is built on', es: 'El suelo donde está una ciudad', fa: 'زمینی که شهر روی آن است' }, { en: 'The other cities a place can reach', es: 'Las otras ciudades a las que se puede llegar', fa: 'شهرهای دیگری که از یک جا می‌شود رسید' }, { en: 'The number of people in a city', es: 'El número de personas de una ciudad', fa: 'تعداد مردم یک شهر' }, { en: 'The main job most people do', es: 'El trabajo principal de la mayoría', fa: 'کار اصلی بیشتر مردم' }], answer: 0,
         why: { en: 'Site is the land itself: a harbor, a hill, a river crossing.', es: 'El sitio es la tierra misma: un puerto natural, una colina, un cruce de río.', fa: 'محل خود زمین است: یک بندر، یک تپه، یک گذرگاه دریا.' } },
       { q: { en: 'Which of these is part of a city\'s situation?', es: '¿Cuál de estos es parte de la situación de una ciudad?', fa: 'کدام یک بخشی از موقعیت یک شهر است؟' },
-        choices: [{ en: 'The rail line that reaches other cities', es: 'La línea de tren que llega a otras ciudades', fa: 'خط ریل که به شهرهای دیگر می‌رسد' }, { en: 'The hill the old fort was built on', es: 'La colina del viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن است' }, { en: 'The deep water next to the docks', es: 'El agua profunda junto a los muelles', fa: 'آب عمیق کنار اسکله‌ها' }, { en: 'The flat dry land above the flood line', es: 'La tierra plana y seca sobre la línea de inundación', fa: 'زمین هموار و خشک بالاتر از خط سیلاب' }], answer: 0,
+        choices: [{ en: 'A rail line to other cities', es: 'Una línea de tren a otras ciudades', fa: 'خط ریل به شهرهای دیگر' }, { en: 'The hill the old fort was built on', es: 'La colina del viejo fuerte', fa: 'تپه‌ای که قلعهٔ کهنه روی آن است' }, { en: 'The deep water next to the docks', es: 'El agua profunda junto a los muelles', fa: 'آب عمیق کنار اسکله‌ها' }, { en: 'The flat dry land above the flood line', es: 'La tierra plana y seca sobre la línea de inundación', fa: 'زمین هموار و خشک بالاتر از خط سیلاب' }], answer: 0,
         why: { en: 'A rail line connects the city to other places. The other three are the ground itself.', es: 'Una línea de tren conecta la ciudad con otros lugares. Las otras tres son el suelo mismo.', fa: 'خط ریل شهر را به جاهای دیگر وصل می‌کند. سه تای دیگر خود زمین هستند.' } },
       { q: { en: 'What is a hinterland?', es: '¿Qué es un hinterland?', fa: 'پس‌کرانه چیست؟' },
-        choices: [{ en: 'The region around a city that depends on it and sends it goods', es: 'La zona alrededor de una ciudad que depende de ella y le manda productos', fa: 'ساحهٔ اطراف شهر که به آن وابسته است و برایش کالا می‌فرستد' }, { en: 'The oldest part of downtown', es: 'La parte más vieja del centro', fa: 'کهنه‌ترین بخش مرکز شهر' }, { en: 'The border between two cities', es: 'La frontera entre dos ciudades', fa: 'سرحد میان دو شهر' }, { en: 'Land the city plans to build on next', es: 'La tierra donde la ciudad piensa construir después', fa: 'زمینی که شهر می‌خواهد بعداً رویش بسازد' }], answer: 0,
+        choices: [{ en: 'Nearby land that sends a city goods', es: 'Tierra cercana que manda productos a una ciudad', fa: 'زمین نزدیک که برای شهر کالا می‌فرستد' }, { en: 'The oldest part of the downtown area', es: 'La parte más vieja del centro de la ciudad', fa: 'کهنه‌ترین بخش مرکز شهر' }, { en: 'The border line between two cities', es: 'La línea de frontera entre dos ciudades', fa: 'خط سرحد میان دو شهر' }, { en: 'Land the city plans to build on next', es: 'La tierra donde la ciudad piensa construir después', fa: 'زمینی که شهر می‌خواهد بعداً رویش بسازد' }], answer: 0,
         why: { en: 'Farms, mines and small towns in the hinterland send goods to the city.', es: 'Las granjas, minas y pueblos del hinterland mandan productos a la ciudad.', fa: 'کشتزارها، معدن‌ها و قریه‌های پس‌کرانه به شهر کالا می‌فرستند.' } },
       { q: { en: 'A city has a very large hinterland. What often happens to it?', es: 'Una ciudad tiene un hinterland muy grande. ¿Qué le pasa muchas veces?', fa: 'یک شهر پس‌کرانهٔ بسیار بزرگ دارد. اکثراً چه می‌شود؟' },
-        choices: [{ en: 'It grows into a busy trade center', es: 'Se vuelve un centro de comercio muy activo', fa: 'یک مرکز پرکار تجارت می‌شود' }, { en: 'It shrinks into a quiet village', es: 'Se encoge hasta ser un pueblo tranquilo', fa: 'کوچک شده یک قریهٔ آرام می‌شود' }, { en: 'Its site moves to new land', es: 'Su sitio se mueve a otra tierra', fa: 'محلش به زمین نو می‌رود' }, { en: 'It stops trading with anyone', es: 'Deja de comerciar con todos', fa: 'با هیچ‌کس تجارت نمی‌کند' }], answer: 0,
+        choices: [{ en: 'It becomes a busy trade center', es: 'Se vuelve un centro de comercio activo', fa: 'یک مرکز پرکار تجارت می‌شود' }, { en: 'It shrinks into a quiet village', es: 'Se encoge hasta ser un pueblo tranquilo', fa: 'کوچک شده یک قریهٔ آرام می‌شود' }, { en: 'Its site moves to new land', es: 'Su sitio se mueve a otra tierra', fa: 'محلش به زمین نو می‌رود' }, { en: 'It stops trading with anyone', es: 'Deja de comerciar con todos', fa: 'با هیچ‌کس تجارت نمی‌کند' }], answer: 0,
         why: { en: 'More farms and towns sending goods means more trade passing through the city.', es: 'Más granjas y pueblos mandando productos significa más comercio pasando por la ciudad.', fa: 'کشتزار و قریهٔ بیشتر که کالا می‌فرستند یعنی تجارت بیشتر از شهر می‌گذرد.' } },
       { q: { en: 'What is the site of Alexandria, Virginia?', es: '¿Cuál es el sitio de Alexandria, Virginia?', fa: 'محل الکساندریا، ویرجینیا چیست؟' },
-        choices: [{ en: 'A deep-water spot on the Potomac River', es: 'Un lugar de agua profunda en el río Potomac', fa: 'یک جای آب عمیق در دریای پوتومک' }, { en: 'A dry plain far above a flood line', es: 'Una llanura seca muy por encima de la línea de inundación', fa: 'یک دشت خشک خیلی بالاتر از خط سیلاب' }, { en: 'A crossing between two large lakes', es: 'Un cruce entre dos lagos grandes', fa: 'یک گذرگاه میان دو جهیل بزرگ' }, { en: 'A hilltop above a mountain pass', es: 'Una colina sobre un paso de montaña', fa: 'سر یک تپه بالای کوتل' }], answer: 0,
+        choices: [{ en: 'Deep water on the Potomac River', es: 'Agua profunda en el río Potomac', fa: 'آب عمیق در دریای پوتومک' }, { en: 'A dry plain far above a flood line', es: 'Una llanura seca muy por encima de la línea de inundación', fa: 'یک دشت خشک خیلی بالاتر از خط سیلاب' }, { en: 'A crossing between two large lakes', es: 'Un cruce entre dos lagos grandes', fa: 'یک گذرگاه میان دو جهیل بزرگ' }, { en: 'A hilltop above a mountain pass', es: 'Una colina sobre un paso de montaña', fa: 'سر یک تپه بالای کوتل' }], answer: 0,
         why: { en: 'Deep water let large ships reach Alexandria\'s docks directly.', es: 'El agua profunda dejaba que los barcos grandes llegaran directo a los muelles de Alexandria.', fa: 'آب عمیق به کشتی‌های بزرگ اجازه می‌داد مستقیم به اسکله‌های الکساندریا برسند.' } },
       { q: { en: 'Alexandria\'s ground never moved, but its jobs changed from shipping flour to government and services. What changed?', es: 'El suelo de Alexandria nunca se movió, pero sus trabajos cambiaron de enviar harina a gobierno y servicios. ¿Qué cambió?', fa: 'زمین الکساندریا هرگز تغییر نکرد، اما کارهایش از صادر کردن آرد به کار دولتی و خدمات تغییر کرد. چه چیز تغییر کرد؟' },
         choices: [{ en: 'Its situation', es: 'Su situación', fa: 'موقعیتش' }, { en: 'Its site', es: 'Su sitio', fa: 'محلش' }, { en: 'The depth of its river', es: 'La profundidad de su río', fa: 'عمق دریایش' }, { en: 'The soil in its hinterland', es: 'El suelo de su hinterland', fa: 'خاک پس‌کرانه‌اش' }], answer: 0,
@@ -314,7 +282,7 @@ window.EPISODE = {
         choices: [{ en: 'The town\'s situation', es: 'La situación del pueblo', fa: 'موقعیت شهرک' }, { en: 'The town\'s site', es: 'El sitio del pueblo', fa: 'محل شهرک' }, { en: 'The town\'s flood line', es: 'La línea de inundación del pueblo', fa: 'خط سیلاب شهرک' }, { en: 'The town\'s hinterland disappeared', es: 'El hinterland del pueblo desapareció', fa: 'پس‌کرانهٔ شهرک از بین رفت' }], answer: 0,
         why: { en: 'A highway is a new connection. The ground under the town is the same.', es: 'Una carretera es una conexión nueva. El suelo del pueblo es el mismo.', fa: 'شاهراه یک وصل نو است. زمین زیر شهرک همان است.' } },
       { q: { en: 'Many towns started as a fort, then became a market town, then a factory town. Why does a town\'s job keep changing?', es: 'Muchos pueblos empezaron como fuerte, luego fueron pueblo de mercado y luego pueblo de fábricas. ¿Por qué cambia el trabajo de un pueblo?', fa: 'بسیاری از شهرک‌ها اول قلعه بودند، بعد شهرک بازار، بعد شهرک فابریکه شدند. چرا کار یک شهرک تغییر می‌کند؟' },
-        choices: [{ en: 'Its situation changes, so its work changes too', es: 'Su situación cambia, así que su trabajo también', fa: 'موقعیتش تغییر می‌کند، پس کارش هم تغییر می‌کند' }, { en: 'The ground under the town keeps shifting', es: 'El suelo debajo del pueblo se sigue moviendo', fa: 'زمین زیر شهرک همیشه حرکت می‌کند' }, { en: 'Every fort must become a factory', es: 'Todo fuerte debe volverse fábrica', fa: 'هر قلعه باید فابریکه شود' }, { en: 'Towns must change their name every 100 years', es: 'Los pueblos deben cambiar de nombre cada 100 años', fa: 'شهرک‌ها باید هر ۱۰۰ سال نام خود را تغییر دهند' }], answer: 0,
+        choices: [{ en: 'Its situation changes, so its work does', es: 'Su situación cambia, y su trabajo también', fa: 'موقعیتش تغییر می‌کند، پس کارش هم' }, { en: 'The ground under the town keeps shifting', es: 'El suelo debajo del pueblo se sigue moviendo', fa: 'زمین زیر شهرک همیشه حرکت می‌کند' }, { en: 'Every fort must become a factory', es: 'Todo fuerte debe volverse fábrica', fa: 'هر قلعه باید فابریکه شود' }, { en: 'Towns must change their name every 100 years', es: 'Los pueblos deben cambiar de nombre cada 100 años', fa: 'شهرک‌ها باید هر ۱۰۰ سال نام خود را تغییر دهند' }], answer: 0,
         why: { en: 'New roads, markets and factories change what a town connects to, and the jobs follow.', es: 'Los caminos, mercados y fábricas nuevos cambian con qué se conecta un pueblo, y los trabajos cambian también.', fa: 'راه‌ها، بازارها و فابریکه‌های نو تغییر می‌دهند که شهرک به چه وصل است، و کارها هم تغییر می‌کنند.' } }
     ]
   },

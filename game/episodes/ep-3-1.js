@@ -8,9 +8,8 @@ window.EPISODE = {
   title: { en: 'Europe', es: 'Europa', fa: 'اروپا' },
   place: { en: 'Peninsula Coast', es: 'Costa de las Penínsulas', fa: 'ساحل شبه‌جزیره‌ها' },
   intro: [
-    { en: 'Christopher: "The Grump froze the weather charts on Peninsula Coast! Nobody knows why the harbor is not frozen. Talk to the ferry captain, the barge skipper and the mountain guide. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón congeló los mapas del tiempo en la Costa de las Penínsulas! Nadie sabe por qué el puerto no está congelado. Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو نقشه‌های هوا را در ساحل شبه‌جزیره‌ها یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است. با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump froze the weather charts! Nobody knows why the harbor is not frozen.', es: '¡El Gruñón congeló los mapas del tiempo! Nadie sabe por qué el puerto no está congelado.', fa: 'غرغرو نقشه‌های هوا را یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است.' },
+        { en: 'Talk to the ferry captain, barge skipper and mountain guide. Then fix the compass stone.', es: 'Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula.', fa: 'با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   /* 32 x 22. North: the sea and a port town. West: a peninsula with a bay on each side.
@@ -66,10 +65,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [11, 12], at: [15, 10], decor: 'shell',
       clue: { en: 'From this note, walk 2 steps north, then 4 steps east. Something is hidden there.', es: 'Desde esta nota, camina 2 pasos al norte y luego 4 pasos al este. Algo está escondido allí.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۴ قدم به شرق. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! North is up and east is to the right. Europe has many peninsulas and bays, so many places are close to the sea. A sea shell was here.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Europa tiene muchas penínsulas y bahías, así que muchos lugares están cerca del mar. Aquí había una concha de mar.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. اروپا شبه‌جزیره‌ها و خلیج‌های زیاد دارد، پس بسیاری از جاها نزدیک بحر هستند. یک صدف بحری اینجا بود.' } },
+      text: { en: 'You followed the compass! Europe has many peninsulas and bays, so most places are near the sea. A shell!', es: '¡Seguiste la brújula! Europa tiene muchas penínsulas y bahías, así que casi todo está cerca del mar. ¡Una concha!', fa: 'قطب‌نما را دنبال کردی! اروپا شبه‌جزیره و خلیج زیاد دارد، پس بیشتر جاها نزدیک بحر هستند. یک صدف!' } },
     { clueAt: [18, 12], at: [21, 17], decor: 'flower',
-      clue: { en: 'The Rhine River starts high in the Alps and flows north to the sea. Follow it south to where it leaves the mountains. Stand on the snowy square on its west bank.', es: 'El río Rin nace en lo alto de los Alpes y corre al norte hasta el mar. Síguelo hacia el sur hasta donde sale de las montañas. Párate en el cuadro de nieve en su orilla oeste.', fa: 'دریای راین از بلندی‌های الپ شروع می‌شود و به طرف شمال تا بحر جاری است. آن را به طرف جنوب دنبال کن تا جایی که از کوه‌ها بیرون می‌آید. روی خانهٔ برفی در کنار غربی آن بایست.' },
-      text: { en: 'You followed the river to its start! The Rhine begins in the Swiss Alps and flows north about 1,230 kilometers to the North Sea. A white edelweiss flower grows here, high in the Alps.', es: '¡Seguiste el río hasta su comienzo! El Rin nace en los Alpes suizos y corre al norte unos 1230 kilómetros hasta el mar del Norte. Aquí, en lo alto de los Alpes, crece una flor blanca, la edelweiss.', fa: 'تو دریا را تا سرچشمه‌اش دنبال کردی! راین از کوه‌های الپ در سویس شروع می‌شود و حدود ۱۲۳۰ کیلومتر به طرف شمال تا بحر شمال جاری است. یک گل سفید ادلوایس اینجا، در بلندی‌های الپ، می‌روید.' } }
+      clue: { en: 'The Rhine flows north from the Alps. Follow it south to the mountains. Stand on the snow, west bank.', es: 'El Rin corre al norte desde los Alpes. Síguelo al sur hasta las montañas. Párate en la nieve, orilla oeste.', fa: 'راین از الپ به طرف شمال می‌رود. آن را به طرف جنوب تا کوه‌ها دنبال کن. روی برف، کنار غربی، بایست.' },
+      text: { en: 'The Rhine starts here, in the Swiss Alps, and flows 1,230 km north to the North Sea. An edelweiss flower!', es: 'El Rin nace aquí, en los Alpes suizos, y corre 1230 km al norte hasta el mar del Norte. ¡Una flor edelweiss!', fa: 'راین اینجا، در الپ سویس، شروع می‌شود و ۱۲۳۰ کیلومتر به شمال تا بحر شمال می‌رود. یک گل ادلوایس!' } }
   ],
 
   words: {
@@ -88,15 +87,10 @@ window.EPISODE = {
       role: { en: 'Ferry captain', es: 'Capitana de ferri', fa: 'کپتان کشتی مسافربری' },
       look: { skin: 0, hair: '#e3c26b', shirt: '#1f4e8c', pants: '#22324f' },
       lines: [
-        { en: 'Look around you! There is water on three sides. This land is a [[peninsula|peninsula]]. Spain, Italy, Greece and Norway are peninsulas too. That is why almost nowhere in Europe is far from the sea.',
-          es: '¡Mira a tu alrededor! Hay agua por tres lados. Esta tierra es una [[peninsula|península]]. España, Italia, Grecia y Noruega también son penínsulas. Por eso casi ningún lugar de Europa está lejos del mar.',
-          fa: 'به اطراف نگاه کن! از سه طرف آب است. این خشکه یک [[peninsula|شبه‌جزیره]] است. اسپانیا، ایتالیا، یونان و ناروی هم شبه‌جزیره هستند. به همین دلیل تقریباً هیچ جای اروپا از بحر دور نیست.' },
-        { en: 'I grew up in Norway. Long ago, thick glaciers carved deep, narrow inlets into its rock. A [[fjord|fjord]] is a long strip of sea between tall cliffs. Ferries use fjords like roads between towns.',
-          es: 'Crecí en Noruega. Hace mucho tiempo, glaciares gruesos tallaron entradas de mar hondas y angostas en la roca. Un [[fjord|fiordo]] es una franja de mar entre acantilados altos. Los ferris usan los fiordos como caminos entre pueblos.',
-          fa: 'من در ناروی بزرگ شدم. خیلی وقت پیش، یخچال‌های ضخیم شکاف‌های عمیق و باریک در سنگ آن کندند. [[fjord|فیورد]] نوار دراز بحر میان صخره‌های بلند است. کشتی‌ها از فیوردها مثل سرک میان شهرها استفاده می‌کنند.' },
-        { en: 'Norway is far north, but its harbors stay open in winter. A warm ocean current, the [[north atlantic drift|North Atlantic Drift]], brings mild water across the Atlantic. Winds carry that mild air over western Europe.',
-          es: 'Noruega está muy al norte, pero sus puertos siguen abiertos en invierno. Una corriente marina cálida, la [[north atlantic drift|Deriva del Atlántico Norte]], trae agua templada por el Atlántico. Los vientos llevan ese aire templado sobre el oeste de Europa.',
-          fa: 'ناروی خیلی شمال است، اما بندرهایش در زمستان باز می‌مانند. یک جریان گرم بحری به نام [[north atlantic drift|جریان گرم اطلس شمالی]] آب معتدل را از اقیانوس اطلس می‌آورد. بادها آن هوای معتدل را به غرب اروپا می‌برند.' }
+        { en: 'Look! Water on three sides. This land is a [[peninsula|peninsula]].', es: '¡Mira! Agua por tres lados. Esta tierra es una [[peninsula|península]].', fa: 'نگاه کن! از سه طرف آب است. این خشکه یک [[peninsula|شبه‌جزیره]] است.' },
+        { en: 'Spain, Italy, Greece and Norway are peninsulas too. Most of Europe is near the sea.', es: 'España, Italia, Grecia y Noruega también son penínsulas. Casi toda Europa está cerca del mar.', fa: 'اسپانیا، ایتالیا، یونان و ناروی هم شبه‌جزیره هستند. بیشتر اروپا نزدیک بحر است.' },
+        { en: 'In Norway, glaciers carved each [[fjord|fjord]]: a long strip of sea between tall cliffs.', es: 'En Noruega, los glaciares tallaron cada [[fjord|fiordo]]: una franja larga de mar entre acantilados altos.', fa: 'در ناروی، یخچال‌ها هر [[fjord|فیورد]] را کندند: نوار دراز بحر میان صخره‌های بلند.' },
+        { en: 'Far-north Norway\'s harbors stay open in winter. The warm [[north atlantic drift|North Atlantic Drift]] brings mild air.', es: 'Los puertos de Noruega, muy al norte, siguen abiertos en invierno. La cálida [[north atlantic drift|Deriva del Atlántico Norte]] trae aire templado.', fa: 'بندرهای ناروی، خیلی در شمال، در زمستان باز می‌مانند. [[north atlantic drift|جریان گرم اطلس شمالی]] هوای معتدل می‌آورد.' }
       ],
       ask: {
         stat: 'loc',
@@ -117,25 +111,20 @@ window.EPISODE = {
       role: { en: 'River barge skipper', es: 'Patrón de barcaza de río', fa: 'ناخدای کشتی باری دریا' },
       look: { skin: 3, hair: '#1b1410', shirt: '#c0392b', pants: '#2b2b3a' },
       lines: [
-        { en: 'My barge carries coal, grain and steel on the Rhine. The Rhine flows north from the Alps to the North Sea. It is [[navigable|navigable]], which means it is deep enough for big cargo boats.',
-          es: 'Mi barcaza lleva carbón, granos y acero por el Rin. El Rin corre hacia el norte, desde los Alpes hasta el mar del Norte. Es [[navigable|navegable]]: es bastante profundo para barcos grandes de carga.',
-          fa: 'کشتی باری من زغال‌سنگ، غله و فولاد را روی دریای راین می‌برد. راین از کوه‌های الپ به طرف شمال تا بحر شمال جاری است. راین [[navigable|قابل کشتیرانی]] است، یعنی برای کشتی‌های بزرگ باری به اندازهٔ کافی عمیق است.' },
-        { en: 'The Danube flows the other way, east. It starts in Germany, passes about ten countries and ends in the Black Sea. Vienna and Budapest grew on its banks. In Europe, rivers join countries together.',
-          es: 'El Danubio corre hacia el otro lado, al este. Nace en Alemania, pasa por unos diez países y termina en el mar Negro. Viena y Budapest crecieron en sus orillas. En Europa, los ríos unen a los países.',
-          fa: 'دریای دانوب به طرف دیگر، یعنی شرق، جاری است. از آلمان شروع می‌شود، از حدود ده کشور می‌گذرد و به بحیرهٔ سیاه می‌ریزد. ویانا و بوداپست کنار آن بزرگ شدند. در اروپا دریاها کشورها را به هم وصل می‌کنند.' },
-        { en: 'People dug canals to link one river to the next. A load can cross most of Europe without leaving the water. Moving heavy goods by boat costs much less than carrying them over land.',
-          es: 'La gente cavó canales para unir un río con otro. Una carga puede cruzar casi toda Europa sin salir del agua. Mover cosas pesadas en barco cuesta mucho menos que llevarlas por tierra.',
-          fa: 'مردم کانال کندند تا یک دریا را به دریای دیگر وصل کنند. یک بار می‌تواند بیشتر اروپا را بدون بیرون آمدن از آب طی کند. بردن بار سنگین با کشتی خیلی ارزان‌تر از بردن آن از راه خشکه است.' }
+        { en: 'My barge sails the Rhine. It flows north from the Alps to the North Sea.', es: 'Mi barcaza navega por el Rin. Corre al norte, desde los Alpes hasta el mar del Norte.', fa: 'کشتی باری من روی راین می‌رود. راین از الپ به طرف شمال تا بحر شمال جاری است.' },
+        { en: 'The Rhine is [[navigable|navigable]]: deep enough for big cargo boats. Boats move heavy goods cheaply.', es: 'El Rin es [[navigable|navegable]]: bastante profundo para barcos grandes de carga. Los barcos mueven cargas pesadas barato.', fa: 'راین [[navigable|قابل کشتیرانی]] است: برای کشتی‌های بزرگ باری عمیق است. کشتی بار سنگین را ارزان می‌برد.' },
+        { en: 'The Danube flows east, through about ten countries, to the Black Sea.', es: 'El Danubio corre al este, por unos diez países, hasta el mar Negro.', fa: 'دانوب به طرف شرق، از حدود ده کشور، تا بحیرهٔ سیاه جاری است.' },
+        { en: 'Vienna and Budapest grew on its banks. Canals link the rivers across Europe.', es: 'Viena y Budapest crecieron en sus orillas. Los canales unen los ríos de Europa.', fa: 'ویانا و بوداپست کنار آن بزرگ شدند. کانال‌ها دریاهای اروپا را به هم وصل می‌کنند.' }
       ],
       ask: {
         stat: 'mov',
         q: { en: 'Why do people ship heavy grain on the Rhine instead of carrying it over land?', es: '¿Por qué la gente lleva granos pesados por el Rin en vez de llevarlos por tierra?', fa: 'چرا مردم غلهٔ سنگین را با کشتی روی راین می‌برند و نه از راه خشکه؟' },
         choices: [
-          { ok: true, t: { en: 'Boats on a navigable river move heavy goods for less money', es: 'Los barcos en un río navegable mueven cosas pesadas por menos dinero', fa: 'کشتی‌ها روی دریای قابل کشتیرانی بار سنگین را ارزان‌تر می‌برند' },
+          { ok: true, t: { en: 'Boats move heavy loads for less money', es: 'Los barcos mueven cargas pesadas más barato', fa: 'کشتی بار سنگین را ارزان‌تر می‌برد' },
             why: { en: 'A navigable river is a road of water. Heavy loads are cheap to move by boat.', es: 'Un río navegable es un camino de agua. Mover cargas pesadas en barco es barato.', fa: 'دریای قابل کشتیرانی یک سرک آبی است. بردن بار سنگین با کشتی ارزان است.' } },
-          { t: { en: 'The Rhine flows into the Black Sea', es: 'El Rin desemboca en el mar Negro', fa: 'راین به بحیرهٔ سیاه می‌ریزد' },
+          { t: { en: 'The Rhine flows east to the Black Sea', es: 'El Rin corre al este, al mar Negro', fa: 'راین به طرف شرق تا بحیرهٔ سیاه می‌رود' },
             why: { en: 'The Rhine flows north to the North Sea. The Danube is the one that reaches the Black Sea.', es: 'El Rin corre al norte, hasta el mar del Norte. El Danubio es el que llega al mar Negro.', fa: 'راین به طرف شمال تا بحر شمال می‌رود. دانوب است که به بحیرهٔ سیاه می‌رسد.' } },
-          { t: { en: 'Europe has no roads', es: 'Europa no tiene caminos', fa: 'اروپا سرک ندارد' },
+          { t: { en: 'Europe has no roads for trucks', es: 'Europa no tiene caminos para camiones', fa: 'اروپا برای لاری‌ها سرک ندارد' },
             why: { en: 'Europe has many roads. Boats are simply cheaper for heavy loads.', es: 'Europa tiene muchos caminos. Los barcos solo son más baratos para cargas pesadas.', fa: 'اروپا سرک‌های زیادی دارد. فقط کشتی برای بار سنگین ارزان‌تر است.' } }
         ]
       }
@@ -146,25 +135,20 @@ window.EPISODE = {
       role: { en: 'Mountain guide', es: 'Guía de montaña', fa: 'رهنمای کوه' },
       look: { skin: 1, hair: '#6b4a2a', shirt: '#3fa34d', pants: '#4a3a2a' },
       lines: [
-        { en: 'Behind me stand the Alps. Before tunnels and modern roads, people crossed them on foot through narrow passes. Snow closed those passes for months every winter.',
-          es: 'Detrás de mí están los Alpes. Antes de los túneles y las carreteras modernas, la gente los cruzaba a pie por pasos angostos. La nieve cerraba esos pasos por meses cada invierno.',
-          fa: 'پشت سر من کوه‌های الپ هستند. پیش از تونل‌ها و سرک‌های امروزی، مردم از راه درّه‌های باریک پیاده از آن‌ها می‌گذشتند. برف هر زمستان آن راه‌ها را برای چند ماه می‌بست.' },
-        { en: 'A landform that makes travel slow, costly or dangerous is a [[natural barrier|natural barrier]]. The Alps are one. The Pyrenees, between Spain and France, are another.',
-          es: 'Una forma de relieve que hace el viaje lento, caro o peligroso es una [[natural barrier|barrera natural]]. Los Alpes son una. Los Pirineos, entre España y Francia, son otra.',
-          fa: 'شکلی از زمین که سفر را کند، گران یا خطرناک می‌کند [[natural barrier|مانع طبیعی]] نام دارد. کوه‌های الپ یکی از آن‌هاست. کوه‌های پیرنه، میان اسپانیا و فرانسه، یکی دیگر است.' },
-        { en: 'Mountains kept people apart. So languages, laws and customs often changed at the mountains. But north of the Alps, the flat North European Plain is easy to cross.',
-          es: 'Las montañas separaban a la gente. Por eso los idiomas, las leyes y las costumbres muchas veces cambiaban en las montañas. Pero al norte de los Alpes, la llanura del norte de Europa es plana y fácil de cruzar.',
-          fa: 'کوه‌ها مردم را از هم جدا نگه داشتند. به همین دلیل زبان‌ها، قانون‌ها و رسم‌ها اکثراً در کنار کوه‌ها تغییر می‌کردند. اما شمال الپ، دشت شمال اروپا هموار است و گذشتن از آن آسان است.' }
+        { en: 'Behind me are the Alps. Snow closed their narrow passes for months every winter.', es: 'Detrás de mí están los Alpes. La nieve cerraba sus pasos angostos por meses cada invierno.', fa: 'پشت سر من کوه‌های الپ هستند. برف هر زمستان درّه‌های باریک آن را برای چند ماه می‌بست.' },
+        { en: 'A landform that makes travel hard is a [[natural barrier|natural barrier]], like the Alps.', es: 'Un relieve que hace difícil viajar es una [[natural barrier|barrera natural]], como los Alpes.', fa: 'شکلی از زمین که سفر را سخت می‌کند [[natural barrier|مانع طبیعی]] است، مثل الپ.' },
+        { en: 'The Pyrenees, between Spain and France, are one too. Mountains kept people apart.', es: 'Los Pirineos, entre España y Francia, también son una. Las montañas separaban a la gente.', fa: 'کوه‌های پیرنه، میان اسپانیا و فرانسه، هم یکی است. کوه‌ها مردم را از هم جدا نگه داشتند.' },
+        { en: 'So customs and languages changed at mountains. The North European Plain is flat and easy.', es: 'Por eso las costumbres y los idiomas cambiaban en las montañas. La llanura del norte de Europa es plana y fácil.', fa: 'پس رسم‌ها و زبان‌ها کنار کوه‌ها تغییر می‌کردند. دشت شمال اروپا هموار و آسان است.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'How did the Alps change life for the people on each side?', es: '¿Cómo cambiaron los Alpes la vida de la gente de cada lado?', fa: 'کوه‌های الپ زندگی مردم هر دو طرف را چطور تغییر داد؟' },
         choices: [
-          { ok: true, t: { en: 'They kept people apart, so languages and customs often changed there', es: 'Separaban a la gente, así que los idiomas y las costumbres muchas veces cambiaban allí', fa: 'مردم را جدا نگه داشتند، پس زبان‌ها و رسم‌ها اکثراً آنجا تغییر کردند' },
+          { ok: true, t: { en: 'They kept people apart, so customs differ', es: 'Separaban a la gente, y las costumbres cambian', fa: 'مردم را جدا کردند، پس رسم‌ها فرق دارند' },
             why: { en: 'People on each side traded less and met less, so each side kept its own ways.', es: 'La gente de cada lado comerciaba y se veía menos, así que cada lado guardó sus costumbres.', fa: 'مردم هر طرف کمتر تجارت می‌کردند و کمتر یکدیگر را می‌دیدند، پس هر طرف رسم خودش را نگه داشت.' } },
-          { t: { en: 'They made everyone speak one language', es: 'Hicieron que todos hablaran un solo idioma', fa: 'باعث شدند همه به یک زبان گپ بزنند' },
+          { t: { en: 'They made everyone speak the same language', es: 'Hicieron que todos hablaran el mismo idioma', fa: 'باعث شدند همه به یک زبان گپ بزنند' },
             why: { en: 'A barrier keeps people apart. That makes more differences, not fewer.', es: 'Una barrera separa a la gente. Eso crea más diferencias, no menos.', fa: 'مانع مردم را جدا می‌کند. این تفاوت بیشتر می‌سازد، نه کمتر.' } },
-          { t: { en: 'They made trade across them fast and cheap', es: 'Hicieron que el comercio entre ellos fuera rápido y barato', fa: 'تجارت از روی آن‌ها را تیز و ارزان کردند' },
+          { t: { en: 'They made trade across them fast and cheap', es: 'Hicieron el comercio rápido y barato', fa: 'تجارت از روی آن‌ها را تیز و ارزان کردند' },
             why: { en: 'Narrow passes and winter snow made crossing slow and costly.', es: 'Los pasos angostos y la nieve del invierno hacían el cruce lento y caro.', fa: 'راه‌های باریک و برف زمستان گذشتن را کند و گران می‌کرد.' } }
         ]
       }
@@ -172,9 +156,7 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 5, y: 13, text: { en: 'PENINSULA POINT · Water on three sides! Far to the south, the [[strait|Strait]] of Gibraltar joins the Atlantic to the Mediterranean. Only about 8 miles of water lie between Spain and Morocco there.',
-      es: 'PUNTA DE LA PENÍNSULA · ¡Agua por tres lados! Muy al sur, el [[strait|estrecho]] de Gibraltar une el Atlántico con el Mediterráneo. Allí solo hay unas 8 millas de agua entre España y Marruecos.',
-      fa: 'نوک شبه‌جزیره · از سه طرف آب! دور در جنوب، [[strait|تنگهٔ]] جبل‌الطارق اقیانوس اطلس را به بحیرهٔ مدیترانه وصل می‌کند. آنجا میان اسپانیا و مراکش فقط حدود ۸ میل آب است.' } },
+    { x: 5, y: 13, text: { en: 'PENINSULA POINT · Far south, the [[strait|Strait]] of Gibraltar joins the Atlantic and Mediterranean. Spain and Morocco: 8 miles apart.', es: 'PUNTA DE LA PENÍNSULA · Muy al sur, el [[strait|estrecho]] de Gibraltar une el Atlántico y el Mediterráneo. España y Marruecos: a 8 millas.', fa: 'نوک شبه‌جزیره · دور در جنوب، [[strait|تنگهٔ]] جبل‌الطارق اطلس و مدیترانه را وصل می‌کند. اسپانیا و مراکش: ۸ میل فاصله.' } },
     { x: 13, y: 17, text: { en: 'ALPINE PASS · Closed by snow in winter. Long ago, traders waited for summer to cross the mountains.',
       es: 'PASO ALPINO · Cerrado por la nieve en invierno. Hace mucho tiempo, los comerciantes esperaban el verano para cruzar las montañas.',
       fa: 'درّهٔ الپ · در زمستان با برف بسته است. خیلی وقت پیش، تاجران تا تابستان صبر می‌کردند تا از کوه‌ها بگذرند.' } }
@@ -190,19 +172,15 @@ window.EPISODE = {
       role: { en: 'Harbor pilot', es: 'Piloto del puerto', fa: 'رهنمای کشتی‌ها در بندر' },
       look: { skin: 4, hair: '#1b1410', shirt: '#e0782b', pants: '#22324f', hat: '#1f2a44' },
       lines: [
-        { en: 'Help! An Ink Thief grabbed my sea chart and ran away. The chart shows ships the deep, [[navigable|navigable]] water up the river.',
-          es: '¡Ayuda! Un Ladrón de Tinta agarró mi carta náutica y se escapó. La carta les muestra a los barcos el agua honda y [[navigable|navegable]] del río.',
-          fa: 'کمک! یک دزد رنگ نقشهٔ بحری مرا گرفت و فرار کرد. این نقشه آب عمیق و [[navigable|قابل کشتیرانی]] دریا را به کشتی‌ها نشان می‌دهد.' },
-        { en: 'Inês the fisher saw which way it ran. She mends her nets on the peninsula, south-west of here. Will you ask her?',
-          es: 'Inês, la pescadora, vio por dónde se fue. Ella arregla sus redes en la península, al suroeste de aquí. ¿Le preguntas?',
-          fa: 'اینس، ماهی‌گیر، دید که به کدام طرف رفت. او در شبه‌جزیره، جنوب غربِ اینجا، تورهایش را ترمیم می‌کند. از او می‌پرسی؟' }
+        { en: 'Help! An Ink Thief grabbed my sea chart and ran away.', es: '¡Ayuda! Un Ladrón de Tinta agarró mi carta náutica y se escapó.', fa: 'کمک! یک دزد رنگ نقشهٔ بحری مرا گرفت و فرار کرد.' },
+        { en: 'The chart shows ships the deep, [[navigable|navigable]] water up the river.', es: 'La carta les muestra a los barcos el agua honda y [[navigable|navegable]] del río.', fa: 'این نقشه آب عمیق و [[navigable|قابل کشتیرانی]] دریا را به کشتی‌ها نشان می‌دهد.' },
+        { en: 'Inês the fisher saw which way it ran.', es: 'Inês, la pescadora, vio por dónde se fue.', fa: 'اینس، ماهی‌گیر، دید که به کدام طرف رفت.' },
+        { en: 'She mends nets on the peninsula, south-west of here. Will you ask her?', es: 'Ella arregla redes en la península, al suroeste de aquí. ¿Le preguntas?', fa: 'او در شبه‌جزیره، جنوب غربِ اینجا، تور ترمیم می‌کند. از او می‌پرسی؟' }
       ],
       wait: { en: 'Inês is on the [[peninsula|peninsula]], south-west of here. That land has water on three sides.',
         es: 'Inês está en la [[peninsula|península]], al suroeste de aquí. Esa tierra tiene agua por tres lados.',
         fa: 'اینس در [[peninsula|شبه‌جزیره]]، جنوب غربِ اینجا است. آن خشکه از سه طرف آب دارد.' },
-      thanks: { en: 'My chart! Now big ships can find the deep water again. Barges carry goods up the river, right into the middle of Europe. Thank you!',
-        es: '¡Mi carta! Ahora los barcos grandes pueden encontrar otra vez el agua honda. Las barcazas llevan mercancías río arriba, hasta el centro de Europa. ¡Gracias!',
-        fa: 'نقشهٔ من! حالا کشتی‌های بزرگ دوباره آب عمیق را پیدا می‌کنند. کشتی‌های باری مال را از راه دریا تا وسط اروپا می‌برند. تشکر!' }
+      thanks: { en: 'My chart! Big ships find deep water again. Barges reach the middle of Europe. Thanks!', es: '¡Mi carta! Los barcos grandes encuentran el agua honda. Las barcazas llegan al centro de Europa. ¡Gracias!', fa: 'نقشهٔ من! کشتی‌های بزرگ دوباره آب عمیق را پیدا می‌کنند. کشتی‌های باری به وسط اروپا می‌رسند. تشکر!' }
     },
     contact: {
       x: 8, y: 12,
@@ -210,12 +188,10 @@ window.EPISODE = {
       role: { en: 'Fisher', es: 'Pescadora', fa: 'ماهی‌گیر' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#2a7fb8', pants: '#4a3a2a', style: 'bun' },
       lines: [
-        { en: 'Yes, I saw it! A little thief with ink all over its hands. It ran east, past the port, toward the river.',
-          es: '¡Sí, lo vi! Un ladroncito con las manos llenas de tinta. Corrió al este, pasó el puerto y fue hacia el río.',
-          fa: 'بله، دیدمش! یک دزد کوچک که دست‌هایش پر از رنگ بود. به طرف شرق دوید، از بندر گذشت و به طرف دریا رفت.' },
-        { en: 'On the way, it tore the chart into 3 pieces and hid them! Each piece is by a different kind of land or water. Listen to its riddles and walk to the right places. Then catch the thief!',
-          es: '¡En el camino, rompió la carta en 3 pedazos y los escondió! Cada pedazo está junto a un tipo distinto de tierra o de agua. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
-          fa: 'در راه، نقشه را سه تکه کرد و تکه‌ها را پنهان کرد! هر تکه کنار یک نوع دیگر خشکه یا آب است. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
+        { en: 'Yes, I saw it! A little thief with ink all over its hands.', es: '¡Sí, lo vi! Un ladroncito con las manos llenas de tinta.', fa: 'بله، دیدمش! یک دزد کوچک که دست‌هایش پر از رنگ بود.' },
+        { en: 'It ran east, past the port, toward the river.', es: 'Corrió al este, pasó el puerto y fue hacia el río.', fa: 'به طرف شرق دوید، از بندر گذشت و به طرف دریا رفت.' },
+        { en: 'It tore the chart into 3 pieces, each by a different land or water.', es: 'Rompió la carta en 3 pedazos, cada uno junto a una tierra o agua distinta.', fa: 'نقشه را سه تکه کرد، هر تکه کنار یک نوع دیگر خشکه یا آب.' },
+        { en: 'Follow its riddles to the right places. Then catch the thief!', es: 'Sigue sus acertijos a los lugares correctos. ¡Después atrapa al ladrón!', fa: 'چیستان‌هایش را تا جاهای درست دنبال کن. بعد دزد را بگیر!' }
       ]
     },
     action: {
@@ -223,33 +199,23 @@ window.EPISODE = {
       at: [13, 11],
       hops: [[6, 11], [12, 15]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the sea chart into 3 pieces and hid them around the coast. Follow my riddles about Europe, if you can!"',
-        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí la carta náutica en 3 pedazos y los escondí por la costa. ¡Sigue mis acertijos sobre Europa, si puedes!"',
-        fa: 'دزد رنگ می‌خندد: «هی هی! نقشهٔ بحری را سه تکه کردم و در ساحل پنهان کردم. اگر می‌توانی، چیستان‌هایم را دربارهٔ اروپا دنبال کن!»' },
+      taunt: { en: 'Hee hee! The sea chart is in 3 pieces around the coast. Follow my riddles about Europe!', es: '¡Ji ji! La carta náutica está en 3 pedazos por la costa. ¡Sigue mis acertijos sobre Europa!', fa: 'هی هی! نقشهٔ بحری سه تکه در ساحل است. چیستان‌هایم را دربارهٔ اروپا دنبال کن!' },
       clues: [
-        { t: { en: 'Piece 1 is where the Rhine River ends. The Rhine starts in the Alps and flows north. Find the place where it meets the sea.',
-            es: 'El pedazo 1 está donde termina el río Rin. El Rin nace en los Alpes y corre hacia el norte. Busca el lugar donde llega al mar.',
-            fa: 'تکهٔ ۱ جایی است که دریای راین تمام می‌شود. راین از کوه‌های الپ شروع می‌شود و به طرف شمال می‌رود. جایی را پیدا کن که به بحر می‌رسد.' },
+        { t: { en: 'Piece 1 is where the Rhine ends. It flows north from the Alps to the sea.', es: 'El pedazo 1 está donde termina el Rin. Corre al norte, desde los Alpes hasta el mar.', fa: 'تکهٔ ۱ جایی است که راین تمام می‌شود. از الپ به طرف شمال تا بحر می‌رود.' },
           zones: [{ x: 17, y: 3, w: 12, h: 3 }],
           noBy: [{ x: 17, y: 17, w: 11, h: 2, t: { en: 'This is where the Rhine starts, at the ice in the Alps. It flows north, away from here. Follow it to its end at the sea.', es: 'Aquí nace el Rin, en el hielo de los Alpes. Corre hacia el norte, lejos de aquí. Síguelo hasta donde termina, en el mar.', fa: 'راین از این جا، از یخ کوه‌های الپ، شروع می‌شود. به طرف شمال، دور از این جا می‌رود. آن را تا آخرش در بحر دنبال کن.' } }],
-          found: { en: 'Piece 1 was at the mouth of the Rhine! The river flows north from the Alps to the North Sea. Barges carry goods up the river from this port.', es: '¡El pedazo 1 estaba en la desembocadura del Rin! El río corre al norte, desde los Alpes hasta el mar del Norte. Las barcazas llevan mercancías río arriba desde este puerto.', fa: 'تکهٔ ۱ در دهانهٔ راین بود! این دریا از کوه‌های الپ به طرف شمال تا بحر شمال می‌رود. کشتی‌های باری از این بندر مال را بالای دریا می‌برند.' } },
-        { t: { en: 'Piece 2 is on the flat plain north of the Alps. Flat land is easy to farm, so look for the wide wheat fields.',
-            es: 'El pedazo 2 está en la llanura plana al norte de los Alpes. La tierra plana es fácil de cultivar, así que busca los campos anchos de trigo.',
-            fa: 'تکهٔ ۲ در دشت هموار شمال کوه‌های الپ است. کشت در زمین هموار آسان است، پس کشتزارهای پهن گندم را پیدا کن.' },
+          found: { en: 'Piece 1, at the mouth of the Rhine! Barges carry goods upriver from this port.', es: '¡El pedazo 1, en la desembocadura del Rin! Las barcazas llevan mercancías río arriba desde este puerto.', fa: 'تکهٔ ۱، در دهانهٔ راین! کشتی‌های باری از این بندر مال را بالای دریا می‌برند.' } },
+        { t: { en: 'Piece 2 is on the flat plain north of the Alps. Flat land is easy to farm: wheat!', es: 'El pedazo 2 está en la llanura al norte de los Alpes. La tierra plana es fácil de cultivar: ¡trigo!', fa: 'تکهٔ ۲ در دشت هموار شمال الپ است. کشت در زمین هموار آسان است: گندم!' },
           zones: [{ x: 17, y: 15, w: 5, h: 2 }, { x: 24, y: 15, w: 7, h: 2 }],
           noBy: [{ x: 10, y: 17, w: 22, h: 4, t: { en: 'These are the Alps: high, steep and snowy. They are hard to farm and hard to cross. A plain is low and flat.', es: 'Estos son los Alpes: altos, empinados y con nieve. Es difícil cultivarlos y cruzarlos. Una llanura es baja y plana.', fa: 'این‌ها کوه‌های الپ هستند: بلند، سراشیب و برفی. کشت در آن‌ها و گذشتن از آن‌ها سخت است. دشت پست و هموار است.' } }],
-          found: { en: 'Piece 2 was in the wheat! The North European Plain is flat and easy to cross. So farms, roads and cities spread all over it.', es: '¡El pedazo 2 estaba en el trigo! La llanura del norte de Europa es plana y fácil de cruzar. Por eso las granjas, las carreteras y las ciudades se extienden por toda ella.', fa: 'تکهٔ ۲ در گندم بود! دشت شمال اروپا هموار است و گذشتن از آن آسان است. پس کشتزارها، سرک‌ها و شهرها در همه جای آن پخش شده‌اند.' } },
-        { t: { en: 'Piece 3 is on land with water on three sides: a [[peninsula|peninsula]]. Spain is one. At its tip, a narrow [[strait|strait]] joins two seas.',
-            es: 'El pedazo 3 está en una tierra con agua por tres lados: una [[peninsula|península]]. España es una. En su punta, un [[strait|estrecho]] angosto une dos mares.',
-            fa: 'تکهٔ ۳ در خشکه‌ای است که از سه طرف آب دارد: یک [[peninsula|شبه‌جزیره]]. اسپانیا یکی از آن‌هاست. در نوک آن، یک [[strait|تنگهٔ]] باریک دو بحر را وصل می‌کند.' },
+          found: { en: 'Piece 2! The North European Plain is flat. Farms, roads and cities spread across it.', es: '¡El pedazo 2! La llanura del norte de Europa es plana. Granjas, carreteras y ciudades la cubren.', fa: 'تکهٔ ۲! دشت شمال اروپا هموار است. کشتزارها، سرک‌ها و شهرها در آن پخش شده‌اند.' } },
+        { t: { en: 'Piece 3 is on a [[peninsula|peninsula]], like Spain. At its tip, a narrow [[strait|strait]] joins two seas.', es: 'El pedazo 3 está en una [[peninsula|península]], como España. En su punta, un [[strait|estrecho]] une dos mares.', fa: 'تکهٔ ۳ در یک [[peninsula|شبه‌جزیره]] است، مثل اسپانیا. در نوک آن، یک [[strait|تنگهٔ]] باریک دو بحر را وصل می‌کند.' },
           zones: [{ x: 3, y: 11, w: 7, h: 4 }],
           noBy: [{ x: 5, y: 3, w: 12, h: 4, t: { en: 'The port town has the sea on only one side, the north. A peninsula has water on three sides.', es: 'El pueblo del puerto tiene el mar de un solo lado, el norte. Una península tiene agua por tres lados.', fa: 'شهرک بندر فقط از یک طرف، شمال، بحر دارد. شبه‌جزیره از سه طرف آب دارد.' } },
             { x: 11, y: 8, w: 5, h: 6, t: { en: 'There is no sea next to this land. A peninsula sticks out into the sea. Keep going west.', es: 'No hay mar junto a esta tierra. Una península se mete en el mar. Sigue hacia el oeste.', fa: 'کنار این زمین بحر نیست. شبه‌جزیره در داخل بحر پیش می‌رود. به طرف غرب برو.' } }],
-          found: { en: 'Piece 3 was on Peninsula Point! Water on three sides. Europe has many peninsulas, so almost no place is far from the sea.', es: '¡El pedazo 3 estaba en la Punta de la Península! Agua por tres lados. Europa tiene muchas penínsulas, así que casi ningún lugar está lejos del mar.', fa: 'تکهٔ ۳ در نوک شبه‌جزیره بود! از سه طرف آب. اروپا شبه‌جزیره‌های زیادی دارد، پس تقریباً هیچ جا از بحر دور نیست.' } }
+          found: { en: 'Piece 3! Europe has many peninsulas, so almost nowhere is far from the sea.', es: '¡El pedazo 3! Europa tiene muchas penínsulas, así que casi ningún lugar está lejos del mar.', fa: 'تکهٔ ۳! اروپا شبه‌جزیره‌های زیادی دارد، پس تقریباً هیچ جا از بحر دور نیست.' } }
       ],
-      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the sea chart is whole again.',
-        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: la carta náutica está completa otra vez.',
-        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ بحری دوباره کامل است.' },
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off. The sea chart is whole again.', es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye. La carta náutica está completa otra vez.', fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و فرار می‌کند. نقشهٔ بحری دوباره کامل است.' },
       item: { icon: '🗺️', name: { en: "Daan's sea chart", es: 'La carta náutica de Daan', fa: 'نقشهٔ بحری دان' } }
     }
   },
@@ -311,7 +277,7 @@ window.EPISODE = {
         choices: [{ en: 'A peninsula', es: 'Una península', fa: 'شبه‌جزیره' }, { en: 'An island', es: 'Una isla', fa: 'جزیره' }, { en: 'A river delta', es: 'Un delta de río', fa: 'دلتای دریا' }, { en: 'A mountain range', es: 'Una cordillera', fa: 'سلسله‌کوه' }], answer: 0,
         why: { en: 'Each one is land with water on most of its sides.', es: 'Cada una es tierra con agua en casi todos sus lados.', fa: 'هر کدام خشکه‌ای است که بیشتر طرف‌هایش آب است.' } },
       { q: { en: 'Why is almost nowhere in Europe far from the sea?', es: '¿Por qué casi ningún lugar de Europa está lejos del mar?', fa: 'چرا تقریباً هیچ جای اروپا از بحر دور نیست؟' },
-        choices: [{ en: 'Its coast is long and full of bays and peninsulas', es: 'Su costa es larga y llena de bahías y penínsulas', fa: 'ساحلش دراز و پر از خلیج و شبه‌جزیره است' }, { en: 'Every country in Europe is an island', es: 'Todos los países de Europa son islas', fa: 'همهٔ کشورهای اروپا جزیره هستند' }, { en: 'Europe is the biggest continent', es: 'Europa es el continente más grande', fa: 'اروپا بزرگ‌ترین قاره است' }, { en: 'Europe has no mountains', es: 'Europa no tiene montañas', fa: 'اروپا کوه ندارد' }], answer: 0,
+        choices: [{ en: 'Its coast is long, with many peninsulas', es: 'Su costa es larga, con muchas penínsulas', fa: 'ساحلش دراز است و شبه‌جزیره زیاد دارد' }, { en: 'Every country in Europe is an island', es: 'Todos los países de Europa son islas', fa: 'همهٔ کشورهای اروپا جزیره هستند' }, { en: 'Europe is the biggest continent of all', es: 'Europa es el continente más grande de todos', fa: 'اروپا از همه بزرگ‌ترین قاره است' }, { en: 'Europe has no mountains', es: 'Europa no tiene montañas', fa: 'اروپا کوه ندارد' }], answer: 0,
         why: { en: 'A long, broken coastline brings the sea close to most places.', es: 'Una costa larga y quebrada acerca el mar a casi todos los lugares.', fa: 'ساحل دراز و پرپیچ بحر را به بیشتر جاها نزدیک می‌کند.' } },
       { q: { en: 'Which mountains stand between Spain and France?', es: '¿Qué montañas están entre España y Francia?', fa: 'کدام کوه‌ها میان اسپانیا و فرانسه هستند؟' },
         choices: [{ en: 'The Pyrenees', es: 'Los Pirineos', fa: 'کوه‌های پیرنه' }, { en: 'The Alps', es: 'Los Alpes', fa: 'کوه‌های الپ' }, { en: 'The Carpathians', es: 'Los Cárpatos', fa: 'کوه‌های کارپات' }, { en: 'The Apennines', es: 'Los Apeninos', fa: 'کوه‌های آپنین' }], answer: 0,
@@ -323,10 +289,10 @@ window.EPISODE = {
         choices: [{ en: 'In the Black Sea', es: 'En el mar Negro', fa: 'در بحیرهٔ سیاه' }, { en: 'In the North Sea', es: 'En el mar del Norte', fa: 'در بحر شمال' }, { en: 'In the Atlantic Ocean', es: 'En el océano Atlántico', fa: 'در اقیانوس اطلس' }, { en: 'In the Mediterranean Sea', es: 'En el mar Mediterráneo', fa: 'در بحیرهٔ مدیترانه' }], answer: 0,
         why: { en: 'The Danube flows east through about ten countries to the Black Sea.', es: 'El Danubio corre al este por unos diez países hasta el mar Negro.', fa: 'دانوب از حدود ده کشور به طرف شرق تا بحیرهٔ سیاه می‌رود.' } },
       { q: { en: 'Rotterdam is one of Europe\'s busiest ports. Why is it in that spot?', es: 'Róterdam es uno de los puertos más activos de Europa. ¿Por qué está en ese lugar?', fa: 'روتردام یکی از پرکارترین بندرهای اروپا است. چرا در آن جا است؟' },
-        choices: [{ en: 'It sits where the Rhine meets the sea', es: 'Está donde el Rin llega al mar', fa: 'جایی است که راین به بحر می‌رسد' }, { en: 'It sits on the Black Sea', es: 'Está en el mar Negro', fa: 'کنار بحیرهٔ سیاه است' }, { en: 'It sits high in the Alps', es: 'Está en lo alto de los Alpes', fa: 'بالای کوه‌های الپ است' }, { en: 'It sits beside the Danube', es: 'Está junto al Danubio', fa: 'کنار دانوب است' }], answer: 0,
+        choices: [{ en: 'It sits where the Rhine meets the sea', es: 'Está donde el Rin llega al mar', fa: 'جایی است که راین به بحر می‌رسد' }, { en: 'It sits on the shore of the Black Sea', es: 'Está en la orilla del mar Negro', fa: 'در ساحل بحیرهٔ سیاه است' }, { en: 'It sits high up in the snowy Alps', es: 'Está en lo alto de los Alpes nevados', fa: 'بالای کوه‌های برفی الپ است' }, { en: 'It sits on the banks of the Danube', es: 'Está en las orillas del Danubio', fa: 'در کنار دریای دانوب است' }], answer: 0,
         why: { en: 'Cargo comes down the Rhine by barge and leaves by ship for the world.', es: 'La carga baja por el Rin en barcazas y sale en barcos hacia el mundo.', fa: 'بار با کشتی‌های باری از راین پایین می‌آید و با کشتی‌های بزرگ به دنیا می‌رود.' } },
       { q: { en: 'What keeps the winters of western Europe mild?', es: '¿Qué hace templados los inviernos del oeste de Europa?', fa: 'چه چیز زمستان‌های غرب اروپا را معتدل نگه می‌دارد؟' },
-        choices: [{ en: 'The North Atlantic Drift, a warm ocean current', es: 'La Deriva del Atlántico Norte, una corriente marina cálida', fa: 'جریان گرم اطلس شمالی، یک جریان گرم بحری' }, { en: 'The Alps, which block warm air', es: 'Los Alpes, que bloquean el aire cálido', fa: 'کوه‌های الپ که هوای گرم را بند می‌کنند' }, { en: 'Being close to the equator', es: 'Estar cerca del ecuador', fa: 'نزدیک بودن به خط استوا' }, { en: 'Ice from the North Pole', es: 'El hielo del Polo Norte', fa: 'یخ قطب شمال' }], answer: 0,
+        choices: [{ en: 'A warm ocean current from the Atlantic', es: 'Una corriente marina cálida del Atlántico', fa: 'یک جریان گرم بحری از اطلس' }, { en: 'The Alps, which trap warm air over Europe', es: 'Los Alpes, que atrapan aire cálido sobre Europa', fa: 'کوه‌های الپ که هوای گرم را روی اروپا نگه می‌دارند' }, { en: 'Being much closer to the equator', es: 'Estar mucho más cerca del ecuador', fa: 'خیلی نزدیک‌تر بودن به خط استوا' }, { en: 'Ice from the North Pole', es: 'El hielo del Polo Norte', fa: 'یخ قطب شمال' }], answer: 0,
         why: { en: 'The warm current and ocean winds bring mild air to western Europe.', es: 'La corriente cálida y los vientos del océano traen aire templado al oeste de Europa.', fa: 'جریان گرم و بادهای اقیانوس هوای معتدل را به غرب اروپا می‌آورند.' } },
       { q: { en: 'What carved the deep fjords along Norway\'s coast?', es: '¿Qué talló los fiordos profundos de la costa de Noruega?', fa: 'چه چیز فیوردهای عمیق ساحل ناروی را کند؟' },
         choices: [{ en: 'Glaciers', es: 'Los glaciares', fa: 'یخچال‌ها' }, { en: 'Volcanoes', es: 'Los volcanes', fa: 'آتشفشان‌ها' }, { en: 'Ships', es: 'Los barcos', fa: 'کشتی‌ها' }, { en: 'Wind from the desert', es: 'El viento del desierto', fa: 'باد صحرا' }], answer: 0,

@@ -8,9 +8,8 @@ window.EPISODE = {
   title: { en: 'Russia & Central Asia', es: 'Rusia y Asia Central', fa: 'روسیه و آسیای میانه' },
   place: { en: 'The Long Railway', es: 'El Largo Ferrocarril', fa: 'خط آهن دراز' },
   intro: [
-    { en: 'Christopher: "The Grump scrambled the train timetable! The Trans-Siberian train cannot leave Moscow. Talk to the conductor, the forest ranger and the herder. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón revolvió el horario del tren! El tren Transiberiano no puede salir de Moscú. Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو جدول حرکت قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند. با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump scrambled the timetable! The Trans-Siberian train cannot leave Moscow.', es: '¡El Gruñón revolvió el horario! El tren Transiberiano no puede salir de Moscú.', fa: 'غرغرو جدول قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند.' },
+        { en: 'Talk to the conductor, the forest ranger and the herder. Then fix the compass stone.', es: 'Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula.', fa: 'با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   map: [
@@ -66,11 +65,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [7, 10], at: [12, 10], decor: 'gem',
-      clue: { en: 'The Ural Mountains are the line between Europe and Asia. Stand on the first square of Asia: just east of the mountains, one step south of the railway.', es: 'Los montes Urales son la línea entre Europa y Asia. Párate en el primer cuadro de Asia: justo al este de las montañas, un paso al sur del ferrocarril.', fa: 'کوه‌های اورال خط میان اروپا و آسیا هستند. روی اولین خانهٔ آسیا بایست: درست شرقِ کوه‌ها، یک قدم جنوبِ خط آهن.' },
-      text: { en: 'You crossed from Europe into Asia! The Ural Mountains are famous for beautiful stones, like green malachite. A shiny green gem was here.', es: '¡Pasaste de Europa a Asia! Los montes Urales son famosos por sus piedras hermosas, como la malaquita verde. Aquí había una gema verde y brillante.', fa: 'تو از اروپا به آسیا رفتی! کوه‌های اورال به خاطر سنگ‌های زیبا مثل ملاکیت سبز مشهور هستند. یک جواهر سبز و براق اینجا بود.' } },
+      clue: { en: 'The Ural Mountains divide Europe and Asia. Stand just east of them, one step south of the railway.', es: 'Los montes Urales dividen Europa y Asia. Párate justo al este de ellos, un paso al sur del ferrocarril.', fa: 'کوه‌های اورال اروپا و آسیا را جدا می‌کنند. درست شرقِ آن‌ها، یک قدم جنوبِ خط آهن بایست.' },
+      text: { en: 'You crossed into Asia! The Urals are famous for pretty stones, like green malachite. A green gem!', es: '¡Pasaste a Asia! Los Urales son famosos por sus piedras bonitas, como la malaquita verde. ¡Una gema verde!', fa: 'به آسیا رسیدی! اورال به خاطر سنگ‌های زیبا مثل ملاکیت سبز مشهور است. یک جواهر سبز!' } },
     { clueAt: [30, 17], at: [26, 19], decor: 'feather',
       clue: { en: 'From this note, walk 4 steps west, then 2 steps south. Something is hidden in the steppe grass.', es: 'Desde esta nota, camina 4 pasos al oeste y luego 2 pasos al sur. Algo está escondido en el pasto de la estepa.', fa: 'از این یادداشت، ۴ قدم به غرب برو، بعد ۲ قدم به جنوب. چیزی در علف‌های دشت پنهان است.' },
-      text: { en: 'You followed compass directions! West is to the left and south is down. On the steppe of Kazakhstan, some herders still hunt with trained golden eagles. An eagle feather was in the grass.', es: '¡Seguiste las direcciones de la brújula! El oeste está a la izquierda y el sur abajo. En la estepa de Kazajistán, algunos pastores todavía cazan con águilas reales entrenadas. Había una pluma de águila en el pasto.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! غرب طرف چپ و جنوب پایین است. در دشت‌های قزاقستان، بعضی چوپان‌ها هنوز با عقاب‌های طلایی تربیه‌شده شکار می‌کنند. یک پر عقاب در علف‌ها بود.' } }
+      text: { en: 'You followed the compass! On the Kazakh steppe, some herders still hunt with golden eagles. A feather!', es: '¡Seguiste la brújula! En la estepa de Kazajistán, algunos pastores todavía cazan con águilas reales. ¡Una pluma!', fa: 'قطب‌نما را دنبال کردی! در دشت قزاقستان، بعضی چوپان‌ها هنوز با عقاب طلایی شکار می‌کنند. یک پر!' } }
   ],
 
   words: {
@@ -89,15 +88,10 @@ window.EPISODE = {
       role: { en: 'Train conductor', es: 'Conductora de tren', fa: 'کنترولر قطار' },
       look: { skin: 1, hair: '#8a5a2b', shirt: '#7a1f2b', pants: '#22324f' },
       lines: [
-        { en: 'Welcome aboard! This is the Trans-Siberian Railway. It runs east from Moscow all the way to Vladivostok on the Pacific Ocean. It is the longest railway line in the world. The whole ride takes about a week.',
-          es: '¡Bienvenido a bordo! Este es el ferrocarril Transiberiano. Va hacia el este, desde Moscú hasta Vladivostok, en el océano Pacífico. Es la línea de tren más larga del mundo. El viaje completo dura una semana más o menos.',
-          fa: 'خوش آمدی! این خط آهن ترانس‌سیبری است. از مسکو به طرف شرق تا ولادی‌وستوک کنار اقیانوس آرام می‌رود. درازترین خط آهن دنیا است. تمام سفر حدود یک هفته طول می‌کشد.' },
-        { en: 'Russia is the largest country on Earth. It stretches across eleven time zones. When the school day starts in Moscow, it is already afternoon on the Pacific coast.',
-          es: 'Rusia es el país más grande de la Tierra. Cruza once husos horarios. Cuando empiezan las clases en Moscú, ya es de tarde en la costa del Pacífico.',
-          fa: 'روسیه بزرگ‌ترین کشور زمین است. یازده منطقهٔ زمانی را در بر می‌گیرد. وقتی درس مکتب در مسکو شروع می‌شود، در ساحل اقیانوس آرام بعد از چاشت است.' },
-        { en: 'But most Russians live here in the west, near Moscow and Saint Petersburg. About three out of four live west of the Ural Mountains. The reason is cold. East of the Urals, winters are long and the ground stays frozen.',
-          es: 'Pero la mayoría de los rusos vive aquí, en el oeste, cerca de Moscú y San Petersburgo. Unos tres de cada cuatro viven al oeste de los montes Urales. La razón es el frío. Al este de los Urales, los inviernos son largos y el suelo sigue congelado.',
-          fa: 'اما بیشتر مردم روسیه اینجا در غرب، نزدیک مسکو و سن‌پترزبورگ زندگی می‌کنند. از هر چهار نفر حدود سه نفر در غرب کوه‌های اورال زندگی می‌کنند. دلیلش سرما است. در شرق اورال زمستان‌ها دراز هستند و زمین یخ‌زده می‌ماند.' }
+        { en: 'Welcome aboard! The Trans-Siberian runs a week east, from Moscow to Vladivostok on the Pacific.', es: '¡Bienvenido! El Transiberiano viaja una semana al este, de Moscú a Vladivostok, en el Pacífico.', fa: 'خوش آمدی! ترانس‌سیبری یک هفته از مسکو به طرف شرق تا ولادی‌وستوک کنار اقیانوس آرام می‌رود.' },
+        { en: 'It is the world\'s longest railway. Russia, the largest country, stretches across eleven time zones.', es: 'Es el ferrocarril más largo del mundo. Rusia, el país más grande, cruza once husos horarios.', fa: 'درازترین خط آهن دنیا است. روسیه، بزرگ‌ترین کشور، یازده منطقهٔ زمانی را در بر می‌گیرد.' },
+        { en: 'When school starts in Moscow, it is already afternoon on the Pacific coast.', es: 'Cuando empiezan las clases en Moscú, ya es de tarde en la costa del Pacífico.', fa: 'وقتی مکتب در مسکو شروع می‌شود، در ساحل اقیانوس آرام بعد از چاشت است.' },
+        { en: 'Three in four Russians live west of the Urals, near Moscow. East, winters are long.', es: 'Tres de cada cuatro rusos viven al oeste de los Urales, cerca de Moscú. Al este, los inviernos son largos.', fa: 'از هر چهار روس سه نفر در غرب اورال، نزدیک مسکو، زندگی می‌کنند. در شرق زمستان دراز است.' }
       ],
       ask: {
         stat: 'reg',
@@ -118,25 +112,20 @@ window.EPISODE = {
       role: { en: 'Forest ranger at Lake Baikal', es: 'Guardabosques del lago Baikal', fa: 'نگهبان جنگل در جهیل بایکال' },
       look: { skin: 2, hair: '#141010', shirt: '#2e6b3a', pants: '#3a2f25' },
       lines: [
-        { en: 'This is the [[taiga|taiga]], the largest forest on Earth. Pine, spruce and fir grow here. Winters are long and bitter, and the soil is thin and poor. Crops grow badly, so few people live in it.',
-          es: 'Esta es la [[taiga|taiga]], el bosque más grande de la Tierra. Aquí crecen pinos, píceas y abetos. Los inviernos son largos y duros, y la tierra es delgada y pobre. Los cultivos crecen mal, así que vive poca gente aquí.',
-          fa: 'این [[taiga|تایگا]] است، بزرگ‌ترین جنگل زمین. کاج و صنوبر اینجا می‌رویند. زمستان‌ها دراز و سخت هستند و خاک نازک و ضعیف است. کشت خوب نمی‌روید، پس مردم کمی اینجا زندگی می‌کنند.' },
-        { en: 'North of the trees lies the [[tundra|tundra]]: flat land with no trees, frozen most of the year. Under it is [[permafrost|permafrost]], ground that stays frozen all year. Builders raise houses on posts so their heat does not melt it.',
-          es: 'Al norte de los árboles está la [[tundra|tundra]]: tierra plana sin árboles, congelada casi todo el año. Debajo está el [[permafrost|permafrost]], suelo que sigue congelado todo el año. Los constructores ponen las casas sobre postes para que su calor no lo derrita.',
-          fa: 'شمال درختان [[tundra|توندرا]] است: زمین هموار بی‌درخت که بیشتر سال یخ‌زده است. زیر آن [[permafrost|زمین همیشه یخ‌زده]] است، زمینی که تمام سال یخ می‌ماند. معماران خانه‌ها را روی پایه‌ها بلند می‌سازند تا گرمی خانه آن را آب نکند.' },
-        { en: 'This is Lake Baikal. It is the deepest lake in the world, and it holds more fresh water than any other lake. The railway runs along its southern shore, near the city of Irkutsk.',
-          es: 'Este es el lago Baikal. Es el lago más profundo del mundo y tiene más agua dulce que cualquier otro lago. El ferrocarril pasa por su orilla sur, cerca de la ciudad de Irkutsk.',
-          fa: 'این جهیل بایکال است. عمیق‌ترین جهیل دنیا است و از هر جهیل دیگر آب شیرین بیشتری دارد. خط آهن از کنار ساحل جنوبی آن، نزدیک شهر ایرکوتسک، می‌گذرد.' }
+        { en: 'This is the [[taiga|taiga]], the largest forest on Earth: pine, spruce and fir.', es: 'Esta es la [[taiga|taiga]], el bosque más grande de la Tierra: pinos, píceas y abetos.', fa: 'این [[taiga|تایگا]] است، بزرگ‌ترین جنگل زمین: کاج و صنوبر.' },
+        { en: 'Bitter winters and poor soil mean crops grow badly, so few people live here.', es: 'Por los inviernos duros y la tierra pobre, los cultivos crecen mal, así que vive poca gente aquí.', fa: 'زمستان سخت و خاک ضعیف باعث می‌شود کشت خوب نروید، پس مردم کمی اینجا زندگی می‌کنند.' },
+        { en: 'North is the treeless [[tundra|tundra]], on [[permafrost|permafrost]]. Houses stand on posts so it stays frozen.', es: 'Al norte está la [[tundra|tundra]] sin árboles, sobre el [[permafrost|permafrost]]. Las casas van sobre postes para que siga congelado.', fa: 'در شمال [[tundra|توندرا]]ی بی‌درخت روی [[permafrost|زمین همیشه یخ‌زده]] است. خانه‌ها روی پایه‌ها هستند تا یخ آب نشود.' },
+        { en: 'Lake Baikal, near Irkutsk, is the world\'s deepest lake, with the most fresh water.', es: 'El lago Baikal, cerca de Irkutsk, es el lago más profundo del mundo y el de más agua dulce.', fa: 'جهیل بایکال، نزدیک ایرکوتسک، عمیق‌ترین جهیل دنیا است و بیشترین آب شیرین را دارد.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'Why do so few people live in the taiga?', es: '¿Por qué vive tan poca gente en la taiga?', fa: 'چرا مردم این‌قدر کم در تایگا زندگی می‌کنند؟' },
         choices: [
-          { ok: true, t: { en: 'The winters are bitter and the soil is poor', es: 'Los inviernos son duros y la tierra es pobre', fa: 'زمستان‌ها سخت و خاک ضعیف است' },
+          { ok: true, t: { en: 'Bitter winters and poor soil', es: 'Inviernos duros y tierra pobre', fa: 'زمستان سخت و خاک ضعیف' },
             why: { en: 'Crops grow badly in thin, cold soil, so few people settle there.', es: 'Los cultivos crecen mal en tierra delgada y fría, así que poca gente se queda allí.', fa: 'کشت در خاک نازک و سرد خوب نمی‌روید، پس مردم کمی آنجا جای می‌گیرند.' } },
-          { t: { en: 'It is too dry for any plants', es: 'Es demasiado seco para cualquier planta', fa: 'برای هیچ گیاهی بسیار خشک است' },
+          { t: { en: 'It is far too dry for plants', es: 'Es demasiado seco para las plantas', fa: 'برای گیاه خیلی خشک است' },
             why: { en: 'The taiga is a huge forest. Trees grow well. The cold is the problem.', es: 'La taiga es un bosque enorme. Los árboles crecen bien. El problema es el frío.', fa: 'تایگا یک جنگل بزرگ است. درختان خوب می‌رویند. مشکل سرما است.' } },
-          { t: { en: 'The forest is very small', es: 'El bosque es muy pequeño', fa: 'جنگل خیلی کوچک است' },
+          { t: { en: 'The forest there is very small', es: 'Allí el bosque es muy pequeño', fa: 'جنگل آنجا خیلی کوچک است' },
             why: { en: 'The taiga is the largest forest on Earth.', es: 'La taiga es el bosque más grande de la Tierra.', fa: 'تایگا بزرگ‌ترین جنگل زمین است.' } }
         ]
       }
@@ -147,15 +136,10 @@ window.EPISODE = {
       role: { en: 'Horse and sheep herder', es: 'Pastora de caballos y ovejas', fa: 'چوپان اسپ و گوسفند' },
       look: { skin: 3, hair: '#141010', shirt: '#c98a1c', pants: '#5a3a22' },
       lines: [
-        { en: 'Welcome to the [[steppe|steppe]]! It is a wide, flat grassland. It is [[semi-arid|semi-arid]]: too dry for a forest, but grass grows well. My family grazes horses and sheep here, as herders have done for thousands of years.',
-          es: '¡Bienvenido a la [[steppe|estepa]]! Es una pradera ancha y plana. Es [[semi-arid|semiárida]]: muy seca para un bosque, pero el pasto crece bien. Mi familia cría caballos y ovejas aquí, como lo han hecho los pastores por miles de años.',
-          fa: 'به [[steppe|استپ]] خوش آمدی! این یک علفزار پهن و هموار است. [[semi-arid|نیمه‌خشک]] است: برای جنگل بسیار خشک، اما علف خوب می‌روید. خانوادهٔ من اینجا اسپ و گوسفند می‌چرانند، همان‌طور که چوپانان هزاران سال این کار را کرده‌اند.' },
-        { en: 'I live in Kazakhstan, in Central Asia. Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan and Tajikistan are all [[landlocked|landlocked]]. Not one touches an ocean. Our goods must cross other countries to reach a ship.',
-          es: 'Vivo en Kazajistán, en Asia Central. Kazajistán, Uzbekistán, Turkmenistán, Kirguistán y Tayikistán son todos países [[landlocked|sin salida al mar]]. Ninguno toca un océano. Nuestras cosas deben cruzar otros países para llegar a un barco.',
-          fa: 'من در قزاقستان، در آسیای میانه زندگی می‌کنم. قزاقستان، ازبکستان، ترکمنستان، قرغزستان و تاجکستان همه [[landlocked|محاط به خشکه]] هستند. هیچ کدام به اقیانوس نمی‌رسد. مال ما باید از کشورهای دیگر بگذرد تا به کشتی برسد.' },
-        { en: 'Long ago, camel caravans on the Silk Road crossed this land between China and Europe. Today freight trains follow some of the same paths.',
-          es: 'Hace mucho tiempo, las caravanas de camellos de la Ruta de la Seda cruzaban esta tierra entre China y Europa. Hoy, trenes de carga siguen algunos de esos mismos caminos.',
-          fa: 'خیلی وقت پیش، کاروان‌های شتر در راه ابریشم از این زمین میان چین و اروپا می‌گذشتند. امروز قطارهای باری از بعضی همان راه‌ها می‌روند.' }
+        { en: 'Welcome to the [[steppe|steppe]], a wide, flat grassland. It is [[semi-arid|semi-arid]]: too dry for forest.', es: '¡Bienvenido a la [[steppe|estepa]], una pradera ancha y plana! Es [[semi-arid|semiárida]]: muy seca para un bosque.', fa: 'به [[steppe|استپ]]، یک علفزار پهن و هموار، خوش آمدی! [[semi-arid|نیمه‌خشک]] است: برای جنگل بسیار خشک.' },
+        { en: 'Grass grows well. Herders have grazed horses and sheep here for thousands of years.', es: 'El pasto crece bien. Los pastores crían caballos y ovejas aquí desde hace miles de años.', fa: 'علف خوب می‌روید. چوپانان هزاران سال است اینجا اسپ و گوسفند می‌چرانند.' },
+        { en: 'Kazakhstan, Uzbekistan, Turkmenistan, Kyrgyzstan and Tajikistan are [[landlocked|landlocked]]. Goods cross other countries to reach ships.', es: 'Kazajistán, Uzbekistán, Turkmenistán, Kirguistán y Tayikistán no tienen [[landlocked|salida al mar]]. Las mercancías cruzan otros países para llegar a un barco.', fa: 'قزاقستان، ازبکستان، ترکمنستان، قرغزستان و تاجکستان [[landlocked|محاط به خشکه]] هستند. مال از کشورهای دیگر می‌گذرد تا به کشتی برسد.' },
+        { en: 'Silk Road camel caravans once crossed here between China and Europe. Now freight trains do.', es: 'Las caravanas de camellos de la Ruta de la Seda cruzaban aquí entre China y Europa. Hoy lo hacen trenes de carga.', fa: 'کاروان‌های شتر راه ابریشم روزی از اینجا میان چین و اروپا می‌گذشتند. حالا قطارهای باری می‌گذرند.' }
       ],
       ask: {
         stat: 'loc',
@@ -191,19 +175,13 @@ window.EPISODE = {
       role: { en: 'Frozen-ground scientist', es: 'Científico del suelo helado', fa: 'دانشمند زمین یخ‌زده' },
       look: { skin: 3, hair: '#2a1d14', shirt: '#4a6fa5', pants: '#2b2b3a', hat: '#5a3a22' },
       lines: [
-        { en: 'Oh no! The Grump\'s blizzard blew my ground thermometer away. It measures [[permafrost|permafrost]], the ground that stays frozen all year.',
-          es: '¡Ay, no! La ventisca del Gruñón se llevó mi termómetro de suelo. Mide el [[permafrost|permafrost]], el suelo que sigue congelado todo el año.',
-          fa: 'وای! توفان برف غرغرو حرارت‌سنج زمین مرا برد. این وسیله [[permafrost|زمین همیشه یخ‌زده]] را اندازه می‌کند، زمینی که تمام سال یخ می‌ماند.' },
-        { en: 'Pyotr fixes the tracks at the station with the flat roofs, east of the Ural Mountains. He saw where it flew. Will you ride east and ask him?',
-          es: 'Pyotr arregla las vías en la estación de techos planos, al este de los montes Urales. Él vio a dónde voló. ¿Vas al este a preguntarle?',
-          fa: 'پیوتر در ایستگاهی که بام‌های هموار دارد، شرق کوه‌های اورال، خط آهن را ترمیم می‌کند. او دید که به کجا پرید. به طرف شرق می‌روی و از او می‌پرسی؟' }
+        { en: 'Oh no! The Grump\'s blizzard blew my ground thermometer away.', es: '¡Ay, no! La ventisca del Gruñón se llevó mi termómetro de suelo.', fa: 'وای! توفان برف غرغرو حرارت‌سنج زمین مرا برد.' },
+        { en: 'It measures [[permafrost|permafrost]], the ground that stays frozen all year.', es: 'Mide el [[permafrost|permafrost]], el suelo que sigue congelado todo el año.', fa: 'این وسیله [[permafrost|زمین همیشه یخ‌زده]] را اندازه می‌کند، زمینی که تمام سال یخ می‌ماند.' },
+        { en: 'Pyotr fixes tracks at the flat-roof station, east of the Ural Mountains.', es: 'Pyotr arregla las vías en la estación de techos planos, al este de los Urales.', fa: 'پیوتر در ایستگاه بام‌هموار، شرق کوه‌های اورال، خط آهن را ترمیم می‌کند.' },
+        { en: 'He saw where it flew. Will you ride east and ask him?', es: 'Él vio a dónde voló. ¿Vas al este a preguntarle?', fa: 'او دید که به کجا پرید. به طرف شرق می‌روی و از او می‌پرسی؟' }
       ],
-      wait: { en: 'Pyotr is at the station with the flat roofs. Follow the railway east, past the Ural Mountains.',
-        es: 'Pyotr está en la estación de techos planos. Sigue el ferrocarril al este, más allá de los montes Urales.',
-        fa: 'پیوتر در ایستگاهی است که بام‌های هموار دارد. خط آهن را به طرف شرق دنبال کن، از کوه‌های اورال بگذر.' },
-      thanks: { en: 'My thermometer! It shows the ground up there is frozen, even in summer. That is permafrost. Trees cannot grow roots in it, so the tundra has no forest. Thank you!',
-        es: '¡Mi termómetro! Muestra que el suelo de allá arriba está congelado, aun en verano. Eso es el permafrost. Los árboles no pueden echar raíces en él, por eso la tundra no tiene bosque. ¡Gracias!',
-        fa: 'حرارت‌سنج من! نشان می‌دهد زمین آن بالا حتی در تابستان یخ‌زده است. این همان زمین همیشه یخ‌زده است. درختان نمی‌توانند در آن ریشه بدوانند، پس توندرا جنگل ندارد. تشکر!' }
+      wait: { en: 'Pyotr is at the flat-roof station. Follow the railway east, past the Urals.', es: 'Pyotr está en la estación de techos planos. Sigue el ferrocarril al este, más allá de los Urales.', fa: 'پیوتر در ایستگاه بام‌هموار است. خط آهن را به طرف شرق دنبال کن، از اورال بگذر.' },
+      thanks: { en: 'My thermometer! Permafrost stays frozen, even in summer. Tree roots cannot grow there. Thanks!', es: '¡Mi termómetro! El permafrost sigue congelado, aun en verano. Las raíces no crecen allí. ¡Gracias!', fa: 'حرارت‌سنج من! زمین همیشه یخ‌زده حتی در تابستان یخ است. ریشهٔ درخت آنجا نمی‌روید. تشکر!' }
     },
     contact: {
       x: 21, y: 7,
@@ -211,21 +189,17 @@ window.EPISODE = {
       role: { en: 'Railway track worker', es: 'Trabajador de las vías', fa: 'کارگر خط آهن' },
       look: { skin: 0, hair: '#e3c26b', shirt: '#e0782b', pants: '#2b3a4a', hat: '#c0392b' },
       lines: [
-        { en: 'I saw it! The wind carried it east and then north, over the [[taiga|taiga]] forest. It came down where the trees stop.',
-          es: '¡Lo vi! El viento lo llevó al este y luego al norte, por encima del bosque de la [[taiga|taiga]]. Cayó donde se acaban los árboles.',
-          fa: 'دیدمش! باد آن را اول به شرق و بعد به شمال، از بالای جنگل [[taiga|تایگا]] برد. جایی افتاد که درختان تمام می‌شوند.' },
-        { en: 'Ride east to the town with the blue roof and the market stalls. Then walk north through the taiga until the trees end. It is on the [[tundra|tundra]], straight north of the blue-roof house.',
-          es: 'Ve al este hasta el pueblo del techo azul y los puestos del mercado. Luego camina al norte por la taiga hasta que se acaben los árboles. Está en la [[tundra|tundra]], justo al norte de la casa del techo azul.',
-          fa: 'به طرف شرق تا شهرکی برو که بام آبی و غرفه‌های بازار دارد. بعد از میان تایگا به طرف شمال برو تا درختان تمام شوند. حرارت‌سنج روی [[tundra|توندرا]]، درست شمالِ خانهٔ بام‌آبی است.' }
+        { en: 'I saw it! The wind carried it east, then north over the [[taiga|taiga]] forest.', es: '¡Lo vi! El viento lo llevó al este y luego al norte, sobre el bosque de la [[taiga|taiga]].', fa: 'دیدمش! باد آن را به شرق و بعد به شمال، از بالای جنگل [[taiga|تایگا]] برد.' },
+        { en: 'It came down where the trees stop.', es: 'Cayó donde se acaban los árboles.', fa: 'جایی افتاد که درختان تمام می‌شوند.' },
+        { en: 'Ride east to the town with the blue roof and the market stalls.', es: 'Ve al este hasta el pueblo del techo azul y los puestos del mercado.', fa: 'به طرف شرق تا شهرکی برو که بام آبی و غرفه‌های بازار دارد.' },
+        { en: 'Walk north past the trees. It lies on the [[tundra|tundra]], north of the blue roof.', es: 'Camina al norte hasta pasar los árboles. Está en la [[tundra|tundra]], al norte del techo azul.', fa: 'به طرف شمال برو تا از درختان بگذری. روی [[tundra|توندرا]]، شمالِ بام آبی است.' }
       ]
     },
     action: {
       type: 'find',
       at: [34, 3],
       hint: { en: 'tundra, straight north of the blue house by the market', es: 'tundra, justo al norte de la casa azul junto al mercado', fa: 'توندرا، درست شمالِ خانهٔ آبی کنار بازار' },
-      found: { en: 'There it is, on the flat, treeless [[tundra|tundra]]! The [[taiga|taiga]] ends just south of here. Farther north, it is too cold for trees.',
-        es: '¡Ahí está, en la [[tundra|tundra]] plana y sin árboles! La [[taiga|taiga]] termina justo al sur de aquí. Más al norte hace demasiado frío para los árboles.',
-        fa: 'آنجاست، روی [[tundra|توندرا]]ی هموار و بی‌درخت! [[taiga|تایگا]] درست جنوبِ اینجا تمام می‌شود. شمال‌تر برای درختان خیلی سرد است.' },
+      found: { en: 'There it is, on the treeless [[tundra|tundra]]! The [[taiga|taiga]] ends just south. Farther north, trees cannot grow.', es: '¡Ahí está, en la [[tundra|tundra]] sin árboles! La [[taiga|taiga]] termina justo al sur. Más al norte no crecen árboles.', fa: 'آنجاست، روی [[tundra|توندرا]]ی بی‌درخت! [[taiga|تایگا]] درست جنوبِ اینجا تمام می‌شود. شمال‌تر درخت نمی‌روید.' },
       item: { icon: '🌡️', name: { en: 'Ground thermometer', es: 'Termómetro de suelo', fa: 'حرارت‌سنج زمین' } }
     }
   },
@@ -284,7 +258,7 @@ window.EPISODE = {
         choices: [{ en: 'no coast on any ocean', es: 'sin costa en ningún océano', fa: 'هیچ ساحلی در اقیانوس ندارد' }, { en: 'a coast on two oceans', es: 'con costa en dos océanos', fa: 'در دو اقیانوس ساحل دارد' }, { en: 'many large rivers', es: 'con muchos ríos grandes', fa: 'دریاهای بزرگ زیاد دارد' }, { en: 'only mountains', es: 'con solo montañas', fa: 'فقط کوه دارد' }], answer: 0,
         why: { en: 'All five countries of Central Asia are landlocked. None touches an ocean.', es: 'Los cinco países de Asia Central no tienen salida al mar. Ninguno toca un océano.', fa: 'هر پنج کشور آسیای میانه محاط به خشکه هستند. هیچ کدام به اقیانوس نمی‌رسد.' } },
       { q: { en: 'The Caspian Sea looks huge on a map. What is it really?', es: 'El mar Caspio se ve enorme en el mapa. ¿Qué es en realidad?', fa: 'بحیرهٔ خزر روی نقشه بسیار بزرگ دیده می‌شود. در اصل چیست؟' },
-        choices: [{ en: 'The largest lake on Earth', es: 'El lago más grande de la Tierra', fa: 'بزرگ‌ترین جهیل زمین' }, { en: 'A true ocean', es: 'Un océano de verdad', fa: 'یک اقیانوس واقعی' }, { en: 'A wide river', es: 'Un río ancho', fa: 'یک دریای پهن' }, { en: 'A glacier', es: 'Un glaciar', fa: 'یک یخچال' }], answer: 0,
+        choices: [{ en: 'The largest lake on Earth', es: 'El lago más grande de la Tierra', fa: 'بزرگ‌ترین جهیل زمین' }, { en: 'A true, salty ocean', es: 'Un océano salado de verdad', fa: 'یک اقیانوس شور واقعی' }, { en: 'A very wide, slow river', es: 'Un río muy ancho y lento', fa: 'یک دریای بسیار پهن و آرام' }, { en: 'A huge glacier of ice', es: 'Un enorme glaciar de hielo', fa: 'یک یخچال بسیار بزرگ' }], answer: 0,
         why: { en: 'Land closes it in on every side, with no outlet to the ocean. So it is a lake.', es: 'La tierra lo rodea por todos lados y no tiene salida al océano. Por eso es un lago.', fa: 'از همه طرف خشکه آن را گرفته و راهی به اقیانوس ندارد. پس یک جهیل است.' } },
       { q: { en: 'Which is the deepest lake in the world?', es: '¿Cuál es el lago más profundo del mundo?', fa: 'عمیق‌ترین جهیل دنیا کدام است؟' },
         choices: [{ en: 'Lake Baikal', es: 'El lago Baikal', fa: 'جهیل بایکال' }, { en: 'The Aral Sea', es: 'El mar de Aral', fa: 'بحیرهٔ آرال' }, { en: 'The Caspian Sea', es: 'El mar Caspio', fa: 'بحیرهٔ خزر' }, { en: 'The Black Sea', es: 'El mar Negro', fa: 'بحیرهٔ سیاه' }], answer: 0,

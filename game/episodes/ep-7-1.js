@@ -10,9 +10,8 @@ window.EPISODE = {
   title: { en: 'China and Japan', es: 'China y Japón', fa: 'چین و جاپان' },
   place: { en: 'Two Rivers and the Islands', es: 'Dos ríos y las islas', fa: 'دو دریا و جزیره‌ها' },
   intro: [
-    { en: 'Christopher: "The Grump scribbled all over East Asia! Rivers, mountains and islands are mixed up. Talk to the scientist on the high plateau, the rice farmer and the engineer across the sea. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón garabateó todo el este de Asia! Los ríos, las montañas y las islas están revueltos. Habla con la científica de la meseta alta, el agricultor de arroz y la ingeniera al otro lado del mar. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو روی تمام شرق آسیا خط‌خطی کرد! دریاها، کوه‌ها و جزیره‌ها مخلوط شده‌اند. با دانشمند فلات بلند، دهقان برنج و انجنیر آن طرف بحر گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump scribbled over East Asia! Rivers, mountains and islands are mixed up.', es: '¡El Gruñón garabateó el este de Asia! Los ríos, las montañas y las islas están revueltos.', fa: 'غرغرو روی شرق آسیا خط‌خطی کرد! دریاها، کوه‌ها و جزیره‌ها مخلوط شده‌اند.' },
+    { en: 'Meet the plateau scientist, rice farmer and island engineer. Then fix the compass stone.', es: 'Habla con la científica de la meseta, el agricultor de arroz y la ingeniera de las islas. Luego arregla la piedra de la brújula.', fa: 'با دانشمند فلات، دهقان برنج و انجنیر جزیره گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   map: [
@@ -85,11 +84,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [18, 3], at: [6, 16], decor: 'fossil',
-      clue: { en: 'Both great rivers start high in the west and flow east to the sea. Go up to the plateau and find where the southern river begins. Stand on the land square just south of its most western water square.', es: 'Los dos grandes ríos nacen en lo alto del oeste y corren al este hasta el mar. Sube a la meseta y busca dónde empieza el río del sur. Párate en el cuadro de tierra justo al sur de su cuadro de agua más al oeste.', fa: 'هر دو دریای بزرگ از بلندی‌های غرب شروع می‌شوند و به طرف شرق تا بحر می‌روند. به سطح مرتفع برو و پیدا کن دریای جنوبی از کجا شروع می‌شود. روی خانهٔ خشکه که درست جنوبِ غربی‌ترین خانهٔ آبِ آن است بایست.' },
-      text: { en: 'You found where the river starts! The Yangtze begins high on the Tibetan Plateau and flows east to the sea. A fossil sea shell was here. Long ago, this high land was under the sea.', es: '¡Encontraste dónde nace el río! El Yangtsé nace en lo alto de la meseta del Tíbet y corre al este hasta el mar. Aquí había una concha fósil. Hace mucho tiempo, esta tierra alta estaba bajo el mar.', fa: 'تو جایی را پیدا کردی که دریا شروع می‌شود! دریای یانگ‌تسه از بلندی‌های سطح مرتفع تبت شروع می‌شود و به طرف شرق تا بحر می‌رود. یک فسیلِ صدف این جا بود. خیلی وقت پیش، این زمین بلند زیر بحر بود.' } },
+      clue: { en: 'Rivers start high in the west. Find where the southern river begins. Stand just south of its western end.', es: 'Los ríos nacen en lo alto del oeste. Busca dónde empieza el río del sur. Párate justo al sur de su punta oeste.', fa: 'دریاها از بلندی غرب شروع می‌شوند. جای شروع دریای جنوبی را پیدا کن. درست جنوبِ سر غربی آن بایست.' },
+      text: { en: 'The Yangtze starts here on the high plateau. A fossil shell shows this land was once under the sea!', es: 'El Yangtsé nace aquí, en la meseta alta. ¡Una concha fósil muestra que esta tierra estuvo bajo el mar!', fa: 'یانگتسی این‌جا در فلات بلند شروع می‌شود. یک فسیل صدف نشان می‌دهد این زمین روزی زیر بحر بود!' } },
     { clueAt: [39, 11], at: [38, 19], decor: 'shell',
       clue: { en: 'From this note, walk 8 steps south, then 1 step west. Something is hidden there.', es: 'Desde esta nota, camina 8 pasos al sur y luego 1 paso al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۸ قدم به جنوب برو، بعد ۱ قدم به غرب. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! South is down and west is to the left. A sea shell was on the shore. Japan is an archipelago, a chain of islands, so no place in Japan is very far from the sea.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. Había una concha en la orilla. Japón es un archipiélago, una cadena de islas, así que ningún lugar de Japón está muy lejos del mar.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. یک صدف در ساحل بود. جاپان یک مجمع‌الجزایر است، یعنی زنجیری از جزیره‌ها، پس هیچ جای جاپان از بحر خیلی دور نیست.' } }
+      text: { en: 'A sea shell was on the shore! Japan is a chain of islands. No place is far from the sea.', es: '¡Había una concha en la orilla! Japón es una cadena de islas. Ningún lugar está lejos del mar.', fa: 'یک صدف در ساحل بود! جاپان زنجیره‌ای از جزیره‌ها است. هیچ جا از بحر دور نیست.' } }
   ],
   // only the Monsoon Cloak (Episode 6.3) walks through the wall of heavy rain into the little mountain valley in Japan
   secret: { tool: 'cloak', at: [45, 12],
@@ -116,25 +115,20 @@ window.EPISODE = {
       role: { en: 'Weather scientist on the plateau', es: 'Científica del clima en la meseta', fa: 'دانشمند هواشناسی در فلات' },
       look: { skin: 2, hair: '#15100c', shirt: '#b8332b', pants: '#3b3b55' },
       lines: [
-        { en: 'Hello, traveler! I measure the weather up here on the Tibetan [[plateau|Plateau]]. It is so high that people call it "the roof of the world." To the south stand the Himalaya, the highest mountains on Earth.',
-          es: '¡Hola, viajero! Yo mido el clima aquí arriba, en la [[plateau|meseta]] del Tíbet. Es tan alta que la llaman "el techo del mundo". Al sur están los Himalaya, las montañas más altas de la Tierra.',
-          fa: 'سلام، مسافر! من اینجا بالای [[plateau|فلات]] تبت هوا را اندازه می‌گیرم. آن‌قدر بلند است که مردم آن را «بام دنیا» می‌گویند. در جنوب، کوه‌های همالیا قرار دارند، بلندترین کوه‌های زمین.' },
-        { en: 'Two great rivers begin in these high mountains: the Yellow River and the Yangtze. Both flow thousands of miles east to the sea. North of here is the Gobi Desert, dry and rocky.',
-          es: 'Dos grandes ríos nacen en estas montañas altas: el río Amarillo y el Yangtsé. Los dos corren miles de millas hacia el este hasta el mar. Al norte está el desierto de Gobi, seco y rocoso.',
-          fa: 'دو دریای بزرگ از این کوه‌های بلند شروع می‌شوند: دریای زرد و دریای یانگتسی. هر دو هزاران میل به طرف شرق تا بحر می‌روند. در شمال اینجا دشت گوبی است، خشک و سنگلاخ.' },
-        { en: 'Cold mountains and dry desert are hard places to live. So very few people live in the west of China. Most people live in the east, near the rivers and the coast. We say the east has a high [[population density|population density]].',
-          es: 'Las montañas frías y el desierto seco son lugares difíciles para vivir. Por eso muy poca gente vive en el oeste de China. La mayoría vive en el este, cerca de los ríos y la costa. Decimos que el este tiene una alta [[population density|densidad de población]].',
-          fa: 'کوه‌های سرد و دشت خشک جای سخت برای زندگی هستند. پس مردم بسیار کم در غرب چین زندگی می‌کنند. بیشتر مردم در شرق، نزدیک دریاها و ساحل زندگی می‌کنند. می‌گوییم شرق [[population density|تراکم نفوس]] بلند دارد.' }
+        { en: 'Hello! I measure weather on the Tibetan [[plateau|Plateau]], "the roof of the world."', es: '¡Hola! Yo mido el clima en la [[plateau|meseta]] del Tíbet, "el techo del mundo".', fa: 'سلام! من در [[plateau|فلات]] تبت، «بام دنیا»، هوا را اندازه می‌گیرم.' },
+        { en: 'South are the Himalaya, Earth\'s highest mountains. North is the dry, rocky Gobi Desert.', es: 'Al sur están los Himalaya, las montañas más altas de la Tierra. Al norte está el desierto de Gobi, seco y rocoso.', fa: 'در جنوب همالیا است، بلندترین کوه‌های زمین. در شمال دشت خشک و سنگلاخ گوبی است.' },
+        { en: 'The Yellow River and the Yangtze begin here. Both flow east to the sea.', es: 'El río Amarillo y el Yangtsé nacen aquí. Los dos corren al este hasta el mar.', fa: 'دریای زرد و یانگتسی از این‌جا شروع می‌شوند. هر دو به شرق تا بحر می‌روند.' },
+        { en: 'Few live in the cold, dry west. The east, near water, has high [[population density|population density]].', es: 'Poca gente vive en el oeste frío y seco. El este, cerca del agua, tiene alta [[population density|densidad de población]].', fa: 'مردم کم در غرب سرد و خشک زندگی می‌کنند. شرق، نزدیک آب، [[population density|تراکم نفوس]] بلند دارد.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Where do most of China\'s people live?', es: '¿Dónde vive la mayoría de la gente de China?', fa: 'بیشتر مردم چین کجا زندگی می‌کنند؟' },
         choices: [
-          { ok: true, t: { en: 'In the east, on flat land near the rivers and the coast', es: 'En el este, en tierra plana cerca de los ríos y la costa', fa: 'در شرق، روی زمین هموار نزدیک دریاها و ساحل' },
+          { ok: true, t: { en: 'In the east, on flat land near water', es: 'En el este, en tierra plana cerca del agua', fa: 'در شرق، روی زمین هموار نزدیک آب' },
             why: { en: 'Flat land with water is easy to farm and build on, so people crowd there.', es: 'La tierra plana con agua es fácil de cultivar y construir, así que la gente se junta allí.', fa: 'زمین هموار با آب برای زراعت و ساختمان آسان است، پس مردم آنجا جمع می‌شوند.' } },
-          { t: { en: 'In the west, near the high mountains', es: 'En el oeste, cerca de las montañas altas', fa: 'در غرب، نزدیک کوه‌های بلند' },
+          { t: { en: 'In the west, up near the high mountains', es: 'En el oeste, arriba cerca de las montañas altas', fa: 'در غرب، بالا نزدیک کوه‌های بلند' },
             why: { en: 'The west is cold, high and dry. Few people live there.', es: 'El oeste es frío, alto y seco. Poca gente vive allí.', fa: 'غرب سرد، بلند و خشک است. مردم کم آنجا زندگی می‌کنند.' } },
-          { t: { en: 'In the Gobi Desert', es: 'En el desierto de Gobi', fa: 'در دشت گوبی' },
+          { t: { en: 'Out in the dry, rocky Gobi Desert', es: 'En el desierto de Gobi, seco y rocoso', fa: 'در دشت خشک و سنگلاخ گوبی' },
             why: { en: 'A desert has little water for farms, so few people live there.', es: 'Un desierto tiene poca agua para cultivar, así que vive poca gente allí.', fa: 'دشت خشک آب کم برای زراعت دارد، پس مردم کم آنجا زندگی می‌کنند.' } }
         ]
       }
@@ -145,23 +139,18 @@ window.EPISODE = {
       role: { en: 'Rice farmer', es: 'Agricultor de arroz', fa: 'دهقان برنج' },
       look: { skin: 1, hair: '#141414', shirt: '#3c78c8', pants: '#5a4630' },
       lines: [
-        { en: 'Welcome to my rice paddies! This wide, flat land is a [[plain|plain]]. Flat land is easy to farm and easy to build on. Rice needs flat fields that can hold water. People here have grown rice for thousands of years.',
-          es: '¡Bienvenido a mis arrozales! Esta tierra ancha y plana es una [[plain|llanura]]. La tierra plana es fácil de cultivar y de construir. El arroz necesita campos planos que guarden agua. Aquí se cultiva arroz desde hace miles de años.',
-          fa: 'به شالیزارهای من خوش آمدی! این زمین پهن و هموار یک [[plain|دشت هموار]] است. زمین هموار برای زراعت و ساختمان آسان است. برنج به کشتزار هموار ضرورت دارد که آب را نگه دارد. مردم اینجا هزاران سال است برنج می‌کارند.' },
-        { en: 'The Yangtze, right here, is the longest river in Asia. Up north, the Yellow River carries so much [[silt|silt]] that the water looks yellow-brown. Silt makes rich soil. But floods could wash away whole villages. Long ago, farmers called it "China\'s Sorrow."',
-          es: 'El Yangtsé, aquí mismo, es el río más largo de Asia. Al norte, el río Amarillo lleva tanto [[silt|limo]] que el agua se ve café amarillenta. El limo hace tierra fértil. Pero sus inundaciones podían llevarse pueblos enteros. Hace mucho, los agricultores lo llamaban "la Tristeza de China".',
-          fa: 'یانگتسی، همین‌جا، درازترین دریای آسیا است. در شمال، دریای زرد آن‌قدر [[silt|لای]] با خود دارد که آبش زرد و نصواری معلوم می‌شود. لای خاک را حاصلخیز می‌کند. اما سیلابش می‌توانست قریه‌های کامل را ببرد. در گذشته دهقانان آن را «غم چین» می‌گفتند.' },
-        { en: 'Where the Yangtze meets the sea, a giant city grew: Shanghai. It is a [[megacity|megacity]], with more than 20 million people. Flat land, a big river and the sea pull people together.',
-          es: 'Donde el Yangtsé llega al mar creció una ciudad gigante: Shanghái. Es una [[megacity|megaciudad]], con más de 20 millones de personas. La tierra plana, un río grande y el mar juntan a la gente.',
-          fa: 'جایی که یانگتسی به بحر می‌رسد، یک شهر بسیار بزرگ رشد کرد: شانگهای. این یک [[megacity|ابرشهر]] است، با بیشتر از ۲۰ میلیون نفر. زمین هموار، یک دریای بزرگ و بحر، مردم را یکجا جمع می‌کنند.' }
+        { en: 'Welcome! This [[plain|plain]] is flat, easy to farm and build on. Rice needs wet fields.', es: '¡Bienvenido! Esta [[plain|llanura]] es plana, fácil de cultivar y de construir. El arroz necesita campos mojados.', fa: 'خوش آمدی! این [[plain|دشت هموار]] صاف است، برای زراعت و ساختمان آسان. برنج به کشتزار تر ضرورت دارد.' },
+        { en: 'The Yangtze, right here, is Asia\'s longest river. The Yellow River carries yellow-brown [[silt|silt]].', es: 'El Yangtsé, aquí mismo, es el río más largo de Asia. El río Amarillo lleva [[silt|limo]] café amarillento.', fa: 'یانگتسی، همین‌جا، درازترین دریای آسیا است. دریای زرد [[silt|لای]] زرد و نصواری با خود دارد.' },
+        { en: 'Silt makes rich soil. But floods washed away villages, so farmers called it "China\'s Sorrow."', es: 'El limo hace tierra fértil. Pero las inundaciones se llevaban pueblos, y lo llamaron "la Tristeza de China".', fa: 'لای خاک را حاصلخیز می‌کند. اما سیلاب قریه‌ها را می‌برد، پس دهقانان آن را «غم چین» گفتند.' },
+        { en: 'Shanghai grew where the Yangtze meets the sea. This [[megacity|megacity]] has over 20 million people!', es: 'Shanghái creció donde el Yangtsé llega al mar. ¡Esta [[megacity|megaciudad]] tiene más de 20 millones de personas!', fa: 'شانگهای جایی رشد کرد که یانگتسی به بحر می‌رسد. این [[megacity|ابرشهر]] بیشتر از ۲۰ میلیون نفر دارد!' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Why did farmers long ago call the Yellow River "China\'s Sorrow"?', es: '¿Por qué los agricultores de antes llamaban al río Amarillo "la Tristeza de China"?', fa: 'چرا دهقانان در گذشته دریای زرد را «غم چین» می‌گفتند؟' },
         choices: [
-          { ok: true, t: { en: 'Its floods could destroy whole villages', es: 'Sus inundaciones podían destruir pueblos enteros', fa: 'سیلابش می‌توانست قریه‌های کامل را خراب کند' },
+          { ok: true, t: { en: 'Its floods could wash away villages', es: 'Sus inundaciones arrasaban pueblos', fa: 'سیلابش قریه‌ها را می‌برد' },
             why: { en: 'The river gave rich soil, but its floods took homes and lives.', es: 'El río daba tierra fértil, pero sus inundaciones se llevaban casas y vidas.', fa: 'دریا خاک حاصلخیز می‌داد، اما سیلابش خانه‌ها و جان‌ها را می‌گرفت.' } },
-          { t: { en: 'It dried up every summer', es: 'Se secaba cada verano', fa: 'هر تابستان خشک می‌شد' },
+          { t: { en: 'It dried up completely every summer', es: 'Se secaba por completo cada verano', fa: 'هر تابستان کاملاً خشک می‌شد' },
             why: { en: 'The problem was too much water in floods, not too little.', es: 'El problema era demasiada agua en las inundaciones, no poca.', fa: 'مشکل آب زیاد در سیلاب بود، نه آب کم.' } },
           { t: { en: 'Its water was too salty to drink', es: 'Su agua era demasiado salada para tomar', fa: 'آبش برای نوشیدن خیلی شور بود' },
             why: { en: 'It is a fresh-water river. Its yellow color comes from silt.', es: 'Es un río de agua dulce. Su color amarillo viene del limo.', fa: 'این دریای آب شیرین است. رنگ زردش از لای است.' } }
@@ -174,25 +163,20 @@ window.EPISODE = {
       role: { en: 'Earthquake engineer', es: 'Ingeniera de terremotos', fa: 'انجنیر زلزله' },
       look: { skin: 0, hair: '#1a1a1a', shirt: '#e8e2d0', pants: '#2f4a6e' },
       lines: [
-        { en: 'Welcome to Japan! Japan is an [[archipelago|archipelago]], a chain of islands. It has four main islands and thousands of small ones. About three-quarters of the land is mountains.',
-          es: '¡Bienvenido a Japón! Japón es un [[archipelago|archipiélago]], una cadena de islas. Tiene cuatro islas principales y miles de islas pequeñas. Cerca de tres cuartas partes de la tierra son montañas.',
-          fa: 'به جاپان خوش آمدی! جاپان یک [[archipelago|مجمع‌الجزایر]] است، یک زنجیره از جزیره‌ها. چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک دارد. تقریباً سه حصه از چهار حصهٔ زمینش کوه است.' },
-        { en: 'So people crowd onto narrow strips of flat land by the coast. Greater Tokyo has about 37 million people! With so little flat land, buildings go up instead of out. Farmers cut [[terrace|terraces]], flat steps, into hillsides to grow rice.',
-          es: 'Por eso la gente se amontona en franjas angostas de tierra plana junto a la costa. ¡El Gran Tokio tiene unos 37 millones de personas! Con tan poca tierra plana, los edificios crecen hacia arriba y no hacia los lados. Los agricultores cortan [[terrace|terrazas]], escalones planos, en las laderas para sembrar arroz.',
-          fa: 'پس مردم روی نوارهای باریک زمین هموار کنار ساحل جمع می‌شوند. توکیوی بزرگ حدود ۳۷ میلیون نفر دارد! با زمین هموار این‌قدر کم، تعمیرها به جای پهن شدن بلند ساخته می‌شوند. دهقانان در دامنهٔ کوه [[terrace|زمین‌های زینه‌ای]] می‌کنند تا برنج بکارند.' },
-        { en: 'Japan sits on the [[ring of fire|Ring of Fire]]. It has many earthquakes and volcanoes, like snowy Mount Fuji. I design tall buildings that sway in an earthquake instead of snapping. A big earthquake under the sea can cause a [[tsunami|tsunami]].',
-          es: 'Japón está en el [[ring of fire|Cinturón de Fuego]]. Tiene muchos terremotos y volcanes, como el monte Fuji con su nieve. Yo diseño edificios altos que se mecen en un terremoto en vez de romperse. Un gran terremoto bajo el mar puede causar un [[tsunami|tsunami]].',
-          fa: 'جاپان روی [[ring of fire|حلقهٔ آتش]] قرار دارد. زلزله و آتشفشان زیاد دارد، مثل کوه برفی فوجی. من تعمیرهای بلند را طوری طرح می‌کنم که در زلزله تاب بخورند، نه اینکه بشکنند. یک زلزلهٔ بزرگ زیر بحر می‌تواند [[tsunami|سونامی]] بسازد.' }
+        { en: 'Welcome! Japan is an [[archipelago|archipelago]] of four main islands. Three-quarters of it is mountains.', es: '¡Bienvenido! Japón es un [[archipelago|archipiélago]] de cuatro islas principales. Tres cuartas partes son montañas.', fa: 'خوش آمدی! جاپان یک [[archipelago|مجمع‌الجزایر]] با چهار جزیرهٔ اصلی است. سه حصه از چهار حصهٔ آن کوه است.' },
+        { en: 'People crowd flat coasts. Tokyo, with 37 million, builds up. Farmers cut [[terrace|terraces]] into hills.', es: 'La gente llena las costas planas. Tokio, con 37 millones, crece hacia arriba. Los agricultores cortan [[terrace|terrazas]] en las colinas.', fa: 'مردم ساحل‌های هموار را پر می‌کنند. توکیو، با ۳۷ میلیون نفر، بلند ساخته می‌شود. دهقانان در تپه‌ها [[terrace|زمین‌های زینه‌ای]] می‌سازند.' },
+        { en: 'Japan is on the [[ring of fire|Ring of Fire]]. It has many earthquakes and volcanoes, like Fuji.', es: 'Japón está en el [[ring of fire|Cinturón de Fuego]]. Tiene muchos terremotos y volcanes, como el Fuji.', fa: 'جاپان روی [[ring of fire|حلقهٔ آتش]] است. زلزله و آتشفشان زیاد دارد، مثل فوجی.' },
+        { en: 'My tall buildings sway instead of snapping. Quakes under the sea can cause a [[tsunami|tsunami]].', es: 'Mis edificios altos se mecen en vez de romperse. Un terremoto bajo el mar puede causar un [[tsunami|tsunami]].', fa: 'تعمیرهای بلند من تاب می‌خورند، نمی‌شکنند. زلزلهٔ زیر بحر می‌تواند [[tsunami|سونامی]] بسازد.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'Why do most people in Japan live on narrow strips near the coast?', es: '¿Por qué la mayoría de la gente en Japón vive en franjas angostas cerca de la costa?', fa: 'چرا بیشتر مردم جاپان روی نوارهای باریک نزدیک ساحل زندگی می‌کنند؟' },
         choices: [
-          { ok: true, t: { en: 'About three-quarters of Japan is mountains, and steep land is hard to build on', es: 'Cerca de tres cuartas partes de Japón son montañas, y es difícil construir en tierra empinada', fa: 'تقریباً سه حصه از چهار حصهٔ جاپان کوه است و ساختمان روی زمین سراشیب سخت است' },
+          { ok: true, t: { en: 'Most of Japan is steep mountains', es: 'Casi todo Japón es de montañas empinadas', fa: 'بیشتر جاپان کوه‌های سراشیب است' },
             why: { en: 'The flat land is mostly by the coast, so the people are there too.', es: 'La tierra plana está casi toda en la costa, así que la gente también.', fa: 'زمین هموار بیشتر کنار ساحل است، پس مردم هم آنجا هستند.' } },
-          { t: { en: 'Inland Japan is covered by desert', es: 'El interior de Japón está cubierto de desierto', fa: 'داخل جاپان را دشت خشک پوشانده' },
+          { t: { en: 'Inland Japan is a dry desert', es: 'El interior de Japón es un desierto seco', fa: 'داخل جاپان دشت خشک است' },
             why: { en: 'Japan\'s inland is mountains and forests, not desert.', es: 'El interior de Japón es de montañas y bosques, no de desierto.', fa: 'داخل جاپان کوه و جنگل است، نه دشت خشک.' } },
-          { t: { en: 'The law says people must live near ports', es: 'La ley dice que la gente debe vivir cerca de los puertos', fa: 'قانون می‌گوید مردم باید نزدیک بندرها زندگی کنند' },
+          { t: { en: 'A law makes people live by ports', es: 'Una ley obliga a vivir junto a los puertos', fa: 'قانون مردم را مجبور به زندگی کنار بندر می‌کند' },
             why: { en: 'No law does that. The land itself pushes people to the flat coast.', es: 'Ninguna ley hace eso. La tierra misma empuja a la gente a la costa plana.', fa: 'هیچ قانونی چنین نیست. خود زمین مردم را به ساحل هموار می‌کشاند.' } }
         ]
       }
@@ -200,12 +184,8 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 22, y: 8, text: { en: 'YELLOW RIVER (Huang He) · Its yellow-brown water carries [[silt|silt]]. Silt makes rich farmland. Its floods gave it the name "China\'s Sorrow."',
-      es: 'RÍO AMARILLO (Huang He) · Su agua café amarillenta lleva [[silt|limo]]. El limo hace tierra fértil. Sus inundaciones le dieron el nombre de "la Tristeza de China".',
-      fa: 'دریای زرد (هوانگ هه) · آب زرد و نصواری آن [[silt|لای]] با خود دارد. لای زمین زراعتی را حاصلخیز می‌کند. سیلابش نام «غم چین» را به آن داد.' } },
-    { x: 31, y: 8, text: { en: 'FERRY PIER · East across the sea: the islands of Japan. West: the river plain, the high mountains and the Gobi Desert.',
-      es: 'MUELLE DEL FERRY · Al este, cruzando el mar: las islas de Japón. Al oeste: la llanura de los ríos, las montañas altas y el desierto de Gobi.',
-      fa: 'اسکلهٔ کشتی · شرق، آن طرف بحر: جزیره‌های جاپان. غرب: دشت دریاها، کوه‌های بلند و دشت گوبی.' } }
+    { x: 22, y: 8, text: { en: 'YELLOW RIVER (Huang He) · Its [[silt|silt]] makes rich farmland. Its floods earned the name "China\'s Sorrow."', es: 'RÍO AMARILLO (Huang He) · Su [[silt|limo]] hace tierra fértil. Sus inundaciones le dieron el nombre de "la Tristeza de China".', fa: 'دریای زرد (هوانگ هه) · [[silt|لای]] آن زمین را حاصلخیز می‌کند. سیلابش نام «غم چین» را به آن داد.' } },
+    { x: 31, y: 8, text: { en: 'FERRY PIER · East across the sea: Japan. West: the river plain, high mountains and Gobi Desert.', es: 'MUELLE DEL FERRY · Al este, cruzando el mar: Japón. Al oeste: la llanura de los ríos, las montañas altas y el desierto de Gobi.', fa: 'اسکلهٔ کشتی · شرق، آن طرف بحر: جاپان. غرب: دشت دریاها، کوه‌های بلند و دشت گوبی.' } }
   ],
 
   /* the quest: Teacher Zhou Lan (gold !) -> Batu the camel herder in the Gobi -> follow the Ink Thief's riddles to the plateau, the desert and the islands, then catch it -> back to Zhou Lan */
@@ -219,19 +199,12 @@ window.EPISODE = {
       role: { en: 'Village school teacher', es: 'Maestra de la escuela del pueblo', fa: 'معلم مکتب ده' },
       look: { skin: 1, hair: '#1c1612', shirt: '#2e8b7a', pants: '#3a3a4a', style: 'bun' },
       lines: [
-        { en: 'Help, traveler! An Ink Thief grabbed my big river map. It shows where China\'s two great rivers go. My students need it tomorrow.',
-          es: '¡Ayuda, viajero! Un Ladrón de Tinta se llevó mi gran mapa de ríos. Muestra por dónde van los dos grandes ríos de China. Mis estudiantes lo necesitan mañana.',
-          fa: 'کمک، مسافر! یک دزد رنگ نقشهٔ بزرگ دریاهایم را گرفت. این نقشه نشان می‌دهد دو دریای بزرگ چین از کجا می‌روند. شاگردانم فردا به آن ضرورت دارند.' },
-        { en: 'Batu, a camel herder, saw where the thief ran. He is in the Gobi Desert, far to the north-west. Will you ask him?',
-          es: 'Batu, un pastor de camellos, vio adónde corrió el ladrón. Está en el desierto de Gobi, lejos al noroeste. ¿Le preguntas?',
-          fa: 'باتو، یک شترچران، دید که دزد به کجا دوید. او در دشت گوبی است، دور در شمال غرب. از او می‌پرسی؟' }
+        { en: 'Help, traveler! An Ink Thief grabbed my big river map!', es: '¡Ayuda, viajero! ¡Un Ladrón de Tinta se llevó mi gran mapa de ríos!', fa: 'کمک، مسافر! یک دزد رنگ نقشهٔ بزرگ دریاهایم را گرفت!' },
+        { en: 'It shows China\'s two great rivers. My students need it tomorrow.', es: 'Muestra los dos grandes ríos de China. Mis estudiantes lo necesitan mañana.', fa: 'این نقشه دو دریای بزرگ چین را نشان می‌دهد. شاگردانم فردا به آن ضرورت دارند.' },
+        { en: 'Batu the camel herder saw the thief. He is in the Gobi Desert, far north-west.', es: 'Batu, el pastor de camellos, vio al ladrón. Está en el desierto de Gobi, lejos al noroeste.', fa: 'باتو، شترچران، دزد را دید. او در دشت گوبی است، دور در شمال غرب.' }
       ],
-      wait: { en: 'Batu is in the Gobi Desert. Go north over the bridge. Then walk west and north into the sand.',
-        es: 'Batu está en el desierto de Gobi. Ve al norte por el puente. Luego camina al oeste y al norte hasta la arena.',
-        fa: 'باتو در دشت گوبی است. از پل به طرف شمال برو. بعد به طرف غرب و شمال تا ریگ‌ها راه برو.' },
-      thanks: { en: 'My river map! Now my students can follow both rivers from the high west down to the sea in the east. Thank you!',
-        es: '¡Mi mapa de ríos! Ahora mis estudiantes pueden seguir los dos ríos desde el oeste alto hasta el mar en el este. ¡Gracias!',
-        fa: 'نقشهٔ دریاهای من! حالا شاگردانم می‌توانند هر دو دریا را از غرب بلند تا بحر در شرق دنبال کنند. تشکر!' }
+      wait: { en: 'Batu is in the Gobi. Cross the bridge north, then go west and north.', es: 'Batu está en el Gobi. Cruza el puente al norte y luego ve al oeste y al norte.', fa: 'باتو در گوبی است. از پل به شمال برو، بعد به غرب و شمال برو.' },
+      thanks: { en: 'My river map! Now my students can follow both rivers east to the sea.', es: '¡Mi mapa de ríos! Ahora mis estudiantes pueden seguir los dos ríos al este hasta el mar.', fa: 'نقشهٔ دریاهای من! حالا شاگردانم هر دو دریا را به شرق تا بحر دنبال کرده می‌توانند.' }
     },
     contact: {
       x: 6, y: 4,
@@ -239,12 +212,9 @@ window.EPISODE = {
       role: { en: 'Camel herder', es: 'Pastor de camellos', fa: 'شترچران' },
       look: { skin: 3, hair: '#20180f', shirt: '#a0522d', pants: '#4a3b2a', hat: '#6b4a2a' },
       lines: [
-        { en: 'Yes, I saw a dark, inky thing with a map! It ran past my camels, laughing!',
-          es: '¡Sí, vi una cosa oscura de tinta con un mapa! ¡Pasó corriendo y riendo junto a mis camellos!',
-          fa: 'بله، یک چیز تاریک رنگی را با یک نقشه دیدم! خندان از کنار شترهایم دوید!' },
-        { en: 'It tore the map into 3 pieces and hid them all over the land! Listen to its riddles and walk to the right place. Then catch the thief!',
-          es: '¡Rompió el mapa en 3 pedazos y los escondió por todas partes! Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
-          fa: 'نقشه را سه تکه کرد و تکه‌ها را همه جا پنهان کرد! به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
+        { en: 'Yes, I saw an inky thing with a map! It ran past my camels, laughing!', es: '¡Sí, vi una cosa de tinta con un mapa! ¡Pasó corriendo y riendo junto a mis camellos!', fa: 'بله، یک چیز رنگی را با یک نقشه دیدم! خندان از کنار شترهایم دوید!' },
+        { en: 'It tore the map into 3 pieces and hid them all over the land!', es: '¡Rompió el mapa en 3 pedazos y los escondió por todas partes!', fa: 'نقشه را سه تکه کرد و تکه‌ها را همه جا پنهان کرد!' },
+        { en: 'Listen to its riddles, walk to the right places, then catch the thief!', es: '¡Escucha sus acertijos, camina a los lugares correctos y atrapa al ladrón!', fa: 'به چیستان‌هایش گوش بده، به جاهای درست برو، بعد دزد را بگیر!' }
       ]
     },
     action: {
@@ -252,32 +222,22 @@ window.EPISODE = {
       at: [44, 19],
       hops: [[41, 10], [39, 18]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'The Ink Thief laughs: "Drip, drip! I tore the river map into 3 pieces and hid them all over East Asia. Follow my riddles, if you can!"',
-        es: 'El Ladrón de Tinta se ríe: "¡Plic, plic! Rompí el mapa de ríos en 3 pedazos y los escondí por todo el este de Asia. ¡Sigue mis acertijos, si puedes!"',
-        fa: 'دزد رنگ می‌خندد: «چک، چک! نقشهٔ دریاها را سه تکه کردم و در تمام شرق آسیا پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      taunt: { en: 'Drip, drip! I tore the river map into 3 pieces and hid them. Follow my riddles!', es: '¡Plic, plic! Rompí el mapa de ríos en 3 pedazos y los escondí. ¡Sigue mis acertijos!', fa: 'چک، چک! نقشهٔ دریاها را سه تکه کردم و پنهان کردم. چیستان‌هایم را دنبال کن!' },
       clues: [
-        { t: { en: 'Piece 1 is where China\'s two great rivers begin. Rivers start high up, where the snow melts. Go to the high, cold [[plateau|plateau]] in the south-west.',
-            es: 'El pedazo 1 está donde nacen los dos grandes ríos de China. Los ríos nacen arriba, donde se derrite la nieve. Ve a la [[plateau|meseta]] alta y fría del suroeste.',
-            fa: 'تکهٔ ۱ جایی است که دو دریای بزرگ چین شروع می‌شوند. دریاها از بلندی شروع می‌شوند، جایی که برف آب می‌شود. به [[plateau|فلات]] بلند و سرد در جنوب غرب برو.' },
+        { t: { en: 'Piece 1 is where both great rivers begin, where snow melts: the high [[plateau|plateau]] in the south-west.', es: 'El pedazo 1 está donde nacen los dos grandes ríos, donde se derrite la nieve: la [[plateau|meseta]] alta del suroeste.', fa: 'تکهٔ ۱ جایی است که هر دو دریای بزرگ شروع می‌شوند، جایی که برف آب می‌شود: [[plateau|فلات]] بلند جنوب غرب.' },
           zones: [{ x: 1, y: 11, w: 15, h: 10 }],
           noBy: [{ x: 16, y: 13, w: 16, h: 8, t: { en: 'Here the river is wide and slow. It is near the end of its trip to the sea. Rivers begin far up in the west.', es: 'Aquí el río es ancho y lento. Está cerca del final de su viaje al mar. Los ríos nacen lejos, arriba en el oeste.', fa: 'این جا دریا پهن و آرام است. نزدیک آخر سفرش به بحر است. دریاها دور در بلندی‌های غرب شروع می‌شوند.' } }],
-          found: { en: 'Piece 1 was on the Tibetan Plateau! Both great rivers start up here in the high west. Then they flow downhill, east to the sea.', es: '¡El pedazo 1 estaba en la meseta del Tíbet! Los dos grandes ríos nacen aquí arriba, en el oeste alto. Luego bajan hacia el este hasta el mar.', fa: 'تکهٔ ۱ در فلات تبت بود! هر دو دریای بزرگ این جا در غرب بلند شروع می‌شوند. بعد به طرف پایین، به شرق تا بحر می‌روند.' } },
-        { t: { en: 'Piece 2 is where very few people live, because it is too dry to grow food. Find the sand.',
-            es: 'El pedazo 2 está donde vive muy poca gente, porque es demasiado seco para cultivar comida. Busca la arena.',
-            fa: 'تکهٔ ۲ جایی است که مردم بسیار کم زندگی می‌کنند، چون برای کشت غذا خیلی خشک است. ریگ را پیدا کن.' },
+          found: { en: 'Piece 1! Both great rivers start up here in the high west, then flow east.', es: '¡Pedazo 1! Los dos grandes ríos nacen aquí arriba, en el oeste alto, y luego corren al este.', fa: 'تکهٔ ۱! هر دو دریای بزرگ این‌جا در غرب بلند شروع می‌شوند، بعد به شرق می‌روند.' } },
+        { t: { en: 'Piece 2 is where few people live, because it is too dry to grow food. Find the sand.', es: 'El pedazo 2 está donde vive poca gente, porque es muy seco para cultivar. Busca la arena.', fa: 'تکهٔ ۲ جایی است که مردم کم زندگی می‌کنند، چون برای کشت خیلی خشک است. ریگ را پیدا کن.' },
           zones: [{ x: 1, y: 1, w: 15, h: 8 }],
           noBy: [{ x: 16, y: 3, w: 16, h: 3, t: { en: 'These are wheat fields. There is enough water to farm here, so many people live here. Look for land that is too dry for any farm.', es: 'Estos son campos de trigo. Aquí hay agua para cultivar, así que vive mucha gente. Busca tierra demasiado seca para cualquier granja.', fa: 'این‌ها زمین‌های گندم است. این جا آب برای زراعت هست، پس مردم زیاد زندگی می‌کنند. زمینی را پیدا کن که برای هیچ کشتی آب ندارد.' } }],
-          found: { en: 'Piece 2 was in the Gobi Desert! A desert gets very little rain. Without water, farms cannot grow food, so very few people live here.', es: '¡El pedazo 2 estaba en el desierto de Gobi! Un desierto recibe muy poca lluvia. Sin agua, las granjas no dan comida, así que vive muy poca gente aquí.', fa: 'تکهٔ ۲ در دشت گوبی بود! دشت خشک باران بسیار کم دارد. بدون آب، کشتزارها غذا نمی‌دهند، پس مردم بسیار کم این جا زندگی می‌کنند.' } },
-        { t: { en: 'Piece 3 is on an [[archipelago|archipelago]]: a chain of islands across the sea, with a snowy volcano. Cross the sea to find it.',
-            es: 'El pedazo 3 está en un [[archipelago|archipiélago]]: una cadena de islas al otro lado del mar, con un volcán nevado. Cruza el mar para encontrarlo.',
-            fa: 'تکهٔ ۳ در یک [[archipelago|مجمع‌الجزایر]] است: زنجیره‌ای از جزیره‌ها آن طرف بحر، با یک آتشفشان برفی. از بحر بگذر تا پیدایش کنی.' },
+          found: { en: 'Piece 2! The Gobi gets little rain. Without water, farms fail. Few people live there.', es: '¡Pedazo 2! El Gobi recibe poca lluvia. Sin agua no hay cultivos. Vive poca gente ahí.', fa: 'تکهٔ ۲! گوبی باران کم دارد. بدون آب کشت نمی‌شود. مردم کم آن‌جا زندگی می‌کنند.' } },
+        { t: { en: 'Piece 3 is on an [[archipelago|archipelago]]: islands across the sea, with a snowy volcano.', es: 'El pedazo 3 está en un [[archipelago|archipiélago]]: islas al otro lado del mar, con un volcán nevado.', fa: 'تکهٔ ۳ در یک [[archipelago|مجمع‌الجزایر]] است: جزیره‌ها آن طرف بحر، با یک آتشفشان برفی.' },
           zones: [{ x: 38, y: 1, w: 9, h: 20 }],
           noBy: [{ x: 26, y: 10, w: 6, h: 5, t: { en: 'This big city is on the mainland of China, not on an island. Take the ferry pier east across the sea.', es: 'Esta ciudad grande está en el continente de China, no en una isla. Toma el muelle del ferry al este, cruzando el mar.', fa: 'این شهر بزرگ روی خشکهٔ چین است، نه روی جزیره. از اسکلهٔ کشتی به طرف شرق از بحر بگذر.' } }],
-          found: { en: 'Piece 3 was in Japan! Japan is an archipelago: four main islands and thousands of small ones. The mountains leave little flat land, so people crowd onto the coast.', es: '¡El pedazo 3 estaba en Japón! Japón es un archipiélago: cuatro islas principales y miles de islas pequeñas. Las montañas dejan poca tierra plana, así que la gente se junta en la costa.', fa: 'تکهٔ ۳ در جاپان بود! جاپان یک مجمع‌الجزایر است: چهار جزیرهٔ اصلی و هزاران جزیرهٔ کوچک. کوه‌ها زمین هموار کم می‌گذارند، پس مردم در ساحل جمع می‌شوند.' } }
+          found: { en: 'Piece 3 was in Japan! Mountains leave little flat land, so people crowd the coast.', es: '¡El pedazo 3 estaba en Japón! Las montañas dejan poca tierra plana, así que la gente llena la costa.', fa: 'تکهٔ ۳ در جاپان بود! کوه‌ها زمین هموار کم می‌گذارند، پس مردم در ساحل جمع می‌شوند.' } }
       ],
-      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: the river map is whole again.',
-        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: el mapa de ríos está completo otra vez.',
-        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ دریاها دوباره کامل است.' },
+      win: { en: 'Got you! The thief drops the 3 pieces and runs off. The river map is whole again!', es: '¡Te atrapé! El ladrón suelta los 3 pedazos y huye. ¡El mapa de ríos está completo otra vez!', fa: 'گرفتمت! دزد سه تکه را می‌اندازد و فرار می‌کند. نقشهٔ دریاها دوباره کامل است!' },
       item: { icon: '🗺️', name: { en: "Teacher Zhou's river map", es: 'El mapa de ríos de la maestra Zhou', fa: 'نقشهٔ دریاهای معلم ژو' } }
     }
   },
@@ -324,7 +284,7 @@ window.EPISODE = {
     win: { en: 'The mud washes away and the rivers run clear. Atlas page 7.1 floats into your hands!', es: 'El lodo se va y los ríos corren limpios. ¡La página 7.1 del atlas cae en tus manos!', fa: 'گِل شسته می‌شود و دریاها صاف جاری می‌شوند. صفحهٔ ۷.۱ اطلس به دستت می‌افتد!' },
     questions: [
       { q: { en: 'What does population density measure?', es: '¿Qué mide la densidad de población?', fa: 'تراکم نفوس چه چیزی را اندازه می‌گیرد؟' },
-        choices: [{ en: 'How many people live in a certain amount of land', es: 'Cuántas personas viven en cierta cantidad de tierra', fa: 'در یک اندازهٔ معین زمین چند نفر زندگی می‌کنند' }, { en: 'How fast a city grows each year', es: 'Qué tan rápido crece una ciudad cada año', fa: 'یک شهر هر سال چقدر تیز رشد می‌کند' }, { en: 'The number of cities in a region', es: 'El número de ciudades de una región', fa: 'تعداد شهرهای یک منطقه' }, { en: 'The total number of people in a country', es: 'El número total de personas de un país', fa: 'تعداد کل مردم یک کشور' }], answer: 0,
+        choices: [{ en: 'How many people live on each bit of land', es: 'Cuántas personas viven en cada pedazo de tierra', fa: 'در هر تکه زمین چند نفر زندگی می‌کنند' }, { en: 'How fast a big city grows each year', es: 'Qué tan rápido crece una gran ciudad cada año', fa: 'یک شهر بزرگ هر سال چقدر تیز رشد می‌کند' }, { en: 'The number of cities in a region', es: 'El número de ciudades de una región', fa: 'تعداد شهرهای یک منطقه' }, { en: 'The total number of people in one country', es: 'El número total de personas de un país', fa: 'تعداد کل مردم یک کشور' }], answer: 0,
         why: { en: 'Density tells how crowded a place is, like people per square mile.', es: 'La densidad dice qué tan lleno está un lugar, como personas por milla cuadrada.', fa: 'تراکم می‌گوید یک جا چقدر شلوغ است، مثل تعداد نفر در هر میل مربع.' } },
       { q: { en: 'Where do most of China\'s people live?', es: '¿Dónde vive la mayoría de la gente de China?', fa: 'بیشتر مردم چین کجا زندگی می‌کنند؟' },
         choices: [{ en: 'In the east, near rivers and the coast', es: 'En el este, cerca de los ríos y la costa', fa: 'در شرق، نزدیک دریاها و ساحل' }, { en: 'In the west, near the mountains and deserts', es: 'En el oeste, cerca de las montañas y desiertos', fa: 'در غرب، نزدیک کوه‌ها و دشت‌ها' }, { en: 'On the Tibetan Plateau', es: 'En la meseta del Tíbet', fa: 'روی فلات تبت' }, { en: 'Evenly spread across the whole country', es: 'Repartida por igual en todo el país', fa: 'برابر در تمام کشور پخش شده' }], answer: 0,
@@ -336,16 +296,16 @@ window.EPISODE = {
         choices: [{ en: 'The Yangtze', es: 'El Yangtsé', fa: 'یانگتسی' }, { en: 'The Yellow River', es: 'El río Amarillo', fa: 'دریای زرد' }, { en: 'The Ganges', es: 'El Ganges', fa: 'گنگا' }, { en: 'The Mekong', es: 'El Mekong', fa: 'میکانگ' }], answer: 0,
         why: { en: 'The Yangtze flows across China from the high west to the sea at Shanghai.', es: 'El Yangtsé cruza China desde el oeste alto hasta el mar en Shanghái.', fa: 'یانگتسی از غرب بلند چین تا بحر در شانگهای جریان دارد.' } },
       { q: { en: 'What is the Three Gorges Dam on the Yangtze known for?', es: '¿Por qué es famosa la presa de las Tres Gargantas en el Yangtsé?', fa: 'بند سه دره روی یانگتسی به چه مشهور است؟' },
-        choices: [{ en: 'It is the largest hydroelectric dam in the world', es: 'Es la presa hidroeléctrica más grande del mundo', fa: 'بزرگ‌ترین بند برق آبی جهان است' }, { en: 'It was built to stop invasions from the north', es: 'Se construyó para frenar invasiones del norte', fa: 'برای جلوگیری از حمله از شمال ساخته شد' }, { en: 'It is the oldest dam in China', es: 'Es la presa más antigua de China', fa: 'کهنه‌ترین بند چین است' }, { en: 'It blocks all ships from the coast', es: 'Impide que todos los barcos lleguen a la costa', fa: 'همهٔ کشتی‌ها را از ساحل بند می‌کند' }], answer: 0,
+        choices: [{ en: 'It is the world\'s largest hydroelectric dam', es: 'Es la presa hidroeléctrica más grande del mundo', fa: 'بزرگ‌ترین بند برق آبی جهان است' }, { en: 'It was built to stop invasions from the north', es: 'Se construyó para frenar invasiones del norte', fa: 'برای جلوگیری از حمله از شمال ساخته شد' }, { en: 'It is the oldest dam in China', es: 'Es la presa más antigua de China', fa: 'کهنه‌ترین بند چین است' }, { en: 'It blocks all ships from reaching the coast', es: 'Impide que los barcos lleguen a la costa', fa: 'همهٔ کشتی‌ها را از رسیدن به ساحل بند می‌کند' }], answer: 0,
         why: { en: 'Its turbines make power for millions of homes, and its locks lift ships past the wall. The Great Wall, not a dam, was built against invasions.', es: 'Sus turbinas dan electricidad a millones de casas y sus esclusas suben los barcos. La Gran Muralla, no una presa, se hizo contra las invasiones.', fa: 'توربین‌هایش برای میلیون‌ها خانه برق می‌سازند و کشتی‌ها را از دیوار بالا می‌برد. دیوار بزرگ چین، نه بند، برای جلوگیری از حمله ساخته شد.' } },
       { q: { en: 'What is a megacity?', es: '¿Qué es una megaciudad?', fa: 'ابرشهر چیست؟' },
-        choices: [{ en: 'A city region with more than 10 million people', es: 'Una zona urbana con más de 10 millones de personas', fa: 'ساحهٔ شهری با بیشتر از ۱۰ میلیون نفر' }, { en: 'The capital city of a country', es: 'La capital de un país', fa: 'پایتخت یک کشور' }, { en: 'A city that makes most of a country\'s goods', es: 'Una ciudad que hace casi todos los productos de un país', fa: 'شهری که بیشتر کالاهای یک کشور را می‌سازد' }, { en: 'Any city built near a river', es: 'Cualquier ciudad construida cerca de un río', fa: 'هر شهری که نزدیک دریا ساخته شده' }], answer: 0,
+        choices: [{ en: 'A city area of over 10 million people', es: 'Una zona urbana de más de 10 millones de personas', fa: 'ساحهٔ شهری با بیشتر از ۱۰ میلیون نفر' }, { en: 'The capital city of a country', es: 'La capital de un país', fa: 'پایتخت یک کشور' }, { en: 'A city that makes most of a country\'s goods', es: 'Una ciudad que hace casi todos los productos de un país', fa: 'شهری که بیشتر کالاهای یک کشور را می‌سازد' }, { en: 'Any city built near a river', es: 'Cualquier ciudad construida cerca de un río', fa: 'هر شهری که نزدیک دریا ساخته شده' }], answer: 0,
         why: { en: 'Shanghai and Tokyo are megacities. Each has well over 10 million people.', es: 'Shanghái y Tokio son megaciudades. Cada una tiene mucho más de 10 millones de personas.', fa: 'شانگهای و توکیو ابرشهر هستند. هر کدام خیلی بیشتر از ۱۰ میلیون نفر دارند.' } },
       { q: { en: 'Greater Tokyo has about 37 million people and very little flat land. What did builders do?', es: 'El Gran Tokio tiene unos 37 millones de personas y muy poca tierra plana. ¿Qué hicieron los constructores?', fa: 'توکیوی بزرگ حدود ۳۷ میلیون نفر و زمین هموار بسیار کم دارد. سازندگان چه کردند؟' },
-        choices: [{ en: 'Built up instead of out, with tall buildings', es: 'Construyeron hacia arriba, con edificios altos', fa: 'به جای پهن، بلند ساختند، با تعمیرهای بلند' }, { en: 'Kept all buildings short and wide', es: 'Hicieron todos los edificios bajos y anchos', fa: 'همهٔ تعمیرها را کوتاه و پهن ساختند' }, { en: 'Put farms in the middle of the city', es: 'Pusieron granjas en el centro de la ciudad', fa: 'کشتزارها را در وسط شهر گذاشتند' }, { en: 'Moved the whole city to the mountains', es: 'Llevaron toda la ciudad a las montañas', fa: 'تمام شهر را به کوه‌ها بردند' }], answer: 0,
+        choices: [{ en: 'Built tall towers that go up, not out', es: 'Hicieron torres altas, hacia arriba', fa: 'تعمیرهای بلند ساختند، به طرف بالا' }, { en: 'Kept all buildings short and wide', es: 'Hicieron todos los edificios bajos y anchos', fa: 'همهٔ تعمیرها را کوتاه و پهن ساختند' }, { en: 'Put farms in the middle of the city', es: 'Pusieron granjas en el centro de la ciudad', fa: 'کشتزارها را در وسط شهر گذاشتند' }, { en: 'Moved the whole city to the mountains', es: 'Llevaron toda la ciudad a las montañas', fa: 'تمام شهر را به کوه‌ها بردند' }], answer: 0,
         why: { en: 'When flat land runs out, cities grow upward.', es: 'Cuando se acaba la tierra plana, las ciudades crecen hacia arriba.', fa: 'وقتی زمین هموار تمام می‌شود، شهرها به طرف بالا رشد می‌کنند.' } },
       { q: { en: 'Why are many tall buildings in Japan made to sway a little?', es: '¿Por qué muchos edificios altos de Japón se hacen para mecerse un poco?', fa: 'چرا بسیاری از تعمیرهای بلند جاپان طوری ساخته می‌شوند که کمی تاب بخورند؟' },
-        choices: [{ en: 'So they bend in an earthquake instead of snapping', es: 'Para que se doblen en un terremoto en vez de romperse', fa: 'تا در زلزله خم شوند، نه اینکه بشکنند' }, { en: 'So they are cheaper to clean', es: 'Para que sea más barato limpiarlos', fa: 'تا پاک کردنشان ارزان‌تر باشد' }, { en: 'So they catch more sunlight', es: 'Para que reciban más sol', fa: 'تا آفتاب بیشتر بگیرند' }, { en: 'Because the wind in Japan never stops', es: 'Porque el viento en Japón nunca para', fa: 'چون باد در جاپان هرگز ایستاد نمی‌شود' }], answer: 0,
+        choices: [{ en: 'To bend in an earthquake, not snap', es: 'Para doblarse en un terremoto, no romperse', fa: 'تا در زلزله خم شوند، نشکنند' }, { en: 'So their windows are cheaper to clean', es: 'Para que sus ventanas sean más baratas de limpiar', fa: 'تا پاک کردن کلکین‌هایشان ارزان‌تر باشد' }, { en: 'So they catch more sunlight all day', es: 'Para recibir más sol todo el día', fa: 'تا تمام روز آفتاب بیشتر بگیرند' }, { en: 'Because the wind in Japan never stops', es: 'Porque el viento en Japón nunca para', fa: 'چون باد در جاپان هرگز ایستاد نمی‌شود' }], answer: 0,
         why: { en: 'Japan is on the Ring of Fire. Buildings that can bend are safer in earthquakes.', es: 'Japón está en el Cinturón de Fuego. Los edificios que se doblan son más seguros en los terremotos.', fa: 'جاپان روی حلقهٔ آتش است. تعمیرهایی که خم می‌شوند در زلزله مصون‌تر هستند.' } }
     ]
   },

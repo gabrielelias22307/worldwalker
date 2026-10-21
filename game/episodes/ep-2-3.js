@@ -7,9 +7,8 @@ window.EPISODE = {
   title: { en: 'Migration in the Americas', es: 'Migración en las Américas', fa: 'مهاجرت در قارهٔ امریکا' },
   place: { en: 'The Long Road', es: 'El Camino Largo', fa: 'راه دراز' },
   intro: [
-    { en: 'Christopher: "The Grump tangled the Long Road! Travelers forgot why people move. Talk to the farmer, the bus driver and the cook. Then fix the compass stone."',
-      es: 'Christopher: "¡El Gruñón enredó el Camino Largo! Los viajeros olvidaron por qué la gente se muda. Habla con el agricultor, la chofer del bus y la cocinera. Luego arregla la piedra de la brújula."',
-      fa: 'کریستوفر: «غرغرو راه دراز را گره زد! مسافران فراموش کردند که چرا مردم جابه‌جا می‌شوند. با دهقان، رانندهٔ بس و آشپز گپ بزن. بعد سنگ قطب‌نما را درست کن.»' }
+    { en: 'The Grump tangled the Long Road! Travelers forgot why people move.', es: '¡El Gruñón enredó el Camino Largo! Los viajeros olvidaron por qué la gente se muda.', fa: 'غرغرو راه دراز را گره زد! مسافران فراموش کردند که چرا مردم جابه‌جا می‌شوند.' },
+        { en: 'Talk to the farmer, the bus driver and the cook. Then fix the compass stone.', es: 'Habla con el agricultor, la chofer del bus y la cocinera. Luego arregla la piedra de la brújula.', fa: 'با دهقان، رانندهٔ بس و آشپز گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
 
   /* 32 x 22. West: a dry farm town. A long road runs east to the bus stop and a busy city.
@@ -64,11 +63,11 @@ window.EPISODE = {
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [4, 7], at: [11, 4], decor: 'vase',
-      clue: { en: 'Use the map key: the town well is a stone box with a little wooden roof. In a drought, water is precious. Stand one step east of the well.', es: 'Usa la leyenda: el pozo del pueblo es una caja de piedra con un techito de madera. En una sequía, el agua vale mucho. Párate un paso al este del pozo.', fa: 'از راهنمای نقشه استفاده کن: چاه قریه یک قطی سنگی با یک سقف کوچک چوبی است. در خشک‌سالی، آب خیلی قیمت دارد. یک قدم شرقِ چاه بایست.' },
-      text: { en: 'You read the map key! In a long drought, wells can go dry. That can push families to move away. A clay water jar was by the well.', es: '¡Leíste la leyenda! En una sequía larga, los pozos se pueden secar. Eso puede empujar a las familias a irse. Había una jarra de barro junto al pozo.', fa: 'تو راهنمای نقشه را خواندی! در خشک‌سالی طولانی، چاه‌ها شاید خشک شوند. این می‌تواند خانواده‌ها را به رفتن وادار کند. یک کوزهٔ گلی کنار چاه بود.' } },
+      clue: { en: 'Map key: the well is a stone box with a little roof. Stand one step east of the well.', es: 'Leyenda: el pozo es una caja de piedra con un techito. Párate un paso al este del pozo.', fa: 'راهنمای نقشه: چاه یک قطی سنگی با یک سقف کوچک است. یک قدم شرقِ چاه بایست.' },
+      text: { en: 'You read the map key! In a long drought, wells dry up and push families away. Here: a clay jar.', es: '¡Leíste la leyenda! En una sequía larga, los pozos se secan y empujan a las familias a irse. Aquí: una jarra de barro.', fa: 'تو راهنمای نقشه را خواندی! در خشک‌سالی طولانی چاه‌ها خشک می‌شوند و خانواده‌ها را به رفتن وادار می‌کنند. اینجا: یک کوزهٔ گلی.' } },
     { clueAt: [16, 7], at: [20, 10], decor: 'drum',
       clue: { en: 'From this note, walk 3 steps south, then 4 steps east, toward the city. Something is hidden there.', es: 'Desde esta nota, camina 3 pasos al sur y luego 4 pasos al este, hacia la ciudad. Algo está escondido allí.', fa: 'از این یادداشت، ۳ قدم به جنوب برو، بعد ۴ قدم به شرق، به طرف شهر. چیزی آن جا پنهان است.' },
-      text: { en: 'You followed compass directions! South is down and east is to the right. When people move, they bring their music. Cumbia music started in Colombia, and now people dance to it in cities all over Latin America. A little drum was hiding here.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Cuando la gente se muda, lleva su música. La cumbia nació en Colombia, y ahora se baila en ciudades de toda América Latina. Un tamborcito estaba escondido aquí.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. وقتی مردم جابه‌جا می‌شوند، موسیقی خود را هم می‌برند. موسیقی کومبیا در کلمبیا شروع شد و حالا مردم در شهرهای سراسر امریکای لاتین با آن می‌رقصند. یک دهل کوچک اینجا پنهان بود.' } }
+      text: { en: 'You followed the compass! Movers bring their music. Cumbia began in Colombia; now all Latin America dances it. A drum!', es: '¡Seguiste la brújula! Quien se muda lleva su música. La cumbia nació en Colombia; hoy se baila en toda América Latina. ¡Un tambor!', fa: 'قطب‌نما را دنبال کردی! مهاجران موسیقی خود را می‌برند. کومبیا در کلمبیا شروع شد؛ حالا در تمام امریکای لاتین می‌رقصند. یک دهل!' } }
   ],
   // only the Compass Rose (Episode 1.3) opens the little gate behind the village houses
   secret: { tool: 'compass', at: [1, 1],
@@ -92,15 +91,10 @@ window.EPISODE = {
       role: { en: 'Corn and bean farmer', es: 'Agricultor de maíz y frijol', fa: 'دهقان جواری و لوبیا' },
       look: { skin: 2, hair: '#d8d4cc', shirt: '#f2efe6', pants: '#5a4630' },
       lines: [
-        { en: 'When I was young, this field grew tall corn. Now the rain comes late, or it does not come at all. A long [[drought|drought]] has dried our soil.',
-          es: 'Cuando yo era joven, este campo daba maíz alto. Ahora la lluvia llega tarde, o no llega. Una larga [[drought|sequía]] secó nuestra tierra.',
-          fa: 'وقتی جوان بودم، این زمین جواری بلند می‌داد. حالا باران دیر می‌آید یا هیچ نمی‌آید. یک [[drought|خشک‌سالی]] طولانی خاک ما را خشک کرده است.' },
-        { en: 'A reason that makes a place hard to stay in is a [[push factor|push factor]]. No rain, no jobs, a flood or danger can all push people away from home.',
-          es: 'Una razón que hace difícil quedarse en un lugar es un [[push factor|factor de expulsión]]. La falta de lluvia, la falta de trabajo, una inundación o el peligro pueden empujar a la gente lejos de su hogar.',
-          fa: 'دلیلی که ماندن در یک جا را سخت می‌کند [[push factor|عامل رانش]] نام دارد. نبودن باران، نبودن کار، سیلاب یا خطر می‌توانند مردم را از خانه دور کنند.' },
-        { en: 'Many young people from our town left to work in the city. Now fewer hands work the farms, and our school has fewer children. [[migration|Migration]] changes the town people leave, too.',
-          es: 'Muchos jóvenes de nuestro pueblo se fueron a trabajar a la ciudad. Ahora hay menos manos en el campo y la escuela tiene menos niños. La [[migration|migración]] también cambia el pueblo que la gente deja.',
-          fa: 'بسیاری از جوانان قریهٔ ما برای کار به شهر رفتند. حالا دست‌های کمتری در زمین کار می‌کنند و مکتب ما شاگردان کمتری دارد. [[migration|مهاجرت]] قریه‌ای را که مردم ترک می‌کنند هم تغییر می‌دهد.' }
+        { en: 'When I was young, this field grew tall corn. Now the rain comes late.', es: 'Cuando yo era joven, este campo daba maíz alto. Ahora la lluvia llega tarde.', fa: 'وقتی جوان بودم، این زمین جواری بلند می‌داد. حالا باران دیر می‌آید.' },
+        { en: 'Sometimes it never comes. A long [[drought|drought]] dried our soil.', es: 'A veces no llega nunca. Una larga [[drought|sequía]] secó nuestra tierra.', fa: 'گاهی هیچ نمی‌آید. یک [[drought|خشک‌سالی]] طولانی خاک ما را خشک کرد.' },
+        { en: 'A [[push factor|push factor]] makes home hard to stay in: no rain, no jobs, floods, danger.', es: 'Un [[push factor|factor de expulsión]] hace difícil quedarse en casa: sin lluvia, sin trabajo, inundaciones, peligro.', fa: '[[push factor|عامل رانش]] ماندن در خانه را سخت می‌کند: نبودن باران، نبودن کار، سیلاب، خطر.' },
+        { en: 'Young people left for the city. [[migration|Migration]] left our farms and school with fewer people.', es: 'Los jóvenes se fueron a la ciudad. La [[migration|migración]] dejó nuestros campos y la escuela con menos gente.', fa: 'جوانان به شهر رفتند. [[migration|مهاجرت]] زمین‌ها و مکتب ما را کم‌نفرتر کرد.' }
       ],
       ask: {
         stat: 'hei',
@@ -108,7 +102,7 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A long drought dries up the farms', es: 'Una larga sequía seca los campos', fa: 'خشک‌سالی طولانی زمین‌ها را خشک می‌کند' },
             why: { en: 'A drought makes home hard to stay in, so it pushes people away.', es: 'Una sequía hace difícil quedarse en casa, así que empuja a la gente a irse.', fa: 'خشک‌سالی ماندن در خانه را سخت می‌کند، پس مردم را دور می‌راند.' } },
-          { t: { en: 'A job offer in a growing city', es: 'Una oferta de trabajo en una ciudad que crece', fa: 'پیشنهاد کار در یک شهر رو به رشد' },
+          { t: { en: 'A job offer in a growing city nearby', es: 'Una oferta de trabajo en una ciudad cercana que crece', fa: 'پیشنهاد کار در یک شهر نزدیک که رشد می‌کند' },
             why: { en: 'A job makes a new place look better. That is a pull factor.', es: 'Un trabajo hace que un lugar nuevo se vea mejor. Eso es un factor de atracción.', fa: 'کار یک جای نو را بهتر نشان می‌دهد. این عامل کشش است.' } },
           { t: { en: 'A cousin with a room to share', es: 'Un primo con un cuarto para compartir', fa: 'یک بچهٔ کاکا که اتاقی برای شریک کردن دارد' },
             why: { en: 'Family in the new place pulls people in. That is a pull factor.', es: 'La familia en el lugar nuevo atrae a la gente. Eso es un factor de atracción.', fa: 'خانواده در جای نو مردم را به طرف خود می‌کشد. این عامل کشش است.' } }
@@ -121,15 +115,10 @@ window.EPISODE = {
       role: { en: 'Bus driver', es: 'Chofer de bus', fa: 'رانندهٔ بس' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2f6fd6', pants: '#22324f' },
       lines: [
-        { en: 'Every morning my bus carries people from the farm towns to the city. Some visit. Some stay to live. [[migration|Migration]] means moving from one place to another to live.',
-          es: 'Cada mañana mi bus lleva gente de los pueblos del campo a la ciudad. Algunos visitan. Otros se quedan a vivir. La [[migration|migración]] es mudarse de un lugar a otro para vivir.',
-          fa: 'هر صبح بس من مردم را از قریه‌های دهقانی به شهر می‌برد. بعضی به دیدن می‌آیند. بعضی برای زندگی می‌مانند. [[migration|مهاجرت]] یعنی رفتن از یک جا به جای دیگر برای زندگی.' },
-        { en: 'A reason that makes a new place look better is a [[pull factor|pull factor]]. Jobs, safe streets, good schools and family who already live there can all pull people in.',
-          es: 'Una razón que hace que un lugar nuevo se vea mejor es un [[pull factor|factor de atracción]]. El trabajo, las calles seguras, las buenas escuelas y la familia que ya vive allí pueden atraer a la gente.',
-          fa: 'دلیلی که یک جای نو را بهتر نشان می‌دهد [[pull factor|عامل کشش]] نام دارد. کار، سرک‌های امن، مکتب‌های خوب و خانواده‌ای که آنجا زندگی می‌کند، همه مردم را به طرف خود می‌کشند.' },
-        { en: 'Most moves mix push and pull. One family may leave dry fields, follow a job and join a cousin, all at once. People often go where relatives and neighbors already went. These links are a [[network|network]].',
-          es: 'Casi todas las mudanzas mezclan expulsión y atracción. Una familia puede dejar campos secos, seguir un trabajo y unirse a un primo, todo a la vez. La gente suele ir a donde ya fueron sus parientes y vecinos. Esos lazos son una [[network|red]].',
-          fa: 'بیشتر سفرها رانش و کشش را با هم دارند. یک خانواده شاید زمین خشک را ترک کند، دنبال کار برود و با یک خویشاوند یکجا شود، همه با هم. مردم اکثراً جایی می‌روند که خویشاوندان و همسایه‌ها قبلاً رفته‌اند. این پیوندها یک [[network|شبکه]] است.' }
+        { en: 'My bus brings people to the city. Some visit. Some stay: that is [[migration|migration]].', es: 'Mi bus trae gente a la ciudad. Algunos visitan. Otros se quedan: eso es [[migration|migración]].', fa: 'بس من مردم را به شهر می‌آورد. بعضی به دیدن می‌آیند. بعضی می‌مانند: این [[migration|مهاجرت]] است.' },
+        { en: 'A [[pull factor|pull factor]] makes a new place look better: jobs, safe streets, good schools, family.', es: 'Un [[pull factor|factor de atracción]] hace que un lugar nuevo se vea mejor: trabajo, calles seguras, buenas escuelas, familia.', fa: '[[pull factor|عامل کشش]] یک جای نو را بهتر نشان می‌دهد: کار، سرک‌های امن، مکتب خوب، خانواده.' },
+        { en: 'Most moves mix both: dry fields push, while a job and a cousin pull.', es: 'Casi todas las mudanzas mezclan las dos: los campos secos expulsan; un trabajo y un primo atraen.', fa: 'بیشتر سفرها هر دو را دارند: زمین خشک می‌راند، و کار و خویشاوند می‌کشند.' },
+        { en: 'People often go where relatives and neighbors went. These links are a [[network|network]].', es: 'La gente suele ir a donde fueron sus parientes y vecinos. Esos lazos son una [[network|red]].', fa: 'مردم اکثراً جایی می‌روند که خویشاوندان و همسایه‌ها رفته‌اند. این پیوندها یک [[network|شبکه]] است.' }
       ],
       ask: {
         stat: 'mov',
@@ -151,23 +140,18 @@ window.EPISODE = {
       remember: { ep: '2.2', t: { en: 'Hello again, friend! I left the banana farm in Ecuador to work here. Back home they still talk about the bananas you carried up the mountain for Taita Inti\'s granddaughter!', es: '¡Hola otra vez, amigo! Dejé la finca de bananos en Ecuador para trabajar aquí. ¡En mi tierra todavía hablan de los bananos que subiste a la montaña para la nieta de Taita Inti!', fa: 'سلام دوباره، دوست من! من فارم کیله را در اکوادور ترک کردم تا اینجا کار کنم. در وطن هنوز هم از کیله‌هایی گپ می‌زنند که تو برای نواسهٔ تایتا اینتی به بالای کوه بردی!' } },
       look: { skin: 4, hair: '#2a1a12', shirt: '#e0782b', pants: '#3a3a3a' },
       lines: [
-        { en: 'I came to this city for work. Now I cook at my own food stand. New workers bring new foods, music and languages. They open shops. The city grows, and the buses get more crowded too.',
-          es: 'Vine a esta ciudad a trabajar. Ahora cocino en mi propio puesto de comida. Los nuevos trabajadores traen comidas, música e idiomas nuevos. Abren tiendas. La ciudad crece, y los buses también se llenan más.',
-          fa: 'من برای کار به این شهر آمدم. حالا در دکان غذای خودم آشپزی می‌کنم. کارگران نو غذا، موسیقی و زبان‌های نو می‌آورند. دکان باز می‌کنند. شهر بزرگ می‌شود و بس‌ها هم پرتر می‌شوند.' },
-        { en: 'Every month I send part of my pay to my mother back home. Money that migrants send to family at home is a [[remittance|remittance]]. It pays first for food, rent, school fees and medicine.',
-          es: 'Cada mes le mando una parte de mi sueldo a mi mamá. El dinero que los migrantes envían a su familia es una [[remittance|remesa]]. Primero paga comida, renta, la escuela y medicinas.',
-          fa: 'هر ماه بخشی از معاشم را برای مادرم در وطن می‌فرستم. پولی که مهاجران برای خانواده می‌فرستند [[remittance|حواله]] نام دارد. اول خرج نان، کرایهٔ خانه، فیس مکتب و دوا می‌شود.' },
-        { en: 'This money is earned by work and then shared. It is not charity. One payment is small, but they add up. In 2024, workers sent about 685 billion dollars to low- and middle-income countries.',
-          es: 'Este dinero se gana trabajando y luego se comparte. No es caridad. Un envío es pequeño, pero se suman. En 2024, los trabajadores enviaron unos 685 mil millones de dólares a países de ingresos bajos y medios.',
-          fa: 'این پول با کار به دست می‌آید و بعد شریک می‌شود. خیرات نیست. یک حواله کوچک است، اما همه با هم زیاد می‌شوند. در سال ۲۰۲۴، کارگران حدود ۶۸۵ میلیارد دالر به کشورهای کم‌درآمد و میانه‌درآمد فرستادند.' }
+        { en: 'I came here for work. Now I cook at my own food stand.', es: 'Vine aquí a trabajar. Ahora cocino en mi propio puesto de comida.', fa: 'من برای کار اینجا آمدم. حالا در دکان غذای خودم آشپزی می‌کنم.' },
+        { en: 'Newcomers bring food, music, languages and shops. The city grows; buses get crowded.', es: 'Los recién llegados traen comida, música, idiomas y tiendas. La ciudad crece; los buses se llenan.', fa: 'تازه‌واردها غذا، موسیقی، زبان و دکان می‌آورند. شهر بزرگ می‌شود؛ بس‌ها پر می‌شوند.' },
+        { en: 'Each month I send home part of my pay: a [[remittance|remittance]]. Earned, not charity.', es: 'Cada mes mando a casa parte de mi sueldo: una [[remittance|remesa]]. Se gana trabajando; no es caridad.', fa: 'هر ماه بخشی از معاشم را به وطن می‌فرستم: یک [[remittance|حواله]]. با کار به دست می‌آید، خیرات نیست.' },
+        { en: 'It pays first for food, rent, school and medicine. Workers sent $685 billion in 2024.', es: 'Primero paga comida, renta, la escuela y medicinas. En 2024, los trabajadores enviaron 685 mil millones de dólares.', fa: 'اول خرج نان، کرایهٔ خانه، فیس مکتب و دوا می‌شود. در ۲۰۲۴ کارگران ۶۸۵ میلیارد دالر فرستادند.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'How can migration change the city where people arrive?', es: '¿Cómo puede la migración cambiar la ciudad a donde llega la gente?', fa: 'مهاجرت چطور شهری را که مردم به آن می‌رسند تغییر می‌دهد؟' },
         choices: [
-          { ok: true, t: { en: 'It gains new shops and foods, and it gets more crowded', es: 'Gana tiendas y comidas nuevas, y se llena más', fa: 'دکان‌ها و غذاهای نو پیدا می‌کند و پرتر می‌شود' },
+          { ok: true, t: { en: 'It gets new shops, foods and more people', es: 'Gana tiendas, comidas nuevas y más gente', fa: 'دکان‌ها، غذاهای نو و مردم بیشتر پیدا می‌کند' },
             why: { en: 'A city that gains workers gains new businesses. Its buses and lines get fuller too.', es: 'Una ciudad que gana trabajadores gana negocios nuevos. Sus buses y filas también se llenan más.', fa: 'شهری که کارگر پیدا می‌کند کسب‌وکار نو هم پیدا می‌کند. بس‌ها و صف‌هایش هم پرتر می‌شوند.' } },
-          { t: { en: 'Its schools shrink as families leave', es: 'Sus escuelas se achican porque las familias se van', fa: 'مکتب‌هایش کوچک می‌شوند چون خانواده‌ها می‌روند' },
+          { t: { en: 'Its schools get smaller as families leave', es: 'Sus escuelas se achican porque las familias se van', fa: 'مکتب‌هایش کوچک‌تر می‌شوند چون خانواده‌ها می‌روند' },
             why: { en: 'That happens in the town people leave, like Don Esteban\'s town.', es: 'Eso pasa en el pueblo que la gente deja, como el de Don Esteban.', fa: 'این در قریه‌ای رخ می‌دهد که مردم ترک می‌کنند، مثل قریهٔ دون استبان.' } },
           { t: { en: 'Nothing changes in the city', es: 'Nada cambia en la ciudad', fa: 'در شهر هیچ چیز تغییر نمی‌کند' },
             why: { en: 'Migration changes both places: the one people leave and the one they reach.', es: 'La migración cambia los dos lugares: el que la gente deja y al que llega.', fa: 'مهاجرت هر دو جا را تغییر می‌دهد: جایی که مردم ترک می‌کنند و جایی که می‌رسند.' } }
@@ -177,9 +161,7 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 9, y: 6, text: { en: 'FARM TOWN · Road to the city → · Most people who move go only a short way, like from a farm town to a city in the same country.',
-      es: 'PUEBLO DEL CAMPO · Camino a la ciudad → · La mayoría de la gente que se muda va solo un poco lejos, como de un pueblo a una ciudad del mismo país.',
-      fa: 'قریهٔ دهقانی · راه شهر به طرف شرق · بیشتر کسانی که جابه‌جا می‌شوند راه کوتاهی می‌روند، مثل رفتن از قریه به شهری در همان کشور.' } },
+    { x: 9, y: 6, text: { en: 'FARM TOWN · City road → · Most people move a short way: farm town to a city in the same country.', es: 'PUEBLO DEL CAMPO · Camino a la ciudad → · Casi toda la gente se muda cerca: del pueblo a una ciudad del mismo país.', fa: 'قریهٔ دهقانی · راه شهر به طرف شرق · بیشتر مردم راه کوتاهی می‌روند: از قریه به شهری در همان کشور.' } },
     { x: 17, y: 4, text: { en: 'BUS STOP · CITY JOBS: cooks, builders, nurses, drivers. Help wanted! A job is a [[pull factor|pull factor]].',
       es: 'PARADA DE BUS · TRABAJOS EN LA CIUDAD: cocineros, constructores, enfermeras, choferes. ¡Se busca personal! Un trabajo es un [[pull factor|factor de atracción]].',
       fa: 'ایستگاه بس · کار در شهر: آشپز، معمار، نرس، راننده. کارگر لازم است! کار یک [[pull factor|عامل کشش]] است.' } }
@@ -195,19 +177,15 @@ window.EPISODE = {
       role: { en: 'Grandmother in the farm town', es: 'Abuela del pueblo del campo', fa: 'مادرکلان در قریهٔ دهقانی' },
       look: { skin: 1, hair: '#d8d4cc', shirt: '#4a6ab0', pants: '#3a3a3a', style: 'bun' },
       lines: [
-        { en: 'Hello, dear. My grandson Diego moved to the city last year. He works at the hospital there. Every month he sends me a letter.',
-          es: 'Hola, mi amor. Mi nieto Diego se mudó a la ciudad el año pasado. Trabaja allá en el hospital. Cada mes me manda una carta.',
-          fa: 'سلام، عزیزم. نواسه‌ام دیگو سال گذشته به شهر رفت. او آنجا در شفاخانه کار می‌کند. هر ماه برایم یک نامه می‌فرستد.' },
-        { en: 'This morning the Ink Thief grabbed his letter on the Long Road! Nadège carries the mail. Please find her in the city, to the east.',
-          es: '¡Esta mañana el Ladrón de Tinta agarró su carta en el Camino Largo! Nadège lleva el correo. Por favor, búscala en la ciudad, hacia el este.',
-          fa: 'امروز صبح دزد رنگ نامهٔ او را در راه دراز قاپید! نادژ نامه‌رسان است. لطفاً او را در شهر، طرف شرق، پیدا کن.' }
+        { en: 'Hello, dear. My grandson Diego moved to the city last year.', es: 'Hola, mi amor. Mi nieto Diego se mudó a la ciudad el año pasado.', fa: 'سلام، عزیزم. نواسه‌ام دیگو سال گذشته به شهر رفت.' },
+        { en: 'He works at the hospital there. Every month he sends me a letter.', es: 'Trabaja allá en el hospital. Cada mes me manda una carta.', fa: 'او آنجا در شفاخانه کار می‌کند. هر ماه برایم یک نامه می‌فرستد.' },
+        { en: 'This morning the Ink Thief grabbed his letter on the Long Road!', es: '¡Esta mañana el Ladrón de Tinta agarró su carta en el Camino Largo!', fa: 'امروز صبح دزد رنگ نامهٔ او را در راه دراز قاپید!' },
+        { en: 'Nadège carries the mail. Please find her in the city, to the east.', es: 'Nadège lleva el correo. Por favor, búscala en la ciudad, hacia el este.', fa: 'نادژ نامه‌رسان است. لطفاً او را در شهر، طرف شرق، پیدا کن.' }
       ],
       wait: { en: 'Nadège is in the city, east along the road. Look near the market stalls.',
         es: 'Nadège está en la ciudad, hacia el este por el camino. Busca cerca de los puestos del mercado.',
         fa: 'نادژ در شهر است، طرف شرق در امتداد سرک. نزدیک دکان‌های بازار ببین.' },
-      thanks: { en: 'Diego\'s letter! He says the city has good work, and he misses home. He also sent a [[remittance|remittance]] for his sister\'s school books. Thank you!',
-        es: '¡La carta de Diego! Dice que en la ciudad hay buen trabajo y que extraña su casa. También mandó una [[remittance|remesa]] para los libros de escuela de su hermana. ¡Gracias!',
-        fa: 'نامهٔ دیگو! می‌نویسد که شهر کار خوب دارد و دلش برای خانه تنگ شده. یک [[remittance|حواله]] هم برای کتاب‌های مکتب خواهرش فرستاده. تشکر!' }
+      thanks: { en: 'Diego\'s letter! Good work, but he misses home. And a [[remittance|remittance]] for school books. Thanks!', es: '¡La carta de Diego! Buen trabajo, pero extraña su casa. Y una [[remittance|remesa]] para libros de escuela. ¡Gracias!', fa: 'نامهٔ دیگو! کار خوب دارد، اما دلش برای خانه تنگ است. یک [[remittance|حواله]] هم برای کتاب‌های مکتب. تشکر!' }
     },
     contact: {
       x: 26, y: 10,
@@ -215,12 +193,10 @@ window.EPISODE = {
       role: { en: 'Mail carrier', es: 'Cartera', fa: 'نامه‌رسان' },
       look: { skin: 5, hair: '#120c08', shirt: '#2f6fd6', pants: '#22324f', hat: '#22324f' },
       lines: [
-        { en: 'Oh no, Diego\'s letter! I carry letters both ways on this road. Workers in the city write home, and families write back. Letters like these keep a family [[network|network]] strong.',
-          es: '¡Ay no, la carta de Diego! Yo llevo cartas en las dos direcciones por este camino. Los trabajadores de la ciudad escriben a casa y las familias contestan. Cartas así mantienen fuerte la [[network|red]] de una familia.',
-          fa: 'وای، نامهٔ دیگو! من در این راه نامه‌ها را به هر دو طرف می‌برم. کارگران در شهر به خانه نامه می‌نویسند و خانواده‌ها جواب می‌دهند. این نامه‌ها [[network|شبکهٔ]] خانواده را قوی نگه می‌دارند.' },
-        { en: 'I saw a thief in a black ink mask! It tore the letter into 3 pieces and hid them along the Long Road. Listen to its riddles and walk to the right places. Then catch the thief!',
-          es: '¡Vi a un ladrón con una máscara de tinta negra! Rompió la carta en 3 pedazos y los escondió por el Camino Largo. Escucha sus acertijos y camina a los lugares correctos. ¡Después atrapa al ladrón!',
-          fa: 'یک دزد با نقاب سیاه را دیدم! نامه را سه تکه کرد و تکه‌ها را در راه دراز پنهان کرد. به چیستان‌هایش گوش بده و به جاهای درست برو. بعد دزد را بگیر!' }
+        { en: 'Oh no, Diego\'s letter! I carry letters both ways on this road.', es: '¡Ay no, la carta de Diego! Yo llevo cartas en las dos direcciones por este camino.', fa: 'وای، نامهٔ دیگو! من در این راه نامه‌ها را به هر دو طرف می‌برم.' },
+        { en: 'Workers write home, and families write back. Letters keep a family [[network|network]] strong.', es: 'Los trabajadores escriben a casa y las familias contestan. Las cartas mantienen fuerte la [[network|red]] familiar.', fa: 'کارگران به خانه نامه می‌نویسند و خانواده‌ها جواب می‌دهند. نامه‌ها [[network|شبکهٔ]] خانواده را قوی نگه می‌دارند.' },
+        { en: 'The Ink Thief tore the letter into 3 pieces along the Long Road!', es: '¡El Ladrón de Tinta rompió la carta en 3 pedazos por el Camino Largo!', fa: 'دزد رنگ نامه را سه تکه کرد و در راه دراز پنهان کرد!' },
+        { en: 'Follow its riddles to the right places. Then catch the thief!', es: 'Sigue sus acertijos a los lugares correctos. ¡Después atrapa al ladrón!', fa: 'چیستان‌هایش را تا جاهای درست دنبال کن. بعد دزد را بگیر!' }
       ]
     },
     action: {
@@ -228,33 +204,23 @@ window.EPISODE = {
       at: [4, 9],
       hops: [[14, 8], [11, 10]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore Diego\'s letter into 3 pieces and hid them along the Long Road. Follow my riddles, if you can!"',
-        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí la carta de Diego en 3 pedazos y los escondí por el Camino Largo. ¡Sigue mis acertijos, si puedes!"',
-        fa: 'دزد رنگ می‌خندد: «هی هی! نامهٔ دیگو را سه تکه کردم و در راه دراز پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      taunt: { en: 'Hee hee! Diego\'s letter is in 3 pieces on the Long Road. Follow my riddles!', es: '¡Ji ji! La carta de Diego está en 3 pedazos por el Camino Largo. ¡Sigue mis acertijos!', fa: 'هی هی! نامهٔ دیگو سه تکه در راه دراز است. چیستان‌هایم را دنبال کن!' },
       clues: [
-        { t: { en: 'Piece 1 is at a [[push factor|push factor]]: a place that makes people want to leave. The rain came too late there, and the fields dried up.',
-            es: 'El pedazo 1 está en un [[push factor|factor de expulsión]]: un lugar que hace que la gente quiera irse. Allí la lluvia llegó muy tarde y los campos se secaron.',
-            fa: 'تکهٔ ۱ در یک [[push factor|عامل رانش]] است: جایی که مردم را به رفتن وادار می‌کند. آن جا باران خیلی دیر آمد و زمین‌ها خشک شدند.' },
+        { t: { en: 'Piece 1 is at a [[push factor|push factor]], a reason to leave: fields where the rain came too late.', es: 'El pedazo 1 está en un [[push factor|factor de expulsión]], una razón para irse: campos donde la lluvia llegó tarde.', fa: 'تکهٔ ۱ در یک [[push factor|عامل رانش]] است، دلیلی برای رفتن: زمین‌هایی که باران خیلی دیر آمد.' },
           zones: [{ x: 1, y: 8, w: 14, h: 13 }],
           noBy: [{ x: 17, y: 1, w: 14, h: 4, t: { en: 'This is the city, with lots of jobs. Jobs pull people in. A push factor is a problem back home that makes people leave.', es: 'Esta es la ciudad, con mucho trabajo. El trabajo atrae a la gente. Un factor de expulsión es un problema en casa que hace que la gente se vaya.', fa: 'این جا شهر است، با کار زیاد. کار مردم را می‌کشد. عامل رانش مشکلی در خانه است که مردم را به رفتن وادار می‌کند.' } }],
-          found: { en: 'Piece 1 was in the dry fields! A [[drought|drought]] killed the crops. That push factor made Diego\'s family think about moving.', es: '¡El pedazo 1 estaba en los campos secos! Una [[drought|sequía]] mató los cultivos. Ese factor de expulsión hizo que la familia de Diego pensara en mudarse.', fa: 'تکهٔ ۱ در زمین‌های خشک بود! یک [[drought|خشک‌سالی]] کشت‌ها را از بین برد. آن عامل رانش خانوادهٔ دیگو را به فکر رفتن انداخت.' } },
-        { t: { en: 'Piece 2 is at a [[pull factor|pull factor]]: a place that makes a new home look better. Find the sign that says "Help wanted!"',
-            es: 'El pedazo 2 está en un [[pull factor|factor de atracción]]: un lugar que hace que un hogar nuevo se vea mejor. ¡Busca el letrero que dice "Se busca personal"!',
-            fa: 'تکهٔ ۲ در یک [[pull factor|عامل کشش]] است: جایی که یک خانهٔ نو را بهتر نشان می‌دهد. لوحه‌ای را پیدا کن که می‌گوید «کارگر لازم است!»' },
+          found: { en: 'Piece 1! A [[drought|drought]] killed the crops. That push made Diego\'s family think of moving.', es: '¡El pedazo 1! Una [[drought|sequía]] mató los cultivos. Esa expulsión hizo pensar en mudarse a la familia de Diego.', fa: 'تکهٔ ۱! یک [[drought|خشک‌سالی]] کشت‌ها را از بین برد. آن رانش خانوادهٔ دیگو را به فکر رفتن انداخت.' } },
+        { t: { en: 'Piece 2 is at a [[pull factor|pull factor]], a reason to come. Find the sign that says "Help wanted!"', es: 'El pedazo 2 está en un [[pull factor|factor de atracción]], una razón para venir. ¡Busca el letrero "Se busca personal"!', fa: 'تکهٔ ۲ در یک [[pull factor|عامل کشش]] است، دلیلی برای آمدن. لوحهٔ «کارگر لازم است!» را پیدا کن.' },
           zones: [{ x: 15, y: 1, w: 16, h: 4 }],
           noBy: [{ x: 1, y: 8, w: 14, h: 13, t: { en: 'These dry fields push people away. A pull factor is in the new place, like a job in the city.', es: 'Estos campos secos alejan a la gente. Un factor de atracción está en el lugar nuevo, como un trabajo en la ciudad.', fa: 'این زمین‌های خشک مردم را دور می‌رانند. عامل کشش در جای نو است، مثل کار در شهر.' } },
             { x: 1, y: 1, w: 14, h: 4, t: { en: 'This is the farm town, Diego\'s old home. A pull factor is in the new place he moved to.', es: 'Este es el pueblo del campo, el hogar de Diego. Un factor de atracción está en el lugar nuevo adonde se mudó.', fa: 'این قریهٔ دهقانی، خانهٔ قبلی دیگو است. عامل کشش در جای نویی است که او به آن رفت.' } }],
-          found: { en: 'Piece 2 was at the bus stop! City jobs, like Diego\'s job at the hospital, pull people in. Jobs and money are economic reasons to move.', es: '¡El pedazo 2 estaba en la parada del bus! Los trabajos de la ciudad, como el de Diego en el hospital, atraen a la gente. El trabajo y el dinero son razones económicas para mudarse.', fa: 'تکهٔ ۲ در ایستگاه بس بود! کار در شهر، مثل کار دیگو در شفاخانه، مردم را می‌کشد. کار و پول دلیل‌های اقتصادی برای رفتن هستند.' } },
-        { t: { en: 'Piece 3 is by the sign on the Long Road that tells how far most people move. Do they cross the sea, or go a short way?',
-            es: 'El pedazo 3 está junto al letrero del Camino Largo que dice qué tan lejos se muda la mayoría de la gente. ¿Cruzan el mar o van un poco lejos?',
-            fa: 'تکهٔ ۳ کنار لوحه‌ای در راه دراز است که می‌گوید بیشتر مردم چقدر دور می‌روند. از بحر می‌گذرند، یا راه کوتاهی می‌روند؟' },
+          found: { en: 'Piece 2! City jobs pull people in. Jobs and money are economic reasons to move.', es: '¡El pedazo 2! Los trabajos de la ciudad atraen a la gente. El trabajo y el dinero son razones económicas.', fa: 'تکهٔ ۲! کار شهر مردم را می‌کشد. کار و پول دلیل‌های اقتصادی برای رفتن هستند.' } },
+        { t: { en: 'Piece 3 is by the road sign that says how far most people move. Far, or near?', es: 'El pedazo 3 está junto al letrero del camino que dice qué tan lejos se muda casi toda la gente. ¿Lejos o cerca?', fa: 'تکهٔ ۳ کنار لوحهٔ سرک است که می‌گوید بیشتر مردم چقدر دور می‌روند. دور یا نزدیک؟' },
           zones: [{ x: 5, y: 6, w: 11, h: 2 }],
           noBy: [{ x: 16, y: 16, w: 15, h: 3, t: { en: 'This river leads to the sea. A trip across the sea to another land is a long move. Most people who move go only a short way.', es: 'Este río lleva al mar. Un viaje por el mar a otra tierra es una mudanza larga. La mayoría de la gente que se muda va solo un poco lejos.', fa: 'این دریا به بحر می‌رسد. سفر از راه بحر به سرزمین دیگر یک کوچ دراز است. بیشتر کسانی که جابه‌جا می‌شوند فقط راه کوتاهی می‌روند.' } }],
-          found: { en: 'Piece 3 was by the farm town sign! Most people who move go only a short way, like Diego from the farm town to a city in the same country.', es: '¡El pedazo 3 estaba junto al letrero del pueblo! La mayoría de la gente que se muda va solo un poco lejos, como Diego, del pueblo a una ciudad del mismo país.', fa: 'تکهٔ ۳ کنار لوحهٔ قریه بود! بیشتر کسانی که جابه‌جا می‌شوند راه کوتاهی می‌روند، مثل دیگو که از قریه به شهری در همان کشور رفت.' } }
+          found: { en: 'Piece 3! Most people move a short way, like Diego: same country, new city.', es: '¡El pedazo 3! Casi toda la gente se muda cerca, como Diego: mismo país, ciudad nueva.', fa: 'تکهٔ ۳! بیشتر مردم راه کوتاهی می‌روند، مثل دیگو: همان کشور، شهر نو.' } }
       ],
-      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off in a puff of ink. All 3 pieces fit together: Diego\'s letter is whole again.',
-        es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye en una nube de tinta. Los 3 pedazos encajan: la carta de Diego está completa otra vez.',
-        fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و در یک ابر رنگ فرار می‌کند. هر سه تکه با هم جور می‌شوند: نامهٔ دیگو دوباره کامل است.' },
+      win: { en: 'Got you! The Ink Thief gives back the pieces and runs off. Diego\'s letter is whole again.', es: '¡Te atrapé! El Ladrón de Tinta devuelve los pedazos y huye. La carta de Diego está completa otra vez.', fa: 'گرفتمت! دزد رنگ تکه‌ها را پس می‌دهد و فرار می‌کند. نامهٔ دیگو دوباره کامل است.' },
       item: { icon: '✉️', name: { en: 'Diego\'s letter', es: 'La carta de Diego', fa: 'نامهٔ دیگو' } }
     }
   },
@@ -302,25 +268,25 @@ window.EPISODE = {
         choices: [{ en: 'A reason that makes a place hard to stay in', es: 'Una razón que hace difícil quedarse en un lugar', fa: 'دلیلی که ماندن در یک جا را سخت می‌کند' }, { en: 'A reason that makes another place look better', es: 'Una razón que hace que otro lugar se vea mejor', fa: 'دلیلی که جای دیگر را بهتر نشان می‌دهد' }, { en: 'A rule about who may enter a country', es: 'Una regla sobre quién puede entrar a un país', fa: 'قانونی دربارهٔ اینکه کی می‌تواند به کشور بیاید' }, { en: 'Money a worker sends to family at home', es: 'Dinero que un trabajador envía a su familia', fa: 'پولی که یک کارگر برای خانواده می‌فرستد' }], answer: 0,
         why: { en: 'No work, a long drought, a flood or danger can all push people away.', es: 'La falta de trabajo, una sequía, una inundación o el peligro pueden expulsar a la gente.', fa: 'نبودن کار، خشک‌سالی، سیلاب یا خطر همه مردم را دور می‌رانند.' } },
       { q: { en: 'What is a pull factor?', es: '¿Qué es un factor de atracción?', fa: 'عامل کشش چیست؟' },
-        choices: [{ en: 'A reason that makes another place look better', es: 'Una razón que hace que otro lugar se vea mejor', fa: 'دلیلی که جای دیگر را بهتر نشان می‌دهد' }, { en: 'A storm that damages farmland', es: 'Una tormenta que daña los campos', fa: 'طوفانی که زمین را خراب می‌کند' }, { en: 'The cost of sending money', es: 'El costo de enviar dinero', fa: 'هزینهٔ فرستادن پول' }, { en: 'A limit on how many people may enter', es: 'Un límite de cuánta gente puede entrar', fa: 'حدی برای تعداد مردمی که می‌توانند بیایند' }], answer: 0,
+        choices: [{ en: 'A reason that makes another place look better', es: 'Una razón que hace que otro lugar se vea mejor', fa: 'دلیلی که جای دیگر را بهتر نشان می‌دهد' }, { en: 'A storm that damages farmland and homes', es: 'Una tormenta que daña los campos y las casas', fa: 'طوفانی که زمین و خانه‌ها را خراب می‌کند' }, { en: 'The cost of sending money', es: 'El costo de enviar dinero', fa: 'هزینهٔ فرستادن پول' }, { en: 'A limit on how many people may enter a country', es: 'Un límite de cuánta gente puede entrar a un país', fa: 'حدی برای تعداد مردمی که می‌توانند به کشور بیایند' }], answer: 0,
         why: { en: 'Jobs, safety, good schools and family already there can all pull people in.', es: 'El trabajo, la seguridad, las buenas escuelas y la familia que ya está allí pueden atraer a la gente.', fa: 'کار، امنیت، مکتب خوب و خانواده‌ای که آنجاست همه مردم را می‌کشند.' } },
       { q: { en: 'What is a remittance?', es: '¿Qué es una remesa?', fa: 'حواله چیست؟' },
-        choices: [{ en: 'Money a migrant sends back to family at home', es: 'Dinero que un migrante envía a su familia en casa', fa: 'پولی که مهاجر برای خانواده در وطن می‌فرستد' }, { en: 'Money one government gives to another', es: 'Dinero que un gobierno le da a otro', fa: 'پولی که یک دولت به دولت دیگر می‌دهد' }, { en: 'Money a company spends on a new factory', es: 'Dinero que una empresa gasta en una fábrica nueva', fa: 'پولی که یک شرکت برای فابریکهٔ نو خرج می‌کند' }, { en: 'Money a worker spends where they live', es: 'Dinero que un trabajador gasta donde vive', fa: 'پولی که کارگر همان جا که زندگی می‌کند خرج می‌کند' }], answer: 0,
+        choices: [{ en: 'Money a migrant sends back to family at home', es: 'Dinero que un migrante envía a su familia en casa', fa: 'پولی که مهاجر برای خانواده در وطن می‌فرستد' }, { en: 'Money one government gives to another', es: 'Dinero que un gobierno le da a otro', fa: 'پولی که یک دولت به دولت دیگر می‌دهد' }, { en: 'Money a company spends to build a new factory', es: 'Dinero que una empresa gasta para construir una fábrica', fa: 'پولی که یک شرکت برای ساختن فابریکهٔ نو خرج می‌کند' }, { en: 'Money a worker spends where they live', es: 'Dinero que un trabajador gasta donde vive', fa: 'پولی که کارگر همان جا که زندگی می‌کند خرج می‌کند' }], answer: 0,
         why: { en: 'A remittance is part of a worker\'s own pay, sent home to family.', es: 'Una remesa es parte del sueldo del trabajador, enviada a su familia.', fa: 'حواله بخشی از معاش خود کارگر است که برای خانواده فرستاده می‌شود.' } },
       { q: { en: 'Drought, floods and poor soil are which kind of cause of migration?', es: 'La sequía, las inundaciones y la tierra pobre son ¿qué tipo de causa de migración?', fa: 'خشک‌سالی، سیلاب و خاک ضعیف کدام نوع علت مهاجرت هستند؟' },
         choices: [{ en: 'Environmental', es: 'Ambiental', fa: 'محیطی' }, { en: 'Political', es: 'Política', fa: 'سیاسی' }, { en: 'Sociocultural', es: 'Sociocultural', fa: 'اجتماعی و فرهنگی' }, { en: 'Economic', es: 'Económica', fa: 'اقتصادی' }], answer: 0,
         why: { en: 'Environmental causes come from the land, water and weather.', es: 'Las causas ambientales vienen de la tierra, el agua y el clima.', fa: 'علت‌های محیطی از زمین، آب و هوا می‌آیند.' } },
       { q: { en: 'A town loses many young workers. What is likely to happen there?', es: 'Un pueblo pierde a muchos trabajadores jóvenes. ¿Qué es probable que pase allí?', fa: 'یک قریه بسیاری از کارگران جوانش را از دست می‌دهد. احتمالاً آنجا چه می‌شود؟' },
-        choices: [{ en: 'Jobs are harder to fill and the school gets smaller', es: 'Es más difícil llenar los trabajos y la escuela se achica', fa: 'پیدا کردن کارگر سخت‌تر می‌شود و مکتب کوچک‌تر می‌شود' }, { en: 'The town gets more crowded', es: 'El pueblo se llena más', fa: 'قریه پرتر می‌شود' }, { en: 'The farms hire more workers', es: 'Los campos contratan más trabajadores', fa: 'زمین‌ها کارگر بیشتر می‌گیرند' }, { en: 'The buses fill up with new people', es: 'Los buses se llenan de gente nueva', fa: 'بس‌ها پر از مردم نو می‌شوند' }], answer: 0,
+        choices: [{ en: 'Fewer workers, and a smaller school', es: 'Menos trabajadores y una escuela más chica', fa: 'کارگر کمتر و مکتب کوچک‌تر' }, { en: 'The town gets more crowded than before', es: 'El pueblo se llena más que antes', fa: 'قریه از قبل پرتر می‌شود' }, { en: 'The farms hire many more workers', es: 'Los campos contratan muchos más trabajadores', fa: 'زمین‌ها کارگران خیلی بیشتر می‌گیرند' }, { en: 'The buses fill up with new people', es: 'Los buses se llenan de gente nueva', fa: 'بس‌ها پر از مردم نو می‌شوند' }], answer: 0,
         why: { en: 'Farms may sit empty because fewer hands are left to work them.', es: 'Los campos pueden quedar vacíos porque quedan menos manos para trabajar.', fa: 'زمین‌ها شاید خالی بمانند چون دست‌های کمتری برای کار مانده است.' } },
       { q: { en: 'Many migrants from one small town live in the same city far away. What best explains that?', es: 'Muchos migrantes de un pueblo pequeño viven en la misma ciudad lejana. ¿Qué lo explica mejor?', fa: 'بسیاری از مهاجران یک قریهٔ کوچک در یک شهر دور زندگی می‌کنند. چه چیز این را بهتر توضیح می‌دهد؟' },
-        choices: [{ en: 'People tend to go where relatives and neighbors already went', es: 'La gente suele ir a donde ya fueron sus parientes y vecinos', fa: 'مردم اکثراً جایی می‌روند که خویشاوندان و همسایه‌ها قبلاً رفته‌اند' }, { en: 'Buses go to only one city', es: 'Los buses van a una sola ciudad', fa: 'بس‌ها فقط به یک شهر می‌روند' }, { en: 'Every city has the same jobs', es: 'Todas las ciudades tienen los mismos trabajos', fa: 'همهٔ شهرها کارهای یکسان دارند' }, { en: 'Sending money costs the same everywhere', es: 'Enviar dinero cuesta lo mismo en todas partes', fa: 'فرستادن پول در همه جا یک قیمت دارد' }], answer: 0,
+        choices: [{ en: 'People go where their relatives already went', es: 'La gente va a donde ya fueron sus parientes', fa: 'مردم جایی می‌روند که خویشاوندانشان رفته‌اند' }, { en: 'Buses from that small town go to only one city', es: 'Los buses de ese pueblo van a una sola ciudad', fa: 'بس‌های آن قریهٔ کوچک فقط به یک شهر می‌روند' }, { en: 'Every city has the same jobs', es: 'Todas las ciudades tienen los mismos trabajos', fa: 'همهٔ شهرها کارهای یکسان دارند' }, { en: 'Sending money costs the same everywhere', es: 'Enviar dinero cuesta lo mismo en todas partes', fa: 'فرستادن پول در همه جا یک قیمت دارد' }], answer: 0,
         why: { en: 'Links between relatives and neighbors form a network. Networks shape where people settle.', es: 'Los lazos entre parientes y vecinos forman una red. Las redes deciden dónde se queda la gente.', fa: 'پیوند میان خویشاوندان و همسایه‌ها یک شبکه می‌سازد. شبکه‌ها جای ماندن مردم را شکل می‌دهند.' } },
       { q: { en: 'What does remittance money pay for first?', es: '¿Qué paga primero el dinero de las remesas?', fa: 'پول حواله اول خرج چه می‌شود؟' },
-        choices: [{ en: 'Food, rent, school fees and medicine', es: 'Comida, renta, la escuela y medicinas', fa: 'نان، کرایهٔ خانه، فیس مکتب و دوا' }, { en: 'Tools for a new business', es: 'Herramientas para un negocio nuevo', fa: 'افزار برای یک کار نو' }, { en: 'An extra room on the house', es: 'Un cuarto extra en la casa', fa: 'یک اتاق اضافه برای خانه' }, { en: 'Savings for a trip', es: 'Ahorros para un viaje', fa: 'پس‌انداز برای سفر' }], answer: 0,
+        choices: [{ en: 'Food, rent, school fees and medicine', es: 'Comida, renta, la escuela y medicinas', fa: 'نان، کرایهٔ خانه، فیس مکتب و دوا' }, { en: 'Tools to start a new family business', es: 'Herramientas para abrir un negocio familiar', fa: 'افزار برای شروع یک کار نو خانوادگی' }, { en: 'An extra room built onto the house', es: 'Un cuarto extra construido en la casa', fa: 'یک اتاق اضافه که به خانه ساخته می‌شود' }, { en: 'Savings for a trip', es: 'Ahorros para un viaje', fa: 'پس‌انداز برای سفر' }], answer: 0,
         why: { en: 'Everyday needs come first. Tools and extra rooms come later, from what is left.', es: 'Primero van las necesidades diarias. Las herramientas y los cuartos vienen después, con lo que sobra.', fa: 'اول نیازهای روزانه است. افزار و اتاق اضافه بعداً از پولی که می‌ماند می‌آیند.' } },
       { q: { en: 'Why are remittances different from charity?', es: '¿Por qué las remesas son diferentes de la caridad?', fa: 'چرا حواله با خیرات فرق دارد؟' },
-        choices: [{ en: 'The money is earned by work and then shared', es: 'El dinero se gana trabajando y luego se comparte', fa: 'پول با کار به دست می‌آید و بعد شریک می‌شود' }, { en: 'The money is sent by governments', es: 'El dinero lo envían los gobiernos', fa: 'پول را دولت‌ها می‌فرستند' }, { en: 'The money is always very small', es: 'El dinero siempre es muy poco', fa: 'پول همیشه خیلی کم است' }, { en: 'The money never leaves the city', es: 'El dinero nunca sale de la ciudad', fa: 'پول هیچ وقت از شهر بیرون نمی‌رود' }], answer: 0,
+        choices: [{ en: 'The money is earned by work and then shared', es: 'El dinero se gana trabajando y luego se comparte', fa: 'پول با کار به دست می‌آید و بعد شریک می‌شود' }, { en: 'The money is sent only by governments', es: 'El dinero lo envían solo los gobiernos', fa: 'پول را فقط دولت‌ها می‌فرستند' }, { en: 'The money is always too small to matter', es: 'El dinero siempre es demasiado poco para importar', fa: 'پول همیشه آن‌قدر کم است که مهم نیست' }, { en: 'The money never leaves the city it is earned in', es: 'El dinero nunca sale de la ciudad donde se gana', fa: 'پول هیچ وقت از شهری که در آن به دست آمده بیرون نمی‌رود' }], answer: 0,
         why: { en: 'A remittance is wages. A worker earns it, then chooses to share it with family.', es: 'Una remesa es sueldo. El trabajador lo gana y decide compartirlo con su familia.', fa: 'حواله معاش است. کارگر آن را به دست می‌آورد و با خانواده شریک می‌کند.' } }
     ]
   },

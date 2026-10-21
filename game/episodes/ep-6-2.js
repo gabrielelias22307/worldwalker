@@ -9,9 +9,8 @@ window.EPISODE = {
   title: { en: 'Southeast Asia: Islands and the Ring of Fire', es: 'Sudeste asiático: islas y el Cinturón de Fuego', fa: 'جنوب شرق آسیا: جزیره‌ها و حلقهٔ آتش' },
   place: { en: 'The Mekong and the Islands', es: 'El Mekong y las islas', fa: 'میکانگ و جزیره‌ها' },
   intro: [
-    { en: 'Christopher: "The Quake Grump is shaking the islands apart! Talk to the boat seller, the rice farmer and the volcano watcher. Then fix the compass stone on the little island."',
-      es: 'Christopher: "¡El Gruñón Temblor está sacudiendo las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán. Luego arregla la piedra de la brújula en la islita."',
-      fa: 'کریستوفر: «غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن. بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.»' }
+    { en: 'The Quake Grump shakes the islands! Meet the boat seller, rice farmer and volcano watcher.', es: '¡El Gruñón Temblor sacude las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán.', fa: 'غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن.' },
+    { en: 'Then fix the compass stone on the little island.', es: 'Luego arregla la piedra de la brújula en la islita.', fa: 'بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.' }
   ],
 
   /* 32 x 22 = 2 x 2 screens.
@@ -67,10 +66,10 @@ window.EPISODE = {
   finds: [
     { clueAt: [2, 9], at: [6, 8], decor: 'drum',
       clue: { en: 'From this note, walk 1 step north, then 4 steps east. You will reach the bank of the Mekong River.', es: 'Desde esta nota, camina 1 paso al norte y luego 4 pasos al este. Llegarás a la orilla del río Mekong.', fa: 'از این یادداشت، ۱ قدم به شمال برو، بعد ۴ قدم به شرق. به کنار دریای میکانگ می‌رسی.' },
-      text: { en: 'You followed the compass to the Mekong! North is up and east is to the right. More than 2,000 years ago, people in what is now Vietnam made big bronze drums. A small drum was hidden in the grass.', es: '¡Seguiste la brújula hasta el Mekong! El norte está arriba y el este a la derecha. Hace más de 2,000 años, la gente de lo que hoy es Vietnam hacía grandes tambores de bronce. Un tambor pequeño estaba escondido en el pasto.', fa: 'تو قطب‌نما را تا میکانگ دنبال کردی! شمال بالا و شرق طرف راست است. بیش از ۲۰۰۰ سال پیش، مردم در جایی که امروز ویتنام است دهل‌های بزرگ برنجی می‌ساختند. یک دهل کوچک در سبزه پنهان بود.' } },
+      text: { en: 'You followed the compass! Over 2,000 years ago, people in Vietnam made bronze drums like this one.', es: '¡Seguiste la brújula! Hace más de 2,000 años, la gente de Vietnam hacía tambores de bronce como este.', fa: 'تو قطب‌نما را دنبال کردی! بیش از ۲۰۰۰ سال پیش، مردم ویتنام دهل‌های برنجی مثل این می‌ساختند.' } },
     { clueAt: [2, 12], at: [6, 15], decor: 'gem',
-      clue: { en: 'Farmers grow rice on terraces on the slopes of the volcano. Find the volcano on this island. Stand on the terrace square straight south of its peak, right below the mountain.', es: 'Los agricultores cultivan arroz en terrazas en las laderas del volcán. Busca el volcán de esta isla. Párate en el cuadro de terraza que está justo al sur de su cima, debajo de la montaña.', fa: 'دهقانان روی زمین‌های زینه‌ای در دامنهٔ آتشفشان برنج می‌کارند. آتشفشان این جزیره را پیدا کن. روی خانهٔ زینه‌ای بایست که درست جنوبِ قلهٔ آن، زیر کوه است.' },
-      text: { en: 'You found the terrace right below the peak! Ash from volcanoes makes the soil rich, so farmers on Java grow rice on the slopes, step by step. A shiny stone from the volcano was in the rice.', es: '¡Encontraste la terraza justo debajo de la cima! La ceniza de los volcanes hace que la tierra sea rica, por eso los agricultores de Java cultivan arroz en las laderas, escalón por escalón. Una piedra brillante del volcán estaba en el arroz.', fa: 'تو زمین زینه‌ای درست زیر قله را پیدا کردی! خاکستر آتشفشان خاک را حاصل‌خیز می‌کند، پس دهقانان جاوه زینه به زینه در دامنه‌ها برنج می‌کارند. یک سنگ براق آتشفشان در برنج بود.' } }
+      clue: { en: 'Farmers grow rice on the volcano\'s slopes. Stand on the terrace square straight south of its peak.', es: 'Los agricultores cultivan arroz en las laderas del volcán. Párate en el cuadro de terraza justo al sur de su cima.', fa: 'دهقانان در دامنهٔ آتشفشان برنج می‌کارند. روی خانهٔ زینه‌ای بایست که درست جنوبِ قلهٔ آن است.' },
+      text: { en: 'Volcanic ash makes rich soil, so Java\'s farmers grow rice on the slopes. A shiny volcano stone was here!', es: 'La ceniza volcánica da suelo rico, por eso los agricultores de Java cultivan arroz en las laderas. ¡Aquí había una piedra brillante del volcán!', fa: 'خاکستر آتشفشان خاک پربار می‌سازد، پس دهقانان جاوه در دامنه‌ها برنج می‌کارند. یک سنگ براق آتشفشان این‌جا بود!' } }
   ],
   // only the canoe (Episode 2.3) reaches the tiny island in the northeast sea
   secret: { tool: 'canoe', at: [28, 2],
@@ -95,15 +94,10 @@ window.EPISODE = {
       role: { en: 'Boat seller on the Mekong', es: 'Vendedora en bote del Mekong', fa: 'فروشندهٔ قایقی در میکانگ' },
       look: { skin: 1, hair: '#14100c', shirt: '#d8c040', pants: '#2a4a3a' },
       lines: [
-        { en: 'Xin chào! I sell fruit from my boat on the Mekong River. The Mekong is the longest river in Mainland Southeast Asia. It starts in the mountains of China and reaches the sea in Vietnam.',
-          es: '¡Xin chào! Vendo fruta desde mi bote en el río Mekong. El Mekong es el río más largo del sudeste asiático continental. Nace en las montañas de China y llega al mar en Vietnam.',
-          fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم. میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از کوه‌های چین شروع می‌شود و در ویتنام به بحر می‌رسد.' },
-        { en: 'Southeast Asia has two parts. [[mainland southeast asia|Mainland Southeast Asia]] is joined to the rest of Asia. It has five countries: Myanmar, Thailand, Laos, Cambodia and Vietnam.',
-          es: 'El sudeste asiático tiene dos partes. El [[mainland southeast asia|sudeste asiático continental]] está unido al resto de Asia. Tiene cinco países: Myanmar, Tailandia, Laos, Camboya y Vietnam.',
-          fa: 'جنوب شرق آسیا دو بخش دارد. [[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به باقی آسیا وصل است. پنج کشور دارد: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' },
-        { en: 'The other part is out in the sea: [[maritime southeast asia|Island (Maritime) Southeast Asia]]. Walk east on the wooden walkway, or south over the long bridge. You will see how much water lies between the islands!',
-          es: 'La otra parte está en el mar: el [[maritime southeast asia|sudeste asiático insular (marítimo)]]. Camina al este por la pasarela de madera o al sur por el puente largo. ¡Verás cuánta agua hay entre las islas!',
-          fa: 'بخش دیگر در بحر است: [[maritime southeast asia|جنوب شرق آسیای جزیره‌ای (بحری)]]. از راه چوبی به طرف شرق یا از پل دراز به طرف جنوب برو. می‌بینی میان جزیره‌ها چقدر آب است!' }
+        { en: 'Xin chào! I sell fruit from my boat on the Mekong River.', es: '¡Xin chào! Vendo fruta desde mi bote en el río Mekong.', fa: 'سین چاو! من از قایقم در دریای میکانگ میوه می‌فروشم.' },
+        { en: 'It is the longest river in Mainland Southeast Asia. It runs from China to Vietnam.', es: 'Es el río más largo del sudeste asiático continental. Va desde China hasta Vietnam.', fa: 'میکانگ درازترین دریای خشکهٔ جنوب شرق آسیا است. از چین تا ویتنام می‌رود.' },
+        { en: '[[mainland southeast asia|Mainland Southeast Asia]] is joined to Asia: Myanmar, Thailand, Laos, Cambodia and Vietnam.', es: 'El [[mainland southeast asia|sudeste asiático continental]] está unido a Asia: Myanmar, Tailandia, Laos, Camboya y Vietnam.', fa: '[[mainland southeast asia|خشکهٔ جنوب شرق آسیا]] به آسیا وصل است: میانمار، تایلند، لائوس، کمبودیا و ویتنام.' },
+        { en: '[[maritime southeast asia|Maritime (Island) Southeast Asia]] is in the sea. Walk east, or cross the bridge south!', es: 'El [[maritime southeast asia|sudeste asiático marítimo (insular)]] está en el mar. ¡Camina al este o cruza el puente al sur!', fa: '[[maritime southeast asia|جنوب شرق آسیای بحری (جزیره‌ای)]] در بحر است. به طرف شرق برو، یا از پل به طرف جنوب!' }
       ],
       ask: {
         stat: 'loc',
@@ -125,25 +119,20 @@ window.EPISODE = {
       remember: { ep: '6.1', t: { en: 'Hello! My friend Lakshmi grows rice by the Ganges. She wrote to me that you found Nani Kamala\'s rain gauge in the river. Now the farmers know when the monsoon rain comes. Thank you!', es: '¡Hola! Mi amiga Lakshmi cultiva arroz junto al Ganges. Me escribió que encontraste el pluviómetro de la abuela Kamala en el río. Ahora los agricultores saben cuándo llega la lluvia del monzón. ¡Gracias!', fa: 'سلام! دوستم لکشمی کنار گنگا برنج می‌کارد. او برایم نوشت که تو باران‌سنج مادرکلان کمالا را در دریا پیدا کردی. حالا دهقانان می‌دانند باران موسمی کی می‌آید. تشکر!' } },
       look: { skin: 3, hair: '#120e0a', shirt: '#3a9a5a', pants: '#6a3a2a', robe: true },
       lines: [
-        { en: 'Selamat datang! Welcome to Java, one island of Indonesia. Indonesia has more than seventeen thousand islands! A big group of islands like this is an [[archipelago|archipelago]].',
-          es: '¡Selamat datang! Bienvenido a Java, una isla de Indonesia. ¡Indonesia tiene más de diecisiete mil islas! Un grupo grande de islas como este es un [[archipelago|archipiélago]].',
-          fa: 'سلامت داتانگ! به جاوه، یکی از جزیره‌های اندونیزیا، خوش آمدی. اندونیزیا بیش از هفده هزار جزیره دارد! گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.' },
-        { en: 'See the volcano above my farm? Its ash fell on this land long ago. Over many years, ash breaks down into [[fertile|fertile]] soil. It is full of the minerals plants need.',
-          es: '¿Ves el volcán arriba de mi granja? Su ceniza cayó sobre esta tierra hace mucho. Con muchos años, la ceniza se convierte en suelo [[fertile|fértil]]. Está lleno de los minerales que necesitan las plantas.',
-          fa: 'آتشفشان بالای کشتزار مرا می‌بینی؟ خاکسترش مدت‌ها پیش روی این زمین ریخت. در طول سال‌ها، خاکستر به خاک [[fertile|حاصلخیز]] تبدیل می‌شود. پر از موادی است که گیاه لازم دارد.' },
-        { en: 'We cut [[terrace|terraces]] into the steep slopes, like giant steps. Each step holds water, so rice can grow on the mountain. This rich soil helps feed one of the most crowded places on Earth.',
-          es: 'Cortamos [[terrace|terrazas]] en las laderas empinadas, como escalones gigantes. Cada escalón guarda agua, así que el arroz puede crecer en la montaña. Este suelo rico ayuda a alimentar a uno de los lugares más poblados del planeta.',
-          fa: 'ما در دامنه‌های سرازیر [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ. هر زینه آب را نگه می‌دارد، پس برنج روی کوه می‌روید. این خاک پربار کمک می‌کند یکی از پرجمعیت‌ترین جاهای زمین نان بخورد.' }
+        { en: 'Selamat datang! Welcome to Java, an island of Indonesia.', es: '¡Selamat datang! Bienvenido a Java, una isla de Indonesia.', fa: 'سلامت داتانگ! به جاوه، یک جزیرهٔ اندونیزیا، خوش آمدی.' },
+        { en: 'Indonesia has more than 17,000 islands. A big group like this is an [[archipelago|archipelago]].', es: 'Indonesia tiene más de 17,000 islas. Un grupo grande así es un [[archipelago|archipiélago]].', fa: 'اندونیزیا بیش از ۱۷۰۰۰ جزیره دارد. گروه بزرگ جزیره‌ها مثل این را [[archipelago|مجمع‌الجزایر]] می‌گویند.' },
+        { en: 'Ash from the volcano above my farm makes [[fertile|fertile]] soil, full of minerals for plants.', es: 'La ceniza del volcán arriba de mi granja hace un suelo [[fertile|fértil]], lleno de minerales para las plantas.', fa: 'خاکستر آتشفشان بالای کشتزارم خاک را [[fertile|حاصلخیز]] می‌کند، پر از موادی که گیاه لازم دارد.' },
+        { en: 'We cut [[terrace|terraces]], like giant steps that hold water. Rice grows here and feeds millions.', es: 'Cortamos [[terrace|terrazas]], como escalones gigantes que guardan agua. Aquí crece arroz que alimenta a millones.', fa: 'ما [[terrace|زمین‌های زینه‌ای]] می‌سازیم، مثل زینه‌های بزرگ که آب را نگه می‌دارند. برنج این‌جا میلیون‌ها نفر را نان می‌دهد.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Java sits on the Ring of Fire, and it is very crowded. Why do so many people farm there?', es: 'Java está en el Cinturón de Fuego y tiene muchísima gente. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه روی حلقهٔ آتش است و بسیار پرجمعیت است. چرا این‌قدر مردم آن‌جا کشاورزی می‌کنند؟' },
+        q: { en: 'Java is on the Ring of Fire, and very crowded. Why do so many people farm there?', es: 'Java está en el Cinturón de Fuego y tiene muchísima gente. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه روی حلقهٔ آتش است و بسیار پرجمعیت است. چرا این‌قدر مردم آن‌جا کشت می‌کنند؟' },
         choices: [
-          { ok: true, t: { en: 'Volcanic ash makes the soil rich, so farms grow a lot of food', es: 'La ceniza volcánica hace rico el suelo, así que las granjas producen mucha comida', fa: 'خاکستر آتشفشان خاک را پربار می‌کند، پس کشتزارها غذای زیاد می‌دهند' },
+          { ok: true, t: { en: 'Volcanic ash makes the soil rich for growing food', es: 'La ceniza volcánica hace el suelo rico para cultivar comida', fa: 'خاکستر آتشفشان خاک را برای کشت غذا پربار می‌کند' },
             why: { en: 'Right. People weigh the danger against the good soil.', es: 'Correcto. La gente compara el peligro con el buen suelo.', fa: 'درست است. مردم خطر را با خاک خوب مقایسه می‌کنند.' } },
           { t: { en: 'The island has no volcanoes and no earthquakes', es: 'La isla no tiene volcanes ni terremotos', fa: 'جزیره هیچ آتشفشان و زلزله ندارد' },
             why: { en: 'Java has many volcanoes. It sits right on the Ring of Fire.', es: 'Java tiene muchos volcanes. Está justo en el Cinturón de Fuego.', fa: 'جاوه آتشفشان‌های زیادی دارد. درست روی حلقهٔ آتش است.' } },
-          { t: { en: 'Volcano soil is poor, so land is cheap', es: 'El suelo del volcán es pobre, así que la tierra es barata', fa: 'خاک آتشفشان ضعیف است، پس زمین ارزان است' },
+          { t: { en: 'Volcano soil is poor, so the land there is very cheap', es: 'El suelo del volcán es pobre, así que la tierra ahí es muy barata', fa: 'خاک آتشفشان ضعیف است، پس زمین آن‌جا بسیار ارزان است' },
             why: { en: 'It is the opposite: volcanic soil is very fertile.', es: 'Es al revés: el suelo volcánico es muy fértil.', fa: 'برعکس است: خاک آتشفشانی بسیار حاصلخیز است.' } }
         ]
       }
@@ -154,15 +143,10 @@ window.EPISODE = {
       role: { en: 'Volcano watcher in the Philippines', es: 'Vigilante de volcanes en Filipinas', fa: 'نگهبان آتشفشان در فیلیپین' },
       look: { skin: 2, hair: '#1c1612', shirt: '#e05a2a', pants: '#24304a' },
       lines: [
-        { en: 'Mabuhay! I watch this volcano for a living. The Philippines has more than seven thousand islands. We sit on the [[ring of fire|Ring of Fire]], a band around the edge of the Pacific Ocean.',
-          es: '¡Mabuhay! Mi trabajo es vigilar este volcán. Filipinas tiene más de siete mil islas. Estamos en el [[ring of fire|Cinturón de Fuego]], una franja alrededor del borde del océano Pacífico.',
-          fa: 'مابوهای! کار من نگهبانی همین آتشفشان است. فیلیپین بیش از هفت هزار جزیره دارد. ما روی [[ring of fire|حلقهٔ آتش]] هستیم، کمربندی دور کنارهٔ اقیانوس آرام.' },
-        { en: 'The Earth\'s outer shell is broken into huge [[plate|plates]], like a cracked eggshell. Along the Ring of Fire, plates meet and grind. That shakes the ground with earthquakes and lets melted rock rise up into volcanoes.',
-          es: 'La capa exterior de la Tierra está rota en enormes [[plate|placas]], como una cáscara de huevo rajada. En el Cinturón de Fuego, las placas se encuentran y se rozan. Eso sacude el suelo con terremotos y deja subir roca derretida a los volcanes.',
-          fa: 'پوستهٔ بیرونی زمین به [[plate|صفحه‌های]] بزرگ شکسته است، مثل پوست تخم‌مرغ کفیده. در حلقهٔ آتش، صفحه‌ها به هم می‌رسند و به هم ساییده می‌شوند. این کار زمین را با زلزله تکان می‌دهد و سنگ ذوب‌شده را به آتشفشان‌ها بالا می‌آورد.' },
-        { en: 'We cannot stop the danger, but we can make it smaller. Sensors watch the volcano day and night. Warnings move people out before an eruption, and drills teach children where to go.',
-          es: 'No podemos detener el peligro, pero sí hacerlo más pequeño. Unos sensores vigilan el volcán día y noche. Las alertas sacan a la gente antes de una erupción, y los simulacros enseñan a los niños adónde ir.',
-          fa: 'ما نمی‌توانیم خطر را متوقف کنیم، اما می‌توانیم آن را کوچک‌تر کنیم. دستگاه‌ها شب و روز آتشفشان را می‌پایند. هشدارها مردم را پیش از فوران بیرون می‌برند و تمرین‌ها به کودکان یاد می‌دهند کجا بروند.' }
+        { en: 'Mabuhay! I watch this volcano. The Philippines has more than 7,000 islands.', es: '¡Mabuhay! Yo vigilo este volcán. Filipinas tiene más de 7,000 islas.', fa: 'مابوهای! من این آتشفشان را نگهبانی می‌کنم. فیلیپین بیش از ۷۰۰۰ جزیره دارد.' },
+        { en: 'We are on the [[ring of fire|Ring of Fire]]. It circles the edge of the Pacific Ocean.', es: 'Estamos en el [[ring of fire|Cinturón de Fuego]]. Rodea el borde del océano Pacífico.', fa: 'ما روی [[ring of fire|حلقهٔ آتش]] هستیم. این حلقه دور کنارهٔ اقیانوس آرام است.' },
+        { en: 'Earth\'s shell is broken into huge [[plate|plates]]. Where they grind, we get earthquakes and volcanoes.', es: 'La capa de la Tierra está rota en enormes [[plate|placas]]. Donde se rozan, hay terremotos y volcanes.', fa: 'پوستهٔ زمین به [[plate|صفحه‌های]] بزرگ شکسته است. جایی که به هم ساییده می‌شوند، زلزله و آتشفشان است.' },
+        { en: 'Sensors watch day and night. Before an eruption, warnings and drills show where to go.', es: 'Unos sensores vigilan día y noche. Antes de una erupción, las alertas y los simulacros muestran adónde ir.', fa: 'دستگاه‌ها شب و روز می‌پایند. پیش از فوران، هشدارها و تمرین‌ها نشان می‌دهند کجا بروند.' }
       ],
       ask: {
         stat: 'pla',
@@ -180,9 +164,7 @@ window.EPISODE = {
   ],
 
   signs: [
-    { x: 12, y: 8, text: { en: 'SEA ROUTE · Ships carry rice, rubber and palm oil from Southeast Asia. Many pass through the Strait of Malacca, a narrow sea path near Singapore that links the Indian Ocean and the Pacific Ocean.',
-      es: 'RUTA DEL MAR · Los barcos llevan arroz, caucho y aceite de palma del sudeste asiático. Muchos pasan por el estrecho de Malaca, un paso de mar angosto cerca de Singapur que une el océano Índico y el océano Pacífico.',
-      fa: 'راه بحری · کشتی‌ها برنج، رابر و روغن نخل را از جنوب شرق آسیا می‌برند. بسیاری از تنگهٔ مالاکا می‌گذرند، یک راه باریک بحری نزدیک سنگاپور که اقیانوس هند را به اقیانوس آرام وصل می‌کند.' } },
+    { x: 12, y: 8, text: { en: 'SEA ROUTE · Ships carry rice, rubber and palm oil through the Strait of Malacca, between the Indian and Pacific Oceans.', es: 'RUTA DEL MAR · Los barcos llevan arroz, caucho y aceite de palma por el estrecho de Malaca, entre el océano Índico y el Pacífico.', fa: 'راه بحری · کشتی‌ها برنج، رابر و روغن نخل را از تنگهٔ مالاکا، میان اقیانوس هند و اقیانوس آرام، می‌برند.' } },
     { x: 24, y: 18, text: { en: 'VOLCANO SAFETY · Green = calm. Yellow = watch closely. Red = leave now. Know your way out, and practice it with your family.',
       es: 'SEGURIDAD DEL VOLCÁN · Verde = calma. Amarillo = vigilar de cerca. Rojo = salir ya. Conoce tu camino de salida y practícalo con tu familia.',
       fa: 'ایمنی آتشفشان · سبز = آرام. زرد = با دقت بپا. سرخ = همین حالا برو. راه بیرون رفتن خود را بدان و با خانواده‌ات تمرین کن.' } }
@@ -198,19 +180,13 @@ window.EPISODE = {
       role: { en: 'Cook on the little island', es: 'Cocinera de la islita', fa: 'آشپز جزیرهٔ کوچک' },
       look: { skin: 4, hair: '#16100c', shirt: '#e0607a', pants: '#2a3a5a', style: 'bun' },
       lines: [
-        { en: 'Welcome to our little island! We have lots of fish and coconuts here. But look: only sand and palm trees. There is no flat, wet land to grow rice.',
-          es: '¡Bienvenido a nuestra islita! Aquí tenemos mucho pescado y muchos cocos. Pero mira: solo arena y palmeras. No hay tierra plana y húmeda para sembrar arroz.',
-          fa: 'به جزیرهٔ کوچک ما خوش آمدی! این‌جا ماهی و نارگیل زیاد داریم. اما ببین: فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای کشت برنج نیست.' },
-        { en: 'The Quake Grump sank our rice boat, and the festival is soon! Lola Nena farms on the island to the south. Take the long bridge south and ask her.',
-          es: '¡El Gruñón Temblor hundió nuestro bote de arroz, y la fiesta es pronto! Lola Nena cultiva en la isla del sur. Toma el puente largo hacia el sur y pregúntale.',
-          fa: 'غرغروی زلزله قایق برنج ما را غرق کرد و جشن نزدیک است! لولا ننا در جزیرهٔ جنوبی کشت می‌کند. از پل دراز به طرف جنوب برو و از او بپرس.' }
+        { en: 'Welcome to our little island! We have lots of fish and coconuts.', es: '¡Bienvenido a nuestra islita! Tenemos mucho pescado y muchos cocos.', fa: 'به جزیرهٔ کوچک ما خوش آمدی! ما ماهی و نارگیل زیاد داریم.' },
+        { en: 'But there is only sand and palm trees. No flat, wet land for rice.', es: 'Pero solo hay arena y palmeras. No hay tierra plana y húmeda para el arroz.', fa: 'اما فقط ریگ و درخت نخل است. هیچ زمین هموار و تر برای برنج نیست.' },
+        { en: 'The Quake Grump sank our rice boat, and the festival is soon!', es: '¡El Gruñón Temblor hundió nuestro bote de arroz, y la fiesta es pronto!', fa: 'غرغروی زلزله قایق برنج ما را غرق کرد و جشن نزدیک است!' },
+        { en: 'Ask Lola Nena, who farms the island to the south. Take the long bridge!', es: 'Pregúntale a Lola Nena, que cultiva en la isla del sur. ¡Toma el puente largo!', fa: 'از لولا ننا بپرس که در جزیرهٔ جنوبی کشت می‌کند. از پل دراز برو!' }
       ],
-      wait: { en: 'Lola Nena is on the island to the south, up on the rice [[terrace|terraces]]. Take the long bridge south.',
-        es: 'Lola Nena está en la isla del sur, arriba en las [[terrace|terrazas]] de arroz. Toma el puente largo hacia el sur.',
-        fa: 'لولا ننا در جزیرهٔ جنوبی، بالای [[terrace|زمین‌های زینه‌ای]] برنج است. از پل دراز به طرف جنوب برو.' },
-      thanks: { en: 'Rice for the festival! Thank you! Our island has plenty of fish. The mainland has plenty of rice. Trade lets each place share what it has extra.',
-        es: '¡Arroz para la fiesta! ¡Gracias! Nuestra isla tiene mucho pescado. El continente tiene mucho arroz. El comercio deja que cada lugar comparta lo que le sobra.',
-        fa: 'برنج برای جشن! تشکر! جزیرهٔ ما ماهی زیاد دارد. خشکه برنج زیاد دارد. تجارت به هر جا کمک می‌کند آنچه را اضافه دارد با دیگران شریک کند.' }
+      wait: { en: 'Lola Nena is on the rice [[terrace|terraces]], south across the long bridge.', es: 'Lola Nena está en las [[terrace|terrazas]] de arroz, al sur, cruzando el puente largo.', fa: 'لولا ننا روی [[terrace|زمین‌های زینه‌ای]] برنج است، جنوب، آن طرف پل دراز.' },
+      thanks: { en: 'Thank you! We have extra fish, the mainland has extra rice. Trade lets us share.', es: '¡Gracias! Nosotros tenemos pescado de sobra y el continente tiene arroz de sobra. El comercio nos deja compartir.', fa: 'تشکر! ما ماهی اضافه داریم، خشکه برنج اضافه دارد. تجارت به ما کمک می‌کند شریک کنیم.' }
     },
     contact: {
       x: 26, y: 15,
@@ -218,12 +194,9 @@ window.EPISODE = {
       role: { en: 'Rice terrace farmer', es: 'Agricultora de terrazas de arroz', fa: 'دهقان زمین‌های زینه‌ای برنج' },
       look: { skin: 2, hair: '#cfc8bd', shirt: '#2a8ac0', pants: '#5a3a2a', style: 'bun', hat: '#d8b060' },
       lines: [
-        { en: 'We grow rice on these [[terrace|terraces]]. But the steps on the mountain are small. They grow just enough rice for our own village.',
-          es: 'Cultivamos arroz en estas [[terrace|terrazas]]. Pero los escalones de la montaña son pequeños. Dan solo el arroz justo para nuestro pueblo.',
-          fa: 'ما در این [[terrace|زمین‌های زینه‌ای]] برنج می‌کاریم. اما زینه‌های کوه کوچک هستند. فقط برای ده خود ما برنج کافی می‌دهند.' },
-        { en: 'Big, flat river plains grow much more. Go to the rice trader by the Mekong, on the [[mainland southeast asia|mainland]] in the north-west. Offer what the little island has plenty of.',
-          es: 'Las llanuras grandes y planas de los ríos dan mucho más. Ve con el comerciante de arroz junto al Mekong, en el [[mainland southeast asia|continente]], al noroeste. Ofrécele lo que la islita tiene de sobra.',
-          fa: 'دشت‌های بزرگ و هموار کنار دریا خیلی بیشتر برنج می‌دهند. نزد تاجر برنج کنار میکانگ برو، در [[mainland southeast asia|خشکه]] در شمال غرب. چیزی را پیشنهاد کن که جزیرهٔ کوچک زیاد دارد.' }
+        { en: 'We grow rice on these [[terrace|terraces]]. But the steps on the mountain are small.', es: 'Cultivamos arroz en estas [[terrace|terrazas]]. Pero los escalones de la montaña son pequeños.', fa: 'ما در این [[terrace|زمین‌های زینه‌ای]] برنج می‌کاریم. اما زینه‌های کوه کوچک هستند.' },
+        { en: 'They grow just enough rice for our village. Flat river plains grow much more.', es: 'Dan solo el arroz justo para nuestro pueblo. Las llanuras planas de los ríos dan mucho más.', fa: 'فقط برای قریهٔ ما برنج کافی می‌دهند. دشت‌های هموار کنار دریا خیلی بیشتر می‌دهند.' },
+        { en: 'Find the Mekong rice trader on the [[mainland southeast asia|mainland]], north-west. Offer what your island has extra.', es: 'Busca al comerciante de arroz del Mekong en el [[mainland southeast asia|continente]], al noroeste. Ofrécele lo que le sobra a tu isla.', fa: 'تاجر برنج میکانگ را در [[mainland southeast asia|خشکه]]، شمال غرب، پیدا کن. چیزی را پیشنهاد کن که جزیره‌ات اضافه دارد.' }
       ]
     },
     action: {
@@ -234,9 +207,8 @@ window.EPISODE = {
         role: { en: 'Rice trader on the Mekong', es: 'Comerciante de arroz del Mekong', fa: 'تاجر برنج میکانگ' },
         look: { skin: 1, hair: '#2a2420', shirt: '#3a6a3a', pants: '#2a2a2a', style: 'short', hat: '#d8c890' },
         lines: [
-          { en: 'The Mekong floods these flat fields every year. It leaves rich mud behind. So we grow more rice than we can eat!',
-            es: 'El Mekong inunda estos campos planos cada año. Deja lodo rico. ¡Por eso cultivamos más arroz del que podemos comer!',
-            fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد. به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
+          { en: 'The Mekong floods these flat fields every year. It leaves rich mud behind.', es: 'El Mekong inunda estos campos planos cada año. Deja lodo rico.', fa: 'میکانگ هر سال این کشتزارهای هموار را زیر آب می‌برد. گِل پربار به جا می‌گذارد.' },
+          { en: 'So we grow more rice than we can eat!', es: '¡Por eso cultivamos más arroz del que podemos comer!', fa: 'به همین خاطر بیشتر از آنچه می‌خوریم برنج می‌کاریم!' }
         ]
       },
       q: { en: 'I will give you a big sack of rice. What will you bring me for it?', es: 'Te daré un saco grande de arroz. ¿Qué me traes a cambio?', fa: 'یک بوجی کلان برنج به تو می‌دهم. در عوض آن چه برایم می‌آوری؟' },
@@ -306,16 +278,16 @@ window.EPISODE = {
         choices: [{ en: 'Soil full of the minerals plants need', es: 'Suelo lleno de los minerales que necesitan las plantas', fa: 'خاکی پر از موادی که گیاه لازم دارد' }, { en: 'Soil that is very dry and full of sand', es: 'Suelo muy seco y lleno de arena', fa: 'خاکی که بسیار خشک و پر از ریگ است' }, { en: 'Soil washed away by floods', es: 'Suelo que se llevaron las inundaciones', fa: 'خاکی که سیلاب برده است' }, { en: 'Soil that stays frozen most of the year', es: 'Suelo que está congelado casi todo el año', fa: 'خاکی که بیشتر سال یخ‌زده است' }], answer: 0,
         why: { en: '[[fertile|Fertile]] soil helps crops grow well. Volcanic ash makes soil fertile.', es: 'El suelo [[fertile|fértil]] ayuda a que los cultivos crezcan bien. La ceniza volcánica lo hace fértil.', fa: 'خاک [[fertile|حاصلخیز]] به خوب روییدن کشت کمک می‌کند. خاکستر آتشفشان خاک را حاصلخیز می‌کند.' } },
       { q: { en: 'Java is very crowded and full of volcanoes. Why do so many people farm there?', es: 'Java tiene mucha gente y muchos volcanes. ¿Por qué tanta gente cultiva ahí?', fa: 'جاوه بسیار پرجمعیت و پر از آتشفشان است. چرا این‌قدر مردم آن‌جا کشاورزی می‌کنند؟' },
-        choices: [{ en: 'Volcanic ash makes the soil rich, so farms grow a great deal of food', es: 'La ceniza volcánica hace rico el suelo, así que las granjas producen muchísima comida', fa: 'خاکستر آتشفشان خاک را پربار می‌کند، پس کشتزارها غذای بسیار زیاد می‌دهند' }, { en: 'The island has no earthquakes and no volcanoes', es: 'La isla no tiene terremotos ni volcanes', fa: 'جزیره هیچ زلزله و آتشفشان ندارد' }, { en: 'The government makes people live near volcanoes', es: 'El gobierno obliga a la gente a vivir cerca de volcanes', fa: 'حکومت مردم را مجبور می‌کند نزدیک آتشفشان زندگی کنند' }, { en: 'Java is the only land Indonesia has', es: 'Java es la única tierra que tiene Indonesia', fa: 'جاوه تنها زمینی است که اندونیزیا دارد' }], answer: 0,
+        choices: [{ en: 'Volcanic ash makes the soil rich for growing food', es: 'La ceniza volcánica hace el suelo rico para cultivar comida', fa: 'خاکستر آتشفشان خاک را برای کشت غذا پربار می‌کند' }, { en: 'The island has no earthquakes and no volcanoes', es: 'La isla no tiene terremotos ni volcanes', fa: 'جزیره هیچ زلزله و آتشفشان ندارد' }, { en: 'The government makes people live near the volcanoes', es: 'El gobierno obliga a la gente a vivir cerca de los volcanes', fa: 'حکومت مردم را مجبور می‌کند نزدیک آتشفشان‌ها زندگی کنند' }, { en: 'Java is the only land Indonesia has', es: 'Java es la única tierra que tiene Indonesia', fa: 'جاوه تنها زمینی است که اندونیزیا دارد' }], answer: 0,
         why: { en: 'People weigh a real danger against real benefits: rich soil grows more rice.', es: 'La gente compara un peligro real con beneficios reales: el suelo rico produce más arroz.', fa: 'مردم یک خطر واقعی را با فایده‌های واقعی مقایسه می‌کنند: خاک پربار برنج بیشتر می‌دهد.' } },
       { q: { en: 'What is an archipelago?', es: '¿Qué es un archipiélago?', fa: 'مجمع‌الجزایر چیست؟' },
-        choices: [{ en: 'A large group of islands close together', es: 'Un grupo grande de islas cercanas', fa: 'گروه بزرگی از جزیره‌های نزدیک به هم' }, { en: 'A band of volcanoes around an ocean', es: 'Una franja de volcanes alrededor de un océano', fa: 'کمربندی از آتشفشان دور یک اقیانوس' }, { en: 'A wind that changes with the season', es: 'Un viento que cambia con la estación', fa: 'بادی که با فصل تغییر می‌کند' }, { en: 'A high area of land with a flat top', es: 'Una zona alta de tierra con la cima plana', fa: 'یک زمین بلند با سر هموار' }], answer: 0,
+        choices: [{ en: 'A large group of islands close together', es: 'Un grupo grande de islas cercanas', fa: 'گروه بزرگی از جزیره‌های نزدیک به هم' }, { en: 'A band of volcanoes around an ocean', es: 'Una franja de volcanes alrededor de un océano', fa: 'کمربندی از آتشفشان دور یک اقیانوس' }, { en: 'A wind that changes with the season', es: 'Un viento que cambia con la estación', fa: 'بادی که با فصل تغییر می‌کند' }, { en: 'A high, wide area of land with a flat top', es: 'Una zona alta y ancha de tierra con la cima plana', fa: 'یک زمین بلند و پهن با سر هموار' }], answer: 0,
         why: { en: 'Indonesia and the Philippines are both [[archipelago|archipelagos]].', es: 'Indonesia y Filipinas son [[archipelago|archipiélagos]].', fa: 'اندونیزیا و فیلیپین هر دو [[archipelago|مجمع‌الجزایر]] هستند.' } },
       { q: { en: 'How does Japan make earthquakes less dangerous?', es: '¿Cómo hace Japón que los terremotos sean menos peligrosos?', fa: 'جاپان چطور زلزله را کم‌خطرتر می‌کند؟' },
-        choices: [{ en: 'It builds schools and offices that sway instead of cracking', es: 'Construye escuelas y oficinas que se mecen en vez de romperse', fa: 'مکتب‌ها و دفترهایی می‌سازد که به جای کفیدن تاب می‌خورند' }, { en: 'It moves every city away from the coast', es: 'Muda todas las ciudades lejos de la costa', fa: 'همهٔ شهرها را از ساحل دور می‌برد' }, { en: 'It stops all farming near volcanoes', es: 'Prohíbe toda la agricultura cerca de volcanes', fa: 'همهٔ کشاورزی نزدیک آتشفشان را منع می‌کند' }, { en: 'It closes its ports in the rainy season', es: 'Cierra sus puertos en la temporada de lluvias', fa: 'بندرهای خود را در فصل باران می‌بندد' }], answer: 0,
+        choices: [{ en: 'Its buildings sway in a quake instead of cracking', es: 'Sus edificios se mecen en un terremoto en vez de romperse', fa: 'ساختمان‌هایش در زلزله به جای کفیدن تاب می‌خورند' }, { en: 'It moves every big city far away from the coast', es: 'Muda todas las ciudades grandes lejos de la costa', fa: 'همهٔ شهرهای بزرگ را از ساحل دور می‌برد' }, { en: 'It stops all farming on the slopes of volcanoes', es: 'Prohíbe toda la agricultura en las laderas de los volcanes', fa: 'همهٔ کشت را در دامنهٔ آتشفشان‌ها منع می‌کند' }, { en: 'It closes its ports in the rainy season', es: 'Cierra sus puertos en la temporada de lluvias', fa: 'بندرهای خود را در فصل باران می‌بندد' }], answer: 0,
         why: { en: 'Buildings that bend and sway are less likely to fall. Warnings and drills help too.', es: 'Los edificios que se doblan y se mecen tienen menos riesgo de caerse. Las alertas y los simulacros también ayudan.', fa: 'ساختمان‌هایی که خم می‌شوند و تاب می‌خورند کمتر فرو می‌ریزند. هشدارها و تمرین‌ها هم کمک می‌کنند.' } },
       { q: { en: 'A mapmaker groups Indonesia, the Philippines and Malaysia together. What is that group called?', es: 'Un cartógrafo agrupa a Indonesia, Filipinas y Malasia. ¿Cómo se llama ese grupo?', fa: 'یک نقشه‌کش اندونیزیا، فیلیپین و مالیزیا را در یک گروه می‌گذارد. نام آن گروه چیست؟' },
-        choices: [{ en: 'Maritime (Island) Southeast Asia', es: 'Sudeste asiático marítimo (insular)', fa: 'جنوب شرق آسیای بحری (جزیره‌ای)' }, { en: 'Mainland Southeast Asia', es: 'Sudeste asiático continental', fa: 'خشکهٔ جنوب شرق آسیا' }, { en: 'The Indian subcontinent', es: 'El subcontinente indio', fa: 'نیم‌قارهٔ هند' }, { en: 'The Ring of Fire', es: 'El Cinturón de Fuego', fa: 'حلقهٔ آتش' }], answer: 0,
+        choices: [{ en: 'Maritime (Island) Southeast Asia', es: 'Sudeste asiático marítimo (insular)', fa: 'جنوب شرق آسیای بحری (جزیره‌ای)' }, { en: 'Mainland Southeast Asia, joined to Asia', es: 'Sudeste asiático continental, unido a Asia', fa: 'خشکهٔ جنوب شرق آسیا، وصل به آسیا' }, { en: 'The Indian subcontinent of South Asia', es: 'El subcontinente indio, en Asia del Sur', fa: 'نیم‌قارهٔ هند در جنوب آسیا' }, { en: 'The Ring of Fire', es: 'El Cinturón de Fuego', fa: 'حلقهٔ آتش' }], answer: 0,
         why: { en: '"Maritime" means "of the sea". Malaysia has land on the mainland and on Borneo, but mapmakers often put it in this group.', es: '"Marítimo" significa "del mar". Malasia tiene tierra en el continente y en Borneo, pero los cartógrafos suelen ponerla en este grupo.', fa: '«بحری» یعنی «مربوط به بحر». مالیزیا هم روی خشکه و هم در بورنئو زمین دارد، اما نقشه‌کش‌ها اکثراً آن را در همین گروه می‌گذارند.' } }
     ]
   },
