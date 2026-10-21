@@ -1,5 +1,5 @@
 // node tests/play.js [1.1 2.2 ...]   plays each episode start to finish in a real browser and saves screenshots to shots/play/
-// Uses the built GitHub Pages files (run tools/build.js first).
+// Uses the built GitHub Pages files (run tools/build.js first). --canvas plays the one-file Canvas builds in dist/canvas instead.
 const { chromium } = require('playwright');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
@@ -7,6 +7,7 @@ const OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: tru
 const all = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
 const ids = process.argv.slice(2).filter(a => !a.startsWith('-')).length ? process.argv.slice(2).filter(a => !a.startsWith('-')) : all;
 const SHOTS = !process.argv.includes('--no-shots');
+const CANVAS = process.argv.includes('--canvas');
 
 (async () => {
   const browser = await chromium.launch();
@@ -16,7 +17,7 @@ const SHOTS = !process.argv.includes('--no-shots');
     const errs = [];
     page.on('pageerror', e => errs.push('pageerror: ' + e.message));
     page.on('console', m => { if (m.type() === 'error' && !/fonts\.g|ERR_|Failed to load resource/.test(m.text())) errs.push('console: ' + m.text()); });
-    const file = 'file://' + path.join(ROOT, 'game', 'ep-' + id.replace('.', '-') + '.html');
+    const file = 'file://' + (CANVAS ? path.join(ROOT, 'dist', 'canvas', `Worldwalker ${id}.html`) : path.join(ROOT, 'game', 'ep-' + id.replace('.', '-') + '.html'));
     const steps = [];
     const step = async (name, fn) => { try { await fn(); steps.push('✓ ' + name); } catch (e) { steps.push('✗ ' + name + ': ' + e.message.split('\n')[0]); throw e; } };
     const shot = async name => { if (SHOTS) await page.screenshot({ path: path.join(OUT, `${id}-${name}.png`) }); };

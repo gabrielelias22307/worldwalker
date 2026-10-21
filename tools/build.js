@@ -5,11 +5,12 @@ const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');
+const { slimJs, slimCss } = require('./slim.js'); // the Canvas file has no comments or indentation, to stay under the limit
 const inline = js => js.replace(/<\/script/gi, '<\\/script');
 const eps = fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort();
 fs.mkdirSync(path.join(ROOT, 'dist', 'canvas'), { recursive: true });
-const css = read(path.join(G, 'engine', 'style.css'));
-const engineJs = ENGINE.map(f => `/* ${f} */\n` + read(path.join(G, 'engine', f))).join('\n');
+const css = slimCss(read(path.join(G, 'engine', 'style.css')));
+const engineJs = ENGINE.map(f => slimJs(read(path.join(G, 'engine', f)))).join(';\n');
 const cfg = read(path.join(G, 'config.js'));
 const report = [];
 for (const f of eps) {
@@ -22,7 +23,7 @@ for (const f of eps) {
   // Canvas version: everything inside one file
   const one = tpl.replace('{{ID}}', id)
     .replace('{{STYLE}}', `<style>\n${css}\n</style>`)
-    .replace('{{SCRIPTS}}', `<script>\n${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(read(path.join(G, 'episodes', f)))}\n</script>`);
+    .replace('{{SCRIPTS}}', `<script>\n${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(slimJs(read(path.join(G, 'episodes', f))))}\n</script>`);
   const out = path.join(ROOT, 'dist', 'canvas', `Worldwalker ${id}.html`);
   fs.writeFileSync(out, one);
   const size = Buffer.byteLength(one);
