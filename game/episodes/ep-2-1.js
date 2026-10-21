@@ -42,6 +42,26 @@ window.EPISODE = {
   start: [7, 9],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): a dock at the lake port, where the railway from the prairie meets lake water that flows east to the ocean */
+  build: [
+    { id: 'dock', kind: 'place', board: [16, 7], tile: 'k', ok: [[14, 5], [15, 5], [16, 5], [17, 5]], cost: { wood: 1 }, over: '~',
+      name: { en: 'Dock at the lake port', es: 'Muelle en el puerto del lago', fa: 'اسکله در بندر جهیل' },
+      ask: { en: 'Grain rides the train from the [[prairie|prairie]] to the lake. Ships carry it across the lake, then down the river to the Atlantic Ocean, like the Great Lakes and the St. Lawrence River. Build a dock on the lake, where the railway ends, at the east end of the lake.',
+        es: 'El grano viaja en tren desde la [[prairie|pradera]] hasta el lago. Los barcos lo llevan por el lago y luego por el río hasta el océano Atlántico, como los Grandes Lagos y el río San Lorenzo. Construye un muelle en el lago, donde termina el tren, en el extremo este del lago.',
+        fa: 'غله با قطار از [[prairie|دشت]] تا جهیل می‌آید. کشتی‌ها آن را از جهیل می‌گذرانند، بعد از راه دریا تا بحر اطلس می‌برند، مثل جهیل‌های بزرگ و دریای سنت لارنس. یک اسکله روی جهیل بساز، جایی که خط آهن تمام می‌شود، در سر شرقی جهیل.' },
+      why: { en: 'Right where the train meets the lake! From here ships can sail east to the ocean.', es: '¡Justo donde el tren llega al lago! Desde aquí los barcos pueden ir al este, hasta el océano.', fa: 'درست جایی که قطار به جهیل می‌رسد! از این جا کشتی‌ها می‌توانند به طرف شرق تا بحر بروند.' },
+      wrong: { en: 'Not here. Build the dock on the lake water where the railway ends, at the east end of the lake. That water flows east, all the way to the ocean.',
+        es: 'Aquí no. Construye el muelle en el agua del lago donde termina el tren, en el extremo este del lago. Esa agua corre hacia el este, hasta el océano.',
+        fa: 'این جا نه. اسکله را روی آب جهیل بساز، جایی که خط آهن تمام می‌شود، در سر شرقی جهیل. آن آب به طرف شرق تا بحر جاری است.' },
+      wrongBy: [
+        { x: 1, y: 12, w: 13, h: 9, t: { en: 'This is the prairie, far from the water. Ships cannot reach a farm, so the train carries the grain to the port.', es: 'Esta es la pradera, lejos del agua. Los barcos no llegan a una granja, así que el tren lleva el grano al puerto.', fa: 'این دشت است و از آب دور است. کشتی به فارم نمی‌رسد، پس قطار غله را به بندر می‌برد.' } },
+        { x: 19, y: 9, w: 12, h: 12, t: { en: 'This river flows south, to the Gulf of Mexico. Ships to the Atlantic leave from the lake port.', es: 'Este río corre hacia el sur, hasta el golfo de México. Los barcos que van al Atlántico salen del puerto del lago.', fa: 'این دریا به طرف جنوب تا خلیج مکسیکو جاری است. کشتی‌هایی که به بحر اطلس می‌روند از بندر جهیل حرکت می‌کنند.' } }
+      ],
+      done: { en: 'The dock is ready! Train, lake and river work together: the Great Lakes and the St. Lawrence River carry ships from the middle of the continent to the Atlantic Ocean. That is why so many cities grew up on this water.',
+        es: '¡El muelle está listo! El tren, el lago y el río trabajan juntos: los Grandes Lagos y el río San Lorenzo llevan barcos desde el centro del continente hasta el océano Atlántico. Por eso tantas ciudades crecieron junto a esta agua.',
+        fa: 'اسکله آماده است! قطار، جهیل و دریا با هم کار می‌کنند: جهیل‌های بزرگ و دریای سنت لارنس کشتی‌ها را از وسط قاره تا بحر اطلس می‌برند. برای همین این‌قدر شهرها کنار این آب بزرگ شدند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [19, 13], at: [22, 17], decor: 'feather',

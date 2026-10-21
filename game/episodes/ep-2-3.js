@@ -41,6 +41,26 @@ window.EPISODE = {
   start: [3, 6],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): a canoe dock where the road comes down to the river, so families on the move can cross */
+  build: [
+    { id: 'dock', kind: 'place', board: [19, 17], tile: 'k', ok: [[18, 19], [19, 19], [20, 19], [21, 19]], cost: { wood: 1 }, over: '~',
+      name: { en: 'Canoe dock at the crossing', es: 'Muelle de canoas en el cruce', fa: 'اسکلهٔ قایق در گذرگاه' },
+      ask: { en: 'People on the move follow roads and rivers. A river can stop them, unless there is a way across. Build a dock to launch the canoe where the road comes down to the river: go south from the crossroads where the city road meets the Long Road.',
+        es: 'La gente que se muda sigue caminos y ríos. Un río la puede detener, si no hay forma de cruzar. Construye un muelle para lanzar la canoa donde el camino baja al río: ve al sur desde el cruce donde el camino de la ciudad se une al Camino Largo.',
+        fa: 'مردمی که جابه‌جا می‌شوند سرک‌ها و دریاها را دنبال می‌کنند. دریا می‌تواند راه‌شان را ببندد، مگر راهی برای گذشتن باشد. یک اسکله برای به آب انداختن قایق بساز، جایی که سرک به دریا می‌رسد: از چهارراهی که سرک شهر به راه دراز می‌رسد به طرف جنوب برو.' },
+      why: { en: 'Right below the crossroads! Travelers on the road can reach the canoe here.', es: '¡Justo debajo del cruce! Los viajeros del camino pueden llegar a la canoa aquí.', fa: 'درست پایین چهارراه! مسافران سرک این جا به قایق می‌رسند.' },
+      wrong: { en: 'Not here. The dock goes on the river, straight south of the crossroads, where the road comes down to the water.',
+        es: 'Aquí no. El muelle va en el río, justo al sur del cruce, donde el camino baja al agua.',
+        fa: 'این جا نه. اسکله روی دریا ساخته می‌شود، درست جنوب چهارراه، جایی که سرک به آب می‌رسد.' },
+      wrongBy: [
+        { x: 1, y: 16, w: 14, h: 5, t: { en: 'These are dry farm fields, far from the river. A canoe needs water.', es: 'Estos son campos secos, lejos del río. Una canoa necesita agua.', fa: 'این‌ها کشتزارهای خشک هستند و از دریا دورند. قایق آب لازم دارد.' } },
+        { x: 23, y: 16, w: 8, h: 4, t: { en: 'This bank is far from the road. Travelers would have to walk a long way to find the canoe.', es: 'Esta orilla está lejos del camino. Los viajeros tendrían que caminar mucho para encontrar la canoa.', fa: 'این ساحل از سرک دور است. مسافران باید راه درازی می‌رفتند تا قایق را پیدا کنند.' } }
+      ],
+      done: { en: 'The dock is built! Now families on the Long Road can cross the river. People move along routes like roads and rivers, and a river is a barrier until there is a way across.',
+        es: '¡El muelle está listo! Ahora las familias del Camino Largo pueden cruzar el río. La gente se mueve por rutas como caminos y ríos, y un río es una barrera hasta que hay forma de cruzarlo.',
+        fa: 'اسکله ساخته شد! حالا خانواده‌ها در راه دراز می‌توانند از دریا بگذرند. مردم در راه‌هایی مثل سرک و دریا حرکت می‌کنند، و دریا تا وقتی راهی برای گذشتن نباشد مانع است.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [4, 7], at: [11, 4], decor: 'vase',

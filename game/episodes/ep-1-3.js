@@ -42,6 +42,27 @@ window.EPISODE = {
   start: [10, 4],
 
   tools: ['axe', 'sickle'],
+
+  /* build (FUN-PASS-2): a sawmill (capital resource) made from the wood you chopped (natural resource), right by the trees */
+  build: [
+    { id: 'sawmill', kind: 'place', board: [6, 10], tile: 'h', ok: [[7, 8, 'R'], [8, 8, 'R'], [7, 9], [8, 9]], cost: { wood: 1 },
+      name: { en: 'Sawmill by the woods', es: 'Aserradero junto al bosque', fa: 'کارخانهٔ چوب‌بری کنار جنگل' },
+      ask: { en: 'The trees are a [[natural resource|natural resource]]. Use their wood to build a sawmill. A sawmill is a [[capital resource|capital resource]]: people make it to help cut logs into boards. Build it in the little clearing in the woods, just west of the dirt road: two roof pieces on top, two walls below.',
+        es: 'Los árboles son un [[natural resource|recurso natural]]. Usa su madera para construir un aserradero. Un aserradero es un [[capital resource|recurso de capital]]: la gente lo hace para ayudar a cortar troncos en tablas. Constrúyelo en el pequeño claro del bosque, justo al oeste del camino de tierra: dos piezas de techo arriba y dos paredes abajo.',
+        fa: 'درختان یک [[natural resource|منبع طبیعی]] هستند. با چوب آن‌ها یک کارخانهٔ چوب‌بری بساز. کارخانهٔ چوب‌بری یک [[capital resource|منبع سرمایه‌ای]] است: مردم آن را می‌سازند تا در بریدن کنده‌ها به تخته کمک کند. آن را در جای خالی کوچک جنگل، درست غرب راه خاکی بساز: دو تکهٔ بام در بالا، دو دیوار در پایین.' },
+      why: { en: 'Right by the trees! The heavy logs only go a few steps to the saw.', es: '¡Justo al lado de los árboles! Los troncos pesados solo viajan unos pasos hasta la sierra.', fa: 'درست کنار درختان! کنده‌های سنگین فقط چند قدم تا اره می‌روند.' },
+      wrong: { en: 'Not here. Build the sawmill in the clearing in the woods, just west of the dirt road. A sawmill goes near the trees, so the heavy logs do not travel far.',
+        es: 'Aquí no. Construye el aserradero en el claro del bosque, justo al oeste del camino de tierra. Un aserradero va cerca de los árboles, para que los troncos pesados no viajen lejos.',
+        fa: 'این جا نه. کارخانهٔ چوب‌بری را در جای خالی جنگل، درست غرب راه خاکی بساز. کارخانهٔ چوب‌بری نزدیک درختان ساخته می‌شود تا کنده‌های سنگین راه دور نروند.' },
+      wrongBy: [
+        { x: 1, y: 12, w: 8, h: 9, t: { en: 'This is farm land for food, far from the trees. The heavy logs would travel a long way.', es: 'Esta es tierra de cultivo para comida, lejos de los árboles. Los troncos pesados viajarían muy lejos.', fa: 'این زمین زراعتی برای خوراک است و از درختان دور است. کنده‌های سنگین راه درازی می‌رفتند.' } },
+        { x: 16, y: 1, w: 15, h: 10, t: { en: 'These mountains have iron, not trees. This land is used for the mine.', es: 'Estas montañas tienen hierro, no árboles. Esta tierra se usa para la mina.', fa: 'این کوه‌ها آهن دارند، نه درخت. این زمین برای معدن به کار می‌رود.' } },
+        { x: 16, y: 11, w: 15, h: 10, t: { en: 'The town is far from the woods. Carrying every log here would take a lot of work.', es: 'El pueblo está lejos del bosque. Traer cada tronco hasta aquí costaría mucho trabajo.', fa: 'شهرک از جنگل دور است. آوردن هر کنده تا این جا کار زیادی می‌خواست.' } }
+      ],
+      done: { en: 'The sawmill is built! The trees are a natural resource. The sawmill is a capital resource that people made to turn logs into boards. It sits next to the trees, so the logs travel only a short way.',
+        es: '¡El aserradero está listo! Los árboles son un recurso natural. El aserradero es un recurso de capital que la gente hizo para convertir troncos en tablas. Está junto a los árboles, así que los troncos viajan poco.',
+        fa: 'کارخانهٔ چوب‌بری ساخته شد! درختان منبع طبیعی هستند. کارخانهٔ چوب‌بری منبع سرمایه‌ای است که مردم ساختند تا کنده‌ها را تخته کنند. کنار درختان است، پس کنده‌ها راه کوتاهی می‌روند.' } }
+  ],
   /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
   finds: [
     { clueAt: [20, 9], at: [24, 12], decor: 'vase',

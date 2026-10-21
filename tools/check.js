@@ -60,7 +60,7 @@ function checkEpisode(file) {
   const solid = (x, y) => x < 0 || y < 0 || x >= W || y >= H || WW.solid(tile(x, y));
   const blockers = new Map();
   const at = (p, what) => {
-    if (!Array.isArray(p) || p.length !== 2) { errs.push(what + ' needs [x, y]'); return null; }
+    if (!Array.isArray(p) || !(p.length === 2 || (p.length === 3 && typeof p[2] === 'string'))) { errs.push(what + ' needs [x, y]'); return null; } // a build spot may add its own tile: [x, y, 'R']
     const [x, y] = p; if (x < 0 || y < 0 || x >= W || y >= H) { errs.push(`${what} (${x},${y}) is off the map`); return null; }
     return p;
   };
