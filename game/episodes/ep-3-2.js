@@ -27,7 +27,7 @@ window.EPISODE = {
     'PT........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',
     'P.wwwwww..MMPPnnPPnPPPPPPnnPPPnPnnnnnnn~~~~Pnn~=',
     'Pwwwwwwww.MMPPnnPPPnnPnPnPnPPPnPnnnnnn~~s~PnPn~=',
-    'Pwwwwwwww.MMnPnnPPnPPnPPnPnnPnnPnnnnn~~~~nnPn~~=',
+    'Pwwwwwwww.MMnPnnPPnPGnPPnPnnPnnPnnnnn~~~~nnPn~~=',
     'P.wwwww.Y.KKnPnnnnnPnPnnnPnnnPPnPnnn~~~~nnPnn~~=',
     'Pgggggggggggggggggggggggggggggggggg~~~~gggggggg=',
     'Pggggggggggggggggggggggggggrgggggg~~~ggggggAAAA=',
@@ -40,10 +40,11 @@ window.EPISODE = {
   start: [5, 8],
   train: true, // this trip comes with a train ticket: step along the tracks and the train carries you (before the Rail Pass in 3.3)
 
-  secret: { tool: 'canoe', at: [40, 12],
-    text: { en: 'The canoe reached an island in Lake Baikal! In the chest is a note. It says Baikal is the deepest lake on Earth. It is more than 1,600 meters deep.',
-      es: '¡La canoa llegó a una isla del lago Baikal! En el cofre hay una nota. Dice que el Baikal es el lago más profundo de la Tierra. Tiene más de 1600 metros de profundidad.',
-      fa: 'قایق کوچک به یک جزیره در جهیل بایکال رسید! در صندوق یک یادداشت است. می‌گوید بایکال عمیق‌ترین جهیل روی زمین است. عمق آن بیشتر از ۱۶۰۰ متر است.' } },
+  // only the Compass Rose (Episode 1.3) opens the wooden gate into the hidden taiga clearing
+  secret: { tool: 'compass', at: [20, 12],
+    text: { en: 'The Compass Rose found a hidden path into the taiga! The taiga is the biggest forest on Earth. It stretches across Russia, from Europe all the way to the Pacific Ocean.',
+      es: '¡La rosa de los vientos encontró un camino escondido en la taiga! La taiga es el bosque más grande de la Tierra. Cruza Rusia, desde Europa hasta el océano Pacífico.',
+      fa: 'قطب‌نما یک راه پنهان را در تایگا پیدا کرد! تایگا بزرگ‌ترین جنگل روی زمین است. این جنگل از اروپا تا بحر آرام در سراسر روسیه کشیده شده است.' } },
 
   tools: ['axe', 'sickle'],
   /* build (FUN-PASS-2): a wooden house for a new town beside the Irkutsk station: in Siberia, towns grew along the railway */

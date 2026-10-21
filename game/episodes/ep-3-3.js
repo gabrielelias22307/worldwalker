@@ -15,7 +15,7 @@ window.EPISODE = {
 
   map: [
     'KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAA',
-    'KggggggggggggggggggJJJgXXggGgAAA',
+    'KggggggggggggggggggJJJgXXggggAAA',
     'KgggggggggggggggxggJJJgXXgggAAAA',
     'K-----------------------------AA',
     'Kgggxggggggg:ggg:gggggggggggAAAA',
@@ -31,9 +31,9 @@ window.EPISODE = {
     'Kgggg::gggssssssssss:gggggggggAA',
     'K:::::::::::::::::::::::::::::AA',
     'KsssssssssssssrsssssssssssssssAA',
-    'KssuuuusrssssssssssssuuuussrssAA',
-    'KssssssssssssuuuuussssssssssssAA',
-    'KsrssssssssssssssssrsssssuuuusAA',
+    'Kssuuuusrssp~~~psssssuuuussrssAA',
+    'Kssssssssss~~s~~uussssssssssssAA',
+    'Ksrssssssssp~~~psssrsssssuuuusAA',
     'KssssssssuuussssssssssssssssssAA',
     'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrAA'
   ],
@@ -64,10 +64,11 @@ window.EPISODE = {
       text: { en: 'You followed compass directions! South is down and east is to the right. Millions of years ago, a sea covered much of Central Asia. A fossil sea shell was in the sand.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el este a la derecha. Hace millones de años, un mar cubría gran parte de Asia Central. Había un fósil de concha de mar en la arena.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و شرق طرف راست است. میلیون‌ها سال پیش، یک بحر بخش بزرگی از آسیای میانه را پوشانده بود. یک فسیل صدف بحری در ریگ بود.' } }
   ],
 
-  secret: { tool: 'compass', at: [28, 1],
-    text: { en: 'The Compass Rose found a hidden path into the mountains! In the chest is an old note. It says people back then did not call it the Silk Road. A German geographer gave it that name in 1877.',
-      es: '¡La rosa de los vientos encontró un camino escondido en las montañas! En el cofre hay una nota vieja. Dice que la gente de esa época no lo llamaba la Ruta de la Seda. Un geógrafo alemán le dio ese nombre en 1877.',
-      fa: 'قطب‌نما یک راه پنهان را در کوه‌ها پیدا کرد! در صندوق یک یادداشت کهنه است. می‌گوید مردم آن زمان آن را جادهٔ ابریشم نمی‌گفتند. یک جغرافیه‌دان آلمانی در سال ۱۸۷۷ این نام را به آن داد.' } },
+  // only the Canoe (Episode 2.3) crosses the oasis pool on the old caravan road to the tiny island
+  secret: { tool: 'canoe', at: [13, 18],
+    text: { en: 'The canoe crossed the oasis pool! In an oasis, water comes up from under the desert. Silk Road caravans stopped at oases to drink and rest, and towns like Samarkand grew around them.',
+      es: '¡La canoa cruzó el estanque del oasis! En un oasis, el agua sube desde debajo del desierto. Las caravanas de la Ruta de la Seda paraban en los oasis para beber y descansar, y ciudades como Samarcanda crecieron a su alrededor.',
+      fa: 'قایق کوچک از حوض واحه گذشت! در واحه، آب از زیر صحرا بالا می‌آید. کاروان‌های راه ابریشم در واحه‌ها می‌ایستادند تا آب بنوشند و استراحت کنند، و شهرهایی مثل سمرقند در کنار آن‌ها بزرگ شدند.' } },
 
   words: {
     'silk road': { en: 'a web of old trade routes across Asia between China and Europe', es: 'una red de antiguas rutas de comercio por Asia, entre China y Europa', fa: 'شبکه‌ای از راه‌های قدیمی تجارت در آسیا میان چین و اروپا' },

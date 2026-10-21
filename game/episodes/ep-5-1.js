@@ -36,8 +36,8 @@ window.EPISODE = {
     'rsss~........wwwww......~ss~===r',
     'rsss~~~~B~~~~~~~~~B~~~~~~ss~~~~r',
     'ruupssssssussussssssIsIsssssIssr',
-    'rsp~pssusssussussIssssssssIssssr',
-    'rssOssusssssussusssssssIsssxsssr',
+    'rsp~pssrrGrrssussIssssssssIssssr',
+    'rssOssurusurussusssssssIsssxsssr',
     'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
   ],
   start: [8, 4],
@@ -66,11 +66,11 @@ window.EPISODE = {
       clue: { en: 'From this note, walk 2 steps north, then 3 steps east. Look in the temple garden.', es: 'Desde esta nota, camina 2 pasos al norte y luego 3 pasos al este. Busca en el jardín del templo.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۳ قدم به شرق. در باغچهٔ معبد ببین.' },
       text: { en: 'You followed compass directions! North is up and east is to the right. A flower was growing in the garden soil. People tell stories of the Hanging Gardens of Babylon, an old city on the Euphrates River in Iraq.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Una flor crecía en la tierra del jardín. La gente cuenta historias de los Jardines Colgantes de Babilonia, una ciudad antigua junto al río Éufrates, en Irak.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. یک گل در خاک باغچه روییده بود. مردم قصه‌های باغ‌های معلق بابل را می‌گویند. بابل یک شهر کهن کنار دریای فرات در عراق است.' } }
   ],
-  // only the Canoe (Episode 2.3) reaches the tiny island in the dam lake
-  secret: { tool: 'canoe', at: [4, 4],
-    text: { en: 'The canoe reached a tiny island in the dam lake! The Atatürk Dam on the Euphrates made one of the biggest lakes in all of Türkiye.',
-      es: '¡La canoa llegó a una islita en el lago de la represa! La represa Atatürk en el Éufrates formó uno de los lagos más grandes de toda Turquía.',
-      fa: 'قایق کوچک به یک جزیرهٔ کوچک در جهیل بند رسید! بند اتاترک روی دریای فرات یکی از بزرگ‌ترین جهیل‌های تمام ترکیه را ساخته است.' } },
+  // only the Water Gourd (Episode 4.3) opens the gate into the dry desert: it carries water for the crossing
+  secret: { tool: 'gourd', at: [9, 20],
+    text: { en: 'The Water Gourd carried water across the dry sand! South of here is the Empty Quarter in Saudi Arabia. It is one of the biggest sand deserts on Earth, and some years almost no rain falls there.',
+      es: '¡La calabaza llevó agua por la arena seca! Al sur está el Cuarto Vacío, en Arabia Saudita. Es uno de los desiertos de arena más grandes de la Tierra, y algunos años casi no llueve allí.',
+      fa: 'کدوی آب، آب را از میان ریگ خشک گذراند! در جنوب اینجا ربع خالی در عربستان سعودی است. این یکی از بزرگ‌ترین صحراهای ریگی روی زمین است، و بعضی سال‌ها تقریباً هیچ باران در آنجا نمی‌بارد.' } },
 
   words: {
     upstream: { en: 'closer to where a river starts', es: 'más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },
