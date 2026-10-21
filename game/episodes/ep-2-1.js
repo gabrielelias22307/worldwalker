@@ -145,7 +145,7 @@ window.EPISODE = {
         { en: 'Hey! I pilot a barge. A river helps trade only if it is [[navigable|navigable]].', es: '¡Hola! Manejo una barcaza. Un río solo ayuda al comercio si es [[navigable|navegable]].', fa: 'سلام! من کشتی باری می‌رانم. دریا فقط وقتی به تجارت کمک می‌کند که [[navigable|قابل کشتیرانی]] باشد.' },
         { en: 'That means deep and wide enough for large boats, like the Mississippi River.', es: 'Eso quiere decir lo bastante profundo y ancho para barcos grandes, como el río Misisipi.', fa: 'یعنی آن‌قدر عمیق و پهن که کشتی‌های بزرگ بگذرند، مثل دریای میسی‌سی‌پی.' },
         { en: 'Barges carry farm goods to the Gulf of Mexico, far cheaper than wagons or trucks.', es: 'Las barcazas llevan productos del campo al golfo de México, mucho más barato que carretas o camiones.', fa: 'کشتی‌های باری اجناس فارم را تا خلیج مکسیکو خیلی ارزان‌تر از گادی یا لاری می‌برند.' },
-        { en: 'Alexandria grew on the Potomac, as far up as ocean ships reached. Its warehouses still stand.', es: 'Alexandria creció en el Potomac, hasta donde llegaban los barcos del océano. Sus almacenes siguen en pie.', fa: 'الکساندریا کنار پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند. گدام‌هایش هنوز ایستاده‌اند.' }
+        { en: 'Alexandria grew on the Potomac, as far as ocean ships reached. Its warehouses still stand.', es: 'Alexandria creció en el Potomac, hasta donde llegaban los barcos del océano. Sus almacenes siguen en pie.', fa: 'الکساندریا کنار پوتومک بزرگ شد، تا جایی که کشتی‌های بحری می‌رسیدند. گدام‌هایش هنوز ایستاده‌اند.' }
       ],
       ask: {
         stat: 'mov',
