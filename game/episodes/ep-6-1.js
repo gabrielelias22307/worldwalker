@@ -33,9 +33,9 @@ window.EPISODE = {
     'Tqqqq:qqqq.qqqq.qqqqq:qqq.~~...j',
     'T....:..RRR...QQQ....:....~~j..j',
     'T.p..:..hdh...hdh....:....bbj..j',
-    'T....:::::::::::::::::....~~jj.j',
-    'Tqqqqq.qqqqq.p.qqqqq......~~jjjj',
-    'Tqqqqq.qqqqq...qqqqq..p.x.~~jj.j',
+    'T....:::::::::::::::::....~~~Gjj',
+    'Tqqqqq.qqqqq.p.qqqqq......~~jqqj',
+    'Tqqqqq.qqqqq...qqqqq..p.x.~~jjjj',
     'Tpssssspsssssspssssssspss~~~~ssj',
     'Tssskksssssssssssskksssss~s~~kkj',
     '~~~~kk~~~~~~~~~~~~kk~~~~~~~~~kk~',
@@ -81,11 +81,11 @@ window.EPISODE = {
       clue: { en: 'In summer, the monsoon wind blows from the sea onto the land. Walk like the summer wind: 3 steps north, away from the sea. Then walk 2 steps west.', es: 'En verano, el viento del monzón sopla del mar hacia la tierra. Camina como el viento de verano: 3 pasos al norte, lejos del mar. Luego camina 2 pasos al oeste.', fa: 'در تابستان، باد موسمی از بحر به طرف خشکه می‌وزد. مثل باد تابستان راه برو: ۳ قدم به شمال، دور از بحر. بعد ۲ قدم به غرب برو.' },
       text: { en: 'You walked like the summer monsoon! Wet wind from the ocean brings heavy rain from about June to September. That rain fills the rice paddies. A duck feather was lying in the field.', es: '¡Caminaste como el monzón de verano! El viento húmedo del océano trae lluvias fuertes más o menos de junio a septiembre. Esa lluvia llena los arrozales. Una pluma de pato estaba en el campo.', fa: 'تو مثل باد موسمی تابستان راه رفتی! باد مرطوب از بحر تقریباً از جون تا سپتمبر باران زیاد می‌آورد. این باران کشتزارهای برنج را پر می‌کند. یک پر مرغابی در کشتزار افتاده بود.' } }
   ],
-  // only the canoe (Episode 2.3) reaches the little island in the delta
-  secret: { tool: 'canoe', at: [26, 18],
-    text: { en: 'The canoe found the island in the delta! The Ganges delta is the biggest river delta in the world. Tigers live in its mangrove forest, and they can swim.',
-      es: '¡La canoa encontró la isla en el delta! El delta del Ganges es el delta de río más grande del mundo. En su bosque de manglares viven tigres, y saben nadar.',
-      fa: 'قایق کوچک جزیره را در دلتا پیدا کرد! دلتای گنگا بزرگ‌ترین دلتای دریا در جهان است. در جنگل مانگرو آن ببرها زندگی می‌کنند و می‌توانند آب‌بازی کنند.' } },
+  // only the Water Key (Episode 5.3) opens the sluice gate where a canal from the river meets the little paddy by the mangroves
+  secret: { tool: 'key', at: [30, 15],
+    text: { en: 'You opened the canal gate! Farmers here share the river water. They open the canal gates by turns, so every rice paddy gets water.',
+      es: '¡Abriste la compuerta del canal! Aquí los agricultores comparten el agua del río. Abren las compuertas por turnos, así cada arrozal recibe agua.',
+      fa: 'تو دروازهٔ جوی را باز کردی! دهقانان این جا آب دریا را با هم شریک می‌کنند. آن‌ها دروازه‌های جوی را به نوبت باز می‌کنند تا هر شالیزار آب بگیرد.' } },
 
   words: {
     monsoon: { en: 'a wind that changes direction with the season: wet from the ocean in summer, dry from the land in winter', es: 'un viento que cambia de dirección con la estación: húmedo desde el océano en verano, seco desde la tierra en invierno', fa: 'بادی که با فصل جهتش را تغییر می‌دهد: در تابستان از اقیانوس و مرطوب، در زمستان از خشکه و خشک' },

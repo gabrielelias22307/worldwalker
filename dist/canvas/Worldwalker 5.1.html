@@ -1171,6 +1171,28 @@ R(c, x, y + 2, T, 1, '#5b3a1e'); R(c, x + 5, y + 3, 6, 1, '#5b3a1e');
 tiles.G = (c, x, y, gx, gy, t, m) => {
 under(c, x, y, gx, gy, m);
 const tl = WW.ep && WW.ep.secret && WW.TOOLS.find(o => o.id === WW.ep.secret.tool), open = tl && WW.hasTool(tl.id);
+const id = tl && tl.id;
+if (id === 'cloak') {
+const k = WW.calm ? 0 : Math.floor((t || 0) / 90);
+c.fillStyle = open ? 'rgba(90,120,170,.25)' : 'rgba(60,80,130,.6)'; c.fillRect(x, y, 16, 16);
+c.fillStyle = open ? 'rgba(200,220,255,.5)' : '#c8dcff';
+for (let i = 0; i < 6; i++) { const rx = (i * 5 + k * 2) % 16, ry = (i * 7 + k * 5) % 16; c.fillRect(x + rx, y + ry, 1, 4); }
+return;
+}
+if (id === 'key') {
+c.fillStyle = '#5a5f66'; c.fillRect(x, y + 1, 3, 15); c.fillRect(x + 13, y + 1, 3, 15); c.fillStyle = '#22202e'; c.fillRect(x, y, 16, 2);
+if (open) { c.fillStyle = '#3a8dde'; c.fillRect(x + 3, y + 4, 10, 12); c.fillStyle = '#8fc3ff'; c.fillRect(x + 4, y + 6, 3, 1); c.fillRect(x + 8, y + 10, 3, 1); return; }
+c.fillStyle = '#7a5a3a'; c.fillRect(x + 3, y + 2, 10, 13); c.fillStyle = '#5b3a1e'; c.fillRect(x + 3, y + 6, 10, 1); c.fillRect(x + 3, y + 10, 10, 1);
+c.fillStyle = '#3a8dde'; c.fillRect(x + 3, y + 15, 10, 1);
+c.fillStyle = '#f2c14e'; c.fillRect(x + 6, y + 7, 4, 3); c.fillStyle = '#22202e'; c.fillRect(x + 7, y + 8, 2, 1);
+return;
+}
+if (id === 'rail') {
+c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 3, 3, 12);
+if (open) { c.fillStyle = '#e04848'; c.fillRect(x + 2, y, 2, 6); return; }
+for (let i = 0; i < 6; i++) { c.fillStyle = i % 2 ? '#ffffff' : '#e04848'; c.fillRect(x + 3 + i * 2, y + 6, 2, 3); }
+return;
+}
 c.fillStyle = '#22202e'; c.fillRect(x + 1, y + 2, 2, 13); c.fillRect(x + 13, y + 2, 2, 13);
 c.fillStyle = '#6d4424'; c.fillRect(x + 1, y + 2, 1, 13); c.fillRect(x + 13, y + 2, 1, 13);
 if (open) { c.fillStyle = '#8b5a2b'; c.fillRect(x + 3, y + 4, 2, 10); c.fillRect(x + 11, y + 4, 2, 10); return; }
@@ -1294,6 +1316,9 @@ qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
 qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
 qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
 qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
+trainGo: { en: 'All aboard! Your Rail Pass lets you ride the train. It stops at each station. Press another way to get off.', es: '¡Todos a bordo! Tu pase de tren te deja viajar en el tren. Para en cada estación. Presiona otra dirección para bajarte.', fa: 'همه سوار شوید! کارت قطارت اجازه می‌دهد سوار قطار شوی. در هر ایستگاه می‌ایستد. برای پیاده شدن طرف دیگر را بزن.' },
+trainTicket: { en: 'All aboard! This trip comes with a train ticket. The train stops at each station. Press another way to get off.', es: '¡Todos a bordo! Este viaje incluye un boleto de tren. El tren para en cada estación. Presiona otra dirección para bajarte.', fa: 'همه سوار شوید! این سفر تکت قطار دارد. قطار در هر ایستگاه می‌ایستد. برای پیاده شدن طرف دیگر را بزن.' },
+trainNeed: { en: 'With the Rail Pass from Episode 3.3 you could ride this train. For now, walk beside the tracks.', es: 'Con el pase de tren del episodio 3.3 podrías viajar en este tren. Por ahora, camina junto a las vías.', fa: 'با کارت قطار از قسمت ۳.۳ می‌توانستی سوار این قطار شوی. فعلاً کنار خط آهن راه برو.' },
 grumpBack: { en: 'Right! The Grump backs away. Walk after it and answer again!', es: '¡Correcto! El Gruñón retrocede. ¡Camina tras él y responde otra vez!', fa: 'درست! غرغرو عقب می‌رود. دنبالش برو و دوباره جواب بده!' },
 qChase: { en: 'find piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
 qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
@@ -1440,6 +1465,9 @@ w_leversHow: { en: 'Pull the levers on the map to set them. Then come back here 
 w_leversGo: { en: 'Find the levers. Walk into one to change it.', es: 'Busca las palancas. Camina hacia una para cambiarla.', fa: 'دسته‌ها را پیدا کن. به طرف یکی برو تا عوضش کنی.' },
 w_leverTest: { en: 'Test the levers at the compass stone.', es: 'Prueba las palancas en la piedra brújula.', fa: 'دسته‌ها را در سنگ قطب‌نما امتحان کن.' },
 w_leverAgain: { en: 'Change the levers on the map and test again.', es: 'Cambia las palancas en el mapa y prueba otra vez.', fa: 'دسته‌ها را روی نقشه عوض کن و دوباره امتحان کن.' },
+gate_cloak: { en: 'The monsoon rain is too heavy to walk through here. A Monsoon Cloak (Episode {e}) would keep you dry.', es: 'La lluvia del monzón es demasiado fuerte para pasar por aquí. Una capa del monzón (episodio {e}) te mantendría seco.', fa: 'باران موسمی این جا خیلی شدید است و نمی‌شود از آن گذشت. یک بارانی موسمی (قسمت {e}) تو را خشک نگه می‌دارد.' },
+gate_key: { en: 'This canal gate is locked. The Water Key (Episode {e}) opens it and lets the water through.', es: 'Esta compuerta del canal está cerrada con llave. La llave del agua (episodio {e}) la abre y deja pasar el agua.', fa: 'این دروازهٔ کانال قفل است. کلید آب (قسمت {e}) آن را باز می‌کند و آب را رد می‌کند.' },
+gate_rail: { en: 'A barrier blocks the tracks. Railway workers with a Rail Pass (Episode {e}) may go through.', es: 'Una barrera cierra las vías. Pueden pasar quienes tengan un pase de tren (episodio {e}).', fa: 'یک مانع خط آهن را بسته است. کسی که کارت قطار (قسمت {e}) دارد می‌تواند رد شود.' },
 gateNeed: { en: 'This gate opens for the {t} (you earn it in Episode {e}). Come back when you have it!', es: 'Esta puerta se abre con {t} (lo ganas en el episodio {e}). ¡Vuelve cuando lo tengas!', fa: 'این دروازه با {t} باز می‌شود (آن را در قسمت {e} می‌گیری). وقتی داشتی برگرد!' },
 secretFound: { en: 'A secret!', es: '¡Un secreto!', fa: 'یک راز!' },
 why_secret: { en: 'secret found', es: 'secreto encontrado', fa: 'راز پیدا شد' },
@@ -3863,7 +3891,7 @@ Wd.bump = (x, y) => {
 if (Wd.fogAt(x, y)) { const b = G().ents.find(e => e.kind === 'boss'); if (b) G().interact(b); return true; }
 if (G().tileAt(x, y) !== 'G') return false;
 const t = tool(); if (!t) return false;
-WW.chris.say(T('gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
+WW.chris.say(T(WW.S['gate_' + t.id] ? 'gate_' + t.id : 'gateNeed').replace('{t}', t.icon + ' ' + L(t.name)).replace('{e}', t.ep)); WW.sfx('bad');
 return true;
 };
 const cards = ch => () => { const h = WW.ui.top(); if (h) h.close(); WW.challenge(Object.assign({}, ch, { type: Wd.BASE[ch.type] })); };
@@ -4695,7 +4723,26 @@ const opts = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2
 if (opts.length) [sm.x, sm.y] = opts[0];
 }
 const DIRS = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] };
-const stepMs = () => 150 - 18 * WW.tier('mov');
+const stepMs = () => ride ? 70 : 150 - 18 * WW.tier('mov');
+let ride = null, rideTold = false;
+const RAIL = '-|';
+const ticket = () => WW.hasTool('rail') || !!(WW.ep && WW.ep.train);
+function rideNext() {
+const p = player, here = tileAt(p.x, p.y); if (!RAIL.includes(here)) return null;
+const opts = Object.entries(DIRS).filter(([, [dx, dy]]) => { const nx = p.x + dx, ny = p.y + dy; return !(ride && nx === ride.px && ny === ride.py) && RAIL.includes(tileAt(nx, ny)); });
+if (opts.length !== 1) return null;
+const [d, [dx, dy]] = opts[0], nx = p.x + dx, ny = p.y + dy;
+if (entAt(nx, ny) && !PASS.includes(entAt(nx, ny).kind)) return null;
+const stopBeside = Object.values(DIRS).some(([ax, ay]) => { const o = entAt(p.x + ax, p.y + ay); return o && o.kind === 'stop'; });
+if (stopBeside && ride && ride.steps > 0) return null;
+return d;
+}
+function rideStep(now) {
+const d = rideNext();
+if (!d) { if (ride && ride.steps) { WW.sfx('blip'); } ride = null; return; }
+ride.px = player.x; ride.py = player.y; ride.steps++;
+tryStep(d, now);
+}
 function tryStep(d, now) {
 if (player.moving || trans || WW.paused) return;
 player.dir = d;
@@ -4781,6 +4828,7 @@ c.closePath(); c.fill();
 const TURN_MS = 110;
 let queued = null;
 function press(d) {
+if (ride && d !== player.dir) ride = null;
 held = d;
 if (player && player.dir === d) queued = d;
 heldSince = player && player.dir !== d && !player.moving ? performance.now() : 0;
@@ -4917,10 +4965,18 @@ c.restore();
 function frame(now) {
 requestAnimationFrame(frame);
 const c = G.ctx; if (!c || !WW.run) return;
-if (player.moving && now - player.moving >= stepMs()) { player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup(); }
+if (player.moving && now - player.moving >= stepMs()) {
+const from = player.from;
+player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup();
+if (!ride && from && RAIL.includes(tileAt(player.x, player.y)) && RAIL.includes(tileAt(from[0], from[1]))) {
+if (ticket()) { ride = { px: from[0], py: from[1], steps: 0 }; WW.sfx('gate'); if (!rideTold) { rideTold = true; WW.chris.say(T(WW.hasTool('rail') ? 'trainGo' : 'trainTicket')); } }
+else if (!rideTold && WW.TOOLS.some(t => t.id === 'rail' && WW.epIndex(t.ep) < WW.epIndex(WW.ep.id))) { rideTold = true; WW.chris.say(T('trainNeed')); }
+}
+}
 const dt = Math.min(100, now - (lastFrame || now)); lastFrame = now;
 if (!player.moving && !trans && !WW.paused) {
-if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
+if (ride) rideStep(now);
+else if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
 else if (queued && !held) { tryStep(queued, now); queued = null; }
 else if (clickTarget) {
 const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
@@ -5023,10 +5079,16 @@ const d = player.dir;
 const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
 WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
 WW.world.boat(c, Math.round(x), Math.round(y), tileAt(player.x, player.y));
+if (ride) {
+const X = Math.round(x), Y = Math.round(y);
+c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 5, 18, 10); c.fillStyle = '#c0392b'; c.fillRect(X, Y + 6, 16, 6); c.fillStyle = '#f2c14e'; c.fillRect(X, Y + 8, 16, 1);
+c.fillStyle = '#22202e'; c.fillRect(X + 2, Y + 13, 3, 3); c.fillRect(X + 11, Y + 13, 3, 3);
+}
 WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
 }
 WW.dbg = {
-teleport(x, y) { player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; clickTarget = null; held = null; },
+riding() { return !!ride; },
+teleport(x, y) { ride = null; player.x = x; player.y = y; player.from = null; player.moving = 0; trans = null; pip.x = x; pip.y = y; clickTarget = null; held = null; },
 face(d) { player.dir = d; },
 act() { actFacing(); },
 bumpInto(x, y) {
@@ -5093,8 +5155,8 @@ map: [
 'rsss~........wwwww......~ss~===r',
 'rsss~~~~B~~~~~~~~~B~~~~~~ss~~~~r',
 'ruupssssssussussssssIsIsssssIssr',
-'rsp~pssusssussussIssssssssIssssr',
-'rssOssusssssussusssssssIsssxsssr',
+'rsp~pssrrGrrssussIssssssssIssssr',
+'rssOssurusurussusssssssIsssxsssr',
 'rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr'
 ],
 start: [8, 4],
@@ -5121,10 +5183,10 @@ text: { en: 'You found the land between the rivers! A clay pot was hiding in the
 clue: { en: 'From this note, walk 2 steps north, then 3 steps east. Look in the temple garden.', es: 'Desde esta nota, camina 2 pasos al norte y luego 3 pasos al este. Busca en el jardín del templo.', fa: 'از این یادداشت، ۲ قدم به شمال برو، بعد ۳ قدم به شرق. در باغچهٔ معبد ببین.' },
 text: { en: 'You followed compass directions! North is up and east is to the right. A flower was growing in the garden soil. People tell stories of the Hanging Gardens of Babylon, an old city on the Euphrates River in Iraq.', es: '¡Seguiste las direcciones de la brújula! El norte está arriba y el este a la derecha. Una flor crecía en la tierra del jardín. La gente cuenta historias de los Jardines Colgantes de Babilonia, una ciudad antigua junto al río Éufrates, en Irak.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! شمال بالا و شرق طرف راست است. یک گل در خاک باغچه روییده بود. مردم قصه‌های باغ‌های معلق بابل را می‌گویند. بابل یک شهر کهن کنار دریای فرات در عراق است.' } }
 ],
-secret: { tool: 'canoe', at: [4, 4],
-text: { en: 'The canoe reached a tiny island in the dam lake! The Atatürk Dam on the Euphrates made one of the biggest lakes in all of Türkiye.',
-es: '¡La canoa llegó a una islita en el lago de la represa! La represa Atatürk en el Éufrates formó uno de los lagos más grandes de toda Turquía.',
-fa: 'قایق کوچک به یک جزیرهٔ کوچک در جهیل بند رسید! بند اتاترک روی دریای فرات یکی از بزرگ‌ترین جهیل‌های تمام ترکیه را ساخته است.' } },
+secret: { tool: 'gourd', at: [9, 20],
+text: { en: 'The Water Gourd carried water across the dry sand! South of here is the Empty Quarter in Saudi Arabia. It is one of the biggest sand deserts on Earth, and some years almost no rain falls there.',
+es: '¡La calabaza llevó agua por la arena seca! Al sur está el Cuarto Vacío, en Arabia Saudita. Es uno de los desiertos de arena más grandes de la Tierra, y algunos años casi no llueve allí.',
+fa: 'کدوی آب، آب را از میان ریگ خشک گذراند! در جنوب اینجا ربع خالی در عربستان سعودی است. این یکی از بزرگ‌ترین صحراهای ریگی روی زمین است، و بعضی سال‌ها تقریباً هیچ باران در آنجا نمی‌بارد.' } },
 words: {
 upstream: { en: 'closer to where a river starts', es: 'más cerca de donde nace un río', fa: 'نزدیک‌تر به جایی که دریا شروع می‌شود' },
 downstream: { en: 'closer to where a river ends', es: 'más cerca de donde termina un río', fa: 'نزدیک‌تر به جایی که دریا تمام می‌شود' },

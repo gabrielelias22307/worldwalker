@@ -27,9 +27,9 @@ window.EPISODE = {
     'Asssssssssssgsss..,..:x........x~~~==~.QQMMMMMM=',
     'Aggggggggggggggg::::::::::::::::kkkkkk.hdMMMMMM=',
     'Aggggggggggggggg.wwww:.T.T..UUUU~~~==~....qMMMM=',
-    'AMMzAAzzzMMAzzzMwwwww:.RRR.fUUUU~~~==~...qqMMMM=',
-    'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~s~==~...qqMMMM=',
-    'Azzzzzzzzzzzzzzzqqqqq:qqqqJUfUUU~~~==~...qqMMMM=',
+    'AMMzAAzzzMMAzzzMwwwww:.RRR.fUUUU~~~==~...qqG.,M=',
+    'AMzzzznzzzzzznzzwwwww:.hdhJUUUUU~s~==~...qqG..M=',
+    'Azzzzzzzzzzzzzzzqqqqq:qqqqJUfUUU~~~==~...qqG..M=',
     'AzzzMAMzzznzzzzzqqqqq:qqqqq..UUU~~~==~....MMMMM=',
     'AzznMz~~~~~~~~~~~~~~~B~~~~~~~~~~~~~==~..RRRMMMM=',
     'AzzzzMz~~~~~~~~~~~~~~B~~~~~~~~~~~~~==~..hdhMMMM=',
@@ -91,11 +91,11 @@ window.EPISODE = {
       clue: { en: 'From this note, walk 8 steps south, then 1 step west. Something is hidden there.', es: 'Desde esta nota, camina 8 pasos al sur y luego 1 paso al oeste. Algo está escondido allí.', fa: 'از این یادداشت، ۸ قدم به جنوب برو، بعد ۱ قدم به غرب. چیزی آن جا پنهان است.' },
       text: { en: 'You followed compass directions! South is down and west is to the left. A sea shell was on the shore. Japan is an archipelago, a chain of islands, so no place in Japan is very far from the sea.', es: '¡Seguiste las direcciones de la brújula! El sur está abajo y el oeste a la izquierda. Había una concha en la orilla. Japón es un archipiélago, una cadena de islas, así que ningún lugar de Japón está muy lejos del mar.', fa: 'تو جهت‌های قطب‌نما را دنبال کردی! جنوب پایین و غرب طرف چپ است. یک صدف در ساحل بود. جاپان یک مجمع‌الجزایر است، یعنی زنجیری از جزیره‌ها، پس هیچ جای جاپان از بحر خیلی دور نیست.' } }
   ],
-  // only the Canoe (Episode 2.3) reaches the tiny island in the sea between China and Japan
-  secret: { tool: 'canoe', at: [33, 12],
-    text: { en: 'The canoe reached the tiny island! A note in the chest says Japan has more than 14,000 islands. But most people live on the four big ones.',
-      es: '¡La canoa llegó a la islita! Una nota en el cofre dice que Japón tiene más de 14,000 islas. Pero casi toda la gente vive en las cuatro grandes.',
-      fa: 'قایق کوچک به جزیرهٔ خُرد رسید! یک یادداشت در صندوق می‌گوید جاپان بیشتر از ۱۴۰۰۰ جزیره دارد. اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' } },
+  // only the Monsoon Cloak (Episode 6.3) walks through the wall of heavy rain into the little mountain valley in Japan
+  secret: { tool: 'cloak', at: [45, 12],
+    text: { en: 'The Monsoon Cloak kept you dry in the heavy rain! In June and July, Japan has a rainy season called tsuyu, the "plum rain". This rain fills the rice paddies.',
+      es: '¡La Capa del monzón te mantuvo seco en la lluvia fuerte! En junio y julio, Japón tiene una temporada de lluvias llamada tsuyu, la "lluvia de las ciruelas". Esta lluvia llena los arrozales.',
+      fa: 'بارانی موسمی تو را در باران زیاد خشک نگه داشت! در جون و جولای، جاپان یک فصل باران به نام تسویو، یعنی «باران آلو»، دارد. این باران شالیزارها را پر می‌کند.' } },
 
   words: {
     plateau: { en: 'a large area of high, mostly flat land', es: 'una gran zona de tierra alta y casi plana', fa: 'یک ساحهٔ بزرگ از زمین بلند و تقریباً هموار' },

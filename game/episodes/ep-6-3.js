@@ -29,9 +29,9 @@ window.EPISODE = {
     'UlUUlUUlJJlUlll...........:..,.T',
     'Ullllllllllllll.Tp...,....:...TT',
     'Ulll:llllllll.............:....T',
-    'W...:.....................:.~~~T',
-    'WRRR:QQQ:RRR:QQ..qqqqqqqq.:.~~.T',
-    'Whdh:hdh:hdh:hd..qqqqqqqq.:.~~~T',
+    'W...:.....................:.~~TT',
+    'WRRR:QQQ:RRR:QQ..qqqqqqqq.:.~W.T',
+    'Whdh:hdh:hdh:hd..qqqqqqqq.:.~~GT',
     'W...:...:...:....qqqqqqqq.:.~~,T',
     'W.mm:mm.:.mm:.............::bb.T',
     'W...:...:...:....qqqq.RRR...~~.T',
@@ -71,11 +71,11 @@ window.EPISODE = {
       clue: { en: 'Crowded cities need lots of water. Find the only well in the old city lanes. Stand on the square just north of it.', es: 'Las ciudades llenas de gente necesitan mucha agua. Busca el único pozo en los callejones viejos de la ciudad. Párate en el cuadro justo al norte del pozo.', fa: 'شهرهای پرجمعیت به آب زیاد ضرورت دارند. تنها چاه را در کوچه‌های کهنهٔ شهر پیدا کن. روی خانه‌ای که درست شمالِ آن است بایست.' },
       text: { en: 'You found the city well! In crowded old neighborhoods, many families often share one well or water tap. An old clay vase was by the well. Today more than half of all people in the world live in cities.', es: '¡Encontraste el pozo de la ciudad! En los barrios viejos y llenos de gente, muchas familias a menudo comparten un pozo o un grifo. Había un jarrón viejo de barro junto al pozo. Hoy más de la mitad de las personas del mundo viven en ciudades.', fa: 'تو چاه شهر را پیدا کردی! در محله‌های کهنه و پرجمعیت، اکثراً چند فامیل از یک چاه یا یک نل آب استفاده می‌کنند. یک گلدان کهنهٔ گلی کنار چاه بود. امروز بیشتر از نیمِ مردم جهان در شهرها زندگی می‌کنند.' } }
   ],
-  // only the canoe (Episode 2.3) reaches the little river bank in the east
-  secret: { tool: 'canoe', at: [30, 12],
-    text: { en: 'The canoe found the hidden river bank! Afghanistan is more than four times bigger than Bangladesh. But Bangladesh has about four times as many people.',
-      es: '¡La canoa encontró la orilla escondida! Afganistán es más de cuatro veces más grande que Bangladés. Pero Bangladés tiene unas cuatro veces más gente.',
-      fa: 'قایق کوچک کنارهٔ پنهان دریا را پیدا کرد! افغانستان بیشتر از چهار برابر بنگله‌دیش بزرگ است. اما بنگله‌دیش حدود چهار برابر مردم بیشتر دارد.' } },
+  // only the Water Key (Episode 5.3) opens the gate of the village water tank by the river in the east
+  secret: { tool: 'key', at: [30, 12],
+    text: { en: 'You opened the village water tank! Clean water keeps families healthy. In many villages, children walk a long way every day to carry water, so a tank or tap near home means more time for school.',
+      es: '¡Abriste el tanque de agua del pueblo! El agua limpia mantiene sanas a las familias. En muchos pueblos, los niños caminan lejos cada día para cargar agua, así que un tanque o un grifo cerca de casa da más tiempo para la escuela.',
+      fa: 'تو ذخیرهٔ آب قریه را باز کردی! آب پاک فامیل‌ها را صحتمند نگه می‌دارد. در بسیاری از قریه‌ها، اطفال هر روز راه درازی می‌روند تا آب بیاورند، پس یک ذخیره یا نل آب نزدیک خانه یعنی وقت بیشتر برای مکتب.' } },
 
   words: {
     population: { en: 'all the people who live in one place', es: 'todas las personas que viven en un lugar', fa: 'همهٔ مردمی که در یک جا زندگی می‌کنند' },
