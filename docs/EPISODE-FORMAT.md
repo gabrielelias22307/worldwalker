@@ -73,6 +73,8 @@ A small side story that the student must finish before the compass stone opens. 
    - `find`: walk onto a secret tile. The contact's clue must use real geography words (north/south/east/west, upstream, across the bridge, next to the market...). The spot twinkles a little once the quest reaches it.
    - `fight`: an **Ink Thief** appears at `at`. Walking into it opens a short question duel: `need` (2) right answers out of 3–4 `questions` (same shape as the Grump's questions). Misses do not count against the Grump stars.
    - `trade`: a **trader** (new person) asks `q` with 3 `choices`. Exactly one is `ok`; every choice has a `why`. The right one should make geographic sense (what this place has plenty of, what it needs).
+     **Real trade (FUN-PASS-2):** give every choice `at: [x, y]` and an `icon` ('🪵' logs, '🛒' ore cart, '🪨' stones; anything else draws a crate). The goods sit on the map where they come from. The trader says `q`; the student walks into a good to pick it up and carries it to the trader. A wrong one: the trader says its `why`, and it goes back to its place. No question panel.
+   - `chase` (FUN-PASS-2, replaces `fight`): the **Ink Thief** tore the stolen `item` into pieces. Each of the `clues` is answered by walking into one of its `zones`; walking into one of its `noBy` areas says why that place is wrong. After the last piece the thief shows itself at `hops[0]`, hops away when you walk into it, and is caught at `at`. No question panel.
 4. The student goes back to the giver, hears `thanks`, and gets +2 to the quest's `stat` and 10 coins.
 
 ```js
@@ -84,6 +86,9 @@ quest: {
   action:  { type: 'find',  at: [x, y], hint: {..} /* few words for the quest bar */, found: {..}, item: { icon: '🧭', name: {..} } }
         // { type: 'fight', at: [x, y], name: {..}, taunt: {..}, win: {..}, need: 2, questions: [ { q, choices: [4], answer: 0, why } x3 ], item }
         // { type: 'trade', trader: { x, y, name, role, look, lines: [ {..} ] }, q: {..}, choices: [ { ok: true, t, why }, { t, why }, { t, why } ], item }
+        // { type: 'trade', ..., choices: [ { ok: true, at: [x, y], icon: '🪵', t, why }, ... ] }   goods on the map
+        // { type: 'chase', at: [x, y], hops: [[x, y], [x, y]], name, taunt, win, item,
+        //   clues: [ { t: {..}, zones: [{ x, y, w, h }], noBy: [{ x, y, w, h, t: {..} }], found: {..} } x3 ] }
 }
 ```
 

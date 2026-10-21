@@ -343,6 +343,46 @@ const CANVAS = process.argv.includes('--canvas');
             }
             await page.locator('#ww-ov .pbtn.gold.big').click();
             if (await page.evaluate(() => WW.run.missed.length)) throw new Error('quest fight misses went into the Grump trial');
+          } else if (a.type === 'chase') { // FUN-PASS-2 Part D: each clue is answered by walking to the right place
+            const standIn = zs => page.evaluate(zs => { const g = WW.game; for (const z of zs) for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) if (g.walkable(x, y) && !g.entAt(x, y)) { WW.dbg.standOn(x, y); return [x, y]; } return null; }, zs);
+            for (let i = 0; i < a.clues.length; i++) {
+              const c = a.clues[i];
+              if (c.noBy && c.noBy.length) {
+                if (!(await standIn([c.noBy[0]]))) throw new Error('cannot stand in clue ' + i + ' wrong area');
+                const say = await page.textContent('.cbubble');
+                if (!/❌/.test(say)) throw new Error('a wrong place for clue ' + i + ' was not explained: ' + say);
+                if (await page.evaluate(() => WW.run.chase) !== i) throw new Error('a wrong place counted as a piece');
+                if (i === 0) { await page.waitForTimeout(300); await shot('q2-chase-wrong'); }
+              }
+              if (!(await standIn(c.zones))) throw new Error('cannot stand in clue ' + i + ' zone');
+              if (await page.evaluate(() => WW.run.chase) !== i + 1) throw new Error('clue ' + i + ' place did not give the piece');
+              if (i === 0) { await page.waitForTimeout(300); await shot('q2-chase-piece'); }
+            }
+            await page.waitForTimeout(300); await shot('q2-chase-thief');
+            for (let k = 0; k < 6 && await page.evaluate(() => WW.run.quest) === 2; k++) {
+              const f = await page.evaluate(() => { const e = WW.dbg.ents.find(o => o.kind === 'qfoe' && o.chase); return [e.x, e.y]; });
+              await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), f);
+              await page.waitForTimeout(150);
+            }
+            await page.waitForSelector('.msgov'); await shot('q2-chase-caught'); await clickGold();
+          } else if (a.choices.every(c => c.at)) { // a real trade: carry the goods to the trader
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
+            await talkThrough();
+            if (!(await page.evaluate(() => WW.run.goodsSeen))) throw new Error('the trader did not ask for goods');
+            await page.evaluate(([x, y]) => WW.dbg.faceFrom(x, y), a.choices[0].at); await page.waitForTimeout(300); await shot('q2-trade-goods');
+            const wrong = a.choices.findIndex(x => !x.ok), ok = a.choices.findIndex(x => x.ok);
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), a.choices[wrong].at);
+            if (await page.evaluate(() => WW.run.good) !== wrong) throw new Error('could not pick up the goods');
+            await page.waitForTimeout(300); await shot('q2-trade-carry');
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
+            await page.waitForSelector('.talkov'); await shot('q2-trade-wrong');
+            if (!/❌/.test(await page.textContent('#ww-ov'))) throw new Error('the wrong goods were not explained');
+            await talkThrough();
+            if (await page.evaluate(w => WW.dbg.ents.some(e => e.kind === 'qgood' && e.i === w && !e.gone), wrong) !== true) throw new Error('the wrong goods did not go back');
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), a.choices[ok].at);
+            await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
+            await page.waitForSelector('.talkov'); await shot('q2-trade');
+            await talkThrough();
           } else {
             await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [a.trader.x, a.trader.y]);
             await talkThrough(); await shot('q2-trade');

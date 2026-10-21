@@ -1294,6 +1294,18 @@ qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
 qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
 qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
 qTrade: { en: 'trade with', es: 'intercambia con', fa: 'معامله کن با' },
+qChase: { en: 'find map piece {i} of {n} (C: the clue)', es: 'encuentra el pedazo {i} de {n} (C: la pista)', fa: 'تکهٔ {i} از {n} را پیدا کن (C: سرنخ)' },
+qCatch: { en: 'catch {n}!', es: '¡atrapa a {n}!', fa: '{n} را بگیر!' },
+qGoods: { en: 'pick up the right goods on the map', es: 'recoge en el mapa lo que sirve para el trato', fa: 'جنس درست را روی نقشه بردار' },
+qBring: { en: 'bring it to {n}', es: 'llévaselo a {n}', fa: 'آن را پیش {n} ببر' },
+chaseNext: { en: 'Clue:', es: 'Pista:', fa: 'سرنخ:' },
+chaseCatch: { en: 'That was the last piece! Now the thief is out in the open. Walk into it to catch it!', es: '¡Era el último pedazo! Ahora el ladrón está a la vista. ¡Camina hacia él para atraparlo!', fa: 'این آخرین تکه بود! حالا دزد پیدا است. به طرفش برو تا بگیری‌اش!' },
+chaseHop: { en: 'Hee hee! The thief jumped away. Follow it!', es: '¡Ji ji! El ladrón saltó lejos. ¡Síguelo!', fa: 'هی هی! دزد پرید و رفت. دنبالش برو!' },
+goodsHow: { en: 'Walk to the goods on the map, pick one up, and bring it to me.', es: 'Camina hasta las cosas en el mapa, recoge una y tráemela.', fa: 'تا جنس‌ها روی نقشه برو، یکی را بردار و پیش من بیاور.' },
+goodsCarry: { en: 'You carry: {g}. Bring it to {n}.', es: 'Llevas: {g}. Llévaselo a {n}.', fa: 'تو می‌بری: {g}. آن را پیش {n} ببر.' },
+goodsBack: { en: 'It went back where you found it. Try something else.', es: 'Volvió a donde lo encontraste. Prueba otra cosa.', fa: 'به جایی که پیدایش کردی برگشت. چیز دیگری را امتحان کن.' },
+goodsLater: { en: 'These are goods for a trade. Someone will need one soon.', es: 'Son cosas para un trato. Pronto alguien necesitará una.', fa: 'این‌ها جنس برای معامله است. به زودی کسی یکی را لازم دارد.' },
+goodsHolding: { en: 'Carrying', es: 'Llevas', fa: 'می‌بری' },
 foundIt: { en: 'You found it!', es: '¡Lo encontraste!', fa: 'پیدایش کردی!' },
 traded: { en: 'Good trade!', es: '¡Buen intercambio!', fa: 'معاملهٔ خوب!' },
 busy: { en: 'Hello, traveler! I am busy right now. Maybe someone else here needs you first.', es: '¡Hola, viajero! Ahora estoy ocupado. Quizás alguien más aquí te necesita primero.', fa: 'سلام، مسافر! حالا مصروف هستم. شاید اول کس دیگری اینجا به تو نیاز دارد.' },
@@ -2982,15 +2994,21 @@ out.push({ kind: 'qnpc', role: 'contact', x: q.contact.x, y: q.contact.y, ref: q
 const a = q.action;
 if (a.type === 'trade') { a.trader.id = 'qtrader'; out.push({ kind: 'qnpc', role: 'trader', x: a.trader.x, y: a.trader.y, ref: a.trader, phase: 13 }); }
 if (a.type === 'fight') out.push({ kind: 'qfoe', x: a.at[0], y: a.at[1], visible: false });
+if (a.type === 'chase') { const h = (a.hops || [])[0] || a.at; out.push({ kind: 'qfoe', x: h[0], y: h[1], visible: false, chase: true, hop: 0 }); }
+if (a.type === 'trade' && Q.goods()) a.choices.forEach((c, i) => out.push({ kind: 'qgood', x: c.at[0], y: c.at[1], i, home: c.at.slice() }));
 if (a.type === 'find') out.push({ kind: 'qspot', x: a.at[0], y: a.at[1] });
 return out;
 };
 const item = () => WW.ep.quest.action.item;
 const itemName = () => (item() ? `${item().icon || '🎁'} ${WW.plain(item().name)}` : '');
 const say = (who, text, after) => WW.ui.talk({ id: who.id, name: who.name, role: who.role, look: who.look, lines: [text] }, after);
+Q.goods = () => { const a = WW.ep.quest && WW.ep.quest.action; return !!(a && a.type === 'trade' && a.choices.every(c => c.at)); };
+const plainT = t => WW.plain(t);
+const join = (t, pre, k) => ({ en: pre + t.en + ' ' + WW.S[k].en, es: pre + t.es + ' ' + WW.S[k].es, fa: pre + t.fa + ' ' + WW.S[k].fa });
 Q.interact = (e, ents) => {
 const q = WW.ep.quest, s = Q.step();
-if (e.kind === 'qfoe') return fight(e);
+if (e.kind === 'qfoe') return e.chase ? catchThief(e) : fight(e);
+if (e.kind === 'qgood') return pickGood(e);
 const who = e.ref;
 if (e.role === 'giver') {
 if (s === 0) WW.ui.talk(Object.assign({}, who, { lines: q.giver.lines, doneLabel: T('accept') }), () => { set(1); WW.sfx('good'); WW.toast('📜 ' + WW.esc(T('newQuest')) + ': ' + WW.esc(WW.plain(q.title)), '#c08a1e'); });
@@ -3005,6 +3023,7 @@ else say(who, T('goodLuck'));
 } else if (e.role === 'trader') {
 if (s !== 2) return say(who, s < 2 ? T('busy') : T('goodLuck'));
 const a = q.action;
+if (Q.goods()) return offer(e);
 WW.ui.talk(Object.assign({}, who, { lines: a.trader.lines, ask: { stat: q.stat, q: a.q, choices: a.choices } }), () => {
 set(3); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold');
 WW.toast(`🤝 ${WW.esc(T('traded'))}${item() ? ' · ' + WW.esc(itemName()) : ''}`, '#2aa198');
@@ -3012,8 +3031,86 @@ WW.toast(`🤝 ${WW.esc(T('traded'))}${item() ? ' · ' + WW.esc(itemName()) : ''
 }
 return true;
 };
+function pickGood(e) {
+const r = WW.run, a = WW.ep.quest.action, c = a.choices[e.i];
+if (Q.step() !== 2) return WW.chris.say(T('goodsLater'));
+if (r.good != null) { const old = WW.game.ents.find(o => o.kind === 'qgood' && o.i === r.good); if (old) { old.x = old.home[0]; old.y = old.home[1]; old.gone = false; } }
+r.good = e.i; e.gone = true;
+WW.sfx('blip'); WW.fx.burst(e.x, e.y, 'gold');
+WW.chris.say(T('goodsCarry').replace('{g}', (c.icon ? c.icon + ' ' : '') + plainT(c.t)).replace('{n}', plainT(a.trader.name)), null, { at: [a.trader.x, a.trader.y] });
+WW.tools && WW.tools.render(); WW.ui.quest();
+return true;
+}
+function offer(e) {
+const r = WW.run, a = WW.ep.quest.action, who = a.trader;
+if (r.good == null) {
+WW.ui.talk(Object.assign({}, who, { lines: [...a.trader.lines, join(a.q, '', 'goodsHow')] }), () => { r.goodsSeen = true; WW.ui.quest(); });
+return true;
+}
+const c = a.choices[r.good], g = WW.game.ents.find(o => o.kind === 'qgood' && o.i === r.good);
+WW.chris.hide();
+r.tries.qtrader = (r.tries.qtrader || 0) + (c.ok ? 0 : 1);
+if (c.ok) {
+r.good = null; set(3); WW.sfx('coin'); WW.fx.burst(e.x, e.y, 'gold'); WW.game.shake();
+WW.toast(`🤝 ${WW.esc(T('traded'))}${item() ? ' · ' + WW.esc(itemName()) : ''}`, '#2aa198');
+say(who, c.why);
+} else {
+r.good = null; if (g) { g.x = g.home[0]; g.y = g.home[1]; g.gone = false; WW.fx.burst(g.x, g.y, 'poof'); }
+WW.sfx('bad'); say(who, join(c.why, '❌ ', 'goodsBack'));
+}
+WW.tools && WW.tools.render(); WW.ui.quest();
+return true;
+}
+Q.target = (hint) => {
+const a = WW.ep.quest.action, r = WW.run;
+if (a.type === 'fight') return a.at;
+if (a.type === 'chase') { const c = Q.clue(); if (!c) { const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); return f ? [f.x, f.y] : a.at; } if (!hint) return null; const z = c.zones[0]; return [z.x + (z.w >> 1), z.y + (z.h >> 1)]; }
+if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; }
+return null;
+};
+Q.carryLine = () => {
+const r = WW.run; if (!r || r.good == null || !Q.goods()) return '';
+const a = WW.ep.quest.action, c = a.choices[r.good];
+return `🤝 <b>${WW.esc(T('goodsHolding'))}:</b> ${c.icon ? c.icon + ' ' : ''}${WW.esc(plainT(c.t))} <small>→ ${WW.esc(plainT(a.trader.name))}</small>`;
+};
+const inZ = (zs, x, y) => (zs || []).find(z => x >= z.x && y >= z.y && x < z.x + z.w && y < z.y + z.h);
+Q.clue = () => { const a = WW.ep.quest.action, r = WW.run; return a.type === 'chase' && Q.step() === 2 ? a.clues[r.chase || 0] || null : null; };
+function chaseStep(x, y) {
+const a = WW.ep.quest.action, r = WW.run, c = Q.clue();
+if (!c) return;
+if (inZ(c.zones, x, y)) {
+r.chase = (r.chase || 0) + 1; r.chaseBand = null;
+WW.sfx('coin'); WW.fx.burst(x, y, 'gold'); WW.game.shake();
+WW.toast(`🧩 ${r.chase}/${a.clues.length} · ${WW.esc(itemName())}`, '#2aa198');
+const next = a.clues[r.chase];
+if (next) WW.chris.say(`🧩 ${L(c.found)} ${T('chaseNext')} ${L(next.t)}`);
+else {
+const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); f.visible = true; WW.fx.burst(f.x, f.y, 'purple'); WW.sfx('boss');
+WW.chris.say(`🧩 ${L(c.found)} ${T('chaseCatch').replace('{n}', plainT(a.name))}`, null, { at: [f.x, f.y] });
+}
+WW.ui.quest();
+return;
+}
+const band = inZ(c.noBy, x, y);
+if (band && r.chaseBand !== band) { r.chaseBand = band; r.chaseMissed = (r.chaseMissed || 0) + 1; WW.sfx('bad'); WW.chris.say(`❌ ${L(band.t)}`); }
+else if (!band) r.chaseBand = null;
+}
+function catchThief(e) {
+const a = WW.ep.quest.action, r = WW.run;
+if (Q.step() !== 2 || (r.chase || 0) < a.clues.length) return true;
+const spots = [...(a.hops || []), a.at];
+if (e.hop < spots.length - 1) {
+WW.fx.burst(e.x, e.y, 'poof'); e.hop++; [e.x, e.y] = spots[e.hop]; WW.fx.burst(e.x, e.y, 'purple'); WW.sfx('bad');
+WW.chris.say(T('chaseHop').replace('{n}', plainT(a.name)), null, { at: [e.x, e.y] });
+return true;
+}
+e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); WW.fx.burst(e.x, e.y, 'gold'); WW.sfx('win'); set(3);
+WW.ui.message('🧩 ' + itemName(), a.win);
+return true;
+}
 function showAction(ents) {
 const a = WW.ep.quest.action;
+if (a.type === 'chase') { WW.run.chase = 0; WW.sfx('boss'); WW.chris.say(`${L(a.taunt)} ${T('chaseNext')} ${L(a.clues[0].t)}`); }
 if (a.type === 'fight') {
 const f = ents.find(e => e.kind === 'qfoe'); f.visible = true;
 WW.fx.burst(f.x, f.y, 'purple');
@@ -3033,6 +3130,7 @@ return true;
 Q.onStep = (x, y) => {
 if (!Q.on() || Q.step() !== 2) return;
 const a = WW.ep.quest.action;
+if (a.type === 'chase') return chaseStep(x, y);
 if (a.type !== 'find' || a.at[0] !== x || a.at[1] !== y) return;
 WW.sfx('win'); WW.fx.burst(x, y, 'gold'); set(3);
 WW.ui.message('✨ ' + T('foundIt'), a.found);
@@ -3069,6 +3167,11 @@ WW.shadow(c, x, y + 13, 10);
 WW.sprite(c, 'smudge', x, y, { bob: true, t, phase: 2, pal: THIEF });
 c.fillStyle = '#22202e'; c.fillRect(x + 3, y + 7, 10, 2);
 c.fillStyle = '#ffffff'; c.fillRect(x + 4, y + 7, 2, 1); c.fillRect(x + 10, y + 7, 2, 1);
+} else if (e.kind === 'qgood') {
+const k = (Math.sin(t / 260 + e.i) + 1) / 2;
+if (Q.step() === 2 && WW.run.goodsSeen) { c.fillStyle = `rgba(255,236,150,${.15 + k * .25})`; c.beginPath(); c.arc(x + 8, y + 9, 8, 0, 7); c.fill(); }
+WW.shadow(c, x, y + 13, 10);
+drawGood(c, WW.ep.quest.action.choices[e.i].icon, x, y);
 } else if (e.kind === 'qspot' && Q.step() === 2) {
 const k = (Math.sin(t / 260) + 1) / 2;
 c.fillStyle = `rgba(255,243,176,${0.25 + k * 0.6})`;
@@ -3076,18 +3179,27 @@ c.fillRect(x + 7, y + 4, 2, 8); c.fillRect(x + 4, y + 7, 8, 2);
 c.fillStyle = `rgba(255,255,255,${k})`; c.fillRect(x + 7, y + 7, 2, 2);
 }
 };
+function drawGood(c, icon, x, y) {
+const R = (a, b, w, h, col) => { c.fillStyle = col; c.fillRect(x + a, y + b, w, h); };
+if (icon === '🪵') { [[2, 9], [6, 9], [10, 9], [4, 5], [8, 5]].forEach(([a, b]) => { R(a - 1, b - 1, 6, 6, '#22202e'); R(a, b, 4, 4, '#8b5a2b'); R(a + 1, b + 1, 2, 2, '#d9a066'); }); }
+else if (icon === '🛒') { R(1, 5, 14, 8, '#22202e'); R(2, 6, 12, 5, '#7a7f87'); R(3, 3, 3, 3, '#5a4a44'); R(6, 2, 4, 4, '#8a6a5a'); R(10, 3, 3, 3, '#5a4a44'); R(3, 12, 3, 3, '#22202e'); R(10, 12, 3, 3, '#22202e'); }
+else if (icon === '🪨') { R(3, 4, 10, 11, '#22202e'); R(4, 5, 8, 9, '#c79a5b'); R(6, 3, 4, 2, '#22202e'); R(5, 8, 3, 3, '#8d939b'); R(9, 10, 2, 2, '#8d939b'); }
+else { R(2, 4, 12, 11, '#22202e'); R(3, 5, 10, 9, '#c79a5b'); R(3, 9, 10, 1, '#8b5a2b'); R(7, 5, 1, 9, '#8b5a2b'); }
+}
 Q.bar = () => {
 const q = WW.ep.quest, s = Q.step(), a = q.action;
 if (s >= 4) return WW.plain(q.title);
 const now = s === 0 ? T('qFindGiver') : s === 1 ? T('qTalkTo') + ' ' + WW.plain(q.contact.name)
 : s === 3 ? T('qReturn') + ' ' + WW.plain(q.giver.name)
-: a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name) : T('qTrade') + ' ' + WW.plain(a.trader.name);
+: a.type === 'find' ? WW.plain(a.hint) : a.type === 'fight' ? T('qBeat') + ' ' + WW.plain(a.name)
+: a.type === 'chase' ? ((WW.run.chase || 0) < a.clues.length ? T('qChase').replace('{i}', (WW.run.chase || 0) + 1).replace('{n}', a.clues.length) : T('qCatch').replace('{n}', WW.plain(a.name)))
+: Q.goods() && WW.run.goodsSeen ? (WW.run.good != null ? T('qBring').replace('{n}', WW.plain(a.trader.name)) : T('qGoods')) : T('qTrade') + ' ' + WW.plain(a.trader.name);
 return `📜 ${WW.plain(q.title)}: ${now.replace(/\ba El\b/, 'al')}`;
 };
 Q.log = () => {
 if (!Q.on()) return '';
 const q = WW.ep.quest, r = WW.run;
-const extra = q.action.type === 'fight' ? ` (${(r.questMissed || []).length} missed)` : q.action.type === 'trade' ? ` (${(r.tries.qtrader || 0) + 1} ${(r.tries.qtrader || 0) ? 'tries' : 'try'})` : '';
+const extra = q.action.type === 'fight' ? ` (${(r.questMissed || []).length} missed)` : q.action.type === 'chase' ? ` (${r.chaseMissed || 0} wrong places)` : q.action.type === 'trade' ? ` (${(r.tries.qtrader || 0) + 1} ${(r.tries.qtrader || 0) ? 'tries' : 'try'})` : '';
 return `QUEST: ${WW.plain({ en: q.title.en })} — ${Q.done() ? 'done' : 'not finished'}${extra}`;
 };
 })();
@@ -3288,8 +3400,9 @@ const left = g.ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
 if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
 else if (WW.quest.on() && !WW.quest.done()) {
 const q = ep.quest, st = WW.quest.step(), a = q.action;
-at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
-text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : WW.quest.bar().replace(/^📜\s*/, '');
+at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : WW.quest.target(true);
+const clue = WW.quest.clue();
+text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : clue ? `🧩 ${T('chaseNext')} ${WW.L(clue.t)}` : WW.quest.bar().replace(/^📜\s*/, '');
 } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
 else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
 }
@@ -3379,6 +3492,7 @@ const bag = document.createElement('div'); bag.className = 'tbag';
 bar.appendChild(bag);
 if (sel === 'build' && WW.farm) { const line = WW.farm.carryLine(); if (line) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${line}</div>`); }
 if (sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.current()) { const c = WW.farm.current(); bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${c.icon} <b>${esc(L(c.name))}</b> · ${WW.farm.seedCount()} <small>${esc(T('seedCycle'))}</small></div>`); }
+const ql = WW.quest.carryLine(); if (ql) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${ql}</div>`);
 const held = X.heldSign();
 if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
 };
@@ -4527,7 +4641,7 @@ WW.ui.finish();
 function interact(e) {
 if (!e || WW.paused) return;
 const ep = WW.ep, r = WW.run;
-if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
+if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qgood') return WW.quest.interact(e, ents);
 if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
 if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
 if (e.kind === 'npc') {
@@ -4758,7 +4872,7 @@ const b = Math.round(Math.sin(t / 250 + e.phase) * 1.5);
 c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
 }
 }
-if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot' || e.kind === 'qgood') WW.quest.draw(c, e, px(e), py(e), t);
 if (WW.world.KINDS.includes(e.kind)) WW.world.draw(c, e, px(e), py(e), t);
 if (e.kind === 'atlas') {
 const a = (Math.sin(t / 250) + 1) / 2;
@@ -4858,7 +4972,7 @@ if (WW.quest.on() && !WW.quest.done()) {
 const q = ep.quest, st = WW.quest.step(), a = q.action;
 if (st === 0 || st === 3) return [q.giver.x, q.giver.y];
 if (st === 1) return [q.contact.x, q.contact.y];
-return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
+return WW.quest.target();
 }
 if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
 return r.challengeDone ? ep.boss.at : ep.challenge.at;

@@ -242,7 +242,7 @@
   function interact(e) {
     if (!e || WW.paused) return;
     const ep = WW.ep, r = WW.run;
-    if (e.kind === 'qnpc' || e.kind === 'qfoe') return WW.quest.interact(e, ents);
+    if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qgood') return WW.quest.interact(e, ents);
     if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
     if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
     if (e.kind === 'npc') {
@@ -492,7 +492,7 @@
           c.fillStyle = '#fffbe8'; c.fillRect(px(e) + 10, py(e) - 9 + b, 7, 6); c.fillStyle = '#22202e'; c.fillRect(px(e) + 12, py(e) - 7 + b, 1, 1); c.fillRect(px(e) + 14, py(e) - 7 + b, 1, 1);
         }
       }
-      if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot') WW.quest.draw(c, e, px(e), py(e), t);
+      if (e.kind === 'qnpc' || e.kind === 'qfoe' || e.kind === 'qspot' || e.kind === 'qgood') WW.quest.draw(c, e, px(e), py(e), t);
       if (WW.world.KINDS.includes(e.kind)) WW.world.draw(c, e, px(e), py(e), t);
       if (e.kind === 'atlas') {
         const a = (Math.sin(t / 250) + 1) / 2;
@@ -599,7 +599,7 @@
       const q = ep.quest, st = WW.quest.step(), a = q.action;
       if (st === 0 || st === 3) return [q.giver.x, q.giver.y];
       if (st === 1) return [q.contact.x, q.contact.y];
-      return a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null; // a secret spot is found with the clue, not the arrow
+      return WW.quest.target(); // a secret spot or a chase clue is found by thinking, not the arrow
     }
     if (!r.challengeDone && r.worldOn) { const w = WW.world.next(); if (w) return w; }
     return r.challengeDone ? ep.boss.at : ep.challenge.at;

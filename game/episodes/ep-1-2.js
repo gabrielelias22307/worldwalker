@@ -176,7 +176,7 @@ window.EPISODE = {
       fa: 'جنگل زمزمه از اینجا شروع می‌شود؟ بعضی می‌گویند از اولین درخت ناجو. بعضی می‌گویند از راه. بعضی می‌گویند از دریا. حق با کیست؟ هیچ کس نمی‌تواند ثابت کند.' } }
   ],
 
-  /* the quest: Ms. Lin the printer (gold !) -> Kwame the paper rider -> beat the Ink Thief in the Whispering Woods -> back to Ms. Lin */
+  /* the quest: Ms. Lin the printer (gold !) -> Kwame the paper rider -> follow the Ink Thief's riddles to 3 kinds of region, then catch it -> back to Ms. Lin */
   quest: {
     stat: 'reg',
     title: { en: 'The Paper Route Map', es: 'El mapa de la ruta del periódico', fa: 'نقشهٔ مسیر روزنامه' },
@@ -209,33 +209,45 @@ window.EPISODE = {
         { en: 'Yes, I saw it! That map is important. It shows every home on my route. All the routes start at one [[hub|hub]]: Ms. Lin\'s print shop.',
           es: '¡Sí, lo vi! Ese mapa es importante. Muestra cada casa de mi ruta. Todas las rutas empiezan en un [[hub|centro]]: la imprenta de la Sra. Lin.',
           fa: 'بله، دیدمش! آن نقشه مهم است. هر خانهٔ مسیر مرا نشان می‌دهد. همهٔ مسیرها از یک [[hub|مرکز]] شروع می‌شوند: چاپخانهٔ خانم لین.' },
-        { en: 'The thief ran south-west into the Whispering Woods. It is hiding in a small gap between the pines, just north of the ranger. It hates region questions. Get two right and it will drop the map!',
-          es: 'El ladrón corrió al suroeste, hacia el Bosque de los Susurros. Se esconde en un pequeño hueco entre los pinos, justo al norte de la guardabosques. Odia las preguntas sobre regiones. ¡Acierta dos y soltará el mapa!',
-          fa: 'دزد به طرف جنوب غرب، به جنگل زمزمه دوید. او در یک جای خالی کوچک میان درختان ناجو، درست شمالِ جنگلبان پنهان است. از سوال‌های منطقه بدش می‌آید. دو سوال را درست جواب بده تا نقشه را بیندازد!' }
+        { en: 'The thief tore the map and hid the pieces! Each piece is in a different kind of region. Listen to its riddles and walk to the right place. Then catch the thief!',
+          es: '¡El ladrón rompió el mapa y escondió los pedazos! Cada pedazo está en un tipo distinto de región. Escucha sus acertijos y camina al lugar correcto. ¡Después atrapa al ladrón!',
+          fa: 'دزد نقشه را پاره کرد و تکه‌ها را پنهان کرد! هر تکه در یک نوع منطقهٔ دیگر است. به چیستان‌هایش گوش بده و به جای درست برو. بعد دزد را بگیر!' }
       ]
     },
     action: {
-      type: 'fight',
+      type: 'chase',
       at: [3, 14],
+      hops: [[12, 19], [8, 17]],
       name: { en: 'The Ink Thief', es: 'El Ladrón de Tinta', fa: 'دزد رنگ' },
-      taunt: { en: 'Hee hee! This paper route map is mine now. Answer my region riddles, or I keep it!',
-        es: '¡Ji ji! Este mapa de reparto ahora es mío. ¡Responde mis acertijos sobre regiones o me lo quedo!',
-        fa: 'هی هی! این نقشهٔ رساندن روزنامه حالا مال من است. به چیستان‌های منطقهٔ من جواب بده، وگرنه آن را نگه می‌دارم!' },
-      win: { en: 'Drat! The Ink Thief drops the map and runs off in a puff of ink.',
-        es: '¡Rayos! El Ladrón de Tinta suelta el mapa y huye en una nube de tinta.',
-        fa: 'اَه! دزد رنگ نقشه را می‌اندازد و در یک ابر سیاهی فرار می‌کند.' },
-      need: 2,
-      questions: [
-        { q: { en: 'Ms. Lin\'s newspaper goes out from her print shop to many homes. What is the hub of that region?', es: 'El periódico de la Sra. Lin sale de su imprenta hacia muchas casas. ¿Cuál es el centro de esa región?', fa: 'روزنامهٔ خانم لین از چاپخانه‌اش به خانه‌های زیادی می‌رود. مرکز این منطقه چیست؟' },
-          choices: [{ en: 'The print shop', es: 'La imprenta', fa: 'چاپخانه' }, { en: 'The Wheat Belt', es: 'El Cinturón del Trigo', fa: 'کمربند گندم' }, { en: 'The Whispering Woods', es: 'El Bosque de los Susurros', fa: 'جنگل زمزمه' }, { en: 'The river bridge', es: 'El puente del río', fa: 'پل دریا' }], answer: 0,
-          why: { en: 'The paper starts at the print shop and moves out to the homes. The starting point is the center, so it is the hub.', es: 'El periódico empieza en la imprenta y sale hacia las casas. El punto de partida es el centro de la región.', fa: 'روزنامه از چاپخانه شروع می‌شود و به خانه‌ها می‌رود. نقطهٔ شروع، مرکز منطقه است.' } },
-        { q: { en: 'Which one is a formal region?', es: '¿Cuál es una región formal?', fa: 'کدام یک منطقهٔ رسمی است؟' },
-          choices: [{ en: 'The countries that use the euro as money', es: 'Los países que usan el euro como dinero', fa: 'کشورهایی که پولشان یورو است' }, { en: 'The homes one pizza shop delivers to', es: 'Las casas a las que lleva comida una pizzería', fa: 'خانه‌هایی که یک پیتزافروشی به آن‌ها غذا می‌رساند' }, { en: 'The area people call "the Midwest"', es: 'La zona que la gente llama "el Medio Oeste"', fa: 'ساحه‌ای که مردم آن را «غرب میانه» می‌گویند' }, { en: 'The towns that send their kids to one school', es: 'Los pueblos que mandan a sus niños a una escuela', fa: 'شهرک‌هایی که اولادهایشان را به یک مکتب می‌فرستند' }], answer: 0,
-          why: { en: 'Each of those countries shares one trait: the euro. One shared trait makes a formal region. The others are built around a hub or live in people\'s minds.', es: 'Cada uno de esos países comparte una característica: el euro. Una característica compartida forma una región formal. Las otras se forman alrededor de un centro o viven en la mente de la gente.', fa: 'هر یک از آن کشورها یک ویژگی مشترک دارد: یورو. یک ویژگی مشترک منطقهٔ رسمی می‌سازد. باقی دور یک مرکز ساخته شده‌اند یا در ذهن مردم هستند.' } },
-        { q: { en: 'Everyone says the Whispering Woods are spooky. Why are they a perceptual region?', es: 'Todos dicen que el Bosque de los Susurros da miedo. ¿Por qué es una región perceptual?', fa: 'همه می‌گویند جنگل زمزمه ترسناک است. چرا یک منطقهٔ ادراکی است؟' },
-          choices: [{ en: 'People believe in them, but nobody can prove where they start', es: 'La gente cree en él, pero nadie puede probar dónde empieza', fa: 'مردم به آن باور دارند، اما کسی نمی‌تواند ثابت کند از کجا شروع می‌شود' }, { en: 'A fence goes all the way around them', es: 'Una cerca lo rodea por completo', fa: 'یک کتاره دور تا دور آن است' }, { en: 'A law says exactly where they end', es: 'Una ley dice exactamente dónde termina', fa: 'یک قانون دقیق می‌گوید کجا تمام می‌شود' }, { en: 'They are built around one print shop', es: 'Se forma alrededor de una imprenta', fa: 'دور یک چاپخانه ساخته شده' }], answer: 0,
-          why: { en: 'A perceptual region lives in people\'s minds. Everyone feels the woods are real, but each person puts the edge in a different place.', es: 'Una región perceptual vive en la mente de la gente. Todos sienten que el bosque es real, pero cada persona pone el borde en un lugar distinto.', fa: 'منطقهٔ ادراکی در ذهن مردم است. همه حس می‌کنند جنگل واقعی است، اما هر کس کناره‌اش را در یک جای دیگر می‌گذارد.' } }
+      taunt: { en: 'The Ink Thief laughs: "Hee hee! I tore the map into 3 pieces and hid them in the valley. Follow my riddles, if you can!"',
+        es: 'El Ladrón de Tinta se ríe: "¡Ji ji! Rompí el mapa en 3 pedazos y los escondí en el valle. ¡Sigue mis acertijos, si puedes!"',
+        fa: 'دزد رنگ می‌خندد: «هی هی! نقشه را سه تکه کردم و در دره پنهان کردم. اگر می‌توانی، چیستان‌هایم را دنبال کن!»' },
+      clues: [
+        { t: { en: 'Piece 1 is at the [[hub|hub]] of a [[functional region|functional region]]. Every stream in the valley flows to it, and the boats leave from it.',
+            es: 'El pedazo 1 está en el [[hub|centro]] de una [[functional region|región funcional]]. Todos los arroyos del valle llegan allí, y de allí salen los botes.',
+            fa: 'تکهٔ ۱ در [[hub|مرکز]] یک [[functional region|منطقهٔ کارکردی]] است. همهٔ جوی‌های دره به آن جا می‌ریزند و کشتی‌ها از آن جا می‌روند.' },
+          zones: [{ x: 24, y: 3, w: 7, h: 5 }],
+          noBy: [{ x: 2, y: 6, w: 10, h: 4, t: { en: 'Every field here grows wheat. That is a formal region, not a hub. Look for the place where the streams and boats meet.', es: 'Aquí todos los campos tienen trigo. Eso es una región formal, no un centro. Busca el lugar donde se juntan los arroyos y los botes.', fa: 'این جا در همهٔ زمین‌ها گندم است. این یک منطقهٔ رسمی است، نه مرکز. جایی را پیدا کن که جوی‌ها و کشتی‌ها به هم می‌رسند.' } },
+            { x: 1, y: 16, w: 12, h: 5, t: { en: 'These are the Whispering Woods. Nothing flows to them. A hub is where everything comes together.', es: 'Este es el Bosque de los Susurros. Nada llega aquí. Un centro es donde todo se junta.', fa: 'این جنگل زمزمه است. چیزی به این جا نمی‌آید. مرکز جایی است که همه چیز به هم می‌رسد.' } }],
+          found: { en: 'Piece 1 was in Hub Town! The streams and the boats all meet here. The hub is the center of a functional region.', es: '¡El pedazo 1 estaba en Pueblo Centro! Aquí se juntan los arroyos y los botes. El centro es el corazón de una región funcional.', fa: 'تکهٔ ۱ در شهرک مرکز بود! جوی‌ها و کشتی‌ها همه این جا به هم می‌رسند. مرکز، وسط یک منطقهٔ کارکردی است.' } },
+        { t: { en: 'Piece 2 is in a [[formal region|formal region]]: a place where one trait is true everywhere. Find the fields that all grow the same crop.',
+            es: 'El pedazo 2 está en una [[formal region|región formal]]: un lugar donde una característica es igual en todas partes. Busca los campos que tienen todos el mismo cultivo.',
+            fa: 'تکهٔ ۲ در یک [[formal region|منطقهٔ رسمی]] است: جایی که یک ویژگی در همه جا یکسان است. زمین‌هایی را پیدا کن که همه یک نوع کشت دارند.' },
+          zones: [{ x: 2, y: 6, w: 10, h: 4 }, { x: 6, y: 1, w: 10, h: 3 }],
+          noBy: [{ x: 24, y: 1, w: 7, h: 11, t: { en: 'Hub Town is a hub. Many different things meet here. A formal region has one trait that is the same everywhere.', es: 'Pueblo Centro es un centro. Aquí se juntan muchas cosas distintas. Una región formal tiene una característica igual en todas partes.', fa: 'شهرک مرکز یک مرکز است. چیزهای زیاد و مختلف این جا به هم می‌رسند. منطقهٔ رسمی یک ویژگی دارد که در همه جا یکسان است.' } },
+            { x: 1, y: 16, w: 12, h: 5, t: { en: 'People don\'t agree where these woods start. A formal region has a clear edge, where its trait stops.', es: 'La gente no se pone de acuerdo en dónde empieza este bosque. Una región formal tiene un borde claro, donde termina su característica.', fa: 'مردم سر این که این جنگل از کجا شروع می‌شود موافق نیستند. منطقهٔ رسمی یک لبهٔ روشن دارد، جایی که ویژگی‌اش تمام می‌شود.' } }],
+          found: { en: 'Piece 2 was in the wheat! Every field here grows wheat, so this is a formal region.', es: '¡El pedazo 2 estaba en el trigo! Aquí todos los campos tienen trigo, así que es una región formal.', fa: 'تکهٔ ۲ در گندم بود! این جا در همهٔ زمین‌ها گندم است، پس این یک منطقهٔ رسمی است.' } },
+        { t: { en: 'Piece 3 is in a [[perceptual region|perceptual region]]. Everybody says it is spooky, but nobody agrees where it starts.',
+            es: 'El pedazo 3 está en una [[perceptual region|región perceptual]]. Todos dicen que da miedo, pero nadie se pone de acuerdo en dónde empieza.',
+            fa: 'تکهٔ ۳ در یک [[perceptual region|منطقهٔ ادراکی]] است. همه می‌گویند ترسناک است، اما کسی سر این که از کجا شروع می‌شود موافق نیست.' },
+          zones: [{ x: 1, y: 16, w: 13, h: 5 }],
+          noBy: [{ x: 2, y: 6, w: 10, h: 4, t: { en: 'Everybody agrees where the wheat ends. A perceptual region has fuzzy edges that people argue about.', es: 'Todos están de acuerdo en dónde termina el trigo. Una región perceptual tiene bordes borrosos que la gente discute.', fa: 'همه موافق‌اند که گندم کجا تمام می‌شود. منطقهٔ ادراکی لبه‌های نامعلوم دارد که مردم سرش بحث می‌کنند.' } },
+            { x: 24, y: 1, w: 7, h: 11, t: { en: 'Hub Town is a real hub: the streams really flow here. A perceptual region lives in people\'s minds.', es: 'Pueblo Centro es un centro real: los arroyos de verdad llegan aquí. Una región perceptual vive en la mente de la gente.', fa: 'شهرک مرکز یک مرکز واقعی است: جوی‌ها واقعاً به این جا می‌آیند. منطقهٔ ادراکی در ذهن مردم است.' } }],
+          found: { en: 'Piece 3 was in the Whispering Woods! People feel the woods are spooky, but each person puts the edge in a different place. That is a perceptual region.', es: '¡El pedazo 3 estaba en el Bosque de los Susurros! La gente siente que el bosque da miedo, pero cada uno pone el borde en otro lugar. Eso es una región perceptual.', fa: 'تکهٔ ۳ در جنگل زمزمه بود! مردم حس می‌کنند جنگل ترسناک است، اما هر کس لبه‌اش را جای دیگری می‌گذارد. این یک منطقهٔ ادراکی است.' } }
       ],
+      win: { en: 'Got you! The Ink Thief gives back the map and runs off in a puff of ink. All 3 pieces fit together: the paper route map is whole again.',
+        es: '¡Te atrapé! El Ladrón de Tinta devuelve el mapa y huye en una nube de tinta. Los 3 pedazos encajan: el mapa de reparto está completo otra vez.',
+        fa: 'گرفتمت! دزد رنگ نقشه را پس می‌دهد و در یک ابر سیاهی فرار می‌کند. هر سه تکه با هم جور می‌شوند: نقشهٔ رساندن روزنامه دوباره کامل است.' },
       item: { icon: '🗺️', name: { en: 'The paper route map', es: 'El mapa de reparto', fa: 'نقشهٔ رساندن روزنامه' } }
     }
   },

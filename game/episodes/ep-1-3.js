@@ -235,11 +235,11 @@ window.EPISODE = {
       },
       q: { en: 'What will you offer Marisol for a load of iron?', es: '¿Qué le ofreces a Marisol a cambio de una carga de hierro?', fa: 'در بدل یک بار آهن، به ماریسول چه پیشنهاد می‌کنی؟' },
       choices: [
-        { ok: true, t: { en: 'Logs from the Timber Woods', es: 'Troncos del Bosque de Madera', fa: 'کنده‌های چوب از جنگل چوب' },
+        { ok: true, at: [7, 4], icon: '🪵', t: { en: 'Logs from the Timber Woods', es: 'Troncos del Bosque de Madera', fa: 'کنده‌های چوب از جنگل چوب' },
           why: { en: 'Good trade! The woods have plenty of trees, and the mountain has almost none. Miners use logs to hold up their tunnels. Each side gets what it lacks.', es: '¡Buen trato! El bosque tiene muchos árboles y la montaña casi ninguno. Los mineros usan troncos para sostener sus túneles. Cada lado recibe lo que le falta.', fa: 'معاملهٔ خوب! جنگل درخت زیاد دارد و کوه تقریباً هیچ ندارد. معدنچی‌ها با کنده‌های چوب سقف تونل‌ها را نگه می‌دارند. هر طرف چیزی را که ندارد می‌گیرد.' } },
-        { t: { en: 'A cart of iron ore', es: 'Una carreta de mineral de hierro', fa: 'یک گادی سنگ آهن' },
+        { at: [22, 4], icon: '🛒', t: { en: 'A cart of iron ore', es: 'Una carreta de mineral de hierro', fa: 'یک گادی سنگ آهن' },
           why: { en: 'The mine already has more iron than it can use. Nobody trades for something they already have plenty of.', es: 'La mina ya tiene más hierro del que puede usar. Nadie cambia algo por lo que ya tiene de sobra.', fa: 'معدن همین حالا بیشتر از ضرورتش آهن دارد. هیچ کس برای چیزی که زیاد دارد معامله نمی‌کند.' } },
-        { t: { en: 'A bag of mountain stones', es: 'Una bolsa de piedras de la montaña', fa: 'یک خلته سنگ کوه' },
+        { at: [16, 3], icon: '🪨', t: { en: 'A bag of mountain stones', es: 'Una bolsa de piedras de la montaña', fa: 'یک خلته سنگ کوه' },
           why: { en: 'The mountain is made of rock! The miners have more than enough. Offer something the mountain does not have.', es: '¡La montaña está hecha de roca! Los mineros tienen de sobra. Ofrece algo que la montaña no tenga.', fa: 'کوه خودش از سنگ است! معدنچی‌ها بیشتر از کافی دارند. چیزی را پیشنهاد کن که کوه ندارد.' } }
       ],
       item: { icon: '🔩', name: { en: 'A load of iron', es: 'Una carga de hierro', fa: 'یک بار آهن' } }

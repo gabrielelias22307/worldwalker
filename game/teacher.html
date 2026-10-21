@@ -160,6 +160,8 @@
     qa_find: { en: 'find a secret spot (gold square on the map)', es: 'encontrar un lugar secreto (cuadro dorado en el mapa)', fa: 'پیدا کردن یک جای مخفی (مربع طلایی روی نقشه)' },
     qa_fight: { en: 'beat the Ink Thief in a question duel', es: 'vencer al Ladrón de Tinta en un duelo de preguntas', fa: 'شکست دادن دزد رنگ در یک مسابقهٔ سؤال' },
     qa_trade: { en: 'make the right trade', es: 'hacer el intercambio correcto', fa: 'معاملهٔ درست' },
+    qa_chase: { en: 'chase the Ink Thief: each clue is answered by walking to the right place, then catch it', es: 'perseguir al Ladrón de Tinta: cada pista se responde caminando al lugar correcto; después atraparlo', fa: 'دنبال کردن دزد رنگ: هر سرنخ با رفتن به جای درست جواب داده می‌شود، بعد گرفتنش' },
+    qGoodsAt: { en: 'The goods sit on the map; the student carries one to the trader.', es: 'Las cosas están en el mapa; el estudiante lleva una al comerciante.', fa: 'جنس‌ها روی نقشه است؛ شاگرد یکی را پیش تاجر می‌برد.' },
     qSpot: { en: 'The spot is at', es: 'El lugar está en', fa: 'جای آن در' },
     loading: { en: 'Loading…', es: 'Cargando…', fa: 'در حال بارگذاری…' },
     pChris: { en: 'Christopher', es: 'Christopher', fa: 'کریستوفر' },
@@ -349,6 +351,8 @@
       const people = [[q.giver, 'G'], [q.contact, 'C']].concat(q.action.type === 'trade' ? [[q.action.trader, 'T']] : []);
       people.forEach(([p, t]) => { WW.drawPerson(x, p, p.x * S, p.y * S - 2, 0); badge(p.x, p.y, t, '#8fc3ff'); });
       const a = q.action;
+      if (a.type === 'chase') { WW.sprite(x, 'smudge', a.at[0] * S, a.at[1] * S, { pal: WW.quest ? WW.quest.THIEF : { g: '#a04848', G: '#6e2c2c' } }); badge(a.at[0], a.at[1], '!', '#ff8f7a'); a.clues.forEach((c, i) => c.zones.forEach(z => { x.strokeStyle = '#8fc3ff'; x.lineWidth = 2; x.setLineDash([3, 3]); x.strokeRect(z.x * S, z.y * S, z.w * S, z.h * S); x.setLineDash([]); badge(z.x, z.y + 1, String(i + 1), '#8fc3ff'); })); }
+      if (a.type === 'trade') (a.choices || []).filter(c => c.at).forEach(c => badge(c.at[0], c.at[1], c.ok ? '✓' : '✗', c.ok ? '#7fd17f' : '#ff8f7a'));
       if (a.type === 'fight') { WW.sprite(x, 'smudge', a.at[0] * S, a.at[1] * S, { pal: WW.quest ? WW.quest.THIEF : { g: '#a04848', G: '#6e2c2c' } }); badge(a.at[0], a.at[1], '!', '#ff8f7a'); }
       if (a.type === 'find') { x.fillStyle = '#fff3b0'; x.fillRect(a.at[0] * S + 7, a.at[1] * S + 3, 2, 10); x.fillRect(a.at[0] * S + 3, a.at[1] * S + 7, 10, 2); x.strokeStyle = '#f2c14e'; x.lineWidth = 2; x.setLineDash([]); x.strokeRect(a.at[0] * S + 1, a.at[1] * S + 1, 14, 14); }
     }
@@ -417,6 +421,8 @@
       h += `<p class="q">${esc(HT('qAction'))}: ${esc(L(H['qa_' + a.type]))}</p>`;
       if (a.type === 'find') h += `<p>${esc(HT('qSpot'))} (${a.at[0]}, ${a.at[1]}) · <i>${rich(a.hint)}</i></p><div class="say">${rich(a.found)}</div>`;
       if (a.type === 'fight') { h += `<p><b>${esc(L(a.name))}</b> · ${a.need || 2} ${esc(HT('bossNeed'))}</p><div class="say">${rich(a.taunt)}</div>`; a.questions.forEach((qq, i) => { h += `<div class="bossq"><p class="q">${i + 1}. ${rich(qq.q)}</p>${answers(qq.choices, (c, j) => j === qq.answer)}${qq.why ? `<p class="muted">${rich(qq.why)}</p>` : ''}</div>`; }); }
+      if (a.type === 'chase') { h += `<p><b>${esc(L(a.name))}</b></p><div class="say">${rich(a.taunt)}</div>`; a.clues.forEach((c, i) => { h += `<div class="bossq"><p class="q">🧩 ${i + 1}. ${rich(c.t)}</p><p>✓ ${rich(c.found)}</p>${(c.noBy || []).map(b => `<p class="muted">✗ ${rich(b.t)}</p>`).join('')}</div>`; }); h += `<div class="say">${rich(a.win)}</div>`; }
+      if (a.type === 'trade' && (a.choices || []).every(c => c.at)) h += `<p class="muted">${esc(HT('qGoodsAt'))}</p>`;
       if (a.type === 'trade') h += person(a.trader, 'T') + a.trader.lines.map(l => `<div class="say">${rich(l)}</div>`).join('') + `<p class="q">${rich(a.q)}</p>${answers(a.choices, c => c.ok, c => c.why)}</div>`;
       if (a.item) h += `<p class="muted">🎒 ${a.item.icon} ${rich(a.item.name)}</p>`;
       h += '</section>';

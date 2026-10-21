@@ -67,6 +67,7 @@
     bar.appendChild(bag);
     if (sel === 'build' && WW.farm) { const line = WW.farm.carryLine(); if (line) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${line}</div>`); }
     if (sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.current()) { const c = WW.farm.current(); bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${c.icon} <b>${esc(L(c.name))}</b> · ${WW.farm.seedCount()} <small>${esc(T('seedCycle'))}</small></div>`); }
+    const ql = WW.quest.carryLine(); if (ql) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${ql}</div>`);
     const held = X.heldSign();
     if (sel === 'sign' && held) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${carry() ? '📦' : '🪧'} <b>${esc(T(carry() ? 'cHolding' : 'sgHolding').replace('{i}', held.n).replace('{n}', r.signs.length))}:</b> ${held.b.icon ? held.b.icon + ' ' : ''}${WW.rich(held.b.text)} <small>${esc(T('sgHow'))}</small></div>`);
   };

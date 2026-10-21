@@ -156,8 +156,9 @@
       if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
       else if (WW.quest.on() && !WW.quest.done()) {
         const q = ep.quest, st = WW.quest.step(), a = q.action;
-        at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : a.type === 'fight' ? a.at : a.type === 'trade' ? [a.trader.x, a.trader.y] : null;
-        text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : WW.quest.bar().replace(/^📜\s*/, '');
+        at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : WW.quest.target(true);
+        const clue = WW.quest.clue();
+        text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hint)) : clue ? `🧩 ${T('chaseNext')} ${WW.L(clue.t)}` : WW.quest.bar().replace(/^📜\s*/, '');
       } else if (!r.challengeDone) { at = WW.world.next() || ep.challenge.at; text = WW.world.nextText() || WW.tools.signText() || T('nsStone'); }
       else { at = ep.boss.at; text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
     }

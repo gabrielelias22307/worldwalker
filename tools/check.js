@@ -91,10 +91,23 @@ function checkEpisode(file) {
   else {
     ['giver', 'contact'].forEach(k => { const p = qu[k]; if (!p) errs.push('quest.' + k + ' missing'); else place([p.x, p.y], 'quest ' + k, true, block); });
     if (!qa) errs.push('quest.action missing');
-    else if (qa.type === 'trade') { if (!qa.trader) errs.push('quest trade needs a trader'); else place([qa.trader.x, qa.trader.y], 'quest trader', true, block); }
+    else if (qa.type === 'trade') {
+      if (!qa.trader) errs.push('quest trade needs a trader'); else place([qa.trader.x, qa.trader.y], 'quest trader', true, block);
+      const onMap = (qa.choices || []).filter(c => c.at);
+      if (onMap.length && onMap.length !== qa.choices.length) errs.push('quest trade: give at: [x, y] to every choice, or to none');
+      onMap.forEach((c, i) => place(c.at, 'trade goods ' + i + ' (' + (c.t && c.t.en) + ')', true, block));
+      if (onMap.length && !qa.choices.some(c => c.ok)) errs.push('quest trade: one choice needs ok: true');
+    }
+    else if (qa.type === 'chase') {
+      const spots = [...(qa.hops || []), qa.at];
+      spots.forEach((p, i) => place(p, i < spots.length - 1 ? 'thief hop ' + i : 'quest thief (caught here)', true, i === spots.length - 1 ? block : new Set()));
+      if (!(qa.clues || []).length) errs.push('quest chase needs clues: [{ t, zones, found }]');
+      (qa.clues || []).forEach((c, i) => { if (!c.t || !c.found || !(c.zones || []).length) errs.push(`chase clue ${i} needs t, found and zones`); });
+      if (!qa.item) errs.push('quest chase needs item (the thing the thief stole)');
+    }
     else if (qa.type === 'fight') place(qa.at, 'quest thief', true, block);
     else if (qa.type === 'find') place(qa.at, 'quest secret spot', true, new Set());
-    else errs.push('quest.action.type must be find, fight or trade');
+    else errs.push('quest.action.type must be find, fight, chase or trade');
   }
   /* ---- the compass stone in the world: its things on the map ---- */
   const c0w = ep.challenge || {};
@@ -253,6 +266,13 @@ function checkEpisode(file) {
         (ep.scraps || []).forEach(p => { if (!s2.has(p.join(','))) errs.push(`${w}: once built, scrap (${p}) cannot be reached`); });
       }
     } else errs.push(`${w}: kind must be repair, signpost or place`);
+  });
+
+  // a chase clue is answered by walking into its zones: each needs ground you can reach, and must not overlap its wrong areas
+  if (qa && qa.type === 'chase') (qa.clues || []).forEach((c, i) => {
+    const inside = z => { const out = []; for (let y = z.y; y < z.y + z.h; y++) for (let x = z.x; x < z.x + z.w; x++) out.push(x + ',' + y); return out; };
+    if (!(c.zones || []).some(z => inside(z).some(k => seen.has(k)))) errs.push(`chase clue ${i}: no square in its zones can be reached`);
+    (c.noBy || []).forEach((b, j) => { if (!b.t) errs.push(`chase clue ${i} noBy ${j} needs t`); const ks = new Set(inside(b)); if ((c.zones || []).some(z => inside(z).some(k => ks.has(k)))) errs.push(`chase clue ${i}: noBy ${j} overlaps its zones`); });
   });
 
   // screens used
