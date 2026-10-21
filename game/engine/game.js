@@ -64,11 +64,15 @@
     // the map takes all the height that is left, keeping its 16 × 11 shape
     G.fit = () => {
       const st = $('ww-stage'), sc = $('ww-screen'), fr = root.querySelector('.ww-frame'); if (!st || !sc) return;
-      const w = Math.max(160, Math.min(st.clientWidth, Math.floor((st.clientHeight - 8) * 16 / 11))), h = Math.round((w - 6) * 11 / 16 + 6);
+      // a phone turned sideways: one short row of icons on top, and the arrow pad beside the map instead of under it
+      const side = root.classList.contains('touch') && innerHeight < 520 && innerWidth > innerHeight;
+      fr.classList.toggle('side', side);
+      const room = side ? st.clientWidth - 2 * (($('ww-dpad').offsetWidth || 164) + 12) : st.clientWidth;
+      const w = Math.max(160, Math.min(room, Math.floor((st.clientHeight - 8) * 16 / 11))), h = Math.round((w - 6) * 11 / 16 + 6);
       sc.style.width = w + 'px'; sc.style.height = h + 'px';
       fr.style.setProperty('--gw', w + 'px'); // the bars above line up with the map
       // a tall, narrow window (a phone): the tool bar and Christopher's bubble go under the map instead of over it
-      const narrow = w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
+      const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
       fr.classList.toggle('narrow', narrow);
       const bar = $('ww-tools');
       if (bar) { if (narrow && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!narrow && bar.parentNode !== sc) sc.appendChild(bar); }
@@ -217,6 +221,7 @@
   function bossBeaten() {
     const r = WW.run, ep = WW.ep;
     r.bossDone = true;
+    WW.chris.hide(); // its fog lines are old news now
     WW.gain(ep.boss.stat || 'reg', 2, 15, T('why_boss'));
     WW.sheetSync();
     const [ax, ay] = G.bossAt(); ents.push({ kind: 'atlas', x: ax, y: ay });

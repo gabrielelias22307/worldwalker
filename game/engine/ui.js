@@ -350,7 +350,7 @@
             <li>${esc(T('gTalk'))} (${ep.npcs.length})</li>${ep.quest ? `<li>${esc(T('gQuest'))}</li>` : ''}
             <li>${esc(T('gStone'))}</li><li>${esc(T('gBoss'))}</li><li>${esc(T('gPage'))}</li></ol>
             <div class="small">⭐ ${esc(T('gBonus'))}</div><div class="small">🌫️ ${esc(T('gDim'))}</div></div>
-          <p class="small">${esc(T('controls'))}</p>`);
+          <p class="small">${esc(T(document.querySelector('.ww-frame.touch') ? 'controlsTouch' : 'controls'))}</p>`);
         const acts = document.createElement('div'); acts.className = 'acts center';
         acts.appendChild(btn(T('start') + ' ▶', 'gold big', () => { h.close(); onGo && onGo(); }));
         box.appendChild(acts);

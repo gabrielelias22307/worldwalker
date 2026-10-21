@@ -391,3 +391,21 @@ canvas{filter:var(--vivid)}
 .screen .toolbar .tcarry,.ww-frame.narrow .stage>.toolbar .tcarry{flex-basis:100%;max-width:100%;width:0;min-width:100%}
 .seasonbadge{left:8px;transform:none}
 .toolbar.top~.seasonbadge,.seasonbadge.under{top:auto;bottom:8px}
+
+/* touch screens: everything big enough to tap (36px+) and read (14px+) */
+.ww-frame.touch .ov .hint,.ww-frame.touch .ov .small{font-size:14.5px}
+@media (pointer:coarse){
+  .ov .hint,.ov .small{font-size:14.5px}
+  .sw{width:38px;height:38px}
+  .langrow .pbtn{min-height:42px;min-width:52px}
+  .talkx{width:40px;height:40px}
+  .starter{min-height:40px;font-size:15px}
+}
+
+/* a phone turned sideways (see G.fit): icons only in one row, the arrow pad on the right of the map */
+.ww-frame.side{position:relative}
+.ww-frame.side .ww-logo,.ww-frame.side .ww-bar .lbl{display:none}
+.ww-frame.side .ww-bar{flex-wrap:nowrap;gap:3px;justify-content:center;padding:2px 4px}
+.ww-frame.side .ww-bar .langs,.ww-frame.side .ww-bar .tools{flex-wrap:nowrap;gap:3px}
+.ww-frame.side .ww-bar button{padding:3px 7px;font-size:13px}
+.ww-frame.side .dpad{position:absolute;right:8px;bottom:8px;margin:0;z-index:5}
