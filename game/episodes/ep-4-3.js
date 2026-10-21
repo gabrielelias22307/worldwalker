@@ -23,7 +23,7 @@ window.EPISODE = {
     'K:::rr:::::::r...eeeeee.....~ss=',
     'K:r::::::r::::.............T~ss=',
     'K:::::::::::::.....K........kss=',
-    'K...----------------------..~===',
+    'K...----------.-----------..~===',
     'K.......x................|..~===',
     'K................eeeeee...K.~===',
     'K................eeeeee.....~===',
@@ -44,7 +44,7 @@ window.EPISODE = {
   tools: ['axe', 'sickle'],
   /* build (FUN-PASS-2): lay the missing rails so the line links the mine to the port of Durban */
   build: [
-    { id: 'railway', kind: 'place', board: [23, 10], tile: '|', ok: [[25, 9], [25, 10], [25, 14], [25, 15]], cost: { wood: 1 },
+    { id: 'railway', kind: 'place', board: [23, 10], tile: '|', ok: [[14, 7, '-'], [25, 9], [25, 10], [25, 14], [25, 15]], cost: { wood: 1 },
       name: { en: 'The railway to Durban', es: 'El tren a Durban', fa: 'خط آهن تا دوربان' },
       ask: { en: 'The Grump pulled rails out of the railway! The [[mineral|minerals]] from the mine must get to the [[port|port]] of Durban, so ships can [[export|export]] them. Follow the tracks east, then south. Lay a new rail in each gap, so the line runs from the mine all the way to the docks.',
         es: '¡El Gruñón arrancó rieles de la vía del tren! Los [[mineral|minerales]] de la mina tienen que llegar al [[port|puerto]] de Durban, para que los barcos los [[export|exporten]]. Sigue la vía al este y luego al sur. Pon un riel nuevo en cada hueco, para que la línea vaya desde la mina hasta los muelles.',
