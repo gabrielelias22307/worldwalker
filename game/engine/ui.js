@@ -205,9 +205,9 @@
             b.onclick = () => {
               picked = i;
               if (ch.ok) {
-                WW.sfx('good');
+                WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
                 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-              } else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+              } else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
               h.render();
             };
             list.appendChild(b);
@@ -361,6 +361,7 @@
   /* the atlas page flies up and back into the Passport before the finish screen (a short moment; skipped with reduced motion) */
   ui.pageHome = (at, done) => {
     const cv = $('ww-cv'), pass = $('ww-b-pass');
+    if (WW.chris.mood) WW.chris.mood('cheer');
     if (WW.calm || !cv || !pass) return done();
     WW.paused = true; WW.sfx('power');
     const g = WW.game, [sx, sy] = g.screenOf(at[0], at[1]), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;

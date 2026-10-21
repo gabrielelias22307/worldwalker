@@ -13,14 +13,15 @@
   };
   const NOTES = {
     blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], power: [[523, .08], [659, .08], [784, .08], [1047, .08], [1319, .3]], gate: [[392, .1], [523, .1], [659, .22]], step: [[120, .02]]
+    hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], power: [[523, .08], [659, .08], [784, .08], [1047, .08], [1319, .3]], gate: [[392, .1], [523, .1], [659, .22]], step: [[120, .02]],
+    chime: [[1175, .07], [1568, .16]] // Christopher calls out: two bright notes (his own, not anyone else's)
   };
   WW.sfx = (name) => {
     if (!WW.save.sound || !ac) return;
     let t = ac.currentTime;
     (NOTES[name] || []).forEach(([f, d]) => {
       const o = ac.createOscillator(), g = ac.createGain();
-      o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : 'square'; o.frequency.value = f;
+      o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : name === 'chime' ? 'triangle' : 'square'; o.frequency.value = f;
       g.gain.setValueAtTime(.06, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
       o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d); t += d * .9;
     });
@@ -175,6 +176,7 @@
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
+    if (WW.chris && WW.chris.resetFlight) WW.chris.resetFlight();
     const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
     G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); WW.farm.setup(ep); G.fit();
@@ -610,14 +612,13 @@
       if (p >= 1) trans = null;
     } else {
       drawScreen(c, sx, sy, 0, 0, now);
-      // Christopher (he flies in when you first meet him)
-      const [psx, psy] = screenOf(pip.x, pip.y);
-      if (psx === sx && psy === sy) {
-        let cx = (pip.x - sx * SW) * TS + 1, cy = (pip.y - sy * SH) * TS - 5;
-        if (pip.x === player.x && pip.y === player.y) { cx -= 13; cy -= 7; } // same tile as the hero: float beside, not behind
-        if (pip.fly && !WW.calm) { const q = Math.min(1, (now - pip.fly.t0) / 900), e = 1 - (1 - q) ** 3; cx = pip.fly.from[0] + (cx - pip.fly.from[0]) * e; cy = pip.fly.from[1] + (cy - pip.fly.from[1]) * e; }
-        pip.dx = cx; pip.dy = cy;
-        WW.chris.draw(c, Math.round(cx), Math.round(cy), now);
+      // Christopher: a little flying spirit beside the hero who flies to what matters (christopher.js, C.step)
+      {
+        const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
+        const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
+        pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8; // his bubble hangs from his seat beside the hero (it doesn't wobble)
+        WW.chris.drawMark(c, sx, sy, now);
+        WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
       }
       drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
       drawStars(c, sx, sy, now);

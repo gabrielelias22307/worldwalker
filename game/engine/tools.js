@@ -178,6 +178,8 @@
       // a soft glow on the tool that fits what the hero faces (the axe at a tree, the sickle at tall grass)
       const d = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[g.player.dir] || [0, 1];
       const fx = g.player.x + d[0], fy = g.player.y + d[1], fit = sel === 'sign' ? null : X.fitTool(fx, fy, g.entAt(fx, fy));
+      if (fit && WW.chris.notice) WW.chris.notice([fx, fy], 'green', 'fit-' + fit); // the first tree, grass or soil: he hops over it
+      { const fe = g.entAt(fx, fy); if (fe && fe.kind === 'qgood' && WW.chris.notice) WW.chris.notice([fx, fy], 'green', 'good'); }
       if (fit !== lastFit) { lastFit = fit; bar.querySelectorAll('.tslot').forEach(b => b.classList.toggle('fit', !!fit && b.dataset.k === fit && sel !== fit)); }
     }
     regrow = regrow.filter(r => {

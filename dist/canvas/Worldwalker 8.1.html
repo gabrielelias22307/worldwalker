@@ -354,6 +354,13 @@ canvas{filter:var(--vivid)}
 .ww-frame.side .ww-bar .langs,.ww-frame.side .ww-bar .tools{flex-wrap:nowrap;gap:3px}
 .ww-frame.side .ww-bar button{padding:3px 7px;font-size:13px}
 .ww-frame.side .dpad{position:absolute;right:8px;bottom:8px;margin:0;z-index:5}
+.cbubble[data-kind=gold]{--cb:#c08a1e}.cbubble[data-kind=green]{--cb:#2e9a46}.cbubble[data-kind=blue]{--cb:#2f7fd1}.cbubble[data-kind=red]{--cb:#c8323a}
+.cbubble[data-kind]{border-color:var(--cb)}
+.cbubble[data-kind]::after{border-top-color:var(--cb)}
+.cbubble[data-kind].below::after,.cbubble[data-kind].dock::after{border-top-color:transparent;border-bottom-color:var(--cb)}
+.cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
+.cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
+.cbubble[data-kind] .cb-name{color:var(--cb)}
 
 </style>
 </head>
@@ -1899,9 +1906,9 @@ if (picked != null && i === picked) b.className = ch.ok ? 'right' : 'wrong';
 b.onclick = () => {
 picked = i;
 if (ch.ok) {
-WW.sfx('good');
+WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin');
 if (!WW.run.asked.has(npc.id)) { WW.run.asked.add(npc.id); WW.gain(a.stat || 'pla', 1, 2, T('why_talk') + ' ' + WW.plain(npc.name)); WW.run.log.push({ who: WW.plain(npc.name), q: WW.plain(a.q), a: WW.plain(ch.t || ch), tries: (WW.run.tries[npc.id] || 0) + 1 }); }
-} else { WW.sfx('bad'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
+} else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.tries[npc.id] = (WW.run.tries[npc.id] || 0) + 1; }
 h.render();
 };
 list.appendChild(b);
@@ -2044,6 +2051,7 @@ box.appendChild(acts);
 };
 ui.pageHome = (at, done) => {
 const cv = $('ww-cv'), pass = $('ww-b-pass');
+if (WW.chris.mood) WW.chris.mood('cheer');
 if (WW.calm || !cv || !pass) return done();
 WW.paused = true; WW.sfx('power');
 const g = WW.game, [sx, sy] = g.screenOf(at[0], at[1]), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
@@ -2490,7 +2498,7 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.onclick = () => {
 if (picked === q.answer) return;
 picked = i;
-if (i === q.answer) WW.sfx('good'); else { WW.sfx('bad'); WW.run.challengeTries++; }
+if (i === q.answer) { WW.sfx('good'); WW.chris.mood && WW.chris.mood('spin'); } else { WW.sfx('bad'); WW.chris.mood && WW.chris.mood('droop'); WW.run.challengeTries++; }
 h.render();
 };
 list.appendChild(b);
@@ -2563,8 +2571,8 @@ if (picked === i) b.className = i === q.answer ? 'right' : 'wrong';
 b.disabled = picked != null;
 b.onclick = () => {
 picked = i;
-if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); keep(); }
-else { last = 'hit'; WW.sfx('hurt'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
+if (i === q.answer) { broken++; last = 'crack'; WW.sfx('hit'); WW.chris.mood && WW.chris.mood('spin'); keep(); }
+else { last = 'hit'; WW.sfx('hurt'); WW.chris.mood && WW.chris.mood('droop'); if (!boss.minor) { WW.sfx('growl'); grr = WW.grr(); } const ml = boss.missedList || WW.run.missed; ml.includes(qi) || ml.push(qi); if (!boss.minor) WW.run.bossMisses++; WW.hurt(true); }
 h.render();
 };
 list.appendChild(b);
@@ -3332,6 +3340,7 @@ C.say = (text, buttons, opt) => {
 aim = (opt && opt.at) || null;
 const b = el(); b.setAttribute('dir', WW.dir());
 b.classList.toggle('meet', C.scene);
+b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
 b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
 if (buttons && buttons.length) {
 const row = document.createElement('div'); row.className = 'cb-acts';
@@ -3396,6 +3405,7 @@ let lines = [], li = 0, after = null;
 C.meet = (ls, done) => {
 lines = ls; li = 0; after = done; C.scene = true; meetT = performance.now(); WW.paused = true;
 const g = WW.game; g.pip.fly = { t0: performance.now(), from: [-20, -20] };
+if (C.fly && !WW.calm) { C.fly.x = -24; C.fly.y = -24; C.fly.loopT = performance.now() + 700; C.fly.callT = performance.now() + 700; }
 setTimeout(() => C.next(true), WW.calm ? 50 : 900);
 };
 C.next = (first) => {
@@ -3451,33 +3461,198 @@ text = st === 2 && a.type === 'find' ? T('nsFind').replace('{h}', WW.plain(a.hin
 else { at = WW.game.bossAt(); text = r.fog && r.fog.set.size ? T('nsFog') : T('nsBoss'); }
 }
 const fix = at && WW.tools && WW.tools.blockingRepair ? WW.tools.blockingRepair(at, reachable) : null;
-if (fix) return { text: fix.text, at: fix.at };
-return { text: text + (at ? ' ' + go(at) : ''), at };
+if (fix) return { text: fix.text, at: fix.at, kind: 'green' };
+let kind = C.kindAt ? C.kindAt(at) : 'gold';
+if (r.challengeDone && !r.bossDone) kind = 'red';
+else if (WW.quest.on() && !WW.quest.done() && !g.ents.some(e => e.kind === 'npc' && !r.talked.has(e.ref.id))) {
+const st = WW.quest.step(), ty = ep.quest.action.type;
+if (st === 2) kind = ty === 'trade' ? 'green' : ty === 'fight' ? 'red' : 'blue';
+}
+return { text: text + (at ? ' ' + go(at) : ''), at, kind };
 };
 C.talk = () => {
 if (C.scene) return C.next();
 if (WW.paused) return;
 if (C.showing() && said === 'next') return C.hide();
-const ns = C.nextStep();
+const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
 const way = WW.game.wayUntil && performance.now() < WW.game.wayUntil;
 C.say(ns.text, [
 ...(ns.at && !way ? [{ label: '🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
-{ label: '✕', kind: 'ghost', fn: () => C.hide() }], { at: ns.at });
+{ label: '✕', kind: 'ghost', fn: () => C.hide() }], { at: ns.at, kind: ns.kind });
 said = 'next';
 };
 const wayFree = () => !WW.run.wayUsed || (WW.save.coins || 0) < 5;
 function buyWay() {
 if (!wayFree()) { WW.spend(5); WW.ui.hud(); }
 WW.run.wayUsed = true; WW.game.wayUntil = performance.now() + 30000;
-WW.sfx('coin'); C.say(T('wayOn'), null, { at: C.nextStep().at });
+const ns = C.nextStep();
+WW.sfx('coin'); C.say(T('wayOn'), null, { at: ns.at, kind: ns.kind });
+C.show(ns.at, ns.kind, { hold: 3200 });
 }
-C.draw = (c, x, y, t) => {
-const k = (Math.sin(t / 400) + 1) / 2;
-c.fillStyle = `rgba(255,236,150,${0.18 + k * 0.14})`; c.beginPath(); c.arc(x + 8, y + 8, 11 + k * 2, 0, 7); c.fill();
-WW.shadow(c, x - 1, y + 15, 8);
-c.save(); c.translate(x + 8, y + 8); c.scale(1.25, 1.25);
-WW.sprite(c, 'pip', -8, -8 + Math.round(Math.sin(t / 260 + 1)), {});
+const COL = { gold: ['#fff1a8', '#f2c14e', '#c08a1e'], green: ['#c8f7b0', '#5fd36a', '#2e9a46'], blue: ['#cfeaff', '#62b6ff', '#2f7fd1'], red: ['#ffd0c8', '#ff6b5e', '#c8323a'] };
+C.COL = COL;
+const IDLE_MS = 15000, IDLE_AGAIN_MS = 25000;
+const F = C.fly = {
+mode: 'follow', x: null, y: null, kind: 'gold', at: null, until: 0, mark: null, callT: -1e9, loopT: -1e9,
+trail: [], ask: false, bang: false, moodT: -1e9, mood: null, side: 1, scr: null, sig: null, act: null,
+lastProgress: 0, lastNudge: 0, pending: null, seen: {}, danger: false, needle: -Math.PI / 2,
+idleMs: IDLE_MS
+};
+C.kindAt = (at) => {
+if (!at) return 'gold';
+const g = WW.game, r = WW.run, e = g.entAt(at[0], at[1]);
+if (WW.world.fogAt && WW.world.fogAt(at[0], at[1])) return 'red';
+if (e) {
+if (/^(boss|smudge|qfoe|ghost)$/.test(e.kind)) return 'red';
+if (/^(clue|chest|qspot|scrap|piece|gold)$/.test(e.kind)) return 'blue';
+if (/^(qgood|site|post|signpost|basket|board|crop|place|survey|stop|lever)$/.test(e.kind)) return 'green';
+return 'gold';
+}
+if (WW.ep.challenge && at[0] === WW.ep.challenge.at[0] && at[1] === WW.ep.challenge.at[1]) return 'gold';
+if (WW.tools && WW.tools.fitTool && WW.tools.fitTool(at[0], at[1], null)) return 'green';
+return r && r.bossDone ? 'gold' : 'gold';
+};
+const center = (at, sx, sy) => [(at[0] - sx * 16) * 16 + 8, (at[1] - sy * 11) * 16 + 8];
+const onScreen = (at, sx, sy) => at && Math.floor(at[0] / 16) === sx && Math.floor(at[1] / 11) === sy;
+C.show = (at, kind, opt = {}) => {
+if (!at) return;
+const now = performance.now();
+F.kind = kind || C.kindAt(at); F.at = at.slice(); F.ask = false; F.bang = true;
+F.mark = { at: at.slice(), kind: F.kind, until: now + (opt.hold || 2600) + 1600 };
+if (opt.call !== false) { F.callT = now; WW.sfx('chime'); }
+if (WW.calm) { F.mode = 'follow'; F.until = now + (opt.hold || 2600); F.nudge = !!opt.nudge; return; }
+F.loopT = opt.call === false ? -1e9 : now;
+F.mode = 'go'; F.until = 0; F.hold = opt.hold || 2600; F.nudge = !!opt.nudge;
+};
+C.notice = (at, kind, key) => {
+if (!at || F.seen[key] || C.scene || WW.paused) return;
+F.seen[key] = true;
+if (F.mode !== 'follow') return;
+C.show(at, kind || C.kindAt(at), { hold: 1400 });
+};
+C.mood = (m) => { F.mood = m; F.moodT = performance.now(); if (m === 'cheer' && WW.game.player) WW.fx.burst(WW.game.player.x, WW.game.player.y, 'gold'); };
+C.resetFlight = () => { F.mode = 'follow'; F.x = null; F.y = null; F.trail = []; F.mark = null; F.ask = false; F.bang = false; F.sig = null; F.act = null; F.seen = {}; F.lastProgress = performance.now(); F.lastNudge = 0; F.pending = null; F.scr = null; };
+function goalSig() {
+const r = WW.run, q = WW.quest;
+return [r.talked.size, q.on() ? q.step() : '-', r.chase || 0, r.route || 0, r.seen ? r.seen.size : 0, (r.signs || []).filter(s => s.placed).length,
+r.challengeDone ? 1 : 0, r.fog && r.fog.set ? r.fog.set.size : '-', r.bossDone ? 1 : 0, r.claimed ? 1 : 0].join('|');
+}
+function activitySig() { const t = WW.tools; return [t && t.have ? t.have('wood') + t.have('fiber') : 0, WW.save.coins || 0, WW.run.carry != null ? 1 : 0].join('|'); }
+C.step = (now, dt, hx, hy, sx, sy, facing) => {
+const g = WW.game, hcx = hx + 8, hcy = hy + 8;
+if (F.scr && (F.scr[0] !== sx || F.scr[1] !== sy) && F.x != null) { F.x += (F.scr[0] - sx) * 256; F.y += (F.scr[1] - sy) * 176; F.trail = []; }
+F.scr = [sx, sy];
+if (facing === 'left') F.side = -1; else if (facing === 'right') F.side = 1;
+const seatX = hcx - 17 * F.side, seatY = hcy - 9;
+F.ax = seatX; F.ay = seatY;
+if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
+const sig = goalSig(), act = activitySig();
+if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
+else if (sig !== F.sig) { F.sig = sig; F.act = act; F.lastProgress = now; F.ask = false; F.pending = now + 700; }
+else if (act !== F.act) { F.act = act; F.lastProgress = now; }
+if (F.pending && now >= F.pending && F.mode === 'follow') {
+F.pending = null;
+const ns = C.nextStep();
+if (ns.at && Math.abs(ns.at[0] - g.player.x) + Math.abs(ns.at[1] - g.player.y) > 2) C.show(ns.at, ns.kind);
+else if (ns.at) F.mark = { at: ns.at.slice(), kind: ns.kind, until: now + 2500 };
+}
+const quiet = now - F.lastProgress, since = now - (F.lastNudge || 0);
+if (quiet > F.idleMs && since > (F.lastNudge ? IDLE_AGAIN_MS : 0) && F.mode === 'follow' && !(C.showing() && bubble.querySelector('button'))) {
+F.lastNudge = now; const ns = C.nextStep(); if (ns.at) C.show(ns.at, ns.kind, { nudge: true, hold: 3200 });
+}
+F.danger = g.ents.some(e => (e.kind === 'smudge' || e.kind === 'qfoe') && !e.gone && e.visible !== false && Math.abs(e.x - g.player.x) + Math.abs(e.y - g.player.y) <= 2);
+}
+if (F.x == null) { F.x = seatX; F.y = seatY; }
+let tx = seatX, ty = seatY, ease = 110;
+if (!WW.calm) { tx += Math.cos(now / 900) * 5; ty += Math.sin(now / 640) * 3; }
+if (F.mode === 'go' || F.mode === 'hover') {
+let px, py, off = false;
+if (onScreen(F.at, sx, sy)) { [px, py] = center(F.at, sx, sy); py -= 20; }
+else {
+const [cx, cy] = center(F.at, sx, sy), dx = cx - hcx, dy = cy - hcy, k = Math.min((dx ? (dx > 0 ? 242 - hcx : hcx - 14) / Math.abs(dx) : 1e9), (dy ? (dy > 0 ? 162 - hcy : hcy - 14) / Math.abs(dy) : 1e9));
+px = hcx + dx * k; py = hcy + dy * k; off = true;
+}
+F.off = off;
+if (F.mode === 'go') { tx = px; ty = py; ease = 150; if (Math.hypot(F.x - px, F.y - py) < 4) { F.mode = 'hover'; F.until = now + F.hold; } }
+else { tx = px + (off ? 0 : Math.cos(now / 260) * 8); ty = py + (off ? Math.sin(now / 200) * 2 : Math.sin(now / 260) * 3); ease = 70; if (now > F.until) { F.mode = 'back'; F.mark && (F.mark.until = Math.min(F.mark.until, now + 700)); } }
+} else if (F.mode === 'back') { ease = 150; if (Math.hypot(F.x - seatX, F.y - seatY) < 6) { F.mode = 'follow'; F.bang = false; if (F.nudge) F.ask = true; F.nudge = false; } }
+if (WW.calm) { F.x = seatX; F.y = seatY; if (F.until && now > F.until) { F.until = 0; F.bang = false; if (F.nudge) F.ask = true; F.nudge = false; } }
+else {
+const a = 1 - Math.exp(-dt / ease);
+const ox = F.x, oy = F.y; F.x += (tx - F.x) * a; F.y += (ty - F.y) * a;
+const sp = Math.hypot(F.x - ox, F.y - oy) / Math.max(1, dt);
+if (sp > 0.03) F.trail.push({ x: F.x + (Math.random() - 0.5) * 6, y: F.y + 4 + (Math.random() - 0.5) * 4, t: now });
+}
+F.trail = F.trail.filter(p => now - p.t < 420).slice(-14);
+let dx = F.x - hcx, dy = F.y - hcy;
+if (Math.abs(dx) < 16 && Math.abs(dy) < 16) { if (Math.abs(dy) >= Math.abs(dx) * 1.2) F.y = hcy + (dy < 0 ? -16 : 16); else F.x = hcx + (dx < 0 ? -16 : 16); }
+if (F.mode === 'hover' && !F.off && onScreen(F.at, sx, sy)) { const [ax, ay] = center(F.at, sx, sy); if (Math.abs(F.x - ax) < 14 && Math.abs(F.y - ay) < 15) F.y = ay - 15; }
+let lx = 0, ly = 0;
+const lq = (now - F.loopT) / 650;
+if (lq >= 0 && lq < 1 && !WW.calm) { lx = Math.sin(lq * Math.PI * 2) * 7; ly = -(1 - Math.cos(lq * Math.PI * 2)) * 6; }
+const want = F.at && F.mode !== 'follow' ? Math.atan2(center(F.at, sx, sy)[1] - F.y, center(F.at, sx, sy)[0] - F.x) : (F.at && F.mark && now < F.mark.until ? Math.atan2(center(F.at, sx, sy)[1] - F.y, center(F.at, sx, sy)[0] - F.x) : -Math.PI / 2);
+let dA = ((want - F.needle + Math.PI * 3) % (Math.PI * 2)) - Math.PI; F.needle += dA * (WW.calm ? 1 : Math.min(1, dt / 120));
+return { x: F.x + lx, y: F.y + ly };
+};
+C.color = () => (F.danger && F.mode === 'follow' ? 'red' : F.mode !== 'follow' || (WW.calm && F.until) ? F.kind : (F.mark && performance.now() < F.mark.until ? F.mark.kind : 'gold'));
+C.drawMark = (c, sx, sy, now) => {
+const m = F.mark; if (!m || now > m.until || !onScreen(m.at, sx, sy)) return;
+const [cx, cy] = center(m.at, sx, sy), col = COL[m.kind] || COL.gold;
+const fade = Math.min(1, (m.until - now) / 500), pulse = WW.calm ? 0 : Math.round((Math.sin(now / 160) + 1));
+const r = 11 + pulse, L = 4;
+c.save(); c.globalAlpha = fade;
+c.fillStyle = col[1] + '33'; c.fillRect(cx - 8, cy - 8, 16, 16);
+[[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([ux, uy]) => {
+const x = cx + ux * r, y = cy + uy * r;
+c.fillStyle = '#22202e'; c.fillRect(Math.min(x, x - ux * L) - 1, y - 1 - (uy > 0 ? 1 : 0), L + 2, 4); c.fillRect(x - 1 - (ux > 0 ? 1 : 0), Math.min(y, y - uy * L) - 1, 4, L + 2);
+c.fillStyle = col[1]; c.fillRect(Math.min(x, x - ux * L), y - (uy > 0 ? 1 : 0), L, 2); c.fillRect(x - (ux > 0 ? 1 : 0), Math.min(y, y - uy * L), 2, L);
+});
 c.restore();
+};
+const WINGS = [
+['.....##.', '...####.', '..###cc.', '.###cc..', '##cc....', '#c......', '........'],
+['........', '..####..', '.######.', '#####ccc', '.##cccc.', '..cc....', '........'],
+['........', '#.......', '##c.....', '.##cc...', '..##cc..', '...###c.', '.....##.']];
+const GLYPH = { '!': ['.#.', '.#.', '.#.', '...', '.#.'], '?': ['##.', '..#', '.#.', '...', '.#.'] };
+C.draw = (c, x, y, t) => {
+const cx = x + 8, cy = y + 8, kind = C.color(), col = COL[kind] || COL.gold, calm = WW.calm;
+const call = Math.max(0, 1 - (t - F.callT) / 900), k = (Math.sin(t / 400) + 1) / 2;
+const droop = F.mood === 'droop' && t - F.moodT < 1400, spin = F.mood === 'spin' && t - F.moodT < 700 && !calm, cheer = F.mood === 'cheer' && t - F.moodT < 1600;
+const bob = calm ? 0 : Math.round(Math.sin(t / 260 + 1) * 1.5) + (droop ? 2 : 0);
+F.trail.forEach(p => { const a = 1 - (t - p.t) / 420; c.fillStyle = col[0]; c.globalAlpha = a * 0.9; c.fillRect(Math.round(p.x), Math.round(p.y), 1, 1); if (a > 0.6) c.fillRect(Math.round(p.x) - 1, Math.round(p.y), 3, 1); });
+c.globalAlpha = 1;
+const rad = 12 + k * 2 + call * 5;
+const gr = c.createRadialGradient(cx, cy + bob, 2, cx, cy + bob, rad);
+gr.addColorStop(0, col[0] + 'cc'); gr.addColorStop(0.45, col[1] + Math.round(0x55 + call * 0x50).toString(16)); gr.addColorStop(1, col[1] + '00');
+c.fillStyle = gr; c.beginPath(); c.arc(cx, cy + bob, rad, 0, 7); c.fill();
+c.save(); c.translate(cx, cy + bob);
+if (spin) c.scale(Math.cos((t - F.moodT) / 700 * Math.PI * 4) || 0.1, 1);
+const fr = calm ? 1 : [0, 1, 2, 1][Math.floor(t / (F.mode === 'follow' ? 90 : 55)) % 4];
+const wing = (s) => {
+const rows = WINGS[fr], dy = droop ? 2 : 0, px = (q, r) => [s > 0 ? 4 + q : -5 - q, r - 8 + dy];
+const on = new Set(); rows.forEach((row, r) => [...row].forEach((ch, q) => ch !== '.' && on.add(q + ',' + r)));
+c.fillStyle = 'rgba(34,32,46,.6)';
+on.forEach(k => { const [q, r] = k.split(',').map(Number); [[1, 0], [-1, 0], [0, 1], [0, -1]].forEach(([a, b]) => { if (!on.has((q + a) + ',' + (r + b)) && q + a >= 0) { const [x, y] = px(q + a, r + b); c.fillRect(x, y, 1, 1); } }); });
+rows.forEach((row, r) => [...row].forEach((ch, q) => { if (ch === '.') return; const [x, y] = px(q, r); c.fillStyle = ch === 'c' ? col[0] : 'rgba(255,255,255,.9)'; c.fillRect(x, y, 1, 1); }));
+};
+wing(-1); wing(1);
+const R = [[-2, 2, -5], [-4, 4, -4], [-5, 5, -3], [-5, 5, -2], [-6, 6, -1], [-6, 6, 0], [-5, 5, 1], [-5, 5, 2], [-4, 4, 3], [-2, 2, 4]];
+c.fillStyle = '#22202e'; R.forEach(([a, b, yy]) => c.fillRect(a - 1, yy - 1, b - a + 2, 3));
+R.forEach(([a, b, yy]) => { c.fillStyle = col[1]; c.fillRect(a, yy, b - a, 1); });
+R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
+const blink = !calm && (t % 3200) < 120;
+c.fillStyle = '#22202e'; if (droop) { c.fillRect(-3, -2, 2, 1); c.fillRect(1, -2, 2, 1); } else { c.fillRect(-3, -3, 1, blink ? 1 : 2); c.fillRect(2, -3, 1, blink ? 1 : 2); }
+const nx = Math.cos(F.needle), ny = Math.sin(F.needle);
+for (let i = 1; i <= 3; i++) { c.fillStyle = '#e04848'; c.fillRect(Math.round(nx * i) - 0, Math.round(1 + ny * i), 1, 1); c.fillStyle = '#2f6fd6'; c.fillRect(Math.round(-nx * i), Math.round(1 - ny * i), 1, 1); }
+c.fillStyle = '#22202e'; c.fillRect(0, 1, 1, 1);
+c.restore();
+const g = F.bang || call > 0 ? '!' : F.ask ? '?' : null;
+if (g) {
+const bx = Math.round(cx) - 3, by = Math.round(y + bob) - 12 - (calm ? 0 : Math.round(Math.abs(Math.sin(t / 180)) * 2));
+c.fillStyle = '#22202e'; c.fillRect(bx - 1, by - 1, 7, 9); c.fillStyle = g === '!' ? col[1] : '#fffbe8'; c.fillRect(bx, by, 5, 7);
+c.fillStyle = '#22202e'; GLYPH[g].forEach((row, r) => [...row].forEach((ch, q) => ch === '#' && c.fillRect(bx + 1 + q, by + 1 + r, 1, 1)));
+}
+if (cheer && !calm) for (let i = 0; i < 6; i++) { const a = (t / 300) + i * 1.05, rr = 12 + ((t - F.moodT) / 90) % 6; c.fillStyle = COL.gold[0]; c.fillRect(Math.round(cx + Math.cos(a) * rr), Math.round(cy + Math.sin(a) * rr), 1, 1); }
 };
 })();
 ;
@@ -3638,6 +3813,8 @@ if (bar) {
 bar.classList.toggle('top', g.player.y % 11 >= 9);
 const d = { up: [0, -1], down: [0, 1], left: [-1, 0], right: [1, 0] }[g.player.dir] || [0, 1];
 const fx = g.player.x + d[0], fy = g.player.y + d[1], fit = sel === 'sign' ? null : X.fitTool(fx, fy, g.entAt(fx, fy));
+if (fit && WW.chris.notice) WW.chris.notice([fx, fy], 'green', 'fit-' + fit);
+{ const fe = g.entAt(fx, fy); if (fe && fe.kind === 'qgood' && WW.chris.notice) WW.chris.notice([fx, fy], 'green', 'good'); }
 if (fit !== lastFit) { lastFit = fit; bar.querySelectorAll('.tslot').forEach(b => b.classList.toggle('fit', !!fit && b.dataset.k === fit && sel !== fit)); }
 }
 regrow = regrow.filter(r => {
@@ -4491,14 +4668,15 @@ if (WW.music) WW.music.wake();
 };
 const NOTES = {
 blip: [[660, .05]], good: [[523, .08], [784, .12]], bad: [[220, .12], [180, .14]], coin: [[988, .05], [1319, .1]],
-hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], power: [[523, .08], [659, .08], [784, .08], [1047, .08], [1319, .3]], gate: [[392, .1], [523, .1], [659, .22]], step: [[120, .02]]
+hurt: [[200, .08], [140, .15]], hit: [[392, .06], [523, .06], [784, .12]], growl: [[120, .12], [95, .14], [70, .22]], zap: [[1200, .03], [1600, .04]], pop: [[300, .05], [600, .08]], chop: [[180, .04], [140, .06]], cut: [[1400, .02], [1100, .03]], win: [[523, .1], [659, .1], [784, .1], [1047, .25]], power: [[523, .08], [659, .08], [784, .08], [1047, .08], [1319, .3]], gate: [[392, .1], [523, .1], [659, .22]], step: [[120, .02]],
+chime: [[1175, .07], [1568, .16]]
 };
 WW.sfx = (name) => {
 if (!WW.save.sound || !ac) return;
 let t = ac.currentTime;
 (NOTES[name] || []).forEach(([f, d]) => {
 const o = ac.createOscillator(), g = ac.createGain();
-o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : 'square'; o.frequency.value = f;
+o.type = name === 'hurt' || name === 'bad' || name === 'growl' ? 'sawtooth' : name === 'chime' ? 'triangle' : 'square'; o.frequency.value = f;
 g.gain.setValueAtTime(.06, t); g.gain.exponentialRampToValueAtTime(.001, t + d);
 o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t + d); t += d * .9;
 });
@@ -4638,6 +4816,7 @@ ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
 ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
 player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
 pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
+if (WW.chris && WW.chris.resetFlight) WW.chris.resetFlight();
 const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
 G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
 G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); WW.farm.setup(ep); G.fit();
@@ -5037,13 +5216,12 @@ WW.fx.draw(c, trans.to[0], trans.to[1], null, now, dt);
 if (p >= 1) trans = null;
 } else {
 drawScreen(c, sx, sy, 0, 0, now);
-const [psx, psy] = screenOf(pip.x, pip.y);
-if (psx === sx && psy === sy) {
-let cx = (pip.x - sx * SW) * TS + 1, cy = (pip.y - sy * SH) * TS - 5;
-if (pip.x === player.x && pip.y === player.y) { cx -= 13; cy -= 7; }
-if (pip.fly && !WW.calm) { const q = Math.min(1, (now - pip.fly.t0) / 900), e = 1 - (1 - q) ** 3; cx = pip.fly.from[0] + (cx - pip.fly.from[0]) * e; cy = pip.fly.from[1] + (cy - pip.fly.from[1]) * e; }
-pip.dx = cx; pip.dy = cy;
-WW.chris.draw(c, Math.round(cx), Math.round(cy), now);
+{
+const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
+const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
+pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8;
+WW.chris.drawMark(c, sx, sy, now);
+WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
 }
 drawHero(c, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
 drawStars(c, sx, sy, now);

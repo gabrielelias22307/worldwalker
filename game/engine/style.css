@@ -409,3 +409,12 @@ canvas{filter:var(--vivid)}
 .ww-frame.side .ww-bar .langs,.ww-frame.side .ww-bar .tools{flex-wrap:nowrap;gap:3px}
 .ww-frame.side .ww-bar button{padding:3px 7px;font-size:13px}
 .ww-frame.side .dpad{position:absolute;right:8px;bottom:8px;margin:0;z-index:5}
+
+/* PLAYTEST-3: Christopher's bubble border matches what he points at (gold goal, green do, blue secret, red danger) */
+.cbubble[data-kind=gold]{--cb:#c08a1e}.cbubble[data-kind=green]{--cb:#2e9a46}.cbubble[data-kind=blue]{--cb:#2f7fd1}.cbubble[data-kind=red]{--cb:#c8323a}
+.cbubble[data-kind]{border-color:var(--cb)}
+.cbubble[data-kind]::after{border-top-color:var(--cb)}
+.cbubble[data-kind].below::after,.cbubble[data-kind].dock::after{border-top-color:transparent;border-bottom-color:var(--cb)}
+.cbubble[data-kind].side-l::after{border-top-color:transparent;border-left-color:var(--cb)}
+.cbubble[data-kind].side-r::after{border-top-color:transparent;border-right-color:var(--cb)}
+.cbubble[data-kind] .cb-name{color:var(--cb)}
