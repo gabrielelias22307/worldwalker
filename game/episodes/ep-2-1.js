@@ -94,14 +94,10 @@ window.EPISODE = {
       role: { en: 'Ship captain from Quebec', es: 'Capitana de barco de Quebec', fa: 'کپتان کشتی از کیوبک' },
       look: { skin: 0, hair: '#8a5a2a', shirt: '#22324f', pants: '#22324f' },
       lines: [
-        { en: 'Bonjour! I am Captain Marie, from Quebec in Canada.', es: '¡Bonjour! Soy la capitana Marie, de Quebec, en Canadá.', fa: 'بونژور! من کپتان ماری از کیوبک در کانادا هستم.' },
-        { en: 'Most of the biggest cities in the United States and Canada sit next to water.', es: 'La mayoría de las ciudades más grandes de Estados Unidos y Canadá están junto al agua.', fa: 'بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند.' },
+        { en: 'Bonjour! I am Captain Marie, from Quebec. Most big U.S. and Canadian cities sit by water.', es: '¡Bonjour! Soy la capitana Marie, de Quebec. Casi todas las grandes ciudades de EE. UU. y Canadá están junto al agua.', fa: 'بونژور! من کپتان ماری از کیوبک هستم. بیشتر شهرهای بزرگ امریکا و کانادا کنار آب هستند.' },
         { en: 'Many sit on a [[harbor|harbor]], a calm place where big ships dock.', es: 'Muchas están en un [[harbor|puerto natural]], un lugar tranquilo donde atracan barcos grandes.', fa: 'بسیاری روی یک [[harbor|بندرگاه]] هستند، جای آرامی که کشتی‌های بزرگ لنگر می‌اندازند.' },
-        { en: 'This lake is like the Great Lakes: five huge lakes between the United States and Canada.', es: 'Este lago es como los Grandes Lagos: cinco lagos enormes entre Estados Unidos y Canadá.', fa: 'این جهیل مثل جهیل‌های بزرگ است: پنج جهیل بسیار بزرگ میان امریکا و کانادا.' },
-        { en: 'They work like an inland sea. Ships cross them loaded with iron ore and grain.', es: 'Funcionan como un mar tierra adentro. Los barcos los cruzan cargados de mineral de hierro y granos.', fa: 'مثل یک بحر در وسط خشکه کار می‌کنند. کشتی‌ها پر از سنگ آهن و غله از آن‌ها می‌گذرند.' },
-        { en: 'From the lakes, ships follow the St. Lawrence River out to the Atlantic Ocean.', es: 'Desde los lagos, los barcos siguen el río San Lorenzo hasta el océano Atlántico.', fa: 'کشتی‌ها از جهیل‌ها راه دریای سنت لارنس را تا بحر اطلس می‌گیرند.' },
-        { en: 'Lake Superior sits about 180 meters above the sea.', es: 'El lago Superior está a unos 180 metros sobre el mar.', fa: 'جهیل سوپریور حدود ۱۸۰ متر از بحر بلندتر است.' },
-        { en: 'So the [[seaway|Seaway]] lowers ships step by step through locks.', es: 'Por eso la [[seaway|Vía Marítima]] baja los barcos paso a paso con esclusas.', fa: 'پس [[seaway|راه آبی سنت لارنس]] کشتی‌ها را با دروازه‌های آبی زینه به زینه پایین می‌برد.' }
+        { en: 'The five Great Lakes, between the U.S. and Canada, are like an inland sea for ore and grain ships.', es: 'Los cinco Grandes Lagos, entre EE. UU. y Canadá, son como un mar interior para barcos de mineral y granos.', fa: 'پنج جهیل بزرگ، میان امریکا و کانادا، برای کشتی‌های سنگ آهن و غله مثل یک بحر داخلی است.' },
+        { en: 'Lake Superior is 180 meters above the sea. The [[seaway|Seaway]] locks lower ships to the Atlantic.', es: 'El lago Superior está 180 metros sobre el mar. Las esclusas de la [[seaway|Vía Marítima]] bajan los barcos hasta el Atlántico.', fa: 'جهیل سوپریور ۱۸۰ متر از بحر بلندتر است. دروازه‌های آبی [[seaway|راه آبی سنت لارنس]] کشتی‌ها را تا اطلس پایین می‌برند.' }
       ],
       ask: {
         stat: 'loc',
@@ -122,16 +118,10 @@ window.EPISODE = {
       role: { en: 'Wheat farmer on the prairie', es: 'Agricultor de trigo en la pradera', fa: 'دهقان گندم در دشت' },
       look: { skin: 2, hair: '#1b1410', shirt: '#e07a2a', pants: '#3a4a6a' },
       lines: [
-        { en: 'Hello! Between the Rocky Mountains and the Appalachian Mountains lies a huge flat middle.', es: '¡Hola! Entre las Montañas Rocosas y los montes Apalaches hay un enorme centro plano.', fa: 'سلام! میان کوه‌های راکی و کوه‌های اپالاچی یک میانهٔ هموار بسیار بزرگ است.' },
-        { en: 'The Rockies are in the west. The Appalachians are in the east.', es: 'Las Rocosas están al oeste. Los Apalaches están al este.', fa: 'کوه‌های راکی در غرب است. کوه‌های اپالاچی در شرق است.' },
-        { en: 'In the United States it is called the Great Plains.', es: 'En Estados Unidos se llaman las Grandes Llanuras.', fa: 'در امریکا نامش دشت‌های بزرگ است.' },
-        { en: 'In Canada it is called the [[prairie|prairies]].', es: 'En Canadá se llaman las [[prairie|praderas]].', fa: 'در کانادا نامش [[prairie|دشت‌ها (پریری)]] است.' },
-        { en: 'Farmers here grow wheat, corn and soybeans on rich land. But farms are far from the sea.', es: 'Aquí los agricultores siembran trigo, maíz y soya en tierra rica. Pero las granjas están lejos del mar.', fa: 'دهقانان اینجا روی زمین حاصل‌خیز گندم، جواری و سویا می‌کارند. اما فارم‌ها از بحر دور هستند.' },
-        { en: 'Long ago, a wagon carried only a little, and roads turned to mud.', es: 'Hace mucho, una carreta llevaba muy poco y los caminos se volvían lodo.', fa: 'در گذشته، یک گادی بار کمی می‌برد و سرک‌ها گل می‌شد.' },
-        { en: 'Moving heavy grain over land was slow and expensive.', es: 'Mover granos pesados por tierra era lento y caro.', fa: 'بردن غلهٔ سنگین از راه خشکه آهسته و قیمت بود.' },
-        { en: 'Today a truck brings my wheat to the grain elevator by the railway.', es: 'Hoy un camión lleva mi trigo al elevador de granos junto al ferrocarril.', fa: 'امروز یک لاری گندم مرا به انبار غله کنار خط آهن می‌برد.' },
-        { en: 'Then a train hauls it to a [[port|port]] on a lake or on the coast.', es: 'Luego un tren lo lleva a un [[port|puerto]] en un lago o en la costa.', fa: 'بعد قطار آن را به یک [[port|بندر]] کنار جهیل یا ساحل می‌برد.' },
-        { en: 'Each step uses cheaper transport, and water is the cheapest of all.', es: 'Cada paso usa un transporte más barato, y el agua es lo más barato de todo.', fa: 'هر قدم وسیلهٔ ارزان‌تر است، و آب از همه ارزان‌تر است.' }
+        { en: 'Hello! A huge flat middle lies between the Rockies (west) and the Appalachians (east).', es: '¡Hola! Un enorme centro plano está entre las Rocosas (oeste) y los Apalaches (este).', fa: 'سلام! یک میانهٔ هموار بسیار بزرگ میان کوه‌های راکی (غرب) و اپالاچی (شرق) است.' },
+        { en: 'It is the Great Plains in the U.S. and the [[prairie|prairies]] in Canada. We grow wheat, corn and soybeans.', es: 'Son las Grandes Llanuras en EE. UU. y las [[prairie|praderas]] en Canadá. Sembramos trigo, maíz y soya.', fa: 'در امریکا دشت‌های بزرگ و در کانادا [[prairie|دشت‌ها (پریری)]] نام دارد. ما گندم، جواری و سویا می‌کاریم.' },
+        { en: 'Farms are far from the sea. Long ago, moving heavy grain by wagon was slow and costly.', es: 'Las granjas están lejos del mar. Hace mucho, mover granos pesados en carreta era lento y caro.', fa: 'فارم‌ها از بحر دور هستند. در گذشته، بردن غلهٔ سنگین با گادی آهسته و قیمت بود.' },
+        { en: 'Now a train hauls my wheat to a [[port|port]]. Water transport is the cheapest of all.', es: 'Ahora un tren lleva mi trigo a un [[port|puerto]]. El transporte por agua es el más barato de todos.', fa: 'حالا قطار گندم مرا به یک [[port|بندر]] می‌برد. بردن از راه آب از همه ارزان‌تر است.' }
       ],
       ask: {
         stat: 'hei',

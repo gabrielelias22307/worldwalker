@@ -85,10 +85,8 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the Wheat Belt! Every farm here grows wheat, field after field.', es: '¡Bienvenido al Cinturón del Trigo! Todas las granjas aquí siembran trigo, campo tras campo.', fa: 'به کمربند گندم خوش آمدی! همهٔ فارم‌های اینجا گندم می‌کارند، زمین پشت زمین.' },
         { en: 'A [[region|region]] is a group of places that share something. Here, we share wheat.', es: 'Una [[region|región]] es un grupo de lugares que comparten algo. Aquí compartimos el trigo.', fa: '[[region|منطقه]] گروهی از جاهاست که یک چیز مشترک دارند. اینجا همه گندم داریم.' },
-        { en: 'When one trait is true across the whole area, it is a [[formal region|formal region]].', es: 'Cuando una característica se cumple en toda el área, es una [[formal region|región formal]].', fa: 'وقتی یک ویژگی در تمام ساحه درست باشد، آن یک [[formal region|منطقهٔ رسمی]] است.' },
-        { en: 'Test it! Any field you walk into has wheat. The [[boundary|boundary]] is where wheat stops.', es: '¡Compruébalo! Cualquier campo tiene trigo. El [[boundary|límite]] está donde se acaba el trigo.', fa: 'امتحان کن! هر زمینی گندم دارد. [[boundary|سرحد]] جایی است که گندم تمام می‌شود.' },
-        { en: 'The United States has a real one: the Corn Belt.', es: 'Estados Unidos tiene una de verdad: el Cinturón del Maíz.', fa: 'امریکا یک منطقهٔ واقعی دارد: کمربند جواری.' },
-        { en: 'Farmers in Iowa, Illinois and Nebraska grow huge amounts of corn, year after year.', es: 'Los agricultores de Iowa, Illinois y Nebraska siembran muchísimo maíz, año tras año.', fa: 'دهقانان در آیووا، ایلینوی و نبراسکا هر سال جواری بسیار زیاد می‌کارند.' }
+        { en: 'One trait true everywhere makes a [[formal region|formal region]]. The [[boundary|boundary]] is where wheat stops.', es: 'Una característica en todas partes forma una [[formal region|región formal]]. El [[boundary|límite]] está donde se acaba el trigo.', fa: 'یک ویژگی که همه جا درست باشد [[formal region|منطقهٔ رسمی]] می‌سازد. [[boundary|سرحد]] جایی است که گندم تمام می‌شود.' },
+        { en: 'The U.S. Corn Belt is real: Iowa, Illinois and Nebraska grow huge amounts of corn.', es: 'El Cinturón del Maíz de EE. UU. es real: Iowa, Illinois y Nebraska siembran muchísimo maíz.', fa: 'کمربند جواری امریکا واقعی است: آیووا، ایلینوی و نبراسکا جواری بسیار زیاد می‌کارند.' }
       ],
       ask: {
         stat: 'pla',
@@ -109,13 +107,10 @@ window.EPISODE = {
       role: { en: 'Boat pilot at Hub Town', es: 'Piloto de bote en Pueblo Centro', fa: 'رانندهٔ کشتی در شهرک مرکز' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2f6fd6', pants: '#2a2a2a' },
       lines: [
-        { en: 'I steer the river boat here at Hub Town.', es: 'Yo manejo el bote del río aquí en Pueblo Centro.', fa: 'من کشتی دریایی را اینجا در شهرک مرکز می‌رانم.' },
-        { en: 'Every stream in this valley flows into one river. It flows right past our dock.', es: 'Todos los arroyos del valle llegan a un mismo río. Ese río pasa justo por nuestro muelle.', fa: 'همهٔ جوی‌های این دره به یک دریا می‌ریزند. آن دریا درست از کنار اسکلهٔ ما می‌گذرد.' },
-        { en: 'A [[functional region|functional region]] forms around one [[hub|hub]].', es: 'Una [[functional region|región funcional]] se forma alrededor de un [[hub|centro]].', fa: '[[functional region|منطقهٔ کارکردی]] دور یک [[hub|مرکز]] ساخته می‌شود.' },
-        { en: 'Every stream that drains into the Mississippi River is in its functional region.', es: 'Cada arroyo que desemboca en el río Misisipi está en su región funcional.', fa: 'هر جویی که به دریای میسی‌سی‌پی می‌ریزد، جزء منطقهٔ کارکردی آن است.' },
-        { en: 'A cell phone tower makes one too. Our valley works the same way, just smaller.', es: 'Una torre de celulares también forma una. Nuestro valle funciona igual, solo que más pequeño.', fa: 'یک برج موبایل هم یکی می‌سازد. درهٔ ما هم همین‌طور است، فقط کوچک‌تر.' },
-        { en: 'Every phone that connects to one tower is inside that tower\'s region.', es: 'Cada teléfono que se conecta a una torre está dentro de la región de esa torre.', fa: 'هر موبایلی که به یک برج وصل شود، داخل منطقهٔ همان برج است.' },
-        { en: 'The edge is where the pull of the hub ends.', es: 'El borde está donde termina la fuerza del centro.', fa: 'کنارهٔ آن جایی است که کشش مرکز تمام می‌شود.' }
+        { en: 'I steer the river boat at Hub Town. Every stream here flows into one river.', es: 'Yo manejo el bote del río en Pueblo Centro. Todos los arroyos de aquí llegan a un mismo río.', fa: 'من کشتی دریایی را در شهرک مرکز می‌رانم. همهٔ جوی‌های اینجا به یک دریا می‌ریزند.' },
+        { en: 'A [[functional region|functional region]] forms around one [[hub|hub]], like our river and dock.', es: 'Una [[functional region|región funcional]] se forma alrededor de un [[hub|centro]], como nuestro río y muelle.', fa: '[[functional region|منطقهٔ کارکردی]] دور یک [[hub|مرکز]] ساخته می‌شود، مثل دریا و اسکلهٔ ما.' },
+        { en: 'All streams that drain into the Mississippi River are in its functional region.', es: 'Todos los arroyos que desembocan en el río Misisipi están en su región funcional.', fa: 'همهٔ جوی‌هایی که به دریای میسی‌سی‌پی می‌ریزند، جزء منطقهٔ کارکردی آن هستند.' },
+        { en: 'A cell phone tower makes one too. Its edge is where the hub\'s pull ends.', es: 'Una torre de celulares también forma una. Su borde está donde termina la fuerza del centro.', fa: 'یک برج موبایل هم یکی می‌سازد. کنارهٔ آن جایی است که کشش مرکز تمام می‌شود.' }
       ],
       ask: {
         stat: 'mov',
@@ -138,11 +133,8 @@ window.EPISODE = {
       lines: [
         { en: 'Shh! You are in the Whispering Woods. Well... maybe. Everyone calls this place spooky.', es: '¡Shh! Estás en el Bosque de los Susurros. Bueno... tal vez. Todos dicen que este lugar da miedo.', fa: 'هیس! تو در جنگل زمزمه هستی. خوب... شاید. همه این جا را ترسناک می‌گویند.' },
         { en: 'But ask five people where the woods begin, and you get five answers.', es: 'Pero si preguntas a cinco personas dónde empieza el bosque, tendrás cinco respuestas.', fa: 'اما اگر از پنج نفر بپرسی جنگل از کجا شروع می‌شود، پنج جواب می‌گیری.' },
-        { en: 'That makes it a [[perceptual region|perceptual region]]. It is real because people agree it exists.', es: 'Eso la hace una [[perceptual region|región perceptual]]. Es real porque la gente cree que existe.', fa: 'همین آن را یک [[perceptual region|منطقهٔ ادراکی]] می‌سازد. واقعی است چون مردم قبول دارند که هست.' },
-        { en: 'But no test can prove where its edges are.', es: 'Pero ninguna prueba puede mostrar dónde están sus bordes.', fa: 'اما هیچ امتحانی نمی‌تواند نشان دهد کناره‌هایش کجاست.' },
-        { en: 'Tornado Alley in the middle of the United States is like this.', es: 'El Callejón de los Tornados, en el centro de Estados Unidos, es así.', fa: 'کوچهٔ تورنادو در وسط امریکا هم همین‌طور است.' },
-        { en: 'It covers parts of Texas, Oklahoma and Kansas. Storms strike there often.', es: 'Cubre partes de Texas, Oklahoma y Kansas. Allí caen tormentas seguido.', fa: 'بخش‌هایی از تگزاس، اوکلاهوما و کانزاس را می‌گیرد. آنجا طوفان زیاد می‌آید.' },
-        { en: 'But weather experts do not draw one official line around it.', es: 'Pero los expertos del clima no dibujan una línea oficial a su alrededor.', fa: 'اما کارشناسان هوا یک خط رسمی دور آن نمی‌کشند.' }
+        { en: 'This is a [[perceptual region|perceptual region]]. People believe in it, but nobody can prove its edges.', es: 'Es una [[perceptual region|región perceptual]]. La gente cree en ella, pero nadie puede probar sus bordes.', fa: 'این یک [[perceptual region|منطقهٔ ادراکی]] است. مردم به آن باور دارند، اما کسی کناره‌هایش را ثابت کرده نمی‌تواند.' },
+        { en: 'Stormy Tornado Alley (Texas, Oklahoma, Kansas) is like this. Experts draw no official line.', es: 'El Callejón de los Tornados (Texas, Oklahoma, Kansas), con sus tormentas, es así. Los expertos no le dibujan una línea oficial.', fa: 'کوچهٔ تورنادو با طوفان‌هایش (تگزاس، اوکلاهوما، کانزاس) همین‌طور است. کارشناسان خط رسمی برایش نمی‌کشند.' }
       ],
       ask: {
         stat: 'reg',
