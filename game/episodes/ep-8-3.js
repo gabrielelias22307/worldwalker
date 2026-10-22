@@ -30,6 +30,21 @@ window.EPISODE = {
       es: 'Algunas fronteras son líneas rectas, como gran parte de la frontera entre Egipto y Sudán.',
       fa: 'بعضی سرحدها خط‌های راست هستند، مثل بیشتر سرحد مصر و سودان.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [19, 12], name: { en: 'Grandpa Luc', es: 'Abuelo Luc', fa: 'پدرکلان لوک' },
+      look: { skin: 0, hair: '#d0d0d0', shirt: '#b8332b', pants: '#2f3a4a', hat: '#2f2f2f' },
+      lines: [
+        { en: 'Come in! I came from Canada for the council. Try some maple syrup.', es: '¡Pasa! Vine de Canadá para el consejo. Prueba un poco de jarabe de arce.', fa: 'بیا داخل! من برای شورا از کانادا آمدم. کمی شیرهٔ درخت افرا بچش.' },
+        { en: 'At home, big lakes sit on the border. Both countries keep them clean together.', es: 'En mi país, unos lagos grandes están en la frontera. Los dos países los cuidan juntos.', fa: 'در وطنم، جهیل‌های بزرگ روی سرحد هستند. هر دو کشور با هم آن‌ها را پاک نگه می‌دارند.' }
+      ] },
+    { at: [28, 17], name: { en: 'Ingrid', es: 'Ingrid', fa: 'اینگرید' },
+      look: { skin: 0, hair: '#a0522d', shirt: '#4f7fbf', pants: '#3a3a3a', style: 'bun' },
+      lines: [
+        { en: 'Careful, the floor is wet. My kids splashed in the river all morning.', es: 'Cuidado, el piso está mojado. Mis hijos chapotearon en el río toda la mañana.', fa: 'احتیاط، زمین تر است. اطفالم تمام صبح در دریا آب‌بازی کردند.' },
+        { en: 'Back home, the Rhine River crosses several countries. They cleaned it together.', es: 'En mi país, el río Rin cruza varios países. Lo limpiaron juntos.', fa: 'در وطنم، دریای راین از چند کشور می‌گذرد. آن‌ها با هم آن را پاک کردند.' }
+      ] }
+  ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
      Top: snow and the Andes-like mountains (west) · the Council Hall (middle) · desert with an oasis (east).

@@ -30,6 +30,21 @@ window.EPISODE = {
       es: 'Hong Kong, Shenzhen y Cantón crecieron donde el río de las Perlas llega al mar.',
       fa: 'هانگ‌کانگ، شنژن و گوانگجو همه جایی بزرگ شدند که دریای مروارید به بحر می‌رسد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [8, 2], name: { en: 'Grandpa Lin', es: 'Abuelo Lin', fa: 'پدرکلان لین' },
+      look: { skin: 2, hair: '#cfcfcf', shirt: '#6b8f4e', pants: '#3d3a33', style: 'short' },
+      lines: [
+        { en: 'Come in! My village is old. We built it here to stay above floods.', es: '¡Pasa! Mi aldea es vieja. La construimos aquí para quedar arriba de las inundaciones.', fa: 'بیا داخل! قریهٔ ما کهنه است. آن را اینجا ساختیم تا بالاتر از سیلاب باشد.' },
+        { en: 'But only one small path goes out. So our town never grew big.', es: 'Pero solo sale un caminito. Por eso nuestro pueblo nunca creció mucho.', fa: 'اما فقط یک راه کوچک از اینجا بیرون می‌رود. برای همین شهرک ما هیچ‌وقت بزرگ نشد.' }
+      ] },
+    { at: [20, 16], name: { en: 'Cook Ying', es: 'Cocinera Ying', fa: 'آشپز یینگ' },
+      look: { skin: 1, hair: '#141010', shirt: '#e0e0d8', pants: '#2b4a6b', style: 'bun' },
+      lines: [
+        { en: 'Shh, my son is sleeping. He unloads ships all night at the river mouth.', es: 'Shh, mi hijo está durmiendo. Él descarga barcos toda la noche en la desembocadura.', fa: 'شش، پسرم خواب است. او تمام شب در دهانهٔ دریا بار کشتی‌ها را خالی می‌کند.' },
+        { en: 'River boats and sea ships meet right here, so there is always work.', es: 'Los botes del río y los barcos del mar se juntan aquí, así que siempre hay trabajo.', fa: 'قایق‌های دریا و کشتی‌های بحر همین‌جا به هم می‌رسند، پس همیشه کار هست.' }
+      ] }
+  ],
 
   map: [
     'AAMAAMATTTTTT~~TTTTTTTTTTTTTTTTT',

@@ -31,6 +31,27 @@ window.EPISODE = {
       es: 'Japón tiene miles de islas, pero casi todos viven en las cuatro más grandes.',
       fa: 'جاپان هزاران جزیره دارد، اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [40, 9], name: { en: 'Grandma Haru', es: 'Abuela Haru', fa: 'مادرکلان هارو' },
+      look: { skin: 1, hair: '#d8d8d8', shirt: '#5b7fbf', pants: '#3a3a4a', style: 'bun' },
+      lines: [
+        { en: 'Come in, and take off your shoes. We sit on soft mats here.', es: 'Pasa, y quítate los zapatos. Aquí nos sentamos en esteras suaves.', fa: 'بیا داخل و بوت‌هایت را بکش. ما اینجا روی بوریاهای نرم می‌نشینیم.' },
+        { en: 'Japan has so many mountains. Our town squeezes onto a thin strip of coast.', es: 'Japón tiene muchísimas montañas. Nuestro pueblo se aprieta en una franja angosta de costa.', fa: 'جاپان کوه‌های بسیار زیادی دارد. شهرک ما در یک نوار باریک ساحل جا شده است.' }
+      ] },
+    { at: [24, 12], name: { en: 'Auntie Fang', es: 'Tía Fang', fa: 'خاله فانگ' },
+      look: { skin: 2, hair: '#1a1410', shirt: '#c9483b', pants: '#2f3d5a', style: 'short' },
+      lines: [
+        { en: 'Come in! Have some hot noodles. Up north, people eat more wheat.', es: '¡Pasa! Come unos fideos calientes. En el norte, la gente come más trigo.', fa: 'بیا داخل! کمی آش داغ بخور. در شمال، مردم بیشتر گندم می‌خورند.' },
+        { en: 'Near the Yangtze it is wetter, so families there eat more rice.', es: 'Cerca del Yangtsé llueve más, así que allí las familias comen más arroz.', fa: 'نزدیک یانگ‌تسه هوا مرطوب‌تر است، پس خانواده‌های آنجا بیشتر برنج می‌خورند.' }
+      ] },
+    { at: [41, 16], name: { en: 'Fisher Kenji', es: 'Pescador Kenji', fa: 'ماهی‌گیر کِنجی' },
+      look: { skin: 2, hair: '#20201c', shirt: '#2f7f8f', pants: '#4a4033', hat: '#e8e2d0' },
+      lines: [
+        { en: 'Shh, the baby is asleep. I just came back from fishing at dawn.', es: 'Shh, el bebé está dormido. Acabo de volver de pescar al amanecer.', fa: 'شش، طفل خواب است. همین حالا از ماهی‌گیری صبح‌وقت برگشتم.' },
+        { en: 'The sea feeds Japan. We eat fish, seaweed and rice almost every day.', es: 'El mar alimenta a Japón. Comemos pescado, algas y arroz casi todos los días.', fa: 'بحر به جاپان غذا می‌دهد. ما تقریباً هر روز ماهی، علف بحری و برنج می‌خوریم.' }
+      ] }
+  ],
 
   map: [
     'AAAAAAAAAAAAAAAATTTTTTTTTTTTTTTT================',

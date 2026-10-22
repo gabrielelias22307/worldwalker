@@ -30,6 +30,33 @@ window.EPISODE = {
       es: 'El canal de Panamá sube los barcos unos 26 metros con esclusas.',
       fa: 'کانال پاناما کشتی‌ها را با دروازه‌های آبی حدود ۲۶ متر بالا می‌برد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [9, 2], name: { en: 'Mr. Pieter', es: 'Sr. Pieter', fa: 'آقای پیتر' },
+      look: { skin: 0, hair: '#c8b080', shirt: '#3a5f8f', pants: '#2a2a2a', style: 'short' },
+      lines: [
+        { en: 'Come in! Have some tea. It came by ship all the way from Asia.', es: '¡Pasa! Toma un poco de té. Llegó en barco desde Asia.', fa: 'بیا داخل! کمی چای بنوش. با کشتی از آسیا تا اینجا آمده است.' },
+        { en: 'When the canal gets blocked, my tea is late and prices go up.', es: 'Cuando el canal se bloquea, mi té llega tarde y los precios suben.', fa: 'وقتی کانال بند شود، چای من دیر می‌رسد و قیمت‌ها بالا می‌روند.' }
+      ] },
+    { at: [7, 15], name: { en: 'Farmer Anke', es: 'Agricultora Anke', fa: 'دهقان آنکه' },
+      look: { skin: 0, hair: '#d9a441', shirt: '#7a9a3a', pants: '#3a4a6a', style: 'long' },
+      lines: [
+        { en: 'Shh, the baby is asleep. I just finished planting wheat.', es: 'Shh, el bebé está dormido. Acabo de terminar de sembrar trigo.', fa: 'شش، طفل خواب است. همین حالا کشت گندم را تمام کردم.' },
+        { en: 'We grow lots of wheat but no coffee. So we trade for it!', es: 'Cultivamos mucho trigo, pero nada de café. ¡Por eso lo conseguimos con el comercio!', fa: 'ما گندم زیاد می‌کاریم، اما قهوه نه. برای همین آن را از راه تجارت می‌گیریم!' }
+      ] },
+    { at: [36, 15], name: { en: 'Auntie Siti', es: 'Tía Siti', fa: 'خاله سیتی' },
+      look: { skin: 3, hair: '#140f0c', shirt: '#d6487a', pants: '#3a2f4a', hat: '#e6c8d8' },
+      lines: [
+        { en: 'Come in! Watch out for the cat. I count ships from my window.', es: '¡Pasa! Cuidado con el gato. Cuento barcos desde mi ventana.', fa: 'بیا داخل! متوجه پشک باش. از کلکینم کشتی‌ها را می‌شمارم.' },
+        { en: 'This strait is like a narrow door. Ships from all over squeeze through.', es: 'Este estrecho es como una puerta angosta. Barcos de todo el mundo pasan apretados.', fa: 'این تنگه مثل یک دروازهٔ باریک است. کشتی‌ها از همه جای جهان از آن فشرده می‌گذرند.' }
+      ] },
+    { at: [42, 15], name: { en: 'Budi', es: 'Budi', fa: 'بودی' },
+      look: { skin: 4, hair: '#0f0c0a', shirt: '#e0b030', pants: '#2f4f3f', style: 'short' },
+      lines: [
+        { en: 'Hello! My boat is small, so I fish near the shore, away from big ships.', es: '¡Hola! Mi bote es pequeño, así que pesco cerca de la orilla, lejos de los barcos grandes.', fa: 'سلام! قایقم کوچک است، پس نزدیک ساحل ماهی می‌گیرم، دور از کشتی‌های بزرگ.' },
+        { en: 'Indonesia sells palm oil to the world. It rides those ships through the strait.', es: 'Indonesia vende aceite de palma al mundo. Viaja en esos barcos por el estrecho.', fa: 'اندونیزیا روغن نخل را به جهان می‌فروشد. با همان کشتی‌ها از تنگه می‌گذرد.' }
+      ] }
+  ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
      Top row of screens: Europe's market port (west) · the desert with the canal (middle) · Asia's factory port (east).
