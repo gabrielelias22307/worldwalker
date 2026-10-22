@@ -34,6 +34,15 @@ window.EPISODE = {
       es: 'Arabia Saudita no tiene ríos que corran todo el año.',
       fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [7, 8], name: { en: 'Grandma Ayşe', es: 'Abuela Ayşe', fa: 'مادرکلان عایشه' },
+      look: { skin: 1, hair: '#d8d8d8', shirt: '#b03a48', pants: '#3a3a5a', style: 'bun', hat: '#e8e0d0' },
+      lines: [
+        { en: 'Come in, take off your boots! Snow gets deep up here in winter.', es: '¡Pasa, quítate las botas! Aquí arriba la nieve es muy profunda en invierno.', fa: 'بیا داخل، بوت‌هایت را بکش! زمستان این‌جا برف خیلی زیاد می‌بارد.' },
+        { en: 'In spring the snow melts. That water fills the Tigris and the Euphrates.', es: 'En primavera la nieve se derrite. Esa agua llena el Tigris y el Éufrates.', fa: 'در بهار برف آب می‌شود. همان آب، دجله و فرات را پر می‌کند.' }
+      ] }
+  ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Top-left: Türkiye's mountains, river springs and a dam. Top-right: the temple (door on its west wall).
      Bottom: the rivers cross farmland to the Gulf; desert, an oasis and oil pumps in the south. */
@@ -45,8 +54,8 @@ window.EPISODE = {
     'M..~.~.....~.M..Dffffff~~fffoooD',
     'M..~~~.T...~....dffffff~~W~~o1oD',
     'M..WWW.....~....Dffffff~~fffoooD',
-    'M...~......b....Dffffff~~ffffffD',
-    'M.T.~......~.P..Dffffff~~ffffffD',
+    'M...~.JEJ..b....Dffffff~~ffffffD',
+    'M.T.~.JdJ..~.P..Dffffff~~ffffffD',
     'M...b....T.~....Do1ooo1oooo1oooD',
     'M...~......~....DDDDDDDDDDDDDDDD',
     'r...~.www..~sssssssssssssss~~~~r',

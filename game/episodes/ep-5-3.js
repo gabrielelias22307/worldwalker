@@ -34,6 +34,21 @@ window.EPISODE = {
       es: 'En 1994, Israel y Jordania firmaron un tratado de paz que reparte el agua del Jordán.',
       fa: 'در ۱۹۹۴، اسرائیل و اردن پیمان صلحی امضا کردند که آب دریای اردن را تقسیم می‌کند.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 2], name: { en: 'Grandpa Elias', es: 'Abuelo Elías', fa: 'پدرکلان الیاس' },
+      look: { skin: 2, hair: '#cfcfcf', shirt: '#5a7a3a', pants: '#4a3a2a', style: 'short' },
+      lines: [
+        { en: 'Have some olives! Olive trees grow well here with very little water.', es: '¡Come unas aceitunas! Los olivos crecen bien aquí con muy poca agua.', fa: 'کمی زیتون بخور! درخت زیتون این‌جا با آب خیلی کم خوب رشد می‌کند.' },
+        { en: 'See the snow on that mountain? In spring it melts and feeds the Jordan.', es: '¿Ves la nieve en esa montaña? En primavera se derrite y alimenta al Jordán.', fa: 'برف روی آن کوه را می‌بینی؟ در بهار آب می‌شود و به دریای اردن آب می‌دهد.' }
+      ] },
+    { at: [27, 2], name: { en: 'Dana', es: 'Dana', fa: 'دانا' },
+      look: { skin: 2, hair: '#1a1410', shirt: '#c8783a', pants: '#3a3a5a', style: 'long' },
+      lines: [
+        { en: 'Shh, the baby is asleep. Please close the door softly.', es: 'Shh, el bebé está dormido. Por favor, cierra la puerta despacito.', fa: 'آرام، طفل خواب است. لطفاً دروازه را آهسته ببند.' },
+        { en: 'Our pipes bring water only some days. We save it in a roof tank.', es: 'Las tuberías traen agua solo algunos días. La guardamos en un tanque en el techo.', fa: 'نل‌ها فقط بعضی روزها آب می‌آورند. آن را در یک تانکی روی بام ذخیره می‌کنیم.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      West edge: the Mediterranean Sea (= ~) and a desalination plant (X).
@@ -42,8 +57,8 @@ window.EPISODE = {
      East side: dry grass (g), hills (K), a town (J) with a well (O) where the water council meets. */
   map: [
     '=~MMMMMAA~~AAMMMMMMMMMMMMMMMMMMM',
-    '=~s..T.nA~~AnM..ggggrgggggJJJggM',
-    '=~s..,.~~~~~~...gggggggg:gJJJggM',
+    '=~sJJT.nA~~AnM..ggggrgggggJJJggM',
+    '=~sdJ,.~~~~~~...gggggggg:gJdJggM',
     '=~s.T.~~~s~~~...ggrgggg:::::ggaM',
     '=~sX..~~~~~~,x..gg:::::::gOggggM',
     '=~sXs.."~~"..,..gg:gggrgggggg"gM',
@@ -54,7 +69,7 @@ window.EPISODE = {
     '=~s..o1o.bb.o1o.gg:ggggggggggTMM',
     '=~s..o1o.~~.o1o.gg:gggggggggrggM',
     '=~ss.oo2.~~.2oo.gg:::::::::ggggM',
-    '=~s.w.ww.~~.www.ggrgggJJJJ:gggTM',
+    '=~s.w.ww.~~.www.ggrgggJJdJ:gggTM',
     '=~ss.www.bb.ww..gggggg:::::ggggM',
     '=~ss.....~~.....sggggggg:O:ggrgM',
     '=~sss.ssu~~ussxssssgggggg:gggggM',

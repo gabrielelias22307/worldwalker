@@ -33,6 +33,33 @@ window.EPISODE = {
       es: 'El Burj Khalifa de Dubái es el edificio más alto del mundo.',
       fa: 'برج خلیفه در دوبی بلندترین ساختمان جهان است.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 2], name: { en: 'Weaver Maryam', es: 'Tejedora Maryam', fa: 'بافنده مریم' },
+      look: { skin: 2, hair: '#2a1a12', shirt: '#2f5fa8', pants: '#5a2a3a', style: 'long' },
+      lines: [
+        { en: 'Shh, I am counting knots. This carpet will take me many months.', es: 'Shh, estoy contando nudos. Esta alfombra me va a tomar muchos meses.', fa: 'آرام، گره‌ها را می‌شمارم. بافتن این قالین چندین ماه وقت می‌گیرد.' },
+        { en: 'Kashan carpets traveled on trade roads. Now people everywhere copy our patterns.', es: 'Las alfombras de Kashán viajaron por rutas de comercio. Ahora en todas partes copian nuestros diseños.', fa: 'قالین‌های کاشان در راه‌های تجارت سفر کردند. حالا همه جا از نقش‌های ما تقلید می‌کنند.' }
+      ] },
+    { at: [8, 2], name: { en: 'Grandpa Javad', es: 'Abuelo Javad', fa: 'پدرکلان جواد' },
+      look: { skin: 2, hair: '#d0d0d0', shirt: '#7a5a3a', pants: '#3a3a3a', style: 'short' },
+      lines: [
+        { en: 'Welcome! Sit in the courtyard. The pool and trees keep it cool.', es: '¡Bienvenido! Siéntate en el patio. El estanque y los árboles lo mantienen fresco.', fa: 'خوش آمدی! در حویلی بنشین. حوض و درخت‌ها این‌جا را سرد نگه می‌دارند.' },
+        { en: 'Tea came here from China long ago. Now we drink it all day!', es: 'El té llegó aquí desde China hace mucho. ¡Ahora lo tomamos todo el día!', fa: 'چای مدت‌ها پیش از چین به این‌جا آمد. حالا تمام روز چای می‌نوشیم!' }
+      ] },
+    { at: [13, 2], name: { en: 'Parisa', es: 'Parisa', fa: 'پریسا' },
+      look: { skin: 1, hair: '#3a2418', shirt: '#3fae6a', pants: '#2a3a5a', style: 'long' },
+      lines: [
+        { en: 'Careful, wet floor! We are cleaning the whole house for Nowruz.', es: '¡Cuidado, el piso está mojado! Estamos limpiando toda la casa para Nowruz.', fa: 'احتیاط کن، زمین تر است! برای نوروز تمام خانه را پاک می‌کنیم.' },
+        { en: 'Nowruz starts the year on the first day of spring. Afghanistan celebrates it too!', es: 'Nowruz empieza el año el primer día de la primavera. ¡Afganistán también lo celebra!', fa: 'نوروز سال را در روز اول بهار شروع می‌کند. افغانستان هم آن را جشن می‌گیرد!' }
+      ] },
+    { at: [3, 14], name: { en: 'Grandpa Obaid', es: 'Abuelo Obaid', fa: 'پدرکلان عبید' },
+      look: { skin: 3, hair: '#e0e0e0', shirt: '#f4f4f4', pants: '#d8d8d0', hat: '#f4f4f4', robe: true },
+      lines: [
+        { en: 'Come in out of the heat! My grandfather dived for pearls here.', es: '¡Pasa, sal del calor! Mi abuelo buceaba buscando perlas aquí.', fa: 'از گرمی بیا داخل! پدرکلانم این‌جا برای مروارید غواصی می‌کرد.' },
+        { en: 'Before oil, Dubai lived from the sea. Now you hear languages from everywhere.', es: 'Antes del petróleo, Dubái vivía del mar. Ahora se escuchan idiomas de todas partes.', fa: 'پیش از نفت، دبی از بحر زندگی می‌کرد. حالا زبان‌های همه جای دنیا را می‌شنوی.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      Rows 1-8: Kashan, Iran — flat-roof houses (J), the covered bazaar lane (f) with stalls (m), a courtyard well (O),
@@ -41,8 +68,8 @@ window.EPISODE = {
      Rows 12-20: Dubai, UAE — old wind-tower houses (J), a market, a road, and glass towers (U). */
   map: [
     'MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM',
-    'MsJJJssJJJssJJJssWWWWWWWWWWWWWsM',
-    'MsJJJssJJJssJJJssWT,,,,,,,,,TWsM',
+    'MsJEJssJEJssJJJssWWWWWWWWWWWWWsM',
+    'MsJdJssJdJssJdJssWT,,,,,,,,,TWsM',
     'MssssssssssssssssW,,T,,,,,T,,WsM',
     'MsmmmsmmmmsmmmmssW~B~~~~~~~B~WsM',
     'M:::::::::::::::::::,,,b,,,,,WsM',
@@ -53,8 +80,8 @@ window.EPISODE = {
     '=============B================B=',
     '~~~kk~~~~~~~~B~~~~~~~~~~~~~~~~B~',
     'psssssssssxssssssssssssssssssssp',
-    'psJJJsJJJssmmmsssUUsUUsUUsUUsssp',
-    'psJJJsJJJssssssssUUsUUsUUsUUsssp',
+    'psJEJsJJJssmmmsssUUsUUsUUsUUsssp',
+    'psJdJsJJJssssssssUUsUUsUUsUUsssp',
     'pssssssssssmmmsssssssssssssssssp',
     'p:::::::::::::::::::::::::::::sp',
     'psmmsmmsmmsssssssUUsmmmmsUUUsssp',

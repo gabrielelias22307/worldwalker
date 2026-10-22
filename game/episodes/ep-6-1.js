@@ -34,6 +34,21 @@ window.EPISODE = {
       es: 'El monte Everest, la montaña más alta del mundo, está en el Himalaya.',
       fa: 'کوه اورست، بلندترین کوه جهان، در هیمالیا است.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [9, 13], name: { en: 'Aunt Meena', es: 'Tía Meena', fa: 'خاله مینا' },
+      look: { skin: 3, hair: '#1a1210', shirt: '#d6409a', pants: '#5a3a2a', style: 'bun' },
+      lines: [
+        { en: 'Careful, the floor is wet! The monsoon rain came in the night.', es: '¡Cuidado, el piso está mojado! La lluvia del monzón llegó en la noche.', fa: 'احتیاط کن، زمین تر است! باران موسمی دیشب آمد.' },
+        { en: 'Our house sits up high on a mud base, so floods stay outside.', es: 'Nuestra casa está en alto, sobre una base de barro, así las inundaciones se quedan afuera.', fa: 'خانهٔ ما روی یک تهداب بلند گِلی است، پس سیلاب بیرون می‌ماند.' }
+      ] },
+    { at: [15, 13], name: { en: 'Grandpa Ravi', es: 'Abuelo Ravi', fa: 'پدرکلان راوی' },
+      look: { skin: 4, hair: '#e8e8e8', shirt: '#f0ead8', pants: '#7a6a4a', style: 'short' },
+      lines: [
+        { en: 'Rice in the wet summer, wheat in the cool winter. Same field!', es: 'Arroz en el verano lluvioso, trigo en el invierno fresco. ¡El mismo campo!', fa: 'برنج در تابستان بارانی، گندم در زمستان سرد. همان یک زمین!' },
+        { en: 'The Ganges leaves rich soil every year. That is why so many people live here.', es: 'El Ganges deja tierra rica cada año. Por eso vive tanta gente aquí.', fa: 'گنگا هر سال خاک حاصلخیز می‌گذارد. برای همین این‌قدر مردم این‌جا زندگی می‌کنند.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      Rows 0-2: the Himalaya (A, M). Rows 3-4: tea terraces (t). The Ganges (~) starts in the ice at the top,

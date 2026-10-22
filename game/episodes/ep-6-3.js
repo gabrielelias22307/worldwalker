@@ -29,6 +29,81 @@ window.EPISODE = {
       es: 'Desde 1970, la esperanza de vida en Bangladés subió de menos de 50 a más de 70 años.',
       fa: 'از سال ۱۹۷۰، اوسط عمر در بنگله‌دیش از کمتر از ۵۰ به بیشتر از ۷۰ سال رسید.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [23, 2], name: { en: 'Grandpa Rahim', es: 'Abuelo Rahim', fa: 'پدرکلان رحیم' },
+      look: { skin: 4, hair: '#e8e8e8', shirt: '#e8e8d8', pants: '#4a6a3a', style: 'short' },
+      lines: [
+        { en: 'Come in, come in! I have farmed this land for sixty years.', es: '¡Pasa, pasa! Hace sesenta años que cultivo esta tierra.', fa: 'بیا داخل، بیا! شصت سال است که این زمین را کشت می‌کنم.' },
+        { en: 'When I was young, families had six or seven kids. Now most have two.', es: 'Cuando yo era joven, las familias tenían seis o siete hijos. Ahora casi todas tienen dos.', fa: 'وقتی جوان بودم، خانواده‌ها شش یا هفت طفل داشتند. حالا بیشترشان دو طفل دارند.' }
+      ] },
+    { at: [18, 4], name: { en: 'Shapla', es: 'Shapla', fa: 'شاپلا' },
+      look: { skin: 3, hair: '#1a1210', shirt: '#e85a8a', pants: '#4a2a4a', style: 'bun' },
+      lines: [
+        { en: 'Shh, the baby is asleep. She got her vaccines at the clinic today.', es: 'Shh, la bebé está dormida. Hoy le pusieron sus vacunas en la clínica.', fa: 'آرام، طفل خواب است. امروز در کلینیک واکسین‌هایش را گرفت.' },
+        { en: 'Vaccines and clean water help more babies grow up healthy.', es: 'Las vacunas y el agua limpia ayudan a que más bebés crezcan sanos.', fa: 'واکسین و آب پاک کمک می‌کنند که طفل‌های بیشتری صحتمند بزرگ شوند.' }
+      ] },
+    { at: [27, 4], name: { en: 'Rafi', es: 'Rafi', fa: 'رفیع' },
+      look: { skin: 4, hair: '#141010', shirt: '#3a6ad6', pants: '#2a2a3a', style: 'short' },
+      lines: [
+        { en: 'My big brother moved to the city for a factory job.', es: 'Mi hermano mayor se fue a la ciudad por un trabajo en una fábrica.', fa: 'برادر بزرگم برای کار در فابریکه به شهر رفت.' },
+        { en: 'He sends money home every month. It pays for my school books!', es: 'Manda dinero a casa cada mes. ¡Con eso pago mis libros de la escuela!', fa: 'هر ماه به خانه پول می‌فرستد. با آن کتاب‌های مکتبم را می‌خرم!' }
+      ] },
+    { at: [23, 17], name: { en: 'Auntie Jharna', es: 'Tía Jharna', fa: 'خاله جرنا' },
+      look: { skin: 3, hair: '#2a1a12', shirt: '#f0a030', pants: '#5a3a2a', style: 'long' },
+      lines: [
+        { en: 'Look up! We put a solar panel on our roof last year.', es: '¡Mira arriba! El año pasado pusimos un panel solar en el techo.', fa: 'بالا را ببین! پارسال یک پلیت آفتابی روی بام خود گذاشتیم.' },
+        { en: 'Now the lights work at night, and my kids can do homework.', es: 'Ahora hay luz en la noche, y mis hijos pueden hacer la tarea.', fa: 'حالا شب‌ها چراغ روشن است و اولادهایم می‌توانند کارخانگی کنند.' }
+      ] },
+    { at: [2, 13], name: { en: 'Rina', es: 'Rina', fa: 'رینا' },
+      look: { skin: 3, hair: '#1a1410', shirt: '#8e5bd6', pants: '#3a3a5a', style: 'bun' },
+      lines: [
+        { en: 'Hi! I sew shirts in a big factory. They sell in faraway countries.', es: '¡Hola! Coso camisas en una fábrica grande. Se venden en países lejanos.', fa: 'سلام! در یک فابریکهٔ بزرگ پیراهن می‌دوزم. آن‌ها در کشورهای دور فروخته می‌شوند.' },
+        { en: 'The pay is small, but I save some for my daughter\'s school.', es: 'El sueldo es poco, pero guardo un poco para la escuela de mi hija.', fa: 'معاشم کم است، ولی کمی برای مکتب دخترم پس‌انداز می‌کنم.' }
+      ] },
+    { at: [6, 13], name: { en: 'Uncle Jamal', es: 'Tío Jamal', fa: 'کاکا جمال' },
+      look: { skin: 5, hair: '#3a3a3a', shirt: '#2a8a5a', pants: '#4a4a3a', style: 'short', hat: '#f0f0f0' },
+      lines: [
+        { en: 'Phew! I pedal a rickshaw all day. City traffic is so slow!', es: '¡Uf! Pedaleo un rickshaw todo el día. ¡El tráfico de la ciudad es lentísimo!', fa: 'اوف! تمام روز ریکشا می‌رانم. ترافیک شهر خیلی آهسته است!' },
+        { en: 'I came from a village. The city has more jobs, but more crowds too.', es: 'Vine de un pueblo. La ciudad tiene más trabajo, pero también más gente.', fa: 'من از قریه آمدم. شهر کار بیشتر دارد، ولی ازدحام هم بیشتر است.' }
+      ] },
+    { at: [10, 13], name: { en: 'Tanvir', es: 'Tanvir', fa: 'تنویر' },
+      look: { skin: 3, hair: '#141010', shirt: '#f0f0f0', pants: '#2a3a6a', style: 'short' },
+      lines: [
+        { en: 'Sorry about the mess! I am studying for my computer exam.', es: '¡Perdón por el desorden! Estoy estudiando para mi examen de computación.', fa: 'ببخش که خانه بی‌نظم است! برای امتحان کمپیوتر درس می‌خوانم.' },
+        { en: 'Our country is full of young people. Soon we all need jobs!', es: 'Nuestro país está lleno de jóvenes. ¡Pronto todos vamos a necesitar trabajo!', fa: 'کشور ما پر از جوانان است. به زودی همهٔ ما به کار ضرورت داریم!' }
+      ] },
+    { at: [14, 13], name: { en: 'Farzana', es: 'Farzana', fa: 'فرزانه' },
+      look: { skin: 2, hair: '#2a1a12', shirt: '#2f9ed6', pants: '#2a2a2a', style: 'long' },
+      lines: [
+        { en: 'I work in the glass towers now, but I grew up in this lane.', es: 'Ahora trabajo en las torres de vidrio, pero crecí en esta calle.', fa: 'حالا در برج‌های شیشه‌ای کار می‌کنم، ولی در همین کوچه بزرگ شدم.' },
+        { en: 'I earn a lot. My neighbor earns little. One average hides us both.', es: 'Yo gano mucho. Mi vecina gana poco. Un solo promedio nos esconde a las dos.', fa: 'من معاش زیاد می‌گیرم. همسایه‌ام کم. یک اوسط هر دوی ما را پنهان می‌کند.' }
+      ] },
+    { at: [2, 18], name: { en: 'Nani Rokeya', es: 'Abuela Rokeya', fa: 'مادرکلان رقیه' },
+      look: { skin: 4, hair: '#d8d8d8', shirt: '#f0f0e0', pants: '#6a4a8a', style: 'bun' },
+      lines: [
+        { en: 'Come sit with me, dear. When I was a girl, few girls went to school.', es: 'Ven, siéntate conmigo. Cuando yo era niña, pocas niñas iban a la escuela.', fa: 'بیا پیش من بنشین، جان. وقتی من دختر بودم، دخترهای کمی به مکتب می‌رفتند.' },
+        { en: 'Now both my granddaughters go to college. One wants to be a doctor!', es: 'Ahora mis dos nietas van a la universidad. ¡Una quiere ser doctora!', fa: 'حالا هر دو نواسه‌ام به پوهنتون می‌روند. یکی می‌خواهد داکتر شود!' }
+      ] },
+    { at: [6, 18], name: { en: 'Nurse Mitali', es: 'Enfermera Mitali', fa: 'نرس میتالی' },
+      look: { skin: 3, hair: '#1a1210', shirt: '#f4f4f4', pants: '#4a8ad6', style: 'bun' },
+      lines: [
+        { en: 'Shh, I just got home from the night shift at the hospital.', es: 'Shh, acabo de llegar del turno de noche en el hospital.', fa: 'آرام، تازه از نوکریوالی شب در شفاخانه به خانه آمدم.' },
+        { en: 'The city has many doctors. Far villages have very few.', es: 'La ciudad tiene muchos doctores. Los pueblos lejanos tienen muy pocos.', fa: 'شهر داکتران زیاد دارد. قریه‌های دور خیلی کم دارند.' }
+      ] },
+    { at: [10, 18], name: { en: 'Kabir', es: 'Kabir', fa: 'کبیر' },
+      look: { skin: 4, hair: '#141010', shirt: '#d6402f', pants: '#3a3a3a', style: 'short', hat: '#f0e0b0' },
+      lines: [
+        { en: 'Try a hot samosa! I sell them by the bus stop.', es: '¡Prueba una samosa caliente! Las vendo en la parada del bus.', fa: 'یک سمبوسهٔ گرم بخور! آن‌ها را کنار ایستگاه بس می‌فروشم.' },
+        { en: 'More people in the city means more hungry customers for me!', es: '¡Más gente en la ciudad quiere decir más clientes con hambre para mí!', fa: 'مردم بیشتر در شهر یعنی مشتری‌های گرسنهٔ بیشتر برای من!' }
+      ] },
+    { at: [14, 18], name: { en: 'Little Nadia', es: 'Nadia', fa: 'نادیه کوچک' },
+      look: { skin: 3, hair: '#1a1410', shirt: '#f0d040', pants: '#3a6a5a', style: 'long' },
+      lines: [
+        { en: 'Hi! Grandma, aunts, uncles and cousins all live in our house.', es: '¡Hola! La abuela, mis tías, mis tíos y mis primos viven en nuestra casa.', fa: 'سلام! مادرکلان، خاله‌ها، کاکاها و بچه‌کاکاهایم همه در خانهٔ ما زندگی می‌کنند.' },
+        { en: 'Twelve people, one house! Our lane is more crowded than a whole village.', es: '¡Doce personas, una casa! Nuestra calle tiene más gente que un pueblo entero.', fa: 'دوازده نفر، یک خانه! کوچهٔ ما از یک قریهٔ کامل پرنفوس‌تر است.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      West: the city. Tall towers (north) and crowded old lanes (south).
