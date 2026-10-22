@@ -51,24 +51,28 @@ function doPost(e) {
   return reply_(out);
 }
 
-/* ---------- the class atlas: how many in the class restored each page (never who, never a ranking) ---------- */
+/* ---------- the class atlas: how many in the class restored each page, and the class top 5 by pages finished (first names only) ---------- */
 function classAtlas_(cls) {
   const want = clean_(cls).toUpperCase();
   if (!want) return { ok: false, error: 'missing class' };
   const sh = sheet_('Students', STUDENT_COLS);
   const n = sh.getLastRow();
-  const pages = {}; let total = 0, students = 0;
+  const pages = {}; let total = 0, students = 0; const board = [];
   if (n >= 2) {
     const rows = sh.getRange(2, 1, n - 1, STUDENT_COLS.length).getValues();
-    const ci = STUDENT_COLS.indexOf('cls'), ei = STUDENT_COLS.indexOf('episodes');
+    const ci = STUDENT_COLS.indexOf('cls'), ei = STUDENT_COLS.indexOf('episodes'), ni = STUDENT_COLS.indexOf('name');
     rows.forEach(r => {
       if (String(r[ci]).toUpperCase() !== want) return;
       students++;
       const eps = safeJson_(r[ei], {});
-      Object.keys(eps).forEach(id => { if (eps[id] && eps[id].done) { pages[id] = (pages[id] || 0) + 1; total++; } });
+      let mine = 0;
+      Object.keys(eps).forEach(id => { if (eps[id] && eps[id].done) { pages[id] = (pages[id] || 0) + 1; total++; mine++; } });
+      const first = clean_(r[ni]).split(/\s+/)[0];
+      if (mine && first) board.push({ name: first.charAt(0).toUpperCase() + first.slice(1), pages: mine });
     });
   }
-  return { ok: true, pages, total, students };
+  board.sort((a, b) => b.pages - a.pages || a.name.localeCompare(b.name));
+  return { ok: true, pages, total, students, top: board.slice(0, 5) };
 }
 
 /* ---------- load and save ---------- */

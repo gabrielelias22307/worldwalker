@@ -137,6 +137,10 @@
     savingSheet: { en: 'Saving to the class sheet…', es: 'Guardando en la hoja de la clase…', fa: 'ذخیره در جدول صنف…' },
     savedSheet: { en: 'Saved to the class sheet ✓', es: 'Guardado en la hoja de la clase ✓', fa: 'در جدول صنف ذخیره شد ✓' },
     sheetDown: { en: 'Could not reach the class sheet. Your Passport Code below has everything.', es: 'No se pudo llegar a la hoja de la clase. Tu código de pasaporte abajo tiene todo.', fa: 'به جدول صنف نرسیدیم. کد پاسپورت پایین همه چیز را دارد.' },
+    top5: { en: 'Top 5 in our class', es: 'Los 5 primeros de la clase', fa: '۵ نفر اول صنف ما' },
+    top5Pages: { en: '{n} pages', es: '{n} páginas', fa: '{n} صفحه' },
+    top5Page: { en: '1 page', es: '1 página', fa: '۱ صفحه' },
+    top5How: { en: 'Finish atlas pages to climb the board.', es: 'Termina páginas del atlas para subir.', fa: 'صفحه‌های اطلس را تمام کن تا بالا بروی.' },
     yourCode: { en: 'Your Passport Code', es: 'Tu código de pasaporte', fa: 'کد پاسپورت تو' },
     codeHelp: { en: 'This code holds your whole hero. If your progress is ever missing, paste it on the start screen.', es: 'Este código guarda todo tu héroe. Si tu progreso falta, pégalo en la pantalla de inicio.', fa: 'این کد تمام قهرمانت را نگه می‌دارد. اگر پیشرفتت گم شد، آن را در صفحهٔ شروع بگذار.' },
     copyCode: { en: 'Copy code', es: 'Copiar código', fa: 'کاپی کد' },
@@ -491,6 +495,14 @@
     let d;
     try { d = await (await fetch(url)).json(); } catch (e) { try { d = await jsonp(url); } catch (e2) { return null; } }
     return d && d.ok ? d : null;
+  };
+  // the class top 5 by pages finished (first names only), as a small list; '' when there is no board
+  WW.topBoard = d => {
+    if (!d || !d.top || !d.top.length) return '';
+    const e = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+    const me = String(WW.save.name || '').trim().split(/\s+/)[0].toLowerCase();
+    const medal = ['🥇', '🥈', '🥉', '4', '5'];
+    return `<div class="top5"><b>🏆 ${e(WW.T('top5'))}</b><ol>${d.top.map((t, i) => `<li${t.name.toLowerCase() === me ? ' class="me"' : ''}><span class="m">${medal[i]}</span><span class="n">${e(t.name)}</span><span class="p">${e(t.pages === 1 ? WW.T('top5Page') : WW.T('top5Pages').replace('{n}', t.pages))}</span></li>`).join('')}</ol><div class="small">${e(WW.T('top5How'))}</div></div>`;
   };
   WW.spend = n => { WW.save.coins -= n; WW.save.spent = (WW.save.spent || 0) + n; WW.store(); };
   // save the hero to the class Sheet after each goal (not only at the end), so leaving halfway loses little
