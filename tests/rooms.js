@@ -26,7 +26,7 @@ const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.1', '4.1'
       await p.keyboard.down('ArrowRight'); await p.waitForTimeout(2200); await p.keyboard.up('ArrowRight');
       await p.keyboard.press('Space');
       const talk = await p.waitForSelector('.roomtalk', { timeout: 1500 }).then(() => true, () => false);
-      if (n === 0) { ok(talk, `${id}: walking right and pressing Space talks to the person`); await p.screenshot({ path: path.join(OUT, `${id}-talk.png`) }); }
+      if (n === 0) { ok(talk, `${id}: walking right and pressing Space talks to the person`); await p.waitForTimeout(400); await p.screenshot({ path: path.join(OUT, `${id}-talk.png`) }); }
       else if (!talk) ok(false, `${id}: Space talks at ${x},${y}`);
       for (let k = 0; k < 4 && await p.$('.roomtalk'); k++) { await p.locator('#ww-ov .pbtn.gold').last().click(); await p.waitForTimeout(80); }
       await p.keyboard.down('ArrowLeft'); await p.waitForTimeout(3200); await p.keyboard.up('ArrowLeft');

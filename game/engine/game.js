@@ -587,7 +587,7 @@
     if (player.moving && now - player.moving >= stepMs()) {
       const from = player.from;
       player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup();
-      if (tileAt(player.x, player.y) === 'd' && !G.preview) { held = null; queued = null; clickTarget = null; WW.room.enter(player.x, player.y); } // a door: go in
+      if (tileAt(player.x, player.y) === 'd' && !G.preview) { held = null; queued = null; clickTarget = null; if (WW.room.enter(player.x, player.y)) return; } // a door: go in (no more map this frame)
       // stepped along the rails: all aboard
       if (!ride && from && RAIL.includes(tileAt(player.x, player.y)) && RAIL.includes(tileAt(from[0], from[1]))) {
         if (ticket()) { ride = { px: from[0], py: from[1], steps: 0 }; WW.sfx('gate'); if (!rideTold) { rideTold = true; WW.chris.say(T(WW.hasTool('rail') ? 'trainGo' : 'trainTicket')); } }
