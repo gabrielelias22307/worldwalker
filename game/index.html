@@ -110,7 +110,7 @@
 
   function openable(i) {
     const s = WW.save;
-    if (s.teacher) return true;
+    if (s.teacher || WW.CONFIG.OPEN_ALL) return true; // OPEN_ALL (config.js): every episode open from the start
     if (i === 0) return true;
     const id = WW.EPISODES[i].id;
     if (s.episodes[id]) return true;

@@ -3,7 +3,8 @@
   const CFG = WW.CONFIG = Object.assign({
     SHEET_URL: '',          // paste the Apps Script web app URL here to turn on the class Sheet
     TEACHER_CODE: 'ATLAS',  // typed on the world map, opens every episode
-    MODE: 'pages'           // 'pages' (GitHub Pages) or 'canvas' (one file uploaded to Canvas)
+    MODE: 'pages',          // 'pages' (GitHub Pages) or 'canvas' (one file uploaded to Canvas)
+    OPEN_ALL: false         // true: every episode on the world map is open from the start (the free-standing Netlify version)
   }, window.WW_CONFIG || {});
 
   /* ---------------- episodes and tools ---------------- */
