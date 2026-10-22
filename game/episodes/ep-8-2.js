@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The Grump knotted the busiest sea road! Ships are stuck, and shelves are empty.', es: '¡El Gruñón anudó la ruta marítima más transitada! Los barcos están atascados y los estantes, vacíos.', fa: 'غرغرو پرکارترین راه بحری را گره زد! کشتی‌ها گیر مانده‌اند و قفسه‌ها خالی هستند.' },
     { en: 'Talk to the shop owner, canal pilot and strait pilot. Then fix the stone.', es: 'Habla con la dueña de la tienda, la piloto del canal y el piloto del estrecho. Luego arregla la piedra.', fa: 'با صاحب دکان، رهنمای کانال و رهنمای تنگه گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [100.5, 3.5],
+    start: [
+      { en: 'Welcome to the Strait of Malacca, a narrow sea road between Malaysia and Indonesia.',
+        es: 'Bienvenido al estrecho de Malaca, un camino de mar angosto entre Malasia e Indonesia.',
+        fa: 'به تنگهٔ مالاکا خوش آمدی، راه آبی باریکی بین مالیزیا و اندونیزیا.' },
+      { en: 'Tens of thousands of ships pass through this strait every year.',
+        es: 'Decenas de miles de barcos pasan por este estrecho cada año.',
+        fa: 'هر سال ده‌ها هزار کشتی از این تنگه می‌گذرند.' },
+      { en: 'In 2021, one stuck ship blocked the Suez Canal for six days.',
+        es: 'En 2021, un barco atascado bloqueó el canal de Suez por seis días.',
+        fa: 'در ۲۰۲۱، یک کشتی گیرمانده کانال سوئز را شش روز بست.' }
+    ],
+    page: { en: 'The Panama Canal lifts ships about 85 feet up with locks.',
+      es: 'El canal de Panamá sube los barcos unos 26 metros con esclusas.',
+      fa: 'کانال پاناما کشتی‌ها را با دروازه‌های آبی حدود ۲۶ متر بالا می‌برد.' }
+  },
 
   /* 48 x 22 tiles = 3 x 2 screens.
      Top row of screens: Europe's market port (west) · the desert with the canal (middle) · Asia's factory port (east).

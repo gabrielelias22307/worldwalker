@@ -58,6 +58,12 @@ const CANVAS = process.argv.includes('--canvas');
           }).observe(document.getElementById('ww-toast'), { childList: true });
         });
         await page.locator('#ww-ov .pbtn.gold.big').click();
+        // the start cut scene: Christopher flies to the place on the world map, 2-3 fact cards (fun-pass-4)
+        await page.waitForSelector('.cutov', { timeout: 3000 });
+        await page.waitForTimeout(1700); await shot('1b-scene');
+        for (let k = 0; k < 4 && await page.$('.cutov'); k++) { await page.locator('#ww-ov .pbtn.gold').last().click(); await page.waitForTimeout(80); }
+        if (await page.$('.cutov')) throw new Error('the start cut scene did not end');
+        if (!(await page.evaluate(() => WW.save.seen[WW.ep.id + 's']))) throw new Error('the start cut scene was not saved as seen');
         const meet = await page.evaluate(() => !!(WW.ep.christopher && WW.ep.christopher.meet));
         if (meet) { // meeting Christopher: he flies in and talks in a bubble over his head
           await page.waitForSelector('.cbubble.meet', { state: 'visible' });
@@ -637,6 +643,8 @@ const CANVAS = process.argv.includes('--canvas');
         const bossAt = await page.evaluate(() => WW.game.bossAt());
         if (!goal || goal.join() !== bossAt.join()) throw new Error('the goal after the Grump is not the page');
         await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), bossAt);
+        await page.waitForSelector('.cutov'); await page.waitForTimeout(1700); await shot('8c-page-scene'); // one new fact, then the finish screen
+        await page.locator('#ww-ov .pbtn.gold').last().click();
         await page.waitForSelector('.finov');
         const fin = await page.textContent('#ww-ov');
         if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');

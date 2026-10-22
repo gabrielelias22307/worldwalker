@@ -11,6 +11,24 @@ window.EPISODE = {
     { en: 'The Grump mixed up this mountain in Ecuador! Farmers plant crops at the wrong height.', es: '¡El Gruñón revolvió esta montaña de Ecuador! Los agricultores siembran a la altura equivocada.', fa: 'غرغرو این کوه را در اکوادور به هم زد! دهقانان حاصلات را در ارتفاع غلط می‌کارند.' },
         { en: 'Climb from the coast to the snow. Talk to the banana, coffee and potato farmers.', es: 'Sube de la costa a la nieve. Habla con los agricultores del banano, del café y de la papa.', fa: 'از ساحل تا برف بالا برو. با دهقان‌های کیله، قهوه و کچالو گپ بزن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-78.5, -0.2],
+    start: [
+      { en: 'We are in Ecuador. Its name is the Spanish word for equator.',
+        es: 'Estamos en Ecuador. Su nombre viene de la línea del ecuador.',
+        fa: 'ما در اکوادور هستیم. نامش به زبان هسپانوی یعنی خط استوا.' },
+      { en: 'Quito, the capital, sits about 9,350 feet up in the Andes.',
+        es: 'Quito, la capital, está a unos 2,850 metros de altura en los Andes.',
+        fa: 'کیتو، پایتخت، حدود ۲۸۵۰ متر بالا در کوه‌های اندیز است.' },
+      { en: 'The Andes are the longest mountain range on land in the world.',
+        es: 'Los Andes son la cordillera más larga sobre tierra en el mundo.',
+        fa: 'اندیز درازترین رشته‌کوه روی خشکهٔ جهان است.' }
+    ],
+    page: { en: 'Near the equator, the volcano Chimborazo still has snow and ice on top.',
+      es: 'Cerca del ecuador, el volcán Chimborazo todavía tiene nieve y hielo arriba.',
+      fa: 'نزدیک خط استوا، آتشفشان چیمبورازو هنوز سرش برف و یخ دارد.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens. Bottom to top:
      rows 19-20 beach, rows 14-17 tierra caliente (bananas y, sugarcane e),

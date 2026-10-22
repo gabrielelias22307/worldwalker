@@ -15,6 +15,24 @@ window.EPISODE = {
       es: 'Habla con la pastora, la guardaparques y el científico del bosque. Luego arregla la piedra de la brújula.',
       fa: 'با مالدار، نگهبان پارک و دانشمند جنگل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [2.0, 13.5],
+    start: [
+      { en: 'The Sahara is the world\'s biggest hot desert. It covers most of North Africa.',
+        es: 'El Sahara es el desierto cálido más grande del mundo. Cubre casi todo el norte de África.',
+        fa: 'صحرا بزرگ‌ترین بیابان گرم جهان است. بیشتر شمال افریقا را پوشانده.' },
+      { en: 'The Sahara is about as big as the whole United States.',
+        es: 'El Sahara es casi tan grande como todo Estados Unidos.',
+        fa: 'صحرا تقریباً به اندازهٔ تمام امریکا بزرگ است.' },
+      { en: 'South of the desert, the Sahel is a strip of dry grass and short trees.',
+        es: 'Al sur del desierto, el Sahel es una franja de pasto seco y árboles bajos.',
+        fa: 'در جنوب صحرا، ساحل نواری از علف خشک و درختان کوتاه است.' }
+    ],
+    page: { en: 'The Great Green Wall plants trees across Africa, from Senegal to Djibouti.',
+      es: 'La Gran Muralla Verde planta árboles a lo largo de África, de Senegal a Yibuti.',
+      fa: 'دیوار بزرگ سبز در سراسر افریقا، از سنگال تا جیبوتی، درخت می‌کارد.' }
+  },
 
   /* 32 x 22 tiles = 2 x 2 screens. North (top) is the Sahara, then the Sahel, the savanna, and the rainforest at the bottom. */
   map: [

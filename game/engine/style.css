@@ -467,3 +467,14 @@ canvas{filter:var(--vivid)}
 .ww-frame.side .stage>.toolbar .tcarry{display:none}
 /* PLAYTEST-3: on a wide screen (a Chromebook) the frame uses the whole width, so the Now card has room beside the map */
 @media (min-width:1280px){.ww-frame{max-width:none}}
+/* cut scenes (fun-pass-4): the world map, then one fact card at a time */
+.cutov .ov-box{max-width:620px;background:#fffbe8}
+.cut-h{font-size:15px;color:#6b5a2a;margin:0 0 8px}
+.cut-h b{color:var(--ink)}
+.cut-cv{display:block;width:100%;height:auto;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px;background:#1d4f8a}
+.cut-card{display:flex;align-items:flex-start;gap:6px;margin:12px 0 4px;flex-wrap:wrap}
+.cut-card p{flex:1 1 80%;font-size:21px;line-height:1.4;margin:0}
+.cut-dots{flex-basis:100%;display:flex;gap:6px;justify-content:center;margin-top:8px}
+.cut-dots i{width:9px;height:9px;border-radius:50%;background:#d8cfae;border:1px solid #b7a77e}
+.cut-dots i.on{background:var(--gold, #f2c14e);border-color:var(--ink)}
+@media (max-width:480px){.cut-card p{font-size:18px}}

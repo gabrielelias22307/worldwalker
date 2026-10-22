@@ -11,6 +11,24 @@ window.EPISODE = {
     { en: 'The Grump smeared every number here! Now people think one number tells the whole story.', es: '¡El Gruñón manchó todos los números de aquí! Ahora la gente cree que un solo número cuenta toda la historia.', fa: 'غرغرو همهٔ عددهای این‌جا را خراب کرد! حالا مردم فکر می‌کنند یک عدد تمام قصه را می‌گوید.' },
     { en: 'Meet the census worker, doctor and city planner. Then fix the compass stone.', es: 'Habla con la encuestadora del censo, la doctora y la planificadora. Luego arregla la piedra de la brújula.', fa: 'با کارمند سرشماری، داکتر و برنامه‌ریز شهر گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [90.4, 23.8],
+    start: [
+      { en: 'Welcome to Bangladesh, one of the most crowded countries in the world.',
+        es: 'Bienvenido a Bangladés, uno de los países con más gente por espacio del mundo.',
+        fa: 'به بنگله‌دیش خوش آمدی، یکی از پرجمعیت‌ترین کشورهای جهان.' },
+      { en: 'Bangladesh is about the size of Iowa, but it has over 170 million people.',
+        es: 'Bangladés es del tamaño de Iowa, pero tiene más de 170 millones de personas.',
+        fa: 'بنگله‌دیش تقریباً به اندازهٔ آیووا است، اما بیشتر از ۱۷۰ میلیون نفر دارد.' },
+      { en: 'In Pakistan, half of all people are younger than 21.',
+        es: 'En Pakistán, la mitad de la gente tiene menos de 21 años.',
+        fa: 'در پاکستان، نیمی از مردم کمتر از ۲۱ سال دارند.' }
+    ],
+    page: { en: 'Since 1970, life expectancy in Bangladesh grew from under 50 to over 70 years.',
+      es: 'Desde 1970, la esperanza de vida en Bangladés subió de menos de 50 a más de 70 años.',
+      fa: 'از سال ۱۹۷۰، اوسط عمر در بنگله‌دیش از کمتر از ۵۰ به بیشتر از ۷۰ سال رسید.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      West: the city. Tall towers (north) and crowded old lanes (south).

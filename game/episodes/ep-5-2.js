@@ -15,6 +15,24 @@ window.EPISODE = {
       es: 'Habla con el vendedor de té, la jardinera y la guía de la ciudad. Luego arregla la piedra.',
       fa: 'با چای‌فروش، باغبان و رهنمای شهر گپ بزن. بعد سنگ را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [51.4, 34.0],
+    start: [
+      { en: 'Welcome to Kashan, an old desert city in Iran, famous for rose water.',
+        es: 'Bienvenido a Kashán, una vieja ciudad del desierto en Irán, famosa por su agua de rosas.',
+        fa: 'به کاشان خوش آمدی، شهر کهنهٔ بیابانی در ایران، مشهور به گلاب.' },
+      { en: 'Old houses here have wind towers that pull cool air inside.',
+        es: 'Las casas viejas aquí tienen torres de viento que meten aire fresco.',
+        fa: 'خانه‌های کهنهٔ اینجا بادگیر دارند که هوای سرد را داخل می‌کشند.' },
+      { en: 'Wind towers spread across the Gulf. You can still see them in Dubai.',
+        es: 'Las torres de viento llegaron a todo el Golfo. Todavía se ven en Dubái.',
+        fa: 'بادگیرها در سراسر خلیج پخش شدند. هنوز در دوبی دیده می‌شوند.' }
+    ],
+    page: { en: 'Dubai\'s Burj Khalifa is the tallest building in the world.',
+      es: 'El Burj Khalifa de Dubái es el edificio más alto del mundo.',
+      fa: 'برج خلیفه در دوبی بلندترین ساختمان جهان است.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      Rows 1-8: Kashan, Iran — flat-roof houses (J), the covered bazaar lane (f) with stalls (m), a courtyard well (O),

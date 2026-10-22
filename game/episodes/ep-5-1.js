@@ -16,6 +16,24 @@ window.EPISODE = {
       es: 'Conoce al agricultor en Irak y a la ingeniera de agua saudita. Luego resuelve el acertijo del templo.',
       fa: 'با دهقان در عراق و انجنیر آب عربستان سعودی هم گپ بزن. بعد معمای معبد را حل کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [44.4, 33.3],
+    start: [
+      { en: 'Welcome to Iraq, where the Tigris and Euphrates flow side by side.',
+        es: 'Bienvenido a Irak, donde el Tigris y el Éufrates corren lado a lado.',
+        fa: 'به عراق خوش آمدی، جایی که دجله و فرات کنار هم جاری‌اند.' },
+      { en: 'Some of the first cities and farms grew up between these two rivers.',
+        es: 'Algunas de las primeras ciudades y granjas nacieron entre estos dos ríos.',
+        fa: 'بعضی از اولین شهرها و زمین‌های زراعتی بین این دو دریا به وجود آمدند.' },
+      { en: 'The two rivers join and flow into the Persian Gulf.',
+        es: 'Los dos ríos se juntan y llegan al golfo Pérsico.',
+        fa: 'این دو دریا یکی می‌شوند و به خلیج فارس می‌ریزند.' }
+    ],
+    page: { en: 'Saudi Arabia has no rivers that flow all year.',
+      es: 'Arabia Saudita no tiene ríos que corran todo el año.',
+      fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد.' }
+  },
 
   /* 32 x 22 tiles = 2 x 2 screens. Top-left: Türkiye's mountains, river springs and a dam. Top-right: the temple (door on its west wall).
      Bottom: the rivers cross farmland to the Gulf; desert, an oasis and oil pumps in the south. */

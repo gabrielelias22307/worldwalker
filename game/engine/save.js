@@ -137,6 +137,11 @@
     savingSheet: { en: 'Saving to the class sheet…', es: 'Guardando en la hoja de la clase…', fa: 'ذخیره در جدول صنف…' },
     savedSheet: { en: 'Saved to the class sheet ✓', es: 'Guardado en la hoja de la clase ✓', fa: 'در جدول صنف ذخیره شد ✓' },
     sheetDown: { en: 'Could not reach the class sheet. Your Passport Code below has everything.', es: 'No se pudo llegar a la hoja de la clase. Tu código de pasaporte abajo tiene todo.', fa: 'به جدول صنف نرسیدیم. کد پاسپورت پایین همه چیز را دارد.' },
+    sceneDid: { en: 'Did you know?', es: '¿Sabías que…?', fa: 'آیا می‌دانستی؟' },
+    sceneSkip: { en: 'Skip', es: 'Saltar', fa: 'رد کن' },
+    sceneNext: { en: 'Next', es: 'Siguiente', fa: 'بعدی' },
+    sceneGo: { en: "Let's go", es: '¡Vamos!', fa: 'برویم' },
+    sceneOn: { en: 'Continue', es: 'Continuar', fa: 'ادامه' },
     top5: { en: 'Top 5 in our class', es: 'Los 5 primeros de la clase', fa: '۵ نفر اول صنف ما' },
     top5Pages: { en: '{n} pages', es: '{n} páginas', fa: '{n} صفحه' },
     top5Page: { en: '1 page', es: '1 página', fa: '۱ صفحه' },
@@ -364,7 +369,7 @@
 
   /* ---------------- the saved hero ---------------- */
   const KEY = 'worldwalker.save.v1';
-  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, secrets: [], finds: [], camp: { owned: [], slots: [null, null, null, null, null, null] }, lang: 'en', sound: true, music: true, teacher: false });
+  const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, seen: {}, secrets: [], finds: [], camp: { owned: [], slots: [null, null, null, null, null, null] }, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;

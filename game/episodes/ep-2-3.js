@@ -10,6 +10,24 @@ window.EPISODE = {
     { en: 'The Grump tangled the Long Road! Travelers forgot why people move.', es: '¡El Gruñón enredó el Camino Largo! Los viajeros olvidaron por qué la gente se muda.', fa: 'غرغرو راه دراز را گره زد! مسافران فراموش کردند که چرا مردم جابه‌جا می‌شوند.' },
         { en: 'Talk to the farmer, the bus driver and the cook. Then fix the compass stone.', es: 'Habla con el agricultor, la chofer del bus y la cocinera. Luego arregla la piedra de la brújula.', fa: 'با دهقان، رانندهٔ بس و آشپز گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-90.5, 14.6],
+    start: [
+      { en: 'Many families travel north through Central America and Mexico. This is Guatemala.',
+        es: 'Muchas familias viajan al norte por Centroamérica y México. Esto es Guatemala.',
+        fa: 'خانواده‌های زیادی از راه امریکای مرکزی و مکسیکو به شمال می‌روند. اینجا گواتیمالا است.' },
+      { en: 'About one in seven people in the United States was born in another country.',
+        es: 'Cerca de una de cada siete personas en Estados Unidos nació en otro país.',
+        fa: 'از هر هفت نفر در امریکا، حدود یک نفر در کشور دیگری به دنیا آمده.' },
+      { en: 'Drought pushes people away. Jobs and family pull them to new places.',
+        es: 'La sequía empuja a la gente a irse. El trabajo y la familia la atraen a lugares nuevos.',
+        fa: 'خشک‌سالی مردم را بیرون می‌راند. کار و خانواده آن‌ها را به جای نو می‌کشد.' }
+    ],
+    page: { en: 'Money sent home is a big part of the economy in Guatemala and Honduras.',
+      es: 'El dinero enviado a casa es una gran parte de la economía de Guatemala y Honduras.',
+      fa: 'پولی که به خانه فرستاده می‌شود بخش بزرگی از اقتصاد گواتیمالا و هندوراس است.' }
+  },
 
   /* 32 x 22. West: a dry farm town. A long road runs east to the bus stop and a busy city.
      South-east: the city neighborhood and the river dock. */

@@ -10,6 +10,24 @@ window.EPISODE = {
     { en: 'The Grump blew through Mapmaker\'s Valley! Every sign is blurry and people are lost.', es: '¡El Gruñón pasó por el Valle del Cartógrafo! Los letreros están borrosos y la gente está perdida.', fa: 'غرغرو از درهٔ نقشه‌کش گذشت! همهٔ تابلوها تار شده و مردم گم شده‌اند.' },
     { en: 'Talk to the mapmaker, the captain and the teacher. Then fix the compass stone.', es: 'Habla con la cartógrafa, la capitana y el maestro. Luego arregla la piedra de la brújula.', fa: 'با نقشه‌کش، کپتان و معلم گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-77.05, 38.8],
+    start: [
+      { en: 'Every map starts where you are. We are in Alexandria, Virginia.',
+        es: 'Todo mapa empieza donde estás. Estamos en Alexandria, Virginia.',
+        fa: 'هر نقشه از جایی شروع می‌شود که تو هستی. ما در الکساندریا، ویرجینیا هستیم.' },
+      { en: 'Alexandria sits near 39° north latitude and 77° west longitude.',
+        es: 'Alexandria está cerca de los 39° de latitud norte y 77° de longitud oeste.',
+        fa: 'الکساندریا نزدیک عرض ۳۹ درجهٔ شمالی و طول ۷۷ درجهٔ غربی است.' },
+      { en: 'Earth is round, so every flat map stretches some places.',
+        es: 'La Tierra es redonda, así que todo mapa plano estira algunos lugares.',
+        fa: 'زمین گرد است، پس هر نقشهٔ هموار بعضی جاها را کش می‌دهد.' }
+    ],
+    page: { en: 'On many flat maps, Greenland looks as big as Africa. Africa is 14 times bigger.',
+      es: 'En muchos mapas planos, Groenlandia parece tan grande como África. África es 14 veces más grande.',
+      fa: 'در بسیاری نقشه‌های هموار، گرینلند به اندازهٔ افریقا دیده می‌شود. افریقا ۱۴ برابر بزرگ‌تر است.' }
+  },
 
   /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md
      A creek (row 11) splits the east bank: the broken south bridge (ZZ) must be fixed with wood to reach Mr. Farid and the lost compass. */

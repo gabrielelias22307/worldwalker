@@ -16,6 +16,24 @@ window.EPISODE = {
       es: 'Habla con la ingeniera, el banquero y la operadora de grúa. Luego arregla la piedra de la brújula.',
       fa: 'با انجنیر، کارمند بانک و رانندهٔ جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [28.0, -26.2],
+    start: [
+      { en: 'Welcome to Johannesburg, South Africa. The city grew up around gold mines.',
+        es: 'Bienvenido a Johannesburgo, Sudáfrica. La ciudad creció alrededor de minas de oro.',
+        fa: 'به ژوهانسبرگ در افریقای جنوبی خوش آمدی. این شهر دور معدن‌های طلا بزرگ شد.' },
+      { en: 'Some gold mines here go more than two miles under the ground.',
+        es: 'Algunas minas de oro aquí bajan más de tres kilómetros bajo tierra.',
+        fa: 'بعضی معدن‌های طلای اینجا بیشتر از سه کیلومتر زیر زمین می‌روند.' },
+      { en: 'South Africa mines most of the world\'s platinum.',
+        es: 'Sudáfrica saca la mayor parte del platino del mundo.',
+        fa: 'افریقای جنوبی بیشتر پلاتین جهان را استخراج می‌کند.' }
+    ],
+    page: { en: 'Durban is one of the busiest ports in Africa.',
+      es: 'Durban es uno de los puertos con más trabajo de África.',
+      fa: 'دوربان یکی از پرکارترین بندرهای افریقا است.' }
+  },
 
   /* 32 x 22 tiles = 2 x 2 screens. Mine top-left, city bottom-left, railway across the top and down the east, port and ocean on the right. */
   map: [

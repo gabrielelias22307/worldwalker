@@ -15,6 +15,24 @@ window.EPISODE = {
       es: 'Habla con la vendedora del mercado, el capitán y la piloto. Luego arregla la piedra de la brújula.',
       fa: 'با فروشندهٔ بازار، کپتان کشتی و پیلوت گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [15.3, -4.3],
+    start: [
+      { en: 'Welcome to Kinshasa, the capital of DR Congo, on the Congo River.',
+        es: 'Bienvenido a Kinsasa, la capital de la RD del Congo, junto al río Congo.',
+        fa: 'به کینشاسا خوش آمدی، پایتخت کانگو، کنار دریای کانگو.' },
+      { en: 'Kinshasa has more than 15 million people. It is growing very fast.',
+        es: 'Kinsasa tiene más de 15 millones de personas. Crece muy rápido.',
+        fa: 'کینشاسا بیشتر از ۱۵ میلیون نفر دارد. خیلی زود بزرگ می‌شود.' },
+      { en: 'Brazzaville, the capital of another country, sits just across the river.',
+        es: 'Brazzaville, la capital de otro país, está justo al otro lado del río.',
+        fa: 'برازاویل، پایتخت یک کشور دیگر، درست آن طرف دریا است.' }
+    ],
+    page: { en: 'The Congo is the world\'s deepest river, over 700 feet deep in places.',
+      es: 'El Congo es el río más profundo del mundo, con más de 200 metros en partes.',
+      fa: 'کانگو عمیق‌ترین دریای جهان است. بعضی جاها بیشتر از ۲۰۰ متر عمق دارد.' }
+  },
 
   /* 32 x 22 tiles = 2 x 2 screens. The Congo River runs along the top, with two docks. Market top-left, homes bottom-left, downtown bottom-right. */
   map: [

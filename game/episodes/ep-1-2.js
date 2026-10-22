@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'Oh no! The Grump ate every region line in Mapmaker\'s Valley.', es: '¡Oh, no! El Gruñón se comió todas las líneas de las regiones del Valle del Cartógrafo.', fa: 'وای! غرغرو همهٔ خط‌های منطقه‌ها را در درهٔ نقشه‌کش خورد.' },
     { en: 'Talk to the farmer, the boat pilot and the ranger. Then fix the compass stone.', es: 'Habla con la agricultora, el piloto del bote y la guardabosques. Luego arregla la piedra de la brújula.', fa: 'با دهقان، رانندهٔ کشتی و جنگلبان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-93.5, 42.0],
+    start: [
+      { en: 'Regions help us sort the world. Let\'s fly over the middle of the United States.',
+        es: 'Las regiones nos ayudan a ordenar el mundo. Volemos sobre el centro de Estados Unidos.',
+        fa: 'منطقه‌ها کمک می‌کنند جهان را دسته کنیم. بیا بالای وسط امریکا پرواز کنیم.' },
+      { en: 'Iowa grows more corn than any other U.S. state.',
+        es: 'Iowa cultiva más maíz que cualquier otro estado de Estados Unidos.',
+        fa: 'آیووا از هر ایالت دیگر امریکا جواری بیشتر می‌کارد.' },
+      { en: 'Each cell tower makes a functional region: the phones it serves.',
+        es: 'Cada torre de celular forma una región funcional: los teléfonos que atiende.',
+        fa: 'هر برج موبایل یک منطقهٔ کارکردی می‌سازد: موبایل‌هایی که به آن وصل‌اند.' }
+    ],
+    page: { en: 'The Mississippi River collects water from 31 U.S. states.',
+      es: 'El río Misisipi recoge agua de 31 estados de Estados Unidos.',
+      fa: 'دریای میسیسیپی آب ۳۱ ایالت امریکا را جمع می‌کند.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      NW: the Wheat Belt, every field is wheat (formal region).

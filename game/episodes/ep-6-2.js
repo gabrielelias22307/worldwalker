@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The Quake Grump shakes the islands! Meet the boat seller, rice farmer and volcano watcher.', es: '¡El Gruñón Temblor sacude las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán.', fa: 'غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن.' },
     { en: 'Then fix the compass stone on the little island.', es: 'Luego arregla la piedra de la brújula en la islita.', fa: 'بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [105.0, 12.5],
+    start: [
+      { en: 'Welcome to Southeast Asia, where a big mainland meets thousands of islands.',
+        es: 'Bienvenido al Sudeste Asiático, donde una gran tierra firme se une con miles de islas.',
+        fa: 'به جنوب‌شرق آسیا خوش آمدی، جایی که خشکهٔ بزرگ به هزاران جزیره می‌رسد.' },
+      { en: 'The Mekong River flows through six countries, from China to Vietnam.',
+        es: 'El río Mekong pasa por seis países, de China a Vietnam.',
+        fa: 'دریای میکانگ از شش کشور می‌گذرد، از چین تا ویتنام.' },
+      { en: 'Indonesia has more active volcanoes than any other country.',
+        es: 'Indonesia tiene más volcanes activos que cualquier otro país.',
+        fa: 'اندونیزیا از هر کشور دیگر آتشفشان فعال بیشتری دارد.' }
+    ],
+    page: { en: 'Cambodia\'s Tonle Sap Lake grows several times bigger in the rainy season.',
+      es: 'El lago Tonlé Sap, en Camboya, crece varias veces en la temporada de lluvias.',
+      fa: 'جهیل تونله‌ساپ در کمبودیا در فصل باران چند برابر بزرگ می‌شود.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      Top-left: mainland Southeast Asia (jungle j, rice q, the Mekong ~ running south to the sea).

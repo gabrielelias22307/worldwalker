@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The Grump washed away the new city\'s plans! Help the people find a good place.', es: '¡El Gruñón borró los planos de la ciudad nueva! Ayuda a la gente a encontrar un buen lugar.', fa: 'غرغرو نقشه‌های شهر نو را شست و برد! به مردم کمک کن یک جای خوب پیدا کنند.' },
     { en: 'Meet the road keeper, rice farmer and harbor pilot. Then climb to the compass stone.', es: 'Habla con el guardián del camino, la agricultora de arroz y el capitán del puerto. Luego sube a la piedra de la brújula.', fa: 'با نگهبان راه، دهقان برنج و رهنمای بندر گپ بزن. بعد تا سنگ قطب‌نما بالا برو.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [121.5, 31.2],
+    start: [
+      { en: 'Welcome to Shanghai, where the Yangtze River meets the sea.',
+        es: 'Bienvenido a Shanghái, donde el río Yangtsé llega al mar.',
+        fa: 'به شانگهای خوش آمدی، جایی که دریای یانگ‌تسه به بحر می‌رسد.' },
+      { en: 'Shanghai\'s port moves more containers than any other port in the world.',
+        es: 'El puerto de Shanghái mueve más contenedores que cualquier otro puerto del mundo.',
+        fa: 'بندر شانگهای از هر بندر دیگر جهان کانتینر بیشتری جابه‌جا می‌کند.' },
+      { en: 'Its situation is great: rivers reach far inland, and ships reach the whole world.',
+        es: 'Su situación es muy buena: los ríos llegan tierra adentro y los barcos, al mundo entero.',
+        fa: 'موقعیتش عالی است: دریاها تا دور در خشکه می‌روند و کشتی‌ها به همهٔ جهان.' }
+    ],
+    page: { en: 'Hong Kong, Shenzhen and Guangzhou all grew where the Pearl River meets the sea.',
+      es: 'Hong Kong, Shenzhen y Cantón crecieron donde el río de las Perlas llega al mar.',
+      fa: 'هانگ‌کانگ، شنژن و گوانگجو همه جایی بزرگ شدند که دریای مروارید به بحر می‌رسد.' }
+  },
 
   map: [
     'AAMAAMATTTTTT~~TTTTTTTTTTTTTTTTT',

@@ -16,6 +16,24 @@ window.EPISODE = {
       es: 'Habla con el agricultor de té, la agricultora de arroz y el pescador. Luego arregla la piedra.',
       fa: 'با دهقان چای، دهقان برنج و ماهیگیر گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [83.0, 25.3],
+    start: [
+      { en: 'Welcome to the Ganges Plain in India, one of the most crowded places on Earth.',
+        es: 'Bienvenido a la llanura del Ganges, en India, uno de los lugares con más gente del mundo.',
+        fa: 'به دشت گنگا در هند خوش آمدی، یکی از پرجمعیت‌ترین جاهای جهان.' },
+      { en: 'India has more people than any other country.',
+        es: 'India tiene más personas que cualquier otro país.',
+        fa: 'هند از هر کشور دیگر جمعیت بیشتری دارد.' },
+      { en: 'Thanks to the monsoon, Mawsynram, India, is one of the rainiest places on Earth.',
+        es: 'Por el monzón, Mawsynram, en India, es uno de los lugares más lluviosos del mundo.',
+        fa: 'به خاطر مونسون، ماوسینرام در هند یکی از پرباران‌ترین جاهای جهان است.' }
+    ],
+    page: { en: 'Mount Everest, the highest mountain on Earth, is in the Himalaya.',
+      es: 'El monte Everest, la montaña más alta del mundo, está en el Himalaya.',
+      fa: 'کوه اورست، بلندترین کوه جهان، در هیمالیا است.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      Rows 0-2: the Himalaya (A, M). Rows 3-4: tea terraces (t). The Ganges (~) starts in the ice at the top,

@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The Grump jammed the supply chain! Phones are stuck halfway, and the stores are empty.', es: '¡El Gruñón trabó la cadena de suministro! Los teléfonos están atascados y las tiendas, vacías.', fa: 'غرغرو زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند.' },
     { en: 'Talk to the chip engineer, line leader and crane operator. Then fix the stone.', es: 'Habla con la ingeniera de chips, la jefa de línea y el operador de grúa. Luego arregla la piedra.', fa: 'با انجنیر چِپ، سرپرست خط و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [121.0, 24.0],
+    start: [
+      { en: 'Welcome to Taiwan, an island that makes many of the world\'s computer chips.',
+        es: 'Bienvenido a Taiwán, una isla que hace muchos de los chips de computadora del mundo.',
+        fa: 'به تایوان خوش آمدی، جزیره‌ای که بسیاری از چیپ‌های کمپیوتر جهان را می‌سازد.' },
+      { en: 'One phone holds parts made in many different countries.',
+        es: 'Un solo teléfono tiene piezas hechas en muchos países distintos.',
+        fa: 'یک موبایل پرزه‌هایی دارد که در کشورهای زیادی ساخته شده‌اند.' },
+      { en: 'Most of the world\'s trade travels by ship.',
+        es: 'La mayor parte del comercio del mundo viaja en barco.',
+        fa: 'بیشتر تجارت جهان با کشتی جابه‌جا می‌شود.' }
+    ],
+    page: { en: 'The biggest container ships are almost as long as four football fields.',
+      es: 'Los barcos de contenedores más grandes miden casi lo mismo que cuatro canchas de fútbol.',
+      fa: 'بزرگ‌ترین کشتی‌های کانتینر تقریباً به درازی چهار میدان فوتبال هستند.' }
+  },
 
   map: [
     'MMMMMMMMMMMMMMMMTTTTTTTTTTTTTTT=',

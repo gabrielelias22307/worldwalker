@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The Grump mixed up everything people use to make things! The bakery has no flour.', es: '¡El Gruñón revolvió todo lo que la gente usa para hacer cosas! La panadería no tiene harina.', fa: 'غرغرو همهٔ چیزهایی را که مردم برای ساختن به کار می‌برند به هم زد! نانوایی آرد ندارد.' },
     { en: 'Talk to the miner, the baker and the farmer. Then fix the compass stone.', es: 'Habla con el minero, la panadera y la agricultora. Luego arregla la piedra de la brújula.', fa: 'با معدنچی، نانوا و دهقان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [26.0, -10.7],
+    start: [
+      { en: 'Natural resources are not spread evenly. Let\'s fly to the Congo, in Africa.',
+        es: 'Los recursos naturales no están repartidos por igual. Volemos al Congo, en África.',
+        fa: 'منابع طبیعی یکسان پخش نیستند. بیا به کانگو در افریقا پرواز کنیم.' },
+      { en: 'The Congo mines about 70 percent of the world\'s cobalt.',
+        es: 'El Congo saca cerca del 70 por ciento del cobalto del mundo.',
+        fa: 'کانگو نزدیک ۷۰ فیصد کوبالت جهان را استخراج می‌کند.' },
+      { en: 'Cobalt goes into phone and car batteries all over the world.',
+        es: 'El cobalto va en baterías de teléfonos y carros en todo el mundo.',
+        fa: 'کوبالت در بتری موبایل‌ها و موترهای سراسر جهان به کار می‌رود.' }
+    ],
+    page: { en: 'Saudi Arabia has some of the biggest oil reserves on Earth.',
+      es: 'Arabia Saudita tiene algunas de las reservas de petróleo más grandes del mundo.',
+      fa: 'عربستان سعودی یکی از بزرگ‌ترین ذخیره‌های تیل جهان را دارد.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens. Each corner shows a different kind of work. */
   map: [

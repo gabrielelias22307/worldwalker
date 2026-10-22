@@ -138,7 +138,7 @@
     const d = after; after = null; d && d();
     WW.toastPump && WW.toastPump();
   };
-  C.skip = () => { if (C.scene) C.end(); }; // for the play-tests
+  C.skip = () => { if (WW.scene && WW.scene.skip) WW.scene.skip(); if (C.scene) C.end(); }; // for the play-tests (a cut scene first, then his welcome)
 
   /* ---------------- "What do I do next?" ---------------- */
   const DIRS = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];

@@ -16,6 +16,24 @@ window.EPISODE = {
       es: 'Habla con la ingeniera, la planificadora del agua y el agricultor. Luego dirige el consejo del agua.',
       fa: 'با انجنیر، برنامه‌ریز آب و دهقان گپ بزن. بعد شورای آب را رهبری کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [35.55, 32.0],
+    start: [
+      { en: 'This is the Jordan River. Several neighbors share its water.',
+        es: 'Este es el río Jordán. Varios vecinos comparten su agua.',
+        fa: 'این دریای اردن است. چند همسایه آبش را با هم شریک‌اند.' },
+      { en: 'The Jordan flows into the Dead Sea, the lowest land on Earth.',
+        es: 'El Jordán llega al mar Muerto, la tierra más baja del mundo.',
+        fa: 'اردن به بحیرهٔ مرده می‌ریزد، پست‌ترین خشکهٔ زمین.' },
+      { en: 'The Dead Sea is so salty that people float on top of it.',
+        es: 'El mar Muerto es tan salado que la gente flota encima.',
+        fa: 'بحیرهٔ مرده آن‌قدر شور است که مردم رویش شناور می‌مانند.' }
+    ],
+    page: { en: 'In 1994, Israel and Jordan signed a peace treaty that shares Jordan River water.',
+      es: 'En 1994, Israel y Jordania firmaron un tratado de paz que reparte el agua del Jordán.',
+      fa: 'در ۱۹۹۴، اسرائیل و اردن پیمان صلحی امضا کردند که آب دریای اردن را تقسیم می‌کند.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens.
      West edge: the Mediterranean Sea (= ~) and a desalination plant (X).

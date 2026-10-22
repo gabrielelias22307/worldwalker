@@ -15,6 +15,24 @@ window.EPISODE = {
       es: 'Habla con la guía del museo, el trabajador del tren y la camionera. Luego arregla la piedra de la brújula.',
       fa: 'با رهنمای موزیم، کارگر خط آهن و رانندهٔ موتر باری گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [67.0, 39.65],
+    start: [
+      { en: 'Welcome to Samarkand, in Uzbekistan. Silk Road traders stopped here for centuries.',
+        es: 'Bienvenido a Samarcanda, en Uzbekistán. Los comerciantes de la Ruta de la Seda paraban aquí.',
+        fa: 'به سمرقند در ازبکستان خوش آمدی. تاجران راه ابریشم قرن‌ها اینجا می‌ماندند.' },
+      { en: 'The Silk Road linked China to the Mediterranean Sea, over 4,000 miles away.',
+        es: 'La Ruta de la Seda unía China con el mar Mediterráneo, a más de 6,000 kilómetros.',
+        fa: 'راه ابریشم چین را به بحیرهٔ مدیترانه وصل می‌کرد، بیشتر از ۶۰۰۰ کیلومتر دورتر.' },
+      { en: 'Paper, silk, spices and ideas all moved along these routes.',
+        es: 'Papel, seda, especias e ideas viajaban por estas rutas.',
+        fa: 'کاغذ، ابریشم، ادویه و فکرها همه از این راه‌ها می‌گذشتند.' }
+    ],
+    page: { en: 'Today, freight trains carry goods from China to Europe in about two weeks.',
+      es: 'Hoy, trenes de carga llevan productos de China a Europa en unas dos semanas.',
+      fa: 'امروز قطارهای باری کالا را در حدود دو هفته از چین به اروپا می‌برند.' }
+  },
 
   map: [
     'KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAA',

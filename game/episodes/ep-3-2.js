@@ -11,6 +11,24 @@ window.EPISODE = {
     { en: 'The Grump scrambled the timetable! The Trans-Siberian train cannot leave Moscow.', es: '¡El Gruñón revolvió el horario! El tren Transiberiano no puede salir de Moscú.', fa: 'غرغرو جدول قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند.' },
         { en: 'Talk to the conductor, the forest ranger and the herder. Then fix the compass stone.', es: 'Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula.', fa: 'با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [90.0, 58.0],
+    start: [
+      { en: 'Russia is the biggest country on Earth. It has 11 time zones.',
+        es: 'Rusia es el país más grande del mundo. Tiene 11 zonas horarias.',
+        fa: 'روسیه بزرگ‌ترین کشور جهان است. ۱۱ منطقهٔ زمانی دارد.' },
+      { en: 'The Trans-Siberian Railway runs about 5,800 miles, from Moscow to the Pacific.',
+        es: 'El Transiberiano recorre unos 9,300 kilómetros, de Moscú al océano Pacífico.',
+        fa: 'خط آهن ترانس‌سیبری حدود ۹۳۰۰ کیلومتر است، از مسکو تا اقیانوس آرام.' },
+      { en: 'Lake Baikal in Siberia is the deepest lake in the world.',
+        es: 'El lago Baikal, en Siberia, es el lago más profundo del mundo.',
+        fa: 'جهیل بایکال در سیبریا عمیق‌ترین جهیل جهان است.' }
+    ],
+    page: { en: 'Kazakhstan is the biggest landlocked country in the world.',
+      es: 'Kazajistán es el país sin salida al mar más grande del mundo.',
+      fa: 'قزاقستان بزرگ‌ترین کشور محاط به خشکه در جهان است.' }
+  },
 
   map: [
     '================================================',

@@ -205,7 +205,7 @@
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
     WW.music.play('realm' + ep.realm);
-    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
+    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); WW.scene('start', () => { $('ww-screen').focus(); meetChris(); }); }));
   };
   // the first time a hero plays an episode with christopher.meet, he flies in and says who he is
   // PLAYTEST-3: then (every episode) he says the episode's opening lines in his bubble while you walk
@@ -219,7 +219,7 @@
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); WW.scene('start', () => { $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); }); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -264,7 +264,8 @@
     WW.store();
     WW.fx.lift(); WW.sfx('win');
     WW.ui.quest();
-    WW.ui.finish();
+    if (G.preview) return WW.ui.finish(); // the teacher's jump to the finish screen goes straight there
+    WW.scene('page', () => WW.ui.finish());
   }
 
   /* ---------------- interacting ---------------- */

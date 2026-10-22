@@ -11,6 +11,24 @@ window.EPISODE = {
     { en: 'The Grump froze the weather charts! Nobody knows why the harbor is not frozen.', es: '¡El Gruñón congeló los mapas del tiempo! Nadie sabe por qué el puerto no está congelado.', fa: 'غرغرو نقشه‌های هوا را یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است.' },
         { en: 'Talk to the ferry captain, barge skipper and mountain guide. Then fix the compass stone.', es: 'Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula.', fa: 'با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [10.0, 48.0],
+    start: [
+      { en: 'Europe is a peninsula of peninsulas. Look how the sea wraps around it.',
+        es: 'Europa es una península llena de penínsulas. Mira cómo el mar la rodea.',
+        fa: 'اروپا شبه‌جزیره‌ای پر از شبه‌جزیره است. ببین بحر چطور دورش را گرفته.' },
+      { en: 'Italy, Spain and Greece are all peninsulas in southern Europe.',
+        es: 'Italia, España y Grecia son penínsulas en el sur de Europa.',
+        fa: 'ایتالیا، هسپانیه و یونان همه شبه‌جزیره‌هایی در جنوب اروپا هستند.' },
+      { en: 'Barges on the Rhine River pass Switzerland, Germany and the Netherlands.',
+        es: 'Las barcazas del río Rin pasan por Suiza, Alemania y los Países Bajos.',
+        fa: 'کشتی‌های باری روی دریای راین از سویس، آلمان و هالند می‌گذرند.' }
+    ],
+    page: { en: 'With its fjords and islands, Norway\'s coast is over 60,000 miles long.',
+      es: 'Con sus fiordos e islas, la costa de Noruega mide más de 100,000 kilómetros.',
+      fa: 'با فیوردها و جزیره‌هایش، ساحل ناروی بیشتر از ۱۰۰ هزار کیلومتر است.' }
+  },
 
   /* 32 x 22. North: the sea and a port town. West: a peninsula with a bay on each side.
      East: the Rhine flows north from the Alps to the sea, with barge quays and two bridges. South: the Alps, with one snowy pass. */

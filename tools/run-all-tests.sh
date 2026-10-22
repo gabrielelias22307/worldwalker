@@ -4,7 +4,7 @@ cd "$(dirname "$0")/.." || exit 1
 export NODE_PATH=${NODE_PATH:-$(npm root -g)}
 node tools/check.js | grep -v ": OK$"; echo "check: done"
 node tools/build.js | sort -k2 -n | tail -1
-for t in "play.js --no-shots" "play.js --canvas --no-shots" fit.js keys.js touch.js "phone.js 1.2 4.3" controls.js stars.js powers.js sheet.js teacher.js walk.js look.js maps.js camp.js music.js wings.js; do
+for t in "play.js --no-shots" "play.js --canvas --no-shots" fit.js keys.js touch.js "phone.js 1.2 4.3" controls.js stars.js powers.js sheet.js teacher.js walk.js look.js maps.js camp.js music.js wings.js fingers.js scenes.js; do
   start=$(date +%s)
   out=$(timeout 1500 node tests/$t 2>&1); code=$?
   echo "=== $t ($(( $(date +%s) - start ))s, exit $code)"

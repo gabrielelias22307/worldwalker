@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'The last page! People from all eight realms came to rebuild the Great Atlas.', es: '¡La última página! Gente de los ocho reinos vino a reconstruir el Gran Atlas.', fa: 'آخرین صفحه! مردم هر هشت سرزمین آمده‌اند تا اطلس بزرگ را دوباره بسازند.' },
     { en: 'The Great Grump turns neighbors against each other. Talk to the guests, then the stone.', es: 'El Gran Gruñón pone a los vecinos en contra. Habla con los invitados y luego ve a la piedra.', fa: 'غرغروی بزرگ همسایه‌ها را دشمن هم می‌کند. با مهمانان گپ بزن، بعد نزد سنگ برو.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-74.0, 40.75],
+    start: [
+      { en: 'Countries meet at the United Nations in New York to work together.',
+        es: 'Los países se reúnen en las Naciones Unidas, en Nueva York, para trabajar juntos.',
+        fa: 'کشورها در سازمان ملل در نیویارک جمع می‌شوند تا با هم کار کنند.' },
+      { en: 'The United Nations has 193 member countries.',
+        es: 'Las Naciones Unidas tienen 193 países miembros.',
+        fa: 'سازمان ملل ۱۹۳ کشور عضو دارد.' },
+      { en: 'The border between the U.S. and Canada is the longest in the world.',
+        es: 'La frontera entre Estados Unidos y Canadá es la más larga del mundo.',
+        fa: 'سرحد امریکا و کانادا درازترین سرحد جهان است.' }
+    ],
+    page: { en: 'Some borders are straight lines, like much of the border between Egypt and Sudan.',
+      es: 'Algunas fronteras son líneas rectas, como gran parte de la frontera entre Egipto y Sudán.',
+      fa: 'بعضی سرحدها خط‌های راست هستند، مثل بیشتر سرحد مصر و سودان.' }
+  },
 
   /* 48 x 22 tiles = 3 x 2 screens.
      Top: snow and the Andes-like mountains (west) · the Council Hall (middle) · desert with an oasis (east).

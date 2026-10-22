@@ -12,6 +12,24 @@ window.EPISODE = {
     { en: 'Welcome to the Americas! The Grump muddied the water routes. Ships and trains are stuck.', es: '¡Bienvenido a las Américas! El Gruñón ensució las rutas de agua. Los barcos y los trenes están atascados.', fa: 'به قارهٔ امریکا خوش آمدی! غرغرو راه‌های آبی را گل‌آلود کرد. کشتی‌ها و قطارها گیر مانده‌اند.' },
     { en: 'Talk to the captain, the farmer and the barge pilot. Then pick a city spot.', es: 'Habla con la capitana, el agricultor y el piloto de la barcaza. Luego elige un lugar para una ciudad.', fa: 'با کپتان، دهقان و رانندهٔ کشتی باری گپ بزن. بعد یک جا برای شهر انتخاب کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-87.6, 41.9],
+    start: [
+      { en: 'Welcome to the Great Lakes, on the border of the United States and Canada.',
+        es: 'Bienvenido a los Grandes Lagos, en la frontera de Estados Unidos y Canadá.',
+        fa: 'به جهیل‌های بزرگ خوش آمدی، در سرحد امریکا و کانادا.' },
+      { en: 'The five Great Lakes hold about one fifth of the world\'s fresh surface water.',
+        es: 'Los cinco Grandes Lagos guardan cerca de una quinta parte del agua dulce de la superficie del mundo.',
+        fa: 'پنج جهیل بزرگ نزدیک یک پنجم آب شیرین روی زمین را دارند.' },
+      { en: 'Chicago grew where the lakes meet rivers and railroads.',
+        es: 'Chicago creció donde los lagos se juntan con ríos y trenes.',
+        fa: 'شیکاگو جایی بزرگ شد که جهیل‌ها به دریاها و خط آهن می‌رسند.' }
+    ],
+    page: { en: 'Ships can sail from Lake Superior all the way to the Atlantic Ocean.',
+      es: 'Los barcos pueden ir desde el lago Superior hasta el océano Atlántico.',
+      fa: 'کشتی‌ها می‌توانند از جهیل سوپیریر تا بحر اطلس بروند.' }
+  },
 
   /* 32 x 22 = 2 x 2 screens. Water is the road: every route here leads to the docks. */
   map: [

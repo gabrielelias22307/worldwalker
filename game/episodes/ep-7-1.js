@@ -13,6 +13,24 @@ window.EPISODE = {
     { en: 'The Grump scribbled over East Asia! Rivers, mountains and islands are mixed up.', es: '¡El Gruñón garabateó el este de Asia! Los ríos, las montañas y las islas están revueltos.', fa: 'غرغرو روی شرق آسیا خط‌خطی کرد! دریاها، کوه‌ها و جزیره‌ها مخلوط شده‌اند.' },
     { en: 'Meet the plateau scientist, rice farmer and island engineer. Then fix the compass stone.', es: 'Habla con la científica de la meseta, el agricultor de arroz y la ingeniera de las islas. Luego arregla la piedra de la brújula.', fa: 'با دانشمند فلات، دهقان برنج و انجنیر جزیره گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [114.0, 31.0],
+    start: [
+      { en: 'Welcome to China. Most Chinese people live in the east, near big rivers.',
+        es: 'Bienvenido a China. La mayoría de los chinos vive en el este, cerca de grandes ríos.',
+        fa: 'به چین خوش آمدی. بیشتر مردم چین در شرق، نزدیک دریاهای بزرگ زندگی می‌کنند.' },
+      { en: 'The Yangtze is the longest river in Asia.',
+        es: 'El Yangtsé es el río más largo de Asia.',
+        fa: 'یانگ‌تسه درازترین دریای آسیا است.' },
+      { en: 'The Three Gorges Dam on the Yangtze is the biggest power plant on Earth.',
+        es: 'La presa de las Tres Gargantas, en el Yangtsé, es la planta eléctrica más grande del mundo.',
+        fa: 'بند سه دره روی یانگ‌تسه بزرگ‌ترین بند برق جهان است.' }
+    ],
+    page: { en: 'Japan has thousands of islands, but most people live on the four biggest.',
+      es: 'Japón tiene miles de islas, pero casi todos viven en las cuatro más grandes.',
+      fa: 'جاپان هزاران جزیره دارد، اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' }
+  },
 
   map: [
     'AAAAAAAAAAAAAAAATTTTTTTTTTTTTTTT================',

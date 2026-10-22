@@ -11,6 +11,24 @@ window.EPISODE = {
     { en: 'The Grump rolled through! The Outback, the coast and the islands are mixed up.', es: '¡El Gruñón pasó por aquí! El Outback, la costa y las islas están mezclados.', fa: 'غرغرو از اینجا گذشت! اوت‌بک، ساحل و جزیره‌ها با هم مخلوط شده‌اند.' },
     { en: 'Talk to the ranger, ferry captain and reef scientist. Then fix the Outback stone.', es: 'Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra del Outback.', fa: 'با محافظ پارک، کپتان کشتی و دانشمند مرجان گپ بزن. بعد سنگ اوت‌بک را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [151.2, -33.9],
+    start: [
+      { en: 'Welcome to Sydney, Australia, a big city on a deep harbor.',
+        es: 'Bienvenido a Sídney, Australia, una gran ciudad junto a una bahía profunda.',
+        fa: 'به سیدنی در آسترالیا خوش آمدی، شهری بزرگ کنار یک بندر عمیق.' },
+      { en: 'Australia is the only country that covers a whole continent.',
+        es: 'Australia es el único país que ocupa todo un continente.',
+        fa: 'آسترالیا تنها کشوری است که یک قارهٔ کامل را می‌پوشاند.' },
+      { en: 'Most Australians live near the coast, far from the dry Outback.',
+        es: 'La mayoría de los australianos vive cerca de la costa, lejos del Outback seco.',
+        fa: 'بیشتر مردم آسترالیا نزدیک ساحل زندگی می‌کنند، دور از اوتبک خشک.' }
+    ],
+    page: { en: 'The Great Barrier Reef is the biggest coral reef system on Earth.',
+      es: 'La Gran Barrera de Coral es el sistema de arrecifes más grande del mundo.',
+      fa: 'دیوار بزرگ مرجانی بزرگ‌ترین مجموعهٔ صخره‌های مرجانی جهان است.' }
+  },
 
   /* 48 x 22 tiles = 3 x 2 screens.
      West: the dry Outback (sand, dry grass, rocks, a big red rock like Uluru, one small town far from everything).
