@@ -45,6 +45,7 @@ let failed = 0;
         await p.fill('#si-name', 'Fit'); await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForSelector('.introov');
         await check('opening card');
         await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForTimeout(300);
+        if (await p.$('.cutov')) { await p.waitForTimeout(1500); await check('cut scene'); if (id === '1.1') await p.screenshot({ path: path.join(OUT, `${sz.name}-0-scene.png`) }); await p.locator('.cutov .pbtn.ghost').click(); await p.waitForTimeout(300); } // fun-pass-4
         if (await p.evaluate(() => WW.chris.scene)) { await p.waitForSelector('.cbubble.meet', { state: 'visible' }); await p.waitForTimeout(500); await check('meeting Christopher'); if (id === '1.1') await p.screenshot({ path: path.join(OUT, `${sz.name}-1-meet.png`) }); await p.evaluate(() => WW.chris.skip()); }
         await p.waitForFunction(() => !WW.paused); await p.evaluate(() => WW.dbg.noSmudges());
         await p.waitForTimeout(250); await check('the map');

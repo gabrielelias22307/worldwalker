@@ -34,8 +34,10 @@ const ok = (c, m) => { if (!c) { failed++; console.log('  ✗ ' + m); } else con
   await tap('#si-name'); await p.keyboard.type('Dee');
   await tap('#ww-ov .pbtn.gold.big'); await p.waitForSelector('.introov');
   ok(true, 'tapped Play');
-  await tap('#ww-ov .pbtn.gold.big'); await p.waitForTimeout(1200);
-  ok(!(await p.evaluate(() => WW.paused)), 'tapped Start: on the map');
+  await tap('#ww-ov .pbtn.gold.big'); await p.waitForTimeout(600);
+  ok(!!(await p.$('.cutov')), 'tapped Start: the cut scene');
+  await tap('.cutov .pbtn.ghost'); await p.waitForTimeout(1200);
+  ok(!(await p.evaluate(() => WW.paused)), 'tapped Skip: on the map');
   // his welcome bubble: a tap moves it on
   if (await p.evaluate(() => WW.chris.scene)) { const before = await p.evaluate(() => document.querySelector('.cbubble .cb-say').innerText); await tap('.cbubble'); const after = await p.evaluate(() => (document.querySelector('.cbubble .cb-say') || {}).innerText || ''); ok(before !== after, 'tapping Christopher\'s bubble moves to his next line'); }
   await p.evaluate(() => WW.chris.skip());
