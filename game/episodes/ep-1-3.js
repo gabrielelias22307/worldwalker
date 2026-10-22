@@ -30,6 +30,27 @@ window.EPISODE = {
       es: 'Arabia Saudita tiene algunas de las reservas de petróleo más grandes del mundo.',
       fa: 'عربستان سعودی یکی از بزرگ‌ترین ذخیره‌های تیل جهان را دارد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [10, 3], name: { en: 'Grandpa Luis', es: 'Abuelo Luis', fa: 'پدرکلان لوییس' },
+      look: { skin: 3, hair: '#e0ddd5', shirt: '#4f7a3a', pants: '#5a4630', style: 'short' },
+      lines: [
+        { en: 'Come in! I made every chair in this house from valley trees.', es: '¡Pasa! Hice cada silla de esta casa con árboles del valle.', fa: 'بیا داخل! هر چوکی این خانه را از درختان دره ساختم.' },
+        { en: 'Trees are a natural resource. My hands and my saw do the rest.', es: 'Los árboles son un recurso natural. Mis manos y mi sierra hacen el resto.', fa: 'درخت یک منبع طبیعی است. دست‌هایم و اره‌ام باقی کار را می‌کنند.' }
+      ] },
+    { at: [27, 13], name: { en: 'Nadia', es: 'Nadia', fa: 'نادیه' },
+      look: { skin: 2, hair: '#3a2416', shirt: '#7a8a99', pants: '#33404d', style: 'long' },
+      lines: [
+        { en: 'Hi! I just finished my shift at the factory. My feet are tired!', es: '¡Hola! Acabo de terminar mi turno en la fábrica. ¡Me duelen los pies!', fa: 'سلام! همین حالا نوبت کارم در فابریکه تمام شد. پاهایم خسته است!' },
+        { en: 'Our bikes use steel from one place and rubber from another. No place has everything.', es: 'Nuestras bicicletas usan acero de un lugar y caucho de otro. Ningún lugar lo tiene todo.', fa: 'بایسکل‌های ما فولاد را از یک جا و رابر را از جای دیگر می‌گیرند. هیچ جا همه چیز ندارد.' }
+      ] },
+    { at: [25, 19], name: { en: 'Auntie Carmen', es: 'Tía Carmen', fa: 'خاله کارمن' },
+      look: { skin: 3, hair: '#2a1a10', shirt: '#e07b39', pants: '#4a3a5a', style: 'long' },
+      lines: [
+        { en: 'Come in! Mind the boxes, tomorrow is market day.', es: '¡Pasa! Cuidado con las cajas, mañana es día de mercado.', fa: 'بیا داخل! مواظب جعبه‌ها باش، فردا روز بازار است.' },
+        { en: 'Our valley grows apples. Bananas can\'t grow here, so we buy them from warm countries.', es: 'Nuestro valle da manzanas. Los bananos no crecen aquí, así que los compramos a países cálidos.', fa: 'درهٔ ما سیب می‌دهد. کیله اینجا نمی‌روید، پس آن را از کشورهای گرم می‌خریم.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens. Each corner shows a different kind of work. */
   map: [

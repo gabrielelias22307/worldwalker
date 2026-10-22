@@ -28,6 +28,33 @@ window.EPISODE = {
       es: 'En muchos mapas planos, Groenlandia parece tan grande como África. África es 14 veces más grande.',
       fa: 'در بسیاری نقشه‌های هموار، گرینلند به اندازهٔ افریقا دیده می‌شود. افریقا ۱۴ برابر بزرگ‌تر است.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 3], name: { en: 'Grandma June', es: 'Abuela June', fa: 'مادرکلان جون' },
+      look: { skin: 5, hair: '#d8d8d8', shirt: '#8e5bd6', pants: '#3a3a5a', style: 'bun' },
+      lines: [
+        { en: 'Come in! I have lived here fifty years. I could walk this valley blindfolded.', es: '¡Pasa! Vivo aquí hace cincuenta años. Podría caminar este valle con los ojos cerrados.', fa: 'بیا داخل! پنجاه سال است اینجا زندگی می‌کنم. با چشم بسته هم در این دره راه می‌روم.' },
+        { en: 'That is my mental map. My grandson needs his phone map to find the store!', es: 'Ese es mi mapa mental. ¡Mi nieto necesita el mapa del celular para encontrar la tienda!', fa: 'این نقشهٔ ذهنی من است. نواسه‌ام برای پیدا کردن دکان به نقشهٔ موبایل ضرورت دارد!' }
+      ] },
+    { at: [11, 3], name: { en: 'Mateo', es: 'Mateo', fa: 'ماتیو' },
+      look: { skin: 2, hair: '#2a1a10', shirt: '#f2b134', pants: '#2f4f8f', style: 'short' },
+      lines: [
+        { en: 'Hi! I\'m drawing a map of our house. The kitchen is north of my room.', es: '¡Hola! Estoy dibujando un mapa de mi casa. La cocina está al norte de mi cuarto.', fa: 'سلام! نقشهٔ خانهٔ خود را می‌کشم. آشپزخانه شمالِ اتاق من است.' },
+        { en: 'My teacher says every map needs a title, a key and a compass rose.', es: 'Mi maestro dice que todo mapa necesita un título, una leyenda y una rosa de los vientos.', fa: 'معلمم می‌گوید هر نقشه به عنوان، راهنمای نقشه و گل باد ضرورت دارد.' }
+      ] },
+    { at: [15, 8], name: { en: 'Tigist', es: 'Tigist', fa: 'تیگیست' },
+      look: { skin: 4, hair: '#1b1410', shirt: '#2e9e8f', pants: '#5a3a2a', style: 'long' },
+      lines: [
+        { en: 'Welcome! Sit down, the coffee is almost ready. My family is from Ethiopia.', es: '¡Bienvenido! Siéntate, el café ya casi está. Mi familia es de Etiopía.', fa: 'خوش آمدی! بنشین، قهوه تقریباً آماده است. خانوادهٔ من از ایتوپیا است.' },
+        { en: 'Ethiopia is near the equator. Its days are about twelve hours all year.', es: 'Etiopía está cerca del ecuador. Allí los días duran unas doce horas todo el año.', fa: 'ایتوپیا نزدیک خط استوا است. آنجا روزها در تمام سال حدود دوازده ساعت است.' }
+      ] },
+    { at: [25, 13], name: { en: 'Bilal', es: 'Bilal', fa: 'بلال' },
+      look: { skin: 3, hair: '#1b1410', shirt: '#3a5fa0', pants: '#22324f', style: 'short', hat: '#2a3f6a' },
+      lines: [
+        { en: 'Careful, the floor is wet. I just got home from my mail route.', es: 'Cuidado, el piso está mojado. Acabo de llegar de mi ruta de correo.', fa: 'احتیاط، کف خانه تر است. همین حالا از مسیر نامه‌رسانی به خانه آمدم.' },
+        { en: 'Every letter needs an exact address. "The blue house by the creek" will not do!', es: 'Cada carta necesita una dirección exacta. ¡"La casa azul junto al arroyo" no sirve!', fa: 'هر نامه آدرس دقیق می‌خواهد. «خانهٔ آبی کنار جوی» کافی نیست!' }
+      ] }
+  ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Legend in docs/EPISODE-FORMAT.md
      A creek (row 11) splits the east bank: the broken south bridge (ZZ) must be fixed with wood to reach Mr. Farid and the lost compass. */

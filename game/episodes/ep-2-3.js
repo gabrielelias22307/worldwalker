@@ -28,6 +28,39 @@ window.EPISODE = {
       es: 'El dinero enviado a casa es una gran parte de la economía de Guatemala y Honduras.',
       fa: 'پولی که به خانه فرستاده می‌شود بخش بزرگی از اقتصاد گواتیمالا و هندوراس است.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 2], name: { en: 'Ixchel', es: 'Ixchel', fa: 'ایشچل' },
+      look: { skin: 4, hair: '#120c08', shirt: '#7b3fa0', pants: '#1f4a6a', style: 'long' },
+      lines: [
+        { en: 'Come in! My husband works in the city now. He calls every Sunday.', es: '¡Pasa! Mi esposo ahora trabaja en la ciudad. Llama cada domingo.', fa: 'بیا داخل! شوهرم حالا در شهر کار می‌کند. هر یکشنبه زنگ می‌زند.' },
+        { en: 'The money he sends bought our new water tank. No more carrying buckets!', es: 'Con el dinero que manda compramos un tanque de agua nuevo. ¡Ya no cargamos cubetas!', fa: 'با پولی که می‌فرستد یک تانکی آب نو خریدیم. دیگر سطل آب نمی‌کشیم!' }
+      ] },
+    { at: [8, 2], name: { en: 'Teacher Rigo', es: 'Maestro Rigo', fa: 'معلم ریگو' },
+      look: { skin: 3, hair: '#2a1a10', shirt: '#e6e6e6', pants: '#3a3a3a', style: 'short' },
+      lines: [
+        { en: 'Shh, I am grading homework. I teach at the little school here.', es: 'Shh, estoy corrigiendo tareas. Enseño en la escuelita de aquí.', fa: 'هیس، کارخانگی‌ها را نمره می‌دهم. من در مکتب کوچک اینجا درس می‌دهم.' },
+        { en: 'Many families moved to the city. My class gets smaller every year.', es: 'Muchas familias se mudaron a la ciudad. Mi clase es más pequeña cada año.', fa: 'خانواده‌های زیادی به شهر رفتند. صنف من هر سال کوچک‌تر می‌شود.' }
+      ] },
+    { at: [13, 2], name: { en: 'Byron', es: 'Byron', fa: 'بایرون' },
+      look: { skin: 2, hair: '#1b1410', shirt: '#2f8fd6', pants: '#3a3a5a', style: 'short' },
+      lines: [
+        { en: 'Sorry, it\'s messy! I am packing. Tomorrow I take the bus to the city.', es: '¡Perdón por el desorden! Estoy empacando. Mañana tomo el bus a la ciudad.', fa: 'ببخش، خانه درهم است! بکس‌هایم را بسته می‌کنم. فردا با بس به شهر می‌روم.' },
+        { en: 'My cousin found me a job at his bakery. I will stay with him.', es: 'Mi primo me consiguió trabajo en su panadería. Voy a vivir con él.', fa: 'پسرکاکایم در نانوایی‌اش برایم کار پیدا کرد. با او زندگی می‌کنم.' }
+      ] },
+    { at: [18, 13], name: { en: 'Ernesto', es: 'Ernesto', fa: 'ارنستو' },
+      look: { skin: 4, hair: '#1b1410', shirt: '#d98e2b', pants: '#4a4a4a', style: 'short', hat: '#f2c230' },
+      lines: [
+        { en: 'Come in! I build houses here. I moved from a mountain village.', es: '¡Pasa! Aquí construyo casas. Me mudé de un pueblo de la montaña.', fa: 'بیا داخل! من اینجا خانه می‌سازم. از یک قریهٔ کوهستانی آمدم.' },
+        { en: 'At home we spoke K\'iche\', a Maya language. Here I speak Spanish all day.', es: 'En casa hablábamos k\'iche\', un idioma maya. Aquí hablo español todo el día.', fa: 'در خانه به زبان کیچه، یک زبان مایا، گپ می‌زدیم. اینجا تمام روز هسپانوی گپ می‌زنم.' }
+      ] },
+    { at: [24, 13], name: { en: 'Pilar', es: 'Pilar', fa: 'پیلار' },
+      look: { skin: 1, hair: '#cfcfcf', shirt: '#3fa34d', pants: '#5a3a5a', style: 'bun' },
+      lines: [
+        { en: 'Hello, neighbor! Careful, the floor is wet. I just mopped it.', es: '¡Hola, vecino! Cuidado, el piso está mojado. Lo acabo de trapear.', fa: 'سلام همسایه! احتیاط، کف خانه تر است. همین حالا پاک کردم.' },
+        { en: 'I was born in this city. My new neighbors taught me to cook pupusas!', es: 'Yo nací en esta ciudad. ¡Mis vecinos nuevos me enseñaron a hacer pupusas!', fa: 'من در همین شهر به دنیا آمدم. همسایه‌های نوی من پختن پوپوسا را به من یاد دادند!' }
+      ] }
+  ],
 
   /* 32 x 22. West: a dry farm town. A long road runs east to the bus stop and a busy city.
      South-east: the city neighborhood and the river dock. */

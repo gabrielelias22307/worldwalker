@@ -29,6 +29,21 @@ window.EPISODE = {
       es: 'Cerca del ecuador, el volcán Chimborazo todavía tiene nieve y hielo arriba.',
       fa: 'نزدیک خط استوا، آتشفشان چیمبورازو هنوز سرش برف و یخ دارد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [13, 6], name: { en: 'Grandma Killa', es: 'Abuela Killa', fa: 'مادرکلان کیلا' },
+      look: { skin: 3, hair: '#2a2a2a', shirt: '#b8323a', pants: '#2a2a4a', style: 'long', hat: '#3a2a20' },
+      lines: [
+        { en: 'Come in, sit by the stove. Nights up here are cold, even near the equator.', es: 'Pasa, siéntate junto a la estufa. Las noches aquí arriba son frías, aun cerca del ecuador.', fa: 'بیا داخل، کنار بخاری بنشین. شب‌ها این بالا سرد است، حتی نزدیک خط استوا.' },
+        { en: 'Andean farmers grow thousands of kinds of potatoes. Try this purple one!', es: 'Los agricultores de los Andes siembran miles de clases de papas. ¡Prueba esta morada!', fa: 'دهقانان اندیز هزاران نوع کچالو می‌کارند. این کچالوی بنفش را بچش!' }
+      ] },
+    { at: [23, 11], name: { en: 'Paola', es: 'Paola', fa: 'پائولا' },
+      look: { skin: 2, hair: '#2a1a10', shirt: '#4caf6a', pants: '#5a4630', style: 'bun', hat: '#e8d9a8' },
+      lines: [
+        { en: 'Hi! My hands smell like coffee. We picked red cherries all day.', es: '¡Hola! Mis manos huelen a café. Recogimos cerezas rojas todo el día.', fa: 'سلام! دست‌هایم بوی قهوه می‌دهد. تمام روز دانه‌های سرخ قهوه چیدیم.' },
+        { en: 'On the hot coast, coffee does not grow well. Up high, frost kills it.', es: 'En la costa caliente, el café no crece bien. Arriba, la helada lo mata.', fa: 'در ساحل گرم، قهوه خوب نمی‌روید. آن بالا، یخبندان آن را می‌کشد.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens. Bottom to top:
      rows 19-20 beach, rows 14-17 tierra caliente (bananas y, sugarcane e),

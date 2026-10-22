@@ -30,6 +30,21 @@ window.EPISODE = {
       es: 'Los barcos pueden ir desde el lago Superior hasta el océano Atlántico.',
       fa: 'کشتی‌ها می‌توانند از جهیل سوپیریر تا بحر اطلس بروند.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [28, 8], name: { en: 'Layla', es: 'Layla', fa: 'لیلا' },
+      look: { skin: 3, hair: '#1b1410', shirt: '#f0c419', pants: '#3a5fa0', style: 'long' },
+      lines: [
+        { en: 'Hi! Want a cookie? My dad drives his truck to Canada today.', es: '¡Hola! ¿Quieres una galleta? Hoy mi papá maneja su camión a Canadá.', fa: 'سلام! کلچه می‌خواهی؟ امروز پدرم لاری‌اش را به کانادا می‌برد.' },
+        { en: 'Many trucks cross between Detroit and Windsor, Canada. The two countries trade a lot.', es: 'Muchos camiones cruzan entre Detroit y Windsor, Canadá. Los dos países comercian mucho.', fa: 'لاری‌های زیادی میان دیترویت و ویندزور در کانادا رفت‌وآمد می‌کنند. دو کشور تجارت زیادی دارند.' }
+      ] },
+    { at: [11, 9], name: { en: 'Grandpa Stan', es: 'Abuelo Stan', fa: 'پدرکلان استن' },
+      look: { skin: 1, hair: '#d8d8d8', shirt: '#2f4f6f', pants: '#2b2b2b', style: 'short', hat: '#a33a2a' },
+      lines: [
+        { en: 'Come in, quick! The wind off the lake is freezing today.', es: '¡Pasa, rápido! El viento del lago está helado hoy.', fa: 'زود بیا داخل! باد جهیل امروز خیلی یخ است.' },
+        { en: 'In winter, ice stops most ships. The locks close until spring.', es: 'En invierno, el hielo detiene a casi todos los barcos. Las esclusas cierran hasta la primavera.', fa: 'در زمستان یخ بیشتر کشتی‌ها را متوقف می‌کند. دروازه‌های آبی تا بهار بسته می‌شوند.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens. Water is the road: every route here leads to the docks. */
   map: [
