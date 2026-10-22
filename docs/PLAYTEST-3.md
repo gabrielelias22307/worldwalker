@@ -252,6 +252,60 @@ The brightest thing (the stone) is locked. Walking into it says to come back lat
 - Check whether the real Canvas page adds its own header inside the 820-pixel frame.
 - All my testing used a browser set up to act like a Chromebook or phone. A real school Chromebook and a real phone are still needed, especially to check whether a Dari voice exists for read-aloud.
 
+## After the fixes (October 21, evening)
+
+All ten problems have been worked on. Christopher's wings handled 2 and 7, and the other eight were fixed one by one. Every test passes:
+
+- all 24 episodes play start to finish, both the website files and the Canvas files
+- fit, keys, touch, phone, controls, stars, powers, Sheet, teacher, walk, look, maps, camp, music, and the new Christopher checks
+
+The largest Canvas file is 405 KB, under the 430 KB limit. Re-measure with `node tests/playtest-start.js` and `node tests/playtest-words.js`, and run everything with `bash tools/run-all-tests.sh`.
+
+| | Before | After |
+|---|---|---|
+| Screens before the first step, 1.1 first time | 5 (309 words) | 2 (sign-in, then a one-sentence card) |
+| Screens before the first step, other episodes | 2 (210–245 words) | 2 (the opening card is one sentence) |
+| A returning student | Continue, then a 200-word card | Continue, then a one-sentence card (~3 s) |
+| Christopher's welcome | 3 bubbles with Next buttons, game paused | said while you walk (3 steps or a tap moves on) |
+| 20 s of doing nothing | nothing happens | Christopher flies to the goal by himself after 15 s |
+| Text boxes over 15 words | 239 of 240 | 0 of 343 |
+| Right answer is the longest choice | 66% (37% clearly) | 11% (0% clearly) |
+
+What changed for each problem:
+
+1. **Faster start:** the opening card is one sentence and **Start**. Christopher says the episode's opening lines on the map while the student walks.
+2. **When a student stops:** Christopher flies to the next goal by himself after about 15 s, for free (Part 2).
+3. **One "go here":**
+   - A gold arrow bobs over the goal right now, or waits at the screen edge pointing the way.
+   - The compass stone rests, dim and with a small lock, until it's ready.
+   - On a Chromebook, a **Now** card beside the map shows the goal, where to go, and the list.
+4. **Shorter boxes:**
+   - The episode text is rewritten in English, Spanish and Dari, with no fact a question needs left out (see `docs/READING-PASS.md`).
+   - Chase messages are two short bubbles.
+   - A 🔊 button reads aloud on computers that have a voice for the language. It hides where there is no Dari voice.
+   - `node tools/check.js --reading` keeps it that way.
+5. **Answers you can't guess:**
+   - Choices are close in length, and the right one is never clearly the longest.
+   - A right answer on the first try gives **⚡ First try! +1 ●** and a 🔥 streak.
+   - "Try again" stays free.
+6. **Phone:**
+   - Bigger top buttons and a bigger arrow pad.
+   - Turned sideways, the tool bar stands beside the map, not on it.
+   - The map can't get wider than the phone without cutting part of it off, so it stays full width.
+7. **Christopher on the hero:** he flies beside the hero and never covers him (Part 2).
+8. **Finish screen:**
+   - The reflection box and **Copy my work** / **Download** come first, then the rewards.
+   - The confetti falls behind the panel.
+9. **Sign-in:** **Play** sits right under the three boxes. "Pick your look" and "Have a Passport Code?" fold away below it.
+10. **Top bar:**
+    - Music, Sound, Keys and help, the arrow pad and Full screen are in one **⚙ Settings** menu.
+    - The quest line is bigger.
+    - The theme bars have word labels (tap one for its name and number).
+
+One thing to know about answers: with lengths evened out, the right answer is now most often a middle-length choice. The lengths are so close that a student can't see a pattern by eye, but a later pass could mix this up more.
+
+Screenshots after the fixes are in `docs/playtest-3/after/`.
+
 ## Next
 
-When you OK this report, I start **Part 2 (Christopher's wings) in 1.1**, then the fixes above one at a time, in the order you pick.
+Gabriel checks the branch `fun-pass-3` and says "merge" when he is happy. The "Still open" items above are still open.
