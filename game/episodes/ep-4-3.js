@@ -34,6 +34,27 @@ window.EPISODE = {
       es: 'Durban es uno de los puertos con más trabajo de África.',
       fa: 'دوربان یکی از پرکارترین بندرهای افریقا است.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [6, 10], name: { en: 'Grandpa Bongani', es: 'Abuelo Bongani', fa: 'پدرکلان بونگانی' },
+      look: { skin: 5, hair: '#d0d0d0', shirt: '#3a5a8a', pants: '#2a2a2a', style: 'short', hat: '#5a4a3a' },
+      lines: [
+        { en: 'Sit, sit! I worked in the gold mines for many years.', es: '¡Siéntate, siéntate! Trabajé en las minas de oro por muchos años.', fa: 'بنشین، بنشین! من سال‌ها در معدن‌های طلا کار کردم.' },
+        { en: 'Deep down, the rock is hot. We needed big fans to cool the air.', es: 'Muy abajo, la roca está caliente. Necesitábamos ventiladores grandes para enfriar el aire.', fa: 'در عمق زمین سنگ داغ است. برای خنک کردن هوا پکه‌های کلان لازم داشتیم.' }
+      ] },
+    { at: [11, 10], name: { en: 'Mama Lerato', es: 'Mamá Lerato', fa: 'ماما لراتو' },
+      look: { skin: 4, hair: '#1a1a1a', shirt: '#2f9a8a', pants: '#5a2a4a', style: 'long' },
+      lines: [
+        { en: 'Dumela! That means hello in Sesotho. Grab a blanket, the nights are cold.', es: '¡Dumela! Significa hola en sesotho. Toma una cobija, las noches son frías.', fa: 'دومیلا! به زبان سوتو یعنی سلام. کمپل بگیر، شب‌ها سرد است.' },
+        { en: 'Our city sits high up, on a plateau. Winter nights can bring frost.', es: 'Nuestra ciudad está en lo alto, sobre una meseta. En invierno, las noches pueden traer escarcha.', fa: 'شهر ما بلند، روی یک فلات است. شب‌های زمستان گاهی یخبندان می‌شود.' }
+      ] },
+    { at: [15, 10], name: { en: 'Kagiso', es: 'Kagiso', fa: 'کاگیسو' },
+      look: { skin: 3, hair: '#202020', shirt: '#f08a24', pants: '#2a3a5a', style: 'short' },
+      lines: [
+        { en: 'Hi! I just got home from my shift. I build cars at a factory.', es: '¡Hola! Acabo de llegar de mi turno. Armo carros en una fábrica.', fa: 'سلام! تازه از نوبت کارم آمدم. من در یک فابریکه موتر می‌سازم.' },
+        { en: 'Trains take our cars to the port. Ships carry many to Europe.', es: 'Los trenes llevan nuestros carros al puerto. Los barcos llevan muchos a Europa.', fa: 'قطارها موترهای ما را به بندر می‌برند. کشتی‌ها بسیاری را به اروپا می‌برند.' }
+      ] }
+  ],
 
   /* 32 x 22 tiles = 2 x 2 screens. Mine top-left, city bottom-left, railway across the top and down the east, port and ocean on the right. */
   map: [
@@ -46,8 +67,8 @@ window.EPISODE = {
     'K:::::::::::::.....K........kss=',
     'K...----------.-----------..~===',
     'K.......x................|..~===',
-    'K................eeeeee...K.~===',
-    'K................eeeeee.....~===',
+    'K....RRR..QQQ.RRReeeeee...K.~===',
+    'K....hdh..hdh.hdheeeeee.....~===',
     'K.UU.:.UU..:JJJ.........:|~~~===',
     'K.UUT:.UUT.:JJJ..XXX..Tx:|~~~===',
     'K:::::::::::::::.XXX....:|kkkk==',

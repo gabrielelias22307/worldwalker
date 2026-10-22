@@ -33,6 +33,21 @@ window.EPISODE = {
       es: 'La Gran Muralla Verde planta árboles a lo largo de África, de Senegal a Yibuti.',
       fa: 'دیوار بزرگ سبز در سراسر افریقا، از سنگال تا جیبوتی، درخت می‌کارد.' }
   },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [18, 9], name: { en: 'Grandma Hauwa', es: 'Abuela Hauwa', fa: 'مادرکلان هاوا' },
+      look: { skin: 5, hair: '#2a2a2a', shirt: '#e0a030', pants: '#6a3a8a', style: 'bun', hat: '#3a8a5a' },
+      lines: [
+        { en: 'Come in out of the sun! The grass roof keeps my hut cool.', es: '¡Entra, sal del sol! El techo de paja mantiene fresca mi choza.', fa: 'از آفتاب بیا داخل! بام علفی کلبه‌ام را خنک نگه می‌دارد.' },
+        { en: 'In winter, the dry Harmattan wind blows Sahara dust. We cover the water jars.', es: 'En invierno, el viento seco Harmattan trae polvo del Sahara. Tapamos las tinajas de agua.', fa: 'در زمستان باد خشک هرمتان گرد صحرا را می‌آورد. ما کوزه‌های آب را می‌پوشانیم.' }
+      ] },
+    { at: [16, 15], name: { en: 'Mama Akinyi', es: 'Mamá Akinyi', fa: 'ماما آکینی' },
+      look: { skin: 4, hair: '#1a1a1a', shirt: '#d9534f', pants: '#2a5a8a', style: 'short' },
+      lines: [
+        { en: 'Welcome! Put down your bag. In the dry season, I walk far for water.', es: '¡Bienvenido! Deja tu mochila. En la temporada seca, camino lejos para buscar agua.', fa: 'خوش آمدی! بکست را بگذار. در فصل خشک برای آب راه دور می‌روم.' },
+        { en: 'When the long rains come in March, we plant maize and beans.', es: 'Cuando llegan las lluvias largas en marzo, sembramos maíz y frijoles.', fa: 'وقتی باران‌های دراز در ماه مارچ می‌آیند، ما جواری و لوبیا می‌کاریم.' }
+      ] }
+  ],
 
   /* 32 x 22 tiles = 2 x 2 screens. North (top) is the Sahara, then the Sahel, the savanna, and the rainforest at the bottom. */
   map: [
@@ -44,14 +59,14 @@ window.EPISODE = {
     'aaagaa:aaagaaagaaaga:aaagaaaga:a',
     'agggggggggggggOgggggggggggggggga',
     'agg::::::::::::::::::::::::::gga',
-    'agYggggg:o1o1oggggggggg:ggggggga',
-    'agaggYgg:1o1o1ggggggagg:gggggaga',
+    'agYggggg:o1o1ogggHHgggg:ggggggga',
+    'agaggYgg:1o1o1gggNdgagg:gggggaga',
     'aggggggg:ggggaggggggggg:ggggggga',
     'a...""..:.....a.....a..:.......a',
     'a..aY...:."".....""....:...AA..a',
     'a"....".:...a..........:..MAnG.a',
-    'a.......:..............:.MMMMMMa',
-    'a....a..:....""...a....:x.MMM..a',
+    'a.......:......HH......:.MMMMMMa',
+    'a....a..:....""Nd.a....:x.MMM..a',
     'a.a.....:..a.......".".:.......a',
     'jjjjjjjj:jjjjjjjjjjjjjj:jjjjjjjj',
     'jjjjj.,.....jjjjjjjj......,.jjjj',
