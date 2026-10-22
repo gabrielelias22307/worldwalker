@@ -99,6 +99,7 @@
     if (!who || room.on) return false;
     st = { at: [x, y], who, realm: who.style || WW.ep.realm, hx: DOOR_X + 18, face: 1, t0: performance.now(), walkT: 0, goal: null };
     room.on = true; WW.chris.hide(); WW.tools.labels(null); WW.sfx('gate');
+    const bar = document.getElementById('ww-tools'); if (bar) bar.classList.remove('top'); // the tool bar stays at the bottom, under the floor
     return true;
   };
   room.exit = () => {
