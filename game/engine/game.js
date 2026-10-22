@@ -39,6 +39,7 @@
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
         <div class="stage" id="ww-stage">
+          <aside class="cpanel" id="ww-cpanel" aria-live="polite"><canvas id="ww-cpface" width="96" height="96" aria-hidden="true"></canvas><div class="cp-slot" id="ww-cpslot"><div class="cp-idle" id="ww-cpidle"></div></div></aside>
           <aside class="nowcard" id="ww-now" aria-live="polite"></aside>
           <div class="screen" id="ww-screen" tabindex="0">
             <canvas id="ww-cv" aria-label="game map"></canvas>
@@ -76,7 +77,11 @@
       const side = root.classList.contains('touch') && innerHeight < 520 && innerWidth > innerHeight;
       fr.classList.toggle('side', side);
       const room = side ? st.clientWidth - 2 * (($('ww-dpad').offsetWidth || 164) + 12) : st.clientWidth;
-      const w = Math.max(160, Math.min(room, Math.floor((st.clientHeight - 8) * 16 / 11))), h = Math.round((w - 6) * 11 / 16 + 6);
+      let w = Math.max(160, Math.min(room, Math.floor((st.clientHeight - 8) * 16 / 11)));
+      // fun-pass-4: a wide screen keeps room on the left for Christopher's corner (his messages never cover the map)
+      const SIDE = 2 * (190 + 14);
+      if (!side && st.clientWidth - w < SIDE && st.clientWidth - SIDE >= 520) w = st.clientWidth - SIDE;
+      const h = Math.round((w - 6) * 11 / 16 + 6);
       sc.style.width = w + 'px'; sc.style.height = h + 'px';
       fr.style.setProperty('--gw', w + 'px'); // the bars above line up with the map
       // a tall, narrow window (a phone): the tool bar and Christopher's bubble go under the map instead of over it
@@ -86,9 +91,20 @@
       if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); } // a sideways phone: the tool bar stands beside the map, not on it
       // PLAYTEST-3: the Now card fills the empty side of a wide screen (a Chromebook): the goal, who to find, the list
       const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
-      if (now) { const on = !narrow && !side && gap >= 160; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; WW.ui.nowCard && WW.ui.nowCard(); } }
+      const wide = !narrow && !side && gap >= 160, cp = $('ww-cpanel');
+      // Christopher's corner (fun-pass-4): on the left of a wide screen, above the Now card; under the map on a phone or in Canvas
+      if (cp) {
+        cp.classList.toggle('on', wide || narrow); cp.classList.toggle('side', wide); cp.classList.toggle('dock', narrow && !wide);
+        if (wide) { cp.style.width = Math.min(gap, 250) + 'px'; cp.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; if (cp.parentNode !== st || cp.nextElementSibling !== now) st.insertBefore(cp, now); }
+        else { cp.style.width = ''; cp.style.left = ''; if (narrow) { const after = bar && bar.parentNode === st ? bar : sc; if (after.nextElementSibling !== cp) after.insertAdjacentElement('afterend', cp); } }
+        if (WW.chris && WW.chris.home) WW.chris.home(wide || narrow ? $('ww-cpslot') : st);
+      }
+      if (now) { const on = wide; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; G.placeNow(); WW.ui.nowCard && WW.ui.nowCard(); } }
       if (WW.chris) WW.chris.place();
     };
+    // the Now card sits under Christopher's corner, and moves when his message grows or shrinks
+    G.placeNow = () => { const now = $('ww-now'), cp = $('ww-cpanel'); if (!now || !now.classList.contains('on')) return; const top = cp && cp.classList.contains('side') ? cp.offsetHeight + 12 : 0; now.style.top = top + 'px'; now.style.maxHeight = `calc(100% - ${top + 4}px)`; };
+    if (window.ResizeObserver) new ResizeObserver(() => G.placeNow()).observe($('ww-cpanel'));
     window.addEventListener('resize', G.fit);
     if (window.ResizeObserver) new ResizeObserver(() => G.fit()).observe($('ww-stage'));
     $('ww-b-snd').onclick = () => { WW.save.sound = !WW.save.sound; WW.store(); WW.audioInit(); WW.ui.hud(); };

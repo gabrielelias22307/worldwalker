@@ -18,12 +18,18 @@
   function el() {
     if (!bubble || !bubble.isConnected) {
       bubble = document.createElement('div'); bubble.className = 'cbubble'; bubble.setAttribute('role', 'status');
-      $('ww-stage').appendChild(bubble); // in the stage, so on a phone it can sit under the map
+      (home || $('ww-stage')).appendChild(bubble); // in his corner beside (or under) the map; over the map only when there is no room
       bubble.addEventListener('click', e => { if (e.target.closest('button')) return; if (C.scene) C.next(); else if (!C.chainNext()) C.hide(); });
     }
     return bubble;
   }
-  C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.display = 'none'; said = null; };
+  C.hide = () => { if (bubble) bubble.style.display = 'none'; if (tag) tag.style.display = 'none'; said = null; idle(); };
+  /* fun-pass-4: his corner. The bubble lives there (no tail, never over the map); his portrait talks while words come */
+  let home = null;
+  C.home = h => { if (!h) return; home = h; if (bubble && bubble.parentNode !== h) h.appendChild(bubble); if (bubble) bubble.classList.toggle('incorner', h.id === 'ww-cpslot'); idle(); };
+  C.inCorner = () => !!(bubble && bubble.classList.contains('incorner'));
+  C.saidT = -1e9;
+  function idle() { const i = $('ww-cpidle'); if (i) { i.style.display = C.showing() ? 'none' : ''; i.textContent = T('cpIdle'); } }
   C.showing = () => !!(bubble && bubble.style.display === 'block');
 
   /* say something over his head. buttons: [{ label, kind, fn }] */
@@ -44,7 +50,8 @@
       b.appendChild(row);
     }
     if (opt && opt.more) b.insertAdjacentHTML('beforeend', `<div class="cb-more" aria-hidden="true">🚶 ▶</div>`);
-    b.style.display = 'block'; said = text;
+    b.style.display = 'block'; said = text; b.classList.toggle('incorner', !!(home && home.id === 'ww-cpslot')); idle();
+    C.saidT = performance.now(); { const cp = $('ww-cpanel'); if (cp) { cp.classList.remove('new'); void cp.offsetWidth; cp.classList.add('new'); } }
     const p = WW.game.player; saidAt = p ? [p.x, p.y] : null;
     WW.sfx('blip');
     C.place();
@@ -58,7 +65,7 @@
   C.chaining = () => chainQ.length > 0;
   /* keep the bubble over his head (called every frame) */
   C.place = () => {
-    if (!C.showing()) return;
+    if (!C.showing() || C.inCorner()) return;
     const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
     const [sx, sy] = g.screenOf(g.player.x, g.player.y), pip = g.pip;
     const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width, stR = $('ww-stage').getBoundingClientRect();
@@ -371,6 +378,18 @@
   // tiny pixel letters for "!" and "?"
   const GLYPH = { '!': ['.#.', '.#.', '.#.', '...', '.#.'], '?': ['##.', '..#', '.#.', '...', '.#.'] };
   /* draw him: (x, y) = the top-left of his 16 × 16 box */
+  // his portrait in the corner: his color, his mood, talking for a moment after each new message (chrisface.js)
+  let faceKey = '';
+  C.face = (t) => {
+    const cv = $('ww-cpface'), cp = $('ww-cpanel'); if (!cv || !WW.chrisFace || !cp || !cp.classList.contains('on')) return;
+    const kind = C.showing() && bubble.dataset.kind ? bubble.dataset.kind : C.color();
+    const mood = F.mood && t - F.moodT < (F.mood === 'cheer' ? 1600 : F.mood === 'spin' ? 700 : 1400) ? F.mood : t - C.saidT < 1500 ? 'talk' : null;
+    const key = kind + mood;
+    if (WW.calm && key === faceKey) return; // reduced motion: draw only when something changes
+    faceKey = key;
+    WW.chrisFace.draw(cv.getContext('2d'), t, { kind, mood, needle: F.needle });
+  };
+  (function loop(t) { try { C.face(t); } catch (e) { } requestAnimationFrame(loop); })(0);
   C.draw = (c, x, y, t) => {
     const cx = x + 8, cy = y + 8, kind = C.color(), col = COL[kind] || COL.gold, calm = WW.calm;
     const call = Math.max(0, 1 - (t - F.callT) / 900), k = (Math.sin(t / 400) + 1) / 2;
