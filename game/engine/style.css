@@ -10,7 +10,8 @@
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
 button{font-family:inherit}
 /* the whole game is exactly as tall as the window: no page scrolling (FUN-PASS-2, Part A) */
-html,body{height:100%;overflow:hidden}
+/* only an episode page is locked to the window (it fits itself); the start page, world map and teacher page must scroll */
+html.ww-game,html.ww-game body{height:100%;overflow:hidden}
 .ww-frame{max-width:1200px;height:100vh;height:100dvh;margin:0 auto;padding:6px 8px;background:var(--bg);display:flex;flex-direction:column;gap:0}
 .ww-frame:fullscreen{max-width:none}
 .stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-bottom:2px;position:relative}

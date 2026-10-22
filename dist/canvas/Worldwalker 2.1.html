@@ -15,7 +15,7 @@
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--bg);color:var(--text);font-family:var(--read);font-size:17px;line-height:1.5}
 button{font-family:inherit}
-html,body{height:100%;overflow:hidden}
+html.ww-game,html.ww-game body{height:100%;overflow:hidden}
 .ww-frame{max-width:1200px;height:100vh;height:100dvh;margin:0 auto;padding:6px 8px;background:var(--bg);display:flex;flex-direction:column;gap:0}
 .ww-frame:fullscreen{max-width:none}
 .stage{flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding-bottom:2px;position:relative}
@@ -4788,6 +4788,7 @@ root.innerHTML = `
         </div>
         <div class="ww-foot" id="ww-foot"></div>
       </div>`;
+document.documentElement.classList.add('ww-game');
 if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
 root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
 $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
@@ -4797,7 +4798,7 @@ $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
 const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
 $('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
 $('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
-document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
+document.addEventListener('pointerdown', e => { if (!e.target.closest('.gear')) gearOpen(false); });
 $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
 $('ww-quest').onclick = () => WW.ui.questPop();
 G.fit = () => {

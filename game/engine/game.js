@@ -55,6 +55,7 @@
         </div>
         <div class="ww-foot" id="ww-foot"></div>
       </div>`;
+    document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
@@ -65,7 +66,7 @@
     const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
     $('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
     $('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
-    document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
+    document.addEventListener('pointerdown', e => { if (!e.target.closest('.gear')) gearOpen(false); }); // any touch outside closes it (the arrow pad sends no click)
     $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
     $('ww-quest').onclick = () => WW.ui.questPop();
     // the map takes all the height that is left, keeping its 16 × 11 shape
