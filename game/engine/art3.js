@@ -383,4 +383,28 @@
     WW.sprite(c, WW.personSprite(p), x, y, { pal });
   };
   WW.shadow = shadow;
+
+  /* ---------- homes you can go into (fun-pass-4): a thatched hut, its mud wall, a wind tower; doors match their wall ---------- */
+  tiles.H = (c, x, y, gx, gy, t, m) => { // thatched roof: straw rows, darker at the edge
+    R(c, x, y, T, T, '#c9a14a'); for (let r = 2; r < T; r += 4) R(c, x, y + r, T, 1, '#a8823a');
+    for (let k = 0; k < 4; k++) R(c, x + ((k * 5 + gx * 3) % 14), y + 1 + k * 4, 2, 2, '#e3c06a');
+    if (at(m, gx - 1, gy) !== 'H') R(c, x, y, 2, T, '#8a6a2e');
+    if (at(m, gx + 1, gy) !== 'H') R(c, x + 14, y, 2, T, '#8a6a2e');
+    R(c, x, y + 14, T, 2, '#7a5a26');
+  };
+  tiles.N = (c, x, y) => { // mud-brick wall of a hut
+    R(c, x, y, T, T, '#c98a4d'); R(c, x, y + 14, T, 2, '#9c6a3b');
+    R(c, x + 3, y + 4, 3, 2, '#b07a46'); R(c, x + 9, y + 8, 4, 2, '#b07a46'); R(c, x + 2, y + 11, 2, 1, '#e0a76a');
+  };
+  tiles.E = (c, x, y) => { // a wind tower on a flat roof: it catches the breeze and sends it down into the house
+    R(c, x, y, T, T, '#e2c48e'); R(c, x + 3, y, 10, T, '#d4b27a'); R(c, x + 3, y, 10, 2, '#b8935a');
+    for (let k = 0; k < 3; k++) R(c, x + 4 + k * 3, y + 3, 2, 7, '#5a3a22');
+    R(c, x, y + 14, T, 2, '#b8935a');
+  };
+  const oldD = tiles.d;
+  tiles.d = (c, x, y, gx, gy, t, m) => {
+    const side = [at(m, gx - 1, gy), at(m, gx + 1, gy)];
+    if (side.includes('N')) tiles.N(c, x, y); else if (side.includes('J') || side.includes('E')) tiles.J(c, x, y, gx, gy, t, m); else return oldD(c, x, y, gx, gy, t, m);
+    R(c, x + 4, y + 3, 8, 13, '#22202e'); R(c, x + 5, y + 4, 6, 12, '#7a4a2a'); R(c, x + 9, y + 9, 1, 2, '#f2c14e');
+  };
 })();

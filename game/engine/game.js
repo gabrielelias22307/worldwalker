@@ -352,6 +352,7 @@
   /* Space (or ●) never surprises: a person, a note or a sign always comes first, whatever tool is picked; then a broken
      bridge or a gate; then the tool that fits what you face (it switches for you); then a star */
   function actFacing() {
+    if (WW.room.on) return WW.room.act();
     if (WW.paused) return;
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
@@ -442,7 +443,7 @@
       if (tag === 'input' || tag === 'textarea') return;
       if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov', 'campov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
       WW.audioInit();
-      if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
+      if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length && !WW.room.on) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
       if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
@@ -456,13 +457,14 @@
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') WW.chris.talk(); else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') { if (!WW.room.on) WW.chris.talk(); } else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
     // click on the map next to the hero = step that way (mouse users)
     $('ww-cv').addEventListener('click', e => {
       WW.audioInit(); $('ww-screen').focus();
+      if (WW.room.on) { const rr = e.target.getBoundingClientRect(); return WW.room.click((e.clientX - rr.left) / rr.width); }
       if (WW.paused || trans) return;
       const r = e.target.getBoundingClientRect();
       const [sx, sy] = screenOf(player.x, player.y);
@@ -580,10 +582,12 @@
   function frame(now) {
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
+    if (WW.room.on) return WW.room.frame(c, now, held); // inside a house (rooms.js)
     // movement timing
     if (player.moving && now - player.moving >= stepMs()) {
       const from = player.from;
       player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup();
+      if (tileAt(player.x, player.y) === 'd' && !G.preview) { held = null; queued = null; clickTarget = null; WW.room.enter(player.x, player.y); } // a door: go in
       // stepped along the rails: all aboard
       if (!ride && from && RAIL.includes(tileAt(player.x, player.y)) && RAIL.includes(tileAt(from[0], from[1]))) {
         if (ticket()) { ride = { px: from[0], py: from[1], steps: 0 }; WW.sfx('gate'); if (!rideTold) { rideTold = true; WW.chris.say(T(WW.hasTool('rail') ? 'trainGo' : 'trainTicket')); } }

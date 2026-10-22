@@ -68,9 +68,9 @@
     net(c, x) { for (let i = 0; i < 6; i++) { R(c, x + i * 8, 26, 1, 44, '#6b4e33'); R(c, x, 26 + i * 8, 40, 1, '#6b4e33'); } R(c, x + 30, 60, 8, 8, '#d98e2b'); }
   };
   /* the room: style by realm; spots for the things, a window, the door on the left */
-  WW.room = {
-    STYLE, RW, RH, FLOOR,
-    draw(c, realm, t, opt = {}) {
+  const room = WW.room = {
+    STYLE, RW, RH, FLOOR, on: false,
+    draw(c, realm, t) {
       const s = STYLE[realm] || STYLE[1];
       wall(c, s); floor(c, s);
       door(c, s, true);
@@ -79,5 +79,95 @@
       let n = 0;
       s.things.forEach(k => { if (k === 'carpet' || k === 'mat') THING[k](c, 120, t); else if (n < 3) THING[k](c, X[n++], t); else if (narrow.includes(k)) THING[k](c, 232, t); });
     }
+  };
+
+  /* ---------- going in, walking, talking, going out ---------- */
+  const L = t => WW.L(t), T = k => WW.T(k);
+  const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const SPEED = 0.07, DOOR_X = 22, PERSON_X = 176; // pixels per ms; the hero leaves through the door on the left
+  let st = null; // { at, who, realm, hx, face, t0, walkT, goal, talked }
+  const big = document.createElement('canvas'); big.width = 16; big.height = 16;
+  function drawBig(c, name, pal, x, y, flip) { // a person twice as big as on the map
+    const b = big.getContext('2d'); b.clearRect(0, 0, 16, 16); WW.sprite(b, name, 0, 0, { pal, flip });
+    c.imageSmoothingEnabled = false; c.fillStyle = 'rgba(0,0,0,.18)'; c.fillRect(x + 4, FLOOR + 8, 24, 4); c.drawImage(big, x, y, 32, 32);
+  }
+  // who lives behind the door at (x, y): ep.houses = [{ at: [x, y], name, look, lines: [ ... ] }]
+  room.who = (x, y) => (WW.ep.houses || []).find(h => h.at[0] === x && h.at[1] === y) || null;
+  room.enter = (x, y) => {
+    const g = WW.game, who = room.who(x, y);
+    if (!WW.solid(g.tileAt(x, y - 1))) return false; // a gate you walk through (a temple yard), not a house
+    if (!who || room.on) return false;
+    st = { at: [x, y], who, realm: who.style || WW.ep.realm, hx: DOOR_X + 18, face: 1, t0: performance.now(), walkT: 0, goal: null };
+    room.on = true; WW.chris.hide(); WW.tools.labels(null); WW.sfx('gate');
+    return true;
+  };
+  room.exit = () => {
+    if (!room.on) return;
+    const g = WW.game, p = g.player, [x, y] = st.at;
+    room.on = false; st = null;
+    if (g.walkable(x, y + 1)) { WW.dbg.teleport(x, y + 1); }
+    p.dir = 'down'; WW.sfx('step');
+  };
+  // Space / ● : talk when you are next to the person, leave when you are at the door
+  room.act = () => {
+    if (!st || WW.paused) return;
+    if (Math.abs(st.hx - PERSON_X) < 44) return room.talk();
+    if (st.hx < DOOR_X + 30) return room.exit();
+  };
+  // a click or tap in the room: on the person = walk over and talk, on the door = leave, anywhere else = walk there
+  room.click = fx => {
+    if (!st || WW.paused) return;
+    const x = fx * RW;
+    st.goal = x < DOOR_X + 20 ? -1 : Math.abs(x - PERSON_X - 16) < 24 ? 'talk' : x;
+  };
+  room.talk = () => {
+    const who = st.who; let i = 0; st.talked = true; st.goal = null;
+    WW.ui.open({
+      cls: 'roomtalk',
+      render(box, h) {
+        const face = WW.spriteCanvas(WW.personSprite(who), WW.lookPal(who.look), 4, 11); face.className = 'rt-face';
+        box.innerHTML = `<div class="rt-top"></div>`;
+        const top = box.querySelector('.rt-top'); top.appendChild(face);
+        top.insertAdjacentHTML('beforeend', `<div><div class="rt-name">${esc(L(who.name))}</div><p class="rt-say">${WW.rich(who.lines[i])}</p></div>`);
+        const sp = WW.speakBtn(() => WW.plain(who.lines[i])); if (sp) top.appendChild(sp);
+        const acts = document.createElement('div'); acts.className = 'acts center';
+        const last = i === who.lines.length - 1;
+        acts.appendChild(WW.btn(last ? T('roomBye') : T('sceneNext') + ' ▶', 'gold', () => { if (last) h.close(); else { i++; h.render(); } }));
+        box.appendChild(acts);
+      }
+    });
+  };
+  // one frame inside: walk with the arrows (left and right), draw the room, the person and the hero
+  room.frame = (c, now, held) => {
+    if (!st) return;
+    const dt = Math.min(60, now - (st.last || now)); st.last = now;
+    let dir = 0;
+    if (!WW.paused) {
+      if (held === 'left') dir = -1; else if (held === 'right') dir = 1;
+      else if (held === 'up' && st.hx < DOOR_X + 30) return room.exit();
+      else if (st.goal != null) {
+        const tx = st.goal === -1 ? DOOR_X - 10 : st.goal === 'talk' ? PERSON_X - 30 : st.goal - 16;
+        if (Math.abs(tx - st.hx) < 3) { const g = st.goal; st.goal = null; if (g === 'talk') room.talk(); if (g === -1) return room.exit(); }
+        else dir = Math.sign(tx - st.hx);
+      }
+    }
+    if (dir) {
+      st.face = dir; st.walkT += dt;
+      st.hx = Math.min(PERSON_X - 26, st.hx + dir * SPEED * dt); // the person stands in the way: you stop beside them
+      if (st.hx < DOOR_X - 8) return room.exit();
+    }
+    room.draw(c, st.realm, now);
+    // the person: faces you, and a small talk sign when you are close and have not talked yet
+    drawBig(c, WW.personSprite(st.who), WW.lookPal(st.who.look), PERSON_X, FLOOR - 24, st.hx < PERSON_X);
+    const near = Math.abs(st.hx - PERSON_X) < 44;
+    if (near || !st.talked) {
+      const by = FLOOR - 40 + (WW.calm ? 0 : Math.round(Math.sin(now / 250) * 2));
+      R(c, PERSON_X + 8, by, 16, 11, '#22202e'); R(c, PERSON_X + 9, by + 1, 14, 9, near ? '#f2c14e' : '#fffbe8'); R(c, PERSON_X + 12, by + 11, 3, 2, '#22202e');
+      R(c, PERSON_X + 11, by + 4, 2, 2, '#22202e'); R(c, PERSON_X + 15, by + 4, 2, 2, '#22202e'); R(c, PERSON_X + 19, by + 4, 2, 2, '#22202e');
+    }
+    const walk = dir && !WW.calm && Math.floor(st.walkT / 140) % 2;
+    drawBig(c, walk ? 'heroSideWalk' : 'heroSide', WW.heroPal(), Math.round(st.hx), FLOOR - 24, st.face < 0);
+    // coming in: a short fade from dark
+    const k = 1 - (now - st.t0) / 260; if (k > 0 && !WW.calm) { c.fillStyle = `rgba(10,9,20,${k})`; c.fillRect(0, 0, RW, RH); }
   };
 })();

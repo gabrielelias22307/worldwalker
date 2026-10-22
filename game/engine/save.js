@@ -142,6 +142,7 @@
     sceneNext: { en: 'Next', es: 'Siguiente', fa: 'بعدی' },
     sceneGo: { en: "Let's go", es: '¡Vamos!', fa: 'برویم' },
     sceneOn: { en: 'Continue', es: 'Continuar', fa: 'ادامه' },
+    roomBye: { en: 'Bye!', es: '¡Adiós!', fa: 'خدا حافظ!' },
     top5: { en: 'Top 5 in our class', es: 'Los 5 primeros de la clase', fa: '۵ نفر اول صنف ما' },
     top5Pages: { en: '{n} pages', es: '{n} páginas', fa: '{n} صفحه' },
     top5Page: { en: '1 page', es: '1 página', fa: '۱ صفحه' },

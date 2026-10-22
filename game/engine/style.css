@@ -478,3 +478,9 @@ canvas{filter:var(--vivid)}
 .cut-dots i{width:9px;height:9px;border-radius:50%;background:#d8cfae;border:1px solid #b7a77e}
 .cut-dots i.on{background:var(--gold, #f2c14e);border-color:var(--ink)}
 @media (max-width:480px){.cut-card p{font-size:18px}}
+/* inside a house (fun-pass-4): the person's face, name and one line at a time */
+.roomtalk .ov-box{max-width:560px}
+.rt-top{display:flex;gap:12px;align-items:flex-start}
+.rt-face{width:64px;height:44px;image-rendering:pixelated;border:3px solid var(--ink);border-radius:4px;background:#efe3cf;flex:none}
+.rt-name{font-weight:800;color:#6b5a2a;font-size:15px}
+.rt-say{font-size:20px;line-height:1.4;margin:4px 0 0}
