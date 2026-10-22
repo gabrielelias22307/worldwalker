@@ -42,7 +42,7 @@ window.EPISODE = {
         { en: 'Shh, I am grading homework. I teach at the little school here.', es: 'Shh, estoy corrigiendo tareas. Enseño en la escuelita de aquí.', fa: 'هیس، کارخانگی‌ها را نمره می‌دهم. من در مکتب کوچک اینجا درس می‌دهم.' },
         { en: 'Many families moved to the city. My class gets smaller every year.', es: 'Muchas familias se mudaron a la ciudad. Mi clase es más pequeña cada año.', fa: 'خانواده‌های زیادی به شهر رفتند. صنف من هر سال کوچک‌تر می‌شود.' }
       ] },
-    { at: [13, 2], name: { en: 'Byron', es: 'Byron', fa: 'بایرون' },
+    { at: [14, 2], name: { en: 'Byron', es: 'Byron', fa: 'بایرون' },
       look: { skin: 2, hair: '#1b1410', shirt: '#2f8fd6', pants: '#3a3a5a', style: 'short' },
       lines: [
         { en: 'Sorry, it\'s messy! I am packing. Tomorrow I take the bus to the city.', es: '¡Perdón por el desorden! Estoy empacando. Mañana tomo el bus a la ciudad.', fa: 'ببخش، خانه درهم است! بکس‌هایم را بسته می‌کنم. فردا با بس به شهر می‌روم.' },
@@ -67,7 +67,7 @@ window.EPISODE = {
   map: [
     'TTTTTTTTTTTTTTTTUUJUUJUUJUUJUUJU',
     'T.RRR..QQQ..RRR....UU..JJJ..UUUU',
-    'TGhdh..hdh..hdh....UU..JJJ..UUUU',
+    'TGhdh..hdh..hhd....UU..JJJ..UUUU',
     'T............,......UU..XX..UU.U',
     'T.mmm.....O......x..UU..XX..UU.U',
     'T::::::::::::::::::::::::::::::U',

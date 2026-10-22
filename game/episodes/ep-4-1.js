@@ -35,7 +35,7 @@ window.EPISODE = {
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
-    { at: [18, 9], name: { en: 'Grandma Hauwa', es: 'Abuela Hauwa', fa: 'مادرکلان هاوا' },
+    { at: [4, 10], name: { en: 'Grandma Hauwa', es: 'Abuela Hauwa', fa: 'مادرکلان هاوا' },
       look: { skin: 5, hair: '#2a2a2a', shirt: '#e0a030', pants: '#6a3a8a', style: 'bun', hat: '#3a8a5a' },
       lines: [
         { en: 'Come in out of the sun! The grass roof keeps my hut cool.', es: '¡Entra, sal del sol! El techo de paja mantiene fresca mi choza.', fa: 'از آفتاب بیا داخل! بام علفی کلبه‌ام را خنک نگه می‌دارد.' },
@@ -59,9 +59,9 @@ window.EPISODE = {
     'aaagaa:aaagaaagaaaga:aaagaaaga:a',
     'agggggggggggggOgggggggggggggggga',
     'agg::::::::::::::::::::::::::gga',
-    'agYggggg:o1o1ogggHHgggg:ggggggga',
-    'agaggYgg:1o1o1gggNdgagg:gggggaga',
-    'aggggggg:ggggaggggggggg:ggggggga',
+    'agYggggg:o1o1oggggggggg:ggggggga',
+    'agaHHYgg:1o1o1ggggggagg:gggggaga',
+    'aggNdggg:ggggaggggggggg:ggggggga',
     'a...""..:.....a.....a..:.......a',
     'a..aY...:."".....""....:...AA..a',
     'a"....".:...a..........:..MAnG.a',

@@ -43,7 +43,7 @@ window.EPISODE = {
         { en: 'Hi! I am packing. Tomorrow I take the train east to visit my aunt.', es: '¡Hola! Estoy haciendo la maleta. Mañana tomo el tren al este para visitar a mi tía.', fa: 'سلام! بکسم را جمع می‌کنم. فردا با قطار به شرق می‌روم تا خاله‌ام را ببینم.' },
         { en: 'When I go to bed in Moscow, my aunt in Vladivostok is waking up.', es: 'Cuando me acuesto en Moscú, mi tía en Vladivostok se está despertando.', fa: 'وقتی من در مسکو می‌خوابم، خاله‌ام در ولادی‌وستوک تازه بیدار می‌شود.' }
       ] },
-    { at: [14, 7], name: { en: 'Grandpa Pavel', es: 'Abuelo Pavel', fa: 'پدرکلان پاول' },
+    { at: [15, 7], name: { en: 'Grandpa Pavel', es: 'Abuelo Pavel', fa: 'پدرکلان پاول' },
       look: { skin: 1, hair: '#e0e0e0', shirt: '#4a7a5a', pants: '#3a2e24', style: 'short' },
       lines: [
         { en: 'Welcome! Look at this green stone. It comes from the Ural Mountains.', es: '¡Bienvenido! Mira esta piedra verde. Viene de los montes Urales.', fa: 'خوش آمدی! این سنگ سبز را ببین. از کوه‌های اورال می‌آید.' },
@@ -77,7 +77,7 @@ window.EPISODE = {
     'P..x..T...MMnnnnnnnPnnnnnnnPPnPnnnnnPnPnPnnnPn~=',
     'PRRR.QQQ..MMPPPnnnnPPJJnRRRPPnnPPnnnnPnPnRRRnP~=',
     'Phdh.hdh..MMPQQQnnnPPJJnhdhnPnPnPQQQPnPnnhdhnn~=',
-    'P.........MMnhdhnPnnnnnnnnnnPnPnPhdhmmnPnnnnnn~=',
+    'P.........MMnhhdnPnnnnnnnnnnPnPnPhdhmmnPnnnnnn~=',
     'P.........MMxnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnk=',
     'P---------------------------------------------k=',
     'PT........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',

@@ -31,7 +31,7 @@ const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.1', '4.1'
       for (let k = 0; k < 4 && await p.$('.roomtalk'); k++) { await p.locator('#ww-ov .pbtn.gold').last().click(); await p.waitForTimeout(80); }
       await p.keyboard.down('ArrowLeft'); await p.waitForTimeout(3200); await p.keyboard.up('ArrowLeft');
       const out = await p.evaluate(() => ({ on: WW.room.on, x: WW.game.player.x, y: WW.game.player.y }));
-      if (n === 0 || out.on || out.y !== y + 1) ok(!out.on && out.x === x && out.y === y + 1, `${id}: walking left out of the door puts you back outside below it (${out.x},${out.y})`);
+      if (n === 0 || out.on || out.y !== y + 1 || out.x !== x) ok(!out.on && out.x === x && out.y === y + 1, `${id}: walking left out of the door at ${x},${y} puts you back outside below it (${out.x},${out.y}${out.on ? ", still inside" : ""})`);
       n++;
     }
     ok(true, `${id}: went into ${n} of ${doors.length} houses`);

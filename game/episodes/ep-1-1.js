@@ -48,7 +48,7 @@ window.EPISODE = {
         { en: 'Welcome! Sit down, the coffee is almost ready. My family is from Ethiopia.', es: '¡Bienvenido! Siéntate, el café ya casi está. Mi familia es de Etiopía.', fa: 'خوش آمدی! بنشین، قهوه تقریباً آماده است. خانوادهٔ من از ایتوپیا است.' },
         { en: 'Ethiopia is near the equator. Its days are about twelve hours all year.', es: 'Etiopía está cerca del ecuador. Allí los días duran unas doce horas todo el año.', fa: 'ایتوپیا نزدیک خط استوا است. آنجا روزها در تمام سال حدود دوازده ساعت است.' }
       ] },
-    { at: [25, 13], name: { en: 'Bilal', es: 'Bilal', fa: 'بلال' },
+    { at: [26, 13], name: { en: 'Bilal', es: 'Bilal', fa: 'بلال' },
       look: { skin: 3, hair: '#1b1410', shirt: '#3a5fa0', pants: '#22324f', style: 'short', hat: '#2a3f6a' },
       lines: [
         { en: 'Careful, the floor is wet. I just got home from my mail route.', es: 'Cuidado, el piso está mojado. Acabo de llegar de mi ruta de correo.', fa: 'احتیاط، کف خانه تر است. همین حالا از مسیر نامه‌رسانی به خانه آمدم.' },
@@ -72,7 +72,7 @@ window.EPISODE = {
     'T......:.............~~.T......T',
     'T......:..........T..~~~~~~~~~~T',
     'T.T.T..:..T.T........~~.QQQQ.K.T',
-    'T..T...:...T."..r.,..~~.hdhh.K.T',
+    'T..T...:...T."..r.,..~~.hhdh.K.T',
     'T...,..:."...."......~~........T',
     'T..".T.:."..T........~~........T',
     'T......::::::::::::::ZZ:::::::.T',

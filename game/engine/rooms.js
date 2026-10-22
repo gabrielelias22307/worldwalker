@@ -105,7 +105,8 @@
     if (!room.on) return;
     const g = WW.game, p = g.player, [x, y] = st.at;
     room.on = false; st = null;
-    if (g.walkable(x, y + 1)) { WW.dbg.teleport(x, y + 1); }
+    const out = [[x, y + 1], [x - 1, y + 1], [x + 1, y + 1], [x, y + 2]].find(([a, b]) => g.walkable(a, b)); // below the door (or next to it)
+    if (out) WW.dbg.teleport(out[0], out[1]);
     p.dir = 'down'; WW.sfx('step');
   };
   // Space / ● : talk when you are next to the person, leave when you are at the door
