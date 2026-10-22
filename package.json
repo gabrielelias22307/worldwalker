@@ -1,0 +1,11 @@
+{
+  "name": "worldwalker",
+  "private": true,
+  "description": "Build tools only. Nothing here goes into the game: terser makes the one-file Canvas build smaller.",
+  "scripts": {
+    "build": "node tools/build.js"
+  },
+  "devDependencies": {
+    "terser": "5.36.0"
+  }
+}

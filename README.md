@@ -42,6 +42,7 @@ The Grump tore the Great Atlas into 24 pages. In each episode the student walks 
 
 ```
 node tools/check.js          # every episode: map, places you can reach, 3 languages, questions
+npm install                  # once: gets terser, which the build uses to make the Canvas files smaller
 node tools/build.js          # builds the Pages files, the Canvas files and the Canvas blocks
 node tests/play.js           # plays all 24 episodes start to finish in a real browser
 node tests/walk.js           # real keyboard walking, screen scrolling, Grump hits, phone arrows

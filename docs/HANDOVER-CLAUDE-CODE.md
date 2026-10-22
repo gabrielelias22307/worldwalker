@@ -96,7 +96,7 @@ The Netlify site already has 1 and 2.
   - Dari: simple Afghan Dari in Arabic script. Use مکتب (school), سرک (road), دریا (river), جهیل (lake), بحر (sea).
 - **Short and plain:** grade-5 words, at most about 15 words per box. Run `node tools/check.js --reading` after any text change.
 - **Plain language everywhere,** for students and for Gabriel. Never the word "debrief". No Roblox in anything.
-- **Canvas files under 430 KB** each. This is the rule for this project; `tools/build.js` refuses bigger files. The largest file is 405 KB today.
+- **Canvas files under 430 KB** each. This is the rule for this project; `tools/build.js` refuses bigger files. The largest file is 340 KB today (the build uses terser since fun-pass-4).
 - **No outside images, fonts or libraries.** Everything is drawn in code.
 - **No "Make it easier" button.** Don't remove the learning; make it easier to reach and nicer to do.
 - **Cozy rules:** nothing is lost for good, a wrong move says why, and reduced motion (`WW.calm`) turns animation down.
@@ -121,6 +121,7 @@ Node and Playwright with Chromium. If `require('playwright')` fails, set `export
 ```
 node tools/check.js                 # every episode's data (must all say OK)
 node tools/check.js --reading       # long boxes and answers that give themselves away (should show no "reading:" notes)
+npm install                         # once: gets terser for the build (nothing goes into the game)
 node tools/build.js                 # builds game/ep-*.html and dist/canvas/*.html, prints sizes
 bash tools/run-all-tests.sh         # every test, one summary line each (about 40 minutes)
 ```
