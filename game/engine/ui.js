@@ -515,7 +515,7 @@
   ui.finish = () => {
     const r = WW.run, ep = WW.ep;
     WW.confetti();
-    let sheet = WW.sheetOn() ? 'saving' : 'off', note = '';
+    let sheet = WW.sheetOn() ? 'saving' : 'off', note = '', board = '';
     ui.open({
       cls: 'finov',
       render(box, h) {
@@ -550,6 +550,7 @@
           (sheet === 'saving' ? `<div class="pending">${esc(T('savingSheet'))}</div>` : sheet === 'ok' ? `<div class="ok">${esc(T('savedSheet'))}</div>` : sheet === 'down' ? `<div class="bad">${esc(T('sheetDown'))}</div>` : '') +
           `<div class="small">${esc(T('yourCode'))}: <code class="pcode">${WW.passportCode()}</code></div>`;
         box.appendChild(sv);
+        if (board) box.insertAdjacentHTML('beforeend', board); // the class top 5, once this page is saved in the Sheet
         if (r.newTool) box.insertAdjacentHTML('beforeend', `<div class="newtool">${r.newTool.icon} <b>${esc(T('gotTool'))}:</b> ${esc(L(r.newTool.name))}</div>`);
         const earned = (r.gains || []).filter(g => g.stat).map(g => { const th = WW.THEMES.find(t => t.k === g.stat); return `<li><span style="color:${th.col}">${th.icon}</span> <b>+${g.n} ${esc(L(th.full))}</b> · ${esc(g.why)}</li>`; }).join('');
         const coins = (r.gains || []).reduce((a, g) => a + g.coins, 0);
@@ -559,7 +560,11 @@
     });
     { const cf = document.querySelectorAll('.confetti'); if (cf.length) cf[cf.length - 1].style.zIndex = 4; } // behind the panel: never over the typing box
     if (sheet === 'saving') {
-      WW.sheetSave(logEntry()).then(res => { sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render(); });
+      WW.sheetSave(logEntry()).then(res => {
+        sheet = res.ok ? 'ok' : 'down'; const t = ui.top(); if (t) t.render();
+        // added in place (no new render), so a student typing the reflection keeps their place
+        if (res.ok) WW.classAtlas().then(d => { board = WW.topBoard(d); const sb = document.querySelector('.finov .savebox'); if (board && sb) sb.insertAdjacentHTML('afterend', board); }).catch(() => { });
+      });
     }
   };
   function logEntry() {

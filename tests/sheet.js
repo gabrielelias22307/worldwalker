@@ -83,16 +83,38 @@ vm.createContext(box); vm.runInContext(fs.readFileSync(path.join(ROOT, 'apps-scr
   // finishing an episode writes one Log line
   await bp.evaluate(() => WW.sheetSave({ episode: '1.2', stars: 3, heartsLost: 0, minutes: 12, missed: [], reflection: 'test' })); await bp.waitForTimeout(400);
   ok(tabs.Log && tabs.Log.rows.length === 2, 'finishing an episode adds one Log line');
-  // the class atlas: totals for the class, no names
+  // the class atlas: totals for the class; names only in the top 5 (first names, ranked by pages finished)
   await bp.evaluate(() => { WW.save.episodes['1.2'] = { done: true, stars: 3 }; WW.store(); WW.sheetSync(); }); await bp.waitForTimeout(400);
   const cl = JSON.parse(box.doGet({ parameter: { action: 'class', cls: 'GEO-1' } }).text);
   ok(cl.ok && cl.students === 1 && cl.total >= 1 && cl.pages['1.2'] === 1, `the class atlas counts restored pages (${JSON.stringify(cl.pages)}, ${cl.students} student)`);
-  ok(!JSON.stringify(cl).includes('Ana'), 'the class atlas shows no names');
+  ok(!JSON.stringify(Object.assign({}, cl, { top: 0 })).includes('Ana'), 'the class atlas shows no names outside the top 5');
+  ok(cl.top.length === 1 && /^Ana$/.test(cl.top[0].name) && cl.top[0].pages === cl.total, `the top 5 shows first names and pages finished (${JSON.stringify(cl.top)})`);
+  // six more students: the board keeps the 5 with the most pages, first word of the name only
+  [['luis perez', 4], ['Mina', 2], ['zahra', 6], ['Omar', 1], ['Bea', 2], ['Kai', 0]].forEach(([name, n]) => {
+    const episodes = {}; for (let i = 1; i <= n; i++) episodes['1.' + i] = { done: true, stars: 1 };
+    box.save_({ cls: 'GEO-1', name, pin: '1234', state: { episodes } });
+  });
+  const top = JSON.parse(box.doGet({ parameter: { action: 'class', cls: 'GEO-1' } }).text).top;
+  ok(top.map(t => t.name + t.pages).join(' ') === 'Zahra6 Luis4 Bea2 Mina2 Ana1', `the top 5 ranks by pages finished (${top.map(t => t.name + ' ' + t.pages).join(', ')})`);
   const other = JSON.parse(box.doGet({ parameter: { action: 'class', cls: 'GEO-9' } }).text);
-  ok(other.ok && other.total === 0, 'another class sees only its own atlas');
+  ok(other.ok && other.total === 0 && other.top.length === 0, 'another class sees only its own atlas and top 5');
   // the camp is saved too: what you bought stays yours on another computer
   await bp.evaluate(() => { WW.camp.give('globe'); WW.save.camp.slots[0] = 'globe'; WW.store(); WW.sheetSync(); }); await bp.waitForTimeout(400);
   ok(/globe/.test(student().camp || ''), 'the camp is saved in the Sheet');
+  // the top 5 on the finish screen (after the page is saved) and on the world map
+  await bp.evaluate(() => WW.ui.finish());
+  await bp.waitForSelector('.finov .top5', { timeout: 5000 }).catch(() => { });
+  const fin = await bp.evaluate(() => { const t = document.querySelector('.finov .top5'); return t ? { text: t.innerText, me: (t.querySelector('li.me') || {}).innerText || '' } : null; });
+  ok(fin && /Zahra/.test(fin.text) && /Ana/.test(fin.me), `the finish screen shows the class top 5 with you marked (${fin && fin.me.replace(/\s+/g, ' ')})`);
+  fs.mkdirSync(path.join(ROOT, 'shots'), { recursive: true });
+  if (fin) await bp.locator('.finov .top5').screenshot({ path: path.join(ROOT, 'shots', 'board-finish.png') });
+  const hub = await ctxB.newPage({ viewport: { width: 1366, height: 768 } });
+  await hub.addInitScript(u => { let c; Object.defineProperty(window, 'WW_CONFIG', { get: () => c, set: v => { c = Object.assign(v, { SHEET_URL: u }); }, configurable: true }); }, SHEET);
+  await hub.goto('file://' + path.join(ROOT, 'game', 'index.html'));
+  await hub.waitForSelector('#classAtlas .top5', { timeout: 5000 }).catch(() => { });
+  const hb = await hub.evaluate(() => { const t = document.querySelector('#classAtlas .top5'); return t ? t.querySelectorAll('li').length : 0; });
+  ok(hb === 5, `the world map shows the class top 5 (${hb} names)`);
+  if (hb) await hub.screenshot({ path: path.join(ROOT, 'shots', 'board-map.png') });
   console.log(`  (${posts} saves sent)`);
   await b.close(); console.log(failed ? failed + ' failed' : 'all good'); process.exitCode = failed ? 1 : 0;
 })();

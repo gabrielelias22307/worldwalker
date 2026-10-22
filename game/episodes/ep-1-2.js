@@ -12,6 +12,51 @@ window.EPISODE = {
     { en: 'Oh no! The Grump ate every region line in Mapmaker\'s Valley.', es: '¡Oh, no! El Gruñón se comió todas las líneas de las regiones del Valle del Cartógrafo.', fa: 'وای! غرغرو همهٔ خط‌های منطقه‌ها را در درهٔ نقشه‌کش خورد.' },
     { en: 'Talk to the farmer, the boat pilot and the ranger. Then fix the compass stone.', es: 'Habla con la agricultora, el piloto del bote y la guardabosques. Luego arregla la piedra de la brújula.', fa: 'با دهقان، رانندهٔ کشتی و جنگلبان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-93.5, 42.0],
+    start: [
+      { en: 'Regions help us sort the world. Let\'s fly over the middle of the United States.',
+        es: 'Las regiones nos ayudan a ordenar el mundo. Volemos sobre el centro de Estados Unidos.',
+        fa: 'منطقه‌ها کمک می‌کنند جهان را دسته کنیم. بیا بالای وسط امریکا پرواز کنیم.' },
+      { en: 'Iowa grows more corn than any other U.S. state.',
+        es: 'Iowa cultiva más maíz que cualquier otro estado de Estados Unidos.',
+        fa: 'آیووا از هر ایالت دیگر امریکا جواری بیشتر می‌کارد.' },
+      { en: 'Each cell tower makes a functional region: the phones it serves.',
+        es: 'Cada torre de celular forma una región funcional: los teléfonos que atiende.',
+        fa: 'هر برج موبایل یک منطقهٔ کارکردی می‌سازد: موبایل‌هایی که به آن وصل‌اند.' }
+    ],
+    page: { en: 'The Mississippi River collects water from 31 U.S. states.',
+      es: 'El río Misisipi recoge agua de 31 estados de Estados Unidos.',
+      fa: 'دریای میسیسیپی آب ۳۱ ایالت امریکا را جمع می‌کند.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 2], name: { en: 'Grandpa Walt', es: 'Abuelo Walt', fa: 'پدرکلان والت' },
+      look: { skin: 0, hair: '#c8c4bc', shirt: '#b5652b', pants: '#3d5a80', style: 'short', hat: '#d9b45a' },
+      lines: [
+        { en: 'Come in, out of the dust! We start the wheat harvest next week.', es: '¡Pasa, sal del polvo! La próxima semana empezamos la cosecha de trigo.', fa: 'بیا داخل، از گرد و خاک بیرون شو! هفتهٔ آینده درو گندم را شروع می‌کنیم.' },
+        { en: 'From here to the fence, every farm grows wheat. Same soil, same rain.', es: 'De aquí hasta la cerca, todas las granjas siembran trigo. El mismo suelo, la misma lluvia.', fa: 'از اینجا تا کتاره، هر فارم گندم می‌کارد. همان خاک، همان باران.' }
+      ] },
+    { at: [26, 2], name: { en: 'Nurse Priya', es: 'Enfermera Priya', fa: 'نرس پریا' },
+      look: { skin: 3, hair: '#1b1410', shirt: '#6fb7d9', pants: '#6fb7d9', style: 'bun' },
+      lines: [
+        { en: 'Shh, the baby is asleep. I work nights at the Hub Town clinic.', es: 'Shh, el bebé está dormido. Trabajo de noche en la clínica de Pueblo Centro.', fa: 'هیس، طفل خواب است. من شب‌ها در کلینیک شهرک مرکز کار می‌کنم.' },
+        { en: 'Our clinic is a hub. Sick people come from every farm around.', es: 'Nuestra clínica es un centro. Los enfermos vienen de todas las granjas de alrededor.', fa: 'کلینیک ما یک مرکز است. مریضان از همهٔ فارم‌های اطراف می‌آیند.' }
+      ] },
+    { at: [29, 2], name: { en: 'Jamal', es: 'Jamal', fa: 'جمال' },
+      look: { skin: 5, hair: '#120c08', shirt: '#e0503a', pants: '#2b2b2b', style: 'short' },
+      lines: [
+        { en: 'Hey! I play music on Hub Town radio every morning.', es: '¡Hola! Pongo música en la radio de Pueblo Centro cada mañana.', fa: 'سلام! هر صبح در رادیوی شهرک مرکز موسیقی پخش می‌کنم.' },
+        { en: 'My signal reaches every farm, then fades past the woods. That is my region\'s edge.', es: 'Mi señal llega a cada granja y se apaga después del bosque. Ese es el borde de mi región.', fa: 'صدای رادیوی من به هر فارم می‌رسد و بعد از جنگل خاموش می‌شود. آنجا لبهٔ منطقهٔ من است.' }
+      ] },
+    { at: [28, 9], name: { en: 'Grandma Hoa', es: 'Abuela Hoa', fa: 'مادرکلان هوآ' },
+      look: { skin: 1, hair: '#bdbdbd', shirt: '#c94f7c', pants: '#2f2f4f', style: 'bun' },
+      lines: [
+        { en: 'Come in! I\'m making pho, a Vietnamese noodle soup. Want a bowl?', es: '¡Pasa! Estoy haciendo pho, una sopa vietnamita de fideos. ¿Quieres un plato?', fa: 'بیا داخل! فو می‌پزم، یک شوربای ویتنامی با رشته. یک کاسه می‌خواهی؟' },
+        { en: 'We call DC, Maryland and Virginia "the DMV." But where does it end? Nobody agrees!', es: 'Aquí le decimos "el DMV" a DC, Maryland y Virginia. ¿Pero dónde termina? ¡Nadie está de acuerdo!', fa: 'ما به دی‌سی، مریلند و ویرجینیا «دی‌ام‌وی» می‌گوییم. اما کجا تمام می‌شود؟ هیچ‌کس موافق نیست!' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      NW: the Wheat Belt, every field is wheat (formal region).

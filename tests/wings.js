@@ -20,6 +20,7 @@ async function open(b, vp, opt = {}) {
   await p.goto(file); await p.evaluate(() => localStorage.clear()); await p.goto(file);
   await p.fill('#si-name', 'Jay'); await p.locator('#ww-ov .pbtn.gold.big').click();
   await p.locator('#ww-ov .pbtn.gold.big').click();
+  await p.waitForSelector('.cutov'); await p.locator('.cutov .pbtn.ghost').click(); // Skip the cut scene
   return { p, ctx, errs };
 }
 const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, sy] = [Math.floor(g.player.x / 16), Math.floor(g.player.y / 11)];

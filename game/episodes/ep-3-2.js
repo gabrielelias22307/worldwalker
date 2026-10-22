@@ -11,6 +11,63 @@ window.EPISODE = {
     { en: 'The Grump scrambled the timetable! The Trans-Siberian train cannot leave Moscow.', es: '¡El Gruñón revolvió el horario! El tren Transiberiano no puede salir de Moscú.', fa: 'غرغرو جدول قطار را درهم کرد! قطار ترانس‌سیبری نمی‌تواند از مسکو حرکت کند.' },
         { en: 'Talk to the conductor, the forest ranger and the herder. Then fix the compass stone.', es: 'Habla con la conductora, la guardabosques y la pastora. Luego arregla la piedra de la brújula.', fa: 'با کنترولر قطار، نگهبان جنگل و چوپان گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [90.0, 58.0],
+    start: [
+      { en: 'Russia is the biggest country on Earth. It has 11 time zones.',
+        es: 'Rusia es el país más grande del mundo. Tiene 11 zonas horarias.',
+        fa: 'روسیه بزرگ‌ترین کشور جهان است. ۱۱ منطقهٔ زمانی دارد.' },
+      { en: 'The Trans-Siberian Railway runs about 5,800 miles, from Moscow to the Pacific.',
+        es: 'El Transiberiano recorre unos 9,300 kilómetros, de Moscú al océano Pacífico.',
+        fa: 'خط آهن ترانس‌سیبری حدود ۹۳۰۰ کیلومتر است، از مسکو تا اقیانوس آرام.' },
+      { en: 'Lake Baikal in Siberia is the deepest lake in the world.',
+        es: 'El lago Baikal, en Siberia, es el lago más profundo del mundo.',
+        fa: 'جهیل بایکال در سیبریا عمیق‌ترین جهیل جهان است.' }
+    ],
+    page: { en: 'Kazakhstan is the biggest landlocked country in the world.',
+      es: 'Kazajistán es el país sin salida al mar más grande del mundo.',
+      fa: 'قزاقستان بزرگ‌ترین کشور محاط به خشکه در جهان است.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [2, 6], name: { en: 'Grandma Nina', es: 'Abuela Nina', fa: 'مادرکلان نینا' },
+      look: { skin: 0, hair: '#cfcfcf', shirt: '#b8433a', pants: '#3a3a5a', style: 'bun', hat: '#e8c84a' },
+      lines: [
+        { en: 'Come in, take off your shoes! In summer I grow cucumbers at my dacha.', es: '¡Pasa, quítate los zapatos! En verano cultivo pepinos en mi dacha.', fa: 'بیا داخل، بوت‌هایت را بکش! تابستان در داچه‌ام بادرنگ می‌کارم.' },
+        { en: 'A dacha is a garden house. My pickles last all the long winter.', es: 'Una dacha es una casa con huerto. Mis pepinillos duran todo el largo invierno.', fa: 'داچه یک خانهٔ باغی است. ترشی‌هایم تا آخر زمستان دراز دوام می‌کنند.' }
+      ] },
+    { at: [6, 6], name: { en: 'Dima', es: 'Dima', fa: 'دیما' },
+      look: { skin: 0, hair: '#c89a50', shirt: '#3a7ad1', pants: '#2a2a3a', style: 'short' },
+      lines: [
+        { en: 'Hi! I am packing. Tomorrow I take the train east to visit my aunt.', es: '¡Hola! Estoy haciendo la maleta. Mañana tomo el tren al este para visitar a mi tía.', fa: 'سلام! بکسم را جمع می‌کنم. فردا با قطار به شرق می‌روم تا خاله‌ام را ببینم.' },
+        { en: 'When I go to bed in Moscow, my aunt in Vladivostok is waking up.', es: 'Cuando me acuesto en Moscú, mi tía en Vladivostok se está despertando.', fa: 'وقتی من در مسکو می‌خوابم، خاله‌ام در ولادی‌وستوک تازه بیدار می‌شود.' }
+      ] },
+    { at: [15, 7], name: { en: 'Grandpa Pavel', es: 'Abuelo Pavel', fa: 'پدرکلان پاول' },
+      look: { skin: 1, hair: '#e0e0e0', shirt: '#4a7a5a', pants: '#3a2e24', style: 'short' },
+      lines: [
+        { en: 'Welcome! Look at this green stone. It comes from the Ural Mountains.', es: '¡Bienvenido! Mira esta piedra verde. Viene de los montes Urales.', fa: 'خوش آمدی! این سنگ سبز را ببین. از کوه‌های اورال می‌آید.' },
+        { en: 'The Urals split Europe and Asia. My sister lives in Europe, I live in Asia!', es: 'Los Urales dividen Europa y Asia. ¡Mi hermana vive en Europa y yo en Asia!', fa: 'اورال اروپا و آسیا را جدا می‌کند. خواهرم در اروپا زندگی می‌کند، من در آسیا!' }
+      ] },
+    { at: [25, 6], name: { en: 'Lena', es: 'Lena', fa: 'لینا' },
+      look: { skin: 1, hair: '#5a3a1e', shirt: '#8e5bd6', pants: '#2f2f4f', style: 'long' },
+      lines: [
+        { en: 'Shh, the baby is asleep. Outside it is colder than your freezer!', es: 'Shh, el bebé está dormido. ¡Afuera hace más frío que en tu congelador!', fa: 'آهسته، طفل خواب است. بیرون از فریزر هم سردتر است!' },
+        { en: 'Our city grew up where the railway bridge crossed the wide Ob River.', es: 'Nuestra ciudad creció donde el puente del tren cruzó el ancho río Obi.', fa: 'شهر ما جایی بزرگ شد که پل خط آهن از دریای پهن اوب می‌گذشت.' }
+      ] },
+    { at: [34, 7], name: { en: 'Bair', es: 'Bair', fa: 'بایر' },
+      look: { skin: 2, hair: '#141414', shirt: '#2e6f8e', pants: '#3a3a3a', style: 'short', hat: '#7a2a2a' },
+      lines: [
+        { en: 'Warm up by the stove! In winter, Lake Baikal freezes thick enough for cars.', es: '¡Caliéntate junto a la estufa! En invierno, el hielo del lago Baikal aguanta hasta carros.', fa: 'کنار بخاری گرم شو! در زمستان یخ جهیل بایکال آنقدر ضخیم است که موتر از رویش می‌رود.' },
+        { en: 'I cut a hole and fish for omul. Only Baikal has this fish.', es: 'Hago un hueco y pesco omul. Este pez solo vive en el Baikal.', fa: 'یک سوراخ می‌کنم و ماهی اومول می‌گیرم. این ماهی فقط در بایکال است.' }
+      ] },
+    { at: [42, 6], name: { en: 'Anya', es: 'Anya', fa: 'آنیا' },
+      look: { skin: 0, hair: '#9a3a1a', shirt: '#1f7a7a', pants: '#2a2a40', style: 'long' },
+      lines: [
+        { en: 'You came all the way! This is the end of the railway, on the Pacific.', es: '¡Llegaste hasta aquí! Este es el final del ferrocarril, junto al Pacífico.', fa: 'تا اینجا آمدی! اینجا آخر خط آهن است، کنار بحر آرام.' },
+        { en: 'Here, trains meet ships. Ships sail on to Japan, Korea and China.', es: 'Aquí los trenes se encuentran con los barcos. Los barcos siguen a Japón, Corea y China.', fa: 'اینجا قطار به کشتی می‌رسد. کشتی‌ها به جاپان، کوریا و چین می‌روند.' }
+      ] }
+  ],
 
   map: [
     '================================================',
@@ -20,7 +77,7 @@ window.EPISODE = {
     'P..x..T...MMnnnnnnnPnnnnnnnPPnPnnnnnPnPnPnnnPn~=',
     'PRRR.QQQ..MMPPPnnnnPPJJnRRRPPnnPPnnnnPnPnRRRnP~=',
     'Phdh.hdh..MMPQQQnnnPPJJnhdhnPnPnPQQQPnPnnhdhnn~=',
-    'P.........MMnhdhnPnnnnnnnnnnPnPnPhdhmmnPnnnnnn~=',
+    'P.........MMnhhdnPnnnnnnnnnnPnPnPhdhmmnPnnnnnn~=',
     'P.........MMxnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnk=',
     'P---------------------------------------------k=',
     'PT........MMnnnnnnnnnnnnnnnnnnnnnnnnnnnn~~nnnn~=',

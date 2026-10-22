@@ -15,6 +15,57 @@ window.EPISODE = {
       es: 'Habla con la vendedora del mercado, el capitán y la piloto. Luego arregla la piedra de la brújula.',
       fa: 'با فروشندهٔ بازار، کپتان کشتی و پیلوت گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [15.3, -4.3],
+    start: [
+      { en: 'Welcome to Kinshasa, the capital of DR Congo, on the Congo River.',
+        es: 'Bienvenido a Kinsasa, la capital de la RD del Congo, junto al río Congo.',
+        fa: 'به کینشاسا خوش آمدی، پایتخت کانگو، کنار دریای کانگو.' },
+      { en: 'Kinshasa has more than 15 million people. It is growing very fast.',
+        es: 'Kinsasa tiene más de 15 millones de personas. Crece muy rápido.',
+        fa: 'کینشاسا بیشتر از ۱۵ میلیون نفر دارد. خیلی زود بزرگ می‌شود.' },
+      { en: 'Brazzaville, the capital of another country, sits just across the river.',
+        es: 'Brazzaville, la capital de otro país, está justo al otro lado del río.',
+        fa: 'برازاویل، پایتخت یک کشور دیگر، درست آن طرف دریا است.' }
+    ],
+    page: { en: 'The Congo is the world\'s deepest river, over 700 feet deep in places.',
+      es: 'El Congo es el río más profundo del mundo, con más de 200 metros en partes.',
+      fa: 'کانگو عمیق‌ترین دریای جهان است. بعضی جاها بیشتر از ۲۰۰ متر عمق دارد.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 13], name: { en: 'Papa Kalala', es: 'Papá Kalala', fa: 'بابا کالالا' },
+      look: { skin: 5, hair: '#2a2a2a', shirt: '#f2c94c', pants: '#2a2a2a', style: 'short', hat: '#8a2a2a' },
+      lines: [
+        { en: 'Come in! I am tuning my guitar. Tonight we play rumba.', es: '¡Pasa! Estoy afinando mi guitarra. Esta noche tocamos rumba.', fa: 'بیا داخل! گیتارم را کوک می‌کنم. امشب رومبا می‌نوازیم.' },
+        { en: 'Cuban records reached Kinshasa long ago. Our musicians made rumba their own.', es: 'Hace mucho, llegaron discos cubanos a Kinshasa. Nuestros músicos hicieron suya la rumba.', fa: 'در زمان قدیم صفحه‌های موسیقی کیوبایی به کینشاسا رسید. موسیقی‌دانان ما رومبا را از خود ساختند.' }
+      ] },
+    { at: [9, 13], name: { en: 'Divine', es: 'Divine', fa: 'دیوین' },
+      look: { skin: 4, hair: '#141414', shirt: '#4a9ad1', pants: '#1f3a6a', style: 'bun' },
+      lines: [
+        { en: 'Hi! I am studying for a test. My school is just up the road.', es: '¡Hola! Estoy estudiando para un examen. Mi escuela está aquí cerca.', fa: 'سلام! برای امتحان درس می‌خوانم. مکتبم همین نزدیک سرک است.' },
+        { en: 'At school we speak French. At home, Lingala. With Grandma, Kikongo.', es: 'En la escuela hablamos francés. En casa, lingala. Con la abuela, kikongo.', fa: 'در مکتب فرانسوی گپ می‌زنیم. در خانه لینگالا. با مادرکلانم کیکونگو.' }
+      ] },
+    { at: [12, 13], name: { en: 'Bienvenu', es: 'Bienvenu', fa: 'بیانونو' },
+      look: { skin: 5, hair: '#1a1a1a', shirt: '#3a9a5a', pants: '#4a3a2a', style: 'short' },
+      lines: [
+        { en: 'I came from my village last year, to find work in the city.', es: 'Vine de mi pueblo el año pasado para buscar trabajo en la ciudad.', fa: 'سال گذشته از قریه‌ام آمدم تا در شهر کار پیدا کنم.' },
+        { en: 'Now I fix phones near the market. I send money home to my mother.', es: 'Ahora arreglo celulares cerca del mercado. Le mando dinero a mi mamá.', fa: 'حالا نزدیک بازار موبایل جور می‌کنم. برای مادرم پول می‌فرستم.' }
+      ] },
+    { at: [4, 18], name: { en: 'Mama Nsimba', es: 'Mamá Nsimba', fa: 'ماما نسیمبا' },
+      look: { skin: 4, hair: '#222222', shirt: '#e05a2a', pants: '#2a6a5a', style: 'bun', hat: '#f2c94c' },
+      lines: [
+        { en: 'Careful, the pot is hot! I am cooking cassava leaves, called pondu.', es: '¡Cuidado, la olla está caliente! Estoy cocinando hojas de yuca, llamadas pondu.', fa: 'احتیاط، دیگ داغ است! برگ‌های کاساوا می‌پزم که نامش پوندو است.' },
+        { en: 'Cassava grows well in hot, rainy places. Its roots become our flour.', es: 'La yuca crece bien en lugares calientes y lluviosos. Sus raíces se vuelven nuestra harina.', fa: 'کاساوا در جاهای گرم و بارانی خوب می‌روید. از ریشه‌اش آرد می‌سازیم.' }
+      ] },
+    { at: [11, 18], name: { en: 'Grandpa Mukendi', es: 'Abuelo Mukendi', fa: 'پدرکلان موکندی' },
+      look: { skin: 3, hair: '#cccccc', shirt: '#6a4ad1', pants: '#3a3a3a', style: 'short' },
+      lines: [
+        { en: 'Listen! When the rain hits our metal roof, it sounds like drums.', es: '¡Escucha! Cuando la lluvia cae en nuestro techo de lámina, suena como tambores.', fa: 'گوش کن! وقتی باران به بام آهنی ما می‌خورد، مثل دهل صدا می‌دهد.' },
+        { en: 'Most rain falls from October to May. Then the big river rises.', es: 'Casi toda la lluvia cae de octubre a mayo. Entonces el gran río crece.', fa: 'بیشتر باران از اکتوبر تا ماه می می‌بارد. آن وقت دریای بزرگ بالا می‌آید.' }
+      ] }
+  ],
 
   /* 32 x 22 tiles = 2 x 2 screens. The Congo River runs along the top, with two docks. Market top-left, homes bottom-left, downtown bottom-right. */
   map: [

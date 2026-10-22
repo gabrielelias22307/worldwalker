@@ -11,7 +11,7 @@ let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); i
   await p.evaluate(() => { localStorage.clear(); localStorage.setItem('worldwalker.save.v1', JSON.stringify({ v: 1, name: 'Camper', cls: 'GEO-1', look: {}, stats: { loc: 4 }, coins: 40, episodes: { '1.1': { done: true, stars: 3 }, '1.2': { done: true, stars: 2 }, '1.3': { done: true, stars: 1 }, '2.1': { done: true, stars: 2 } }, bag: { wood: { got: 6, used: 0 }, fiber: { got: 5, used: 0 } }, lang: 'en', sound: false, music: false })); });
   await p.goto(url);
   await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForSelector('.introov');
-  await p.locator('#ww-ov .pbtn.gold.big').click(); await p.waitForFunction(() => !WW.paused);
+  await p.locator('#ww-ov .pbtn.gold.big').click(); await p.evaluate(() => WW.scene.skip()); await p.waitForFunction(() => !WW.paused);
   await p.click('#ww-b-pass'); await p.waitForSelector('.passov');
   await p.locator('.campbtn').click(); await p.waitForSelector('.campov .campcv');
   // buy a lantern (2 wood + 5 coins) and a rug (4 fiber); a globe costs 25 coins

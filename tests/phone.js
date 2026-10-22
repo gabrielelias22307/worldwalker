@@ -99,6 +99,7 @@ async function play(b, id) {
     await tap('#ww-ov .pbtn.gold.big'); await p.waitForSelector('.introov');
     await checkPanel('intro'); await shot('1-intro');
     await tap('#ww-ov .pbtn.gold.big');
+    await p.waitForSelector('.cutov'); await p.waitForTimeout(1500); await checkPanel('cut scene'); await shot('1b-scene'); await tap('.cutov .pbtn.ghost'); // fun-pass-4
     for (let i = 0; i < 8 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble', { state: 'visible' }); await p.tap('.cbubble'); await p.waitForTimeout(150); }
     ok(true, 'signed in, read the intro and met Christopher with taps');
     await shot('2-map');

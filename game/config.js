@@ -4,5 +4,6 @@
    TEACHER_CODE  – type this on the world map to open every episode for a student. */
 window.WW_CONFIG = {
   SHEET_URL: '',
-  TEACHER_CODE: 'ATLAS'
+  TEACHER_CODE: 'ATLAS',
+  OPEN_ALL: false   // true opens every episode on the world map from the start (used for the Netlify version)
 };

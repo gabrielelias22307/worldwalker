@@ -11,6 +11,45 @@ window.EPISODE = {
     { en: 'The Grump rolled through! The Outback, the coast and the islands are mixed up.', es: '¡El Gruñón pasó por aquí! El Outback, la costa y las islas están mezclados.', fa: 'غرغرو از اینجا گذشت! اوت‌بک، ساحل و جزیره‌ها با هم مخلوط شده‌اند.' },
     { en: 'Talk to the ranger, ferry captain and reef scientist. Then fix the Outback stone.', es: 'Habla con el guardaparques, la capitana del ferry y la científica del arrecife. Luego arregla la piedra del Outback.', fa: 'با محافظ پارک، کپتان کشتی و دانشمند مرجان گپ بزن. بعد سنگ اوت‌بک را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [151.2, -33.9],
+    start: [
+      { en: 'Welcome to Sydney, Australia, a big city on a deep harbor.',
+        es: 'Bienvenido a Sídney, Australia, una gran ciudad junto a una bahía profunda.',
+        fa: 'به سیدنی در آسترالیا خوش آمدی، شهری بزرگ کنار یک بندر عمیق.' },
+      { en: 'Australia is the only country that covers a whole continent.',
+        es: 'Australia es el único país que ocupa todo un continente.',
+        fa: 'آسترالیا تنها کشوری است که یک قارهٔ کامل را می‌پوشاند.' },
+      { en: 'Most Australians live near the coast, far from the dry Outback.',
+        es: 'La mayoría de los australianos vive cerca de la costa, lejos del Outback seco.',
+        fa: 'بیشتر مردم آسترالیا نزدیک ساحل زندگی می‌کنند، دور از اوتبک خشک.' }
+    ],
+    page: { en: 'The Great Barrier Reef is the biggest coral reef system on Earth.',
+      es: 'La Gran Barrera de Coral es el sistema de arrecifes más grande del mundo.',
+      fa: 'دیوار بزرگ مرجانی بزرگ‌ترین مجموعهٔ صخره‌های مرجانی جهان است.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [39, 6], name: { en: 'Grandpa Sione', es: 'Abuelo Sione', fa: 'پدرکلان سیونه' },
+      look: { skin: 4, hair: '#bdbdbd', shirt: '#2f8f7f', pants: '#e8e0c8', style: 'short' },
+      lines: [
+        { en: 'Come in! Have some taro from my garden. Volcano soil is very rich.', es: '¡Pasa! Come un poco de taro de mi huerto. La tierra volcánica es muy rica.', fa: 'بیا داخل! کمی تارو از باغچه‌ام بخور. خاک آتشفشانی خیلی حاصلخیز است.' },
+        { en: 'Our island is high, so rising seas worry us less than the atolls.', es: 'Nuestra isla es alta, así que el mar que sube nos preocupa menos que a los atolones.', fa: 'جزیرهٔ ما بلند است، پس بالا آمدن بحر ما را کمتر از اتول‌ها نگران می‌کند.' }
+      ] },
+    { at: [6, 14], name: { en: 'Grandma Nell', es: 'Abuela Nell', fa: 'مادرکلان نِل' },
+      look: { skin: 0, hair: '#e8e4dc', shirt: '#c26a3a', pants: '#5a4a3a', hat: '#b89a6a' },
+      lines: [
+        { en: 'Come in out of the heat! The supply truck comes only once a week.', es: '¡Pasa, sal del calor! El camión de provisiones viene solo una vez por semana.', fa: 'بیا داخل، از گرما بیرون شو! لاری اموال فقط هفته‌ای یک بار می‌آید.' },
+        { en: 'The next big town is hours away. Some kids out here do school online.', es: 'El siguiente pueblo grande está a horas. Algunos niños de aquí estudian por internet.', fa: 'شهر بزرگ بعدی چند ساعت دور است. بعضی اطفال اینجا از راه انترنت درس می‌خوانند.' }
+      ] },
+    { at: [24, 18], name: { en: 'Ahmed', es: 'Ahmed', fa: 'احمد' },
+      look: { skin: 2, hair: '#1e1612', shirt: '#3a8fd6', pants: '#e0c070', style: 'short' },
+      lines: [
+        { en: 'Careful, my surfboard is drying by the door. The beach is ten minutes away!', es: 'Cuidado, mi tabla de surf se está secando junto a la puerta. ¡La playa está a diez minutos!', fa: 'احتیاط، تختهٔ موج‌سواری‌ام کنار دروازه خشک می‌شود. ساحل ده دقیقه دور است!' },
+        { en: 'My parents came from Lebanon. Many Sydney families came from across the world.', es: 'Mis papás vinieron del Líbano. Muchas familias de Sídney vinieron de todo el mundo.', fa: 'پدر و مادرم از لبنان آمدند. خانواده‌های زیادی در سیدنی از سراسر جهان آمده‌اند.' }
+      ] }
+  ],
 
   /* 48 x 22 tiles = 3 x 2 screens.
      West: the dry Outback (sand, dry grass, rocks, a big red rock like Uluru, one small town far from everything).

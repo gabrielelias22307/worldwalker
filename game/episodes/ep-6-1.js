@@ -16,6 +16,39 @@ window.EPISODE = {
       es: 'Habla con el agricultor de té, la agricultora de arroz y el pescador. Luego arregla la piedra.',
       fa: 'با دهقان چای، دهقان برنج و ماهیگیر گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [83.0, 25.3],
+    start: [
+      { en: 'Welcome to the Ganges Plain in India, one of the most crowded places on Earth.',
+        es: 'Bienvenido a la llanura del Ganges, en India, uno de los lugares con más gente del mundo.',
+        fa: 'به دشت گنگا در هند خوش آمدی، یکی از پرجمعیت‌ترین جاهای جهان.' },
+      { en: 'India has more people than any other country.',
+        es: 'India tiene más personas que cualquier otro país.',
+        fa: 'هند از هر کشور دیگر جمعیت بیشتری دارد.' },
+      { en: 'Thanks to the monsoon, Mawsynram, India, is one of the rainiest places on Earth.',
+        es: 'Por el monzón, Mawsynram, en India, es uno de los lugares más lluviosos del mundo.',
+        fa: 'به خاطر مونسون، ماوسینرام در هند یکی از پرباران‌ترین جاهای جهان است.' }
+    ],
+    page: { en: 'Mount Everest, the highest mountain on Earth, is in the Himalaya.',
+      es: 'El monte Everest, la montaña más alta del mundo, está en el Himalaya.',
+      fa: 'کوه اورست، بلندترین کوه جهان، در هیمالیا است.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [9, 13], name: { en: 'Aunt Meena', es: 'Tía Meena', fa: 'خاله مینا' },
+      look: { skin: 3, hair: '#1a1210', shirt: '#d6409a', pants: '#5a3a2a', style: 'bun' },
+      lines: [
+        { en: 'Careful, the floor is wet! The monsoon rain came in the night.', es: '¡Cuidado, el piso está mojado! La lluvia del monzón llegó en la noche.', fa: 'احتیاط کن، زمین تر است! باران موسمی دیشب آمد.' },
+        { en: 'Our house sits up high on a mud base, so floods stay outside.', es: 'Nuestra casa está en alto, sobre una base de barro, así las inundaciones se quedan afuera.', fa: 'خانهٔ ما روی یک تهداب بلند گِلی است، پس سیلاب بیرون می‌ماند.' }
+      ] },
+    { at: [15, 13], name: { en: 'Grandpa Ravi', es: 'Abuelo Ravi', fa: 'پدرکلان راوی' },
+      look: { skin: 4, hair: '#e8e8e8', shirt: '#f0ead8', pants: '#7a6a4a', style: 'short' },
+      lines: [
+        { en: 'Rice in the wet summer, wheat in the cool winter. Same field!', es: 'Arroz en el verano lluvioso, trigo en el invierno fresco. ¡El mismo campo!', fa: 'برنج در تابستان بارانی، گندم در زمستان سرد. همان یک زمین!' },
+        { en: 'The Ganges leaves rich soil every year. That is why so many people live here.', es: 'El Ganges deja tierra rica cada año. Por eso vive tanta gente aquí.', fa: 'گنگا هر سال خاک حاصلخیز می‌گذارد. برای همین این‌قدر مردم این‌جا زندگی می‌کنند.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      Rows 0-2: the Himalaya (A, M). Rows 3-4: tea terraces (t). The Ganges (~) starts in the ice at the top,

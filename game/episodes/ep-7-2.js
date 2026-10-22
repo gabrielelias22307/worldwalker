@@ -12,6 +12,39 @@ window.EPISODE = {
     { en: 'The Grump washed away the new city\'s plans! Help the people find a good place.', es: '¡El Gruñón borró los planos de la ciudad nueva! Ayuda a la gente a encontrar un buen lugar.', fa: 'غرغرو نقشه‌های شهر نو را شست و برد! به مردم کمک کن یک جای خوب پیدا کنند.' },
     { en: 'Meet the road keeper, rice farmer and harbor pilot. Then climb to the compass stone.', es: 'Habla con el guardián del camino, la agricultora de arroz y el capitán del puerto. Luego sube a la piedra de la brújula.', fa: 'با نگهبان راه، دهقان برنج و رهنمای بندر گپ بزن. بعد تا سنگ قطب‌نما بالا برو.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [121.5, 31.2],
+    start: [
+      { en: 'Welcome to Shanghai, where the Yangtze River meets the sea.',
+        es: 'Bienvenido a Shanghái, donde el río Yangtsé llega al mar.',
+        fa: 'به شانگهای خوش آمدی، جایی که دریای یانگ‌تسه به بحر می‌رسد.' },
+      { en: 'Shanghai\'s port moves more containers than any other port in the world.',
+        es: 'El puerto de Shanghái mueve más contenedores que cualquier otro puerto del mundo.',
+        fa: 'بندر شانگهای از هر بندر دیگر جهان کانتینر بیشتری جابه‌جا می‌کند.' },
+      { en: 'Its situation is great: rivers reach far inland, and ships reach the whole world.',
+        es: 'Su situación es muy buena: los ríos llegan tierra adentro y los barcos, al mundo entero.',
+        fa: 'موقعیتش عالی است: دریاها تا دور در خشکه می‌روند و کشتی‌ها به همهٔ جهان.' }
+    ],
+    page: { en: 'Hong Kong, Shenzhen and Guangzhou all grew where the Pearl River meets the sea.',
+      es: 'Hong Kong, Shenzhen y Cantón crecieron donde el río de las Perlas llega al mar.',
+      fa: 'هانگ‌کانگ، شنژن و گوانگجو همه جایی بزرگ شدند که دریای مروارید به بحر می‌رسد.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [8, 2], name: { en: 'Grandpa Lin', es: 'Abuelo Lin', fa: 'پدرکلان لین' },
+      look: { skin: 2, hair: '#cfcfcf', shirt: '#6b8f4e', pants: '#3d3a33', style: 'short' },
+      lines: [
+        { en: 'Come in! My village is old. We built it here to stay above floods.', es: '¡Pasa! Mi aldea es vieja. La construimos aquí para quedar arriba de las inundaciones.', fa: 'بیا داخل! قریهٔ ما کهنه است. آن را اینجا ساختیم تا بالاتر از سیلاب باشد.' },
+        { en: 'But only one small path goes out. So our town never grew big.', es: 'Pero solo sale un caminito. Por eso nuestro pueblo nunca creció mucho.', fa: 'اما فقط یک راه کوچک از اینجا بیرون می‌رود. برای همین شهرک ما هیچ‌وقت بزرگ نشد.' }
+      ] },
+    { at: [20, 16], name: { en: 'Cook Ying', es: 'Cocinera Ying', fa: 'آشپز یینگ' },
+      look: { skin: 1, hair: '#141010', shirt: '#e0e0d8', pants: '#2b4a6b', style: 'bun' },
+      lines: [
+        { en: 'Shh, my son is sleeping. He unloads ships all night at the river mouth.', es: 'Shh, mi hijo está durmiendo. Él descarga barcos toda la noche en la desembocadura.', fa: 'شش، پسرم خواب است. او تمام شب در دهانهٔ دریا بار کشتی‌ها را خالی می‌کند.' },
+        { en: 'River boats and sea ships meet right here, so there is always work.', es: 'Los botes del río y los barcos del mar se juntan aquí, así que siempre hay trabajo.', fa: 'قایق‌های دریا و کشتی‌های بحر همین‌جا به هم می‌رسند، پس همیشه کار هست.' }
+      ] }
+  ],
 
   map: [
     'AAMAAMATTTTTT~~TTTTTTTTTTTTTTTTT',

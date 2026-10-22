@@ -49,6 +49,14 @@ function checkEpisode(file) {
   if (!Array.isArray(ep.learned) || ep.learned.length < 3) errs.push('learned[] needs 3 lines');
   if (!ep.reflect || !ep.reflect.q || !ep.reflect.starter) errs.push('reflect {q, starter} missing');
   for (const k in ep.words || {}) if (k !== k.toLowerCase()) errs.push(`words key "${k}" must be lower case`);
+  // cut scenes (fun-pass-4): where the place is, 2-3 facts after Start, 1 fact after the page
+  const sc = ep.scenes;
+  if (!sc) errs.push('scenes { at, start, page } missing');
+  else {
+    if (!Array.isArray(sc.at) || sc.at.length !== 2 || !(Math.abs(sc.at[0]) <= 180) || !(sc.at[1] <= 82 && sc.at[1] >= -58)) errs.push('scenes.at must be [longitude, latitude] (latitude 82 to -58)');
+    if (!Array.isArray(sc.start) || sc.start.length < 2 || sc.start.length > 3) errs.push('scenes.start needs 2 or 3 facts');
+    if (!sc.page || !sc.page.en) errs.push('scenes.page needs one fact');
+  }
 
   /* ---- map ---- */
   const map = ep.map || [];
@@ -57,6 +65,17 @@ function checkEpisode(file) {
   if (W % SW || H % SH || !W) errs.push(`map is ${W}x${H}; width must be a multiple of 16 and height of 11`);
   map.forEach((r, y) => [...r].forEach((ch, x) => { if (!WW.tiles[ch]) errs.push(`map (${x},${y}) unknown tile "${ch}"`); }));
   if (errs.some(e => e.startsWith('map'))) return { errs, warns, ep };
+  // houses (fun-pass-4): every door has someone living behind it: { at: [x, y], name, look, lines: [2-3] }
+  map.forEach((r, y) => [...r].forEach((ch, x) => {
+    if (ch !== 'd' || !WW.solid((map[y - 1] || '')[x]) || WW.solid((map[y + 1] || '')[x])) return; // a house door: a building above, open ground below
+    const hs = (ep.houses || []).filter(h => h.at && h.at[0] === x && h.at[1] === y);
+    if (hs.length !== 1) errs.push(`door (${x},${y}) needs exactly one houses entry (has ${hs.length})`);
+  }));
+  (ep.houses || []).forEach((h, i) => {
+    if (!h.at || (map[h.at[1]] || '')[h.at[0]] !== 'd') errs.push(`houses[${i}] at ${h.at} is not on a door`);
+    if (!h.name || !h.look || !Array.isArray(h.lines) || h.lines.length < 2 || h.lines.length > 3) errs.push(`houses[${i}] needs name, look and 2-3 lines`);
+    if (h.at && WW.solid((map[h.at[1] + 1] || '')[h.at[0]])) errs.push(`houses[${i}]: the square below the door must be open`);
+  });
   const tile = (x, y) => (map[y] || '')[x];
   const solid = (x, y) => x < 0 || y < 0 || x >= W || y >= H || WW.solid(tile(x, y));
   const blockers = new Map();
@@ -363,6 +382,8 @@ function checkEpisode(file) {
       }
     }
     (ep.signs || []).forEach((sg, i) => box(sg.text, `sign ${i + 1}`, 20));
+    (ep.houses || []).forEach((h, i) => (h.lines || []).forEach((o, k) => box(o, `houses[${i}] ${strip((h.name || {}).en)} line ${k + 1}`)));
+    if (ep.scenes) { (ep.scenes.start || []).forEach((o, i) => box(o, `scenes.start[${i}]`)); box(ep.scenes.page, 'scenes.page'); }
     (ep.finds || []).forEach((f, i) => { box(f.clue, `find ${i + 1} clue`, 20); box(f.text, `find ${i + 1} text`, 20); });
     // the right answer should not give itself away by being the longest
     const sets = [];

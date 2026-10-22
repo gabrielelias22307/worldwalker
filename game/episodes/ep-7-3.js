@@ -12,6 +12,69 @@ window.EPISODE = {
     { en: 'The Grump jammed the supply chain! Phones are stuck halfway, and the stores are empty.', es: '¡El Gruñón trabó la cadena de suministro! Los teléfonos están atascados y las tiendas, vacías.', fa: 'غرغرو زنجیرهٔ تأمین را بند کرد! مبایل‌ها نیمه‌راه گیر مانده‌اند و دکان‌ها خالی هستند.' },
     { en: 'Talk to the chip engineer, line leader and crane operator. Then fix the stone.', es: 'Habla con la ingeniera de chips, la jefa de línea y el operador de grúa. Luego arregla la piedra.', fa: 'با انجنیر چِپ، سرپرست خط و کارگر جرثقیل گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [121.0, 24.0],
+    start: [
+      { en: 'Welcome to Taiwan, an island that makes many of the world\'s computer chips.',
+        es: 'Bienvenido a Taiwán, una isla que hace muchos de los chips de computadora del mundo.',
+        fa: 'به تایوان خوش آمدی، جزیره‌ای که بسیاری از چیپ‌های کمپیوتر جهان را می‌سازد.' },
+      { en: 'One phone holds parts made in many different countries.',
+        es: 'Un solo teléfono tiene piezas hechas en muchos países distintos.',
+        fa: 'یک موبایل پرزه‌هایی دارد که در کشورهای زیادی ساخته شده‌اند.' },
+      { en: 'Most of the world\'s trade travels by ship.',
+        es: 'La mayor parte del comercio del mundo viaja en barco.',
+        fa: 'بیشتر تجارت جهان با کشتی جابه‌جا می‌شود.' }
+    ],
+    page: { en: 'The biggest container ships are almost as long as four football fields.',
+      es: 'Los barcos de contenedores más grandes miden casi lo mismo que cuatro canchas de fútbol.',
+      fa: 'بزرگ‌ترین کشتی‌های کانتینر تقریباً به درازی چهار میدان فوتبال هستند.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [19, 4], name: { en: 'Wei-ling', es: 'Wei-ling', fa: 'وی‌لینگ' },
+      look: { skin: 1, hair: '#16110d', shirt: '#f2f2f2', pants: '#9fb4c8', style: 'long' },
+      lines: [
+        { en: 'Hi! I\'m on my break. In there, I wear a full white suit.', es: '¡Hola! Estoy en mi descanso. Allá adentro uso un traje blanco completo.', fa: 'سلام! وقت استراحتم است. آن داخل، یک لباس سفید کامل می‌پوشم.' },
+        { en: 'One speck of dust can ruin a chip. So the air is super clean.', es: 'Una pizca de polvo puede arruinar un chip. Por eso el aire es superlimpio.', fa: 'یک ذره گرد می‌تواند یک چیپ را خراب کند. برای همین هوا خیلی پاک است.' }
+      ] },
+    { at: [23, 4], name: { en: 'Mr. Tsai', es: 'Sr. Tsai', fa: 'آقای تسای' },
+      look: { skin: 2, hair: '#3a3a3a', shirt: '#4a6fa5', pants: '#2a2a33', style: 'short' },
+      lines: [
+        { en: 'Tea break! Want a cup? I pack chips into tiny trays all day.', es: '¡Pausa para el té! ¿Quieres una taza? Empaco chips en bandejitas todo el día.', fa: 'وقت چای! یک پیاله می‌خواهی؟ من تمام روز چیپ‌ها را در قطی‌های کوچک بسته می‌کنم.' },
+        { en: 'Chips are small but cost a lot, so many fly by plane, not ship.', es: 'Los chips son pequeños pero caros, así que muchos viajan en avión, no en barco.', fa: 'چیپ‌ها کوچک اما قیمتی هستند، پس بسیاری با طیاره می‌روند، نه با کشتی.' }
+      ] },
+    { at: [26, 4], name: { en: 'Joy', es: 'Joy', fa: 'جوی' },
+      look: { skin: 3, hair: '#100c0a', shirt: '#e3a33b', pants: '#3b4a5e', style: 'long' },
+      lines: [
+        { en: 'Come sit! I came from the Philippines to work here.', es: '¡Ven, siéntate! Vine de Filipinas a trabajar aquí.', fa: 'بیا بنشین! من از فیلیپین آمدم تا اینجا کار کنم.' },
+        { en: 'I send money home each month. Workers move along supply chains too!', es: 'Cada mes mando dinero a casa. ¡Los trabajadores también se mueven en las cadenas de suministro!', fa: 'هر ماه به خانه پول می‌فرستم. کارگرها هم در زنجیرهٔ تأمین جابه‌جا می‌شوند!' }
+      ] },
+    { at: [3, 14], name: { en: 'Ah-ming', es: 'Ah-ming', fa: 'آمینگ' },
+      look: { skin: 2, hair: '#1c1612', shirt: '#3f8f6a', pants: '#33333d', style: 'short', hat: '#2e5f8a' },
+      lines: [
+        { en: 'Five more minutes of break! Then I snap screens onto phones again.', es: '¡Cinco minutos más de descanso! Después vuelvo a poner pantallas en teléfonos.', fa: 'پنج دقیقهٔ دیگر استراحت! بعد دوباره صفحه‌ها را روی موبایل‌ها می‌چسپانم.' },
+        { en: 'Screens come from one country, batteries from another. We put them together.', es: 'Las pantallas vienen de un país y las baterías de otro. Aquí las juntamos.', fa: 'صفحه‌ها از یک کشور می‌آیند و بتری‌ها از کشور دیگر. ما اینجا آن‌ها را یکجا می‌کنیم.' }
+      ] },
+    { at: [9, 14], name: { en: 'Shu-fen', es: 'Shu-fen', fa: 'شوفن' },
+      look: { skin: 1, hair: '#2a1d16', shirt: '#b05a9a', pants: '#2f2f3f', style: 'bun' },
+      lines: [
+        { en: 'Careful, the floor is wet. I just mopped up my spilled soup.', es: 'Cuidado, el piso está mojado. Acabo de limpiar mi sopa derramada.', fa: 'احتیاط، زمین تر است. همین حالا شوربای ریخته‌ام را پاک کردم.' },
+        { en: 'I test every phone. If one part is late, the whole line stops.', es: 'Pruebo cada teléfono. Si una pieza llega tarde, toda la línea se detiene.', fa: 'من هر موبایل را امتحان می‌کنم. اگر یک پرزه دیر برسد، تمام خط کار می‌ایستد.' }
+      ] },
+    { at: [17, 17], name: { en: 'Grandma Mei-hua', es: 'Abuela Mei-hua', fa: 'مادرکلان می‌هوا' },
+      look: { skin: 1, hair: '#e0e0e0', shirt: '#8e5bd6', pants: '#3a3a5a', style: 'short' },
+      lines: [
+        { en: 'Come in! My grandson works at the port, loading big metal boxes.', es: '¡Pasa! Mi nieto trabaja en el puerto, cargando grandes cajas de metal.', fa: 'بیا داخل! نواسه‌ام در بندر کار می‌کند و صندوق‌های بزرگ آهنی بار می‌کند.' },
+        { en: 'Every box is the same size, so cranes, trains and trucks can all carry them.', es: 'Todas las cajas tienen el mismo tamaño, así que grúas, trenes y camiones pueden llevarlas.', fa: 'همهٔ صندوق‌ها یک اندازه هستند، پس جرثقیل، ریل و لاری همه می‌توانند آن‌ها را ببرند.' }
+      ] },
+    { at: [4, 18], name: { en: 'Uncle Hao', es: 'Tío Hao', fa: 'کاکا هائو' },
+      look: { skin: 3, hair: '#221a14', shirt: '#c46a2f', pants: '#2c3a2c', style: 'short' },
+      lines: [
+        { en: 'Come in, but quietly. My wife works nights at the factory.', es: 'Pasa, pero en silencio. Mi esposa trabaja de noche en la fábrica.', fa: 'بیا داخل، اما آرام. خانمم شب‌ها در فابریکه کار می‌کند.' },
+        { en: 'I fix bikes. Taiwan makes lots of bikes, with parts from all over.', es: 'Yo arreglo bicicletas. Taiwán hace muchas bicicletas, con piezas de todas partes.', fa: 'من بایسکل جور می‌کنم. تایوان بایسکل‌های زیادی می‌سازد، با پرزه‌هایی از همه جا.' }
+      ] }
+  ],
 
   map: [
     'MMMMMMMMMMMMMMMMTTTTTTTTTTTTTTT=',

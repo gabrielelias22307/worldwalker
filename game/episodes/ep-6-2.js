@@ -12,6 +12,63 @@ window.EPISODE = {
     { en: 'The Quake Grump shakes the islands! Meet the boat seller, rice farmer and volcano watcher.', es: '¡El Gruñón Temblor sacude las islas! Habla con la vendedora del bote, la agricultora de arroz y el vigilante del volcán.', fa: 'غرغروی زلزله جزیره‌ها را تکان می‌دهد! با فروشندهٔ قایق، دهقان برنج و نگهبان آتشفشان گپ بزن.' },
     { en: 'Then fix the compass stone on the little island.', es: 'Luego arregla la piedra de la brújula en la islita.', fa: 'بعد سنگ قطب‌نما را در جزیرهٔ کوچک درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [105.0, 12.5],
+    start: [
+      { en: 'Welcome to Southeast Asia, where a big mainland meets thousands of islands.',
+        es: 'Bienvenido al Sudeste Asiático, donde una gran tierra firme se une con miles de islas.',
+        fa: 'به جنوب‌شرق آسیا خوش آمدی، جایی که خشکهٔ بزرگ به هزاران جزیره می‌رسد.' },
+      { en: 'The Mekong River flows through six countries, from China to Vietnam.',
+        es: 'El río Mekong pasa por seis países, de China a Vietnam.',
+        fa: 'دریای میکانگ از شش کشور می‌گذرد، از چین تا ویتنام.' },
+      { en: 'Indonesia has more active volcanoes than any other country.',
+        es: 'Indonesia tiene más volcanes activos que cualquier otro país.',
+        fa: 'اندونیزیا از هر کشور دیگر آتشفشان فعال بیشتری دارد.' }
+    ],
+    page: { en: 'Cambodia\'s Tonle Sap Lake grows several times bigger in the rainy season.',
+      es: 'El lago Tonlé Sap, en Camboya, crece varias veces en la temporada de lluvias.',
+      fa: 'جهیل تونله‌ساپ در کمبودیا در فصل باران چند برابر بزرگ می‌شود.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [3, 4], name: { en: 'Grandma Hoa', es: 'Abuela Hoa', fa: 'مادرکلان هوا' },
+      look: { skin: 1, hair: '#d8d8d8', shirt: '#3a8a5a', pants: '#2a2a3a', style: 'bun', hat: '#e0c070' },
+      lines: [
+        { en: 'Sit, sit! Have a bowl of noodles made from Mekong rice.', es: '¡Siéntate, siéntate! Come un plato de fideos hechos con arroz del Mekong.', fa: 'بنشین، بنشین! یک کاسه نودل از برنج میکانگ بخور.' },
+        { en: 'The Mekong Delta grows about half of Vietnam\'s rice.', es: 'El delta del Mekong produce como la mitad del arroz de Vietnam.', fa: 'دلتای میکانگ تقریباً نیم برنج ویتنام را تولید می‌کند.' }
+      ] },
+    { at: [12, 4], name: { en: 'Sokha', es: 'Sokha', fa: 'سوکا' },
+      look: { skin: 3, hair: '#141010', shirt: '#2f6fd6', pants: '#3a3a2a', style: 'short' },
+      lines: [
+        { en: 'Watch the ladder! Our house stands on tall wooden stilts.', es: '¡Cuidado con la escalera! Nuestra casa está sobre pilotes altos de madera.', fa: 'مواظب زینه باش! خانهٔ ما روی پایه‌های بلند چوبی ایستاده است.' },
+        { en: 'In the rainy season the river rises. My kids go to school by boat!', es: 'En la temporada de lluvias el río sube. ¡Mis hijos van a la escuela en bote!', fa: 'در موسم باران آب دریا بالا می‌آید. اولادهایم با قایق به مکتب می‌روند!' }
+      ] },
+    { at: [3, 18], name: { en: 'Farmer Wayan', es: 'Agricultor Wayan', fa: 'دهقان وایان' },
+      look: { skin: 3, hair: '#1a1410', shirt: '#e8e0c8', pants: '#4a3a2a', style: 'short', hat: '#c8a050' },
+      lines: [
+        { en: 'Ash from the volcano made our soil rich. Rice loves it!', es: 'La ceniza del volcán hizo rica nuestra tierra. ¡Al arroz le encanta!', fa: 'خاکستر آتشفشان خاک ما را حاصلخیز کرد. برنج آن را دوست دارد!' },
+        { en: 'If the volcano rumbles, the village alarm rings. Then we leave fast.', es: 'Si el volcán retumba, suena la alarma del pueblo. Entonces nos vamos rápido.', fa: 'اگر آتشفشان غرش کند، زنگ خطر قریه به صدا می‌آید. بعد زود می‌رویم.' }
+      ] },
+    { at: [9, 18], name: { en: 'Ayu', es: 'Ayu', fa: 'آیو' },
+      look: { skin: 2, hair: '#1a1410', shirt: '#f0f0f0', pants: '#c83a3a', style: 'long' },
+      lines: [
+        { en: 'Hi! Today at school we practiced our earthquake drill.', es: '¡Hola! Hoy en la escuela practicamos el simulacro de terremoto.', fa: 'سلام! امروز در مکتب تمرین زلزله کردیم.' },
+        { en: 'Drop, cover, and hold on! The Ring of Fire shakes a lot.', es: '¡Agáchate, cúbrete y agárrate! El Cinturón de Fuego tiembla mucho.', fa: 'خم شو، پناه بگیر و محکم بگیر! حلقهٔ آتش زیاد می‌لرزد.' }
+      ] },
+    { at: [21, 18], name: { en: 'Tita Joy', es: 'Tía Joy', fa: 'خاله جوی' },
+      look: { skin: 3, hair: '#2a1a12', shirt: '#f0c030', pants: '#3a4a6a', style: 'long' },
+      lines: [
+        { en: 'Typhoon season is coming. Help me tie this roof down tight!', es: 'Viene la temporada de tifones. ¡Ayúdame a amarrar bien este techo!', fa: 'موسم طوفان نزدیک است. کمکم کن این بام را محکم ببندم!' },
+        { en: 'The Philippines has over 7,000 islands. My cousins live on three of them.', es: 'Filipinas tiene más de 7,000 islas. Mis primos viven en tres de ellas.', fa: 'فلپین بیشتر از ۷۰۰۰ جزیره دارد. بچه‌کاکاهایم در سه تای آن‌ها زندگی می‌کنند.' }
+      ] },
+    { at: [26, 18], name: { en: 'Fisher Arif', es: 'Pescador Arif', fa: 'ماهی‌گیر عارف' },
+      look: { skin: 4, hair: '#141010', shirt: '#2a8ab0', pants: '#3a3a3a', style: 'short', hat: '#d8c890' },
+      lines: [
+        { en: 'Want some grilled fish? I caught it at sunrise this morning.', es: '¿Quieres pescado asado? Lo pesqué al amanecer esta mañana.', fa: 'ماهی کباب می‌خوری؟ امروز صبح وقت آفتاب‌برآمد گرفتمش.' },
+        { en: 'Long ago, ships came to these islands for spices like cloves and nutmeg.', es: 'Hace mucho, los barcos venían a estas islas por especias como clavo y nuez moscada.', fa: 'مدت‌ها پیش کشتی‌ها برای ادویه مثل میخک و جوز بویا به این جزیره‌ها می‌آمدند.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens.
      Top-left: mainland Southeast Asia (jungle j, rice q, the Mekong ~ running south to the sea).

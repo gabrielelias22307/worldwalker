@@ -55,6 +55,7 @@
         </div>
         <div class="ww-foot" id="ww-foot"></div>
       </div>`;
+    document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
@@ -65,7 +66,7 @@
     const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };
     $('ww-b-gear').onclick = e => { e.stopPropagation(); gearOpen(!$('ww-gearmenu').classList.contains('on')); };
     $('ww-gearmenu').addEventListener('click', e => { if (e.target.closest('#ww-b-help, #ww-b-pad, #ww-b-full')) gearOpen(false); });
-    document.addEventListener('click', e => { if (!e.target.closest('.gear')) gearOpen(false); });
+    document.addEventListener('pointerdown', e => { if (!e.target.closest('.gear')) gearOpen(false); }); // any touch outside closes it (the arrow pad sends no click)
     $('ww-b-help').onclick = () => { if (!WW.ui.stack.length) WW.ui.message('❓', T('controls')); };
     $('ww-quest').onclick = () => WW.ui.questPop();
     // the map takes all the height that is left, keeping its 16 × 11 shape
@@ -204,7 +205,7 @@
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
     WW.music.play('realm' + ep.realm);
-    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); meetChris(); }));
+    WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); WW.scene('start', () => { $('ww-screen').focus(); meetChris(); }); }));
   };
   // the first time a hero plays an episode with christopher.meet, he flies in and says who he is
   // PLAYTEST-3: then (every episode) he says the episode's opening lines in his bubble while you walk
@@ -218,7 +219,7 @@
     const tag = document.createElement('a'); tag.className = 'ww-preview'; tag.textContent = 'TEACHER PREVIEW · nothing is saved';
     if (WW.CONFIG.MODE === 'pages') { tag.href = 'teacher.html#ep=' + ep.id; tag.textContent += ' · ↩ console'; }
     $('ww-bar').insertBefore(tag, $('ww-bar').querySelector('.langs'));
-    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); });
+    if (where === 'start') return WW.ui.intro(() => { WW.audioInit(); WW.scene('start', () => { $('ww-screen').focus(); const m = ep.christopher && ep.christopher.meet; WW.chris.meet([...(m || []), ...(ep.intro || [])], null, { flyIn: !!m, meet: false }); }); });
     ep.npcs.forEach(n => r.talked.add(n.id));
     r.quest = 4;
     if (where === 'stone') { WW.ui.quest(); WW.dbg.bumpInto(ep.challenge.at[0], ep.challenge.at[1]); return; }
@@ -263,7 +264,8 @@
     WW.store();
     WW.fx.lift(); WW.sfx('win');
     WW.ui.quest();
-    WW.ui.finish();
+    if (G.preview) return WW.ui.finish(); // the teacher's jump to the finish screen goes straight there
+    WW.scene('page', () => WW.ui.finish());
   }
 
   /* ---------------- interacting ---------------- */
@@ -350,6 +352,7 @@
   /* Space (or ●) never surprises: a person, a note or a sign always comes first, whatever tool is picked; then a broken
      bridge or a gate; then the tool that fits what you face (it switches for you); then a star */
   function actFacing() {
+    if (WW.room.on) return WW.room.act();
     if (WW.paused) return;
     const [dx, dy] = DIRS[player.dir], tx = player.x + dx, ty = player.y + dy;
     const e = entAt(tx, ty);
@@ -440,7 +443,7 @@
       if (tag === 'input' || tag === 'textarea') return;
       if (e.key === 'Escape') { const t = WW.ui.top(); if (t && ['passov', 'msgov', 'talkov', 'campov'].includes(t.opts.cls)) t.close(); else if (!t) WW.chris.hide(); return; }
       WW.audioInit();
-      if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length) { e.preventDefault(); WW.chris.talk(); return; }
+      if ((e.key === 'c' || e.key === 'C') && !WW.ui.stack.length && !WW.room.on) { e.preventDefault(); WW.chris.talk(); return; }
       if (WW.chris.scene && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); WW.chris.next(); return; }
       if ((e.key === 'q' || e.key === 'Q') && !WW.ui.stack.length) { WW.ui.questPop(); return; }
       if (WW.paused) return;
@@ -454,13 +457,14 @@
     const pad = $('ww-dpad');
     pad.querySelectorAll('button').forEach(b => {
       const d = b.dataset.d;
-      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') WW.chris.talk(); else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
+      const down = e => { e.preventDefault(); WW.audioInit(); if (d === 'act') actFacing(); else if (d === 'chris') { if (!WW.room.on) WW.chris.talk(); } else if (d === 'goals') { if (!WW.ui.stack.length) WW.ui.questPop(); } else press(d); };
       const up = e => { e.preventDefault(); if (held === d) held = null; };
       b.addEventListener('pointerdown', down); b.addEventListener('pointerup', up); b.addEventListener('pointerleave', up); b.addEventListener('pointercancel', up);
     });
     // click on the map next to the hero = step that way (mouse users)
     $('ww-cv').addEventListener('click', e => {
       WW.audioInit(); $('ww-screen').focus();
+      if (WW.room.on) { const rr = e.target.getBoundingClientRect(); return WW.room.click((e.clientX - rr.left) / rr.width); }
       if (WW.paused || trans) return;
       const r = e.target.getBoundingClientRect();
       const [sx, sy] = screenOf(player.x, player.y);
@@ -578,10 +582,12 @@
   function frame(now) {
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
+    if (WW.room.on) return WW.room.frame(c, now, held); // inside a house (rooms.js)
     // movement timing
     if (player.moving && now - player.moving >= stepMs()) {
       const from = player.from;
       player.moving = 0; player.from = null; WW.fx.step(player.x, player.y); pickup();
+      if (tileAt(player.x, player.y) === 'd' && !G.preview) { held = null; queued = null; clickTarget = null; WW.room.enter(player.x, player.y); } // a door: go in
       // stepped along the rails: all aboard
       if (!ride && from && RAIL.includes(tileAt(player.x, player.y)) && RAIL.includes(tileAt(from[0], from[1]))) {
         if (ticket()) { ride = { px: from[0], py: from[1], steps: 0 }; WW.sfx('gate'); if (!rideTold) { rideTold = true; WW.chris.say(T(WW.hasTool('rail') ? 'trainGo' : 'trainTicket')); } }

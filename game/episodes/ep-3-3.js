@@ -15,6 +15,39 @@ window.EPISODE = {
       es: 'Habla con la guía del museo, el trabajador del tren y la camionera. Luego arregla la piedra de la brújula.',
       fa: 'با رهنمای موزیم، کارگر خط آهن و رانندهٔ موتر باری گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [67.0, 39.65],
+    start: [
+      { en: 'Welcome to Samarkand, in Uzbekistan. Silk Road traders stopped here for centuries.',
+        es: 'Bienvenido a Samarcanda, en Uzbekistán. Los comerciantes de la Ruta de la Seda paraban aquí.',
+        fa: 'به سمرقند در ازبکستان خوش آمدی. تاجران راه ابریشم قرن‌ها اینجا می‌ماندند.' },
+      { en: 'The Silk Road linked China to the Mediterranean Sea, over 4,000 miles away.',
+        es: 'La Ruta de la Seda unía China con el mar Mediterráneo, a más de 6,000 kilómetros.',
+        fa: 'راه ابریشم چین را به بحیرهٔ مدیترانه وصل می‌کرد، بیشتر از ۶۰۰۰ کیلومتر دورتر.' },
+      { en: 'Paper, silk, spices and ideas all moved along these routes.',
+        es: 'Papel, seda, especias e ideas viajaban por estas rutas.',
+        fa: 'کاغذ، ابریشم، ادویه و فکرها همه از این راه‌ها می‌گذشتند.' }
+    ],
+    page: { en: 'Today, freight trains carry goods from China to Europe in about two weeks.',
+      es: 'Hoy, trenes de carga llevan productos de China a Europa en unas dos semanas.',
+      fa: 'امروز قطارهای باری کالا را در حدود دو هفته از چین به اروپا می‌برند.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [12, 8], name: { en: 'Baker Rustam', es: 'Panadero Rustam', fa: 'نانوا رستم' },
+      look: { skin: 2, hair: '#1e1a16', shirt: '#f2efe6', pants: '#3a3a5a', style: 'short', hat: '#2a5a3a' },
+      lines: [
+        { en: 'Come in! Smell that? Samarkand bread is famous all over Uzbekistan.', es: '¡Pasa! ¿Hueles eso? El pan de Samarcanda es famoso en todo Uzbekistán.', fa: 'بیا داخل! بویش را حس می‌کنی؟ نان سمرقند در تمام ازبکستان مشهور است.' },
+        { en: 'It stays fresh for days. Long ago, traders packed it for the trip.', es: 'Se mantiene fresco por días. Hace mucho, los comerciantes lo llevaban de viaje.', fa: 'چند روز تازه می‌ماند. در زمان‌های قدیم تاجران آن را برای سفر با خود می‌بردند.' }
+      ] },
+    { at: [16, 8], name: { en: 'Zarina', es: 'Zarina', fa: 'زرینه' },
+      look: { skin: 2, hair: '#2a1a10', shirt: '#2f7fd1', pants: '#8e3a5a', style: 'long' },
+      lines: [
+        { en: 'Careful, the paper is drying! I make it from mulberry tree bark.', es: '¡Cuidado, el papel se está secando! Lo hago con corteza de morera.', fa: 'احتیاط، کاغذ خشک می‌شود! من آن را از پوست درخت توت می‌سازم.' },
+        { en: 'Papermaking came here from China long ago. Then it traveled west to Europe.', es: 'Hace mucho, el arte del papel llegó aquí desde China. Luego viajó al oeste, a Europa.', fa: 'کاغذسازی در زمان قدیم از چین به اینجا آمد. بعد به غرب تا اروپا رفت.' }
+      ] }
+  ],
 
   map: [
     'KKKKKKKKKKKKKKKKKKKKKKKKKKKKAAAA',

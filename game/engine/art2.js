@@ -189,7 +189,7 @@
     '..kGGGGGGGGGGk..', '...kkkkkkkkkk...', '................', '................'];
 
   /* walkable or not */
-  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L YZG'.split(''));
+  const SOLID = new Set('TPpcajMAVKrWDRQhJUXIOmFxC~=L YZGHNE'.split('')); // H N E: huts and wind towers (fun-pass-4)
   WW.solid = ch => SOLID.has(ch) || ch === undefined;
 
   /* named looks for people */

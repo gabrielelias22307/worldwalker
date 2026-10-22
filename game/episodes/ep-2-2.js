@@ -11,6 +11,39 @@ window.EPISODE = {
     { en: 'The Grump mixed up this mountain in Ecuador! Farmers plant crops at the wrong height.', es: '¡El Gruñón revolvió esta montaña de Ecuador! Los agricultores siembran a la altura equivocada.', fa: 'غرغرو این کوه را در اکوادور به هم زد! دهقانان حاصلات را در ارتفاع غلط می‌کارند.' },
         { en: 'Climb from the coast to the snow. Talk to the banana, coffee and potato farmers.', es: 'Sube de la costa a la nieve. Habla con los agricultores del banano, del café y de la papa.', fa: 'از ساحل تا برف بالا برو. با دهقان‌های کیله، قهوه و کچالو گپ بزن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [-78.5, -0.2],
+    start: [
+      { en: 'We are in Ecuador. Its name is the Spanish word for equator.',
+        es: 'Estamos en Ecuador. Su nombre viene de la línea del ecuador.',
+        fa: 'ما در اکوادور هستیم. نامش به زبان هسپانوی یعنی خط استوا.' },
+      { en: 'Quito, the capital, sits about 9,350 feet up in the Andes.',
+        es: 'Quito, la capital, está a unos 2,850 metros de altura en los Andes.',
+        fa: 'کیتو، پایتخت، حدود ۲۸۵۰ متر بالا در کوه‌های اندیز است.' },
+      { en: 'The Andes are the longest mountain range on land in the world.',
+        es: 'Los Andes son la cordillera más larga sobre tierra en el mundo.',
+        fa: 'اندیز درازترین رشته‌کوه روی خشکهٔ جهان است.' }
+    ],
+    page: { en: 'Near the equator, the volcano Chimborazo still has snow and ice on top.',
+      es: 'Cerca del ecuador, el volcán Chimborazo todavía tiene nieve y hielo arriba.',
+      fa: 'نزدیک خط استوا، آتشفشان چیمبورازو هنوز سرش برف و یخ دارد.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [13, 6], name: { en: 'Grandma Killa', es: 'Abuela Killa', fa: 'مادرکلان کیلا' },
+      look: { skin: 3, hair: '#2a2a2a', shirt: '#b8323a', pants: '#2a2a4a', style: 'long', hat: '#3a2a20' },
+      lines: [
+        { en: 'Come in, sit by the stove. Nights up here are cold, even near the equator.', es: 'Pasa, siéntate junto a la estufa. Las noches aquí arriba son frías, aun cerca del ecuador.', fa: 'بیا داخل، کنار بخاری بنشین. شب‌ها این بالا سرد است، حتی نزدیک خط استوا.' },
+        { en: 'Andean farmers grow thousands of kinds of potatoes. Try this purple one!', es: 'Los agricultores de los Andes siembran miles de clases de papas. ¡Prueba esta morada!', fa: 'دهقانان اندیز هزاران نوع کچالو می‌کارند. این کچالوی بنفش را بچش!' }
+      ] },
+    { at: [23, 11], name: { en: 'Paola', es: 'Paola', fa: 'پائولا' },
+      look: { skin: 2, hair: '#2a1a10', shirt: '#4caf6a', pants: '#5a4630', style: 'bun', hat: '#e8d9a8' },
+      lines: [
+        { en: 'Hi! My hands smell like coffee. We picked red cherries all day.', es: '¡Hola! Mis manos huelen a café. Recogimos cerezas rojas todo el día.', fa: 'سلام! دست‌هایم بوی قهوه می‌دهد. تمام روز دانه‌های سرخ قهوه چیدیم.' },
+        { en: 'On the hot coast, coffee does not grow well. Up high, frost kills it.', es: 'En la costa caliente, el café no crece bien. Arriba, la helada lo mata.', fa: 'در ساحل گرم، قهوه خوب نمی‌روید. آن بالا، یخبندان آن را می‌کشد.' }
+      ] }
+  ],
 
   /* 32 x 22 = 2 x 2 screens. Bottom to top:
      rows 19-20 beach, rows 14-17 tierra caliente (bananas y, sugarcane e),

@@ -15,6 +15,7 @@ let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); i
     await p.goto(url); await p.evaluate(() => localStorage.clear()); await p.goto(url);
     await p.tap('#si-name'); await p.keyboard.type('Touchy');
     await p.tap('#ww-ov .pbtn.gold.big'); await p.waitForSelector('.introov'); await p.tap('#ww-ov .pbtn.gold.big');
+    await p.waitForSelector('.cutov'); await p.tap('.cutov .pbtn.ghost'); // Skip the cut scene
     for (let i = 0; i < 8 && await p.evaluate(() => WW.chris.scene); i++) { await p.waitForSelector('.cbubble', { state: 'visible' }); await p.tap('.cbubble'); await p.waitForTimeout(150); }
     ok(!(await p.evaluate(() => WW.chris.scene)), 'meeting Christopher: tapping his bubble moves on (no Next buttons)');
     await p.evaluate(() => WW.dbg.noSmudges());

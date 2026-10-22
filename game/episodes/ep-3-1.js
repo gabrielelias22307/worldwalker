@@ -11,6 +11,63 @@ window.EPISODE = {
     { en: 'The Grump froze the weather charts! Nobody knows why the harbor is not frozen.', es: '¡El Gruñón congeló los mapas del tiempo! Nadie sabe por qué el puerto no está congelado.', fa: 'غرغرو نقشه‌های هوا را یخ زد! هیچ کس نمی‌داند چرا بندر یخ نزده است.' },
         { en: 'Talk to the ferry captain, barge skipper and mountain guide. Then fix the compass stone.', es: 'Habla con la capitana del ferri, el patrón de la barcaza y el guía de montaña. Luego arregla la piedra de la brújula.', fa: 'با کپتان کشتی، ناخدای کشتی باری و رهنمای کوه گپ بزن. بعد سنگ قطب‌نما را درست کن.' }
   ],
+  /* cut scenes (fun-pass-4): where the place is on the world map, facts after Start, one fact after the page */
+  scenes: {
+    at: [10.0, 48.0],
+    start: [
+      { en: 'Europe is a peninsula of peninsulas. Look how the sea wraps around it.',
+        es: 'Europa es una península llena de penínsulas. Mira cómo el mar la rodea.',
+        fa: 'اروپا شبه‌جزیره‌ای پر از شبه‌جزیره است. ببین بحر چطور دورش را گرفته.' },
+      { en: 'Italy, Spain and Greece are all peninsulas in southern Europe.',
+        es: 'Italia, España y Grecia son penínsulas en el sur de Europa.',
+        fa: 'ایتالیا، هسپانیه و یونان همه شبه‌جزیره‌هایی در جنوب اروپا هستند.' },
+      { en: 'Barges on the Rhine River pass Switzerland, Germany and the Netherlands.',
+        es: 'Las barcazas del río Rin pasan por Suiza, Alemania y los Países Bajos.',
+        fa: 'کشتی‌های باری روی دریای راین از سویس، آلمان و هالند می‌گذرند.' }
+    ],
+    page: { en: 'With its fjords and islands, Norway\'s coast is over 60,000 miles long.',
+      es: 'Con sus fiordos e islas, la costa de Noruega mide más de 100,000 kilómetros.',
+      fa: 'با فیوردها و جزیره‌هایش، ساحل ناروی بیشتر از ۱۰۰ هزار کیلومتر است.' }
+  },
+  /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
+  houses: [
+    { at: [5, 5], name: { en: 'Grandpa Henrik', es: 'Abuelo Henrik', fa: 'پدرکلان هنریک' },
+      look: { skin: 0, hair: '#e8e8e8', shirt: '#2f5d8a', pants: '#3a3a4a', style: 'short', hat: '#1f2f4a' },
+      lines: [
+        { en: 'Come in, shut the door! The North Sea wind is strong today.', es: '¡Pasa y cierra la puerta! El viento del mar del Norte está fuerte hoy.', fa: 'بیا داخل، دروازه را ببند! باد بحر شمال امروز تیز است.' },
+        { en: 'I fished here all my life. Our harbor stays open, even in deep winter.', es: 'Pesqué aquí toda mi vida. Nuestro puerto sigue abierto, aun en pleno invierno.', fa: 'تمام عمرم اینجا ماهی گرفتم. بندر ما حتی در وسط زمستان باز می‌ماند.' }
+      ] },
+    { at: [11, 5], name: { en: 'Baker Annika', es: 'Panadera Annika', fa: 'نانوا آنیکا' },
+      look: { skin: 0, hair: '#e6c46a', shirt: '#f2efe6', pants: '#6a4a3a', style: 'bun' },
+      lines: [
+        { en: 'Careful, the oven is hot! I bake bread before the sun comes up.', es: '¡Cuidado, el horno está caliente! Horneo pan antes de que salga el sol.', fa: 'احتیاط، تنور داغ است! من پیش از برآمدن آفتاب نان می‌پزم.' },
+        { en: 'Taste this dark rye bread. Rye grows well in cool, wet northern Europe.', es: 'Prueba este pan oscuro de centeno. El centeno crece bien en el norte de Europa, fresco y húmedo.', fa: 'این نان تیرهٔ چاودار را بچش. چاودار در شمال سرد و مرطوب اروپا خوب می‌روید.' }
+      ] },
+    { at: [15, 5], name: { en: 'Chiara', es: 'Chiara', fa: 'کیارا' },
+      look: { skin: 1, hair: '#3b2414', shirt: '#d9534f', pants: '#2d4a6b', style: 'long' },
+      lines: [
+        { en: 'Ciao! I am from Italy. Italy is a peninsula shaped like a boot.', es: '¡Ciao! Soy de Italia. Italia es una península con forma de bota.', fa: 'چاو! من از ایتالیا هستم. ایتالیا یک شبه‌جزیره به شکل موزه است.' },
+        { en: 'At home, summers are hot and dry. Here it rains in every season!', es: 'En mi tierra, los veranos son calurosos y secos. ¡Aquí llueve en todas las estaciones!', fa: 'در وطنم تابستان گرم و خشک است. اینجا در هر فصل باران می‌بارد!' }
+      ] },
+    { at: [25, 5], name: { en: 'Grandma Margit', es: 'Abuela Margit', fa: 'مادرکلان مارگیت' },
+      look: { skin: 0, hair: '#d8d8d8', shirt: '#7a9e5a', pants: '#4a3a5a', style: 'bun' },
+      lines: [
+        { en: 'Hello, dear! Mind my bicycle in the hall. I ride it every day.', es: '¡Hola, cariño! Cuidado con mi bicicleta en el pasillo. La uso todos los días.', fa: 'سلام عزیزم! متوجه بایسکلم در دهلیز باش. هر روز سوارش می‌شوم.' },
+        { en: 'I speak three languages. In Europe, the next country is often very close.', es: 'Hablo tres idiomas. En Europa, el país vecino suele estar muy cerca.', fa: 'من سه زبان گپ می‌زنم. در اروپا کشور همسایه اکثراً خیلی نزدیک است.' }
+      ] },
+    { at: [29, 5], name: { en: 'Kofi', es: 'Kofi', fa: 'کوفی' },
+      look: { skin: 5, hair: '#1a1a1a', shirt: '#f0a020', pants: '#2a3a5a', style: 'short' },
+      lines: [
+        { en: 'Shh, I work nights at the port. Ships come and go all day and night.', es: 'Shh, trabajo de noche en el puerto. Los barcos van y vienen día y noche.', fa: 'آهسته، من شب‌ها در بندر کار می‌کنم. کشتی‌ها شب و روز می‌آیند و می‌روند.' },
+        { en: 'From our port, river barges carry the boxes inland, all the way to Switzerland.', es: 'Desde nuestro puerto, las barcazas llevan las cajas por el río, hasta Suiza.', fa: 'از بندر ما، کشتی‌های باری صندوق‌ها را روی دریا تا سویس می‌برند.' }
+      ] },
+    { at: [27, 9], name: { en: 'Farmer Jakub', es: 'Agricultor Jakub', fa: 'دهقان یاکوب' },
+      look: { skin: 1, hair: '#8a5a2a', shirt: '#4f7a3a', pants: '#3a3020', style: 'short', hat: '#6a5030' },
+      lines: [
+        { en: 'Come in! Wipe your boots, it was muddy in the fields.', es: '¡Pasa! Límpiate las botas, había mucho lodo en el campo.', fa: 'بیا داخل! موزه‌هایت را پاک کن، در زمین‌های زراعتی گِل بود.' },
+        { en: 'The North European Plain has rich soil. We grow wheat and potatoes.', es: 'La Llanura del Norte de Europa tiene suelo rico. Cultivamos trigo y papas.', fa: 'دشت شمال اروپا خاک حاصلخیز دارد. ما گندم و کچالو می‌کاریم.' }
+      ] }
+  ],
 
   /* 32 x 22. North: the sea and a port town. West: a peninsula with a bay on each side.
      East: the Rhine flows north from the Alps to the sea, with barge quays and two bridges. South: the Alps, with one snowy pass. */
