@@ -75,29 +75,51 @@
       const st = $('ww-stage'), sc = $('ww-screen'), fr = root.querySelector('.ww-frame'); if (!st || !sc) return;
       // a phone turned sideways: one short row of icons on top, and the arrow pad beside the map instead of under it
       const side = root.classList.contains('touch') && innerHeight < 520 && innerWidth > innerHeight;
-      fr.classList.toggle('side', side);
+      // a tall window (a phone held upright, the Canvas frame): the tool bar and Christopher's corner go under the map.
+      // Decided by the window's shape only, never by the room left over: the phone layout's bigger arrow pad takes room,
+      // and deciding by room made the layout flip back and forth every frame (the phone "glitch", fun-pass-4).
+      const narrow = !side && fr.clientHeight >= fr.clientWidth * 1.15;
+      // a small phone (iPhone SE, Moto G4): a smaller arrow pad and the tool bar stays on the map, so the map stays big
+      const short = narrow && fr.clientHeight < 700;
+      fr.classList.toggle('side', side); fr.classList.toggle('narrow', narrow); fr.classList.toggle('short', short);
+      const below = !narrow ? 0 : short ? 88 : 156; // room kept under the map: his corner (80 / 92 px), and the tool bar on bigger phones
       const room = side ? st.clientWidth - 2 * (($('ww-dpad').offsetWidth || 164) + 12) : st.clientWidth;
-      let w = Math.max(160, Math.min(room, Math.floor((st.clientHeight - 8) * 16 / 11)));
+      let w = Math.max(160, Math.min(room, Math.floor((st.clientHeight - 8 - below) * 16 / 11)));
       // fun-pass-4: a wide screen keeps room on the left for Christopher's corner (his messages never cover the map)
       const SIDE = 2 * (190 + 14);
-      if (!side && st.clientWidth - w < SIDE && st.clientWidth - SIDE >= 520) w = st.clientWidth - SIDE;
+      if (!side && !narrow && st.clientWidth - w < SIDE && st.clientWidth - SIDE >= 520) w = st.clientWidth - SIDE;
+      // a sideways phone with room to spare: the map slides toward the arrow pad, so Christopher's corner fits beside the tools
+      let shift = 0;
+      if (side) { const padW = $('ww-dpad').offsetWidth || 164, leftNeed = 140 + 172, rightNeed = padW + 12, avail = st.clientWidth - leftNeed - rightNeed;
+        if (avail >= w * 0.85) { w = Math.min(w, avail); shift = Math.round((leftNeed - rightNeed) / 2); } }
+      sc.style.position = shift ? 'relative' : ''; sc.style.left = shift ? shift + 'px' : '';
+      fr.classList.toggle('beside', !!shift);
       const h = Math.round((w - 6) * 11 / 16 + 6);
       sc.style.width = w + 'px'; sc.style.height = h + 'px';
       fr.style.setProperty('--gw', w + 'px'); // the bars above line up with the map
-      // a tall, narrow window (a phone): the tool bar and Christopher's bubble go under the map instead of over it
-      const narrow = !side && w >= st.clientWidth - 2 && st.clientHeight - h >= 150;
-      fr.classList.toggle('narrow', narrow);
       const bar = $('ww-tools');
-      if (bar) { const out = narrow || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); } // a sideways phone: the tool bar stands beside the map, not on it
+      if (bar) { const out = (narrow && !short) || side; if (out && bar.parentNode !== st) sc.insertAdjacentElement('afterend', bar); else if (!out && bar.parentNode !== sc) sc.appendChild(bar); } // a sideways phone: the tool bar stands beside the map, not on it
       // PLAYTEST-3: the Now card fills the empty side of a wide screen (a Chromebook): the goal, who to find, the list
       const now = $('ww-now'), gap = (st.clientWidth - w) / 2 - 14;
       const wide = !narrow && !side && gap >= 160, cp = $('ww-cpanel');
       // Christopher's corner (fun-pass-4): on the left of a wide screen, above the Now card; under the map on a phone or in Canvas
       if (cp) {
-        cp.classList.toggle('on', wide || narrow); cp.classList.toggle('side', wide); cp.classList.toggle('dock', narrow && !wide);
+        cp.classList.toggle('on', wide || narrow || side); cp.classList.toggle('side', wide); cp.classList.toggle('dock', narrow && !wide); cp.classList.toggle('lside', side);
+        if (side) { cp.style.width = Math.max(120, Math.floor((st.clientWidth - w) / 2) - 12) + 'px'; cp.style.left = ''; if (cp.parentNode !== st) st.appendChild(cp); const tb = $('ww-tools'), pad = $('ww-dpad'), lg = Math.floor((st.clientWidth - w) / 2) - 8, padH = pad ? pad.offsetHeight : 160;
+          const tbOn = tb && tb.parentNode === st, tbB = tbOn ? tb.offsetTop + tb.offsetHeight + 6 : 4, tbR = tbOn ? tb.offsetLeft + tb.offsetWidth + 6 : 4;
+          // three places that may be free; take the one with the most room
+          const spots = [
+            { area: lg * (st.clientHeight - tbB - 4), css: { left: '4px', top: tbB + 'px', right: '', bottom: '4px', width: Math.max(0, lg - 4) + 'px' } },                 // under the tools
+            { area: (lg - tbR) * (st.clientHeight - 8), css: { left: tbR + 'px', top: '4px', right: '', bottom: '4px', width: Math.max(0, lg - tbR) + 'px' } },            // beside the tools
+            { area: lg * (st.clientHeight - padH - 16), css: { left: 'auto', top: '4px', right: '4px', bottom: (padH + 12) + 'px', width: Math.max(0, lg - 4) + 'px' } } // above the arrow pad
+          ].map(o => Object.assign(o, { area: parseInt(o.css.width) >= 150 && o.area / parseInt(o.css.width) >= 56 ? o.area : o.area / 100 })) // too thin to read: last choice
+            .sort((a, b) => b.area - a.area);
+          if (shift) spots.unshift({ css: { left: tbR + 'px', top: '4px', right: '', bottom: '4px', width: Math.max(0, Math.floor((st.clientWidth - w) / 2) + shift - tbR - 8) + 'px' } }); // the room made beside the tools
+          Object.assign(cp.style, spots[0].css);
+        } // a sideways phone: under the tools, left of the map
         if (wide) { cp.style.width = Math.min(gap, 250) + 'px'; cp.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; if (cp.parentNode !== st || cp.nextElementSibling !== now) st.insertBefore(cp, now); }
-        else { cp.style.width = ''; cp.style.left = ''; if (narrow) { const after = bar && bar.parentNode === st ? bar : sc; if (after.nextElementSibling !== cp) after.insertAdjacentElement('afterend', cp); } }
-        if (WW.chris && WW.chris.home) WW.chris.home(wide || narrow ? $('ww-cpslot') : st);
+        else if (!side) { cp.style.width = ''; cp.style.left = ''; cp.style.top = ''; cp.style.right = ''; cp.style.bottom = ''; if (narrow) { const after = bar && bar.parentNode === st ? bar : sc; if (after.nextElementSibling !== cp) after.insertAdjacentElement('afterend', cp); } }
+        if (WW.chris && WW.chris.home) WW.chris.home(wide || narrow || side ? $('ww-cpslot') : st);
       }
       if (now) { const on = wide; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; G.placeNow(); WW.ui.nowCard && WW.ui.nowCard(); } }
       if (WW.chris) WW.chris.place();

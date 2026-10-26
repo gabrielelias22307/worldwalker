@@ -502,3 +502,25 @@ canvas{filter:var(--vivid)}
 @keyframes cpnew{0%{outline-color:#fff1a8;box-shadow:0 0 0 6px rgba(242,193,78,.55)}100%{outline-color:var(--line);box-shadow:0 0 0 0 rgba(242,193,78,0)}}
 @media (prefers-reduced-motion:reduce){.cpanel.new{animation:none}}
 .nowcard.on{overflow:auto}
+/* phones: his corner under the map has a fixed height (long words scroll inside it), so the map never resizes when he talks */
+.cpanel.dock.on{height:92px;overflow:hidden}
+.cpanel.dock .cp-slot{height:100%;overflow:auto;overscroll-behavior:contain}
+.cpanel.dock canvas{width:68px;height:68px}
+.cpanel.dock .cbubble{font-size:14px;padding:5px 8px}
+/* a short screen (a phone turned sideways): the cut scene map gets smaller so the words and buttons still fit */
+@media (max-height:480px){.cut-cv{max-height:34vh;width:auto;max-width:100%;margin:0 auto}.cut-card p{font-size:16px}.cutov .ov-box{padding:8px 10px}.cut-h{margin-bottom:4px}}
+/* a small phone held upright: a smaller arrow pad, a shorter corner; and nothing under the map may spill onto the pad */
+.ww-frame.narrow .stage{overflow:hidden}
+.ww-frame.narrow.short .dpad{grid-template-columns:repeat(3,60px);grid-template-rows:repeat(3,48px);gap:5px;margin:auto auto 6px}
+.ww-frame.narrow.short .dpad button{font-size:22px}
+.ww-frame.short .cpanel.dock.on{height:80px;padding:6px}
+.ww-frame.short .cpanel.dock canvas{width:58px;height:58px}
+/* a phone turned sideways: the tools in two short columns (all of them reachable, no scrolling), his corner under them */
+.ww-frame.side .stage>.toolbar{display:grid;grid-template-columns:repeat(3,40px);overflow:visible;max-height:none}
+.ww-frame.side .stage>.toolbar .tbag{grid-column:1 / -1;flex-direction:row;justify-content:center}
+.cpanel.lside{position:absolute;left:4px;bottom:4px;padding:5px;overflow:hidden;display:none;box-sizing:border-box}
+.cpanel.lside.on{display:flex;gap:6px;align-items:flex-start}
+.cpanel.lside canvas{width:40px;height:40px;flex:none;border-width:2px}
+.cpanel.lside .cp-slot{max-height:100%;overflow:auto;overscroll-behavior:contain}
+.cpanel.lside .cbubble,.cpanel.lside .cp-idle{font-size:12px;padding:4px 6px}
+.cpanel.lside .cbubble .cb-acts .pbtn{font-size:11px;padding:2px 6px;min-height:26px}
