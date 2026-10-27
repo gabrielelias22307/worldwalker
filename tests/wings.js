@@ -2,7 +2,7 @@
 //  - he meets you by flying in, then floats beside the hero and never covers the hero
 //  - when a new goal starts he flies to it, circles it, and locks on (corner brackets), in the goal's color
 //  - after ~15 s with no progress he flies to the next goal by himself (free), then shows "?"
-//  - "Show me the way" sends him there too
+//  - "Show me the way" sends him there too (fun-pass-4: far away, he leads on the real path, a few squares ahead)
 //  - the first time the hero faces a tree, he hops over it (green)
 //  - with reduced motion (WW.calm) he stays still beside the hero: no orbit, no flights, just the glow and a still lock-on
 // Screenshots at 1366×768, in the Canvas frame (654×820) and on a phone (390×844) go to shots/wings/.
@@ -81,8 +81,9 @@ const state = p => p.evaluate(() => { const F = WW.chris.fly, g = WW.game, [sx, 
   const kindB = await p.evaluate(() => document.querySelector('.cbubble').dataset.kind);
   ok(kindB === (await state(p)).next.kind, `his bubble border matches what he points at (${kindB})`);
   await p.locator('.cbubble .pbtn.gold').first().click();
-  for (let i = 0; i < 20; i++) { await p.waitForTimeout(150); s = await state(p); if (s.mode === 'hover') break; }
-  ok(s.mode === 'hover' && s.at.join() === s.next.at.join(), '"Show me the way" sends him to the goal');
+  let lead = null;
+  for (let i = 0; i < 20; i++) { await p.waitForTimeout(150); s = await state(p); lead = await p.evaluate(() => WW.chris.fly.mode === 'lead' && WW.chris.fly.leadAt.join()); if (s.mode === 'hover' || lead) break; }
+  ok((s.mode === 'hover' && s.at.join() === s.next.at.join()) || lead === s.next.at.join(), `"Show me the way" sends him to the goal, or leads the way there (${lead ? 'leads' : s.mode})`);
   await p.screenshot({ path: path.join(OUT, '8-show-way.png') });
   // the bubble is not on top of the hero
   const cov = await p.evaluate(() => { const b = document.querySelector('.cbubble').getBoundingClientRect(), cv = document.getElementById('ww-cv').getBoundingClientRect(), k = cv.width / 256, g = WW.game, sx = Math.floor(g.player.x / 16), sy = Math.floor(g.player.y / 11);
