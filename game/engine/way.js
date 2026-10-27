@@ -69,7 +69,7 @@
     const path = way.path([p.x, p.y], at);
     if (!path) { const d = WW.chris.dirWord(p.x, p.y, at[0], at[1]); return d ? T('goDir').replace('{d}', d) : ''; } // no way yet (a bridge to fix): the plain direction
     const L = way.legs(path, [p.x, p.y]); if (!L) return T('dirHere');
-    const w = k => T('dir_' + k);
+    const w = k => T('dir_' + k), num = n => WW.lang === 'fa' ? String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]) : n; // Dari digits in Dari
     const [sx, sy] = g.screenOf(p.x, p.y), [gx, gy] = g.screenOf(at[0], at[1]);
     let s = L.d2 ? T('goThen').replace('{d}', w(L.d1)).replace('{d2}', w(L.d2)) : null;
     if (sx !== gx || sy !== gy) { // on another screen: say so, with the arrow of that screen
@@ -78,8 +78,8 @@
       const sd = dir8(sx, sy, ox, oy), far = ox !== gx || oy !== gy;
       return (s || T('goDir').replace('{d}', w(L.d1))) + ' ' + T(far ? 'goFar' : 'goScreen').replace('{a}', w(sd).replace(/^.*\s/, '')); // in the order you walk it
     }
-    if (s) return s + ' ' + (L.n === 1 ? T('stepOne') : T('stepsN').replace('{n}', L.n));
-    return (L.n === 1 ? T('goStep1') : T('goSteps').replace('{n}', L.n)).replace('{d}', w(L.d1));
+    if (s) return s + ' ' + (L.n === 1 ? T('stepOne') : T('stepsN').replace('{n}', num(L.n)));
+    return (L.n === 1 ? T('goStep1') : T('goSteps').replace('{n}', num(L.n))).replace('{d}', w(L.d1));
   };
   /* the way to go right now, as one of 8 directions (for the compass and the gold arrow at the screen edge) */
   way.now = () => { const t = way.toGoal(); if (!t || !t.path || !t.path.length) return null; const p = G().player; const L = way.legs(t.path, [p.x, p.y]); return L && L.d1; };
