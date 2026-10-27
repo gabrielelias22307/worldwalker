@@ -524,3 +524,16 @@ canvas{filter:var(--vivid)}
 .cpanel.lside .cp-slot{max-height:100%;overflow:auto;overscroll-behavior:contain}
 .cpanel.lside .cbubble,.cpanel.lside .cp-idle{font-size:12px;padding:4px 6px}
 .cpanel.lside .cbubble .cb-acts .pbtn{font-size:11px;padding:2px 6px;min-height:26px}
+/* the whole episode as a small map (fun-pass-4): in the Now card, and in the ☰ goals */
+.nc-mini{margin-top:8px}
+.nc-mh{font-size:12px;color:var(--gold);margin-bottom:3px}
+canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-rendering:pixelated;border:2px solid #3a3560;border-radius:4px;background:#17152a}
+.qpop canvas.minimap{max-width:200px;margin-top:6px}
+.qpop.on{max-height:calc(100% - 16px);overflow:auto;overscroll-behavior:contain}
+.ww-frame.narrow .qpop canvas.minimap,.ww-frame.side .qpop canvas.minimap{max-width:150px}
+/* a phone: the small map beside the goals list, so both fit in the ☰ pop-up */
+.ww-frame.narrow .qpop.on{display:grid;grid-template-columns:1fr 112px;column-gap:8px;align-items:start}
+.ww-frame.narrow .qpop.on>b{grid-column:1 / -1}
+.ww-frame.narrow .qpop .nc-mini{grid-column:2;grid-row:2 / span 2;margin:0}
+.ww-frame.narrow .qpop canvas.minimap{max-width:112px}
+.ww-frame.narrow .qpop ol{margin:4px 0;padding-inline-start:18px}

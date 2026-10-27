@@ -155,7 +155,8 @@
     const a = (Math.atan2(dx, -dy) * 180 / Math.PI + 360 + 22.5) % 360;
     return T('dir_' + DIRS[Math.floor(a / 45)]);
   };
-  const go = (at) => { const p = WW.game.player, d = at && C.dirWord(p.x, p.y, at[0], at[1]); return !at ? '' : d ? T('goDir').replace('{d}', d) : T('dirHere'); };
+  // fun-pass-4: the words follow the real path (way.js): "Go 3 steps south ⬇." / "Go south ⬇, then east ➡." / "Next screen ➡: …"
+  const go = (at) => { if (WW.way && at) return WW.way.words(at); const p = WW.game.player, d = at && C.dirWord(p.x, p.y, at[0], at[1]); return !at ? '' : d ? T('goDir').replace('{d}', d) : T('dirHere'); };
   C.go = go;
   // can the hero walk there now? (a broken bridge might be in the way)
   function reachable(at) {
@@ -219,7 +220,7 @@
     WW.run.wayUsed = true; WW.game.wayUntil = performance.now() + 30000;
     const ns = C.nextStep();
     WW.sfx('coin'); C.say(T('wayOn'), null, { at: ns.at, kind: ns.kind });
-    C.show(ns.at, ns.kind, { hold: 3200 });
+    C.lead(ns.at, ns.kind);
   }
 
   /* ---------------- PLAYTEST-3 · Christopher gets wings ----------------
@@ -274,6 +275,19 @@
     if (F.mode !== 'follow') return;
     C.show(at, kind || C.kindAt(at), { hold: 1400 });
   };
+  /* fun-pass-4 · he leads the way: footprints light up on the real path, and he flies a few squares ahead on it and waits
+     for you (never straight over a river). Ends when you get there, the goal changes, or after 30 s. */
+  C.lead = (at, kind, opt = {}) => {
+    if (!at) return;
+    const t = WW.way && WW.way.path([WW.game.player.x, WW.game.player.y], at);
+    if (!t || t.length < 3) return C.show(at, kind, { hold: 3200, nudge: opt.nudge }); // close by, or no way yet: just show it
+    const now = performance.now();
+    WW.way.showTrail(30000);
+    F.kind = kind || C.kindAt(at); F.leadAt = at.slice(); F.leadUntil = now + 30000; F.ask = false; F.bang = true; F.nudge = !!opt.nudge; F.mark = null;
+    F.callT = now; WW.sfx('chime');
+    if (opt.nudge && !C.showing()) C.say(T('followMe'), null, { kind: F.kind });
+    F.mode = WW.calm ? 'follow' : 'lead';
+  };
   /* little moods: 'spin' (a right answer), 'droop' (a miss), 'cheer' (an atlas page) */
   C.mood = (m) => { F.mood = m; F.moodT = performance.now(); if (m === 'cheer' && WW.game.player) WW.fx.burst(WW.game.player.x, WW.game.player.y, 'gold'); };
   C.resetFlight = () => { F.mode = 'follow'; F.x = null; F.y = null; F.trail = []; F.mark = null; F.ask = false; F.bang = false; F.sig = null; F.act = null; F.seen = {}; F.lastProgress = performance.now(); F.lastNudge = 0; F.pending = null; F.scr = null; };
@@ -311,7 +325,7 @@
       }
       const quiet = now - F.lastProgress, since = now - (F.lastNudge || 0);
       if (quiet > F.idleMs && since > (F.lastNudge ? IDLE_AGAIN_MS : 0) && F.mode === 'follow' && !(C.showing() && bubble.querySelector('button'))) {
-        F.lastNudge = now; const ns = C.nextStep(); if (ns.at) C.show(ns.at, ns.kind, { nudge: true, hold: 3200 });
+        F.lastNudge = now; const ns = C.nextStep(); if (ns.at) C.lead(ns.at, ns.kind, { nudge: true }); // stuck: he leads the way on the real path
       }
       // danger: a bad guy within 2 tiles makes his light go red
       F.danger = g.ents.some(e => (e.kind === 'smudge' || e.kind === 'qfoe') && !e.gone && e.visible !== false && Math.abs(e.x - g.player.x) + Math.abs(e.y - g.player.y) <= 2);
@@ -330,6 +344,16 @@
       F.off = off;
       if (F.mode === 'go') { tx = px; ty = py; ease = 150; if (Math.hypot(F.x - px, F.y - py) < 4) { F.mode = 'hover'; F.until = now + F.hold; } }
       else { tx = px + (off ? 0 : Math.cos(now / 260) * 8); ty = py + (off ? Math.sin(now / 200) * 2 : Math.sin(now / 260) * 3); ease = 70; if (now > F.until) { F.mode = 'back'; F.mark && (F.mark.until = Math.min(F.mark.until, now + 700)); } }
+    } else if (F.mode === 'lead') {
+      const path = WW.way.path([g.player.x, g.player.y], F.leadAt), goalNow = g.goal && g.goal();
+      if (!path || path.length <= 1 || now > F.leadUntil || !goalNow || goalNow[0] !== F.leadAt[0] || goalNow[1] !== F.leadAt[1]) { F.mode = 'back'; WW.way.trailUntil = Math.min(WW.way.trailUntil, now + 600); }
+      else {
+        const tile = path[Math.min(3, path.length - 1)]; F.at = tile;
+        if (onScreen(tile, sx, sy)) { [tx, ty] = center(tile, sx, sy); ty -= 6; }
+        else { const [cx, cy] = center(tile, sx, sy); tx = Math.max(14, Math.min(242, cx)); ty = Math.max(18, Math.min(162, cy)); }
+        if (!WW.calm) ty += Math.sin(now / 220) * 2;
+        ease = 140;
+      }
     } else if (F.mode === 'back') { ease = 150; if (Math.hypot(F.x - seatX, F.y - seatY) < 6) { F.mode = 'follow'; F.bang = false; if (F.nudge) F.ask = true; F.nudge = false; } }
     if (WW.calm) { F.x = seatX; F.y = seatY; if (F.until && now > F.until) { F.until = 0; F.bang = false; if (F.nudge) F.ask = true; F.nudge = false; } }
     else {

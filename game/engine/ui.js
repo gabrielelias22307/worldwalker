@@ -145,11 +145,13 @@
     ui.questSteps = steps;
     const pop = $('ww-qpop'); if (pop && pop.classList.contains('on')) ui.questPop(true);
   };
+  // fun-pass-4: the whole episode as a small map (way.js draws it): you blink, the goal is a gold square
+  const miniHtml = () => `<div class="nc-mini"><div class="nc-mh">🗺️ ${esc(T('miniMap'))}</div><canvas class="minimap" aria-hidden="true"></canvas></div>`;
   // PLAYTEST-3: the Now card (wide screens): the goal right now, where to go, and the list
   ui.nowCard = () => {
     const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
     const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
-    const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+    const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>${miniHtml()}`;
     if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
   };
   setInterval(() => ui.nowCard(), 700);
@@ -160,7 +162,7 @@
   ui.questPop = (refresh) => {
     const pop = $('ww-qpop'); if (!pop) return;
     if (!refresh && pop.classList.contains('on')) { pop.classList.remove('on'); return; }
-    pop.innerHTML = `<b>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</b>${ui.questList()}<div class="small">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>`;
+    pop.innerHTML = `<b>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</b>${ui.questList()}<div class="small">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>${miniHtml()}`;
     pop.setAttribute('dir', WW.dir()); pop.classList.add('on');
     clearTimeout(qTimer); if (!refresh) qTimer = setTimeout(() => pop.classList.remove('on'), 7000);
   };

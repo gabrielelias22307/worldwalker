@@ -180,7 +180,7 @@
   function screenOf(x, y) { return [Math.floor(x / SW), Math.floor(y / SH)]; }
   // for christopher.js and tools.js: the map and the things on it
   G.tileAt = (x, y) => tileAt(x, y);
-  G.setTile = (x, y, ch) => { map[y] = map[y].slice(0, x) + ch + map[y].slice(x + 1); };
+  G.setTile = (x, y, ch) => { map[y] = map[y].slice(0, x) + ch + map[y].slice(x + 1); G.mapVer = (G.mapVer || 0) + 1; }; // mapVer: the paths in way.js know the map changed
   G.entAt = (x, y) => entAt(x, y);
   G.walkable = (x, y) => walkable(x, y);
   G.screenOf = screenOf;
@@ -468,6 +468,7 @@
   const TURN_MS = 110;
   let queued = null;
   function press(d) {
+    clickTarget = null; // a key or the arrow pad takes over from tap-to-walk
     if (ride && d !== player.dir) ride = null; // pressed another way: off the train
     held = d;
     if (player && player.dir === d) queued = d; // already facing it: even a very quick tap is one step
@@ -512,10 +513,21 @@
       const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
       const e2 = entAt(tx, ty);
       if (e2 && !PASS.includes(e2.kind) && Math.abs(dx) + Math.abs(dy) === 1) { player.dir = d; interact(e2); return; }
-      clickTarget = [tx, ty];
+      // fun-pass-4: tap to walk. The hero walks the real path there (around walls and water, way.js); a person or a thing: walk up and use it
+      const path = WW.way.path([player.x, player.y], [tx, ty]);
+      if (path && path.length) { clickTarget = { at: [tx, ty], path: path.slice(), ent: e2 && !PASS.includes(e2.kind) ? e2 : null }; showTap(tx, ty, true); }
+      else if (!path) { showTap(tx, ty, false); WW.sfx('bad'); } // no way to get there (yet)
     });
   }
-  let clickTarget = null;
+  let clickTarget = null; // tap to walk: { at, path: [[x, y], …], ent }
+  // a little ring where you tapped: gold = going there, red = no way there yet
+  let tapMark = null;
+  function showTap(x, y, ok) { tapMark = { x, y, ok, t: performance.now() }; }
+  G.drawTap = (c, sx, sy, now) => {
+    if (!tapMark || now - tapMark.t > 700 || screenOf(tapMark.x, tapMark.y).join() !== [sx, sy].join()) return;
+    const k = (now - tapMark.t) / 700, px = (tapMark.x - sx * SW) * TS + 8, py = (tapMark.y - sy * SH) * TS + 8;
+    c.strokeStyle = tapMark.ok ? `rgba(242,193,78,${1 - k})` : `rgba(224,72,72,${1 - k})`; c.lineWidth = 2; c.beginPath(); c.arc(px, py, 4 + k * 6, 0, 7); c.stroke();
+  };
 
   /* ---------------- smudges wander ---------------- */
   function moveSmudges(now) {
@@ -637,17 +649,15 @@
       if (ride) rideStep(now);
       else if (held && now - heldSince >= TURN_MS) { tryStep(held, now); queued = null; }
       else if (queued && !held) { tryStep(queued, now); queued = null; }
-      else if (clickTarget) {
-        const dx = clickTarget[0] - player.x, dy = clickTarget[1] - player.y;
-        if (!dx && !dy) clickTarget = null;
+      else if (clickTarget) { // tap to walk: one step at a time along the path; something moved into the way: find a new path
+        const w = clickTarget;
+        if (!w.path.length) { clickTarget = null; if (w.ent && !w.ent.gone && Math.abs(w.ent.x - player.x) + Math.abs(w.ent.y - player.y) === 1) { player.dir = w.ent.x > player.x ? 'right' : w.ent.x < player.x ? 'left' : w.ent.y > player.y ? 'down' : 'up'; interact(w.ent); } }
         else {
-          const d = Math.abs(dx) > Math.abs(dy) ? (dx > 0 ? 'right' : 'left') : (dy > 0 ? 'down' : 'up');
+          const [nx, ny] = w.path[0], d = nx > player.x ? 'right' : nx < player.x ? 'left' : ny > player.y ? 'down' : 'up';
           const bx = player.x, by = player.y; tryStep(d, now);
-          if (player.x === bx && player.y === by) {
-            const d2 = Math.abs(dx) > Math.abs(dy) ? (dy ? (dy > 0 ? 'down' : 'up') : null) : (dx ? (dx > 0 ? 'right' : 'left') : null);
-            if (d2) tryStep(d2, now);
-            if (player.x === bx && player.y === by) clickTarget = null;
-          }
+          if (player.x === nx && player.y === ny) w.path.shift();
+          else if (player.x === bx && player.y === by && !WW.paused) { const p2 = WW.way.path([player.x, player.y], w.at); if (p2 && p2.length && !w.retried) { w.path = p2.slice(); w.retried = true; } else clickTarget = null; }
+          else clickTarget = null;
         }
       }
     }
@@ -684,6 +694,8 @@
         const hx = (fx - sx * SW) * TS, hy = (fy - sy * SH) * TS;
         const p = WW.chris.step(now, dt, hx, hy, sx, sy, player.dir);
         pip.dx = WW.chris.fly.ax - 8; pip.dy = WW.chris.fly.ay - 8; // his bubble hangs from his seat beside the hero (it doesn't wobble)
+        WW.way.drawTrail(c, sx, sy, now); // footprints on the real path (way.js)
+        G.drawTap(c, sx, sy, now);
         WW.chris.drawMark(c, sx, sy, now);
         drawGoal(c, sx, sy, hx, hy, now);
         WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
@@ -693,6 +705,7 @@
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
+    if (!trans) WW.way.drawCompass(c, now); // N E S W in the corner, the way to go lit up
     WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
     if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
     c.restore();
@@ -713,8 +726,10 @@
       const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
       if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return; // right there: no arrow needed
       tri(x, Math.max(6, y), 0, 1);
-    } else { // on another screen: an arrow at the edge, pointing that way
-      const dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy), cx = hx + 8, cy = hy + 8;
+    } else { // on another screen: an arrow at the edge, pointing the way the real path leaves this screen (way.js)
+      let dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy); const cx = hx + 8, cy = hy + 8;
+      const wp = WW.way.path([player.x, player.y], g), out = wp && wp.find(([x, y]) => screenOf(x, y).join() !== [sx, sy].join());
+      if (out) { const [osx, osy] = screenOf(out[0], out[1]); dx = Math.sign(osx - sx); dy = Math.sign(osy - sy); }
       const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
       const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
       const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
