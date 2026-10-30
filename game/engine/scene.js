@@ -118,7 +118,7 @@
     // the guess: two big choices; either one is fine (it is a guess): a short "why", +1 coin, and it goes in the student's work
     function guessCard(box) {
       const card = document.createElement('div'); card.className = 'cut-card cut-guess';
-      card.innerHTML = `<p><b>🤔 ${esc(kind === 'page' ? T('sceneNextEp') : T('sceneGuess'))}</b> ${WW.rich(guess.q)}</p>`;
+      card.innerHTML = `<p><b>🤔 ${esc(T('sceneGuess'))}</b> ${WW.rich(guess.q)}</p>`; // the page-scene questions start with "Next: …" themselves
       const sp = WW.speakBtn(() => WW.plain(guess.q) + '. ' + guess.choices.map(c => WW.plain(c.t)).join('. ')); if (sp) card.prepend(sp);
       const row = document.createElement('div'); row.className = 'cut-choices choices'; // .choices: the first choice gets the keyboard focus (Enter picks it)
       guess.choices.forEach((c, k) => {
@@ -138,6 +138,7 @@
       if (picked == null) acts.appendChild(WW.btn(T('sceneSkip'), 'ghost', finish));
       else acts.appendChild(WW.btn((kind === 'page' ? T('sceneOn') : T('sceneGo')) + ' ▶', 'gold', finish));
       box.appendChild(acts);
+      if (picked != null) requestAnimationFrame(() => { const ov = document.getElementById('ww-ov'); if (ov) ov.scrollTop = ov.scrollHeight; }); // a small screen: the why and the button come into view
     }
     cur = { end: finish };
     if (kind === 'page') WW.sfx && WW.sfx('chime');
