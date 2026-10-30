@@ -160,7 +160,9 @@ async function play(b, id) {
     // claim the page: walk onto it
     const pg = await p.evaluate(() => WW.game.bossAt());
     await walkTo(pg[0], pg[1], true); await p.waitForTimeout(1500);
-    for (let k = 0; k < 6 && !(await p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ }).count()); k++) { const g = p.locator('#ww-ov .pbtn.gold'); if (!(await g.count())) break; await g.last().scrollIntoViewIfNeeded(); await g.last().tap(); await p.waitForTimeout(500); }
+    for (let k = 0; k < 8 && !(await p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ }).count()); k++) {
+      if (await p.$('.cut-choices button:not([disabled])')) { await checkPanel('guess'); await tap('.cut-choices button'); await p.waitForTimeout(400); continue; } // the page scene's guess (fun-pass-4)
+      const g = p.locator('#ww-ov .pbtn.gold'); if (!(await g.count())) break; await g.last().scrollIntoViewIfNeeded(); await g.last().tap(); await p.waitForTimeout(500); }
     await checkPanel('finish'); await shot('7-finish');
     const copy = p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ });
     ok(await copy.count() > 0, 'the finish panel has "Copy my work"');
