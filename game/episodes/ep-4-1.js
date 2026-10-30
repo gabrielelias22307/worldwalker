@@ -31,7 +31,23 @@ window.EPISODE = {
     ],
     page: { en: 'The Great Green Wall plants trees across Africa, from Senegal to Djibouti.',
       es: 'La Gran Muralla Verde planta árboles a lo largo de África, de Senegal a Yibuti.',
-      fa: 'دیوار بزرگ سبز در سراسر افریقا، از سنگال تا جیبوتی، درخت می‌کارد.' }
+      fa: 'دیوار بزرگ سبز در سراسر افریقا، از سنگال تا جیبوتی، درخت می‌کارد.' },
+    guess: {
+      q: { en: 'Going south from the Sahara, does the land get wetter or drier?', es: 'Yendo al sur desde el Sahara, ¿la tierra se vuelve más húmeda o más seca?', fa: 'وقتی از صحرا به طرف جنوب برویم، زمین مرطوب‌تر می‌شود یا خشک‌تر؟' },
+      choices: [
+        { t: { en: '🌧️ Wetter', es: '🌧️ Más húmeda', fa: '🌧️ مرطوب‌تر' }, ok: true },
+        { t: { en: '🏜️ Drier', es: '🏜️ Más seca', fa: '🏜️ خشک‌تر' } }
+      ],
+      why: { en: 'South of the Sahara the land gets wetter: desert, Sahel, savanna, then rainforest.', es: 'Al sur del Sahara la tierra se vuelve más húmeda: desierto, Sahel, sabana y luego selva.', fa: 'در جنوب صحرا زمین مرطوب‌تر می‌شود: بیابان، ساحل، ساوانا و بعد جنگل بارانی.' }
+    },
+    next: {
+      q: { en: 'Next: Kinshasa, a big African city. Is it growing or shrinking?', es: 'Ahora: Kinshasa, una gran ciudad africana. ¿Está creciendo o achicándose?', fa: 'بعدی: کینشاسا، یک شهر بزرگ افریقا. بزرگ‌تر می‌شود یا کوچک‌تر؟' },
+      choices: [
+        { t: { en: '📈 Growing fast', es: '📈 Crece rápido', fa: '📈 زود بزرگ می‌شود' }, ok: true },
+        { t: { en: '📉 Shrinking fast', es: '📉 Se achica rápido', fa: '📉 زود کوچک می‌شود' } }
+      ],
+      why: { en: 'Kinshasa has more than 15 million people, and people keep moving there for jobs.', es: 'Kinshasa tiene más de 15 millones de personas, y sigue llegando gente a buscar trabajo.', fa: 'کینشاسا بیشتر از ۱۵ میلیون نفر دارد و مردم برای کار هنوز به آن‌جا می‌روند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

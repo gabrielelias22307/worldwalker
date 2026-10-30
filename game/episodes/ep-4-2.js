@@ -31,7 +31,23 @@ window.EPISODE = {
     ],
     page: { en: 'The Congo is the world\'s deepest river, over 700 feet deep in places.',
       es: 'El Congo es el río más profundo del mundo, con más de 200 metros en partes.',
-      fa: 'کانگو عمیق‌ترین دریای جهان است. بعضی جاها بیشتر از ۲۰۰ متر عمق دارد.' }
+      fa: 'کانگو عمیق‌ترین دریای جهان است. بعضی جاها بیشتر از ۲۰۰ متر عمق دارد.' },
+    guess: {
+      q: { en: 'Do people in DR Congo speak one language or many?', es: '¿La gente de la RD del Congo habla un idioma o muchos?', fa: 'مردم کانگوی دموکراتیک یک زبان دارند یا زبان‌های زیاد؟' },
+      choices: [
+        { t: { en: '🗣️ Many languages', es: '🗣️ Muchos idiomas', fa: '🗣️ زبان‌های زیاد' }, ok: true },
+        { t: { en: '1️⃣ Just one', es: '1️⃣ Solo uno', fa: '1️⃣ فقط یکی' } }
+      ],
+      why: { en: 'DR Congo has more than 200 languages, and many people speak more than one.', es: 'La RD del Congo tiene más de 200 idiomas, y mucha gente habla más de uno.', fa: 'کانگوی دموکراتیک بیشتر از ۲۰۰ زبان دارد و بسیاری از مردم بیشتر از یک زبان می‌دانند.' }
+    },
+    next: {
+      q: { en: 'Next: Johannesburg, South Africa. What did miners dig for there?', es: 'Ahora: Johannesburgo, Sudáfrica. ¿Qué buscaban los mineros allí?', fa: 'بعدی: ژوهانسبرگ در افریقای جنوبی. معدن‌کارها آن‌جا دنبال چه می‌کندند؟' },
+      choices: [
+        { t: { en: '🛢️ Oil', es: '🛢️ Petróleo', fa: '🛢️ نفت' } },
+        { t: { en: '🪙 Gold', es: '🪙 Oro', fa: '🪙 طلا' }, ok: true }
+      ],
+      why: { en: 'Gold was found there in 1886, and Johannesburg grew up around the gold mines.', es: 'Allí se encontró oro en 1886, y Johannesburgo creció alrededor de las minas de oro.', fa: 'در سال ۱۸۸۶ آن‌جا طلا پیدا شد و ژوهانسبرگ دور معدن‌های طلا بزرگ شد.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
