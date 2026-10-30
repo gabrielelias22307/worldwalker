@@ -32,7 +32,23 @@ window.EPISODE = {
     ],
     page: { en: 'Mount Everest, the highest mountain on Earth, is in the Himalaya.',
       es: 'El monte Everest, la montaña más alta del mundo, está en el Himalaya.',
-      fa: 'کوه اورست، بلندترین کوه جهان، در هیمالیا است.' }
+      fa: 'کوه اورست، بلندترین کوه جهان، در هیمالیا است.' },
+    guess: {
+      q: { en: 'When does most of India\'s rain fall?', es: '¿Cuándo cae casi toda la lluvia de la India?', fa: 'بیشتر باران هند چه وقت می‌بارد؟' },
+      choices: [
+        { t: { en: '🗓️ Evenly all year', es: '🗓️ Igual todo el año', fa: '🗓️ یکسان در تمام سال' } },
+        { t: { en: '📅 In a few months', es: '📅 En unos meses', fa: '📅 در چند ماه' }, ok: true }
+      ],
+      why: { en: 'Most of India\'s rain falls in a few monsoon months, so farmers plant rice then.', es: 'Casi toda la lluvia de la India cae en unos meses de monzón, y los agricultores siembran arroz entonces.', fa: 'بیشتر باران هند در چند ماه موسمی می‌بارد، پس دهقانان همان وقت برنج می‌کارند.' }
+    },
+    next: {
+      q: { en: 'Next: Indonesia. Is it one big island or many islands?', es: 'Después: Indonesia. ¿Es una isla grande o muchas islas?', fa: 'بعدی: اندونیزیا. یک جزیرهٔ بزرگ است یا جزیره‌های زیاد؟' },
+      choices: [
+        { t: { en: '🏝️ Many islands', es: '🏝️ Muchas islas', fa: '🏝️ جزیره‌های زیاد' }, ok: true },
+        { t: { en: '🗺️ One big island', es: '🗺️ Una isla grande', fa: '🗺️ یک جزیرهٔ بزرگ' } }
+      ],
+      why: { en: 'Indonesia has more than 17,000 islands, so it is a huge archipelago.', es: 'Indonesia tiene más de 17,000 islas, así que es un archipiélago enorme.', fa: 'اندونیزیا بیش از ۱۷۰۰۰ جزیره دارد، پس یک مجمع‌الجزایر بزرگ است.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

@@ -32,7 +32,23 @@ window.EPISODE = {
     ],
     page: { en: 'Saudi Arabia has no rivers that flow all year.',
       es: 'Arabia Saudita no tiene ríos que corran todo el año.',
-      fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد.' }
+      fa: 'عربستان سعودی هیچ دریایی ندارد که تمام سال جاری باشد.' },
+    guess: {
+      q: { en: 'In dry Iraq, where did early farms and cities grow?', es: 'En Irak, una tierra seca, ¿dónde nacieron las primeras granjas y ciudades?', fa: 'در عراق خشک، اولین کشتزارها و شهرها کجا به وجود آمدند؟' },
+      choices: [
+        { t: { en: '🏞️ Near rivers', es: '🏞️ Cerca de ríos', fa: '🏞️ نزدیک دریاها' }, ok: true },
+        { t: { en: '🏜️ Far from water', es: '🏜️ Lejos del agua', fa: '🏜️ دور از آب' } }
+      ],
+      why: { en: 'Farms need water, so early farms and cities grew along the Tigris and Euphrates.', es: 'Las granjas necesitan agua, así que las primeras granjas y ciudades crecieron junto al Tigris y el Éufrates.', fa: 'کشتزارها به آب ضرورت دارند، پس اولین کشتزارها و شهرها کنار دجله و فرات به وجود آمدند.' }
+    },
+    next: {
+      q: { en: 'Next: old houses in hot Iran have wind towers. What do they do?', es: 'Después: las casas antiguas del caluroso Irán tienen torres de viento. ¿Qué hacen?', fa: 'بعدی: خانه‌های کهنه در ایران گرم برج باد دارند. این برج‌ها چه کار می‌کنند؟' },
+      choices: [
+        { t: { en: '🔥 Heat the rooms', es: '🔥 Calientan los cuartos', fa: '🔥 اتاق را گرم می‌کنند' } },
+        { t: { en: '🌬️ Cool the rooms', es: '🌬️ Enfrían los cuartos', fa: '🌬️ اتاق را خنک می‌کنند' }, ok: true }
+      ],
+      why: { en: 'Wind towers catch breezes and pull cool air into houses in hot desert cities.', es: 'Las torres de viento atrapan la brisa y meten aire fresco a las casas en ciudades calurosas del desierto.', fa: 'برج‌های باد نسیم را می‌گیرند و هوای خنک را به خانه‌های شهرهای گرم بیابانی می‌کشند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

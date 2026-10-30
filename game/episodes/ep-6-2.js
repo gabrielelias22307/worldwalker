@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'Cambodia\'s Tonle Sap Lake grows several times bigger in the rainy season.',
       es: 'El lago Tonlé Sap, en Camboya, crece varias veces en la temporada de lluvias.',
-      fa: 'جهیل تونله‌ساپ در کمبودیا در فصل باران چند برابر بزرگ می‌شود.' }
+      fa: 'جهیل تونله‌ساپ در کمبودیا در فصل باران چند برابر بزرگ می‌شود.' },
+    guess: {
+      q: { en: 'Volcanic ash falls on fields. Later, is the soil richer or poorer?', es: 'La ceniza de un volcán cae en los campos. Después, ¿el suelo es más rico o más pobre?', fa: 'خاکستر آتشفشان روی کشتزارها می‌افتد. بعداً خاک حاصلخیزتر می‌شود یا ضعیف‌تر؟' },
+      choices: [
+        { t: { en: '🪨 Poorer soil', es: '🪨 Suelo más pobre', fa: '🪨 خاک ضعیف‌تر' } },
+        { t: { en: '🌱 Richer soil', es: '🌱 Suelo más rico', fa: '🌱 خاک حاصلخیزتر' }, ok: true }
+      ],
+      why: { en: 'Volcanic ash makes fertile soil, so many farmers grow rice near volcanoes.', es: 'La ceniza volcánica hace el suelo fértil, por eso muchos agricultores siembran arroz cerca de volcanes.', fa: 'خاکستر آتشفشان خاک را حاصلخیز می‌کند، پس دهقانان زیادی نزدیک آتشفشان‌ها برنج می‌کارند.' }
+    },
+    next: {
+      q: { en: 'Next: Bangladesh is a small country. Does it have few or many people?', es: 'Después: Bangladés es un país pequeño. ¿Tiene poca o mucha gente?', fa: 'بعدی: بنگله‌دیش یک کشور کوچک است. مردم کم دارد یا زیاد؟' },
+      choices: [
+        { t: { en: '👥 Very many', es: '👥 Muchísima', fa: '👥 خیلی زیاد' }, ok: true },
+        { t: { en: '🧍 Very few', es: '🧍 Muy poca', fa: '🧍 خیلی کم' } }
+      ],
+      why: { en: 'Bangladesh is about the size of Iowa but has over 170 million people.', es: 'Bangladés es del tamaño de Iowa, más o menos, pero tiene más de 170 millones de personas.', fa: 'بنگله‌دیش تقریباً به اندازهٔ آیووا است، اما بیشتر از ۱۷۰ میلیون نفر دارد.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
