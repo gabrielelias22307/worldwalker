@@ -588,6 +588,11 @@
     lines.push(`CHALLENGE: ${WW.plain(ep.challenge.title)} — solved in ${r.challengeTries} ${r.challengeTries === 1 ? 'try' : 'tries'}`);
     lines.push(`GRUMP TRIAL: ${r.missed.length} missed ${r.missed.length ? '(' + r.missed.map(i => WW.plain(ep.boss.questions[i].q)).join(' | ') + ')' : ''}`);
     lines.push('');
+    if (r.guesses && r.guesses.length) { // fun-pass-4: the guesses at the end of the cut scenes
+      lines.push(`MY GUESSES (${r.guesses.filter(g => g.ok).length} of ${r.guesses.length} matched)`);
+      r.guesses.forEach(g => lines.push(`- ${g.q} — my guess: ${g.a}${g.ok ? ' ✓' : ''}`));
+      lines.push('');
+    }
     lines.push('REFLECTION');
     lines.push('Q: ' + WW.plain(ep.reflect.q));
     lines.push('A: ' + (r.reflection || '(blank)'));

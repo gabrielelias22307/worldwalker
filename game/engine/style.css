@@ -537,3 +537,13 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 .ww-frame.narrow .qpop .nc-mini{grid-column:2;grid-row:2 / span 2;margin:0}
 .ww-frame.narrow .qpop canvas.minimap{max-width:112px}
 .ww-frame.narrow .qpop ol{margin:4px 0;padding-inline-start:18px}
+/* the guess at the end of a cut scene (fun-pass-4): two big choices, then a short why */
+.cut-choices{flex-basis:100%;display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.cut-choices .pbtn.big{font-size:19px;padding:12px 10px;min-height:56px;white-space:normal}
+.cut-choices .pbtn.right{background:#c8f7b0;border-color:#2e9a46}
+.cut-choices .pbtn.other{background:#ffe9a0;border-color:#c08a1e}
+.cut-choices .pbtn:disabled{opacity:1;cursor:default}
+.cut-choices .pbtn:disabled:not(.right):not(.other){opacity:.55}
+.cut-why{flex-basis:100%;font-size:18px !important;margin-top:10px !important;padding:8px 10px;border-radius:6px;background:#fff6d6;border:2px solid #d9b44a}
+.cut-why.yes{background:#e6fbd9;border-color:#5fd36a}
+@media (max-width:480px){.cut-choices .pbtn.big{font-size:16px;padding:10px 6px}}

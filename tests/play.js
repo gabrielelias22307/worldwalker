@@ -61,7 +61,11 @@ const CANVAS = process.argv.includes('--canvas');
         // the start cut scene: Christopher flies to the place on the world map, 2-3 fact cards (fun-pass-4)
         await page.waitForSelector('.cutov', { timeout: 3000 });
         await page.waitForTimeout(1700); await shot('1b-scene');
-        for (let k = 0; k < 4 && await page.$('.cutov'); k++) { await page.locator('#ww-ov .pbtn.gold').last().click(); await page.waitForTimeout(80); }
+        for (let k = 0; k < 8 && await page.$('.cutov'); k++) { // Next on each card; the guess: pick one, then Continue
+          if (await page.$('.cut-choices button:not([disabled])')) { if (k === 4) await shot('1c-guess'); await page.locator('.cut-choices button').first().click(); }
+          else await page.locator('#ww-ov .pbtn.gold').last().click();
+          await page.waitForTimeout(80); }
+        if (!(await page.evaluate(() => (WW.run.guesses || []).length === 1))) throw new Error('the guess after the start scene was not kept');
         if (await page.$('.cutov')) throw new Error('the start cut scene did not end');
         if (!(await page.evaluate(() => WW.save.seen[WW.ep.id + 's']))) throw new Error('the start cut scene was not saved as seen');
         const meet = await page.evaluate(() => !!(WW.ep.christopher && WW.ep.christopher.meet));
@@ -643,11 +647,12 @@ const CANVAS = process.argv.includes('--canvas');
         const bossAt = await page.evaluate(() => WW.game.bossAt());
         if (!goal || goal.join() !== bossAt.join()) throw new Error('the goal after the Grump is not the page');
         await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), bossAt);
-        await page.waitForSelector('.cutov'); await page.waitForTimeout(1700); await shot('8c-page-scene'); // one new fact, then the finish screen
-        await page.locator('#ww-ov .pbtn.gold').last().click();
+        await page.waitForSelector('.cutov'); await page.waitForTimeout(1700); await shot('8c-page-scene'); // one new fact, a "what's next?" guess, then the finish screen
+        for (let k = 0; k < 4 && await page.$('.cutov'); k++) { if (await page.$('.cut-choices button:not([disabled])')) await page.locator('.cut-choices button').last().click(); else await page.locator('#ww-ov .pbtn.gold').last().click(); await page.waitForTimeout(80); }
         await page.waitForSelector('.finov');
         const fin = await page.textContent('#ww-ov');
         if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');
+        if (!/MY GUESSES \(\d of 2 matched\)/.test(await page.evaluate(() => WW.workText()))) throw new Error('the two guesses are not in "Copy my work"');
       });
       await step('finish + turn in', async () => {
         await page.waitForTimeout(800); await shot('9a-finish-top');

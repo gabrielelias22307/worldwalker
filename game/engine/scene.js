@@ -86,6 +86,9 @@
     const cards = sc ? (kind === 'page' ? [sc.page] : sc.start || []).filter(Boolean) : [];
     if (!cards.length || (WW.save.seen || {})[key]) return done && done();
     let i = 0, raf = 0, t0 = performance.now(), live = true;
+    // fun-pass-4: a quick, very easy guess at the end: about this place (start), or about the next episode (page)
+    const guess = sc && (kind === 'page' ? sc.next : sc.guess);
+    let stage = 'cards', picked = null;
     const finish = () => {
       if (!live) return; live = false; cancelAnimationFrame(raf); cur = null;
       WW.save.seen = Object.assign(WW.save.seen || {}, { [key]: 1 }); WW.store();
@@ -100,6 +103,7 @@
         cancelAnimationFrame(raf);
         const tick = t => { if (!live) return; paint(c, t, sc.at, kind, t0); raf = requestAnimationFrame(tick); };
         if (WW.calm) paint(c, 0, sc.at, kind, 0); else raf = requestAnimationFrame(tick); // reduced motion: one still picture
+        if (stage === 'guess') return guessCard(box);
         const card = document.createElement('div'); card.className = 'cut-card';
         card.innerHTML = `<p>${WW.rich(cards[i])}</p>${cards.length > 1 ? `<div class="cut-dots">${cards.map((_, j) => `<i class="${j === i ? 'on' : ''}"></i>`).join('')}</div>` : ''}`;
         const sp = WW.speakBtn(() => WW.plain(cards[i])); if (sp) card.prepend(sp);
@@ -107,10 +111,34 @@
         const acts = document.createElement('div'); acts.className = 'acts center';
         const last = i === cards.length - 1;
         if (!last) acts.appendChild(WW.btn(T('sceneSkip'), 'ghost', finish));
-        acts.appendChild(WW.btn(last ? (kind === 'page' ? T('sceneOn') : T('sceneGo')) + ' ▶' : T('sceneNext') + ' ▶', 'gold', () => { if (last) finish(); else { i++; h.render(); } }));
+        acts.appendChild(WW.btn(last && !guess ? (kind === 'page' ? T('sceneOn') : T('sceneGo')) + ' ▶' : T('sceneNext') + ' ▶', 'gold', () => { if (!last) { i++; h.render(); } else if (guess) { stage = 'guess'; h.render(); } else finish(); }));
         box.appendChild(acts);
       }
     });
+    // the guess: two big choices; either one is fine (it is a guess): a short "why", +1 coin, and it goes in the student's work
+    function guessCard(box) {
+      const card = document.createElement('div'); card.className = 'cut-card cut-guess';
+      card.innerHTML = `<p><b>🤔 ${esc(kind === 'page' ? T('sceneNextEp') : T('sceneGuess'))}</b> ${WW.rich(guess.q)}</p>`;
+      const sp = WW.speakBtn(() => WW.plain(guess.q) + '. ' + guess.choices.map(c => WW.plain(c.t)).join('. ')); if (sp) card.prepend(sp);
+      const row = document.createElement('div'); row.className = 'cut-choices choices'; // .choices: the first choice gets the keyboard focus (Enter picks it)
+      guess.choices.forEach((c, k) => {
+        const b = WW.btn(esc(L(c.t)), 'big' + (picked === k ? (c.ok ? ' right' : ' other') : ''), () => {
+          if (picked != null) return; picked = k;
+          const r = WW.run; if (r) { (r.guesses = r.guesses || []).push({ q: WW.plain(guess.q), a: WW.plain(c.t), ok: !!c.ok }); WW.gain(null, 0, 1, T('guessCoin'), true); }
+          WW.sfx(c.ok ? 'good' : 'pop'); if (c.ok && WW.chris.mood) WW.chris.mood('spin');
+          h.render();
+        });
+        if (picked != null) b.disabled = true;
+        row.appendChild(b);
+      });
+      card.appendChild(row);
+      if (picked != null) card.insertAdjacentHTML('beforeend', `<p class="cut-why ${guess.choices[picked].ok ? 'yes' : 'no'}">${esc(guess.choices[picked].ok ? T('guessYes') : T('guessOther'))}${WW.rich(guess.why)}</p>`);
+      box.appendChild(card);
+      const acts = document.createElement('div'); acts.className = 'acts center';
+      if (picked == null) acts.appendChild(WW.btn(T('sceneSkip'), 'ghost', finish));
+      else acts.appendChild(WW.btn((kind === 'page' ? T('sceneOn') : T('sceneGo')) + ' ▶', 'gold', finish));
+      box.appendChild(acts);
+    }
     cur = { end: finish };
     if (kind === 'page') WW.sfx && WW.sfx('chime');
   };

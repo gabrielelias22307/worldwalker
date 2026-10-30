@@ -56,6 +56,9 @@ function checkEpisode(file) {
     if (!Array.isArray(sc.at) || sc.at.length !== 2 || !(Math.abs(sc.at[0]) <= 180) || !(sc.at[1] <= 82 && sc.at[1] >= -58)) errs.push('scenes.at must be [longitude, latitude] (latitude 82 to -58)');
     if (!Array.isArray(sc.start) || sc.start.length < 2 || sc.start.length > 3) errs.push('scenes.start needs 2 or 3 facts');
     if (!sc.page || !sc.page.en) errs.push('scenes.page needs one fact');
+    // the guesses (fun-pass-4): 2 choices, exactly one expected, and a why
+    [['guess', 'after Start'], ['next', 'after the page']].forEach(([k, w]) => { const gq = sc[k];
+      if (!gq || !gq.q || !gq.why || !Array.isArray(gq.choices) || gq.choices.length !== 2 || gq.choices.filter(c => c.ok).length !== 1 || gq.choices.some(c => !c.t)) errs.push(`scenes.${k} (the guess ${w}) needs q, why and 2 choices with exactly one ok`); });
   }
 
   /* ---- map ---- */
@@ -383,7 +386,8 @@ function checkEpisode(file) {
     }
     (ep.signs || []).forEach((sg, i) => box(sg.text, `sign ${i + 1}`, 20));
     (ep.houses || []).forEach((h, i) => (h.lines || []).forEach((o, k) => box(o, `houses[${i}] ${strip((h.name || {}).en)} line ${k + 1}`)));
-    if (ep.scenes) { (ep.scenes.start || []).forEach((o, i) => box(o, `scenes.start[${i}]`)); box(ep.scenes.page, 'scenes.page'); }
+    if (ep.scenes) { (ep.scenes.start || []).forEach((o, i) => box(o, `scenes.start[${i}]`)); box(ep.scenes.page, 'scenes.page');
+      ['guess', 'next'].forEach(k => { const gq = ep.scenes[k]; if (!gq) return; box(gq.q, `scenes.${k} question`); box(gq.why, `scenes.${k} why`, 18); (gq.choices || []).forEach((c, j) => box(c.t, `scenes.${k} choice ${j + 1}`, 5)); }); }
     (ep.finds || []).forEach((f, i) => { box(f.clue, `find ${i + 1} clue`, 20); box(f.text, `find ${i + 1} text`, 20); });
     // the right answer should not give itself away by being the longest
     const sets = [];
