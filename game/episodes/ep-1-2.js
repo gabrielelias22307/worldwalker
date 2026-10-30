@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'The Mississippi River collects water from 31 U.S. states.',
       es: 'El río Misisipi recoge agua de 31 estados de Estados Unidos.',
-      fa: 'دریای میسیسیپی آب ۳۱ ایالت امریکا را جمع می‌کند.' }
+      fa: 'دریای میسیسیپی آب ۳۱ ایالت امریکا را جمع می‌کند.' },
+    guess: {
+      q: { en: 'Which U.S. state grows the most corn?', es: '¿Qué estado de Estados Unidos cultiva más maíz?', fa: 'کدام ایالت امریکا از همه بیشتر جواری می‌کارد؟' },
+      choices: [
+        { t: { en: '🏜️ Arizona', es: '🏜️ Arizona', fa: '🏜️ اریزونا' } },
+        { t: { en: '🌽 Iowa', es: '🌽 Iowa', fa: '🌽 آیووا' }, ok: true }
+      ],
+      why: { en: 'Iowa grows more corn than any other state, so it is part of the Corn Belt region.', es: 'Iowa cultiva más maíz que cualquier otro estado, así que es parte de la región del Cinturón del Maíz.', fa: 'آیووا از هر ایالت دیگر بیشتر جواری می‌کارد، پس بخشی از منطقهٔ کمربند جواری است.' }
+    },
+    next: {
+      q: { en: 'Next: resources! Is oil found evenly all over Earth?', es: '¡Ahora: recursos! ¿El petróleo está igual en toda la Tierra?', fa: 'بعدی: منابع! آیا تیل در همه جای زمین یکسان پیدا می‌شود؟' },
+      choices: [
+        { t: { en: '🌍 Yes, everywhere', es: '🌍 Sí, en todas partes', fa: '🌍 بلی، همه جا' } },
+        { t: { en: '📍 No, some places', es: '📍 No, en algunos lugares', fa: '📍 نه، بعضی جاها' }, ok: true }
+      ],
+      why: { en: 'Natural resources are spread unevenly, so countries trade for what they lack.', es: 'Los recursos naturales no están repartidos por igual, así que los países comercian.', fa: 'منابع طبیعی یکسان پخش نشده‌اند، پس کشورها برای چیزهایی که ندارند تجارت می‌کنند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

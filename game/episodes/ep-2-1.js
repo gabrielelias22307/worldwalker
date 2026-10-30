@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'Ships can sail from Lake Superior all the way to the Atlantic Ocean.',
       es: 'Los barcos pueden ir desde el lago Superior hasta el océano Atlántico.',
-      fa: 'کشتی‌ها می‌توانند از جهیل سوپیریر تا بحر اطلس بروند.' }
+      fa: 'کشتی‌ها می‌توانند از جهیل سوپیریر تا بحر اطلس بروند.' },
+    guess: {
+      q: { en: 'Can a ship sail from the Great Lakes to the ocean?', es: '¿Puede un barco ir de los Grandes Lagos al océano?', fa: 'آیا کشتی می‌تواند از جهیل‌های بزرگ تا بحر برود؟' },
+      choices: [
+        { t: { en: '🚢 Yes, it can', es: '🚢 Sí, puede', fa: '🚢 بلی، می‌تواند' }, ok: true },
+        { t: { en: '🚫 No, never', es: '🚫 No, nunca', fa: '🚫 نه، هیچ وقت' } }
+      ],
+      why: { en: 'Ships follow the St. Lawrence River from the Great Lakes to the Atlantic Ocean.', es: 'Los barcos siguen el río San Lorenzo desde los Grandes Lagos hasta el océano Atlántico.', fa: 'کشتی‌ها از راه دریای سنت لارنس از جهیل‌های بزرگ تا بحر اطلس می‌روند.' }
+    },
+    next: {
+      q: { en: 'Next: the Andes Mountains! Is it colder high up or low down?', es: '¡Ahora: los Andes! ¿Hace más frío arriba o abajo?', fa: 'بعدی: کوه‌های اندیز! بالای کوه سردتر است یا پایین؟' },
+      choices: [
+        { t: { en: '🏖️ Low down', es: '🏖️ Abajo', fa: '🏖️ پایین' } },
+        { t: { en: '🏔️ High up', es: '🏔️ Arriba', fa: '🏔️ بالا' }, ok: true }
+      ],
+      why: { en: 'Air gets cooler as you climb, so high mountains near the equator can have snow.', es: 'El aire se enfría al subir, así que las montañas altas cerca del ecuador pueden tener nieve.', fa: 'هر قدر بالا بروی هوا سردتر می‌شود، پس کوه‌های بلند نزدیک خط استوا هم برف دارند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

@@ -27,7 +27,23 @@ window.EPISODE = {
     ],
     page: { en: 'Near the equator, the volcano Chimborazo still has snow and ice on top.',
       es: 'Cerca del ecuador, el volcán Chimborazo todavía tiene nieve y hielo arriba.',
-      fa: 'نزدیک خط استوا، آتشفشان چیمبورازو هنوز سرش برف و یخ دارد.' }
+      fa: 'نزدیک خط استوا، آتشفشان چیمبورازو هنوز سرش برف و یخ دارد.' },
+    guess: {
+      q: { en: 'On a mountain in Ecuador, where do potatoes grow best?', es: 'En una montaña de Ecuador, ¿dónde crecen mejor las papas?', fa: 'در یک کوه در اکوادور، کچالو در کجا بهتر می‌روید؟' },
+      choices: [
+        { t: { en: '🥔 High and cool', es: '🥔 Arriba y fresco', fa: '🥔 بالا و سرد' }, ok: true },
+        { t: { en: '🌴 Low and hot', es: '🌴 Abajo y caliente', fa: '🌴 پایین و گرم' } }
+      ],
+      why: { en: 'Potatoes like cool air, so farmers plant them high up, and bananas grow on the hot coast.', es: 'Las papas prefieren el aire fresco, así que se siembran arriba; los bananos crecen en la costa caliente.', fa: 'کچالو هوای سرد را دوست دارد، پس آن را بالا می‌کارند و کیله در ساحل گرم می‌روید.' }
+    },
+    next: {
+      q: { en: 'Next: people on the move! Why do many families move?', es: '¡Ahora: gente que se muda! ¿Por qué se mudan muchas familias?', fa: 'بعدی: مردم در سفر! چرا بسیاری از خانواده‌ها کوچ می‌کنند؟' },
+      choices: [
+        { t: { en: '💼 Jobs and family', es: '💼 Trabajo y familia', fa: '💼 کار و خانواده' }, ok: true },
+        { t: { en: '🎲 No reason', es: '🎲 Sin razón', fa: '🎲 بی دلیل' } }
+      ],
+      why: { en: 'Most people move for reasons like jobs, safety or family, or because drought hurts their farms.', es: 'La mayoría se muda por trabajo, seguridad o familia, o porque la sequía daña sus cultivos.', fa: 'بیشتر مردم به خاطر کار، امنیت یا خانواده کوچ می‌کنند، یا چون خشکسالی به زمین‌شان آسیب می‌زند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
