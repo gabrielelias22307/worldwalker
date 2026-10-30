@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'Hong Kong, Shenzhen and Guangzhou all grew where the Pearl River meets the sea.',
       es: 'Hong Kong, Shenzhen y Cantón crecieron donde el río de las Perlas llega al mar.',
-      fa: 'هانگ‌کانگ، شنژن و گوانگجو همه جایی بزرگ شدند که دریای مروارید به بحر می‌رسد.' }
+      fa: 'هانگ‌کانگ، شنژن و گوانگجو همه جایی بزرگ شدند که دریای مروارید به بحر می‌رسد.' },
+    guess: {
+      q: { en: 'What does a city\'s site mean?', es: '¿Qué significa el sitio de una ciudad?', fa: 'جای یک شهر یعنی چه؟' },
+      choices: [
+        { t: { en: '🏞️ The land it sits on', es: '🏞️ La tierra donde está', fa: '🏞️ زمینی که رویش است' }, ok: true },
+        { t: { en: '🚌 Its bus times', es: '🚌 Sus horarios de bus', fa: '🚌 وقت‌های سرویس آن' } }
+      ],
+      why: { en: 'Site is the land under a city: flat or high, wet or dry.', es: 'El sitio es la tierra bajo una ciudad: plana o alta, húmeda o seca.', fa: 'جای شهر زمین زیر آن است: هموار یا بلند، تر یا خشک.' }
+    },
+    next: {
+      q: { en: 'Where do the parts of one phone come from?', es: '¿De dónde vienen las piezas de un celular?', fa: 'پرزه‌های یک موبایل از کجا می‌آیند؟' },
+      choices: [
+        { t: { en: '🏠 Just one country', es: '🏠 De un solo país', fa: '🏠 فقط یک کشور' } },
+        { t: { en: '🌏 Many countries', es: '🌏 De muchos países', fa: '🌏 کشورهای زیاد' }, ok: true }
+      ],
+      why: { en: 'One phone holds parts made in many countries, then put together in one place.', es: 'Un celular tiene piezas hechas en muchos países, que luego se juntan en un lugar.', fa: 'یک موبایل پرزه‌هایی از کشورهای زیاد دارد که در یک جا یکجا می‌شوند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

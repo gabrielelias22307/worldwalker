@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'The biggest container ships are almost as long as four football fields.',
       es: 'Los barcos de contenedores más grandes miden casi lo mismo que cuatro canchas de fútbol.',
-      fa: 'بزرگ‌ترین کشتی‌های کانتینر تقریباً به درازی چهار میدان فوتبال هستند.' }
+      fa: 'بزرگ‌ترین کشتی‌های کانتینر تقریباً به درازی چهار میدان فوتبال هستند.' },
+    guess: {
+      q: { en: 'How do most of the world\'s goods travel?', es: '¿Cómo viaja la mayoría de los productos del mundo?', fa: 'بیشتر کالاهای جهان چطور سفر می‌کنند؟' },
+      choices: [
+        { t: { en: '🚢 By ship', es: '🚢 En barco', fa: '🚢 با کشتی' }, ok: true },
+        { t: { en: '✈️ By plane', es: '✈️ En avión', fa: '✈️ با طیاره' } }
+      ],
+      why: { en: 'Ships carry most world trade because one ship holds thousands of containers.', es: 'Los barcos llevan casi todo el comercio del mundo, porque un barco carga miles de contenedores.', fa: 'کشتی‌ها بیشتر تجارت جهان را می‌برند، چون یک کشتی هزاران کانتینر را می‌برد.' }
+    },
+    next: {
+      q: { en: 'Australia\'s middle is very dry. Where do most Australians live?', es: 'El centro de Australia es muy seco. ¿Dónde vive la mayoría?', fa: 'وسط آسترالیا بسیار خشک است. بیشتر مردم کجا زندگی می‌کنند؟' },
+      choices: [
+        { t: { en: '🏜️ The dry middle', es: '🏜️ En el centro seco', fa: '🏜️ وسط خشک' } },
+        { t: { en: '🏖️ Near the coast', es: '🏖️ Cerca de la costa', fa: '🏖️ نزدیک ساحل' }, ok: true }
+      ],
+      why: { en: 'The coast gets more rain, so most Australians live in cities near the sea.', es: 'La costa recibe más lluvia, por eso casi todos viven en ciudades cerca del mar.', fa: 'ساحل باران بیشتر دارد، پس بیشتر مردم آسترالیا در شهرهای نزدیک بحر زندگی می‌کنند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
