@@ -1,6 +1,6 @@
 // node tests/scenes.js [1.1 …]   the cut scenes (fun-pass-4): the start scene plays once after Start, Skip works,
 // the page scene plays before the finish screen, reduced motion keeps still. Pictures go to shots/scenes/
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'scenes');
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.1', '4.2', '8.1'];
 (async () => {

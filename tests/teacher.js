@@ -1,5 +1,5 @@
 // node tests/teacher.js   opens the teacher console, checks every episode's page, and the preview jumps (stone, boss, finish) in 3 episodes
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'teacher'); fs.mkdirSync(OUT, { recursive: true });

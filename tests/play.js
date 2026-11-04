@@ -1,6 +1,6 @@
 // node tests/play.js [1.1 2.2 ...]   plays each episode start to finish in a real browser and saves screenshots to shots/play/
 // Uses the built GitHub Pages files (run tools/build.js first). --canvas plays the one-file Canvas builds in dist/canvas instead.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: true });
@@ -40,7 +40,7 @@ const CANVAS = process.argv.includes('--canvas');
           window.__qpanels = 0;
           new MutationObserver(() => {
             const t = WW.ui.top(); const ov = document.getElementById('ww-ov');
-            if (t && !t.__q && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) {
+            if (t && !t.__q && t.opts.cls !== 'cutov' && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) { // the quick guesses in the cut scenes are not question panels
               t.__q = true; window.__qpanels++;
               // in a row: question panels with no walking between them (the hero is on the same square)
               const p = WW.dbg.player, at = p.x + ',' + p.y;

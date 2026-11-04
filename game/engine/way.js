@@ -108,8 +108,9 @@
   /* ---------- the compass in the corner of the map ---------- */
   way.drawCompass = (c, now) => {
     if (!WW.run || WW.paused && !WW.room) return;
-    const d = way.now(), cx = 256 - 17, cy = 17, R = 13;
-    c.save();
+    if (document.querySelector('#ww-toast .tst')) return; // a pop-up message is in this corner: the compass waits
+    const d = way.now(), cx = 256 - 14, cy = 14, R = 11;
+    c.save(); c.globalAlpha = 0.85;
     c.fillStyle = 'rgba(15,14,26,.72)'; c.beginPath(); c.arc(cx, cy, R + 2, 0, 7); c.fill();
     c.strokeStyle = '#c79a3a'; c.lineWidth = 1.5; c.beginPath(); c.arc(cx, cy, R, 0, 7); c.stroke();
     // the way to go: a gold wedge from the middle
@@ -120,7 +121,7 @@
     }
     c.font = 'bold 7px system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
     const L = T('compassLetters').split(' '), lit = d ? { n: [0], ne: [0, 1], e: [1], se: [1, 2], s: [2], sw: [2, 3], w: [3], nw: [3, 0] }[d] : [];
-    [[0, -1], [1, 0], [0, 1], [-1, 0]].forEach(([ux, uy], i) => { c.fillStyle = lit.includes(i) ? '#ffe9a0' : 'rgba(255,251,232,.55)'; c.fillText(L[i], cx + ux * (R - 5), cy + uy * (R - 5) + 0.5); });
+    [[0, -1], [1, 0], [0, 1], [-1, 0]].forEach(([ux, uy], i) => { c.fillStyle = lit.includes(i) ? '#ffe9a0' : 'rgba(255,251,232,.55)'; c.fillText(L[i], cx + ux * (R - 4.5), cy + uy * (R - 4.5) + 0.5); });
     c.fillStyle = '#c79a3a'; c.fillRect(cx - 1, cy - 1, 2, 2);
     c.restore();
   };

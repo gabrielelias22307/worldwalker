@@ -1,5 +1,5 @@
 // node tests/walk.js   real keyboard walking in Episode 1.1: screen change, bumping into a person, a Smudge hit, phone layout
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 const ROOT = path.join(__dirname, '..');
 (async () => {
   const b = await chromium.launch(); const errs = []; const out = [];

@@ -1,5 +1,5 @@
 // node tests/look.js [1.1 6.1 ...]   screenshots episodes in the real game after a few seconds, to check weather, light and the living world
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'look'); fs.mkdirSync(OUT, { recursive: true });
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.1', '2.1', '2.3', '3.2', '4.1', '6.1', '7.1', '7.3'];

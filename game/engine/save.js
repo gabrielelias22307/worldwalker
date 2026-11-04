@@ -48,6 +48,7 @@
     WW.lang = l; WW.save.lang = l; WW.store();
     document.documentElement.lang = l === 'fa' ? 'fa' : l;
     langListeners.forEach(f => { try { f(l); } catch (e) { console.error(e); } });
+    if (WW.chris && WW.chris.relang) WW.chris.relang(); // his corner speaks the new language at once
   };
   WW.dir = () => (WW.lang === 'fa' ? 'rtl' : 'ltr');
 
@@ -89,7 +90,7 @@
     accept: { en: "I'll help!", es: '¡Te ayudo!', fa: 'کمک می‌کنم!' },
     newQuest: { en: 'New quest', es: 'Nueva misión', fa: 'مأموریت تازه' },
     questDone: { en: 'Quest complete!', es: '¡Misión cumplida!', fa: 'مأموریت تمام شد!' },
-    qFindGiver: { en: 'find the person with !', es: 'busca a la persona con !', fa: 'کسی را با ! پیدا کن' },
+    qFindGiver: { en: 'find the person with a ❗ over their head', es: 'busca a la persona con un ❗ sobre la cabeza', fa: 'کسی را پیدا کن که بالای سرش ❗ است' },
     qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
     qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
     qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },

@@ -1,6 +1,6 @@
 // node tests/corner.js   Christopher's corner (fun-pass-4): on a Chromebook, a laptop, the Canvas frame and a phone his words show
 // in his corner (left of the map, or under it), never over the map; his portrait is drawn. Pictures go to shots/wings/
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 let failed = 0; const ok = (c, w) => { console.log((c ? '✓ ' : '✗ ') + w); if (!c) failed++; };
 (async () => {
   const b = await chromium.launch();

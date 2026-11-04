@@ -1,5 +1,5 @@
 // node tests/camp.js   the base camp: pages on the wall, tools on the rack, souvenirs, buying and placing decorations
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: true });
 let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); if (!c) failed++; };

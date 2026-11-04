@@ -1,7 +1,7 @@
 // node tests/keys.js   plays Episode 1.1 with REAL key presses only (no teleports, no debug actions):
 // sign in, meet Christopher, walk to Rosa and talk, pick the axe, chop, cut grass, repair the bridge,
 // meet everyone, do the quest, take the signposts and place one. It reads the map only to plan where to walk.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); if (!c) { failed++; throw new Error(m); } };

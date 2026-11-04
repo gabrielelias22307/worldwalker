@@ -3,7 +3,7 @@
 // taps "Copy my work". Every panel it opens must fit the screen with buttons big enough to tap and text big enough to read.
 // The stone's challenge itself is finished with a shortcut (tests/touch.js covers tools and signposts by touch).
 // Then a sideways phone (844×390) must still fit. Screenshots go to shots/phone/.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'phone'); fs.mkdirSync(OUT, { recursive: true });
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.2', '1.3'];

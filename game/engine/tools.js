@@ -258,7 +258,7 @@
       cls: 'chov',
       render(box, h) {
         const cv = carry(), mark = cv ? '📦' : '🪧';
-        box.innerHTML = `<h3>${mark} ${esc(L(ch.title))}</h3><p class="say">${WW.rich(ch.intro)}</p>`;
+        box.innerHTML = `<h3>${mark} ${esc(L(ch.title))}</h3>`; WW.introInto(box, ch.intro, ch, box); // long words: one short step at a time
         if (cv) box.insertAdjacentHTML('beforeend', `<p class="say"><b>${esc(T('cHow'))}</b> ${ch.bins.map(b => `<span class="zchip">${b.icon || ''} ${WW.rich(b.label)}</span>`).join(' ')}</p>`);
         const list = signItems().map((b, i) => { const s = (r.signs || []).find(o => o.id === b.id); return `<li>${s && s.right ? '✅' : s && s.placed ? '❌' : mark} ${i + 1}. ${b.icon ? b.icon + ' ' : ''}${WW.rich(b.text)}</li>`; }).join('');
         const cost = signItems()[0].cost;

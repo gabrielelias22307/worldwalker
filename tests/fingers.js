@@ -1,7 +1,7 @@
 // node tests/fingers.js   real finger touches (touchStart/touchMove/touchEnd through the browser's input system, the way a
 // phone sends them), not script clicks. Checks that pages scroll with a swipe and that every kind of thing a student taps
 // works on a phone (390×844): the world map, an episode's start, the map, tools, people, answers, cards and bins, ⚙, bars.
-const { chromium, devices } = require('playwright');
+const { chromium, devices } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'fingers'); fs.mkdirSync(OUT, { recursive: true });
 let failed = 0;

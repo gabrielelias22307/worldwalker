@@ -1,6 +1,6 @@
 // node tests/controls.js   Space never surprises: people come first whatever tool is picked; the right tool is picked for you;
 // a bad guy in front gets a star even at a tree; Space at the broken bridge opens the repair.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path');
 let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); if (!c) failed++; };
 (async () => {

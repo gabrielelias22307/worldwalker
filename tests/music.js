@@ -1,5 +1,5 @@
 // node tests/music.js   renders every song to shots/music/<name>.wav and checks it is not silent and not too loud
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'music');
 fs.mkdirSync(OUT, { recursive: true });

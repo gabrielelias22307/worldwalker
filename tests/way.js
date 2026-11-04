@@ -1,7 +1,7 @@
 // node tests/way.js   finding the way (fun-pass-4): the words follow the real path, "Show me the way" lights footprints and
 // Christopher leads on the path, being stuck does the same, the compass and the small map are drawn, a tap walks there
 // around walls and water. Pictures go to shots/way/
-const { chromium } = require('playwright'); const path = require('path'), fs = require('fs');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'way'); fs.mkdirSync(OUT, { recursive: true });
 let failed = 0; const ok = (c, w) => { console.log((c ? '✓ ' : '✗ ') + w); if (!c) failed++; };
 async function open(b, ep, vp, touch) {

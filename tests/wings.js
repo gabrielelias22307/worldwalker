@@ -6,7 +6,7 @@
 //  - the first time the hero faces a tree, he hops over it (green)
 //  - with reduced motion (WW.calm) he stays still beside the hero: no orbit, no flights, just the glow and a still lock-on
 // Screenshots at 1366×768, in the Canvas frame (654×820) and on a phone (390×844) go to shots/wings/.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'wings'); fs.mkdirSync(OUT, { recursive: true });
 const file = 'file://' + path.join(ROOT, 'dist', 'canvas', 'Worldwalker 1.1.html');

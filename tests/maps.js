@@ -1,5 +1,5 @@
 // node tests/maps.js  -> shots/maps/<id>.png : each episode's whole map with people (P), stone (S), boss (B), scraps (*), start (@)
-const { chromium } = require('playwright'); const path = require('path'), fs = require('fs');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'); const OUT = path.join(ROOT, 'shots', 'maps'); fs.mkdirSync(OUT, { recursive: true });
 const eps = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort();
 (async () => {

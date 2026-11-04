@@ -18,7 +18,11 @@
     const ov = $('ww-ov');
     const h = { opts, close() { ui.close(h); }, render() { draw(); } };
     function draw() {
-      ov.className = 'ov' + (opts.cls ? ' ' + opts.cls : '');
+      // fun-pass-4: on a wide screen a big panel (a challenge, the Grump, the Passport, the finish) covers the whole game area,
+      // beside the map too; a small one (talking, a sign) stays on the map, by the person
+      const big = !['talkov', 'msgov', 'roomtalk'].includes(opts.cls) && WW.game && WW.game.wideOv, home = big ? $('ww-stage') : $('ww-screen');
+      if (home && ov.parentNode !== home) home.appendChild(ov);
+      ov.className = 'ov' + (opts.cls ? ' ' + opts.cls : '') + (big ? ' wide' : '');
       ov.setAttribute('dir', WW.dir());
       ov.innerHTML = '';
       const box = document.createElement('div');
@@ -35,7 +39,7 @@
       if (pick) try { pick.focus({ preventScroll: true }); } catch (e) { }
     }
     ui.stack.push(h); holdToast();
-    $('ww-screen').classList.add('ovopen');
+    $('ww-screen').classList.add('ovopen'); { const fr = document.querySelector('.ww-frame'); if (fr) fr.classList.add('ovopen'); } // the tool bar hides behind panels (fun-pass-4)
     draw();
     WW.paused = true;
     return h;
@@ -44,7 +48,7 @@
     ui.stack = ui.stack.filter(x => x !== h);
     const top = ui.stack[ui.stack.length - 1];
     if (top) top.render();
-    else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); WW.paused = false; hidePop(); }
+    else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); { const fr = document.querySelector('.ww-frame'); if (fr) fr.classList.remove('ovopen'); } WW.paused = false; hidePop(); }
     if (h.opts.onClose) h.opts.onClose();
     setTimeout(pumpToast, 250);
   };
@@ -70,19 +74,42 @@
     WW.sfx('blip');
   });
 
+  /* ---------------- long instructions, one short step at a time (fun-pass-4) ----------------
+     A challenge's words are split into sentences of at most ~15 words; Next shows the next one; the rest of the panel
+     (the list, the buttons) shows after the last step. Read once: the next visit shows them all at once. */
+  WW.chunks = s => {
+    const sent = String(s).split(/(?<=[.!?؟])\s+(?=\S)/), out = [];
+    sent.forEach(x => { const n = x.split(/\s+/).length, last = out[out.length - 1]; if (last && last.n + n <= 15) { last.t += ' ' + x; last.n += n; } else out.push({ t: x, n }); });
+    return out.map(o => o.t);
+  };
+  WW.introInto = (el, intro, holder, box) => {
+    const parts = WW.chunks(L(intro));
+    if (parts.length <= 1 || holder.__read) { el.insertAdjacentHTML('beforeend', `<p class="say">${WW.rich(intro)}</p>`); return true; }
+    const k = Math.min(holder.__ii || 0, parts.length - 1), done = k >= parts.length - 1;
+    const wrap = document.createElement('div'); wrap.className = 'introstep';
+    wrap.innerHTML = parts.slice(0, k + 1).map((p, i) => `<p class="say${i === k ? ' now' : ''}">${WW.rich(p)}</p>`).join('');
+    el.appendChild(wrap);
+    if (done) { holder.__read = true; return true; }
+    box.classList.add('stepping');
+    const b = WW.btn(`${esc(T('next'))} ▶ <small>${k + 1}/${parts.length}</small>`, 'gold stepnext', () => { holder.__ii = k + 1; const t = ui.top(); if (t) t.render(); });
+    wrap.appendChild(b);
+    return false;
+  };
+
   /* ---------------- toast ---------------- */
   // small messages in the corner; several can show at once. big = a "New power!" banner
   /* reward pop-ups wait in a line: one at a time, and never on top of an open panel or while Christopher is introducing himself */
   const tq = []; let tCur = null, tTimer = 0;
   WW.toast = (html, col, big) => {
-    tq.push({ html, col, big, at: performance.now() });
+    tq.push({ html, col, big, at: performance.now(), sig: WW.chris && WW.chris.sig ? WW.chris.sig() : '' });
     while (tq.length > 6) { const i = tq.findIndex(o => !o.big); tq.splice(i < 0 ? 0 : i, 1); } // a long line: drop the small ones first
     pumpToast();
   };
   function pumpToast() {
     const box = $('ww-toast'); if (!box) return;
     if (tCur || ui.stack.length || (WW.chris && WW.chris.scene)) return;
-    while (tq.length && !tq[0].big && performance.now() - tq[0].at > 12000) tq.shift(); // small news that waited too long is old news
+    const sigNow = WW.chris && WW.chris.sig ? WW.chris.sig() : '';
+    while (tq.length && !tq[0].big && (performance.now() - tq[0].at > 12000 || (tq[0].sig && tq[0].sig !== sigNow && performance.now() - tq[0].at > 3000))) tq.shift(); // small news that waited too long, or whose step is done, is old news
     if (!tq.length) return;
     const o = tCur = tq.shift();
     const el = o.el = document.createElement('div'); el.className = 'tst' + (o.big ? ' big' : '');
@@ -151,7 +178,7 @@
   ui.nowCard = () => {
     const el = $('ww-now'); if (!el || !el.classList.contains('on') || !WW.run || !WW.game.player) return;
     const steps = ui.questSteps || [], i = steps.findIndex(([, ok]) => !ok), ns = WW.chris && !WW.chris.scene ? WW.chris.nextStep() : null;
-    const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>${miniHtml()}`;
+    const html = `<div class="nc-h">🎯 ${esc(T('nowCard'))}</div><div class="nc-goal">${esc(i < 0 ? T('claim') : steps[i][0])}</div>${ns && ns.text && !document.querySelector('#ww-cpanel.on') ? `<div class="nc-next">🧭 ${WW.rich(ns.text)}</div>` : ''}${ui.questList()}<div class="nc-scr">📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length}</div>${miniHtml()}`;
     if (el.__h !== html) { el.innerHTML = html; el.__h = html; el.setAttribute('dir', WW.dir()); }
   };
   setInterval(() => ui.nowCard(), 700);

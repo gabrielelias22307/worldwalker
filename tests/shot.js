@@ -1,5 +1,5 @@
 // node tests/shot.js <page.html> <out-name> [width]  -> shots/<out-name>.png, prints page errors
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 (async () => {
   const [f, name, w] = process.argv.slice(2);
   const b = await chromium.launch(); const p = await b.newPage({ viewport: { width: +(w || 1300), height: 900 } });

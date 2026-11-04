@@ -3,7 +3,7 @@
 // before the first step on the map, the words on each, how many things look clickable, tiny text and small tap targets,
 // what a returning student sees, and (with --idle, 1.1 + a sample) whether anything happens after 5, 15 and 20 seconds
 // of doing nothing. Screenshots go to shots/playtest/, numbers to shots/playtest/start.json.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'playtest'); fs.mkdirSync(OUT, { recursive: true });
 const all = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
