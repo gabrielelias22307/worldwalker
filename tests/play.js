@@ -4,7 +4,8 @@ const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: true });
-const all = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
+const GDIR = process.env.GAME || 'game', NAME = GDIR === 'game' ? 'Worldwalker' : 'Timewalker'; // GAME=history: Timewalker
+const all = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
 const ids = process.argv.slice(2).filter(a => !a.startsWith('-')).length ? process.argv.slice(2).filter(a => !a.startsWith('-')) : all;
 const SHOTS = !process.argv.includes('--no-shots');
 const CANVAS = process.argv.includes('--canvas');
@@ -17,7 +18,7 @@ const CANVAS = process.argv.includes('--canvas');
     const errs = [];
     page.on('pageerror', e => errs.push('pageerror: ' + e.message));
     page.on('console', m => { if (m.type() === 'error' && !/fonts\.g|ERR_|Failed to load resource/.test(m.text())) errs.push('console: ' + m.text()); });
-    const file = 'file://' + (CANVAS ? path.join(ROOT, 'dist', 'canvas', `Worldwalker ${id}.html`) : path.join(ROOT, 'game', 'ep-' + id.replace('.', '-') + '.html'));
+    const file = 'file://' + (CANVAS ? path.join(ROOT, 'dist', GDIR === 'game' ? 'canvas' : 'canvas-' + GDIR, `${NAME} ${id}.html`) : path.join(ROOT, GDIR, 'ep-' + id.replace('.', '-') + '.html'));
     const steps = [];
     const step = async (name, fn) => { try { await fn(); steps.push('✓ ' + name); } catch (e) { steps.push('✗ ' + name + ': ' + e.message.split('\n')[0]); throw e; } };
     const shot = async name => { if (SHOTS) await page.screenshot({ path: path.join(OUT, `${id}-${name}.png`) }); };

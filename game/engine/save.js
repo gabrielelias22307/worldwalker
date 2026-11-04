@@ -386,7 +386,7 @@
   WW.grr = () => WW.L(WW.S.grr[(Math.random() * WW.S.grr.length) | 0]);
 
   /* ---------------- the saved hero ---------------- */
-  const KEY = 'worldwalker.save.v1';
+  const KEY = (window.WW_COURSE && window.WW_COURSE.saveKey) || 'worldwalker.save.v1'; // each game keeps its own hero
   const blank = () => ({ v: 1, name: '', cls: '', pin: '', look: { skin: 1, hair: 0, hat: 0 }, stats: { loc: 0, pla: 0, hei: 0, mov: 0, reg: 0 }, coins: 0, spent: 0, episodes: {}, bag: {}, built: {}, metChris: false, seen: {}, secrets: [], finds: [], camp: { owned: [], slots: [null, null, null, null, null, null] }, lang: 'en', sound: true, music: true, teacher: false });
   function readLocal() { try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); return s && s.v === 1 ? Object.assign(blank(), s) : null; } catch (e) { return null; } }
   WW.save = readLocal() || blank();
@@ -414,6 +414,28 @@
       { en: 'Region master: 2 free hints in every trial and duel', es: 'Maestro de regiones: 2 pistas gratis en cada prueba y duelo', fa: 'استاد منطقه: ۲ کمک رایگان در هر آزمون و مسابقه' }]
   };
   WW.heartsMax = () => 3 + WW.tier('pla');
+
+  /* ---------------- a course (fun-pass-4): the same engine runs another game ----------------
+     A page that loads a course file first (window.WW_COURSE, e.g. history/course.js) gets that game's name, its realms
+     (eras), its five powers, its tools, its words (S) and a list of word swaps for the engine's own words
+     ("atlas page" -> "chronicle page", "Christopher" -> "Tock"), in each language. Without one: Worldwalker. */
+  WW.COURSE = window.WW_COURSE || null;
+  WW.TITLE = (WW.COURSE && WW.COURSE.title) || 'WORLDWALKER';
+  WW.SUB = (WW.COURSE && WW.COURSE.sub) || 'THE TORN ATLAS';
+  if (WW.COURSE) {
+    const CO = WW.COURSE;
+    if (CO.realms) WW.REALMS = [null, ...CO.realms];
+    if (CO.tools) WW.TOOLS = CO.tools;
+    if (CO.themes) CO.themes.forEach((t, i) => Object.assign(WW.THEMES[i], t)); // same keys (loc, pla, hei, mov, reg): saves and the Sheet stay the same
+    const swap = (o) => { // the word swaps, in every language of every engine word
+      if (!o || typeof o !== 'object') return;
+      if (Array.isArray(o)) return o.forEach(swap);
+      ['en', 'es', 'fa'].forEach(l => { if (typeof o[l] === 'string') (CO.swaps && CO.swaps[l] || []).forEach(([a, b]) => { o[l] = o[l].split(a).join(b); }); });
+      Object.keys(o).forEach(k => { if (k !== 'en' && k !== 'es' && k !== 'fa') swap(o[k]); });
+    };
+    swap(WW.S); swap(WW.PERKS);
+    if (CO.S) Object.assign(WW.S, CO.S);
+  }
 
   /* LOOK swatches (also used by the look picker) */
   WW.LOOK = {

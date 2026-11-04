@@ -56,6 +56,17 @@
   const SW = MW * CS, SH = MH * CS + 8;
   let cur = null; // the scene on screen: { end }
 
+  // Timewalker (fun-pass-4): a timeline under the world map, 1450 to 2025, with this episode's year lit up
+  const TL = 18;
+  function timeline(c, year, t) {
+    const y0 = SH, x0 = 8, x1 = SW - 8, X = yr => x0 + (yr - 1450) / (2025 - 1450) * (x1 - x0);
+    c.fillStyle = '#17152a'; c.fillRect(0, y0, SW, TL);
+    c.fillStyle = '#5a5278'; c.fillRect(x0, y0 + 6, x1 - x0, 2);
+    c.font = '5px system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'top';
+    for (let yr = 1500; yr <= 2000; yr += 100) { c.fillStyle = '#8a82aa'; c.fillRect(Math.round(X(yr)), y0 + 4, 1, 6); c.fillStyle = '#b9b2d6'; c.fillText(String(yr), X(yr), y0 + 11); }
+    const k = WW.calm ? 1 : (Math.sin(t / 220) + 1) / 2, mx = Math.round(X(year));
+    c.fillStyle = '#22202e'; c.fillRect(mx - 3, y0 + 2, 7, 10); c.fillStyle = `rgba(242,193,78,${0.7 + 0.3 * k})`; c.fillRect(mx - 2, y0 + 3, 5, 8);
+  }
   function paint(c, t, at, kind, t0) {
     const [mq, mr] = cell(at), mx = mq * CS, my = mr * CS + 4, calm = WW.calm;
     c.fillStyle = '#1d4f8a'; c.fillRect(0, 0, SW, SH);
@@ -78,6 +89,7 @@
     const sx = mx < SW / 2 ? SW + 10 : -26, sy = 6;
     const cx = sx + (mx - 8 - sx) * e, cy = sy + (my - 22 - sy) * e - Math.sin(e * Math.PI) * 10;
     WW.chris.draw(c, Math.round(cx), Math.round(cy), t);
+    const yr = WW.ep && WW.ep.scenes && WW.ep.scenes.year; if (yr) timeline(c, yr, t);
   }
 
   // play one scene; done() runs after the last card or Skip
@@ -97,8 +109,8 @@
     const h = WW.ui.open({
       cls: 'cutov',
       render(box) {
-        box.innerHTML = `<div class="cut-h">${esc(kind === 'page' ? T('sceneDid') : T('episode') + ' ' + ep.id)} · <b>${esc(L(ep.place))}</b></div>`;
-        const cv = document.createElement('canvas'); cv.className = 'cut-cv'; cv.width = SW; cv.height = SH;
+        box.innerHTML = `<div class="cut-h">${esc(kind === 'page' ? T('sceneDid') : T('episode') + ' ' + ep.id)} · <b>${esc(L(ep.place))}</b>${sc.year ? ` · <b class="cut-year">${esc(sc.yearText ? L(sc.yearText) : sc.year)}</b>` : ''}</div>`;
+        const cv = document.createElement('canvas'); cv.className = 'cut-cv'; cv.width = SW; cv.height = SH + (sc.year ? TL : 0); // a year: room for the timeline
         const c = cv.getContext('2d'); c.imageSmoothingEnabled = false; box.appendChild(cv);
         cancelAnimationFrame(raf);
         const tick = t => { if (!live) return; paint(c, t, sc.at, kind, t0); raf = requestAnimationFrame(tick); };

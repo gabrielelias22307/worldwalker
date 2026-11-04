@@ -332,7 +332,7 @@
       cls: 'startov',
       render(box, h) {
         const ep = WW.ep;
-        box.innerHTML = `<div class="logo">WORLDWALKER</div><div class="sublogo">THE TORN ATLAS</div>
+        box.innerHTML = `<div class="logo">${esc(WW.TITLE)}</div><div class="sublogo">${esc(WW.SUB)}</div>
           <div class="epcard"><div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(WW.REALMS[ep.realm]))}</div>
           <h2>${esc(L(ep.title))}</h2><div class="place">${esc(L(ep.place))}</div></div>
           <div class="langrow">${['en', 'es', 'fa'].map(l => `<button class="pbtn ${WW.lang === l ? 'gold' : ''}" data-l="${l}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('')}</div>`;
@@ -604,7 +604,7 @@
     const r = WW.run, ep = WW.ep, s = WW.save;
     const en = t => (t && t.en) || WW.plain(t);
     const lines = [];
-    lines.push(`WORLDWALKER — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
+    lines.push(`${WW.TITLE} — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
     lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
     lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
     lines.push('');

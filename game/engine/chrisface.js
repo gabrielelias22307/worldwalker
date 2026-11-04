@@ -22,6 +22,27 @@
       feather(c, CX + side * 12, CY - 4 + i, len, 5 - i * 0.4, a, col[1], t);
     }
   }
+  /* Tock (Timewalker): a little glass hourglass with brass caps; sand falls from the top bulb (his face) to the bottom */
+  function hourglass(c, t, col, calm, mood) {
+    const top = [CX, CY - 6, 15], bot = [CX, CY + 18, 9.5], wood = '#7a4a2a';
+    // the brass caps and the wooden posts
+    c.fillStyle = '#22202e'; c.fillRect(CX - 20, CY - 26, 40, 7); c.fillRect(CX - 20, CY + 26, 40, 7);
+    const brass = c.createLinearGradient(0, CY - 26, 0, CY - 19); brass.addColorStop(0, '#ffe9a0'); brass.addColorStop(1, '#a8781e');
+    c.fillStyle = brass; c.fillRect(CX - 19, CY - 25, 38, 5); c.fillRect(CX - 19, CY + 27, 38, 5);
+    c.fillStyle = wood; c.fillRect(CX - 19, CY - 20, 3, 47); c.fillRect(CX + 16, CY - 20, 3, 47);
+    // the glass: a big bulb (his face) over a small one, glowing in his color
+    const glass = () => { c.beginPath(); c.arc(top[0], top[1], top[2], 0, 7); c.arc(bot[0], bot[1], bot[2], 0, 7); c.rect(CX - 2, CY + 7, 4, 4); };
+    c.fillStyle = '#22202e'; c.beginPath(); c.arc(top[0], top[1], top[2] + 2, 0, 7); c.arc(bot[0], bot[1], bot[2] + 2, 0, 7); c.fill();
+    const g = c.createRadialGradient(CX - 6, CY - 12, 2, CX, CY, 24); g.addColorStop(0, '#ffffff'); g.addColorStop(0.3, col[0]); g.addColorStop(0.8, col[1]); g.addColorStop(1, col[2]);
+    c.fillStyle = g; glass(); c.fill();
+    // the sand: a little left on top, a pile at the bottom, a thin stream between (it moves unless reduced motion)
+    c.save(); glass(); c.clip();
+    c.fillStyle = '#e8c06a'; c.beginPath(); c.ellipse(CX, CY + 9, 6, 2.5, 0, 0, 7); c.fill();
+    c.beginPath(); c.ellipse(CX, CY + 27, 11, 6, 0, 0, 7); c.fill(); c.fillStyle = '#c99a3a'; c.fillRect(CX - 9, CY + 24, 18, 1);
+    const fall = calm ? 0 : (t / 60) % 4;
+    c.fillStyle = '#f2d27a'; c.fillRect(CX - 0.5, CY + 9, 1, 12); c.fillStyle = '#fff1c0'; c.fillRect(CX - 0.5, CY + 10 + fall * 2, 1, 2);
+    c.restore();
+  }
   /* draw him into c (a 96 × 96 canvas): kind = gold / green / blue / red, mood = null / talk / spin / droop / cheer */
   function draw(c, t, o = {}) {
     const col = COL[o.kind] || COL.gold, calm = WW.calm, mood = o.mood;
@@ -42,24 +63,27 @@
     // wings behind the body
     const flap = calm ? 0.1 : droop ? -0.5 : cheer ? 0.45 + Math.sin(t / 70) * 0.25 : Math.sin(t / 160) * 0.22;
     wing(c, -1, flap, col, t); wing(c, 1, flap, col, t);
-    // the body: a glowing sphere with a brass rim
-    const R = 20;
-    c.fillStyle = '#22202e'; c.beginPath(); c.arc(CX, CY, R + 2, 0, 7); c.fill();
-    const rim = c.createLinearGradient(CX - R, CY - R, CX + R, CY + R); rim.addColorStop(0, '#ffe9a0'); rim.addColorStop(0.5, '#c79a3a'); rim.addColorStop(1, '#7a5a1e');
-    c.fillStyle = rim; c.beginPath(); c.arc(CX, CY, R, 0, 7); c.fill();
-    const sph = c.createRadialGradient(CX - 7, CY - 8, 2, CX, CY, R - 2);
-    sph.addColorStop(0, '#ffffff'); sph.addColorStop(0.25, col[0]); sph.addColorStop(0.75, col[1]); sph.addColorStop(1, col[2]);
-    c.fillStyle = sph; c.beginPath(); c.arc(CX, CY, R - 3, 0, 7); c.fill();
-    // the compass face: little marks for N, E, S and W
-    c.fillStyle = 'rgba(34,32,46,.45)';
-    for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, r1 = R - 6, r2 = i % 2 ? R - 5 : R - 8; c.save(); c.translate(CX + Math.cos(a) * (r1 + r2) / 2, CY + Math.sin(a) * (r1 + r2) / 2); c.rotate(a); c.fillRect(-(r1 - r2) / 2, -0.5, Math.abs(r1 - r2) || 1, 1.2); c.restore(); }
-    // the needle turns toward what he means (red end), with a brass pin
-    const na = o.needle != null ? o.needle : 0 + (calm ? 0 : Math.sin(t / 900) * 0.4) + (mood === 'spin' && !calm ? t / 60 : 0);
-    c.save(); c.translate(CX, CY + 10); c.rotate(na);
-    c.fillStyle = '#e04848'; c.beginPath(); c.moveTo(7, 0); c.lineTo(0, -2); c.lineTo(0, 2); c.fill();
-    c.fillStyle = '#2f6fd6'; c.beginPath(); c.moveTo(-7, 0); c.lineTo(0, -2); c.lineTo(0, 2); c.fill();
-    c.restore();
-    c.fillStyle = '#7a5a1e'; c.beginPath(); c.arc(CX, CY + 10, 1.6, 0, 7); c.fill(); c.fillStyle = '#ffe9a0'; c.fillRect(CX - 1, CY + 9, 1, 1);
+    if (WW.COURSE && WW.COURSE.guide === 'hourglass') hourglass(c, t, col, calm, mood); // Timewalker's guide, Tock
+    else {
+      // the body: a glowing sphere with a brass rim
+      const R = 20;
+      c.fillStyle = '#22202e'; c.beginPath(); c.arc(CX, CY, R + 2, 0, 7); c.fill();
+      const rim = c.createLinearGradient(CX - R, CY - R, CX + R, CY + R); rim.addColorStop(0, '#ffe9a0'); rim.addColorStop(0.5, '#c79a3a'); rim.addColorStop(1, '#7a5a1e');
+      c.fillStyle = rim; c.beginPath(); c.arc(CX, CY, R, 0, 7); c.fill();
+      const sph = c.createRadialGradient(CX - 7, CY - 8, 2, CX, CY, R - 2);
+      sph.addColorStop(0, '#ffffff'); sph.addColorStop(0.25, col[0]); sph.addColorStop(0.75, col[1]); sph.addColorStop(1, col[2]);
+      c.fillStyle = sph; c.beginPath(); c.arc(CX, CY, R - 3, 0, 7); c.fill();
+      // the compass face: little marks for N, E, S and W
+      c.fillStyle = 'rgba(34,32,46,.45)';
+      for (let i = 0; i < 8; i++) { const a = i * Math.PI / 4, r1 = R - 6, r2 = i % 2 ? R - 5 : R - 8; c.save(); c.translate(CX + Math.cos(a) * (r1 + r2) / 2, CY + Math.sin(a) * (r1 + r2) / 2); c.rotate(a); c.fillRect(-(r1 - r2) / 2, -0.5, Math.abs(r1 - r2) || 1, 1.2); c.restore(); }
+      // the needle turns toward what he means (red end), with a brass pin
+      const na = o.needle != null ? o.needle : 0 + (calm ? 0 : Math.sin(t / 900) * 0.4) + (mood === 'spin' && !calm ? t / 60 : 0);
+      c.save(); c.translate(CX, CY + 10); c.rotate(na);
+      c.fillStyle = '#e04848'; c.beginPath(); c.moveTo(7, 0); c.lineTo(0, -2); c.lineTo(0, 2); c.fill();
+      c.fillStyle = '#2f6fd6'; c.beginPath(); c.moveTo(-7, 0); c.lineTo(0, -2); c.lineTo(0, 2); c.fill();
+      c.restore();
+      c.fillStyle = '#7a5a1e'; c.beginPath(); c.arc(CX, CY + 10, 1.6, 0, 7); c.fill(); c.fillStyle = '#ffe9a0'; c.fillRect(CX - 1, CY + 9, 1, 1);
+    }
     // eyes: dark and shiny; they blink, look down when he droops, and smile when he cheers
     const blink = !calm && (t % 3400) < 130;
     [-7, 7].forEach(dx => {
