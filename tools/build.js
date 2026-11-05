@@ -15,6 +15,8 @@ try { terser = require('terser'); } catch (e) { console.log('terser is missing: 
 const shorten = async js => (await terser.minify(js, { compress: false, mangle: true, format: { ascii_only: false, comments: false } })).code + '\n';
 const inline = js => js.replace(/<\/script/gi, '<\\/script');
 const eps = fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort();
+const only = process.argv.slice(3).map(id => 'ep-' + id.replace('.', '-') + '.js'); // node tools/build.js history 3.1 3.2: build only these (the catalog still lists all)
+const built = only.length ? eps.filter(f => only.includes(f)) : eps;
 fs.mkdirSync(DIST, { recursive: true });
 const css = slimCss(read(path.join(E, 'engine', 'style.css')));
 (async () => {
@@ -22,8 +24,8 @@ const engineJs = (await Promise.all(ENGINE.map(f => shorten(read(path.join(E, 'e
 const cfg = read(path.join(G, 'config.js'));
 const report = [];
 const epJs = {};
-for (const f of eps) epJs[f] = await shorten(read(path.join(G, 'episodes', f)));
-for (const f of eps) {
+for (const f of built) epJs[f] = await shorten(read(path.join(G, 'episodes', f)));
+for (const f of built) {
   const id = f.slice(3, 6).replace('-', '.');
   // GitHub Pages version: shares the engine files
   const pages = tpl.replace('{{ID}}', id)
