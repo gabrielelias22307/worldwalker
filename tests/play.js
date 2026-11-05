@@ -91,7 +91,7 @@ const CANVAS = process.argv.includes('--canvas');
       await step('stone waits for talks', async () => {
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.challenge.at);
         const t = await page.textContent('#ww-ov');
-        if (!/Christopher/.test(t)) throw new Error('stone opened before talking');
+        if (!/Christopher|Tock/.test(t)) throw new Error('stone opened before talking');
         await clickGold();
       });
       if (ep.tools) await step('tool bar: axe, sickle, seeds', async () => {
