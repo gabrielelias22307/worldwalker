@@ -1,6 +1,6 @@
 // node tests/stars.js   Space throws stars: they fly, stop at walls, knock out Grumplings (who come back), sting the Grump,
 // give at most 5 coins, and Space still talks to a person you are facing
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 const url = 'file://' + path.join(__dirname, '..', 'game', 'ep-1-1.html');
 (async () => {
   const b = await chromium.launch(), p = await b.newPage({ viewport: { width: 1100, height: 900 } });

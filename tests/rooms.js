@@ -1,6 +1,6 @@
 // node tests/rooms.js [1.1 …]   inside the houses (fun-pass-4): walk up into a door, the room opens; walk to the person,
 // Space talks; walk left (or up at the door) and you are back outside below the door. Pictures go to shots/rooms/
-const { chromium } = require('playwright'); const path = require('path');
+const { chromium } = require('playwright'); require('./autostep'); const path = require('path');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'rooms');
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.1', '4.1', '5.2', '7.1'];
 (async () => {

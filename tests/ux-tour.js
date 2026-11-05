@@ -1,5 +1,5 @@
 // node tests/ux-tour.js [ep]   a slow look at an episode the way a student sees it (1366×768), screenshots to shots/ux/
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'ux'); fs.mkdirSync(OUT, { recursive: true });
 const id = process.argv[2] || '1.1';

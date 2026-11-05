@@ -1,7 +1,7 @@
 // node tests/phones.js [ep]   10 phone models, held upright and turned sideways (fun-pass-4 phone glitches):
 // the layout settles (never redone every frame), nothing sticks out of the screen or covers the arrow pad,
 // Christopher's corner is on and his words are never over the map, the arrow pad moves the hero, no page errors.
-const { chromium, devices } = require('playwright'); const path = require('path'), fs = require('fs');
+const { chromium, devices } = require('playwright'); require('./autostep'); const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'phones'); fs.mkdirSync(OUT, { recursive: true });
 let failed = 0; const ok = (c, w) => { console.log((c ? '✓ ' : '✗ ') + w); if (!c) failed++; };
 const LIST = ['iPhone SE', 'iPhone 12 Mini', 'iPhone 14', 'iPhone 15 Pro Max', 'Pixel 5', 'Pixel 7', 'Galaxy S8', 'Galaxy S24', 'Galaxy A55', 'Moto G4'];

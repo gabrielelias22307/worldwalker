@@ -15,7 +15,8 @@
     const pip = WW.spriteCanvas('stone', { W: '#9aa3ad', G: '#5e636b', y: '#f2c14e', r: '#e04848', n: '#2f6fd6' }, 3); pip.className = 'chface';
     const hd = document.createElement('div'); hd.className = 'ch-head';
     hd.appendChild(pip);
-    hd.insertAdjacentHTML('beforeend', `<div><h3>${esc(L(ch.title))}</h3>${(ch.intro ? `<p class="say">${WW.rich(ch.intro)}</p>` : '')}</div>`);
+    hd.insertAdjacentHTML('beforeend', `<div><h3>${esc(L(ch.title))}</h3></div>`);
+    if (ch.intro) WW.introInto(hd.lastElementChild, ch.intro, ch, box); // long words: one short step at a time
     box.appendChild(hd);
   }
   function solved(h, ch, okText) {

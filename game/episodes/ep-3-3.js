@@ -31,7 +31,23 @@ window.EPISODE = {
     ],
     page: { en: 'Today, freight trains carry goods from China to Europe in about two weeks.',
       es: 'Hoy, trenes de carga llevan productos de China a Europa en unas dos semanas.',
-      fa: 'امروز قطارهای باری کالا را در حدود دو هفته از چین به اروپا می‌برند.' }
+      fa: 'امروز قطارهای باری کالا را در حدود دو هفته از چین به اروپا می‌برند.' },
+    guess: {
+      q: { en: 'Where do trading cities grow: where roads meet, or far from roads?', es: '¿Dónde crecen las ciudades de comercio: donde se juntan caminos o lejos de ellos?', fa: 'شهرهای تجارتی کجا بزرگ می‌شوند: جایی که راه‌ها به هم می‌رسند یا دور از راه‌ها؟' },
+      choices: [
+        { t: { en: '🛣️ Where roads meet', es: '🛣️ Donde se juntan caminos', fa: '🛣️ جای رسیدن راه‌ها' }, ok: true },
+        { t: { en: '🏔️ Far from roads', es: '🏔️ Lejos de los caminos', fa: '🏔️ دور از راه‌ها' } }
+      ],
+      why: { en: 'Trade routes bring people, goods and money, so cities like Samarkand grew where routes met.', es: 'Las rutas de comercio traen gente, mercancías y dinero, así que ciudades como Samarcanda crecieron en los cruces.', fa: 'راه‌های تجارت مردم، مال و پول می‌آورند، پس شهرهایی مثل سمرقند سر راه‌ها بزرگ شدند.' }
+    },
+    next: {
+      q: { en: 'Next: the Sahara in Africa. Is the Sahara wet or dry?', es: 'Ahora: el Sahara en África. ¿El Sahara es húmedo o seco?', fa: 'بعدی: صحرای افریقا. صحرا مرطوب است یا خشک؟' },
+      choices: [
+        { t: { en: '💧 Very wet', es: '💧 Muy húmedo', fa: '💧 خیلی مرطوب' } },
+        { t: { en: '🌵 Very dry', es: '🌵 Muy seco', fa: '🌵 خیلی خشک' }, ok: true }
+      ],
+      why: { en: 'The Sahara is the world\'s biggest hot desert, about as big as the United States.', es: 'El Sahara es el desierto cálido más grande del mundo, casi tan grande como Estados Unidos.', fa: 'صحرا که تقریباً به اندازهٔ تمام امریکا است، بزرگ‌ترین بیابان گرم جهان است.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

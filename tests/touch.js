@@ -1,6 +1,6 @@
 // node tests/touch.js   a phone (390×844, touch): every tool, carrying a signpost and Christopher work with on-screen buttons,
 // a tap on an arrow is one step, and no button covers the map.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); if (!c) failed++; };

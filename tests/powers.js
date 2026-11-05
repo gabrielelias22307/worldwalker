@@ -1,5 +1,5 @@
 // node tests/powers.js   checks what the five powers do: hearts, walking speed, calmer Smudges, healing scraps, arrows, hints, and the How you grow page
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const url = 'file://' + path.join(ROOT, 'game', 'ep-1-1.html');

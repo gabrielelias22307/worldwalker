@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'Some borders are straight lines, like much of the border between Egypt and Sudan.',
       es: 'Algunas fronteras son líneas rectas, como gran parte de la frontera entre Egipto y Sudán.',
-      fa: 'بعضی سرحدها خط‌های راست هستند، مثل بیشتر سرحد مصر و سودان.' }
+      fa: 'بعضی سرحدها خط‌های راست هستند، مثل بیشتر سرحد مصر و سودان.' },
+    guess: {
+      q: { en: 'Some borders are perfectly straight lines. Who made them?', es: 'Algunas fronteras son líneas rectas. ¿Quién las hizo?', fa: 'بعضی سرحدها خط‌های کاملاً راست هستند. چه کسی آن‌ها را ساخت؟' },
+      choices: [
+        { t: { en: '🌋 Volcanoes', es: '🌋 Los volcanes', fa: '🌋 آتشفشان‌ها' } },
+        { t: { en: '✏️ People', es: '✏️ Las personas', fa: '✏️ مردم' }, ok: true }
+      ],
+      why: { en: 'Rivers and mountains make curvy borders, but people draw straight-line borders on maps.', es: 'Los ríos y las montañas hacen fronteras curvas, pero las personas dibujan las rectas en los mapas.', fa: 'دریاها و کوه‌ها سرحدهای کج می‌سازند، اما مردم سرحدهای راست را روی نقشه می‌کشند.' }
+    },
+    next: {
+      q: { en: 'After our whole trip: are the world\'s places connected or alone?', es: 'Después de todo el viaje: ¿los lugares del mundo están conectados o solos?', fa: 'بعد از تمام سفر: جاهای جهان به هم وصل هستند یا تنها؟' },
+      choices: [
+        { t: { en: '🔗 Connected', es: '🔗 Conectados', fa: '🔗 وصل' }, ok: true },
+        { t: { en: '🏝️ All alone', es: '🏝️ Solos', fa: '🏝️ تنها' } }
+      ],
+      why: { en: 'Rivers, trade and borders link places, so countries depend on each other and work together.', es: 'Los ríos, el comercio y las fronteras unen los lugares, así que los países dependen unos de otros.', fa: 'دریاها، تجارت و سرحدها جاها را وصل می‌کنند، پس کشورها به همدیگر نیاز دارند و با هم کار می‌کنند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

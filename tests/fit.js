@@ -2,7 +2,7 @@
 // 1366×768 (school Chromebook), 654×820 (inside the Canvas page) and 390×844 (a phone, touch). Fails if the page scrolls,
 // or if the map, tool bar, quest bar, Christopher's bubble, the arrow pad or an open panel goes outside the window.
 // Shots of 1.1 go to shots/fit/.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'fit'); fs.mkdirSync(OUT, { recursive: true });
 const all = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));

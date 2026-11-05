@@ -118,9 +118,11 @@
           Object.assign(cp.style, spots[0].css);
         } // a sideways phone: under the tools, left of the map
         if (wide) { cp.style.width = Math.min(gap, 250) + 'px'; cp.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; if (cp.parentNode !== st || cp.nextElementSibling !== now) st.insertBefore(cp, now); }
-        else if (!side) { cp.style.width = ''; cp.style.left = ''; cp.style.top = ''; cp.style.right = ''; cp.style.bottom = ''; if (narrow) { const after = bar && bar.parentNode === st ? bar : sc; if (after.nextElementSibling !== cp) after.insertAdjacentElement('afterend', cp); } }
+        else if (!side) { cp.style.width = ''; cp.style.left = ''; cp.style.top = ''; cp.style.right = ''; cp.style.bottom = '';
+          cp.style.height = narrow ? Math.round((short ? 80 : 92) + Math.max(0, Math.min(70, st.clientHeight - h - below - 12))) + 'px' : ''; if (narrow) { const after = bar && bar.parentNode === st ? bar : sc; if (after.nextElementSibling !== cp) after.insertAdjacentElement('afterend', cp); } }
         if (WW.chris && WW.chris.home) WW.chris.home(wide || narrow || side ? $('ww-cpslot') : st);
       }
+      if (G.wideOv !== wide) { G.wideOv = wide; const ov = $('ww-ov'), t = WW.ui.top(); if (ov && t) t.render(); else if (ov && ov.parentNode !== sc) { sc.appendChild(ov); ov.classList.remove('wide'); } } // only when it changes // big panels: the whole game area on a wide screen (ui.open)
       if (now) { const on = wide; now.classList.toggle('on', on); if (on) { now.style.width = Math.min(gap, 250) + 'px'; now.style.left = Math.max(0, gap - Math.min(gap, 250)) + 'px'; G.placeNow(); WW.ui.nowCard && WW.ui.nowCard(); } }
       if (WW.chris) WW.chris.place();
     };

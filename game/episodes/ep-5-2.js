@@ -31,7 +31,23 @@ window.EPISODE = {
     ],
     page: { en: 'Dubai\'s Burj Khalifa is the tallest building in the world.',
       es: 'El Burj Khalifa de Dubái es el edificio más alto del mundo.',
-      fa: 'برج خلیفه در دوبی بلندترین ساختمان جهان است.' }
+      fa: 'برج خلیفه در دوبی بلندترین ساختمان جهان است.' },
+    guess: {
+      q: { en: 'How do foods, games and words spread to new places?', es: '¿Cómo llegan las comidas, los juegos y las palabras a lugares nuevos?', fa: 'غذاها، بازی‌ها و کلمه‌ها چطور به جاهای تازه می‌رسند؟' },
+      choices: [
+        { t: { en: '🌧️ Rain carries them', es: '🌧️ La lluvia los lleva', fa: '🌧️ باران آن‌ها را می‌برد' } },
+        { t: { en: '🧳 Travel and trade', es: '🧳 Viajes y comercio', fa: '🧳 سفر و تجارت' }, ok: true }
+      ],
+      why: { en: 'Cultural diffusion spreads traits like tea, chess and words when people meet, trade and travel.', es: 'La difusión cultural lleva rasgos como el té, el ajedrez y las palabras cuando la gente se encuentra, comercia y viaja.', fa: 'پخش فرهنگی ویژگی‌هایی مثل چای، شطرنج و کلمه‌ها را وقتی مردم همدیگر را می‌بینند، تجارت و سفر می‌کنند پخش می‌کند.' }
+    },
+    next: {
+      q: { en: 'Next: the Dead Sea is very salty. Can people float in it?', es: 'Después: el mar Muerto es muy salado. ¿La gente puede flotar en él?', fa: 'بعدی: بحیرهٔ مرده خیلی شور است. آیا مردم روی آب آن می‌مانند؟' },
+      choices: [
+        { t: { en: '🛟 Yes, they float', es: '🛟 Sí, flotan', fa: '🛟 بلی، روی آب می‌مانند' }, ok: true },
+        { t: { en: '⚓ No, they sink', es: '⚓ No, se hunden', fa: '⚓ نه، غرق می‌شوند' } }
+      ],
+      why: { en: 'The Dead Sea is so salty that people float on top of the water.', es: 'El mar Muerto es tan salado que la gente flota sobre el agua.', fa: 'بحیرهٔ مرده آن‌قدر شور است که مردم روی آب می‌مانند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

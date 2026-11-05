@@ -26,7 +26,23 @@ window.EPISODE = {
     ],
     page: { en: 'On many flat maps, Greenland looks as big as Africa. Africa is 14 times bigger.',
       es: 'En muchos mapas planos, Groenlandia parece tan grande como África. África es 14 veces más grande.',
-      fa: 'در بسیاری نقشه‌های هموار، گرینلند به اندازهٔ افریقا دیده می‌شود. افریقا ۱۴ برابر بزرگ‌تر است.' }
+      fa: 'در بسیاری نقشه‌های هموار، گرینلند به اندازهٔ افریقا دیده می‌شود. افریقا ۱۴ برابر بزرگ‌تر است.' },
+    guess: {
+      q: { en: 'Earth is round. Does a flat map stretch some places?', es: 'La Tierra es redonda. ¿Un mapa plano estira algunos lugares?', fa: 'زمین گرد است. آیا نقشهٔ هموار بعضی جاها را کش می‌دهد؟' },
+      choices: [
+        { t: { en: '✅ Yes, some places', es: '✅ Sí, algunos lugares', fa: '✅ بلی، بعضی جاها' }, ok: true },
+        { t: { en: '❌ No, never', es: '❌ No, nunca', fa: '❌ نه، هیچ وقت' } }
+      ],
+      why: { en: 'A round Earth cannot lie flat, so every flat map stretches some places.', es: 'Una Tierra redonda no puede quedar plana, así que todo mapa plano estira algunos lugares.', fa: 'زمین گرد هموار نمی‌شود، پس هر نقشهٔ هموار بعضی جاها را کش می‌دهد.' }
+    },
+    next: {
+      q: { en: 'Next: regions! Which one could be a region?', es: '¡Ahora: regiones! ¿Cuál podría ser una región?', fa: 'بعدی: منطقه‌ها! کدام یک می‌تواند یک منطقه باشد؟' },
+      choices: [
+        { t: { en: '🌽 Corn-farming states', es: '🌽 Estados de maíz', fa: '🌽 ایالت‌های جواری' }, ok: true },
+        { t: { en: '🎲 Random dots', es: '🎲 Puntos al azar', fa: '🎲 نقطه‌های تصادفی' } }
+      ],
+      why: { en: 'A region is an area that shares something, like crops, climate or language.', es: 'Una región es un área que comparte algo, como cultivos, clima o idioma.', fa: 'منطقه جایی است که چیزی مشترک دارد، مثل کشت، آب و هوا یا زبان.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

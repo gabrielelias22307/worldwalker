@@ -1,6 +1,6 @@
 // node tests/play.js [1.1 2.2 ...]   plays each episode start to finish in a real browser and saves screenshots to shots/play/
 // Uses the built GitHub Pages files (run tools/build.js first). --canvas plays the one-file Canvas builds in dist/canvas instead.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: true });
@@ -40,7 +40,7 @@ const CANVAS = process.argv.includes('--canvas');
           window.__qpanels = 0;
           new MutationObserver(() => {
             const t = WW.ui.top(); const ov = document.getElementById('ww-ov');
-            if (t && !t.__q && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) {
+            if (t && !t.__q && t.opts.cls !== 'cutov' && ov.querySelector('.choices button, .pool .card, .opts .opt, .switches .reason')) { // the quick guesses in the cut scenes are not question panels
               t.__q = true; window.__qpanels++;
               // in a row: question panels with no walking between them (the hero is on the same square)
               const p = WW.dbg.player, at = p.x + ',' + p.y;
@@ -61,7 +61,11 @@ const CANVAS = process.argv.includes('--canvas');
         // the start cut scene: Christopher flies to the place on the world map, 2-3 fact cards (fun-pass-4)
         await page.waitForSelector('.cutov', { timeout: 3000 });
         await page.waitForTimeout(1700); await shot('1b-scene');
-        for (let k = 0; k < 4 && await page.$('.cutov'); k++) { await page.locator('#ww-ov .pbtn.gold').last().click(); await page.waitForTimeout(80); }
+        for (let k = 0; k < 8 && await page.$('.cutov'); k++) { // Next on each card; the guess: pick one, then Continue
+          if (await page.$('.cut-choices button:not([disabled])')) { if (k === 4) await shot('1c-guess'); await page.locator('.cut-choices button').first().click(); }
+          else await page.locator('#ww-ov .pbtn.gold').last().click();
+          await page.waitForTimeout(80); }
+        if (!(await page.evaluate(() => (WW.run.guesses || []).length === 1))) throw new Error('the guess after the start scene was not kept');
         if (await page.$('.cutov')) throw new Error('the start cut scene did not end');
         if (!(await page.evaluate(() => WW.save.seen[WW.ep.id + 's']))) throw new Error('the start cut scene was not saved as seen');
         const meet = await page.evaluate(() => !!(WW.ep.christopher && WW.ep.christopher.meet));
@@ -643,11 +647,12 @@ const CANVAS = process.argv.includes('--canvas');
         const bossAt = await page.evaluate(() => WW.game.bossAt());
         if (!goal || goal.join() !== bossAt.join()) throw new Error('the goal after the Grump is not the page');
         await page.evaluate(([x, y]) => WW.dbg.standOn(x, y), bossAt);
-        await page.waitForSelector('.cutov'); await page.waitForTimeout(1700); await shot('8c-page-scene'); // one new fact, then the finish screen
-        await page.locator('#ww-ov .pbtn.gold').last().click();
+        await page.waitForSelector('.cutov'); await page.waitForTimeout(1700); await shot('8c-page-scene'); // one new fact, a "what's next?" guess, then the finish screen
+        for (let k = 0; k < 4 && await page.$('.cutov'); k++) { if (await page.$('.cut-choices button:not([disabled])')) await page.locator('.cut-choices button').last().click(); else await page.locator('#ww-ov .pbtn.gold').last().click(); await page.waitForTimeout(80); }
         await page.waitForSelector('.finov');
         const fin = await page.textContent('#ww-ov');
         if (!/What you earned/.test(fin)) throw new Error('finish screen has no "What you earned"');
+        if (!/MY GUESSES \(\d of 2 matched\)/.test(await page.evaluate(() => WW.workText()))) throw new Error('the two guesses are not in "Copy my work"');
       });
       await step('finish + turn in', async () => {
         await page.waitForTimeout(800); await shot('9a-finish-top');

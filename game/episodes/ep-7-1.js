@@ -29,7 +29,23 @@ window.EPISODE = {
     ],
     page: { en: 'Japan has thousands of islands, but most people live on the four biggest.',
       es: 'Japón tiene miles de islas, pero casi todos viven en las cuatro más grandes.',
-      fa: 'جاپان هزاران جزیره دارد، اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' }
+      fa: 'جاپان هزاران جزیره دارد، اما بیشتر مردم در چهار جزیرهٔ بزرگ زندگی می‌کنند.' },
+    guess: {
+      q: { en: 'Where do most people in China live?', es: '¿Dónde vive la mayoría de la gente en China?', fa: 'بیشتر مردم چین کجا زندگی می‌کنند؟' },
+      choices: [
+        { t: { en: '🏔️ High mountains', es: '🏔️ Montañas altas', fa: '🏔️ کوه‌های بلند' } },
+        { t: { en: '🌾 Flat river land', es: '🌾 Llanuras de ríos', fa: '🌾 زمین هموار کنار دریا' }, ok: true }
+      ],
+      why: { en: 'Flat land near rivers is easy to farm, so most Chinese people live there.', es: 'La tierra plana cerca de los ríos es fácil de cultivar, por eso ahí vive la mayoría de los chinos.', fa: 'زمین هموار نزدیک دریاها برای زراعت آسان است، پس بیشتر مردم چین آنجا زندگی می‌کنند.' }
+    },
+    next: {
+      q: { en: 'Where is a good place for a big port city?', es: '¿Dónde es un buen lugar para una gran ciudad con puerto?', fa: 'یک شهر بندری بزرگ را کجا بسازیم خوب است؟' },
+      choices: [
+        { t: { en: '🌊 Where river meets sea', es: '🌊 Donde el río llega al mar', fa: '🌊 جایی که دریا به بحر می‌رسد' }, ok: true },
+        { t: { en: '🏜️ Middle of a desert', es: '🏜️ En medio del desierto', fa: '🏜️ وسط ریگستان' } }
+      ],
+      why: { en: 'River boats and sea ships meet there, so trade and jobs grow.', es: 'Ahí se juntan los barcos del río y los del mar, y crecen el comercio y el trabajo.', fa: 'آنجا کشتی‌های دریا و بحر به هم می‌رسند، پس تجارت و کار زیاد می‌شود.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

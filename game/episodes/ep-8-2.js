@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'The Panama Canal lifts ships about 85 feet up with locks.',
       es: 'El canal de Panamá sube los barcos unos 26 metros con esclusas.',
-      fa: 'کانال پاناما کشتی‌ها را با دروازه‌های آبی حدود ۲۶ متر بالا می‌برد.' }
+      fa: 'کانال پاناما کشتی‌ها را با دروازه‌های آبی حدود ۲۶ متر بالا می‌برد.' },
+    guess: {
+      q: { en: 'Can one country make everything it needs?', es: '¿Puede un país hacer todo lo que necesita?', fa: 'آیا یک کشور می‌تواند همه چیزهای لازم را بسازد؟' },
+      choices: [
+        { t: { en: '✅ Yes, it can', es: '✅ Sí, puede', fa: '✅ بلی، می‌تواند' } },
+        { t: { en: '🤝 No, it trades', es: '🤝 No, comercia', fa: '🤝 نه، تجارت می‌کند' }, ok: true }
+      ],
+      why: { en: 'No country has everything, so countries trade for what they do not make.', es: 'Ningún país lo tiene todo, así que los países comercian para conseguir lo que no hacen.', fa: 'هیچ کشوری همه چیز ندارد، پس کشورها چیزهایی را که نمی‌سازند با تجارت می‌گیرند.' }
+    },
+    next: {
+      q: { en: 'Two neighbor countries share a border. What helps them get along?', es: 'Dos países vecinos comparten una frontera. ¿Qué los ayuda a llevarse bien?', fa: 'دو کشور همسایه یک سرحد دارند. چه چیز به آن‌ها کمک می‌کند خوب کنار بیایند؟' },
+      choices: [
+        { t: { en: '🗣️ Talking together', es: '🗣️ Hablar juntos', fa: '🗣️ با هم گپ زدن' }, ok: true },
+        { t: { en: '🙈 Ignoring each other', es: '🙈 Ignorarse', fa: '🙈 همدیگر را نادیده گرفتن' } }
+      ],
+      why: { en: 'Neighbors who talk and sign agreements can solve problems about land and water.', es: 'Los vecinos que hablan y firman acuerdos pueden resolver problemas de tierra y agua.', fa: 'همسایه‌هایی که گپ می‌زنند و موافقت‌نامه امضا می‌کنند، مشکلات زمین و آب را حل می‌کنند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

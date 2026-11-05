@@ -48,6 +48,7 @@
     WW.lang = l; WW.save.lang = l; WW.store();
     document.documentElement.lang = l === 'fa' ? 'fa' : l;
     langListeners.forEach(f => { try { f(l); } catch (e) { console.error(e); } });
+    if (WW.chris && WW.chris.relang) WW.chris.relang(); // his corner speaks the new language at once
   };
   WW.dir = () => (WW.lang === 'fa' ? 'rtl' : 'ltr');
 
@@ -89,7 +90,7 @@
     accept: { en: "I'll help!", es: '¡Te ayudo!', fa: 'کمک می‌کنم!' },
     newQuest: { en: 'New quest', es: 'Nueva misión', fa: 'مأموریت تازه' },
     questDone: { en: 'Quest complete!', es: '¡Misión cumplida!', fa: 'مأموریت تمام شد!' },
-    qFindGiver: { en: 'find the person with !', es: 'busca a la persona con !', fa: 'کسی را با ! پیدا کن' },
+    qFindGiver: { en: 'find the person with a ❗ over their head', es: 'busca a la persona con un ❗ sobre la cabeza', fa: 'کسی را پیدا کن که بالای سرش ❗ است' },
     qTalkTo: { en: 'talk to', es: 'habla con', fa: 'گپ بزن با' },
     qReturn: { en: 'go back to', es: 'vuelve con', fa: 'برگرد پیش' },
     qBeat: { en: 'beat', es: 'vence a', fa: 'شکست بده' },
@@ -138,6 +139,11 @@
     savedSheet: { en: 'Saved to the class sheet ✓', es: 'Guardado en la hoja de la clase ✓', fa: 'در جدول صنف ذخیره شد ✓' },
     sheetDown: { en: 'Could not reach the class sheet. Your Passport Code below has everything.', es: 'No se pudo llegar a la hoja de la clase. Tu código de pasaporte abajo tiene todo.', fa: 'به جدول صنف نرسیدیم. کد پاسپورت پایین همه چیز را دارد.' },
     sceneDid: { en: 'Did you know?', es: '¿Sabías que…?', fa: 'آیا می‌دانستی؟' },
+    sceneGuess: { en: 'Guess!', es: '¡Adivina!', fa: 'حدس بزن!' },
+    sceneNextEp: { en: "What's next?", es: '¿Qué sigue?', fa: 'بعد چه می‌شود؟' },
+    guessYes: { en: 'Yes! ', es: '¡Sí! ', fa: 'بله! ' },
+    guessOther: { en: 'Good guess! Actually… ', es: '¡Buena idea! En realidad… ', fa: 'حدس خوبی بود! در واقع… ' },
+    guessCoin: { en: 'a guess', es: 'una adivinanza', fa: 'یک حدس' },
     sceneSkip: { en: 'Skip', es: 'Saltar', fa: 'رد کن' },
     sceneNext: { en: 'Next', es: 'Siguiente', fa: 'بعدی' },
     sceneGo: { en: "Let's go", es: '¡Vamos!', fa: 'برویم' },

@@ -29,7 +29,19 @@
   C.home = h => { if (!h) return; home = h; if (bubble && bubble.parentNode !== h) h.appendChild(bubble); if (bubble) bubble.classList.toggle('incorner', h.id === 'ww-cpslot'); idle(); };
   C.inCorner = () => !!(bubble && bubble.classList.contains('incorner'));
   C.saidT = -1e9;
-  function idle() { const i = $('ww-cpidle'); if (i) { i.style.display = C.showing() ? 'none' : ''; i.textContent = T('cpIdle'); } }
+  // his corner when he is not saying anything: the next step, with the way to go, and Show me the way (fun-pass-4)
+  let idleHtml = '';
+  function idle() {
+    const i = $('ww-cpidle'); if (!i) return;
+    i.style.display = C.showing() ? 'none' : '';
+    if (C.showing()) return;
+    let ns = null; try { ns = WW.run && WW.game && WW.game.player && !C.scene ? C.nextStep() : null; } catch (e) { }
+    const html = ns && ns.text ? `<div class="cp-name">🧭 ${esc(T('chrisName'))}</div><div class="cp-next">${WW.rich(ns.text)}</div>` : esc(T('cpIdle'));
+    if (html !== idleHtml) { idleHtml = html; i.innerHTML = html; i.dataset.kind = ns ? ns.kind : '';
+      if (ns && ns.at) { const b = WW.btn('🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), 'gold cpway', e => { e.stopPropagation(); buyWay(); }); i.appendChild(b); } }
+  }
+  C.relang = () => { idleHtml = ''; idle(); };
+  setInterval(() => { if (!WW.paused) idle(); }, 700);
   C.showing = () => !!(bubble && bubble.style.display === 'block');
 
   /* say something over his head. buttons: [{ label, kind, fn }] */
@@ -197,7 +209,8 @@
       const st = WW.quest.step(), ty = ep.quest.action.type;
       if (st === 2) kind = ty === 'trade' ? 'green' : ty === 'fight' ? 'red' : 'blue'; // a find or a chase clue is blue
     }
-    return { text: text + (at ? ' ' + go(at) : ''), at, kind };
+    const sep = /[.!?؟。»"”)]\s*$/.test(text) ? ' ' : '. '; // a sentence that ends before the way to go starts
+    return { text: text + (at ? sep + go(at) : ''), at, kind };
   };
 
   /* C: talk to him */
@@ -293,6 +306,7 @@
   C.resetFlight = () => { F.mode = 'follow'; F.x = null; F.y = null; F.trail = []; F.mark = null; F.ask = false; F.bang = false; F.sig = null; F.act = null; F.seen = {}; F.lastProgress = performance.now(); F.lastNudge = 0; F.pending = null; F.scr = null; };
 
   // a short fingerprint of where the student is in the episode (a change = progress, maybe a new goal)
+  C.sig = () => { try { return WW.run && WW.run.talked ? goalSig() : ''; } catch (e) { return ''; } };
   function goalSig() {
     const r = WW.run, q = WW.quest;
     return [r.talked.size, q.on() ? q.step() : '-', r.chase || 0, r.route || 0, r.seen ? r.seen.size : 0, (r.signs || []).filter(s => s.placed).length,
@@ -315,7 +329,7 @@
     if (!C.scene && !WW.paused && WW.run && WW.run.talked) {
       const sig = goalSig(), act = activitySig();
       if (F.sig == null) { F.sig = sig; F.act = act; F.lastProgress = now; }
-      else if (sig !== F.sig) { F.sig = sig; F.act = act; F.lastProgress = now; F.ask = false; F.pending = now + 700; }
+      else if (sig !== F.sig) { F.sig = sig; F.act = act; F.lastProgress = now; F.ask = false; F.pending = now + 700; if (C.showing() && !C.scene && now - C.saidT > 1500 && !C.chaining()) C.hide(); } // a new step: yesterday's words go
       else if (act !== F.act) { F.act = act; F.lastProgress = now; }
       if (F.pending && now >= F.pending && F.mode === 'follow') {
         F.pending = null;

@@ -32,7 +32,23 @@ window.EPISODE = {
     ],
     page: { en: 'Durban is one of the busiest ports in Africa.',
       es: 'Durban es uno de los puertos con más trabajo de África.',
-      fa: 'دوربان یکی از پرکارترین بندرهای افریقا است.' }
+      fa: 'دوربان یکی از پرکارترین بندرهای افریقا است.' },
+    guess: {
+      q: { en: 'Ore leaves a mine in South Africa. How does it cross the ocean?', es: 'El mineral sale de una mina en Sudáfrica. ¿Cómo cruza el océano?', fa: 'سنگ معدن از یک معدن در افریقای جنوبی بیرون می‌شود. چطور از اقیانوس می‌گذرد؟' },
+      choices: [
+        { t: { en: '🐪 By camel', es: '🐪 En camello', fa: '🐪 با شتر' } },
+        { t: { en: '🚢 By ship', es: '🚢 En barco', fa: '🚢 با کشتی' }, ok: true }
+      ],
+      why: { en: 'Ore rides a train to a port like Durban, and then a ship carries it far away.', es: 'El mineral va en tren hasta un puerto como Durban, y luego un barco lo lleva lejos.', fa: 'سنگ معدن با قطار تا بندری مثل دوربان می‌رود و بعد کشتی آن را دور می‌برد.' }
+    },
+    next: {
+      q: { en: 'Next: Iraq, between two rivers. Why did early farms grow there?', es: 'Ahora: Irak, entre dos ríos. ¿Por qué nacieron granjas allí hace mucho?', fa: 'بعدی: عراق، بین دو دریا. چرا زمین‌های زراعتی اول آن‌جا به وجود آمدند؟' },
+      choices: [
+        { t: { en: '💧 Water for crops', es: '💧 Agua para cultivos', fa: '💧 آب برای کشت' }, ok: true },
+        { t: { en: '❄️ Lots of snow', es: '❄️ Mucha nieve', fa: '❄️ برف زیاد' } }
+      ],
+      why: { en: 'The Tigris and Euphrates gave water to farms, so some of the first cities grew there.', es: 'El Tigris y el Éufrates daban agua a las granjas, por eso allí nacieron algunas de las primeras ciudades.', fa: 'دجله و فرات به زمین‌ها آب می‌دادند، پس بعضی از اولین شهرها آن‌جا به وجود آمدند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

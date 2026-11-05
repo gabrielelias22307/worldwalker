@@ -3,7 +3,7 @@
 // taps "Copy my work". Every panel it opens must fit the screen with buttons big enough to tap and text big enough to read.
 // The stone's challenge itself is finished with a shortcut (tests/touch.js covers tools and signposts by touch).
 // Then a sideways phone (844×390) must still fit. Screenshots go to shots/phone/.
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'phone'); fs.mkdirSync(OUT, { recursive: true });
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ['1.2', '1.3'];
@@ -160,7 +160,9 @@ async function play(b, id) {
     // claim the page: walk onto it
     const pg = await p.evaluate(() => WW.game.bossAt());
     await walkTo(pg[0], pg[1], true); await p.waitForTimeout(1500);
-    for (let k = 0; k < 6 && !(await p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ }).count()); k++) { const g = p.locator('#ww-ov .pbtn.gold'); if (!(await g.count())) break; await g.last().scrollIntoViewIfNeeded(); await g.last().tap(); await p.waitForTimeout(500); }
+    for (let k = 0; k < 8 && !(await p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ }).count()); k++) {
+      if (await p.$('.cut-choices button:not([disabled])')) { await checkPanel('guess'); await tap('.cut-choices button'); await p.waitForTimeout(400); continue; } // the page scene's guess (fun-pass-4)
+      const g = p.locator('#ww-ov .pbtn.gold'); if (!(await g.count())) break; await g.last().scrollIntoViewIfNeeded(); await g.last().tap(); await p.waitForTimeout(500); }
     await checkPanel('finish'); await shot('7-finish');
     const copy = p.locator('#ww-ov .pbtn', { hasText: /Copy my work/ });
     ok(await copy.count() > 0, 'the finish panel has "Copy my work"');

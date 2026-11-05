@@ -27,7 +27,23 @@ window.EPISODE = {
     ],
     page: { en: 'The Great Barrier Reef is the biggest coral reef system on Earth.',
       es: 'La Gran Barrera de Coral es el sistema de arrecifes más grande del mundo.',
-      fa: 'دیوار بزرگ مرجانی بزرگ‌ترین مجموعهٔ صخره‌های مرجانی جهان است.' }
+      fa: 'دیوار بزرگ مرجانی بزرگ‌ترین مجموعهٔ صخره‌های مرجانی جهان است.' },
+    guess: {
+      q: { en: 'Seas are rising. Which island is in more danger?', es: 'El mar está subiendo. ¿Qué isla corre más peligro?', fa: 'آب بحر بالا می‌آید. کدام جزیره در خطر بیشتر است؟' },
+      choices: [
+        { t: { en: '⛰️ A tall island', es: '⛰️ Una isla alta', fa: '⛰️ جزیرهٔ بلند' } },
+        { t: { en: '🏝️ A low island', es: '🏝️ Una isla baja', fa: '🏝️ جزیرهٔ پست' }, ok: true }
+      ],
+      why: { en: 'Low coral islands, called atolls, sit just above the sea, so rising water can flood them.', es: 'Las islas bajas de coral, llamadas atolones, están apenas sobre el mar, y el agua puede inundarlas.', fa: 'جزیره‌های پست مرجانی، به نام اتول، کمی بالاتر از بحر هستند و آب می‌تواند آن‌ها را بگیرد.' }
+    },
+    next: {
+      q: { en: 'One ship gets stuck in a narrow canal. What happens?', es: 'Un barco se atasca en un canal estrecho. ¿Qué pasa?', fa: 'یک کشتی در یک کانال تنگ گیر می‌ماند. چه می‌شود؟' },
+      choices: [
+        { t: { en: '🚧 Other ships wait', es: '🚧 Los otros barcos esperan', fa: '🚧 کشتی‌های دیگر منتظر می‌مانند' }, ok: true },
+        { t: { en: '⚡ Ships go faster', es: '⚡ Los barcos van más rápido', fa: '⚡ کشتی‌ها تیزتر می‌روند' } }
+      ],
+      why: { en: 'In 2021, one stuck ship blocked the Suez Canal for six days, and hundreds of ships waited.', es: 'En 2021, un barco atascado cerró el canal de Suez seis días, y cientos de barcos esperaron.', fa: 'در ۲۰۲۱، یک کشتی گیرمانده کانال سوئز را شش روز بست و صدها کشتی منتظر ماندند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

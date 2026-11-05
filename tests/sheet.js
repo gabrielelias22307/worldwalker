@@ -1,6 +1,6 @@
 // node tests/sheet.js   runs apps-script/Code.gs against a pretend Google Sheet, and plays two "computers" against it:
 // stats saved after each goal, read back at the next episode, spent coins never come back, old saves never win
-const { chromium } = require('playwright');
+const { chromium } = require('playwright'); require('./autostep');
 const fs = require('fs'), path = require('path'), vm = require('vm'), crypto = require('crypto');
 const ROOT = path.join(__dirname, '..');
 

@@ -28,7 +28,23 @@ window.EPISODE = {
     ],
     page: { en: 'Saudi Arabia has some of the biggest oil reserves on Earth.',
       es: 'Arabia Saudita tiene algunas de las reservas de petróleo más grandes del mundo.',
-      fa: 'عربستان سعودی یکی از بزرگ‌ترین ذخیره‌های تیل جهان را دارد.' }
+      fa: 'عربستان سعودی یکی از بزرگ‌ترین ذخیره‌های تیل جهان را دارد.' },
+    guess: {
+      q: { en: 'Phone batteries use cobalt. Where does cobalt come from?', es: 'Las baterías de celular usan cobalto. ¿De dónde viene el cobalto?', fa: 'بتری‌های موبایل کوبالت دارند. کوبالت از کجا می‌آید؟' },
+      choices: [
+        { t: { en: '⛏️ From a mine', es: '⛏️ De una mina', fa: '⛏️ از معدن' }, ok: true },
+        { t: { en: '🌳 From a tree', es: '🌳 De un árbol', fa: '🌳 از درخت' } }
+      ],
+      why: { en: 'Cobalt is a natural resource dug from mines, and most of it comes from the Congo.', es: 'El cobalto es un recurso natural que sale de minas, y la mayor parte viene del Congo.', fa: 'کوبالت یک منبع طبیعی است که از معدن کنده می‌شود و بیشترش از کانگو می‌آید.' }
+    },
+    next: {
+      q: { en: 'Next: big cities! Where do many big cities grow?', es: '¡Ahora: grandes ciudades! ¿Dónde crecen muchas ciudades grandes?', fa: 'بعدی: شهرهای بزرگ! بسیاری از شهرهای بزرگ کجا رشد می‌کنند؟' },
+      choices: [
+        { t: { en: '🏜️ Far from water', es: '🏜️ Lejos del agua', fa: '🏜️ دور از آب' } },
+        { t: { en: '⛵ Near water', es: '⛵ Cerca del agua', fa: '⛵ نزدیک آب' }, ok: true }
+      ],
+      why: { en: 'Many big cities grew on lakes, rivers or harbors, because boats moved heavy goods cheaply.', es: 'Muchas ciudades grandes crecieron junto a lagos, ríos o puertos, porque los barcos llevaban carga barata.', fa: 'بسیاری از شهرهای بزرگ کنار جهیل، دریا یا بندر رشد کردند، چون کشتی‌ها بار سنگین را ارزان می‌بردند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

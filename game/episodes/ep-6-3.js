@@ -27,7 +27,23 @@ window.EPISODE = {
     ],
     page: { en: 'Since 1970, life expectancy in Bangladesh grew from under 50 to over 70 years.',
       es: 'Desde 1970, la esperanza de vida en Bangladés subió de menos de 50 a más de 70 años.',
-      fa: 'از سال ۱۹۷۰، اوسط عمر در بنگله‌دیش از کمتر از ۵۰ به بیشتر از ۷۰ سال رسید.' }
+      fa: 'از سال ۱۹۷۰، اوسط عمر در بنگله‌دیش از کمتر از ۵۰ به بیشتر از ۷۰ سال رسید.' },
+    guess: {
+      q: { en: 'A country has many young children. Will it need more or fewer schools?', es: 'Un país tiene muchos niños pequeños. ¿Necesitará más o menos escuelas?', fa: 'یک کشور اطفال خورد زیاد دارد. به مکتب بیشتر ضرورت دارد یا کمتر؟' },
+      choices: [
+        { t: { en: '🏫 More schools', es: '🏫 Más escuelas', fa: '🏫 مکتب بیشتر' }, ok: true },
+        { t: { en: '🏚️ Fewer schools', es: '🏚️ Menos escuelas', fa: '🏚️ مکتب کمتر' } }
+      ],
+      why: { en: 'Many children will soon start school, so the country needs more schools and teachers.', es: 'Muchos niños pronto empezarán la escuela, así que el país necesita más escuelas y maestros.', fa: 'اطفال زیاد به زودی به مکتب می‌روند، پس کشور به مکتب و معلم بیشتر ضرورت دارد.' }
+    },
+    next: {
+      q: { en: 'Next: China. Do most people there live near rivers or in deserts?', es: 'Después: China. ¿La mayoría de la gente vive cerca de ríos o en desiertos?', fa: 'بعدی: چین. بیشتر مردم آن‌جا نزدیک دریاها زندگی می‌کنند یا در بیابان‌ها؟' },
+      choices: [
+        { t: { en: '🏜️ In deserts', es: '🏜️ En desiertos', fa: '🏜️ در بیابان‌ها' } },
+        { t: { en: '🏞️ Near rivers', es: '🏞️ Cerca de ríos', fa: '🏞️ نزدیک دریاها' }, ok: true }
+      ],
+      why: { en: 'Most people in China live in the east, on flat plains near big rivers.', es: 'Casi toda la gente de China vive en el este, en llanuras cerca de grandes ríos.', fa: 'بیشتر مردم چین در شرق، روی دشت‌های هموار نزدیک دریاهای بزرگ زندگی می‌کنند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

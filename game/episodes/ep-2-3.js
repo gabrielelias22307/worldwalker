@@ -26,7 +26,23 @@ window.EPISODE = {
     ],
     page: { en: 'Money sent home is a big part of the economy in Guatemala and Honduras.',
       es: 'El dinero enviado a casa es una gran parte de la economía de Guatemala y Honduras.',
-      fa: 'پولی که به خانه فرستاده می‌شود بخش بزرگی از اقتصاد گواتیمالا و هندوراس است.' }
+      fa: 'پولی که به خانه فرستاده می‌شود بخش بزرگی از اقتصاد گواتیمالا و هندوراس است.' },
+    guess: {
+      q: { en: 'A drought dries up the farm. Does it push or pull people?', es: 'Una sequía seca la finca. ¿Empuja o atrae a la gente?', fa: 'خشکسالی زمین را خشک می‌کند. آیا مردم را می‌راند یا می‌کشاند؟' },
+      choices: [
+        { t: { en: '⬅️ Pushes them away', es: '⬅️ Los empuja', fa: '⬅️ می‌راند' }, ok: true },
+        { t: { en: '➡️ Pulls them in', es: '➡️ Los atrae', fa: '➡️ می‌کشاند' } }
+      ],
+      why: { en: 'A drought is a push factor, because it makes home hard to stay in.', es: 'Una sequía es un factor de expulsión, porque hace difícil quedarse en casa.', fa: 'خشکسالی یک عامل رانش است، چون ماندن در خانه را سخت می‌کند.' }
+    },
+    next: {
+      q: { en: 'Next: Europe! Is most of Europe near the sea or far?', es: '¡Ahora: Europa! ¿Casi toda Europa está cerca o lejos del mar?', fa: 'بعدی: اروپا! بیشتر اروپا نزدیک بحر است یا دور؟' },
+      choices: [
+        { t: { en: '🏜️ Far from the sea', es: '🏜️ Lejos del mar', fa: '🏜️ دور از بحر' } },
+        { t: { en: '🌊 Near the sea', es: '🌊 Cerca del mar', fa: '🌊 نزدیک بحر' }, ok: true }
+      ],
+      why: { en: 'Europe has many peninsulas, so almost no place is far from the sea.', es: 'Europa tiene muchas penínsulas, así que casi ningún lugar está lejos del mar.', fa: 'اروپا جزیره‌نماهای زیادی دارد، پس تقریباً هیچ جا از بحر دور نیست.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

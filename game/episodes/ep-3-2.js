@@ -27,7 +27,23 @@ window.EPISODE = {
     ],
     page: { en: 'Kazakhstan is the biggest landlocked country in the world.',
       es: 'Kazajistán es el país sin salida al mar más grande del mundo.',
-      fa: 'قزاقستان بزرگ‌ترین کشور محاط به خشکه در جهان است.' }
+      fa: 'قزاقستان بزرگ‌ترین کشور محاط به خشکه در جهان است.' },
+    guess: {
+      q: { en: 'The train goes from Moscow to the Pacific. Is the trip short or long?', es: 'El tren va de Moscú al Pacífico. ¿El viaje es corto o largo?', fa: 'قطار از مسکو تا اقیانوس آرام می‌رود. سفر کوتاه است یا دراز؟' },
+      choices: [
+        { t: { en: '⏱️ A short trip', es: '⏱️ Un viaje corto', fa: '⏱️ سفر کوتاه' } },
+        { t: { en: '🚆 A long trip', es: '🚆 Un viaje largo', fa: '🚆 سفر دراز' }, ok: true }
+      ],
+      why: { en: 'The Trans-Siberian Railway runs about 5,800 miles, and the whole trip takes about a week.', es: 'El Transiberiano recorre unos 9,300 kilómetros, y todo el viaje dura casi una semana.', fa: 'خط آهن ترانس‌سیبری حدود ۹۳۰۰ کیلومتر است و تمام سفر تقریباً یک هفته طول می‌کشد.' }
+    },
+    next: {
+      q: { en: 'Next: the old Silk Road. What did traders carry on it?', es: 'Ahora: la antigua Ruta de la Seda. ¿Qué llevaban los comerciantes?', fa: 'بعدی: راه قدیم ابریشم. تاجرها در آن چه می‌بردند؟' },
+      choices: [
+        { t: { en: '🧵 Silk and spices', es: '🧵 Seda y especias', fa: '🧵 ابریشم و ادویه' }, ok: true },
+        { t: { en: '📱 Phones and cars', es: '📱 Teléfonos y carros', fa: '📱 موبایل و موتر' } }
+      ],
+      why: { en: 'Silk Road traders carried silk, spices and paper between China and the Mediterranean Sea.', es: 'Los comerciantes de la Ruta de la Seda llevaban seda, especias y papel entre China y el mar Mediterráneo.', fa: 'تاجرهای راه ابریشم، ابریشم، ادویه و کاغذ را بین چین و بحیرهٔ مدیترانه می‌بردند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

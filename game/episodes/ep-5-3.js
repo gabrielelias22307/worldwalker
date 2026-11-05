@@ -32,7 +32,23 @@ window.EPISODE = {
     ],
     page: { en: 'In 1994, Israel and Jordan signed a peace treaty that shares Jordan River water.',
       es: 'En 1994, Israel y Jordania firmaron un tratado de paz que reparte el agua del Jordán.',
-      fa: 'در ۱۹۹۴، اسرائیل و اردن پیمان صلحی امضا کردند که آب دریای اردن را تقسیم می‌کند.' }
+      fa: 'در ۱۹۹۴، اسرائیل و اردن پیمان صلحی امضا کردند که آب دریای اردن را تقسیم می‌کند.' },
+    guess: {
+      q: { en: 'Near the Jordan River, is fresh water plentiful or scarce?', es: 'Cerca del río Jordán, ¿el agua dulce abunda o es escasa?', fa: 'نزدیک دریای اردن، آب شیرین زیاد است یا کم؟' },
+      choices: [
+        { t: { en: '💧 Plentiful', es: '💧 Abundante', fa: '💧 زیاد' } },
+        { t: { en: '🏜️ Scarce', es: '🏜️ Escasa', fa: '🏜️ کم' }, ok: true }
+      ],
+      why: { en: 'The Levant is dry, so fresh water is scarce and neighbors must share it carefully.', es: 'El Levante es seco, así que el agua dulce es escasa y los vecinos deben compartirla con cuidado.', fa: 'شام خشک است، پس آب شیرین کم است و همسایه‌ها باید آن را با دقت میان خود تقسیم کنند.' }
+    },
+    next: {
+      q: { en: 'Next: India\'s monsoon. What does the summer monsoon bring?', es: 'Después: el monzón de la India. ¿Qué trae el monzón de verano?', fa: 'بعدی: باد موسمی هند. باد موسمی تابستان چه می‌آورد؟' },
+      choices: [
+        { t: { en: '🌧️ Heavy rain', es: '🌧️ Mucha lluvia', fa: '🌧️ باران زیاد' }, ok: true },
+        { t: { en: '❄️ Deep snow', es: '❄️ Mucha nieve', fa: '❄️ برف زیاد' } }
+      ],
+      why: { en: 'The summer monsoon blows wet air from the ocean and brings heavy rain to India.', es: 'El monzón de verano trae aire húmedo del océano y mucha lluvia a la India.', fa: 'باد موسمی تابستان هوای مرطوب را از اقیانوس می‌آورد و در هند باران زیاد می‌باراند.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [

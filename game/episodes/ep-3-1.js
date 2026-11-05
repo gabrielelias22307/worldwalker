@@ -27,7 +27,23 @@ window.EPISODE = {
     ],
     page: { en: 'With its fjords and islands, Norway\'s coast is over 60,000 miles long.',
       es: 'Con sus fiordos e islas, la costa de Noruega mide más de 100,000 kilómetros.',
-      fa: 'با فیوردها و جزیره‌هایش، ساحل ناروی بیشتر از ۱۰۰ هزار کیلومتر است.' }
+      fa: 'با فیوردها و جزیره‌هایش، ساحل ناروی بیشتر از ۱۰۰ هزار کیلومتر است.' },
+    guess: {
+      q: { en: 'Is most of Europe near the sea or far from it?', es: '¿La mayor parte de Europa está cerca o lejos del mar?', fa: 'بیشتر جاهای اروپا نزدیک بحر است یا دور از بحر؟' },
+      choices: [
+        { t: { en: '🌊 Near the sea', es: '🌊 Cerca del mar', fa: '🌊 نزدیک بحر' }, ok: true },
+        { t: { en: '🏜️ Far from the sea', es: '🏜️ Lejos del mar', fa: '🏜️ دور از بحر' } }
+      ],
+      why: { en: 'Europe has many peninsulas and bays, so most places are close to the sea.', es: 'Europa tiene muchas penínsulas y bahías, así que casi todos los lugares están cerca del mar.', fa: 'اروپا شبه‌جزیره‌ها و خلیج‌های زیاد دارد، پس بیشتر جاها نزدیک بحر هستند.' }
+    },
+    next: {
+      q: { en: 'Next stop: Russia. Is Russia a small or a big country?', es: 'Próxima parada: Rusia. ¿Rusia es un país pequeño o grande?', fa: 'ایستگاه بعدی: روسیه. روسیه کشور کوچک است یا بزرگ؟' },
+      choices: [
+        { t: { en: '🐭 Very small', es: '🐭 Muy pequeño', fa: '🐭 خیلی کوچک' } },
+        { t: { en: '🐘 Very big', es: '🐘 Muy grande', fa: '🐘 خیلی بزرگ' }, ok: true }
+      ],
+      why: { en: 'Russia is the biggest country on Earth, with 11 time zones.', es: 'Rusia es el país más grande del mundo, con 11 zonas horarias.', fa: 'روسیه با ۱۱ منطقهٔ زمانی بزرگ‌ترین کشور جهان است.' }
+    }
   },
   /* houses (fun-pass-4): who lives behind each door; walk in and talk (2 lines each) */
   houses: [
