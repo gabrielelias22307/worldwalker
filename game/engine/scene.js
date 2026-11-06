@@ -109,7 +109,7 @@
     const h = WW.ui.open({
       cls: 'cutov',
       render(box) {
-        box.innerHTML = `<div class="cut-h">${esc(kind === 'page' ? T('sceneDid') : T('episode') + ' ' + ep.id)} · <b>${esc(L(ep.place))}</b>${sc.year && !L(ep.place).includes(String(sc.year)) ? ` · <b class="cut-year">${esc(sc.yearText ? L(sc.yearText) : sc.year)}</b>` : ''}</div>`;
+        box.innerHTML = `<div class="cut-h">${esc(kind === 'page' ? T('sceneDid') : T('episode') + ' ' + ep.id)} · <b>${esc(L(ep.place))}</b>${sc.year && !L(ep.place).toLowerCase().includes(String(sc.yearText ? L(sc.yearText) : sc.year).toLowerCase()) && !L(ep.place).includes(String(sc.year)) ? ` · <b class="cut-year">${esc(sc.yearText ? L(sc.yearText) : sc.year)}</b>` : ''}</div>`;
         const cv = document.createElement('canvas'); cv.className = 'cut-cv'; cv.width = SW; cv.height = SH + (sc.year ? TL : 0); // a year: room for the timeline
         const c = cv.getContext('2d'); c.imageSmoothingEnabled = false; box.appendChild(cv);
         cancelAnimationFrame(raf);

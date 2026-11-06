@@ -250,7 +250,8 @@ window.EPISODE = {
   },
 
   scraps: [[1, 10], [30, 1], [1, 20]],
-  smudges: [[4, 9]],
+  smudges: [], // a memorial: nothing to fight here
+  memorial: true,
 
   /* the time stone in the world: read the 4 record posts in Hall 2 (one row each), then answer at the stone */
   challenge: {

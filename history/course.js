@@ -46,6 +46,9 @@ window.WW_COURSE = {
       es: 'El Gruñón rompió la Gran Crónica en 24 páginas y las esparció por el tiempo. La gente está olvidando su propia historia. Eres aprendiz de Caminante del Tiempo. Con Tock, tu reloj de arena vivo, recupera las páginas aprendiendo cada momento.',
       fa: 'غرغرو تاریخ‌نامهٔ بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در طول زمان پراکنده ساخت. مردم تاریخ خود را فراموش می‌کنند. تو شاگرد زمان‌گرد هستی. با تاک، ساعت ریگی زنده‌ات، با یاد گرفتن هر زمان صفحه‌ها را پس بگیر.' },
     storyOne: { en: 'The Grump tore the Great Chronicle. Win back its pages, one moment at a time!', es: '¡El Gruñón rompió la Gran Crónica! Recupera sus páginas, un momento a la vez.', fa: 'غرغرو تاریخ‌نامهٔ بزرگ را پاره کرد! صفحه‌هایش را یکی یکی پس بگیر.' },
+    map: { en: 'Timeline', es: 'Línea del tiempo', fa: 'خط زمان' },
+    powers: { en: 'Five history powers', es: 'Cinco poderes de historia', fa: 'پنج نیروی تاریخ' },
+    bag: { en: 'Bag · one tool from each era', es: 'Bolsa · una herramienta de cada época', fa: 'کوله · یک ابزار از هر دوره' },
     chrisJob: { en: 'Tock is your living hourglass: he shows the way, tells you what to do next, and trades hints for coins.', es: 'Tock es tu reloj de arena vivo: te muestra el camino, te dice qué hacer después y cambia pistas por monedas.', fa: 'تاک ساعت ریگی زندهٔ توست: راه را نشان می‌دهد، می‌گوید بعد چه کنی، و در برابر سکه کمک می‌دهد.' }
   }
 };

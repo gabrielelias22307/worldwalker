@@ -106,7 +106,7 @@ function checkEpisode(file) {
     place(Array.isArray(s) ? s.slice(0, 2) : s, 'bad guy ' + i, true, new Set());
     if (s[2] && !['grump', 'bat', 'blob', 'whirl'].includes(s[2])) errs.push(`bad guy ${i} type "${s[2]}" must be grump, bat, blob or whirl`);
   });
-  if ((ep.smudges || []).length < 1 || (ep.smudges || []).length > 3) errs.push('need 1 to 3 bad guys (smudges)');
+  if (!ep.memorial && ((ep.smudges || []).length < 1 || (ep.smudges || []).length > 3)) errs.push('need 1 to 3 bad guys (smudges)'); // memorial: true (Timewalker 2.3, 7.3): none
   if ((ep.scraps || []).length !== 3) errs.push('need exactly 3 scraps');
   if ((ep.npcs || []).length < 3) errs.push('need at least 3 people (npcs)');
   const qu = ep.quest, qa = qu && qu.action;

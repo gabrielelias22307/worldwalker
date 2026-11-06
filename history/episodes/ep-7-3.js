@@ -260,7 +260,8 @@ window.EPISODE = {
   },
 
   scraps: [[1, 1], [30, 9], [1, 20]],
-  smudges: [[25, 19]],
+  smudges: [], // a memorial: nothing to fight here
+  memorial: true,
 
   challenge: {
     at: [20, 18],
