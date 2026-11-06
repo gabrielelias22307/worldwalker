@@ -5,7 +5,7 @@
 cd "$(dirname "$0")/.." || exit 1
 node tools/build.js > /dev/null || exit 1
 rm -rf netlify-site && mkdir netlify-site
-cp -r index.html game mockups netlify-site/
+cp -r index.html game history mockups netlify-site/
 sed -i.bak "s/OPEN_ALL: false/OPEN_ALL: true/" netlify-site/game/config.js && rm -f netlify-site/game/config.js.bak
 grep -q "OPEN_ALL: true" netlify-site/game/config.js || { echo "OPEN_ALL was not turned on"; exit 1; }
 printf '[build]\n  publish = "."\n' > netlify-site/netlify.toml
