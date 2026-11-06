@@ -1,11 +1,12 @@
 // node tools/build.js           ->  game/ep-X-Y.html (GitHub Pages) + dist/canvas/Worldwalker X.Y.html (one file for Canvas)
 // node tools/build.js history   ->  history/ep-X-Y.html + dist/canvas-history/Timewalker X.Y.html (the same engine, history/course.js first)
+// node tools/build.js gov       ->  gov/ep-X-Y.html + dist/canvas-gov/Civicwalker X.Y.html (any folder with a course.js works the same way)
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..'), E = path.join(ROOT, 'game'); // the engine always lives in game/engine
 const GAME = process.argv[2] || 'game', G = path.join(ROOT, GAME), HIST = GAME !== 'game';
-const NAME = HIST ? 'Timewalker' : 'Worldwalker', DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas');
+const NAME = require('./course-info.js')(GAME).name, DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas'); // the game's name comes from its course file
 const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
-if (HIST && GAME === 'history') require('./history-pages.js'); // Timewalker's timeline and teacher pages, from Worldwalker's
+if (HIST) require('./course-pages.js')(GAME); // the course's map page and teacher page, made from Worldwalker's
 const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'game.js'];
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');

@@ -462,9 +462,12 @@ function checkEpisode(file) {
 }
 
 if (require.main === module) {
-const args = process.argv.slice(2).filter(a => a !== '--reading');
-const files = args.length ? args.map(f => path.resolve(f.includes('/') ? f : path.join(G, 'episodes', f)))
-    : fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => path.join(G, 'episodes', f));
+let args = process.argv.slice(2).filter(a => a !== '--reading');
+// node tools/check.js gov (or history): every episode in that game's folder
+let ED = path.join(G, 'episodes');
+if (args.length && fs.existsSync(path.join(__dirname, '..', args[0], 'episodes'))) { ED = path.join(__dirname, '..', args[0], 'episodes'); args = args.slice(1); }
+const files = args.length ? args.map(f => path.resolve(f.includes('/') ? f : path.join(ED, f)))
+    : fs.readdirSync(ED).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => path.join(ED, f));
 let bad = 0;
 for (const f of files) {
   const { errs, warns } = checkEpisode(f);
