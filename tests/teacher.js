@@ -35,7 +35,8 @@ const ids = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\
   ok(await page.evaluate(() => document.documentElement.dir === 'rtl'), 'Dari switches the console to right-to-left');
   await page.click('[data-l="en"]');
 
-  for (const id of ['1.1', '5.1', '8.3']) {
+  const PREV = ['1.1', '5.1', '8.3'].filter(i => ids.includes(i)), LAST = PREV[PREV.length - 1]; // a game still being built may have only some episodes
+  for (const id of PREV) {
     const f = 'ep-' + id.replace('.', '-') + '.html';
     for (const [where, sel] of [['stone', '#ww-ov'], ['boss', '.bossov'], ['finish', '.finov']]) {
       await page.goto(url(f) + '?teacher=' + where);
@@ -46,10 +47,10 @@ const ids = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\
       await page.screenshot({ path: path.join(OUT, `${id}-${where}.png`) });
     }
   }
-  ok(await page.evaluate(k => !JSON.parse(localStorage.getItem(k)).episodes['8.3'], INFO.saveKey), 'preview finish did not save the episode'); // each game keeps its own save
+  ok(await page.evaluate(k => !((JSON.parse(localStorage.getItem(k[0])) || { episodes: {} }).episodes[k[1]]), INFO.saveKey), 'preview finish did not save the episode'); // each game keeps its own save
   // a student (no teacher code) gets the normal start screen even with ?teacher=
   await page.evaluate(() => localStorage.clear());
-  await page.goto(url('ep-2-1.html') + '?teacher=finish');
+  await page.goto(url('ep-' + (ids.includes('2.1') ? '2.1' : ids[0]).replace('.', '-') + '.html') + '?teacher=finish');
   ok(await page.waitForSelector('.startov', { timeout: 4000 }).then(() => true, () => false), 'without the teacher code ?teacher= is ignored');
 
   ok(!errs.length, 'no page errors' + (errs.length ? ': ' + errs.join(' | ') : ''));

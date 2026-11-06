@@ -59,7 +59,7 @@
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
-        box.innerHTML = `<h3>🧭 ${esc(L(ch.title))}</h3>`; WW.introInto(box, ch.intro, ch, box); // long words: one short step at a time
+        box.innerHTML = `<h3>${WW.GICON} ${esc(L(ch.title))}</h3>`; WW.introInto(box, ch.intro, ch, box); // long words: one short step at a time
         box.insertAdjacentHTML('beforeend', `<p class="say"><b>${esc(T(how))}</b></p>${extra ? extra() : ''}`);
         const acts = document.createElement('div'); acts.className = 'acts';
         if (go) acts.appendChild(WW.btn(go.label, 'gold', () => { h.close(); go.fn(); }));

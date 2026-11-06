@@ -422,6 +422,7 @@
   WW.COURSE = window.WW_COURSE || null;
   WW.TITLE = (WW.COURSE && WW.COURSE.title) || 'WORLDWALKER';
   WW.SUB = (WW.COURSE && WW.COURSE.sub) || 'THE TORN ATLAS';
+WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and name icon (Civicwalker: 🔔)
   if (WW.COURSE) {
     const CO = WW.COURSE;
     if (CO.realms) WW.REALMS = [null, ...CO.realms];

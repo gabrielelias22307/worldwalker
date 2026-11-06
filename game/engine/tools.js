@@ -16,7 +16,9 @@
   X.SLOTS = SLOTS;
   let sel = 'star', regrow = [], told = {}, bar = null, lastFit = null;
 
-  X.on = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
+  // the tool bar is on when the episode has farm tools, or a 'carry' stone (cards to carry, even with no tools: Civicwalker)
+  const farmTools = () => !!(WW.ep && WW.ep.tools && WW.ep.tools.length);
+  X.on = () => farmTools() || !!(WW.ep && WW.ep.challenge && WW.ep.challenge.type === 'carry');
 
   /* ---------------- the bag (saved with the hero: got and used, like coins, so spent wood never comes back) ---------------- */
   X.have = item => { const b = (WW.save.bag || {})[item]; return b ? (b.got || 0) - (b.used || 0) : 0; };
@@ -50,6 +52,7 @@
     bar.innerHTML = ''; bar.setAttribute('dir', 'ltr');
     SLOTS.forEach((k, i) => {
       if (k === 'sign' && !signs) return;
+      if (!farmTools() && ['axe', 'sickle', 'seed'].includes(k)) return; // no farm tools in this episode: only stars and cards
       if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
       const farm = k === 'seed' && WW.farm && WW.farm.on(), crop = farm && WW.farm.current();
       const tk = k === 'sign' && carry() ? 'tool_card' : 'tool_' + k;
@@ -62,9 +65,10 @@
       b.onclick = () => { X.pick(k); WW.audioInit(); $('ww-screen').focus(); };
       bar.appendChild(b);
     });
+    if (farmTools()) { // wood and grass only matter with farm tools
     const bag = document.createElement('div'); bag.className = 'tbag';
     ['wood', 'fiber'].forEach(k => { const s = document.createElement('span'); s.title = T('item_' + k); s.appendChild(WW.spriteCanvas(ICON[k], TPAL, 2)); s.insertAdjacentHTML('beforeend', `<b>${X.have(k)}</b>`); bag.appendChild(s); });
-    bar.appendChild(bag);
+    bar.appendChild(bag); }
     if (sel === 'build' && WW.farm) { const line = WW.farm.carryLine(); if (line) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${line}</div>`); }
     if (sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.current()) { const c = WW.farm.current(); bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${c.icon} <b>${esc(L(c.name))}</b> · ${WW.farm.seedCount()} <small>${esc(T('seedCycle'))}</small></div>`); }
     const ql = WW.quest.carryLine(); if (ql) bar.insertAdjacentHTML('beforeend', `<div class="tcarry" dir="${WW.dir()}">${ql}</div>`);
@@ -73,6 +77,7 @@
   };
   // which tool fits the tile you face (null: none)
   X.fitTool = (x, y, e) => {
+    if (!farmTools()) return null;
     const g = G(), ch = g.tileAt(x, y), [W, H] = g.size, border = x <= 0 || y <= 0 || x >= W - 1 || y >= H - 1;
     if (e && e.kind === 'crop') return 'sickle';
     if (CHOP[ch] && !border && !(WW.ep.keep || []).some(p => p[0] === x && p[1] === y)) return 'axe';
@@ -81,7 +86,7 @@
     return null;
   };
   X.pick = (k, auto) => {
-    if (!X.on()) return;
+    if (!X.on() || (!farmTools() && ['axe', 'sickle', 'seed'].includes(k))) return;
     if (auto) { sel = k; X.render(); const b = bar && bar.querySelector('.tslot.on'); if (b) { b.classList.add('auto'); setTimeout(() => b.classList.remove('auto'), 600); } return; }
     if (k === 'build' && !(WW.farm && WW.farm.kit())) return;
     if (k === 'seed' && sel === 'seed' && WW.farm && WW.farm.on() && WW.farm.crops().length > 1) WW.farm.nextCrop(); // 4 again: the next crop

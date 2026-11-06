@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its realms, its five powers and its tools, and swaps the engine's own
    geography words for government words in each language. Episodes live in gov/episodes/. */
 window.WW_COURSE = {
-  id: 'civicwalker', name: 'Civicwalker', title: 'CIVICWALKER', sub: 'THE TORN CHARTER', saveKey: 'civicwalker.save.v1', guide: 'bell',
+  id: 'civicwalker', name: 'Civicwalker', title: 'CIVICWALKER', sub: 'THE TORN CHARTER', saveKey: 'civicwalker.save.v1', guide: 'bell', icon: '🔔',
   realms: [
     { en: 'The Old Lands', es: 'Las Tierras Antiguas', fa: 'سرزمین‌های کهن' },
     { en: 'Charter Hall', es: 'La Sala de la Carta', fa: 'تالار منشور' },
@@ -32,14 +32,14 @@ window.WW_COURSE = {
     { id: 'sail', ep: '8.2', icon: '⛵', name: { en: 'Harbor Sail', es: 'Vela del puerto', fa: 'بادبان بندر' } }],
   // the engine's own words, swapped in order (longer ones first)
   swaps: {
-    en: [['Christopher', 'Liberty'], ['living compass', 'flying Liberty Bell'], ['compass stone', 'charter stone'], ['Compass arrow', 'Bell arrow'],
+    en: [['🧭', '🔔'], ['Christopher', 'Liberty'], ['living compass', 'flying Liberty Bell'], ['compass stone', 'charter stone'], ['Compass arrow', 'Bell arrow'],
       ['Great Atlas', 'Great Charter'], ['Atlas pages', 'Charter pages'], ['atlas pages', 'charter pages'], ['Atlas page', 'Charter page'], ['atlas page', 'charter page'],
       ['Atlas scraps', 'Charter scraps'], ['atlas scraps', 'charter scraps'], ['atlas scrap', 'charter scrap'], ['the atlas', 'the charter'], ['Worldwalker', 'Civicwalker'],
       ['Region sense', 'Big-picture sense'], ['Region master', 'Big-picture master']],
-    es: [['Christopher', 'Liberty'], ['brújula viva', 'Campana de la Libertad voladora'], ['piedra de la brújula', 'piedra de la carta'], ['piedra brújula', 'piedra de la carta'], ['Flecha brújula', 'Flecha de la campana'],
+    es: [['🧭', '🔔'], ['Christopher', 'Liberty'], ['brújula viva', 'Campana de la Libertad voladora'], ['piedra de la brújula', 'piedra de la carta'], ['piedra brújula', 'piedra de la carta'], ['Flecha brújula', 'Flecha de la campana'],
       ['el Gran Atlas', 'la Gran Carta'], ['Gran Atlas', 'Gran Carta'], ['Páginas del atlas', 'Páginas de la carta'], ['páginas del atlas', 'páginas de la carta'], ['Página del atlas', 'Página de la carta'], ['página del atlas', 'página de la carta'],
       ['Pedazos del atlas', 'Pedazos de la carta'], ['pedazos del atlas', 'pedazos de la carta'], ['pedazo del atlas', 'pedazo de la carta'], ['del atlas', 'de la carta'], ['Caminante del Mundo', 'Caminante Cívico']],
-    fa: [['کریستوفر', 'لیبرتی'], ['قطب‌نمای زنده', 'زنگ آزادی پرنده'], ['سنگ قطب‌نما', 'سنگ منشور'], ['اطلس بزرگ', 'منشور بزرگ'], ['اطلس', 'منشور'], ['جهان‌گرد', 'رهرو مدنی']]
+    fa: [['🧭', '🔔'], ['کریستوفر', 'لیبرتی'], ['قطب‌نمای زنده', 'زنگ آزادی پرنده'], ['سنگ قطب‌نما', 'سنگ منشور'], ['اطلس بزرگ', 'منشور بزرگ'], ['اطلس', 'منشور'], ['جهان‌گرد', 'رهرو مدنی']]
   },
   S: {
     story: { en: 'The Grump tore the Great Charter into 24 pages and scattered them. People are forgetting how their government works. You are a Civicwalker apprentice. With Liberty, your flying Liberty Bell, win the pages back by learning each idea.',

@@ -34,7 +34,7 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>${WW.TITLE}</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">🧭</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">${WW.GICON}</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
@@ -49,7 +49,7 @@
           </div>
         </div>
         <div class="dpad" id="ww-dpad" aria-label="arrows">
-          <button data-d="chris" class="padchris" aria-label="Christopher">🧭</button><button data-d="goals" class="padgoals" aria-label="goals">☰</button>
+          <button data-d="chris" class="padchris" aria-label="Christopher">${WW.GICON}</button><button data-d="goals" class="padgoals" aria-label="goals">☰</button>
           <button data-d="up" aria-label="up">▲</button><button data-d="left" aria-label="left">◀</button>
           <button data-d="act" class="act" aria-label="use">●</button>
           <button data-d="right" aria-label="right">▶</button><button data-d="down" aria-label="down">▼</button>

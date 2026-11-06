@@ -36,9 +36,9 @@
     i.style.display = C.showing() ? 'none' : '';
     if (C.showing()) return;
     let ns = null; try { ns = WW.run && WW.game && WW.game.player && !C.scene ? C.nextStep() : null; } catch (e) { }
-    const html = ns && ns.text ? `<div class="cp-name">🧭 ${esc(T('chrisName'))}</div><div class="cp-next">${WW.rich(ns.text)}</div>` : esc(T('cpIdle'));
+    const html = ns && ns.text ? `<div class="cp-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cp-next">${WW.rich(ns.text)}</div>` : esc(T('cpIdle'));
     if (html !== idleHtml) { idleHtml = html; i.innerHTML = html; i.dataset.kind = ns ? ns.kind : '';
-      if (ns && ns.at) { const b = WW.btn('🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), 'gold cpway', e => { e.stopPropagation(); buyWay(); }); i.appendChild(b); } }
+      if (ns && ns.at) { const b = WW.btn(WW.GICON + ' ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), 'gold cpway', e => { e.stopPropagation(); buyWay(); }); i.appendChild(b); } }
   }
   C.relang = () => { idleHtml = ''; idle(); };
   setInterval(() => { if (!WW.paused) idle(); }, 700);
@@ -54,7 +54,7 @@
     const b = el(); b.setAttribute('dir', WW.dir());
     b.classList.toggle('meet', C.scene);
     b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
-    b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+    b.innerHTML = `<div class="cb-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
     { const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
     if (buttons && buttons.length) {
       const row = document.createElement('div'); row.className = 'cb-acts';
@@ -222,7 +222,7 @@
     const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
     const way = WW.game.wayUntil && performance.now() < WW.game.wayUntil;
     C.say(ns.text, [
-      ...(ns.at && !way ? [{ label: '🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
+      ...(ns.at && !way ? [{ label: WW.GICON + ' ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
       { label: '✕', kind: 'ghost', fn: () => C.hide() }], { at: ns.at, kind: ns.kind });
     said = 'next';
   };

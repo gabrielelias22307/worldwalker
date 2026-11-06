@@ -150,7 +150,7 @@
       lab('ww-b-mus', WW.save.music ? '🎵' : '🚫', T('music'));
       lab('ww-b-full', '⛶', T('full'));
       lab('ww-b-help', '?', T('helpKeys'));
-      lab('ww-b-chris', '🧭', T('chrisName') + ' (C)');
+      lab('ww-b-chris', WW.GICON, T('chrisName') + ' (C)');
       lab('ww-b-gear', '⚙', T('settings'));
     }
   };
@@ -471,7 +471,7 @@
         box.insertAdjacentHTML('beforeend', pw);
         if (WW.run && ui.questSteps) box.insertAdjacentHTML('beforeend', `<h3>🏁 ${esc(T('goals'))} ${esc(WW.ep.id)}</h3><div class="ppgoals">${ui.questList()}</div>`);
         { const cb = btn('🏕️ ' + esc(T('campOpen')), 'teal', () => ui.camp()); cb.classList.add('campbtn'); box.appendChild(cb); }
-        box.insertAdjacentHTML('beforeend', `<div class="pp-chris">🧭 <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
+        box.insertAdjacentHTML('beforeend', `<div class="pp-chris">${WW.GICON} <span><b>${esc(T('chrisName'))}</b> · ${esc(T('chrisJob'))}</span></div>`);
         let gr = `<h3>${esc(T('grow'))}</h3><p class="small">${esc(T('growHow'))}</p><div class="grow">`;
         WW.THEMES.forEach(th => {
           const v = s.stats[th.k] || 0, tr = WW.tier(th.k);
