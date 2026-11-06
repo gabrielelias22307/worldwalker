@@ -461,10 +461,15 @@
     // eyes (blink now and then)
     const blink = !calm && (t % 3200) < 120;
     c.fillStyle = '#22202e'; if (droop) { c.fillRect(-2, -1, 1, 1); c.fillRect(1, -1, 1, 1); } else { c.fillRect(-2, -2, 1, blink ? 1 : 2); c.fillRect(1, -2, 1, blink ? 1 : 2); }
+    if (WW.COURSE && WW.COURSE.guide === 'hourglass') { // Tock: brass caps over and under his light, and a line of sand
+      c.fillStyle = '#22202e'; c.fillRect(-4, -6, 9, 2); c.fillRect(-4, 4, 9, 2); c.fillStyle = '#e0b04a'; c.fillRect(-3, -6, 7, 1); c.fillRect(-3, 5, 7, 1);
+      c.fillStyle = '#e8c06a'; c.fillRect(-2, 2, 5, 1); c.fillRect(0, 0, 1, 2);
+    } else {
     // the needle (red end points at what he shows)
     const nx = Math.cos(F.needle), ny = Math.sin(F.needle);
     for (let i = 1; i <= 2; i++) { c.fillStyle = '#e04848'; c.fillRect(Math.round(nx * i), Math.round(1 + ny * i), 1, 1); c.fillStyle = '#2f6fd6'; c.fillRect(Math.round(-nx * i), Math.round(1 - ny * i), 1, 1); }
     c.fillStyle = '#22202e'; c.fillRect(0, 1, 1, 1);
+    }
     c.restore();
     // "!" = he has something to tell you · "?" = ask him (C or 🧭)
     const g = F.bang || call > 0 ? '!' : F.ask ? '?' : null;
