@@ -5,6 +5,7 @@ const ROOT = path.join(__dirname, '..'), E = path.join(ROOT, 'game'); // the eng
 const GAME = process.argv[2] || 'game', G = path.join(ROOT, GAME), HIST = GAME !== 'game';
 const NAME = HIST ? 'Timewalker' : 'Worldwalker', DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas');
 const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
+if (HIST && GAME === 'history') require('./history-pages.js'); // Timewalker's timeline and teacher pages, from Worldwalker's
 const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'game.js'];
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');

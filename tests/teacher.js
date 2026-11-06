@@ -3,8 +3,9 @@ const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'teacher'); fs.mkdirSync(OUT, { recursive: true });
-const url = f => 'file://' + path.join(ROOT, 'game', f);
-const ids = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
+const GDIR = process.env.GAME || 'game'; // GAME=history: Timewalker's teacher page
+const url = f => 'file://' + path.join(ROOT, GDIR, f);
+const ids = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
 
 (async () => {
   const browser = await chromium.launch();
@@ -21,7 +22,7 @@ const ids = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep
   ok(await page.isVisible('#tcode'), 'console is locked without the teacher code');
   await page.fill('#tcode', 'nope'); await page.click('#tgo');
   ok(await page.isVisible('#tcode'), 'wrong code is refused');
-  await page.fill('#tcode', 'atlas'); await page.click('#tgo');
+  await page.fill('#tcode', GDIR === 'game' ? 'atlas' : 'chronicle'); await page.click('#tgo'); // each game's teacher code (config.js)
   await page.waitForSelector('#main h1');
   await page.screenshot({ path: path.join(OUT, 'console.png'), fullPage: true });
   for (const id of ids) {
@@ -45,7 +46,7 @@ const ids = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep
       await page.screenshot({ path: path.join(OUT, `${id}-${where}.png`) });
     }
   }
-  ok(await page.evaluate(() => !JSON.parse(localStorage.getItem('worldwalker.save.v1')).episodes['8.3']), 'preview finish did not save the episode');
+  ok(await page.evaluate(k => !JSON.parse(localStorage.getItem(k)).episodes['8.3'], GDIR === 'game' ? 'worldwalker.save.v1' : 'timewalker.save.v1'), 'preview finish did not save the episode'); // each game keeps its own save
   // a student (no teacher code) gets the normal start screen even with ?teacher=
   await page.evaluate(() => localStorage.clear());
   await page.goto(url('ep-2-1.html') + '?teacher=finish');
