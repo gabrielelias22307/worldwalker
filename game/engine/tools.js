@@ -345,7 +345,7 @@
     const ch = WW.ep.challenge;
     WW.challengeSolved(ch);
     sel = 'star'; X.render();
-    WW.chris.say(`🎉 ${L(ch.success)}`);
+    WW.chris.say(`${WW.ep.memorial ? '' : '🎉 '}${L(ch.success)}`); // a quiet (memorial) episode: no party emoji
   }
 
   /* drawing: the survey grid under everything, crops and signposts on top */
@@ -353,7 +353,7 @@
   X.under = (c, sx, sy) => {
     const ch = WW.ep.challenge;
     if (ch && ch.type === 'carry') (ch.zones || []).forEach(z => { // the marked areas, one color for each group
-      const col = ZCOL[ch.bins.findIndex(b => b.id === z.bin) % ZCOL.length], ox = (z.x - sx * 16) * 16, oy = (z.y - sy * 11) * 16;
+      const bi = ch.bins.findIndex(b => b.id === z.bin), col = (ch.bins[bi] && ch.bins[bi].color) || ZCOL[bi % ZCOL.length], ox = (z.x - sx * 16) * 16, oy = (z.y - sy * 11) * 16;
       if (ox > 256 || oy > 176 || ox + z.w * 16 < 0 || oy + z.h * 16 < 0) return;
       c.save(); c.globalAlpha = .34; c.fillStyle = col; c.fillRect(ox, oy, z.w * 16, z.h * 16);
       c.globalAlpha = .9; c.strokeStyle = col; c.lineWidth = 2; c.setLineDash([4, 3]); c.strokeRect(ox + 1, oy + 1, z.w * 16 - 2, z.h * 16 - 2); c.restore();

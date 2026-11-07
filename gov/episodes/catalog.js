@@ -16,6 +16,36 @@ window.WW_CATALOG = [
   "sol": "GOVT"
  },
  {
+  "id": "1.2",
+  "realm": 1,
+  "title": {
+   "en": "Big Ideas About Government",
+   "es": "Grandes ideas sobre el gobierno",
+   "fa": "اندیشه‌های بزرگ دربارهٔ حکومت"
+  },
+  "place": {
+   "en": "London, 1690",
+   "es": "Londres, 1690",
+   "fa": "لندن، ۱۶۹۰"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "1.3",
+  "realm": 1,
+  "title": {
+   "en": "The Road of Rights",
+   "es": "El camino de los derechos",
+   "fa": "راه حقوق"
+  },
+  "place": {
+   "en": "Williamsburg, 1776",
+   "es": "Williamsburg, 1776",
+   "fa": "ویلیامزبرگ، ۱۷۷۶"
+  },
+  "sol": "GOVT"
+ },
+ {
   "id": "2.1",
   "realm": 2,
   "title": {
@@ -31,6 +61,21 @@ window.WW_CATALOG = [
   "sol": "GOVT"
  },
  {
+  "id": "2.2",
+  "realm": 2,
+  "title": {
+   "en": "The Bill of Rights",
+   "es": "La Carta de Derechos",
+   "fa": "منشور حقوق"
+  },
+  "place": {
+   "en": "Richmond, 1788",
+   "es": "Richmond, 1788",
+   "fa": "ریچموند، ۱۷۸۸"
+  },
+  "sol": "GOVT"
+ },
+ {
   "id": "2.3",
   "realm": 2,
   "title": {
@@ -42,6 +87,96 @@ window.WW_CATALOG = [
    "en": "Richmond, Virginia, today",
    "es": "Richmond, Virginia, hoy",
    "fa": "ریچموند، ویرجینیا، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "3.1",
+  "realm": 3,
+  "title": {
+   "en": "Becoming a Citizen",
+   "es": "Ser ciudadano",
+   "fa": "شهروند شدن"
+  },
+  "place": {
+   "en": "Alexandria, today",
+   "es": "Alexandria, hoy",
+   "fa": "الکساندریا، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "3.2",
+  "realm": 3,
+  "title": {
+   "en": "Free Speech at School",
+   "es": "Libertad de expresión en la escuela",
+   "fa": "آزادی بیان در مکتب"
+  },
+  "place": {
+   "en": "Des Moines, 1965",
+   "es": "Des Moines, 1965",
+   "fa": "دی موین، ۱۹۶۵"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "3.3",
+  "realm": 3,
+  "title": {
+   "en": "Civil Rights",
+   "es": "Los derechos civiles",
+   "fa": "حقوق مدنی"
+  },
+  "place": {
+   "en": "Farmville, today",
+   "es": "Farmville, hoy",
+   "fa": "فارمویل، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "4.1",
+  "realm": 4,
+  "title": {
+   "en": "What Parties Do",
+   "es": "Lo que hacen los partidos",
+   "fa": "حزب‌ها چه می‌کنند"
+  },
+  "place": {
+   "en": "Maple Ford, election season",
+   "es": "Maple Ford, época de elecciones",
+   "fa": "میپل فورد، موسم انتخابات"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "4.2",
+  "realm": 4,
+  "title": {
+   "en": "Left, Center, Right",
+   "es": "Izquierda, centro, derecha",
+   "fa": "چپ، میانه، راست"
+  },
+  "place": {
+   "en": "Maple Ford, the town square",
+   "es": "Maple Ford, la plaza del pueblo",
+   "fa": "میپل فورد، میدان شهر"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "4.3",
+  "realm": 4,
+  "title": {
+   "en": "Election Night",
+   "es": "Noche de elecciones",
+   "fa": "شب انتخابات"
+  },
+  "place": {
+   "en": "Maple Ford, election night",
+   "es": "Maple Ford, noche de elecciones",
+   "fa": "میپل فورد، شب انتخابات"
   },
   "sol": "GOVT"
  },
