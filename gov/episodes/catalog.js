@@ -181,6 +181,21 @@ window.WW_CATALOG = [
   "sol": "GOVT"
  },
  {
+  "id": "5.1",
+  "realm": 5,
+  "title": {
+   "en": "Two Houses of Congress",
+   "es": "Las dos cámaras del Congreso",
+   "fa": "دو مجلس کانگرس"
+  },
+  "place": {
+   "en": "Capitol Hill, today",
+   "es": "Capitol Hill, hoy",
+   "fa": "تپهٔ کاپیتول، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
   "id": "5.2",
   "realm": 5,
   "title": {
@@ -192,6 +207,156 @@ window.WW_CATALOG = [
    "en": "The US Capitol, Washington, DC",
    "es": "El Capitolio, Washington, D. C.",
    "fa": "کاپیتول امریکا، واشنگتن دی‌سی"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "5.3",
+  "realm": 5,
+  "title": {
+   "en": "The Role of Congress",
+   "es": "El papel del Congreso",
+   "fa": "نقش کانگرس"
+  },
+  "place": {
+   "en": "Capitol Hill hearing rooms, today",
+   "es": "Salas de audiencias del Capitolio, hoy",
+   "fa": "تالارهای جلسه در تپهٔ کاپیتول، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "6.1",
+  "realm": 6,
+  "title": {
+   "en": "The President's Many Jobs",
+   "es": "Los muchos trabajos del presidente",
+   "fa": "کارهای زیاد رئیس جمهور"
+  },
+  "place": {
+   "en": "The White House, today",
+   "es": "La Casa Blanca, hoy",
+   "fa": "قصر سفید، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "6.2",
+  "realm": 6,
+  "title": {
+   "en": "Changes in Presidential Power",
+   "es": "Cambios en el poder presidencial",
+   "fa": "تغییرها در قدرت رئیس جمهور"
+  },
+  "place": {
+   "en": "Washington, DC, today",
+   "es": "Washington, D. C., hoy",
+   "fa": "واشنگتن دی‌سی، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "6.3",
+  "realm": 6,
+  "title": {
+   "en": "The President's Tools",
+   "es": "Las herramientas del presidente",
+   "fa": "ابزارهای رئیس جمهور"
+  },
+  "place": {
+   "en": "The West Wing, today",
+   "es": "El Ala Oeste, hoy",
+   "fa": "بال غربی، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "7.1",
+  "realm": 7,
+  "title": {
+   "en": "The Court's Big Power",
+   "es": "El gran poder de la Corte",
+   "fa": "قدرت بزرگ محکمه"
+  },
+  "place": {
+   "en": "Washington, 1803",
+   "es": "Washington, 1803",
+   "fa": "واشنگتن، ۱۸۰۳"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "7.2",
+  "realm": 7,
+  "title": {
+   "en": "The Court Ladder",
+   "es": "La escalera de los tribunales",
+   "fa": "زینهٔ محکمه‌ها"
+  },
+  "place": {
+   "en": "Alexandria, today",
+   "es": "Alexandria, hoy",
+   "fa": "الکساندریا، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "7.3",
+  "realm": 7,
+  "title": {
+   "en": "Cases That Changed Rights",
+   "es": "Casos que cambiaron los derechos",
+   "fa": "دعواهایی که حقوق را تغییر دادند"
+  },
+  "place": {
+   "en": "The Supreme Court, today",
+   "es": "La Corte Suprema, hoy",
+   "fa": "ستره محکمه، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "8.1",
+  "realm": 8,
+  "title": {
+   "en": "Two Ways to Lead",
+   "es": "Dos formas de gobernar",
+   "fa": "دو راه رهبری"
+  },
+  "place": {
+   "en": "London, today",
+   "es": "Londres, hoy",
+   "fa": "لندن، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "8.2",
+  "realm": 8,
+  "title": {
+   "en": "Foreign Policy and National Interests",
+   "es": "Política exterior e intereses nacionales",
+   "fa": "سیاست خارجی و منافع ملی"
+  },
+  "place": {
+   "en": "The United Nations, New York, today",
+   "es": "Las Naciones Unidas, Nueva York, hoy",
+   "fa": "سازمان ملل متحد، نیویارک، امروز"
+  },
+  "sol": "GOVT"
+ },
+ {
+  "id": "8.3",
+  "realm": 8,
+  "title": {
+   "en": "Economy and Trade",
+   "es": "Economía y comercio",
+   "fa": "اقتصاد و تجارت"
+  },
+  "place": {
+   "en": "Norfolk, today",
+   "es": "Norfolk, hoy",
+   "fa": "نورفوک، امروز"
   },
   "sol": "GOVT"
  }
