@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 5,
   sol: 'GOVT',
   title: { en: 'How a Bill Becomes a Law', es: 'Cómo un proyecto se vuelve ley', fa: 'لایحه چطور قانون می‌شود' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'The US Capitol, Washington, DC', es: 'El Capitolio, Washington, D. C.', fa: 'کاپیتول امریکا، واشنگتن دی‌سی' },
   intro: [
     { en: 'The Grump tore the page on how laws are made. Bills are stuck everywhere!',

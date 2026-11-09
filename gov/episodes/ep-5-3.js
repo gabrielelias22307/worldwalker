@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 5,
   sol: 'GOVT',
   title: { en: 'The Role of Congress', es: 'El papel del Congreso', fa: 'نقش کانگرس' },
+  weather: { sky: 'rain', time: 'day' },
   place: { en: 'Capitol Hill hearing rooms, today', es: 'Salas de audiencias del Capitolio, hoy', fa: 'تالارهای جلسه در تپهٔ کاپیتول، امروز' },
   intro: [
     { en: 'The Grump tore the page about the big jobs of Congress. Now nobody checks anybody!',

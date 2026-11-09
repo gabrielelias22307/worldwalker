@@ -49,6 +49,7 @@ const vm = require('vm');
 const catalog = eps.map(f => { try { const box = { window: {} }; vm.createContext(box); vm.runInContext(read(path.join(G, 'episodes', f)), box); const e = box.window.EPISODE; return { id: e.id, realm: e.realm, title: e.title, place: e.place, sol: e.sol }; } catch (err) { console.log('catalog: could not read ' + f); return null; } }).filter(Boolean);
 fs.writeFileSync(path.join(G, 'episodes', 'catalog.js'), '/* made by tools/build.js */\nwindow.WW_CATALOG = ' + JSON.stringify(catalog, null, 1) + ';\n');
 // paste-ready Canvas page blocks (game inside the page + full-screen button + turn-in steps)
+const CO = require('./course-info.js')(GAME).course, PAGEWORD = ((CO && (CO.swaps.en || []).find(w => w[0] === 'atlas page')) || [0, 'atlas page'])[1]; // 'charter page', 'chronicle page'
 const PAGES = 'https://gabrielelias22307.github.io/worldwalker/' + GAME + '/', BLOCKS = path.join(ROOT, 'dist', HIST ? 'canvas-blocks-' + GAME : 'canvas-blocks');
 fs.mkdirSync(BLOCKS, { recursive: true });
 catalog.forEach(e => {
@@ -58,7 +59,7 @@ catalog.forEach(e => {
 <iframe src="${url}" width="100%" height="820" style="border: 0; display: block;" title="${NAME} Episode ${e.id}" allow="fullscreen; clipboard-write; autoplay" allowfullscreen="allowfullscreen" loading="lazy"></iframe>
 <div style="background-color: #fffbe8; padding: 12px 14px; color: #22202e;">
 <p style="margin: 0 0 10px 0;"><a href="${url}" target="_blank" style="display: inline-block; background-color: #f2c14e; color: #22202e; border: 3px solid #22202e; border-radius: 6px; padding: 10px 16px; font-weight: bold; text-decoration: none;">Open the game full screen ↗</a></p>
-<p style="margin: 0;"><b>When you win the atlas page:</b> press <b>Copy my work</b> and paste it into this assignment, or press <b>Download</b> and upload the file. Nothing is turned in until you do that step.</p>
+<p style="margin: 0;"><b>When you win the ${PAGEWORD}:</b> press <b>Copy my work</b> and paste it into this assignment, or press <b>Download</b> and upload the file. Nothing is turned in until you do that step.</p>
 <p style="margin: 6px 0 0 0;"><b>Cuando ganes la página:</b> presiona <b>Copiar mi trabajo</b> y pégalo aquí, o <b>Descargar</b> y sube el archivo.</p>
 <p style="margin: 6px 0 0 0;" dir="rtl" lang="fa"><b>وقتی صفحه را بردی:</b> دکمهٔ <b>کارم را کاپی کن</b> را بزن و اینجا بگذار، یا <b>دانلود</b> را بزن و فایل را آپلود کن.</p>
 </div>

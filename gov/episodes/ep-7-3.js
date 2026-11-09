@@ -9,6 +9,7 @@ window.EPISODE = {
   realm: 7,
   sol: 'GOVT',
   title: { en: 'Cases That Changed Rights', es: 'Casos que cambiaron los derechos', fa: 'دعواهایی که حقوق را تغییر دادند' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'The Supreme Court, today', es: 'La Corte Suprema, hoy', fa: 'ستره محکمه، امروز' },
   intro: [
     { en: 'The Grump tore the page about famous court cases. People forget their rights!',

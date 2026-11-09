@@ -170,7 +170,7 @@
     r.questMissed = r.questMissed || [];
     WW.bossTrial({ name: a.name, need: a.need || 2, taunt: a.taunt, win: a.win, questions: a.questions, pal: THIEF, minor: true, missedList: r.questMissed }, () => {
       e.gone = true; WW.fx.burst(e.x, e.y, 'poof'); set(3);
-      WW.music.play('realm' + WW.ep.realm);
+      WW.music.play(WW.tune());
       if (item()) WW.toast(WW.esc(itemName()), '#2aa198');
     });
     return true;

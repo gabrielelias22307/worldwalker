@@ -30,6 +30,49 @@ window.WW_COURSE = {
     { id: 'cloak', ep: '6.3', icon: '🧥', name: { en: 'Rain Coat', es: 'Impermeable', fa: 'بارانی' } },
     { id: 'seal', ep: '7.3', icon: '🔏', name: { en: 'Court Seal', es: 'Sello del tribunal', fa: 'مهر محکمه' } },
     { id: 'sail', ep: '8.2', icon: '⛵', name: { en: 'Harbor Sail', es: 'Vela del puerto', fa: 'بادبان بندر' } }],
+  // one song for each realm (our own tunes, made in code like the engine's; see game/engine/music.js for how notes are written)
+  songs: {
+    // 1 The Old Lands: an old harp tune in D (dorian)
+    realm1: { bpm: 96, lead: 'pluck',
+      melody: `D5 - F5 - A5 - G5 F5 | E5 - D5 - C5 - D5 - | F5 - A5 - C6 - B5 A5 | G5 - - - . . A5 - | D6 - C6 - A5 - G5 F5 | G5 - A5 - F5 - E5 - | D5 - F5 - E5 - C5 - | D5 - - - . . . .`,
+      bass: `D3 . A3 . D3 . A3 . | C3 . G3 . C3 . G3 . | F3 . C4 . F3 . C4 . | G3 . D4 . G3 . . . | D3 . A3 . D3 . A3 . | C3 . G3 . A3 . E3 . | Bb2 . F3 . C3 . G3 . | D3 . A3 . D3 . . .`,
+      drums: 'k . . h s . . h' },
+    // 2 Charter Hall: a fife-and-drum march in G
+    realm2: { bpm: 120, lead: 'square',
+      melody: `G5 - B5 - D6 - B5 G5 | A5 - F#5 - D5 - . . | G5 - A5 - B5 - C6 B5 | A5 - - - . . D5 - | E5 - G5 - B5 - A5 G5 | F#5 - A5 - D6 - C6 A5 | B5 - G5 - A5 - F#5 - | G5 - - - . . . .`,
+      bass: `G2 . D3 . G2 . D3 . | D3 . A2 . D3 . A2 . | G2 . D3 . G2 . D3 . | D3 . A2 . D3 . . . | C3 . G2 . C3 . G2 . | D3 . A2 . D3 . A2 . | G2 . C3 . D3 . D2 . | G2 . D3 . G2 . . .`,
+      drums: 's s s . s . s . | k . s . k s s s' },
+    // 3 Liberty Commons: a gentle hymn in F
+    realm3: { bpm: 92, lead: 'tri',
+      melody: `F5 - - - A5 - C6 - | Bb5 - A5 - G5 - - - | A5 - - - F5 - G5 - | A5 - - - - - . . | C6 - - - Bb5 - A5 - | G5 - A5 - Bb5 - - - | A5 - G5 - F5 - E5 - | F5 - - - - - . .`,
+      bass: `F3 . C4 . F3 . C4 . | Bb2 . F3 . C3 . G3 . | F3 . C4 . D3 . A3 . | F3 . C4 . F3 . . . | A2 . E3 . Bb2 . F3 . | C3 . G3 . Bb2 . F3 . | F3 . C3 . C3 . G2 . | F2 . C3 . F2 . . .`,
+      drums: 'k . h . . . h . | k . h . s . h .' },
+    // 4 Ballot Fair: a bouncy fair tune in C
+    realm4: { bpm: 132, lead: 'square',
+      melody: `C5 E5 G5 E5 C6 - G5 - | A5 F5 A5 C6 F5 - . . | G5 B5 D6 B5 G5 - F5 - | E5 - G5 - C5 - . . | C5 E5 G5 E5 C6 - G5 - | A5 C6 A5 F5 D5 - F5 - | E5 G5 F5 D5 B4 - D5 - | C5 - - - . . . .`,
+      bass: `C3 G3 C3 G3 C3 G3 C3 G3 | F3 C4 F3 C4 F3 C4 F3 C4 | G3 D4 G3 D4 G3 D4 G3 D4 | C3 G3 C3 G3 C3 G3 C3 G3 | C3 G3 C3 G3 E3 G3 E3 G3 | F3 C4 F3 C4 D3 A3 D3 A3 | G3 D4 G3 D4 G2 D3 G2 D3 | C3 G3 C3 . . . . .`,
+      drums: 'k h s h k h s h' },
+    // 5 Capitol Hill: a brass fanfare in B flat
+    realm5: { bpm: 116, lead: 'square',
+      melody: `F5 - Bb5 - D6 - F6 - | D6 - - - Bb5 - . . | C6 - D6 - Eb6 - C6 - | D6 - - - F5 - . . | Bb5 - D6 - F6 - D6 - | Eb6 - C6 - A5 - F5 - | G5 - A5 - C6 - A5 - | Bb5 - - - . . . .`,
+      bass: `Bb2 . F3 . Bb2 . F3 . | Bb2 . F3 . D3 . F3 . | Eb3 . Bb3 . F3 . C4 . | Bb2 . F3 . Bb2 . . . | Bb2 . F3 . D3 . F3 . | Eb3 . Bb3 . F3 . C4 . | Eb3 . Bb3 . F3 . C3 . | Bb2 . F3 . Bb2 . . .`,
+      drums: 'k . s . k k s . | k . s . k . s s' },
+    // 6 The Executive Mansion: a stately dance in D
+    realm6: { bpm: 100, lead: 'tri',
+      melody: `D5 - F#5 - A5 - D6 - | C#6 - B5 - A5 - - - | B5 - G5 - E5 - G5 - | F#5 - - - . . A5 - | D6 - C#6 - B5 - A5 - | G5 - B5 - E5 - G5 - | F#5 - E5 - D5 - C#5 - | D5 - - - . . . .`,
+      bass: `D3 . A3 . D3 . A3 . | A2 . E3 . A2 . E3 . | G2 . D3 . E3 . B3 . | D3 . A3 . D3 . . . | B2 . F#3 . G2 . D3 . | E3 . B3 . A2 . E3 . | D3 . A2 . A2 . E3 . | D3 . A3 . D3 . . .`,
+      drums: 'k . . . h . . . | k . . . h . s .' },
+    // 7 Courthouse Heights: a careful, thinking tune in A minor
+    realm7: { bpm: 104, lead: 'pluck',
+      melody: `A4 - C5 - E5 - A5 - | G#5 - - - E5 - . . | F5 - E5 - D5 - C5 - | B4 - - - E5 - . . | A5 - G5 - F5 - E5 - | D5 - F5 - B4 - D5 - | C5 - B4 - A4 - G#4 - | A4 - - - . . . .`,
+      bass: `A2 . E3 . A2 . E3 . | E2 . B2 . E2 . B2 . | D3 . A3 . A2 . E3 . | E2 . B2 . E2 . . . | F2 . C3 . C3 . G2 . | D3 . A2 . E2 . B2 . | A2 . E3 . E2 . B2 . | A2 . E3 . A2 . . .`,
+      drums: 'k . h . s . h . | k . h . s . k .' },
+    // 8 The World Harbor: a sea song in D
+    realm8: { bpm: 124, lead: 'square',
+      melody: `A4 - D5 - D5 - F#5 E5 | D5 - A4 - . . A4 - | B4 - E5 - E5 - G5 F#5 | E5 - - - . . A4 - | D5 - F#5 - A5 - F#5 D5 | G5 - E5 - C#5 - A4 - | B4 - D5 - E5 - C#5 - | D5 - - - . . . .`,
+      bass: `D3 . A2 . D3 . A2 . | D3 . A2 . D3 . A2 . | E3 . B2 . E3 . B2 . | A2 . E3 . A2 . . . | D3 . A2 . D3 . A2 . | G2 . D3 . A2 . E3 . | G2 . D3 . A2 . E3 . | D3 . A2 . D3 . . .`,
+      drums: 'k . h k s . h .' }
+  },
   // the engine's own words, swapped in order (longer ones first)
   swaps: {
     en: [['🧭', '🔔'], ['Christopher', 'Liberty'], ['living compass', 'flying Liberty Bell'], ['compass stone', 'charter stone'], ['Compass arrow', 'Bell arrow'],

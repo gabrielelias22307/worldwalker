@@ -9,6 +9,7 @@ window.EPISODE = {
   realm: 2,
   sol: 'GOVT',
   title: { en: 'The Constitution', es: 'La Constitución', fa: 'قانون اساسی' },
+  weather: { sky: 'heat', time: 'day' },
   place: { en: 'Philadelphia, 1787', es: 'Filadelfia, 1787', fa: 'فیلادلفیا، ۱۷۸۷' },
   intro: [
     { en: 'The Grump tore the page about the Constitution. Now people forget who checks whom.',

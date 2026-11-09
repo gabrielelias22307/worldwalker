@@ -14,6 +14,7 @@ window.EPISODE = {
   realm: 6,
   sol: 'GOVT',
   title: { en: 'The President\'s Many Jobs', es: 'Los muchos trabajos del presidente', fa: 'کارهای زیاد رئیس جمهور' },
+  weather: { sky: 'clear', time: 'sunset' },
   place: { en: 'The White House, today', es: 'La Casa Blanca, hoy', fa: 'قصر سفید، امروز' },
   intro: [
     { en: 'The Grump tore the page about the President\'s jobs. Now they are all mixed up!',

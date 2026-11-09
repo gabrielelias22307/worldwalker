@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 6,
   sol: 'GOVT',
   title: { en: 'Changes in Presidential Power', es: 'Cambios en el poder presidencial', fa: 'تغییرها در قدرت رئیس جمهور' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Washington, DC, today', es: 'Washington, D. C., hoy', fa: 'واشنگتن دی‌سی، امروز' },
   intro: [
     { en: 'The Grump tore the page on who takes over. Now nobody knows the line!',

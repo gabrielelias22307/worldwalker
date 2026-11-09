@@ -318,7 +318,7 @@
     let broken = st ? st.broken : 0, picked = null, last = null, grr = '';
     let freeHints = st ? st.freeHints : WW.tier('reg'); const hidden = st ? st.hidden : {}; // Region power: free hints. A hint hides one wrong answer.
     const keep = () => { if (st) Object.assign(st, { broken, freeHints }); };
-    WW.music.play('boss');
+    WW.music.play(WW.ep && WW.ep.memorial ? 'quiet' : 'boss'); // a quiet episode keeps its soft song
     WW.ui.open({
       cls: 'bossov',
       render(box, h) {

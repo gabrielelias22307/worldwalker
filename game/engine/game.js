@@ -244,7 +244,7 @@
     bindInput();
     requestAnimationFrame(frame);
     if (G.preview) return previewJump(G.preview);
-    WW.music.play('realm' + ep.realm);
+    WW.music.play(WW.tune());
     WW.ui.start(() => WW.ui.intro(() => { WW.audioInit(); WW.scene('start', () => { $('ww-screen').focus(); meetChris(); }); }));
   };
   // the first time a hero plays an episode with christopher.meet, he flies in and says who he is
@@ -288,7 +288,7 @@
     WW.sheetSync();
     const [ax, ay] = G.bossAt(); ents.push({ kind: 'atlas', x: ax, y: ay });
     WW.fx.lift();
-    WW.music.play('win', 'realm' + ep.realm);
+    if (ep.memorial) WW.music.play('quiet'); else WW.music.play('win', WW.tune()); // a quiet episode: no win jingle
     WW.ui.quest();
     setTimeout(() => WW.ui.message('', T('pageAppears')), 500);
   }

@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 2,
   sol: 'GOVT',
   title: { en: 'Nation or State?', es: '¿Nación o estado?', fa: 'ملت یا ایالت؟' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Richmond, Virginia, today', es: 'Richmond, Virginia, hoy', fa: 'ریچموند، ویرجینیا، امروز' },
   intro: [
     { en: 'The Grump tore the page about who holds which powers. Now everyone is mixed up!',

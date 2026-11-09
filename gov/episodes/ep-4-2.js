@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 4,
   sol: 'GOVT',
   title: { en: 'Left, Center, Right', es: 'Izquierda, centro, derecha', fa: 'چپ، میانه، راست' },
+  weather: { sky: 'leaves', time: 'day' },
   place: { en: 'Maple Ford, the town square', es: 'Maple Ford, la plaza del pueblo', fa: 'میپل فورد، میدان شهر' },
   intro: [
     { en: 'The Grump tore the page about ideas on government. Now neighbors only shout!',

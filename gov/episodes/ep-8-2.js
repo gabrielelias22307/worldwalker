@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 8,
   sol: 'GOVT',
   title: { en: 'Foreign Policy and National Interests', es: 'Política exterior e intereses nacionales', fa: 'سیاست خارجی و منافع ملی' },
+  weather: { sky: 'clear', time: 'sunset' },
   place: { en: 'The United Nations, New York, today', es: 'Las Naciones Unidas, Nueva York, hoy', fa: 'سازمان ملل متحد، نیویارک، امروز' },
   intro: [
     { en: 'The Grump tore the page about how the US deals with other countries.',

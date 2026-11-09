@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 7,
   sol: 'GOVT',
   title: { en: 'The Court Ladder', es: 'La escalera de los tribunales', fa: 'زینهٔ محکمه‌ها' },
+  weather: { sky: 'leaves', time: 'day' },
   place: { en: 'Alexandria, today', es: 'Alexandria, hoy', fa: 'الکساندریا، امروز' },
   intro: [
     { en: 'The Grump tore the page about courts. Cases are stuck between courts!',

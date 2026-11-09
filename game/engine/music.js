@@ -82,6 +82,15 @@
              A2 A3 A2 A3 A2 A3 A2 A3 | F2 F3 F2 F3 F2 F3 F2 F3 | E2 E3 E2 E3 E2 E3 E2 E3 | E2 E3 E2 E3 E2 E3 E2 E3`,
       drums: 'k h s h k k s h'
     },
+    // a quiet episode (memorial: true): slow and soft, no drums
+    quiet: {
+      bpm: 72, lead: 'tri',
+      melody: `E5 - - - D5 - - - | C5 - - - G4 - - - | A4 - - - C5 - - - | D5 - - - - - - - |
+               E5 - - - G5 - - - | F5 - - - E5 - - - | D5 - - - C5 - - - | C5 - - - - - - -`,
+      bass: `C3 - - - - - - - | E3 - - - - - - - | F3 - - - - - - - | G3 - - - - - - - |
+             C3 - - - - - - - | F3 - - - - - - - | G3 - - - - - - - | C3 - - - - - - -`,
+      drums: ''
+    },
     // the page is won (plays once)
     win: {
       bpm: 170, lead: 'square', once: true,
@@ -91,6 +100,7 @@
     }
   };
 
+  Object.assign(SONGS, (window.WW_COURSE && window.WW_COURSE.songs) || {}); // a course may bring its own realm songs (Civicwalker)
   const NOTE = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
   function freq(tok) {
     const m = /^([A-G])([#b]?)(\d)$/.exec(tok); if (!m) return 0;

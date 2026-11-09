@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 3,
   sol: 'GOVT',
   title: { en: 'Becoming a Citizen', es: 'Ser ciudadano', fa: 'شهروند شدن' },
+  weather: { sky: 'petals', time: 'day' },
   place: { en: 'Alexandria, today', es: 'Alexandria, hoy', fa: 'الکساندریا، امروز' },
   intro: [
     { en: 'The Grump tore the page about citizens. Now people forget their duties.',

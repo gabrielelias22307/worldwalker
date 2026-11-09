@@ -9,6 +9,7 @@ window.EPISODE = {
   realm: 1,
   sol: 'GOVT',
   title: { en: 'Who Rules Here?', es: '¿Quién gobierna aquí?', fa: 'اینجا کی حکومت می‌کند؟' },
+  weather: { sky: 'heat', time: 'day' },
   place: { en: 'Athens, 430 BCE', es: 'Atenas, 430 a. C.', fa: 'آتن، ۴۳۰ پیش از میلاد' },
   intro: [
     { en: 'The Grump tore the page about who rules. Now people forget how governments differ.',

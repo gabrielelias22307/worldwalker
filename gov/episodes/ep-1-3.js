@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 1,
   sol: 'GOVT',
   title: { en: 'The Road of Rights', es: 'El camino de los derechos', fa: 'راه حقوق' },
+  weather: { sky: 'clear', time: 'sunset' },
   place: { en: 'Williamsburg, 1776', es: 'Williamsburg, 1776', fa: 'ویلیامزبرگ، ۱۷۷۶' },
   intro: [
     { en: 'The Grump tore the page about rights. Now people forget that rulers have limits.',

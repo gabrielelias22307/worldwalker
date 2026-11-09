@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 2,
   sol: 'GOVT',
   title: { en: 'The Bill of Rights', es: 'La Carta de Derechos', fa: 'منشور حقوق' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Richmond, 1788', es: 'Richmond, 1788', fa: 'ریچموند، ۱۷۸۸' },
   intro: [
     { en: 'The Grump tore the page about our rights. Now people forget what protects them!',

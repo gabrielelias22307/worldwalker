@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 7,
   sol: 'GOVT',
   title: { en: 'The Court\'s Big Power', es: 'El gran poder de la Corte', fa: 'قدرت بزرگ محکمه' },
+  weather: { sky: 'dust', time: 'day' },
   place: { en: 'Washington, 1803', es: 'Washington, 1803', fa: 'واشنگتن، ۱۸۰۳' },
   intro: [
     { en: 'The Grump tore the page about the courts. Now people think judges obey every law.',

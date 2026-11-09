@@ -8,6 +8,7 @@ window.EPISODE = {
   realm: 1,
   sol: 'GOVT',
   title: { en: 'Big Ideas About Government', es: 'Grandes ideas sobre el gobierno', fa: 'اندیشه‌های بزرگ دربارهٔ حکومت' },
+  weather: { sky: 'drizzle', time: 'day' },
   place: { en: 'London, 1690', es: 'Londres, 1690', fa: 'لندن، ۱۶۹۰' },
   intro: [
     { en: 'The Grump tore the page of big ideas. People forget why governments exist.',

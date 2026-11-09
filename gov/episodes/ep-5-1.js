@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 5,
   sol: 'GOVT',
   title: { en: 'Two Houses of Congress', es: 'Las dos cámaras del Congreso', fa: 'دو مجلس کانگرس' },
+  weather: { sky: 'petals', time: 'day' },
   place: { en: 'Capitol Hill, today', es: 'Capitol Hill, hoy', fa: 'تپهٔ کاپیتول، امروز' },
   intro: [
     { en: 'The Grump tore the page about Congress. People mix up the House and Senate!',

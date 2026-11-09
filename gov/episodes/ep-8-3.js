@@ -9,6 +9,7 @@ window.EPISODE = {
   realm: 8,
   sol: 'GOVT',
   title: { en: 'Economy and Trade', es: 'Economía y comercio', fa: 'اقتصاد و تجارت' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Norfolk, today', es: 'Norfolk, hoy', fa: 'نورفوک، امروز' },
   intro: [
     { en: 'The last page! The Grump hid it here, in the busy World Harbor.',
