@@ -59,7 +59,7 @@
     WW.ui.open({
       cls: 'chov',
       render(box, h) {
-        box.innerHTML = `<h3>🧭 ${esc(L(ch.title))}</h3>`; WW.introInto(box, ch.intro, ch, box); // long words: one short step at a time
+        box.innerHTML = `<h3>${WW.GICON} ${esc(L(ch.title))}</h3>`; WW.introInto(box, ch.intro, ch, box); // long words: one short step at a time
         box.insertAdjacentHTML('beforeend', `<p class="say"><b>${esc(T(how))}</b></p>${extra ? extra() : ''}`);
         const acts = document.createElement('div'); acts.className = 'acts';
         if (go) acts.appendChild(WW.btn(go.label, 'gold', () => { h.close(); go.fn(); }));
@@ -99,7 +99,7 @@
       if (e.i < r.route) return WW.chris.say(`✅ ${WW.plain(it.t)}`);
       if (e.i === r.route) {
         r.route++; WW.sfx('good'); WW.fx.burst(e.x, e.y, 'gold');
-        if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`🎉 ${L(ch.success)}`); return; }
+        if (r.route >= ch.items.length) { WW.challengeSolved(ch); WW.chris.say(`${WW.ep.memorial ? '' : '🎉 '}${L(ch.success)}`); return; }
         WW.chris.say(`✅ ${r.route}. ${WW.plain(it.t)}. ${T('w_routeNext')}`, null, { at: [e.x, e.y] });
       } else {
         r.challengeTries++; WW.sfx('bad'); g.shake();
@@ -142,7 +142,7 @@
         if (res.show) box.insertAdjacentHTML('beforeend', `<div class="outs">${res.show.map(o => `<span class="out ${o.ok ? 'good' : 'badp'}">${o.icon || ''} ${WW.rich(o.t)}</span>`).join('')}</div>`);
         box.insertAdjacentHTML('beforeend', `<div class="fb ${res.ok ? 'right' : 'wrong'}"><b>${esc(T(res.ok ? 'right' : 'wrong'))}</b> ${WW.rich(res.t || '')}</div>`);
         const a = document.createElement('div'); a.className = 'acts';
-        a.appendChild(WW.btn(T(res.ok ? 'cont' : 'close') + ' ▶', 'gold', () => { h.close(); if (res.ok) WW.chris.say(`🎉 ${L(ch.success)}`); }));
+        a.appendChild(WW.btn(T(res.ok ? 'cont' : 'close') + ' ▶', 'gold', () => { h.close(); if (res.ok) WW.chris.say(`${WW.ep.memorial ? '' : '🎉 '}${L(ch.success)}`); }));
         if (!res.ok) { a.appendChild(WW.btn(esc(T('sgCards')), 'ghost small', cards(ch))); box.insertAdjacentHTML('beforeend', `<p class="small">${esc(T('w_leverAgain'))}</p>`); }
         box.appendChild(a);
       }

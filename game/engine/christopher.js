@@ -36,9 +36,9 @@
     i.style.display = C.showing() ? 'none' : '';
     if (C.showing()) return;
     let ns = null; try { ns = WW.run && WW.game && WW.game.player && !C.scene ? C.nextStep() : null; } catch (e) { }
-    const html = ns && ns.text ? `<div class="cp-name">🧭 ${esc(T('chrisName'))}</div><div class="cp-next">${WW.rich(ns.text)}</div>` : esc(T('cpIdle'));
+    const html = ns && ns.text ? `<div class="cp-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cp-next">${WW.rich(ns.text)}</div>` : esc(T('cpIdle'));
     if (html !== idleHtml) { idleHtml = html; i.innerHTML = html; i.dataset.kind = ns ? ns.kind : '';
-      if (ns && ns.at) { const b = WW.btn('🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), 'gold cpway', e => { e.stopPropagation(); buyWay(); }); i.appendChild(b); } }
+      if (ns && ns.at) { const b = WW.btn(WW.GICON + ' ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), 'gold cpway', e => { e.stopPropagation(); buyWay(); }); i.appendChild(b); } }
   }
   C.relang = () => { idleHtml = ''; idle(); };
   setInterval(() => { if (!WW.paused) idle(); }, 700);
@@ -54,7 +54,7 @@
     const b = el(); b.setAttribute('dir', WW.dir());
     b.classList.toggle('meet', C.scene);
     b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
-    b.innerHTML = `<div class="cb-name">🧭 ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+    b.innerHTML = `<div class="cb-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
     { const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
     if (buttons && buttons.length) {
       const row = document.createElement('div'); row.className = 'cb-acts';
@@ -222,7 +222,7 @@
     const ns = C.nextStep(); if (C.fly) { C.fly.ask = false; C.fly.lastProgress = performance.now(); }
     const way = WW.game.wayUntil && performance.now() < WW.game.wayUntil;
     C.say(ns.text, [
-      ...(ns.at && !way ? [{ label: '🧭 ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
+      ...(ns.at && !way ? [{ label: WW.GICON + ' ' + T('showWay') + ' · ' + (wayFree() ? T('free') : '5 ●'), kind: 'gold', fn: buyWay }] : []),
       { label: '✕', kind: 'ghost', fn: () => C.hide() }], { at: ns.at, kind: ns.kind });
     said = 'next';
   };
@@ -454,14 +454,20 @@
     };
     wing(-1); wing(1);
     // body: a small round light with a dark rim, his color, and a compass needle inside
-    const R = [[-1, 1, -4], [-3, 3, -3], [-4, 4, -2], [-4, 4, -1], [-4, 4, 0], [-4, 4, 1], [-3, 3, 2], [-1, 1, 3]];
+    const BELL = WW.COURSE && WW.COURSE.guide === 'bell'; // Liberty (Civicwalker): a little bronze bell under a yoke
+    const R = BELL ? [[-2, 3, -4], [-3, 3, -3], [-3, 3, -2], [-3, 3, -1], [-4, 4, 0], [-4, 4, 1], [-5, 5, 2], [-6, 6, 3]]
+      : [[-1, 1, -4], [-3, 3, -3], [-4, 4, -2], [-4, 4, -1], [-4, 4, 0], [-4, 4, 1], [-3, 3, 2], [-1, 1, 3]];
     c.fillStyle = '#22202e'; R.forEach(([a, b, yy]) => c.fillRect(a - 1, yy - 1, b - a + 2, 3));
-    R.forEach(([a, b, yy]) => { c.fillStyle = col[1]; c.fillRect(a, yy, b - a, 1); });
-    R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
+    R.forEach(([a, b, yy]) => { c.fillStyle = BELL ? '#8a5424' : col[1]; c.fillRect(a, yy, b - a, 1); });
+    R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = BELL ? '#d0954a' : '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
     // eyes (blink now and then)
     const blink = !calm && (t % 3200) < 120;
     c.fillStyle = '#22202e'; if (droop) { c.fillRect(-2, -1, 1, 1); c.fillRect(1, -1, 1, 1); } else { c.fillRect(-2, -2, 1, blink ? 1 : 2); c.fillRect(1, -2, 1, blink ? 1 : 2); }
-    if (WW.COURSE && WW.COURSE.guide === 'hourglass') { // Tock: brass caps over and under his light, and a line of sand
+    if (BELL) { // Liberty: the yoke, the crack and the clapper; his color glows in a line across the bell
+      c.fillStyle = '#22202e'; c.fillRect(-5, -7, 11, 2); c.fillStyle = '#7a4a2a'; c.fillRect(-4, -7, 9, 1);
+      c.fillStyle = col[1]; c.fillRect(-3, 1, 7, 1); c.fillStyle = '#22202e'; c.fillRect(2, 2, 1, 2); c.fillRect(3, 3, 1, 1);
+      const sw = calm ? 0 : Math.round(Math.sin(t / 300)); c.fillRect(sw, 5, 2, 2);
+    } else if (WW.COURSE && WW.COURSE.guide === 'hourglass') { // Tock: brass caps over and under his light, and a line of sand
       c.fillStyle = '#22202e'; c.fillRect(-4, -6, 9, 2); c.fillRect(-4, 4, 9, 2); c.fillStyle = '#e0b04a'; c.fillRect(-3, -6, 7, 1); c.fillRect(-3, 5, 7, 1);
       c.fillStyle = '#e8c06a'; c.fillRect(-2, 2, 5, 1); c.fillRect(0, 0, 1, 2);
     } else {

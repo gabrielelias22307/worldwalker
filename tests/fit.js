@@ -5,7 +5,8 @@
 const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..'), OUT = path.join(ROOT, 'shots', 'fit'); fs.mkdirSync(OUT, { recursive: true });
-const all = fs.readdirSync(path.join(ROOT, 'game', 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
+const GDIR = process.env.GAME || 'game', NAME = require('../tools/course-info.js')(GDIR).name; // GAME=history or GAME=gov: that game's Canvas files
+const all = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : all;
 const SIZES = [{ name: 'chromebook', w: 1366, h: 768 }, { name: 'canvas', w: 654, h: 820 }, { name: 'phone', w: 390, h: 844, touch: true }];
 let failed = 0;
@@ -17,7 +18,7 @@ let failed = 0;
     for (const id of ids) {
       const p = await ctx.newPage(); const errs = [], bad = [];
       p.on('pageerror', e => errs.push(e.message));
-      const file = 'file://' + path.join(ROOT, 'dist', 'canvas', `Worldwalker ${id}.html`);
+      const file = 'file://' + path.join(ROOT, 'dist', GDIR === 'game' ? 'canvas' : 'canvas-' + GDIR, `${NAME} ${id}.html`);
       // is it all on screen? (a panel may scroll inside itself, but the panel itself must fit)
       const innerW = sz.w;
       const check = async (when, extra = []) => {

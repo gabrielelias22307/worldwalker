@@ -1,11 +1,12 @@
 // node tools/build.js           ->  game/ep-X-Y.html (GitHub Pages) + dist/canvas/Worldwalker X.Y.html (one file for Canvas)
 // node tools/build.js history   ->  history/ep-X-Y.html + dist/canvas-history/Timewalker X.Y.html (the same engine, history/course.js first)
+// node tools/build.js gov       ->  gov/ep-X-Y.html + dist/canvas-gov/Civicwalker X.Y.html (any folder with a course.js works the same way)
 const fs = require('fs'), path = require('path');
 const ROOT = path.join(__dirname, '..'), E = path.join(ROOT, 'game'); // the engine always lives in game/engine
 const GAME = process.argv[2] || 'game', G = path.join(ROOT, GAME), HIST = GAME !== 'game';
-const NAME = HIST ? 'Timewalker' : 'Worldwalker', DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas');
+const NAME = require('./course-info.js')(GAME).name, DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas'); // the game's name comes from its course file
 const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
-if (HIST && GAME === 'history') require('./history-pages.js'); // Timewalker's timeline and teacher pages, from Worldwalker's
+if (HIST) require('./course-pages.js')(GAME); // the course's map page and teacher page, made from Worldwalker's
 const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'game.js'];
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
@@ -48,6 +49,7 @@ const vm = require('vm');
 const catalog = eps.map(f => { try { const box = { window: {} }; vm.createContext(box); vm.runInContext(read(path.join(G, 'episodes', f)), box); const e = box.window.EPISODE; return { id: e.id, realm: e.realm, title: e.title, place: e.place, sol: e.sol }; } catch (err) { console.log('catalog: could not read ' + f); return null; } }).filter(Boolean);
 fs.writeFileSync(path.join(G, 'episodes', 'catalog.js'), '/* made by tools/build.js */\nwindow.WW_CATALOG = ' + JSON.stringify(catalog, null, 1) + ';\n');
 // paste-ready Canvas page blocks (game inside the page + full-screen button + turn-in steps)
+const CO = require('./course-info.js')(GAME).course, PAGEWORD = ((CO && (CO.swaps.en || []).find(w => w[0] === 'atlas page')) || [0, 'atlas page'])[1]; // 'charter page', 'chronicle page'
 const PAGES = 'https://gabrielelias22307.github.io/worldwalker/' + GAME + '/', BLOCKS = path.join(ROOT, 'dist', HIST ? 'canvas-blocks-' + GAME : 'canvas-blocks');
 fs.mkdirSync(BLOCKS, { recursive: true });
 catalog.forEach(e => {
@@ -57,7 +59,7 @@ catalog.forEach(e => {
 <iframe src="${url}" width="100%" height="820" style="border: 0; display: block;" title="${NAME} Episode ${e.id}" allow="fullscreen; clipboard-write; autoplay" allowfullscreen="allowfullscreen" loading="lazy"></iframe>
 <div style="background-color: #fffbe8; padding: 12px 14px; color: #22202e;">
 <p style="margin: 0 0 10px 0;"><a href="${url}" target="_blank" style="display: inline-block; background-color: #f2c14e; color: #22202e; border: 3px solid #22202e; border-radius: 6px; padding: 10px 16px; font-weight: bold; text-decoration: none;">Open the game full screen ↗</a></p>
-<p style="margin: 0;"><b>When you win the atlas page:</b> press <b>Copy my work</b> and paste it into this assignment, or press <b>Download</b> and upload the file. Nothing is turned in until you do that step.</p>
+<p style="margin: 0;"><b>When you win the ${PAGEWORD}:</b> press <b>Copy my work</b> and paste it into this assignment, or press <b>Download</b> and upload the file. Nothing is turned in until you do that step.</p>
 <p style="margin: 6px 0 0 0;"><b>Cuando ganes la página:</b> presiona <b>Copiar mi trabajo</b> y pégalo aquí, o <b>Descargar</b> y sube el archivo.</p>
 <p style="margin: 6px 0 0 0;" dir="rtl" lang="fa"><b>وقتی صفحه را بردی:</b> دکمهٔ <b>کارم را کاپی کن</b> را بزن و اینجا بگذار، یا <b>دانلود</b> را بزن و فایل را آپلود کن.</p>
 </div>

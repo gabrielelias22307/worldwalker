@@ -43,6 +43,29 @@
     c.fillStyle = '#f2d27a'; c.fillRect(CX - 0.5, CY + 9, 1, 12); c.fillStyle = '#fff1c0'; c.fillRect(CX - 0.5, CY + 10 + fall * 2, 1, 2);
     c.restore();
   }
+  /* Liberty (Civicwalker): the Liberty Bell, flying. A wooden yoke on top, a bronze bell (his face), the long crack,
+     and a clapper that swings under the lip (it stays still with reduced motion) */
+  function bell(c, t, col, calm, mood) {
+    const shape = () => { c.beginPath(); c.moveTo(CX - 12, CY - 14); c.quadraticCurveTo(CX - 12, CY - 26, CX, CY - 26); c.quadraticCurveTo(CX + 12, CY - 26, CX + 12, CY - 14);
+      c.bezierCurveTo(CX + 13, CY + 4, CX + 16, CY + 14, CX + 23, CY + 21); c.quadraticCurveTo(CX, CY + 27, CX - 23, CY + 21); c.bezierCurveTo(CX - 16, CY + 14, CX - 13, CY + 4, CX - 12, CY - 14); c.closePath(); };
+    // the yoke: a dark wooden beam with two iron straps
+    c.fillStyle = '#22202e'; c.fillRect(CX - 22, CY - 36, 44, 9); c.fillStyle = '#7a4a2a'; c.fillRect(CX - 21, CY - 35, 42, 7);
+    c.fillStyle = '#9a6a3e'; c.fillRect(CX - 21, CY - 35, 42, 2); c.fillStyle = '#3a3440'; c.fillRect(CX - 8, CY - 35, 3, 10); c.fillRect(CX + 5, CY - 35, 3, 10);
+    // the clapper swings under the lip
+    const sw = calm ? 0 : Math.sin(t / (mood === 'cheer' ? 120 : 380)) * (mood === 'cheer' ? 6 : 2.5);
+    c.strokeStyle = '#22202e'; c.lineWidth = 2; c.beginPath(); c.moveTo(CX, CY + 18); c.lineTo(CX + sw, CY + 28); c.stroke();
+    c.fillStyle = '#22202e'; c.beginPath(); c.arc(CX + sw, CY + 29, 4, 0, 7); c.fill(); c.fillStyle = '#5a5060'; c.beginPath(); c.arc(CX + sw - 1, CY + 28, 2, 0, 7); c.fill();
+    // the bronze, with a little of his color in the glow
+    c.lineWidth = 4; c.strokeStyle = '#22202e'; shape(); c.stroke();
+    const g = c.createLinearGradient(CX - 22, 0, CX + 22, 0);
+    g.addColorStop(0, '#5e3a1a'); g.addColorStop(0.3, '#c98a3e'); g.addColorStop(0.45, col[0]); g.addColorStop(0.6, '#b07432'); g.addColorStop(1, '#4a2c12');
+    c.fillStyle = g; shape(); c.fill();
+    // two bands near the top and the lip
+    c.fillStyle = 'rgba(60,34,14,.55)'; c.fillRect(CX - 12, CY - 17, 24, 2); c.fillRect(CX - 18, CY + 13, 36, 2);
+    // the famous crack: a jagged dark line up from the lip
+    c.strokeStyle = '#22202e'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(CX + 6, CY + 23); c.lineTo(CX + 8, CY + 17); c.lineTo(CX + 6, CY + 12); c.lineTo(CX + 8, CY + 7); c.lineTo(CX + 7, CY + 3); c.stroke();
+    c.lineWidth = 1;
+  }
   /* draw him into c (a 96 × 96 canvas): kind = gold / green / blue / red, mood = null / talk / spin / droop / cheer */
   function draw(c, t, o = {}) {
     const col = COL[o.kind] || COL.gold, calm = WW.calm, mood = o.mood;
@@ -64,6 +87,7 @@
     const flap = calm ? 0.1 : droop ? -0.5 : cheer ? 0.45 + Math.sin(t / 70) * 0.25 : Math.sin(t / 160) * 0.22;
     wing(c, -1, flap, col, t); wing(c, 1, flap, col, t);
     if (WW.COURSE && WW.COURSE.guide === 'hourglass') hourglass(c, t, col, calm, mood); // Timewalker's guide, Tock
+    else if (WW.COURSE && WW.COURSE.guide === 'bell') bell(c, t, col, calm, mood); // Civicwalker's guide, Liberty
     else {
       // the body: a glowing sphere with a brass rim
       const R = 20;
