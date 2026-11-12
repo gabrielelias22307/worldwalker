@@ -39,7 +39,7 @@ window.EPISODE = {
     ],
     page: { en: 'Harpers Ferry is now in West Virginia. It is a national historical park.',
       es: 'Hoy Harpers Ferry está en Virginia Occidental. Es un parque histórico nacional.',
-      fa: 'هارپرز فری امروز در ویرجینیای غربی است. یک پارک تاریخی ملی است.' },
+      fa: 'هارپرز فری امروز در ورجینیای غربی است. یک پارک تاریخی ملی است.' },
     guess: {
       q: { en: 'John Brown wanted to start an uprising against slavery. Did it work?', es: 'John Brown quería empezar un levantamiento contra la esclavitud. ¿Funcionó?', fa: 'جان براون می‌خواست قیامی علیه برده‌داری شروع کند. آیا موفق شد؟' },
       choices: [
