@@ -33,14 +33,14 @@ window.EPISODE = {
         es: 'Voluntarios jubilados dan clases gratis de dinero en el centro comunitario.',
         fa: 'رضاکاران متقاعد در مرکز محله صنف‌های رایگان پول درس می‌دهند.' }
     ],
-    page: { en: 'Retirement can last 20 years or more. That is a lot of years to pay for.',
+    page: { en: 'Retirement can last 20 years or more. That is many years to pay for.',
       es: 'La jubilación puede durar 20 años o más. Son muchos años que pagar.',
       fa: 'تقاعد می‌تواند ۲۰ سال یا بیشتر طول بکشد. این سال‌های زیادی برای پرداخت است.' },
     guess: {
       q: { en: 'When is the best time to start saving for retirement?', es: '¿Cuándo es el mejor momento para empezar a ahorrar para la jubilación?', fa: 'بهترین وقت برای شروع پس‌انداز تقاعد چه وقت است؟' },
       choices: [
         { t: { en: '🌱 As early as you can', es: '🌱 Lo antes posible', fa: '🌱 هر چه زودتر' }, ok: true },
-        { t: { en: '👴 A few years before you stop', es: '👴 Unos años antes de dejar de trabajar', fa: '👴 چند سال پیش از بس کردن کار' } }
+        { t: { en: '👴 Close to retirement', es: '👴 Cerca de la jubilación', fa: '👴 نزدیک تقاعد' } }
       ],
       why: { en: 'Money saved early has more years to grow. Time is the biggest helper.', es: 'El dinero ahorrado temprano tiene más años para crecer. El tiempo es la mayor ayuda.', fa: 'پولی که زود پس‌انداز شود سال‌های بیشتری برای رشد دارد. وقت بزرگ‌ترین کمک است.' }
     },
@@ -163,7 +163,7 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'What is true about Social Security?', es: '¿Qué es cierto sobre el Seguro Social?', fa: 'کدام گپ دربارهٔ تأمین اجتماعی درست است؟' },
         choices: [
-          { ok: true, t: { en: 'It helps, but covers only part of the costs', es: 'Ayuda, pero cubre solo parte de los gastos', fa: 'کمک می‌کند، اما فقط بخشی از مصارف را می‌پوشاند' },
+          { ok: true, t: { en: 'It helps, but only pays part', es: 'Ayuda, pero paga solo una parte', fa: 'کمک می‌کند، اما فقط بخشی را می‌پردازد' },
             why: { en: 'Yes! It is a government program that helps. Most people also need their own savings.', es: '¡Sí! Es un programa del gobierno que ayuda. Casi todos necesitan también sus propios ahorros.', fa: 'بله! یک برنامهٔ حکومت است که کمک می‌کند. بیشتر مردم پس‌انداز خود را هم لازم دارند.' } },
           { t: { en: 'It pays for every cost in retirement', es: 'Paga todos los gastos de la jubilación', fa: 'همهٔ مصارف تقاعد را می‌پردازد' },
             why: { en: 'No. Ms. Rivera said it is not meant to pay for everything.', es: 'No. La Sra. Rivera dijo que no está hecho para pagarlo todo.', fa: 'نه. خانم ریویرا گفت برای پرداخت همه چیز ساخته نشده.' } },
@@ -211,7 +211,7 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'A teen pays very little tax now. Which IRA often fits best?', es: 'Un joven paga muy pocos impuestos ahora. ¿Qué IRA suele ser mejor?', fa: 'یک نوجوان حالا مالیات بسیار کم می‌دهد. کدام IRA اکثراً بهتر است؟' },
         choices: [
-          { ok: true, t: { en: 'A Roth IRA: low tax now, tax-free later', es: 'Una Roth IRA: poco impuesto ahora, nada después', fa: 'Roth IRA: حالا مالیات کم، بعداً بدون مالیات' },
+          { ok: true, t: { en: 'A Roth IRA: tax now, none later', es: 'Una Roth IRA: impuesto ahora, nada después', fa: 'Roth IRA: حالا مالیات، بعداً هیچ' },
             why: { en: 'Yes! The teen pays a small tax now. In retirement, the money comes out tax-free.', es: '¡Sí! El joven paga poco impuesto ahora. En la jubilación, saca el dinero sin impuestos.', fa: 'بله! نوجوان حالا مالیات کم می‌دهد. در تقاعد، پول بدون مالیات بیرون می‌آید.' } },
           { t: { en: 'A traditional IRA: a big tax break now', es: 'Una IRA tradicional: gran descuento ahora', fa: 'IRA عادی: تخفیف مالیات کلان حالا' },
             why: { en: 'Not the best fit. A teen pays little tax now, so the tax break is small.', es: 'No es lo mejor. Un joven paga pocos impuestos, así que el descuento es pequeño.', fa: 'بهترین نیست. نوجوان حالا مالیات کم می‌دهد، پس تخفیف کوچک است.' } },
@@ -302,7 +302,7 @@ window.EPISODE = {
       { name: { en: 'The 401(k) match at work', es: 'El aporte del 401(k) en el trabajo', fa: 'پول همسان 401(k) در کار' }, icon: '🎁', start: 0,
         states: [{ en: 'Skip the match', es: 'No tomar el aporte', fa: 'پول همسان را نگیرد' }, { en: 'Take the match', es: 'Tomar el aporte', fa: 'پول همسان را بگیرد' }] },
       { name: { en: 'Account for extra savings', es: 'Cuenta para ahorros extra', fa: 'حساب برای پس‌انداز اضافی' }, icon: '🏦', start: 0,
-        states: [{ en: 'No account', es: 'Sin cuenta', fa: 'بدون حساب' }, { en: 'Roth IRA', es: 'Roth IRA', fa: 'Roth IRA' }] }
+        states: [{ en: 'No account', es: 'Sin cuenta', fa: 'بدون حساب' }, { en: 'Roth IRA', es: 'Roth IRA', fa: 'حساب Roth IRA' }] }
     ],
     results: {
       '1,1,1': { ok: true, t: { en: 'A strong plan! Kai starts now, takes free match money, and grows savings tax-free.', es: '¡Un buen plan! Kai empieza ya, toma el aporte gratis y crece sin impuestos.', fa: 'یک برنامهٔ قوی! کای حالا شروع می‌کند، پول همسان را می‌گیرد و بدون مالیات رشد می‌کند.' },
@@ -340,29 +340,29 @@ window.EPISODE = {
           { en: 'When people stop working full-time', es: 'Cuando la gente deja de trabajar a tiempo completo', fa: 'وقتی مردم کار تمام‌وقت را بس می‌کنند' },
           { en: 'When people start their first job', es: 'Cuando la gente empieza su primer trabajo', fa: 'وقتی مردم اولین وظیفهٔ خود را شروع می‌کنند' },
           { en: 'When people open a bank account', es: 'Cuando la gente abre una cuenta de banco', fa: 'وقتی مردم یک حساب بانکی باز می‌کنند' },
-          { en: 'When people take a short vacation', es: 'Cuando la gente toma unas vacaciones cortas', fa: 'وقتی مردم یک رخصتی کوتاه می‌گیرند' }],
+          { en: 'When people take a long summer vacation', es: 'Cuando la gente toma unas vacaciones largas de verano', fa: 'وقتی مردم یک رخصتی دراز تابستانی می‌گیرند' }],
         answer: 0,
         why: { en: 'Retirement is when people stop working full-time. They still need money for many years.', es: 'La jubilación es cuando se deja de trabajar a tiempo completo. Igual se necesita dinero por años.', fa: 'تقاعد وقتی است که مردم کار تمام‌وقت را بس می‌کنند. سال‌ها باز هم پول لازم دارند.' } },
       { q: { en: 'How do workers pay into Social Security?', es: '¿Cómo aportan los trabajadores al Seguro Social?', fa: 'کارگران چطور در تأمین اجتماعی پول می‌دهند؟' },
         choices: [
           { en: 'A payroll tax on each paycheck', es: 'Un impuesto en cada cheque de pago', fa: 'مالیات معاش از هر معاش' },
-          { en: 'A fee paid at the bank', es: 'Una tarifa que se paga en el banco', fa: 'یک فیس که در بانک پرداخت می‌شود' },
-          { en: 'A gift they mail each year', es: 'Un regalo que envían cada año', fa: 'یک تحفه که هر سال می‌فرستند' },
-          { en: 'They do not pay into it', es: 'No aportan nada', fa: 'هیچ پول نمی‌دهند' }],
+          { en: 'A fee paid each month at the bank', es: 'Una tarifa que se paga cada mes en el banco', fa: 'یک فیس که هر ماه در بانک پرداخت می‌شود' },
+          { en: 'A gift they mail to the government', es: 'Un regalo que le envían al gobierno', fa: 'یک تحفه که به حکومت می‌فرستند' },
+          { en: 'They do not pay anything into it', es: 'No aportan nada de dinero', fa: 'هیچ پولی در آن نمی‌دهند' }],
         answer: 0,
         why: { en: 'Social Security is a government program. Workers pay into it through payroll taxes.', es: 'El Seguro Social es un programa del gobierno. Se paga con impuestos sobre la nómina.', fa: 'تأمین اجتماعی برنامهٔ حکومت است. کارگران با مالیات معاش در آن پول می‌دهند.' } },
       { q: { en: 'Is Social Security meant to pay for everything in retirement?', es: '¿El Seguro Social está hecho para pagar todo en la jubilación?', fa: 'آیا تأمین اجتماعی برای پرداخت همه چیز در تقاعد ساخته شده؟' },
         choices: [
           { en: 'No, savings are needed too', es: 'No, también se necesitan ahorros', fa: 'نه، پس‌انداز هم لازم است' },
           { en: 'Yes, it covers every cost', es: 'Sí, cubre todos los gastos', fa: 'بله، همهٔ مصارف را می‌پوشاند' },
-          { en: 'Yes, but only for rent', es: 'Sí, pero solo para la renta', fa: 'بله، اما فقط برای کرایه' },
+          { en: 'Yes, but only for rent and food', es: 'Sí, pero solo para la renta y la comida', fa: 'بله، اما فقط برای کرایه و خوراک' },
           { en: 'No, it pays nothing at all', es: 'No, no paga nada', fa: 'نه، هیچ چیز نمی‌پردازد' }],
         answer: 0,
         why: { en: 'Social Security helps, but it covers only part. Most people also need their own savings.', es: 'El Seguro Social ayuda, pero cubre solo una parte. Casi todos necesitan ahorros propios.', fa: 'تأمین اجتماعی کمک می‌کند، اما فقط بخشی را. بیشتر مردم پس‌انداز خود را هم لازم دارند.' } },
       { q: { en: 'What is a 401(k)?', es: '¿Qué es un 401(k)?', fa: '401(k) چیست؟' },
         choices: [
           { en: 'A retirement plan you get at work', es: 'Un plan de jubilación del trabajo', fa: 'یک برنامهٔ تقاعد از وظیفه' },
-          { en: 'A loan you get to buy a car', es: 'Un préstamo para comprar un carro', fa: 'یک قرض برای خریدن موتر' },
+          { en: 'A loan you get from a bank to buy a car', es: 'Un préstamo del banco para comprar un carro', fa: 'یک قرض از بانک برای خریدن موتر' },
           { en: 'A government check for students', es: 'Un cheque del gobierno para estudiantes', fa: 'یک چک حکومت برای شاگردان' },
           { en: 'A card you use at the store', es: 'Una tarjeta que usas en la tienda', fa: 'یک کارت که در دکان کار می‌گیری' }],
         answer: 0,
@@ -380,13 +380,13 @@ window.EPISODE = {
           { en: 'Now, then it comes out tax-free', es: 'Ahora, y luego sale sin impuestos', fa: 'حالا، بعد بدون مالیات بیرون می‌آید' },
           { en: 'Later, when you take it out', es: 'Después, cuando lo sacas', fa: 'بعداً، وقتی بیرون می‌کشی' },
           { en: 'Twice, now and again later', es: 'Dos veces, ahora y después', fa: 'دو بار، حالا و بعداً' },
-          { en: 'Every time it grows a dollar', es: 'Cada vez que crece un dólar', fa: 'هر بار که یک دالر رشد می‌کند' }],
+          { en: 'Every single time it grows by a dollar', es: 'Cada vez que crece aunque sea un dólar', fa: 'هر باری که حتی یک دالر رشد می‌کند' }],
         answer: 0,
         why: { en: 'With a Roth IRA you pay tax now. In retirement, you take it out tax-free.', es: 'Con una Roth IRA pagas impuestos ahora. En la jubilación, lo sacas sin impuestos.', fa: 'با Roth IRA حالا مالیات می‌دهی. در تقاعد، بدون مالیات بیرون می‌کشی.' } },
       { q: { en: 'Who can have a Roth IRA?', es: '¿Quién puede tener una Roth IRA?', fa: 'کی می‌تواند Roth IRA داشته باشد؟' },
         choices: [
           { en: 'Anyone with earned income, even a teen', es: 'Quien tenga ingreso del trabajo, hasta un joven', fa: 'هر کس که عاید کار دارد، حتی نوجوان' },
-          { en: 'Only people who are already retired', es: 'Solo la gente que ya está jubilada', fa: 'فقط کسانی که قبلاً متقاعد شده‌اند' },
+          { en: 'Only people who already retired from work', es: 'Solo la gente que ya se jubiló del trabajo', fa: 'فقط کسانی که قبلاً از کار متقاعد شده‌اند' },
           { en: 'Only people who own a business', es: 'Solo la gente que tiene un negocio', fa: 'فقط کسانی که کسب و کار دارند' },
           { en: 'Only people over the age of 40', es: 'Solo la gente mayor de 40 años', fa: 'فقط کسانی که بالای ۴۰ سال دارند' }],
         answer: 0,
@@ -394,7 +394,7 @@ window.EPISODE = {
       { q: { en: 'Jada saved from 18 to 28. Ben saved from 28 to 65. Why can Jada end with about as much?', es: 'Jada ahorró de 18 a 28. Ben ahorró de 28 a 65. ¿Por qué Jada puede terminar con casi lo mismo?', fa: 'جادا از ۱۸ تا ۲۸ پس‌انداز کرد. بن از ۲۸ تا ۶۵. چرا جادا تقریباً همان‌قدر دارد؟' },
         choices: [
           { en: 'Her money had more years to grow', es: 'Su dinero tuvo más años para crecer', fa: 'پولش سال‌های بیشتر برای رشد داشت' },
-          { en: 'She put in more money than Ben', es: 'Ella puso más dinero que Ben', fa: 'او بیشتر از بن پول گذاشت' },
+          { en: 'She put in much more money than Ben did', es: 'Ella puso mucho más dinero que Ben', fa: 'او خیلی بیشتر از بن پول گذاشت' },
           { en: 'Her bank gave her a big prize', es: 'Su banco le dio un gran premio', fa: 'بانکش یک جایزهٔ کلان به او داد' },
           { en: 'Ben lost his savings in a storm', es: 'Ben perdió sus ahorros en una tormenta', fa: 'بن پس‌اندازش را در طوفان از دست داد' }],
         answer: 0,

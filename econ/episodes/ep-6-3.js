@@ -63,7 +63,7 @@ window.EPISODE = {
       lines: [
         { en: 'Welcome to the library talk room. Today\'s talk: learn before you invest.', es: 'Bienvenido a la sala de charlas de la biblioteca. Hoy: aprende antes de invertir.', fa: 'به اتاق گفتگوی کتابخانه خوش آمدی. گفتگوی امروز: پیش از سرمایه‌گذاری یاد بگیر.' },
         { en: 'Crypto is opened with a [[private key|private key]], like a very long password.', es: 'Las criptomonedas se abren con una [[private key|clave privada]], como una contraseña muy larga.', fa: 'پول دیجیتال با یک [[private key|کلید خصوصی]] باز می‌شود، مثل یک رمز بسیار دراز.' },
-        { en: 'Lose that key, and the money can be gone for good. No bank can reset it.', es: 'Si pierdes esa clave, el dinero puede perderse para siempre. Ningún banco la puede cambiar.', fa: 'اگر آن کلید را گم کنی، پول شاید برای همیشه از دست برود. هیچ بانکی آن را نو نمی‌سازد.' }
+        { en: 'Lose that key, and the money can be gone. No bank can reset it.', es: 'Si pierdes esa clave, el dinero puede perderse para siempre. Ningún banco la puede cambiar.', fa: 'اگر آن کلید را گم کنی، پول شاید برای همیشه از دست برود. هیچ بانکی آن را نو نمی‌سازد.' }
       ] },
     { at: [27, 6], name: { en: 'Mr. Bello', es: 'Sr. Bello', fa: 'آقای بیلو' },
       look: { skin: 4, hair: '#2a2a2a', shirt: '#c06a2a', pants: '#3a3a3a', style: 'short' },
@@ -207,7 +207,7 @@ window.EPISODE = {
             why: { en: 'Yes! Learning first and starting small keeps the risk low.', es: '¡Sí! Aprender primero y empezar con poco mantiene bajo el riesgo.', fa: 'بله! اول یاد گرفتن و کم شروع کردن خطر را کم نگه می‌دارد.' } },
           { t: { en: 'Put it all in one hot coin', es: 'Ponerlo todo en una moneda de moda', fa: 'همه را در یک سکهٔ مشهور بگذارد' },
             why: { en: 'One risky coin could lose most of it. Spread out risk and start small.', es: 'Una moneda riesgosa podría perder casi todo. Reparte el riesgo y empieza con poco.', fa: 'یک سکهٔ پرخطر می‌تواند بیشترش را از بین ببرد. خطر را پخش کن و کم شروع کن.' } },
-          { t: { en: 'Borrow more money to invest', es: 'Pedir más dinero prestado para invertir', fa: 'پول بیشتر قرض بگیرد و بگذارد' },
+          { t: { en: 'Borrow more money to invest it all', es: 'Pedir más dinero prestado e invertirlo todo', fa: 'پول بیشتر قرض بگیرد و همه را بگذارد' },
             why: { en: 'Never invest borrowed money. Only invest what you can afford to lose.', es: 'Nunca inviertas dinero prestado. Solo invierte lo que puedes perder.', fa: 'هرگز پول قرضی را سرمایه‌گذاری نکن. فقط پولی را بگذار که از دست داده بتوانی.' } }
         ]
       }
@@ -343,7 +343,7 @@ window.EPISODE = {
       { q: { en: 'What is a blockchain?', es: '¿Qué es una cadena de bloques?', fa: 'بلاک‌چین چیست؟' },
         choices: [
           { en: 'A shared record of trades on many computers', es: 'Un registro compartido de intercambios en muchas computadoras', fa: 'یک دفتر مشترک معامله‌ها در کمپیوترهای زیاد' },
-          { en: 'A metal chain that locks up a bank vault', es: 'Una cadena de metal que cierra la bóveda de un banco', fa: 'یک زنجیر آهنی که صندوق بانک را قفل می‌کند' },
+          { en: 'A metal chain that locks a big bank vault door', es: 'Una cadena de metal que cierra la puerta de la bóveda de un banco', fa: 'یک زنجیر آهنی که دروازهٔ صندوق کلان بانک را قفل می‌کند' },
           { en: 'A list of prices set by the government', es: 'Una lista de precios que pone el gobierno', fa: 'یک فهرست قیمت که حکومت تعیین می‌کند' },
           { en: 'A paper receipt from a store clerk', es: 'Un recibo de papel de una cajera', fa: 'یک رسید کاغذی از فروشندهٔ دکان' }],
         answer: 0,
@@ -351,7 +351,7 @@ window.EPISODE = {
       { q: { en: 'A coin costs $50 at 9 a.m. and $30 by noon. What is this called?', es: 'Una moneda cuesta $50 a las 9 a. m. y $30 al mediodía. ¿Cómo se llama esto?', fa: 'یک سکه ساعت ۹ صبح ۵۰ دالر است و تا چاشت ۳۰ دالر. این را چه می‌گویند؟' },
         choices: [
           { en: 'Volatility', es: 'Volatilidad', fa: 'نوسان' },
-          { en: 'Interest', es: 'Interés', fa: 'سود بانکی' },
+          { en: 'An interest rate', es: 'Una tasa de interés', fa: 'نرخ سود بانکی' },
           { en: 'Insurance', es: 'Seguro', fa: 'بیمه' },
           { en: 'A budget', es: 'Un presupuesto', fa: 'بودجه' }],
         answer: 0,
@@ -392,7 +392,7 @@ window.EPISODE = {
         choices: [
           { en: 'A custodial account with an adult', es: 'Una cuenta custodial con un adulto', fa: 'یک حساب سرپرستی با یک بزرگسال' },
           { en: 'A credit card in her own name', es: 'Una tarjeta de crédito a su nombre', fa: 'یک کارت قرضه به نام خودش' },
-          { en: 'A crypto tip from a stranger', es: 'Un dato cripto de un desconocido', fa: 'یک خبر کریپتو از یک بیگانه' },
+          { en: 'A crypto tip from a stranger online', es: 'Un dato cripto de un desconocido en internet', fa: 'یک خبر کریپتو از یک بیگانه در انترنت' },
           { en: 'A business permit from the city', es: 'Un permiso de negocio de la ciudad', fa: 'یک جواز کسب از شاروالی' }],
         answer: 0,
         why: { en: 'Under 18, an adult usually opens and manages a custodial account with you.', es: 'Si eres menor de 18, un adulto casi siempre abre y maneja contigo una cuenta custodial.', fa: 'زیر ۱۸ سال، معمولاً یک بزرگسال یک حساب سرپرستی را با تو باز و اداره می‌کند.' } }

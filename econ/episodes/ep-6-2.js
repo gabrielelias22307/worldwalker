@@ -85,8 +85,14 @@ window.EPISODE = {
       lines: [
         { en: 'I cook at night. I save in a [[mutual fund|mutual fund]].', es: 'Cocino de noche. Ahorro en un [[mutual fund|fondo mutuo]].', fa: 'من شب‌ها آشپزی می‌کنم. در یک [[mutual fund|صندوق مشترک]] پس‌انداز می‌کنم.' },
         { en: 'It pools money from many people to buy many stocks and bonds.', es: 'Junta el dinero de mucha gente para comprar muchas acciones y bonos.', fa: 'پول مردم زیاد را یکجا می‌کند تا سهام و اوراق قرضهٔ زیاد بخرد.' },
-        { en: 'It charges a [[fee|fee]]. A 1% fee on $1,000 is $10 a year.', es: 'Cobra una [[fee|comisión]]. Una comisión del 1% sobre $1,000 es $10 al año.', fa: 'یک [[fee|فیس]] می‌گیرد. فیس ۱٪ بر ۱۰۰۰ دالر، سالانه ۱۰ دالر است.' },
-        { en: 'Low fees leave more money to grow.', es: 'Las comisiones bajas dejan más dinero para crecer.', fa: 'فیس کم پول بیشتری را برای رشد می‌گذارد.' }
+        { en: 'It charges a [[fee|fee]]. A 1% fee on $1,000 is $10 a year.', es: 'Cobra una [[fee|comisión]]. Una comisión del 1% sobre $1,000 es $10 al año.', fa: 'یک [[fee|فیس]] می‌گیرد. فیس ۱٪ بر ۱۰۰۰ دالر، سالانه ۱۰ دالر است.' }
+      ] },
+    { at: [23, 7], name: { en: 'Mr. Park', es: 'Sr. Park', fa: 'آقای پارک' },
+      look: { skin: 0, hair: '#3a3a3a', shirt: '#4a5a8a', pants: '#2a2a2a', hat: '#2a3a6a', style: 'short' },
+      lines: [
+        { en: 'I deliver mail. My money for next year is in a bank [[cd|CD]].', es: 'Reparto el correo. Mi dinero para el próximo año está en un [[cd|CD]] del banco.', fa: 'من نامه‌رسان هستم. پولم برای سال آینده در یک [[cd|سپردهٔ مدت‌دار]] بانک است.' },
+        { en: 'I leave it there for 1 year. The bank pays a set interest.', es: 'Lo dejo ahí 1 año. El banco paga un interés fijo.', fa: 'آن را ۱ سال آنجا می‌گذارم. بانک سود معین می‌دهد.' },
+        { en: 'It is safe, but it grows slowly. Less risk often means less growth.', es: 'Es seguro, pero crece despacio. Menos riesgo suele traer menos crecimiento.', fa: 'امن است، اما آهسته رشد می‌کند. خطر کمتر اکثراً یعنی رشد کمتر.' }
       ] }
   ],
 
