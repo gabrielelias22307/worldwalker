@@ -181,6 +181,21 @@ window.WW_CATALOG = [
   "sol": "VUS"
  },
  {
+  "id": "5.1",
+  "realm": 5,
+  "title": {
+   "en": "Reformers and John Brown",
+   "es": "Los reformistas y John Brown",
+   "fa": "اصلاح‌گران و جان براون"
+  },
+  "place": {
+   "en": "Harpers Ferry, 1859",
+   "es": "Harpers Ferry, 1859",
+   "fa": "هارپرز فری، ۱۸۵۹"
+  },
+  "sol": "VUS"
+ },
+ {
   "id": "5.2",
   "realm": 5,
   "title": {
