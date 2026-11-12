@@ -211,6 +211,21 @@ window.WW_CATALOG = [
   "sol": "VUS"
  },
  {
+  "id": "6.1",
+  "realm": 6,
+  "title": {
+   "en": "Building the Nation: Immigration",
+   "es": "Construir la nación: la inmigración",
+   "fa": "ساختن ملت: مهاجرت"
+  },
+  "place": {
+   "en": "Ellis Island, 1907",
+   "es": "Isla Ellis, 1907",
+   "fa": "جزیرهٔ الیس، ۱۹۰۷"
+  },
+  "sol": "VUS"
+ },
+ {
   "id": "6.2",
   "realm": 6,
   "title": {
@@ -226,6 +241,21 @@ window.WW_CATALOG = [
   "sol": "VUS"
  },
  {
+  "id": "6.3",
+  "realm": 6,
+  "title": {
+   "en": "Reformers and an Empire",
+   "es": "Reformistas y un imperio",
+   "fa": "اصلاح‌طلبان و یک امپراتوری"
+  },
+  "place": {
+   "en": "Chicago, 1906",
+   "es": "Chicago, 1906",
+   "fa": "شیکاگو، ۱۹۰۶"
+  },
+  "sol": "VUS"
+ },
+ {
   "id": "7.1",
   "realm": 7,
   "title": {
@@ -237,6 +267,21 @@ window.WW_CATALOG = [
    "en": "Newport News, 1918",
    "es": "Newport News, 1918",
    "fa": "نیوپورت نیوز، ۱۹۱۸"
+  },
+  "sol": "VUS"
+ },
+ {
+  "id": "7.2",
+  "realm": 7,
+  "title": {
+   "en": "The Twenties and the Depression",
+   "es": "Los años veinte y la Depresión",
+   "fa": "دههٔ بیست و رکود بزرگ"
+  },
+  "place": {
+   "en": "Harlem, 1933",
+   "es": "Harlem, 1933",
+   "fa": "هارلم، ۱۹۳۳"
   },
   "sol": "VUS"
  }
