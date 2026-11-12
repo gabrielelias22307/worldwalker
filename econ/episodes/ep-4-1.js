@@ -67,7 +67,7 @@ window.EPISODE = {
     { at: [22, 2], name: { en: 'Mr. Adeyemi', es: 'Sr. Adeyemi', fa: 'آقای ادیمی' },
       look: { skin: 5, hair: '#2a2a2a', shirt: '#3a5a9a', pants: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'Welcome to Harbor Bank. A [[checking account|checking account]] holds money for everyday spending.', es: 'Bienvenido a Harbor Bank. Una [[checking account|cuenta corriente]] guarda dinero para gastos diarios.', fa: 'به بانک هاربر خوش آمدی. [[checking account|حساب جاری]] پول را برای مصرف روزانه نگه می‌دارد.' },
+        { en: 'Welcome to Pelican Point Bank. A [[checking account|checking account]] holds money for everyday spending.', es: 'Bienvenido a Pelican Point Bank. Una [[checking account|cuenta corriente]] guarda dinero para gastos diarios.', fa: 'به بانک هاربر خوش آمدی. [[checking account|حساب جاری]] پول را برای مصرف روزانه نگه می‌دارد.' },
         { en: 'You [[deposit|deposit]] money in and withdraw money out. You can write checks too.', es: 'Haces un [[deposit|depósito]] para meter dinero y retiras para sacarlo. También puedes hacer cheques.', fa: 'پول را [[deposit|واریز]] می‌کنی و پول را برداشت می‌کنی. چک هم نوشته می‌توانی.' },
         { en: 'Each month we send a [[statement|statement]]. It lists every deposit and payment.', es: 'Cada mes enviamos un [[statement|estado de cuenta]]. Muestra cada depósito y cada pago.', fa: 'هر ماه یک [[statement|صورت حساب]] می‌فرستیم. هر واریز و هر پرداخت در آن است.' }
       ] },
@@ -81,7 +81,7 @@ window.EPISODE = {
     { at: [9, 13], name: { en: 'Leo', es: 'Leo', fa: 'لیو' },
       look: { skin: 1, hair: '#6a4a2a', shirt: '#e0a030', pants: '#3a4a2a', style: 'short' },
       lines: [
-        { en: 'I walk dogs for my neighbors. I work for myself. I am [[self-employed|self-employed]].', es: 'Paseo perros de mis vecinos. Trabajo para mí mismo. Soy [[self-employed|trabajador independiente]].', fa: 'من سگ‌های همسایه‌ها را گشت می‌دهم. برای خودم کار می‌کنم. من [[self-employed|خودکار]] هستم.' },
+        { en: 'I walk dogs for my neighbors. I work for myself. I am [[self-employed|self-employed]].', es: 'Paseo perros de mis vecinos. Trabajo para mí mismo. Soy [[self-employed|trabajador independiente]].', fa: 'من سگ‌های همسایه‌ها را گشت می‌دهم. برای خودم کار می‌کنم. من [[self-employed|کار آزاد]] هستم.' },
         { en: 'No boss takes taxes out of my pay. I must save for my own taxes.', es: 'Ningún jefe me quita impuestos del pago. Debo ahorrar para mis propios impuestos.', fa: 'هیچ رئیسی از پولم مالیات کم نمی‌کند. باید برای مالیات خودم پول جدا کنم.' },
         { en: 'My cousin sells cars. She earns a [[commission|commission]]: part of each sale.', es: 'Mi prima vende carros. Gana una [[commission|comisión]]: una parte de cada venta.', fa: 'دختر کاکایم موتر می‌فروشد. او [[commission|کمیشن]] می‌گیرد: یک بخش از هر فروش.' }
       ] }
@@ -89,7 +89,7 @@ window.EPISODE = {
 
   /* 32 x 22 = 2 x 2 screens.
      North-west: Harbor Fresh Market (J roof over a wall row h; its door opens into the break room), the parking lot
-     (l) with produce stands (m). North-east: Harbor Bank (Q over h) with the ATM sign beside it, tall apartments (U).
+     (l) with produce stands (m). North-east: Pelican Point Bank (Q over h) with the ATM sign beside it, tall apartments (U).
      Row 11: the downtown street (l). South: the harbor cafe and Leo's home (roofs over hdh), a small park with flowers,
      the bus stop, then the waterfront walk (row 17) along the Elizabeth River (~) with two docks (k). */
   map: [

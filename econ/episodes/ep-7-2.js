@@ -42,16 +42,16 @@ window.EPISODE = {
     guess: {
       q: { en: 'Does one insurance plan cover every kind of problem?', es: '¿Un solo seguro cubre todo tipo de problema?', fa: 'آیا یک بیمه همه نوع مشکل را می‌پوشاند؟' },
       choices: [
-        { t: { en: '🧩 No, each kind covers different things', es: '🧩 No, cada tipo cubre cosas distintas', fa: '🧩 نه، هر نوع چیزهای جدا را می‌پوشاند' }, ok: true },
-        { t: { en: '☂️ Yes, one plan covers it all', es: '☂️ Sí, un seguro lo cubre todo', fa: '☂️ بله، یک بیمه همه را می‌پوشاند' } }
+        { t: { en: '🧩 No, each kind differs', es: '🧩 No, cada tipo es distinto', fa: '🧩 نه، هر نوع فرق دارد' }, ok: true },
+        { t: { en: '☂️ Yes, one covers all', es: '☂️ Sí, uno lo cubre todo', fa: '☂️ بله، یکی همه را می‌پوشاند' } }
       ],
       why: { en: 'Each kind covers its own problems. Car insurance does not pay the doctor.', es: 'Cada tipo cubre sus propios problemas. El seguro de auto no le paga al médico.', fa: 'هر نوع مشکل‌های خود را می‌پوشاند. بیمهٔ موتر پول داکتر را نمی‌دهد.' }
     },
     next: {
       q: { en: 'Next: retirement. Why start saving at 18 instead of 40?', es: 'Ahora: la jubilación. ¿Por qué empezar a ahorrar a los 18 y no a los 40?', fa: 'بعدی: تقاعد. چرا پس‌انداز را در ۱۸ سالگی شروع کنیم، نه در ۴۰ سالگی؟' },
       choices: [
-        { t: { en: '🌱 The money has more years to grow', es: '🌱 El dinero tiene más años para crecer', fa: '🌱 پول سال‌های بیشتری برای رشد دارد' }, ok: true },
-        { t: { en: '🛒 Prices go down when you get old', es: '🛒 Los precios bajan cuando eres mayor', fa: '🛒 قیمت‌ها وقتی پیر شوی پایین می‌آیند' } }
+        { t: { en: '🌱 More years to grow', es: '🌱 Más años para crecer', fa: '🌱 سال‌های بیشتر برای رشد' }, ok: true },
+        { t: { en: '🛒 Prices drop later on', es: '🛒 Los precios bajan después', fa: '🛒 قیمت‌ها بعداً پایین می‌آیند' } }
       ],
       why: { en: 'Money saved at 18 has 22 more years to grow than money saved at 40.', es: 'El dinero ahorrado a los 18 tiene 22 años más para crecer que el ahorrado a los 40.', fa: 'پولی که در ۱۸ سالگی پس‌انداز شود، ۲۲ سال بیشتر از پول ۴۰ سالگی رشد می‌کند.' }
     }
@@ -62,15 +62,13 @@ window.EPISODE = {
       look: { skin: 1, hair: '#c8c8c8', shirt: '#4a7ab0', pants: '#3a3a3a', style: 'bun' },
       lines: [
         { en: 'I own this house on the hill. I have [[homeowners insurance|homeowners insurance]].', es: 'Soy dueña de esta casa en la colina. Tengo [[homeowners insurance|seguro de vivienda]].', fa: 'من مالک این خانه روی تپه هستم. [[homeowners insurance|بیمهٔ خانه]] دارم.' },
-        { en: 'It pays to fix my house after a fire or a storm.', es: 'Paga para arreglar mi casa después de un incendio o una tormenta.', fa: 'بعد از آتش‌سوزی یا طوفان، پول ترمیم خانه‌ام را می‌دهد.' },
-        { en: 'It also covers my things inside, like my bed and my table.', es: 'También cubre mis cosas de adentro, como mi cama y mi mesa.', fa: 'چیزهای داخل خانه‌ام را هم می‌پوشاند، مثل بستر و میزم.' },
+        { en: 'After a fire or storm, it pays to fix my house and things inside.', es: 'Tras un incendio o una tormenta, paga para arreglar mi casa y mis cosas.', fa: 'بعد از آتش‌سوزی یا طوفان، پول ترمیم خانه و چیزهای داخلش را می‌دهد.' },
         { en: 'But floods are different. They usually need separate [[flood insurance|flood insurance]].', es: 'Pero las inundaciones son distintas. Casi siempre necesitan un [[flood insurance|seguro contra inundaciones]] aparte.', fa: 'اما سیلاب فرق دارد. معمولاً یک [[flood insurance|بیمهٔ سیلاب]] جدا لازم است.' }
       ] },
     { at: [19, 4], name: { en: 'Ms. Bello', es: 'Sra. Bello', fa: 'خانم بلو' },
       look: { skin: 5, hair: '#1a1008', shirt: '#8a3a5a', pants: '#2a2a3a', style: 'long' },
       lines: [
-        { en: 'I am an insurance agent. Today I explain [[life insurance|life insurance]].', es: 'Soy agente de seguros. Hoy explico el [[life insurance|seguro de vida]].', fa: 'من نمایندهٔ بیمه هستم. امروز [[life insurance|بیمهٔ زندگی]] را توضیح می‌دهم.' },
-        { en: 'It pays money to a family if the person dies.', es: 'Le paga dinero a la familia si la persona muere.', fa: 'اگر آن شخص بمیرد، به خانواده‌اش پول می‌دهد.' },
+        { en: 'I sell [[life insurance|life insurance]]. It pays money to a family if a person dies.', es: 'Vendo [[life insurance|seguros de vida]]. Pagan dinero a la familia si una persona muere.', fa: 'من [[life insurance|بیمهٔ زندگی]] می‌فروشم. اگر کسی بمیرد، به خانواده‌اش پول می‌دهد.' },
         { en: '[[term life|Term life]] covers a set time, like 20 years. It costs less.', es: 'El [[term life|seguro a término]] cubre un tiempo fijo, como 20 años. Cuesta menos.', fa: '[[term life|بیمهٔ زندگی مدت‌دار]] یک وقت معین را می‌پوشاند، مثل ۲۰ سال. ارزان‌تر است.' },
         { en: '[[whole life|Whole life]] lasts your whole life. It costs more.', es: 'El [[whole life|seguro de vida entera]] dura toda tu vida. Cuesta más.', fa: '[[whole life|بیمهٔ تمام عمر]] تا آخر عمرت دوام دارد. گران‌تر است.' }
       ] },
@@ -331,7 +329,7 @@ window.EPISODE = {
     questions: [
       { q: { en: 'What does health insurance help pay for?', es: '¿Qué ayuda a pagar el seguro médico?', fa: 'بیمهٔ صحی در پرداخت چه چیز کمک می‌کند؟' },
         choices: [
-          { en: 'Doctors, the hospital and medicine', es: 'Médicos, el hospital y medicinas', fa: 'داکتر، شفاخانه و دوا' },
+          { en: 'Doctor visits and medicine', es: 'Consultas médicas y medicinas', fa: 'رفتن به داکتر و دوا' },
           { en: 'Fixing a car after a crash', es: 'Arreglar un carro tras un choque', fa: 'ترمیم موتر بعد از تصادم' },
           { en: 'A laptop stolen from a home', es: 'Una laptop robada de una casa', fa: 'لپ‌تاپ دزدی‌شده از خانه' },
           { en: 'A roof hurt by a big storm', es: 'Un techo dañado por una tormenta', fa: 'بامی که طوفان خراب کرده' }],

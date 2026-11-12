@@ -4,7 +4,7 @@
    North-east: Riverbend Community Bank (Q over h, made up), a credit union (R over h, made up) and a plaza with a fountain (O).
    Row 5 and row 11 are streets (l); a wide avenue (l) runs north to south down the middle.
    South-west: a phone repair shop and a row of buildings. South-east: the tall Federal Reserve Bank of Richmond (U) on its plaza.
-   Row 17 is the riverside path; the James River (~) runs below it, with a footbridge (B) to the south bank.
+   Row 16 is the riverside path; the James River (~) runs below it, with a footbridge (B) to the south bank.
    People show what banks do, the Fed and the FDIC; the ledger stone asks what to do with a scam text. */
 window.EPISODE = {
   id: '2.2',
@@ -47,7 +47,7 @@ window.EPISODE = {
       why: { en: 'At an insured bank, the FDIC covers up to $250,000 per person.', es: 'En un banco asegurado, la FDIC cubre hasta $250,000 por persona.', fa: 'در یک بانک بیمه‌شده، اف‌دی‌آی‌سی تا ۲۵۰٬۰۰۰ دالر برای هر نفر را می‌پوشاند.' }
     },
     next: {
-      q: { en: 'Next: why does a bag of chips cost more now than when your parents were kids?', es: 'Ahora: ¿por qué una bolsa de papitas cuesta más hoy que cuando tus papás eran niños?', fa: 'بعدی: چرا یک پاکت چپس حالا از زمان کودکی پدر و مادرت قیمت‌تر است؟' },
+      q: { en: 'Next: why do chips cost more now than when your parents were kids?', es: 'Ahora: ¿por qué una bolsa de papitas cuesta más hoy que cuando tus papás eran niños?', fa: 'بعدی: چرا یک پاکت چپس حالا از زمان کودکی پدر و مادرت قیمت‌تر است؟' },
       choices: [
         { t: { en: '📈 Prices rise over time', es: '📈 Los precios suben', fa: '📈 قیمت‌ها بالا می‌روند' }, ok: true },
         { t: { en: '🥔 The bags got bigger', es: '🥔 Las bolsas crecieron', fa: '🥔 پاکت‌ها کلان شدند' } }
@@ -99,7 +99,7 @@ window.EPISODE = {
      (Q over h) and the credit union in the north-east, over a paved plaza (l) with a fountain (O).
      Rows 5 and 11 are streets; the avenue (l, columns 15-16) runs south to the river.
      South: the phone repair shop (R over h) and a row of buildings (J) in the south-west; the tall Federal Reserve Bank
-     of Richmond (U) on its plaza in the south-east. Row 17 is the riverside path; the James River (~) has a footbridge (B)
+     of Richmond (U) on its plaza in the south-east. Row 16 is the riverside path; the James River (~) has a footbridge (B)
      to the grassy south bank. */
   map: [
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
@@ -118,11 +118,11 @@ window.EPISODE = {
     'TT.RRR.T.JJJJT.llllxlUUUUUUUlllT',
     'T..hdh...JJJJ..llllllUUUUUUUllTT',
     'T.........,....llllllUUUUUUUlllT',
-    'T.T,...T.,.T...llllllllllllllllT',
     'T::::::::::::::ll::::::::::::::T',
     'T~~~~~~~B~~~~~~~~~~~~~~~~~~~~~~T',
     'T~~~~~~~B~~~~~~~~~~~~~~~~~~~~~~T',
-    'T..x.T....,.,.T.T...,......T.,.T',
+    'T......,....,......,.....,.....T',
+    'T..x.T....,...T.T...,......T.,.T',
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
   ],
   start: [14, 6],
@@ -172,7 +172,7 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'It charges more on loans than it pays savers', es: 'Cobra más por los préstamos de lo que paga al ahorrar', fa: 'از قرض بیشتر می‌گیرد تا آنچه به پس‌انداز می‌دهد' },
             why: { en: 'Yes! Loan interest is higher than savings interest. The difference pays the bank.', es: '¡Sí! El interés de los préstamos es más alto que el de los ahorros. La diferencia es del banco.', fa: 'بله! سود قرض از سود پس‌انداز بیشتر است. همین فرق، کمایی بانک است.' } },
-          { t: { en: 'It prints new dollar bills in the back room', es: 'Imprime billetes nuevos en un cuarto de atrás', fa: 'در اتاق پشتی نوت‌های نو چاپ می‌کند' },
+          { t: { en: 'It prints brand-new dollar bills in the back room', es: 'Imprime billetes nuevos en un cuarto de atrás', fa: 'در اتاق پشتی نوت‌های نو چاپ می‌کند' },
             why: { en: 'No. Banks cannot print money. The US government makes bills and coins.', es: 'No. Los bancos no pueden imprimir dinero. El gobierno de EE. UU. hace los billetes y monedas.', fa: 'نه. بانک‌ها پول چاپ کرده نمی‌توانند. حکومت امریکا نوت و سکه را می‌سازد.' } },
           { t: { en: 'The city pays it for each new customer', es: 'La ciudad le paga por cada cliente nuevo', fa: 'شهر برای هر مشتری نو به آن پول می‌دهد' },
             why: { en: 'No. Banks earn from loans. Borrowers pay back more than they borrowed.', es: 'No. Los bancos ganan con los préstamos. Se devuelve más de lo que se pidió.', fa: 'نه. بانک‌ها از قرض کمایی می‌کنند. قرض‌گیرنده بیشتر از آنچه گرفته پس می‌دهد.' } }
@@ -198,7 +198,7 @@ window.EPISODE = {
             why: { en: 'Yes! It manages the money supply to help keep prices steady.', es: '¡Sí! Maneja la cantidad de dinero para ayudar a que los precios no cambien mucho.', fa: 'بله! مقدار پول را اداره می‌کند تا قیمت‌ها ثابت بمانند.' } },
           { t: { en: 'It opens savings accounts for teenagers', es: 'Abre cuentas de ahorros para adolescentes', fa: 'برای نوجوانان حساب پس‌انداز باز می‌کند' },
             why: { en: 'No. The Fed is a bank for banks. People save at banks and credit unions.', es: 'No. La Reserva Federal es un banco para bancos. La gente ahorra en bancos y cooperativas.', fa: 'نه. فدرال ریزرو بانکِ بانک‌ها است. مردم در بانک و اتحادیهٔ اعتباری پس‌انداز می‌کنند.' } },
-          { t: { en: 'It sets the price of every bag of chips', es: 'Pone el precio de cada bolsa de papitas', fa: 'قیمت هر پاکت چپس را تعیین می‌کند' },
+          { t: { en: 'It sets the price of every single bag of chips', es: 'Pone el precio de cada bolsa de papitas', fa: 'قیمت هر پاکت چپس را تعیین می‌کند' },
             why: { en: 'No. Stores set their own prices. The Fed works to keep prices steady overall.', es: 'No. Las tiendas ponen sus precios. La Reserva Federal busca que los precios, en general, no cambien mucho.', fa: 'نه. دکان‌ها قیمت خود را تعیین می‌کنند. فدرال ریزرو کوشش می‌کند قیمت‌ها در کل ثابت بمانند.' } }
         ]
       }
@@ -220,7 +220,7 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Savings in an insured bank account', es: 'Ahorros en una cuenta de un banco asegurado', fa: 'پس‌انداز در حساب یک بانک بیمه‌شده' },
             why: { en: 'Yes! Deposits are insured up to $250,000 per person at each insured bank.', es: '¡Sí! Los depósitos están asegurados hasta $250,000 por persona en cada banco asegurado.', fa: 'بله! پول سپرده تا ۲۵۰٬۰۰۰ دالر برای هر نفر در هر بانک بیمه‌شده بیمه است.' } },
-          { t: { en: 'Crypto coins kept in a phone app', es: 'Criptomonedas guardadas en una app', fa: 'سکه‌های کریپتو در یک برنامهٔ تیلفون' },
+          { t: { en: 'Crypto coins kept in an app on your phone', es: 'Criptomonedas guardadas en una app del teléfono', fa: 'سکه‌های کریپتو در یک برنامهٔ تیلفون' },
             why: { en: 'No. Crypto is not insured. Its value can drop fast, and it can be stolen.', es: 'No. Las criptomonedas no están aseguradas. Su valor puede caer rápido y te las pueden robar.', fa: 'نه. کریپتو بیمه نیست. ارزشش زود پایین می‌آید و دزدیده هم شده می‌تواند.' } },
           { t: { en: 'Shares of stock in a big company', es: 'Acciones de una empresa grande', fa: 'سهام یک شرکت کلان' },
             why: { en: 'No. Stocks are not insured. Their value can go down.', es: 'No. Las acciones no están aseguradas. Su valor puede bajar.', fa: 'نه. سهام بیمه نیست. ارزش آن پایین آمده می‌تواند.' } }
@@ -285,7 +285,7 @@ window.EPISODE = {
           why: { en: 'Right! A photo ID shows who Maya is. Now I can open her account.', es: '¡Correcto! La identificación muestra quién es Maya. Ya puedo abrir su cuenta.', fa: 'درست! تذکرهٔ عکس‌دار نشان می‌دهد مایا کیست. حالا حسابش را باز کرده می‌توانم.' } },
         { at: [13, 15], icon: '🔢', t: { en: 'A note with her PIN', es: 'Una nota con su PIN', fa: 'یک یادداشت با پین او' },
           why: { en: 'Never share a PIN, not even with a bank worker. A real bank won\'t ask.', es: 'Nunca compartas un PIN, ni con un empleado del banco. Un banco real no lo pide.', fa: 'هرگز پین را به کسی نده، حتی به کارمند بانک. بانک واقعی آن را نمی‌خواهد.' } },
-        { at: [29, 16], icon: '🔑', t: { en: 'A note with her password', es: 'Una nota con su contraseña', fa: 'یک یادداشت با رمز او' },
+        { at: [29, 15], icon: '🔑', t: { en: 'A note with her password', es: 'Una nota con su contraseña', fa: 'یک یادداشت با رمز او' },
           why: { en: 'Keep passwords secret. A real bank never asks for your password.', es: 'Guarda tus contraseñas en secreto. Un banco real nunca te pide tu contraseña.', fa: 'رمزها را مخفی نگه دار. بانک واقعی هرگز رمز تو را نمی‌خواهد.' } }
       ],
       item: { icon: '📒', name: { en: 'Maya\'s new savings account', es: 'La nueva cuenta de ahorros de Maya', fa: 'حساب پس‌انداز نو مایا' } }
@@ -401,7 +401,7 @@ window.EPISODE = {
         choices: [
           { en: 'Fake messages that try to steal your info', es: 'Mensajes falsos que intentan robar tus datos', fa: 'پیام‌های دروغ که معلومات تو را می‌دزدند' },
           { en: 'A safe way to pay with your phone', es: 'Una forma segura de pagar con el teléfono', fa: 'یک راه امن برای پرداخت با تیلفون' },
-          { en: 'A text from your real bank about a bill', es: 'Un mensaje de tu banco real sobre una cuenta', fa: 'پیامی از بانک واقعی‌ات دربارهٔ یک بل' },
+          { en: 'A text from your real bank about a late bill', es: 'Un mensaje de tu banco real sobre un pago atrasado', fa: 'پیامی از بانک واقعی‌ات دربارهٔ یک بل' },
           { en: 'A long password with numbers in it', es: 'Una contraseña larga con números', fa: 'یک رمز دراز که عدد دارد' }],
         answer: 0,
         why: { en: 'Phishing tricks you into sharing passwords, PINs or codes. Don\'t reply, and don\'t tap the link.', es: 'El phishing te engaña para que des contraseñas, PIN o códigos. No respondas ni toques el enlace.', fa: 'فیشینگ تو را فریب می‌دهد تا رمز، پین یا کود را بدهی. جواب نده و روی لینک نزن.' } },
