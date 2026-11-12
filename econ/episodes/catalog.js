@@ -314,5 +314,35 @@ window.WW_CATALOG = [
    "fa": "پارک چراغ دریایی سیف هاربر (خیالی)"
   },
   "sol": "EPF"
+ },
+ {
+  "id": "8.1",
+  "realm": 8,
+  "title": {
+   "en": "What Is Education Worth?",
+   "es": "¿Cuánto vale la educación?",
+   "fa": "ارزش تعلیم چقدر است؟"
+  },
+  "place": {
+   "en": "Future Fields career fair",
+   "es": "Feria de carreras de Future Fields",
+   "fa": "نمایشگاه کار فیوچر فیلدز"
+  },
+  "sol": "EPF"
+ },
+ {
+  "id": "8.2",
+  "realm": 8,
+  "title": {
+   "en": "Paying for College",
+   "es": "Cómo pagar la universidad",
+   "fa": "پرداخت پول کالج"
+  },
+  "place": {
+   "en": "Williamsburg, college open house",
+   "es": "Williamsburg, día de puertas abiertas",
+   "fa": "ویلیامزبرگ، روز دروازه‌های باز کالج"
+  },
+  "sol": "EPF"
  }
 ];
