@@ -117,7 +117,7 @@ window.EPISODE = {
     'Tllllllllllllllllllllllllllllll~',
     'T............................~~~',
     'T.JJJJJ..T..T....JJJJJJ.RRR..~~~',
-    'T.JJJJJ...........JJdJJJ.hdh..~~~'.slice(0, 16) + '.JJdJJJ.hdh..~~~',
+    'T.JJJJJ..........JJdJJJ.hdh..~~~',
     'T......,,,,,.................~~~',
     'T.x....~~~........RRR........~~~',
     'T.....,~~~,.......hdh........~~~',
@@ -168,9 +168,9 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'His savings account', es: 'Su cuenta de ahorros', fa: 'حساب پس‌انداز او' },
             why: { en: 'Yes! Leo owns his savings, and it has money value. It is an asset.', es: '¡Sí! Leo es dueño de sus ahorros y valen dinero. Son un activo.', fa: 'بله! پس‌انداز مال لیو است و ارزش پولی دارد. دارایی است.' } },
-          { t: { en: 'His car loan', es: 'Su préstamo del carro', fa: 'قرض موتر او' },
+          { t: { en: 'His car loan from the bank', es: 'Su préstamo del carro del banco', fa: 'قرض موترش از بانک' },
             why: { en: 'No. Leo owes the car loan. A debt you owe is a liability.', es: 'No. Leo debe el préstamo del carro. Una deuda que debes es un pasivo.', fa: 'نه. لیو قرض موتر را باید بپردازد. قرضی که داری بدهی است.' } },
-          { t: { en: 'The rent he pays', es: 'La renta que paga', fa: 'کرایه‌ای که می‌دهد' },
+          { t: { en: 'The rent he pays each month', es: 'La renta que paga cada mes', fa: 'کرایه‌ای که هر ماه می‌دهد' },
             why: { en: 'No. Rent is money spent. Leo does not own the house he rents.', es: 'No. La renta es dinero gastado. Leo no es dueño de la casa que renta.', fa: 'نه. کرایه پول خرج شده است. لیو مالک خانهٔ کرایی نیست.' } }
         ]
       }
@@ -330,12 +330,12 @@ window.EPISODE = {
       { q: { en: 'What is an asset?', es: '¿Qué es un activo?', fa: 'دارایی چیست؟' },
         choices: [
           { en: 'Something you own that has money value', es: 'Algo que tienes y que vale dinero', fa: 'چیزی که داری و ارزش پولی دارد' },
-          { en: 'Money you borrowed and must pay back', es: 'Dinero que pediste y debes devolver', fa: 'پولی که قرض گرفتی و باید پس بدهی' },
+          { en: 'Money you borrowed that you must pay back', es: 'Dinero que pediste y que debes devolver', fa: 'پولی که قرض گرفتی و باید آن را پس بدهی' },
           { en: 'A bill you pay every single month', es: 'Una cuenta que pagas cada mes', fa: 'یک بل که هر ماه می‌پردازی' },
           { en: 'Something you rent from a neighbor', es: 'Algo que le rentas a un vecino', fa: 'چیزی که از همسایه کرایه می‌کنی' }],
         answer: 0,
         why: { en: 'An asset is something you own with money value: cash, savings, a car, a house.', es: 'Un activo es algo tuyo que vale dinero: efectivo, ahorros, un carro, una casa.', fa: 'دارایی چیزی است که داری و ارزش پولی دارد: پول نقد، پس‌انداز، موتر، خانه.' } },
-      { q: { en: 'Which of these is a liability?', es: '¿Cuál de estos es un pasivo?', fa: 'کدام یکی از اینها بدهی است?' },
+      { q: { en: 'Which of these is a liability?', es: '¿Cuál de estos es un pasivo?', fa: 'کدام یکی از اینها بدهی است؟' },
         choices: [
           { en: 'A student loan', es: 'Un préstamo de estudios', fa: 'یک قرض تحصیلی' },
           { en: 'A savings account', es: 'Una cuenta de ahorros', fa: 'یک حساب پس‌انداز' },
@@ -347,22 +347,22 @@ window.EPISODE = {
         choices: [
           { en: 'Assets minus liabilities', es: 'Activos menos pasivos', fa: 'دارایی منهای بدهی' },
           { en: 'Assets plus liabilities', es: 'Activos más pasivos', fa: 'دارایی جمع بدهی' },
-          { en: 'Liabilities minus pay', es: 'Pasivos menos sueldo', fa: 'بدهی منهای معاش' },
+          { en: 'Liabilities minus your assets', es: 'Pasivos menos tus activos', fa: 'بدهی منهای دارایی تو' },
           { en: 'Pay times your hours', es: 'Sueldo por tus horas', fa: 'معاش ضرب ساعت‌ها' }],
         answer: 0,
         why: { en: 'Net worth = what you own minus what you owe.', es: 'Patrimonio neto = lo que tienes menos lo que debes.', fa: 'ارزش خالص = آنچه داری منهای آنچه قرض داری.' } },
       { q: { en: 'Mia owns $3,000 in assets. She owes $5,000. What is her net worth?', es: 'Mia tiene $3,000 en activos. Debe $5,000. ¿Cuál es su patrimonio neto?', fa: 'میا ۳٬۰۰۰ دالر دارایی دارد. ۵٬۰۰۰ دالر قرض دارد. ارزش خالص او چقدر است؟' },
         choices: [
           { en: 'minus $2,000', es: 'menos $2,000', fa: 'منفی ۲٬۰۰۰ دالر' },
-          { en: '$2,000', es: '$2,000', fa: '۲٬۰۰۰ دالر' },
-          { en: '$8,000', es: '$8,000', fa: '۸٬۰۰۰ دالر' },
-          { en: '$5,000', es: '$5,000', fa: '۵٬۰۰۰ دالر' }],
+          { en: 'plus $2,000', es: 'más $2,000', fa: 'مثبت ۲٬۰۰۰ دالر' },
+          { en: 'plus $8,000', es: 'más $8,000', fa: 'مثبت ۸٬۰۰۰ دالر' },
+          { en: 'minus $8,000', es: 'menos $8,000', fa: 'منفی ۸٬۰۰۰ دالر' }],
         answer: 0,
         why: { en: '$3,000 − $5,000 = minus $2,000. She owes more than she owns.', es: '$3,000 − $5,000 = menos $2,000. Debe más de lo que tiene.', fa: '۳٬۰۰۰ − ۵٬۰۰۰ = منفی ۲٬۰۰۰ دالر. بیشتر از داشته‌اش قرض دارد.' } },
       { q: { en: 'Which asset is the most liquid?', es: '¿Qué activo es el más líquido?', fa: 'کدام دارایی از همه نقدتر است؟' },
         choices: [
           { en: 'Cash in a wallet', es: 'Efectivo en una cartera', fa: 'پول نقد در بکس پول' },
-          { en: 'A family house', es: 'Una casa familiar', fa: 'یک خانهٔ فامیلی' },
+          { en: 'A big family house', es: 'Una casa familiar grande', fa: 'یک خانهٔ کلان فامیلی' },
           { en: 'A used car', es: 'Un carro usado', fa: 'یک موتر کهنه' },
           { en: 'A piece of land', es: 'Un terreno', fa: 'یک توته زمین' }],
         answer: 0,
@@ -388,7 +388,7 @@ window.EPISODE = {
           { en: 'It is common, and he can raise it', es: 'Es común, y lo puede subir', fa: 'عادی است و می‌تواند آن را بالا ببرد' },
           { en: 'He can never change that number', es: 'Nunca puede cambiar ese número', fa: 'هرگز نمی‌تواند آن عدد را تغییر بدهد' },
           { en: 'It means he owns nothing at all', es: 'Significa que no tiene nada', fa: 'یعنی هیچ چیزی ندارد' },
-          { en: 'It means he must stop school', es: 'Significa que debe dejar la escuela', fa: 'یعنی باید درس را بس کند' }],
+          { en: 'It means he must leave college soon', es: 'Significa que pronto debe dejar la universidad', fa: 'یعنی باید زود پوهنتون را ترک کند' }],
         answer: 0,
         why: { en: 'Many young adults start below zero. Saving and paying debt help it grow.', es: 'Muchos jóvenes empiezan bajo cero. Ahorrar y pagar deudas lo hacen crecer.', fa: 'بسیاری از جوانان از کمتر از صفر شروع می‌کنند. پس‌انداز و پرداخت قرض آن را بالا می‌برد.' } }
     ]
