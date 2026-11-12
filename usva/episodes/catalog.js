@@ -196,6 +196,21 @@ window.WW_CATALOG = [
   "sol": "VUS"
  },
  {
+  "id": "5.3",
+  "realm": 5,
+  "title": {
+   "en": "Abolition and Reconstruction",
+   "es": "Abolición y Reconstrucción",
+   "fa": "لغو برده‌داری و بازسازی"
+  },
+  "place": {
+   "en": "Richmond, 1868",
+   "es": "Richmond, 1868",
+   "fa": "ریچموند، ۱۸۶۸"
+  },
+  "sol": "VUS"
+ },
+ {
   "id": "6.2",
   "realm": 6,
   "title": {
