@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 8,
   sol: 'VUS',
   title: { en: 'The March on Washington', es: 'La Marcha sobre Washington', fa: 'راهپیمایی واشنگتن' },
+  weather: { sky: 'heat', time: 'day' },
   place: { en: 'Washington, 1963', es: 'Washington, 1963', fa: 'واشنگتن، ۱۹۶۳' },
   intro: [
     { en: 'The Grump blurred the [[civil rights|civil rights]] page. People forget how unfair laws changed.',

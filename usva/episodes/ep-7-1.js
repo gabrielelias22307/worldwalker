@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 7,
   sol: 'VUS',
   title: { en: 'World War I and Versailles', es: 'La Primera Guerra Mundial y Versalles', fa: 'جنگ جهانی اول و ورسای' },
+  weather: { sky: 'drizzle', time: 'day' },
   place: { en: 'Newport News, 1918', es: 'Newport News, 1918', fa: 'نیوپورت نیوز، ۱۹۱۸' },
   intro: [
     { en: 'The Grump blurred the [[world war i|World War I]] page. People forget why America went to war.',

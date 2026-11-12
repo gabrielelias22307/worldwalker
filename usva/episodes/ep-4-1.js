@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 4,
   sol: 'VUS',
   title: { en: 'New Visions', es: 'Nuevas visiones', fa: 'دیدگاه‌های نو' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'St. Louis, 1804', es: 'San Luis, 1804', fa: 'سنت لوئیس، ۱۸۰۴' },
   intro: [
     { en: 'The Grump blurred the page about the [[louisiana purchase|Louisiana Purchase]]. The river trade is stuck!',

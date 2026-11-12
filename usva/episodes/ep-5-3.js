@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 5,
   sol: 'VUS',
   title: { en: 'Abolition and Reconstruction', es: 'Abolición y Reconstrucción', fa: 'لغو برده‌داری و بازسازی' },
+  weather: { sky: 'drizzle', time: 'day' },
   place: { en: 'Richmond, 1868', es: 'Richmond, 1868', fa: 'ریچموند، ۱۸۶۸' },
   intro: [
     { en: 'The Grump blurred the [[reconstruction|Reconstruction]] page. People are forgetting rights that were won and lost.',

@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 6,
   sol: 'VUS',
   title: { en: 'The Gilded Age and Inventions', es: 'La Edad Dorada y los inventos', fa: 'عصر طلاکاری و اختراع‌ها' },
+  weather: { sky: 'dust', time: 'day' },
   place: { en: 'Pittsburgh, 1892', es: 'Pittsburgh, 1892', fa: 'پیتسبرگ، ۱۸۹۲' },
   intro: [
     { en: 'The Grump filled Pittsburgh with smoke. People forgot how [[invention|inventions]] changed their lives.',

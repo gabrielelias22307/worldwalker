@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 7,
   sol: 'VUS',
   title: { en: 'World War II at Home and at War', es: 'La Segunda Guerra Mundial en casa y en el frente', fa: 'جنگ جهانی دوم در خانه و در جبهه' },
+  weather: { sky: 'clear', time: 'sunset' },
   place: { en: 'Norfolk, 1943', es: 'Norfolk, 1943', fa: 'نورفک، ۱۹۴۳' },
   intro: [
     { en: 'The Grump blurred the [[home front|home front]] page. People forget how everyone helped win the war.',

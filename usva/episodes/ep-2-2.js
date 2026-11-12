@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 2,
   sol: 'VUS',
   title: { en: 'Declaring Independence', es: 'Declarar la independencia', fa: 'اعلام استقلال' },
+  weather: { sky: 'snow', time: 'day' },
   place: { en: 'Boston, 1773', es: 'Boston, 1773', fa: 'بوستون، ۱۷۷۳' },
   intro: [
     { en: 'The Grump blurred this journal page. Boston is forgetting why people wanted [[independence|independence]].',

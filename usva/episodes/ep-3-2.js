@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 3,
   sol: 'VUS',
   title: { en: 'The Bill of Rights', es: 'La Carta de Derechos', fa: 'منشور حقوق' },
+  weather: { sky: 'petals', time: 'day' },
   place: { en: 'New York, 1789', es: 'Nueva York, 1789', fa: 'نیویارک، ۱۷۸۹' },
   intro: [
     { en: 'The Grump blurred the [[bill of rights|Bill of Rights]] page. People forgot their rights!',

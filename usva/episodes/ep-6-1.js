@@ -13,6 +13,7 @@ window.EPISODE = {
   realm: 6,
   sol: 'VUS',
   title: { en: 'Building the Nation: Immigration', es: 'Construir la nación: la inmigración', fa: 'ساختن ملت: مهاجرت' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Ellis Island, 1907', es: 'Isla Ellis, 1907', fa: 'جزیرهٔ الیس، ۱۹۰۷' },
   intro: [
     { en: 'The Grump blurred the page about [[immigrant|immigrants]]. Their stories are fading!',

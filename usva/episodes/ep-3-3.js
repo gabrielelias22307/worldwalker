@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 3,
   sol: 'VUS',
   title: { en: 'The First Presidents', es: 'Los primeros presidentes', fa: 'اولین رئیس‌جمهورها' },
+  weather: { sky: 'clear', time: 'sunset' },
   place: { en: 'Mount Vernon, 1797', es: 'Mount Vernon, 1797', fa: 'مونت ورنن، ۱۷۹۷' },
   intro: [
     { en: 'The Grump blurred the journal page about the first two Presidents.',

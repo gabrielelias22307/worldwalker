@@ -9,6 +9,7 @@ window.EPISODE = {
   realm: 4,
   sol: 'VUS',
   title: { en: 'Good Feelings, Growing Apart', es: 'Buenos sentimientos, regiones que se separan', fa: 'احساس خوب، منطقه‌های جدا' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Erie Canal, 1825', es: 'Canal de Erie, 1825', fa: 'کانال ایری، ۱۸۲۵' },
   intro: [
     { en: 'The Grump tore the Erie [[canal|Canal]] page. People forget how the country grew.',

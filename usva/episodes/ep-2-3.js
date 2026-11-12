@@ -11,6 +11,7 @@ window.EPISODE = {
   realm: 2,
   sol: 'VUS',
   title: { en: 'The Revolutionary War', es: 'La guerra de Independencia', fa: 'جنگ انقلاب امریکا' },
+  weather: { sky: 'leaves', time: 'day' },
   place: { en: 'Yorktown, 1781', es: 'Yorktown, 1781', fa: 'یورک‌تاون، ۱۷۸۱' },
   intro: [
     { en: 'The Grump blew away the Yorktown page. People forgot how the war was won.',

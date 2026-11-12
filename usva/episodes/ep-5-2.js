@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 5,
   sol: 'VUS',
   title: { en: 'The Civil War and Emancipation', es: 'La Guerra Civil y la emancipación', fa: 'جنگ داخلی و آزادی بردگان' },
+  weather: { sky: 'leaves', time: 'day' },
   place: { en: 'Fort Monroe, 1862', es: 'Fuerte Monroe, 1862', fa: 'قلعهٔ مونرو، ۱۸۶۲' },
   intro: [
     { en: 'The Grump blurred the Civil War page. People forgot who walked here to be free.',

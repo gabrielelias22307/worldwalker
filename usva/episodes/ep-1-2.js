@@ -12,6 +12,7 @@ window.EPISODE = {
   realm: 1,
   sol: 'VUS',
   title: { en: 'The Colonies\' Geography', es: 'La geografía de las colonias', fa: 'جغرافیای مستعمره‌ها' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Philadelphia, 1750', es: 'Filadelfia, 1750', fa: 'فیلادلفیا، ۱۷۵۰' },
   intro: [
     { en: 'The Grump blurred the [[colony|colonies]] page. Now people mix up north, middle and south!',

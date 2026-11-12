@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 1,
   sol: 'VUS',
   title: { en: 'Jamestown and the Powhatan', es: 'Jamestown y los powhatan', fa: 'جیمزتاون و مردم پوهاتن' },
+  weather: { sky: 'clear', time: 'day' },
   place: { en: 'Jamestown, 1608', es: 'Jamestown, 1608', fa: 'جیمزتاون، ۱۶۰۸' },
   intro: [
     { en: 'The Grump tore the Jamestown page. People forgot why the English came here.',

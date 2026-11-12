@@ -10,6 +10,7 @@ window.EPISODE = {
   realm: 3,
   sol: 'VUS',
   title: { en: 'Creating the Constitution', es: 'La creación de la Constitución', fa: 'ساختن قانون اساسی' },
+  weather: { sky: 'heat', time: 'day' },
   place: { en: 'Philadelphia, 1787', es: 'Filadelfia, 1787', fa: 'فیلادلفیا، ۱۷۸۷' },
   intro: [
     { en: 'The Grump blurred the [[constitution|Constitution]] page. People forgot how the states learned to agree.',
