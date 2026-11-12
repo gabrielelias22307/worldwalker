@@ -13,9 +13,9 @@ window.EPISODE = {
   weather: { sky: 'drizzle', time: 'day' },
   place: { en: 'Safe Harbor, after the storm', es: 'Safe Harbor, después de la tormenta', fa: 'بندر امن، بعد از توفان' },
   intro: [
-    { en: 'The Grump tore the page about risk. After the storm, people do not know what to do.',
-      es: 'El Gruñón rompió la página sobre el riesgo. Tras la tormenta, la gente no sabe qué hacer.',
-      fa: 'غرغرو صفحهٔ خطر را پاره کرد. بعد از توفان، مردم نمی‌دانند چه کنند.' },
+    { en: 'The Grump tore the page about risk. After the storm, people feel lost.',
+      es: 'El Gruñón rompió la página sobre el riesgo. Tras la tormenta, la gente se siente perdida.',
+      fa: 'غرغرو صفحهٔ خطر را پاره کرد. بعد از توفان، مردم سرگردان هستند.' },
     { en: 'Talk to the 3 people here, then fix the ledger stone.',
       es: 'Habla con las 3 personas de aquí y luego arregla la piedra del libro.',
       fa: 'با ۳ نفر اینجا گپ بزن، بعد سنگ دفتر حساب را درست کن.' }
