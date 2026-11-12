@@ -299,5 +299,65 @@ window.WW_CATALOG = [
    "fa": "هارلم، ۱۹۳۳"
   },
   "sol": "VUS"
+ },
+ {
+  "id": "7.3",
+  "realm": 7,
+  "title": {
+   "en": "World War II at Home and at War",
+   "es": "La Segunda Guerra Mundial en casa y en el frente",
+   "fa": "جنگ جهانی دوم در خانه و در جبهه"
+  },
+  "place": {
+   "en": "Norfolk, 1943",
+   "es": "Norfolk, 1943",
+   "fa": "نورفک، ۱۹۴۳"
+  },
+  "sol": "VUS"
+ },
+ {
+  "id": "8.1",
+  "realm": 8,
+  "title": {
+   "en": "The Cold War, China and Korea",
+   "es": "La Guerra Fría, China y Corea",
+   "fa": "جنگ سرد، چین و کوریا"
+  },
+  "place": {
+   "en": "Arlington, 1962",
+   "es": "Arlington, 1962",
+   "fa": "آرلینگتن، ۱۹۶۲"
+  },
+  "sol": "VUS"
+ },
+ {
+  "id": "8.2",
+  "realm": 8,
+  "title": {
+   "en": "The March on Washington",
+   "es": "La Marcha sobre Washington",
+   "fa": "راهپیمایی واشنگتن"
+  },
+  "place": {
+   "en": "Washington, 1963",
+   "es": "Washington, 1963",
+   "fa": "واشنگتن، ۱۹۶۳"
+  },
+  "sol": "VUS"
+ },
+ {
+  "id": "8.3",
+  "realm": 8,
+  "title": {
+   "en": "Modern Themes: Terrorism and Climate",
+   "es": "Temas de hoy: el terrorismo y el clima",
+   "fa": "موضوعات امروز: تروریزم و اقلیم"
+  },
+  "place": {
+   "en": "Arlington, today",
+   "es": "Arlington, hoy",
+   "fa": "آرلینگتن، امروز"
+  },
+  "sol": "VUS"
  }
 ];
