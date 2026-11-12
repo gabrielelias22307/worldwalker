@@ -249,7 +249,7 @@ window.EPISODE = {
     action: {
       type: 'chase',
       at: [6, 17],
-      hops: [[21, 9], [13, 14]],
+      hops: [[21, 9], [10, 12]],
       name: { en: 'The Grump\'s Gust', es: 'La Ráfaga del Gruñón', fa: 'تندباد غرغرو' },
       taunt: { en: 'The gust spins: "Papers blow away. Who will remember what they prove?"', es: 'La ráfaga gira: "Los papeles se vuelan. ¿Quién recordará lo que prueban?"', fa: 'تندباد می‌چرخد: «کاغذها پرواز می‌کنند. کی به یاد می‌آورد که چه چیزی را ثابت می‌کنند؟»' },
       clues: [
