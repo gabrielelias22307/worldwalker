@@ -66,6 +66,34 @@
     c.strokeStyle = '#22202e'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(CX + 6, CY + 23); c.lineTo(CX + 8, CY + 17); c.lineTo(CX + 6, CY + 12); c.lineTo(CX + 8, CY + 7); c.lineTo(CX + 7, CY + 3); c.stroke();
     c.lineWidth = 1;
   }
+  /* Copper (Coinwalker): a round pink piggy bank, flying. A coin slot on top, ears, little legs, a curly tail,
+     and a snout under his eyes; a gold coin peeks out of the slot and bobs (still with reduced motion) */
+  function pig(c, t, col, calm, mood) {
+    const body = () => { c.beginPath(); c.ellipse(CX, CY + 2, 24, 20, 0, 0, 7); };
+    // legs and tail behind the body
+    c.fillStyle = '#22202e'; [-14, -5, 5, 14].forEach(dx => c.fillRect(CX + dx - 4, CY + 14, 8, 11));
+    c.fillStyle = '#e88aa0'; [-14, -5, 5, 14].forEach(dx => c.fillRect(CX + dx - 3, CY + 15, 6, 9));
+    c.fillStyle = '#b85a72'; [-14, -5, 5, 14].forEach(dx => c.fillRect(CX + dx - 3, CY + 22, 6, 2));
+    c.strokeStyle = '#22202e'; c.lineWidth = 3; c.beginPath(); c.arc(CX + 27, CY - 2, 4, Math.PI * 0.6, Math.PI * 2.3); c.stroke();
+    c.strokeStyle = '#e88aa0'; c.lineWidth = 1.5; c.beginPath(); c.arc(CX + 27, CY - 2, 4, Math.PI * 0.6, Math.PI * 2.3); c.stroke();
+    // ears
+    [[-13, -1], [13, 1]].forEach(([dx, s]) => { c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(CX + dx - 7, CY - 13); c.lineTo(CX + dx + s * 2, CY - 27); c.lineTo(CX + dx + 7, CY - 13); c.fill();
+      c.fillStyle = '#f4a6b8'; c.beginPath(); c.moveTo(CX + dx - 4, CY - 14); c.lineTo(CX + dx + s * 2, CY - 23); c.lineTo(CX + dx + 4, CY - 14); c.fill(); });
+    // the body: pink, shaded, with a little of his color in the glow
+    c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(CX, CY + 2, 26, 22, 0, 0, 7); c.fill();
+    const g = c.createRadialGradient(CX - 8, CY - 8, 3, CX, CY + 2, 28);
+    g.addColorStop(0, '#ffe4ec'); g.addColorStop(0.35, '#f7b3c5'); g.addColorStop(0.8, '#e07f99'); g.addColorStop(1, col[2]);
+    c.fillStyle = g; body(); c.fill();
+    // the coin slot on top, with a gold coin that bobs in it
+    const up = calm ? 0 : Math.round((Math.sin(t / 300) + 1) * 1.5) + (mood === 'cheer' ? 2 : 0);
+    c.fillStyle = '#22202e'; c.fillRect(CX - 7, CY - 19, 14, 4);
+    c.fillStyle = '#c08a1e'; c.fillRect(CX - 5, CY - 23 - up, 10, 5); c.fillStyle = '#ffe9a0'; c.fillRect(CX - 4, CY - 23 - up, 8, 2);
+    c.fillStyle = '#22202e'; c.fillRect(CX - 7, CY - 18, 14, 2);
+    // the snout (under his eyes and over his mouth): a soft oval with two nostrils
+    c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(CX, CY + 7, 9, 6, 0, 0, 7); c.fill();
+    c.fillStyle = '#f4a6b8'; c.beginPath(); c.ellipse(CX, CY + 7, 8, 5, 0, 0, 7); c.fill();
+    c.fillStyle = '#9a3e58'; c.fillRect(CX - 4, CY + 6, 2, 3); c.fillRect(CX + 2, CY + 6, 2, 3);
+  }
   /* draw him into c (a 96 × 96 canvas): kind = gold / green / blue / red, mood = null / talk / spin / droop / cheer */
   function draw(c, t, o = {}) {
     const col = COL[o.kind] || COL.gold, calm = WW.calm, mood = o.mood;
@@ -88,6 +116,7 @@
     wing(c, -1, flap, col, t); wing(c, 1, flap, col, t);
     if (WW.COURSE && WW.COURSE.guide === 'hourglass') hourglass(c, t, col, calm, mood); // Timewalker's guide, Tock
     else if (WW.COURSE && WW.COURSE.guide === 'bell') bell(c, t, col, calm, mood); // Civicwalker's guide, Liberty
+    else if (WW.COURSE && WW.COURSE.guide === 'pig') pig(c, t, col, calm, mood); // Coinwalker's guide, Copper
     else {
       // the body: a glowing sphere with a brass rim
       const R = 20;
@@ -120,8 +149,9 @@
     c.fillStyle = 'rgba(255,120,120,.45)'; c.fillRect(CX - 13, CY - 1, 4, 2); c.fillRect(CX + 9, CY - 1, 4, 2);
     const open = talk && !calm ? Math.abs(Math.sin(t / 85)) * 3 : 0;
     c.fillStyle = '#22202e';
-    if (droop) { c.fillRect(CX - 3, CY + 1, 6, 1); c.fillRect(CX - 4, CY + 2, 1, 1); c.fillRect(CX + 3, CY + 2, 1, 1); }
-    else { c.beginPath(); c.ellipse(CX, CY, 3.5, 1 + open, 0, 0, Math.PI); c.fill(); if (open > 1) { c.fillStyle = '#e06a6a'; c.fillRect(CX - 1, CY + 1, 2, 1); } }
+    const MY = WW.COURSE && WW.COURSE.guide === 'pig' ? CY + 15 : CY; // Copper's mouth sits under his snout
+    if (droop) { c.fillRect(CX - 3, MY + 1, 6, 1); c.fillRect(CX - 4, MY + 2, 1, 1); c.fillRect(CX + 3, MY + 2, 1, 1); }
+    else { c.beginPath(); c.ellipse(CX, MY, 3.5, 1 + open, 0, 0, Math.PI); c.fill(); if (open > 1) { c.fillStyle = '#e06a6a'; c.fillRect(CX - 1, MY + 1, 2, 1); } }
     // the glass shine
     c.fillStyle = 'rgba(255,255,255,.55)'; c.beginPath(); c.ellipse(CX - 9, CY - 11, 5, 3, -0.6, 0, 7); c.fill();
     c.fillStyle = 'rgba(255,255,255,.8)'; c.fillRect(CX - 12, CY - 12, 2, 2);
