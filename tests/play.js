@@ -4,7 +4,8 @@ const { chromium } = require('playwright'); require('./autostep');
 const path = require('path'), fs = require('fs');
 const ROOT = path.join(__dirname, '..');
 const OUT = path.join(ROOT, 'shots', 'play'); fs.mkdirSync(OUT, { recursive: true });
-const GDIR = process.env.GAME || 'game', NAME = require('../tools/course-info.js')(GDIR).name; // GAME=history: Timewalker, GAME=gov: Civicwalker
+const GDIR = process.env.GAME || 'game', NAME = require('../tools/course-info.js')(GDIR).name;
+const CINFO = require('../tools/course-info.js')(GDIR), GNAME = ((CINFO.course && CINFO.course.swaps.en.find(w => w[0] === 'Christopher')) || [0, 'Christopher'])[1], GUIDE = new RegExp(GNAME); // the guide's name (Christopher, Tock, Liberty, Copper) // GAME=history: Timewalker, GAME=gov: Civicwalker
 const all = fs.readdirSync(path.join(ROOT, GDIR, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort().map(f => f.slice(3, 6).replace('-', '.'));
 const ids = process.argv.slice(2).filter(a => !a.startsWith('-')).length ? process.argv.slice(2).filter(a => !a.startsWith('-')) : all;
 const SHOTS = !process.argv.includes('--no-shots');
@@ -91,7 +92,7 @@ const CANVAS = process.argv.includes('--canvas');
       await step('stone waits for talks', async () => {
         await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), ep.challenge.at);
         const t = await page.textContent('#ww-ov');
-        if (!/Christopher|Tock|Liberty/.test(t)) throw new Error('stone opened before talking');
+        if (!GUIDE.test(t)) throw new Error('stone opened before talking');
         await clickGold();
       });
       if (ep.tools) await step('tool bar: axe, sickle, seeds', async () => {
