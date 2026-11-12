@@ -520,6 +520,49 @@ window.WW_COURSE = {
     { id: 'cloak', ep: '6.3', icon: '🧥', name: { en: 'Rain Coat', es: 'Impermeable', fa: 'بارانی' } },
     { id: 'seal', ep: '7.3', icon: '☂️', name: { en: 'Big Umbrella', es: 'Paraguas grande', fa: 'چتر بزرگ' } },
     { id: 'sail', ep: '8.2', icon: '⛵', name: { en: 'Harbor Sail', es: 'Vela del puerto', fa: 'بادبان بندر' } }],
+  // one song for each realm (our own tunes, made in code like the engine's; see game/engine/music.js for how notes are written)
+  songs: {
+    // 1 Market Valley: a busy market-day tune in C
+    realm1: { bpm: 126, lead: 'square',
+      melody: `C5 - E5 G5 A5 - G5 E5 | F5 - A5 - G5 - . . | E5 - G5 C6 B5 - A5 G5 | A5 - - - G5 - . . | C5 - E5 G5 A5 - G5 E5 | F5 - D5 - E5 - C5 - | D5 - F5 - E5 - D5 - | C5 - - - . . . .`,
+      bass: `C3 . G3 . C3 . G3 . | F3 . C4 . F3 . C4 . | C3 . G3 . E3 . G3 . | F3 . C4 . G3 . . . | C3 . G3 . C3 . G3 . | F3 . A3 . C3 . G3 . | G3 . D4 . G2 . D3 . | C3 . G3 . C3 . . .`,
+      drums: 'k . h s k h s h' },
+    // 2 Mint Town: a ticking clockwork tune in G (coins being counted)
+    realm2: { bpm: 112, lead: 'pluck',
+      melody: `G5 D5 G5 B5 A5 - F#5 - | G5 - D5 - B4 - . . | C5 E5 G5 C6 B5 - A5 - | G5 - - - D5 - . . | E5 G5 B5 G5 A5 - F#5 - | G5 B5 D6 B5 C6 - A5 - | B5 - G5 - A5 - F#5 - | G5 - - - . . . .`,
+      bass: `G2 . D3 . G2 . D3 . | G2 . D3 . G2 . D3 . | C3 . G3 . C3 . G3 . | D3 . A3 . D3 . . . | E3 . B3 . D3 . A3 . | G2 . D3 . A2 . E3 . | D3 . A3 . D2 . A2 . | G2 . D3 . G2 . . .`,
+      drums: 'c . c . c . c h' },
+    // 3 Budget Bay: an easy seaside stroll in F
+    realm3: { bpm: 100, lead: 'tri',
+      melody: `F5 - G5 - A5 - C6 - | A5 - - - F5 - . . | G5 - A5 - Bb5 - D6 - | C6 - - - A5 - . . | F5 - A5 - C6 - A5 - | Bb5 - G5 - E5 - G5 - | F5 - E5 - D5 - E5 - | F5 - - - . . . .`,
+      bass: `F2 . C3 . F3 . C3 . | F2 . C3 . A2 . C3 . | Bb2 . F3 . Bb2 . F3 . | C3 . G3 . C3 . . . | F2 . C3 . F3 . C3 . | Bb2 . F3 . C3 . G3 . | Bb2 . F3 . C3 . G2 . | F2 . C3 . F2 . . .`,
+      drums: 'k . h . s . h h' },
+    // 4 Paycheck Port: a cheerful work song in D
+    realm4: { bpm: 120, lead: 'square',
+      melody: `D5 - F#5 - A5 - A5 B5 | A5 - F#5 - D5 - . . | E5 - G5 - B5 - B5 C#6 | B5 - G5 - E5 - . . | F#5 - A5 - D6 - C#6 B5 | A5 - B5 - G5 - E5 - | F#5 - E5 - D5 - C#5 - | D5 - - - . . . .`,
+      bass: `D3 . A3 . D3 . A3 . | D3 . A3 . D3 . A3 . | E3 . B3 . E3 . B3 . | A2 . E3 . A2 . . . | D3 . A3 . B2 . F#3 . | G2 . D3 . A2 . E3 . | D3 . A2 . A2 . E3 . | D3 . A3 . D3 . . .`,
+      drums: 'k . s . k k s .' },
+    // 5 Credit Crossing: a train-crossing shuffle in A minor
+    realm5: { bpm: 132, lead: 'square',
+      melody: `A4 C5 E5 A5 G5 - E5 - | F5 - D5 - E5 - . . | A4 C5 E5 A5 B5 - G#5 - | A5 - - - E5 - . . | F5 A5 C6 A5 G5 - E5 - | F5 - D5 - B4 - D5 - | C5 - B4 - A4 - G#4 - | A4 - - - . . . .`,
+      bass: `A2 E3 A2 E3 A2 E3 A2 E3 | D3 A3 D3 A3 E2 B2 E2 B2 | A2 E3 A2 E3 E2 B2 E2 B2 | A2 E3 A2 E3 A2 . . . | F2 C3 F2 C3 C3 G3 C3 G3 | D3 A3 D3 A3 E2 B2 E2 B2 | A2 E3 A2 E3 E2 B2 E2 B2 | A2 E3 A2 . . . . .`,
+      drums: 'k h s h k h s h' },
+    // 6 Investor Peaks: a climbing mountain tune in E flat
+    realm6: { bpm: 108, lead: 'tri',
+      melody: `Eb5 - G5 - Bb5 - Eb6 - | D6 - Bb5 - G5 - . . | F5 - Ab5 - C6 - F6 - | Eb6 - C6 - Ab5 - . . | G5 - Bb5 - Eb6 - D6 - | C6 - Ab5 - F5 - Ab5 - | G5 - F5 - Eb5 - D5 - | Eb5 - - - . . . .`,
+      bass: `Eb3 . Bb3 . Eb3 . Bb3 . | Eb3 . Bb3 . G3 . Bb3 . | F3 . C4 . F3 . C4 . | Ab2 . Eb3 . Ab2 . . . | Eb3 . Bb3 . G3 . Bb3 . | Ab2 . Eb3 . F3 . C4 . | Bb2 . F3 . Bb2 . F3 . | Eb3 . Bb3 . Eb3 . . .`,
+      drums: 'k . . h s . . h | k . h . s . k .' },
+    // 7 Safe Harbor: a calm lighthouse lullaby in C
+    realm7: { bpm: 84, lead: 'tri',
+      melody: `E5 - - - G5 - - - | F5 - E5 - D5 - - - | C5 - - - E5 - - - | D5 - - - - - . . | E5 - - - A5 - G5 - | F5 - - - E5 - D5 - | C5 - D5 - E5 - D5 - | C5 - - - - - . .`,
+      bass: `C3 . G3 . C3 . G3 . | G2 . D3 . G2 . D3 . | A2 . E3 . A2 . E3 . | G2 . D3 . G2 . . . | C3 . G3 . A2 . E3 . | F2 . C3 . G2 . D3 . | F2 . C3 . G2 . D3 . | C3 . G3 . C3 . . .`,
+      drums: 'k . . . h . . . | k . . . h . . .' },
+    // 8 Future Fields: a hopeful, rising tune in G
+    realm8: { bpm: 116, lead: 'square',
+      melody: `G5 - A5 - B5 - D6 - | E6 - D6 - B5 - . . | C6 - B5 - A5 - G5 - | A5 - - - D5 - . . | G5 - B5 - D6 - G6 - | F#6 - E6 - D6 - B5 - | C6 - B5 - A5 - F#5 - | G5 - - - . . . .`,
+      bass: `G2 . D3 . G2 . D3 . | C3 . G3 . E3 . B3 . | A2 . E3 . C3 . G3 . | D3 . A3 . D3 . . . | G2 . D3 . B2 . F#3 . | E3 . B3 . G2 . D3 . | C3 . G3 . D3 . A3 . | G2 . D3 . G2 . . .`,
+      drums: 'k . s . k . s s' }
+  },
   // the engine's own words, swapped in order (longer ones first)
   swaps: {
     en: [['🧭', '🐷'], ['Christopher', 'Copper'], ['living compass', 'flying piggy bank'], ['compass stone', 'ledger stone'], ['Compass arrow', 'Coin arrow'],

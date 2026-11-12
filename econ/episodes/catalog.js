@@ -344,5 +344,20 @@ window.WW_CATALOG = [
    "fa": "ویلیامزبرگ، روز دروازه‌های باز کالج"
   },
   "sol": "EPF"
+ },
+ {
+  "id": "8.3",
+  "realm": 8,
+  "title": {
+   "en": "Exploring the World of Careers",
+   "es": "Explorar el mundo de las carreras",
+   "fa": "گشت در دنیای مسلک‌ها"
+  },
+  "place": {
+   "en": "Alexandria, job-search day",
+   "es": "Alexandria, día de buscar trabajo",
+   "fa": "الکساندریا، روز کاریابی"
+  },
+  "sol": "EPF"
  }
 ];
