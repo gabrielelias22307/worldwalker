@@ -92,7 +92,7 @@ window.EPISODE = {
       lines: [
         { en: 'I am a nurse. I owe $300 on my [[credit card|credit card]].', es: 'Soy enfermera. Debo $300 en mi [[credit card|tarjeta de crédito]].', fa: 'من نرس هستم. ۳۰۰ دالر روی [[credit card|کارت قرضه‌ام]] قرض دارم.' },
         { en: 'That balance is a [[liability|liability]]. I must pay it back.', es: 'Ese saldo es un [[liability|pasivo]]. Tengo que pagarlo.', fa: 'آن مقدار یک [[liability|بدهی]] است. باید آن را بپردازم.' },
-        { en: 'I pay $100 each month. In 3 months, I will owe $0.', es: 'Pago $100 cada mes. En 3 meses, no deberé nada.', fa: 'هر ماه ۱۰۰ دالر می‌پردازم. در ۳ ماه، هیچ قرض نخواهم داشت.' }
+        { en: 'I pay $100 each month and add no new charges. Soon I will owe $0.', es: 'Pago $100 cada mes y no hago compras nuevas. Pronto no deberé nada.', fa: 'هر ماه ۱۰۰ دالر می‌پردازم و خرید نو نمی‌کنم. زود هیچ قرض نخواهم داشت.' }
       ] }
   ],
 
@@ -257,13 +257,13 @@ window.EPISODE = {
       lines: [
         { en: 'A blue notebook? Yes! The wind took it down the street.', es: '¿Una libreta azul? ¡Sí! El viento se la llevó por la calle.', fa: 'یک کتابچهٔ آبی؟ بله! باد آن را در امتداد سرک برد.' },
         { en: 'It flew south, past the bank, and on toward the bay.', es: 'Voló al sur, pasó el banco y siguió hacia la bahía.', fa: 'به طرف جنوب پرید، از کنار بانک گذشت و به طرف خلیج رفت.' },
-        { en: 'Look at the end of the wooden dock, south-east, over the water.', es: 'Busca al final del muelle de madera, al sureste, sobre el agua.', fa: 'در آخر پایهٔ چوبی، در جنوب شرق، بالای آب ببین.' }
+        { en: 'Look at the end of the wooden dock, south-east, over the water.', es: 'Busca al final del muelle de madera, al sureste, sobre el agua.', fa: 'در آخر اسکلهٔ چوبی، در جنوب شرق، بالای آب ببین.' }
       ]
     },
     action: {
       type: 'find',
       at: [28, 19],
-      hint: { en: 'the end of the wooden dock on the bay, south-east', es: 'el final del muelle de madera en la bahía, al sureste', fa: 'آخر پایهٔ چوبی در خلیج، جنوب شرق' },
+      hint: { en: 'the end of the wooden dock on the bay, south-east', es: 'el final del muelle de madera en la bahía, al sureste', fa: 'آخر اسکلهٔ چوبی در خلیج، جنوب شرق' },
       found: { en: 'Kofi\'s notebook! It says: savings up, loan down, net worth up!', es: '¡La libreta de Kofi! Dice: ahorros arriba, préstamo abajo, patrimonio neto arriba.', fa: 'کتابچهٔ کوفی! نوشته: پس‌انداز بالا، قرض پایین، ارزش خالص بالا!' },
       item: { icon: '📒', name: { en: 'Kofi\'s money notebook', es: 'La libreta de dinero de Kofi', fa: 'کتابچهٔ پول کوفی' } }
     }

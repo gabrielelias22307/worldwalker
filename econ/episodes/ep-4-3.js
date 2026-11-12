@@ -402,7 +402,7 @@ window.EPISODE = {
           { en: 'April 15', es: 'El 15 de abril', fa: '۱۵ اپریل' },
           { en: 'July 4', es: 'El 4 de julio', fa: '۴ جولای' },
           { en: 'January 1', es: 'El 1 de enero', fa: '۱ جنوری' },
-          { en: 'December 25', es: 'El 25 de diciembre', fa: '۲۵ دسامبر' }],
+          { en: 'December 25', es: 'El 25 de diciembre', fa: '۲۵ دسمبر' }],
         answer: 0,
         why: { en: 'Form 1040, the federal tax return, is usually due on April 15.', es: 'El Formulario 1040, la declaración federal, casi siempre vence el 15 de abril.', fa: 'فورمهٔ ۱۰۴۰، اظهارنامهٔ فدرال، معمولاً تا ۱۵ اپریل وقت دارد.' } },
       { q: { en: 'Too much tax was withheld from your pay this year. What do you get?', es: 'Este año te retuvieron demasiado impuesto. ¿Qué recibes?', fa: 'امسال مالیات زیاد از معاشت کم شد. چه می‌گیری؟' },
