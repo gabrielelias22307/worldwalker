@@ -379,7 +379,7 @@ window.EPISODE = {
           { en: 'Argued Brown v. Board in the Supreme Court', es: 'Defendieron el caso Brown en la Corte Suprema', fa: 'از دعوای براون در ستره محکمه دفاع کردند' },
           { en: 'Built the buses that came to the march', es: 'Fabricaron los autobuses que vinieron a la marcha', fa: 'بس‌هایی را ساختند که به راهپیمایی آمد' }],
         answer: 0,
-        why: { en: 'They built a farm workers\' union. From 1965, they led the Delano grape strike and boycott.', es: 'Formaron un sindicato de campesinos. Desde 1965, dirigieron la huelga y el boicot de la uva de Delano.', fa: 'آن‌ها اتحادیهٔ کارگران زراعتی ساختند. از ۱۹۶۵، اعتصاب و تحریم انگور دیلانو را رهبری کردند.' } },
+        why: { en: 'They built a farm workers\' union. In 1965 they joined Filipino workers in the Delano grape strike.', es: 'Formaron un sindicato de campesinos. En 1965 se unieron a trabajadores filipinos en la huelga de la uva de Delano.', fa: 'آن‌ها اتحادیهٔ کارگران زراعتی ساختند. در ۱۹۶۵ با کارگران فلیپینی در اعتصاب انگور دیلانو یکجا شدند.' } },
       { q: { en: 'What did Loving v. Virginia decide in 1967?', es: '¿Qué decidió el caso Loving contra Virginia en 1967?', fa: 'فیصلهٔ لاوینگ علیه ویرجینیا در ۱۹۶۷ چه بود؟' },
         choices: [
           { en: 'States could not ban marriage between races', es: 'Los estados no podían prohibir el matrimonio entre razas', fa: 'ایالت‌ها نمی‌توانستند ازدواج میان نژادها را منع کنند' },
