@@ -94,6 +94,31 @@
     c.fillStyle = '#f4a6b8'; c.beginPath(); c.ellipse(CX, CY + 7, 8, 5, 0, 0, 7); c.fill();
     c.fillStyle = '#9a3e58'; c.fillRect(CX - 4, CY + 6, 2, 3); c.fillRect(CX + 2, CY + 6, 2, 3);
   }
+  /* Beacon (Trailwalker): a little brass lantern, flying. A ring handle and a peaked cap, a warm glass body (his face),
+     four dark frame bars, a candle flame under his mouth that flickers (still with reduced motion), and a brass base */
+  function lantern(c, t, col, calm, mood) {
+    // the ring handle and the peaked cap
+    c.strokeStyle = '#22202e'; c.lineWidth = 4; c.beginPath(); c.arc(CX, CY - 31, 5, 0, 7); c.stroke();
+    c.strokeStyle = '#d9a640'; c.lineWidth = 2; c.beginPath(); c.arc(CX, CY - 31, 5, 0, 7); c.stroke();
+    c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(CX - 20, CY - 18); c.lineTo(CX, CY - 28); c.lineTo(CX + 20, CY - 18); c.closePath(); c.fill();
+    const cap = c.createLinearGradient(0, CY - 27, 0, CY - 18); cap.addColorStop(0, '#ffe9a0'); cap.addColorStop(1, '#a8781e');
+    c.fillStyle = cap; c.beginPath(); c.moveTo(CX - 17, CY - 19); c.lineTo(CX, CY - 26); c.lineTo(CX + 17, CY - 19); c.closePath(); c.fill();
+    // the glass body, glowing warm with a little of his color
+    c.fillStyle = '#22202e'; c.fillRect(CX - 19, CY - 19, 38, 40);
+    const g = c.createRadialGradient(CX, CY + 8, 3, CX, CY, 26);
+    g.addColorStop(0, '#fffbe0'); g.addColorStop(0.35, '#ffd86b'); g.addColorStop(0.8, col[1]); g.addColorStop(1, col[2]);
+    c.fillStyle = g; c.fillRect(CX - 17, CY - 17, 34, 36);
+    // the candle and its flame (under his mouth)
+    c.fillStyle = '#f4ecd8'; c.fillRect(CX - 3, CY + 12, 6, 6);
+    const fl = calm ? 0 : Math.sin(t / 90) * 1.2 + (mood === 'cheer' ? 1 : 0);
+    c.fillStyle = '#ff9a2e'; c.beginPath(); c.ellipse(CX + fl * 0.4, CY + 8, 2.6, 4 + fl * 0.5, 0, 0, 7); c.fill();
+    c.fillStyle = '#fff6c0'; c.beginPath(); c.ellipse(CX + fl * 0.4, CY + 9, 1.2, 2, 0, 0, 7); c.fill();
+    // frame bars at the corners and the brass base
+    c.fillStyle = '#3a3440'; c.fillRect(CX - 17, CY - 17, 3, 36); c.fillRect(CX + 14, CY - 17, 3, 36);
+    c.fillStyle = '#22202e'; c.fillRect(CX - 21, CY + 19, 42, 8);
+    const base = c.createLinearGradient(0, CY + 20, 0, CY + 26); base.addColorStop(0, '#ffe9a0'); base.addColorStop(1, '#8a5a1a');
+    c.fillStyle = base; c.fillRect(CX - 19, CY + 20, 38, 5);
+  }
   /* draw him into c (a 96 × 96 canvas): kind = gold / green / blue / red, mood = null / talk / spin / droop / cheer */
   function draw(c, t, o = {}) {
     const col = COL[o.kind] || COL.gold, calm = WW.calm, mood = o.mood;
@@ -117,6 +142,7 @@
     if (WW.COURSE && WW.COURSE.guide === 'hourglass') hourglass(c, t, col, calm, mood); // Timewalker's guide, Tock
     else if (WW.COURSE && WW.COURSE.guide === 'bell') bell(c, t, col, calm, mood); // Civicwalker's guide, Liberty
     else if (WW.COURSE && WW.COURSE.guide === 'pig') pig(c, t, col, calm, mood); // Coinwalker's guide, Copper
+    else if (WW.COURSE && WW.COURSE.guide === 'lantern') lantern(c, t, col, calm, mood); // Trailwalker's guide, Beacon
     else {
       // the body: a glowing sphere with a brass rim
       const R = 20;

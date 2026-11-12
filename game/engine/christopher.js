@@ -456,15 +456,19 @@
     // body: a small round light with a dark rim, his color, and a compass needle inside
     const BELL = WW.COURSE && WW.COURSE.guide === 'bell'; // Liberty (Civicwalker): a little bronze bell under a yoke
     const PIG = WW.COURSE && WW.COURSE.guide === 'pig'; // Copper (Coinwalker): a round pink piggy bank
-    const R = PIG ? [[-3, 3, -4], [-4, 4, -3], [-5, 5, -2], [-5, 5, -1], [-5, 5, 0], [-5, 5, 1], [-4, 4, 2], [-3, 3, 3]] : BELL ? [[-2, 3, -4], [-3, 3, -3], [-3, 3, -2], [-3, 3, -1], [-4, 4, 0], [-4, 4, 1], [-5, 5, 2], [-6, 6, 3]]
+    const LAN = WW.COURSE && WW.COURSE.guide === 'lantern'; // Beacon (Trailwalker): a little glowing lantern
+    const R = LAN ? [[-3, 3, -4], [-3, 3, -3], [-3, 3, -2], [-3, 3, -1], [-3, 3, 0], [-3, 3, 1], [-3, 3, 2], [-4, 4, 3]] : PIG ? [[-3, 3, -4], [-4, 4, -3], [-5, 5, -2], [-5, 5, -1], [-5, 5, 0], [-5, 5, 1], [-4, 4, 2], [-3, 3, 3]] : BELL ? [[-2, 3, -4], [-3, 3, -3], [-3, 3, -2], [-3, 3, -1], [-4, 4, 0], [-4, 4, 1], [-5, 5, 2], [-6, 6, 3]]
       : [[-1, 1, -4], [-3, 3, -3], [-4, 4, -2], [-4, 4, -1], [-4, 4, 0], [-4, 4, 1], [-3, 3, 2], [-1, 1, 3]];
     c.fillStyle = '#22202e'; R.forEach(([a, b, yy]) => c.fillRect(a - 1, yy - 1, b - a + 2, 3));
-    R.forEach(([a, b, yy]) => { c.fillStyle = PIG ? '#e07f99' : BELL ? '#8a5424' : col[1]; c.fillRect(a, yy, b - a, 1); });
-    R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = PIG ? '#f7b3c5' : BELL ? '#d0954a' : '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
+    R.forEach(([a, b, yy]) => { c.fillStyle = LAN ? '#3a3440' : PIG ? '#e07f99' : BELL ? '#8a5424' : col[1]; c.fillRect(a, yy, b - a, 1); });
+    R.slice(1, -1).forEach(([a, b, yy]) => { c.fillStyle = LAN ? '#ffd86b' : PIG ? '#f7b3c5' : BELL ? '#d0954a' : '#fffbe8'; c.fillRect(a + 1, yy, b - a - 2, 1); });
     // eyes (blink now and then)
     const blink = !calm && (t % 3200) < 120;
     c.fillStyle = '#22202e'; if (droop) { c.fillRect(-2, -1, 1, 1); c.fillRect(1, -1, 1, 1); } else { c.fillRect(-2, -2, 1, blink ? 1 : 2); c.fillRect(1, -2, 1, blink ? 1 : 2); }
-    if (PIG) { // Copper: ears, the coin slot with a coin, the snout, little legs
+    if (LAN) { // Beacon: the cap and ring, the flame, the brass base
+      c.fillStyle = '#22202e'; c.fillRect(-4, -6, 9, 2); c.fillRect(0, -8, 1, 2); c.fillStyle = '#d9a640'; c.fillRect(-3, -6, 7, 1);
+      c.fillStyle = '#ff9a2e'; c.fillRect(0, calm ? 1 : 1 - (Math.floor(t / 150) % 2), 1, 2); c.fillStyle = '#d9a640'; c.fillRect(-4, 4, 9, 1);
+    } else if (PIG) { // Copper: ears, the coin slot with a coin, the snout, little legs
       c.fillStyle = '#22202e'; c.fillRect(-4, -6, 2, 2); c.fillRect(3, -6, 2, 2); c.fillRect(-1, -5, 3, 1);
       c.fillStyle = '#f2c14e'; c.fillRect(0, calm ? -6 : -6 - (Math.floor(t / 400) % 2), 1, 1);
       c.fillStyle = '#c4607c'; c.fillRect(-1, 1, 3, 2); c.fillStyle = '#22202e'; c.fillRect(-1, 2, 1, 1); c.fillRect(1, 2, 1, 1);
