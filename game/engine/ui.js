@@ -30,6 +30,7 @@
       ov.appendChild(box);
       opts.render(box, h);
       ov.scrollTop = 0;
+      { const fbs = box.querySelectorAll('.fb'); const fb = fbs[fbs.length - 1]; if (fb && fb.scrollIntoView) try { fb.scrollIntoView({ block: 'nearest' }); } catch (e) { } } // the right/wrong message is never below the screen
       // keyboard players: the main button (or the first answer) has focus, so Enter or Space presses it
       const f = box.querySelector('.choices button:not([disabled]), .pbtn.gold:not([disabled])');
       const main = [...box.querySelectorAll('.pbtn.gold:not([disabled])')].pop();
@@ -50,6 +51,7 @@
     if (top) top.render();
     else { $('ww-ov').className = 'ov hidden'; $('ww-ov').innerHTML = ''; $('ww-screen').classList.remove('ovopen'); { const fr = document.querySelector('.ww-frame'); if (fr) fr.classList.remove('ovopen'); } WW.paused = false; hidePop(); }
     if (h.opts.onClose) h.opts.onClose();
+    if (!ui.stack.length && WW.game) WW.game.graceUntil = performance.now() + 2000; // a moment to look around before the Grump's helpers move again
     setTimeout(pumpToast, 250);
   };
   ui.top = () => ui.stack[ui.stack.length - 1];

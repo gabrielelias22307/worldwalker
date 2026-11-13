@@ -76,7 +76,8 @@
       // the arrow of the screen the path goes to next (not the straight line: the path may go around a lake first)
       const out = path.find(([x, y]) => g.screenOf(x, y).join() !== [sx, sy].join()), [ox, oy] = out ? g.screenOf(out[0], out[1]) : [gx, gy];
       const sd = dir8(sx, sy, ox, oy), far = ox !== gx || oy !== gy;
-      return (s || T('goDir').replace('{d}', w(L.d1))) + ' ' + T(far ? 'goFar' : 'goScreen').replace('{a}', w(sd).replace(/^.*\s/, '')); // in the order you walk it
+      let hops = 0; path.reduce((prev, [x, y]) => { const k = g.screenOf(x, y).join(); if (k !== prev) hops++; return k; }, [sx, sy].join()); // how many screens the path really crosses
+      return (s || T('goDir').replace('{d}', w(L.d1))) + ' ' + T(far ? 'goFar' : 'goScreen').replace('{a}', w(sd).replace(/^.*\s/, '')).replace('{n}', num(Math.max(2, hops))); // in the order you walk it
     }
     if (s) return s + ' ' + (L.n === 1 ? T('stepOne') : T('stepsN').replace('{n}', num(L.n)));
     return (L.n === 1 ? T('goStep1') : T('goSteps').replace('{n}', num(L.n))).replace('{d}', w(L.d1));

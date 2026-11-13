@@ -113,7 +113,7 @@
       if (r.seen.size < ch.options.length) {
         return WW.ui.message(`🚩 ${WW.plain(o.name)}`, `${o.desc ? L(o.desc) + ' ' : ''}${T('w_siteMore').replace('{n}', ch.options.length - r.seen.size)}`);
       }
-      return WW.challenge(Object.assign({}, ch, { type: 'claim', pickAt: e.i }));
+      return WW.challenge(Object.assign({}, ch, { type: 'claim', pickAt: null })); // nothing chosen yet: the student picks the claim
     }
     if (e.kind === 'survey') {
       const row = ch.table.rows[e.i]; r.seen.add(e.i); WW.sfx('blip');

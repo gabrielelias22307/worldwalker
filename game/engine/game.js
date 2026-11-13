@@ -173,7 +173,7 @@
     r.hearts--; r.heartsLost++; shakeT = performance.now();
     if (r.hearts <= 0) {
       r.hearts = WW.heartsMax();
-      if (!inBoss) { player.x = WW.ep.start[0]; player.y = WW.ep.start[1]; pip.x = player.x; pip.y = player.y; }
+      if (!inBoss) { G.graceUntil = performance.now() + 3000; ents.forEach(e => { if (e.kind === 'smudge') { e.x = e.hx; e.y = e.hy; } }); } // rescued where you stand: the helpers go back home and wait a moment
       WW.toast(T('rescued'), '#2f7fd1');
     } else if (!inBoss) WW.toast(T('ouch'), '#b0392b');
     WW.ui.hud();
@@ -340,7 +340,7 @@
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
-    const sm = !G.foesAsleep() && ents.find(e => e.kind === 'smudge' && e.visible !== false && e.x === player.x && e.y === player.y);
+    const sm = !G.foesHold() && ents.find(e => e.kind === 'smudge' && e.visible !== false && e.x === player.x && e.y === player.y);
     if (sm) touchSmudge(sm);
   }
   function touchSmudge(sm) {
@@ -403,7 +403,8 @@
     if (WW.tools.on()) {
       const fit = WW.tools.fitTool(tx, ty, e), sel = WW.tools.selected();
       // the right tool for what you face: the axe for a small tree, the sickle for tall grass or a crop, seeds for soil
-      if (fit && fit !== sel && ['star', 'axe', 'sickle'].includes(sel) && !foeAhead()) WW.tools.pick(fit, true);
+      if (foeAhead() && !G.foesAsleep()) return throwStar(); // a helper in the line of fire: Space throws a star, whatever tool is held
+      if (fit && fit !== sel && ['star', 'axe', 'sickle'].includes(sel)) WW.tools.pick(fit, true);
       if (WW.tools.act(tx, ty, e)) return;
     }
     throwStar();
@@ -533,7 +534,7 @@
 
   /* ---------------- smudges wander ---------------- */
   function moveSmudges(now) {
-    if (WW.paused || trans || G.noSmudges || G.foesAsleep()) return;
+    if (WW.paused || trans || G.noSmudges || G.foesHold()) return;
     const [psx, psy] = screenOf(player.x, player.y);
     const calmer = WW.tier('hei') ? 1.6 : 1; // People & land power: calmer bad guys
     ents.forEach(e => {
@@ -717,7 +718,9 @@
   /* PLAYTEST-3: one clear "go here": a gold arrow bobs over the goal right now (or waits at the edge of the screen, pointing) */
   /* A calm start (all games): the Grump's helpers sleep until the student has talked to the first person, so nobody is
      chased the moment an episode opens. Then they wake (with a short pause before any of them charges) and the guide says so. */
-  G.foesAsleep = () => !!(WW.run && WW.run.talked.size === 0 && ents.some(e => e.kind === 'smudge'));
+  G.foesAsleep = () => !!(WW.run && (WW.run.talked.size === 0 || WW.run.challengeDone) && ents.some(e => e.kind === 'smudge')); // asleep before the first talk, and again once the stone is done (the Grump trial is the real fight)
+  G.graceUntil = 0;
+  G.foesHold = () => G.foesAsleep() || performance.now() < G.graceUntil || !!(WW.chris && WW.chris.showing && WW.chris.showing() && !WW.chris.inCorner()); // still while the guide talks over the map and for a moment after any panel
   function wakeFoes() {
     const now = performance.now();
     ents.forEach(e => { if (e.kind === 'smudge') { e.next = now + 1500; e.nextRage = now + 8000 + Math.random() * 4000; WW.fx.burst(e.x, e.y, 'purple'); } });

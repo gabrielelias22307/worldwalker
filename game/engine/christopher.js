@@ -47,6 +47,8 @@
   /* say something over his head. buttons: [{ label, kind, fn }] */
   /* opt.at: [x, y] — the place he is talking about; the bubble sits on the other side so it never covers it */
   let aim = null;
+  // a line written as 'Tock: "…"' already has his name above it: show only the words (no "Tock: "Tock…")
+  const nameless = t => { const m = /^\s*([^:"«»]{2,24}):\s*["«](.*)["»]\s*$/s.exec(String(t)); return m && m[1].trim() === T('chrisName').trim() ? m[2] : t; };
   C.say = (text, buttons, opt) => {
     if (!(opt && opt.chain)) chainQ = []; // a new message: any waiting second half is dropped
     if (C.scene && !(opt && opt.scene)) { C.scene = false; if (meetOpt.meet !== false) { WW.save.metChris = true; WW.store(); } after = null; } // something real happens: his welcome gives way
@@ -54,7 +56,7 @@
     const b = el(); b.setAttribute('dir', WW.dir());
     b.classList.toggle('meet', C.scene);
     b.dataset.kind = (opt && opt.kind) || (aim && C.kindAt ? C.kindAt(aim) : (C.color ? C.color() : 'gold'));
-    b.innerHTML = `<div class="cb-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(words(text))}</div>`;
+    b.innerHTML = `<div class="cb-name">${WW.GICON} ${esc(T('chrisName'))}</div><div class="cb-say">${WW.rich(nameless(words(text)))}</div>`;
     { const sp = WW.speakBtn && WW.speakBtn(() => b.querySelector('.cb-say').innerText); if (sp) b.querySelector('.cb-name').appendChild(sp); }
     if (buttons && buttons.length) {
       const row = document.createElement('div'); row.className = 'cb-acts';

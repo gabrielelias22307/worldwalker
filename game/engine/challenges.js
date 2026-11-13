@@ -183,7 +183,7 @@
               const b = document.createElement('button'); b.className = 'reason' + (why[k.id] === ri ? ' sel' : ''); b.dataset.r = ri;
               if (checked && why[k.id] === ri) b.classList.add(r.fits.includes(pick) ? 'right' : 'wrong');
               b.innerHTML = WW.rich(r.t);
-              b.onclick = () => { if (done) return; why[k.id] = ri; checked = false; WW.sfx('blip'); h.render(); };
+              b.onclick = () => { if (done) return; why[k.id] = why[k.id] === ri ? null : ri; checked = false; WW.sfx('blip'); h.render(); }; // tap again to un-pick
               grp.appendChild(b);
             });
             box.appendChild(grp);
