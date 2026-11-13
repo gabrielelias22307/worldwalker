@@ -316,7 +316,7 @@
     if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
     if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
     if (e.kind === 'npc') {
-      WW.ui.talk(e.ref, () => { r.talked.add(e.ref.id); WW.ui.quest(); });
+      WW.ui.talk(e.ref, () => { const was = G.foesAsleep(); r.talked.add(e.ref.id); WW.ui.quest(); if (was && !G.foesAsleep()) wakeFoes(); });
     } else if (e.kind === 'sign') {
       WW.ui.message('🪧', e.ref.text);
     } else if (e.kind === 'stone') {
@@ -340,7 +340,7 @@
       WW.toast(`📄 ${esc(T('scraps'))} ${WW.run.scraps.size}/${WW.ep.scraps.length} · +3 ●`, '#c08a1e');
       WW.ui.hud(); WW.ui.quest();
     }
-    const sm = ents.find(e => e.kind === 'smudge' && e.visible !== false && e.x === player.x && e.y === player.y);
+    const sm = !G.foesAsleep() && ents.find(e => e.kind === 'smudge' && e.visible !== false && e.x === player.x && e.y === player.y);
     if (sm) touchSmudge(sm);
   }
   function touchSmudge(sm) {
@@ -533,7 +533,7 @@
 
   /* ---------------- smudges wander ---------------- */
   function moveSmudges(now) {
-    if (WW.paused || trans || G.noSmudges) return;
+    if (WW.paused || trans || G.noSmudges || G.foesAsleep()) return;
     const [psx, psy] = screenOf(player.x, player.y);
     const calmer = WW.tier('hei') ? 1.6 : 1; // People & land power: calmer bad guys
     ents.forEach(e => {
@@ -614,7 +614,9 @@
       if (e.kind === 'smudge') {
         const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
         if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
-        WW.drawFoe(c, e, px(e) + j, py(e), t, rage);
+        const zz = G.foesAsleep(); if (zz) c.globalAlpha = 0.6;
+        WW.drawFoe(c, e, px(e) + j, py(e), zz ? 0 : t, rage);
+        if (zz) { c.globalAlpha = 1; const k = Math.floor(t / 600) % 3; c.fillStyle = '#fffbe8'; c.font = 'bold 8px monospace'; c.fillText('z', px(e) + 12, py(e) - 2 - k * 3); if (k > 0) c.fillText('z', px(e) + 15, py(e) - 7 - k * 2); }
       }
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;
@@ -713,6 +715,14 @@
     c.restore();
   }
   /* PLAYTEST-3: one clear "go here": a gold arrow bobs over the goal right now (or waits at the edge of the screen, pointing) */
+  /* A calm start (all games): the Grump's helpers sleep until the student has talked to the first person, so nobody is
+     chased the moment an episode opens. Then they wake (with a short pause before any of them charges) and the guide says so. */
+  G.foesAsleep = () => !!(WW.run && WW.run.talked.size === 0 && ents.some(e => e.kind === 'smudge'));
+  function wakeFoes() {
+    const now = performance.now();
+    ents.forEach(e => { if (e.kind === 'smudge') { e.next = now + 1500; e.nextRage = now + 8000 + Math.random() * 4000; WW.fx.burst(e.x, e.y, 'purple'); } });
+    setTimeout(() => WW.chris.say(T('foesWake')), 600);
+  }
   G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
   function drawGoal(c, sx, sy, hx, hy, now) {
     if (WW.paused || (WW.chris && WW.chris.scene)) return;
