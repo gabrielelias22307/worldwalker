@@ -403,7 +403,7 @@
     if (WW.tools.on()) {
       const fit = WW.tools.fitTool(tx, ty, e), sel = WW.tools.selected();
       // the right tool for what you face: the axe for a small tree, the sickle for tall grass or a crop, seeds for soil
-      if (foeAhead() && !G.foesAsleep()) return throwStar(); // a helper in the line of fire: Space throws a star, whatever tool is held
+      if (sel !== 'sign' && foeAhead() && !G.foesAsleep()) return throwStar(); // a helper in the line of fire: Space throws a star, whatever farm tool is held (a card or sign in hand is still placed)
       if (fit && fit !== sel && ['star', 'axe', 'sickle'].includes(sel)) WW.tools.pick(fit, true);
       if (WW.tools.act(tx, ty, e)) return;
     }

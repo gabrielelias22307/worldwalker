@@ -38,6 +38,7 @@ let failed = 0; const ok = (c, m) => { console.log((c ? '✓ ' : '✗ ') + m); i
   await p.keyboard.press('1');
   const shot = await p.evaluate(() => {
     const s = WW.dbg.ents.find(e => e.kind === 'smudge'); const t = [11, 13]; // a tree at (11,13) with open ground west of it
+    WW.run.talked.add('rosa'); // the helpers are awake once the student has talked to someone
     WW.dbg.faceFrom(13, 13, []); s.visible = true; s.stunUntil = 0; s.x = 12; s.y = 13; s.next = 1e15; s.home = WW.game.screenOf(12, 13);
     WW.dbg.teleport(14, 13); WW.dbg.face('left'); return [WW.game.tileAt(11, 13), WW.game.tileAt(13, 13)];
   });

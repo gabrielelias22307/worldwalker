@@ -518,6 +518,9 @@ const CANVAS = process.argv.includes('--canvas');
             await clickGold(); await page.waitForFunction(() => !WW.paused);
           }
           await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), c.options[o].at);
+          await page.waitForSelector('.chov .opt');
+          if (await page.locator('#ww-ov .opt.sel').count()) throw new Error('a claim was chosen before the student picked one');
+          await page.click(`#ww-ov .opt[data-i="${o}"]`);
           await page.waitForSelector('.chov .reason');
           for (const k of kinds) { const ri = c.reasons.findIndex(r => r.kind === k && r.fits.includes(o)); await page.click(`#ww-ov .reason[data-r="${ri}"]`); }
           await page.locator('#ww-ov .pbtn.gold', { hasText: /check|revis|بررسی/i }).click();
