@@ -259,7 +259,8 @@ window.EPISODE = {
         role: { en: 'Park ranger', es: 'Guardaparques', fa: 'محافظ پارک' },
         look: { skin: 0, hair: '#c08040', shirt: '#7a8a4a', pants: '#5a4630', hat: '#6a5a30', style: 'bun' },
         lines: [
-          { en: 'Three papers blew across the lawn. They landed all around here!', es: 'Tres papeles volaron por el césped. ¡Cayeron por todos lados aquí!', fa: 'سه کاغذ از روی چمن پرواز کرد. همه طرف اینجا افتادند!' }
+          { en: 'Three papers blew across the lawn. They landed all around here!', es: 'Tres papeles volaron por el césped. ¡Cayeron por todos lados aquí!', fa: 'سه کاغذ از روی چمن پرواز کرد. همه طرف اینجا افتادند!' },
+          { en: 'One paper names a new judge. The Senate must confirm that pick.', es: 'Un papel nombra a un juez nuevo. El Senado debe confirmar esa elección.', fa: 'یک کاغذ یک قاضی نو را نام می‌برد. سنا باید این انتخاب را تأیید کند.' }
         ]
       },
       q: { en: 'The signing needs a paper the President finishes alone, with no vote from Congress or the Senate.', es: 'La firma necesita un papel que el presidente termina solo, sin voto del Congreso ni del Senado.', fa: 'برای امضا کاغذی لازم است که رئیس جمهور تنها تمامش کند، بدون رأی کانگرس یا سنا.' },

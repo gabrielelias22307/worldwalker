@@ -348,7 +348,7 @@ window.EPISODE = {
           { en: 'A mixed economy', es: 'Una economía mixta', fa: 'اقتصاد مختلط' },
           { en: 'A command economy', es: 'Una economía dirigida', fa: 'اقتصاد دستوری' },
           { en: 'A traditional economy', es: 'Una economía tradicional', fa: 'اقتصاد سنتی' },
-          { en: 'A pure barter economy', es: 'Una economía solo de trueque', fa: 'اقتصاد فقط تبادلهٔ جنس' }],
+          { en: 'A royal economy', es: 'Una economía del rey', fa: 'اقتصاد شاهی' }],
         answer: 0,
         why: { en: 'The US has a mostly free market, plus some government rules. That is a mixed economy.', es: 'EE. UU. tiene un mercado casi todo libre, más algunas reglas del gobierno. Es una economía mixta.', fa: 'امریکا بازار بیشتر آزاد دارد، همراه با بعضی قانون‌های حکومت. این اقتصاد مختلط است.' } },
       { q: { en: 'In a market economy, who decides what to make and sell?', es: 'En una economía de mercado, ¿quién decide qué hacer y vender?', fa: 'در اقتصاد بازار، کی تصمیم می‌گیرد چه چیز ساخته و فروخته شود؟' },
@@ -401,12 +401,12 @@ window.EPISODE = {
         why: { en: 'Roads, schools and defense serve everyone. Taxes pay for these public goods.', es: 'Las carreteras, las escuelas y la defensa sirven a todos. Los impuestos pagan estos bienes públicos.', fa: 'سرک‌ها، مکتب‌ها و دفاع به همه خدمت می‌کنند. مالیه پول این خدمات عامه را می‌دهد.' } },
       { q: { en: 'Which is a big part of Virginia\'s economy?', es: '¿Cuál es una parte grande de la economía de Virginia?', fa: 'کدام یکی بخش بزرگ اقتصاد ویرجینیا است؟' },
         choices: [
-          { en: 'The port and shipbuilding', es: 'El puerto y la construcción de barcos', fa: 'بندر و کشتی‌سازی' },
+          { en: 'The port and its trade', es: 'El puerto y su comercio', fa: 'بندر و تجارت آن' },
           { en: 'Gold and silver mines', es: 'Minas de oro y plata', fa: 'معدن‌های طلا و نقره' },
           { en: 'Big banana farms', es: 'Grandes granjas de bananas', fa: 'کشتزارهای بزرگ کیله' },
           { en: 'Oil wells in the desert', es: 'Pozos de petróleo en el desierto', fa: 'چاه‌های نفت در بیابان' }],
         answer: 0,
-        why: { en: 'Virginia has the port, ships and shipbuilding, the military, farms and technology. It trades with many countries.', es: 'Virginia tiene el puerto, barcos y astilleros, las fuerzas armadas, granjas y tecnología. Comercia con muchos países.', fa: 'ویرجینیا بندر، کشتی و کشتی‌سازی، نیروهای نظامی، کشتزار و تکنالوژی دارد. با کشورهای زیاد تجارت می‌کند.' } }
+        why: { en: 'The Port of Virginia sends Virginia goods, like soybeans, to other countries.', es: 'El Puerto de Virginia envía productos de Virginia, como la soya, a otros países.', fa: 'بندر ویرجینیا جنس‌های ویرجینیا، مثل سویا، را به کشورهای دیگر می‌فرستد.' } }
     ]
   },
 

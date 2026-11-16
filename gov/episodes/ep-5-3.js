@@ -147,7 +147,7 @@ window.EPISODE = {
         { en: 'This is a Senate hearing room. Senators sit up on the dais.', es: 'Esta es una sala de audiencias del Senado. Los senadores se sientan en el estrado.', fa: 'این تالار جلسهٔ سنا است. سناتورها بالای سکو می‌نشینند.' },
         { en: 'Congress checks the work of the executive branch. That job is called [[oversight|oversight]].', es: 'El Congreso revisa el trabajo del poder ejecutivo. Ese trabajo se llama [[oversight|supervisión]].', fa: 'کانگرس کار قوهٔ اجرائیه را بررسی می‌کند. نام این کار [[oversight|نظارت]] است.' },
         { en: 'Committees hold [[hearing|hearings]] and investigations. They can call [[witness|witnesses]] to answer.', es: 'Los comités hacen [[hearing|audiencias]] e investigaciones. Pueden llamar [[witness|testigos]] para responder.', fa: 'کمیته‌ها [[hearing|جلسهٔ شنیدن]] و تحقیق می‌کنند. می‌توانند [[witness|شاهدان]] را برای جواب دادن بخواهند.' },
-        { en: 'Reporters sit at the press table, so the public learns what happens.', es: 'Los periodistas se sientan en la mesa de prensa, así el público sabe qué pasa.', fa: 'خبرنگاران پشت میز رسانه‌ها می‌نشینند، تا مردم بدانند چه می‌شود.' }
+        { en: 'Here the Senate also confirms judges, and approves treaties by a two-thirds vote.', es: 'Aquí el Senado también confirma jueces y aprueba tratados con dos tercios de los votos.', fa: 'این‌جا سنا قاضی‌ها را هم تأیید می‌کند، و معاهده‌ها را با رأی دو سوم تأیید می‌کند.' }
       ],
       ask: {
         stat: 'pla',
