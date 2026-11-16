@@ -147,7 +147,7 @@ window.EPISODE = {
       lines: [
         { en: 'Bonjour! I am a countess. My family must live here, at the king\'s court.', es: '¡Bonjour! Soy condesa. Mi familia debe vivir aquí, en la corte del rey.', fa: 'بونژور! من کنتس هستم. خانواده‌ام باید اینجا، در دربار شاه، زندگی کند.' },
         { en: 'Each morning, [[noble|nobles]] watch the king wake up. We even hand him his shirt!', es: 'Cada mañana, los [[noble|nobles]] vemos al rey despertar. ¡Hasta le damos su camisa!', fa: 'هر صبح، [[noble|اشراف]] بیدار شدن شاه را تماشا می‌کنند. حتی پیراهنش را به دستش می‌دهیم!' },
-        { en: 'If we leave, we lose his favor. So we stay, and we obey.', es: 'Si nos vamos, perdemos su favor. Así que nos quedamos y obedecemos.', fa: 'اگر برویم، لطف او را از دست می‌دهیم. پس می‌مانیم و اطاعت می‌کنیم.' }
+        { en: 'The king says his power comes from God: [[divine right|divine right]]. So we obey.', es: 'El rey dice que su poder viene de Dios: el [[divine right|derecho divino]]. Así que obedecemos.', fa: 'شاه می‌گوید قدرتش از خداست: [[divine right|حق الهی]]. پس اطاعت می‌کنیم.' }
       ],
       ask: {
         stat: 'loc',
@@ -305,7 +305,7 @@ window.EPISODE = {
         why: { en: 'This is about Louis XIV at Versailles.', es: 'Esto es sobre Luis XIV en Versalles.', fa: 'این دربارهٔ لویی چهاردهم در ورسای است.' } },
       { kind: 'deed', fits: [0], t: { en: 'He forced Protestants to become Catholic or leave the country', es: 'Obligó a los protestantes a hacerse católicos o irse del país', fa: 'پروتستان‌ها را مجبور کرد کاتولیک شوند یا کشور را ترک کنند' },
         why: { en: 'This is about Louis XIV. In 1685 he ended the Edict of Nantes.', es: 'Esto es sobre Luis XIV. En 1685 acabó con el Edicto de Nantes.', fa: 'این دربارهٔ لویی چهاردهم است. او در ۱۶۸۵ فرمان نانت را لغو کرد.' } },
-      { kind: 'deed', fits: [1], t: { en: 'He built a new capital, St. Petersburg, and made nobles cut their beards', es: 'Construyó una capital nueva, San Petersburgo, y obligó a los nobles a cortarse la barba', fa: 'پایتخت نو، سن پترزبورگ، را ساخت و اشراف را مجبور کرد ریش خود را بتراشند' },
+      { kind: 'deed', fits: [1], t: { en: 'He made Russia more like western Europe and built St. Petersburg', es: 'Hizo que Rusia se pareciera a Europa occidental y construyó San Petersburgo', fa: 'روسیه را بیشتر مثل غرب اروپا ساخت و سن پترزبورگ را بنا کرد' },
         why: { en: 'This is about Peter the Great. He wanted Russia to look like western Europe.', es: 'Esto es sobre Pedro el Grande. Quería que Rusia se pareciera a Europa occidental.', fa: 'این دربارهٔ پطر کبیر است. او می‌خواست روسیه مثل غرب اروپا شود.' } },
       { kind: 'deed', fits: [2], t: { en: 'They needed Parliament\'s vote to raise taxes or keep an army', es: 'Necesitaban el voto del Parlamento para subir impuestos o tener un ejército', fa: 'برای بالا بردن مالیه یا داشتن لشکر به رأی پارلمان نیاز داشتند' },
         why: { en: 'This is about William and Mary. The Bill of Rights said so.', es: 'Esto es sobre Guillermo y María. Así lo decía la Declaración de Derechos.', fa: 'این دربارهٔ ویلیام و مری است. منشور حقوق چنین می‌گفت.' } },

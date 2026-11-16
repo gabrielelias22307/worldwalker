@@ -290,12 +290,12 @@ window.EPISODE = {
         why: { en: '1690 is the smallest year, so Locke wrote first. The others read his ideas.', es: '1690 es el año más antiguo, así que Locke escribió primero. Los otros leyeron sus ideas.', fa: '۱۶۹۰ کوچک‌ترین سال است، پس لاک اول نوشت. دیگران اندیشه‌های او را خواندند.' } },
       { q: { en: 'Rousseau wrote that people are "in chains." What did he mean?', es: 'Rousseau escribió que la gente está "encadenada". ¿Qué quiso decir?', fa: 'روسو نوشت مردم «در زنجیر» هستند. منظورش چه بود؟' },
         choices: [{ en: 'Unfair rulers and laws took their freedom', es: 'Gobernantes y leyes injustas les quitaron la libertad', fa: 'حاکمان و قانون‌های ناعادلانه آزادی‌شان را گرفتند' }, { en: 'Everyone in Paris wore real iron chains', es: 'Todos en París llevaban cadenas de hierro de verdad', fa: 'همه در پاریس زنجیر آهنی واقعی داشتند' }, { en: 'People wanted kings more than freedom', es: 'La gente quería reyes más que libertad', fa: 'مردم پادشاه را بیشتر از آزادی می‌خواستند' }], answer: 0,
-        why: { en: 'People are born free, Rousseau said, but unfair governments hold them down.', es: 'Rousseau dijo que nacemos libres, pero los gobiernos injustos nos oprimen.', fa: 'روسو گفت انسان آزاد به دنیا می‌آید، اما حکومت‌های ناعادلانه او را در فشار نگه می‌دارند.' } },
+        why: { en: 'Rousseau meant unfair rulers take freedom. His [[social contract|social contract]]: people agree to a fair government.', es: 'Rousseau quería decir que los gobernantes injustos quitan la libertad. Su [[social contract|contrato social]]: la gente acepta un gobierno justo.', fa: 'منظور روسو این بود که حاکمان ناعادل آزادی را می‌گیرند. [[social contract|قرارداد اجتماعی]] او: مردم یک حکومت عادل را قبول می‌کنند.' } },
       { q: { en: 'Voltaire\'s line is about which freedom?', es: '¿De qué libertad habla la frase de Voltaire?', fa: 'حرف ولتر دربارهٔ کدام آزادی است؟' },
         choices: [{ en: 'Freedom of religion', es: 'La libertad de religión', fa: 'آزادی دین' }, { en: 'Freedom to own land', es: 'La libertad de tener tierras', fa: 'آزادی داشتن زمین' }, { en: 'Freedom from taxes', es: 'La libertad de no pagar impuestos', fa: 'آزادی از مالیات' }], answer: 0,
         why: { en: 'Voltaire said no one should be punished for their religion. He also fought for free speech.', es: 'Voltaire dijo que nadie debe ser castigado por su religión. También luchó por la libertad de expresión.', fa: 'ولتر گفت هیچ کس نباید به خاطر دینش جزا ببیند. او برای آزادی بیان هم مبارزه کرد.' } }
     ],
-    success: { en: 'The thinkers\' words are clear again! Soon their ideas will change the world.', es: '¡Las palabras de los pensadores se ven otra vez! Pronto sus ideas cambiarán el mundo.', fa: 'حرف‌های اندیشمندان دوباره روشن شد! به زودی اندیشه‌هایشان جهان را تغییر می‌دهد.' }
+    success: { en: 'The thinkers\' words are clear! Their ideas will lead to revolutions in America and France.', es: '¡Las palabras de los pensadores se ven otra vez! Sus ideas llevarán a revoluciones en Norteamérica y en Francia.', fa: 'حرف‌های اندیشمندان دوباره روشن شد! اندیشه‌هایشان به انقلاب‌هایی در امریکا و فرانسه می‌انجامد.' }
   },
 
   boss: {
@@ -347,22 +347,22 @@ window.EPISODE = {
           { en: 'A promise to never change any old law', es: 'Una promesa de nunca cambiar ninguna ley vieja', fa: 'وعده‌ای که هیچ قانون کهنه هرگز تغییر نکند' }],
         answer: 0,
         why: { en: 'Rousseau said power comes from the people. A government must serve the people who agree to it.', es: 'Rousseau dijo que el poder viene del pueblo. Un gobierno debe servir a la gente que lo acepta.', fa: 'روسو گفت قدرت از مردم می‌آید. حکومت باید به مردمی خدمت کند که آن را قبول کرده‌اند.' } },
-      { q: { en: 'Where did people in Paris meet to talk about new ideas?', es: '¿Dónde se reunía la gente de París para hablar de ideas nuevas?', fa: 'مردم پاریس برای گپ زدن دربارهٔ اندیشه‌های نو کجا جمع می‌شدند؟' },
+      { q: { en: 'Why did people in Paris read some books in secret?', es: '¿Por qué la gente de París leía algunos libros en secreto?', fa: 'چرا مردم پاریس بعضی کتاب‌ها را پنهانی می‌خواندند؟' },
         choices: [
-          { en: 'In salons and cafés', es: 'En salones y cafés', fa: 'در محفل‌ها و قهوه‌خانه‌ها' },
-          { en: 'In the king\'s prisons', es: 'En las cárceles del rey', fa: 'در زندان‌های پادشاه' },
-          { en: 'On ships at sea', es: 'En barcos en el mar', fa: 'در کشتی‌ها روی بحر' },
-          { en: 'Inside army forts', es: 'Dentro de fuertes del ejército', fa: 'داخل قلعه‌های عسکری' }],
+          { en: 'The king\'s censors banned them', es: 'Los censores del rey los prohibían', fa: 'سانسورچی‌های پادشاه آن‌ها را منع کرده بودند' },
+          { en: 'The books were too heavy to carry', es: 'Los libros pesaban demasiado', fa: 'کتاب‌ها برای بردن خیلی سنگین بودند' },
+          { en: 'Reading was only allowed at night', es: 'Solo se podía leer de noche', fa: 'خواندن فقط در شب اجازه بود' },
+          { en: 'The books were gifts from the king', es: 'Los libros eran regalos del rey', fa: 'کتاب‌ها تحفهٔ پادشاه بودند' }],
         answer: 0,
-        why: { en: 'Writers met in salons, often led by women, and in cafés. They argued about books and ideas.', es: 'Los escritores se reunían en salones, muchas veces dirigidos por mujeres, y en cafés. Discutían libros e ideas.', fa: 'نویسندگان در محفل‌ها، که اکثراً زنان اداره می‌کردند، و در قهوه‌خانه‌ها جمع می‌شدند و دربارهٔ کتاب بحث می‌کردند.' } },
-      { q: { en: 'Which writer said girls deserve the same education as boys?', es: '¿Qué escritora dijo que las niñas merecen la misma educación que los niños?', fa: 'کدام نویسنده گفت دختران سزاوار همان آموزشی هستند که پسران دارند؟' },
+        why: { en: 'The king\'s censors banned books that questioned him. Paris even burned a book by Voltaire.', es: 'Los censores del rey prohibían libros que lo cuestionaban. París hasta quemó un libro de Voltaire.', fa: 'سانسورچی‌های پادشاه کتاب‌هایی را که از او انتقاد می‌کردند منع می‌کردند. پاریس حتی کتاب ولتر را سوزاند.' } },
+      { q: { en: 'Many writers talked about rights for free men. Who was often left out?', es: 'Muchos escritores hablaban de los derechos de los hombres libres. ¿Quiénes quedaban fuera?', fa: 'بسیاری از نویسندگان دربارهٔ حقوق مردان آزاد حرف می‌زدند. چه کسانی اکثراً بیرون می‌ماندند؟' },
         choices: [
-          { en: 'Mary Wollstonecraft', es: 'Mary Wollstonecraft', fa: 'مری وولستون‌کرافت' },
-          { en: 'King Louis XV', es: 'El rey Luis XV', fa: 'پادشاه لویی پانزدهم' },
-          { en: 'Christopher Columbus', es: 'Cristóbal Colón', fa: 'کریستوفر کلمبوس' },
-          { en: 'John Locke', es: 'John Locke', fa: 'جان لاک' }],
+          { en: 'Women and enslaved people', es: 'Las mujeres y las personas esclavizadas', fa: 'زنان و مردم برده' },
+          { en: 'Kings and their nobles', es: 'Los reyes y sus nobles', fa: 'پادشاهان و اشراف‌شان' },
+          { en: 'Teachers and students', es: 'Los maestros y los estudiantes', fa: 'معلمان و شاگردان' },
+          { en: 'Rich printers and booksellers', es: 'Los impresores y libreros ricos', fa: 'چاپگران و کتاب‌فروشان پولدار' }],
         answer: 0,
-        why: { en: 'In 1792, Mary Wollstonecraft wrote that girls should learn like boys. Many people disagreed then.', es: 'En 1792, Mary Wollstonecraft escribió que las niñas deben aprender como los niños. Mucha gente no estaba de acuerdo.', fa: 'در سال ۱۷۹۲، مری وولستون‌کرافت نوشت دختران باید مثل پسران درس بخوانند. آن وقت بسیاری مخالف بودند.' } },
+        why: { en: 'Most writers meant only free men. Women and enslaved people had to fight for their rights.', es: 'Casi todos pensaban solo en hombres libres. Las mujeres y los esclavizados lucharon por sus derechos.', fa: 'بیشتر نویسندگان فقط مردان آزاد را در نظر داشتند. زنان و برده‌ها برای حقوق خود جنگیدند.' } },
       { q: { en: 'How did Enlightenment ideas change the world?', es: '¿Cómo cambiaron el mundo las ideas de la Ilustración?', fa: 'اندیشه‌های روشنگری جهان را چطور تغییر دادند؟' },
         choices: [
           { en: 'They inspired revolutions in America and France', es: 'Inspiraron revoluciones en América y Francia', fa: 'الهام‌بخش انقلاب‌های امریکا و فرانسه شدند' },

@@ -272,7 +272,7 @@ window.EPISODE = {
     why: { en: 'First the old Greeks and Romans. Then the dome (1436), printing (1450), David (1504) and the ceiling (1512).',
       es: 'Primero los griegos y romanos. Luego la cúpula (1436), la imprenta (1450), el David (1504) y el techo (1512).',
       fa: 'اول یونانی‌ها و رومی‌های کهن. بعد گنبد (۱۴۳۶)، چاپ (۱۴۵۰)، داوود (۱۵۰۴) و سقف (۱۵۱۲).' },
-    success: { en: 'The timeline is right again! Old ideas came back, and new art followed.', es: '¡La línea del tiempo está bien otra vez! Volvieron las ideas antiguas y llegó arte nuevo.', fa: 'خط زمان دوباره درست شد! اندیشه‌های کهن برگشتند و هنر نو پیدا شد.' }
+    success: { en: 'The timeline is right again! Renaissance means rebirth: old ideas came back to life.', es: '¡La línea del tiempo está bien otra vez! Renacimiento quiere decir volver a nacer: las ideas antiguas revivieron.', fa: 'خط زمان دوباره درست شد! رنسانس یعنی دوباره زاده شدن: اندیشه‌های کهن دوباره زنده شدند.' }
   },
 
   boss: {
@@ -294,7 +294,7 @@ window.EPISODE = {
         why: { en: 'Renaissance means rebirth. Old Greek and Roman ideas came back to life.', es: 'Renacimiento quiere decir volver a nacer. Las ideas griegas y romanas volvieron a la vida.', fa: 'رنسانس یعنی دوباره زاده شدن. اندیشه‌های کهن یونان و روم دوباره زنده شدند.' } },
       { q: { en: 'Where did the Renaissance begin?', es: '¿Dónde empezó el Renacimiento?', fa: 'رنسانس از کجا شروع شد؟' },
         choices: [
-          { en: 'In Italian city-states', es: 'En las ciudades-estado de Italia', fa: 'در دولت‌شهرهای ایتالیا' },
+          { en: 'In the cities of Italy', es: 'En las ciudades de Italia', fa: 'در شهرهای ایتالیا' },
           { en: 'In the forests of Germany', es: 'En los bosques de Alemania', fa: 'در جنگل‌های آلمان' },
           { en: 'In the villages of Norway', es: 'En las aldeas de Noruega', fa: 'در قریه‌های ناروی' },
           { en: 'In the deserts of Arabia', es: 'En los desiertos de Arabia', fa: 'در صحراهای عربستان' }],
