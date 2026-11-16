@@ -275,7 +275,7 @@ window.EPISODE = {
         role: { en: 'Credit union worker', es: 'Empleada de la cooperativa', fa: 'کارمند اتحادیهٔ اعتباری' },
         look: { skin: 2, hair: '#1a1008', shirt: '#3a9aa0', pants: '#2a2a3a', style: 'bun' },
         lines: [
-          { en: 'Hi! I help new members open accounts at the credit union.', es: '¡Hola! Ayudo a los socios nuevos a abrir cuentas en la cooperativa.', fa: 'سلام! من به عضوهای نو کمک می‌کنم در اتحادیه حساب باز کنند.' },
+          { en: 'Hi! Members own this credit union. I help new members open accounts.', es: '¡Hola! Los socios son los dueños de esta cooperativa. Ayudo a los nuevos a abrir cuentas.', fa: 'سلام! صاحبان این اتحادیه عضوهایش هستند. به عضوهای نو کمک می‌کنم حساب باز کنند.' },
           { en: 'First, I must check who the new member is.', es: 'Primero tengo que revisar quién es el socio nuevo.', fa: 'اول باید بررسی کنم که عضو نو کی است.' }
         ]
       },
@@ -330,7 +330,7 @@ window.EPISODE = {
       { kind: 'protect', fits: [], t: { en: 'A page is safe if it looks like your bank.', es: 'Una página es segura si se parece a tu banco.', fa: 'اگر صفحه مثل بانکت معلوم شود، امن است.' },
         why: { en: 'Fake pages can look real. Check the web address, or call the bank.', es: 'Las páginas falsas pueden parecer reales. Revisa la dirección web o llama al banco.', fa: 'صفحه‌های دروغ واقعی معلوم شده می‌توانند. آدرس ویب‌سایت را ببین یا به بانک زنگ بزن.' } },
       { kind: 'sign', fits: [2], t: { en: 'A real bank never asks for your PIN in a text.', es: 'Un banco real nunca te pide tu PIN por mensaje.', fa: 'بانک واقعی هرگز پینت را با پیام نمی‌خواهد.' },
-        why: { en: 'Asking for a PIN is a big warning sign of [[phishing|phishing]].', es: 'Pedir un PIN es una gran señal de [[phishing|phishing]].', fa: 'خواستن پین یک نشانهٔ بزرگ [[phishing|فیشینگ]] است.' } },
+        why: { en: 'Fake texts that ask for your PIN are [[phishing|phishing]]. They steal your info.', es: 'Los textos falsos que piden tu PIN son [[phishing|phishing]]. Roban tus datos.', fa: 'پیام‌های جعلی که پین تو را می‌خواهند [[phishing|فیشینگ]] هستند. معلومات تو را می‌دزدند.' } },
       { kind: 'sign', fits: [2], t: { en: 'It rushes you with "now!" so you don\'t stop to think.', es: 'Te apura con "¡ya!" para que no te detengas a pensar.', fa: 'با «همین حالا!» عجله‌ات می‌دهد تا فکر نکنی.' },
         why: { en: 'Scams rush you. Slow down and call the bank yourself.', es: 'Las estafas te apuran. Ve despacio y llama tú al banco.', fa: 'فریب‌ها عجله می‌دهند. آرام باش و خودت به بانک زنگ بزن.' } },
       { kind: 'sign', fits: [], t: { en: 'It uses the word "account," so it must be real.', es: 'Usa la palabra "cuenta", así que debe ser real.', fa: 'کلمهٔ «حساب» را دارد، پس باید واقعی باشد.' },

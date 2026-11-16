@@ -270,7 +270,8 @@ window.EPISODE = {
         look: { skin: 2, hair: '#2a2a2a', shirt: '#f0f0e8', pants: '#3a3a3a', style: 'short' },
         lines: [
           { en: 'I do payroll. I make sure every worker is paid the right amount.', es: 'Me encargo de los pagos. Cuido que cada trabajador cobre lo correcto.', fa: 'من کار معاش را می‌کنم. مطمئن می‌شوم هر کارگر معاش درست بگیرد.' },
-          { en: 'Some workers also pay for health insurance or retirement from their pay.', es: 'Algunos trabajadores también pagan seguro médico o retiro con su sueldo.', fa: 'بعضی کارگران از معاش خود برای بیمهٔ صحی یا تقاعد هم پول می‌دهند.' }
+          { en: 'Some workers also pay for health insurance or retirement from their pay.', es: 'Algunos trabajadores también pagan seguro médico o retiro con su sueldo.', fa: 'بعضی کارگران از معاش خود برای بیمهٔ صحی یا تقاعد هم پول می‌دهند.' },
+          { en: 'Some workers also get [[tips|tips]]: extra money from customers for good service.', es: 'Algunos trabajadores también reciben [[tips|propinas]]: dinero extra de los clientes por buen servicio.', fa: 'بعضی کارگران [[tips|انعام]] هم می‌گیرند: پول اضافه از مشتریان برای خدمت خوب.' }
         ]
       },
       q: { en: 'For Kofi\'s direct deposit, I need his two bank numbers. Bring me a paper that shows them.', es: 'Para el depósito directo de Kofi, necesito sus dos números del banco. Tráeme un papel que los muestre.', fa: 'برای واریز مستقیم کوفی، دو نمبر بانکی‌اش را لازم دارم. ورقی بیاور که آنها را نشان بدهد.' },

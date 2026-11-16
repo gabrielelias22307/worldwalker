@@ -329,7 +329,7 @@ window.EPISODE = {
     ],
     items: [
       { bin: 'income', t: { en: 'A federal tax based on what you earn in a year', es: 'Un impuesto federal según lo que ganas en un año', fa: 'مالیات فدرال بر اساس کمایی یک سال' },
-        why: { en: 'It is based on what you earn, so it is [[income tax|income tax]].', es: 'Se basa en lo que ganas, así que es [[income tax|impuesto sobre la renta]].', fa: 'بر اساس کمایی توست، پس [[income tax|مالیات بر عاید]] است.' } },
+        why: { en: 'It is [[income tax|income tax]]. It is [[progressive|progressive]]: the higher part of pay has a higher rate.', es: 'Es [[income tax|impuesto sobre la renta]]. Es [[progressive|progresivo]]: la parte más alta del pago tiene una tasa más alta.', fa: 'این [[income tax|مالیات بر عاید]] است. [[progressive|تصاعدی]] است: بخش بالاتر کمایی نرخ بالاتر دارد.' } },
       { bin: 'income', t: { en: 'A Virginia state tax on your yearly pay', es: 'Un impuesto del estado de Virginia sobre tu pago del año', fa: 'مالیات ایالت ویرجینیا بر معاش سالانه‌ات' },
         why: { en: 'Virginia taxes the money you earn. That is a state [[income tax|income tax]].', es: 'Virginia cobra impuesto sobre lo que ganas. Es un [[income tax|impuesto sobre la renta]] estatal.', fa: 'ویرجینیا بر پولی که کمایی می‌کنی مالیات می‌گیرد. این [[income tax|مالیات بر عاید]] ایالتی است.' } },
       { bin: 'payroll', t: { en: 'Money for Social Security, taken from each paycheck', es: 'Dinero para el Seguro Social, sacado de cada cheque', fa: 'پول برای تأمین اجتماعی که از هر معاش کم می‌شود' },

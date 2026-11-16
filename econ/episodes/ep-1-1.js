@@ -186,7 +186,7 @@ window.EPISODE = {
       role: { en: 'Student with a part-time job', es: 'Estudiante con trabajo de medio tiempo', fa: 'شاگرد با کار نیمه‌وقت' },
       look: { skin: 3, hair: '#1a1208', shirt: '#2f5f9a', pants: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'I help at the bike shop on Saturdays.', es: 'Los sábados ayudo en el taller de bicicletas.', fa: 'روزهای شنبه در دکان بایسکل کمک می‌کنم.' },
+        { en: 'I work at the bike shop. My pay is an [[incentive|incentive]]: a reward to work.', es: 'Trabajo en el taller de bicicletas. Mi pago es un [[incentive|incentivo]]: un premio por trabajar.', fa: 'من در دکان بایسکل کار می‌کنم. مزدم یک [[incentive|تشویق]] است: جایزه‌ای برای کار.' },
         { en: 'Today I had three choices: work, a soccer game, or sleep late.', es: 'Hoy tenía tres opciones: trabajar, un partido de fútbol o dormir tarde.', fa: 'امروز سه انتخاب داشتم: کار، یک مسابقهٔ فوتبال، یا تا ناوقت خواب.' },
         { en: 'I picked work. My next best choice was the soccer game.', es: 'Elegí trabajar. Mi siguiente mejor opción era el partido de fútbol.', fa: 'کار را انتخاب کردم. بهترین انتخاب بعدی‌ام مسابقهٔ فوتبال بود.' },
         { en: 'The game is my [[opportunity cost|opportunity cost]]. Every choice is a [[trade-off|trade-off]].', es: 'El partido es mi [[opportunity cost|costo de oportunidad]]. Cada decisión es una [[trade-off|disyuntiva]].', fa: 'مسابقه [[opportunity cost|هزینهٔ فرصت]] من است. هر انتخاب یک [[trade-off|بده‌بستان]] است.' }
@@ -210,7 +210,7 @@ window.EPISODE = {
       role: { en: 'Nurse', es: 'Enfermera', fa: 'نرس' },
       look: { skin: 1, hair: '#1a1008', shirt: '#3a9aa0', pants: '#3a9aa0', style: 'bun' },
       lines: [
-        { en: 'I am a nurse. I shop here after my night shift.', es: 'Soy enfermera. Compro aquí después de mi turno de noche.', fa: 'من نرس هستم. بعد از نوبت شب اینجا خرید می‌کنم.' },
+        { en: 'I am a nurse. My work is a [[services|service]]: I care for people.', es: 'Soy enfermera. Mi trabajo es un [[services|servicio]]: cuido a la gente.', fa: 'من نرس هستم. کار من یک [[services|خدمت]] است: از مردم مراقبت می‌کنم.' },
         { en: 'First I buy what I [[need|need]], like eggs and bread.', es: 'Primero compro lo que [[need|necesito]], como huevos y pan.', fa: 'اول چیزی را می‌خرم که [[need|ضرورت]] دارم، مثل تخم و نان.' },
         { en: 'If money is left, I buy a [[want|want]], like flowers.', es: 'Si me sobra dinero, compro un [[want|deseo]], como flores.', fa: 'اگر پول بماند، یک [[want|خواهش]] می‌خرم، مثل گل.' },
         { en: 'Needs keep us alive and safe. Wants are just nice to have.', es: 'Las necesidades nos mantienen vivos y seguros. Los deseos solo son bonitos.', fa: 'ضرورت‌ها ما را زنده و امن نگه می‌دارند. خواهش‌ها فقط خوب هستند.' }
@@ -330,7 +330,7 @@ window.EPISODE = {
       { bin: 'entre', t: { en: 'The woman who opened the taco stand', es: 'La mujer que abrió el puesto de tacos', fa: 'زنی که غرفهٔ تاکو را باز کرد' },
         why: { en: 'Carmen took a risk to start a business. She is an [[entrepreneur|entrepreneur]].', es: 'Carmen se arriesgó para empezar un negocio. Es una [[entrepreneur|emprendedora]].', fa: 'کارمن خطر کرد تا یک کسب و کار را شروع کند. او [[entrepreneur|کارآفرین]] است.' } }
     ],
-    success: { en: 'Every card is in the right group! Land, labor, capital and entrepreneurship make things.', es: '¡Cada tarjeta está en su grupo! La tierra, el trabajo, el capital y el emprendimiento producen cosas.', fa: 'هر کارت در گروه درست است! زمین، نیروی کار، سرمایه و کارآفرینی چیزها را می‌سازند.' }
+    success: { en: 'Every card fits! Every economy must ask: what to make, how, and for whom?', es: '¡Cada tarjeta está en su grupo! Toda economía debe preguntar: qué producir, cómo y para quién.', fa: 'هر کارت در گروه درست است! هر اقتصاد باید بپرسد: چه بسازد، چطور، و برای کی؟' }
   },
 
   boss: {

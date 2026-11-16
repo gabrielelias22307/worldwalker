@@ -308,7 +308,7 @@ window.EPISODE = {
       { icon: '🎯', t: { en: 'Set a SMART goal: $300 for a bike in 6 months', es: 'Ponte una meta SMART: $300 para una bici en 6 meses', fa: 'یک هدف SMART بگذار: ۳۰۰ دالر برای بایسکل در ۶ ماه' } },
       { icon: '📝', t: { en: 'Make a budget: money in and money out', es: 'Haz un presupuesto: el dinero que entra y el que sale', fa: 'بودجه بساز: پولی که می‌آید و پولی که می‌رود' } },
       { icon: '🏦', t: { en: 'Pay yourself first: save $50 each payday', es: 'Págate a ti primero: ahorra $50 cada día de pago', fa: 'اول به خودت بپرداز: هر روز معاش ۵۰ دالر پس‌انداز کن' } },
-      { icon: '🛟', t: { en: 'Build an emergency fund for surprises', es: 'Arma un fondo de emergencia para las sorpresas', fa: 'یک پس‌انداز اضطراری برای غافلگیری‌ها جمع کن' } },
+      { icon: '🛟', t: { en: 'Build an emergency fund for surprises: 3 to 6 months of expenses', es: 'Arma un fondo de emergencia para sorpresas: de 3 a 6 meses de gastos', fa: 'برای غافلگیری‌ها پس‌انداز اضطراری جمع کن: مصرف ۳ تا ۶ ماه' } },
       { icon: '🚲', t: { en: 'Reach the goal: buy the bike!', es: 'Logra la meta: ¡compra la bici!', fa: 'به هدف برس: بایسکل را بخر!' } }
     ],
     why: { en: 'Plan in order: set a goal, make a budget, save first, build a surprise fund, then reach your goal.',
