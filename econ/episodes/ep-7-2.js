@@ -367,14 +367,14 @@ window.EPISODE = {
           { en: 'The town\'s car insurance', es: 'El seguro de auto del pueblo', fa: 'بیمهٔ موتر شهرک' }],
         answer: 0,
         why: { en: 'The landlord\'s insurance covers the building. Renters insurance covers the renter\'s things.', es: 'El seguro del casero cubre el edificio. El seguro de inquilino cubre las cosas del inquilino.', fa: 'بیمهٔ صاحب خانه ساختمان را می‌پوشاند. بیمهٔ کرایه‌نشین چیزهای کرایه‌نشین را.' } },
-      { q: { en: 'A river floods Mrs. Park\'s house. What does she usually need?', es: 'Un río inunda la casa de la Sra. Park. ¿Qué necesita casi siempre?', fa: 'دریا خانهٔ خانم پارک را زیر آب می‌برد. معمولاً به چه ضرورت دارد؟' },
+      { q: { en: 'A kitchen fire burns part of the house Mrs. Park owns. Which insurance helps?', es: 'Un incendio en la cocina quema parte de la casa propia de la Sra. Park. ¿Qué seguro ayuda?', fa: 'آتش آشپزخانه بخشی از خانهٔ خانم پارک را می‌سوزاند. خانه از خودش است. کدام بیمه کمک می‌کند؟' },
         choices: [
-          { en: 'Separate flood insurance', es: 'Un seguro aparte contra inundaciones', fa: 'بیمهٔ جدای سیلاب' },
-          { en: 'Her car\'s comprehensive', es: 'La cobertura amplia de su carro', fa: 'بیمهٔ همه‌جانبهٔ موترش' },
-          { en: 'Her disability insurance', es: 'Su seguro por discapacidad', fa: 'بیمهٔ ناتوانی‌اش' },
-          { en: 'Her term life insurance', es: 'Su seguro de vida a término', fa: 'بیمهٔ زندگی مدت‌دارش' }],
+          { en: 'Homeowners', es: 'Seguro de vivienda', fa: 'بیمهٔ خانه' },
+          { en: 'Comprehensive', es: 'Cobertura amplia', fa: 'همه‌جانبهٔ موتر' },
+          { en: 'Renters', es: 'Seguro de inquilino', fa: 'بیمهٔ کرایه‌نشین' },
+          { en: 'Health', es: 'Seguro médico', fa: 'بیمهٔ صحی' }],
         answer: 0,
-        why: { en: 'Homeowners insurance usually does not cover floods. Flood insurance is separate.', es: 'El seguro de vivienda casi nunca cubre inundaciones. El seguro contra inundaciones va aparte.', fa: 'بیمهٔ خانه معمولاً سیلاب را نمی‌پوشاند. بیمهٔ سیلاب جدا است.' } },
+        why: { en: 'Mrs. Park owns her house. A fire there is covered by homeowners insurance.', es: 'La Sra. Park es dueña de su casa. Un incendio allí lo cubre el seguro de vivienda.', fa: 'خانم پارک مالک خانهٔ خود است. آتش‌سوزی آنجا را بیمهٔ خانه می‌پوشاند.' } },
       { q: { en: 'What does life insurance do?', es: '¿Qué hace el seguro de vida?', fa: 'بیمهٔ زندگی چه کار می‌کند؟' },
         choices: [
           { en: 'Pays the family if a person dies', es: 'Le paga a la familia si alguien muere', fa: 'اگر کسی بمیرد به خانواده‌اش می‌پردازد' },
@@ -383,14 +383,14 @@ window.EPISODE = {
           { en: 'Pays for a stolen bike or laptop', es: 'Paga una bici o laptop robada', fa: 'پول بایسکل یا لپ‌تاپ دزدی‌شده را می‌دهد' }],
         answer: 0,
         why: { en: 'Life insurance pays money to the family. Term life lasts a set time; whole life lasts your whole life.', es: 'El seguro de vida paga a la familia. A término dura un tiempo fijo; vida entera, toda la vida.', fa: 'بیمهٔ زندگی به خانواده پول می‌دهد. مدت‌دار وقت معین دارد؛ تمام عمر تا آخر عمر.' } },
-      { q: { en: 'Mr. Grant hurt his back and cannot work. Which insurance replaces part of his pay?', es: 'El Sr. Grant se lastimó la espalda y no puede trabajar. ¿Qué seguro reemplaza parte de su sueldo?', fa: 'کمر آقای گرانت زخمی شده و کار کرده نمی‌تواند. کدام بیمه یک بخش معاشش را می‌دهد؟' },
+      { q: { en: 'What does Virginia require every driver to have?', es: '¿Qué exige Virginia que tenga cada conductor?', fa: 'ویرجینیا از هر راننده می‌خواهد چه چیزی داشته باشد؟' },
         choices: [
-          { en: 'Disability', es: 'Discapacidad', fa: 'ناتوانی' },
-          { en: 'Homeowners', es: 'Vivienda', fa: 'خانه' },
-          { en: 'Collision', es: 'Choque', fa: 'تصادم' },
-          { en: 'Renters', es: 'Inquilino', fa: 'کرایه‌نشین' }],
+          { en: 'Car insurance', es: 'Seguro de auto', fa: 'بیمهٔ موتر' },
+          { en: 'Life insurance', es: 'Seguro de vida', fa: 'بیمهٔ زندگی' },
+          { en: 'Renters insurance', es: 'Seguro de inquilino', fa: 'بیمهٔ کرایه‌نشین' },
+          { en: 'Health insurance', es: 'Seguro médico', fa: 'بیمهٔ صحی' }],
         answer: 0,
-        why: { en: 'Disability insurance replaces part of your income when you cannot work.', es: 'El seguro por discapacidad reemplaza parte de tu ingreso cuando no puedes trabajar.', fa: 'بیمهٔ ناتوانی وقتی کار کرده نتوانی، یک بخش درآمدت را می‌دهد.' } }
+        why: { en: 'Virginia requires drivers to have car insurance. That is why Omar needs his card.', es: 'Virginia exige que los conductores tengan seguro de auto. Por eso Omar necesita su tarjeta.', fa: 'ویرجینیا از راننده‌ها بیمهٔ موتر می‌خواهد. برای همین عمر به کارتش ضرورت دارد.' } }
     ]
   },
 

@@ -238,7 +238,7 @@ window.EPISODE = {
         { en: 'I taught math for 30 years. Now I am retired.', es: 'Enseñé matemáticas por 30 años. Ahora estoy jubilada.', fa: 'من ۳۰ سال ریاضی درس دادم. حالا متقاعد هستم.' },
         { en: 'Every month, I put a little money in an [[index fund|index fund]].', es: 'Cada mes pongo un poco de dinero en un [[index fund|fondo indexado]].', fa: 'هر ماه کمی پول در یک [[index fund|صندوق شاخص]] می‌گذارم.' },
         { en: 'It follows a whole market list, like 500 big companies.', es: 'Sigue toda una lista del mercado, como 500 empresas grandes.', fa: 'یک فهرست کامل بازار را دنبال می‌کند، مثل ۵۰۰ شرکت بزرگ.' },
-        { en: 'Some years it fell. I did not sell. Over time, it grew.', es: 'Algunos años bajó. No vendí. Con el tiempo, creció.', fa: 'بعضی سال‌ها پایین آمد. نفروختم. با گذشت وقت، رشد کرد.' }
+        { en: 'In a [[bear market|bear market]], prices fall for a long time. I did not sell.', es: 'En un [[bear market|mercado bajista]], los precios bajan por mucho tiempo. Yo no vendí.', fa: 'در [[bear market|بازار رو به پایین]]، قیمت‌ها برای مدت دراز پایین می‌آیند. من نفروختم.' }
       ],
       ask: {
         stat: 'reg',
@@ -381,11 +381,11 @@ window.EPISODE = {
       { q: { en: 'Stock prices fall for a long time. What is that called?', es: 'Los precios de las acciones bajan por mucho tiempo. ¿Cómo se llama eso?', fa: 'قیمت سهام برای مدت دراز پایین می‌آید. نامش چیست؟' },
         choices: [
           { en: 'A bear market', es: 'Un mercado bajista', fa: 'بازار رو به پایین' },
-          { en: 'A bull market', es: 'Un mercado alcista', fa: 'بازار رو به بالا' },
+          { en: 'An index fund', es: 'Un fondo indexado', fa: 'صندوق شاخص' },
           { en: 'A hot tip', es: 'Un dato caliente', fa: 'یک خبر داغ' },
           { en: 'A dividend', es: 'Un dividendo', fa: 'سود سهام' }],
         answer: 0,
-        why: { en: 'A bear swipes down, so a falling market is a bear market. A bull market rises.', es: 'El oso ataca hacia abajo: un mercado que cae es bajista. Un mercado alcista sube.', fa: 'خرس به پایین پنجه می‌زند، پس بازار رو به پایین «خرسی» است. بازار گاوی بالا می‌رود.' } },
+        why: { en: 'A bear market is a long fall in prices. Mrs. Nguyen did not sell, and it grew.', es: 'Un mercado bajista es una larga caída de precios. La Sra. Nguyen no vendió, y creció.', fa: 'بازار رو به پایین یعنی پایین آمدن دراز قیمت‌ها. خانم نگوین نفروخت و پولش رشد کرد.' } },
       { q: { en: 'Which of these is backed by the US government?', es: '¿Cuál de estos está respaldado por el gobierno de EE. UU.?', fa: 'کدام یکی از اینها پشتیبانی حکومت امریکا را دارد؟' },
         choices: [
           { en: 'A Treasury bill', es: 'Una letra del Tesoro', fa: 'اسناد خزانه' },

@@ -425,22 +425,22 @@ window.EPISODE = {
           { en: 'You never have to pay any interest at all', es: 'Nunca tienes que pagar ningún interés', fa: 'هرگز هیچ سود نمی‌پردازی' }],
         answer: 0,
         why: { en: 'Even with no interest, $500 at $25 a month takes 20 months. Interest adds more.', es: 'Aun sin intereses, $500 a $25 al mes tarda 20 meses. Los intereses suman más.', fa: 'حتی بدون سود، ۵۰۰ دالر با ماهی ۲۵ دالر ۲۰ ماه می‌گیرد. سود بیشتر می‌سازد.' } },
-      { q: { en: 'A campus table offers a free T-shirt if you sign up for a card. What should you do?', es: 'Una mesa en el campus da una camiseta gratis si sacas una tarjeta. ¿Qué debes hacer?', fa: 'یک میز در پوهنتون برای گرفتن کارت پیراهن مفت می‌دهد. چه باید بکنی؟' },
+      { q: { en: 'Your credit report shows a card you never opened. What should you do?', es: 'Tu informe de crédito muestra una tarjeta que nunca abriste. ¿Qué debes hacer?', fa: 'گزارش اعتباری‌ات کارتی را نشان می‌دهد که هرگز نگرفتی. چه باید بکنی؟' },
         choices: [
-          { en: 'Read the terms before you decide', es: 'Leer las condiciones antes de decidir', fa: 'پیش از تصمیم، شرط‌ها را بخوان' },
-          { en: 'Sign up fast before shirts run out', es: 'Firmar rápido antes de que se acaben', fa: 'زود امضا کن پیش از تمام شدن پیراهن‌ها' },
-          { en: 'Sign up for every card on the table', es: 'Sacar todas las tarjetas de la mesa', fa: 'همهٔ کارت‌های روی میز را بگیر' },
-          { en: 'Give them a friend\'s name instead', es: 'Darles el nombre de un amigo', fa: 'به جای خودت نام یک دوست را بده' }],
+          { en: 'Tell the bureau and the bank fast', es: 'Avisar rápido a la agencia y al banco', fa: 'زود به ادارهٔ اعتباری و بانک خبر بده' },
+          { en: 'Use that card to buy some new things', es: 'Usar esa tarjeta para comprar cosas nuevas', fa: 'با آن کارت چند چیز نو بخر' },
+          { en: 'Wait a few years and see what happens', es: 'Esperar unos años a ver qué pasa', fa: 'چند سال صبر کن و ببین چه می‌شود' },
+          { en: 'Thank the bank for the free gift', es: 'Darle las gracias al banco por el regalo', fa: 'از بانک برای تحفهٔ مفت تشکر کن' }],
         answer: 0,
-        why: { en: 'A gift is not a reason to borrow. Read the APR and the fees first.', es: 'Un regalo no es razón para pedir prestado. Lee primero la tasa APR y los cargos.', fa: 'تحفه دلیل قرض گرفتن نیست. اول نرخ سود سالانه و فیس‌ها را بخوان.' } },
-      { q: { en: 'What does the APR on a credit card tell you?', es: '¿Qué te dice la tasa APR de una tarjeta de crédito?', fa: 'نرخ سود سالانه (APR) کارت اعتباری به تو چه می‌گوید؟' },
+        why: { en: 'A card you never opened may be fraud. Report it fast to protect your credit.', es: 'Una tarjeta que nunca abriste puede ser fraude. Repórtala rápido para proteger tu crédito.', fa: 'کارتی که هرگز نگرفتی شاید تقلب باشد. زود خبر بده تا اعتبارت محفوظ بماند.' } },
+      { q: { en: 'What does your card statement show?', es: '¿Qué muestra el estado de cuenta de tu tarjeta?', fa: 'صورت حساب کارتت چه چیزی را نشان می‌دهد؟' },
         choices: [
-          { en: 'The yearly interest rate you pay', es: 'La tasa de interés que pagas por año', fa: 'نرخ سودی که هر سال می‌پردازی' },
-          { en: 'The number of cards you can own', es: 'El número de tarjetas que puedes tener', fa: 'تعداد کارت‌هایی که داشته می‌توانی' },
-          { en: 'The day your card will expire', es: 'El día en que tu tarjeta vence', fa: 'روزی که کارتت باطل می‌شود' },
-          { en: 'The store where the card works best', es: 'La tienda donde la tarjeta funciona mejor', fa: 'دکانی که کارت در آن بهتر کار می‌کند' }],
+          { en: 'What you owe and the due date', es: 'Lo que debes y la fecha de pago', fa: 'چقدر قرضداری و روز آخر پرداخت' },
+          { en: 'Your grades from school this year', es: 'Tus notas de la escuela de este año', fa: 'نمره‌های مکتبت در این سال' },
+          { en: 'The stores that you like the most', es: 'Las tiendas que más te gustan', fa: 'دکان‌هایی که بیشتر دوست داری' },
+          { en: 'Phone numbers of all your friends', es: 'Los teléfonos de todos tus amigos', fa: 'شماره‌های تیلفون همهٔ دوستانت' }],
         answer: 0,
-        why: { en: 'APR is the yearly interest rate on money you owe. A lower APR costs less.', es: 'La APR es la tasa de interés por año sobre lo que debes. Una APR más baja cuesta menos.', fa: 'APR نرخ سود سالانه بر قرض توست. نرخ کمتر ارزان‌تر تمام می‌شود.' } }
+        why: { en: 'A statement shows your balance, the minimum payment and the due date. Pay on time!', es: 'El estado de cuenta muestra tu saldo, el pago mínimo y la fecha de pago. ¡Paga a tiempo!', fa: 'صورت حساب قرض کارت، کمترین پرداخت و روز آخر پرداخت را نشان می‌دهد. سر وقت بپرداز!' } }
     ]
   },
 

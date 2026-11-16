@@ -166,7 +166,7 @@ window.EPISODE = {
         q: { en: 'Jon borrows $800. He pays back $880 in all. How much is the interest?', es: 'Jon pide $800. Devuelve $880 en total. ¿Cuánto es el interés?', fa: 'جان ۸۰۰ دالر قرض می‌گیرد. در کل ۸۸۰ دالر پس می‌دهد. سود چقدر است؟' },
         choices: [
           { ok: true, t: { en: '$80', es: '$80', fa: '۸۰ دالر' },
-            why: { en: 'Yes! $880 minus $800 is $80. The interest is the extra money.', es: '¡Sí! $880 menos $800 son $80. El interés es el dinero extra.', fa: 'بله! ۸۸۰ منفی ۸۰۰ می‌شود ۸۰. سود همان پول اضافه است.' } },
+            why: { en: 'Yes! $880 minus $800 is $80. A lower [[apr|APR]], the yearly percent, means less interest.', es: '¡Sí! $880 menos $800 son $80. Una [[apr|APR]] más baja, el porcentaje al año, significa menos interés.', fa: 'بله! ۸۸۰ منفی ۸۰۰ می‌شود ۸۰. [[apr|APR]] کمتر، یعنی فیصدی سالانهٔ کمتر، سود کمتر دارد.' } },
           { t: { en: '$880', es: '$880', fa: '۸۸۰ دالر' },
             why: { en: 'No. $880 is all he pays back. Take away the $800 he borrowed.', es: 'No. $880 es todo lo que devuelve. Quítale los $800 que pidió.', fa: 'نه. ۸۸۰ دالر همهٔ پولی است که پس می‌دهد. ۸۰۰ دالر قرض را کم کن.' } },
           { t: { en: '$800', es: '$800', fa: '۸۰۰ دالر' },

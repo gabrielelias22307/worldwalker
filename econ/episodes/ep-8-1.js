@@ -324,7 +324,7 @@ window.EPISODE = {
         choices: [{ en: 'It is short, cheap and pays well', es: 'Es corto, barato y paga bien', fa: 'کوتاه، ارزان و با معاش خوب است' }, { en: 'It always pays more than a degree', es: 'Siempre paga más que un título', fa: 'همیشه از هر سند بیشتر معاش دارد' }, { en: 'It takes longer than a bachelor\'s', es: 'Toma más tiempo que una licenciatura', fa: 'از سند لیسانس بیشتر وقت می‌گیرد' }], answer: 0,
         why: { en: 'In the example it takes 1 year, costs $5,000 and pays $46,000. You start earning sooner.', es: 'En el ejemplo dura 1 año, cuesta $5,000 y paga $46,000. Empiezas a ganar antes.', fa: 'در این نمونه ۱ سال وقت، ۵٬۰۰۰ دالر هزینه و ۴۶٬۰۰۰ دالر معاش دارد. زودتر کمایی را شروع می‌کنی.' } }
     ],
-    success: { en: 'The posters are clear again! Every path has costs and benefits.', es: '¡Los carteles están claros otra vez! Cada camino tiene costos y beneficios.', fa: 'پوسترها دوباره روشن شدند! هر راه هزینه و فایده دارد.' }
+    success: { en: 'Every path has costs and gains. Comparing them shows the [[return on investment|return on investment]].', es: 'Cada camino tiene costos y beneficios. Compararlos muestra el [[return on investment|retorno de la inversión]].', fa: 'هر راه هزینه و فایده دارد. مقایسهٔ آنها [[return on investment|بازگشت سرمایه]] را نشان می‌دهد.' }
   },
 
   boss: {

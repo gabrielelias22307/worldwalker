@@ -353,9 +353,9 @@ window.EPISODE = {
     otherwise: { ok: false,
       t: { en: 'Storm damage is not covered! If a tree falls on her car, the policy pays nothing.', es: '¡Los daños por tormenta no están cubiertos! Si un árbol cae en su auto, la póliza no paga nada.', fa: 'آسیب توفان پوشش ندارد! اگر درخت روی موترش بیفتد، بیمه‌نامه هیچ پولی نمی‌دهد.' },
       show: [{ icon: '🌪️', ok: false, t: { en: 'storm damage not covered', es: 'tormenta sin cobertura', fa: 'توفان پوشش ندارد' } }] },
-    success: { en: 'Rosa picked a $500 deductible at $45 a month, with storm coverage. She can pay both parts!',
-      es: 'Rosa eligió un deducible de $500 a $45 al mes, con cobertura de tormenta. ¡Puede pagar las dos partes!',
-      fa: 'روزا سهم اول ۵۰۰ دالر را با ماهی ۴۵ دالر و پوشش توفان انتخاب کرد. هر دو بخش را داده می‌تواند!' }
+    success: { en: 'Rosa can pay both parts! A higher [[deductible|deductible]] usually means a lower [[premium|premium]].',
+      es: '¡Rosa puede pagar las dos partes! Un [[deductible|deducible]] más alto casi siempre significa una [[premium|prima]] más baja.',
+      fa: 'روزا هر دو بخش را داده می‌تواند! [[deductible|سهم اول]] بلندتر معمولاً یعنی [[premium|حق بیمهٔ]] کمتر.' }
   },
 
   boss: {
