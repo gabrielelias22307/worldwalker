@@ -362,14 +362,14 @@ window.EPISODE = {
           { en: 'Off the spectrum entirely', es: 'Totalmente fuera del espectro', fa: 'کاملاً بیرون از طیف' }],
         answer: 0,
         why: { en: 'Most Americans are moderate or near the center, with some ideas from each side.', es: 'La mayoría de los estadounidenses son moderados o están cerca del centro.', fa: 'بیشتر امریکایی‌ها میانه‌رو یا نزدیک میانه هستند، با فکرهایی از هر دو طرف.' } },
-      { q: { en: 'Which is true about political parties and ideology?', es: '¿Qué es cierto sobre los partidos políticos y la ideología?', fa: 'کدام یکی دربارهٔ حزب‌های سیاسی و ایدیولوژی درست است؟' },
+      { q: { en: 'What is the political spectrum?', es: '¿Qué es el espectro político?', fa: 'طیف سیاسی چیست؟' },
         choices: [
-          { en: 'Each party has members with many ideas', es: 'Cada partido tiene miembros con muchas ideas', fa: 'هر حزب اعضایی با فکرهای گوناگون دارد' },
-          { en: 'Every member of a party thinks the same', es: 'Todos los miembros de un partido piensan igual', fa: 'همهٔ اعضای یک حزب یک‌رقم فکر می‌کنند' },
-          { en: 'Parties have no ideas about government', es: 'Los partidos no tienen ideas sobre el gobierno', fa: 'حزب‌ها هیچ فکری دربارهٔ حکومت ندارند' },
-          { en: 'A party may have only one member', es: 'Un partido solo puede tener un miembro', fa: 'یک حزب فقط یک عضو داشته می‌تواند' }],
+          { en: 'A line of ideas, left to right', es: 'Una línea de ideas, de izquierda a derecha', fa: 'یک خط از فکرها، از چپ به راست' },
+          { en: 'A list of every party\'s members', es: 'Una lista de los miembros de cada partido', fa: 'فهرست اعضای هر حزب' },
+          { en: 'A map of the town\'s streets', es: 'Un mapa de las calles del pueblo', fa: 'نقشهٔ سرک‌های شهر' },
+          { en: 'A chart of the town\'s tax money', es: 'Una tabla del dinero de impuestos del pueblo', fa: 'جدول پول مالیات شهر' }],
         answer: 0,
-        why: { en: 'A party leans one way, but its members are spread all along the spectrum.', es: 'Un partido se inclina hacia un lado, pero sus miembros están a lo largo de todo el espectro.', fa: 'یک حزب به یک طرف میل دارد، اما اعضایش در تمام طول طیف پخش هستند.' } }
+        why: { en: 'The political spectrum lines up ideas about government, from left to right.', es: 'El espectro político ordena las ideas sobre el gobierno, de izquierda a derecha.', fa: 'طیف سیاسی فکرها دربارهٔ حکومت را از چپ به راست می‌چیند.' } }
     ]
   },
 

@@ -286,9 +286,9 @@ window.EPISODE = {
     spots: [[3, 6], [8, 13], [25, 5]],
     stat: 'hei',
     title: { en: 'Plant the flag on the ruling', es: 'Pon la bandera en el fallo', fa: 'بیرق را روی حکم بگذار' },
-    intro: { en: 'The case reaches the [[supreme court|Supreme Court]]. Visit each flag. Pick the right ruling, then give two reasons.',
-      es: 'El caso llega a la [[supreme court|Corte Suprema]]. Visita cada bandera. Elige el fallo correcto y da dos razones.',
-      fa: 'این قضیه به [[supreme court|ستره محکمه]] می‌رسد. به هر بیرق سر بزن. حکم درست را انتخاب کن، بعد دو دلیل بده.' },
+    intro: { en: 'The case, Tinker v. Des Moines, reaches the [[supreme court|Supreme Court]]. Visit each flag. Pick the right ruling, then give two reasons.',
+      es: 'El caso, Tinker contra Des Moines, llega a la [[supreme court|Corte Suprema]]. Visita cada bandera. Elige el fallo correcto y da dos razones.',
+      fa: 'قضیهٔ تینکر علیه دی موین به [[supreme court|ستره محکمه]] می‌رسد. به هر بیرق سر بزن. حکم درست را انتخاب کن، بعد دو دلیل بده.' },
     options: [
       { icon: '⛔', name: { en: 'The school may ban any speech it dislikes', es: 'La escuela puede prohibir lo que no le guste', fa: 'مکتب هر گپی را که خوشش نیاید منع کند' },
         desc: { en: 'School leaders decide what students may say.', es: 'Los líderes escolares deciden qué pueden decir los estudiantes.', fa: 'مسئولان مکتب تصمیم می‌گیرند شاگردان چه بگویند.' },
@@ -367,7 +367,7 @@ window.EPISODE = {
           { en: 'Armbands are against the Constitution', es: 'Los brazaletes van contra la Constitución', fa: 'بازوبند مخالف قانون اساسی است' }],
         answer: 0,
         why: { en: 'The Court said students do not shed their rights at the schoolhouse gate.', es: 'La Corte dijo que los estudiantes no dejan sus derechos en la puerta de la escuela.', fa: 'محکمه گفت شاگردان حقوق خود را دم دروازهٔ مکتب از دست نمی‌دهند.' } },
-      { q: { en: 'How did the nine justices vote in 1969?', es: '¿Cómo votaron los nueve jueces en 1969?', fa: 'نُه قاضی در ۱۹۶۹ چطور رأی دادند؟' },
+      { q: { en: 'How did the Supreme Court vote in 1969?', es: '¿Cómo votó la Corte Suprema en 1969?', fa: 'ستره محکمه در ۱۹۶۹ چطور رأی داد؟' },
         choices: [
           { en: '7 to 2 for the students', es: '7 a 2 por los estudiantes', fa: '۷ در برابر ۲ به نفع شاگردان' },
           { en: '9 to 0 for the students', es: '9 a 0 por los estudiantes', fa: '۹ در برابر ۰ به نفع شاگردان' },
@@ -377,12 +377,12 @@ window.EPISODE = {
         why: { en: 'Seven justices sided with the students. Two sided with the school.', es: 'Siete jueces apoyaron a los estudiantes. Dos apoyaron a la escuela.', fa: 'هفت قاضی طرف شاگردان را گرفتند. دو قاضی طرف مکتب را گرفتند.' } },
       { q: { en: 'After Tinker, when may a school limit student speech?', es: 'Después de Tinker, ¿cuándo puede una escuela limitar la expresión?', fa: 'بعد از تینکر، مکتب چه وقت می‌تواند گپ شاگردان را محدود کند؟' },
         choices: [
-          { en: 'When it would substantially disrupt school', es: 'Cuando interrumpiría mucho la escuela', fa: 'وقتی مکتب را به‌طور جدی برهم بزند' },
+          { en: 'When it would truly disrupt school', es: 'Cuando de verdad interrumpiría la escuela', fa: 'وقتی واقعاً درس را برهم بزند' },
           { en: 'When a teacher does not agree with it', es: 'Cuando un maestro no está de acuerdo', fa: 'وقتی یک معلم با آن موافق نباشد' },
           { en: 'When it is about a war or the news', es: 'Cuando trata de una guerra o noticias', fa: 'وقتی دربارهٔ جنگ یا خبرها باشد' },
           { en: 'Whenever one parent writes to complain', es: 'Cuando un padre escribe para quejarse', fa: 'هر وقت یک والد شکایت بنویسد' }],
         answer: 0,
-        why: { en: 'A school may stop speech that would substantially disrupt school, not just speech it dislikes.', es: 'Una escuela puede frenar lo que interrumpiría mucho, no solo lo que no le gusta.', fa: 'مکتب می‌تواند گپی را منع کند که درس را جدی برهم بزند، نه فقط چیزی که خوشش نمی‌آید.' } },
+        why: { en: 'A school may stop speech that truly disrupts class, not just speech it dislikes.', es: 'Una escuela puede frenar lo que de verdad interrumpe la clase, no solo lo que no le gusta.', fa: 'مکتب می‌تواند گپی را منع کند که واقعاً درس را برهم بزند، نه فقط چیزی که خوشش نمی‌آید.' } },
       { q: { en: 'A silent black armband is an example of what?', es: 'Un brazalete negro y callado, ¿es un ejemplo de qué?', fa: 'یک بازوبند سیاه و خاموش نمونهٔ چیست؟' },
         choices: [
           { en: 'Symbolic speech', es: 'Expresión simbólica', fa: 'بیان نمادین' },
