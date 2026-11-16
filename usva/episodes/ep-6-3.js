@@ -253,7 +253,7 @@ window.EPISODE = {
       role: { en: 'Reporter', es: 'Reportera', fa: 'خبرنگار' },
       look: { skin: 4, hair: '#1a1008', shirt: '#6a4a8a', pants: '#2a2a3a', hat: '#2a2a3a', style: 'bun' },
       lines: [
-        { en: 'I am a reporter, a [[muckraker|muckraker]]. I write about problems so people fix them.', es: 'Soy reportera, una [[muckraker|periodista denunciante]]. Escribo sobre problemas para que la gente los arregle.', fa: 'من خبرنگار هستم، یک [[muckraker|خبرنگار افشاگر]]. دربارهٔ مشکلات می‌نویسم تا مردم آن‌ها را حل کنند.' },
+        { en: 'I am a [[muckraker|muckraker]], like Ida B. Wells. She reports on [[lynching|lynching]]: murder by mobs.', es: 'Soy una [[muckraker|periodista denunciante]], como Ida B. Wells. Ella denuncia los [[lynching|linchamientos]]: asesinatos por turbas.', fa: 'من یک [[muckraker|خبرنگار افشاگر]] هستم، مثل آیدا بی. ولز. او دربارهٔ [[lynching|لینچ]]، یعنی قتل به دست اوباش، می‌نویسد.' },
         { en: 'The lake wind blew my notes away! Ask Tommy the newsboy. He sees everything.', es: '¡El viento del lago se llevó mis notas! Pregúntale a Tommy, el vendedor de periódicos. Él lo ve todo.', fa: 'باد جهیل یادداشت‌هایم را برد! از تامی روزنامه‌فروش بپرس. او همه چیز را می‌بیند.' }
       ],
       wait: { en: 'Tommy sells papers by the butcher\'s market, south across the tracks.', es: 'Tommy vende periódicos junto al mercado de carne, al sur, cruzando las vías.', fa: 'تامی کنار بازار قصابی، جنوب خط ریل، روزنامه می‌فروشد.' },
@@ -369,7 +369,7 @@ window.EPISODE = {
           { en: 'Chinese Exclusion Act and Dawes Act of the 1880s', es: 'Ley de Exclusión China y Ley Dawes de los años 1880', fa: 'قانون منع چینایی‌ها و قانون داوز در دههٔ ۱۸۸۰' }],
         answer: 0,
         why: { en: 'Inspectors would check meat, and food and medicine labels had to be honest.', es: 'Los inspectores revisarían la carne, y las etiquetas de comida y medicina debían ser honestas.', fa: 'مفتشان گوشت را بررسی می‌کردند و لیبل‌های غذا و دوا باید راست می‌بود.' } },
-      { q: { en: 'What did journalist Ida B. Wells expose?', es: '¿Qué denunció la periodista Ida B. Wells?', fa: 'خبرنگار آیدا بی. ولز چه چیزی را افشا کرد؟' },
+      { q: { en: 'What did reporter Ida B. Wells write about?', es: '¿Sobre qué escribía la reportera Ida B. Wells?', fa: 'خبرنگار آیدا بی. ولز دربارهٔ چه می‌نوشت؟' },
         choices: [
           { en: 'The lynching of Black Americans by mobs', es: 'El linchamiento de afroamericanos por turbas', fa: 'لینچ امریکایی‌های سیاه‌پوست به دست اوباش' },
           { en: 'Spoiled meat in the Chicago stock yards', es: 'La carne podrida en los corrales de Chicago', fa: 'گوشت خراب در کشتارگاه‌های شیکاگو' },
@@ -385,22 +385,22 @@ window.EPISODE = {
           { en: 'Ended child labor in all factories', es: 'Terminó el trabajo infantil en las fábricas', fa: 'کار اطفال را در همهٔ فابریکه‌ها ختم کرد' }],
         answer: 0,
         why: { en: 'Suffragists like Susan B. Anthony, Carrie Chapman Catt and Alice Paul worked for it for decades.', es: 'Sufragistas como Susan B. Anthony, Carrie Chapman Catt y Alice Paul lucharon por ella durante décadas.', fa: 'مدافعان حق رأی مثل سوزان بی. انتونی، کری چپمن کت و الیس پال ده‌ها سال برای آن کار کردند.' } },
-      { q: { en: 'Why was Theodore Roosevelt called a "trust-buster"?', es: '¿Por qué a Theodore Roosevelt lo llamaban "rompe-monopolios"?', fa: 'چرا به تیودور روزولت «شکنندهٔ تراست» می‌گفتند؟' },
+      { q: { en: 'What did the reformers called Progressives want to do?', es: '¿Qué querían hacer los reformistas llamados progresistas?', fa: 'اصلاح‌گرانی که ترقی‌خواه نام داشتند، چه می‌خواستند؟' },
         choices: [
-          { en: 'He broke up giant companies that crushed rivals', es: 'Dividió empresas enormes que aplastaban a sus rivales', fa: 'شرکت‌های بسیار بزرگی را که رقیبان را له می‌کردند، شکست' },
-          { en: 'He built the first railroad to the Pacific Ocean', es: 'Construyó el primer tren hasta el océano Pacífico', fa: 'اولین خط ریل را تا بحر آرام ساخت' },
-          { en: 'He wrote the book The Jungle about meatpacking', es: 'Escribió el libro La jungla sobre las empacadoras', fa: 'کتاب «جنگل» را دربارهٔ بسته‌بندی گوشت نوشت' },
-          { en: 'He gave Hawaii back to its queen in 1898', es: 'Le devolvió Hawái a su reina en 1898', fa: 'در ۱۸۹۸ هاوایی را به ملکه‌اش پس داد' }],
+          { en: 'Fix the problems that industry made', es: 'Arreglar los problemas que causó la industria', fa: 'مشکلاتی را که صنعت ساخته بود حل کنند' },
+          { en: 'Close every factory in the country', es: 'Cerrar todas las fábricas del país', fa: 'همهٔ فابریکه‌های کشور را ببندند' },
+          { en: 'Make the workday much longer', es: 'Hacer mucho más larga la jornada', fa: 'روز کاری را خیلی درازتر کنند' },
+          { en: 'Stop all newspapers from printing', es: 'Prohibir que se imprimieran periódicos', fa: 'جلوی چاپ همهٔ روزنامه‌ها را بگیرند' }],
         answer: 0,
-        why: { en: 'A [[trust|trust]] was a giant company group that crushed rivals. Roosevelt went to court to break some up.', es: 'Un [[trust|monopolio]] era un grupo enorme de empresas que aplastaba rivales. Roosevelt fue a la corte para dividir algunos.', fa: '[[trust|تراست]] گروه بزرگ شرکت‌ها بود که رقیبان را له می‌کرد. روزولت برای شکستن بعضی به محکمه رفت.' } },
-      { q: { en: 'Why did the US want lands overseas around 1900?', es: '¿Por qué EE. UU. quería tierras al otro lado del mar cerca de 1900?', fa: 'چرا امریکا در حدود ۱۹۰۰ سرزمین‌هایی آن طرف بحر می‌خواست؟' },
+        why: { en: 'Progressives wanted to fix problems like spoiled meat, child labor and crowded tenements.', es: 'Los progresistas querían arreglar problemas como la carne podrida, el trabajo infantil y las vecindades llenas.', fa: 'ترقی‌خواهان می‌خواستند مشکلاتی مثل گوشت خراب، کار اطفال و خانه‌های پرازدحام را حل کنند.' } },
+      { q: { en: 'Filipinos fought the US from 1899 to 1902. What did they want?', es: 'Los filipinos lucharon contra EE. UU. de 1899 a 1902. ¿Qué querían?', fa: 'فیلیپینی‌ها از ۱۸۹۹ تا ۱۹۰۲ با امریکا جنگیدند. چه می‌خواستند؟' },
         choices: [
-          { en: 'Markets, navy bases, and feeling superior', es: 'Mercados, bases navales y sentirse superiores', fa: 'بازار، پایگاه بحری و احساس برتری' },
-          { en: 'To give every island its own free government', es: 'Para darle a cada isla su propio gobierno libre', fa: 'تا به هر جزیره حکومت آزاد خودش را بدهد' },
-          { en: 'Because Spain asked the US to take its lands', es: 'Porque España le pidió a EE. UU. tomar sus tierras', fa: 'چون هسپانیه از امریکا خواست سرزمین‌هایش را بگیرد' },
-          { en: 'Because there was no more room in Chicago', es: 'Porque ya no había espacio en Chicago', fa: 'چون در شیکاگو دیگر جای نبود' }],
+          { en: 'To rule their own land', es: 'Gobernar su propia tierra', fa: 'بر سرزمین خود حکومت کنند' },
+          { en: 'To be ruled by Spain again', es: 'Volver a ser gobernados por España', fa: 'دوباره زیر حکومت هسپانیه باشند' },
+          { en: 'To move to the United States', es: 'Mudarse a Estados Unidos', fa: 'به امریکا کوچ کنند' },
+          { en: 'To join the US Navy', es: 'Unirse a la Marina de EE. UU.', fa: 'به قوای بحری امریکا بپیوندند' }],
         answer: 0,
-        why: { en: 'Leaders wanted new markets and navy bases. Many also wrongly believed they were superior to other peoples.', es: 'Los líderes querían mercados y bases navales. Muchos también creían, sin razón, que eran superiores a otros pueblos.', fa: 'رهبران بازار تازه و پایگاه بحری می‌خواستند. بسیاری هم به غلط فکر می‌کردند از مردمان دیگر برترند.' } },
+        why: { en: 'They wanted self-rule, not a new ruler. Many thousands of Filipinos died, and the US kept control.', es: 'Querían gobernarse solos, no un nuevo gobernante. Murieron muchos miles de filipinos, y EE. UU. siguió al mando.', fa: 'آن‌ها حکومت بر خود را می‌خواستند، نه یک حاکم نو. هزاران فیلیپینی کشته شدند و امریکا کنترول را نگه داشت.' } },
       { q: { en: 'What lands did the US gain from the Spanish-American War (1898)?', es: '¿Qué tierras ganó EE. UU. con la Guerra Hispano-Estadounidense (1898)?', fa: 'امریکا از جنگ امریکا و هسپانیه (۱۸۹۸) کدام سرزمین‌ها را گرفت؟' },
         choices: [
           { en: 'Puerto Rico, Guam and the Philippines', es: 'Puerto Rico, Guam y Filipinas', fa: 'پورتوریکو، گوام و فیلیپین' },
@@ -409,14 +409,14 @@ window.EPISODE = {
           { en: 'Mexico, Jamaica and Newfoundland', es: 'México, Jamaica y Terranova', fa: 'مکسیکو، جامائیکا و نیوفوندلند' }],
         answer: 0,
         why: { en: 'Spain gave up Puerto Rico, Guam and the Philippines. Cuba came under strong US control.', es: 'España entregó Puerto Rico, Guam y Filipinas. Cuba quedó bajo un fuerte control de EE. UU.', fa: 'هسپانیه پورتوریکو، گوام و فیلیپین را واگذار کرد. کیوبا زیر کنترول سخت امریکا آمد.' } },
-      { q: { en: 'How did Hawaii\'s Queen Liliuokalani lose power in 1893?', es: '¿Cómo perdió el poder la reina Liliuokalani de Hawái en 1893?', fa: 'ملکه لیلیوکالانی هاوایی در ۱۸۹۳ چطور قدرت را از دست داد؟' },
+      { q: { en: 'What did Hull House, opened by Jane Addams, do?', es: '¿Qué hacía Hull House, abierta por Jane Addams?', fa: 'هال هاوس که جین آدامز باز کرد، چه کار می‌کرد؟' },
         choices: [
-          { en: 'American businessmen overthrew her', es: 'Empresarios estadounidenses la derrocaron', fa: 'تاجران امریکایی او را سرنگون کردند' },
-          { en: 'She sold Hawaii to the US for gold', es: 'Vendió Hawái a EE. UU. por oro', fa: 'او هاوایی را به امریکا به طلا فروخت' },
-          { en: 'Hawaiian voters asked to join the US', es: 'Los votantes hawaianos pidieron unirse a EE. UU.', fa: 'رأی‌دهندگان هاوایی خواستند به امریکا بپیوندند' },
-          { en: 'Spain took Hawaii in a short war', es: 'España tomó Hawái en una guerra corta', fa: 'هسپانیه در یک جنگ کوتاه هاوایی را گرفت' }],
+          { en: 'Helped immigrant families nearby', es: 'Ayudaba a familias inmigrantes cercanas', fa: 'به خانواده‌های مهاجر نزدیک کمک می‌کرد' },
+          { en: 'Packed meat for the whole country', es: 'Empacaba carne para todo el país', fa: 'برای تمام کشور گوشت بسته‌بندی می‌کرد' },
+          { en: 'Printed news about the war', es: 'Imprimía noticias sobre la guerra', fa: 'خبرهای جنگ را چاپ می‌کرد' },
+          { en: 'Trained soldiers to fight Spain', es: 'Entrenaba soldados para luchar contra España', fa: 'عسکر را برای جنگ با هسپانیه آماده می‌کرد' }],
         answer: 0,
-        why: { en: 'Businessmen, helped by US marines, overthrew her. The US annexed Hawaii in 1898. Many Hawaiians protested.', es: 'Empresarios, con ayuda de marines de EE. UU., la derrocaron. EE. UU. anexó Hawái en 1898. Muchos hawaianos protestaron.', fa: 'تاجران با کمک عسکران بحری امریکا او را سرنگون کردند. امریکا در ۱۸۹۸ هاوایی را ضمیمه کرد. بسیاری اعتراض کردند.' } }
+        why: { en: 'It was a [[settlement house|settlement house]]. It taught English, cared for children and fought child labor.', es: 'Era una [[settlement house|casa de asentamiento]]. Enseñaba inglés, cuidaba niños y luchaba contra el trabajo infantil.', fa: 'یک [[settlement house|خانهٔ کمک]] بود. انگلیسی یاد می‌داد، از اطفال نگهداری می‌کرد و با کار اطفال مبارزه می‌کرد.' } }
     ]
   },
 

@@ -208,7 +208,7 @@ window.EPISODE = {
       lines: [
         { en: 'I fought in Korea. In 1950, North Korea invaded South Korea.', es: 'Peleé en Corea. En 1950, Corea del Norte invadió Corea del Sur.', fa: 'من در کوریا جنگیدم. در ۱۹۵۰، کوریای شمالی به کوریای جنوبی حمله کرد.' },
         { en: 'The United Nations sent troops to help the South. Most helpers from abroad were American.', es: 'Las Naciones Unidas enviaron tropas para ayudar al Sur. La mayoría de los que llegaron de fuera eran estadounidenses.', fa: 'سازمان ملل برای کمک به جنوب عسکر فرستاد. بیشتر عسکرهای خارجی امریکایی بودند.' },
-        { en: 'Then China sent a huge army to help the North.', es: 'Luego China envió un ejército enorme para ayudar al Norte.', fa: 'بعد چین یک اردوی بسیار بزرگ برای کمک به شمال فرستاد.' },
+        { en: 'In 1949, Mao Zedong\'s Communists took power in China. Then China\'s army helped the North.', es: 'En 1949, los comunistas de Mao Zedong tomaron el poder en China. Luego, el ejército chino ayudó al Norte.', fa: 'در ۱۹۴۹، کمونیست‌های مائو تسه‌دونگ در چین قدرت را گرفتند. بعد اردوی چین به شمال کمک کرد.' },
         { en: 'Black and white soldiers served together in my unit. That was new.', es: 'Soldados negros y blancos servían juntos en mi unidad. Eso era nuevo.', fa: 'سربازان سیاه‌پوست و سفیدپوست در قطعهٔ من با هم خدمت می‌کردند. این نو بود.' },
         { en: 'In 1953, an [[armistice|armistice]] stopped the fighting near the 38th parallel.', es: 'En 1953, un [[armistice|armisticio]] detuvo la pelea cerca del paralelo 38.', fa: 'در ۱۹۵۳، یک [[armistice|آتش‌بس]] جنگ را نزدیک مدار ۳۸ درجه بس کرد.' }
       ],
@@ -384,22 +384,22 @@ window.EPISODE = {
           { en: 'Closed every school for a year', es: 'Cerró todas las escuelas por un año', fa: 'همهٔ مکتب‌ها را یک سال بست' }],
         answer: 0,
         why: { en: 'Americans feared falling behind. NASA began in 1958, and schools taught more science and math.', es: 'Los estadounidenses temían quedarse atrás. La NASA empezó en 1958 y las escuelas enseñaron más ciencias.', fa: 'امریکایی‌ها ترسیدند عقب بمانند. ناسا در ۱۹۵۸ شروع شد و مکتب‌ها ساینس و ریاضی بیشتر درس دادند.' } },
-      { q: { en: 'During the Red Scare, what was McCarthyism?', es: 'Durante el Temor Rojo, ¿qué era el macartismo?', fa: 'در زمان ترس سرخ، مک‌کارتیزم چه بود؟' },
+      { q: { en: 'What was the "iron curtain"?', es: '¿Qué era la "cortina de hierro"?', fa: '«پردهٔ آهنین» چه بود؟' },
         choices: [
-          { en: 'Calling people communists without proof', es: 'Llamar comunista a la gente sin pruebas', fa: 'کمونیست خواندن مردم بدون ثبوت' },
-          { en: 'A plan that sent food to Europe', es: 'Un plan que mandó comida a Europa', fa: 'نقشه‌ای که به اروپا غذا فرستاد' },
-          { en: 'A new way to build rockets in space', es: 'Una nueva forma de hacer cohetes en el espacio', fa: 'راه نو برای ساختن راکت در فضا' },
-          { en: 'A treaty that ended the fighting in Korea', es: 'Un tratado que terminó la pelea en Corea', fa: 'پیمانی که جنگ کوریا را ختم کرد' }],
+          { en: 'A line that split Europe in two', es: 'Una línea que dividía Europa en dos', fa: 'خطی که اروپا را دو تکه کرد' },
+          { en: 'A metal wall around Cuba', es: 'Un muro de metal alrededor de Cuba', fa: 'یک دیوار فلزی دور کیوبا' },
+          { en: 'A curtain in NASA\'s rocket labs', es: 'Una cortina en los laboratorios de NASA', fa: 'پرده‌ای در لابراتوارهای راکت ناسا' },
+          { en: 'A fence along the Korean border', es: 'Una cerca en la frontera de Corea', fa: 'یک کتاره در سرحد کوریا' }],
         answer: 0,
-        why: { en: 'Senator McCarthy made many false charges. People lost jobs, though most had done nothing wrong.', es: 'El senador McCarthy hizo muchas acusaciones falsas. Gente perdió su trabajo sin haber hecho nada malo.', fa: 'سناتور مک‌کارتی تهمت‌های دروغ زیادی زد. مردم کار خود را از دست دادند، با این‌که کار بدی نکرده بودند.' } },
-      { q: { en: 'In October 1962, what did President Kennedy do about the missiles in Cuba?', es: 'En octubre de 1962, ¿qué hizo el presidente Kennedy con los misiles en Cuba?', fa: 'در اکتوبر ۱۹۶۲، رئیس‌جمهور کندی دربارهٔ راکت‌های کیوبا چه کرد؟' },
+        why: { en: 'The [[iron curtain|iron curtain]] split Europe. In the east, Communist parties ruled under Soviet control.', es: 'La [[iron curtain|cortina de hierro]] dividió Europa. En el este, los comunistas gobernaban bajo control soviético.', fa: '[[iron curtain|پردهٔ آهنین]] اروپا را تقسیم کرد. در شرق، کمونیست‌ها زیر کنترول شوروی حکومت می‌کردند.' } },
+      { q: { en: 'How did the Cuban Missile Crisis end in 1962?', es: '¿Cómo terminó la Crisis de los misiles en 1962?', fa: 'بحران راکت‌های کیوبا در ۱۹۶۲ چطور تمام شد؟' },
         choices: [
-          { en: 'Ordered a naval quarantine of Cuba', es: 'Ordenó una cuarentena naval de Cuba', fa: 'دستور محاصرهٔ بحری کیوبا را داد' },
-          { en: 'Bombed the city of Moscow that night', es: 'Bombardeó la ciudad de Moscú esa noche', fa: 'همان شب شهر مسکو را بمباران کرد' },
-          { en: 'Gave Cuba to the Soviet Union', es: 'Le dio Cuba a la Unión Soviética', fa: 'کیوبا را به اتحاد شوروی داد' },
-          { en: 'Moved the Pentagon down to Florida', es: 'Llevó el Pentágono a Florida', fa: 'پنتاگون را به فلوریدا برد' }],
+          { en: 'The Soviets took their missiles out', es: 'Los soviéticos sacaron sus misiles', fa: 'شوروی راکت‌هایش را بیرون برد' },
+          { en: 'The US and the Soviets went to war', es: 'EE. UU. y los soviéticos fueron a la guerra', fa: 'امریکا و شوروی به جنگ رفتند' },
+          { en: 'Cuba became a part of Florida', es: 'Cuba se volvió parte de Florida', fa: 'کیوبا بخشی از فلوریدا شد' },
+          { en: 'The Soviets built more bases', es: 'Los soviéticos hicieron más bases', fa: 'شوروی پایگاه‌های بیشتر ساخت' }],
         answer: 0,
-        why: { en: 'Navy ships blocked weapons from reaching Cuba. After 13 days, the Soviets agreed to remove the missiles.', es: 'Barcos de la Marina bloquearon las armas hacia Cuba. Después de 13 días, los soviéticos sacaron los misiles.', fa: 'کشتی‌های بحری راه سلاح به کیوبا را بستند. بعد از ۱۳ روز، شوروی قبول کرد راکت‌ها را ببرد.' } }
+        why: { en: 'After 13 days, the Soviets agreed to take their missiles out of Cuba. A nuclear war was avoided.', es: 'Después de 13 días, los soviéticos aceptaron sacar sus misiles de Cuba. Se evitó una guerra nuclear.', fa: 'بعد از ۱۳ روز، شوروی قبول کرد راکت‌هایش را از کیوبا بیرون ببرد. از جنگ هسته‌ای جلوگیری شد.' } }
     ]
   },
 

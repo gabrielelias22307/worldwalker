@@ -199,7 +199,7 @@ window.EPISODE = {
       role: { en: 'Newspaper reporter', es: 'Reportero', fa: 'خبرنگار' },
       look: { skin: 5, hair: '#1a1a1a', shirt: '#e8e0d0', pants: '#2a2a3a', style: 'short', hat: '#3a3a3a' },
       lines: [
-        { en: 'I write for a Black newspaper here in Norfolk.', es: 'Escribo para un periódico afroamericano aquí en Norfolk.', fa: 'من برای یک روزنامهٔ سیاه‌پوستان اینجا در نورفک می‌نویسم.' },
+        { en: 'My Black newspaper also reports: in 1942, [[executive order 9066|Executive Order 9066]] forced Japanese Americans into camps.', es: 'Mi periódico afroamericano también informa: en 1942, la [[executive order 9066|Orden Ejecutiva 9066]] obligó a japoneses estadounidenses a ir a campos.', fa: 'روزنامهٔ سیاه‌پوستان ما هم خبر می‌دهد: در ۱۹۴۲، [[executive order 9066|فرمان اجرایی ۹۰۶۶]] امریکایی‌های جاپانی‌تبار را به زور به کمپ‌ها فرستاد.' },
         { en: 'We call for [[double v|Double V]]: victory abroad, and victory over racism at home.', es: 'Pedimos la [[double v|Doble V]]: victoria afuera y victoria sobre el racismo en casa.', fa: 'ما [[double v|دوبل وی]] می‌خواهیم: پیروزی در بیرون، و پیروزی بر نژادپرستی در وطن.' },
         { en: 'The armed forces still keep Black and white troops apart.', es: 'Las fuerzas armadas todavía separan a las tropas negras y blancas.', fa: 'نیروهای مسلح هنوز سربازان سیاه‌پوست و سفیدپوست را جدا نگه می‌دارند.' },
         { en: 'Black pilots trained at Tuskegee, Alabama. Now the Tuskegee Airmen fly in North Africa.', es: 'Pilotos negros se entrenaron en Tuskegee, Alabama. Ahora los aviadores de Tuskegee vuelan en África del Norte.', fa: 'پیلوت‌های سیاه‌پوست در توسکیجی، الاباما آموزش دیدند. حالا هوانوردان توسکیجی در شمال افریقا پرواز می‌کنند.' }
@@ -226,7 +226,7 @@ window.EPISODE = {
         { en: 'I fix radios. In the 1930s, Hitler and Mussolini became [[dictator|dictators]].', es: 'Arreglo radios. En los años treinta, Hitler y Mussolini se volvieron [[dictator|dictadores]].', fa: 'من رادیو ترمیم می‌کنم. در دههٔ ۱۹۳۰، هیتلر و موسولینی [[dictator|دیکتاتور]] شدند.' },
         { en: 'Japan\'s military leaders invaded China. Hitler\'s Germany took land in Europe.', es: 'Los jefes militares de Japón invadieron China. La Alemania de Hitler tomó tierras en Europa.', fa: 'رهبران نظامی جاپان به چین حمله کردند. آلمانِ هیتلر سرزمین‌هایی در اروپا گرفت.' },
         { en: 'At first, Britain and France gave Hitler what he wanted. That was [[appeasement|appeasement]].', es: 'Al principio, Gran Bretaña y Francia le dieron a Hitler lo que quería. Eso fue el [[appeasement|apaciguamiento]].', fa: 'اول، بریتانیا و فرانسه هر چه هیتلر خواست به او دادند. این [[appeasement|سیاست سازش]] بود.' },
-        { en: 'The US stayed [[neutral|neutral]] until Japan attacked Pearl Harbor on December 7, 1941.', es: 'EE. UU. fue [[neutral|neutral]] hasta que Japón atacó Pearl Harbor el 7 de diciembre de 1941.', fa: 'امریکا [[neutral|بی‌طرف]] ماند تا جاپان در ۷ دسامبر ۱۹۴۱ به پرل هاربر حمله کرد.' }
+        { en: 'The radio says Nazi Germany is murdering millions of Jews. History calls it the Holocaust.', es: 'La radio dice que la Alemania nazi está asesinando a millones de judíos. La historia lo llama el Holocausto.', fa: 'رادیو می‌گوید آلمان نازی میلیون‌ها یهودی را می‌کشد. تاریخ آن را هولوکاست می‌نامد.' }
       ],
       ask: {
         stat: 'loc',
@@ -380,14 +380,14 @@ window.EPISODE = {
           { en: 'A British vote in London', es: 'Una votación británica en Londres', fa: 'یک رأی‌گیری بریتانیا در لندن' }],
         answer: 0,
         why: { en: 'On December 7, 1941, Japan attacked Pearl Harbor, Hawaii. The next day, the US declared war.', es: 'El 7 de diciembre de 1941, Japón atacó Pearl Harbor, Hawái. Al día siguiente, EE. UU. declaró la guerra.', fa: 'در ۷ دسامبر ۱۹۴۱، جاپان به پرل هاربر در هاوایی حمله کرد. روز بعد، امریکا اعلان جنگ کرد.' } },
-      { q: { en: 'What happened on D-Day, June 6, 1944?', es: '¿Qué pasó el Día D, el 6 de junio de 1944?', fa: 'در روز دی، ۶ جون ۱۹۴۴، چه شد؟' },
+      { q: { en: 'Who was "Rosie the Riveter"?', es: '¿Quién era "Rosie la Remachadora"?', fa: '«روزی پرچ‌کار» که بود؟' },
         choices: [
-          { en: 'Allied troops landed in France', es: 'Tropas aliadas desembarcaron en Francia', fa: 'سربازان متحد در فرانسه پیاده شدند' },
-          { en: 'Japan attacked Pearl Harbor', es: 'Japón atacó Pearl Harbor', fa: 'جاپان به پرل هاربر حمله کرد' },
-          { en: 'Germany won the whole war in Europe', es: 'Alemania ganó toda la guerra en Europa', fa: 'آلمان تمام جنگ اروپا را برد' },
-          { en: 'The US sent its first bonds', es: 'EE. UU. vendió sus primeros bonos', fa: 'امریکا اولین اوراق قرضه را فروخت' }],
+          { en: 'A symbol of women in war jobs', es: 'Un símbolo de las mujeres en trabajos de guerra', fa: 'نماد زنانی که در کارهای جنگی بودند' },
+          { en: 'A famous warship built in Norfolk', es: 'Un famoso barco de guerra hecho en Norfolk', fa: 'یک کشتی جنگی مشهور ساخت نورفک' },
+          { en: 'A singer heard on every radio', es: 'Una cantante que sonaba en cada radio', fa: 'آوازخوانی که در هر رادیو شنیده می‌شد' },
+          { en: 'A nurse who served in Africa', es: 'Una enfermera que sirvió en África', fa: 'نرسی که در افریقا خدمت کرد' }],
         answer: 0,
-        why: { en: 'Allied troops crossed the sea and landed in Normandy, France. They began to free Western Europe.', es: 'Las tropas aliadas cruzaron el mar y desembarcaron en Normandía, Francia. Empezaron a liberar Europa occidental.', fa: 'سربازان متحد از بحر گذشتند و در نورماندی فرانسه پیاده شدند. آزادی اروپای غربی را شروع کردند.' } },
+        why: { en: 'Posters showed "Rosie the Riveter" to honor the millions of women who took war jobs.', es: 'Los carteles mostraban a "Rosie la Remachadora" para honrar a millones de mujeres en trabajos de guerra.', fa: 'اعلان‌ها «روزی پرچ‌کار» را نشان می‌دادند تا از میلیون‌ها زن که کار جنگی گرفتند قدردانی کنند.' } },
       { q: { en: 'What did Black Americans mean by the "Double V" campaign?', es: '¿Qué querían decir los afroamericanos con la campaña de la "Doble V"?', fa: 'امریکایی‌های سیاه‌پوست از کمپاین «دوبل وی» چه منظور داشتند؟' },
         choices: [
           { en: 'Beat racism at home, win the war', es: 'Vencer el racismo en casa y ganar la guerra', fa: 'نژادپرستی را در وطن شکست بدهیم و جنگ را ببریم' },
@@ -412,14 +412,14 @@ window.EPISODE = {
           { en: 'The attack on Pearl Harbor', es: 'El ataque a Pearl Harbor', fa: 'حمله به پرل هاربر' }],
         answer: 0,
         why: { en: 'Nazi Germany murdered six million Jews and millions of others. We remember them, so it never happens again.', es: 'La Alemania nazi asesinó a seis millones de judíos y a millones de otras personas. Los recordamos para que nunca se repita.', fa: 'آلمان نازی شش میلیون یهودی و میلیون‌ها نفر دیگر را کشت. ما آن‌ها را به یاد می‌آوریم تا دیگر هرگز تکرار نشود.' } },
-      { q: { en: 'What happened after atomic bombs hit Hiroshima and Nagasaki in August 1945?', es: '¿Qué pasó después de que bombas atómicas cayeran en Hiroshima y Nagasaki en agosto de 1945?', fa: 'بعد از این‌که بم‌های اتمی در اگست ۱۹۴۵ بر هیروشیما و ناگاساکی افتادند، چه شد؟' },
+      { q: { en: 'What was a war bond?', es: '¿Qué era un bono de guerra?', fa: 'اوراق قرضهٔ جنگ چه بود؟' },
         choices: [
-          { en: 'Japan surrendered, and the war ended', es: 'Japón se rindió y la guerra terminó', fa: 'جاپان تسلیم شد و جنگ تمام شد' },
-          { en: 'Germany started fighting the war again', es: 'Alemania volvió a pelear la guerra', fa: 'آلمان دوباره جنگیدن را شروع کرد' },
-          { en: 'The US went back to being neutral', es: 'EE. UU. volvió a ser neutral', fa: 'امریکا دوباره بی‌طرف شد' },
-          { en: 'D-Day began on the coast of France', es: 'El Día D empezó en la costa de Francia', fa: 'روز دی در ساحل فرانسه شروع شد' }],
+          { en: 'Money lent to the government', es: 'Dinero prestado al gobierno', fa: 'پولی که به حکومت قرض داده می‌شد' },
+          { en: 'A ticket to ride a warship', es: 'Un boleto para subir a un barco de guerra', fa: 'تکتی برای سوار شدن به کشتی جنگی' },
+          { en: 'A medal for brave soldiers', es: 'Una medalla para soldados valientes', fa: 'مدالی برای سربازان شجاع' },
+          { en: 'A coupon for free gasoline', es: 'Un cupón para gasolina gratis', fa: 'کوپونی برای تیل مفت' }],
         answer: 0,
-        why: { en: 'Germany surrendered on May 8 (V-E Day). Japan gave up in August (V-J Day) and signed on September 2.', es: 'Alemania se rindió el 8 de mayo (Día V-E). Japón se rindió en agosto (Día V-J) y firmó el 2 de septiembre.', fa: 'آلمان در ۸ می تسلیم شد (روز وی-ای). جاپان در اگست تسلیم شد (روز وی-جی) و در ۲ سپتمبر امضا کرد.' } }
+        why: { en: 'A war bond lent money to the government for the war. Years later, it paid back more.', es: 'Un bono de guerra prestaba dinero al gobierno para la guerra. Años después, devolvía más.', fa: 'اوراق قرضهٔ جنگ به حکومت برای جنگ پول قرض می‌داد. سال‌ها بعد، بیشتر پس می‌داد.' } }
     ]
   },
 

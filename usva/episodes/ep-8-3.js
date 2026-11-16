@@ -169,7 +169,7 @@ window.EPISODE = {
       lines: [
         { en: 'My uncle worked at the Pentagon in 2001. He was not hurt.', es: 'Mi tío trabajaba en el Pentágono en 2001. No salió herido.', fa: 'کاکایم در سال ۲۰۰۱ در پنتاگون کار می‌کرد. او زخمی نشد.' },
         { en: 'He helped carry hurt coworkers out of the smoke. He still visits here.', es: 'Ayudó a sacar del humo a compañeros heridos. Todavía viene aquí.', fa: 'او کمک کرد همکاران زخمی را از میان دود بیرون ببرند. او هنوز اینجا می‌آید.' },
-        { en: '[[al-qaeda|Al-Qaeda]], a terrorist group, planned the attacks. Its leader was Osama bin Laden.', es: '[[al-qaeda|Al Qaeda]], un grupo terrorista, planeó los ataques. Su líder era Osama bin Laden.', fa: '[[al-qaeda|القاعده]]، یک گروه تروریستی، این حمله‌ها را پلان کرد. رهبرش اسامه بن لادن بود.' },
+        { en: '[[al-qaeda|Al-Qaeda]], a terrorist group, planned the attacks. Terrorists attack ordinary people to spread fear.', es: '[[al-qaeda|Al Qaeda]], un grupo terrorista, planeó los ataques. Los terroristas atacan a gente común para sembrar miedo.', fa: '[[al-qaeda|القاعده]]، یک گروه تروریستی، این حمله‌ها را پلان کرد. تروریست‌ها به مردم عادی حمله می‌کنند تا ترس پخش کنند.' },
         { en: 'On Flight 93, passengers fought back. It crashed near Shanksville, Pennsylvania.', es: 'En el vuelo 93, los pasajeros se defendieron. Cayó cerca de Shanksville, Pensilvania.', fa: 'در پرواز ۹۳، مسافران مقاومت کردند. طیاره نزدیک شنکسویل، پنسلوانیا سقوط کرد.' }
       ],
       ask: {
@@ -347,20 +347,20 @@ window.EPISODE = {
         why: { en: 'The passengers fought back. The plane crashed in a field near Shanksville, Pennsylvania.', es: 'Los pasajeros se defendieron. El avión cayó en un campo cerca de Shanksville, Pensilvania.', fa: 'مسافران مقاومت کردند. طیاره در یک مزرعه نزدیک شنکسویل، پنسلوانیا سقوط کرد.' } },
       { q: { en: 'What is terrorism?', es: '¿Qué es el terrorismo?', fa: 'تروریزم چیست؟' },
         choices: [
-          { en: 'Attacking ordinary people to spread fear for political goals', es: 'Atacar a gente común para sembrar miedo por fines políticos', fa: 'حمله به مردم عادی برای پخش ترس، به خاطر هدف‌های سیاسی' },
-          { en: 'A fair election where all the people choose their own leaders', es: 'Una elección justa donde todo el pueblo elige a sus propios líderes', fa: 'یک انتخابات عادلانه که همهٔ مردم رهبران خود را انتخاب می‌کنند' },
-          { en: 'A law that protects the rights of every single person', es: 'Una ley que protege los derechos de cada persona', fa: 'قانونی که از حقوق هر انسان محافظت می‌کند' },
-          { en: 'A peaceful march where people ask leaders for change', es: 'Una marcha pacífica donde la gente pide cambios', fa: 'یک راهپیمایی آرام که مردم از رهبران تغییر می‌خواهند' }],
+          { en: 'Attacking ordinary people to spread fear', es: 'Atacar a gente común para sembrar miedo', fa: 'حمله به مردم عادی برای پخش ترس' },
+          { en: 'A fair election where people choose leaders', es: 'Una elección justa donde la gente elige líderes', fa: 'انتخابات عادلانه که مردم رهبران را انتخاب می‌کنند' },
+          { en: 'A law that protects the rights of everyone', es: 'Una ley que protege los derechos de todos', fa: 'قانونی که از حقوق همه محافظت می‌کند' },
+          { en: 'A peaceful march that asks for change', es: 'Una marcha pacífica que pide cambios', fa: 'راهپیمایی آرام که تغییر می‌خواهد' }],
         answer: 0,
         why: { en: 'Terrorists attack ordinary people to make everyone afraid. It is never right.', es: 'Los terroristas atacan a gente común para dar miedo a todos. Nunca está bien.', fa: 'تروریستان به مردم عادی حمله می‌کنند تا همه را بترسانند. این هرگز درست نیست.' } },
-      { q: { en: 'What new department did the United States create in 2002?', es: '¿Qué departamento nuevo creó Estados Unidos en 2002?', fa: 'امریکا در سال ۲۰۰۲ کدام وزارت نو را ساخت؟' },
+      { q: { en: 'At the Pentagon Memorial, what does each bench honor?', es: 'En el Memorial del Pentágono, ¿a quién honra cada banca?', fa: 'در یادبود پنتاگون، هر چوکی از چه کسی یاد می‌کند؟' },
         choices: [
-          { en: 'The Department of Homeland Security', es: 'El Departamento de Seguridad Nacional', fa: 'وزارت امنیت داخلی' },
-          { en: 'The Department of the Treasury', es: 'El Departamento del Tesoro', fa: 'وزارت خزانه' },
-          { en: 'The Department of Veterans Affairs', es: 'El Departamento de Asuntos de Veteranos', fa: 'وزارت امور سربازان سابق' },
-          { en: 'The Department of Housing and Urban Development', es: 'El Departamento de Vivienda y Desarrollo Urbano', fa: 'وزارت مسکن و انکشاف شهری' }],
+          { en: 'One person killed there', es: 'Una persona que murió allí', fa: 'یک نفر که آنجا کشته شد' },
+          { en: 'One battle from long ago', es: 'Una batalla de hace mucho tiempo', fa: 'یک جنگ از زمان‌های قدیم' },
+          { en: 'One state of the country', es: 'Un estado del país', fa: 'یک ایالت کشور' },
+          { en: 'One worker who built it', es: 'Un obrero que lo construyó', fa: 'یک کارگری که آن را ساخت' }],
         answer: 0,
-        why: { en: 'Homeland Security works to protect the country. Airports also added new security checks.', es: 'Seguridad Nacional trabaja para proteger al país. Los aeropuertos también agregaron controles nuevos.', fa: 'وزارت امنیت داخلی برای حفاظت کشور کار می‌کند. میدان‌های هوایی هم بررسی‌های امنیتی نو افزودند.' } },
+        why: { en: 'Each of the 184 benches has one name. The benches are in order by age.', es: 'Cada una de las 184 bancas tiene un nombre. Las bancas están en orden por edad.', fa: 'هر کدام از ۱۸۴ چوکی یک نام دارد. چوکی‌ها به ترتیب سن هستند.' } },
       { q: { en: 'What causes most of climate change today?', es: '¿Qué causa la mayor parte del cambio climático hoy?', fa: 'امروز بیشتر تغییر اقلیم از چه چیزی است؟' },
         choices: [
           { en: 'Burning coal, oil and gas', es: 'Quemar carbón, petróleo y gas', fa: 'سوختاندن زغال سنگ، نفت و گاز' },

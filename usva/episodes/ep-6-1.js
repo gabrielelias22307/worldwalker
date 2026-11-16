@@ -149,7 +149,7 @@ window.EPISODE = {
       lines: [
         { en: 'Buongiorno! We sailed for two weeks from Sicily, in southern Italy.', es: '¡Buongiorno! Navegamos dos semanas desde Sicilia, en el sur de Italia.', fa: 'بونجورنو! ما دو هفته از سیسیل، در جنوب ایتالیا، با کشتی آمدیم.' },
         { en: 'At home our crops failed, and there was no work. That pushed us away.', es: 'En casa se perdieron las cosechas y no había trabajo. Eso nos empujó a salir.', fa: 'در وطن حاصلات ما خراب شد و کار نبود. این ما را به رفتن مجبور کرد.' },
-        { en: 'My brother is in New York. He found work building the subway.', es: 'Mi hermano está en Nueva York. Encontró trabajo construyendo el metro.', fa: 'برادرم در نیویارک است. او در ساختن ریل زیرزمینی کار پیدا کرد.' }
+        { en: 'My brother lives in a crowded [[tenement|tenement]] in New York. He builds the subway.', es: 'Mi hermano vive en una [[tenement|vecindad]] llena de gente en Nueva York. Construye el metro.', fa: 'برادرم در یک [[tenement|تعمیر پرازدحام]] در نیویارک زندگی می‌کند. او ریل زیرزمینی می‌سازد.' }
       ],
       ask: {
         stat: 'reg',
@@ -346,14 +346,14 @@ window.EPISODE = {
           { en: 'In the Gulf of Mexico', es: 'En el golfo de México', fa: 'در خلیج مکسیکو' }],
         answer: 0,
         why: { en: 'Ellis Island opened in 1892 in New York Harbor, near the Statue of Liberty.', es: 'La isla Ellis abrió en 1892 en el puerto de Nueva York, cerca de la Estatua de la Libertad.', fa: 'جزیرهٔ الیس در سال ۱۸۹۲ در بندر نیویارک، نزدیک مجسمهٔ آزادی باز شد.' } },
-      { q: { en: 'On the West Coast, where did many Asian immigrants arrive after 1910?', es: 'En la costa oeste, ¿a dónde llegaron muchos inmigrantes asiáticos después de 1910?', fa: 'در ساحل غربی، بسیاری از مهاجران آسیایی بعد از ۱۹۱۰ به کجا می‌رسیدند؟' },
+      { q: { en: 'In 1907, about how many people came through Ellis Island?', es: 'En 1907, ¿cuántas personas pasaron más o menos por la isla Ellis?', fa: 'در سال ۱۹۰۷، تقریباً چند نفر از جزیرهٔ الیس گذشتند؟' },
         choices: [
-          { en: 'Angel Island, San Francisco Bay', es: 'La isla Ángel, bahía de San Francisco', fa: 'جزیرهٔ اینجل، خلیج سان فرانسیسکو' },
-          { en: 'Ellis Island, New York Harbor', es: 'La isla Ellis, puerto de Nueva York', fa: 'جزیرهٔ الیس، بندر نیویارک' },
-          { en: 'Boston Harbor, Massachusetts', es: 'El puerto de Boston, Massachusetts', fa: 'بندر بوستون، ماساچوست' },
-          { en: 'The Great Lakes, near Chicago', es: 'Los Grandes Lagos, cerca de Chicago', fa: 'جهیل‌های بزرگ، نزدیک شیکاگو' }],
+          { en: 'About a million', es: 'Cerca de un millón', fa: 'تقریباً یک میلیون' },
+          { en: 'About a thousand', es: 'Cerca de mil', fa: 'تقریباً یک هزار' },
+          { en: 'About a hundred', es: 'Cerca de cien', fa: 'تقریباً یک صد' },
+          { en: 'About a billion', es: 'Cerca de mil millones', fa: 'تقریباً یک میلیارد' }],
         answer: 0,
-        why: { en: 'Angel Island opened in 1910. Many Asian immigrants were held there much longer, for weeks or months.', es: 'La isla Ángel abrió en 1910. A muchos inmigrantes asiáticos los retenían allí mucho más tiempo, semanas o meses.', fa: 'جزیرهٔ اینجل در سال ۱۹۱۰ باز شد. بسیاری از مهاجران آسیایی آنجا خیلی بیشتر، هفته‌ها یا ماه‌ها، نگه داشته می‌شدند.' } },
+        why: { en: 'In 1907 alone, about a million immigrants passed through Ellis Island in New York Harbor.', es: 'Solo en 1907, cerca de un millón de inmigrantes pasaron por la isla Ellis, en el puerto de Nueva York.', fa: 'تنها در سال ۱۹۰۷، تقریباً یک میلیون مهاجر از جزیرهٔ الیس در بندر نیویارک گذشتند.' } },
       { q: { en: 'Why was the Chinese Exclusion Act of 1882 a big change?', es: '¿Por qué la Ley de Exclusión China de 1882 fue un gran cambio?', fa: 'چرا قانون منع چینایی‌ها در ۱۸۸۲ یک تغییر بزرگ بود؟' },
         choices: [
           { en: 'First US law to ban one nationality', es: 'Primera ley de EE. UU. que prohibió una nacionalidad', fa: 'اولین قانون امریکا که یک ملیت را منع کرد' },
@@ -378,14 +378,14 @@ window.EPISODE = {
           { en: 'In tents by the harbor', es: 'En tiendas de campaña junto al puerto', fa: 'در خیمه‌ها کنار بندر' }],
         answer: 0,
         why: { en: '[[tenement|Tenements]] were small, crowded and often dark. Families built neighborhoods with churches, synagogues and shops.', es: 'Las [[tenement|vecindades]] eran pequeñas, llenas y a menudo oscuras. Las familias formaron barrios con iglesias, sinagogas y tiendas.', fa: '[[tenement|تعمیرهای پرازدحام]] کوچک و اکثراً تاریک بودند. خانواده‌ها محله‌هایی با کلیسا، کنیسه و دکان ساختند.' } },
-      { q: { en: 'What was Hull House, started by Jane Addams in 1889?', es: '¿Qué era Hull House, fundada por Jane Addams en 1889?', fa: 'هال هاوس که جین آدامز در سال ۱۸۸۹ ساخت، چه بود؟' },
+      { q: { en: 'How did immigrant groups in New York help each other?', es: '¿Cómo se ayudaban los grupos de inmigrantes en Nueva York?', fa: 'گروه‌های مهاجر در نیویارک چطور به یکدیگر کمک می‌کردند؟' },
         choices: [
-          { en: 'A center that helped immigrants', es: 'Un centro que ayudaba a los inmigrantes', fa: 'مرکزی که به مهاجران کمک می‌کرد' },
-          { en: 'A factory for railroad cars', es: 'Una fábrica de vagones de tren', fa: 'فابریکهٔ واگون‌های ریل' },
-          { en: 'A station for new arrivals', es: 'Una estación para recién llegados', fa: 'مرکزی برای تازه‌واردها در بندر' },
-          { en: 'A big hotel for rich visitors', es: 'Un gran hotel para visitantes ricos', fa: 'یک هوتل بزرگ برای مهمانان ثروتمند' }],
+          { en: 'Printed their own newspapers', es: 'Imprimían sus propios periódicos', fa: 'روزنامه‌های خودشان را چاپ می‌کردند' },
+          { en: 'Closed the harbor to all new ships', es: 'Cerraban el puerto a todos los barcos nuevos', fa: 'بندر را به روی همهٔ کشتی‌های نو می‌بستند' },
+          { en: 'Sent every newcomer back home', es: 'Mandaban de regreso a cada recién llegado', fa: 'هر تازه‌وارد را پس به وطنش می‌فرستادند' },
+          { en: 'Wrote laws to keep newcomers out', es: 'Escribían leyes para no dejar entrar a nadie', fa: 'قانون می‌نوشتند تا تازه‌واردها نیایند' }],
         answer: 0,
-        why: { en: 'Hull House in Chicago was a [[settlement house|settlement house]]. It gave classes and child care to immigrant families.', es: 'Hull House, en Chicago, era una [[settlement house|casa de asentamiento]]. Daba clases y cuidado de niños a familias inmigrantes.', fa: 'هال هاوس در شیکاگو یک [[settlement house|خانهٔ کمک]] بود. به خانواده‌های مهاجر درس و نگهداری اطفال می‌داد.' } }
+        why: { en: 'Greek, Italian and Jewish groups printed papers. They listed churches, shops and jobs for newcomers.', es: 'Grupos griegos, italianos y judíos imprimían periódicos. Mostraban iglesias, tiendas y trabajos para los recién llegados.', fa: 'گروه‌های یونانی، ایتالیایی و یهودی روزنامه چاپ می‌کردند. در آن‌ها کلیساها، دکان‌ها و کارها برای تازه‌واردها نوشته بود.' } }
     ]
   },
 
