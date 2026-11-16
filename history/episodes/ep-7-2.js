@@ -230,6 +230,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#1a1008', shirt: '#e0a020', pants: '#2a4a7a', style: 'long' },
       lines: [
         { en: 'My class has a [[scrap drive|scrap drive]]. Old metal becomes new ships.', es: 'Mi clase hace una [[scrap drive|colecta de chatarra]]. El metal viejo se vuelve barcos nuevos.', fa: 'صنف ما [[scrap drive|جمع‌آوری کهنه]] دارد. فلز کهنه کشتی نو می‌شود.' },
+        { en: 'In 1942, the government forced my Japanese American friend into a camp.', es: 'En 1942, el gobierno obligó a mi amiga japonesa estadounidense a ir a un campo.', fa: 'در ۱۹۴۲، حکومت دوست جاپانی‌امریکایی‌ام را به زور به یک اردوگاه فرستاد.' },
         { en: 'Grandma Lou knows where to take it. Please ask her in her garden.', es: 'La abuela Lou sabe adónde llevarlo. Por favor, pregúntale en su huerto.', fa: 'مادرکلان لو می‌داند آن را کجا ببریم. لطفاً در باغچه‌اش از او بپرس.' }
       ],
       wait: { en: 'Grandma Lou is in the victory garden, east of the store.', es: 'La abuela Lou está en el huerto de la victoria, al este de la tienda.', fa: 'مادرکلان لو در باغچهٔ پیروزی، شرق دکان است.' },
@@ -242,6 +243,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#d8d8d8', shirt: '#3fa34d', pants: '#5a4630', style: 'bun' },
       lines: [
         { en: 'I grow potatoes and beans here, so more food can go to soldiers.', es: 'Aquí cultivo papas y frijoles, para que haya más comida para los soldados.', fa: 'من اینجا کچالو و لوبیا می‌کارم تا غذای بیشتر به سربازان برسد.' },
+        { en: 'Life at home in the war is the [[home front|home front]]. We all help.', es: 'La vida en casa durante la guerra es el [[home front|frente interno]]. Todos ayudamos.', fa: 'زندگی در خانه در وقت جنگ [[home front|جبههٔ داخلی]] است. همهٔ ما کمک می‌کنیم.' },
         { en: 'Take metal to Mr. Green. He is in the shipyard, south-east, by the docks.', es: 'Lleva metal al señor Green. Está en el astillero, al sureste, junto a los muelles.', fa: 'فلز را پیش آقای گرین ببر. او در کشتی‌سازی، جنوب شرق، کنار بندرگاه است.' }
       ]
     },
@@ -391,14 +393,14 @@ window.EPISODE = {
           { en: 'Farms that grew flowers to sell abroad', es: 'Granjas que daban flores para vender afuera', fa: 'فارم‌هایی که گل برای فروش در خارج می‌کاشتند' }],
         answer: 0,
         why: { en: 'Families grew their own vegetables, so more farm food could go to soldiers.', es: 'Las familias cultivaban sus verduras, y así más comida iba a los soldados.', fa: 'خانواده‌ها سبزی خود را کاشتند تا غذای فارم‌ها بیشتر به سربازان برسد.' } },
-      { q: { en: 'Which country had been at war with Japan since 1937?', es: '¿Qué país estaba en guerra con Japón desde 1937?', fa: 'کدام کشور از سال ۱۹۳۷ با جاپان در جنگ بود؟' },
+      { q: { en: 'Why was sugar rationed in the United States?', es: '¿Por qué se racionó el azúcar en Estados Unidos?', fa: 'چرا در امریکا شکر جیره‌بندی شد؟' },
         choices: [
-          { en: 'China', es: 'China', fa: 'چین' },
-          { en: 'Mexico', es: 'México', fa: 'مکسیکو' },
-          { en: 'Canada', es: 'Canadá', fa: 'کانادا' },
-          { en: 'Brazil', es: 'Brasil', fa: 'برازیل' }],
+          { en: 'Japan cut off sugar from the Philippines', es: 'Japón cortó el azúcar de Filipinas', fa: 'جاپان راه شکر فیلیپین را بست' },
+          { en: 'Doctors said sugar was bad for everyone', es: 'Los médicos dijeron que el azúcar dañaba a todos', fa: 'داکتران گفتند شکر برای همه بد است' },
+          { en: 'American farms grew far too much sugar', es: 'Las granjas de EE. UU. tenían demasiado azúcar', fa: 'فارم‌های امریکا شکر خیلی زیاد داشتند' },
+          { en: 'Stores wanted to charge much higher prices', es: 'Las tiendas querían cobrar precios más altos', fa: 'دکان‌ها می‌خواستند قیمت را خیلی بالا ببرند' }],
         answer: 0,
-        why: { en: 'Japan invaded China in 1937. Later, China and the United States were allies.', es: 'Japón invadió China en 1937. Después, China y Estados Unidos fueron aliados.', fa: 'جاپان در سال ۱۹۳۷ به چین حمله کرد. بعد، چین و امریکا متحد شدند.' } }
+        why: { en: 'The ration chart says it: Japan cut off sugar from the Philippines, so sugar was short.', es: 'La tabla lo dice: Japón cortó el azúcar de Filipinas, así que faltaba azúcar.', fa: 'جدول جیره همین را می‌گوید: جاپان راه شکر فیلیپین را بست، پس شکر کم شد.' } }
     ]
   },
 

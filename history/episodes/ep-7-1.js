@@ -153,7 +153,7 @@ window.EPISODE = {
           { ok: true, t: { en: 'They had no jobs and wanted hope', es: 'No tenían trabajo y querían esperanza', fa: 'بی‌کار بودند و امید می‌خواستند' },
             why: { en: 'Yes. Hard times made people scared. Hitler promised jobs and pride.', es: 'Sí. Los tiempos difíciles asustaron a la gente. Hitler prometió trabajo y orgullo.', fa: 'بله. روزهای سخت مردم را ترساند. هتلر وعدهٔ کار و غرور داد.' } },
           { t: { en: 'Germany had just won World War I', es: 'Alemania acababa de ganar la guerra', fa: 'آلمان تازه جنگ جهانی اول را برده بود' },
-            why: { en: 'No. Germany lost World War I. Many Germans felt angry about it.', es: 'No. Alemania perdió la Primera Guerra Mundial. Muchos alemanes estaban enojados por eso.', fa: 'نه. آلمان جنگ جهانی اول را باخت. بسیاری از آلمانی‌ها از این خشمگین بودند.' } },
+            why: { en: 'No. Germany lost the war. Germans were angry: the Treaty of Versailles made Germany pay and lose land.', es: 'No. Alemania perdió la guerra. Los alemanes estaban enojados: el Tratado de Versalles hizo pagar a Alemania y perder tierras.', fa: 'نه. آلمان جنگ را باخت. آلمانی‌ها خشمگین بودند: پیمان ورسای آلمان را وادار کرد پول بدهد و زمین از دست بدهد.' } },
           { t: { en: 'Most Germans were rich and happy', es: 'Casi todos los alemanes eran ricos y felices', fa: 'بیشتر آلمانی‌ها ثروتمند و خوشحال بودند' },
             why: { en: 'No. The Great Depression made millions of Germans poor.', es: 'No. La Gran Depresión dejó pobres a millones de alemanes.', fa: 'نه. رکود بزرگ میلیون‌ها آلمانی را فقیر ساخت.' } }
         ]

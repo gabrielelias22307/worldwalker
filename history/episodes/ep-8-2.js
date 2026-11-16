@@ -201,7 +201,7 @@ window.EPISODE = {
         { en: 'Akwaaba! That means welcome. I sell cloth at Makola Market in Accra.', es: '¡Akwaaba! Eso significa bienvenido. Vendo tela en el mercado Makola de Accra.', fa: 'اکوابا! یعنی خوش آمدی. من در بازار ماکولا در اکرا تکه می‌فروشم.' },
         { en: 'Under British rule, our land was called the Gold Coast.', es: 'Bajo el dominio británico, nuestra tierra se llamaba Costa de Oro.', fa: 'در زمان حکومت بریتانیا، سرزمین ما ساحل طلا نام داشت.' },
         { en: 'Kwame Nkrumah\'s party said: "Self-government now!" We market women gave it money.', es: 'El partido de Kwame Nkrumah decía: "¡Autogobierno ya!". Las mujeres del mercado le dimos dinero.', fa: 'حزب کوامی نکرومه می‌گفت: «حالا حکومت خود!» ما زنان بازار به آن پول دادیم.' },
-        { en: 'Tonight at midnight, the Gold Coast becomes free Ghana!', es: '¡Esta noche a medianoche, la Costa de Oro se convierte en Ghana libre!', fa: 'امشب نیمه‌شب، ساحل طلا گانای آزاد می‌شود!' }
+        { en: 'Tonight the Gold Coast becomes free Ghana! We will inspire other African colonies.', es: '¡Esta noche la Costa de Oro se convierte en Ghana libre! Vamos a inspirar a otras colonias africanas.', fa: 'امشب ساحل طلا گانای آزاد می‌شود! ما به مستعمره‌های دیگر افریقا الهام می‌دهیم.' }
       ],
       ask: {
         stat: 'pla',
@@ -234,7 +234,7 @@ window.EPISODE = {
       role: { en: 'History teacher', es: 'Maestra de historia', fa: 'معلم تاریخ' },
       look: { skin: 5, hair: '#120c08', shirt: '#2a4a8a', pants: '#e0a020', style: 'bun' },
       lines: [
-        { en: 'I teach history. I made a scrapbook called "How Freedom Spread."', es: 'Enseño historia. Hice un álbum llamado "Cómo se extendió la libertad".', fa: 'من تاریخ درس می‌دهم. یک البوم به نام «آزادی چطور پخش شد» ساختم.' },
+        { en: 'I teach history. My scrapbook holds primary sources: words and photos from that time.', es: 'Enseño historia. Mi álbum guarda fuentes primarias: palabras y fotos de esa época.', fa: 'من تاریخ درس می‌دهم. البوم من منابع اصلی دارد: گفته‌ها و عکس‌های همان زمان.' },
         { en: 'It shows India in 1947 and Ghana in 1957.', es: 'Muestra a India en 1947 y a Ghana en 1957.', fa: 'هند را در ۱۹۴۷ و گانا را در ۱۹۵۷ نشان می‌دهد.' },
         { en: 'An Ink Thief tore it and ran! Kofi the fisherman saw it.', es: '¡Un Ladrón de Tinta lo rompió y huyó! Kofi, el pescador, lo vio.', fa: 'یک دزد رنگ آن را پاره کرد و فرار کرد! کوفی ماهی‌گیر او را دید.' }
       ],

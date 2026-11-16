@@ -142,7 +142,7 @@ window.EPISODE = {
       role: { en: 'Nurse', es: 'Enfermera', fa: 'نرس' },
       look: { skin: 1, hair: '#5a3a20', shirt: '#f2f2f2', pants: '#3a4a6a', style: 'bun', hat: '#f2f2f2' },
       lines: [
-        { en: 'Bonjour. I am a nurse in this field hospital, far behind the front.', es: 'Bonjour. Soy enfermera en este hospital de campaña, lejos del frente.', fa: 'بونژور. من نرس این شفاخانهٔ صحرایی هستم، دور از خط جنگ.' },
+        { en: 'Bonjour, I am a nurse. We fight the Central Powers: Germany, Austria-Hungary, the Ottomans.', es: 'Bonjour, soy enfermera. Luchamos contra las Potencias Centrales: Alemania, Austria-Hungría y los otomanos.', fa: 'بونژور، من نرس هستم. ما با قدرت‌های مرکزی می‌جنگیم: آلمان، اتریش-هنگری و عثمانی.' },
         { en: 'The front is a long line of [[trench|trenches]], from the sea to Switzerland.', es: 'El frente es una larga línea de [[trench|trincheras]], desde el mar hasta Suiza.', fa: 'خط جنگ یک قطار دراز [[trench|خندق‌ها]] است، از بحر تا سویس.' },
         { en: 'New weapons like machine guns made attacks very deadly. So both sides dug in.', es: 'Armas nuevas, como la ametralladora, hicieron los ataques muy mortales. Así que los dos lados cavaron.', fa: 'سلاح‌های نو مثل ماشیندار حمله را بسیار کشنده ساختند. پس هر دو طرف خندق کندند.' }
       ],
@@ -269,12 +269,12 @@ window.EPISODE = {
       { icon: '⛏️', t: { en: '1916 · Long, terrible battles at Verdun and the Somme', es: '1916 · Batallas largas y terribles en Verdún y el Somme', fa: '۱۹۱۶ · جنگ‌های دراز و وحشتناک در وردن و سوم' } },
       { icon: '🚢', t: { en: '1917 · The United States joins the war', es: '1917 · Estados Unidos entra en la guerra', fa: '۱۹۱۷ · ایالات متحده وارد جنگ می‌شود' } },
       { icon: '🕊️', t: { en: '1918 · The armistice: the fighting stops on November 11', es: '1918 · El armisticio: los combates paran el 11 de noviembre', fa: '۱۹۱۸ · آتش‌بس: جنگ در ۱۱ نوامبر بس می‌شود' } },
-      { icon: '📜', t: { en: '1919 · The Treaty of Versailles is signed', es: '1919 · Se firma el Tratado de Versalles', fa: '۱۹۱۹ · پیمان ورسای امضا می‌شود' } }
+      { icon: '📜', t: { en: '1919 · The Treaty of Versailles blames Germany and makes it pay', es: '1919 · El Tratado de Versalles culpa a Alemania y la hace pagar', fa: '۱۹۱۹ · پیمان ورسای آلمان را مقصر می‌داند و آن را وادار به پرداخت می‌کند' } }
     ],
     why: { en: 'Sarajevo came first. Then alliances spread the war. Then 1916, 1917, the armistice in 1918, the treaty in 1919.',
       es: 'Primero fue Sarajevo. Luego las alianzas extendieron la guerra. Después 1916, 1917, el armisticio en 1918 y el tratado en 1919.',
       fa: 'اول سارایوو بود. بعد پیمان‌ها جنگ را پخش کردند. بعد ۱۹۱۶، ۱۹۱۷، آتش‌بس در ۱۹۱۸ و پیمان در ۱۹۱۹.' },
-    success: { en: 'The timeline is right again. Four years of war, remembered in order.', es: 'La línea del tiempo está bien otra vez. Cuatro años de guerra, recordados en orden.', fa: 'خط زمان دوباره درست شد. چهار سال جنگ، به ترتیب به یاد آمد.' }
+    success: { en: 'Order is back. After the war, the Ottoman, Russian and Austro-Hungarian empires fell.', es: 'El orden volvió. Después de la guerra, cayeron los imperios otomano, ruso y austrohúngaro.', fa: 'ترتیب دوباره درست شد. بعد از جنگ، امپراتوری‌های عثمانی، روسیه و اتریش-هنگری از بین رفتند.' }
   },
 
   boss: {
@@ -299,7 +299,7 @@ window.EPISODE = {
           { en: 'Countries promised to fight for each other', es: 'Los países prometieron luchar unos por otros', fa: 'کشورها قول دادند برای همدیگر بجنگند' },
           { en: 'Countries promised to stay out of every war', es: 'Los países prometieron no entrar en ninguna guerra', fa: 'کشورها قول دادند از هر جنگ دور بمانند' },
           { en: 'Countries sold all their ships to Serbia', es: 'Los países le vendieron todos sus barcos a Serbia', fa: 'کشورها همهٔ کشتی‌هایشان را به صربستان فروختند' },
-          { en: 'Countries asked the League of Nations to vote', es: 'Los países pidieron votar a la Sociedad de Naciones', fa: 'کشورها از جامعهٔ ملل خواستند رأی بدهد' }],
+          { en: 'Countries asked all their people to vote first', es: 'Los países pidieron a su gente votar primero', fa: 'کشورها اول از همهٔ مردم خود خواستند رأی بدهند' }],
         answer: 0,
         why: { en: 'When one ally went to war, its partners joined. Soon all the great powers were fighting.', es: 'Cuando un aliado entraba en guerra, sus socios lo seguían. Pronto todas las potencias luchaban.', fa: 'وقتی یک متحد به جنگ رفت، شریکانش هم آمدند. زود همهٔ قدرت‌های بزرگ در جنگ بودند.' } },
       { q: { en: 'Which countries were the Central Powers?', es: '¿Qué países eran las Potencias Centrales?', fa: 'کدام کشورها قدرت‌های مرکزی بودند؟' },

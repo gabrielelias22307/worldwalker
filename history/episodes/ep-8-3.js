@@ -151,7 +151,7 @@ window.EPISODE = {
           { ok: true, t: { en: 'Countries linked more closely by trade and ideas', es: 'Países más unidos por el comercio y las ideas', fa: 'کشورهایی که با تجارت و اندیشه بیشتر وصل‌اند' },
             why: { en: 'Yes. One shirt can touch three countries before it reaches you.', es: 'Sí. Una camisa puede pasar por tres países antes de llegar a ti.', fa: 'بله. یک پیراهن پیش از رسیدن به تو از سه کشور می‌گذرد.' } },
           { t: { en: 'One country ruling all the others on Earth', es: 'Un país que gobierna a todos los demás de la Tierra', fa: 'یک کشور که بر همهٔ کشورهای دیگر زمین حکومت کند' },
-            why: { en: 'No single country rules the world. Globalization means countries trade and share ideas.', es: 'Ningún país gobierna el mundo. Globalización significa que los países comercian y comparten ideas.', fa: 'هیچ کشوری بر جهان حکومت نمی‌کند. جهانی شدن یعنی کشورها تجارت و اندیشه را شریک می‌کنند.' } },
+            why: { en: 'No single country rules the world. Since 1945, the United Nations helps countries keep peace together.', es: 'Ningún país gobierna el mundo. Desde 1945, las Naciones Unidas ayudan a los países a mantener la paz juntos.', fa: 'هیچ کشوری بر جهان حکومت نمی‌کند. از ۱۹۴۵، سازمان ملل متحد به کشورها کمک می‌کند تا با هم صلح را نگه دارند.' } },
           { t: { en: 'People never moving far from where they were born', es: 'Gente que nunca se aleja de donde nació', fa: 'مردمی که هرگز از جای تولدشان دور نمی‌روند' },
             why: { en: 'That is the opposite. Today people, goods and ideas move all over the world.', es: 'Es lo contrario. Hoy personas, productos e ideas se mueven por todo el mundo.', fa: 'این برعکس است. امروز مردم، جنس و اندیشه در همهٔ جهان حرکت می‌کنند.' } }
         ]
