@@ -147,7 +147,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#b85a2a', shirt: '#6a7a4a', pants: '#4a3a2a', hat: '#5a4a3a', style: 'short' },
       lines: [
         { en: 'Hello! I drive the mules. They pull boats along this [[towpath|towpath]].', es: '¡Hola! Yo arreo las mulas. Tiran de los barcos por este [[towpath|camino de sirga]].', fa: 'سلام! من قاطرها را می‌رانم. آن‌ها کشتی‌ها را در این [[towpath|راه کنار کانال]] می‌کشند.' },
-        { en: 'The Erie Canal opened this year. It runs 363 miles, Albany to Buffalo.', es: 'El Canal de Erie abrió este año. Mide 363 millas, de Albany a Buffalo.', fa: 'کانال ایری امسال باز شد. ۳۶۳ میل درازی دارد، از البانی تا بافلو.' },
+        { en: 'With the Hudson River, the Erie Canal links the Great Lakes to New York City.', es: 'Con el río Hudson, el Canal de Erie une los Grandes Lagos con la ciudad de Nueva York.', fa: 'کانال ایری، همراه دریای هادسن، جهیل‌های بزرگ را به شهر نیویارک وصل می‌کند.' },
         { en: 'My father came from Ireland. He helped blast the rock for these locks.', es: 'Mi padre vino de Irlanda. Ayudó a romper la roca para estas esclusas.', fa: 'پدرم از آیرلند آمد. او در شکستن سنگ برای این دروازه‌های آبی کمک کرد.' }
       ],
       ask: {
@@ -171,7 +171,7 @@ window.EPISODE = {
       lines: [
         { en: 'I was born free in Albany. I cook on a canal boat.', es: 'Nací libre en Albany. Cocino en un barco del canal.', fa: 'من در البانی آزاد به دنیا آمدم. در یک کشتی کانال آشپزی می‌کنم.' },
         { en: 'New York law will free every [[enslaved|enslaved]] person here in 1827.', es: 'La ley de Nueva York liberará a toda persona [[enslaved|esclavizada]] aquí en 1827.', fa: 'قانون نیویارک در ۱۸۲۷ هر انسان [[enslaved|برده]] را در اینجا آزاد می‌کند.' },
-        { en: 'In 1820, Congress made the Missouri [[compromise|Compromise]] about slavery in new states.', es: 'En 1820, el Congreso hizo el [[compromise|Compromiso]] de Misuri sobre la esclavitud en estados nuevos.', fa: 'در ۱۸۲۰، کانگرس [[compromise|سازش]] میزوری را دربارهٔ برده‌داری در ایالت‌های نو ساخت.' }
+        { en: 'In 1820, the Missouri [[compromise|Compromise]] made Missouri a slave state and Maine a free state.', es: 'En 1820, el [[compromise|Compromiso]] de Misuri hizo a Misuri estado esclavista y a Maine estado libre.', fa: 'در ۱۸۲۰، [[compromise|سازش]] میزوری، میزوری را ایالت برده‌دار و مین را ایالت آزاد ساخت.' }
       ],
       ask: {
         stat: 'reg',
@@ -279,7 +279,7 @@ window.EPISODE = {
       { bin: 'north', t: { en: 'Textile mills make cloth', es: 'Fábricas textiles hacen tela', fa: 'فابریکه‌های تکه‌بافی تکه می‌سازند' },
         why: { en: 'Mills grew in New England towns like Lowell. The North built factories.', es: 'Las fábricas crecieron en pueblos de Nueva Inglaterra como Lowell. El Norte construyó fábricas.', fa: 'فابریکه‌ها در شهرک‌های نیوانگلند مثل لاول زیاد شدند. شمال فابریکه ساخت.' } },
       { bin: 'north', t: { en: 'Busy ports and growing cities', es: 'Puertos activos y ciudades que crecen', fa: 'بندرهای پرکار و شهرهای رو به رشد' },
-        why: { en: 'New York City grew fast. The North lived by trade, ships and cities.', es: 'La ciudad de Nueva York creció rápido. El Norte vivía del comercio, los barcos y las ciudades.', fa: 'شهر نیویارک زود بزرگ شد. شمال با تجارت، کشتی و شهر زندگی می‌کرد.' } },
+        why: { en: 'The Erie Canal made New York City the busiest US port. The North lived by trade.', es: 'El Canal de Erie hizo de Nueva York el puerto más activo del país. El Norte vivía del comercio.', fa: 'کانال ایری شهر نیویارک را پرکارترین بندر امریکا ساخت. شمال با تجارت زندگی می‌کرد.' } },
       { bin: 'north', t: { en: 'Most workers are free and paid', es: 'La mayoría trabaja libre y con pago', fa: 'بیشتر کارگران آزادند و مزد می‌گیرند' },
         why: { en: 'Northern states ended slavery step by step. Workers earned wages.', es: 'Los estados del Norte terminaron la esclavitud poco a poco. Los obreros ganaban un sueldo.', fa: 'ایالت‌های شمالی برده‌داری را قدم به قدم ختم کردند. کارگران مزد می‌گرفتند.' } },
       { bin: 'south', t: { en: 'Big cotton plantations', es: 'Grandes plantaciones de algodón', fa: 'کشتزارهای بزرگ پخته' },
@@ -293,7 +293,7 @@ window.EPISODE = {
       { bin: 'west', t: { en: 'Wants cheap land and better roads', es: 'Quiere tierra barata y mejores caminos', fa: 'زمین ارزان و سرک بهتر می‌خواهد' },
         why: { en: 'Western farmers needed land they could buy, and roads to send crops to market.', es: 'Los granjeros del oeste necesitaban tierra que pudieran comprar y caminos para llevar cosechas al mercado.', fa: 'دهقانان غرب زمینی می‌خواستند که بتوانند بخرند، و سرک برای بردن حاصل به بازار.' } }
     ],
-    success: { en: 'Every card is in its section! Each region wanted different things.', es: '¡Cada tarjeta está en su región! Cada región quería cosas diferentes.', fa: 'هر کارت در منطقهٔ خودش است! هر منطقه چیزهای متفاوت می‌خواست.' }
+    success: { en: 'Each card is in its section! Putting your region first is called [[sectionalism|sectionalism]].', es: '¡Cada tarjeta está en su región! Poner tu región primero se llama [[sectionalism|seccionalismo]].', fa: 'هر کارت در منطقهٔ خودش است! مقدم دانستن منطقهٔ خود را [[sectionalism|منطقه‌گرایی]] می‌گویند.' }
   },
 
   boss: {
@@ -305,14 +305,14 @@ window.EPISODE = {
     taunt: { en: 'Canals, locks, compromises... so boring! I will let it all leak away!', es: 'Canales, esclusas, compromisos... ¡qué aburrido! ¡Dejaré que todo se escape!', fa: 'کانال، دروازهٔ آبی، سازش... چقدر خسته‌کن! می‌گذارم همه‌اش چکه کند و برود!' },
     win: { en: 'The fog lifts off the canal. Journal page 4.2 floats down into your hands!', es: 'La niebla se va del canal. ¡La página 4.2 del diario cae en tus manos!', fa: 'مه از روی کانال کنار می‌رود. صفحهٔ ۴.۲ روزنامچه به دستت می‌افتد!' },
     questions: [
-      { q: { en: 'Why do people call 1817 to 1825 the Era of Good Feelings?', es: '¿Por qué llaman a los años de 1817 a 1825 la Era de los Buenos Sentimientos?', fa: 'چرا سال‌های ۱۸۱۷ تا ۱۸۲۵ را دوران احساس خوب می‌نامند؟' },
+      { q: { en: 'Northern textile mills used machines. What did they make?', es: 'Las fábricas textiles del Norte usaban máquinas. ¿Qué hacían?', fa: 'فابریکه‌های تکه‌بافی شمال ماشین داشتند. چه می‌ساختند؟' },
         choices: [
-          { en: 'One main party and national pride', es: 'Un solo partido y orgullo nacional', fa: 'یک حزب اصلی و افتخار ملی' },
-          { en: 'A new war with Britain every year', es: 'Una guerra nueva con Gran Bretaña cada año', fa: 'هر سال یک جنگ نو با بریتانیا' },
-          { en: 'No president led the country then', es: 'Ningún presidente dirigía el país entonces', fa: 'آن وقت هیچ رئیس جمهوری کشور را رهبری نمی‌کرد' },
-          { en: 'Every state voted to end slavery', es: 'Todos los estados votaron por acabar la esclavitud', fa: 'همهٔ ایالت‌ها به ختم برده‌داری رأی دادند' }],
+          { en: 'Cloth from cotton', es: 'Tela de algodón', fa: 'تکه از پخته' },
+          { en: 'Ships from iron', es: 'Barcos de hierro', fa: 'کشتی از آهن' },
+          { en: 'Paper money', es: 'Dinero de papel', fa: 'پول کاغذی' },
+          { en: 'Bread from wheat', es: 'Pan de trigo', fa: 'نان از گندم' }],
         answer: 0,
-        why: { en: 'Under President Monroe, the Federalist Party faded away. Many people felt proud of the nation.', es: 'Con el presidente Monroe, el Partido Federalista desapareció. Mucha gente se sentía orgullosa del país.', fa: 'در زمان رئیس جمهور مونرو، حزب فدرالیست از بین رفت. بسیاری از مردم به کشور افتخار می‌کردند.' } },
+        why: { en: 'In Massachusetts mills, machines made Southern cotton into cloth.', es: 'En las fábricas de Massachusetts, las máquinas convertían el algodón del Sur en tela.', fa: 'در فابریکه‌های ماساچوست، ماشین‌ها از پختهٔ جنوب تکه می‌ساختند.' } },
       { q: { en: 'What did the Monroe Doctrine of 1823 tell Europe?', es: '¿Qué le dijo a Europa la Doctrina Monroe de 1823?', fa: 'اصل مونرو در ۱۸۲۳ به اروپا چه گفت؟' },
         choices: [
           { en: 'Do not start new colonies in the Americas', es: 'No funden nuevas colonias en América', fa: 'در قارهٔ امریکا مستعمرهٔ نو نسازید' },
@@ -321,14 +321,14 @@ window.EPISODE = {
           { en: 'Buy all the cotton grown in the South', es: 'Compren todo el algodón del Sur', fa: 'همهٔ پختهٔ جنوب را بخرید' }],
         answer: 0,
         why: { en: 'Monroe said the Americas were closed to new European colonies. The U.S. would stay out of Europe.', es: 'Monroe dijo que América estaba cerrada a nuevas colonias europeas. EE. UU. no se metería en Europa.', fa: 'مونرو گفت قارهٔ امریکا برای مستعمره‌های نو اروپایی بسته است. امریکا هم در کار اروپا دخالت نمی‌کند.' } },
-      { q: { en: 'What was Henry Clay\'s American System?', es: '¿Qué era el Sistema Americano de Henry Clay?', fa: 'نظام امریکایی هنری کلی چه بود؟' },
+      { q: { en: 'Why did Western farmers want better roads?', es: '¿Por qué los granjeros del Oeste querían mejores caminos?', fa: 'چرا دهقانان غرب سرک‌های بهتر می‌خواستند؟' },
         choices: [
-          { en: 'Roads, canals, a national bank and tariffs', es: 'Caminos, canales, un banco nacional y aranceles', fa: 'سرک، کانال، بانک ملی و تعرفه' },
-          { en: 'A plan for each state to make its own coins', es: 'Un plan para que cada estado hiciera sus monedas', fa: 'طرحی که هر ایالت سکهٔ خودش را بسازد' },
-          { en: 'A treaty that sold land to France and Spain', es: 'Un tratado que vendía tierras a Francia y España', fa: 'معاهده‌ای که زمین را به فرانسه و هسپانیه فروخت' },
-          { en: 'A law that ended all taxes on foreign goods', es: 'Una ley que quitaba todo impuesto a lo extranjero', fa: 'قانونی که همهٔ مالیه بر جنس خارجی را ختم کرد' }],
+          { en: 'To send their crops to market', es: 'Para llevar sus cosechas al mercado', fa: 'تا حاصلات خود را به بازار بفرستند' },
+          { en: 'To ship cotton to Britain', es: 'Para mandar algodón a Gran Bretaña', fa: 'تا پخته را به بریتانیا بفرستند' },
+          { en: 'To reach the king\'s palace', es: 'Para llegar al palacio del rey', fa: 'تا به قصر پادشاه برسند' },
+          { en: 'To build big textile mills', es: 'Para hacer grandes fábricas textiles', fa: 'تا فابریکه‌های بزرگ تکه‌بافی بسازند' }],
         answer: 0,
-        why: { en: 'Clay wanted roads, canals, a bank and tariffs to tie the regions together.', es: 'Clay quería caminos, canales, un banco y aranceles para unir las regiones.', fa: 'کلی سرک، کانال، بانک و تعرفه می‌خواست تا منطقه‌ها را به هم وصل کند.' } },
+        why: { en: 'Western farmers wanted cheap land, and roads to send their crops to market.', es: 'Los granjeros del Oeste querían tierra barata y caminos para llevar sus cosechas al mercado.', fa: 'دهقانان غرب زمین ارزان و سرک می‌خواستند تا حاصلات خود را به بازار بفرستند.' } },
       { q: { en: 'What did the Erie Canal connect?', es: '¿Qué unió el Canal de Erie?', fa: 'کانال ایری چه چیزها را به هم وصل کرد؟' },
         choices: [
           { en: 'The Great Lakes and New York City', es: 'Los Grandes Lagos y la ciudad de Nueva York', fa: 'جهیل‌های بزرگ و شهر نیویارک' },

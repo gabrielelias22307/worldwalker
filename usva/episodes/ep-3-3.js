@@ -291,9 +291,14 @@ window.EPISODE = {
       note: { en: 'In 1801, Adams handed power to Jefferson in peace. Some called it the Revolution of 1800.', es: 'En 1801, Adams entregó el poder a Jefferson en paz. Algunos lo llamaron la Revolución de 1800.', fa: 'در ۱۸۰۱، آدامز قدرت را با صلح به جفرسن سپرد. بعضی آن را انقلاب ۱۸۰۰ نامیدند.' }
     },
     questions: [
-      { q: { en: 'Which President served longer?', es: '¿Qué presidente gobernó más tiempo?', fa: 'کدام رئیس‌جمهور مدت بیشتری خدمت کرد؟' },
-        choices: [{ en: 'George Washington', es: 'George Washington', fa: 'جورج واشنگتن' }, { en: 'John Adams', es: 'John Adams', fa: 'جان آدامز' }, { en: 'They served the same', es: 'Gobernaron lo mismo', fa: 'هر دو یک اندازه' }, { en: 'Neither one served', es: 'Ninguno gobernó', fa: 'هیچ‌کدام خدمت نکرد' }], answer: 0,
-        why: { en: 'Washington served 8 years, from 1789 to 1797. Adams served 4 years.', es: 'Washington gobernó 8 años, de 1789 a 1797. Adams gobernó 4 años.', fa: 'واشنگتن ۸ سال، از ۱۷۸۹ تا ۱۷۹۷، خدمت کرد. آدامز ۴ سال خدمت کرد.' } },
+      { q: { en: 'Who did most of the work at Mount Vernon?', es: '¿Quiénes hacían la mayor parte del trabajo en Mount Vernon?', fa: 'بیشتر کار مونت ورنن را چه کسانی انجام می‌دادند؟' },
+        choices: [
+          { en: 'Hundreds of enslaved people', es: 'Cientos de personas esclavizadas', fa: 'صدها نفر برده' },
+          { en: 'Paid workers from France', es: 'Trabajadores pagados de Francia', fa: 'کارگران با مزد از فرانسه' },
+          { en: 'Soldiers of the army', es: 'Soldados del ejército', fa: 'عسکرهای اردو' },
+          { en: 'Members of Congress', es: 'Miembros del Congreso', fa: 'اعضای کانگرس' }],
+        answer: 0,
+        why: { en: 'Hundreds of enslaved people lived and worked there. They got no pay, and they were not free.', es: 'Cientos de personas esclavizadas vivían y trabajaban allí. No recibían pago y no eran libres.', fa: 'صدها نفر برده آنجا زندگی و کار می‌کردند. مزد نمی‌گرفتند و آزاد نبودند.' } },
       { q: { en: 'Which President belonged to a political party?', es: '¿Qué presidente pertenecía a un partido político?', fa: 'کدام رئیس‌جمهور عضو یک حزب سیاسی بود؟' },
         choices: [{ en: 'John Adams', es: 'John Adams', fa: 'جان آدامز' }, { en: 'George Washington', es: 'George Washington', fa: 'جورج واشنگتن' }, { en: 'Both of them', es: 'Los dos', fa: 'هر دو' }, { en: 'Neither of them', es: 'Ninguno', fa: 'هیچ‌کدام' }], answer: 0,
         why: { en: 'The table says Adams was a Federalist. Washington had no party.', es: 'La tabla dice que Adams era federalista. Washington no tenía partido.', fa: 'جدول می‌گوید آدامز فدرالیست بود. واشنگتن حزب نداشت.' } },
@@ -332,14 +337,14 @@ window.EPISODE = {
           { en: 'It started a new war', es: 'Empezó una guerra nueva', fa: 'یک جنگ نو را شروع کرد' }],
         answer: 0,
         why: { en: 'Later Presidents followed his example. A precedent is an example others follow.', es: 'Los presidentes después siguieron su ejemplo. Un precedente es un ejemplo que otros siguen.', fa: 'رئیس‌جمهورهای بعدی از او پیروی کردند. نمونه‌ای شد که دیگران دنبالش کردند.' } },
-      { q: { en: 'What did the Whiskey Rebellion of 1794 show?', es: '¿Qué mostró la Rebelión del Whiskey de 1794?', fa: 'شورش ویسکی در ۱۷۹۴ چه را نشان داد؟' },
+      { q: { en: 'Which political party did John Adams belong to?', es: '¿A qué partido político pertenecía John Adams?', fa: 'جان آدامز عضو کدام حزب سیاسی بود؟' },
         choices: [
-          { en: 'The government could enforce its laws', es: 'El gobierno podía hacer cumplir sus leyes', fa: 'حکومت می‌توانست قانونش را اجرا کند' },
-          { en: 'Farmers never had to pay any taxes', es: 'Los granjeros nunca tenían que pagar impuestos', fa: 'دهقانان هرگز مالیات نمی‌دادند' },
-          { en: 'Each state needed its own President', es: 'Cada estado necesitaba su propio presidente', fa: 'هر ایالت رئیس‌جمهور خودش را می‌خواست' },
-          { en: 'The President had no power at all', es: 'El presidente no tenía ningún poder', fa: 'رئیس‌جمهور هیچ قدرتی نداشت' }],
+          { en: 'The Federalists', es: 'Los federalistas', fa: 'فدرالیست‌ها' },
+          { en: 'No party at all', es: 'Ningún partido', fa: 'هیچ حزبی' },
+          { en: 'The party of the king', es: 'El partido del rey', fa: 'حزب شاه' },
+          { en: 'The party of France', es: 'El partido de Francia', fa: 'حزب فرانسه' }],
         answer: 0,
-        why: { en: 'Washington sent an army, and the rebels stopped. Federal law was obeyed.', es: 'Washington mandó un ejército y los rebeldes pararon. Se cumplió la ley federal.', fa: 'واشنگتن لشکر فرستاد و شورشیان دست کشیدند. از قانون فدرال پیروی شد.' } },
+        why: { en: 'The journal table says Adams was a Federalist. Washington had no party.', es: 'La tabla del diario dice que Adams era federalista. Washington no tenía partido.', fa: 'جدول روزنامچه می‌گوید آدامز فدرالیست بود. واشنگتن حزب نداشت.' } },
       { q: { en: 'What did the Proclamation of Neutrality (1793) say?', es: '¿Qué decía la Proclamación de Neutralidad (1793)?', fa: 'اعلامیهٔ بی‌طرفی (۱۷۹۳) چه می‌گفت؟' },
         choices: [
           { en: 'Stay out of Europe\'s war', es: 'No entrar en la guerra de Europa', fa: 'از جنگ اروپا دور بمانیم' },

@@ -308,7 +308,7 @@ window.EPISODE = {
     why: { en: 'Check the years: 1765, 1770, 1773, 1774, 1775, 1776. Each event led to the next one.',
       es: 'Mira los años: 1765, 1770, 1773, 1774, 1775, 1776. Cada hecho llevó al siguiente.',
       fa: 'سال‌ها را ببین: ۱۷۶۵، ۱۷۷۰، ۱۷۷۳، ۱۷۷۴، ۱۷۷۵، ۱۷۷۶. هر رویداد به رویداد بعدی انجامید.' },
-    success: { en: 'The road is in order! Each cause led to an effect, all the way to 1776.', es: '¡El camino está en orden! Cada causa llevó a un efecto, hasta 1776.', fa: 'راه به ترتیب شد! هر علت به یک نتیجه رسید، تا سال ۱۷۷۶.' }
+    success: { en: 'In order! In 1776, the Declaration said people have rights no king can take.', es: '¡En orden! En 1776, la Declaración dijo que la gente tiene derechos que ningún rey puede quitar.', fa: 'به ترتیب شد! در ۱۷۷۶، اعلامیه گفت مردم حقوقی دارند که هیچ شاهی نمی‌تواند بگیرد.' }
   },
 
   boss: {
@@ -376,14 +376,14 @@ window.EPISODE = {
           { en: 'Colonies must always obey Britain', es: 'Las colonias siempre deben obedecer a Gran Bretaña', fa: 'مستعمره‌ها همیشه باید از بریتانیا اطاعت کنند' }],
         answer: 0,
         why: { en: 'It names natural rights: life, liberty and the pursuit of happiness. Government needs the consent of the governed.', es: 'Nombra derechos naturales: la vida, la libertad y la búsqueda de la felicidad. El gobierno necesita el consentimiento del pueblo.', fa: 'حقوق طبیعی را نام می‌برد: زندگی، آزادی و جستجوی خوشبختی. حکومت به رضایت مردم نیاز دارد.' } },
-      { q: { en: 'The Declaration says "all men are created equal." Who was left out then?', es: 'La Declaración dice "todos los hombres son creados iguales". ¿A quién dejaba fuera entonces?', fa: 'اعلامیه می‌گوید «همهٔ انسان‌ها برابر آفریده شده‌اند.» آن زمان چه کسانی بیرون ماندند؟' },
+      { q: { en: 'Who was Crispus Attucks?', es: '¿Quién fue Crispus Attucks?', fa: 'کریسپوس اتکس کی بود؟' },
         choices: [
-          { en: 'Enslaved people and women', es: 'A las personas esclavizadas y a las mujeres', fa: 'برده‌ها و زنان' },
-          { en: 'Farmers and shopkeepers', es: 'A los agricultores y los tenderos', fa: 'دهقانان و دوکانداران' },
-          { en: 'Everyone born in Boston', es: 'A todos los nacidos en Boston', fa: 'همهٔ کسانی که در بوستون زاده شدند' },
-          { en: 'White men who owned land', es: 'A los hombres blancos con tierras', fa: 'مردان سفیدپوست زمین‌دار' }],
+          { en: 'A sailor shot by British soldiers', es: 'Un marinero baleado por soldados británicos', fa: 'ملاحی که سربازهای بریتانیایی به او شلیک کردند' },
+          { en: 'A Loyalist who sold tea in Boston', es: 'Un leal al rey que vendía té en Boston', fa: 'یک وفادار به شاه که در بوستون چای می‌فروخت' },
+          { en: 'The king who ruled Britain then', es: 'El rey que gobernaba Gran Bretaña', fa: 'شاهی که آن زمان بر بریتانیا حکم می‌کرد' },
+          { en: 'A printer who made the newspaper', es: 'Un impresor que hacía el periódico', fa: 'چاپگری که روزنامه را چاپ می‌کرد' }],
         answer: 0,
-        why: { en: 'Those words did not then include enslaved people or women. People fought for equal rights for many years.', es: 'Esas palabras no incluían entonces a las personas esclavizadas ni a las mujeres. La gente luchó muchos años por la igualdad.', fa: 'آن کلمات در آن زمان برده‌ها و زنان را شامل نمی‌شد. مردم سال‌ها برای حقوق برابر مبارزه کردند.' } }
+        why: { en: 'Crispus Attucks, a sailor of African and Native descent, died first in the Boston Massacre.', es: 'Crispus Attucks, un marinero de origen africano e indígena, murió primero en la Masacre de Boston.', fa: 'کریسپوس اتکس، ملاحی با ریشهٔ افریقایی و بومی، در کشتار بوستون اول کشته شد.' } }
     ]
   },
 

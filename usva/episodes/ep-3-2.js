@@ -217,7 +217,7 @@ window.EPISODE = {
       role: { en: 'Coffee house cook', es: 'Cocinera del café', fa: 'آشپز قهوه‌خانه' },
       look: { skin: 4, hair: '#2a1a10', shirt: '#f2f2f2', pants: '#5a3a2a', style: 'long' },
       lines: [
-        { en: 'People argue here all day. How strong should the new nation be?', es: 'Aquí la gente discute todo el día. ¿Qué tan fuerte debe ser la nación?', fa: 'مردم اینجا تمام روز بحث می‌کنند. کشور نو چقدر قوی باشد؟' },
+        { en: 'People argue here all day. Two sides are forming the first [[political party|political parties]].', es: 'Aquí la gente discute todo el día. Dos lados forman los primeros [[political party|partidos políticos]].', fa: 'مردم اینجا تمام روز بحث می‌کنند. دو طرف اولین [[political party|حزب‌های سیاسی]] را می‌سازند.' },
         { en: 'Alexander Hamilton wants a strong national government and a [[national bank|national bank]].', es: 'Alexander Hamilton quiere un gobierno nacional fuerte y un [[national bank|banco nacional]].', fa: 'الکساندر همیلتن یک حکومت ملی قوی و یک [[national bank|بانک ملی]] می‌خواهد.' },
         { en: 'He reads the Constitution loosely. He points to the [[elastic clause|elastic clause]].', es: 'Él lee la Constitución de forma amplia. Señala la [[elastic clause|cláusula elástica]].', fa: 'او قانون اساسی را آزادانه می‌خواند. به [[elastic clause|بند کش‌دار]] اشاره می‌کند.' },
         { en: 'Thomas Jefferson wants strong states. He reads the Constitution strictly, word by word.', es: 'Thomas Jefferson quiere estados fuertes. Lee la Constitución de forma estricta, palabra por palabra.', fa: 'توماس جفرسن ایالت‌های قوی می‌خواهد. او قانون اساسی را دقیق، کلمه به کلمه می‌خواند.' }
@@ -327,7 +327,7 @@ window.EPISODE = {
       { bin: 'tenth', t: { en: 'A state wants to set up its own schools', es: 'Un estado quiere crear sus propias escuelas', fa: 'یک ایالت می‌خواهد مکتب‌های خود را بسازد' },
         why: { en: 'The Constitution does not give schools to the nation. The 10th Amendment leaves that power to the states.', es: 'La Constitución no le da las escuelas a la nación. La 10.ª Enmienda deja ese poder a los estados.', fa: 'قانون اساسی مکتب‌ها را به کشور نداده. تعدیل دهم این قدرت را به ایالت‌ها می‌گذارد.' } }
     ],
-    success: { en: 'Every problem found its amendment! The Bill of Rights protects them all.', es: '¡Cada problema encontró su enmienda! La Carta de Derechos los protege a todos.', fa: 'هر مشکل تعدیل خود را پیدا کرد! منشور حقوق از همه حمایت می‌کند.' }
+    success: { en: 'Every problem found its amendment! The first 10 amendments are the Bill of Rights.', es: '¡Cada problema encontró su enmienda! Las primeras 10 enmiendas son la Carta de Derechos.', fa: 'هر مشکل تعدیل خود را پیدا کرد! ۱۰ تعدیل اول منشور حقوق است.' }
   },
 
   boss: {
@@ -373,7 +373,7 @@ window.EPISODE = {
         why: { en: 'George Mason wrote the Virginia Declaration of Rights in 1776. It listed rights like a free press.', es: 'George Mason escribió la Declaración de Derechos de Virginia en 1776. Incluía derechos como la prensa libre.', fa: 'جورج میسن اعلامیهٔ حقوق ویرجینیا را در ۱۷۷۶ نوشت. حقوقی مثل مطبوعات آزاد را داشت.' } },
       { q: { en: 'What is the Bill of Rights?', es: '¿Qué es la Carta de Derechos?', fa: 'منشور حقوق چیست؟' },
         choices: [
-          { en: 'The first 10 amendments, ratified in 1791', es: 'Las primeras 10 enmiendas, ratificadas en 1791', fa: '۱۰ تعدیل اول، تصویب‌شده در ۱۷۹۱' },
+          { en: 'The first 10 amendments to the Constitution', es: 'Las primeras 10 enmiendas a la Constitución', fa: '۱۰ تعدیل اول قانون اساسی' },
           { en: 'The first 10 laws that Congress passed in 1789', es: 'Las primeras 10 leyes que el Congreso aprobó en 1789', fa: '۱۰ قانون اولی که کانگرس در ۱۷۸۹ تصویب کرد' },
           { en: 'The list of the first 10 Presidents', es: 'La lista de los primeros 10 presidentes', fa: 'فهرست ۱۰ رئیس جمهور اول' },
           { en: 'The 10 rules of the first national bank', es: 'Las 10 reglas del primer banco nacional', fa: '۱۰ قاعدهٔ اولین بانک ملی' }],

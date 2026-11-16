@@ -156,7 +156,7 @@ window.EPISODE = {
       lines: [
         { en: 'I guard this door. Inside, [[delegate|delegates]] from 12 states meet in secret.', es: 'Yo cuido esta puerta. Adentro, [[delegate|delegados]] de 12 estados se reúnen en secreto.', fa: 'من این دروازه را پاسبانی می‌کنم. داخل، [[delegate|نماینده‌ها]] از ۱۲ ایالت مخفی جلسه دارند.' },
         { en: 'General Washington leads the meetings. Rhode Island sent no one at all.', es: 'El general Washington dirige las reuniones. Rhode Island no mandó a nadie.', fa: 'جنرال واشنگتن جلسه‌ها را رهبری می‌کند. رود آیلند هیچ کس را نفرستاد.' },
-        { en: 'The Virginia Plan gives big states more votes. New Jersey wants equal votes.', es: 'El Plan de Virginia da más votos a los estados grandes. Nueva Jersey quiere votos iguales.', fa: 'طرح ویرجینیا به ایالت‌های بزرگ رأی بیشتر می‌دهد. نیوجرسی رأی برابر می‌خواهد.' }
+        { en: 'James Madison\'s Virginia Plan gives big states more votes. New Jersey wants equal votes.', es: 'El Plan de Virginia de James Madison da más votos a los estados grandes. Nueva Jersey quiere votos iguales.', fa: 'طرح ویرجینیای جیمز مدیسن به ایالت‌های بزرگ رأی بیشتر می‌دهد. نیوجرسی رأی برابر می‌خواهد.' }
       ],
       ask: {
         stat: 'mov',
@@ -179,7 +179,7 @@ window.EPISODE = {
       lines: [
         { en: 'I farm in western Massachusetts. Many farmers there owe big debts and taxes.', es: 'Cultivo en el oeste de Massachusetts. Muchos agricultores allí deben deudas e impuestos grandes.', fa: 'من در غرب ماساچوست دهقانی می‌کنم. دهقانان زیادی آنجا قرض و مالیات سنگین دارند.' },
         { en: 'In 1786, Daniel Shays led angry farmers. They closed courts to save their farms.', es: 'En 1786, Daniel Shays dirigió a agricultores enojados. Cerraron tribunales para salvar sus granjas.', fa: 'در ۱۷۸۶، دانیال شیز دهقانان خشمگین را رهبری کرد. محکمه‌ها را بستند تا زمین‌شان را نجات دهند.' },
-        { en: 'Congress had no money and no army to stop it. That scared many leaders.', es: 'El Congreso no tenía dinero ni ejército para pararlo. Eso asustó a muchos líderes.', fa: 'کانگرس نه پول داشت و نه اردو تا آن را بند کند. این رهبران زیادی را ترساند.' }
+        { en: 'Under the Articles of Confederation, Congress had no money and no army to stop it.', es: 'Con los Artículos de la Confederación, el Congreso no tenía dinero ni ejército para pararlo.', fa: 'زیر اساسنامهٔ کنفدراسیون، کانگرس نه پول داشت و نه اردو تا آن را بند کند.' }
       ],
       ask: {
         stat: 'pla',
@@ -357,14 +357,14 @@ window.EPISODE = {
           { en: 'A fight between Virginia and Maryland', es: 'Una pelea entre Virginia y Maryland', fa: 'یک دعوا میان ویرجینیا و مریلند' }],
         answer: 0,
         why: { en: 'Congress could not stop it. Many leaders saw that the nation needed a stronger government.', es: 'El Congreso no pudo pararla. Muchos líderes vieron que el país necesitaba un gobierno más fuerte.', fa: 'کانگرس نتوانست آن را بند کند. رهبران زیادی دیدند که کشور حکومت قوی‌تر می‌خواهد.' } },
-      { q: { en: 'Why is James Madison called the Father of the Constitution?', es: '¿Por qué llaman a James Madison el Padre de la Constitución?', fa: 'چرا جیمز مدیسن را پدر قانون اساسی می‌گویند؟' },
+      { q: { en: 'Why was James Madison so important to the Constitution?', es: '¿Por qué fue James Madison tan importante para la Constitución?', fa: 'چرا جیمز مدیسن برای قانون اساسی این‌قدر مهم بود؟' },
         choices: [
           { en: 'His Virginia Plan and ideas shaped it', es: 'Su Plan de Virginia y sus ideas le dieron forma', fa: 'طرح ویرجینیا و فکرهایش آن را شکل داد' },
           { en: 'He was the first king of America', es: 'Fue el primer rey de Estados Unidos', fa: 'او اولین پادشاه امریکا بود' },
           { en: 'He printed it in his own shop', es: 'Lo imprimió en su propia imprenta', fa: 'آن را در چاپخانهٔ خودش چاپ کرد' },
           { en: 'He was the only delegate who came at all', es: 'Fue el único delegado que llegó', fa: 'او تنها نماینده‌ای بود که آمد' }],
         answer: 0,
-        why: { en: 'Madison of Virginia planned the Virginia Plan and kept careful notes of the debates.', es: 'Madison, de Virginia, preparó el Plan de Virginia y tomó notas cuidadosas de los debates.', fa: 'مدیسن از ویرجینیا طرح ویرجینیا را آماده کرد و از بحث‌ها یادداشت دقیق گرفت.' } },
+        why: { en: 'Madison wrote the Virginia Plan. People call him the Father of the Constitution.', es: 'Madison escribió el Plan de Virginia. Lo llaman el Padre de la Constitución.', fa: 'مدیسن طرح ویرجینیا را نوشت. مردم او را پدر قانون اساسی می‌گویند.' } },
       { q: { en: 'What did the Great Compromise decide?', es: '¿Qué decidió el Gran Compromiso?', fa: 'سازش بزرگ چه تصمیمی گرفت؟' },
         choices: [
           { en: 'House by population, Senate 2 per state', es: 'Cámara por población, Senado 2 por estado', fa: 'مجلس به اندازهٔ نفوس، سنا ۲ از هر ایالت' },
@@ -381,30 +381,30 @@ window.EPISODE = {
           { en: 'Let 3 of every 5 voters choose the President', es: 'Dejó que 3 de 5 votantes eligieran presidente', fa: 'گذاشت ۳ از ۵ رأی‌دهنده رئیس جمهور را انتخاب کنند' }],
         answer: 0,
         why: { en: 'It counted enslaved people for seats and taxes. It gave slave states more power and freed no one.', es: 'Contaba a los esclavizados para asientos e impuestos. Dio más poder a los estados esclavistas y no liberó a nadie.', fa: 'برده‌ها را برای چوکی و مالیات حساب کرد. به ایالت‌های برده‌دار قدرت بیشتر داد و کسی را آزاد نکرد.' } },
-      { q: { en: 'What did the Constitution say about the slave trade from Africa?', es: '¿Qué dijo la Constitución sobre la trata de esclavos desde África?', fa: 'قانون اساسی دربارهٔ تجارت برده از افریقا چه گفت؟' },
+      { q: { en: 'Why did people stop trusting Continental paper money?', es: '¿Por qué la gente dejó de confiar en el dinero de papel continental?', fa: 'چرا مردم دیگر به پول کاغذی کانتیننتال اعتماد نداشتند؟' },
         choices: [
-          { en: 'Congress could not ban it until 1808', es: 'El Congreso no podía prohibirla hasta 1808', fa: 'کانگرس تا ۱۸۰۸ نمی‌توانست آن را منع کند' },
-          { en: 'It ended the slave trade on day one', es: 'Terminó la trata desde el primer día', fa: 'تجارت برده را از روز اول تمام کرد' },
-          { en: 'Only the Senate could buy and sell people', es: 'Solo el Senado podía comprar y vender personas', fa: 'فقط سنا می‌توانست آدم بخرد و بفروشد' },
-          { en: 'Each state had to ban it in 1787', es: 'Cada estado tenía que prohibirla en 1787', fa: 'هر ایالت باید آن را در ۱۷۸۷ منع می‌کرد' }],
+          { en: 'Congress printed too much of it', es: 'El Congreso imprimió demasiado', fa: 'کانگرس آن را بیش از حد چاپ کرد' },
+          { en: 'It was made of real silver', es: 'Estaba hecho de plata de verdad', fa: 'از نقرهٔ اصلی ساخته شده بود' },
+          { en: 'Only the king could spend it', es: 'Solo el rey podía gastarlo', fa: 'فقط شاه می‌توانست آن را خرچ کند' },
+          { en: 'It was too heavy to carry', es: 'Pesaba demasiado para llevarlo', fa: 'برای بردن زیاد سنگین بود' }],
         answer: 0,
-        why: { en: 'This deal let the cruel trade go on for 20 more years. Congress banned it in 1808.', es: 'Este acuerdo dejó seguir la cruel trata 20 años más. El Congreso la prohibió en 1808.', fa: 'این توافق گذاشت تجارت ظالمانه ۲۰ سال دیگر ادامه یابد. کانگرس آن را در ۱۸۰۸ منع کرد.' } },
-      { q: { en: 'Why did the Constitution split power into three branches?', es: '¿Por qué la Constitución dividió el poder en tres ramas?', fa: 'چرا قانون اساسی قدرت را به سه بخش تقسیم کرد؟' },
+        why: { en: 'Congress could not tax, and it printed too many dollars. So the paper lost its value.', es: 'El Congreso no podía cobrar impuestos e imprimió demasiados dólares. Así el papel perdió su valor.', fa: 'کانگرس مالیات گرفته نمی‌توانست و دالر زیاد چاپ کرد. پس آن کاغذ بی‌ارزش شد.' } },
+      { q: { en: 'Who led the meetings of the delegates?', es: '¿Quién dirigía las reuniones de los delegados?', fa: 'کی جلسه‌های نمایندگان را رهبری می‌کرد؟' },
         choices: [
-          { en: 'So no one branch gets too much power', es: 'Para que ninguna rama tenga demasiado poder', fa: 'تا هیچ بخشی قدرت زیاد نگیرد' },
-          { en: 'So each state could have its own king', es: 'Para que cada estado tuviera su propio rey', fa: 'تا هر ایالت پادشاه خود را داشته باشد' },
-          { en: 'So Congress could skip all elections', es: 'Para que el Congreso no tuviera elecciones', fa: 'تا کانگرس هیچ انتخاباتی نداشته باشد' },
-          { en: 'So the courts could collect all taxes', es: 'Para que los tribunales cobraran los impuestos', fa: 'تا محکمه‌ها همهٔ مالیات را بگیرند' }],
+          { en: 'General George Washington', es: 'El general George Washington', fa: 'جنرال جورج واشنگتن' },
+          { en: 'King George III of Britain', es: 'El rey Jorge III de Gran Bretaña', fa: 'جورج سوم، شاه بریتانیا' },
+          { en: 'Daniel Shays, the farmer', es: 'Daniel Shays, el granjero', fa: 'دانیال شیز، دهقان' },
+          { en: 'A captain from Rhode Island', es: 'Un capitán de Rhode Island', fa: 'یک کپتان از رود آیلند' }],
         answer: 0,
-        why: { en: 'With checks and balances, each branch can stop the others from taking too much power.', es: 'Con frenos y contrapesos, cada rama puede impedir que las otras tomen demasiado poder.', fa: 'با کنترل و توازن، هر بخش می‌تواند نگذارد بخش‌های دیگر قدرت زیاد بگیرند.' } },
-      { q: { en: 'Anti-Federalists feared the new plan. What did they want added?', es: 'Los antifederalistas temían el plan nuevo. ¿Qué querían agregar?', fa: 'ضد فدرالیست‌ها از طرح نو می‌ترسیدند. چه چیزی را می‌خواستند اضافه شود؟' },
+        why: { en: 'The doorkeeper said General Washington led the meetings. Delegates came from 12 states.', es: 'El portero dijo que el general Washington dirigía las reuniones. Vinieron delegados de 12 estados.', fa: 'دربان گفت جنرال واشنگتن جلسه‌ها را رهبری می‌کرد. نمایندگان از ۱۲ ایالت آمدند.' } },
+      { q: { en: 'What did the New Jersey Plan want?', es: '¿Qué quería el Plan de Nueva Jersey?', fa: 'طرح نیوجرسی چه می‌خواست؟' },
         choices: [
-          { en: 'A bill of rights to protect people', es: 'Una carta de derechos para proteger al pueblo', fa: 'منشور حقوق برای حفاظت مردم' },
-          { en: 'A king to lead the national army', es: 'Un rey para dirigir el ejército nacional', fa: 'یک پادشاه برای رهبری اردوی ملی' },
-          { en: 'More power for the President alone', es: 'Más poder solo para el presidente', fa: 'قدرت بیشتر فقط برای رئیس جمهور' },
-          { en: 'Fewer states in the new union', es: 'Menos estados en la nueva unión', fa: 'ایالت‌های کمتر در اتحاد نو' }],
+          { en: 'Equal votes for every state', es: 'Votos iguales para cada estado', fa: 'رأی برابر برای هر ایالت' },
+          { en: 'More votes for big states', es: 'Más votos para los estados grandes', fa: 'رأی بیشتر برای ایالت‌های بزرگ' },
+          { en: 'A king to lead all states', es: 'Un rey para todos los estados', fa: 'یک شاه برای رهبری همهٔ ایالت‌ها' },
+          { en: 'No Congress of any kind', es: 'Ningún Congreso de ningún tipo', fa: 'هیچ نوع کانگرس' }],
         answer: 0,
-        why: { en: 'Federalists backed the Constitution. Anti-Federalists feared a strong government and wanted rights written down.', es: 'Los federalistas apoyaban la Constitución. Los antifederalistas temían un gobierno fuerte y querían derechos escritos.', fa: 'فدرالیست‌ها از قانون اساسی حمایت کردند. ضد فدرالیست‌ها از حکومت قوی می‌ترسیدند و حقوق نوشته‌شده می‌خواستند.' } }
+        why: { en: 'Small states like New Jersey wanted equal votes. Big states wanted votes by population.', es: 'Los estados pequeños como Nueva Jersey querían votos iguales. Los grandes querían votos por población.', fa: 'ایالت‌های کوچک مثل نیوجرسی رأی برابر می‌خواستند. ایالت‌های بزرگ رأی به اندازهٔ نفوس می‌خواستند.' } }
     ]
   },
 

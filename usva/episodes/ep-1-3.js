@@ -198,7 +198,7 @@ window.EPISODE = {
       role: { en: 'Free Black seamstress', es: 'Costurera negra libre', fa: 'خیاط سیاه‌پوست آزاد' },
       look: { skin: 5, hair: '#120c08', shirt: '#7a4a8a', pants: '#3a2a2a', style: 'bun' },
       lines: [
-        { en: 'This fall, a traveling preacher spoke to huge crowds right here.', es: 'Este otoño, un predicador viajero habló a multitudes enormes aquí mismo.', fa: 'این خزان، یک واعظ سیار درست همین‌جا برای جمعیت بسیار بزرگ وعظ کرد.' },
+        { en: 'This fall, George Whitefield, a traveling preacher, spoke to huge crowds right here.', es: 'Este otoño, George Whitefield, un predicador viajero, habló a multitudes enormes aquí mismo.', fa: 'این خزان، جورج وایتفیلد، یک واعظ سیار، درست همین‌جا برای جمعیت بسیار بزرگ وعظ کرد.' },
         { en: 'People call it the [[great awakening|Great Awakening]], a [[revival|revival]] of faith.', es: 'La gente lo llama el [[great awakening|Gran Despertar]], un [[revival|renacer]] de la fe.', fa: 'مردم آن را [[great awakening|بیداری بزرگ]] می‌گویند، یک [[revival|بیداری دوبارهٔ]] ایمان.' },
         { en: 'Preachers say all are equal before God. Yet many Black Bostonians are enslaved.', es: 'Los predicadores dicen que todos son iguales ante Dios. Pero muchos negros de Boston están esclavizados.', fa: 'واعظان می‌گویند همه پیش خدا برابرند. اما بسیاری از سیاه‌پوستان بوستون برده هستند.' },
         { en: 'Now people feel free to choose their church and question their leaders.', es: 'Ahora la gente se siente libre de elegir su iglesia y cuestionar a sus líderes.', fa: 'حالا مردم خود را آزاد حس می‌کنند کلیسایشان را انتخاب کنند و از رهبران سؤال کنند.' }
@@ -375,7 +375,7 @@ window.EPISODE = {
           { en: 'Captain John Smith', es: 'El capitán John Smith', fa: 'کپتان جان اسمیت' },
           { en: 'Christopher Columbus', es: 'Cristóbal Colón', fa: 'کریستوفر کلمبوس' }],
         answer: 0,
-        why: { en: 'George Whitefield preached all over the colonies. Jonathan Edwards was another famous preacher.', es: 'George Whitefield predicó por todas las colonias. Jonathan Edwards fue otro predicador famoso.', fa: 'جورج وایتفیلد در همهٔ مستعمره‌ها وعظ کرد. جاناتان ادواردز واعظ مشهور دیگری بود.' } },
+        why: { en: 'George Whitefield traveled and preached all over the colonies, even here on Boston Common.', es: 'George Whitefield viajó y predicó por todas las colonias, hasta aquí en el Boston Common.', fa: 'جورج وایتفیلد سفر کرد و در همهٔ مستعمره‌ها وعظ کرد، حتی همین‌جا در بوستون کامن.' } },
       { q: { en: 'How did the Great Awakening help lead toward the American Revolution?', es: '¿Cómo ayudó el Gran Despertar a llevar a la Revolución estadounidense?', fa: 'بیداری بزرگ چطور به رسیدن انقلاب امریکا کمک کرد؟' },
         choices: [
           { en: 'People learned to question leaders', es: 'La gente aprendió a cuestionar a los líderes', fa: 'مردم یاد گرفتند از رهبران سؤال کنند' },
