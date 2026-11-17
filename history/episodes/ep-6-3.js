@@ -248,7 +248,7 @@ window.EPISODE = {
       role: { en: 'Newsboy', es: 'Voceador de periódicos', fa: 'روزنامه‌فروش' },
       look: { skin: 2, hair: '#a05a2a', shirt: '#6a6a5a', pants: '#3a3a3a', style: 'short', hat: '#5a5a4a' },
       lines: [
-        { en: 'Extra! Another bank closed today. People lost their [[savings|savings]].', es: '¡Extra! Otro banco cerró hoy. La gente perdió sus [[savings|ahorros]].', fa: 'خبر تازه! امروز یک بانک دیگر بسته شد. مردم [[savings|پس‌انداز]] خود را از دست دادند.' },
+        { en: 'Extra! Scared people all took out their [[savings|savings]] at once. Another bank closed!', es: '¡Extra! La gente asustada sacó sus [[savings|ahorros]] toda a la vez. ¡Otro banco cerró!', fa: 'خبر تازه! مردم ترسیده همه یکباره [[savings|پس‌انداز]] خود را بیرون کشیدند. یک بانک دیگر بسته شد!' },
         { en: 'Farmer Hendrik has potatoes, but no one has cash. He will [[barter|barter]].', es: 'El granjero Hendrik tiene papas, pero nadie tiene dinero. Él hará [[barter|trueque]].', fa: 'دهقان هندریک کچالو دارد، اما کسی پول نقد ندارد. او [[barter|معاوضه]] می‌کند.' },
         { en: 'Find Hendrik at the rail yard, west of here, by the closed mill.', es: 'Busca a Hendrik en el patio del tren, al oeste, junto a la acería cerrada.', fa: 'هندریک را در میدان قطار، طرف غرب، کنار فابریکهٔ بسته پیدا کن.' }
       ]
@@ -364,22 +364,22 @@ window.EPISODE = {
           { en: 'None of them', es: 'Ninguno', fa: 'هیچ‌کدام' }],
         answer: 0,
         why: { en: 'About 24 in 100 workers had no job. That is almost 1 in 4.', es: 'Unos 24 de cada 100 trabajadores no tenían empleo. Es casi 1 de cada 4.', fa: 'حدود ۲۴ از ۱۰۰ کارگر بیکار بودند. این تقریباً ۱ از ۴ است.' } },
-      { q: { en: 'What was a Hooverville?', es: '¿Qué era un Hooverville?', fa: 'هوورویل چه بود؟' },
+      { q: { en: 'What was a soup line in the 1930s?', es: '¿Qué era una fila de sopa en los años 30?', fa: 'قطار شوربا در دههٔ ۱۹۳۰ چه بود؟' },
         choices: [
-          { en: 'A camp of shacks for people with no home', es: 'Un campo de chozas para gente sin casa', fa: 'اردوگاه کلبه‌ها برای مردم بی‌خانه' },
+          { en: 'A line where hungry people got food', es: 'Una fila donde gente con hambre recibía comida', fa: 'قطاری که مردم گرسنه در آن غذا می‌گرفتند' },
           { en: 'A fancy new hotel for rich bankers', es: 'Un hotel nuevo y lujoso para banqueros', fa: 'یک هوتل نو و مجلل برای بانکداران' },
           { en: 'A big farm owned by the president', es: 'Una gran finca del presidente', fa: 'یک فارم بزرگ مال رئیس‌جمهور' },
           { en: 'A factory that made cars, trucks and tractors', es: 'Una fábrica de autos, camiones y tractores', fa: 'فابریکه‌ای که موتر، لاری و تراکتور می‌ساخت' }],
         answer: 0,
-        why: { en: 'People who lost their homes built shacks. They named the camps after President Hoover, in anger.', es: 'La gente que perdió su casa hizo chozas. Llamaron a los campos como el presidente Hoover, con enojo.', fa: 'مردمی که خانه‌شان را از دست دادند کلبه ساختند. با خشم، اردوگاه‌ها را به نام رئیس‌جمهور هوور نامیدند.' } },
+        why: { en: 'Many people had no job and no money. They waited in long lines for a meal.', es: 'Mucha gente no tenía trabajo ni dinero. Hacían filas largas para recibir comida.', fa: 'بسیاری از مردم نه کار داشتند نه پول. در قطارهای دراز برای یک وقت غذا منتظر می‌ماندند.' } },
       { q: { en: 'Why did many farmers suffer in the 1930s?', es: '¿Por qué sufrieron muchos agricultores en los años 30?', fa: 'چرا بسیاری از دهقانان در دههٔ ۱۹۳۰ رنج کشیدند؟' },
         choices: [
-          { en: 'Low crop prices, and drought on the Plains', es: 'Precios bajos y sequía en las llanuras', fa: 'قیمت کم حاصلات و خشکسالی در دشت‌ها' },
+          { en: 'Crop prices fell very low', es: 'Los precios de las cosechas bajaron mucho', fa: 'قیمت حاصلات خیلی پایین آمد' },
           { en: 'Crop prices were far too high to sell', es: 'Los precios eran muy altos para vender', fa: 'قیمت حاصلات برای فروش خیلی بالا بود' },
           { en: 'There was too much rain every year', es: 'Llovía demasiado cada año', fa: 'هر سال باران خیلی زیاد می‌بارید' },
           { en: 'Cities stopped eating bread and meat', es: 'Las ciudades dejaron de comer pan y carne', fa: 'شهرها دیگر نان و گوشت نخوردند' }],
         answer: 0,
-        why: { en: 'Prices fell so low that farming did not pay. Then drought and dust storms hit the Great Plains.', es: 'Los precios bajaron tanto que sembrar no dejaba ganancia. Luego la sequía y el polvo azotaron las Grandes Llanuras.', fa: 'قیمت‌ها آن‌قدر پایین آمد که کشت فایده نداشت. بعد خشکسالی و توفان خاک به دشت‌های بزرگ رسید.' } },
+        why: { en: 'Crop prices fell so low that selling crops did not pay. Many farmers grew poor.', es: 'Los precios bajaron tanto que vender la cosecha no dejaba ganancia. Muchos agricultores se volvieron pobres.', fa: 'قیمت حاصلات آن‌قدر پایین آمد که فروختن آن فایده نداشت. بسیاری از دهقانان فقیر شدند.' } },
       { q: { en: 'How did the Depression spread to other countries?', es: '¿Cómo llegó la Depresión a otros países?', fa: 'رکود چطور به کشورهای دیگر رسید؟' },
         choices: [
           { en: 'Through loans and world trade', es: 'Por los préstamos y el comercio mundial', fa: 'از راه قرض و تجارت جهانی' },
@@ -388,14 +388,14 @@ window.EPISODE = {
           { en: 'It did not spread at all', es: 'No se extendió para nada', fa: 'اصلاً پخش نشد' }],
         answer: 0,
         why: { en: 'US banks called back loans, and countries bought less from each other. World trade shrank.', es: 'Los bancos de EE. UU. pidieron sus préstamos, y los países se compraban menos. El comercio mundial se achicó.', fa: 'بانک‌های امریکا قرض‌ها را پس خواستند و کشورها از هم کمتر خریدند. تجارت جهانی کوچک شد.' } },
-      { q: { en: 'From 1933, what did President Roosevelt\'s New Deal do?', es: 'Desde 1933, ¿qué hizo el Nuevo Trato del presidente Roosevelt?', fa: 'از ۱۹۳۳، نیو دیل رئیس‌جمهور روزولت چه کرد؟' },
+      { q: { en: 'Why did many people barter, or trade goods, in 1932?', es: '¿Por qué mucha gente hacía trueque, o cambiaba cosas, en 1932?', fa: 'چرا در ۱۹۳۲ بسیاری از مردم معاوضه می‌کردند، یعنی جنس را با جنس عوض می‌کردند؟' },
         choices: [
-          { en: 'It made jobs and helped people', es: 'Creó trabajos y ayudó a la gente', fa: 'کار ساخت و به مردم کمک کرد' },
-          { en: 'It closed all of the banks forever', es: 'Cerró todos los bancos para siempre', fa: 'همهٔ بانک‌ها را برای همیشه بست' },
-          { en: 'It ended all trade with Europe', es: 'Terminó todo el comercio con Europa', fa: 'تمام تجارت با اروپا را بس کرد' },
-          { en: 'It sent all the workers to farms', es: 'Mandó a todos los obreros al campo', fa: 'همهٔ کارگران را به فارم فرستاد' }],
+          { en: 'Few people had any cash to pay', es: 'Poca gente tenía dinero para pagar', fa: 'کم کسی پول نقد برای پرداخت داشت' },
+          { en: 'Stores gave everything away for free', es: 'Las tiendas regalaban todo gratis', fa: 'دکان‌ها همه چیز را مفت می‌دادند' },
+          { en: 'A new law said money was not allowed', es: 'Una ley nueva prohibía usar dinero', fa: 'یک قانون نو گفت پول اجازه نیست' },
+          { en: 'Coins were too heavy to carry around', es: 'Las monedas pesaban mucho para llevarlas', fa: 'سکه‌ها برای با خود بردن خیلی سنگین بودند' }],
         answer: 0,
-        why: { en: 'The [[new deal|New Deal]] paid people to build roads, parks and dams. It also made banks safer.', es: 'El [[new deal|Nuevo Trato]] pagó a la gente por hacer caminos, parques y represas. También hizo más seguros los bancos.', fa: '[[new deal|نیو دیل]] به مردم پول داد تا سرک، پارک و بند بسازند. بانک‌ها را هم امن‌تر ساخت.' } },
+        why: { en: 'Banks closed and jobs were lost. With no cash, people traded goods, like potatoes for coal.', es: 'Cerraron bancos y se perdieron trabajos. Sin dinero, la gente cambiaba cosas, como papas por carbón.', fa: 'بانک‌ها بسته شدند و کارها از دست رفت. بی پول نقد، مردم جنس عوض می‌کردند، مثل کچالو با ذغال.' } },
       { q: { en: 'How did the Depression help dictators rise?', es: '¿Cómo ayudó la Depresión a que subieran dictadores?', fa: 'رکود چطور به بالا آمدن دیکتاتورها کمک کرد؟' },
         choices: [
           { en: 'Hungry, scared people wanted a strong leader', es: 'La gente con hambre y miedo quería un líder fuerte', fa: 'مردم گرسنه و ترسیده رهبر قوی می‌خواستند' },

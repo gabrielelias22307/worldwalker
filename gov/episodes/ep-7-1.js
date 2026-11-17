@@ -411,14 +411,14 @@ window.EPISODE = {
           { en: 'Voters choosing judges in each election', es: 'Los votantes eligen jueces en cada elección', fa: 'رأی‌دهندگان در هر انتخابات قاضی انتخاب می‌کنند' }],
         answer: 0,
         why: { en: '[[judicial review|Judicial review]] is the power of courts to strike down laws that break the Constitution.', es: 'La [[judicial review|revisión judicial]] es el poder de las cortes de anular leyes contra la Constitución.', fa: '[[judicial review|بررسی قضایی]] قدرت محکمه‌ها برای باطل کردن قانون‌های خلاف قانون اساسی است.' } },
-      { q: { en: 'With judicial review, the courts can check which branches?', es: 'Con la revisión judicial, ¿a qué ramas pueden controlar las cortes?', fa: 'با بررسی قضایی، محکمه‌ها کدام قوه‌ها را کنترول می‌کنند؟' },
+      { q: { en: 'In Marbury v. Madison, the Court struck down part of a law. Who made that law?', es: 'En Marbury contra Madison, la Corte anuló parte de una ley. ¿Quién hizo esa ley?', fa: 'در قضیهٔ ماربری علیه مدیسن، محکمه بخشی از یک قانون را باطل کرد. آن قانون را کی ساخت؟' },
         choices: [
-          { en: 'Congress and the President', es: 'El Congreso y el presidente', fa: 'کانگرس و رئیس جمهور' },
-          { en: 'Only the state governors', es: 'Solo los gobernadores', fa: 'فقط والیان ایالت‌ها' },
-          { en: 'Only the voters and the press', es: 'Solo los votantes y la prensa', fa: 'فقط رأی‌دهندگان و مطبوعات' },
-          { en: 'No one; it is only advice', es: 'A nadie; es solo un consejo', fa: 'هیچ کس؛ فقط یک مشوره است' }],
+          { en: 'Congress', es: 'El Congreso', fa: 'کانگرس' },
+          { en: 'The President', es: 'El presidente', fa: 'رئیس جمهور' },
+          { en: 'A state governor', es: 'Un gobernador', fa: 'والی یک ایالت' },
+          { en: 'The Chief Justice', es: 'El presidente de la Corte', fa: 'رئیس ستره محکمه' }],
         answer: 0,
-        why: { en: 'Courts can strike down laws of Congress and acts of the President that break the Constitution.', es: 'Las cortes pueden anular leyes del Congreso y actos del presidente que van contra la Constitución.', fa: 'محکمه‌ها می‌توانند قانون کانگرس و کار رئیس جمهور را که خلاف قانون اساسی باشد باطل کنند.' } }
+        why: { en: 'Congress made the Judiciary Act. Judicial review lets courts check the laws of Congress.', es: 'El Congreso hizo la Ley Judicial. La revisión judicial deja a las cortes controlar las leyes del Congreso.', fa: 'کانگرس قانون محاکم را ساخت. بررسی قضایی به محکمه‌ها اجازه می‌دهد قانون‌های کانگرس را کنترول کنند.' } }
     ]
   },
 

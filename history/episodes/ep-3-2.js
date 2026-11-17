@@ -274,7 +274,7 @@ window.EPISODE = {
       { icon: '🍎', t: { en: '1687 · Isaac Newton explains gravity', es: '1687 · Isaac Newton explica la gravedad', fa: '۱۶۸۷ · آیزاک نیوتن جاذبه را توضیح می‌دهد' } }
     ],
     why: { en: 'Look at the years. Start with the smallest: 1021, 1543, 1610, 1628, 1633, then 1687.', es: 'Mira los años. Empieza por el más pequeño: 1021, 1543, 1610, 1628, 1633 y luego 1687.', fa: 'به سال‌ها نگاه کن. از کوچک‌ترین شروع کن: ۱۰۲۱، ۱۵۴۳، ۱۶۱۰، ۱۶۲۸، ۱۶۳۳، بعد ۱۶۸۷.' },
-    success: { en: 'The timeline is fixed! Each discovery built on the ones before it.', es: '¡La línea del tiempo está arreglada! Cada descubrimiento se apoyó en los anteriores.', fa: 'خط زمان درست شد! هر کشف روی کشف‌های پیش از خود ساخته شد.' }
+    success: { en: 'The timeline is fixed! Scientists ask, guess, test and check: the [[scientific method|scientific method]].', es: '¡La línea del tiempo está arreglada! Los científicos preguntan, suponen, prueban y revisan: el [[scientific method|método científico]].', fa: 'خط زمان درست شد! دانشمندان سؤال می‌کنند، حدس می‌زنند، آزمایش و بررسی می‌کنند: [[scientific method|روش علمی]].' }
   },
 
   boss: {

@@ -291,7 +291,7 @@ window.EPISODE = {
       { icon: '👥', t: { en: 'May 1789 · The Estates-General meets at Versailles', es: 'Mayo de 1789 · Los Estados Generales se reúnen en Versalles', fa: 'می ۱۷۸۹ · مجلس طبقات در ورسای جمع می‌شود' } },
       { icon: '🏰', t: { en: 'July 14, 1789 · Crowds storm the Bastille', es: '14 de julio de 1789 · La multitud toma la Bastilla', fa: '۱۴ جولای ۱۷۸۹ · مردم به باستیل حمله می‌کنند' } },
       { icon: '⚖️', t: { en: 'August 1789 · The Declaration of the Rights of Man', es: 'Agosto de 1789 · La Declaración de los Derechos del Hombre', fa: 'اگست ۱۷۸۹ · اعلامیهٔ حقوق بشر و شهروند' } },
-      { icon: '🕯️', t: { en: '1793 · The Reign of Terror begins', es: '1793 · Empieza el Reinado del Terror', fa: '۱۷۹۳ · دورهٔ وحشت شروع می‌شود' } },
+      { icon: '🕯️', t: { en: '1793 · The Reign of Terror begins: leaders kill thousands they call enemies', es: '1793 · Empieza el Reinado del Terror: los líderes matan a miles que llaman enemigos', fa: '۱۷۹۳ · دورهٔ وحشت شروع می‌شود: رهبران هزاران نفر را که دشمن می‌نامند می‌کشند' } },
       { icon: '👑', t: { en: '1799 · Napoleon takes control of France', es: '1799 · Napoleón toma el control de Francia', fa: '۱۷۹۹ · ناپلئون فرانسه را در دست می‌گیرد' } }
     ],
     why: { en: 'America comes first: 1776, 1781, 1787. Then France: May, July and August 1789, the Terror in 1793, Napoleon in 1799.',
@@ -317,14 +317,14 @@ window.EPISODE = {
           { en: 'The colonies must pay more taxes', es: 'Las colonias deben pagar más impuestos', fa: 'مستعمره‌ها باید مالیهٔ بیشتر بدهند' }],
         answer: 0,
         why: { en: 'Thomas Jefferson wrote it. It used Locke\'s idea that people have rights a government must protect.', es: 'Thomas Jefferson la escribió. Usó la idea de Locke: la gente tiene derechos que el gobierno debe proteger.', fa: 'توماس جفرسون آن را نوشت. از اندیشهٔ لاک کار گرفت: مردم حقوقی دارند که حکومت باید نگهداری کند.' } },
-      { q: { en: 'Why were the American colonists angry at Britain?', es: '¿Por qué los colonos estadounidenses estaban enojados con Gran Bretaña?', fa: 'چرا مستعمره‌نشینان امریکا از بریتانیا قهر بودند؟' },
+      { q: { en: 'Whose ideas did the Americans use when they declared independence?', es: '¿De quién eran las ideas que usaron los estadounidenses al declarar la independencia?', fa: 'امریکایی‌ها وقتی استقلال را اعلام کردند، از اندیشه‌های چه کسی استفاده کردند؟' },
         choices: [
-          { en: 'They paid taxes but had no vote in Parliament', es: 'Pagaban impuestos pero no votaban en el Parlamento', fa: 'مالیه می‌دادند اما در پارلمان رای نداشتند' },
-          { en: 'Britain gave them too much land and money', es: 'Gran Bretaña les daba demasiada tierra y dinero', fa: 'بریتانیا به آن‌ها زمین و پول بسیار زیاد می‌داد' },
-          { en: 'Britain made them speak French in school', es: 'Gran Bretaña los obligaba a hablar francés en la escuela', fa: 'بریتانیا آن‌ها را مجبور می‌کرد در مکتب فرانسوی حرف بزنند' },
-          { en: 'They wanted a new king of their own to rule them', es: 'Querían un rey nuevo propio que los gobernara', fa: 'یک پادشاه نو از خودشان می‌خواستند' }],
+          { en: 'John Locke\'s ideas', es: 'Las ideas de John Locke', fa: 'اندیشه‌های جان لاک' },
+          { en: 'King Louis XVI\'s ideas', es: 'Las ideas del rey Luis XVI', fa: 'اندیشه‌های شاه لویی شانزدهم' },
+          { en: 'The Pope\'s ideas', es: 'Las ideas del Papa', fa: 'اندیشه‌های پاپ' },
+          { en: 'Napoleon\'s ideas', es: 'Las ideas de Napoleón', fa: 'اندیشه‌های ناپلئون' }],
         answer: 0,
-        why: { en: '"No taxation without representation!" Colonists wanted a say in their laws and taxes.', es: '"¡No a los impuestos sin representación!" Los colonos querían voz en sus leyes e impuestos.', fa: '«مالیه بدون نماینده نه!» مستعمره‌نشینان در قانون و مالیهٔ خود صدا می‌خواستند.' } },
+        why: { en: 'The Americans used Locke\'s ideas: all people have rights a government must protect.', es: 'Los estadounidenses usaron las ideas de Locke: todos tienen derechos que el gobierno debe proteger.', fa: 'امریکایی‌ها از اندیشه‌های لاک استفاده کردند: همه حقوقی دارند که حکومت باید از آن نگهداری کند.' } },
       { q: { en: 'How did helping the Americans cause trouble in France?', es: '¿Cómo causó problemas en Francia ayudar a los estadounidenses?', fa: 'کمک به امریکایی‌ها چطور در فرانسه دردسر ساخت؟' },
         choices: [
           { en: 'France went deep into debt', es: 'Francia se llenó de deudas', fa: 'فرانسه زیر قرض سنگین رفت' },
@@ -349,7 +349,7 @@ window.EPISODE = {
           { en: 'France and Britain signed a peace treaty', es: 'Francia y Gran Bretaña firmaron la paz', fa: 'فرانسه و بریتانیا پیمان صلح امضا کردند' }],
         answer: 0,
         why: { en: 'People stormed the Bastille to get gunpowder. July 14 is now France\'s national holiday.', es: 'La gente tomó la Bastilla para conseguir pólvora. El 14 de julio es hoy la fiesta nacional de Francia.', fa: 'مردم برای گرفتن باروت به باستیل حمله کردند. ۱۴ جولای حالا روز ملی فرانسه است.' } },
-      { q: { en: 'What does Article 1 of the Declaration of the Rights of Man say?', es: '¿Qué dice el artículo 1 de la Declaración de los Derechos del Hombre?', fa: 'مادهٔ ۱ اعلامیهٔ حقوق بشر و شهروند چه می‌گوید؟' },
+      { q: { en: 'What does the Declaration of the Rights of Man say?', es: '¿Qué dice la Declaración de los Derechos del Hombre?', fa: 'اعلامیهٔ حقوق بشر و شهروند چه می‌گوید؟' },
         choices: [
           { en: 'Men are born and remain free and equal in rights', es: 'Los hombres nacen y permanecen libres e iguales en derechos', fa: 'انسان‌ها آزاد و با حقوق برابر به دنیا می‌آیند و می‌مانند' },
           { en: 'The king\'s word will always be the highest law in France', es: 'La palabra del rey siempre será la ley más alta de Francia', fa: 'حرف پادشاه همیشه بالاترین قانون فرانسه می‌ماند' },

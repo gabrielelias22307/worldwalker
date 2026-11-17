@@ -321,14 +321,14 @@ window.EPISODE = {
           { en: 'Priests rule in the name of a god', es: 'Los sacerdotes gobiernan en nombre de un dios', fa: 'روحانیان به نام یک خدا حکومت می‌کنند' }],
         answer: 0,
         why: { en: 'In a monarchy, a king or queen rules, and power passes down in one royal family.', es: 'En una monarquía gobierna un rey o una reina, y el poder pasa dentro de una familia real.', fa: 'در پادشاهی، پادشاه یا ملکه حکومت می‌کند و قدرت در یک خانوادهٔ شاهی دست به دست می‌شود.' } },
-      { q: { en: 'How is a limited monarchy different from an absolute monarchy?', es: '¿En qué se diferencia una monarquía limitada de una monarquía absoluta?', fa: 'پادشاهی محدود با پادشاهی مطلق چه فرق دارد؟' },
+      { q: { en: 'Why do people form a government?', es: '¿Por qué la gente forma un gobierno?', fa: 'چرا مردم حکومت می‌سازند؟' },
         choices: [
-          { en: 'The monarch must follow the laws', es: 'El monarca debe seguir las leyes', fa: 'پادشاه باید از قانون پیروی کند' },
-          { en: 'The monarch is chosen by a vote', es: 'El monarca es elegido por voto', fa: 'پادشاه با رأی انتخاب می‌شود' },
-          { en: 'The monarch rules many more lands', es: 'El monarca gobierna muchas más tierras', fa: 'پادشاه بر سرزمین‌های بیشتر حکومت می‌کند' },
-          { en: 'The monarch shares power with the priests', es: 'El monarca comparte el poder con los sacerdotes', fa: 'پادشاه قدرت را با روحانیان شریک می‌سازد' }],
+          { en: 'To keep order and safety', es: 'Para mantener el orden y la seguridad', fa: 'برای نگه داشتن نظم و امنیت' },
+          { en: 'To make every person rich', es: 'Para hacer rica a cada persona', fa: 'تا هر نفر پولدار شود' },
+          { en: 'To stop all trade and travel', es: 'Para detener todo el comercio y los viajes', fa: 'تا همهٔ تجارت و سفر را بند کند' },
+          { en: 'To give the king more gold', es: 'Para darle más oro al rey', fa: 'تا به پادشاه طلای بیشتر بدهد' }],
         answer: 0,
-        why: { en: 'An absolute monarch has all the power. A limited, or constitutional, monarch must follow laws and share power.', es: 'Un monarca absoluto tiene todo el poder. Un monarca limitado, o constitucional, debe seguir leyes y compartir el poder.', fa: 'پادشاه مطلق همهٔ قدرت را دارد. پادشاه محدود، یا مشروطه، باید از قانون پیروی کند و قدرت را شریک سازد.' } },
+        why: { en: 'A government keeps order and safety, settles fights, and builds things like roads for all.', es: 'Un gobierno mantiene el orden y la seguridad, resuelve peleas y construye cosas como caminos para todos.', fa: 'حکومت نظم و امنیت را نگه می‌دارد، جنگ‌ها را حل می‌کند و برای همه چیزهایی مثل سرک می‌سازد.' } },
       { q: { en: 'A small group of rich families runs a city. What is this called?', es: 'Un grupo pequeño de familias ricas dirige una ciudad. ¿Cómo se llama esto?', fa: 'یک گروه کوچک از خانواده‌های پولدار یک شهر را اداره می‌کند. نام این چیست؟' },
         choices: [
           { en: 'Oligarchy', es: 'Oligarquía', fa: 'الیگارشی' },
@@ -349,7 +349,7 @@ window.EPISODE = {
         choices: [
           { en: 'Direct democracy', es: 'Democracia directa', fa: 'دموکراسی مستقیم' },
           { en: 'Representative democracy', es: 'Democracia representativa', fa: 'دموکراسی نمایندگی' },
-          { en: 'Limited monarchy', es: 'Monarquía limitada', fa: 'پادشاهی محدود' },
+          { en: 'Monarchy', es: 'Monarquía', fa: 'پادشاهی' },
           { en: 'Oligarchy', es: 'Oligarquía', fa: 'الیگارشی' }],
         answer: 0,
         why: { en: 'In a direct democracy, the people vote on each law themselves, like the citizens of Athens.', es: 'En una democracia directa, el pueblo vota cada ley por sí mismo, como los ciudadanos de Atenas.', fa: 'در دموکراسی مستقیم، مردم خودشان به هر قانون رأی می‌دهند، مثل شهروندان آتن.' } },
@@ -365,7 +365,7 @@ window.EPISODE = {
         choices: [
           { en: 'Representative democracy', es: 'Democracia representativa', fa: 'دموکراسی نمایندگی' },
           { en: 'Direct democracy, like Athens', es: 'Democracia directa, como Atenas', fa: 'دموکراسی مستقیم، مثل آتن' },
-          { en: 'An absolute monarchy', es: 'Una monarquía absoluta', fa: 'یک پادشاهی مطلق' },
+          { en: 'A monarchy with a king', es: 'Una monarquía con un rey', fa: 'پادشاهی با یک پادشاه' },
           { en: 'A theocracy with priests', es: 'Una teocracia con sacerdotes', fa: 'یک حکومت دینی با روحانیان' }],
         answer: 0,
         why: { en: 'In a republic, people elect representatives to make laws for them. The US is a representative democracy.', es: 'En una república, la gente elige representantes que hacen las leyes. EE. UU. es una democracia representativa.', fa: 'در جمهوری، مردم نماینده‌هایی را انتخاب می‌کنند که برایشان قانون بسازند. امریکا دموکراسی نمایندگی است.' } }

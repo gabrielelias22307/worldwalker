@@ -236,7 +236,7 @@ window.EPISODE = {
         { en: 'Danny the newsboy sells papers in the rail yard. Maybe he saw it.', es: 'Danny, el niño que vende periódicos, está en el patio del tren. Quizás la vio.', fa: 'دنی، بچهٔ روزنامه‌فروش، در ایستگاه ریل است. شاید آن را دیده باشد.' }
       ],
       wait: { en: 'Danny sells papers in the rail yard, east of the main street.', es: 'Danny vende periódicos en el patio del tren, al este de la calle principal.', fa: 'دنی در ایستگاه ریل، شرق سرک اصلی، روزنامه می‌فروشد.' },
-      thanks: { en: 'My story! It says big companies must follow the Sherman Antitrust Act. Thank you!', es: '¡Mi noticia! Dice que las grandes empresas deben cumplir la Ley Sherman. ¡Gracias!', fa: 'خبرم! می‌گوید شرکت‌های بزرگ باید از قانون ضد انحصار شرمن پیروی کنند. تشکر!' }
+      thanks: { en: 'My story! The Sherman Antitrust Act fights a [[monopoly|monopoly]] like Standard Oil. Thanks!', es: '¡Mi noticia! La Ley Sherman lucha contra un [[monopoly|monopolio]] como Standard Oil. ¡Gracias!', fa: 'خبرم! قانون ضد انحصار شرمن با یک [[monopoly|انحصار]] مثل استاندارد اویل مبارزه می‌کند. تشکر!' }
     },
     contact: {
       x: 19, y: 8,
@@ -245,6 +245,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#1a1008', shirt: '#7a6a4a', pants: '#3a2a1a', hat: '#5a4a3a' },
       lines: [
         { en: 'I sell papers from dawn to dark. I have no time for school.', es: 'Vendo periódicos desde el amanecer hasta la noche. No tengo tiempo para la escuela.', fa: 'از صبح زود تا تاریکی روزنامه می‌فروشم. برای مکتب وقت ندارم.' },
+        { en: 'They call it the [[gilded age|Gilded Age]]: gold on top. Kids like me work all day.', es: 'Le dicen la [[gilded age|Edad Dorada]]: oro por encima. Niños como yo trabajan todo el día.', fa: 'این را [[gilded age|عصر طلاکاری]] می‌گویند: طلا فقط در رو. بچه‌هایی مثل من تمام روز کار می‌کنند.' },
         { en: 'A page blew to the riverbank. Look 2 steps east of the riverboat dock.', es: 'Una hoja voló a la orilla del río. Busca 2 pasos al este del muelle.', fa: 'یک ورق به کنار دریا پرید. ۲ قدم شرقِ بندرگاه را ببین.' }
       ]
     },
@@ -340,7 +341,7 @@ window.EPISODE = {
           { en: 'Pumped oil out of the ground', es: 'Sacó petróleo de la tierra', fa: 'تیل را از زمین بیرون کشید' }],
         answer: 0,
         why: { en: 'Blowing air through hot iron made steel quickly. Cheap steel built rails, bridges and tall buildings.', es: 'Soplar aire por el hierro caliente hacía acero rápido. El acero barato construyó rieles, puentes y edificios.', fa: 'دمیدن هوا در آهن داغ فولاد را زود می‌ساخت. فولاد ارزان ریل، پل و تعمیرهای بلند ساخت.' } },
-      { q: { en: 'Some called Carnegie and Rockefeller "captains of industry." Others said "robber barons." Why?', es: 'Unos llamaban a Carnegie y Rockefeller "capitanes de la industria". Otros, "barones ladrones". ¿Por qué?', fa: 'بعضی کارنگی و راکفلر را «ناخدایان صنعت» می‌گفتند، بعضی «اشراف دزد». چرا؟' },
+      { q: { en: 'Some called rich owners "captains of industry." Others said "robber barons." Why?', es: 'Unos llamaban a los dueños ricos "capitanes de la industria". Otros, "barones ladrones". ¿Por qué?', fa: 'بعضی مالکان ثروتمند را «ناخدایان صنعت» می‌گفتند، بعضی «اشراف دزد». چرا؟' },
         choices: [
           { en: 'They built big companies but kept pay low', es: 'Crearon grandes empresas, pero pagaban poco', fa: 'شرکت‌های بزرگ ساختند اما مزد را کم نگه داشتند' },
           { en: 'They were sea captains who robbed ships at sea', es: 'Eran capitanes que robaban barcos en el mar', fa: 'ناخدای کشتی بودند که در بحر کشتی‌ها را دزدیدند' },

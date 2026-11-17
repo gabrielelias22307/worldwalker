@@ -186,7 +186,7 @@ window.EPISODE = {
       role: { en: 'Student who works at the library', es: 'Estudiante que trabaja en la biblioteca', fa: 'شاگردی که در کتابخانه کار می‌کند' },
       look: { skin: 3, hair: '#1a1208', shirt: '#2f5f9a', pants: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'I shelve books at the library. I read a lot about prices.', es: 'Acomodo libros en la biblioteca. Leo mucho sobre precios.', fa: 'من در کتابخانه کتاب‌ها را در الماری می‌گذارم. دربارهٔ قیمت‌ها زیاد می‌خوانم.' },
+        { en: 'Higher costs cause [[cost-push|cost-push]] inflation. Too many buyers cause [[demand-pull|demand-pull]] inflation.', es: 'Costos más altos causan inflación de [[cost-push|costos]]. Demasiados compradores causan inflación de [[demand-pull|demanda]].', fa: 'هزینه‌های بالاتر تورم [[cost-push|فشار هزینه]] می‌آورد. خریداران زیاد تورم [[demand-pull|کشش تقاضا]] می‌آورند.' },
         { en: 'The [[cpi|Consumer Price Index]], or CPI, tracks prices of a [[basket|basket]].', es: 'El [[cpi|Índice de Precios al Consumidor]], o IPC, sigue los precios de una [[basket|canasta]].', fa: '[[cpi|شاخص قیمت مصرف‌کننده]] قیمت‌های یک [[basket|سبد]] را دنبال می‌کند.' },
         { en: 'The basket holds things people often buy: food, rent, gas, bus rides.', es: 'La canasta tiene cosas que la gente compra seguido: comida, renta, gasolina, bus.', fa: 'این سبد چیزهایی دارد که مردم اکثراً می‌خرند: خوراک، کرایه، تیل، بس.' },
         { en: 'A government agency, the Bureau of Labor Statistics, measures it.', es: 'Una agencia del gobierno, la Oficina de Estadísticas Laborales, lo mide.', fa: 'یک ادارهٔ دولتی، به نام ادارهٔ آمار کار، آن را اندازه می‌گیرد.' },
@@ -385,14 +385,14 @@ window.EPISODE = {
           { en: 'About 90%', es: 'Cerca del 90%', fa: 'حدود ۹۰٪' }],
         answer: 0,
         why: { en: 'The Fed aims for about 2% a year. Slow, steady inflation is easier to plan for.', es: 'La Reserva Federal busca cerca del 2% al año. Es más fácil planear con inflación lenta.', fa: 'فدرال ریزرو حدود ۲٪ در سال را هدف می‌گیرد. برنامه‌ریزی با تورم آهسته آسان‌تر است.' } },
-      { q: { en: 'Germany in 1923 and Zimbabwe in 2008 had prices rise extremely fast. What is that?', es: 'En Alemania en 1923 y Zimbabue en 2008 los precios subieron muy rápido. ¿Qué es eso?', fa: 'در آلمان ۱۹۲۳ و زیمبابوی ۲۰۰۸ قیمت‌ها بسیار تیز بالا رفت. این چیست؟' },
+      { q: { en: 'Prices rise each year. What happens to cash hidden at home?', es: 'Los precios suben cada año. ¿Qué le pasa al efectivo escondido en casa?', fa: 'قیمت‌ها هر سال بالا می‌روند. پول نقدِ پنهان در خانه چه می‌شود؟' },
         choices: [
-          { en: 'Hyperinflation', es: 'Hiperinflación', fa: 'تورم بسیار شدید' },
-          { en: 'Slow deflation', es: 'Deflación lenta', fa: 'کاهش آهستهٔ قیمت‌ها' },
-          { en: 'A careful budget', es: 'Un presupuesto cuidadoso', fa: 'یک بودجهٔ دقیق' },
-          { en: 'A huge store sale', es: 'Una gran oferta', fa: 'یک حراج بزرگ دکان' }],
+          { en: 'It slowly loses value', es: 'Pierde valor poco a poco', fa: 'آهسته‌آهسته ارزش از دست می‌دهد' },
+          { en: 'It slowly gains value', es: 'Gana valor poco a poco', fa: 'آهسته‌آهسته ارزش پیدا می‌کند' },
+          { en: 'It keeps the same value', es: 'Mantiene el mismo valor', fa: 'ارزشش همان‌طور می‌ماند' },
+          { en: 'It earns more each year', es: 'Gana más cada año', fa: 'هر سال بیشتر می‌شود' }],
         answer: 0,
-        why: { en: 'In hyperinflation, prices rise so fast that money becomes almost worthless.', es: 'En la hiperinflación, los precios suben tan rápido que el dinero casi no vale nada.', fa: 'در تورم بسیار شدید، قیمت‌ها آنقدر تیز بالا می‌روند که پول تقریباً بی‌ارزش می‌شود.' } }
+        why: { en: 'Inflation makes each dollar buy less. So cash hidden at home loses value.', es: 'La inflación hace que cada dólar compre menos. El efectivo en casa pierde valor.', fa: 'تورم باعث می‌شود هر دالر کمتر بخرد. پس پول نقد در خانه ارزش از دست می‌دهد.' } }
     ]
   },
 

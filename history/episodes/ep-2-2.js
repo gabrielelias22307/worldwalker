@@ -148,7 +148,7 @@ window.EPISODE = {
         q: { en: 'Which food first grew in the Americas?', es: '¿Qué comida creció primero en América?', fa: 'کدام غذا اول در قارهٔ امریکا رویید؟' },
         choices: [
           { ok: true, t: { en: 'Corn', es: 'El maíz', fa: 'جواری' },
-            why: { en: 'Yes! People in Mexico grew the first corn thousands of years ago.', es: '¡Sí! La gente de México sembró el primer maíz hace miles de años.', fa: 'بله! مردم مکسیکو هزاران سال پیش اولین جواری را کاشتند.' } },
+            why: { en: 'Yes! Corn first grew in Mexico. Later, corn and potatoes fed more people around the world.', es: '¡Sí! El maíz nació en México. Después, el maíz y la papa alimentaron a más gente en todo el mundo.', fa: 'بله! جواری اول در مکسیکو رویید. بعد، جواری و کچالو مردم بیشتری را در سراسر جهان سیر کردند.' } },
           { t: { en: 'Wheat', es: 'El trigo', fa: 'گندم' },
             why: { en: 'Wheat first grew in Southwest Asia. Spanish ships brought it here.', es: 'El trigo creció primero en el suroeste de Asia. Los barcos españoles lo trajeron.', fa: 'گندم اول در جنوب غرب آسیا رویید. کشتی‌های هسپانوی آن را اینجا آوردند.' } },
           { t: { en: 'Rice', es: 'El arroz', fa: 'برنج' },
@@ -185,7 +185,7 @@ window.EPISODE = {
       role: { en: 'Healer', es: 'Curandera', fa: 'شفادهنده' },
       look: { skin: 5, hair: '#1a1008', shirt: '#6a4a8a', pants: '#3a2a20', robe: true, style: 'bun' },
       lines: [
-        { en: 'I am a healer. This part of the story is sad, but important.', es: 'Soy curandera. Esta parte de la historia es triste, pero importante.', fa: 'من شفادهنده هستم. این بخش داستان غم‌انگیز، اما مهم است.' },
+        { en: 'I am a healer. Europeans forced enslaved Africans to work on [[plantation|plantations]], huge sugar farms.', es: 'Soy curandera. Los europeos obligaron a africanos esclavizados a trabajar en [[plantation|plantaciones]], enormes fincas de azúcar.', fa: 'من شفادهنده هستم. اروپایی‌ها افریقایی‌های برده را به زور در [[plantation|کشتزارهای بزرگ]] نیشکر به کار واداشتند.' },
         { en: 'Europeans also brought diseases, like [[smallpox|smallpox]]. Native peoples had never met them.', es: 'Los europeos también trajeron enfermedades, como la [[smallpox|viruela]]. Los pueblos indígenas nunca las habían tenido.', fa: 'اروپایی‌ها مریضی‌هایی مثل [[smallpox|چیچک]] را هم آوردند. مردمان بومی هرگز آن‌ها را ندیده بودند.' },
         { en: 'Their bodies had no [[immunity|immunity]] to fight them. Millions of people died.', es: 'Sus cuerpos no tenían [[immunity|inmunidad]] para combatirlas. Murieron millones de personas.', fa: 'بدن‌شان برای جنگ با آن‌ها [[immunity|مصونیت]] نداشت. میلیون‌ها نفر مردند.' }
       ],
@@ -314,7 +314,7 @@ window.EPISODE = {
     questions: [
       { q: { en: 'What was the Columbian Exchange?', es: '¿Qué fue el intercambio colombino?', fa: 'مبادلهٔ کلمبی چه بود؟' },
         choices: [
-          { en: 'Plants, animals, people and germs moving between hemispheres', es: 'Plantas, animales, personas y gérmenes que pasaban entre hemisferios', fa: 'رفت و آمد نبات، حیوان، مردم و میکروب میان نیم‌کره‌ها' },
+          { en: 'Foods, animals and diseases crossing the ocean both ways', es: 'Alimentos, animales y enfermedades que cruzaban el océano en ambos sentidos', fa: 'غذا، حیوان و بیماری که از دو طرف بحر می‌گذشتند' },
           { en: 'A war between Spain and Portugal over gold and silver', es: 'Una guerra entre España y Portugal por el oro y la plata', fa: 'جنگی میان هسپانیه و پرتگال بر سر طلا و نقره' },
           { en: 'A trade deal that let only Spain sail across the Atlantic Ocean', es: 'Un acuerdo que dejaba solo a España cruzar el océano Atlántico', fa: 'قراردادی که فقط به هسپانیه اجازهٔ سفر در بحر اطلس می‌داد' },
           { en: 'A ship race from Seville to New Spain and back again', es: 'Una carrera de barcos de Sevilla a la Nueva España y de vuelta', fa: 'مسابقهٔ کشتی از سویل تا هسپانیهٔ نو و برگشت' }],
@@ -344,14 +344,14 @@ window.EPISODE = {
           { en: 'Horses from the Americas pulled more plows', es: 'Los caballos de América tiraban más arados', fa: 'اسپ‌های امریکایی قلبه‌های بیشتر کشیدند' }],
         answer: 0,
         why: { en: 'Potatoes and corn grow lots of food on small farms. More food helped more people live.', es: 'La papa y el maíz dan mucha comida en fincas pequeñas. Más comida ayudó a vivir a más gente.', fa: 'کچالو و جواری در زمین کوچک غذای زیاد می‌دهند. غذای بیشتر به زنده ماندن مردم بیشتر کمک کرد.' } },
-      { q: { en: 'How did horses change life for many Native peoples of the Americas?', es: '¿Cómo cambiaron los caballos la vida de muchos pueblos indígenas de América?', fa: 'اسپ زندگی بسیاری از مردمان بومی امریکا را چطور تغییر داد؟' },
+      { q: { en: 'There were no horses in the Americas in 1492. How did they get there?', es: 'En 1492 no había caballos en América. ¿Cómo llegaron allí?', fa: 'در سال ۱۴۹۲ در امریکا اسپ نبود. اسپ‌ها چطور به آنجا رسیدند؟' },
         choices: [
-          { en: 'They used horses to hunt bison and travel far', es: 'Usaron caballos para cazar bisontes y viajar lejos', fa: 'با اسپ گاومیش شکار کردند و راه دور رفتند' },
-          { en: 'They used horses to plow rice fields in the hills', es: 'Usaron caballos para arar campos de arroz en los cerros', fa: 'با اسپ کشتزارهای برنج را در تپه‌ها قلبه کردند' },
-          { en: 'Horses replaced all their farms and villages', es: 'Los caballos reemplazaron todas sus fincas y pueblos', fa: 'اسپ‌ها جای همهٔ فارم‌ها و قریه‌هایشان را گرفتند' },
-          { en: 'Horses carried silver across the Atlantic Ocean', es: 'Los caballos llevaban plata a través del Atlántico', fa: 'اسپ‌ها نقره را از بحر اطلس گذراندند' }],
+          { en: 'On ships from Europe', es: 'En barcos desde Europa', fa: 'با کشتی‌ها از اروپا' },
+          { en: 'From the Andes Mountains', es: 'Desde los Andes', fa: 'از کوه‌های اندیز' },
+          { en: 'From the forests of Mexico', es: 'Desde los bosques de México', fa: 'از جنگل‌های مکسیکو' },
+          { en: 'On rafts from China', es: 'En balsas desde China', fa: 'با جاله‌ها از چین' }],
         answer: 0,
-        why: { en: 'On the Great Plains, peoples like the Comanche and Lakota rode horses to hunt bison.', es: 'En las Grandes Llanuras, pueblos como los comanches y los lakotas cazaban bisontes a caballo.', fa: 'در دشت‌های بزرگ، مردمانی مثل کومانچی و لاکوتا سوار اسپ گاومیش شکار می‌کردند.' } },
+        why: { en: 'Spanish ships brought horses after 1492. Llamas and turkeys were already in the Americas.', es: 'Los barcos españoles trajeron caballos después de 1492. Las llamas y los pavos ya estaban en América.', fa: 'کشتی‌های هسپانوی بعد از ۱۴۹۲ اسپ آوردند. لاما و فیل‌مرغ از قبل در امریکا بودند.' } },
       { q: { en: 'Why did millions of Native people die after Europeans arrived?', es: '¿Por qué murieron millones de indígenas después de que llegaron los europeos?', fa: 'چرا بعد از آمدن اروپایی‌ها میلیون‌ها نفر از مردمان بومی مردند؟' },
         choices: [
           { en: 'New diseases like smallpox, and no immunity', es: 'Enfermedades nuevas como la viruela, sin inmunidad', fa: 'مریضی‌های نو مثل چیچک، بدون مصونیت' },

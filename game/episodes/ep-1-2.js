@@ -147,7 +147,7 @@ window.EPISODE = {
         { en: 'Welcome to the Wheat Belt! Every farm here grows wheat, field after field.', es: '¡Bienvenido al Cinturón del Trigo! Todas las granjas aquí siembran trigo, campo tras campo.', fa: 'به کمربند گندم خوش آمدی! همهٔ فارم‌های اینجا گندم می‌کارند، زمین پشت زمین.' },
         { en: 'A [[region|region]] is a group of places that share something. Here, we share wheat.', es: 'Una [[region|región]] es un grupo de lugares que comparten algo. Aquí compartimos el trigo.', fa: '[[region|منطقه]] گروهی از جاهاست که یک چیز مشترک دارند. اینجا همه گندم داریم.' },
         { en: 'One trait true everywhere makes a [[formal region|formal region]]. The [[boundary|boundary]] is where wheat stops.', es: 'Una característica en todas partes forma una [[formal region|región formal]]. El [[boundary|límite]] está donde se acaba el trigo.', fa: 'یک ویژگی که همه جا درست باشد [[formal region|منطقهٔ رسمی]] می‌سازد. [[boundary|سرحد]] جایی است که گندم تمام می‌شود.' },
-        { en: 'The U.S. Corn Belt is real: Iowa, Illinois and Nebraska grow huge amounts of corn.', es: 'El Cinturón del Maíz de EE. UU. es real: Iowa, Illinois y Nebraska siembran muchísimo maíz.', fa: 'کمربند جواری امریکا واقعی است: آیووا، ایلینوی و نبراسکا جواری بسیار زیاد می‌کارند.' }
+        { en: 'Nature does not make regions. People draw them, like the U.S. Corn Belt.', es: 'La naturaleza no hace regiones. Las dibuja la gente, como el Cinturón del Maíz de EE. UU.', fa: 'طبیعت منطقه نمی‌سازد. مردم آن‌ها را رسم می‌کنند، مثل کمربند جواری امریکا.' }
       ],
       ask: {
         stat: 'pla',

@@ -270,6 +270,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#141010', shirt: '#2a3a5a', pants: '#2a2a2a', style: 'short', hat: '#2a3a5a' },
       lines: [
         { en: 'Mail for soldiers goes by train to the piers, then by ship.', es: 'El correo para los soldados va en tren a los muelles, y luego en barco.', fa: 'نامه‌های سربازان با ریل به بندرگاه می‌رود، بعد با کشتی.' },
+        { en: 'Many Black Southerners ride north for factory jobs. People call it the [[great migration|Great Migration]].', es: 'Muchos afroamericanos del Sur viajan al Norte por trabajos en fábricas. Lo llaman la [[great migration|Gran Migración]].', fa: 'بسیاری از سیاه‌پوستان جنوب برای کار در فابریکه‌ها به شمال می‌روند. این را [[great migration|کوچ بزرگ]] می‌گویند.' },
         { en: 'Go south to the waterfront. Miss Clara of the Red Cross packs boxes there.', es: 'Ve al sur, a la orilla del agua. Allí la señorita Clara, de la Cruz Roja, prepara cajas.', fa: 'به جنوب، کنار آب برو. خانم کلارا از صلیب سرخ آنجا بسته‌ها را آماده می‌کند.' }
       ]
     },
@@ -373,22 +374,22 @@ window.EPISODE = {
           { en: 'A plan to take colonies in Africa', es: 'Un plan para tomar colonias en África', fa: 'نقشه‌ای برای گرفتن مستعمره در افریقا' }],
         answer: 0,
         why: { en: 'German submarines sank ships, and the Zimmermann Telegram asked Mexico to attack the US.', es: 'Los submarinos alemanes hundieron barcos, y el telegrama Zimmermann le pidió a México atacar a EE. UU.', fa: 'زیردریایی‌های آلمانی کشتی‌ها را غرق کردند و تلگرام زیمرمن از مکسیکو خواست به امریکا حمله کند.' } },
-      { q: { en: 'What did the Selective Service Act of 1917 do?', es: '¿Qué hizo la Ley de Servicio Selectivo de 1917?', fa: 'قانون خدمت انتخابی سال ۱۹۱۷ چه کرد؟' },
+      { q: { en: 'Which new weapons made World War I so deadly?', es: '¿Qué armas nuevas hicieron tan mortal la Primera Guerra Mundial?', fa: 'کدام سلاح‌های نو جنگ جهانی اول را این‌قدر کشنده ساخت؟' },
         choices: [
-          { en: 'It drafted men into the army', es: 'Reclutó hombres para el ejército', fa: 'مردان را به زور به اردو برد' },
-          { en: 'It let women vote in elections', es: 'Dejó votar a las mujeres', fa: 'به زنان حق رأی داد' },
-          { en: 'It paid farmers to grow more food', es: 'Pagó a granjeros por más comida', fa: 'به دهقانان برای غذای بیشتر پول داد' },
-          { en: 'It closed all ports to ships', es: 'Cerró todos los puertos a los barcos', fa: 'همهٔ بندرها را به کشتی‌ها بست' }],
+          { en: 'Machine guns, tanks and poison gas', es: 'Ametralladoras, tanques y gas venenoso', fa: 'ماشین‌دار، تانک و گاز زهری' },
+          { en: 'Swords, spears and wooden shields', es: 'Espadas, lanzas y escudos de madera', fa: 'شمشیر، نیزه و سپر چوبی' },
+          { en: 'Bows, arrows and stone walls', es: 'Arcos, flechas y muros de piedra', fa: 'تیر و کمان و دیوار سنگی' },
+          { en: 'Horses, knives and sailboats', es: 'Caballos, cuchillos y veleros', fa: 'اسپ، چاقو و کشتی بادبانی' }],
         answer: 0,
-        why: { en: 'The draft made millions of young men sign up. Many were sent to fight in France.', es: 'El reclutamiento obligó a millones de jóvenes a inscribirse. Muchos fueron a pelear en Francia.', fa: 'سربازگیری اجباری میلیون‌ها مرد جوان را به نام‌نویسی واداشت. بسیاری برای جنگ به فرانسه رفتند.' } },
-      { q: { en: 'What did the Espionage and Sedition Acts do at home?', es: '¿Qué hicieron en casa las leyes de Espionaje y Sedición?', fa: 'قانون‌های جاسوسی و فتنه در داخل کشور چه کردند؟' },
+        why: { en: 'Machine guns, tanks and poison gas killed many soldiers in the muddy trenches.', es: 'Las ametralladoras, los tanques y el gas venenoso mataron a muchos soldados en las trincheras.', fa: 'ماشین‌دار، تانک و گاز زهری بسیاری از سربازان را در سنگرهای گِلی کشت.' } },
+      { q: { en: 'What spread around the world in 1918 and made millions sick?', es: '¿Qué se extendió por el mundo en 1918 y enfermó a millones?', fa: 'در سال ۱۹۱۸ چه چیزی در جهان پخش شد و میلیون‌ها نفر را مریض کرد؟' },
         choices: [
-          { en: 'They limited speech against the war', es: 'Limitaron hablar contra la guerra', fa: 'حرف زدن ضد جنگ را محدود کردند' },
-          { en: 'They gave every family free bread', es: 'Dieron pan gratis a cada familia', fa: 'به هر خانواده نان مفت دادند' },
-          { en: 'They ended the draft for all men', es: 'Acabaron el reclutamiento para todos', fa: 'سربازگیری را برای همه تمام کردند' },
-          { en: 'They built new piers in Virginia', es: 'Construyeron muelles nuevos en Virginia', fa: 'بندرگاه‌های نو در ویرجینیا ساختند' }],
+          { en: 'A deadly flu', es: 'Una gripe mortal', fa: 'یک زکام کشنده' },
+          { en: 'A new dance', es: 'Un baile nuevo', fa: 'یک رقص نو' },
+          { en: 'A gold rush', es: 'Una fiebre del oro', fa: 'هجوم برای طلا' },
+          { en: 'A cold winter', es: 'Un invierno frío', fa: 'یک زمستان سرد' }],
         answer: 0,
-        why: { en: 'These laws made it a crime to speak against the war or the draft. Some people went to jail.', es: 'Estas leyes volvieron delito hablar contra la guerra o el reclutamiento. Algunos fueron a la cárcel.', fa: 'این قانون‌ها حرف زدن ضد جنگ یا سربازگیری را جرم ساخت. بعضی‌ها زندانی شدند.' } },
+        why: { en: 'In 1918, the flu made millions sick around the world. Many soldiers and families died.', es: 'En 1918, la gripe enfermó a millones en todo el mundo. Murieron muchos soldados y familias.', fa: 'در سال ۱۹۱۸، زکام میلیون‌ها نفر را در جهان مریض کرد. بسیاری از سربازان و خانواده‌ها مردند.' } },
       { q: { en: 'What was the Great Migration?', es: '¿Qué fue la Gran Migración?', fa: 'کوچ بزرگ چه بود؟' },
         choices: [
           { en: 'Black Americans moving to Northern cities', es: 'Afroamericanos que se mudaron a ciudades del Norte', fa: 'کوچ امریکایی‌های سیاه‌پوست به شهرهای شمال' },
@@ -397,7 +398,7 @@ window.EPISODE = {
           { en: 'Germans moving to Mexico in 1917', es: 'Alemanes que se mudaron a México en 1917', fa: 'آلمانی‌هایی که در ۱۹۱۷ به مکسیکو رفتند' }],
         answer: 0,
         why: { en: 'Millions of Black Southerners moved north for factory jobs and to escape unfair laws.', es: 'Millones de afroamericanos del Sur se mudaron al norte por trabajo y para escapar de leyes injustas.', fa: 'میلیون‌ها سیاه‌پوست جنوب برای کار در فابریکه و دوری از قانون‌های ناعادلانه به شمال رفتند.' } },
-      { q: { en: 'Wilson\'s Fourteen Points asked for open talks, free seas, self-rule and what else?', es: 'Los Catorce Puntos de Wilson pedían diálogo abierto, mares libres, autogobierno y ¿qué más?', fa: 'چهارده نکتهٔ ویلسن گفتگوی آشکار، بحرهای آزاد، خودمختاری و دیگر چه می‌خواست؟' },
+      { q: { en: 'After the war, what did President Wilson want most for the peace?', es: 'Después de la guerra, ¿qué quería más el presidente Wilson para la paz?', fa: 'بعد از جنگ، رئیس جمهور ویلسن برای صلح از همه بیشتر چه می‌خواست؟' },
         choices: [
           { en: 'A League of Nations', es: 'Una Sociedad de Naciones', fa: 'یک جامعهٔ ملل' },
           { en: 'A bigger army for every nation', es: 'Un ejército más grande para cada país', fa: 'اردوی بزرگ‌تر برای هر کشور' },

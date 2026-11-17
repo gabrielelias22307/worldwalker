@@ -157,7 +157,7 @@ window.EPISODE = {
           { t: { en: 'The voters, on a separate ballot', es: 'Los votantes, en una boleta aparte', fa: 'رأی‌دهندگان، در یک ورقهٔ جدا' },
             why: { en: 'No. That is how the US picks a President. UK voters elect MPs.', es: 'No. Así elige EE. UU. a su presidente. Los votantes del Reino Unido eligen diputados.', fa: 'نه. امریکا این‌طور رئیس جمهور را انتخاب می‌کند. رأی‌دهندگان بریتانیا اعضای پارلمان را انتخاب می‌کنند.' } },
           { t: { en: 'The monarch, by free choice', es: 'El monarca, como él quiera', fa: 'پادشاه، به خواست خودش' },
-            why: { en: 'No. The monarch\'s role is mostly ceremony. The monarch asks the leader Parliament supports.', es: 'No. El papel del monarca es sobre todo ceremonial. Llama al líder que apoya el Parlamento.', fa: 'نه. کار پادشاه بیشتر تشریفاتی است. پادشاه رهبری را می‌خواهد که پارلمان از او حمایت می‌کند.' } }
+            why: { en: 'No. The monarch is head of state, mostly for ceremony. Parliament\'s majority decides.', es: 'No. El monarca es jefe de Estado, sobre todo para ceremonias. Decide la mayoría del Parlamento.', fa: 'نه. پادشاه رئیس کشور است، بیشتر برای تشریفات. اکثریت پارلمان تصمیم می‌گیرد.' } }
         ]
       }
     },
@@ -391,14 +391,14 @@ window.EPISODE = {
           { en: 'Parliamentary', es: 'Parlamentario', fa: 'پارلمانی' }],
         answer: 0,
         why: { en: 'In a confederal system, the states are strong and the central government is weak.', es: 'En un sistema confederal, los estados son fuertes y el gobierno central es débil.', fa: 'در نظام کنفدرال، ایالت‌ها قوی هستند و حکومت مرکزی ضعیف است.' } },
-      { q: { en: 'In an [[autocracy|autocracy]], can the people vote the ruler out?', es: 'En una [[autocracy|autocracia]], ¿puede el pueblo sacar al gobernante con su voto?', fa: 'در [[autocracy|حکومت مطلقهٔ یک نفر]]، آیا مردم با رأی حاکم را برداشته می‌توانند؟' },
+      { q: { en: 'Who do UK voters elect to the House of Commons?', es: '¿A quién eligen los votantes del Reino Unido para la Cámara de los Comunes?', fa: 'رأی‌دهندگان بریتانیا چه کسانی را به مجلس عوام انتخاب می‌کنند؟' },
         choices: [
-          { en: 'No, one ruler has all power', es: 'No, un gobernante tiene todo el poder', fa: 'نه، یک حاکم همهٔ قدرت را دارد' },
-          { en: 'Yes, at the next election', es: 'Sí, en las próximas elecciones', fa: 'بله، در انتخابات بعدی' },
-          { en: 'Yes, by a no-confidence vote', es: 'Sí, con un voto de no confianza', fa: 'بله، با رأی عدم اعتماد' },
-          { en: 'Yes, by impeachment in court', es: 'Sí, con un juicio político', fa: 'بله، با استیضاح در محکمه' }],
+          { en: 'Members of Parliament', es: 'A miembros del Parlamento', fa: 'اعضای پارلمان' },
+          { en: 'The Prime Minister alone', es: 'Solo al primer ministro', fa: 'فقط صدراعظم' },
+          { en: 'The monarch and family', es: 'Al monarca y su familia', fa: 'پادشاه و خانواده‌اش' },
+          { en: 'Judges of the top court', es: 'A los jueces de la corte más alta', fa: 'قاضی‌های بالاترین محکمه' }],
         answer: 0,
-        why: { en: 'In an autocracy, one ruler holds all power. In a [[democracy|democracy]], like the UK and US, voters choose who governs.', es: 'En una autocracia, un gobernante tiene todo el poder. En una [[democracy|democracia]], como el Reino Unido y EE. UU., los votantes eligen quién gobierna.', fa: 'در حکومت مطلقه، یک حاکم همهٔ قدرت را دارد. در [[democracy|دموکراسی]]، مثل بریتانیا و امریکا، رأی‌دهندگان حاکمان را انتخاب می‌کنند.' } }
+        why: { en: 'UK voters elect 650 MPs. The leader most MPs support becomes Prime Minister.', es: 'Los votantes eligen 650 miembros del Parlamento. El líder que más apoyan se vuelve primer ministro.', fa: 'رأی‌دهندگان بریتانیا ۶۵۰ عضو پارلمان را انتخاب می‌کنند. رهبری که بیشتر آن‌ها حمایتش کنند صدراعظم می‌شود.' } }
     ]
   },
 

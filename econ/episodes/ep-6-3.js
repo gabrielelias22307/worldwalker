@@ -364,14 +364,14 @@ window.EPISODE = {
           { en: 'Cash hidden under a mattress', es: 'Efectivo escondido bajo el colchón', fa: 'پول نقد پنهان زیر توشک' }],
         answer: 0,
         why: { en: 'FDIC insurance covers money in insured banks. It does not cover crypto or collectibles.', es: 'El seguro de la FDIC cubre el dinero en bancos asegurados. No cubre cripto ni coleccionables.', fa: 'بیمهٔ FDIC پول بانک‌های بیمه‌شده را می‌پوشاند. پول دیجیتال یا چیزهای کلکسیونی را نمی‌پوشاند.' } },
-      { q: { en: 'Sam loses the private key to his crypto. What can happen?', es: 'Sam pierde la clave privada de sus cripto. ¿Qué puede pasar?', fa: 'سام کلید خصوصی پول دیجیتالش را گم می‌کند. چه می‌شود؟' },
+      { q: { en: 'A thief steals Sam\'s crypto. What can happen?', es: 'Un ladrón roba las cripto de Sam. ¿Qué puede pasar?', fa: 'یک دزد پول دیجیتال سام را می‌دزدد. چه می‌شود؟' },
         choices: [
-          { en: 'His crypto can be gone for good', es: 'Sus cripto pueden perderse para siempre', fa: 'پول دیجیتالش شاید برای همیشه برود' },
-          { en: 'His bank mails him a new key', es: 'Su banco le manda una clave nueva', fa: 'بانکش یک کلید نو برایش می‌فرستد' },
+          { en: 'It may be gone for good', es: 'Puede perderse para siempre', fa: 'شاید برای همیشه از دست برود' },
+          { en: 'FDIC insurance pays him back', es: 'El seguro FDIC le devuelve el dinero', fa: 'بیمهٔ FDIC پولش را پس می‌دهد' },
           { en: 'The government pays him back', es: 'El gobierno le devuelve el dinero', fa: 'حکومت پولش را پس می‌دهد' },
           { en: 'The price of his coin doubles', es: 'El precio de su moneda se duplica', fa: 'قیمت سکه‌اش دو برابر می‌شود' }],
         answer: 0,
-        why: { en: 'No bank or government backs crypto. Lose the key, and often no one can get it back.', es: 'Ningún banco ni gobierno respalda las cripto. Si pierdes la clave, muchas veces nadie la recupera.', fa: 'هیچ بانک یا حکومت پشتیبان پول دیجیتال نیست. اگر کلید گم شود، اکثراً کسی آن را پس آورده نمی‌تواند.' } },
+        why: { en: 'No insurance covers crypto. If it is lost or stolen, it may be gone for good.', es: 'Ningún seguro cubre las cripto. Si se pierden o las roban, pueden perderse para siempre.', fa: 'هیچ بیمه‌ای پول دیجیتال را پوشش نمی‌دهد. اگر گم یا دزدیده شود، شاید برای همیشه برود.' } },
       { q: { en: 'A post says: "Send me crypto, and I will send back double!" What is it?', es: 'Un mensaje dice: "¡Mándame cripto y te devuelvo el doble!" ¿Qué es?', fa: 'یک پیام می‌گوید: «برایم پول دیجیتال بفرست، دو برابرش را پس می‌فرستم!» این چیست؟' },
         choices: [
           { en: 'A scam', es: 'Una estafa', fa: 'یک فریب' },

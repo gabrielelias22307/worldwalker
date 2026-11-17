@@ -332,7 +332,7 @@ window.EPISODE = {
       { q: { en: 'Congress has two houses. What is the word for this?', es: 'El Congreso tiene dos cámaras. ¿Cuál es la palabra para esto?', fa: 'کانگرس دو مجلس دارد. کلمهٔ این چیست؟' },
         choices: [
           { en: 'Bicameral', es: 'Bicameral', fa: 'دو مجلسی' },
-          { en: 'Unicameral', es: 'Unicameral', fa: 'یک مجلسی' },
+          { en: 'Expressed', es: 'Expreso', fa: 'نوشته‌شده' },
           { en: 'Federal', es: 'Federal', fa: 'فدرال' },
           { en: 'Elastic', es: 'Elástico', fa: 'کشدار' }],
         answer: 0,
@@ -361,14 +361,14 @@ window.EPISODE = {
           { en: 'For life', es: 'De por vida', fa: 'تمام عمر' }],
         answer: 0,
         why: { en: 'Senators serve 6 years. About one third of the Senate is elected every 2 years.', es: 'Los senadores sirven 6 años. Cerca de un tercio del Senado se elige cada 2 años.', fa: 'سناتورها ۶ سال کار می‌کنند. تقریباً یک سوم سنا هر ۲ سال انتخاب می‌شود.' } },
-      { q: { en: 'Who is the President of the Senate?', es: '¿Quién es el presidente del Senado?', fa: 'رئیس سنا کیست؟' },
+      { q: { en: 'Who leads the Senate and can break a tie vote?', es: '¿Quién dirige el Senado y puede romper un empate?', fa: 'کی سنا را رهبری می‌کند و می‌تواند رأی برابر را بشکند؟' },
         choices: [
           { en: 'The Vice President', es: 'El vicepresidente', fa: 'معاون رئیس جمهور' },
           { en: 'The Speaker of the House', es: 'El Presidente de la Cámara', fa: 'رئیس مجلس نمایندگان' },
           { en: 'The Chief Justice', es: 'El presidente de la Corte Suprema', fa: 'رئیس محکمهٔ عالی' },
           { en: 'The oldest senator', es: 'El senador más viejo', fa: 'پیرترین سناتور' }],
         answer: 0,
-        why: { en: 'The Vice President is President of the Senate and votes only to break a tie.', es: 'El vicepresidente es el presidente del Senado y vota solo para romper un empate.', fa: 'معاون رئیس جمهور رئیس سنا است و فقط برای شکستن رأی برابر رأی می‌دهد.' } },
+        why: { en: 'The Vice President leads the Senate and votes only to break a tie.', es: 'El vicepresidente dirige el Senado y vota solo para romper un empate.', fa: 'معاون رئیس جمهور سنا را رهبری می‌کند و فقط برای شکستن رأی برابر رأی می‌دهد.' } },
       { q: { en: 'Which house must start every tax bill?', es: '¿Qué cámara debe empezar cada proyecto de impuestos?', fa: 'کدام مجلس باید هر لایحهٔ مالیات را شروع کند؟' },
         choices: [
           { en: 'The House', es: 'La Cámara', fa: 'مجلس نمایندگان' },
@@ -389,7 +389,7 @@ window.EPISODE = {
         choices: [
           { en: 'Expressed powers', es: 'Poderes expresos', fa: 'قدرت‌های نوشته‌شده' },
           { en: 'Implied powers', es: 'Poderes implícitos', fa: 'قدرت‌های ضمنی' },
-          { en: 'Reserved powers', es: 'Poderes reservados', fa: 'قدرت‌های ذخیره' },
+          { en: 'Court powers', es: 'Poderes de la corte', fa: 'قدرت‌های محکمه' },
           { en: 'Royal powers', es: 'Poderes reales', fa: 'قدرت‌های شاهی' }],
         answer: 0,
         why: { en: 'Powers written out in Article I, Section 8 are expressed powers. The elastic clause adds implied powers.', es: 'Los poderes escritos en el Artículo I, Sección 8, son expresos. La cláusula elástica añade los implícitos.', fa: 'قدرت‌های نوشته‌شده در مادهٔ اول، بخش ۸، قدرت‌های نوشته‌شده‌اند. بند کشدار قدرت‌های ضمنی را اضافه می‌کند.' } }

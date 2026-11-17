@@ -368,7 +368,7 @@ window.EPISODE = {
         why: { en: 'The 1st Amendment protects symbolic speech. A quiet armband did not stop classes, so students could wear it.', es: 'La Primera Enmienda protege la expresión simbólica. El brazalete no paraba las clases, así que podían usarlo.', fa: 'متمم اول از بیان نمادین محافظت می‌کند. بازوبند درس را بند نکرد، پس شاگردان می‌توانستند آن را ببندند.' } },
       { q: { en: 'Brown v. Board of Education, 1954: what did the Court decide?', es: 'Brown contra la Junta de Educación, 1954: ¿qué decidió la Corte?', fa: 'براون علیه بورد تعلیمات، ۱۹۵۴: ستره محکمه چه تصمیم گرفت؟' },
         choices: [
-          { en: 'School segregation is unconstitutional', es: 'Separar escuelas por raza es inconstitucional', fa: 'جدایی نژادی در مکتب خلاف قانون اساسی است' },
+          { en: 'School segregation breaks the Constitution', es: 'Separar escuelas por raza va contra la Constitución', fa: 'جدایی نژادی در مکتب خلاف قانون اساسی است' },
           { en: 'Separate schools are fair if they are equal', es: 'Las escuelas separadas son justas si son iguales', fa: 'مکتب‌های جدا اگر برابر باشند عادلانه‌اند' },
           { en: 'Each state may choose for itself', es: 'Cada estado puede decidir solo', fa: 'هر ایالت خودش انتخاب کند' },
           { en: 'Only private schools must change', es: 'Solo las escuelas privadas deben cambiar', fa: 'فقط مکتب‌های خصوصی باید تغییر کنند' }],

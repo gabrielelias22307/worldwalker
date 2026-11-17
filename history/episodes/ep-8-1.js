@@ -168,14 +168,14 @@ window.EPISODE = {
         { en: 'I report for a radio station in West Berlin.', es: 'Soy reportera de una estación de radio de Berlín Oeste.', fa: 'من برای یک رادیو در برلین غربی خبر می‌گیرم.' },
         { en: 'Two [[superpower|superpowers]] lead the world now: the United States and the Soviet Union.', es: 'Dos [[superpower|superpotencias]] dirigen el mundo: Estados Unidos y la Unión Soviética.', fa: 'حالا دو [[superpower|ابرقدرت]] جهان را رهبری می‌کنند: امریکا و اتحاد شوروی.' },
         { en: 'The West has [[capitalism|capitalism]] and free elections. The East has [[communism|communism]] and one party.', es: 'El Oeste tiene [[capitalism|capitalismo]] y elecciones libres. El Este tiene [[communism|comunismo]] y un solo partido.', fa: 'غرب [[capitalism|سرمایه‌داری]] و انتخابات آزاد دارد. شرق [[communism|کمونیزم]] و یک حزب دارد.' },
-        { en: 'They never fight each other head-on. They build bombs and win friends instead.', es: 'Nunca pelean de frente. En cambio, fabrican bombas y buscan aliados.', fa: 'هرگز رو در رو نمی‌جنگند. به جایش بم می‌سازند و دوست پیدا می‌کنند.' }
+        { en: 'They never fight head-on. They build more and more nuclear bombs: an arms race.', es: 'Nunca pelean de frente. Fabrican más y más bombas nucleares: una carrera de armas.', fa: 'هرگز رو در رو نمی‌جنگند. بیشتر و بیشتر بم هسته‌ای می‌سازند: یک مسابقهٔ سلاح.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'Why do people call it the Cold War?', es: '¿Por qué la gente la llama la Guerra Fría?', fa: 'چرا مردم آن را جنگ سرد می‌نامند؟' },
         choices: [
           { ok: true, t: { en: 'The two superpowers never fought head-on', es: 'Las superpotencias nunca pelearon de frente', fa: 'دو ابرقدرت هرگز رو در رو نجنگیدند' },
-            why: { en: 'Right. They were rivals, but their armies never fought each other directly.', es: 'Correcto. Eran rivales, pero sus ejércitos nunca pelearon directamente.', fa: 'درست. رقیب بودند، اما عسکرهایشان هرگز مستقیم با هم نجنگیدند.' } },
+            why: { en: 'Right. They never fought directly. Each led a military alliance: NATO in the West, the Warsaw Pact in the East.', es: 'Correcto. Nunca pelearon directamente. Cada una dirigía una alianza militar: la OTAN en el oeste y el Pacto de Varsovia en el este.', fa: 'درست. هرگز مستقیم نجنگیدند. هر کدام یک پیمان نظامی را رهبری می‌کرد: ناتو در غرب، پیمان وارسا در شرق.' } },
           { t: { en: 'All its battles were fought in snowy places', es: 'Sus batallas fueron en lugares con nieve', fa: 'همهٔ جنگ‌هایش در جاهای برفی بود' },
             why: { en: '"Cold" does not mean the weather. It means no direct fighting between the superpowers.', es: '"Fría" no habla del clima. Significa que las superpotencias no pelearon directamente.', fa: '«سرد» دربارهٔ هوا نیست. یعنی ابرقدرت‌ها مستقیم با هم نجنگیدند.' } },
           { t: { en: 'It started and ended in one cold winter', es: 'Empezó y terminó en un solo invierno frío', fa: 'در یک زمستان سرد شروع و تمام شد' },
@@ -189,7 +189,7 @@ window.EPISODE = {
       role: { en: 'Factory worker', es: 'Obrera de fábrica', fa: 'کارگر فابریکه' },
       look: { skin: 1, hair: '#4a2a1a', shirt: '#4a6a8a', pants: '#3a3a3a', style: 'long' },
       lines: [
-        { en: 'Hello. I build radios in that factory here in East Berlin.', es: 'Hola. Armo radios en esa fábrica de Berlín Este.', fa: 'سلام. من در آن فابریکه در برلین شرقی رادیو می‌سازم.' },
+        { en: 'Hello. I build radios here in East Berlin. The government owns our factory.', es: 'Hola. Armo radios aquí en Berlín Este. El gobierno es dueño de nuestra fábrica.', fa: 'سلام. من این‌جا در برلین شرقی رادیو می‌سازم. فابریکهٔ ما مال حکومت است.' },
         { en: 'Our leaders say the wall protects us from enemies in the West.', es: 'Nuestros líderes dicen que el muro nos protege de los enemigos del Oeste.', fa: 'رهبران ما می‌گویند دیوار ما را از دشمنان غرب حفاظت می‌کند.' },
         { en: 'But it really stops us from leaving. Millions of [[refugee|refugees]] already left.', es: 'Pero en realidad nos impide salir. Millones de [[refugee|refugiados]] ya se fueron.', fa: 'اما در اصل جلوی رفتن ما را می‌گیرد. میلیون‌ها [[refugee|پناهنده]] قبلاً رفته‌اند.' },
         { en: 'Some of us like our free schools and sure jobs. But we cannot speak freely.', es: 'A algunos nos gustan las escuelas gratis y el trabajo seguro. Pero no podemos hablar libremente.', fa: 'بعضی از ما مکتب مفت و کار مطمئن را دوست داریم. اما آزادانه گپ زده نمی‌توانیم.' }
@@ -359,14 +359,14 @@ window.EPISODE = {
           { en: 'Two radio stations that played music', es: 'Dos estaciones de radio que ponían música', fa: 'دو رادیو که موسیقی پخش می‌کردند' }],
         answer: 0,
         why: { en: 'In NATO, the US and its allies promised to defend each other. The Soviets led the Warsaw Pact.', es: 'En la OTAN, EE. UU. y sus aliados prometieron defenderse. Los soviéticos dirigían el Pacto de Varsovia.', fa: 'در ناتو، امریکا و متحدانش وعده دادند از هم دفاع کنند. شوروی پیمان وارسا را رهبری می‌کرد.' } },
-      { q: { en: 'Many countries, like India and Ghana, joined neither side. What were they called?', es: 'Muchos países, como India y Ghana, no se unieron a ningún lado. ¿Cómo se llamaban?', fa: 'بسیاری از کشورها، مثل هند و گانا، طرف هیچ کدام را نگرفتند. نام‌شان چه بود؟' },
+      { q: { en: 'In 1945, four countries split Berlin. Which one had the east part?', es: 'En 1945, cuatro países dividieron Berlín. ¿Cuál tenía la parte este?', fa: 'در ۱۹۴۵، چهار کشور برلین را تقسیم کردند. کدام یک بخش شرقی را داشت؟' },
         choices: [
-          { en: 'Non-aligned countries', es: 'Países no alineados', fa: 'کشورهای بی‌طرف' },
-          { en: 'Superpower countries', es: 'Países superpotencia', fa: 'کشورهای ابرقدرت' },
-          { en: 'Occupied countries', es: 'Países ocupados', fa: 'کشورهای اشغال‌شده' },
-          { en: 'Iron Curtain countries', es: 'Países del Telón de Acero', fa: 'کشورهای پردهٔ آهنین' }],
+          { en: 'The Soviet Union', es: 'La Unión Soviética', fa: 'اتحاد شوروی' },
+          { en: 'The United States', es: 'Estados Unidos', fa: 'ایالات متحده' },
+          { en: 'Great Britain', es: 'Gran Bretaña', fa: 'بریتانیا' },
+          { en: 'France', es: 'Francia', fa: 'فرانسه' }],
         answer: 0,
-        why: { en: 'The non-aligned countries refused to pick a side. Many had just won freedom from colonial rule.', es: 'Los países no alineados no quisieron elegir lado. Muchos acababan de liberarse del dominio colonial.', fa: 'کشورهای بی‌طرف نخواستند طرفی بگیرند. بسیاری تازه از حکومت استعماری آزاد شده بودند.' } },
+        why: { en: 'The Soviets had East Berlin. The US, Britain and France had the west.', es: 'Los soviéticos tenían Berlín Este. Estados Unidos, Gran Bretaña y Francia tenían el oeste.', fa: 'شوروی برلین شرقی را داشت. امریکا، بریتانیا و فرانسه غرب را داشتند.' } },
       { q: { en: 'What was the arms race?', es: '¿Qué fue la carrera armamentista?', fa: 'مسابقهٔ تسلیحاتی چه بود؟' },
         choices: [
           { en: 'Each side building more and more nuclear weapons', es: 'Cada lado fabricando más y más armas nucleares', fa: 'هر طرف بیشتر و بیشتر سلاح هسته‌ای ساخت' },

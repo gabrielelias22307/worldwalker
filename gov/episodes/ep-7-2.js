@@ -364,22 +364,22 @@ window.EPISODE = {
           { en: 'In courts of appeals', es: 'En cortes de apelaciones', fa: 'در محکمه‌های استیناف' }],
         answer: 0,
         why: { en: 'Most cases are about state laws, so state courts hear them. Federal courts hear far fewer.', es: 'La mayoría de los casos son sobre leyes estatales, así que los ven tribunales estatales. Los federales ven muchos menos.', fa: 'بیشتر قضیه‌ها دربارهٔ قانون‌های ایالتی است، پس محکمه‌های ایالتی آن‌ها را می‌شنوند. محکمه‌های فدرال خیلی کمتر.' } },
-      { q: { en: 'Two neighbors argue over money for a broken fence. What kind of case is it?', es: 'Dos vecinos discuten por dinero de una cerca rota. ¿Qué tipo de caso es?', fa: 'دو همسایه سر پول یک کتارهٔ شکسته دعوا دارند. این چه نوع قضیه است؟' },
+      { q: { en: 'Which case goes to a federal court?', es: '¿Qué caso va a un tribunal federal?', fa: 'کدام قضیه به محکمهٔ فدرال می‌رود؟' },
         choices: [
-          { en: 'A civil case', es: 'Un caso civil', fa: 'قضیهٔ مدنی' },
-          { en: 'A criminal case', es: 'Un caso penal', fa: 'قضیهٔ جنایی' },
-          { en: 'A federal crime', es: 'Un delito federal', fa: 'جرم فدرال' },
-          { en: 'A traffic case', es: 'Un caso de tránsito', fa: 'قضیهٔ ترافیکی' }],
+          { en: 'A case about a US law', es: 'Un caso sobre una ley de EE. UU.', fa: 'قضیه‌ای دربارهٔ قانون امریکا' },
+          { en: 'A traffic ticket in Virginia', es: 'Una multa de tránsito en Virginia', fa: 'جریمهٔ ترافیکی در ویرجینیا' },
+          { en: 'A parking ticket in Alexandria', es: 'Una multa de parqueo en Alexandria', fa: 'جریمهٔ پارکینگ در الکساندریا' },
+          { en: 'A late fee at the library', es: 'Una multa de la biblioteca', fa: 'جریمهٔ دیر کردن کتابخانه' }],
         answer: 0,
-        why: { en: 'A civil case is a fight over money, property or a promise. In a criminal case, the government charges someone.', es: 'Un caso civil es una disputa por dinero, propiedad o una promesa. En un caso penal, el gobierno acusa a alguien.', fa: 'قضیهٔ مدنی اختلاف سر پول، مال یا وعده است. در قضیهٔ جنایی، حکومت کسی را متهم می‌کند.' } },
-      { q: { en: 'In Virginia, which court is the main trial court, with jury trials?', es: 'En Virginia, ¿cuál es el tribunal principal de juicios, con jurado?', fa: 'در ویرجینیا، محکمهٔ اصلی محاکمه با هیئت منصفه کدام است؟' },
+        why: { en: 'Federal courts hear cases on the Constitution, US laws, two states, or other countries.', es: 'Los tribunales federales ven casos sobre la Constitución, leyes de EE. UU., dos estados u otros países.', fa: 'محکمه‌های فدرال قضیه‌های قانون اساسی، قانون‌های امریکا، دو ایالت یا کشورهای دیگر را می‌شنوند.' } },
+      { q: { en: 'Lina\'s dad got a traffic ticket in Virginia. Which court hears it?', es: 'El papá de Lina recibió una multa de tránsito en Virginia. ¿Qué tribunal la ve?', fa: 'پدر لینا در ویرجینیا جریمهٔ ترافیکی گرفت. کدام محکمه آن را می‌شنود؟' },
         choices: [
-          { en: 'Circuit court', es: 'El tribunal de circuito', fa: 'محکمهٔ حوزه' },
           { en: 'General district court', es: 'El tribunal general de distrito', fa: 'محکمهٔ عمومی ناحیه' },
-          { en: 'Court of Appeals of Virginia', es: 'La Corte de Apelaciones de Virginia', fa: 'محکمهٔ استیناف ویرجینیا' },
-          { en: 'Supreme Court of Virginia', es: 'La Corte Suprema de Virginia', fa: 'دیوان عالی ویرجینیا' }],
+          { en: 'A federal district court', es: 'Un tribunal federal de distrito', fa: 'محکمهٔ فدرال ناحیه' },
+          { en: 'The 4th Circuit court', es: 'La corte del Cuarto Circuito', fa: 'محکمهٔ حوزهٔ چهارم' },
+          { en: 'The US Supreme Court', es: 'La Corte Suprema de EE. UU.', fa: 'دیوان عالی امریکا' }],
         answer: 0,
-        why: { en: 'Circuit court holds jury trials for bigger cases. General district court hears traffic and small cases, with no jury.', es: 'El tribunal de circuito hace juicios con jurado para casos grandes. El general de distrito ve tránsito y casos pequeños, sin jurado.', fa: 'محکمهٔ حوزه برای قضیه‌های بزرگ‌تر محاکمه با هیئت منصفه دارد. محکمهٔ عمومی ناحیه قضیه‌های ترافیکی و کوچک را بدون هیئت منصفه می‌شنود.' } }
+        why: { en: 'Traffic tickets go to Virginia\'s general district court, a state court, with no jury.', es: 'Las multas de tránsito van al tribunal general de distrito de Virginia, un tribunal estatal, sin jurado.', fa: 'جریمهٔ ترافیکی به محکمهٔ عمومی ناحیهٔ ویرجینیا می‌رود، یک محکمهٔ ایالتی، بدون هیئت منصفه.' } }
     ]
   },
 

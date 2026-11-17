@@ -343,7 +343,7 @@ window.EPISODE = {
         why: { en: 'It protected Black men\'s right to vote. Women of every race still could not vote.', es: 'Protegió el derecho al voto de los hombres negros. Las mujeres de toda raza aún no podían votar.', fa: 'از حق رأی مردان سیاه‌پوست حمایت کرد. زنان هیچ نژادی هنوز رأی نداشتند.' } },
       { q: { en: 'What did the Freedmen\'s Bureau do?', es: '¿Qué hizo la Oficina de Libertos?', fa: 'ادارهٔ آزادشدگان چه کرد؟' },
         choices: [
-          { en: 'Gave food and opened schools', es: 'Dio comida y abrió escuelas', fa: 'غذا داد و مکتب باز کرد' },
+          { en: 'Checked work contracts', es: 'Revisó contratos de trabajo', fa: 'قراردادهای کار را بررسی کرد' },
           { en: 'Trained Confederate soldiers', es: 'Entrenó a soldados confederados', fa: 'عسکرهای کنفدرالی را تربیه کرد' },
           { en: 'Sold land to railroad owners', es: 'Vendió tierras a dueños de trenes', fa: 'زمین را به مالکان ریل فروخت' },
           { en: 'Collected taxes from farmers', es: 'Cobró impuestos a los granjeros', fa: 'از دهقانان مالیه گرفت' }],
@@ -351,12 +351,12 @@ window.EPISODE = {
         why: { en: 'Congress made the Bureau in 1865. It gave food, opened schools and checked work contracts.', es: 'El Congreso creó la Oficina en 1865. Dio comida, abrió escuelas y revisó contratos de trabajo.', fa: 'کانگرس اداره را در ۱۸۶۵ ساخت. غذا داد، مکتب باز کرد و قراردادهای کار را دید.' } },
       { q: { en: 'During Reconstruction, what did many Black Americans do for the first time?', es: 'Durante la Reconstrucción, ¿qué hicieron muchos afroamericanos por primera vez?', fa: 'در دوران بازسازی، بسیاری از سیاه‌پوستان امریکا برای اولین بار چه کردند؟' },
         choices: [
-          { en: 'Voted and served in Congress', es: 'Votaron y sirvieron en el Congreso', fa: 'رأی دادند و در کانگرس خدمت کردند' },
+          { en: 'Voted and served as delegates', es: 'Votaron y fueron delegados', fa: 'رأی دادند و نماینده شدند' },
           { en: 'Sailed away to start a country', es: 'Se fueron en barco a fundar un país', fa: 'با کشتی رفتند تا کشوری بسازند' },
           { en: 'Ran the Bureau in Washington', es: 'Dirigieron la Oficina en Washington', fa: 'اداره را در واشنگتن اداره کردند' },
-          { en: 'Wrote the U.S. Constitution', es: 'Escribieron la Constitución de EE. UU.', fa: 'قانون اساسی امریکا را نوشتند' }],
+          { en: 'Owned most of the farmland', es: 'Fueron dueños de casi toda la tierra', fa: 'صاحب بیشتر زمین‌های زراعتی شدند' }],
         answer: 0,
-        why: { en: 'Black men voted. Some served in Congress, in state legislatures and in Virginia\'s convention.', es: 'Los hombres negros votaron. Algunos sirvieron en el Congreso, en legislaturas estatales y en la convención de Virginia.', fa: 'مردان سیاه‌پوست رأی دادند. بعضی در کانگرس، مجلس‌های ایالتی و جلسهٔ بزرگ ویرجینیا خدمت کردند.' } },
+        why: { en: 'Black men voted. Some were delegates who wrote Virginia\'s new constitution. Some even served in Congress.', es: 'Los hombres negros votaron. Algunos fueron delegados y escribieron la nueva constitución de Virginia. Algunos llegaron al Congreso.', fa: 'مردان سیاه‌پوست رأی دادند. بعضی نماینده شدند و قانون اساسی تازهٔ ویرجینیا را نوشتند. بعضی حتی در کانگرس خدمت کردند.' } },
       { q: { en: 'What was sharecropping?', es: '¿Qué era la aparcería?', fa: 'بزگری چه بود؟' },
         choices: [
           { en: 'Paying rent with part of the crop', es: 'Pagar la renta con parte de la cosecha', fa: 'پرداخت کرایه با حصهٔ حاصل' },

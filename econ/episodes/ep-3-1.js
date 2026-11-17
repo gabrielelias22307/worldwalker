@@ -173,7 +173,7 @@ window.EPISODE = {
           { t: { en: 'Her expense', es: 'Su gasto', fa: 'مصرف او' },
             why: { en: 'No. An expense is money going out. Her pay is money coming in.', es: 'No. Un gasto es dinero que sale. Su pago es dinero que entra.', fa: 'نه. مصرف پولی است که می‌رود. معاش او پولی است که می‌آید.' } },
           { t: { en: 'Her deficit', es: 'Su déficit', fa: 'کسر بودجهٔ او' },
-            why: { en: 'No. A deficit is spending more than you earn. Her pay is income.', es: 'No. Un déficit es gastar más de lo que ganas. Su pago es ingreso.', fa: 'نه. کسر بودجه یعنی بیشتر از کمایی مصرف کنی. معاش او عاید است.' } }
+            why: { en: 'No. A [[deficit|deficit]] is spending more than you earn. Money left over is a [[surplus|surplus]].', es: 'No. Un [[deficit|déficit]] es gastar más de lo que ganas. El dinero que sobra es un [[surplus|superávit]].', fa: 'نه. [[deficit|کسر بودجه]] یعنی بیشتر از کمایی مصرف کنی. پولی که باقی بماند [[surplus|اضافه]] است.' } }
         ]
       }
     },
@@ -209,7 +209,8 @@ window.EPISODE = {
       lines: [
         { en: 'I use the [[50/30/20|50/30/20]] guide for my budget.', es: 'Uso la guía [[50/30/20|50/30/20]] para mi presupuesto.', fa: 'من برای بودجه‌ام از رهنمای [[50/30/20|۵۰/۳۰/۲۰]] کار می‌گیرم.' },
         { en: 'About 50% for needs, 30% for wants and 20% for [[savings|savings]].', es: 'Más o menos 50% para necesidades, 30% para deseos y 20% para [[savings|ahorros]].', fa: 'حدود ۵۰٪ برای ضرورت، ۳۰٪ برای خواهش و ۲۰٪ برای [[savings|پس‌انداز]].' },
-        { en: 'With $1,000: $500 for needs, $300 for wants, $200 to save.', es: 'Con $1,000: $500 para necesidades, $300 para deseos, $200 para ahorrar.', fa: 'با ۱۰۰۰ دالر: ۵۰۰ برای ضرورت، ۳۰۰ برای خواهش، ۲۰۰ برای پس‌انداز.' }
+        { en: 'With $1,000: $500 for needs, $300 for wants, $200 to save.', es: 'Con $1,000: $500 para necesidades, $300 para deseos, $200 para ahorrar.', fa: 'با ۱۰۰۰ دالر: ۵۰۰ برای ضرورت، ۳۰۰ برای خواهش، ۲۰۰ برای پس‌انداز.' },
+        { en: 'On payday, I save first. That is [[pay yourself first|paying myself first]].', es: 'El día de pago, ahorro primero. Eso es [[pay yourself first|pagarme primero]].', fa: 'روز معاش، اول پس‌انداز می‌کنم. این [[pay yourself first|اول به خودت بپرداز]] است.' }
       ],
       ask: {
         stat: 'hei',

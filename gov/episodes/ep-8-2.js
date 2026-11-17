@@ -333,14 +333,14 @@ window.EPISODE = {
           { en: 'Leaving all other countries alone', es: 'No tratar con ningún otro país', fa: 'هیچ رابطه با کشورهای دیگر نداشتن' }],
         answer: 0,
         why: { en: 'US interests are security, a strong economy and trade, peace, democracy and human rights.', es: 'Los intereses de EE. UU. son la seguridad, la economía y el comercio, la paz, la democracia y los derechos humanos.', fa: 'منافع امریکا امنیت، اقتصاد و تجارت قوی، صلح، دموکراسی و حقوق بشر است.' } },
-      { q: { en: 'Who is the Chief Diplomat and Commander in Chief?', es: '¿Quién es el Diplomático en Jefe y el Comandante en Jefe?', fa: 'دیپلومات اول و سرقوماندان اعلی کیست؟' },
+      { q: { en: 'Who is the Chief Diplomat of the United States?', es: '¿Quién es el Diplomático en Jefe de Estados Unidos?', fa: 'دیپلومات اول امریکا کیست؟' },
         choices: [
           { en: 'The President', es: 'El presidente', fa: 'رئیس جمهور' },
           { en: 'The Secretary of State', es: 'El secretario de Estado', fa: 'وزیر خارجه' },
           { en: 'The Speaker of the House', es: 'El presidente de la Cámara', fa: 'رئیس مجلس نمایندگان' },
           { en: 'The Chief Justice', es: 'El presidente de la Corte Suprema', fa: 'رئیس ستره محکمه' }],
         answer: 0,
-        why: { en: 'The President leads foreign policy and the military. The Secretary of State helps the President.', es: 'El presidente dirige la política exterior y el ejército. El secretario de Estado lo ayuda.', fa: 'رئیس جمهور سیاست خارجی و اردو را رهبری می‌کند. وزیر خارجه به رئیس جمهور کمک می‌کند.' } },
+        why: { en: 'The President is the Chief Diplomat and makes treaties. The Secretary of State helps.', es: 'El presidente es el Diplomático en Jefe y hace tratados. El secretario de Estado lo ayuda.', fa: 'رئیس جمهور دیپلومات اول است و معاهده می‌بندد. وزیر خارجه به او کمک می‌کند.' } },
       { q: { en: 'What does the Senate do with a treaty?', es: '¿Qué hace el Senado con un tratado?', fa: 'سنا با معاهده چه می‌کند؟' },
         choices: [
           { en: 'Approves it with a two-thirds vote', es: 'Lo aprueba con dos tercios de los votos', fa: 'با رأی دو سوم آن را تأیید می‌کند' },

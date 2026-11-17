@@ -253,6 +253,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#3a2416', shirt: '#7a4a2a', pants: '#2a3a5a', hat: '#5a5a5a' },
       lines: [
         { en: 'Paper! Paper! Today\'s news is all about the New Deal.', es: '¡Periódico! ¡Periódico! Las noticias de hoy son sobre el Nuevo Trato.', fa: 'اخبار! اخبار! خبر امروز همه دربارهٔ «معاملهٔ نو» است.' },
+        { en: 'Bad news: drought and dust storms ruin farms on the Plains. The Dust Bowl!', es: 'Malas noticias: la sequía y las tormentas de polvo arruinan granjas en las Llanuras. ¡El Dust Bowl!', fa: 'خبر بد: خشکسالی و توفان‌های گرد و خاک فارم‌های دشت‌ها را خراب می‌کند. «کاسهٔ گرد و خاک»!' },
         { en: 'A page flew west. It landed between two trees, east of the library.', es: 'Una hoja voló al oeste. Cayó entre dos árboles, al este de la biblioteca.', fa: 'یک ورق به غرب پرید. میان دو درخت، شرق کتابخانه افتاد.' }
       ]
     },
@@ -326,22 +327,22 @@ window.EPISODE = {
     taunt: { en: 'Boom, crash! I mixed up the Twenties and the Thirties. Good luck!', es: '¡Bum, crash! Revolví los años veinte y los treinta. ¡Buena suerte!', fa: 'بوم، شَرَق! دههٔ بیست و سی را به هم زدم. موفق باشی!' },
     win: { en: 'The gloom lifts over Lenox Avenue. Journal page 7.2 floats down into your hands!', es: 'La tristeza se va de la avenida Lenox. ¡La página 7.2 del diario cae en tus manos!', fa: 'دلگیری از سرک لینوکس دور می‌شود. صفحهٔ ۷.۲ روزنامچه به دستت می‌افتد!' },
     questions: [
-      { q: { en: 'What did the 19th Amendment do in 1920?', es: '¿Qué hizo la Enmienda 19 en 1920?', fa: 'ترمیم نزدهم در ۱۹۲۰ چه کرد؟' },
+      { q: { en: 'In the 1920s, what did buying on credit mean?', es: 'En los años veinte, ¿qué era comprar a crédito?', fa: 'در دههٔ ۱۹۲۰، خریدن به قرض چه معنی داشت؟' },
         choices: [
-          { en: 'Gave women the right to vote', es: 'Dio a las mujeres el derecho al voto', fa: 'به زنان حق رأی داد' },
-          { en: 'Made selling alcohol illegal', es: 'Prohibió vender alcohol', fa: 'فروش الکول را غیرقانونی ساخت' },
-          { en: 'Set quotas on new immigrants', es: 'Puso cuotas a los inmigrantes nuevos', fa: 'برای مهاجران نو سهمیه گذاشت' },
-          { en: 'Protected savings in all banks', es: 'Protegió los ahorros en todos los bancos', fa: 'پس‌انداز همهٔ بانک‌ها را محافظت کرد' }],
+          { en: 'Buy now, pay a little each month', es: 'Comprar ahora y pagar un poco cada mes', fa: 'حالا بخر، هر ماه کمی پول بده' },
+          { en: 'Pay the whole price at the store', es: 'Pagar todo el precio en la tienda', fa: 'تمام قیمت را در دکان بپرداز' },
+          { en: 'Trade farm crops for new goods', es: 'Cambiar cosechas por cosas nuevas', fa: 'حاصلات فارم را با جنس نو عوض کن' },
+          { en: 'Get things free from a church', es: 'Recibir cosas gratis de una iglesia', fa: 'از کلیسا چیزها را مفت بگیر' }],
         answer: 0,
-        why: { en: 'The 19th Amendment gave women across the country the right to vote in 1920.', es: 'La Enmienda 19 dio a las mujeres de todo el país el derecho al voto en 1920.', fa: 'ترمیم نزدهم در ۱۹۲۰ به زنان سراسر کشور حق رأی داد.' } },
-      { q: { en: 'What was Prohibition?', es: '¿Qué fue la Prohibición?', fa: 'منع الکول چه بود؟' },
+        why: { en: 'Many bought radios and cars on credit. They paid a little each month, and debt grew.', es: 'Muchos compraron radios y carros a crédito. Pagaban un poco cada mes, y las deudas crecieron.', fa: 'بسیاری رادیو و موتر را به قرض خریدند. هر ماه کمی پول می‌دادند و قرض زیاد شد.' } },
+      { q: { en: 'During the Depression, what was a bread line?', es: 'Durante la Depresión, ¿qué era una fila del pan?', fa: 'در زمان رکود بزرگ، صف نان چه بود؟' },
         choices: [
-          { en: 'A ban on making and selling alcohol', es: 'Una ley contra hacer y vender alcohol', fa: 'منع ساختن و فروختن الکول' },
-          { en: 'A ban on playing jazz in clubs', es: 'Una ley contra tocar jazz en clubes', fa: 'منع نواختن جاز در کلپ‌ها' },
-          { en: 'A law that limited buying on credit', es: 'Una ley que limitaba comprar a crédito', fa: 'قانونی که خرید قرضی را محدود کرد' },
-          { en: 'A program that gave jobs to youth', es: 'Un programa que daba empleo a jóvenes', fa: 'برنامه‌ای که به جوانان کار داد' }],
+          { en: 'People waiting for free food', es: 'Gente esperando comida gratis', fa: 'مردمی که منتظر غذای مفت بودند' },
+          { en: 'A new train line to Harlem', es: 'Una nueva línea de tren a Harlem', fa: 'یک خط نو ریل تا هارلم' },
+          { en: 'A row of bakeries on one street', es: 'Una fila de panaderías en una calle', fa: 'یک قطار نانوایی در یک سرک' },
+          { en: 'Workers lined up to buy stocks', es: 'Obreros en fila para comprar acciones', fa: 'کارگرانی که برای خرید سهام صف بستند' }],
         answer: 0,
-        why: { en: 'The 18th Amendment banned alcohol from 1920. The 21st Amendment ended Prohibition in 1933.', es: 'La Enmienda 18 prohibió el alcohol desde 1920. La Enmienda 21 terminó la Prohibición en 1933.', fa: 'ترمیم هجدهم از ۱۹۲۰ الکول را منع کرد. ترمیم بیست و یکم در ۱۹۳۳ آن را تمام کرد.' } },
+        why: { en: 'Hungry people waited in [[bread line|bread lines]] for free food. Churches, like the one in Harlem, gave soup.', es: 'La gente con hambre hacía [[bread line|fila por pan]] y comida gratis. Iglesias, como la de Harlem, daban sopa.', fa: 'مردم گرسنه در [[bread line|صف نان]] برای غذای مفت منتظر می‌ماندند. کلیساها، مثل کلیسای هارلم، شوربا می‌دادند.' } },
       { q: { en: 'What was the Harlem Renaissance?', es: '¿Qué fue el Renacimiento de Harlem?', fa: 'رنسانس هارلم چه بود؟' },
         choices: [
           { en: 'A rise of Black art, music and writing', es: 'Un auge del arte, la música y la escritura negras', fa: 'رشد هنر، موسیقی و نوشتهٔ سیاه‌پوستان' },
@@ -350,14 +351,14 @@ window.EPISODE = {
           { en: 'A big stock sale on Wall Street', es: 'Una gran venta de acciones en Wall Street', fa: 'فروش بزرگ سهام در وال استریت' }],
         answer: 0,
         why: { en: 'In the 1920s, writers like Langston Hughes and musicians like Duke Ellington made Harlem famous.', es: 'En los años veinte, escritores como Langston Hughes y músicos como Duke Ellington hicieron famoso a Harlem.', fa: 'در دههٔ ۱۹۲۰، نویسندگانی مثل لنگستن هیوز و نوازندگانی مثل دیوک الینگتن هارلم را مشهور ساختند.' } },
-      { q: { en: 'What did the 1924 immigration law do?', es: '¿Qué hizo la ley de inmigración de 1924?', fa: 'قانون مهاجرت ۱۹۲۴ چه کرد؟' },
+      { q: { en: 'What did President Franklin D. Roosevelt begin in 1933?', es: '¿Qué comenzó el presidente Franklin D. Roosevelt en 1933?', fa: 'رئیس‌جمهور فرانکلین روزولت در ۱۹۳۳ چه چیزی را شروع کرد؟' },
         choices: [
-          { en: 'Set quotas so fewer immigrants could come', es: 'Puso cuotas para que vinieran menos inmigrantes', fa: 'سهمیه گذاشت تا مهاجران کمتری بیایند' },
-          { en: 'Opened the borders to everyone who came', es: 'Abrió las fronteras a todos los que llegaban', fa: 'سرحدها را برای همه باز کرد' },
-          { en: 'Gave free farmland to every immigrant', es: 'Dio tierra gratis a cada inmigrante', fa: 'به هر مهاجر زمین زراعتی مفت داد' },
-          { en: 'Let only immigrants vote in elections', es: 'Dejó votar solo a los inmigrantes', fa: 'فقط به مهاجران اجازهٔ رأی داد' }],
+          { en: 'The New Deal', es: 'El Nuevo Trato', fa: '«معاملهٔ نو»' },
+          { en: 'The Harlem Renaissance', es: 'El Renacimiento de Harlem', fa: 'رنسانس هارلم' },
+          { en: 'The stock market crash', es: 'El desplome de la bolsa', fa: 'سقوط بازار سهام' },
+          { en: 'Buying stocks on margin', es: 'Comprar acciones a margen', fa: 'خرید سهام با پول قرضی' }],
         answer: 0,
-        why: { en: 'The 1924 law set quotas. Far fewer people from Southern and Eastern Europe and Asia could come.', es: 'La ley de 1924 puso cuotas. Muchas menos personas del sur y este de Europa y de Asia pudieron venir.', fa: 'قانون ۱۹۲۴ سهمیه گذاشت. مردم خیلی کمتری از جنوب و شرق اروپا و آسیا توانستند بیایند.' } },
+        why: { en: 'Roosevelt began the [[new deal|New Deal]] in 1933. He also talked to Americans in [[fireside chat|fireside chats]].', es: 'Roosevelt comenzó el [[new deal|Nuevo Trato]] en 1933. También habló a todos en [[fireside chat|charlas junto a la chimenea]].', fa: 'روزولت در ۱۹۳۳ [[new deal|معاملهٔ نو]] را شروع کرد. او در [[fireside chat|گپ‌های کنار آتشدان]] با امریکایی‌ها حرف زد.' } },
       { q: { en: 'Which was one cause of the stock market crash in 1929?', es: '¿Cuál fue una causa del desplome de la bolsa en 1929?', fa: 'کدام یک از علت‌های سقوط بازار سهام در ۱۹۲۹ بود؟' },
         choices: [
           { en: 'Buying stocks with borrowed money', es: 'Comprar acciones con dinero prestado', fa: 'خریدن سهام با پول قرضی' },

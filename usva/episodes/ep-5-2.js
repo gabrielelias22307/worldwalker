@@ -273,7 +273,7 @@ window.EPISODE = {
       { icon: '💥', t: { en: 'Fort Sumter: Confederates fire on a Union fort', es: 'Fuerte Sumter: los confederados atacan un fuerte de la Unión', fa: 'قلعهٔ سامتر: کنفدراسی بر یک قلعهٔ اتحادیه آتش می‌کند' } },
       { icon: '⚔️', t: { en: 'First Bull Run: the first big battle, in Virginia', es: 'Primera batalla de Bull Run: la primera gran batalla, en Virginia', fa: 'اولین جنگ بول ران: اولین جنگ بزرگ، در ویرجینیا' } },
       { icon: '🌾', t: { en: 'Antietam: the deadliest single day of the war', es: 'Antietam: el día más mortal de la guerra', fa: 'انتیتم: مرگبارترین روز جنگ' } },
-      { icon: '📜', t: { en: 'The Emancipation Proclamation: ending slavery becomes a war aim', es: 'La Proclamación de Emancipación: acabar con la esclavitud se vuelve una meta', fa: 'اعلامیهٔ آزادی بردگان: پایان بردگی هدف جنگ می‌شود' } },
+      { icon: '📜', t: { en: 'The Emancipation Proclamation frees enslaved people in the rebel states', es: 'La Proclamación de Emancipación libera a los esclavizados en los estados rebeldes', fa: 'اعلامیهٔ آزادی بردگان، برده‌ها را در ایالت‌های شورشی آزاد می‌کند' } },
       { icon: '🔁', t: { en: 'Gettysburg and Vicksburg: the war turns toward the Union', es: 'Gettysburg y Vicksburg: la guerra se inclina hacia la Unión', fa: 'گتیزبرگ و ویکسبرگ: جنگ به سود اتحادیه می‌چرخد' } },
       { icon: '🕊️', t: { en: 'Appomattox Court House: Lee surrenders to Grant', es: 'Appomattox Court House: Lee se rinde ante Grant', fa: 'اپوماتکس کورت هاوس: لی به گرانت تسلیم می‌شود' } }
     ],

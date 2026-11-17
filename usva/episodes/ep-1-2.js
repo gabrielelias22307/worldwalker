@@ -179,7 +179,7 @@ window.EPISODE = {
         { en: 'Guten Tag! I came from Germany. Now I farm in Pennsylvania.', es: '¡Guten Tag! Vine de Alemania. Ahora cultivo en Pensilvania.', fa: 'گوتن تاگ! من از آلمان آمدم. حالا در پنسلوانیا دهقانی می‌کنم.' },
         { en: 'The Middle Colonies have rich soil, many rivers and mild weather.', es: 'Las Colonias del Centro tienen tierra rica, muchos ríos y clima templado.', fa: 'مستعمره‌های میانه خاک حاصلخیز، دریاهای زیاد و هوای معتدل دارند.' },
         { en: 'We grow so much wheat, people call us the [[breadbasket|breadbasket]].', es: 'Sembramos tanto trigo que nos llaman el [[breadbasket|granero]].', fa: 'این‌قدر گندم می‌کاریم که ما را [[breadbasket|سبد نان]] می‌گویند.' },
-        { en: 'Here, people of many faiths and lands live side by side.', es: 'Aquí, gente de muchas religiones y países vive lado a lado.', fa: 'اینجا مردم از دین‌ها و کشورهای زیاد کنار هم زندگی می‌کنند.' }
+        { en: 'William Penn, a Quaker, started Pennsylvania. People of every faith are free here.', es: 'William Penn, un cuáquero, fundó Pensilvania. Aquí, gente de toda religión es libre.', fa: 'ویلیام پن، که یک کویکر بود، پنسلوانیا را ساخت. اینجا مردم هر دین آزاد هستند.' }
       ],
       ask: {
         stat: 'reg',
@@ -240,6 +240,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#5a3a1a', shirt: '#8a4a8a', pants: '#3a3a4a', style: 'long' },
       lines: [
         { en: 'Oh no! The wind took my new map of the 13 colonies!', es: '¡Ay, no! ¡El viento se llevó mi mapa nuevo de las 13 colonias!', fa: 'وای! باد نقشهٔ نوی ۱۳ مستعمرهٔ مرا برد!' },
+        { en: 'My father says the Lenape people lived here long before Philadelphia.', es: 'Mi padre dice que el pueblo lenape vivía aquí mucho antes que Filadelfia.', fa: 'پدرم می‌گوید مردم لناپی خیلی پیش از فیلادلفیا اینجا زندگی می‌کردند.' },
         { en: 'Peter sells newspapers north of High Street. Maybe he saw it fly.', es: 'Peter vende periódicos al norte de la calle High. Tal vez lo vio volar.', fa: 'پیتر در شمال سرک های روزنامه می‌فروشد. شاید دید که پرید.' }
       ],
       wait: { en: 'Peter is north of High Street, on the west side of town.', es: 'Peter está al norte de la calle High, en el lado oeste.', fa: 'پیتر در شمال سرک های، در طرف غرب شهر است.' },
@@ -363,14 +364,14 @@ window.EPISODE = {
           { en: 'Sailors from Boston', es: 'Marineros de Boston', fa: 'ملاحان بوستون' }],
         answer: 0,
         why: { en: 'Enslaved Africans were forced to work for no pay. Their families could be sold apart.', es: 'Obligaban a africanos esclavizados a trabajar sin pago. Podían vender a sus familias por separado.', fa: 'افریقایی‌های برده به زور و بی‌مزد کار می‌کردند. خانواده‌هایشان را جدا جدا می‌فروختند.' } },
-      { q: { en: 'What was the triangular trade?', es: '¿Qué fue el comercio triangular?', fa: 'تجارت مثلثی چه بود؟' },
+      { q: { en: 'How did New England towns decide things?', es: '¿Cómo decidían las cosas los pueblos de Nueva Inglaterra?', fa: 'شهرهای نیو انگلند چطور تصمیم می‌گرفتند؟' },
         choices: [
-          { en: 'Atlantic trade linking the colonies, Africa and the West Indies', es: 'Comercio atlántico entre las colonias, África y las Antillas', fa: 'تجارت بحر اطلس میان مستعمره‌ها، افریقا و جزایر هند غربی' },
-          { en: 'A market with three stalls on High Street in Philadelphia', es: 'Un mercado con tres puestos en la calle High de Filadelfia', fa: 'بازاری با سه دکان در سرک های فیلادلفیا' },
-          { en: 'A treaty that split the land into three equal colonies', es: 'Un tratado que dividió la tierra en tres colonias iguales', fa: 'معاهده‌ای که زمین را به سه مستعمرهٔ برابر تقسیم کرد' },
-          { en: 'A ship race from Boston to Charles Town, then back', es: 'Una carrera de barcos de Boston a Charles Town y de vuelta', fa: 'مسابقهٔ کشتی از بوستون تا چارلز تاون و برگشت' }],
+          { en: 'Together, at town meetings', es: 'Juntos, en reuniones del pueblo', fa: 'با هم، در جلسه‌های شهر' },
+          { en: 'By a letter from the king', es: 'Con una carta del rey', fa: 'با یک نامه از پادشاه' },
+          { en: 'By asking Southern planters', es: 'Preguntando a los dueños del Sur', fa: 'با پرسیدن از زمین‌داران جنوب' },
+          { en: 'By a vote of ship captains', es: 'Con el voto de los capitanes', fa: 'با رأی کپتانان کشتی' }],
         answer: 0,
-        why: { en: 'Ships carried rum to Africa, enslaved Africans to the West Indies, and sugar back. Millions suffered.', es: 'Los barcos llevaban ron a África, africanos esclavizados a las Antillas, y azúcar de vuelta. Millones sufrieron.', fa: 'کشتی‌ها رم به افریقا، افریقایی‌های برده به جزایر هند غربی و شکر را برمی‌گرداندند. میلیون‌ها رنج کشیدند.' } },
+        why: { en: 'Ezra, the sailor from Boston, said New England towns decide things at town meetings.', es: 'Ezra, el marinero de Boston, dijo que esos pueblos deciden juntos en reuniones del pueblo.', fa: 'عزرا، ملاح بوستونی، گفت که شهرهای نیو انگلند در جلسه‌های شهر با هم تصمیم می‌گیرند.' } },
       { q: { en: 'Who lived on the land of Pennsylvania before the colonists came?', es: '¿Quién vivía en la tierra de Pensilvania antes de que llegaran los colonos?', fa: 'پیش از آمدن مهاجران، کی در زمین پنسلوانیا زندگی می‌کرد؟' },
         choices: [
           { en: 'The Lenape people', es: 'El pueblo lenape', fa: 'مردم لناپی' },

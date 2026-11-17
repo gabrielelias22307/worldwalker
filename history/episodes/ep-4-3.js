@@ -350,12 +350,12 @@ window.EPISODE = {
           { en: 'Sailors who carried goods to Haiti', es: 'Marineros que llevaban mercancías a Haití', fa: 'ملاحانی که جنس به هائیتی می‌بردند' }],
         answer: 0,
         why: { en: 'Creoles were born in the Americas. Spain gave the top jobs to men born in Spain.', es: 'Los criollos nacían en América. España daba los mejores puestos a los nacidos en España.', fa: 'کریول‌ها در امریکا به دنیا می‌آمدند. هسپانیه بهترین کارها را به هسپانیه‌زاده‌ها می‌داد.' } },
-      { q: { en: 'Who led independence in northern South America?', es: '¿Quién dirigió la independencia del norte de América del Sur?', fa: 'استقلال شمال امریکای جنوبی را کی رهبری کرد؟' },
+      { q: { en: 'Who led the fight against Spain in Gran Colombia?', es: '¿Quién dirigió la lucha contra España en la Gran Colombia?', fa: 'کی جنگ علیه هسپانیه را در کلمبیای بزرگ رهبری کرد؟' },
         choices: [
           { en: 'Simón Bolívar', es: 'Simón Bolívar', fa: 'سیمون بولیوار' },
           { en: 'Toussaint Louverture', es: 'Toussaint Louverture', fa: 'توسن لوورتور' },
           { en: 'Napoleon Bonaparte', es: 'Napoleón Bonaparte', fa: 'ناپلئون بناپارت' },
-          { en: 'King Ferdinand VII', es: 'El rey Fernando VII', fa: 'پادشاه فردیناند هفتم' }],
+          { en: 'George Washington', es: 'George Washington', fa: 'جورج واشنگتن' }],
         answer: 0,
         why: { en: 'Bolívar led armies that freed today\'s Venezuela, Colombia, Ecuador, Peru and Bolivia.', es: 'Bolívar dirigió ejércitos que liberaron las actuales Venezuela, Colombia, Ecuador, Perú y Bolivia.', fa: 'بولیوار اردوهایی را رهبری کرد که ونزوئلا، کلمبیا، اکوادور، پیرو و بولیویای امروز را آزاد کردند.' } },
       { q: { en: 'What did Haiti ask Bolívar to do in return for its help?', es: '¿Qué le pidió Haití a Bolívar a cambio de su ayuda?', fa: 'هائیتی در عوض کمکش از بولیوار چه خواست؟' },
@@ -366,22 +366,22 @@ window.EPISODE = {
           { en: 'Give Haiti a new king', es: 'Darle a Haití un rey nuevo', fa: 'به هائیتی یک پادشاه نو بدهد' }],
         answer: 0,
         why: { en: 'Pétion asked Bolívar to end slavery in the lands he freed. Bolívar promised to free many.', es: 'Pétion le pidió a Bolívar acabar con la esclavitud en las tierras que liberara. Bolívar prometió liberar a muchos.', fa: 'پتیون خواست بولیوار در سرزمین‌هایی که آزاد می‌کند برده‌داری را تمام کند. بولیوار وعدهٔ آزادی بسیاری را داد.' } },
-      { q: { en: 'Who called on the people of Mexico to rise up in 1810?', es: '¿Quién llamó al pueblo de México a levantarse en 1810?', fa: 'در سال ۱۸۱۰ کی مردم مکسیکو را به قیام خواند؟' },
+      { q: { en: 'Who declared Haiti\'s independence on January 1, 1804?', es: '¿Quién declaró la independencia de Haití el 1 de enero de 1804?', fa: 'کی در اول جنوری ۱۸۰۴ استقلال هائیتی را اعلام کرد؟' },
         choices: [
-          { en: 'Miguel Hidalgo, a priest', es: 'Miguel Hidalgo, un sacerdote', fa: 'میگل هیدالگو، یک کشیش' },
-          { en: 'Simón Bolívar, a general', es: 'Simón Bolívar, un general', fa: 'سیمون بولیوار، یک جنرال' },
+          { en: 'Dessalines, a Haitian leader', es: 'Dessalines, un líder haitiano', fa: 'دسالین، یک رهبر هائیتی' },
+          { en: 'Simón Bolívar, a creole general', es: 'Simón Bolívar, un general criollo', fa: 'سیمون بولیوار، یک جنرال کریول' },
           { en: 'Napoleon, ruler of France', es: 'Napoleón, gobernante de Francia', fa: 'ناپلئون، حاکم فرانسه' },
-          { en: 'Dessalines, a Haitian leader', es: 'Dessalines, un líder haitiano', fa: 'دسالین، یک رهبر هائیتی' }],
+          { en: 'The king of Spain', es: 'El rey de España', fa: 'پادشاه هسپانیه' }],
         answer: 0,
-        why: { en: 'On September 16, 1810, Father Hidalgo called for freedom. Mexico was independent by 1821.', es: 'El 16 de septiembre de 1810, el padre Hidalgo llamó a la libertad. México fue independiente en 1821.', fa: 'در ۱۶ سپتامبر ۱۸۱۰، پدر هیدالگو مردم را به آزادی خواند. مکسیکو تا ۱۸۲۱ مستقل شد.' } },
-      { q: { en: 'In 1825, France forced Haiti to pay a huge sum. Who got the money?', es: 'En 1825, Francia obligó a Haití a pagar una suma enorme. ¿Quién recibió el dinero?', fa: 'در سال ۱۸۲۵، فرانسه هائیتی را مجبور کرد پول بسیار زیاد بدهد. پول به کی رسید؟' },
+        why: { en: 'Dessalines declared independence in Gonaïves on January 1, 1804. Haiti was free from France.', es: 'Dessalines declaró la independencia en Gonaïves el 1 de enero de 1804. Haití quedó libre de Francia.', fa: 'دسالین در اول جنوری ۱۸۰۴ در گونائیو استقلال را اعلام کرد. هائیتی از فرانسه آزاد شد.' } },
+      { q: { en: 'Which new nation ended slavery for good when it became free?', es: '¿Qué nación nueva acabó con la esclavitud para siempre al ser libre?', fa: 'کدام کشور نو وقتی آزاد شد، بردگی را برای همیشه پایان داد؟' },
         choices: [
-          { en: 'French planters who had enslaved people', es: 'Dueños franceses que habían esclavizado a personas', fa: 'مالکان فرانسوی که مردم را برده کرده بودند' },
-          { en: 'Haitian farmers who lost their crops', es: 'Campesinos haitianos que perdieron sus cosechas', fa: 'دهقانان هائیتی که حاصل خود را از دست دادند' },
-          { en: 'Bolívar\'s army in South America', es: 'El ejército de Bolívar en América del Sur', fa: 'اردوی بولیوار در امریکای جنوبی' },
-          { en: 'New schools for Haiti\'s children', es: 'Escuelas nuevas para los niños de Haití', fa: 'مکتب‌های نو برای اطفال هائیتی' }],
+          { en: 'Haiti', es: 'Haití', fa: 'هائیتی' },
+          { en: 'The United States', es: 'Estados Unidos', fa: 'ایالات متحده' },
+          { en: 'Gran Colombia', es: 'La Gran Colombia', fa: 'کلمبیای بزرگ' },
+          { en: 'Spain', es: 'España', fa: 'هسپانیه' }],
         answer: 0,
-        why: { en: 'It was deeply unfair. Haiti paid this debt for more than 100 years, and it stayed poor.', es: 'Fue muy injusto. Haití pagó esta deuda por más de 100 años, y siguió siendo pobre.', fa: 'این کار بسیار ناعادلانه بود. هائیتی بیش از ۱۰۰ سال این قرض را پرداخت و فقیر ماند.' } }
+        why: { en: 'Haiti ended slavery for good when it became free. In the United States, slavery lasted until 1865.', es: 'Haití acabó con la esclavitud para siempre al ser libre. En Estados Unidos, duró hasta 1865.', fa: 'هائیتی وقتی آزاد شد، بردگی را برای همیشه پایان داد. در ایالات متحده، بردگی تا ۱۸۶۵ ادامه داشت.' } }
     ]
   },
 

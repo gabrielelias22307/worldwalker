@@ -144,7 +144,7 @@ window.EPISODE = {
       lines: [
         { en: 'I work 11 hours a day in the cloth mill. The pay is very low.', es: 'Trabajo 11 horas al día en la fábrica de tela. La paga es muy baja.', fa: 'من روزی ۱۱ ساعت در فابریکهٔ تکه کار می‌کنم. مزد بسیار کم است.' },
         { en: 'In February, we women waited hours in bread lines. Then we marched.', es: 'En febrero, las mujeres esperamos horas en las filas del pan. Luego marchamos.', fa: 'در فبروری، ما زنان ساعت‌ها در قطار نان ایستادیم. بعد راهپیمایی کردیم.' },
-        { en: 'Workers went on [[strike|strike]]. Soldiers joined us. The [[tsar|tsar]] gave up his throne.', es: 'Los obreros hicieron [[strike|huelga]]. Los soldados se unieron. El [[tsar|zar]] dejó el trono.', fa: 'کارگران [[strike|اعتصاب]] کردند. سربازان با ما یکجا شدند. [[tsar|تزار]] از تخت کنار رفت.' }
+        { en: 'Workers went on [[strike|strike]]. Soldiers joined us. [[tsar|Tsar]] Nicholas II gave up his throne.', es: 'Los obreros hicieron [[strike|huelga]]. Los soldados se unieron. El [[tsar|zar]] Nicolás II dejó el trono.', fa: 'کارگران [[strike|اعتصاب]] کردند. سربازان با ما یکجا شدند. [[tsar|تزار]] نیکلای دوم از تخت کنار رفت.' }
       ],
       ask: {
         stat: 'loc',
@@ -168,7 +168,7 @@ window.EPISODE = {
         { en: 'I am a [[peasant|peasant]]. In 1914, the army took me to fight Germany.', es: 'Soy [[peasant|campesino]]. En 1914, el ejército me llevó a luchar contra Alemania.', fa: 'من [[peasant|دهقان]] هستم. در ۱۹۱۴، لشکر مرا برای جنگ با آلمان برد.' },
         { en: 'Millions of Russian soldiers died or were hurt. We had too few boots and guns.', es: 'Millones de soldados rusos murieron o fueron heridos. Teníamos pocas botas y pocos fusiles.', fa: 'میلیون‌ها سرباز روس کشته یا زخمی شدند. موزه و تفنگ کم داشتیم.' },
         { en: 'Lenin promised "Peace, Land and Bread." Landlords own most good land.', es: 'Lenin prometió "Paz, tierra y pan". Los terratenientes tienen casi toda la buena tierra.', fa: 'لنین وعده داد: «صلح، زمین و نان.» ملاکان بیشتر زمین‌های خوب را دارند.' },
-        { en: 'Now his [[bolshevik|Bolsheviks]] rule. I just want to go home and farm.', es: 'Ahora gobiernan sus [[bolshevik|bolcheviques]]. Yo solo quiero volver a casa a sembrar.', fa: 'حالا [[bolshevik|بلشویک‌های]] او حکومت می‌کنند. من فقط می‌خواهم به خانه بروم و کشت کنم.' }
+        { en: '[[bolshevik|Bolsheviks]] rule now. They will sign a peace treaty with Germany. Then I go home.', es: 'Ahora gobiernan los [[bolshevik|bolcheviques]]. Firmarán un tratado de paz con Alemania. Entonces volveré a casa.', fa: 'حالا [[bolshevik|بلشویک‌ها]] حکومت می‌کنند. آن‌ها با آلمان پیمان صلح امضا می‌کنند. بعد من به خانه می‌روم.' }
       ],
       ask: {
         stat: 'mov',
@@ -190,7 +190,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#3a2a1a', shirt: '#2a4a5a', pants: '#2a2a2a', style: 'bun' },
       lines: [
         { en: 'In October, the [[bolshevik|Bolsheviks]] took power here, at the Winter Palace.', es: 'En octubre, los [[bolshevik|bolcheviques]] tomaron el poder aquí, en el Palacio de Invierno.', fa: 'در اکتوبر، [[bolshevik|بلشویک‌ها]] اینجا، در قصر زمستانی، قدرت را گرفتند.' },
-        { en: 'Their leader is Lenin. He follows the ideas of Karl Marx, called [[communism|communism]].', es: 'Su líder es Lenin. Sigue las ideas de Karl Marx, llamadas [[communism|comunismo]].', fa: 'رهبرشان لنین است. او از فکرهای کارل مارکس پیروی می‌کند که [[communism|کمونیزم]] نام دارد.' },
+        { en: 'Lenin follows Karl Marx. In [[communism|communism]], workers share the factories and land.', es: 'Lenin sigue a Karl Marx. En el [[communism|comunismo]], los obreros comparten las fábricas y la tierra.', fa: 'لنین پیرو کارل مارکس است. در [[communism|کمونیزم]]، کارگران فابریکه‌ها و زمین را باهم شریک دارند.' },
         { en: 'Now they close newspapers that disagree with them. I fear for free speech.', es: 'Ahora cierran los periódicos que no están de acuerdo con ellos. Temo por la libertad de palabra.', fa: 'حالا روزنامه‌هایی را که با آن‌ها موافق نیستند می‌بندند. برای آزادی بیان می‌ترسم.' }
       ],
       ask: {

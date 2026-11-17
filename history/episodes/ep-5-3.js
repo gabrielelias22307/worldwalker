@@ -242,7 +242,7 @@ window.EPISODE = {
       role: { en: 'Newspaper printer', es: 'Impresor de periódico', fa: 'چاپگر روزنامه' },
       look: { skin: 2, hair: '#4a4a4a', shirt: '#f2f2f2', pants: '#2a2a2a', hat: '#2a2a3a' },
       lines: [
-        { en: 'I print a newspaper. Indians must know what empires are doing, here and in Africa.', es: 'Imprimo un periódico. Los indios deben saber lo que hacen los imperios, aquí y en África.', fa: 'من روزنامه چاپ می‌کنم. هندی‌ها باید بدانند امپراتوری‌ها اینجا و در افریقا چه می‌کنند.' },
+        { en: 'My newspaper writes about [[imperialism|imperialism]]: strong countries taking control of other lands.', es: 'Mi periódico escribe sobre el [[imperialism|imperialismo]]: países fuertes que toman el control de otras tierras.', fa: 'روزنامهٔ من دربارهٔ [[imperialism|امپریالیزم]] می‌نویسد: کشورهای قوی که سرزمین‌های دیگر را زیر کنترول می‌گیرند.' },
         { en: 'A letter from Zanzibar was lost on the way. It tells what happened there.', es: 'Una carta de Zanzíbar se perdió en el camino. Cuenta lo que pasó allí.', fa: 'یک نامه از زنگبار در راه گم شد. می‌گوید آنجا چه شد.' },
         { en: 'Hamisi sails a dhow. Ask him by the north dock.', es: 'Hamisi navega un dhow. Pregúntale junto al muelle del norte.', fa: 'حمیسی کشتی داو می‌راند. کنار بندرگاه شمالی از او بپرس.' }
       ],

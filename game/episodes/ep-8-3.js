@@ -197,7 +197,7 @@ window.EPISODE = {
         { en: 'Akwaaba! I teach history in Ghana. Many borders on a map of Africa are straight.', es: '¡Akwaaba! Enseño historia en Ghana. Muchas fronteras en un mapa de África son rectas.', fa: 'اکوابا! من در غانا تاریخ درس می‌دهم. بسیاری از سرحدهای روی نقشهٔ افریقا راست هستند.' },
         { en: 'A straight line drawn by people, not following nature, is a [[geometric border|geometric border]].', es: 'Una línea recta dibujada por la gente, sin seguir la naturaleza, es una [[geometric border|frontera geométrica]].', fa: 'خط راستی که مردم کشیده‌اند و از طبیعت پیروی نمی‌کند [[geometric border|سرحد هندسی]] است.' },
         { en: 'In the late 1800s, Europeans drew many with a ruler. Some villages were split.', es: 'A fines del siglo XIX, los europeos dibujaron muchas con regla. Algunas aldeas quedaron partidas.', fa: 'در اواخر دههٔ ۱۸۰۰، اروپایی‌ها بسیاری را با خط‌کش کشیدند. بعضی قریه‌ها تقسیم شدند.' },
-        { en: 'Old maps, history or resources can start a [[boundary dispute|boundary dispute]], like China and India\'s.', es: 'Mapas viejos, la historia o los recursos pueden causar una [[boundary dispute|disputa fronteriza]], como la de China e India.', fa: 'نقشه‌های کهنه، تاریخ یا منابع می‌توانند [[boundary dispute|اختلاف سرحدی]] شروع کنند، مثل چین و هند.' }
+        { en: 'An argument over where a border goes is a [[boundary dispute|boundary dispute]], like China and India\'s.', es: 'Una discusión sobre dónde va una frontera es una [[boundary dispute|disputa fronteriza]], como la de China e India.', fa: 'اختلاف بر سر این‌که سرحد از کجا بگذرد [[boundary dispute|اختلاف سرحدی]] است، مثل چین و هند.' }
       ],
       ask: {
         stat: 'loc',

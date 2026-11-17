@@ -391,7 +391,7 @@ window.EPISODE = {
         why: { en: 'Brown and 21 men seized the armory. They hoped enslaved people would rise up.', es: 'Brown y 21 hombres tomaron la armería. Esperaban que los esclavizados se levantaran.', fa: 'براون و ۲۱ مرد اسلحه‌خانه را گرفتند. امید داشتند بردگان قیام کنند.' } },
       { q: { en: 'How did North and South see John Brown after the raid?', es: '¿Cómo vieron el Norte y el Sur a John Brown después del ataque?', fa: 'شمال و جنوب بعد از حمله جان براون را چطور دیدند؟' },
         choices: [
-          { en: 'Some saw a martyr; others, a terrorist', es: 'Unos vieron un mártir; otros, un terrorista', fa: 'بعضی شهید دیدند؛ دیگران، تروریست' },
+          { en: 'Some saw a hero; others, a terrorist', es: 'Unos vieron un héroe; otros, un terrorista', fa: 'بعضی قهرمان دیدند؛ دیگران، تروریست' },
           { en: 'Nearly everyone agreed he was a hero', es: 'Casi todos estuvieron de acuerdo en que era un héroe', fa: 'تقریباً همه قبول داشتند که قهرمان بود' },
           { en: 'Nearly everyone agreed he was a criminal', es: 'Casi todos estuvieron de acuerdo en que era un criminal', fa: 'تقریباً همه قبول داشتند که مجرم بود' },
           { en: 'Almost nobody heard about the raid', es: 'Casi nadie supo del ataque', fa: 'تقریباً هیچ کس از حمله خبر نشد' }],

@@ -149,7 +149,7 @@ window.EPISODE = {
         q: { en: 'Why did Portugal want a sea route to India?', es: '¿Por qué Portugal quería una ruta por mar a la India?', fa: 'چرا پرتگال یک راه بحری به هند می‌خواست؟' },
         choices: [
           { ok: true, t: { en: 'To buy spices without many middlemen', es: 'Para comprar especias sin muchos intermediarios', fa: 'برای خریدن مصاله بدون دلال‌های زیاد' },
-            why: { en: 'Yes! Spices passed through many traders. Buying in India was cheaper, and made Portugal rich.', es: '¡Sí! Las especias pasaban por muchos comerciantes. Comprar en la India era más barato y enriqueció a Portugal.', fa: 'بله! مصاله از دست سوداگران زیادی می‌گذشت. خریدن در هند ارزان‌تر بود و پرتگال را پولدار ساخت.' } },
+            why: { en: 'Yes! Arab, Indian, African and Chinese sailors already traded spices on the Indian Ocean. Buying in India cost less.', es: '¡Sí! Marineros árabes, indios, africanos y chinos ya comerciaban especias en el océano Índico. Comprar en la India costaba menos.', fa: 'بله! ملاحان عرب، هندی، افریقایی و چینی از قبل در بحر هند مصاله تجارت می‌کردند. خریدن در هند ارزان‌تر بود.' } },
           { t: { en: 'To find new fields for growing wheat', es: 'Para buscar campos nuevos para el trigo', fa: 'برای پیدا کردن زمین نو برای گندم' },
             why: { en: 'Portugal already grew wheat. The prize it wanted was the spice trade of Asia.', es: 'Portugal ya sembraba trigo. Lo que quería era el comercio de especias de Asia.', fa: 'پرتگال خودش گندم می‌کاشت. چیزی که می‌خواست تجارت مصالهٔ آسیا بود.' } },
           { t: { en: 'To get away from the cold winters', es: 'Para escapar de los inviernos fríos', fa: 'برای فرار از زمستان‌های سرد' },
@@ -339,7 +339,7 @@ window.EPISODE = {
           { en: 'Metal walls that no storm could break', es: 'Paredes de metal que ninguna tormenta rompía', fa: 'دیوارهای فلزی که هیچ توفان نمی‌شکست' }],
         answer: 0,
         why: { en: 'Caravels were small and fast. Their triangle sails worked even against the wind.', es: 'Las carabelas eran pequeñas y rápidas. Sus velas triangulares servían aun contra el viento.', fa: 'کاراول کوچک و تیز بود. بادبان سه‌کنجش حتی در برابر باد کار می‌کرد.' } },
-      { q: { en: 'What did the Treaty of Tordesillas do in 1494?', es: '¿Qué hizo el Tratado de Tordesillas en 1494?', fa: 'معاهدهٔ تردسیاس در سال ۱۴۹۴ چه کرد؟' },
+      { q: { en: 'What did the treaty of 1494 do?', es: '¿Qué hizo el tratado de 1494?', fa: 'معاهدهٔ سال ۱۴۹۴ چه کرد؟' },
         choices: [
           { en: 'Split new lands between Spain and Portugal', es: 'Repartió las tierras nuevas entre España y Portugal', fa: 'سرزمین‌های نو را میان هسپانیه و پرتگال تقسیم کرد' },
           { en: 'Gave the Americas back to Native peoples', es: 'Devolvió América a los pueblos indígenas', fa: 'امریکا را به مردمان بومی پس داد' },

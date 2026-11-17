@@ -174,7 +174,7 @@ window.EPISODE = {
         { en: 'I study the Age of Jackson. Andrew Jackson was President from 1829 to 1837.', es: 'Estudio la era de Jackson. Andrew Jackson fue presidente de 1829 a 1837.', fa: 'من دوران جکسن را مطالعه می‌کنم. اندرو جکسن از ۱۸۲۹ تا ۱۸۳۷ رئیس جمهور بود.' },
         { en: 'States ended property rules, so more white men could vote.', es: 'Los estados quitaron las reglas de propiedad, así que más hombres blancos podían votar.', fa: 'ایالت‌ها شرط داشتن ملک را برداشتند، پس مردان سفیدپوست بیشتری رای دادند.' },
         { en: 'Jackson gave jobs to supporters: the [[spoils system|spoils system]]. He fought the national bank.', es: 'Jackson dio empleos a sus seguidores: el [[spoils system|sistema de botín]]. Luchó contra el banco nacional.', fa: 'جکسن به طرفداران خود وظیفه داد: [[spoils system|سیستم غنیمت]]. او با بانک ملی مخالفت کرد.' },
-        { en: 'In 1830 he signed the Indian [[removal|Removal]] Act. Native nations had no vote.', es: 'En 1830 firmó la Ley de [[removal|Traslado Forzoso]] de los Indios. Las naciones indígenas no votaban.', fa: 'در ۱۸۳۰ او قانون [[removal|بیرون راندن]] بومیان را امضا کرد. ملت‌های بومی حق رای نداشتند.' }
+        { en: 'In 1830 he signed the Indian [[removal|Removal]] Act, to move Native nations west.', es: 'En 1830 firmó la Ley de [[removal|Traslado Forzoso]] de los Indios, para mover a las naciones indígenas al oeste.', fa: 'در ۱۸۳۰ او قانون [[removal|بیرون راندن]] بومیان را امضا کرد تا ملت‌های بومی را به غرب بفرستد.' }
       ],
       ask: {
         stat: 'mov',
@@ -198,7 +198,7 @@ window.EPISODE = {
         { en: 'My family is Cherokee. We live in Oklahoma. I came to see this place.', es: 'Mi familia es cheroqui. Vivimos en Oklahoma. Vine a conocer este lugar.', fa: 'خانوادهٔ من چروکی است. در اوکلاهوما زندگی می‌کنیم. آمدم این جا را ببینم.' },
         { en: 'In 1835, a small group signed the [[treaty|Treaty]] of New Echota.', es: 'En 1835, un grupo pequeño firmó el [[treaty|Tratado]] de New Echota.', fa: 'در سال ۱۸۳۵، یک گروه کوچک [[treaty|معاهدهٔ]] نیو ایچوتا را امضا کرد.' },
         { en: 'They were not the Cherokee government. Chief John Ross and most Cherokee protested.', es: 'No eran el gobierno cheroqui. El jefe John Ross y la mayoría de los cheroquis protestaron.', fa: 'آن‌ها حکومت چروکی نبودند. رئیس جان راس و بیشتر چروکی‌ها اعتراض کردند.' },
-        { en: 'In 1838, soldiers forced my [[descendant|ancestors]] west. Many died on the way.', es: 'En 1838, los soldados obligaron a mis [[descendant|antepasados]] a ir al oeste. Muchos murieron en el camino.', fa: 'در سال ۱۸۳۸، عسکرها [[descendant|نیاکانم]] را به زور به غرب بردند. بسیاری در راه مردند.' }
+        { en: 'In 1838, soldiers forced my [[descendant|ancestors]] west, on the Trail of Tears. Many died.', es: 'En 1838, los soldados obligaron a mis [[descendant|antepasados]] a ir al oeste, por el Sendero de Lágrimas. Muchos murieron.', fa: 'در سال ۱۸۳۸، عسکرها [[descendant|نیاکانم]] را به زور از راه اشک‌ها به غرب بردند. بسیاری مردند.' }
       ],
       ask: {
         stat: 'mov',
@@ -237,7 +237,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#3a2a1a', shirt: '#8a2a5a', pants: '#2a2a3a', style: 'long' },
       lines: [
         { en: 'I teach visitors with a copy of the Cherokee Phoenix.', es: 'Enseño a los visitantes con una copia del Cherokee Phoenix.', fa: 'من با یک نسخهٔ «فینکس چروکی» به بازدیدکننده‌ها درس می‌دهم.' },
-        { en: 'One page is missing. It has English and Cherokee side by side.', es: 'Falta una página. Tiene inglés y cheroqui, lado a lado.', fa: 'یک صفحه گم شده. انگلیسی و چروکی را پهلوی هم دارد.' },
+        { en: 'One page is missing. It has English, and Cherokee in the writing Sequoyah made.', es: 'Falta una página. Tiene inglés, y cheroqui en la escritura que creó Sequoyah.', fa: 'یک صفحه گم شده. انگلیسی دارد، و چروکی به خطی که سیکویا ساخت.' },
         { en: 'Mr. Ray, the groundskeeper, may have seen it. He works at the farm.', es: 'Tal vez el Sr. Ray, el jardinero, la vio. Trabaja en la granja.', fa: 'شاید آقای ری، باغبان، آن را دیده باشد. او در فارم کار می‌کند.' }
       ],
       wait: { en: 'Mr. Ray is at the farm field, south of the museum.', es: 'El Sr. Ray está en el campo de la granja, al sur del museo.', fa: 'آقای ری کنار کشتزار فارم، در جنوب موزیم است.' },

@@ -239,7 +239,7 @@ window.EPISODE = {
       role: { en: 'Newspaper boy', es: 'Vendedor de periódicos', fa: 'پسر روزنامه‌فروش' },
       look: { skin: 3, hair: '#1a1208', shirt: '#e0c080', pants: '#3a3a3a', hat: '#5a3a22' },
       lines: [
-        { en: 'News! People say Mazzini was the soul, Cavour the brain, and Garibaldi the sword.', es: '¡Noticias! Dicen que Mazzini fue el alma, Cavour el cerebro y Garibaldi la espada.', fa: 'خبر! مردم می‌گویند مازینی روح، کاوور مغز و گاریبالدی شمشیر بود.' },
+        { en: 'News! Mazzini was the soul. Cavour, the brain, made smart deals. Garibaldi was the sword.', es: '¡Noticias! Mazzini fue el alma. Cavour, el cerebro, hizo acuerdos astutos. Garibaldi fue la espada.', fa: 'خبر! مازینی روح بود. کاوور، مغز، معامله‌های زیرکانه کرد. گاریبالدی شمشیر بود.' },
         { en: 'I saw the Ink Thief! It hid the 3 pieces of the map.', es: '¡Vi al Ladrón de Tinta! Escondió los 3 pedazos del mapa.', fa: 'دزد رنگ را دیدم! سه تکهٔ نقشه را پنهان کرد.' },
         { en: 'Follow its riddles about how Italy was made. Then catch it!', es: 'Sigue sus acertijos sobre cómo se hizo Italia. ¡Después atrápalo!', fa: 'چیستان‌هایش را دربارهٔ ساخته شدن ایتالیا دنبال کن. بعد آن را بگیر!' }
       ]
@@ -346,14 +346,14 @@ window.EPISODE = {
           { en: 'Saxony', es: 'Sajonia', fa: 'زاکسن' }],
         answer: 0,
         why: { en: 'Prussia had the strongest army and industry. Its king became the German emperor.', es: 'Prusia tenía el ejército y la industria más fuertes. Su rey fue el emperador alemán.', fa: 'پروس قوی‌ترین لشکر و صنعت را داشت. پادشاهش امپراتور آلمان شد.' } },
-      { q: { en: 'Where was the German Empire announced in January 1871?', es: '¿Dónde se anunció el Imperio alemán en enero de 1871?', fa: 'امپراتوری آلمان در جنوری ۱۸۷۱ در کجا اعلام شد؟' },
+      { q: { en: 'When was the German Empire announced?', es: '¿Cuándo se anunció el Imperio alemán?', fa: 'امپراتوری آلمان چه وقت اعلام شد؟' },
         choices: [
-          { en: 'In the palace of Versailles, France', es: 'En el palacio de Versalles, Francia', fa: 'در قصر ورسای، فرانسه' },
-          { en: 'In the Colosseum in Rome, Italy', es: 'En el Coliseo de Roma, Italia', fa: 'در کولوسئوم روم، ایتالیا' },
-          { en: 'In the city of Vienna, Austria', es: 'En la ciudad de Viena, Austria', fa: 'در شهر ویانا، اتریش' },
-          { en: 'On a ship far out in the cold North Sea', es: 'En un barco lejos, en el frío mar del Norte', fa: 'روی کشتی، دور در بحر سرد شمال' }],
+          { en: 'In 1871', es: 'En 1871', fa: 'در ۱۸۷۱' },
+          { en: 'In 1861', es: 'En 1861', fa: 'در ۱۸۶۱' },
+          { en: 'In 1914', es: 'En 1914', fa: 'در ۱۹۱۴' },
+          { en: 'In 1789', es: 'En 1789', fa: 'در ۱۷۸۹' }],
         answer: 0,
-        why: { en: 'Prussia had just beaten France. Wilhelm I was named emperor in Versailles\' Hall of Mirrors.', es: 'Prusia acababa de vencer a Francia. Guillermo I fue nombrado emperador en el Salón de los Espejos de Versalles.', fa: 'پروس تازه فرانسه را شکست داده بود. ویلهلم اول در تالار آینه‌های ورسای امپراتور اعلام شد.' } },
+        why: { en: 'In January 1871, just after Prussia beat France, the German Empire was announced.', es: 'En enero de 1871, justo después de que Prusia venció a Francia, se anunció el Imperio alemán.', fa: 'در جنوری ۱۸۷۱، کمی بعد از آن‌که پروس فرانسه را شکست داد، امپراتوری آلمان اعلام شد.' } },
       { q: { en: 'Which city became Italy\'s capital in 1871?', es: '¿Qué ciudad fue la capital de Italia en 1871?', fa: 'کدام شهر در ۱۸۷۱ پایتخت ایتالیا شد؟' },
         choices: [
           { en: 'Rome', es: 'Roma', fa: 'روم' },

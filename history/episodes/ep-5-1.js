@@ -143,7 +143,7 @@ window.EPISODE = {
       lines: [
         { en: 'I run the mill\'s [[steam engine|steam engine]]. It burns coal all day long.', es: 'Yo manejo la [[steam engine|máquina de vapor]] de la fábrica. Quema carbón todo el día.', fa: 'من [[steam engine|ماشین بخار]] فابریکه را می‌چلانم. تمام روز ذغال سنگ می‌سوزاند.' },
         { en: 'James Watt made steam engines much better, about seventy years ago.', es: 'James Watt mejoró mucho las máquinas de vapor, hace unos setenta años.', fa: 'جیمز وات حدود هفتاد سال پیش ماشین‌های بخار را خیلی بهتر ساخت.' },
-        { en: 'Now one engine turns hundreds of spinning machines at once.', es: 'Ahora una sola máquina mueve cientos de máquinas de hilar a la vez.', fa: 'حالا یک ماشین بخار صدها ماشین ریسندگی را یکجا می‌چرخاند.' }
+        { en: 'Factories began here in Britain. Cotton mills like ours came first.', es: 'Las fábricas empezaron aquí, en Gran Bretaña. Las fábricas de algodón como la nuestra fueron las primeras.', fa: 'فابریکه‌ها اول این‌جا در بریتانیا شروع شدند. فابریکه‌های پخته مثل فابریکهٔ ما اول آمدند.' }
       ],
       ask: {
         stat: 'loc',
@@ -239,6 +239,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1a1208', shirt: '#9a5a2a', pants: '#2a3a4a', hat: '#5a3a22' },
       lines: [
         { en: 'Our barge came up the canal from the coal mines at Worsley.', es: 'Nuestra barcaza subió por el canal desde las minas de carbón de Worsley.', fa: 'کشتی باری ما از معدن‌های ذغال ورسلی از راه کانال آمد.' },
+        { en: 'My cousins left their farm for mill jobs here. This is [[urbanization|urbanization]].', es: 'Mis primos dejaron su granja por trabajos en las fábricas de aquí. Esto es la [[urbanization|urbanización]].', fa: 'بچه‌های کاکایم زمین زراعتی را برای کار فابریکه ترک کردند. این [[urbanization|شهرنشینی]] است.' },
         { en: 'Cross the canal and walk west to the wharf. Ask Ned, the merchant.', es: 'Cruza el canal y camina al oeste hasta el muelle. Pregúntale a Ned, el comerciante.', fa: 'از کانال بگذر و به غرب تا بندرگاه برو. از ند سوداگر بپرس.' }
       ]
     },
@@ -332,12 +333,12 @@ window.EPISODE = {
         why: { en: 'It began in Britain around 1750. Later it spread to Europe, the United States and Japan.', es: 'Empezó en Gran Bretaña hacia 1750. Después se extendió a Europa, Estados Unidos y Japón.', fa: 'در حدود ۱۷۵۰ در بریتانیا شروع شد. بعد به اروپا، امریکا و جاپان رسید.' } },
       { q: { en: 'Why did it begin in Britain?', es: '¿Por qué empezó en Gran Bretaña?', fa: 'چرا در بریتانیا شروع شد؟' },
         choices: [
-          { en: 'It had coal, iron, rivers and many ports', es: 'Tenía carbón, hierro, ríos y muchos puertos', fa: 'ذغال، آهن، دریا و بندرهای زیاد داشت' },
+          { en: 'It had lots of coal for its engines', es: 'Tenía mucho carbón para sus máquinas', fa: 'برای ماشین‌هایش ذغال زیاد داشت' },
           { en: 'It had the most people of any country', es: 'Tenía más gente que cualquier otro país', fa: 'از هر کشور دیگر مردم بیشتر داشت' },
           { en: 'It had no farms, so all people were free', es: 'No tenía granjas, así que todos estaban libres', fa: 'زمین زراعتی نداشت، پس همه آزاد بودند' },
           { en: 'It was the warmest country in Europe', es: 'Era el país más cálido de Europa', fa: 'گرم‌ترین کشور اروپا بود' }],
         answer: 0,
-        why: { en: 'Coal and iron built and ran the machines. Rivers, canals and ports moved goods.', es: 'El carbón y el hierro hacían y movían las máquinas. Ríos, canales y puertos movían las mercancías.', fa: 'ذغال و آهن ماشین‌ها را ساختند و چلاندند. دریاها، کانال‌ها و بندرها اجناس را بردند.' } },
+        why: { en: 'Britain had lots of coal. Burning coal made steam, and steam ran the machines.', es: 'Gran Bretaña tenía mucho carbón. El carbón hacía vapor, y el vapor movía las máquinas.', fa: 'بریتانیا ذغال زیاد داشت. سوختن ذغال بخار می‌ساخت، و بخار ماشین‌ها را می‌چلاند.' } },
       { q: { en: 'Which industry used factory machines first, in a big way?', es: '¿Qué industria usó primero máquinas de fábrica, en grande?', fa: 'کدام صنعت اول به طور گسترده از ماشین فابریکه کار گرفت؟' },
         choices: [
           { en: 'Making cotton cloth', es: 'Hacer tela de algodón', fa: 'ساختن تکهٔ پخته' },

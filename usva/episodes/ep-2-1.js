@@ -413,14 +413,14 @@ window.EPISODE = {
           { en: 'Trade with France is open again', es: 'El comercio con Francia se abre otra vez', fa: 'تجارت با فرانسه دوباره باز است' }],
         answer: 0,
         why: { en: 'Britain drew a line on the mountains to keep peace with Native nations. Many colonists were angry.', es: 'Gran Bretaña trazó una línea en las montañas para tener paz con las naciones indígenas. Muchos colonos se enojaron.', fa: 'بریتانیا روی کوه‌ها خطی کشید تا با ملت‌های بومی صلح کند. بسیاری از مردم مستعمره قهر شدند.' } },
-      { q: { en: 'In 1763, why did Pontiac and many Native nations fight the British?', es: 'En 1763, ¿por qué Pontiac y muchas naciones indígenas pelearon contra los británicos?', fa: 'در ۱۷۶۳، چرا پونتیاک و بسیاری از ملت‌های بومی با بریتانوی‌ها جنگیدند؟' },
+      { q: { en: 'Why did many Native nations choose sides and fight in this war?', es: '¿Por qué muchas naciones indígenas eligieron un lado y pelearon en esta guerra?', fa: 'چرا بسیاری از ملت‌های بومی طرفی را انتخاب کردند و در این جنگ جنگیدند؟' },
         choices: [
           { en: 'To protect their homelands', es: 'Para proteger sus tierras', fa: 'برای نگهداری سرزمین خود' },
           { en: 'To win new lands in Europe', es: 'Para ganar tierras en Europa', fa: 'برای گرفتن زمین نو در اروپا' },
           { en: 'To help Parliament collect taxes', es: 'Para ayudar al Parlamento a cobrar', fa: 'برای کمک به پارلمان در گرفتن مالیات' },
           { en: 'To move their towns to Britain', es: 'Para llevar sus pueblos a Gran Bretaña', fa: 'برای بردن قریه‌هایشان به بریتانیا' }],
         answer: 0,
-        why: { en: 'British soldiers stayed in their forts and settlers kept coming. Native nations fought to keep their land.', es: 'Los soldados británicos se quedaron en sus fuertes y seguían llegando colonos. Las naciones indígenas pelearon por su tierra.', fa: 'عسکرهای بریتانوی در قلعه‌ها ماندند و مهاجران می‌آمدند. ملت‌های بومی برای زمین خود جنگیدند.' } }
+        why: { en: 'Both Britain and France claimed their valley. Native nations fought to keep their land and people safe.', es: 'Gran Bretaña y Francia decían que su valle era suyo. Las naciones indígenas pelearon por su tierra y su gente.', fa: 'بریتانیا و فرانسه هر دو دره‌شان را از خود می‌دانستند. ملت‌های بومی برای حفظ زمین و مردم خود جنگیدند.' } }
     ]
   },
 

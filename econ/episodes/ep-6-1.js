@@ -155,7 +155,7 @@ window.EPISODE = {
       lines: [
         { en: 'I drive the town bus. I [[saving|save]] a little from every paycheck.', es: 'Manejo el autobús del pueblo. [[saving|Ahorro]] un poco de cada sueldo.', fa: 'من بس شهرک را می‌رانم. از هر معاشم کمی [[saving|پس‌انداز]] می‌کنم.' },
         { en: 'Saving means keeping money in a safe place, like a bank.', es: 'Ahorrar es guardar dinero en un lugar seguro, como un banco.', fa: 'پس‌انداز یعنی نگه داشتن پول در جای امن، مثل بانک.' },
-        { en: 'My savings grow slowly, but they are easy to reach.', es: 'Mis ahorros crecen despacio, pero puedo sacarlos fácil.', fa: 'پس‌اندازم آهسته زیاد می‌شود، اما به آسانی به آن می‌رسم.' },
+        { en: 'Prices rise over time. That is [[inflation|inflation]]. So cash in a drawer buys less.', es: 'Los precios suben con el tiempo. Eso es la [[inflation|inflación]]. Así, el efectivo en un cajón compra menos.', fa: 'قیمت‌ها با گذشت وقت بالا می‌روند. این [[inflation|تورم]] است. پس پول نقد در یک دراز کمتر می‌خرد.' },
         { en: 'How fast you can turn something into cash is [[liquidity|liquidity]].', es: 'Qué tan rápido conviertes algo en efectivo se llama [[liquidity|liquidez]].', fa: 'این که چقدر زود چیزی را به پول نقد تبدیل کنی [[liquidity|نقدینگی]] است.' }
       ],
       ask: {
@@ -211,7 +211,7 @@ window.EPISODE = {
         q: { en: 'June will not need her money for 30 years. Why can investing fit her?', es: 'June no necesitará su dinero en 30 años. ¿Por qué invertir puede servirle?', fa: 'جون تا ۳۰ سال به پولش ضرورت ندارد. چرا سرمایه‌گذاری برایش مناسب است؟' },
         choices: [
           { ok: true, t: { en: 'She has many years to wait out drops', es: 'Tiene muchos años para esperar si baja', fa: 'سال‌های زیاد دارد تا از پایین آمدن‌ها بگذرد' },
-            why: { en: 'Yes! With a long time horizon, she has time to wait out bad years.', es: '¡Sí! Con un plazo largo, tiene tiempo para esperar los años malos.', fa: 'بله! با مدت زمان دراز، وقت دارد تا سال‌های بد بگذرند.' } },
+            why: { en: 'Yes! She can wait out bad years, and her gains can earn gains: [[compound growth|compound growth]].', es: '¡Sí! Puede esperar los años malos, y sus ganancias pueden ganar más: [[compound growth|crecimiento compuesto]].', fa: 'بله! می‌تواند صبر کند تا سال‌های بد بگذرند، و سودش هم سود می‌آورد: [[compound growth|رشد مرکب]].' } },
           { t: { en: 'Investments always go up every year', es: 'Las inversiones siempre suben cada año', fa: 'سرمایه‌گذاری همیشه هر سال بالا می‌رود' },
             why: { en: 'No. Investments go up and down. Past growth is no promise.', es: 'No. Las inversiones suben y bajan. Crecer antes no es una promesa.', fa: 'نه. سرمایه‌گذاری بالا و پایین می‌رود. رشد گذشته وعده نیست.' } },
           { t: { en: 'She needs all the cash very soon', es: 'Necesita todo el efectivo muy pronto', fa: 'به همهٔ پول نقد خیلی زود ضرورت دارد' },

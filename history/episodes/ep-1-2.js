@@ -175,7 +175,7 @@ window.EPISODE = {
         q: { en: 'Why were Calicut\'s traders worried about the Portuguese?', es: '¿Por qué los comerciantes de Calicut estaban preocupados por los portugueses?', fa: 'چرا تاجران کالیکوت از پرتگالی‌ها نگران بودند؟' },
         choices: [
           { ok: true, t: { en: 'They wanted all the pepper trade', es: 'Querían todo el comercio de pimienta', fa: 'تمام تجارت مرچ را می‌خواستند' },
-            why: { en: 'Yes. Portugal wanted to keep other traders out and control the spices by force.', es: 'Sí. Portugal quería sacar a los demás comerciantes y controlar las especias a la fuerza.', fa: 'بله. پرتگال می‌خواست تاجران دیگر را بیرون کند و مصاله را به زور در دست بگیرد.' } },
+            why: { en: 'Yes. Portugal wanted cheaper spices, with no traders in between. It used force to keep others out.', es: 'Sí. Portugal quería especias más baratas, sin comerciantes en el medio. Usó la fuerza para sacar a los demás.', fa: 'بله. پرتگال مصالهٔ ارزان‌تر می‌خواست، بدون تاجران در میان راه. با زور دیگران را بیرون می‌کرد.' } },
           { t: { en: 'They only wanted to buy rice', es: 'Solo querían comprar arroz', fa: 'فقط می‌خواستند برنج بخرند' },
             why: { en: 'The Portuguese came for spices, mostly pepper, not rice.', es: 'Los portugueses vinieron por las especias, sobre todo la pimienta, no por el arroz.', fa: 'پرتگالی‌ها برای مصاله، بیشتر مرچ، آمدند، نه برای برنج.' } },
           { t: { en: 'They came to give gifts to all', es: 'Vinieron a dar regalos a todos', fa: 'آمدند تا به همه تحفه بدهند' },
@@ -349,12 +349,12 @@ window.EPISODE = {
           { en: 'To get away from the monsoon', es: 'Para escapar del monzón', fa: 'تا از باد موسمی دور شوند' }],
         answer: 0,
         why: { en: 'Spices passed through many traders, like those of Cairo and Venice. Each one raised the price.', es: 'Las especias pasaban por muchos comerciantes, como los de El Cairo y Venecia. Cada uno subía el precio.', fa: 'مصاله از دست تاجران زیادی، مثل تاجران قاهره و ونیز، می‌گذشت. هر کدام قیمت را بالا می‌بردند.' } },
-      { q: { en: 'Which Swahili city-states in East Africa traded across the Indian Ocean?', es: '¿Qué ciudades-estado suajilis de África oriental comerciaban por el océano Índico?', fa: 'کدام شهرهای سواحلی افریقای شرقی از راه بحر هند تجارت می‌کردند؟' },
+      { q: { en: 'Which Swahili cities in East Africa traded across the Indian Ocean?', es: '¿Qué ciudades suajilis de África oriental comerciaban por el océano Índico?', fa: 'کدام شهرهای سواحلی افریقای شرقی از راه بحر هند تجارت می‌کردند؟' },
         choices: [
           { en: 'Kilwa and Mombasa', es: 'Kilwa y Mombasa', fa: 'کیلوا و مومباسا' },
           { en: 'Venice and Genoa', es: 'Venecia y Génova', fa: 'ونیز و جنوا' },
           { en: 'Paris and London', es: 'París y Londres', fa: 'پاریس و لندن' },
-          { en: 'Cuzco and Quito', es: 'Cuzco y Quito', fa: 'کوسکو و کیتو' }],
+          { en: 'Madrid and Rome', es: 'Madrid y Roma', fa: 'مادرید و روم' }],
         answer: 0,
         why: { en: 'Kilwa and Mombasa were rich Swahili ports. They traded gold and ivory for cloth and porcelain.', es: 'Kilwa y Mombasa eran ricos puertos suajilis. Cambiaban oro y marfil por telas y porcelana.', fa: 'کیلوا و مومباسا بندرهای ثروتمند سواحلی بودند. طلا و عاج را با تکه و چینی عوض می‌کردند.' } },
       { q: { en: 'How did Islam spread to many Indian Ocean ports?', es: '¿Cómo llegó el islam a muchos puertos del océano Índico?', fa: 'اسلام چطور به بندرهای زیادی در بحر هند رسید؟' },
