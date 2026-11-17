@@ -7,7 +7,9 @@
    BUILT and RULED: the Sahelian state model, religious pluralism, matrilineality, and other African states compared.)
    Map: the dry grassland of the herders in the north (cattle pen, tent), the palace of the mansa and a mosque on the
    royal plaza (north-east), the main street (row 10), the market (south-west), weavers' and farmers' houses (south-east),
-   grain fields and the river along the south. The time stone's four levers set how a Sahel state was run. */
+   grain fields and the river along the south. The time stone's four levers set how a Sahel state was run.
+   Two reading stands (must-read): the Cresques map of Mansa Musa (primary source, by the palace) and an adapted
+   reading of "States and Empires of West Africa" (by the main street, near the market). */
 window.EPISODE = {
   id: '1.5',
   realm: 1,
@@ -18,7 +20,8 @@ window.EPISODE = {
   place: { en: 'Niani, Mali, 1330' },
   intro: [
     { en: 'The Grump blurred the page on Mali. Niani is forgetting how its rulers built and ran a great Sahel state!' },
-    { en: 'Talk to the 4 people here, help Awa the scribe\'s apprentice, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on their stands: a European map of Mansa Musa and a reading on West African states.' },
+    { en: 'Then help Awa the scribe\'s apprentice and wake the time stone.' }
   ],
   scenes: {
     at: [-8.38, 11.37],
@@ -85,16 +88,17 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#3a6aa8', robe: true, hat: '#e8dcc0', style: 'short' },
       lines: [
         { en: 'My family herds cattle in the dry grassland north of town. We are [[nomad|nomads]]: we follow the grass and do not stay put.' },
-        { en: 'The mansa is strong in the wet, grain-growing lands by the rivers. Those lands feed many people. Out here, his officials cannot really rule us.' },
-        { en: 'Now and then they demand [[tribute|tribute]]: a few animals or some goods. In the past, herders even raided the river towns.' }
+        { en: 'Sahel states grow strong in wet places: along the Niger and Senegal rivers and around the lakes of the Chad Basin. That grain land feeds many people.' },
+        { en: 'Out here in the drier lands, the mansa\'s officials cannot really rule us. The most they can do is demand [[tribute|tribute]] now and then: goods, money or animals.' },
+        { en: 'And it goes both ways. In the past, herders like us sometimes raided or even invaded the towns by the lakes and rivers.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Why was a Sahel ruler\'s power weaker over herders than over river farmers?' },
+        q: { en: 'Which best explains why Sahel rulers took only occasional tribute from the herders?' },
         choices: [
-          { ok: true, t: { en: 'Herders kept moving across the dry lands' }, why: { en: 'Yes. States were built on dense, wet, grain-growing centers. Nomads in the drier lands around them were hard to rule.' } },
-          { t: { en: 'Herders had a bigger army than Mali' }, why: { en: 'No. Herders sometimes raided towns, but they were hard to rule mainly because they moved and lived far from the towns.' } },
-          { t: { en: 'Rulers never asked the herders for anything' }, why: { en: 'No. Rulers did demand tribute now and then: trade goods, money or animals. That was about all the control they had.' } }
+          { ok: true, t: { en: 'Their power rested on wet grain lands' }, why: { en: 'Yes. Sahel states were built on dense, wet, grain-producing centers. Nomads moving through the drier lands around them were hard to rule.' } },
+          { t: { en: 'The herders had all converted to Islam early' }, why: { en: 'No. Islam came with traders and some merchants and rulers. Herders were hard to rule because they moved through the dry lands.' } },
+          { t: { en: 'The herders paid heavy taxes on cloth' }, why: { en: 'No. Cloth was not the key. Rulers taxed long-distance trade, and from nomads they could only demand occasional tribute.' } }
         ]
       }
     },
@@ -102,17 +106,18 @@ window.EPISODE = {
       x: 7, y: 14, name: { en: 'Bakary' }, role: { en: 'Royal toll collector' },
       look: { skin: 5, hair: '#1b1410', shirt: '#e0b030', robe: true, hat: '#f4efe4', style: 'short' },
       lines: [
-        { en: 'West African gold travels north on the trade routes across the Sahara, to North Africa and Europe, where it is in great demand.' },
-        { en: 'Mali controls much of that gold. I collect the mansa\'s share of the trade. Trade is easier to tax than the cloth our weavers make.' },
-        { en: 'This is the old [[sahelian state model|Sahel]] way. Wagadu, called Ghana, grew rich on gold. Kanem and the Hausa states controlled kola nuts.' }
+        { en: 'Most West African gold is mined a hundred miles or so south of old Wagadu, called Ghana. Wagadu sat in the middle of the route that sent it north.' },
+        { en: 'The gold crosses the Sahara to North Africa and Europe, where it is in great demand. Now Mali controls much of it, and I collect the mansa\'s share.' },
+        { en: 'Kanem and the Hausa states sell kola nuts from the southern forests, a stimulant in North Africa and the Middle East. Takrur trades grain and salt.' },
+        { en: 'Our weavers make fine cloth, but trade is easier to tax. That is the old [[sahelian state model|Sahel]] way of paying for a government.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Where did Sahel rulers like the mansa get most of the money to govern?' },
+        q: { en: 'Which best explains how Wagadu (Ghana) grew rich?' },
         choices: [
-          { ok: true, t: { en: 'Taxing the long-distance trade' }, why: { en: 'Yes. Controlling trade routes in gold, kola nuts, grain and salt paid for Sahel governments.' } },
-          { t: { en: 'Taxing the village weavers most' }, why: { en: 'No. These states made textiles, but rulers focused on trade because it was easier to tax.' } },
-          { t: { en: 'Selling land to European kings' }, why: { en: 'No. Europe wanted Mali\'s gold, but rulers did not sell land. They taxed the trade that passed through.' } }
+          { ok: true, t: { en: 'It sat between the goldfields and northern buyers' }, why: { en: 'Yes. The gold was mined south of Wagadu. Wagadu controlled the route that carried it north, so it could profit from the trade.' } },
+          { t: { en: 'It mined most of the gold inside its own capital city' }, why: { en: 'No. Most gold was mined a hundred miles or so south of Wagadu. Its power came from controlling the route north.' } },
+          { t: { en: 'It shipped kola nuts to Europe by sea' }, why: { en: 'No. Kanem and the Hausa states controlled kola nuts, sold to North Africa and the Middle East. Wagadu\'s wealth was the gold trade.' } }
         ]
       }
     },
@@ -120,17 +125,18 @@ window.EPISODE = {
       x: 21, y: 15, name: { en: 'Sira' }, role: { en: 'Cloth weaver' },
       look: { skin: 4, hair: '#120c08', shirt: '#2f8a6a', robe: true, hat: '#d9822b', style: 'bun' },
       lines: [
-        { en: 'Our first [[mansa|mansa]], Sunjata, defeated the Susu around 1240. Then his followers conquered the peoples around them, and Mali grew huge.' },
-        { en: 'His full name was Sogolon Mari Djata. Sogolon was his mother\'s name! Much of his support came through her.' },
-        { en: 'Here many people trace family through the mother. That is [[matrilineality|matrilineality]]. So the [[queen mother|queen mother]] holds real power at court.' }
+        { en: 'For a hundred years the Susu were the great power here. They held most of the gold and kola trade, with strong textile and iron industries.' },
+        { en: 'Then our first [[mansa|mansa]], Sunjata, defeated the Susu around 1240. His followers conquered the peoples around them until Mali stretched over a thousand miles east to west.' },
+        { en: 'His full name was Sogolon Mari Djata. Sogolon was his mother\'s name! She may have been related to the Susu rulers, and she brought him supporters.' },
+        { en: 'Many here trace family through the mother. That is [[matrilineality|matrilineality]]. So the [[queen mother|queen mother]], the king\'s mother, holds real power at court.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'Sunjata may have been Muslim. What does his mother\'s name in his own name show?' },
+        q: { en: 'Sunjata may have been Muslim, yet his name begins with his mother\'s. This best shows that...' },
         choices: [
-          { ok: true, t: { en: 'Local traditions lived on beside Islam' }, why: { en: 'Yes. Matrilineality and the power of queen mothers continued, though they were not normal features of Islam in many regions.' } },
-          { t: { en: 'Islam had wiped out every old local custom' }, why: { en: 'No. Most farmers kept local religions, and customs like matrilineality stayed important.' } },
-          { t: { en: 'Mothers ruled Mali instead of kings' }, why: { en: 'No. The mansa ruled. Queen mothers had real political power, but they did not replace him.' } }
+          { ok: true, t: { en: 'local customs continued alongside Islam' }, why: { en: 'Yes. Matrilineality and the power of royal queen mothers continued, though they were not normal features of Islam in many other regions.' } },
+          { t: { en: 'Islam required tracing descent through mothers' }, why: { en: 'No. Political power for queen mothers was not a normal feature of Islam in many regions. Matrilineality was a local West African custom.' } },
+          { t: { en: 'Susu customs replaced Mali\'s after 1240' }, why: { en: 'No. Sunjata defeated the Susu around 1240. Matrilineality was a shared local custom that lived on in Mali.' } }
         ]
       }
     },
@@ -138,17 +144,57 @@ window.EPISODE = {
       x: 25, y: 6, name: { en: 'Ibrahima' }, role: { en: 'Court scribe' },
       look: { skin: 4, hair: '#1b1410', shirt: '#f4efe4', robe: true, hat: '#3a5a8a', style: 'short' },
       lines: [
-        { en: 'Islam came here with traders from North Africa. Many of our merchants are Muslim now. Most farmers still follow local religions.' },
-        { en: 'Some kings became Muslim because Islam was useful for trade and had a written language. The kings of Takrur and Kanem did, long ago.' },
-        { en: 'At court, Muslims and followers of local religions both serve, and many rituals are allowed. We call this [[religious pluralism|religious pluralism]].' }
+        { en: 'Since at least the ninth century, Islam has been a powerful force here. It came with the traders from North Africa, and many of our merchants became Muslim.' },
+        { en: 'A few kings converted because Islam was useful for trade and had a written language. The kings of Takrur and Kanem were Muslim by the eleventh century.' },
+        { en: 'But most kings did not convert, and most farmers still follow local religions. Kings take part in many kinds of prayers and practices.' },
+        { en: 'At court, Muslims and followers of local religions both serve. We call this [[religious pluralism|religious pluralism]].' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did some West African rulers choose to convert to Islam?' },
+        q: { en: 'Why did a few West African rulers, like the kings of Takrur and Kanem, convert to Islam?' },
         choices: [
-          { ok: true, t: { en: 'It helped trade and brought writing' }, why: { en: 'Yes. Islam was the religion of the North African traders, and it came with a written language.' } },
-          { t: { en: 'Their farmers demanded that they convert' }, why: { en: 'No. Most farmers followed local religions. It was merchants and some rulers who became Muslim.' } },
-          { t: { en: 'Islam banned all other faiths at court' }, why: { en: 'No. Mali\'s court was inclusive: Muslims and followers of local religions both served there.' } }
+          { ok: true, t: { en: 'It aided trade and offered a written language' }, why: { en: 'Yes. Islam was the religion of the North African traders, and it came with a written language that was useful to rulers.' } },
+          { t: { en: 'Most of their own farmers had already become Muslim' }, why: { en: 'No. Most farmers followed local, non-Muslim religions. Traders, some merchants and a few rulers were Muslim.' } },
+          { t: { en: 'Islam let them rule the nomads directly' }, why: { en: 'No. Sahel states could not really rule nomads in the dry lands, whatever their faith. They only took occasional tribute.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 20, y: 6, icon: '📜',
+      name: { en: 'A European Map of Mansa Musa' }, role: { en: 'Primary source' },
+      src: { en: 'Abraham Cresques of Mallorca, map showing Mansa Musa (about 1375); described in "States and Empires of West Africa," World History Project' },
+      lines: [
+        { en: 'The historian Trevor Getz describes the map: "A man sits in the middle of a late fourteenth century map, staring at a yellow orb, a nugget of gold. He is clearly a king, for he wears a crown and holds a scepter."' },
+        { en: '"Yet the king is African, not European. He is Mansa Musa I, ruler of the state of Mali, and is possibly the wealthiest man of his time."' },
+        { en: '"He probably did not really have a crown or a scepter because these were not West African symbols of kingship. But the gold nugget is accurate because Mansa Musa controlled some of the richest goldfields of this era."' },
+        { en: 'Context: Abraham Cresques was a European map-maker who lived in Mallorca, Spain, around 1375. He never met or saw Mansa Musa, who became mansa around 1312. In the early 1300s, trade grew in North Africa and Europe, and so did the demand for currency, especially gold. Mali controlled much of the gold of western Afro-Eurasia. So Cresques drew a great, rich king the way Europeans pictured kings: with a crown and a scepter.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: why did Cresques show Mansa Musa with a crown and a scepter?' },
+        choices: [
+          { ok: true, t: { en: 'He used European symbols for a great king' }, why: { en: 'Yes. Crowns and scepters were European symbols of kings. Cresques never met Mansa Musa, so he pictured him the European way.' } },
+          { t: { en: 'He copied the royal regalia he saw at Niani' }, why: { en: 'No. Cresques lived in Mallorca, Spain, and never met or saw Mansa Musa.' } },
+          { t: { en: 'Mali\'s kings wore crowns sent from Europe' }, why: { en: 'No. Crowns and scepters were not West African symbols of kingship. Mansa Musa probably had neither.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 10, y: 11, icon: '📖',
+      name: { en: 'States and Empires of West Africa' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "States and Empires of West Africa" by Trevor R. Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'South of the Sahara lies the Sahel, mostly dry grassland, with wetter land along the Senegal and Niger rivers and the lakes of the Chad Basin. These wet areas could support large populations, and that created a need for government. The earliest state we know was Wagadu, called Ghana after its ruler\'s title, founded around the end of the sixth century. Kanem in the Chad Basin and Takrur on the Senegal River followed around the ninth century.' },
+        { en: 'They shared three elements: the Sahelian state model. First, they paid for government by dominating long-distance trade. Gold was mined a hundred miles or so south of Wagadu, which sat on the route north. Second, they relied on dense, wet, grain-producing centers, and took only occasional tribute from the nomadic herders around them. Third, they dealt with religious diversity: Islam came with North African traders, but most farmers kept local religions.' },
+        { en: 'In the twelfth century Wagadu declined. It may have been surpassed by Susu, which gained control of most of the gold and kola nut trade. Around 1240 Sunjata, Mali\'s first mansa, defeated Susu, and Mali grew to over a thousand miles east to west. In the early 1300s, growing trade in North Africa and Europe created a demand for currency, especially gold. Mali controlled much of the gold of western Afro-Eurasia, and its rulers grew very rich.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Which of the following best explains why Mali\'s rulers grew so rich in the early 1300s?' },
+        choices: [
+          { ok: true, t: { en: 'Rising trade raised demand for Mali\'s gold' }, why: { en: 'Yes. Growing trade in North Africa and Europe created a demand for currency, especially gold, and Mali controlled much of it.' } },
+          { t: { en: 'Mali taxed its weavers\' cloth above all else' }, why: { en: 'No. Sahel states made textiles, but rulers focused on long-distance trade, like gold, because it was easier to tax.' } },
+          { t: { en: 'Mali ruled the herders of the dry lands tightly' }, why: { en: 'No. Sahel states could not really rule nomadic herders. Their power rested on wet, grain-producing centers and on trade.' } }
         ]
       }
     }
@@ -197,7 +243,8 @@ window.EPISODE = {
       x: 12, y: 8, name: { en: 'Dauda' }, role: { en: 'Caravan guide' },
       look: { skin: 3, hair: '#1b1410', shirt: '#4a7aa8', robe: true, hat: '#f4efe4', style: 'short' },
       lines: [
-        { en: 'I lead caravans across Mali, over a thousand miles. Its far regions mostly run their own affairs. Is it an [[empire|empire]]? People could argue!' },
+        { en: 'I lead caravans across Mali, over a thousand miles. At its core is a people who share one language and culture. Around them live conquered peoples who do not.' },
+        { en: 'That sounds like an [[empire|empire]]. But Mali is not very centralized: far regions mostly run their own affairs, and conquered people are not clearly treated as lesser. People could argue!' },
         { en: 'The thief dropped three pieces, each where it fits. Read each clue and walk to the place that matches it.' }
       ]
     },
@@ -215,7 +262,7 @@ window.EPISODE = {
         { t: { en: 'Piece 2: "In Kongo, the word for king is related to the word for judge." Find where a king hears his people: the palace gate, north-east.' },
           zones: [{ x: 19, y: 4, w: 8, h: 2 }],
           noBy: [{ x: 28, y: 4, w: 3, h: 2, t: { en: 'This is the mosque door. The piece is at the palace gate, just to the west.' } }],
-          found: { en: 'Piece 2! As Kongo\'s population grew, so did disputes, and kings arose as judges. Kongo also taxed river trade and used nzimbu shells as money.' } },
+          found: { en: 'Piece 2! As Kongo\'s population grew, so did disputes, and kings arose as judges. Kongo also ran the cloth trade, taxed river trade and used nzimbu shells as money.' } },
         { t: { en: 'Piece 3: "Great Zimbabwe\'s kings loaned cows and bulls to chiefs to win their loyalty." Find the cattle pen, north-west.' },
           zones: [{ x: 3, y: 3, w: 3, h: 2 }],
           noBy: [{ x: 8, y: 4, w: 5, h: 1, t: { en: 'This is a herder\'s tent, not a pen. The cattle pen with its fence is just to the west.' } }],
@@ -274,57 +321,59 @@ window.EPISODE = {
     win: { en: 'The dust settles over the river. The page on African states floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'These states generally relied on controlling long-distance trade for the funds they needed to govern and survive. They also made textiles, but their governments focused on trade because it was easier to tax.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
-        q: { en: 'The excerpt best explains how Sahel rulers...' },
-        choices: [{ en: 'paid for running their states' }, { en: 'chose who would be the next king' }, { en: 'spread Islam to their farmers' }, { en: 'ruled the herders of the dry lands' }],
+        stim: { text: { en: 'Wagadu controlled a large portion of the gold trade because it sat in the middle of the trade route that sent the gold north. Most West African gold in this period was mined a hundred miles or so south of Wagadu, and it was in great demand in North Africa and Europe.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
+        q: { en: 'The excerpt best supports the claim that Wagadu\'s power rested mainly on...' },
+        choices: [{ en: 'its place between the goldfields and northern buyers' }, { en: 'its ownership of the goldfields inside its own borders' }, { en: 'its control over the nomads of the dry grasslands' }, { en: 'its conversion to Islam to win North African allies' }],
         answer: 0,
-        why: { en: 'Controlling and taxing long-distance trade, such as gold and kola nuts, paid for Sahel governments.' }
+        why: { en: 'The gold was mined south of Wagadu. Wagadu grew strong by controlling the route that carried it north to buyers in North Africa and Europe.' }
       },
       {
         stim: { title: { en: 'What some Sahel states controlled' }, rows: [[{ en: 'State' }, { en: 'Trade it controlled' }], [{ en: 'Wagadu (Ghana)' }, { en: 'much of the gold trade' }], [{ en: 'Kanem and the Hausa states' }, { en: 'kola nuts' }], [{ en: 'Takrur' }, { en: 'grain and salt' }], [{ en: 'Mali' }, { en: 'much of the gold of western Afro-Eurasia' }]], src: { en: 'From "States and Empires of West Africa," World History Project' } },
-        q: { en: 'Which conclusion does the table best support?' },
-        choices: [{ en: 'Sahel states drew power from controlling trade' }, { en: 'Sahel states traded only with one another, never abroad' }, { en: 'Only Mali ever took part in the gold trade' }, { en: 'Sahel states made nothing to trade' }],
+        q: { en: 'The table most directly reflects which element of the Sahelian state model?' },
+        choices: [{ en: 'Paying for government by dominating trade' }, { en: 'Basing power in wet, grain-producing centers' }, { en: 'Welcoming several religions at the royal court' }, { en: 'Taking occasional tribute from nomadic herders' }],
         answer: 0,
-        why: { en: 'Each state built its strength on a trade it controlled. This shared pattern is part of the Sahelian state model.' }
+        why: { en: 'Each state drew its income from a long-distance trade it controlled. The other choices are real parts of the model, but the table shows only trade.' }
       },
       {
-        stim: { text: { en: 'In 1375, Abraham Cresques, a map-maker in Mallorca, Spain, drew Mansa Musa with a crown and scepter, holding a nugget of gold. Crowns and scepters were European, not West African, symbols of kings.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
-        q: { en: 'Which best describes the point of view shown in the map?' },
-        choices: [{ en: 'A European used his own symbols for an African king' }, { en: 'A Mali scribe showed the mansa\'s real royal clothes' }, { en: 'A North African trader mocked Mali\'s lack of gold' }, { en: 'A Swahili merchant drew his own city\'s ruler' }],
+        stim: { text: { en: '"He probably did not really have a crown or a scepter because these were not West African symbols of kingship. But the gold nugget is accurate because Mansa Musa controlled some of the richest goldfields of this era."' }, src: { en: 'Trevor Getz on the map of Mansa Musa by Abraham Cresques of Mallorca (about 1375), "States and Empires of West Africa," World History Project' } },
+        q: { en: 'Which development best explains why a map-maker in Spain around 1375 showed Mansa Musa holding gold?' },
+        choices: [{ en: 'Rising trade in Europe and North Africa raised demand for gold' }, { en: 'Mali\'s armies had conquered North Africa and parts of Spain' }, { en: 'Mansa Musa had sent crowns and scepters to European kings' }, { en: 'Swahili ships carried Mali\'s gold to Europe by the Indian Ocean' }],
         answer: 0,
-        why: { en: 'Cresques never met Mansa Musa. He showed a great, rich king the way Europeans pictured kings. The gold was accurate: Mali controlled rich goldfields.' }
+        why: { en: 'In the early 1300s, growing trade in North Africa and Europe created a demand for currency, especially gold, and Mali controlled much of it. Cresques never met Mansa Musa.' }
       },
       {
-        q: { en: 'How did Sahel states such as Mali usually deal with the nomadic herders around them?' },
-        choices: [{ en: 'They demanded tribute now and then' }, { en: 'They sent governors to every camp' }, { en: 'They forced all herders to farm grain' }, { en: 'They made the herders their kings' }],
+        stim: { text: { en: 'They had little control over the people in the drier regions around them, most of whom were nomadic herders. The most control these governments could exert over the nomads was the occasional demand of tribute.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
+        q: { en: 'Which of the following best explains the limit on state power described in the excerpt?' },
+        choices: [{ en: 'States were built on dense, wet, grain-farming centers' }, { en: 'The herders had converted to Islam and refused all rule' }, { en: 'Mansas let the queen mothers govern the dry lands' }, { en: 'Kanem and Takrur ruled the herders for Mali instead' }],
         answer: 0,
-        why: { en: 'States were strong in wet grain lands but could not really rule nomads in the dry lands. The most they could do was demand occasional tribute.' }
+        why: { en: 'Sahel states were strongest in the wet lands by the rivers and lakes. Nomads who moved through the drier lands around them could not really be ruled.' }
       },
       {
-        stim: { text: { en: 'Both Muslims and members of local religions served in their courts. Rulers allowed many different sets of rituals, and themselves took part in several kinds of prayers and practices.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
-        q: { en: 'The excerpt best illustrates which feature of Sahel states?' },
-        choices: [{ en: 'Religious pluralism' }, { en: 'Rule by merchant families' }, { en: 'A ban on local religions' }, { en: 'Rulers chosen by exam' }],
+        stim: { text: { en: 'A few rulers chose to convert to Islam because it was useful for trade and because it had a written language. The kings of Takrur and Kanem became Muslim by the eleventh century. But most kings did not. Instead, they were very inclusive.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
+        q: { en: 'Compared with the kings of Takrur and Kanem, most Sahel kings in this period...' },
+        choices: [{ en: 'kept local faiths but welcomed Muslims at court' }, { en: 'converted even earlier, back in the ninth century' }, { en: 'banned Islam to protect the local religions' }, { en: 'made Islam the faith of all their farmers' }],
         answer: 0,
-        why: { en: 'Accepting many faiths at court is religious pluralism. Most farmers kept local religions, while traders and some rulers were Muslim.' }
+        why: { en: 'Most kings did not convert. Both Muslims and followers of local religions served at court, and kings took part in many kinds of prayers: religious pluralism.' }
       },
       {
-        stim: { text: { en: 'Sunjata\'s full name was Sogolon Mari Djata. "Sogolon" was his mother\'s name. Although he may have been Muslim, much of his power came from his mother.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
-        q: { en: 'This evidence best supports which claim about Mali?' },
-        choices: [{ en: 'Matrilineal customs lived on beside Islam' }, { en: 'Islam quickly ended all local family customs' }, { en: 'Mali was ruled by a council of merchants' }, { en: 'Kings were chosen only through their fathers' }],
+        stim: { text: { en: 'Sunjata\'s full name was Sogolon Mari Djata. "Sogolon" was his mother\'s name, and although he may have been Muslim, he still embraced matrilineality. Much of his power came from his mother.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
+        q: { en: 'The evidence best supports which claim about continuity in Mali after Islam arrived?' },
+        choices: [{ en: 'Royal queen mothers kept real political power' }, { en: 'Kings were always the firstborn son of the king' }, { en: 'Most farmers soon converted to Islam' }, { en: 'Merchant councils took over from the mansa' }],
         answer: 0,
-        why: { en: 'Matrilineality, tracing family through the mother, stayed important, and queen mothers held real political power.' }
+        why: { en: 'Matrilineality, tracing family through the mother, continued beside Islam, and royal queen mothers held real political power, unlike in many other Islamic regions.' }
       },
       {
-        q: { en: 'Compared with Mali, the Swahili states of the Indian Ocean coast were mostly...' },
-        choices: [{ en: 'port cities where merchants held power' }, { en: 'large land empires ruled by one king' }, { en: 'nomadic herding groups with no towns at all' }, { en: 'states run by Christian scribes' }],
+        stim: { text: { en: 'On the Swahili coast, merchant families held most of the power in the port cities. In Lamu there was no king at all, just a group of merchant families who made decisions together.' }, src: { en: 'Adapted from "Africa 1200–1450," World History Project' } },
+        q: { en: 'Compared with Mali, the Swahili states described in the excerpt...' },
+        choices: [{ en: 'focused on port trade, not on ruling large lands' }, { en: 'relied on tribute from nomadic cattle herders' }, { en: 'chose rulers through the mother\'s family line' }, { en: 'built their power on the cloth trade and nzimbu shells' }],
         answer: 0,
-        why: { en: 'Swahili city-states focused on port cities and trade, not on controlling big areas of land. Merchant families held most of the power; Lamu had no king.' }
+        why: { en: 'Swahili city-states focused on port cities and trade rather than on controlling large areas of land. Nzimbu shells and cloth were the basis of Kongo\'s power.' }
       },
       {
-        q: { en: 'Which statement best compares how rulers of Mali and Great Zimbabwe built their power?' },
-        choices: [{ en: 'Both controlled gold; Zimbabwe also loaned cattle' }, { en: 'Both relied mainly on Swahili kings to run their lands' }, { en: 'Neither state had any trade with outsiders' }, { en: 'Both chose rulers by a written exam' }],
+        q: { en: 'Historians argue about whether Mali was an empire. Which evidence best supports calling it an empire?' },
+        choices: [{ en: 'A core people ruled conquered peoples unlike them' }, { en: 'Its far regions mostly ran their own affairs' }, { en: 'Conquered people were not clearly treated as lesser' }, { en: 'Both Muslims and local believers served at court' }],
         answer: 0,
-        why: { en: 'Mali controlled much of West Africa\'s gold. Great Zimbabwe dominated gold exports to Sofala, and its kings loaned cattle to keep provincial chiefs loyal.' }
+        why: { en: 'An empire is a core people or state ruling others. Mali\'s core shared a language and culture; conquered peoples around it did not. Its weak center argues the other way.' }
       }
     ]
   },
