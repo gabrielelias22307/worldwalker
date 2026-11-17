@@ -75,11 +75,15 @@
       }).join('')}</section>`).join('')}</div>${WW.COURSE && WW.COURSE.credit ? `<p class="hw-credit">${esc(WW.COURSE.credit)}</p>` : ''}</div>`;
     const cv = document.getElementById('hw-map'); paint(cv);
     const pins = document.getElementById('hw-pins'), tip = document.getElementById('hw-tip');
+    const placed = []; // two stops in the same city: nudge the later one aside so both can be clicked
     cat.forEach(e => {
       if (!e.at) return;
+      let X = px(e.at[0]) / PW * 100, Y = py(e.at[1]) / PH * 100;
+      for (let k = 0; k < 6 && placed.some(([a, b]) => Math.abs(a - X) < 2.6 && Math.abs(b - Y) < 4); k++) { X += 2.4; Y += k % 2 ? -3 : 3; }
+      placed.push([X, Y]);
       const b = document.createElement('button'), st = s.episodes[e.id] || {};
       b.className = 'hw-pin' + (st.done ? ' done' : '') + (next && next.id === e.id ? ' next' : ''); b.dataset.ep = e.id;
-      b.style.left = (px(e.at[0]) / PW * 100) + '%'; b.style.top = (py(e.at[1]) / PH * 100) + '%'; b.style.setProperty('--uc', UNITC[e.realm]);
+      b.style.left = X + '%'; b.style.top = Y + '%'; b.style.setProperty('--uc', UNITC[e.realm]);
       b.textContent = e.id; b.setAttribute('aria-label', e.id + ' ' + L(e.title) + ', ' + L(e.place));
       b.onmouseenter = b.onfocus = () => { tip.hidden = false; tip.innerHTML = `<b>${esc(e.id)} · ${esc(L(e.title))}</b><br>${esc(L(e.place))}`; tip.style.left = b.style.left; tip.style.top = b.style.top; };
       b.onmouseleave = b.onblur = () => (tip.hidden = true);
