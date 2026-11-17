@@ -24,7 +24,7 @@ window.WW_COURSE = {
   swaps: {
     en: [['Christopher', 'Tock'], ['living compass', 'living hourglass'], ['compass stone', 'time stone'], ['Compass arrow', 'Time arrow'],
       ['Great Atlas', 'Great Chronicle'], ['Atlas pages', 'Chronicle pages'], ['atlas pages', 'chronicle pages'], ['Atlas page', 'Chronicle page'], ['atlas page', 'chronicle page'],
-      ['Atlas scraps', 'Chronicle scraps'], ['atlas scraps', 'chronicle scraps'], ['atlas scrap', 'chronicle scrap'], ['the atlas', 'the chronicle'], ['Worldwalker', 'Timewalker'],
+      ['Atlas scraps', 'Chronicle scraps'], ['atlas scraps', 'chronicle scraps'], ['atlas scrap', 'chronicle scrap'], ['the atlas', 'the chronicle'], ['Worldwalker', 'HistoryWalker'],
       ['Region sense', 'Big-picture sense'], ['Region master', 'Big-picture master']],
     es: [['Christopher', 'Tock'], ['brújula viva', 'reloj de arena vivo'], ['piedra de la brújula', 'piedra del tiempo'], ['piedra brújula', 'piedra del tiempo'], ['Flecha brújula', 'Flecha del tiempo'],
       ['el Gran Atlas', 'la Gran Crónica'], ['Gran Atlas', 'Gran Crónica'], ['Páginas del atlas', 'Páginas de la crónica'], ['páginas del atlas', 'páginas de la crónica'], ['Página del atlas', 'Página de la crónica'], ['página del atlas', 'página de la crónica'],
@@ -32,10 +32,8 @@ window.WW_COURSE = {
     fa: [['کریستوفر', 'تاک'], ['قطب‌نمای زنده', 'ساعت ریگی زنده'], ['سنگ قطب‌نما', 'سنگ زمان'], ['اطلس بزرگ', 'تاریخ‌نامهٔ بزرگ'], ['اطلس', 'تاریخ‌نامه'], ['جهان‌گرد', 'زمان‌گرد']]
   },
   S: {
-    story: { en: 'The Grump tore the Great Chronicle into 24 pages and scattered them across time. People are forgetting their own history. You are a Timewalker apprentice. With Tock, your living hourglass, win the pages back by learning each moment.',
-      es: 'El Gruñón rompió la Gran Crónica en 24 páginas y las esparció por el tiempo. La gente está olvidando su propia historia. Eres aprendiz de Caminante del Tiempo. Con Tock, tu reloj de arena vivo, recupera las páginas aprendiendo cada momento.',
-      fa: 'غرغرو تاریخ‌نامهٔ بزرگ را به ۲۴ صفحه پاره کرد و آن‌ها را در طول زمان پراکنده ساخت. مردم تاریخ خود را فراموش می‌کنند. تو شاگرد زمان‌گرد هستی. با تاک، ساعت ریگی زنده‌ات، با یاد گرفتن هر زمان صفحه‌ها را پس بگیر.' },
-    storyOne: { en: 'The Grump tore the Great Chronicle. Win back its pages, one moment at a time!', es: '¡El Gruñón rompió la Gran Crónica! Recupera sus páginas, un momento a la vez.', fa: 'غرغرو تاریخ‌نامهٔ بزرگ را پاره کرد! صفحه‌هایش را یکی یکی پس بگیر.' },
+    story: { en: 'The Grump tore the Great Chronicle into 26 pages and scattered them across the world, from 1200 to 1750. People are forgetting how their states rose, traded and believed. You are a HistoryWalker. With Tock, your living hourglass, win the pages back by learning each place and time.' },
+    storyOne: { en: 'The Grump tore the Great Chronicle. Win back its pages, one place and time at a time!' },
     map: { en: 'World map', es: 'Mapa', fa: 'نقشه' },
     powers: { en: 'Five history powers', es: 'Cinco poderes de historia', fa: 'پنج نیروی تاریخ' },
     bag: { en: 'Bag · one tool from each era', es: 'Bolsa · una herramienta de cada época', fa: 'کوله · یک ابزار از هر دوره' },
