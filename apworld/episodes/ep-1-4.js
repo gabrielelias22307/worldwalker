@@ -14,7 +14,7 @@ window.EPISODE = {
   place: { en: 'Tenochtitlan, Mexica (Aztec) state, 1450' },
   intro: [
     { en: 'The Grump blurred the page on the Americas. Tenochtitlan is forgetting how it conquers, trades and feeds itself!' },
-    { en: 'Talk to the 4 people here, help a featherworker, then wake the time stone.' }
+    { en: 'Talk to the 4 people, read the 2 sources on the wooden stands, help a featherworker, then wake the time stone.' }
   ],
   scenes: {
     at: [-99.13, 19.43],
@@ -80,17 +80,18 @@ window.EPISODE = {
       x: 12, y: 6, name: { en: 'Yaotl' }, role: { en: 'Warrior' },
       look: { skin: 3, hair: '#120c08', shirt: '#b8452a', pants: '#3a2a20', style: 'long' },
       lines: [
-        { en: 'Early in this century, our city joined two other city-states in an alliance. Together we built an [[empire|empire]].' },
+        { en: 'In the early 1400s, our city joined two other powerful city-states in an alliance. Together we built the Aztec [[empire|empire]].' },
         { en: 'We march on neighboring peoples. Conquered towns must send [[tribute|tribute]]: food, woven cloth, feathered art and precious stones.' },
-        { en: 'We also take prisoners of war. Priests offer them in [[human sacrifice|human sacrifice]] at the temple. They teach that blood holds off the end of the world.' }
+        { en: 'We take prisoners of war. Priests offer them in [[human sacrifice|human sacrifice]] at the pyramids. Our 52-year calendar warns that only blood can postpone the end of the world.' },
+        { en: 'Two peoples nearby were never conquered, in Tlaxcala and in Michoacán. Perhaps we leave them free so they keep giving us wars, and prisoners to sacrifice.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Which best explains why the Mexica went on campaigns to conquer their neighbors?' },
+        q: { en: 'Which of the following best explains what drove Mexica campaigns against neighboring peoples?' },
         choices: [
-          { ok: true, t: { en: 'To win tribute and captives for sacrifice' }, why: { en: 'Yes. The need for food and goods, and for prisoners to sacrifice, drove Mexica conquest. State and religion worked together.' } },
-          { t: { en: 'To spread their language to every people' }, why: { en: 'No. The Mexica made little attempt to change conquered peoples. They mainly demanded tribute.' } },
-          { t: { en: 'To win gold for trade with Europe' }, why: { en: 'No. The Americas and Afro-Eurasia were not yet connected. That came about 1500.' } }
+          { t: { en: 'A plan to make conquered peoples fully Mexica' }, why: { en: 'No. The Mexica made little attempt to integrate conquered peoples into their culture beyond demanding tribute.' } },
+          { ok: true, t: { en: 'The need for food, tribute and captives' }, why: { en: 'Yes. The need for food and for prisoners to sacrifice pushed the Mexica to conquer. State power and religion worked together.' } },
+          { t: { en: 'A search for gold to trade across the sea' }, why: { en: 'No. The Americas and Afro-Eurasia were not yet connected before about 1500, and there was no sea trade with Europe.' } }
         ]
       }
     },
@@ -98,17 +99,18 @@ window.EPISODE = {
       x: 22, y: 7, name: { en: 'Cuauhtli' }, role: { en: 'Pochteca merchant' },
       look: { skin: 4, hair: '#1a1008', shirt: '#2f7f8f', pants: '#5a4630', style: 'short' },
       lines: [
-        { en: 'I am one of the [[pochteca|pochteca]], the Mexica merchants. Yacatecuhtli, our god of commerce, protects us on the road.' },
-        { en: 'We have no pack animals and no sailing ships. So we carry [[luxury goods|luxury goods]] on our backs: turquoise, quetzal feathers, cacao, jade.' },
-        { en: 'We also carry news. What we learn about rival lands helps the empire plan its next conquest.' }
+        { en: 'I am one of the [[pochteca|pochteca]], the Aztec merchants. Yacatecuhtli, our god of commerce, protects faithful merchants and travelers.' },
+        { en: 'We have no pack animals, no sailing ships and hardly any navigable rivers. So we carry [[luxury goods|luxury goods]] on our backs: turquoise, quetzal feathers, cacao, obsidian, jade.' },
+        { en: 'Pochteca walk as far as Panama, perhaps Colombia, maybe even north to Texas. Turquoise from the Puebloan peoples, 1,200 miles north, reaches our markets.' },
+        { en: 'We also carry news. We gather information about rivals, and the empire uses it to plan conquests.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did pochteca carry mostly light, costly goods on long journeys?' },
+        q: { en: 'Which of the following best explains why long-distance trade in Mesoamerica centered on light, high-value goods?' },
         choices: [
-          { ok: true, t: { en: 'People carried goods on their backs' }, why: { en: 'Right. With no pack animals and few navigable rivers, only light goods of high value were worth a long walk.' } },
-          { t: { en: 'Nobles banned trade in food and salt' }, why: { en: 'No. Staples like salt, grain and cotton were traded too, but over shorter distances.' } },
-          { t: { en: 'Big ships carried the heavy goods' }, why: { en: 'No. Mesoamerican societies did not develop sailing technology.' } }
+          { t: { en: 'Llamas carried staples, so people took luxuries' }, why: { en: 'No. Llamas and alpacas lived only in the Andes of South America. Mesoamerica had no pack animals at all.' } },
+          { t: { en: 'Rulers banned trade in salt, grain and cotton' }, why: { en: 'No. Staples like salt, grain and cotton were traded too, but only over shorter distances.' } },
+          { ok: true, t: { en: 'Merchants had to carry all goods on their backs' }, why: { en: 'Right. With no pack animals, no sailing ships and few navigable rivers, only light, costly goods were worth a long walk.' } }
         ]
       }
     },
@@ -116,17 +118,18 @@ window.EPISODE = {
       x: 12, y: 15, name: { en: 'Tochtli' }, role: { en: 'Scribe' },
       look: { skin: 2, hair: '#2a1a10', shirt: '#e8dcc0', pants: '#6a4a2a', robe: true, style: 'short' },
       lines: [
-        { en: 'Priests, officials and merchants all need careful records. I paint account books and calendars in a writing made of pictures.' },
-        { en: 'This book lists the [[tribute|tribute]] of conquered towns. We take their goods, but we do little to make them Mexica.' },
-        { en: 'Our calendar runs in 52-year cycles. Priests warn that the end of a cycle could bring the end of the world.' }
+        { en: 'Priests, administrators and merchants all need accurate records. I paint account books and calendars in a text made of complex pictures.' },
+        { en: 'This book lists the [[tribute|tribute]] of conquered towns. We take their goods, but we make little attempt to bring them into our culture.' },
+        { en: 'On our long journey here, our ancestors lived among the Toltecs at Tula. They took Toltec beliefs, crops, weapons and the legend of Quetzalcoatl, the feathered serpent.' },
+        { en: 'Quetzalcoatl sailed away in a stone boat, promising to return. Our priests fear that the end of a 52-year cycle could bring the end of the world.' }
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'What does Tochtli\'s tribute book show about how the Mexica ruled their empire?' },
+        q: { en: 'Tochtli\'s tribute book would be most useful to a historian studying which topic?' },
         choices: [
-          { ok: true, t: { en: 'They took tribute but changed little' }, why: { en: 'Yes. The Mexica demanded tribute and made little attempt to bring conquered peoples into their culture.' } },
-          { t: { en: 'They ruled with no written records' }, why: { en: 'No. Priests, officials and merchants kept account books, calendars and records in picture writing.' } },
-          { t: { en: 'They made every town adopt Mexica gods' }, why: { en: 'No. The Mexica mostly left conquered peoples alone, as long as the tribute came.' } }
+          { t: { en: 'How the Inca moved conquered villagers' }, why: { en: 'No. Moving conquered villagers was an Inca policy in the Andes. This book records Mexica tribute.' } },
+          { t: { en: 'How pochteca merchants hid their wealth' }, why: { en: 'No. The book lists what conquered towns paid the state, not the private wealth of merchants.' } },
+          { ok: true, t: { en: 'How the Mexica drew wealth from conquests' }, why: { en: 'Yes. A tribute list shows what conquered towns had to send. The Mexica took goods but changed little else.' } }
         ]
       }
     },
@@ -134,17 +137,57 @@ window.EPISODE = {
       x: 20, y: 15, name: { en: 'Xochitl' }, role: { en: 'Chinampa farmer' },
       look: { skin: 3, hair: '#120c08', shirt: '#4f8a3a', pants: '#3a2a20', style: 'bun' },
       lines: [
-        { en: 'Our founders were told to look for a sign: an eagle with a snake, on a cactus. They saw it on this lake island, in 1325.' },
-        { en: 'Island land is scarce. So we build [[chinampa|chinampas]], gardens raised up in the shallow lake, with canals between them.' },
-        { en: 'Our gardens feed a huge city. Tenochtitlan has over 200,000 people, more than any city in Europe.' }
+        { en: 'Our ancestors left Aztlan and walked south, seeking a sign: an eagle with a snake in its mouth, on a cactus. They saw it on this lake island in 1325.' },
+        { en: 'Island land is scarce. So we build [[chinampa|chinampas]], gardens raised in the shallow lake with canals between them. Vegetables and avocados grow here.' },
+        { en: 'Our gardens help feed over 200,000 people, more than London, Paris or Madrid. Tens of thousands visit the market at Tlatelolco every day.' },
+        { en: 'Salt, grain and cotton come over shorter distances. Short trade moves food between climate zones, and that protects people from drought.' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'How did the Mexica adapt to building a great city on a lake island?' },
         choices: [
-          { ok: true, t: { en: 'They built chinampa gardens in the lake' }, why: { en: 'Yes. Chinampas made the lake into farmland and fed a city larger than any in Europe.' } },
-          { t: { en: 'They cut terraces into high mountains' }, why: { en: 'No. Terraces were the Inca way to farm in the Andes. The Mexica farmed the lake itself.' } },
-          { t: { en: 'They brought all food in by ship' }, why: { en: 'No. Mesoamerica had no sailing ships. The city grew much of its own food in chinampas.' } }
+          { t: { en: 'They cut farming terraces into hillsides' }, why: { en: 'No. Terracing was the way to farm in the Andean highlands. The Mexica farmed the lake itself.' } },
+          { ok: true, t: { en: 'They raised chinampa gardens in the lake' }, why: { en: 'Yes. Chinampas turned the shallow lake into farmland and helped feed a city larger than any in Europe.' } },
+          { t: { en: 'They brought maize in by Maya canoes' }, why: { en: 'No. Maya canoes carried luxury goods along the coast. Tenochtitlan grew much of its own food in chinampas.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 27, y: 5, icon: '📖',
+      name: { en: 'The Worst Transportation System?' }, role: { en: 'A scholar\'s claim' },
+      src: { en: 'Kenneth Hirth, archaeologist; quoted in "Long-Distance Trade in the Americas" by Bennett Sherry, World History Project' },
+      lines: [
+        { en: 'Archaeologist Kenneth Hirth claims that "Mesoamerica had the worst transportation system in the ancient world."' },
+        { en: 'His reasons: Mesoamerican societies did not develop sailing technology, and most grew up inland, away from seaports. Other than llamas and alpacas in the mountains of South America, the Americas had no pack animals, and hardly any navigable rivers. Most merchants carried goods on their backs.' },
+        { en: 'But Hirth notes that, nonetheless, Mesoamerica developed active long-distance exchange networks and huge markets. All societies in the Americas took part in some level of trade.' },
+        { en: 'Context: for a long time scholars thought trade here was limited. Few written sources survive. Teotihuacan left no records, and Spanish colonizers later burned many Maya records. Merchants were not part of the ruling class, and the sources that survive focus on the ruling class. So scholars rely on murals of market scenes and on archaeology.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: why did scholars long assume that trade in the Americas was limited?' },
+        choices: [
+          { t: { en: 'Digs found no goods from far-off places' }, why: { en: 'No. Archaeology found far-traveled goods, like Puebloan turquoise at Aztec sites. Digs are how we know about this trade.' } },
+          { ok: true, t: { en: 'The sources focus on the ruling class' }, why: { en: 'Yes. Merchants were not rulers, few written records survive, and many were burned. So trade was easy to miss.' } },
+          { t: { en: 'Merchants\' own diaries described it as small' }, why: { en: 'No. We have very few written sources about merchants at all. Scholars rely on murals and archaeology.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 17, y: 5, icon: '📖',
+      name: { en: 'Two Empires of the Americas' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "The Americas 1200–1450" by William H. Beezley, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'In 1325 the Aztecs, often called the Mexica, began to build Tenochtitlan on an island in a lake in the Valley of Mexico. The need for food and for bodies for sacrifices pushed them to conquer neighboring peoples. They took prisoners and collected tribute: food, weaving, feathered art and precious stones. They made little attempt to integrate conquered peoples into their culture beyond demanding tribute.' },
+        { en: 'The most successful and significant empire in the Americas in this period was the Inca. The ruler, the Sapa Inca, was the representative on Earth of Inti, the Sun god. Around 1250 the Inca began to expand through military conquest. They scattered some residents to other communities, sent in colonists, and forced conquered peoples to worship Inca gods, without giving up their own, and to pay tribute.' },
+        { en: 'Inca rule relied on a network of officials and on roads that equaled or possibly surpassed Roman engineering. Chasqui runners carried orders up to 250 kilometers in one day, and from Cusco to Quito (1,500 km) within a week. Knotted strings called quipu kept records. In time the Inca ruled the Andes from today\'s Colombia into Argentina.' }
+      ],
+      ask: {
+        stat: 'hei',
+        q: { en: 'Comparison: which best explains why Inca rule tied conquered peoples to the state more closely than Mexica rule?' },
+        choices: [
+          { t: { en: 'Only the Inca collected tribute from them' }, why: { en: 'No. Both empires demanded tribute. The difference was what else each state did to conquered peoples.' } },
+          { t: { en: 'The Inca let them rule without officials' }, why: { en: 'No. Inca rule relied on a network of officials, roads, runners and quipu records.' } },
+          { ok: true, t: { en: 'The Inca moved people and imposed gods' }, why: { en: 'Yes. The Inca scattered residents, sent colonists and required worship of Inca gods. The Mexica mostly just took tribute.' } }
         ]
       }
     }
@@ -227,57 +270,59 @@ window.EPISODE = {
     win: { en: 'The fog lifts off the lake. The page on the Americas floats down into your hands.' },
     questions: [
       {
-        stim: { text: { en: 'The need for food and for bodies for sacrifices pushed the Aztecs on campaigns to conquer neighboring peoples.' }, src: { en: 'Adapted from "The Americas 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best supports which claim about the Mexica state?' },
-        choices: [{ en: 'Religion and tribute drove its growth' }, { en: 'Trade with Europe drove its expansion' }, { en: 'It grew mostly by peaceful agreements' }, { en: 'It expanded to spread one language' }],
-        answer: 0,
-        why: { en: 'Mexica wars brought tribute, such as food, and prisoners for human sacrifice. State power and religion were tied together.' }
+        stim: { text: { en: 'The need for food and bodies for sacrifices pushed the Aztecs on campaigns to conquer neighboring peoples. ... The Aztecs made little attempt to integrate these people into their culture beyond demanding tribute.' }, src: { en: 'Adapted from "The Americas 1200–1450" by William H. Beezley, World History Project' } },
+        q: { en: 'The excerpt best supports which claim about Mexica state building?' },
+        choices: [{ en: 'Conquest aimed to spread Mexica culture widely' }, { en: 'Religious and economic needs drove conquest' }, { en: 'Long-distance trade replaced the need for war' }, { en: 'Conquered towns became full Mexica members' }],
+        answer: 1,
+        why: { en: 'Wars brought tribute such as food, and prisoners for human sacrifice. The Mexica did little to change conquered peoples, so spreading their culture was not the goal.' }
       },
       {
-        stim: { title: { en: 'Ruling conquered peoples' }, rows: [[{ en: 'State' }, { en: 'What it did' }], [{ en: 'Mexica' }, { en: 'Demanded tribute; little attempt to integrate them' }], [{ en: 'Inca' }, { en: 'Demanded tribute; moved people, sent colonists, added Inca gods' }]], src: { en: 'From "The Americas 1200–1450," World History Project' } },
-        q: { en: 'The table best supports which comparison?' },
-        choices: [{ en: 'Both took tribute; the Inca integrated more' }, { en: 'Neither state took any tribute at all' }, { en: 'The Mexica integrated conquered peoples more' }, { en: 'Both left conquered peoples completely free' }],
-        answer: 0,
-        why: { en: 'Both were tribute empires. The Inca moved people, sent colonists and required worship of Inca gods; the Mexica mostly just collected tribute.' }
+        stim: { title: { en: 'Ruling conquered peoples' }, rows: [[{ en: 'State' }, { en: 'What it did' }], [{ en: 'Mexica' }, { en: 'Demanded tribute; little attempt to integrate them' }], [{ en: 'Inca' }, { en: 'Demanded tribute; scattered residents, sent colonists, required worship of Inca gods' }]], src: { en: 'From "The Americas 1200–1450," World History Project' } },
+        q: { en: 'Compared with the Mexica approach shown in the table, the Inca approach...' },
+        choices: [{ en: 'took tribute but left local gods untouched' }, { en: 'relied less on tribute, more on markets' }, { en: 'integrated peoples more by moving them' }, { en: 'gave up conquest for a confederation' }],
+        answer: 2,
+        why: { en: 'Both took tribute. The Inca went further: they resettled people, sent colonists and required worship of Inca gods (alongside local ones). A confederation was the Haudenosaunee way.' }
       },
       {
-        stim: { text: { en: '"Mesoamerica had the worst transportation system in the ancient world."' }, src: { en: 'Kenneth Hirth, archaeologist, quoted in "Long-Distance Trade in the Americas," World History Project' } },
-        q: { en: 'Which feature of Mesoamerica best explains the archaeologist\'s claim?' },
-        choices: [{ en: 'No pack animals, so people carried goods' }, { en: 'Huge fleets of sailing ships on the coast' }, { en: 'Camel caravans crossing wide deserts' }, { en: 'Iron railways linking all the cities' }],
+        stim: { text: { en: 'Kenneth Hirth claims that "Mesoamerica had the worst transportation system in the ancient world." But Hirth notes that nonetheless, Mesoamerica developed active long-distance exchange networks and huge markets.' }, src: { en: 'From "Long-Distance Trade in the Americas" by Bennett Sherry, World History Project' } },
+        q: { en: 'Which of the following best explains why long-distance trade in Mesoamerica centered on luxury goods?' },
+        choices: [{ en: 'People, not animals or ships, carried goods' }, { en: 'Inca roads linked it to Andean markets' }, { en: 'Maya rulers banned the salt and cotton trade' }, { en: 'Llama caravans could carry only light loads' }],
         answer: 0,
-        why: { en: 'Mesoamerica had no pack animals, no sailing ships and few navigable rivers. Merchants like the pochteca carried goods on their backs.' }
+        why: { en: 'Mesoamerica had no pack animals, no sailing ships and few navigable rivers. Merchants carried goods on their backs, so only light, costly goods traveled far. Llamas lived only in the Andes.' }
       },
       {
-        stim: { text: { en: 'Pochteca also carried information. They acted as spies for the empire, gathering information about rivals.' }, src: { en: 'Adapted from "Long-Distance Trade in the Americas," World History Project' } },
-        q: { en: 'The excerpt best shows that, for the Mexica, long-distance trade was...' },
-        choices: [{ en: 'linked to the state\'s military expansion' }, { en: 'forbidden by the rulers of the empire' }, { en: 'only for food like maize and salt' }, { en: 'run entirely by merchants from the Inca' }],
-        answer: 0,
-        why: { en: 'Merchants gathered intelligence that the Mexica used to plan conquests. Trade and state building went together.' }
+        stim: { text: { en: 'Pochteca also carried information. They acted as spies for the empire, gathering information about rivals, which the Aztecs used for military expansion.' }, src: { en: 'From "Long-Distance Trade in the Americas" by Bennett Sherry, World History Project' } },
+        q: { en: 'The excerpt most directly reflects which feature of the Aztec Empire?' },
+        choices: [{ en: 'Merchants formed the empire\'s ruling class' }, { en: 'Trade networks ended the need for war' }, { en: 'Merchants were barred from leaving it' }, { en: 'Trade and conquest supported each other' }],
+        answer: 3,
+        why: { en: 'Pochteca gathered news of rivals that the empire used to plan conquests. Merchants were not the ruling class, and they traveled far beyond the border.' }
       },
       {
-        q: { en: 'Which development best explains how Tenochtitlan fed a population larger than any city in Europe?' },
-        choices: [{ en: 'Chinampa gardens raised in the lake' }, { en: 'Terraced fields on Andean mountains' }, { en: 'Wheat brought over from Europe' }, { en: 'Grain shipped in on big sailboats' }],
-        answer: 0,
-        why: { en: 'Chinampas turned the shallow lake into farmland. Terraces were the Inca way of farming high in the Andes.' }
+        stim: { text: { en: 'Few written sources survive. Teotihuacan left no records, and Spanish colonizers later burned many Maya records. Merchants were not part of the ruling class. Scholars rely on murals of market scenes and on archaeology.' }, src: { en: 'Adapted from "Long-Distance Trade in the Americas," World History Project' } },
+        q: { en: 'The passage best supports the claim that historians\' older view of trade in the Americas...' },
+        choices: [{ en: 'came mostly from merchants\' own diaries' }, { en: 'was proven by full Maya written archives' }, { en: 'was shaped by sources on the ruling class' }, { en: 'rested on Spanish records of Inca markets' }],
+        answer: 2,
+        why: { en: 'The sources that survive focus on the ruling class, not merchants, so scholars long assumed trade was limited. Murals and archaeology show it was not.' }
       },
       {
-        stim: { title: { en: 'Inca messengers' }, rows: [[{ en: 'Measure' }, { en: 'Distance' }], [{ en: 'A chasqui runner in one day' }, { en: 'up to 250 km' }], [{ en: 'Cusco to Quito, in about a week' }, { en: '1,500 km' }]], src: { en: 'From "The Americas 1200–1450," World History Project' } },
-        q: { en: 'The data best show how the Inca state...' },
-        choices: [{ en: 'used roads and runners to rule a vast land' }, { en: 'had no contact with its far provinces' }, { en: 'sent its messages mostly by sailing ship' }, { en: 'let each village rule itself with no orders' }],
-        answer: 0,
-        why: { en: 'Chasqui runners on well-built roads carried orders across the Andes. Roads, officials and quipu records held the empire together.' }
+        stim: { title: { en: 'Inca messengers' }, rows: [[{ en: 'Measure' }, { en: 'Distance' }], [{ en: 'A chasqui runner in one day' }, { en: 'up to 250 km' }], [{ en: 'Cusco to Quito, within a week' }, { en: '1,500 km' }]], src: { en: 'From "The Americas 1200–1450," World History Project' } },
+        q: { en: 'The data best support the claim that the Inca state...' },
+        choices: [{ en: 'reached far provinces mainly by sea' }, { en: 'used roads and runners to rule a vast land' }, { en: 'left far villages to rule with no orders' }, { en: 'kept records in picture-written books' }],
+        answer: 1,
+        why: { en: 'Chasqui runners on roads that rivaled Roman engineering carried orders across the Andes. The Inca kept records with quipu; picture-written account books were Mexica.' }
       },
       {
-        q: { en: 'Which statement best compares the Haudenosaunee with the Mexica?' },
-        choices: [{ en: 'One united by a peace pledge, one by conquest' }, { en: 'Both built empires by conquering neighbors' }, { en: 'Both had capitals on islands in lakes' }, { en: 'Neither had any kind of government' }],
-        answer: 0,
-        why: { en: 'Five Haudenosaunee nations pledged peace and formed a confederation. The Mexica built a tribute empire by war.' }
+        stim: { text: { en: 'Iroquois chiefs of the Seneca, Cayuga, Onondaga, Oneida, and Mohawk—who had often been in deadly conflict with each other—pledged to live in peace and to unite in a confederation.' }, src: { en: 'From "The Americas 1200–1450" by William H. Beezley, World History Project' } },
+        q: { en: 'Compared with the Mexica, the Haudenosaunee described in the excerpt built unity mainly through...' },
+        choices: [{ en: 'tribute paid by the conquered towns' }, { en: 'resettling villagers and colonists' }, { en: 'a sun god and his ruler on Earth' }, { en: 'a pledge of peace among five nations' }],
+        answer: 3,
+        why: { en: 'Five nations pledged peace and formed a confederation under the Great Tree of Peace. Tribute was Mexica; resettlement and the Sun god\'s ruler were Inca.' }
       },
       {
-        q: { en: 'Why did the Mexica keep account books, calendars and records in picture writing?' },
-        choices: [{ en: 'Priests and officials needed records' }, { en: 'Spanish rulers ordered them to write' }, { en: 'Only farmers could read and write' }, { en: 'Records were sold as luxury goods' }],
+        q: { en: 'Which of the following best explains how Tenochtitlan supported a population larger than London, Paris or Madrid?' },
+        choices: [{ en: 'Chinampa gardens raised in the lake' }, { en: 'Terraced fields on Andean slopes' }, { en: 'Maize shipped in by Maya canoes' }, { en: 'Llama caravans bringing in grain' }],
         answer: 0,
-        why: { en: 'Running an empire, its tribute, its trade and its 52-year calendar needed accurate records, so the Mexica kept them.' }
+        why: { en: 'Chinampas turned the shallow lake into farmland, and short-distance trade brought staples. Terraces and llamas belonged to the Andes; Maya canoes carried luxuries.' }
       }
     ]
   },
