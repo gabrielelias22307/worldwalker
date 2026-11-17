@@ -20,7 +20,7 @@ window.EPISODE = {
   place: { en: 'Santa Fe, Nuevo México, New Spain, 1680' },
   intro: [
     { en: 'The Grump smeared the page on [[resistance|resistance]]. In Santa Fe, people are forgetting why they push back against growing states.' },
-    { en: 'Talk to the 4 people here, help a trader find his book of news, then wake the time stone.' }
+    { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a trader find his book of news, then wake the time stone.' }
   ],
   scenes: {
     at: [-105.94, 35.69],
@@ -86,16 +86,17 @@ window.EPISODE = {
       look: { skin: 1, hair: '#3a2416', shirt: '#2a3a5a', pants: '#2a2a2a', hat: '#1b1410', style: 'short' },
       lines: [
         { en: 'I copy the orders for this colony. They come from [[new spain|New Spain]] and from Spain, far away. Power gathered at the top: that is [[centralization|centralization]].' },
-        { en: 'Centralizing states bring more taxes, more laws and often more oppression. Even nobles can lose power and profits.' },
-        { en: 'In France in 1648, lords revolted when the [[regent|regent]] Anne of Austria and Cardinal Mazarin sold noble titles to raise tax money. That civil war was the [[fronde|Fronde]].' }
+        { en: 'Centralizing states bring more taxes, more laws and often more oppression. Even elites, like nobles or wealthy merchants, can lose power and profits.' },
+        { en: 'In France, King Louis XIV was only 10. His [[regent|regent]], Anne of Austria, and Cardinal Mazarin needed tax money for costly wars, so they sold offices and noble titles.' },
+        { en: 'In 1648 the lords revolted and drove the court into the countryside: the [[fronde|Fronde]]. But they were too divided. By 1653 the crown was back in charge.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with the Pueblo Revolt, who led the Fronde in France, and why?' },
+        q: { en: 'Compared with the Pueblo Revolt, the Fronde was led by whom, and against what?' },
         choices: [
-          { ok: true, t: { en: 'Nobles, to keep their power and tax income' }, why: { en: 'Yes. The Pueblos resisted colonizers. In France, elites resisted a centralizing crown that sold titles to new aristocrats. Too divided, they lost by 1653.' } },
-          { t: { en: 'Peasants, to escape a foreign colonial army' }, why: { en: 'No. The Fronde was a civil war between the crown and much of the French nobility, not peasants against colonizers.' } },
-          { t: { en: 'Priests, to force a new religion on France' }, why: { en: 'No. The Fronde was about power and tax money. Land-owning lords wanted the old system back.' } }
+          { ok: true, t: { en: 'Nobles, against their own centralizing crown' }, why: { en: 'Yes. The Pueblos resisted colonizers. In France, land-owning lords resisted their own king\'s government, which sold titles to new aristocrats and cut their tax income.' } },
+          { t: { en: 'Peasants, against a foreign colonial army' }, why: { en: 'No. The Fronde was a civil war between the crown and much of the French nobility, not peasants against colonizers.' } },
+          { t: { en: 'Priests, against a crown that sold church lands' }, why: { en: 'No. The crown sold government positions and noble titles. Land-owning lords, not priests, wanted the old system back.' } }
         ]
       }
     },
@@ -103,17 +104,17 @@ window.EPISODE = {
       x: 24, y: 9, name: { en: 'Swift Deer' }, role: { en: 'Pueblo runner' },
       look: { skin: 3, hair: '#1b1410', shirt: '#b8562b', pants: '#5a4a3a', style: 'long' },
       lines: [
-        { en: 'I carry messages between the Pueblo towns. Spanish priests try to force us to give up our own religion. Our leaders will not let it die.' },
-        { en: 'A religious leader named Popé is uniting the towns. He even recruits our Apache and Navajo neighbors. The goal: drive out the Spanish and restore the old order.' },
-        { en: 'When one person suffers alone, [[resistance|resistance]] is quiet. When a whole people suffers together, it becomes organized.' }
+        { en: 'I carry messages between the Pueblo towns. Spanish priests try to force us to abandon our own religious practices. Our religious leaders will not let them die.' },
+        { en: 'A shaman named Popé leads the resistance to settlers and priests. He even recruits our Apache and Navajo neighbors. The goal: expel the Spanish and restore the old order.' },
+        { en: 'When one person suffers alone, [[resistance|resistance]] is quiet. When a whole people suffers together, it becomes organized: a revolt of many towns at once.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'What did Popé want to happen after the Spanish were driven out?' },
+        q: { en: 'In 1680 the revolt drove the Spanish off most Pueblo land. What did Popé then order?' },
         choices: [
-          { ok: true, t: { en: 'A return to traditional religion and ways' }, why: { en: 'Yes. In 1680 the revolt drove the Spanish off most Pueblo land. Popé then ordered everyone to return to their traditional religion and abandon Spanish culture.' } },
-          { t: { en: 'A blend of Pueblo and Spanish religions together' }, why: { en: 'No. Popé ordered people to abandon any Spanish culture, not to mix it with their own.' } },
-          { t: { en: 'A new Pueblo empire ruling over all New Spain' }, why: { en: 'No. The goal was to expel the Spanish from Pueblo lands and restore the old order, not to conquer New Spain.' } }
+          { ok: true, t: { en: 'A return to traditional Pueblo religion' }, why: { en: 'Yes. Popé ordered everyone to return to their traditional religion and abandon any Spanish culture. Fighting went on, and Spanish troops later recaptured the region.' } },
+          { t: { en: 'A blend of Pueblo and Catholic practice' }, why: { en: 'No. Popé ordered people to abandon any Spanish culture, not to mix it with their own.' } },
+          { t: { en: 'A march south to conquer New Spain' }, why: { en: 'No. The goal was to expel the Spanish from Pueblo lands and restore the old order, not to conquer New Spain.' } }
         ]
       }
     },
@@ -121,17 +122,18 @@ window.EPISODE = {
       x: 26, y: 15, name: { en: 'Blue Corn' }, role: { en: 'Pueblo farmer' },
       look: { skin: 4, hair: '#1b1410', shirt: '#3a6a8a', pants: '#5a3a2a', style: 'bun' },
       lines: [
-        { en: 'My people, the Pueblo, lived in this land long before the Spanish came. We will still be here after them.' },
-        { en: 'Beginning in the 1540s, Spanish forces pushed north from New Spain. Waves of settlers followed and took over vast areas of land.' },
-        { en: 'They take our land so we cannot live on our own, then force us to work for them. And new diseases spread among us.' }
+        { en: 'My people, the Pueblo, lived in this land, in the Southwest, long before the Spanish came. We will still be here after them.' },
+        { en: 'Beginning in the 1540s, Spanish forces pushed north from New Spain, the land you call Mexico. Waves of settlers followed and took over vast areas of land.' },
+        { en: 'They take our land so we cannot live on our own, then force us to work for them. That is how they get our labor.' },
+        { en: 'New diseases came with the settlers and spread fast among us. So many sick and dying makes it harder to fight back. Still, we resist.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why was it hard for Pueblo people to live independently under Spanish rule?' },
+        q: { en: 'Which of the following best explains how settlers made Pueblo people work for them?' },
         choices: [
-          { ok: true, t: { en: 'Settlers seized land and forced their labor' }, why: { en: 'Yes. Without their land, Pueblo families could not live on their own, so settlers could force them to work. That was one cause of the revolt.' } },
-          { t: { en: 'The Pueblo had never farmed before the 1540s' }, why: { en: 'No. Blue Corn\'s people lived and farmed here long before the Spanish. The settlers took that land.' } },
-          { t: { en: 'Settlers paid them to move south to New Spain' }, why: { en: 'No. Settlers took land and forced Pueblo people to work for them. Nothing was freely chosen.' } }
+          { ok: true, t: { en: 'They took the land families lived on' }, why: { en: 'Yes. Without their land, Pueblo families could not live independently, so settlers could force them to work. That was one cause of the revolt.' } },
+          { t: { en: 'They paid wages in silver from the mines' }, why: { en: 'No. Settlers did not hire Pueblo workers for wages. They took land and forced people to work.' } },
+          { t: { en: 'Priests ordered work as a religious duty' }, why: { en: 'No. Priests pressed the Pueblo to abandon their religion. Labor was forced by settlers who seized the land.' } }
         ]
       }
     },
@@ -141,15 +143,56 @@ window.EPISODE = {
       lines: [
         { en: 'Not all [[resistance|resistance]] is war. People with little power work slowly, pretend to obey, steal or run away. Historians call it [[everyday resistance|everyday resistance]].' },
         { en: 'Enslaved people who escape plantations are [[maroon|maroons]]. Running away, [[marronage|marronage]], denies slavers the labor they depend on.' },
-        { en: 'In Brazil, runaways build free towns. Bahia had thirteen. The biggest, Palmares, had as many as 220 buildings in 1645. It even allied with the Dutch against the Portuguese.' }
+        { en: 'In Brazil, runaways build communities called palenques or macambos. The province of Bahia had thirteen. The biggest, Palmares, had as many as 220 buildings in 1645.' },
+        { en: 'Palmares even has its own foreign policy: an alliance with the Dutch against the Portuguese. From such towns, maroons raid plantations and free others.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why was running away a form of resistance to slavery?' },
+        q: { en: 'Which of the following best explains why running away was a form of resistance to slavery?' },
         choices: [
-          { ok: true, t: { en: 'It took away labor the slavers relied on' }, why: { en: 'Yes. Plantations depended on enslaved labor. Marronage denied it, and maroon towns could attack plantations and free others.' } },
-          { t: { en: 'It was the only way to join the Spanish army' }, why: { en: 'No. Maroons escaped to be free, and many built their own communities.' } },
-          { t: { en: 'Plantation owners paid people to leave' }, why: { en: 'No. Slavers relied on enslaved labor. Losing it hurt them, which is why running away was resistance.' } }
+          { ok: true, t: { en: 'It denied slavers the labor they relied on' }, why: { en: 'Yes. Plantations depended on enslaved labor. Marronage denied it, and maroon towns could attack plantations and free others.' } },
+          { t: { en: 'It forced the Portuguese crown to end slavery' }, why: { en: 'No. Running away did not end slavery. It hurt slavers by taking away the labor they relied on.' } },
+          { t: { en: 'It let runaways join the Dutch army in Brazil' }, why: { en: 'No. Palmares as a community allied with the Dutch, but maroons ran away to be free and built their own towns.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 3, y: 5, icon: '📜',
+      name: { en: 'Weapons of the Weak' }, role: { en: 'A historian\'s words' },
+      src: { en: 'Historian James Scott, on "everyday forms of peasant resistance"; quoted in "State Centralization and Resistance," World History Project' },
+      lines: [
+        { en: '"... to understand what we might call everyday forms of peasant resistance—the prosaic [humdrum] but constant struggle between peasantry and those who seek to extract labor, food, taxes, rents and interest from them."' },
+        { en: '"Most forms of this struggle stop well short of outright collective defiance. Here I have in mind the ordinary weapons of relatively powerless groups: foot dragging, dissimulation, desertion, false compliance, pilfering, feigned ignorance, slander, arson, sabotage, and so on."' },
+        { en: 'Context: James Scott is a historian, not a person of this era. He called these strategies the "peasant weapons of the weak." When we think of resistance, we usually think of violence and large revolts. Scott wanted readers to see a different kind, everyday resistance, open to people with almost no power.' },
+        { en: 'In plain words: weak people lied to escape or oppose the powerful. They ran away. They pretended to obey but did not. They stole. They slowed their work. They destroyed things when they could get away with it.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: what is the historian\'s main purpose in this passage?' },
+        choices: [
+          { ok: true, t: { en: 'To show that powerless people resisted in daily ways' }, why: { en: 'Yes. Scott points past wars and big revolts to the constant, quiet struggle of peasants against those who took their labor, food and taxes.' } },
+          { t: { en: 'To argue that peasants seldom resisted their rulers' }, why: { en: 'No. Scott calls the struggle constant. It simply stopped short of outright collective defiance.' } },
+          { t: { en: 'To explain how nobles fought kings in civil wars' }, why: { en: 'No. That was the Fronde. Scott writes about relatively powerless groups, not elites like nobles.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 16, y: 15, icon: '📖',
+      name: { en: 'Growing States, Many Resisters' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "State Centralization and Resistance" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'From 1400 to 1750, states grew bigger. Safavid, Ottoman, Mughal and Ming (later Qing) rulers split Eurasia; European states built oceanic empires. Government centralized: decisions were made far from the people affected, with more taxes, more laws and often more oppression. Most resistance targeted a particular policy, not the whole government. But resistance to European regimes that supported plantation slavery was aimed at the entire system.' },
+        { en: 'Enslaved people fled plantations and formed maroon communities. In the 1730s, maroons in Jamaica fought the British colony to a draw, forcing the colonists to recognize their freedom, a promise not always honored. In 1760 Takyi (Tacky), once a leader among the Fante people of West Africa, launched a major rebellion. It took over several plantations and was put down only through brute force. It was one of as many as 100 rebellions.' },
+        { en: 'Beginning in the 1540s, Spanish forces pushed from New Spain into the Southwest. Settlers took vast areas of land and forced local people to work; priests tried to force the Pueblo to abandon their religion. Resistance was difficult because new diseases spread rapidly. In 1680 Popé, a religious leader, with Apache and Navajo recruits, drove the Spanish off most Pueblo territory. Fighting continued, and Spanish troops later recaptured the region.' },
+        { en: 'Elites resisted too. In France, nobles fought the crown in the Fronde (1648–1653). In Korea, Joseon nobles stayed loyal to the Ming as the Manchu Qing rose. One overthrew a neutral king and became King Injo (r. 1623–1649). Even after the Qing invaded Joseon, its aristocrats kept Ming clothing and hairstyles and refused the long "queue" the Qing demanded.' }
+      ],
+      ask: {
+        stat: 'hei',
+        q: { en: 'Comparison: which of the following best describes a pattern across the cases in the reading?' },
+        choices: [
+          { ok: true, t: { en: 'Groups resisted different things in different ways' }, why: { en: 'Yes. Invasion, forced cultural change, a centralizing king, enslavement: people resisted with wars, flight and even hairstyles.' } },
+          { t: { en: 'Only enslaved people resisted growing states' }, why: { en: 'No. Pueblo towns, French nobles and Joseon aristocrats resisted too, not only the enslaved.' } },
+          { t: { en: 'Each resistance movement won lasting victory' }, why: { en: 'No. The Fronde lost by 1653, Takyi\'s rebellion was crushed, and Spain later retook Pueblo lands.' } }
         ]
       }
     }
@@ -195,7 +238,7 @@ window.EPISODE = {
         { en: 'The Grump\'s Ink Thief tore my book of news into three pieces! Ask Grandmother Willow, the potter. She lives across the river, by the Pueblo houses.' }
       ],
       wait: { en: 'Grandmother Willow works south of the river. Cross the west bridge and look by the Pueblo houses.' },
-      thanks: { en: 'My book is whole! Pueblo towns, French lords, Korean nobles, Brazilian maroons: all resisted growing states, in very different ways.' }
+      thanks: { en: 'My book is whole! Pueblo towns, French lords, Korean nobles loyal to the Ming, Brazilian maroons: all resisted growing states, in different ways.' }
     },
     contact: {
       x: 5, y: 16, name: { en: 'Grandmother Willow' }, role: { en: 'Pueblo potter' },
@@ -280,58 +323,59 @@ window.EPISODE = {
     win: { en: 'The dust settles over the river valley. Chronicle page 4.6 floats down into your hands.' },
     questions: [
       {
-        stim: { text: { en: '"...the ordinary weapons of relatively powerless groups: foot dragging, dissimulation, desertion, false compliance, pilfering, feigned ignorance, slander, arson, sabotage, and so on."' }, src: { en: 'Historian James Scott, quoted in "State Centralization and Resistance," World History Project' } },
-        q: { en: 'The historian\'s list best describes which kind of resistance?' },
-        choices: [{ en: 'Everyday resistance by people with little power' }, { en: 'Large armies fighting to build a new state' }, { en: 'Nobles revolting against a regent in France' }, { en: 'Priests working to convert people to a new faith' }],
+        stim: { text: { en: '"Most forms of this struggle stop well short of outright collective defiance. Here I have in mind the ordinary weapons of relatively powerless groups: foot dragging, dissimulation, desertion, false compliance, pilfering, feigned ignorance..."' }, src: { en: 'Historian James Scott, quoted in "State Centralization and Resistance," World History Project' } },
+        q: { en: 'The historian\'s point of view in the excerpt best supports the claim that...' },
+        choices: [{ en: 'resistance often took forms short of open revolt' }, { en: 'peasants seldom resisted those who taxed them' }, { en: 'organized revolts were the most common resistance' }, { en: 'elites led most resistance to centralizing states' }],
         answer: 0,
-        why: { en: 'Working slowly, pretending to obey, stealing and running away are everyday resistance: strategies for people with almost no power.' }
+        why: { en: 'Scott calls the struggle constant but says most of it stopped short of outright collective defiance: slow work, false compliance, desertion, theft. That is everyday resistance.' }
       },
       {
-        stim: { text: { en: 'Settlers tried to force the local populations to work for them, often by taking their land. Meanwhile, priests often tried to force the Pueblo to abandon their own religious practices.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
-        q: { en: 'The excerpt best explains which development?' },
-        choices: [{ en: 'The Pueblo Revolt of 1680' }, { en: 'The Fronde in France' }, { en: 'The rise of the Qing dynasty' }, { en: 'Palmares\' alliance with the Dutch' }],
+        stim: { text: { en: 'Settlers tried to force the local populations to work for them, often by taking their land and depriving them of the ability to live independently. Meanwhile, priests often tried to force the Pueblo to abandon their own religious practices.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
+        q: { en: 'The conditions described in the excerpt most directly contributed to which development?' },
+        choices: [{ en: 'The Pueblo Revolt of 1680' }, { en: 'The Fronde of 1648' }, { en: 'Takyi\'s rebellion of 1760' }, { en: 'Joseon\'s support for the Ming' }],
         answer: 0,
-        why: { en: 'Land seizures, forced labor and attacks on Pueblo religion led Pueblo leaders like Popé to organize the revolt of 1680.' }
+        why: { en: 'Land seizures, forced labor and pressure on Pueblo religion led Pueblo religious leaders like Popé to organize the revolt of 1680.' }
       },
       {
-        stim: { text: { en: 'The victorious Popé ordered that everyone return to their traditional religion and abandon any Spanish culture.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
-        q: { en: 'Popé\'s order best reflects a goal of...' },
-        choices: [{ en: 'restoring the order from before the Spanish' }, { en: 'blending Spanish and Pueblo religions together' }, { en: 'building a Pueblo empire over New Spain' }, { en: 'joining the French nobles in their revolt' }],
+        stim: { text: { en: 'Popé and his followers set a goal to expel the Spanish and restore the old order. The victorious Popé ordered that everyone return to their traditional religion and abandon any Spanish culture.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
+        q: { en: 'Popé\'s order most directly reflects which goal of the revolt?' },
+        choices: [{ en: 'restoring Pueblo ways from before Spanish rule' }, { en: 'blending Pueblo and Catholic religious practice' }, { en: 'allying with the Dutch against the Spanish crown' }, { en: 'extending Pueblo rule south over New Spain' }],
         answer: 0,
-        why: { en: 'Popé and his followers set out to expel the Spanish and restore the old order, including traditional religion.' }
+        why: { en: 'The goal was to expel the Spanish and restore the old order, so Popé ordered a return to traditional religion. The Dutch alliance belongs to Palmares in Brazil.' }
       },
       {
-        stim: { text: { en: 'To bring more tax money directly to the state, the regent and Cardinal Mazarin sold government positions, and the aristocratic titles that went with them, to the highest bidders.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
-        q: { en: 'Which group most strongly opposed the policy described above?' },
-        choices: [{ en: 'Land-owning French lords' }, { en: 'Enslaved workers in Brazil' }, { en: 'Pueblo religious leaders' }, { en: 'Apache and Navajo allies' }],
+        stim: { text: { en: 'Needing more tax money for costly wars, the regent Anne of Austria and Cardinal Mazarin sold government positions, and the aristocratic titles that went with them, to the highest bidders.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
+        q: { en: 'Which of the following best explains why land-owning lords opposed the policy described above?' },
+        choices: [{ en: 'It cut their power and made new aristocrats' }, { en: 'It raised taxes on peasants who then revolted' }, { en: 'It forced nobles to fight wars against the Qing' }, { en: 'It ended the regency of Anne of Austria' }],
         answer: 0,
-        why: { en: 'The old lords lost tax money and power, and disliked the new aristocrats. In 1648 they revolted: the Fronde.' }
+        why: { en: 'The lords disliked new aristocrats, losing access to tax money and losing power. In 1648 they revolted: the Fronde, a civil war between crown and nobility.' }
       },
       {
-        q: { en: 'Compared with the Pueblo Revolt, the Fronde was different because it was...' },
-        choices: [{ en: 'led by elites defending their own power' }, { en: 'led by enslaved people seeking freedom' }, { en: 'a revolt against a foreign colonizer' }, { en: 'aimed at restoring a traditional religion' }],
+        stim: { title: { en: 'Two challenges to state power' }, rows: [[{ en: 'Feature' }, { en: 'Pueblo Revolt' }, { en: 'The Fronde' }], [{ en: 'Who resisted' }, { en: 'Pueblo towns, with Apache and Navajo recruits' }, { en: 'Land-owning French nobles' }], [{ en: 'Resisted whom' }, { en: 'Spanish settlers, priests and soldiers' }, { en: 'Their own king\'s government' }], [{ en: 'Outcome' }, { en: 'Spanish driven off; region later retaken' }, { en: 'Crown back in charge by 1653' }]], src: { en: 'From "State Centralization and Resistance," World History Project' } },
+        q: { en: 'Which of the following best describes a similarity between the two movements in the table?' },
+        choices: [{ en: 'Both resisted a state extending its power over them' }, { en: 'Both were led by religious leaders seeking old ways' }, { en: 'Both left the rebels in lasting, secure control' }, { en: 'Both opposed a foreign colonial empire\'s settlers' }],
         answer: 0,
-        why: { en: 'The Pueblos resisted colonizers who took land and attacked their religion. The Fronde was nobles resisting their own centralizing crown.' }
+        why: { en: 'The Pueblos fought colonizers and the nobles fought their own crown, but both pushed back against a growing state. Neither kept lasting control.' }
       },
       {
-        stim: { text: { en: 'Joseon aristocrats continued to wear the clothing and hairstyles popular during the Ming dynasty, and did not adopt the long "queue" hairstyle the Qing demanded.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
-        q: { en: 'The practice described above is best understood as...' },
-        choices: [{ en: 'quiet resistance to a new ruling dynasty' }, { en: 'proof that Korea welcomed the Qing' }, { en: 'a revolt of enslaved people seeking freedom' }, { en: 'a Spanish effort to change local culture' }],
+        stim: { text: { en: 'Even after the Qing dynasty invaded Joseon itself, Joseon aristocrats continued to wear the clothing and hairstyles popular during the Ming dynasty, and did not adopt the long "queue" hairstyle the Qing demanded.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
+        q: { en: 'The practice described above most directly reflects...' },
+        choices: [{ en: 'Joseon\'s lasting loyalty to the fallen Ming' }, { en: 'Joseon\'s alliance with Japan against the Ming' }, { en: 'Korean nobles\' support for the Qing conquest' }, { en: 'a Qing policy of tolerating Ming styles' }],
         answer: 0,
-        why: { en: 'Joseon stayed loyal to the Ming. Keeping Ming styles and refusing the queue was a sign of continued resistance to the Qing.' }
+        why: { en: 'Joseon had been a Ming ally; the Ming helped defend it from Japan in the 1590s. Keeping Ming styles and refusing the queue was quiet resistance to the Qing.' }
       },
       {
-        stim: { title: { en: 'Maroon communities in Bahia, Brazil (1600s)' }, rows: [[{ en: 'Fact' }, { en: 'Number' }], [{ en: 'Runaway communities in Bahia' }, { en: '13' }], [{ en: 'Buildings at Palmares, 1645' }, { en: 'as many as 220' }]], src: { en: 'From "State Centralization and Resistance," World History Project' } },
-        q: { en: 'The data best support which claim about marronage?' },
-        choices: [{ en: 'Runaways built large, organized communities' }, { en: 'Few enslaved people ever tried to escape' }, { en: 'Portuguese officials ran the maroon towns' }, { en: 'Running away was legal under Portuguese rule' }],
+        stim: { text: { en: 'In the 1730s, maroons in Jamaica fought the government of that British island colony to a draw. Then, in 1760, Takyi launched a major rebellion that took over several plantations. It was put down only through brute force.' }, src: { en: 'Adapted from "State Centralization and Resistance," World History Project' } },
+        q: { en: 'Compared with most resistance in this period, the resistance described above was distinctive because it...' },
+        choices: [{ en: 'targeted the whole system of plantation slavery' }, { en: 'aimed at one tax policy, not the whole state' }, { en: 'was led by nobles defending their privileges' }, { en: 'relied only on everyday acts like foot dragging' }],
         answer: 0,
-        why: { en: 'Thirteen communities in one province and a town of 220 buildings show organized societies. Palmares even had its own alliance with the Dutch.' }
+        why: { en: 'Most resistance was against a particular policy. Resistance to European regimes that supported plantation slavery was aimed at the entire system.' }
       },
       {
-        q: { en: 'Which best explains why growing states faced resistance between 1450 and 1750?' },
-        choices: [{ en: 'They raised taxes and laws, ruling from afar' }, { en: 'They gave power back to local lords everywhere' }, { en: 'They stopped collecting taxes from peasants' }, { en: 'They let every group keep its own old ways' }],
+        q: { en: 'Which of the following best explains why growing states faced resistance between 1450 and 1750?' },
+        choices: [{ en: 'Centralized rule brought more taxes, laws and oppression' }, { en: 'States handed power back to regional lords and nobles' }, { en: 'Eurasian empires stopped taxing merchants and elites' }, { en: 'Rulers let every group keep its own customs and faith' }],
         answer: 0,
-        why: { en: 'Centralization moved decisions far from the people affected and brought more taxes, more laws and often more oppression.' }
+        why: { en: 'Centralization moved decisions far from the people affected and brought more taxes, more laws and often more oppression, even for some elites.' }
       }
     ]
   },
