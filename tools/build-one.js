@@ -33,6 +33,7 @@ ${css}
 <div id="ww"></div>
 <script>
 ${inline(read(path.join(G, 'course.js')))}
+${fs.existsSync(path.join(G, 'images.js')) ? inline(read(path.join(G, 'images.js'))) : ''}
 ${inline(read(path.join(G, 'config.js')))}
 window.WW_CONFIG.MODE = 'one';
 </script>

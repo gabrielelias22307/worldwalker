@@ -320,7 +320,7 @@
     if (WW.world.KINDS.includes(e.kind)) return WW.world.interact(e);
     if (WW.farm.KINDS.includes(e.kind)) return WW.farm.interact(e);
     if (e.kind === 'npc') {
-      WW.ui.talk(e.ref, () => { const was = G.foesAsleep(); r.talked.add(e.ref.id); WW.ui.quest(); if (was && !G.foesAsleep()) wakeFoes(); });
+      WW.ui.talk(e.ref, () => { const was = G.foesAsleep(); r.talked.add(e.ref.id); WW.ui.quest(); if (was && !G.foesAsleep()) wakeFoes(); WW.hd && WW.hd.scrapTip && WW.hd.scrapTip(); });
     } else if (e.kind === 'sign') {
       WW.ui.message('🪧', e.ref.text);
     } else if (e.kind === 'stone') {
@@ -335,6 +335,7 @@
   function pickup() {
     WW.quest.onStep(player.x, player.y);
     if (WW.world.onStep(player.x, player.y)) return;
+    if (WW.hd && WW.hd.bossTouch) { const b = WW.hd.bossTouch(ents, player); if (b) { held = null; clickTarget = null; return interact(b); } } // HistoryWalker: beside the Void asks
     const pg = ents.find(e => e.kind === 'atlas' && !e.gone && e.x === player.x && e.y === player.y);
     if (pg && !WW.run.claimed) { pg.gone = true; WW.run.claimed = true; WW.fx.burst(pg.x, pg.y, 'gold'); WW.ui.pageHome([pg.x, pg.y], finishEpisode); return; }
     const e = ents.find(e => e.kind === 'scrap' && !e.gone && e.x === player.x && e.y === player.y);

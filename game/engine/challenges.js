@@ -159,7 +159,7 @@
   /* a stimulus for an AP-style question: a source excerpt with its author and date, or a small table */
   WW.stimHTML = st => {
     const esc2 = v => WW.rich(v);
-    let body = '';
+    let body = WW.pic ? WW.pic(st.title, st.text, st.src) : '';
     if (st.text) body += `<div class="stimtext">${esc2(st.text)}</div>`;
     if (st.rows) body += `<table class="stimtab">${st.rows.map((r, i) => `<tr>${r.map(cell => i === 0 ? `<th>${esc2(cell)}</th>` : `<td>${esc2(cell)}</td>`).join('')}</tr>`).join('')}</table>`;
     return `<div class="stim">${st.title ? `<div class="stimtitle">${esc2(st.title)}</div>` : ''}${body}${st.src ? `<div class="stimsrc">${esc2(st.src)}</div>` : ''}</div>`;
@@ -317,59 +317,6 @@
     f(ch);
   };
 
-
-  /* ---------------- flash recall (HistoryWalker): a shade caught you ----------------
-     Instead of a plain hit, one quick question about what this episode has ALREADY taught: a key term from the
-     glossary (what it means, or which term fits a meaning), or the question of a person or reading you have already
-     finished. Right: the shade dissolves and no heart is lost. Wrong: a heart is lost and the answer is shown.
-     No timer: the map stops while you think. */
-  let recallSeen = new Set(), recallN = 0;
-  function recallPool() {
-    const ep = WW.ep, pool = [], words = Object.keys(ep.words || {}).filter(k => ep.words[k] && L(ep.words[k]));
-    words.forEach(k => {
-      const others = shuffle(words.filter(w => w !== k), recallN * 31 + k.length).slice(0, 3);
-      if (others.length < 3) return;
-      const term = k.replace(/\b\w/g, ch => ch.toUpperCase());
-      pool.push({ key: 'w:' + k, q: `What does <b>${esc(term)}</b> mean?`, choices: [L(ep.words[k]), ...others.map(o => L(ep.words[o]))], why: `<b>${esc(term)}</b>: ${esc(L(ep.words[k]))}` });
-      pool.push({ key: 'm:' + k, q: `Which term means: <i>${esc(L(ep.words[k]))}</i>?`, choices: [term, ...others.map(o => o.replace(/\b\w/g, ch => ch.toUpperCase()))], why: `That is <b>${esc(term)}</b>.` });
-    });
-    ep.npcs.forEach(n => {
-      if (!n.ask || !WW.run.talked.has(n.id)) return; // only what you have already heard or read
-      const ok = n.ask.choices.find(c => c.ok);
-      pool.push({ key: 'a:' + n.id, q: `${WW.rich(n.ask.q)} <span class="small">(${esc(WW.plain(n.name))})</span>`, choices: [L(ok.t), ...n.ask.choices.filter(c => !c.ok).map(c => L(c.t))], why: WW.rich(ok.why) });
-    });
-    return pool;
-  }
-  WW.recall = (onDone) => {
-    let pool = recallPool().filter(p => !recallSeen.has(p.key));
-    if (!pool.length) { recallSeen = new Set(); pool = recallPool(); }
-    if (!pool.length) return onDone(null); // nothing taught yet: a plain hit
-    const item = pool[(recallN++ * 7 + Date.now()) % pool.length]; recallSeen.add(item.key);
-    const order = shuffle(item.choices.map((_, i) => i), recallN * 13 + 5);
-    let picked = null;
-    WW.sfx('growl');
-    WW.ui.open({
-      cls: 'msgov recallov',
-      render(box, h) {
-        box.innerHTML = `<div class="recall-head"><span class="recall-shade"></span><div><div class="recall-t">⚡ Flash recall!</div><div class="small">A shade caught you. Answer to drive it off.</div></div></div><p class="say q">${item.q}</p>`;
-        const list = document.createElement('div'); list.className = 'choices';
-        order.forEach(i => {
-          const b = document.createElement('button'); b.dataset.i = i; b.innerHTML = esc(item.choices[i]);
-          if (picked != null) { if (i === 0) b.className = 'right'; else if (i === picked) b.className = 'wrong'; b.disabled = true; }
-          b.onclick = () => { if (picked != null) return; picked = i; WW.sfx(i === 0 ? 'good' : 'bad'); h.render(); };
-          list.appendChild(b);
-        });
-        box.appendChild(list);
-        if (picked != null) {
-          const ok = picked === 0;
-          box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${ok ? 'Right! The shade dissolves.' : 'Not quite. The shade strikes!'}</b> ${item.why}</div>`);
-          const acts = document.createElement('div'); acts.className = 'acts';
-          acts.appendChild(btn(T('cont') + ' ▶', 'gold', () => { h.close(); onDone(ok); }));
-          box.appendChild(acts);
-        }
-      }
-    });
-  };
 
   /* ---------------- the Grump trial ---------------- */
   /* st (optional): the trial in the world — the same questions, one at a time. Each right answer closes the panel and

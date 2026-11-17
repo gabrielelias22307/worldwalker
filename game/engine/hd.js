@@ -848,3 +848,240 @@
     };
   });
 })();
+
+/* HistoryWalker extras (only HD courses ship hd.js, so the Canvas games stay small):
+   public-domain source pictures, the reflection checklist, the scraps tip, and the Void asking when you step beside it */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s);
+  { const st = document.createElement('style'); st.textContent = `#ww .stimpic { margin: 0 0 8px; text-align: center; } #ww .stimpic img { max-width: 100%; max-height: 210px; border: 2px solid #6a5a48; border-radius: 4px; cursor: zoom-in; display: block; margin: 0 auto; } #ww .stimpic.big img { max-height: 70vh; cursor: zoom-out; } #ww .stimpic figcaption { font-size: 0.78em; color: #6a5a48; margin-top: 3px; line-height: 1.3; } #ww .rcheck { list-style: none; margin: 6px 0 0; padding: 0; font-size: 0.85em; } #ww .rcheck li { color: #8a7a66; padding: 1px 0; } #ww .rcheck li::before { content: '☐ '; } #ww .rcheck li.on { color: #2a7a4a; font-weight: bold; } #ww .rcheck li.on::before { content: '☑ '; } #ww .rcwarn { color: #b03a2e; font-weight: bold; font-size: 0.9em; margin: 6px 0 0; }`; document.head.appendChild(st); }
+  // a picture for a source (course images.js): the first whose match word is in the given texts
+  WW.pic = (...texts) => {
+    const all = window.WW_IMAGES; if (!all) return '';
+    const s = texts.map(t => t ? L(t) : '').join(' ');
+    const p = all.find(im => im.match.some(w => s.includes(w))); if (!p) return '';
+    return `<figure class="stimpic"><img src="${p.src}" alt="${esc(p.alt)}" onclick="this.parentNode.classList.toggle('big')"><figcaption>${esc(p.caption)} · <i>${esc(p.credit)}</i></figcaption></figure>`;
+  };
+  // the finish screen: a claim / evidence / specific-fact checklist that lights up while the student types; Copy and
+  // Download refuse a blank or very short answer
+  WW.hd.reflect = (box, ta) => {
+    ta.rows = 5;
+    const words = () => (ta.value.trim().match(/[A-Za-z0-9À-ɏ'’-]+/g) || []).length;
+    const checks = [
+      ['claim', v => words() >= 8],
+      ['evidence', v => /\b(because|since|so|for example|for instance|such as|shows?|showed|evidence|according|the (reading|source)|led to|caused|as a result)\b/i.test(v)],
+      ['fact', v => /\d/.test(v) || v.trim().split(/\s+/).some((w, i, a) => i > 0 && !/[.!?:]$/.test(a[i - 1]) && /^[A-Z][a-z]{2,}/.test(w))]];
+    const cl = document.createElement('ul'); cl.className = 'rcheck';
+    cl.innerHTML = checks.map(c => `<li data-k="${c[0]}">${esc(T('rc_' + c[0]))}</li>`).join('');
+    box.appendChild(cl);
+    const tick = () => { checks.forEach(c => cl.querySelector(`[data-k=${c[0]}]`).classList.toggle('on', !!c[1](ta.value))); const w = box.querySelector('.rcwarn'); if (w && words() >= 12) w.remove(); };
+    tick();
+    return { tick, ready() { if (words() >= 12) return true; if (!box.querySelector('.rcwarn')) cl.insertAdjacentHTML('afterend', `<p class="rcwarn">${esc(T('rc_short'))}</p>`); ta.focus(); WW.sfx('bad'); return false; } };
+  };
+  // after the first talk, Quill says once that hidden scraps are worth looking for (course.S.scrapTip)
+  WW.hd.scrapTip = () => {
+    const r = WW.run, S = WW.COURSE && WW.COURSE.S;
+    if (!S || !S.scrapTip || r.scrapTold || !WW.ep.scraps.length || r.scraps.size >= WW.ep.scraps.length) return;
+    r.scrapTold = true;
+    setTimeout(() => { if (WW.ui.top()) { r.scrapTold = false; return; } WW.chris.say(T('scrapTip').replace('{n}', WW.ep.scraps.length - r.scraps.size)); }, 1500);
+  };
+  // the Void's darkness is drawn wider than its one square: stepping right beside it (diagonals too) asks its question
+  let touchAt = null;
+  WW.hd.bossTouch = (ents, p) => {
+    if (WW.run.bossDone || WW.ui.top()) return null;
+    const b = ents.find(o => o.kind === 'boss' && !o.gone && o.visible !== false), k = p.x + ',' + p.y;
+    const near = b && Math.max(Math.abs(b.x - p.x), Math.abs(b.y - p.y)) === 1;
+    if (!near) { touchAt = null; return null; }
+    if (touchAt === k) return null;
+    touchAt = k; return b;
+  };
+})();
+
+/* HistoryWalker-only styles and flash recall, kept here so the Canvas games (no hd.js) stay under the size limit */
+(function () {
+  const L = t => WW.L(t), T = k => WW.T(k), esc = s => WW.esc(s), btn = (a, b, c) => WW.btn(a, b, c);
+  const shuffle = (a, seed = 7) => { a = a.slice(); let s = seed; for (let i = a.length - 1; i > 0; i--) { s = (s * 9301 + 49297) % 233280; const j = Math.floor((s / 233280) * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  { const st = document.createElement('style'); st.textContent = `
+/* AP-style stimulus above a Grump question (HistoryWalker) */
+#ww .stim { background: #fbf4e2; color: #2b2533; border: 2px solid #c9b48a; border-left: 6px solid #9a6a3a; border-radius: 6px; padding: 10px 12px; margin: 6px 0 10px; font-size: 0.92em; line-height: 1.45; }
+#ww .stimtitle { font-weight: bold; margin-bottom: 4px; }
+#ww .stimtext { font-family: Georgia, 'Times New Roman', serif; }
+#ww .stimsrc { margin-top: 6px; font-size: 0.85em; color: #6a5a48; font-style: italic; }
+#ww .stimtab { border-collapse: collapse; width: 100%; font-size: 0.9em; }
+#ww .stimtab th, #ww .stimtab td { border: 1px solid #c9b48a; padding: 3px 6px; text-align: left; }
+#ww .stimtab th { background: #efe2c4; }
+/* the world map page of a one-file game (hub.js) */
+#ww.hw-hub { min-height: 100vh; background: radial-gradient(circle at 30% 0%, #2b2a4a, #14132a 70%); color: #f4ecd8; font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; }
+.hw-wrap { max-width: 1180px; margin: 0 auto; padding: 14px 16px 40px; }
+.hw-top { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+.hw-logo { font-family: var(--pix, monospace); color: #f2c14e; font-size: clamp(20px, 4vw, 34px); letter-spacing: 2px; text-shadow: 3px 3px 0 #000; }
+.hw-sub { font-family: var(--pix, monospace); font-size: 11px; color: #c9bfa6; margin-top: 6px; }
+.hw-me { text-align: right; font-size: 15px; }
+.hw-code { font-family: var(--pix, monospace); font-size: 11px; color: #f2c14e; background: #0b0a14; padding: 6px 8px; border-radius: 4px; margin-top: 4px; display: inline-block; }
+.hw-mapbox { position: relative; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,.5); }
+#hw-map { display: block; width: 100%; height: auto; image-rendering: pixelated; }
+.hw-pin { position: absolute; transform: translate(-50%, -50%); font: bold 11px/1 system-ui, sans-serif; padding: 4px 5px; border-radius: 10px; border: 2px solid #1a1626; background: var(--uc); color: #1a1626; cursor: pointer; box-shadow: 0 2px 0 #000, 0 0 0 0 var(--uc); }
+.hw-pin.done { background: #fff8e0; }
+.hw-pin.done::after { content: '★'; color: #c08a1e; margin-left: 2px; }
+.hw-pin.next { animation: hwpulse 1.4s ease-in-out infinite; z-index: 2; }
+@keyframes hwpulse { 50% { box-shadow: 0 2px 0 #000, 0 0 0 8px rgba(242,193,78,.35); } }
+.hw-pin:hover, .hw-pin:focus { z-index: 3; outline: 3px solid #fff; }
+#hw-tip { position: absolute; transform: translate(-50%, calc(-100% - 16px)); background: #fffbe8; color: #22202e; border: 2px solid #22202e; border-radius: 6px; padding: 6px 9px; font-size: 13px; pointer-events: none; white-space: nowrap; z-index: 4; }
+.hw-next { margin: 14px 0; text-align: center; }
+.hw-go { font-size: 17px; font-weight: 700; padding: 11px 18px; border: 3px solid #000; border-radius: 6px; background: #f2c14e; color: #22202e; cursor: pointer; box-shadow: 0 4px 0 #000; }
+.hw-units { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; }
+.hw-unit { background: #22203c; border: 3px solid #000; border-top: 6px solid var(--uc); border-radius: 8px; padding: 10px; }
+.hw-unit h2 { font-size: 15px; margin: 0 0 8px; color: var(--uc); }
+.hw-ep { width: 100%; display: grid; grid-template-columns: 34px 1fr auto; gap: 8px; align-items: center; text-align: left; margin: 5px 0; padding: 7px 8px; background: #2e2b52; color: #fff; border: 2px solid #000; border-radius: 5px; cursor: pointer; font: inherit; font-size: 14px; }
+.hw-ep:hover, .hw-ep:focus { border-color: #f2c14e; }
+.hw-ep.done { background: #1f3d2a; }
+.hw-ep .id { font-weight: 700; color: #f2c14e; }
+.hw-ep small { display: block; color: #b9b2c8; font-size: 12px; }
+.hw-ep .st { color: #f2c14e; }
+.hw-credit { margin-top: 18px; font-size: 12px; color: #9a92ad; text-align: center; }
+/* a reading stand (HistoryWalker): the talk panel shows a source passage */
+#ww .docface { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 40px; background: #fbf4e2; border: 3px solid #22202e; border-radius: 8px; }
+#ww .docread .stimtext { font-size: 1.05em; }
+#ww .docpage { text-align: right; font-size: 0.8em; color: #8a7a62; margin-top: 4px; }
+#ww.guide-small .cpanel.side canvas { max-width: 108px; }
+#ww.guide-small .cpanel.dock canvas { width: 60px; height: 60px; }
+/* HistoryWalker: the Void's trial is fought in the dark */
+#ww.void-dark .bossov .ov-box { background: #130e20; color: #e9e2f7; border-color: #3a2a5a; box-shadow: 0 0 40px rgba(120,60,200,.45); }
+#ww.void-dark .bossov .bname { color: #c9b6ff; }
+#ww.void-dark .bossov .say.q, #ww.void-dark .bossov .klabel { color: #e9e2f7; }
+#ww.void-dark .bossov .choices button { background: #1f1830; color: #f2ecff; border-color: #4a3a72; }
+#ww.void-dark .bossov .choices button:hover { border-color: #b89cff; }
+#ww.void-dark .bossov .bossface { background: #050208; border-color: #4a3a72; }
+#ww.void-dark .bossov .stim { background: #ece4d6; }
+#ww.void-dark .bossov .say.taunt { color: #c8b4ff; font-style: italic; text-shadow: 0 0 8px rgba(150,90,255,.5); }
+#ww.void-dark .bossov .fb.wrong, #ww.void-dark .bossov .fb.right { color: #22202e; }
+/* flash recall (HistoryWalker): a shade caught you */
+#ww .recallov .ov-box { background: #160f26; color: #efe8ff; border-color: #4a3a72; box-shadow: 0 0 36px rgba(120,60,200,.5); }
+#ww .recallov .recall-head { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+#ww .recallov .recall-shade { width: 44px; height: 44px; border-radius: 50%; flex: none; background: radial-gradient(circle at 50% 55%, #030006 45%, #5a2aa0 70%, rgba(90,40,170,0) 72%); box-shadow: 0 0 18px #7a4ad8; position: relative; }
+#ww .recallov .recall-shade::before, #ww .recallov .recall-shade::after { content: ''; position: absolute; top: 18px; width: 9px; height: 3px; background: #e8dcff; border-radius: 50%; }
+#ww .recallov .recall-shade::before { left: 11px; transform: rotate(18deg); } #ww .recallov .recall-shade::after { right: 11px; transform: rotate(-18deg); }
+#ww .recallov .recall-t { font-weight: 800; font-size: 1.15em; color: #c9b6ff; }
+#ww .recallov .say.q { color: #f4efff; }
+#ww .recallov .choices button { background: #231a38; color: #f2ecff; border-color: #4a3a72; }
+#ww .recallov .fb { color: #22202e; }
+#ww .recallov .choices button.right { background: #1d4a32; border-color: #5fd36a; }
+#ww .recallov .choices button.wrong { background: #4a1d2a; border-color: #ff6b5e; }
+#ww.guide-small #ww-now { max-height: calc(100vh - 300px) !important; overflow-y: auto; }
+`; document.head.appendChild(st); }
+  /* ---------------- flash recall (HistoryWalker): a shade caught you ----------------
+     Instead of a plain hit, one quick question about what this episode has ALREADY taught: a key term from the
+     glossary (what it means, or which term fits a meaning), or the question of a person or reading you have already
+     finished. Right: the shade dissolves and no heart is lost. Wrong: a heart is lost and the answer is shown.
+     No timer: the map stops while you think. */
+  let recallSeen = new Set(), recallN = 0;
+  function recallPool() {
+    const ep = WW.ep, pool = [], words = Object.keys(ep.words || {}).filter(k => ep.words[k] && L(ep.words[k]));
+    words.forEach(k => {
+      const others = shuffle(words.filter(w => w !== k), recallN * 31 + k.length).slice(0, 3);
+      if (others.length < 3) return;
+      const term = k.replace(/\b\w/g, ch => ch.toUpperCase());
+      pool.push({ key: 'w:' + k, q: `What does <b>${esc(term)}</b> mean?`, choices: [L(ep.words[k]), ...others.map(o => L(ep.words[o]))], why: `<b>${esc(term)}</b>: ${esc(L(ep.words[k]))}` });
+      pool.push({ key: 'm:' + k, q: `Which term means: <i>${esc(L(ep.words[k]))}</i>?`, choices: [term, ...others.map(o => o.replace(/\b\w/g, ch => ch.toUpperCase()))], why: `That is <b>${esc(term)}</b>.` });
+    });
+    ep.npcs.forEach(n => {
+      if (!n.ask || !WW.run.talked.has(n.id)) return; // only what you have already heard or read
+      const ok = n.ask.choices.find(c => c.ok);
+      pool.push({ key: 'a:' + n.id, q: `${WW.rich(n.ask.q)} <span class="small">(${esc(WW.plain(n.name))})</span>`, choices: [L(ok.t), ...n.ask.choices.filter(c => !c.ok).map(c => L(c.t))], why: WW.rich(ok.why) });
+    });
+    return pool;
+  }
+  WW.recall = (onDone) => {
+    let pool = recallPool().filter(p => !recallSeen.has(p.key));
+    if (!pool.length) { recallSeen = new Set(); pool = recallPool(); }
+    if (!pool.length) return onDone(null); // nothing taught yet: a plain hit
+    const item = pool[(recallN++ * 7 + Date.now()) % pool.length]; recallSeen.add(item.key);
+    const order = shuffle(item.choices.map((_, i) => i), recallN * 13 + 5);
+    let picked = null;
+    WW.sfx('growl');
+    WW.ui.open({
+      cls: 'msgov recallov',
+      render(box, h) {
+        box.innerHTML = `<div class="recall-head"><span class="recall-shade"></span><div><div class="recall-t">⚡ Flash recall!</div><div class="small">A shade caught you. Answer to drive it off.</div></div></div><p class="say q">${item.q}</p>`;
+        const list = document.createElement('div'); list.className = 'choices';
+        order.forEach(i => {
+          const b = document.createElement('button'); b.dataset.i = i; b.innerHTML = esc(item.choices[i]);
+          if (picked != null) { if (i === 0) b.className = 'right'; else if (i === picked) b.className = 'wrong'; b.disabled = true; }
+          b.onclick = () => { if (picked != null) return; picked = i; WW.sfx(i === 0 ? 'good' : 'bad'); h.render(); };
+          list.appendChild(b);
+        });
+        box.appendChild(list);
+        if (picked != null) {
+          const ok = picked === 0;
+          box.insertAdjacentHTML('beforeend', `<div class="fb ${ok ? 'right' : 'wrong'}"><b>${ok ? 'Right! The shade dissolves.' : 'Not quite. The shade strikes!'}</b> ${item.why}</div>`);
+          const acts = document.createElement('div'); acts.className = 'acts';
+          acts.appendChild(btn(T('cont') + ' ▶', 'gold', () => { h.close(); onDone(ok); }));
+          box.appendChild(acts);
+        }
+      }
+    });
+  };
+
+})();
+
+/* Quill's portrait (HistoryWalker's guide), moved here from chrisface.js so the Canvas games stay small */
+(function () {
+  const CX = 48, CY = 50;
+  function owlPortrait(c, t, o, col, calm) {
+    const mood = o.mood, droop = mood === 'droop', cheer = mood === 'cheer', talk = mood === 'talk' || o.talking;
+    const bob = calm ? 0 : Math.sin(t / 420) * 2 + (droop ? 3 : 0) - (cheer ? 2 : 0);
+    const tilt = calm ? 0 : Math.sin(t / 1300) * 0.08 + (mood === 'spin' ? Math.sin(t / 90) * 0.25 : 0);
+    const flap = calm ? 0 : cheer ? Math.sin(t / 70) * 0.5 : talk ? Math.sin(t / 140) * 0.18 : Math.max(0, Math.sin(t / 900)) * 0.12;
+    c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.ellipse(CX, 88, 14, 3, 0, 0, 7); c.fill();
+    c.save(); c.translate(CX, CY + 6 + bob); c.rotate(tilt);
+    const BR = ['#3e2a1c', '#5c3f29', '#7a5536', '#9a7048', '#c39a6a'];
+    // wings, behind the body; they lift when he flaps
+    [-1, 1].forEach(s => {
+      c.save(); c.translate(s * 15, -2); c.rotate(s * (0.15 + flap)); c.scale(s, 1);
+      c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(6, 8, 10, 17, 0.25, 0, 7); c.fill();
+      c.fillStyle = BR[1]; c.beginPath(); c.ellipse(6, 8, 8, 15, 0.25, 0, 7); c.fill();
+      c.fillStyle = BR[2]; for (let k = 0; k < 4; k++) { c.beginPath(); c.ellipse(5 + k * 1.2, 1 + k * 5, 5, 2.4, 0.4, 0, 7); c.fill(); }
+      c.fillStyle = BR[3]; for (let k = 0; k < 3; k++) c.fillRect(8 + k * 2, 14 + k * 3, 3, 1);
+      c.restore();
+    });
+    // the round body with a lighter, speckled chest
+    c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(0, 6, 21, 25, 0, 0, 7); c.fill();
+    const g = c.createRadialGradient(-6, -6, 3, 0, 4, 26); g.addColorStop(0, BR[4]); g.addColorStop(0.5, BR[3]); g.addColorStop(1, BR[1]);
+    c.fillStyle = g; c.beginPath(); c.ellipse(0, 6, 19, 23, 0, 0, 7); c.fill();
+    c.fillStyle = '#ead7b4'; c.beginPath(); c.ellipse(0, 15, 11, 12, 0, 0, 7); c.fill();
+    c.fillStyle = BR[2]; for (let r = 0; r < 3; r++) for (let k = -2; k <= 2; k++) { if ((k + r) % 2) continue; c.beginPath(); c.moveTo(k * 4 - 1.5, 9 + r * 5); c.lineTo(k * 4, 11 + r * 5); c.lineTo(k * 4 + 1.5, 9 + r * 5); c.fill(); }
+    // ear tufts that twitch now and then
+    const tw = calm ? 0 : ((t % 4200) < 180 ? 2 : 0);
+    [-1, 1].forEach(s => { c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(s * 9, -15); c.lineTo(s * (16 + tw), -27 - tw); c.lineTo(s * 17, -12); c.fill(); c.fillStyle = BR[2]; c.beginPath(); c.moveTo(s * 10, -15); c.lineTo(s * (15 + tw), -24 - tw); c.lineTo(s * 15, -13); c.fill(); });
+    // the face disc
+    c.fillStyle = '#f1e2c4'; [-1, 1].forEach(s => { c.beginPath(); c.arc(s * 8, -6, 10, 0, 7); c.fill(); });
+    c.strokeStyle = BR[2]; c.lineWidth = 1.2; [-1, 1].forEach(s => { c.beginPath(); c.arc(s * 8, -6, 10, s > 0 ? -1.2 : Math.PI - 1.9, s > 0 ? 1.9 : Math.PI + 1.2); c.stroke(); });
+    // big amber eyes: they look toward what he means, blink, squint when he cheers, droop when he is sad
+    const blink = !calm && (t % 3600) < 140, look = calm ? 0 : Math.sin(t / 1700) * 1.6;
+    [-1, 1].forEach(s => {
+      const ex = s * 8, ey = -6;
+      if (blink || cheer) { c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(ex, ey + (cheer ? -1 : 0), 6, cheer ? 2.5 : 1.4, 0, cheer ? Math.PI : 0, cheer ? 0 : Math.PI * 2, cheer); c.fill(); return; }
+      c.fillStyle = '#22202e'; c.beginPath(); c.arc(ex, ey, 7, 0, 7); c.fill();
+      const eg = c.createRadialGradient(ex - 2, ey - 2, 1, ex, ey, 6.5); eg.addColorStop(0, '#fff3b0'); eg.addColorStop(0.6, col[1]); eg.addColorStop(1, col[2]);
+      c.fillStyle = eg; c.beginPath(); c.arc(ex, ey, 6, 0, 7); c.fill();
+      c.fillStyle = '#1a1420'; c.beginPath(); c.arc(ex + look, ey + (droop ? 1.5 : 0.5), 3.4, 0, 7); c.fill();
+      c.fillStyle = '#ffffff'; c.fillRect(ex + look - 2, ey - 2, 2, 2); c.fillRect(ex + look + 1.5, ey + 1.5, 1, 1);
+      if (droop) { c.fillStyle = BR[1]; c.fillRect(ex - 7, ey - 7, 14, 4); }
+    });
+    // the beak: it opens while words come
+    const open = talk && !calm ? Math.abs(Math.sin(t / 85)) * 2.5 : 0;
+    c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(-4, 0); c.lineTo(4, 0); c.lineTo(0, 7 + open); c.fill();
+    c.fillStyle = '#e8a33a'; c.beginPath(); c.moveTo(-3, 0.5); c.lineTo(3, 0.5); c.lineTo(0, 5); c.fill();
+    if (open > 0.5) { c.fillStyle = '#c0603a'; c.fillRect(-1.5, 4, 3, open); }
+    // a quill pen tucked under his wing
+    c.save(); c.translate(15, 12); c.rotate(-0.7);
+    c.fillStyle = '#22202e'; c.fillRect(-1, -14, 3, 22); c.fillStyle = '#fbf4e2'; c.beginPath(); c.ellipse(0.5, -8, 3, 8, 0, 0, 7); c.fill();
+    c.fillStyle = '#d9cdb4'; c.fillRect(0, -15, 1, 16); c.fillStyle = '#2b2b3a'; c.fillRect(0, 6, 1, 3);
+    c.restore();
+    // little feet on a branch
+    c.fillStyle = '#6b4a2a'; c.fillRect(-22, 29, 44, 4); c.fillStyle = '#22202e'; c.fillRect(-22, 33, 44, 1);
+    c.fillStyle = '#e8a33a'; [-7, 5].forEach(x => { c.fillRect(x, 27, 2, 3); c.fillRect(x + 2.5, 27, 2, 3); c.fillRect(x - 2.5, 27, 2, 3); });
+    c.restore();
+    if (cheer && !calm) for (let i = 0; i < 8; i++) { const a = t / 400 + i * 0.785, r = 36 + Math.sin(t / 150 + i) * 3; c.fillStyle = i % 2 ? '#fff1a8' : col[1]; c.fillRect(Math.round(CX + Math.cos(a) * r), Math.round(CY + Math.sin(a) * r * 0.8), 2, 2); }
+  }
+  WW.hd.owlPortrait = owlPortrait;
+})();

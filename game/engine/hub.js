@@ -7,7 +7,7 @@
   const L = t => WW.L(t);
   // rough coastlines (longitude, latitude): enough for a friendly painted map, not for navigation
   const LAND = [
-    [[-168, 66], [-162, 70], [-140, 70], [-120, 72], [-95, 72], [-80, 73], [-62, 66], [-56, 52], [-66, 45], [-70, 42], [-76, 35], [-81, 31], [-80, 25], [-82, 28], [-84, 30], [-90, 29], [-97, 26], [-97, 22], [-95, 18], [-90, 21], [-87, 21], [-88, 16], [-83, 10], [-79, 9], [-80, 8], [-85, 11], [-92, 15], [-105, 20], [-110, 24], [-112, 30], [-117, 32], [-120, 35], [-124, 40], [-124, 48], [-130, 55], [-140, 60], [-150, 60], [-160, 58], [-165, 62]],
+    [[-168, 66], [-162, 70], [-140, 70], [-120, 72], [-95, 72], [-80, 73], [-62, 66], [-56, 52], [-66, 45], [-70, 42], [-76, 35], [-81, 31], [-80, 25], [-82, 28], [-84, 30], [-90, 29], [-97, 26], [-97, 22], [-95, 18], [-90, 21], [-87, 21], [-88, 16], [-83, 10], [-79, 9], [-80, 8], [-85, 11], [-91, 13.5], [-95, 15], [-100, 16], [-105, 18.5], [-107, 22], [-110, 24], [-112, 30], [-117, 32], [-120, 35], [-124, 40], [-124, 48], [-130, 55], [-140, 60], [-150, 60], [-160, 58], [-165, 62]],
     [[-50, 60], [-42, 60], [-20, 70], [-20, 80], [-60, 82], [-70, 78], [-55, 70]],
     [[-79, 9], [-75, 11], [-62, 11], [-52, 5], [-50, 0], [-35, -5], [-39, -15], [-48, -25], [-58, -35], [-65, -42], [-68, -52], [-74, -52], [-73, -40], [-71, -30], [-70, -18], [-76, -14], [-81, -5], [-80, 0]],
     [[-10, 36], [-9, 43], [-2, 44], [-5, 48], [2, 51], [8, 54], [10, 58], [5, 62], [15, 69], [28, 71], [40, 67], [60, 69], [70, 73], [90, 76], [110, 77], [130, 72], [150, 71], [170, 70], [180, 66], [175, 62], [160, 60], [155, 51], [143, 47], [140, 43], [135, 35], [128, 35], [127, 38], [125, 40], [121, 39], [122, 30], [120, 24], [110, 20], [108, 16], [109, 12], [104, 9], [103, 1], [100, 6], [98, 10], [95, 16], [91, 22], [86, 20], [80, 15], [77, 8], [73, 17], [68, 23], [60, 25], [56, 27], [52, 28], [48, 30], [50, 26], [55, 25], [57, 22], [52, 16], [44, 12], [43, 16], [39, 22], [35, 28], [33, 31], [35, 36], [30, 36], [27, 37], [26, 40], [23, 38], [22, 37], [20, 40], [19, 42], [15, 45], [12, 44], [18, 40], [16, 38], [12, 38], [10, 44], [6, 43], [3, 43], [0, 39], [-2, 37], [-6, 36]],
@@ -75,12 +75,26 @@
       }).join('')}</section>`).join('')}</div>${WW.COURSE && WW.COURSE.credit ? `<p class="hw-credit">${esc(WW.COURSE.credit)}</p>` : ''}</div>`;
     const cv = document.getElementById('hw-map'); paint(cv);
     const pins = document.getElementById('hw-pins'), tip = document.getElementById('hw-tip');
-    const placed = []; // two stops in the same city: nudge the later one aside so both can be clicked
+    // pins that would overlap (two stops in one city, or cities close together like in Europe) are spread apart a
+    // little, evenly around where they belong, so every pin can be read and clicked and none drifts far out to sea
+    const PX = cv.getBoundingClientRect(), pw = 36 / (PX.width || 1148) * 100, ph = 24 / (PX.height || 469) * 100;
+    const spots = cat.filter(e => e.at).map((e, i) => ({ e, i, X: px(e.at[0]) / PW * 100, Y: py(e.at[1]) / PH * 100 }));
+    for (let it = 0; it < 80; it++) {
+      let moved = false;
+      for (let i = 0; i < spots.length; i++) for (let j = i + 1; j < spots.length; j++) {
+        const a = spots[i], b = spots[j]; let dx = b.X - a.X, dy = b.Y - a.Y;
+        const ox = pw - Math.abs(dx), oy = ph - Math.abs(dy);
+        if (ox <= 0 || oy <= 0) continue;
+        moved = true;
+        if (Math.abs(dx) < 0.01 && Math.abs(dy) < 0.01) { a.Y -= oy; continue; } // the same city: the earlier stop sits just north (inland), the later on the city
+        if (ox / pw < oy / ph) { const m = ox / 2 * Math.sign(dx); a.X -= m; b.X += m; } else { const m = oy / 2 * Math.sign(dy || 1); a.Y -= m; b.Y += m; }
+      }
+      if (!moved) break;
+    }
+    const at = new Map(spots.map(s => [s.e, s]));
     cat.forEach(e => {
       if (!e.at) return;
-      let X = px(e.at[0]) / PW * 100, Y = py(e.at[1]) / PH * 100;
-      for (let k = 0; k < 6 && placed.some(([a, b]) => Math.abs(a - X) < 2.6 && Math.abs(b - Y) < 4); k++) { X += 2.4; Y += k % 2 ? -3 : 3; }
-      placed.push([X, Y]);
+      const { X, Y } = at.get(e);
       const b = document.createElement('button'), st = s.episodes[e.id] || {};
       b.className = 'hw-pin' + (st.done ? ' done' : '') + (next && next.id === e.id ? ' next' : ''); b.dataset.ep = e.id;
       b.style.left = X + '%'; b.style.top = Y + '%'; b.style.setProperty('--uc', UNITC[e.realm]);

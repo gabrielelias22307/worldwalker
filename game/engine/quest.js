@@ -109,7 +109,7 @@
     const a = WW.ep.quest.action, r = WW.run;
     if (a.type === 'fight') return a.at;
     if (a.type === 'chase') { const c = Q.clue(); if (!c) { const f = WW.game.ents.find(o => o.kind === 'qfoe' && o.chase); return f ? [f.x, f.y] : a.at; } if (!hint) return null; const z = c.zones[0]; return [z.x + (z.w >> 1), z.y + (z.h >> 1)]; }
-    if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null || !hint) return [a.trader.x, a.trader.y]; const p = WW.game.player, d = o => Math.abs(o.x - p.x) + Math.abs(o.y - p.y), g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone).sort((m, n) => d(m) - d(n)); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; } // the nearest good, so the hint never gives the answer away
+    if (a.type === 'trade') { if (!Q.goods() || !r.goodsSeen || r.good != null) return [a.trader.x, a.trader.y]; const p = WW.game.player, d = o => Math.abs(o.x - p.x) + Math.abs(o.y - p.y), g = WW.game.ents.filter(o => o.kind === 'qgood' && !o.gone).sort((m, n) => d(m) - d(n)); return g.length ? [g[0].x, g[0].y] : [a.trader.x, a.trader.y]; } // the nearest good, so the hint never gives the answer away
     return null;
   };
   Q.carryLine = () => {

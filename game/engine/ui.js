@@ -244,7 +244,7 @@
           const ln = lines[page] || {};
           const txt = ln;
           body.innerHTML = npc.doc
-            ? `<div class="stim docread"><div class="stimtext say">${WW.rich(txt)}</div>${page === lines.length - 1 && npc.src ? `<div class="stimsrc">${WW.rich(npc.src)}</div>` : ''}<div class="docpage">${page + 1} / ${lines.length}</div></div>`
+            ? `<div class="stim docread">${page === 0 && WW.pic ? WW.pic(npc.name, npc.src) : ''}<div class="stimtext say">${WW.rich(txt)}</div>${page === lines.length - 1 && npc.src ? `<div class="stimsrc">${WW.rich(npc.src)}</div>` : ''}<div class="docpage">${page + 1} / ${lines.length}</div></div>`
             : `<p class="say">${WW.rich(txt)}</p><p class="hint">${page === 0 && /\[\[/.test(L(ln)) ? esc(T('tapWord')) : ''}</p>`;
           const acts = document.createElement('div'); acts.className = 'acts';
           if (page > 0) acts.appendChild(btn(T('back'), 'ghost', () => { page--; h.render(); }));
@@ -563,12 +563,13 @@
         starter.onclick = () => { const ta = box.querySelector('textarea'); if (!ta.value.trim()) { ta.value = WW.plain(ep.reflect.starter) + ' '; r.reflection = ta.value; } ta.focus(); };
         box.appendChild(starter);
         const ta = document.createElement('textarea'); ta.placeholder = T('reflectHint'); ta.value = r.reflection || ''; ta.rows = 3;
-        ta.oninput = () => { r.reflection = ta.value; };
+        ta.oninput = () => { r.reflection = ta.value; tick(); };
         box.appendChild(ta);
+        const RC = WW.hd && WW.hd.reflect && WW.COURSE.reflectCheck ? WW.hd.reflect(box, ta) : null, tick = () => RC && RC.tick(), ready = () => !RC || RC.ready(); // HistoryWalker: claim / evidence / fact checklist (hd.js)
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
         const acts = document.createElement('div'); acts.className = 'acts';
-        acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
-        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`${(WW.COURSE && WW.COURSE.name) || 'Worldwalker'} ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
+        acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { if (!ready()) return; WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
+        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => ready() && WW.download(`${(WW.COURSE && WW.COURSE.name) || 'Worldwalker'} ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
         box.appendChild(acts);
         box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
         const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
