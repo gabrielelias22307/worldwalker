@@ -17,7 +17,7 @@ window.EPISODE = {
   place: { en: 'Mexico City, New Spain, 1570' },
   intro: [
     { en: 'The Grump blurred the page on the Columbian Exchange. Mexico City is forgetting what crossed the ocean, and what it cost.' },
-    { en: 'Talk to the 4 people here, help a cook find flour, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a cook find flour, then wake the time stone.' }
   ],
   scenes: {
     at: [-99.13, 19.43],
@@ -75,6 +75,7 @@ window.EPISODE = {
     'cash crop': { en: 'a crop grown to sell for profit, like sugar, tobacco or cacao' },
     'plantation': { en: 'a huge farm growing one cash crop, worked by forced labor, often enslaved Africans' },
     'missionary': { en: 'a person who travels to a foreign place to spread their religion' },
+    'encomienda': { en: 'a Spanish colonial labor system that controlled Indigenous American workers; a form of enslavement' },
     'religious syncretism': { en: 'the blending of belief systems from two or more places into something new' }
   },
   npcs: [
@@ -82,17 +83,18 @@ window.EPISODE = {
       x: 6, y: 10, name: { en: 'Teresa' }, role: { en: 'Nahua painter' },
       look: { skin: 3, hair: '#1b1410', shirt: '#b8452a', style: 'long' },
       lines: [
-        { en: 'I am one of the Nahua artists painting a book for a Spanish friar. My page shows the effects of [[smallpox|smallpox]].' },
-        { en: 'Smallpox, measles and influenza came with the Spanish. We had never met these sicknesses, so our bodies had no [[immunity|immunity]].' },
-        { en: 'When Cortés came, 25 to 30 million people lived in Mexico. Fifty years later, about 3 million are left. Whole towns stand empty.' }
+        { en: 'Nahua artists like me paint every picture in a book edited by the Spanish priest Bernardino de Sahagún. My page shows the effects of [[smallpox|smallpox]].' },
+        { en: 'Smallpox, measles, mumps and influenza came with the Spanish. We had never met them, so our bodies had no [[immunity|immunity]]. Most Spaniards had some.' },
+        { en: 'When Cortés invaded in 1519, 25 to 30 million people lived in Mexico. Fifty years later, about 3 million are left.' },
+        { en: 'War and forced labor killed many of us. But almost all of this loss came from disease. Whole towns stand empty.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did diseases like smallpox kill so many Native people in Mexico?' },
+        q: { en: 'Which best explains why Afro-Eurasian diseases killed so many Native people in Mexico?' },
         choices: [
-          { ok: true, t: { en: 'They had never met these diseases' }, why: { en: 'Yes. Afro-Eurasians had lived with these diseases for generations. With few herd animals, the Americas had never had them, so people had no immunity.' } },
-          { t: { en: 'The Spanish poisoned all the lakes' }, why: { en: 'No. The epidemics were mostly an unintended result of contact. Europeans carried germs they had some resistance to.' } },
-          { t: { en: 'Mexico\'s cities were too small' }, why: { en: 'No. Tenochtitlan was among the largest cities in the world. Large cities were nearly wiped out.' } }
+          { ok: true, t: { en: 'They had never met these germs before' }, why: { en: 'Yes. With few domesticated herd animals, the source of smallpox and measles, the Americas had never had these diseases. People had no immunity.' } },
+          { t: { en: 'The Spanish spread disease on purpose' }, why: { en: 'No. The readings call the epidemics an unintended result of contact. Europeans carried germs they had some resistance to.' } },
+          { t: { en: 'Famine had already weakened the cities' }, why: { en: 'No. Before contact, cities like Tenochtitlan and Cusco were among the largest in the world. Almost all the loss came from disease.' } }
         ]
       }
     },
@@ -100,17 +102,18 @@ window.EPISODE = {
       x: 5, y: 13, name: { en: 'Diego' }, role: { en: 'Cattle herder' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#7a5a2a', pants: '#3a2a1a', hat: '#a8824a', style: 'short' },
       lines: [
-        { en: 'My father came from Spain and my mother is Nahua. The colonial government calls people like me [[mestizo|mestizo]].' },
-        { en: 'Before the Spanish, there were no horses, cattle, sheep or pigs here. Now I herd cattle for meat, tallow and hides.' },
-        { en: 'Cattle eat and trample the native plants. And the Spanish plant wheat where native crops once grew.' }
+        { en: 'My father came from Spain and my mother is Nahua. The colonial government labels me [[mestizo|mestizo]]. People of African and Spanish parents it labels mulatto.' },
+        { en: 'Before 1492, the only large domesticated animals here were llamas and alpacas, far south. The Spanish brought horses, cattle, sheep, goats and pigs.' },
+        { en: 'I herd cattle for meat, tallow and hides. Up north, people now hunt buffalo on horseback.' },
+        { en: 'But cattle eat and trample native plants. And the Spanish replace native crops with wheat, barley and sorghum.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'How did animals from Afro-Eurasia change the land of Mexico?' },
+        q: { en: 'Which best describes a change the exchange brought to the land of Mexico?' },
         choices: [
-          { ok: true, t: { en: 'Cattle destroyed many native plants' }, why: { en: 'Yes. European animals, especially cattle, ate and trampled indigenous plants. The exchange reshaped the environment.' } },
-          { t: { en: 'Cattle had always lived in Mexico' }, why: { en: 'No. Before 1492 the only large domesticated animals in the Americas were llamas and alpacas, far to the south.' } },
-          { t: { en: 'The new animals changed nothing at all' }, why: { en: 'No. Horses changed transport and hunting, cattle gave meat, tallow and hides, and they harmed native plants.' } }
+          { ok: true, t: { en: 'New animals and crops pushed out native plants' }, why: { en: 'Yes. Cattle destroyed indigenous plants, and the Spanish replaced native crops with wheat, barley and sorghum.' } },
+          { t: { en: 'Maize and potatoes replaced the native wheat' }, why: { en: 'No. Maize and potatoes are American crops. Wheat came from Afro-Eurasia with the Spanish.' } },
+          { t: { en: 'Llamas spread north and became the main herd' }, why: { en: 'No. Llamas and alpacas lived far to the south. The new herds in Mexico were Afro-Eurasian cattle, sheep, goats and pigs.' } }
         ]
       }
     },
@@ -118,17 +121,18 @@ window.EPISODE = {
       x: 21, y: 11, name: { en: 'Alonso' }, role: { en: 'Spanish merchant' },
       look: { skin: 0, hair: '#4a3020', shirt: '#2a4a7a', pants: '#2a2a3a', hat: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'My ships carry maize, tomatoes, chili peppers and turkeys east to Spain. Europe, Africa and Asia had never seen them.' },
+        { en: 'My ships carry maize, tomatoes, chili peppers and turkeys east. The English think turkeys come from Turkey; the Turks think India. They come from Mexico!' },
         { en: 'Maize and the potatoes of Peru are [[staple crop|staple crops]], rich in calories. Potatoes grow where it is too dry for rice or too wet for wheat.' },
-        { en: 'With so many Native people dead, workers are few. So Europeans force enslaved Africans across the ocean to grow sugar, our richest [[cash crop|cash crop]].' }
+        { en: 'Sugar is our richest [[cash crop|cash crop]]. Portuguese settlers grew rich on it in the Madeira Islands in the 1420s. Columbus carried Madeira sugarcane west in 1492.' },
+        { en: 'Now sugar grows on Hispaniola. With so many Native people dead, Europeans force enslaved Africans across the ocean to work the cane.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compare: how did the Columbian Exchange change populations on each side of the Atlantic?' },
+        q: { en: 'Compared with its effect on the Americas, the exchange\'s effect on Afro-Eurasia\'s population was…' },
         choices: [
-          { ok: true, t: { en: 'Afro-Eurasia grew; the Americas lost millions' }, why: { en: 'Right. American staple crops fed growing populations in Afro-Eurasia, while epidemics killed millions of Native Americans.' } },
-          { t: { en: 'Both sides lost about the same number of people' }, why: { en: 'No. Very few diseases traveled from west to east, so Afro-Eurasia did not suffer a great dying.' } },
-          { t: { en: 'The Americas grew while Afro-Eurasia shrank' }, why: { en: 'No, the reverse. Disease moved mostly west, and new crops from the Americas fed more people in Afro-Eurasia.' } }
+          { ok: true, t: { en: 'growth, fed by American staple crops' }, why: { en: 'Right. Calorie-rich maize, potatoes and cassava fed growing populations, while epidemics killed millions of Native Americans.' } },
+          { t: { en: 'a sharp fall from new American diseases' }, why: { en: 'No. Very few diseases traveled west to east. Some historians argue syphilis did, but the evidence is not conclusive.' } },
+          { t: { en: 'little change, since few crops sailed east' }, why: { en: 'No. Many crops sailed east: maize, potatoes, tomatoes, chili peppers, cacao. They changed diets and populations.' } }
         ]
       }
     },
@@ -136,17 +140,57 @@ window.EPISODE = {
       x: 3, y: 3, name: { en: 'Juana' }, role: { en: 'Nahua pilgrim' },
       look: { skin: 4, hair: '#1b1410', shirt: '#3a7a8a', robe: true, style: 'bun' },
       lines: [
-        { en: 'Before the Spanish came, my grandmother climbed this hill to pray to Tonantzin, a mother goddess and protector.' },
-        { en: 'Catholic [[missionary|missionaries]] burned our temples and books. Sickness killed us but spared most Spaniards, so many wondered if the old gods still protected us.' },
-        { en: 'Now we pray here to the Virgin of Guadalupe. Many still call her Tonantzin. Old and new beliefs blend: [[religious syncretism|religious syncretism]].' }
+        { en: 'Before the Spanish, my grandmother climbed this hill of Tepeyac to pray to Tonantzin, a mother goddess and protector.' },
+        { en: 'Catholic [[missionary|missionaries]] burned our temples, symbols and books. They built churches over the ruins, using stones from the old pyramids.' },
+        { en: 'Sickness killed us but spared most Spaniards, so many wondered if the old gods still protected us. Some converted willingly; some sought the priests\' protection.' },
+        { en: 'In 1531, they say, the Virgin spoke Nahuatl to Juan Diego here. Many call her Tonantzin still. That is [[religious syncretism|religious syncretism]].' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'What does the shrine at Tepeyac show about religion in New Spain?' },
+        q: { en: 'The shrine at Tepeyac most directly reflects which development in New Spain?' },
         choices: [
-          { ok: true, t: { en: 'Old and new beliefs blended together' }, why: { en: 'Yes. Converts prayed at the same site, for the same reasons, to a figure who blended the Virgin Mary and Tonantzin.' } },
-          { t: { en: 'Native beliefs vanished completely' }, why: { en: 'No. Missionaries, to their frustration, often found images of Jesus and Mary beside statues of Aztec gods.' } },
-          { t: { en: 'The Spanish took up the old Aztec gods' }, why: { en: 'No. The Spanish forced conversion to Catholicism and burned temples. But Native converts reshaped the new faith.' } }
+          { ok: true, t: { en: 'Native and Catholic beliefs blending' }, why: { en: 'Yes. Converts prayed at the same site, for the same reasons, to a figure who blended the Virgin Mary and Tonantzin.' } },
+          { t: { en: 'A full rejection of Catholic teaching' }, why: { en: 'No. Many converted. Missionaries, to their frustration, found images of Jesus and Mary beside statues of Aztec gods.' } },
+          { t: { en: 'Missionaries turning to Aztec gods' }, why: { en: 'No. Missionaries re-used some Native symbols, but they forced conversion to Catholicism and burned temples.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 13, y: 10, icon: '📜',
+      name: { en: 'Smallpox at Plymouth' }, role: { en: 'Primary source' },
+      src: { en: 'William Bradford, governor of the Plymouth colony, describing about 1634; quoted in "The Columbian Exchange," World History Project' },
+      lines: [
+        { en: '"This spring also, those Indians that lived about their trading house there, fell sick of the small pox and died most miserably; for a sorer disease cannot befall them, they fear it more than the plague. For usually they that have this disease have them in abundance. [...]"' },
+        { en: '"The condition of this people was so lamentable [sad] and they fell down so generally of this disease as they were in the end not able to help one another, no not to make a fire nor to fetch a little water to drink, nor any to bury the dead."' },
+        { en: '"But would strive as long as they could, and when they could procure [obtain] no other means to make fire, they would burn the wooden trays and dishes they ate their meat in, and their very bows and arrows. And some would crawl out on all fours to get a little water, and sometimes die by the way and not be able to get in again."' },
+        { en: 'Context: William Bradford was a governor of the Plymouth colony, an English settlement in present-day Massachusetts. Around 1634 he described smallpox spreading through nearby Indigenous American communities. He wrote as an English colonial leader watching from outside; the sick people\'s own words are not recorded here. The same Afro-Eurasian diseases had already struck New Spain, where Nahua artists painted the effects of smallpox.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: how does Bradford\'s point of view shape the value of this source?' },
+        choices: [
+          { ok: true, t: { en: 'A close witness, but an outsider\'s view' }, why: { en: 'Yes. As governor he saw the epidemic up close, but he wrote as an English colonist. We do not hear the sick people\'s own voices.' } },
+          { t: { en: 'It proves colonists spread smallpox on purpose' }, why: { en: 'No. The excerpt describes suffering, not how the disease came. The readings call the epidemics an unintended result of contact.' } },
+          { t: { en: 'It records the views of Native healers' }, why: { en: 'No. Bradford was an English colonial governor. The excerpt gives his observations, not the words of the Native people.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 24, y: 10, icon: '📖',
+      name: { en: 'The Columbian Exchange' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "The Columbian Exchange" by Eman M. Elshaikh, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Columbus\'s arrival in 1492 created large-scale connections between Eurasia, Africa and the Americas. This transfer of goods, people, microbes and ideas is called the Columbian Exchange. About 35 to 75 million people lived in the Americas, some in Tenochtitlan and Cusco, among the largest cities in the world. But they had few domesticated animals, the source of smallpox and measles, while Afro-Eurasians had thousands of generations to build resistance. Between 1492 and 1650, the Indigenous population fell rapidly.' },
+        { en: 'With so few people, forests regrew and there was a shortage of labor. That need for labor contributed to the rise of the Atlantic slave trade, bringing even more diseases, like malaria and yellow fever. The Spanish [[encomienda|encomienda]] was a form of enslavement that controlled Indigenous labor. Settlers grew sugar, coffee, tobacco and cotton as cash crops; wheat thrived as a staple. Over a few hundred years, more than twelve million enslaved Africans were brought to the Americas. Sugar, the most important cash crop, centered on Hispaniola and the Caribbean.' },
+        { en: 'Very few diseases traveled from west to east. But American crops such as potatoes, sweet potatoes, maize and cassava were rich in calories and quickly became staple crops. They grew even on land no one thought was useful. The potato thrived in the cold of northwestern Europe, became a common food in Ireland, and led to massive population growth and increasing urbanization. Millions of people moved from Afro-Eurasia to the Americas, both willingly and by force.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Causation: which chain of causes and effects best fits the reading?' },
+        choices: [
+          { ok: true, t: { en: 'Epidemics, then a labor shortage, then the slave trade' }, why: { en: 'Yes. Disease killed millions, leaving too few workers, and that need for labor contributed to the rise of the Atlantic slave trade.' } },
+          { t: { en: 'The slave trade, then smallpox, then a labor shortage' }, why: { en: 'No, the order is reversed. Smallpox came first; the slave trade it helped cause later brought even more diseases, like malaria.' } },
+          { t: { en: 'Wheat failed, so settlers turned to cash crops instead' }, why: { en: 'No. Wheat thrived in the Americas as a staple. Settlers grew cash crops like sugar because they sold for profit.' } }
         ]
       }
     }
@@ -232,7 +276,7 @@ window.EPISODE = {
       { id: 'toam', icon: '🐎', label: { en: 'To the Americas' }, sub: { en: 'from Afro-Eurasia, sailing west' } }
     ],
     items: [
-      { bin: 'toae', t: { en: 'Maize and potatoes' }, why: { en: 'American staple crops, rich in calories. They helped populations grow from Ireland to China.' } },
+      { bin: 'toae', t: { en: 'Maize and potatoes' }, why: { en: 'American staple crops, rich in calories. Rulers found a field of potatoes could feed three times as many people as a field of wheat.' } },
       { bin: 'toae', t: { en: 'Tomatoes and chili peppers' }, why: { en: 'From the Americas. They became part of Italian and Indian cooking, as if they had always been there.' } },
       { bin: 'toae', t: { en: 'Cacao and tobacco' }, why: { en: 'American plants that Europeans turned into cash crops to sell abroad.' } },
       { bin: 'toae', t: { en: 'Turkeys' }, why: { en: 'The turkey is from Mexico. The English thought it came from Turkey, and the Turks thought it came from India.' } },
@@ -251,57 +295,60 @@ window.EPISODE = {
     win: { en: 'The Grump fades. The page on the Columbian Exchange returns, and with it the memory of the people who lived it.' },
     questions: [
       {
-        stim: { text: { en: '"...those Indians that lived about their trading house there, fell sick of the small pox and died most miserably... they were in the end not able to help one another, no not to make a fire nor to fetch a little water to drink, nor any to bury the dead."' }, src: { en: 'William Bradford, governor of Plymouth colony, describing about 1634' } },
-        q: { en: 'The excerpt best illustrates which effect of the Columbian Exchange?' },
-        choices: [{ en: 'Afro-Eurasian diseases devastating Native peoples' }, { en: 'American crops causing famine across Europe' }, { en: 'Native peoples carrying smallpox to Europe' }, { en: 'European doctors curing all epidemics in the Americas' }],
+        stim: { text: { en: '"The condition of this people was so lamentable [sad] and they fell down so generally of this disease as they were in the end not able to help one another, no not to make a fire nor to fetch a little water to drink, nor any to bury the dead."' }, src: { en: 'William Bradford, governor of the Plymouth colony, describing smallpox about 1634; quoted in "The Columbian Exchange," World History Project' } },
+        q: { en: 'Which of the following best explains the conditions described in the excerpt?' },
+        choices: [{ en: 'Native peoples had no immunity to Afro-Eurasian diseases' }, { en: 'Malaria and yellow fever arrived with the slave trade' }, { en: 'Spanish wheat fields had replaced Native food crops' }, { en: 'Syphilis spread from the Americas to Europe and back' }],
         answer: 0,
-        why: { en: 'Smallpox was new to the Americas. With no immunity, whole communities fell sick at once, too weak even to care for one another.' }
+        why: { en: 'Smallpox was new to the Americas. With no immunity, whole communities fell sick at once. Malaria and yellow fever came later with the slave trade; syphilis\'s path is not proven.' }
       },
       {
-        stim: { title: { en: 'Native population of Mexico (estimates)' }, rows: [[{ en: 'Time' }, { en: 'People' }], [{ en: 'When Cortés invaded (1519)' }, { en: '25 to 30 million' }], [{ en: 'Fifty years later' }, { en: 'about 3 million' }]], src: { en: 'From "Unit 4 Introduction: Transoceanic Interconnections," World History Project' } },
-        q: { en: 'Which best explains the change shown in the table?' },
-        choices: [{ en: 'Epidemics of diseases new to the Americas' }, { en: 'A mass migration of Native people to Spain' }, { en: 'Famine after the potato crop failed' }, { en: 'Wars only among the old Aztec cities' }],
-        answer: 0,
-        why: { en: 'Almost all of this loss of population was caused by Afro-Eurasian diseases like smallpox and measles: the Great Dying.' }
+        stim: { title: { en: 'Indigenous population of Mexico (estimates)' }, rows: [[{ en: 'Time' }, { en: 'People' }], [{ en: 'When Cortés invaded (1519)' }, { en: '25 to 30 million' }], [{ en: 'Fifty years later' }, { en: 'about 3 million' }]], src: { en: 'From "Unit 4 Introduction: Transoceanic Interconnections," World History Project' } },
+        q: { en: 'Which of the following best explains the change shown in the table?' },
+        choices: [{ en: 'The violence of the Spanish conquest of 1521' }, { en: 'Forced labor under the encomienda system' }, { en: 'Epidemics of diseases new to the Americas' }, { en: 'Migration of Native workers to Caribbean sugar' }],
+        answer: 2,
+        why: { en: 'Conquest and forced labor such as encomienda did kill people, but almost all of this loss came from Afro-Eurasian diseases like smallpox and measles: the Great Dying.' }
       },
       {
-        stim: { text: { en: 'Rulers discovered that a field of potatoes could feed three times as many people as a field of wheat. After that, European governments encouraged farmers to grow potatoes.' }, src: { en: 'Adapted from "Crops that Grew the World," World History Project' } },
-        q: { en: 'The development described above best helps explain...' },
-        choices: [{ en: 'population growth in Afro-Eurasia after 1500' }, { en: 'the Great Dying of Native peoples in the Americas' }, { en: 'why the Spanish planted wheat in Mexico' }, { en: 'why few diseases traveled west to east' }],
-        answer: 0,
-        why: { en: 'Calorie-rich American staple crops like potatoes and maize fed more people, so Afro-Eurasia\'s population rose after 1500.' }
+        stim: { text: { en: 'Very few diseases traveled from west to east. But American crops such as potatoes, sweet potatoes, maize and cassava were rich in calories and quickly became staple crops. The potato thrived in the cold of northwestern Europe.' }, src: { en: 'Adapted from "The Columbian Exchange" by Eman M. Elshaikh, World History Project' } },
+        q: { en: 'The developments in the excerpt best help explain which of the following?' },
+        choices: [{ en: 'The labor shortage that drove the Atlantic slave trade' }, { en: 'Population growth in Afro-Eurasia after 1500' }, { en: 'The spread of wheat and barley across the Americas' }, { en: 'The rise of sugar plantations on Hispaniola' }],
+        answer: 1,
+        why: { en: 'Calorie-rich American staple crops fed more people. A field of potatoes could feed three times as many as a field of wheat, so Afro-Eurasia\'s population rose.' }
       },
       {
         stim: { text: { en: 'Catholic missionaries, to their frustration, often found images of Jesus and the Virgin Mary alongside statues of Aztec and other indigenous gods.' }, src: { en: 'Adapted from "Religious Syncretism in Colonial Mexico City," World History Project' } },
-        q: { en: 'The excerpt best reflects...' },
-        choices: [{ en: 'religious syncretism in New Spain' }, { en: 'a total rejection of Christianity' }, { en: 'the complete end of Aztec beliefs' }, { en: 'the Spanish worship of Aztec gods' }],
-        answer: 0,
-        why: { en: 'Native converts did not fully give up old gods and rituals. They blended them with Catholicism: religious syncretism.' }
+        q: { en: 'The excerpt best supports the claim that, in New Spain,…' },
+        choices: [{ en: 'missionaries adopted Aztec gods to win converts' }, { en: 'Native converts mixed Catholic and older beliefs' }, { en: 'most Nahua people refused to convert at all' }, { en: 'converts sought only the protection of priests' }],
+        answer: 1,
+        why: { en: 'Converts kept old gods beside new saints: religious syncretism. Missionaries were frustrated, not adopting Aztec gods. People converted for many reasons, not only protection.' }
       },
       {
-        q: { en: 'Which statement best compares the effects of the Columbian Exchange on the Americas and on Afro-Eurasia?' },
-        choices: [{ en: 'Population fell in the Americas but rose in Afro-Eurasia' }, { en: 'Both regions lost most of their people to new diseases' }, { en: 'Population rose in the Americas but fell in Afro-Eurasia' }, { en: 'Neither region saw any real change in its population' }],
-        answer: 0,
-        why: { en: 'Disease moved mostly west and killed millions of Native Americans. American staple crops moved east and fed growing populations.' }
+        stim: { text: { en: 'With so few people, there was a shortage of labor. That need for labor contributed to the rise of the Atlantic slave trade, bringing even more diseases, like malaria and yellow fever.' }, src: { en: 'Adapted from "The Columbian Exchange" by Eman M. Elshaikh, World History Project' } },
+        q: { en: 'Which of the following best describes the relationship shown in the excerpt?' },
+        choices: [{ en: 'The slave trade caused the first epidemics in the Americas' }, { en: 'European settlers arrived in numbers that ended the labor shortage' }, { en: 'Population collapse helped cause a new forced migration' }, { en: 'Cash crop profits led Europeans to abandon forced labor' }],
+        answer: 2,
+        why: { en: 'Epidemics came first and caused the labor shortage. Europeans met it by forcibly bringing more than twelve million enslaved Africans to the Americas over a few hundred years.' }
       },
       {
-        q: { en: 'Which best explains why Europeans forced enslaved Africans to the Americas in this period?' },
-        choices: [{ en: 'Disease had left too few Native workers' }, { en: 'African rulers asked to send settlers' }, { en: 'Spain needed more workers for its wheat' }, { en: 'Native peoples had all moved to Europe' }],
-        answer: 0,
-        why: { en: 'Epidemics killed millions of Native Americans, causing a labor shortage. Europeans forced enslaved Africans across the Atlantic to grow cash crops like sugar.' }
+        stim: { title: { en: 'Two directions of the exchange' }, rows: [[{ en: 'Sailing west, to the Americas' }, { en: 'Sailing east, to Afro-Eurasia' }], [{ en: 'Smallpox, measles, influenza' }, { en: 'Very few diseases' }], [{ en: 'Horses, cattle, sheep, pigs' }, { en: 'Turkeys' }], [{ en: 'Wheat, sugarcane, citrus' }, { en: 'Maize, potatoes, cassava, chili peppers' }]], src: { en: 'Based on "The Columbian Exchange" and "Crops that Grew the World," World History Project' } },
+        q: { en: 'Compared with the Americas, Afro-Eurasia after 1500 most likely experienced…' },
+        choices: [{ en: 'a great dying from diseases like syphilis' }, { en: 'growth fed by calorie-rich new crops' }, { en: 'a labor shortage met by encomienda' }, { en: 'native plants destroyed by Mexican herds' }],
+        answer: 1,
+        why: { en: 'Disease moved mostly west. American staple crops moved east and fed growing populations. Encomienda and cattle destroying plants were changes in the Americas.' }
       },
       {
-        q: { en: 'Which was an environmental effect of the Columbian Exchange in Mexico?' },
-        choices: [{ en: 'Cattle ate and trampled native plants' }, { en: 'Horses died out all over the Americas' }, { en: 'Maize replaced all the wheat in Spain' }, { en: 'Llamas spread to the fields of Europe' }],
-        answer: 0,
-        why: { en: 'Animals brought from Afro-Eurasia, especially cattle, destroyed indigenous plants, and the Spanish replaced native crops with wheat.' }
+        stim: { text: { en: 'European animals, especially cattle, destroyed indigenous plants. The Spanish replaced indigenous, or native, crops with wheat, barley, and sorghum.' }, src: { en: 'Adapted from "Crops that Grew the World" by Bennett Sherry, World History Project' } },
+        q: { en: 'The excerpt most directly reflects which of the following?' },
+        choices: [{ en: 'The spread of American staple crops to Afro-Eurasia' }, { en: 'Afro-Eurasian species reshaping American environments' }, { en: 'Population growth after potatoes reached Ireland' }, { en: 'The use of horses to hunt buffalo more efficiently' }],
+        answer: 1,
+        why: { en: 'Cattle, wheat, barley and sorghum all came from Afro-Eurasia and changed the land of the Americas. Horses changed hunting, but the excerpt is about plants.' }
       },
       {
         stim: { text: { en: 'The Spanish destroyed a shrine to an Aztec mother goddess and replaced it with a shrine to the mother of Jesus. Indigenous converts adopted the Lady of Guadalupe as their protector, and some still call her Tonantzin.' }, src: { en: 'Adapted from "Religious Syncretism in Colonial Mexico City," World History Project' } },
-        q: { en: 'Which continuity does the excerpt best show?' },
-        choices: [{ en: 'People prayed at the same site for similar reasons' }, { en: 'The Aztec priests kept ruling Mexico City' }, { en: 'The Spanish never built churches in Mexico' }, { en: 'Catholic practice stayed exactly the same as in Spain' }],
-        answer: 0,
-        why: { en: 'Tepeyac stayed a place of pilgrimage. Converts prayed to a protector mother figure there, as their ancestors had prayed to Tonantzin.' }
+        q: { en: 'Which of the following was a continuity shown in the excerpt?' },
+        choices: [{ en: 'Aztec priests kept authority beside the clergy' }, { en: 'Temples stood unchanged beside new churches' }, { en: 'Catholic practice stayed the same as in Spain' }, { en: 'People prayed at one site for similar reasons' }],
+        answer: 3,
+        why: { en: 'Tepeyac stayed a place of pilgrimage. Converts prayed there to a protector mother figure, as their ancestors had prayed to Tonantzin. Temples were burned and their stones reused.' }
       }
     ]
   },
