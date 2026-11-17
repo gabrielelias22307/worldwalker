@@ -38,6 +38,10 @@
     { k: 'reg', icon: '🧩', col: '#8e5bd6', name: { en: 'Regions', es: 'Regiones', fa: 'منطقه‌ها' }, full: { en: 'Region', es: 'Región', fa: 'منطقه' } }];
   WW.epIndex = id => WW.EPISODES.findIndex(e => e.id === id);
   WW.epFile = id => 'ep-' + id.replace('.', '-') + '.html';
+  // the map and the next episode: separate pages (GitHub Pages), or the same file (HistoryWalker: MODE 'one', #ep=1.2)
+  WW.hasMap = () => WW.CONFIG.MODE === 'pages' || WW.CONFIG.MODE === 'one';
+  WW.goMap = () => { if (WW.CONFIG.MODE === 'one') { history.replaceState(null, '', location.pathname + location.search); location.reload(); } else location.href = 'index.html'; };
+  WW.goEp = id => { if (WW.CONFIG.MODE === 'one') { location.hash = 'ep=' + id; location.reload(); } else location.href = WW.epFile(id); };
 
   /* ---------------- languages ---------------- */
   WW.lang = 'en';
@@ -393,7 +397,8 @@
   WW.save = readLocal() || blank();
   if (!WW.save.stats) WW.save.stats = blank().stats;
   if (!WW.save.episodes) WW.save.episodes = {};
-  WW.lang = WW.save.lang || 'en';
+  WW.LANGS = (window.WW_COURSE && window.WW_COURSE.langs) || ['en', 'es', 'fa']; // HistoryWalker is English only
+  WW.lang = WW.LANGS.includes(WW.save.lang) ? WW.save.lang : 'en';
   WW.store = () => { try { localStorage.setItem(KEY, JSON.stringify(WW.save)); return true; } catch (e) { return false; } };
   WW.resetHero = () => { const lang = WW.save.lang; WW.save = blank(); WW.save.lang = lang; WW.store(); };
   WW.doneCount = () => Object.keys(WW.save.episodes).filter(k => WW.save.episodes[k] && WW.save.episodes[k].done).length;
@@ -429,6 +434,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
   if (WW.COURSE) {
     const CO = WW.COURSE;
     if (CO.realms) WW.REALMS = [null, ...CO.realms];
+    if (CO.episodes) WW.EPISODES = CO.episodes.map(([id, realm]) => ({ id, realm })); // HistoryWalker: one episode per AP topic (1.1-1.7, 2.1-2.7, 3.1-3.4, 4.1-4.8)
     if (CO.tools) WW.TOOLS = CO.tools;
     if (CO.themes) CO.themes.forEach((t, i) => Object.assign(WW.THEMES[i], t)); // same keys (loc, pla, hei, mov, reg): saves and the Sheet stay the same
     const swap = (o) => { // the word swaps, in every language of every engine word
@@ -457,31 +463,33 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
      15 letters/numbers: episodes done (24 bits) + five powers (5 bits each) + look (9 bits) + version (2 bits) + check (15 bits) */
   const ALPH = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
   function check15(n) { let h = 0x2a1; let x = n; for (let i = 0; i < 12; i++) { h = (h * 31 + Number(x & 31n)) & 0x7fff; x >>= 5n; } return BigInt(h); }
+  // the layout grows with the number of episodes (24 in the first games: 15 letters; HistoryWalker's 26: 16 letters)
+  const NE = () => BigInt(WW.EPISODES.length), LEN = () => Math.ceil((WW.EPISODES.length + 35 + 15) / 5);
   WW.passportCode = (s = WW.save) => {
-    let n = 0n;
+    let n = 0n; const E = NE();
     WW.EPISODES.forEach((e, i) => { if (s.episodes[e.id] && s.episodes[e.id].done) n |= 1n << BigInt(i); });
-    let shift = 24n;
+    let shift = E;
     WW.THEMES.forEach(t => { n |= BigInt(Math.min(31, s.stats[t.k] || 0)) << shift; shift += 5n; });
     const l = s.look || {};
-    n |= BigInt((l.skin ?? 1) & 7) << 49n; n |= BigInt((l.hair || 0) & 7) << 52n; n |= BigInt((l.hat || 0) & 7) << 55n;
-    n |= 1n << 58n; // version 1
-    const full = (n << 15n) | check15(n);
+    n |= BigInt((l.skin ?? 1) & 7) << (E + 25n); n |= BigInt((l.hair || 0) & 7) << (E + 28n); n |= BigInt((l.hat || 0) & 7) << (E + 31n);
+    n |= 1n << (E + 34n); // version 1
+    const full = (n << 15n) | check15(n), len = LEN();
     let out = '';
-    for (let i = 0; i < 15; i++) out = ALPH[Number((full >> BigInt(i * 5)) & 31n)] + out;
+    for (let i = 0; i < len; i++) out = ALPH[Number((full >> BigInt(i * 5)) & 31n)] + out;
     return 'WW-' + out.slice(0, 5) + '-' + out.slice(5, 10) + '-' + out.slice(10);
   };
   WW.readCode = code => {
     const c = String(code || '').toUpperCase().replace(/^WW/, '').replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1');
-    if (c.length !== 15) return null;
-    let full = 0n;
+    if (c.length !== LEN()) return null;
+    let full = 0n; const E = NE();
     for (const ch of c) { const v = ALPH.indexOf(ch); if (v < 0) return null; full = (full << 5n) | BigInt(v); }
     const n = full >> 15n;
     if ((full & 0x7fffn) !== check15(n)) return null;
     const out = { episodes: {}, stats: {}, look: {} };
     WW.EPISODES.forEach((e, i) => { if ((n >> BigInt(i)) & 1n) out.episodes[e.id] = { done: true, stars: 1 }; });
-    let shift = 24n;
+    let shift = E;
     WW.THEMES.forEach(t => { out.stats[t.k] = Number((n >> shift) & 31n); shift += 5n; });
-    out.look = { skin: Number((n >> 49n) & 7n), hair: Number((n >> 52n) & 7n), hat: Number((n >> 55n) & 7n) };
+    out.look = { skin: Number((n >> (E + 25n)) & 7n), hair: Number((n >> (E + 28n)) & 7n), hat: Number((n >> (E + 31n)) & 7n) };
     return out;
   };
   // never lose progress: keep the best of both

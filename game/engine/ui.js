@@ -337,7 +337,7 @@
         box.innerHTML = `<div class="logo">${esc(WW.TITLE)}</div><div class="sublogo">${esc(WW.SUB)}</div>
           <div class="epcard"><div class="epn">${esc(T('episode'))} ${esc(ep.id)} · ${esc(L(WW.REALMS[ep.realm]))}</div>
           <h2>${esc(L(ep.title))}</h2><div class="place">${esc(L(ep.place))}</div></div>
-          <div class="langrow">${['en', 'es', 'fa'].map(l => `<button class="pbtn ${WW.lang === l ? 'gold' : ''}" data-l="${l}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('')}</div>`;
+          <div class="langrow"${WW.LANGS.length < 2 ? ' hidden' : ''}>${WW.LANGS.map(l => `<button class="pbtn ${WW.lang === l ? 'gold' : ''}" data-l="${l}">${l === 'fa' ? 'دری' : l.toUpperCase()}</button>`).join('')}</div>`;
         box.querySelectorAll('[data-l]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.l)));
         if (!newHero) {
           const s = WW.save;
@@ -570,9 +570,9 @@
         box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
         const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
         const nav = document.createElement('div'); nav.className = 'acts';
-        if (WW.CONFIG.MODE === 'pages') {
-          nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => (location.href = 'index.html')));
-          if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => (location.href = WW.epFile(nx.id))));
+        if (WW.hasMap()) {
+          nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => WW.goMap()));
+          if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => WW.goEp(nx.id)));
         } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
         nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
         box.appendChild(nav);

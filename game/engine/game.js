@@ -34,7 +34,7 @@
         <div class="ww-bar" id="ww-bar">
           <a class="ww-logo" ${WW.CONFIG.MODE === 'pages' ? 'href="index.html"' : ''}>${WW.TITLE}</a>
           <span class="langs"><button data-lang="en">EN</button><button data-lang="es">ES</button><button data-lang="fa">دری</button></span>
-          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">${WW.GICON}</button><button id="ww-b-pass"></button>${WW.CONFIG.MODE === 'pages' ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
+          <span class="tools"><button id="ww-b-chris" aria-label="Christopher (C)">${WW.GICON}</button><button id="ww-b-pass"></button>${WW.hasMap() ? '<button id="ww-b-map"></button>' : ''}<span class="gear"><button id="ww-b-gear" aria-haspopup="true" aria-expanded="false">⚙</button><span class="gearmenu" id="ww-gearmenu"><button id="ww-b-mus"></button><button id="ww-b-snd"></button><button id="ww-b-help" class="ww-help">?</button><button id="ww-b-pad" aria-label="arrow buttons">✥</button><button id="ww-b-full"></button></span></span></span>
         </div>
         <div class="hud" id="ww-hud"></div>
         <div class="quest" id="ww-quest" role="button" tabindex="-1"></div>
@@ -59,9 +59,10 @@
     document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
+    if (WW.LANGS.length < 2) root.querySelector('.langs').hidden = true; // one language: no language buttons
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
-    if ($('ww-b-map')) $('ww-b-map').onclick = () => (location.href = 'index.html');
+    if ($('ww-b-map')) $('ww-b-map').onclick = () => WW.goMap();
     $('ww-b-pad').onclick = () => { root.classList.toggle('touch'); G.fit(); };
     // PLAYTEST-3: Music, Sound, Keys and help, the arrow pad and Full screen live in one ⚙ menu
     const gearOpen = on => { const m = $('ww-gearmenu'); m.classList.toggle('on', on); $('ww-b-gear').setAttribute('aria-expanded', on ? 'true' : 'false'); };

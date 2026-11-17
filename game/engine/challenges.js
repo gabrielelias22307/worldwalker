@@ -156,6 +156,15 @@
     });
   }
 
+  /* a stimulus for an AP-style question: a source excerpt with its author and date, or a small table */
+  WW.stimHTML = st => {
+    const esc2 = v => WW.rich(v);
+    let body = '';
+    if (st.text) body += `<div class="stimtext">${esc2(st.text)}</div>`;
+    if (st.rows) body += `<table class="stimtab">${st.rows.map((r, i) => `<tr>${r.map(cell => i === 0 ? `<th>${esc2(cell)}</th>` : `<td>${esc2(cell)}</td>`).join('')}</tr>`).join('')}</table>`;
+    return `<div class="stim">${st.title ? `<div class="stimtitle">${esc2(st.title)}</div>` : ''}${body}${st.src ? `<div class="stimsrc">${esc2(st.src)}</div>` : ''}</div>`;
+  };
+
   /* ---------------- claim ---------------- */
   function claimUI(ch) {
     let pick = ch.pickAt ?? null, why = {}, checked = false; // pickAt: the site the student is standing at (world version)
@@ -345,6 +354,7 @@
         if (broken === 0 && picked == null && boss.taunt) box.insertAdjacentHTML('beforeend', `<p class="say taunt">${WW.rich(boss.taunt)}</p>`);
         const qi = queue[0], q = boss.questions[qi];
         box.dataset.q = qi;
+        if (q.stim) box.insertAdjacentHTML('beforeend', WW.stimHTML(q.stim)); // AP style: a source, a table or a quote to read first
         box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
         const list = document.createElement('div'); list.className = 'choices two';
         const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
