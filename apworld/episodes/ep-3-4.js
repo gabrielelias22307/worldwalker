@@ -18,7 +18,7 @@ window.EPISODE = {
   intro: [
     { en: 'The Grump blurred the page on the great land empires. In Beijing, people forget how empires win and keep power!' },
     { en: 'After the Mongol Empire fell, [[land-based empire|land-based empires]] filled the gap: Ottoman, Safavid, Mughal, Russian, and in China the Ming, then the Qing.' },
-    { en: 'Talk to the 4 people here, help a tutor, then wake the time stone and compare the empires.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a tutor, then wake the time stone and compare the empires.' }
   ],
   scenes: {
     at: [116.4, 39.9],
@@ -79,6 +79,8 @@ window.EPISODE = {
     'shia': { en: 'the branch of Islam (Shi\'ite) that followed Imam Ali; the Safavids made it their state faith' },
     'sulh-i kul': { en: '"universal toleration": Akbar\'s policy that non-Muslim subjects had the same rights as Muslims' },
     'timar': { en: 'an Ottoman estate granted by the sultan; its peasants paid part of their harvest as tax' },
+    'sipahi': { en: 'an Ottoman noble, basically a knight, who gave yearly service to the state in return for the right to tax an area' },
+    'political technologies': { en: 'ideas and ways of organizing an empire, like a bureaucracy or an alliance with religious officials, that let a central government rule a big area' },
     'serf': { en: 'in Russia, a peasant who could not leave the land and was heavily taxed' },
     'tsar': { en: 'the title of Russia\'s rulers, taken from the Roman title Caesar' },
     'manchu': { en: 'a people from north of China whose armies took power and founded the Qing dynasty' }
@@ -88,17 +90,18 @@ window.EPISODE = {
       x: 4, y: 7, name: { en: 'Bayan' }, role: { en: 'Manchu soldier' },
       look: { skin: 2, hair: '#1b1410', shirt: '#2a4a8a', pants: '#2a2a3a', hat: '#7a2a2a', style: 'short' },
       lines: [
-        { en: 'We [[manchu|Manchus]] came from the north. When famine and debt broke the Ming, our army took power as the Qing.' },
-        { en: '[[gunpowder|Gunpowder]] weapons cost so much that local nobles cannot buy many. Cannon smash their castle walls. So guns make rulers stronger than nobles.' },
-        { en: 'The Ottomans broke Constantinople\'s walls with cannon in 1453. Our Kangxi Emperor ended resistance, then made his army smaller to save money.' }
+        { en: 'We [[manchu|Manchus]] came from the north in the 1640s, supposedly to help the Ming. Instead, we took power ourselves as the Qing dynasty.' },
+        { en: '[[gunpowder|Gunpowder]] was first made in China. Guns cost so much that local nobles cannot buy many, and cannon smash their castle walls.' },
+        { en: 'Cannon won Constantinople for the Ottomans in 1453. Babur beat the Sultan of Delhi at Panipat in 1526. Russians beat the Crimean Khanate in 1532.' },
+        { en: 'Our Kangxi Emperor, ruler since 1661, first ended resistance, then made his army smaller to keep costs low. That let him freeze taxes.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'How did gunpowder weapons help the rulers of land-based empires?' },
+        q: { en: 'Which best explains how gunpowder helped rulers of land-based empires centralize power?' },
         choices: [
-          { ok: true, t: { en: 'They weakened local nobles and castles' }, why: { en: 'Yes. Only rulers could afford many guns, and cannon broke the walls nobles hid behind. Power became more centralized.' } },
-          { t: { en: 'They let every noble raise his own army' }, why: { en: 'No. Guns were too costly for most nobles. The Mughal Akbar even banned anyone but himself from owning cannon.' } },
-          { t: { en: 'They ended the wars between empires' }, why: { en: 'No. Empires with guns kept fighting. The Ottomans and Safavids clashed for generations.' } }
+          { ok: true, t: { en: 'Costly guns and cannon undercut local nobles' }, why: { en: 'Yes. Only rulers could buy many guns, and cannon broke the castle walls nobles hid behind. Power moved to the center.' } },
+          { t: { en: 'Muskets let each noble defend his own castle' }, why: { en: 'No. Guns were too costly for most nobles, and cannon made castles useless. The Mughal Akbar even banned anyone but himself from owning cannon.' } },
+          { t: { en: 'Guns let rulers stop relying on any allies' }, why: { en: 'No, an overstatement. Rulers still needed paid officials, nobles and religious leaders to hold a vast land.' } }
         ]
       }
     },
@@ -106,17 +109,18 @@ window.EPISODE = {
       x: 24, y: 8, name: { en: 'Liang' }, role: { en: 'Scholar-official' },
       look: { skin: 1, hair: '#2b1d14', shirt: '#7a2a2a', robe: true, hat: '#1b1410', style: 'bun' },
       lines: [
-        { en: 'I passed the [[civil service exam|exams]] on Confucian books. The Qing kept the Ming system of trained officials, a huge [[bureaucracy|bureaucracy]].' },
-        { en: 'The Ming had perhaps 200,000 officials. Under the Qing, we answer to generals tied to the emperor\'s family.' },
-        { en: 'Every great empire needs officials paid by the ruler. The Ottomans train boys taken in the [[devshirme|devshirme]]. Mughal [[mansabdar|mansabdars]] must come to court to prove loyalty.' }
+        { en: 'I passed the [[civil service exam|exams]] on Confucian texts about acting virtuously. Officials often come from land-owning families, but not always the most powerful ones.' },
+        { en: 'The Ming built a huge [[bureaucracy|bureaucracy]], perhaps 200,000 people. The Qing kept the system, but we officials answer to generals tied to the emperor\'s family.' },
+        { en: 'The Ottomans train boys from the [[devshirme|devshirme]]. Lands granted to them go back to the sultan when they die, so no permanent aristocracy forms.' },
+        { en: 'Mughal [[mansabdar|mansabdars]] must come to court often to prove loyalty. Ottoman [[sipahi|sipahi]] give yearly service in return for the right to tax an area.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with the Ottoman Empire, how did Qing China choose many of its officials?' },
+        q: { en: 'Compared with Ottoman officials raised through the devshirme, Qing officials were chosen mainly...' },
         choices: [
-          { ok: true, t: { en: 'By exams on Confucian books' }, why: { en: 'Yes. China chose officials by exam; the Ottomans trained boys from the devshirme. Both wanted skilled, loyal servants.' } },
-          { t: { en: 'By taking boys from Christian families' }, why: { en: 'No. That was the Ottoman devshirme. The Qing filled their bureaucracy through exams on Confucian texts.' } },
-          { t: { en: 'By letting nobles pass posts to sons' }, why: { en: 'No. Both empires tried to limit the power of noble families. Qing officials had to pass exams.' } }
+          { ok: true, t: { en: 'by examinations on Confucian texts' }, why: { en: 'Yes. China chose officials by exam; the Ottomans trained boys from the devshirme. Both wanted skilled officials loyal to the ruler.' } },
+          { t: { en: 'by service as commanders under generals' }, why: { en: 'No. Qing officials did answer to generals tied to the emperor, but they won their posts by passing the exams.' } },
+          { t: { en: 'by birth into the most powerful families' }, why: { en: 'No. Many came from land-owning families, but not always the most powerful ones. They had to pass the exams.' } }
         ]
       }
     },
@@ -124,17 +128,18 @@ window.EPISODE = {
       x: 8, y: 14, name: { en: 'Yusuf' }, role: { en: 'Caravan merchant' },
       look: { skin: 3, hair: '#2b1d14', shirt: '#2a7a6a', robe: true, hat: '#e8e0d0', style: 'short' },
       lines: [
-        { en: 'I bring goods from Persia and India. Every empire taxes me: tolls on Safavid roads, about 2.5 percent at Mughal customs.' },
-        { en: 'Rulers use faith too. The Ottoman sultan claims to be [[caliph|caliph]] of Sunni Islam, yet Christians and Jews govern themselves if they pay taxes and stay loyal.' },
-        { en: 'The Safavid shahs are [[shia|Shi\'a]] and forced subjects to convert. The Mughal Akbar ruled a mostly Hindu land, so he declared [[sulh-i kul|sulh-i kul]], universal toleration.' }
+        { en: 'Every empire taxes me. Mughal rulers tax land, and their customs take about 2.5 percent. Safavid shahs put tolls on caravans and even "sell" trade routes.' },
+        { en: 'The Ottoman sultan claims to be [[caliph|caliph]]; Selim I took Mecca and Medina in 1517. Christians and Jews govern themselves if they pay taxes and stay loyal.' },
+        { en: 'From 1501 the [[shia|Shi\'a]] Safavid Ismail required conquered people to become Shi\'ites. In Tabriz, as many as 20,000 Sunnis who resisted were killed.' },
+        { en: 'Akbar ruled a mostly Hindu land. He married daughters of Hindu Rajput families and declared [[sulh-i kul|sulh-i kul]]: non-Muslims had the same rights as Muslims.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Why did Akbar\'s policy of universal toleration make sense in Mughal India?' },
+        q: { en: 'Which context best explains Akbar\'s policy of sulh-i kul, or universal toleration?' },
         choices: [
-          { ok: true, t: { en: 'Most of his subjects were not Muslim' }, why: { en: 'Yes. A Muslim ruler of a mostly Hindu land needed loyalty from every faith, so non-Muslims got the same rights.' } },
-          { t: { en: 'He wanted all subjects to become Shi\'a' }, why: { en: 'No. Forcing people to become Shi\'a was the Safavid policy. Akbar tolerated many faiths.' } },
-          { t: { en: 'India had only one religion back then' }, why: { en: 'No. India was very diverse: Hindus, Muslims, Sikhs, Jains, Buddhists, Christians, Jews and more.' } }
+          { ok: true, t: { en: 'A Muslim dynasty ruling a Hindu majority' }, why: { en: 'Yes. A Muslim emperor of a mostly Hindu land needed loyalty from every faith, so non-Muslims got the same rights.' } },
+          { t: { en: 'A Shi\'a dynasty facing Sunni neighbors' }, why: { en: 'No. That was the Safavid context, and the Safavids forced conversion instead of tolerating other faiths.' } },
+          { t: { en: 'A Sunni caliph guarding Mecca and Medina' }, why: { en: 'No. That was the Ottoman sultan. Akbar\'s problem was ruling Hindus, Muslims, Sikhs and others in India.' } }
         ]
       }
     },
@@ -142,17 +147,56 @@ window.EPISODE = {
       x: 20, y: 19, name: { en: 'Old Wang' }, role: { en: 'Farmer' },
       look: { skin: 3, hair: '#8a8a8a', shirt: '#6a7a4a', pants: '#3a3a2a', hat: '#c9a24a', style: 'short' },
       lines: [
-        { en: 'Under the late Ming, taxes crushed us farmers. Then famines came in 1628, and the government could not feed us.' },
-        { en: 'The Kangxi Emperor froze our taxes so they would not rise. Now many farm families here live well.' },
-        { en: 'Travelers say Ottoman peasants on a [[timar|timar]] pay 15 to 25 percent of their crop. In Russia, [[serf|serfs]] cannot leave their land, and they are heavily taxed.' }
+        { en: 'Ming taxes were low at first, then rose. Local landowners who collected them kept some, so we paid more while the state got less.' },
+        { en: 'By the 1620s, taxes crushed us. Famines struck in 1628, and the Ming could not feed us. That weakness let the Qing take power.' },
+        { en: 'The Kangxi Emperor froze our taxes so they would not rise. Now Chinese peasants live better than in almost any other society.' },
+        { en: 'Ottoman peasants on a [[timar|timar]] give 15 to 25 percent of their crop to a landlord, who sends part to the sultan. Russian [[serf|serfs]] cannot leave their land.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'What changed for Chinese farmers from the late Ming to the Kangxi Emperor?' },
+        q: { en: 'Which best describes a change in Chinese farm taxes from the late Ming to the Kangxi Emperor?' },
         choices: [
-          { ok: true, t: { en: 'Heavy taxes gave way to frozen taxes' }, why: { en: 'Right. Heavy late-Ming taxes and famine helped bring the Ming down. Kangxi kept taxes from rising, a very popular move.' } },
-          { t: { en: 'Farmers became serfs tied to the land' }, why: { en: 'No. Serfdom was Russia\'s system, where peasants could not leave the land. Chinese farmers were not serfs.' } },
-          { t: { en: 'Farmers no longer paid any taxes' }, why: { en: 'No. Kangxi froze taxes, he did not end them. Taxes on farming still paid for the state.' } }
+          { ok: true, t: { en: 'Crushing taxes gave way to frozen taxes' }, why: { en: 'Right. Heavy late-Ming taxes and the famines of 1628 weakened the Ming. Kangxi kept taxes from rising, a very popular move.' } },
+          { t: { en: 'Landowners began to keep part of the tax' }, why: { en: 'No. That happened under the Ming and helped ruin it: taxes went up while the state got less.' } },
+          { t: { en: 'Farmers were bound to the land as serfs' }, why: { en: 'No. Serfdom was Russia\'s system under the Romanovs. Chinese farmers were not serfs.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 28, y: 5, icon: '📜',
+      name: { en: 'The Qianlong Emperor to Lord Macartney' }, role: { en: 'Primary source' },
+      src: { en: 'The Qianlong Emperor, explanation to the British trade envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' },
+      lines: [
+        { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders."' },
+        { en: '"There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' },
+        { en: 'Context: the Qianlong Emperor, Kangxi\'s grandson, gave this answer in 1791 to a British envoy who wanted more trade. Since 1433, when the Ming ended Zheng He\'s great fleets, China had turned its resources inland. Foreign merchants were welcome to come to China. In the 1750s Qianlong\'s campaigns made China larger than ever. It was peaceful and prosperous.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: which best explains why the emperor says China needs no foreign goods?' },
+        choices: [
+          { ok: true, t: { en: 'He ruled a rich empire that made all it needed' }, why: { en: 'Yes. China produced everything it needed at home, and inland expansion had brought new wealth and land.' } },
+          { t: { en: 'His empire had lost its wealth to European traders' }, why: { en: 'No. China in this era was peaceful, prosperous and larger than ever. It was not a time of decline or European domination.' } },
+          { t: { en: 'The Ming had banned all trade with Asian neighbors' }, why: { en: 'No. Trade went on, mostly with neighbors in Southeast and Central Asia, and foreign merchants could come to China.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 6, y: 5, icon: '📖',
+      name: { en: 'Gunpowder Empires' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Gunpowder Empires" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Historians William H. McNeill and Marshall G.S. Hodgson saw three vast empires rise around the same time: the Ottoman, Safavid and Mughal. They called them "gunpowder empires." Guns solved a big problem. Rulers had let local nobles govern in their name, and nobles hid behind castle walls. But guns were so expensive that only sultans, kings and emperors could buy many, and cannon could reduce castle walls to rubble.' },
+        { en: 'Ottoman Sultan Murad I (r. 1362–1389) built the janissary corps, enslaved soldiers with muskets, loyal only to him. Babur used muskets and cannon to defeat the Sultan of Delhi in 1526. Shah Abbas the Great (r. 1588–1629) assembled 12,000 musketeers and 500 cannon. The Mughal Akbar forbade anyone but the emperor from owning cannon.' },
+        { en: 'Yet recent historians say the name may mislead. Most armies still relied mainly on swords, spears and bows. Ruling vast lands relied more on [[political technologies|political technologies]]: a bureaucracy of officials paid by the central government, and alliances between rulers and religious officials. Russia and Qing China followed the same pattern, and China had the most advanced bureaucracy of the age.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Why do recent historians find the term "gunpowder empires" misleading?' },
+        choices: [
+          { ok: true, t: { en: 'Rule rested on officials and religious allies' }, why: { en: 'Yes. Armies still used mostly swords, spears and bows. Bureaucracy and alliances with religious officials held the empires together.' } },
+          { t: { en: 'Only the Ottomans ever used muskets or cannon' }, why: { en: 'No. Babur, Shah Abbas, the Russians and the Qing all used gunpowder weapons too.' } },
+          { t: { en: 'Local nobles, not rulers, owned most cannon' }, why: { en: 'No. Guns were too costly for nobles, and rulers kept them for themselves, as Akbar did with cannon.' } }
         ]
       }
     }
@@ -264,57 +308,59 @@ window.EPISODE = {
     win: { en: 'The dust settles over Beijing. The page on land-based empires floats down into your hands!' },
     questions: [
       {
-        stim: { title: { en: 'How three empires raised money' }, rows: [[{ en: 'Empire' }, { en: 'Example' }], [{ en: 'Ottoman' }, { en: 'Peasants on timars paid 15–25% of their harvest' }], [{ en: 'Mughal' }, { en: 'A customs duty of about 2.5% on imported goods' }], [{ en: 'Safavid' }, { en: 'Tolls on caravans using imperial roads' }]], src: { en: 'From "Legitimizing and Consolidating Power," World History Project' } },
-        q: { en: 'The table best supports which comparison?' },
-        choices: [{ en: 'Empires taxed both farming and trade' }, { en: 'Only the Ottomans collected any taxes' }, { en: 'Trade was never taxed in these lands' }, { en: 'Each empire ran on Russian merchants' }],
+        stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
+        q: { en: 'The emperor\'s point of view in the excerpt most directly reflects...' },
+        choices: [{ en: 'confidence that a vast inland empire was self-sufficient' }, { en: 'fear that European merchants now dominated China\'s trade' }, { en: 'the Ming plan to send Zheng He\'s fleets across the ocean' }, { en: 'a Confucian ban on all trade with Asian neighbors' }],
         answer: 0,
-        why: { en: 'The Ottomans taxed harvests; the Mughals and Safavids also taxed trade. Empires needed money for armies, roads and palaces.' }
+        why: { en: 'Since 1433 China had turned inland and produced all it needed. By Qianlong\'s time it was prosperous and larger than ever, so he saw no need for foreign goods.' }
       },
       {
-        stim: { text: { en: 'Ismail appointed new religious leaders in every territory he conquered. They spread the Shi\'ite faith to people who were required to become Shi\'ites.' }, src: { en: 'Adapted from "The Safavid Empire," World History Project' } },
+        stim: { text: { en: 'Despite having some firearms, most of these armies continued to rely mainly on swords, spears, and bows. The rulers\' ability to reign over vast empires may have relied more on advances in governance.' }, src: { en: 'Adapted from "Gunpowder Empires" by Trevor Getz, World History Project' } },
+        q: { en: 'The passage best supports which claim about land-based empires from 1450 to 1750?' },
+        choices: [{ en: 'Gunpowder played no real part in their growth' }, { en: 'Officials and religious allies held them together' }, { en: 'Only the Ottomans, Safavids and Mughals had guns' }, { en: 'Their armies fought mostly with muskets and cannon' }],
+        answer: 1,
+        why: { en: 'Recent historians stress "political technologies": paid officials and alliances with religious leaders. Guns mattered, but saying they played no part is an overstatement.' }
+      },
+      {
+        stim: { title: { en: 'How three empires raised money' }, rows: [[{ en: 'Empire' }, { en: 'Example' }], [{ en: 'Ottoman' }, { en: 'Peasants on timars paid 15–25% of their harvest to a landlord' }], [{ en: 'Mughal' }, { en: 'Taxes on land, plus a customs duty of about 2.5% on imports' }], [{ en: 'Safavid' }, { en: 'Tolls on caravans using imperial roads' }]], src: { en: 'From "Legitimizing and Consolidating Power," World History Project' } },
+        q: { en: 'The table best supports which claim about funding land-based empires?' },
+        choices: [{ en: 'Mughal rulers taxed trade instead of land' }, { en: 'Ottoman sultans collected harvest taxes directly' }, { en: 'Empires taxed both agriculture and trade' }, { en: 'Safavid tolls replaced all taxes on farming' }],
+        answer: 2,
+        why: { en: 'Empires taxed farming and trade. The Mughals taxed land AND imports; Ottoman landlords collected the harvest tax and sent part to the sultan.' }
+      },
+      {
+        stim: { text: { en: 'Ismail appointed new religious leaders in every territory he conquered. They spread the Shi\'ite faith to captive audiences who were required to become Shi\'ites.' }, src: { en: 'Adapted from "The Safavid Empire" by Trevor Getz, World History Project' } },
         q: { en: 'Compared with Ottoman rule over religious minorities, the Safavid policy above was...' },
-        choices: [{ en: 'harsher: Ottoman minorities ruled themselves' }, { en: 'the same: both forced everyone to convert' }, { en: 'milder: the Ottomans banned every Christian church' }, { en: 'unrelated to the ruler\'s power or goals' }],
+        choices: [{ en: 'harsher: Ottoman Christians and Jews kept self-rule' }, { en: 'milder: the Ottomans banned Jewish and Christian worship' }, { en: 'similar: both made Sunni Islam the faith of the state' }, { en: 'unusual: no other empire tied religion to its rule' }],
         answer: 0,
         why: { en: 'Safavids forced conversion to Shi\'a Islam. The Ottomans let Christian and Jewish communities govern themselves if they paid taxes and stayed loyal.' }
       },
       {
         stim: { text: { en: 'The Qing could not claim to have inherited an earlier dynasty, as they were outsiders from the north. Even so, they offered ritual ceremonies at the tombs of the Ming Emperors.' }, src: { en: 'Adapted from "Legitimizing and Consolidating Power," World History Project' } },
-        q: { en: 'Which best explains the Qing actions described above?' },
-        choices: [{ en: 'They wanted to show a right to rule' }, { en: 'They planned to bring back the Ming' }, { en: 'They hoped to convert China to Islam' }, { en: 'They meant to end the Confucian exams' }],
-        answer: 0,
-        why: { en: 'Honoring the dynasty before them was a way for Manchu outsiders to build legitimacy, the accepted right to rule.' }
+        q: { en: 'The Qing actions most directly reflect which strategy also used by Russia\'s rulers?' },
+        choices: [{ en: 'Choosing officials through Confucian exams' }, { en: 'Giving nobles control over peasants as serfs' }, { en: 'Building armies of enslaved soldiers' }, { en: 'Claiming legitimacy through ties to the past' }],
+        answer: 3,
+        why: { en: 'Both sought legitimacy. The Qing honored the Ming tombs; Russia\'s rulers took the title Tsar, from the Roman Caesar, and allied with the Orthodox Church.' }
       },
       {
-        stim: { text: { en: 'Akbar formalized sulh-i kul, or "universal toleration." Non-Muslim subjects were to have the same rights as Muslims under the Mughal system.' }, src: { en: 'Adapted from "South Asia 1450–1750," World History Project' } },
-        q: { en: 'Akbar\'s policy is best understood as a way to...' },
-        choices: [{ en: 'win loyalty in a mostly Hindu land' }, { en: 'force all Hindu subjects to convert' }, { en: 'copy the Safavid policy on faith' }, { en: 'end all trade with other states' }],
-        answer: 0,
-        why: { en: 'A Muslim emperor ruling a Hindu majority needed support from every faith. Toleration kept a diverse empire together.' }
+        stim: { title: { en: 'Rulers and their nobles' }, rows: [[{ en: 'Empire' }, { en: 'Policy' }], [{ en: 'Mughal' }, { en: 'Mansabdars must come to court often to prove loyalty' }], [{ en: 'Ottoman' }, { en: 'Sipahi give yearly service for the right to tax an area' }], [{ en: 'Mughal' }, { en: 'No one but the emperor may own cannon' }]], src: { en: 'From "Gunpowder Empires," World History Project' } },
+        q: { en: 'The table best supports the claim that rulers of land-based empires...' },
+        choices: [{ en: 'let nobles rule freely behind their castle walls' }, { en: 'worked to keep their nobles dependent on them' }, { en: 'replaced all nobles with officials chosen by exam' }, { en: 'left gunpowder weapons in the hands of nobles' }],
+        answer: 1,
+        why: { en: 'Rulers still used nobles but controlled them: service, visits to court and a monopoly on cannon. Power became more centralized.' }
       },
       {
-        stim: { text: { en: 'Gunpowder weapons were so expensive that local nobles usually couldn\'t afford them. And cannon could reduce the walls of a castle to rubble.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
-        q: { en: 'The excerpt best explains how gunpowder helped rulers to...' },
-        choices: [{ en: 'gain power over local nobles' }, { en: 'sell more silk to Europe' }, { en: 'share power with castle lords' }, { en: 'convert subjects to a new faith' }],
-        answer: 0,
-        why: { en: 'Only rulers could pay for many guns, and cannon broke nobles\' castle walls. Power became more centralized.' }
+        q: { en: 'Compared with the Ottoman devshirme, the Qing way of filling the bureaucracy differed in that it...' },
+        choices: [{ en: 'took boys from Christian families in the Balkans' }, { en: 'tested candidates on Confucian texts about virtue' }, { en: 'let officials pass their granted lands to sons' }, { en: 'gave every post to the most powerful families' }],
+        answer: 1,
+        why: { en: 'Qing officials passed exams on Confucian texts. The devshirme took Balkan Christian boys, converted and trained them; their lands went back to the sultan.' }
       },
       {
-        q: { en: 'Which statement best compares how the Qing and Ottoman empires staffed their governments?' },
-        choices: [{ en: 'Qing used exams; Ottomans trained devshirme boys' }, { en: 'Both let nobles pass every post down to sons' }, { en: 'Both chose all officials by Confucian exams' }, { en: 'Neither empire had any officials paid by rulers' }],
-        answer: 0,
-        why: { en: 'Both wanted loyal officials, but in different ways: Confucian exams in China, the devshirme in the Ottoman Empire.' }
-      },
-      {
-        q: { en: 'Which strategy was shared by most land-based empires from 1450 to 1750?' },
-        choices: [{ en: 'A bureaucracy of officials paid by the ruler' }, { en: 'A ban on all cannon and muskets in war' }, { en: 'Rule with no help at all from religious leaders' }, { en: 'Power shared equally with every noble' }],
-        answer: 0,
-        why: { en: 'Every great empire needed paid officials to collect taxes and rule. A bureaucracy kept power centralized in the ruler\'s hands.' }
-      },
-      {
-        q: { en: 'Which statement best compares farmers under the Kangxi Emperor with serfs in Romanov Russia?' },
-        choices: [{ en: 'Kangxi froze taxes; serfs could not leave land' }, { en: 'Both were free to leave the land whenever they liked' }, { en: 'Serfs paid no taxes, unlike Chinese farmers' }, { en: 'Kangxi turned Chinese farmers into serfs' }],
-        answer: 0,
-        why: { en: 'Kangxi kept taxes from rising, a popular move. Russian serfs were bound to the land and heavily taxed.' }
+        stim: { text: { en: 'The Kangxi Emperor first ended resistance to his rule and then decreased the size of his army to keep costs low. This allowed him to freeze taxes so that they would not increase.' }, src: { en: 'Adapted from "China Under Ming and Qing Rule" by Trevor Getz, World History Project' } },
+        q: { en: 'Compared with the treatment of peasants in Romanov Russia, Kangxi\'s policy...' },
+        choices: [{ en: 'also tied peasants to land owned by nobles' }, { en: 'raised taxes to pay for a larger army' }, { en: 'eased burdens while Russian serfs were bound' }, { en: 'gave peasants the timar estates of nobles' }],
+        answer: 2,
+        why: { en: 'Kangxi kept taxes from rising, and Chinese peasants lived better than almost anywhere. Russian serfs could not leave their land and were heavily taxed.' }
       }
     ]
   },
