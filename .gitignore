@@ -3,3 +3,7 @@ node_modules/
 .DS_Store
 netlify-site/
 .netlify
+
+# HistoryWalker is one file (dist/HistoryWalker.html); the per-episode test builds stay out
+dist/canvas-apworld/
+dist/canvas-blocks-apworld/
