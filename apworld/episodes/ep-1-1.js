@@ -13,7 +13,7 @@ window.EPISODE = {
   place: { en: 'Hangzhou, Song China, 1200' },
   intro: [
     { en: 'The Grump blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
-    { en: 'Talk to the 4 people here, help a traveler from Japan, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a traveler from Japan, then wake the time stone.' }
   ],
   scenes: {
     at: [120.15, 30.25],
@@ -69,6 +69,8 @@ window.EPISODE = {
     'social hierarchy': { en: 'a ranking of people from higher to lower, like ruler over subject or father over son' },
     'wet-field rice': { en: 'rice grown in flooded, leveled fields called paddies' },
     'paper money': { en: 'printed paper used in place of coins; the Song government issued it from the 1120s' },
+    'cash crop': { en: 'a crop grown to sell, like tea, sugar, cotton or mulberry leaves' },
+    'aristocracy': { en: 'old, powerful families whose rank passed from parents to children' },
     'buddhism': { en: 'a belief system that began in India with the teachings of Siddhartha Gautama, the Buddha' },
     'pure land': { en: 'a popular form of Buddhism: simple devotion to the Buddha Amitabha can bring rebirth in paradise' },
     'sinicized': { en: 'changed by Chinese influence to fit Chinese ideas and customs' },
@@ -79,17 +81,18 @@ window.EPISODE = {
       x: 14, y: 6, name: { en: 'Wen' }, role: { en: 'Exam student' },
       look: { skin: 1, hair: '#1b1410', shirt: '#3a5a8a', robe: true, style: 'bun' },
       lines: [
-        { en: 'I have studied for years to take the [[civil service exam|civil service exams]]. Hundreds of thousands of young men try.' },
-        { en: 'Family name is still the easiest path to power. But passing the exams can make even a poor man a [[scholar-official|scholar-official]].' },
-        { en: 'We study [[confucianism|Confucian]] books gathered by Zhu Xi. They teach a [[social hierarchy|hierarchy]]: ruler over subject, father over son, husband over wife.' }
+        { en: 'I have studied for years for the [[civil service exam|civil service exams]], a Chinese invention. Hundreds of thousands of young men take them.' },
+        { en: 'Birth into the [[aristocracy|aristocracy]] is still the easiest path to power. But passing the exams can make even a poor man a [[scholar-official|scholar-official]]. Women may not take them.' },
+        { en: 'The scholar Zhu Xi, born in 1130, gathered the [[confucianism|Confucian]] writings into one official version. The exams are based on it now.' },
+        { en: 'They teach a [[social hierarchy|hierarchy]]: ruler over subject, father over son, husband over wife, like Heaven over Earth. An official must also know poetry, music and art.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'What did the civil service exams change in Song China?' },
         choices: [
-          { ok: true, t: { en: 'More able men could win government jobs' }, why: { en: 'Yes. Aristocratic family was still the easiest path, but the exams opened a second path to power for educated men.' } },
-          { t: { en: 'Women could now take and pass the exams' }, why: { en: 'No. The exams were not open to women. Confucian teaching said a woman\'s place was the household.' } },
-          { t: { en: 'The exams now chose who became emperor' }, why: { en: 'No. The emperor came from the ruling dynasty. The exams chose officials who served him.' } }
+          { ok: true, t: { en: 'They gave able men another path to office' }, why: { en: 'Yes. Aristocratic family was still the easiest path, but the exams let many able, educated men gain influence.' } },
+          { t: { en: 'They ended the power of aristocratic families' }, why: { en: 'No. That overstates it. Aristocratic lineage was still the easiest path to power. The exams added another path.' } },
+          { t: { en: 'They opened government posts to educated women' }, why: { en: 'No. The exams were not open to women. Confucian teaching said a woman\'s place was the household.' } }
         ]
       }
     },
@@ -97,17 +100,18 @@ window.EPISODE = {
       x: 22, y: 9, name: { en: 'Mei' }, role: { en: 'Silk weaver' },
       look: { skin: 1, hair: '#1b1410', shirt: '#c0392b', robe: true, style: 'long' },
       lines: [
-        { en: 'My mother and I raise silkworms, spin the thread and weave cloth at home. Our silk pays our rent and taxes.' },
-        { en: 'We trade with coins or [[paper money|paper money]]. Merchants invented it, and since the 1120s our government prints it too.' },
-        { en: 'Hangzhou became the Song capital in 1132. People pour in from the countryside and the lost north. Soon we may be a million!' }
+        { en: 'My mother and I raise silkworms, spin the thread and weave cloth at home. Our silk pays our rents and taxes, and buys tea, oil and charcoal.' },
+        { en: 'We trade with coins or [[paper money|paper money]]. Merchants invented it, and since the 1120s our government prints it too: the first government paper money in the world.' },
+        { en: 'Hangzhou became the Song capital in 1132, after the Jurchens conquered most of the north. People pour in from the countryside and the lost north.' },
+        { en: 'Grandmother says Hangzhou began as a rice-growing village in the Yangzi River Delta. Soon we may be a million people!' }
       ],
       ask: {
         stat: 'pla',
         q: { en: 'Confucian books say a woman\'s place is the household. What does Mei\'s work show about that?' },
         choices: [
           { ok: true, t: { en: 'Work at home could earn the family money' }, why: { en: 'Right. Household silk making was real production: it paid rents and taxes and bought goods.' } },
-          { t: { en: 'Women never worked in Song China' }, why: { en: 'No. Village women raised silkworms, spun thread and wove cloth that supported the family.' } },
-          { t: { en: 'Women ran the silk trade with Europe' }, why: { en: 'No. Mei weaves at home and sells in Hangzhou. Nothing here says women ran trade with Europe.' } }
+          { t: { en: 'Confucian ideas about women had lost their hold' }, why: { en: 'No. Mei still works inside the household, as Confucian teaching expected. Her work shows what that household role could include.' } },
+          { t: { en: 'Women\'s silk was made only for their own clothes' }, why: { en: 'No. Mei\'s silk is sold. The profits pay rents and taxes and buy other goods.' } }
         ]
       }
     },
@@ -115,17 +119,18 @@ window.EPISODE = {
       x: 6, y: 16, name: { en: 'Old Lu' }, role: { en: 'Rice farmer' },
       look: { skin: 2, hair: '#8a8a8a', shirt: '#6a7a4a', pants: '#3a3a2a', hat: '#c9a24a', style: 'short' },
       lines: [
-        { en: 'My grandfather\'s village turned this swamp into flooded paddies. Now rain does not decide if we eat.' },
+        { en: 'My grandfather\'s village leveled this swamp into irrigated paddies. Now irregular rain does not decide if we eat.' },
         { en: 'We grow seedlings in a seed bed, then every family member helps move them into the flooded field. It is hard work!' },
-        { en: 'That way we reap two harvests a year. More rice means more people: China has doubled since the old days.' }
+        { en: 'That way we reap two harvests a year. China grew from about 50 million people in the 700s to about 100 million in the 1100s.' },
+        { en: 'We also grow [[cash crop|cash crops]] to sell: tea, sugar, cotton, and mulberry leaves to feed silkworms.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Why could China\'s population grow from about 50 million to about 100 million by the 1100s?' },
         choices: [
           { ok: true, t: { en: 'Wet-field rice gave two harvests a year' }, why: { en: 'Yes. Irrigated paddies and transplanted seedlings expanded the food supply, so more people could be fed.' } },
-          { t: { en: 'Farmers stopped growing rice for cash crops' }, why: { en: 'No. Villagers grew cash crops like tea and mulberry, but rice paddies were what fed the growing population.' } },
-          { t: { en: 'The rains in China became regular' }, why: { en: 'No. Paddies were irrigated so farmers depended less on irregular rain.' } }
+          { t: { en: 'Cash crops like tea replaced rice paddies' }, why: { en: 'No. Villagers did grow tea and other cash crops, but rice paddies were what fed the growing population.' } },
+          { t: { en: 'The rains over China became more regular' }, why: { en: 'No. The rains stayed irregular. Paddies were irrigated so farmers depended less on rain.' } }
         ]
       }
     },
@@ -133,17 +138,18 @@ window.EPISODE = {
       x: 24, y: 20, name: { en: 'Brother Jun' }, role: { en: 'Buddhist monk' },
       look: { skin: 1, hair: '#2b1d14', shirt: '#d9822b', robe: true, style: 'short' },
       lines: [
-        { en: '[[buddhism|Buddhism]] began in India. Merchants on the Silk Roads carried it here long ago, with their goods.' },
-        { en: 'The Chinese made it their own. They mixed it with Daoist ideas and Chinese customs. We say it became [[sinicized|Sinicized]].' },
-        { en: 'Many ordinary people love [[pure land|Pure Land]] Buddhism. Monks from Japan study it here and carry it home.' }
+        { en: '[[buddhism|Buddhism]] began in India with Siddhartha Gautama. Merchants on the Silk Road carried it here long ago, along with their goods.' },
+        { en: 'The Chinese mixed it with Daoism and Chinese customs: it became [[sinicized|Sinicized]]. Some Daoists even say Laozi traveled to India and was reborn as the Buddha.' },
+        { en: 'We kept the Indian sutras. But in India, rebirth in the [[pure land|Pure Land]] meant a complete break with earthly life. Here it means an extension of earthly living.' },
+        { en: 'Our golden age was under the Tang. Then in the 800s the state destroyed over 4,000 monasteries. Buddhism declined, but it never disappeared.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'What happened to Buddhism after it reached China?' },
         choices: [
           { ok: true, t: { en: 'It blended with Chinese beliefs' }, why: { en: 'Yes. Buddhism mixed with Daoism and Chinese customs. Belief systems often change as they spread.' } },
-          { t: { en: 'It stayed exactly as it was in India' }, why: { en: 'No. The Chinese changed it, for example in how they understood the Pure Land and nirvana.' } },
-          { t: { en: 'The Song government banned it for good' }, why: { en: 'No. Buddhism never disappeared in China. It was practiced alongside Daoism and Confucianism.' } }
+          { t: { en: 'It kept every Indian belief unchanged' }, why: { en: 'No. The Chinese kept the sutras but changed ideas like nirvana and the Pure Land.' } },
+          { t: { en: 'The state wiped it out after the Tang' }, why: { en: 'No. Monasteries were destroyed in the 800s, but Buddhism never disappeared. It was practiced alongside Daoism and Confucianism.' } }
         ]
       }
     },
@@ -152,17 +158,37 @@ window.EPISODE = {
       name: { en: 'The Analects of Confucius' }, role: { en: 'Primary source' },
       src: { en: 'Confucius, The Analects 1.6 and 1.9 (about 500 BCE); quoted in "Confucianism," World History Project' },
       lines: [
-        { en: '"The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large, and should cleave to those who are ren [virtuous in all things]."' },
-        { en: '"Master Zeng said: Devote care to life\'s end and pursue respect for the distant dead; in this way, the virtue of the people will return to fullness."' },
-        { en: 'Song scholars studied these words for the exams. The family was seen as a small government: order at home made order in the state.' }
+        { en: '"1.6 The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large, and should cleave to [embrace] those who are ren [virtuous in all things]."' },
+        { en: '"1.9 Master Zeng said: Devote care to life\'s end and pursue respect for the distant dead; in this way, the virtue of the people will return to fullness…"' },
+        { en: 'Context: Confucius (551–479 BCE) lived in a time of frequent wars and wanted to restore order. He left no writings; after his death his followers compiled his teachings into The Analects.' },
+        { en: 'Centuries later, Song officials had to master these teachings to pass the civil service exams. The family was seen as a mini-government: order at home made order in the state.' }
       ],
       ask: {
         stat: 'mov',
         q: { en: 'Sourcing: why would the Song state want its officials to master these passages?' },
         choices: [
           { ok: true, t: { en: 'They taught duty, respect and order' }, why: { en: 'Yes. Filial piety at home was meant to become loyalty and order in the state. That served the government.' } },
-          { t: { en: 'They taught how to grow more rice' }, why: { en: 'No. The passages are about duty and virtue, not farming.' } },
-          { t: { en: 'They praised merchants over scholars' }, why: { en: 'No. Nothing here is about merchants. It is about family duty and virtue.' } }
+          { t: { en: 'They taught harsh laws and punishments' }, why: { en: 'No. Confucianism aimed to make people want to be good through virtue, not to rule by punishment.' } },
+          { t: { en: 'They taught escape from earthly duties' }, why: { en: 'No. Confucius focused on practical, worldly duties: family, government and community.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 28, y: 7, icon: '📖',
+      name: { en: 'Rice, Money and Cities' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "East Asia 1200–1450" by Merry Wiesner-Hanks, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Ordinary people led important innovations, including wet-field rice in central and southern China. Villagers leveled forests, swamps and coastal plains into irrigated paddies, less dependent on irregular rainfall. To reap two harvests a year, they transplanted seedlings into flooded fields, work for every family member. The food supply grew, and China\'s population rose from about 50 million in the 700s to about 100 million in the 1100s.' },
+        { en: 'Villagers also grew cash crops: sugar, tea, mulberry leaves and cotton. Women in village households raised silkworms, spun thread and wove cloth; the profits paid rents and taxes. The economy was commercial. Trade used coins, or paper money invented by merchants. In the 1120s the Song government issued the world\'s first government paper money. Iron production grew six-fold from the 800s to the 1100s, mostly for armor and weapons.' },
+        { en: 'Economic growth fueled cities. By 1200 eastern China was the most urbanized part of the world, with at least six cities of over 100,000 people. Hangzhou began as a rice-growing village in the Yangzi River Delta. After 1132 it was the Song capital. Immigrants poured in from the countryside and the conquered north, and a century later it may have held one million people.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Causation: which chain of causes and effects best fits the reading?' },
+        choices: [
+          { ok: true, t: { en: 'More rice fed more people; trade drew many to cities' }, why: { en: 'Yes. Wet-field rice grew the food supply and the population; a commercial economy and the capital drew people into cities like Hangzhou.' } },
+          { t: { en: 'Iron weapons won new lands that fed the growing cities' }, why: { en: 'No. Iron was mostly for armor and weapons, but Song lands shrank: the Jurchens conquered most of the north.' } },
+          { t: { en: 'Paper money let cities buy food, so farming declined' }, why: { en: 'No. Paper money helped trade, but farming grew: paddies and two harvests a year fed the cities.' } }
         ]
       }
     }
@@ -198,7 +224,8 @@ window.EPISODE = {
       x: 11, y: 10, name: { en: 'Kenji' }, role: { en: 'Monk from Japan' },
       look: { skin: 0, hair: '#1b1410', shirt: '#4a4a5a', robe: true, style: 'short' },
       lines: [
-        { en: 'I sailed from Japan to study Buddhism here. Japanese monks bring Chinese teachings home, like Zen and Pure Land.' },
+        { en: 'I sailed from Japan to study Buddhism here. Japanese monks bring Chinese teachings home, like Chan, which we call Zen, and Pure Land.' },
+        { en: 'At home, ordinary people blend Pure Land with our own Shinto. Since our civil war, a [[shogun|shogun]], our top general, heads a military government.' },
         { en: 'The Grump\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
       ],
       wait: { en: 'The printer works on the east side, by the canal dock, south of the bridge.' },
@@ -251,56 +278,59 @@ window.EPISODE = {
     win: { en: 'The fog lifts over West Lake. The page on East Asia floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: '"A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy..."' }, src: { en: 'Confucius, The Analects, 1.6 (about 500 BCE)' } },
-        q: { en: 'Song scholars studied passages like this one. Which value does the passage teach?' },
-        choices: [{ en: 'Respect for elders and family duty' }, { en: 'Equality between rulers and subjects' }, { en: 'Escape from all earthly duties' }, { en: 'Trade as the surest path to success' }],
+        stim: { text: { en: '"The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large..."' }, src: { en: 'Confucius, The Analects, 1.6 (about 500 BCE)' } },
+        q: { en: 'The passage most directly reflects which Confucian idea?' },
+        choices: [{ en: 'Order in society begins with right conduct in the family' }, { en: 'A ruler should govern mainly through laws and punishments' }, { en: 'Suffering ends only when a person lets go of all desire' }, { en: 'All relationships in society should be between equals' }],
         answer: 0,
-        why: { en: 'Being filial means honoring parents and elders. Confucian teaching built society on respect inside the family and a hierarchy outside it.' }
+        why: { en: 'Being filial means honoring parents and elders. Confucians saw the family as a mini-government: order at home made order in the state.' }
+      },
+      {
+        stim: { text: { en: 'One outstanding scholar, Zhu Xi (1130–1200 CE), brought together Confucian writings into what became the official version and the basis of examinations from then on.' }, src: { en: 'Adapted from "East Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best explains the significance of the development described in the passage?' },
+        choices: [{ en: 'It made one official Confucian version the test for officials' }, { en: 'It ended the advantage aristocratic families had in government' }, { en: 'It replaced Confucian books with Buddhist sutras on the exams' }, { en: 'It opened the civil service exams to women for the first time' }],
+        answer: 0,
+        why: { en: 'Officials had to master Confucian teachings to pass the exams, and Zhu Xi\'s version became the basis of the exams. Aristocratic family still remained the easiest path to power.' }
+      },
+      {
+        q: { en: 'Which of the following was a continuity in how men gained power in Song China, even as the civil service exams spread?' },
+        choices: [{ en: 'Aristocratic lineage stayed the easiest path to office' }, { en: 'Winning battles stayed the only real route to high office' }, { en: 'Buddhist monasteries kept choosing the officials' }, { en: 'Rich merchants kept buying most government posts' }],
+        answer: 0,
+        why: { en: 'Birth into the aristocracy was still the easiest path to power. The exams added a second path for able men; they did not replace the old one.' }
       },
       {
         stim: { title: { en: 'Population of China (estimates)' }, rows: [[{ en: 'Time' }, { en: 'People' }], [{ en: '700s CE' }, { en: 'about 50 million' }], [{ en: '1100s CE' }, { en: 'about 100 million' }]], src: { en: 'From "East Asia 1200–1450," World History Project' } },
-        q: { en: 'Which development best explains the change shown in the table?' },
-        choices: [{ en: 'Wet-field rice and two harvests a year' }, { en: 'The Mongol conquest of southern China' }, { en: 'Buddhism arriving from India' }, { en: 'The end of the civil service exams' }],
+        q: { en: 'Which of the following best explains the change shown in the table?' },
+        choices: [{ en: 'Irrigated paddies that gave two rice harvests a year' }, { en: 'Paper money that let villagers buy grain from abroad' }, { en: 'Iron tools from a six-fold rise in iron production' }, { en: 'The Mongol Yuan dynasty uniting north and south China' }],
         answer: 0,
-        why: { en: 'Turning forests and swamps into irrigated paddies expanded the food supply, which let the population grow.' }
+        why: { en: 'Wet-field rice expanded the food supply, which let the population double. Most iron went to armor and weapons, and the Mongols came only in the 1270s.' }
       },
       {
-        q: { en: 'Which statement best describes how a man gained power in the Song government?' },
-        choices: [{ en: 'Family helped most, but exams offered another path' }, { en: 'Only soldiers who won battles could hold any office' }, { en: 'Rich merchants bought every post in the government' }, { en: 'Buddhist monks chose all the officials of the state' }],
+        stim: { text: { en: 'Women in village households raised silkworms, spun silk thread, and wove textiles. Profits from these household enterprises paid their rents and taxes.' }, src: { en: 'Adapted from "East Asia 1200–1450," World History Project' } },
+        q: { en: 'The passage best supports which claim about women in Song China?' },
+        choices: [{ en: 'Their household work was part of a commercial economy' }, { en: 'Confucian ideas about women had lost all their influence' }, { en: 'Their silk work won them the right to take the exams' }, { en: 'They did housework only, which earned no money at all' }],
         answer: 0,
-        why: { en: 'Aristocratic family was still the easiest path, but passing the civil service exams let many able men gain influence.' }
+        why: { en: 'Women still worked inside the household, as Confucian teaching expected, but their silk was sold and paid rents and taxes. Women could not take the exams.' }
       },
       {
-        stim: { text: { en: 'In the 1120s the Song government itself began issuing money, producing the world\'s first government-issued paper money.' }, src: { en: 'Adapted from "East Asia 1200–1450," World History Project' } },
-        q: { en: 'The development described above shows that Song China\'s economy was...' },
-        choices: [{ en: 'growing more commercial, with new ways to trade' }, { en: 'shrinking because farmers stopped selling goods' }, { en: 'run only by barter, with no money' }, { en: 'controlled by merchants from Europe' }],
+        stim: { text: { en: 'Trade was carried out in coins, or in paper money, invented by Chinese merchants. In the 1120s the Song government itself began issuing money, producing the world\'s first government issued paper money.' }, src: { en: 'Adapted from "East Asia 1200–1450," World History Project' } },
+        q: { en: 'The developments described in the passage most directly reflect...' },
+        choices: [{ en: 'the growth of a commercial economy in Song China' }, { en: 'a sudden shortage of trade goods such as silk and tea' }, { en: 'Mongol rulers bringing new ideas into China' }, { en: 'the shrinking of Chinese cities after 1132' }],
         answer: 0,
-        why: { en: 'Coins, merchant paper money and then government paper money all show a busy, commercial economy that traded silk, tea and porcelain.' }
+        why: { en: 'Coins, merchant paper money and then government paper money show a busy, commercial economy. Cities grew, and Hangzhou became the capital in 1132.' }
       },
       {
-        q: { en: 'Confucian writings said a woman\'s proper realm was the household. Which evidence from this episode complicates that idea?' },
-        choices: [{ en: 'Women\'s silk work at home paid rents and taxes' }, { en: 'Women wrote and graded the civil service exams' }, { en: 'Women served as generals in the Song army' }, { en: 'Women were barred from making any goods' }],
+        stim: { text: { en: '"While in India rebirth in the Pure Land meant a complete break with earthly life, which was considered a life of suffering, in the Chinese Pure Land School it means an extension of earthly living."' }, src: { en: 'Quoted in "Why do Belief Systems Spread? How China Made Buddhism its Own," World History Project' } },
+        q: { en: 'Compared with Indian Buddhism, the Chinese Pure Land School described in the excerpt...' },
+        choices: [{ en: 'reshaped a Buddhist idea to fit Chinese beliefs' }, { en: 'threw out the Indian sutras in favor of Daoist texts' }, { en: 'kept the Indian meaning of rebirth unchanged' }, { en: 'was made by officials to train exam students' }],
         answer: 0,
-        why: { en: 'Even inside the household, village women produced silk thread and cloth that supported the family\'s income.' }
+        why: { en: 'The Chinese kept the Indian sutras but changed what the Pure Land meant. Buddhism was Sinicized: changed through Chinese influence.' }
       },
       {
-        stim: { text: { en: 'As Buddhist ideas spread from Indian merchants throughout China, some became mixed with similar beliefs that already existed, like Daoism.' }, src: { en: 'Adapted from "How China Made Buddhism its Own," World History Project' } },
-        q: { en: 'The process described above is best explained as...' },
-        choices: [{ en: 'a belief system changing as it spread to a new place' }, { en: 'a government forcing everyone to give up their faith' }, { en: 'a religion that stayed the same everywhere it went' }, { en: 'Confucian officials inventing Buddhism' }],
+        stim: { title: { en: 'China\'s neighbors' }, rows: [[{ en: 'Korea (Koryŏ)' }, { en: 'Modeled its government and capital city on China' }], [{ en: 'Japan' }, { en: 'Monks brought Zen and Pure Land from China; ordinary people blended Pure Land with Shinto' }]], src: { en: 'From "East Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best explains the pattern shown in the table?' },
+        choices: [{ en: 'Neighbors adopted Chinese ideas and adapted them' }, { en: 'Song officials ruled both Korea and Japan directly' }, { en: 'Both took Chinese ideas after Mongol conquest' }, { en: 'Buddhism reached both straight from India' }],
         answer: 0,
-        why: { en: 'Carried by merchants along trade routes, Buddhism blended with Daoism and Chinese customs. It became Sinicized.' }
-      },
-      {
-        q: { en: 'Which statement best compares Chinese influence on Korea and Japan in this period?' },
-        choices: [{ en: 'Both adopted Chinese ideas but adapted them' }, { en: 'Both rejected everything that came from China' }, { en: 'Both were ruled directly by Song officials' }, { en: 'Only Japan ever used Chinese writing' }],
-        answer: 0,
-        why: { en: 'Korea\'s Koryŏ copied China\'s government and capital; Japanese monks brought home Chinese Buddhism. Each fit these ideas to its own traditions.' }
-      },
-      {
-        q: { en: 'Why did Hangzhou grow into perhaps the largest city in the world by the 1200s?' },
-        choices: [{ en: 'It was the Song capital and a trade center' }, { en: 'It was the only city left in all of China' }, { en: 'The Mongols moved their capital there first' }, { en: 'Its people moved north to farm new lands' }],
-        answer: 0,
-        why: { en: 'After 1132 Hangzhou was the Song capital. Trade, production and newcomers from the countryside and the north made it huge.' }
+        why: { en: 'Chinese government and Buddhism shaped Korea and Japan, but each fit them to its own traditions. The Mongols never conquered Japan.' }
       }
     ]
   },
