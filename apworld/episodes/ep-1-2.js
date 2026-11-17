@@ -19,7 +19,7 @@ window.EPISODE = {
   place: { en: 'Cairo, Mamluk Sultanate, 1300' },
   intro: [
     { en: 'The Grump blurred the page on Dar al-Islam. Cairo is forgetting how Islam kept growing after Baghdad fell!' },
-    { en: 'Talk to the 4 people here, help a pilgrim from Morocco, then wake the time stone.' }
+    { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a pilgrim from Morocco, then wake the time stone.' }
   ],
   scenes: {
     at: [31.24, 30.04],
@@ -84,17 +84,18 @@ window.EPISODE = {
       x: 10, y: 7, name: { en: 'Yusuf' }, role: { en: 'Bookbinder' },
       look: { skin: 3, hair: '#8a8a8a', shirt: '#6a4a8a', robe: true, style: 'short', hat: '#f2f2f2' },
       lines: [
-        { en: 'My grandfather bound books in Baghdad, capital of the Abbasid [[caliphate|Caliphate]]. In 1258 he fled here to Cairo.' },
-        { en: 'That year a Mongol army sacked Baghdad. They killed the last Abbasid caliph and destroyed the [[house of wisdom|House of Wisdom]].' },
-        { en: 'But the caliphs had been weak for centuries. After the 900s they were often puppets of other rulers. That is [[political fragmentation|political fragmentation]].' }
+        { en: 'My grandfather bound books in Baghdad, capital of the Abbasid [[caliphate|Caliphate]] (750–1258). In 1258 he fled here to Cairo.' },
+        { en: 'From 900 to 1258 the Abbasids slowly declined. Their empire was too large, and foreign invasions, internal revolts and disputes between Sunni and Shia Islam ate away at it.' },
+        { en: 'After the 900s the caliphs were often puppets controlled by other rulers. That is [[political fragmentation|political fragmentation]].' },
+        { en: 'In 1258 a Mongol army sacked Baghdad, killed the last Abbasid caliph and destroyed the [[house of wisdom|House of Wisdom]]. Yet the Mongol conquests spread Islam further than ever.' }
       ],
       ask: {
-        stat: 'pla',
-        q: { en: 'What did the Mongol sack of Baghdad in 1258 bring to an end?' },
+        stat: 'loc',
+        q: { en: 'Which best explains the decline of Abbasid power BEFORE 1258?' },
         choices: [
-          { ok: true, t: { en: 'The rule of the Abbasid caliphs' }, why: { en: 'Yes. Abbasid power, already split apart, ended. But Islam as a faith kept growing.' } },
-          { t: { en: 'Islam as a religion in Asia' }, why: { en: 'No. The Mongol conquests actually helped spread Islam further than ever.' } },
-          { t: { en: 'Trade across all of Afro-Eurasia' }, why: { en: 'No. Merchants and scholars kept moving across Dar al-Islam after 1258.' } }
+          { ok: true, t: { en: 'Too much land, revolts and Sunni–Shia disputes' }, why: { en: 'Yes. Far-flung lands, invasions, revolts and Sunni–Shia disputes wore the empire down from 900 on.' } },
+          { t: { en: 'Mongol armies conquering Persia in the 1000s' }, why: { en: 'No. The Mongols came in the 1200s. In the 1000s it was Turkic peoples, like the Seljuks, who moved west.' } },
+          { t: { en: 'The loss of Greek books from the House of Wisdom' }, why: { en: 'No. The House of Wisdom was destroyed in 1258, at the very end, after centuries of decline.' } }
         ]
       }
     },
@@ -103,16 +104,17 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1b1410', shirt: '#2a6a8a', robe: true, style: 'short', hat: '#e8e0d0' },
       lines: [
         { en: 'I heal the sick with the [[canon of medicine|Canon of Medicine]], written by Ibn Sina in 1025.' },
-        { en: 'In the [[golden age|Golden Age]], scholars translated Greek books, like Plato\'s, into Arabic. That is how many were preserved.' },
-        { en: 'They also built new ideas: Arabic numerals, algebra, zero. The Persian scholar al-Tusi is remembered for trigonometry.' }
+        { en: 'The [[golden age|Golden Age]] was centered in Baghdad. The Abbasid conquests linked a network of scholars and merchants, so ideas spread quickly across vast distances.' },
+        { en: 'Scholars translated Greek works, like those of Socrates and Plato, into Arabic and preserved them. They embraced Indian science and Chinese technology too.' },
+        { en: 'And they innovated: Arabic numerals, algebra, zero. The Persian scholar Nasir al-Din al-Tusi wrote on astronomy and mathematics and is remembered for trigonometry.' }
       ],
       ask: {
-        stat: 'mov',
-        q: { en: 'Which best describes the scholars of the Islamic Golden Age?' },
+        stat: 'loc',
+        q: { en: 'Which best explains why ideas from so many lands met in Abbasid Baghdad?' },
         choices: [
-          { ok: true, t: { en: 'They kept old knowledge and added new' }, why: { en: 'Yes. They preserved Greek texts and innovated too. Ibn Sina\'s Canon was taught in European universities for centuries.' } },
-          { t: { en: 'They only copied out old Greek books' }, why: { en: 'No. They did preserve Greek books, but they also created algebra and trigonometry.' } },
-          { t: { en: 'They refused all ideas from other lands' }, why: { en: 'No. They embraced Greek philosophy, Indian science and Chinese technology.' } }
+          { ok: true, t: { en: 'Conquests linked a web of scholars and merchants' }, why: { en: 'Yes. A huge empire tied Greek, Indian and Chinese ideas together, and scholars built on them.' } },
+          { t: { en: 'Mongol rulers brought scholars there from China' }, why: { en: 'No. The Mongols destroyed the House of Wisdom in 1258. The network was built by the Abbasid conquests.' } },
+          { t: { en: 'European universities sent their Greek books east' }, why: { en: 'No. It went the other way: Greek works survived in Arabic, and Ibn Sina\'s Canon was later taught in Europe for over 600 years.' } }
         ]
       }
     },
@@ -121,16 +123,17 @@ window.EPISODE = {
       look: { skin: 1, hair: '#3a2416', shirt: '#8a2a2a', pants: '#3a3a2a', style: 'short', hat: '#c9a24a' },
       lines: [
         { en: 'I serve the Mamluk [[sultanate|Sultanate]], which rules Egypt. Our sultans are a [[turkic|Turkic]] dynasty.' },
-        { en: 'Long ago the Turks were [[pastoralist|pastoralists]] on the steppes of Eurasia. In the 1000s and 1100s many moved west and converted to Islam.' },
-        { en: 'Turks like the Seljuks conquered huge lands and ruled from Persia. They took on Persian ways, until they seemed more Persian than Turkic.' }
+        { en: 'Long ago the Turks were [[pastoralist|pastoralists]] on the steppes of Eurasia. In the 1000s and 1100s many migrated west into Central and Southwest Asia and converted to Islam.' },
+        { en: 'In those centuries the Turkic Seljuks ruled a huge empire centered in Persia. They adopted the culture of the people they conquered and seemed more Persian than Turkic.' },
+        { en: 'Then the Mongol armies of Chinggis Khan swept across Eurasia and defeated Turks, Arabs and many others. Still, Turkic Muslims like us rule Egypt.' }
       ],
       ask: {
-        stat: 'loc',
-        q: { en: 'How did Turkic peoples change Dar al-Islam after 1000?' },
+        stat: 'hei',
+        q: { en: 'Compared with the Arab armies that first spread Islam, Turkic dynasties like the Seljuks were...' },
         choices: [
-          { ok: true, t: { en: 'They converted and built Muslim states' }, why: { en: 'Yes. Seljuks, Mamluks and other Turkic dynasties ruled large Muslim states.' } },
-          { t: { en: 'They wiped out Islam wherever they went' }, why: { en: 'No. Many Turks converted to Islam and then ruled as Muslims.' } },
-          { t: { en: 'They forced all of Persia to herd' }, why: { en: 'No. The Seljuks adopted the Persian culture of the people they conquered.' } }
+          { ok: true, t: { en: 'steppe newcomers who converted and took on Persian ways' }, why: { en: 'Yes. They came as pastoralists, converted, and adopted the culture of the lands they conquered.' } },
+          { t: { en: 'steppe herders who kept their old ways and their old faith' }, why: { en: 'No. Many Turks converted to Islam, and the Seljuks became more Persian than Turkic.' } },
+          { t: { en: 'Abbasid caliphs who ruled from Baghdad until 1258' }, why: { en: 'No. The Seljuk empire was centered in Persia. The Abbasid caliphs, often puppets, stayed in Baghdad.' } }
         ]
       }
     },
@@ -139,16 +142,55 @@ window.EPISODE = {
       look: { skin: 4, hair: '#1b1410', shirt: '#2a8a6a', pants: '#3a2a1a', style: 'long' },
       lines: [
         { en: 'We grow sugarcane and cotton here by the Nile. Both came to Dar al-Islam from India.' },
-        { en: 'The empire was huge and its trade links long. Merchants spread sorghum from Africa and rice from India. Hundreds of plants moved like this.' },
-        { en: 'The Abbasids also combined irrigation methods from across their lands. An ox turns our water wheel, like the pump the inventor al-Jazari drew.' }
+        { en: 'The early empire was huge and its trade links long. Merchants spread sorghum from Africa and rice, cotton and sugarcane from India.' },
+        { en: 'Hundreds of other plants and animals were exchanged in all directions. That changed how people grew and ate food in many regions of Afro-Eurasia.' },
+        { en: 'The Abbasids combined new irrigation methods from around their empire to grow more. An ox turns our water wheel, like the animal-powered pump the inventor al-Jazari drew.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did crops like sugarcane spread across Dar al-Islam?' },
+        q: { en: 'Which best explains why sugarcane and rice spread across Dar al-Islam?' },
         choices: [
-          { ok: true, t: { en: 'A big empire\'s trade links carried them' }, why: { en: 'Yes. A huge territory linked by trade moved crops and animals in all directions.' } },
-          { t: { en: 'Every farm invented its own crops' }, why: { en: 'No. Sugarcane, rice and cotton were carried from India by merchants.' } },
-          { t: { en: 'The Nile flooded the seeds out of Arabia' }, why: { en: 'No. These crops came from India and Africa along trade routes.' } }
+          { ok: true, t: { en: 'The caliphates\' vast lands and trade links' }, why: { en: 'Yes. A huge territory linked by trade moved crops and animals in all directions.' } },
+          { t: { en: 'Mongol conquerors carrying them from China' }, why: { en: 'No. Rice, cotton and sugarcane came from India, carried along the early caliphates\' trade links.' } },
+          { t: { en: 'Turkic herders bringing them off the steppes' }, why: { en: 'No. The Turks were pastoralists who herded animals. These crops came from India and Africa.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 12, y: 3, icon: '📜',
+      name: { en: 'A Visitor from Mars' }, role: { en: 'A historian\'s words' },
+      src: { en: 'Marshall Hodgson, historian; quoted in "Dar al-Islam," World History Project' },
+      lines: [
+        { en: '"In the sixteenth century of our era, a visitor from Mars might well have supposed that the world was on the verge of becoming Muslim."' },
+        { en: '"He would have based his judgment partly on the strategic and political advantage of the Muslims, but partly also on the vitality of their general culture."' },
+        { en: 'Hodgson was a modern historian looking back, not a person of the time. His imagined Martian is an outsider with no side to take. His point: around 1500, Islam looked like the most dominant force on Earth, through both power and culture.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: what is the purpose of Hodgson\'s "visitor from Mars"?' },
+        choices: [
+          { ok: true, t: { en: 'To show Islam\'s strength c. 1500 to an outsider' }, why: { en: 'Yes. An outsider\'s eye lets him judge Islam\'s reach in 1500: political advantage AND a lively culture.' } },
+          { t: { en: 'To argue Islam\'s power rested only on its armies' }, why: { en: 'No. He names two causes: political and strategic advantage, but also the vitality of Muslim culture.' } },
+          { t: { en: 'To record what a traveler saw in Baghdad in 1258' }, why: { en: 'No. Hodgson is a modern historian, and his Martian looks at the 1500s, long after Baghdad fell.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 23, y: 3, icon: '📖',
+      name: { en: 'Fragmentation and Expansion' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Dar al-Islam" by Bennett Sherry, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'From 900 to 1258, the Abbasid Caliphate slowly declined. Foreign invasions, internal revolts and disputes between Sunni and Shia Islam ate away at the empire. After the tenth century, the caliphs in Baghdad were often merely puppets controlled by some other ruler.' },
+        { en: 'In the eleventh and twelfth centuries, Turkic pastoralists from the Eurasian steppes migrated west, and many converted to Islam. In 1258 a Mongol army sacked Baghdad and killed the last Abbasid caliph. But the Mongol conquests actually helped spread Islam further than ever.' },
+        { en: 'After the Mongol Empire collapsed in the fourteenth century, Turkic dynasties again rose to power. Timur, of Turkic and Mongol descent, conquered an empire from India to Anatolia. Between 1000 and 1500, Dar al-Islam nearly doubled in size, reaching sub-Saharan Africa, the East African coast, India and the islands of Southeast Asia.' }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'Which best describes change and continuity in Dar al-Islam, 1200–1450?' },
+        choices: [
+          { ok: true, t: { en: 'Power split among states; the faith kept spreading' }, why: { en: 'Yes. Political unity was lost, but Islam reached new peoples, from Africa to Southeast Asia.' } },
+          { t: { en: 'A restored caliph reunited Muslims as the faith spread' }, why: { en: 'No. The last Abbasid caliph was killed in 1258. Turkic and other dynasties ruled separate states.' } },
+          { t: { en: 'Power split among many states as the faith declined' }, why: { en: 'No. Power did split, but Dar al-Islam nearly doubled in size between 1000 and 1500.' } }
         ]
       }
     }
@@ -184,9 +226,10 @@ window.EPISODE = {
       x: 26, y: 9, name: { en: 'Idris' }, role: { en: 'Pilgrim from Morocco' },
       look: { skin: 3, hair: '#1b1410', shirt: '#e8e0d0', robe: true, style: 'short', hat: '#f2f2f2' },
       lines: [
-        { en: 'Peace be upon you! I study Islamic law in Morocco, and I am going to Mecca.' },
-        { en: 'Islam is [[universalist|universalist]] and [[missionary|missionary]], like Christianity and Buddhism: anyone may become Muslim, and Muslims spread its message.' },
-        { en: 'From Morocco to India, people speak Arabic and share my law, so I feel at home everywhere. But the Ink Thief tore my map! Ask Mina the scribe.' }
+        { en: 'Peace be upon you! Islam is [[universalist|universalist]] and [[missionary|missionary]], like Christianity and Buddhism: anyone may become Muslim, and Muslims spread its message.' },
+        { en: 'They say a Christian merchant from Venice, Marco Polo, crossed Asia to China. Everywhere he went he was a stranger.' },
+        { en: 'Not me, a Moroccan scholar of Islamic law! From Morocco to India, people share Arabic, my beliefs and my law. I could even serve as a judge far from home.' },
+        { en: 'I am going to Mecca, but the Ink Thief tore my map! Ask Mina the scribe.' }
       ],
       wait: { en: 'Mina writes letters by the Nile docks, in the north-west of the city.' },
       thanks: { en: 'My map is whole! One shared world of faith, law and Arabic, from Morocco to India. Thank you.' }
@@ -195,7 +238,8 @@ window.EPISODE = {
       x: 5, y: 9, name: { en: 'Mina' }, role: { en: 'Christian scribe' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#2f5f9a', pants: '#3a2a3a', style: 'long' },
       lines: [
-        { en: 'I am a Christian. I write letters in Arabic for anyone. Many non-Muslims here keep their own religion.' },
+        { en: 'I am a Christian. I write letters in Arabic for anyone. Our rulers are Muslim, but the people here follow many faiths, including Judaism and Christianity.' },
+        { en: 'Since the early caliphates, many non-Muslims were allowed, even encouraged, to keep their own religions.' },
         { en: 'The Ink Thief ran off with Idris\'s map in 3 pieces. He left a riddle for each. Follow them!' }
       ]
     },
@@ -268,57 +312,60 @@ window.EPISODE = {
     win: { en: 'The dust settles over Cairo. The page on Dar al-Islam floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: '"In the sixteenth century of our era, a visitor from Mars might well have supposed that the world was on the verge of becoming Muslim."' }, src: { en: 'Marshall Hodgson, historian, quoted in "Dar al-Islam," World History Project' } },
-        q: { en: 'Which development from c. 1000 to 1500 best supports the historian\'s view?' },
-        choices: [{ en: 'Dar al-Islam nearly doubled in size' }, { en: 'One caliph united every Muslim state' }, { en: 'Islam stayed inside the Arabian Peninsula' }, { en: 'The Mongols ended Islam in their empire' }],
+        stim: { text: { en: '"In the sixteenth century of our era, a visitor from Mars might well have supposed that the world was on the verge of becoming Muslim."' }, src: { en: 'Marshall Hodgson, historian; quoted in "Dar al-Islam," World History Project' } },
+        q: { en: 'Which development from c. 1000 to 1500 would best support the historian\'s claim?' },
+        choices: [{ en: 'Dar al-Islam nearly doubled, reaching India and Southeast Asia' }, { en: 'The Seljuks restored the full power of the Abbasid caliphs' }, { en: 'Turkic converts made Baghdad the capital of a reunited caliphate' }, { en: 'The Mongol conquests confined Islam to Egypt and Arabia' }],
         answer: 0,
-        why: { en: 'Between 1000 and 1500 Dar al-Islam nearly doubled, reaching sub-Saharan Africa, East Africa, India and Southeast Asia.' }
+        why: { en: 'Between 1000 and 1500 Dar al-Islam nearly doubled, reaching sub-Saharan Africa, the East African coast, India and Southeast Asia.' }
       },
       {
-        stim: { text: { en: 'After the tenth century, the Abbasid caliphs in Baghdad were often merely puppets controlled by some other ruler.' }, src: { en: 'Adapted from "Dar al-Islam," World History Project' } },
-        q: { en: 'The excerpt best reflects which historical process?' },
-        choices: [{ en: 'The political fragmentation of the caliphate' }, { en: 'The spread of new crops from India' }, { en: 'The rise of a single all-powerful caliph' }, { en: 'The translation of Greek books into Arabic' }],
+        stim: { text: { en: '"He would have based his judgment partly on the strategic and political advantage of the Muslims, but partly also on the vitality of their general culture."' }, src: { en: 'Marshall Hodgson, historian; quoted in "Dar al-Islam," World History Project' } },
+        q: { en: 'The historian\'s point of view is best described as which of the following?' },
+        choices: [{ en: 'Islam\'s strength c. 1500 came from both power and culture' }, { en: 'Islam\'s strength c. 1500 came mainly from military conquest' }, { en: 'Islam\'s culture had faded once the Abbasid Caliphate fell' }, { en: 'Islam\'s power by 1500 was limited to the Arab lands' }],
         answer: 0,
-        why: { en: 'Puppet caliphs show that the Abbasids had lost real power. Their empire had broken into many states.' }
+        why: { en: 'Hodgson names two causes: the Muslims\' strategic and political advantage AND the vitality of their culture.' }
       },
       {
-        q: { en: 'Which best explains how Turkic peoples affected Dar al-Islam from c. 1000 to 1450?' },
-        choices: [{ en: 'They converted and founded Muslim states' }, { en: 'They ended Islam in Southwest Asia' }, { en: 'They kept the Abbasid caliphs fully in power' }, { en: 'They refused to adopt any local culture' }],
+        stim: { text: { en: 'From 900 to 1258, the Abbasid Caliphate slowly declined. Foreign invasions, internal revolts, and disputes between Sunni and Shia Islam ate away at the empire.' }, src: { en: 'Adapted from "Dar al-Islam" by Bennett Sherry, World History Project' } },
+        q: { en: 'The excerpt most directly reflects which historical process?' },
+        choices: [{ en: 'The political fragmentation of a large empire' }, { en: 'The spread of Islam into Southeast Asia and India' }, { en: 'The preservation of Greek texts in Arabic' }, { en: 'The exchange of crops along trade routes' }],
         answer: 0,
-        why: { en: 'Many Turks converted and built states like the Seljuk Empire and the Mamluk Sultanate, adopting local, often Persian, culture.' }
+        why: { en: 'Invasions, revolts and Sunni–Shia disputes broke Abbasid power apart. After the 900s the caliphs were often puppets.' }
       },
       {
-        stim: { title: { en: 'Crops spread through Dar al-Islam' }, rows: [[{ en: 'Crop' }, { en: 'Came from' }], [{ en: 'Sorghum' }, { en: 'Africa' }], [{ en: 'Rice, cotton, sugarcane' }, { en: 'India' }]], src: { en: 'From "Dar al-Islam," World History Project' } },
-        q: { en: 'Which best explains the spread of crops shown in the table?' },
-        choices: [{ en: 'A huge empire with long trade links' }, { en: 'Farmers who stopped irrigating fields' }, { en: 'The Mongol sack of Baghdad in 1258' }, { en: 'A ban on trade with Africa and India' }],
-        answer: 0,
-        why: { en: 'The early caliphates\' vast territory and trade links moved hundreds of plants and animals in all directions.' }
+        stim: { text: { en: 'Like other Turkic dynasties, the Seljuks readily adopted the culture of the peoples they conquered, soon seeming more Persian than Turkic.' }, src: { en: 'Adapted from "Dar al-Islam" by Bennett Sherry, World History Project' } },
+        q: { en: 'The passage best supports the claim that Turkic conquerors in Dar al-Islam...' },
+        choices: [{ en: 'replaced Persian culture with steppe traditions' }, { en: 'took on the culture of the lands they ruled' }, { en: 'ruled as Abbasid caliphs from Baghdad' }, { en: 'returned to their old faiths after conquest' }],
+        answer: 1,
+        why: { en: 'The Seljuks, steppe pastoralists who converted to Islam, ruled from Persia and became "more Persian than Turkic."' }
       },
       {
-        stim: { text: { en: 'Ibn Sina\'s Canon of Medicine was first published in 1025. Over six hundred years later, it was still being taught in European universities.' }, src: { en: 'Adapted from "Dar al-Islam," World History Project' } },
-        q: { en: 'This evidence best shows that scholars in Dar al-Islam...' },
-        choices: [{ en: 'shaped learning far beyond Dar al-Islam' }, { en: 'copied old books but added nothing of their own' }, { en: 'studied religious law and nothing else' }, { en: 'kept all of their knowledge a secret' }],
-        answer: 0,
-        why: { en: 'Muslim scholars both preserved and innovated. Their medicine, algebra and numerals spread far, even to Europe.' }
+        stim: { title: { en: 'Crops that spread through Dar al-Islam' }, rows: [[{ en: 'Crop' }, { en: 'Came from' }], [{ en: 'Sorghum' }, { en: 'Africa' }], [{ en: 'Rice, cotton, sugarcane' }, { en: 'India' }]], src: { en: 'From "Dar al-Islam" by Bennett Sherry, World History Project' } },
+        q: { en: 'Which of the following best explains the pattern shown in the table?' },
+        choices: [{ en: 'Mongol conquests linking China with Persia' }, { en: 'Turkic pastoralists migrating west from the steppes' }, { en: 'The early caliphates\' vast lands and trade links' }, { en: 'Scholars translating Greek farming books' }],
+        answer: 2,
+        why: { en: 'The early caliphates\' huge territory and trade links moved hundreds of plants and animals in all directions.' }
       },
       {
-        stim: { text: { en: 'Everywhere Marco Polo, a Christian merchant from Venice, traveled, he was a stranger. Ibn Battuta, a Muslim scholar from Morocco, found himself at home everywhere he traveled.' }, src: { en: 'Adapted from "Dar al-Islam," World History Project' } },
-        q: { en: 'Which best explains the difference between the two travelers\' experiences?' },
-        choices: [{ en: 'Dar al-Islam shared Arabic, beliefs and law' }, { en: 'Ibn Battuta never left the land of Morocco' }, { en: 'Marco Polo traveled only inside Europe' }, { en: 'One caliph ruled every land Ibn Battuta saw' }],
-        answer: 0,
-        why: { en: 'Across Dar al-Islam, scholars and merchants spoke Arabic and shared beliefs and law. A scholar of Islamic law felt at home.' }
+        stim: { text: { en: 'Ibn Sina\'s Canon of Medicine was first published in 1025. Over six hundred years later, it was still being taught in European universities.' }, src: { en: 'Adapted from "Dar al-Islam" by Bennett Sherry, World History Project' } },
+        q: { en: 'This evidence best supports the claim that scholars of the Islamic Golden Age...' },
+        choices: [{ en: 'mostly preserved Greek texts without adding to them' }, { en: 'worked only inside the House of Wisdom in Baghdad' }, { en: 'studied Islamic law rather than the sciences' }, { en: 'shaped learning far beyond Dar al-Islam' }],
+        answer: 3,
+        why: { en: 'Muslim scholars preserved AND innovated, and their medicine, algebra and numerals spread far, even to Europe.' }
       },
       {
-        q: { en: 'Which statement best describes many non-Muslims living in Dar al-Islam?' },
-        choices: [{ en: 'They were allowed to keep their religions' }, { en: 'They were all forced to convert at once' }, { en: 'They were banned from all cities and markets' }, { en: 'They ruled the Mamluk Sultanate' }],
-        answer: 0,
-        why: { en: 'Muslim rulers governed Christians, Jews and others, and many were allowed, even encouraged, to keep their own faith.' }
+        stim: { text: { en: 'Ibn Battuta, a Moroccan scholar trained in Islamic law, was so at home in this cultural world that he was able to work as a judge thousands of miles from home. Marco Polo, a Christian merchant from Venice, was a stranger everywhere he traveled.' }, src: { en: 'Adapted from "Dar al-Islam" by Bennett Sherry, World History Project' } },
+        q: { en: 'Compared with Marco Polo\'s travels, Ibn Battuta\'s travels best show...' },
+        choices: [{ en: 'one empire ruling every land from Morocco to India' }, { en: 'a shared world of Arabic, Islamic beliefs and law' }, { en: 'that Venice was the center of Indian Ocean trade' }, { en: 'that Mongol rulers appointed judges across Asia' }],
+        answer: 1,
+        why: { en: 'No single empire ruled Dar al-Islam, but Arabic, shared beliefs and Islamic law made a scholar at home from Morocco to India.' }
       },
       {
-        q: { en: 'Like Christianity and Buddhism, Islam was a universalist, missionary faith. This means Muslims believed...' },
-        choices: [{ en: 'anyone could join, and they should spread it' }, { en: 'only Arabs could ever become Muslims' }, { en: 'their faith should stay a secret' }, { en: 'each city needed its very own different faith' }],
-        answer: 0,
-        why: { en: 'Muslims believed anyone could become Muslim and that it was their duty to spread the message of Islam.' }
+        stim: { text: { en: 'Although ruled by Muslims, these societies often had populations that followed a wide array of faiths, including Judaism and Christianity.' }, src: { en: 'Adapted from "Unit 1 Introduction: The Global Tapestry, c. 1200 to 1450," World History Project' } },
+        q: { en: 'Which of the following best explains the pattern described in the excerpt?' },
+        choices: [{ en: 'Islam was not a missionary or universalist faith' }, { en: 'Many non-Muslims could keep their own religions' }, { en: 'Christian rulers governed most cities in Egypt' }, { en: 'Muslim rulers governed only Arab peoples' }],
+        answer: 1,
+        why: { en: 'Islam was a missionary faith, but many non-Muslims in Dar al-Islam were allowed, even encouraged, to keep their own religions.' }
       }
     ]
   },
