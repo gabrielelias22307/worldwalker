@@ -11,7 +11,9 @@
    never ranks people in its own voice. Slavery and forced labor are told plainly and with care.
    Map: the river and its north bank along the top; the central plaza with the viceroy's palace (north-west) and the
    cathedral (north-east); a grid of streets; the tailor's shop and the friars' convent in the south-west; the market
-   stalls and a Spanish family's house in the south-east, and an open yard where the time stone stands. */
+   stalls and a Spanish family's house in the south-east, and an open yard where the time stone stands.
+   Reading stands: a primary source (Bernardin de Saint-Pierre, 1773, as quoted in "Transatlantic Migration Patterns")
+   by the market stalls, and a reading adapted from "Transatlantic Migration Patterns" east of the plaza. */
 window.EPISODE = {
   id: '4.7',
   realm: 4,
@@ -21,8 +23,8 @@ window.EPISODE = {
   title: { en: 'Changing Social Hierarchies' },
   place: { en: 'Lima, Viceroyalty of Peru, 1650' },
   intro: [
-    { en: 'The Grump blurred the page on social hierarchies. Lima is forgetting who ranked its people, and why.' },
-    { en: 'Talk to the 4 people here, help a court scribe, then wake the time stone.' }
+    { en: 'The Grump blurred the page on social hierarchies. Lima is forgetting who ranked its people, why, and who paid the cost.' },
+    { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a court scribe, then wake the time stone.' }
   ],
   scenes: {
     at: [-77.03, -12.05],
@@ -90,17 +92,18 @@ window.EPISODE = {
       x: 5, y: 8, name: { en: 'Mateo' }, role: { en: 'Carpenter' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#7a5a2a', pants: '#3a2a1a', style: 'short' },
       lines: [
-        { en: 'My mother is Andean and my father came from Spain. Colonial officials write "[[mestizo|mestizo]]" beside my name.' },
-        { en: 'Spanish rulers made a ranking of labels by ancestry, the [[casta system|casta system]]. It keeps a small Spanish group on top.' },
-        { en: 'The law also split society into [[two republics|two "republics"]]: one of Spaniards, one of Indians. That plan broke down almost at once. Look how many families here are mixed!' }
+        { en: 'My mother is Andean and my father came from Spain. Officials write "[[mestizo|mestizo]]" beside my name: their label for mixed parents, usually a Spanish father and an indigenous mother.' },
+        { en: 'Spanish rulers made this ranking of labels by ancestry, the [[casta system|casta system]], to keep a small Spanish group on top. It says who holds power, not who is worth more.' },
+        { en: 'The law also split society into [[two republics|two "republics"]]. The republic of Spaniards took in Spaniards plus enslaved Africans, mestizo children, Asians and every other non-Indian.' },
+        { en: 'The republic of Indians held indigenous people living outside the major Spanish towns. The plan to keep them apart broke down almost at once. Look how many families are mixed!' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Who made the casta labels and the two republics, and why?' },
+        q: { en: 'Under Spanish law, in which "republic" were enslaved Africans and mestizos placed?' },
         choices: [
-          { ok: true, t: { en: 'Colonial rulers, to keep Spaniards on top' }, why: { en: 'Yes. The Spanish colonial government made these rankings to keep a small Spanish group at the top. They say nothing true about anyone\'s worth.' } },
-          { t: { en: 'Andean nobles, to protect their old titles' }, why: { en: 'No. The Spanish crown and its officials wrote these laws for the colony.' } },
-          { t: { en: 'Friars, to make every colonist equal' }, why: { en: 'No. Friars were sent to protect and convert Native people, but the system ranked people. It did not make them equal.' } }
+          { ok: true, t: { en: 'The republic of Spaniards, with all non-Indians' }, why: { en: 'Yes. "Republic" here meant a level of society with its own rules. Every non-Indian, even enslaved Africans, was placed with the Spaniards, though never as equals.' } },
+          { t: { en: 'The republic of Indians, with Native villagers' }, why: { en: 'No. That republic held indigenous people living outside the major Spanish towns.' } },
+          { t: { en: 'A third republic made only for mixed families' }, why: { en: 'No. The law had only two republics: one of Spaniards and one of Indians.' } }
         ]
       }
     },
@@ -108,17 +111,18 @@ window.EPISODE = {
       x: 6, y: 13, name: { en: 'Isabel' }, role: { en: 'Seamstress' },
       look: { skin: 1, hair: '#3a2a1a', shirt: '#7a2a4a', robe: true, style: 'bun' },
       lines: [
-        { en: 'I was born here in Lima to Spanish parents, so I am a [[criollo|criolla]]. The law counts me as "Spanish," like people born in Spain.' },
-        { en: 'Yet we Spaniards are few. Mestizos, Africans, enslaved and free, and Native peoples greatly outnumber us. Still, Spaniards run the government, trade and society.' },
-        { en: 'I sew by the [[sumptuary laws|sumptuary laws]]. These dress codes limit clothing, weapons and travel by class, so everyone\'s rank shows on the street.' }
+        { en: 'I was born in Lima to Spanish parents, so I am a [[criollo|criolla]]. The label "Spanish" covers people born in Spain to Christian parents, and criollos born here.' },
+        { en: 'Yet we are few. Mestizos, Africans, enslaved and free, and indigenous peoples greatly outnumber us. Still, the small group calling itself Spanish dominates government, economy and society.' },
+        { en: 'I sew by the [[sumptuary laws|sumptuary laws]]. These dress codes limit clothing, weapons and transportation by social class, so everyone\'s rank shows on the street.' },
+        { en: 'A 1573 law says married Spaniards must bring their wives to the colonies or return to Spain. The king\'s advisors want Spanish families here for good, to keep the hierarchy.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'What does Lima\'s population show about power in Spanish America?' },
+        q: { en: 'Compared with their share of Lima\'s people, how much power did Spaniards and criollos hold?' },
         choices: [
-          { ok: true, t: { en: 'A small minority ruled the majority' }, why: { en: 'Right. Spaniards and criollos were greatly outnumbered, yet they dominated government, economy and society.' } },
-          { t: { en: 'The largest group held the most power' }, why: { en: 'No. Mestizos, Africans and Native peoples outnumbered Spaniards but were ranked below them.' } },
-          { t: { en: 'Every group shared power the same way' }, why: { en: 'No. The colony\'s laws, even its dress codes, ranked people by class and ancestry.' } }
+          { ok: true, t: { en: 'Far more power than their small numbers' }, why: { en: 'Right. A small minority identifying as Spanish dominated government, economy and society. Colonial laws, even dress codes, held that rank in place.' } },
+          { t: { en: 'About as much as their large majority' }, why: { en: 'No. They were not a majority: mestizos, Africans and indigenous peoples greatly outnumbered them.' } },
+          { t: { en: 'Power in Spain, but little in the colony' }, why: { en: 'No. In Lima itself, the small Spanish group ran government, trade and society.' } }
         ]
       }
     },
@@ -126,17 +130,18 @@ window.EPISODE = {
       x: 21, y: 14, name: { en: 'Felipa' }, role: { en: 'Food seller' },
       look: { skin: 5, hair: '#1b1410', shirt: '#d9822b', pants: '#5a3a2a', style: 'long' },
       lines: [
-        { en: 'My mother was taken from West Africa and carried across the ocean in chains: the [[middle passage|Middle Passage]]. I am free today, but many Africans in Lima are still enslaved.' },
-        { en: 'Disease killed so many Native people that colonists wanted new workers. After 1580, enslaved Africans crossing the ocean far outnumbered Europeans. Most were forced to grow sugar on [[plantation|plantations]].' },
-        { en: 'Owners forbid large gatherings, but on Sundays people walk miles to find others who speak their language. Their children mix African and European ways into new [[creole|creole]] communities.' }
+        { en: 'My mother was taken from West Africa and carried in chains across the [[middle passage|Middle Passage]]. I am free today, but many Africans in Lima are still enslaved.' },
+        { en: 'Smallpox and other diseases killed millions of indigenous Americans, so planters wanted new workers. From 1580 on, enslaved Africans crossing the ocean far outnumbered European migrants.' },
+        { en: 'Most were forced to cut sugar cane on [[plantation|plantations]] in Brazil, Cuba, Jamaica and Saint-Domingue. Brutal work killed so many that owners demanded even more captives.' },
+        { en: 'Owners forbid large gatherings, but on Sundays people walk 4 or 5 miles to find their own language. Their children blend African and European ways into [[creole|creole]] communities.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did forced migration from Africa grow after 1580?' },
+        q: { en: 'How did high death rates on sugar plantations affect the slave trade?' },
         choices: [
-          { ok: true, t: { en: 'Plantations needed workers after disease' }, why: { en: 'Yes. Disease had killed millions of Native people, and sugar plantation owners forced enslaved Africans across the ocean to work.' } },
-          { t: { en: 'Africans chose to sail west for better jobs' }, why: { en: 'No. These people were captured and forced to migrate. Voluntary migrants were always treated far better.' } },
-          { t: { en: 'No European would ever cross the ocean' }, why: { en: 'No. Europeans did cross, by choice and as convicts, but after 1580 enslaved Africans far outnumbered them.' } }
+          { ok: true, t: { en: 'Owners replaced the dead with new captives' }, why: { en: 'Yes. Dangerous voyages and brutal work caused high death rates, which led to even greater demand for enslaved laborers.' } },
+          { t: { en: 'Planters switched to free European workers' }, why: { en: 'No. Planters turned to free migrants only after the slave trade was abolished in the 1800s. Before then, they demanded more captives.' } },
+          { t: { en: 'Native workers returned to the sugar fields' }, why: { en: 'No. Disease had killed millions of indigenous Americans. That loss is why planters turned to Africa in the first place.' } }
         ]
       }
     },
@@ -144,17 +149,57 @@ window.EPISODE = {
       x: 26, y: 6, name: { en: 'Quispe' }, role: { en: 'Andean stonemason' },
       look: { skin: 3, hair: '#1b1410', shirt: '#3a7a8a', pants: '#4a4a3a', hat: '#a8824a', style: 'short' },
       lines: [
-        { en: 'I cut stone for the cathedral. My home village belongs to the "republic of Indians." By law, no Spaniard may spend the night there. Only friars may.' },
-        { en: 'Spanish officials wrongly judged us to be like children who need guarding. They use that idea to keep us apart and under their control.' },
-        { en: 'Men from Andean towns are forced to work in the silver mines: the [[mita|mita]]. That silver enriches Spain, western Europe and even China.' }
+        { en: 'I cut stone for the cathedral. My village belongs to the "republic of Indians." By law, no Spaniard or other non-Indian may spend the night there, except friars.' },
+        { en: 'Spanish officials misjudged us as childlike, easily used by other Spaniards. Their plan to keep us apart rested on the false idea that we were inferior.' },
+        { en: 'Men from Andean towns are forced to work in the silver mines: the [[mita|mita]]. Spanish South America has the richest silver mines in the world.' },
+        { en: 'That silver fuels trade around the globe. It enriches Spain, western Europe and China, but only because indigenous people are forced to dig it.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'How did the global silver trade depend on the colony\'s hierarchy?' },
+        q: { en: 'Which best describes the global silver trade that ran through Peru?' },
         choices: [
-          { ok: true, t: { en: 'It relied on forced Native labor' }, why: { en: 'Yes. The global silver trade was made possible by the forced labor of Native people in South American mines.' } },
-          { t: { en: 'Free miners chose the work for high pay' }, why: { en: 'No. Native people were forced to do this work. It was not a free choice.' } },
-          { t: { en: 'Spanish nobles dug the silver themselves' }, why: { en: 'No. Spaniards held power and profits. The hard labor was forced on Native people.' } }
+          { ok: true, t: { en: 'It linked Europe and China but rested on forced labor' }, why: { en: 'Yes. Silver drove global trade and benefited Spain, western Europe and China. It was made possible by forced indigenous labor in South American mines.' } },
+          { t: { en: 'It mainly enriched the Andean towns that mined it' }, why: { en: 'No. The profits went to Spain, western Europe and China. Andean miners were forced to work under the mita.' } },
+          { t: { en: 'It relied on enslaved Africans more than Native miners' }, why: { en: 'No. Most enslaved Africans were forced to farm sugar. The silver came from forced indigenous labor in the mines.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 23, y: 11, icon: '📜',
+      name: { en: 'Sugar, Coffee and Two Continents' }, role: { en: 'Primary source' },
+      src: { en: 'J.H. Bernardin de Saint-Pierre (1773); quoted in "Transatlantic Migration Patterns," World History Project' },
+      lines: [
+        { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world:…"' },
+        { en: '"…America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' },
+        { en: 'Context: J.H. Bernardin de Saint-Pierre wrote this in 1773, as forced migration from Africa rose toward its peak (1760 to 1820). He weighs "the happiness of Europe," so his audience is the Europeans who bought these crops.' },
+        { en: 'In his time, sugar in coffee and tea was still a luxury mostly for the wealthy. His purpose: to make those buyers see the cost. Disease and violence emptied American land, and captive Africans were forced across the ocean to farm it.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: what is the author\'s main purpose in this passage?' },
+        choices: [
+          { ok: true, t: { en: 'To show Europeans the human cost of their crops' }, why: { en: 'Yes. He sets Europe\'s "happiness" against the "unhappiness" of America and Africa: emptied land, and people forced to farm it.' } },
+          { t: { en: 'To urge Europeans to plant more sugar in Brazil' }, why: { en: 'No. Portugal did build sugar colonies in Brazil, but he questions whether these crops are worth their cost at all.' } },
+          { t: { en: 'To praise Africa for sending willing workers west' }, why: { en: 'No. He says Africa was "depopulated." The workers were captives, forced across the Atlantic.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 28, y: 8, icon: '📖',
+      name: { en: 'Chosen and Forced Crossings' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Transatlantic Migration Patterns" by Burleigh Hendrickson, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'From the late 1400s, people migrated from Afro-Eurasia to the Americas. Three key events drove this migration: the Reformation, the decimation of the indigenous American population, and the sugar plantation system. Smallpox wiped out millions of indigenous Americans. Before 1580, the vast majority of migrants were Europeans who came of their own free will. In the 1630s and 1640s, 20,000 English Puritans fled strict religious rules for English colonies.' },
+        { en: 'Other Europeans chose to escape poverty. Some sold four years of labor in exchange for the cost of travel: indentured servitude. A migrant who survived the voyage had a 1 in 4 chance of dying of disease in the first year. Still, voluntary migrants were always treated far better than captive Africans. From 1580 until the slave trade was gradually abolished in the early 1800s, enslaved Africans far outnumbered European migrants.' },
+        { en: 'Forced migration peaked from 1760 to 1820, when almost 5 million enslaved Africans were forced across the Middle Passage. Most were enslaved to farm sugar cane: the Portuguese in Brazil, the Spanish in Cuba, the British in Jamaica and Antigua, and the French in Saint-Domingue, the most profitable of all. Dangerous voyages and brutal work caused high death rates. This, in turn, led to even greater demand for enslaved laborers.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Causation: which best explains why forced migrants outnumbered voluntary ones after 1580?' },
+        choices: [
+          { ok: true, t: { en: 'Disease killed Native workers, so sugar planters forced Africans over' }, why: { en: 'Yes. With the indigenous population decimated, plantation owners turned to enslaved Africans, and high death rates raised the demand even further.' } },
+          { t: { en: 'The Reformation sent so many Puritans west that Europe ran short' }, why: { en: 'No. The Reformation drove voluntary migration, like 20,000 Puritans, but after 1580 forced migrants far outnumbered those who chose to come.' } },
+          { t: { en: 'Africans crossed as indentured servants who sold four years of work' }, why: { en: 'No. Indentured servants were poor Europeans who agreed to the bargain. Captive Africans were enslaved and had no choice.' } }
         ]
       }
     }
@@ -260,57 +305,59 @@ window.EPISODE = {
     win: { en: 'The Grump fades. The page on social hierarchies returns, and with it the truth: rulers made these rankings to keep power.' },
     questions: [
       {
-        stim: { text: { en: '"...America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, writing about coffee and sugar, 1773' } },
-        q: { en: 'The excerpt best reflects which development?' },
-        choices: [{ en: 'American land worked by enslaved Africans' }, { en: 'European farmers settling in Africa for coffee' }, { en: 'Native Americans shipping sugar to Africa' }, { en: 'Free workers choosing to farm the Caribbean' }],
+        stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, 1773; quoted in "Transatlantic Migration Patterns," World History Project' } },
+        q: { en: 'The author\'s point of view in the excerpt is best described as...' },
+        choices: [{ en: 'critical of the human cost of Europe\'s crops' }, { en: 'supportive of expanding sugar into Brazil' }, { en: 'concerned mainly with Andean silver miners' }, { en: 'hopeful that free migrants would farm the crops' }],
         answer: 0,
-        why: { en: 'Disease emptied land in the Americas, and plantation owners forced enslaved Africans across the ocean to grow sugar and coffee for Europe.' }
+        why: { en: 'He sets Europe\'s "happiness" against the "unhappiness" of America, emptied for land, and Africa, emptied for forced laborers. He questions whether these luxuries are worth that cost.' }
       },
       {
-        stim: { title: { en: 'Who crossed the Atlantic?' }, rows: [[{ en: 'Period' }, { en: 'Most migrants were...' }], [{ en: 'Late 1400s to 1580' }, { en: 'Europeans who chose to come' }], [{ en: '1580 to the early 1800s' }, { en: 'Enslaved Africans, far outnumbering Europeans' }]], src: { en: 'From "Transatlantic Migration Patterns," World History Project' } },
-        q: { en: 'Which best explains the change shown in the table?' },
-        choices: [{ en: 'Sugar plantations demanded forced labor' }, { en: 'Europe banned all travel to the colonies' }, { en: 'African states sent settlers to trade' }, { en: 'Native Americans moved to Europe for work' }],
+        stim: { title: { en: 'Who crossed the Atlantic?' }, rows: [[{ en: 'Period' }, { en: 'Most migrants were...' }], [{ en: 'Late 1400s to 1580' }, { en: 'Europeans who chose to come' }], [{ en: '1580 to the early 1800s' }, { en: 'Enslaved Africans, far outnumbering Europeans' }], [{ en: 'Peak, 1760 to 1820' }, { en: 'Almost 5 million enslaved Africans' }]], src: { en: 'From "Transatlantic Migration Patterns," World History Project' } },
+        q: { en: 'Which of the following best explains the change shown in the table?' },
+        choices: [{ en: 'Native peoples were decimated and sugar plantations spread' }, { en: 'The Reformation drove 20,000 Puritans to English colonies' }, { en: 'Indentured servitude grew among poor European migrants' }, { en: 'A 1573 law made married Spaniards bring their wives over' }],
         answer: 0,
-        why: { en: 'With so many Native people killed by disease, plantation owners turned to enslaved Africans. Forced migration far outweighed voluntary migration.' }
+        why: { en: 'With the indigenous population decimated by disease, sugar plantation owners turned to enslaved Africans. The Puritans and indentured servants were voluntary migrants, who after 1580 were far outnumbered.' }
       },
       {
         stim: { text: { en: 'Spaniards and criollos were greatly outnumbered by mestizos, Africans and indigenous peoples. Nevertheless, it was that small population identifying as Spaniards who dominated government, economy, and society.' }, src: { en: 'Adapted from "European Colonies in the Americas," World History Project' } },
         q: { en: 'The excerpt best supports which claim about Spanish colonial society?' },
-        choices: [{ en: 'A small minority ruled the larger population' }, { en: 'Power went to whichever group was largest' }, { en: 'Native nobles still ruled the colonial cities' }, { en: 'All groups shared power equally under law' }],
+        choices: [{ en: 'Power rested on rank set by law, not on numbers' }, { en: 'Criollos held less power than mestizos and Africans' }, { en: 'The republic of Indians governed the Spanish towns' }, { en: 'Power shifted to mestizos as their numbers grew' }],
         answer: 0,
-        why: { en: 'Colonial rulers kept power in the hands of a small group identifying as Spanish, even though most people were not.' }
+        why: { en: 'A small group identifying as Spanish, including criollos, ruled a much larger population. Colonial rulers kept that power through laws that ranked people, not because they were many.' }
       },
       {
         stim: { text: { en: 'No Spaniards or other non-Indians could spend the night in an indigenous community, with the exception of Spanish friars.' }, src: { en: 'Adapted from "European Colonies in the Americas," World History Project' } },
-        q: { en: 'This rule of the "two republics" was based mainly on...' },
-        choices: [{ en: 'rulers\' belief that Native people were inferior' }, { en: 'Native leaders\' wish to keep out Spanish traders' }, { en: 'a peace treaty signed by Spain and Native towns' }, { en: 'church rules that banned all travel on Sundays' }],
+        q: { en: 'This rule of the "two republics" most directly reflects...' },
+        choices: [{ en: 'officials\' false belief that Native people were childlike' }, { en: 'the friars\' wish to keep Native towns free of Christianity' }, { en: 'the mita\'s need to keep miners close to the silver mines' }, { en: 'the casta rule that mestizos must live in Native towns' }],
         answer: 0,
-        why: { en: 'Spanish officials wrongly judged Native people as childlike and used that idea to keep them apart and controlled. The plan broke down almost at once.' }
+        why: { en: 'Spanish officials misjudged indigenous people as childlike and inferior, and used that idea to keep them apart. Friars were allowed in to protect and convert them. The plan broke down almost at once.' }
       },
       {
-        q: { en: 'Spanish colonial sumptuary laws were mainly used to...' },
-        choices: [{ en: 'make each person\'s rank visible' }, { en: 'raise taxes on silver from the mines' }, { en: 'let Native towns choose their own rulers' }, { en: 'stop all trade between Lima and Spain' }],
+        stim: { text: { en: 'The global silver trade, which benefited Spain, Western Europe, and China, was made possible by the forced labor of indigenous people in South American mines.' }, src: { en: 'Trevor Getz, "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
+        q: { en: 'The excerpt best supports the claim that colonial hierarchy in Peru...' },
+        choices: [{ en: 'was tied to a world economy built on forced labor' }, { en: 'mattered only inside the Viceroyalty of Peru' }, { en: 'depended mainly on enslaved Africans in the mines' }, { en: 'gave Andean towns a large share of silver profits' }],
         answer: 0,
-        why: { en: 'These dress codes limited clothing, weapons and travel by class, so a person\'s rank could be seen on the street.' }
-      },
-      {
-        q: { en: 'Which best explains how the global silver trade depended on colonial hierarchy?' },
-        choices: [{ en: 'Native people were forced to mine it' }, { en: 'Spanish nobles dug the silver themselves' }, { en: 'Chinese merchants owned Peru\'s mines' }, { en: 'Free miners from Europe did the work' }],
-        answer: 0,
-        why: { en: 'The silver trade enriched Spain, western Europe and China. It was made possible by the forced labor of Native people in South American mines.' }
+        why: { en: 'Under the mita, Andean men were forced to mine silver, and that silver enriched Spain, western Europe and China. Colonial rank at home fed a global economy.' }
       },
       {
         stim: { text: { en: 'Second-generation enslaved Africans combined African and European cultures and languages. Eventually, Creole (mixed) communities emerged.' }, src: { en: 'Adapted from "Transatlantic Migration Patterns," World History Project' } },
-        q: { en: 'The excerpt best illustrates...' },
-        choices: [{ en: 'new cultures forming despite harsh limits' }, { en: 'Africans fully giving up their languages' }, { en: 'Europeans adopting only African customs' }, { en: 'slave owners encouraging big gatherings' }],
+        q: { en: 'Compared with the casta labels made by colonial rulers, the creole communities in the excerpt...' },
+        choices: [{ en: 'were built by enslaved people themselves, despite limits' }, { en: 'were set up by owners to encourage large gatherings' }, { en: 'were a legal rank inside the republic of Indians' }, { en: 'replaced African languages with European ones' }],
         answer: 0,
-        why: { en: 'Owners restricted movement and gatherings, yet enslaved people built creole communities that blended African and European ways.' }
+        why: { en: 'Rulers imposed the casta labels from above. Enslaved Africans, barred from large gatherings and free only on Sundays, built creole communities themselves, blending African and European ways.' }
       },
       {
-        q: { en: 'Which statement best describes the casta system in Spanish America?' },
-        choices: [{ en: 'Rulers\' labels that ranked people by ancestry' }, { en: 'A set of rules that made every colonist equal' }, { en: 'A ranking that Native towns made for nobles' }, { en: 'A tax paid only by the Spaniards born in Spain' }],
+        stim: { text: { en: 'Voluntary migrants were always treated far better than captive Africans. But their journey to the Americas could also be very dangerous.' }, src: { en: 'Adapted from "Transatlantic Migration Patterns," World History Project' } },
+        q: { en: 'Which of the following best supports the second sentence of the excerpt?' },
+        choices: [{ en: 'Survivors had a 1 in 4 chance of dying in year one' }, { en: 'Puritans were shipped over as prisoners of war' }, { en: 'Indentured servants could never earn freedom' }, { en: 'Spanish law kept migrants out of all colonial towns' }],
         answer: 0,
-        why: { en: 'Colonial rulers ranked people by their parents\' ancestry to keep a small Spanish group in power. The ranking said nothing true about anyone\'s worth.' }
+        why: { en: 'A voluntary migrant who survived the voyage still had a 1 in 4 chance of dying of disease in the first year. Puritans chose to come, and indentured servants worked a set term, often four years.' }
+      },
+      {
+        q: { en: 'Which of the following best explains the purpose of the casta system in Spanish America?' },
+        choices: [{ en: 'Colonial rulers used ancestry to keep Spaniards on top' }, { en: 'Friars used it to make all colonists equal in church' }, { en: 'Andean towns used it to choose their own leaders' }, { en: 'Planters used it to count enslaved Africans for sale' }],
+        answer: 0,
+        why: { en: 'Colonial rulers ranked people by their parents\' ancestry to keep a small Spanish group in power. The ranking said who held power, nothing true about anyone\'s worth.' }
       }
     ]
   },
