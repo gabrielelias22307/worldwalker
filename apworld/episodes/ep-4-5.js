@@ -8,7 +8,11 @@
    disease and the labor shortage), "Origins of Oceanic Connections" (4.2: silver to China and India via the Philippines
    from the 1570s), "Survey of Transoceanic Empires" and "European Colonies in the Americas" (4.4: the Andes under Spanish
    control by the 1550s, the richest silver mines, ethnic hierarchy, pirates), "Opener: Empire and Hierarchy" (4.7: the
-   mita and chattel slavery as labor systems). World History Project content is CC BY-NC 4.0. Facts here come from those
+   mita and chattel slavery as labor systems), "The Disastrous Effects of Increased Global Interactions" (4.3: the 50 to 90
+   percent decline, chattel slavery), "Transatlantic Migration Patterns" (4.7, Burleigh Hendrickson: the Bernardin de
+   Saint-Pierre quotation of 1773 and the sugar colonies). The two reading stands: Bernardin de Saint-Pierre (primary
+   source, by the merchants' houses) and "The New Economics of Empire," adapted from "Overview of New Economic Systems"
+   (by the treasury). World History Project content is CC BY-NC 4.0. Facts here come from those
    readings. English only, AP level. Hard history (forced labor, slavery, epidemics) is told plainly and with care:
    nothing about suffering is a prize, and the Grump is quiet and serious.
    Map: the plaza with the church and the royal treasury (north-west), the market and merchants' houses (north-east),
@@ -25,7 +29,7 @@ window.EPISODE = {
   place: { en: 'Potosí, Spanish Peru, 1600' },
   intro: [
     { en: 'The Grump blurred the page on maritime empires. Potosí is forgetting how silver, forced labor and new kinds of business remade the world.' },
-    { en: 'Talk to the 4 people here, help a seamstress, then wake the time stone.' }
+    { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a seamstress, then wake the time stone.' }
   ],
   scenes: {
     at: [-65.75, -19.58],
@@ -89,17 +93,18 @@ window.EPISODE = {
       x: 13, y: 16, name: { en: 'Quispe' }, role: { en: 'Mine worker (forced labor)' },
       look: { skin: 3, hair: '#1b1410', shirt: '#8a5a3a', pants: '#3a2e24', hat: '#7a2a2a', style: 'short' },
       lines: [
-        { en: 'Spanish officials forced me to leave my village and work in these mines. They call it the [[mita|mita]].' },
-        { en: 'Spain also uses the [[encomienda|encomienda]], part of its colonial law to control Indigenous labor. It is a form of enslavement.' },
-        { en: 'Diseases from across the ocean killed millions of our people. To replace them, Europeans forced enslaved Africans to the Americas: [[chattel slavery|chattel slavery]].' }
+        { en: 'Spanish officials forced me to leave my village and dig silver in these mines. They call it the [[mita|mita]]. The Spanish force Indigenous people to mine the silver.' },
+        { en: 'Spain also uses the [[encomienda|encomienda]], part of its colonial law to control Indigenous American labor. It is a form of enslavement.' },
+        { en: 'Since 1492, smallpox, measles and influenza have killed millions of us. Historians estimate the Indigenous population of the Americas fell by 50 to 90 percent.' },
+        { en: 'So few of us are left that there is a labor shortage. Europeans forcibly bring enslaved Africans instead: [[chattel slavery|chattel slavery]], owned for life, their children too.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Which best explains how Spain got so much silver from mines like these?' },
+        q: { en: 'Which of the following best explains why Europeans forcibly brought enslaved Africans to the Americas?' },
         choices: [
-          { ok: true, t: { en: 'Indigenous people were forced to dig' }, why: { en: 'Yes. Spain\'s silver rested on [[coerced labor|coerced labor]]: systems like the mita forced Indigenous people into the mines.' } },
-          { t: { en: 'Settlers from Spain did all the digging' }, why: { en: 'No. The Spanish forced Indigenous people to do the mining. Settlers came to grow rich, not to dig.' } },
-          { t: { en: 'Workers came freely for high wages' }, why: { en: 'No. Quispe was forced to leave his village. The silver trade was made possible by forced Indigenous labor.' } }
+          { ok: true, t: { en: 'Epidemics killed millions and left a labor shortage' }, why: { en: 'Yes. Diseases new to the Americas killed 50 to 90 percent of Indigenous people. Europeans filled the labor shortage by forcing enslaved Africans across the ocean.' } },
+          { t: { en: 'Spanish law forbade forcing Indigenous people to work' }, why: { en: 'No. Spanish law did the opposite: the encomienda and the mita forced Indigenous people to work. Disease, not law, caused the labor shortage.' } },
+          { t: { en: 'Indigenous Americans were immune to the new diseases' }, why: { en: 'No. Indigenous Americans had never met these diseases and had no resistance to them. That is why so many died.' } }
         ]
       }
     },
@@ -107,17 +112,18 @@ window.EPISODE = {
       x: 24, y: 13, name: { en: 'Rosa' }, role: { en: 'Llama driver' },
       look: { skin: 4, hair: '#1b1410', shirt: '#c0392b', pants: '#2e3a5a', hat: '#5a3a2a', style: 'long' },
       lines: [
-        { en: 'My llamas carry loads down from the mines. Silver bars go to Spain, then on to the rest of Europe.' },
-        { en: 'Since the 1570s, huge ships called [[galleon|galleons]] carry our silver across the Pacific, by way of the Philippines, to China and India.' },
-        { en: 'Silver is money everywhere in the world now. It makes Spain, Western Europe and China rich.' }
+        { en: 'My llamas carry silver bars down from the mines. Silver is a precious metal used as money around the globe.' },
+        { en: 'Ships carry it across the Atlantic to Seville in Spain. From Spain it flows on to the rest of Europe.' },
+        { en: 'Since the 1570s, huge [[galleon|galleons]] carry Spanish silver across the Pacific, from Acapulco in New Spain to Manila in the Philippines, and on to China and India.' },
+        { en: 'Silver fuels trade across the world, especially with China. It enriches Spain, Western Europe and China, but it is dug by forced Indigenous labor.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Why did silver from the Andes matter far beyond Peru?' },
+        q: { en: 'Which of the following best explains why silver from the Andes mattered far beyond Peru?' },
         choices: [
-          { ok: true, t: { en: 'It served as money around the world' }, why: { en: 'Right. Silver moved to Europe, India and China. It became the great facilitator of global trade.' } },
-          { t: { en: 'It stayed in Peru to build churches' }, why: { en: 'No. Most silver left: across the Atlantic to Spain, and across the Pacific to Asia.' } },
-          { t: { en: 'Only Spain had any real use for silver' }, why: { en: 'No. China and India were huge markets for silver, reached by galleons through the Philippines.' } }
+          { ok: true, t: { en: 'It was money that linked the Americas, Europe and Asia' }, why: { en: 'Right. Silver crossed the Atlantic to Europe and the Pacific to China and India. It became the great facilitator of global trade.' } },
+          { t: { en: 'It paid for Spain\'s trade with Africa and nowhere else' }, why: { en: 'No. Silver went to Spain and Europe, and on galleons through Manila to China and India. Rosa names Asia, not only Africa.' } },
+          { t: { en: 'It stayed in the Andes to build Spanish churches' }, why: { en: 'No. Most silver left Peru: across the Atlantic to Spain, and across the Pacific to Asia.' } }
         ]
       }
     },
@@ -125,17 +131,18 @@ window.EPISODE = {
       x: 10, y: 7, name: { en: 'Don Diego' }, role: { en: 'Royal official' },
       look: { skin: 1, hair: '#3a2a1a', shirt: '#2a2a3a', pants: '#1a1a24', robe: true, hat: '#1a1a1a', style: 'short' },
       lines: [
-        { en: 'The crown follows [[mercantilism|mercantilism]]: use trade to build the kingdom\'s power, ban free trade, and sell more than you buy.' },
-        { en: 'Colonies send raw materials like silver to Spain and buy Spain\'s finished goods. Colonists may not trade with other countries.' },
-        { en: 'We hold this distant land through royal officials, local elites who work with us, and soldiers with guns.' }
+        { en: 'Since 1542 the Viceroyalty of Peru holds all Spanish lands in South America. A viceroy, a "vice king" in Lima, rules for the king, with councils of judges called audiencias.' },
+        { en: 'The crown follows [[mercantilism|mercantilism]]: use the economy to expand political power, forbid free trade, and sell more than you buy.' },
+        { en: 'So this colony sends raw materials like silver to Spain and buys Spain\'s finished goods. Colonists may not trade with other countries.' },
+        { en: 'We Spaniards are few, yet we rule: through royal officials, local elites who work with us, and soldiers whose gunpowder weapons put down resistance.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'Which policy best reflects mercantilism?' },
+        q: { en: 'Which of the following policies most directly reflects mercantilism?' },
         choices: [
-          { ok: true, t: { en: 'Colonies trade only with the home country' }, why: { en: 'Yes. Colonies supply raw materials and buy finished goods, all inside one empire, so the home country sells more than it buys.' } },
-          { t: { en: 'Every colony trades freely with any nation' }, why: { en: 'No. Mercantilism prohibits free trade. Colonists were not able to trade with other countries.' } },
-          { t: { en: 'The home country buys more than it sells' }, why: { en: 'No. That is the opposite of the goal. Mercantilists wanted to sell more than they bought.' } }
+          { ok: true, t: { en: 'Colonies may trade only with the home country' }, why: { en: 'Yes. Colonies supply raw materials and buy finished goods inside one empire, so the home country sells more than it buys and grows more powerful.' } },
+          { t: { en: 'Private firms trade with little control by the crown' }, why: { en: 'No. That is closer to the later "let it be" (laissez-faire) idea. Under mercantilism the government controlled much of the economy.' } },
+          { t: { en: 'The home country buys more goods than it sells' }, why: { en: 'No. That is the opposite of the goal. Mercantilists wanted to sell more than they bought.' } }
         ]
       }
     },
@@ -143,17 +150,57 @@ window.EPISODE = {
       x: 20, y: 8, name: { en: 'Isabel' }, role: { en: 'Cloth merchant' },
       look: { skin: 0, hair: '#5a3a1a', shirt: '#2a6a5a', robe: true, style: 'bun' },
       lines: [
-        { en: 'Letters from Europe say London merchants have founded an East India Company, a [[chartered company|chartered company]] licensed by their king.' },
-        { en: 'It is a [[joint-stock company|joint-stock company]]: many investors split the cost of the voyages and share the profits. One shipwreck no longer ruins one man.' },
-        { en: 'English and Dutch pirates already raid Spanish ships. They want a share of the riches Spain and Portugal claim.' }
+        { en: 'Letters say London merchants founded an East India Company this very year, 1600, to import textiles and spices from the Mughal Empire in India.' },
+        { en: 'It is a [[joint-stock company|joint-stock company]]: many small investors split the costs and share the profits. If ships sink, no single investor loses everything.' },
+        { en: 'It is also a [[chartered company|chartered company]], licensed by the King of England, like the Dutch East India Company and the Portuguese Company of the Indies.' },
+        { en: 'The risk is real. Early in this century, as many as half of all Portuguese ships setting out for the Indian Ocean were lost at sea.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did European merchants form joint-stock companies?' },
+        q: { en: 'Which of the following best explains why European merchants formed joint-stock companies?' },
         choices: [
-          { ok: true, t: { en: 'To share the cost and risk of voyages' }, why: { en: 'Yes. Ocean trade was a costly gamble. Splitting costs among many investors kept each one\'s losses small.' } },
-          { t: { en: 'To let the king run all of the trade himself' }, why: { en: 'No. They were private companies. Some, like the East India Company, were licensed by the king, but investors owned them.' } },
-          { t: { en: 'Because ocean trade had become safe' }, why: { en: 'No. Ships still sank. Joint-stock companies spread the losses among many investors.' } }
+          { ok: true, t: { en: 'To spread the cost and risk of voyages among many' }, why: { en: 'Yes. Ocean trade was a costly gamble. Splitting costs among many investors kept each one\'s losses small.' } },
+          { t: { en: 'To let the king own and run all of the trade' }, why: { en: 'No. The king licensed (chartered) the East India Company, but many private investors owned it.' } },
+          { t: { en: 'Because new ships had made the voyages safe' }, why: { en: 'No. Ships still sank: half the Portuguese ships bound for the Indian Ocean were lost. Joint-stock companies spread those losses.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 27, y: 6, icon: '📜',
+      name: { en: 'Coffee, Sugar and Two Continents' }, role: { en: 'Primary source' },
+      src: { en: 'J.H. Bernardin de Saint-Pierre (1773); quoted in "Transatlantic Migration Patterns," World History Project' },
+      lines: [
+        { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world:"' },
+        { en: '"America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' },
+        { en: 'Context: J.H. Bernardin de Saint-Pierre wrote this in 1773, more than 170 years after this day in Potosí. He writes about "the happiness of Europe": he looks at the trade from Europe, where demand for sugar and coffee had boomed. By his time there were sugar colonies in Portuguese Brazil, Spanish Cuba, British Jamaica and, most profitable of all, French Saint-Domingue.' },
+        { en: 'The pattern he names began in this era. Disease killed millions of Indigenous Americans and left a labor shortage, and Europeans forced enslaved Africans to work the plantations. From 1580, enslaved Africans far outnumbered European migrants to the Americas. The Americas supplied the land, Africa the forced labor, and Europe made money from producing, shipping and using the goods.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: which best describes the author\'s point of view in this source?' },
+        choices: [
+          { ok: true, t: { en: 'A European questioning the human cost of Europe\'s luxuries' }, why: { en: 'Yes. He doubts that sugar and coffee are essential to Europe\'s happiness and says they cost the Americas and Africa their people.' } },
+          { t: { en: 'A planter arguing that sugar needs enslaved labor to grow' }, why: { en: 'No. He does not defend the plantations. He says sugar and coffee brought "unhappiness" to two great regions of the world.' } },
+          { t: { en: 'An African ruler praising the profits of the Atlantic trade' }, why: { en: 'No. He writes about "the happiness of Europe", and he condemns the trade: Africa was "depopulated".' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 12, y: 8, icon: '📖',
+      name: { en: 'The New Economics of Empire' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Overview of New Economic Systems" by Eman M. Elshaikh, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Lending money was once seen as wrong. A character in Shakespeare\'s Hamlet advises, "Neither a borrower nor a lender be." The Christian Church banned charging interest. Then Leonardo of Pisa, called Fibonacci (c. 1175–1250), wrote Liber Abaci. It brought Europe Hindu-Arabic numerals, fractions and decimals, and ways to calculate profits and interest. The first modern banks grew in Florence and Venice, using bills of exchange, related to modern checks.' },
+        { en: 'Still, ocean trade was a costly gamble: if the ships sank, you lost all your money. Joint-stock companies were the answer. Several investors split the initial costs and shared the profits, so no one person took on a huge burden. They were not new: the Song dynasty in China used them around 1000 CE, and the Muslim world had another form. But in the 1500s and 1600s the model took off on an international scale, starting in Europe.' },
+        { en: 'Running an empire was not cheap, and joint-stock companies often funded colonizing better than governments. The British and Dutch East India Companies were companies, not governments, yet they performed colonial administration in India. Many European states followed mercantilism: colonies supplied raw materials, bought finished goods, and could not trade with other countries. As merchants grew rich, a middle class emerged in Europe, and later capitalism.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'According to the reading, which best explains why joint-stock companies became key to building overseas empires?' },
+        choices: [
+          { ok: true, t: { en: 'They spread empire\'s high costs and risks among many investors' }, why: { en: 'Yes. Empire was costly and voyages were risky. Shared ownership kept each investor\'s losses small, so companies could fund colonies better than governments.' } },
+          { t: { en: 'They were a European invention no earlier state had used' }, why: { en: 'No. The Song dynasty in China used joint-stock companies around 1000 CE. What was new was their international scale.' } },
+          { t: { en: 'They let colonists trade freely with any country they chose' }, why: { en: 'No. Under mercantilism, colonies could not trade with other countries. Companies helped fund empire; they did not free colonial trade.' } }
         ]
       }
     }
@@ -164,15 +211,15 @@ window.EPISODE = {
     { at: [11, 3], name: { en: 'Clerk Beltrán' }, look: { skin: 1, hair: '#2b1d14', shirt: '#4a4a6a', robe: true, style: 'short' },
       lines: [{ en: 'This is the royal treasury. We weigh and record every silver bar.' }, { en: 'This silver makes Spain rich, so the crown watches every bar.' }] },
     { at: [19, 2], name: { en: 'Doña Catalina' }, look: { skin: 0, hair: '#3a2a1a', shirt: '#7a2a4a', robe: true, style: 'bun' },
-      lines: [{ en: 'My husband sailed from Spain to make his fortune in the silver mines.' }, { en: 'This town holds Indigenous, African, Asian and Spanish people.' }] },
+      lines: [{ en: 'My husband sailed from Spain to make quick money in the silver mines. He means to go home a much wealthier man.' }, { en: 'This town holds Indigenous, African, Asian and Spanish people. Yet the few Spaniards run the government and the economy.' }] },
     { at: [28, 2], name: { en: 'Shopkeeper Mendoza' }, look: { skin: 2, hair: '#1b1410', shirt: '#8a6a2a', style: 'short' },
-      lines: [{ en: 'Silver, sugar, and red and blue dyes are the riches of Spain\'s colonies.' }, { en: 'Everything on my shelves came on the king\'s ships from Spain.' }] },
+      lines: [{ en: 'Silver, sugar, and red and blue dyes are the riches of Spain\'s colonies.' }, { en: 'Everything on my shelves came on the king\'s ships from Spain.' }, { en: 'English, Dutch and French pirates raid those ships. They want a share of the riches Spain and Portugal claim.' }] },
     { at: [3, 13], name: { en: 'Sisa' }, look: { skin: 4, hair: '#1b1410', shirt: '#6a3a7a', style: 'long' },
       lines: [{ en: 'My husband was sent to the mines. I wait for him to come home.' }, { en: 'We keep our language and our ways, even under Spanish rule.' }] },
     { at: [9, 13], name: { en: 'Grandmother Wayra' }, look: { skin: 3, hair: '#8a8a8a', shirt: '#2a5a8a', style: 'bun' },
       lines: [{ en: 'The sicknesses that came with the Spanish took many in our village.' }, { en: 'Fewer hands remain, yet the mines still demand workers.' }] },
     { at: [28, 13], name: { en: 'Lorenzo' }, look: { skin: 2, hair: '#2b1d14', shirt: '#4a7a4a', style: 'short' },
-      lines: [{ en: 'My father is Spanish and my mother is Andean.' }, { en: 'Colonial society ranks people by ancestry. People call it the [[casta system|casta system]].' }] }
+      lines: [{ en: 'My father is Spanish and my mother is Andean.' }, { en: 'Mestizos like me, usually of Spanish fathers and Indigenous mothers, Africans and Indigenous people together far outnumber the Spaniards.' }, { en: 'Colonial society ranks people by ancestry. People call it the [[casta system|casta system]].' }] }
   ],
   signs: [
     { x: 15, y: 3, text: { en: 'PLAZA OF POTOSÍ · The church and the royal treasury. Every silver bar is recorded here.' } },
@@ -194,7 +241,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1b1410', shirt: '#b98250', pants: '#4a3a2a', style: 'long' },
       lines: [
         { en: 'I sew clothes for Spanish families. They want fine linen made in Spain, and I have none left.' },
-        { en: 'Under Spain\'s rules, finished goods come from Spain and the colony pays with its riches. Ask Felipe the porter. He works in the southeast, past the llama corral.' }
+        { en: 'Under Spain\'s mercantilist rules, finished goods come from Spain and the colony pays with raw silver. Ask Felipe the porter, southeast, past the llama corral.' }
       ],
       wait: { en: 'Felipe carries loads in the southeast, east of the llama corral, south of the road.' },
       thanks: { en: 'Spanish linen! The colony sends out raw wealth and buys back finished goods. That is mercantilism at work.' }
@@ -332,63 +379,65 @@ window.EPISODE = {
     questions: [
       {
         stim: { text: { en: 'The global silver trade, which benefited Spain, Western Europe, and China, was made possible by the forced labor of indigenous people in South American mines.' }, src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
-        q: { en: 'The excerpt best supports which claim about the global economy, 1450–1750?' },
-        choices: [{ en: 'Forced labor in the Americas fueled world trade' }, { en: 'Free wage labor from Europe ran the silver mines' }, { en: 'China supplied most of the world\'s silver' }, { en: 'Silver mattered only to merchants in Spain' }],
+        q: { en: 'The excerpt best supports which of the following claims about the global economy, 1450–1750?' },
+        choices: [{ en: 'Coerced labor in the Americas underpinned world trade' }, { en: 'Wage labor from Europe drove the American silver economy' }, { en: 'Silver enriched Spain but never reached Asian markets' }, { en: 'China\'s own mines supplied most of the world\'s silver' }],
         answer: 0,
-        why: { en: 'The silver that linked Europe, the Americas and Asia was dug by Indigenous people forced to work under systems like the mita.' }
+        why: { en: 'The silver that linked Europe, the Americas and Asia was dug by Indigenous people forced to work under systems like the mita. It benefited Spain, Western Europe and China.' }
       },
       {
-        stim: { title: { en: 'Where silver from Spanish America went' }, rows: [[{ en: 'Route' }, { en: 'Destination' }], [{ en: 'Across the Atlantic' }, { en: 'Spain, then the rest of Europe' }], [{ en: 'Across the Pacific by galleon (from the 1570s)' }, { en: 'China and India, via the Philippines' }]], src: { en: 'From "Origins of Oceanic Connections" and "Survey of Transoceanic Empires," World History Project' } },
-        q: { en: 'The table best supports which conclusion?' },
-        choices: [{ en: 'Silver linked the Americas, Europe and Asia' }, { en: 'Silver trade stayed inside the Atlantic world' }, { en: 'Asia sent its own silver to the Americas' }, { en: 'Spain kept all of its silver at home' }],
-        answer: 0,
-        why: { en: 'American silver crossed both oceans. It became money for the world and the great facilitator of global trade.' }
+        stim: { title: { en: 'Where silver from Spanish America went' }, rows: [[{ en: 'Route' }, { en: 'Destination' }], [{ en: 'Across the Atlantic to Seville' }, { en: 'Spain, then the rest of Europe' }], [{ en: 'Across the Pacific by galleon, Acapulco to Manila (from the 1570s)' }, { en: 'China and India, via the Philippines' }]], src: { en: 'From "Origins of Oceanic Connections" and "Survey of Transoceanic Empires," World History Project' } },
+        q: { en: 'Which of the following best explains why the trade shown in the table mattered to the global economy?' },
+        choices: [{ en: 'Galleons kept every Asian good out of the Americas' }, { en: 'The Pacific route ended Spain\'s Atlantic trade' }, { en: 'Silver used as money tied American mines to Asia' }, { en: 'Dutch companies carried most of the silver to China' }],
+        answer: 2,
+        why: { en: 'Silver was money around the globe. Crossing both oceans, it linked the mines of the Americas to Europe and to China and India: the great facilitator of global trade.' }
+      },
+      {
+        stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre (1773), quoted in "Transatlantic Migration Patterns," World History Project' } },
+        q: { en: 'Which of the following best explains the pattern the author describes?' },
+        choices: [{ en: 'Mercantilist rules banned sugar from the Americas' }, { en: 'European demand for cash crops drove forced labor' }, { en: 'Plantation wars, not disease, emptied the Americas' }, { en: 'Spanish silver paid wages to African field workers' }],
+        answer: 1,
+        why: { en: 'Demand for sugar and coffee boomed in Europe. Disease had left a labor shortage in the Americas, so Europeans forced enslaved Africans to work the plantations, and Europe made the money.' }
       },
       {
         stim: { text: { en: 'Mercantilism is an economic philosophy in which a government uses its economy to expand political power, prohibiting free trade. The goal is to sell more than you buy.' }, src: { en: 'Adapted from "Overview of New Economic Systems," World History Project' } },
-        q: { en: 'Which Spanish colonial rule best reflects the philosophy described above?' },
-        choices: [{ en: 'Colonists may trade only with Spain' }, { en: 'Colonists may trade with any nation' }, { en: 'Spain must import more than it exports' }, { en: 'Colonies must make all their own goods' }],
-        answer: 0,
-        why: { en: 'Under mercantilism, colonies supplied raw materials, bought the home country\'s finished goods and were not able to trade with other countries.' }
+        q: { en: 'Which Spanish colonial rule most directly reflects the philosophy described above?' },
+        choices: [{ en: 'Colonists may sell silver to Dutch traders' }, { en: 'Colonists may trade only with Spain' }, { en: 'Private firms trade with little crown control' }, { en: 'Spain must import more than it exports' }],
+        answer: 1,
+        why: { en: 'Under mercantilism, colonies supplied raw materials, bought the home country\'s finished goods and could not trade with other countries. Little government control is the later laissez-faire idea.' }
       },
       {
-        stim: { text: { en: 'The East India Company was founded in London, England, in 1600. It was a new kind of joint stock company, with lots of small stockholders. But it was also a chartered company, licensed to operate by the King of England.' }, src: { en: 'Adapted from "The East India Company: Pioneering Corporation or Plundering Pirates?," World History Project' } },
-        q: { en: 'The company described above is best understood as an example of...' },
-        choices: [{ en: 'investors sharing the risk of licensed trade' }, { en: 'a government office staffed by royal officials' }, { en: 'a single rich merchant risking his own ships' }, { en: 'a religious order sent to spread Christianity' }],
-        answer: 0,
-        why: { en: 'Many investors split the costs and shared the profits, which kept each one\'s losses small, and the king licensed the company to trade.' }
+        stim: { text: { en: 'Strictly speaking, joint-stock companies were not new: they were used in the Song Dynasty in China around 1000 CE, and in a different form in the Muslim world. But in the sixteenth and seventeenth centuries, the joint-stock model really took off on a more international scale, starting in Europe.' }, src: { en: 'Adapted from "Overview of New Economic Systems," World History Project' } },
+        q: { en: 'Which of the following best describes the continuity and change shown in the passage?' },
+        choices: [{ en: 'Europe invented shared ownership in the 1600s' }, { en: 'Shared ownership ended as Europe\'s empires grew' }, { en: 'Song China used the form to rule lands in India' }, { en: 'An older business form spread on a global scale' }],
+        answer: 3,
+        why: { en: 'Continuity: shared ownership was centuries old, in Song China and the Muslim world. Change: from the 1500s it took off on an international scale, starting in Europe.' }
       },
       {
-        q: { en: 'Which development best explains the rising prices in Spain in this period?' },
-        choices: [{ en: 'A flood of silver from the Americas' }, { en: 'The end of trade with the colonies' }, { en: 'A shortage of coins in Spanish markets' }, { en: 'Galleons carrying silver back from China' }],
+        stim: { text: { en: 'Among the wealthiest were the British East India Company and the Dutch East India Company. These were companies, not governments, yet they performed colonial administration in India on behalf of the British and the Dutch.' }, src: { en: 'Adapted from "Overview of New Economic Systems," World History Project' } },
+        q: { en: 'Compared with Spain\'s rule of Peru, the passage shows that the British and Dutch in India…' },
+        choices: [{ en: 'could rely on private companies to govern' }, { en: 'ruled through a viceroy and audiencias' }, { en: 'banned joint-stock firms from ocean trade' }, { en: 'had no royal license for their companies' }],
         answer: 0,
-        why: { en: 'So much American silver poured into Spain that each coin bought less. That rise in prices is inflation.' }
+        why: { en: 'Spain ruled Peru through a viceroy, royal officials and soldiers. The British and Dutch East India Companies, licensed but privately owned, ran colonial administration in India.' }
+      },
+      {
+        q: { en: 'Which of the following best explains the rising prices in Spain around 1600?' },
+        choices: [{ en: 'A shortage of silver coins in Spanish markets' }, { en: 'Galleons carried Spain\'s silver off to Asia' }, { en: 'A flood of American silver cut each coin\'s value' }, { en: 'Mercantilist bans raised the price of Dutch goods' }],
+        answer: 2,
+        why: { en: 'So much American silver poured into Spain that each coin bought less. That general rise in prices is inflation.' }
       },
       {
         stim: { text: { en: 'Encomienda was part of the colonial Spanish legal system used to control the Indigenous American labor force, and it was a form of enslavement.' }, src: { en: 'Adapted from "The Columbian Exchange," World History Project' } },
-        q: { en: 'The excerpt best reflects which way Spain maintained its American empire?' },
-        choices: [{ en: 'Legal systems that coerced Indigenous labor' }, { en: 'Paying Indigenous workers more than settlers' }, { en: 'Leaving Indigenous lands under Inca rule' }, { en: 'Ending all forced labor in its colonies' }],
+        q: { en: 'Compared with chattel slavery in the Americas, the system described above…' },
+        choices: [{ en: 'was also coerced labor, of Indigenous Americans' }, { en: 'was a wage system that paid Indigenous workers' }, { en: 'shipped Indigenous workers across the Atlantic' }, { en: 'was used in Portuguese Brazil but not in Peru' }],
         answer: 0,
-        why: { en: 'Spain used laws like the encomienda and the mita to force Indigenous people to work for the colonial economy.' }
-      },
-      {
-        q: { en: 'Which statement best compares the mita and chattel slavery in the Americas?' },
-        choices: [{ en: 'Both coerced labor for colonial profit' }, { en: 'Both were systems of paid and free labor' }, { en: 'Only the mita was a form of forced labor' }, { en: 'Both brought workers across the Atlantic' }],
-        answer: 0,
-        why: { en: 'The mita forced Indigenous people into the mines; chattel slavery forced enslaved Africans across the ocean. Both were coerced labor serving colonial economies.' }
-      },
-      {
-        q: { en: 'Which best describes how Spain kept control of distant colonies like Peru?' },
-        choices: [{ en: 'Officials, local elites and armed soldiers' }, { en: 'Letting each of the colonies elect its own king' }, { en: 'A joint-stock company run from London' }, { en: 'Treaties that let rivals share the silver' }],
-        answer: 0,
-        why: { en: 'Colonial governments worked through royal officials and local elites, and used gunpowder weapons to put down resistance.' }
+        why: { en: 'Both were coerced labor serving colonial profit. The encomienda and the mita forced Indigenous Americans to work; chattel slavery made enslaved Africans property for life, their children too.' }
       }
     ]
   },
   learned: [
     { en: '[[coerced labor|Coerced labor]] built Spain\'s silver wealth: the [[mita|mita]] and [[encomienda|encomienda]] forced Indigenous people to work, and [[chattel slavery|chattel slavery]] forced enslaved Africans to the Americas.' },
     { en: 'American silver became money for the world: it flooded Spain, causing [[inflation|inflation]], and crossed the Pacific on [[galleon|galleons]] to China and India.' },
-    { en: '[[mercantilism|Mercantilism]] tied colonies to their home country, and [[joint-stock company|joint-stock companies]] let investors share the risks of overseas trade and empire.' }
+    { en: '[[mercantilism|Mercantilism]] tied colonies to their home country, and [[joint-stock company|joint-stock companies]] let investors share the risks of overseas trade and empire; the British and Dutch East India Companies even governed lands in India.' }
   ],
   reflect: {
     q: { en: 'AP practice: Explain one way silver from the Spanish Americas changed the global economy between 1450 and 1750.' },
