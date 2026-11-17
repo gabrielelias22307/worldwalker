@@ -193,7 +193,7 @@
     if (r.bossDone) { at = WW.game.bossAt(); text = T('nsPage'); }
     else {
       const left = g.ents.filter(e => e.kind === 'npc' && !r.talked.has(e.ref.id));
-      if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = T('nsTalk').replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
+      if (left.length) { const n = near(left).ref; at = [n.x, n.y]; text = (n.doc ? T('nsRead') : T('nsTalk')).replace('{n}', WW.plain(n.name)).replace('{r}', WW.plain(n.role)); }
       else if (WW.quest.on() && !WW.quest.done()) {
         const q = ep.quest, st = WW.quest.step(), a = q.action;
         at = st === 0 || st === 3 ? [q.giver.x, q.giver.y] : st === 1 ? [q.contact.x, q.contact.y] : WW.quest.target(true);
@@ -445,6 +445,7 @@
     c.fillStyle = gr; c.beginPath(); c.arc(cx, cy + bob, rad, 0, 7); c.fill();
     c.save(); c.translate(cx, cy + bob);
     if (spin) c.scale(Math.cos((t - F.moodT) / 700 * Math.PI * 4) || 0.1, 1);
+    if (WW.COURSE && WW.COURSE.guide === 'owl') { owl(c, t, col, calm, droop); c.restore(); return markOver(c, cx, cy, y, bob, call, col, t, calm, cheer); }
     // wings: three frames (up, middle, down), white and a little see-through, his color at the tips
     const fr = calm ? 1 : [0, 1, 2, 1][Math.floor(t / (F.mode === 'follow' ? 90 : 55)) % 4];
     const wing = (s) => {
@@ -489,7 +490,10 @@
     c.fillStyle = '#22202e'; c.fillRect(0, 1, 1, 1);
     }
     c.restore();
-    // "!" = he has something to tell you · "?" = ask him (C or 🧭)
+    markOver(c, cx, cy, y, bob, call, col, t, calm, cheer);
+  };
+  // "!" = he has something to tell you · "?" = ask him (C or 🧭)
+  function markOver(c, cx, cy, y, bob, call, col, t, calm, cheer) {
     const g = F.bang || call > 0 ? '!' : F.ask ? '?' : null;
     if (g) {
       const bx = Math.round(cx) - 3, by = Math.round(y + bob) - 6 - (calm ? 0 : Math.round(Math.abs(Math.sin(t / 180)) * 2));
@@ -497,5 +501,26 @@
       c.fillStyle = '#22202e'; GLYPH[g].forEach((row, r) => [...row].forEach((ch, q) => ch === '#' && c.fillRect(bx + 1 + q, by + 1 + r, 1, 1)));
     }
     if (cheer && !calm) for (let i = 0; i < 6; i++) { const a = (t / 300) + i * 1.05, rr = 12 + ((t - F.moodT) / 90) % 6; c.fillStyle = COL.gold[0]; c.fillRect(Math.round(cx + Math.cos(a) * rr), Math.round(cy + Math.sin(a) * rr), 1, 1); }
-  };
+  }
+  /* Quill (HistoryWalker): a little owl about 8 x 9 map units, drawn in half units (the HD canvas shows them sharp).
+     His wings beat in three frames while he flies, his eyes blink, and his tufts stand up. */
+  function owl(c, t, col, calm, droop) {
+    const h = 0.5, P = (x, y, w, hh, color) => { c.fillStyle = color; c.fillRect(x * h, y * h, w * h, hh * h); };
+    const fr = calm ? 1 : [0, 1, 2, 1][Math.floor(t / (F.mode === 'follow' ? 110 : 60)) % 4], wy = [-4, 0, 3][fr];
+    const K = '#22202e', B1 = '#5c3f29', B2 = '#7a5536', B3 = '#9a7048', CH = '#ead7b4';
+    [-1, 1].forEach(s => { // wings out to the side, up / middle / down
+      for (let i = 0; i < 6; i++) { const x = s > 0 ? 6 + i : -7 - i, y = -2 + wy * (i / 5) - (i > 3 ? 1 : 0); P(x, y - 1, 1, 6 - Math.floor(i / 2), K); P(x, y, 1, 4 - Math.floor(i / 2), i % 2 ? B2 : B1); }
+    });
+    // body
+    P(-6, -6, 12, 15, K); P(-5, -5, 10, 13, B2); P(-6, -3, 1, 9, K); P(5, -3, 1, 9, K);
+    P(-3, 2, 6, 6, CH); P(-2, 3, 1, 1, B3); P(1, 4, 1, 1, B3); P(-1, 6, 1, 1, B3);
+    P(-5, -8, 2, 3, K); P(3, -8, 2, 3, K); P(-4, -7, 1, 2, B3); P(4, -7, 1, 2, B3); // ear tufts
+    // face disc and eyes (they blink)
+    P(-5, -4, 4, 4, CH); P(1, -4, 4, 4, CH);
+    const blink = !calm && (t % 3400) < 130;
+    if (blink || droop) { P(-4, -2, 3, 1, K); P(1, -2, 3, 1, K); }
+    else { P(-4, -3, 3, 3, col[1]); P(1, -3, 3, 3, col[1]); P(-3, -2, 1, 2, K); P(2, -2, 1, 2, K); P(-4, -3, 1, 1, '#fff3b0'); P(1, -3, 1, 1, '#fff3b0'); }
+    P(-1, -1, 2, 2, '#e8a33a'); // beak
+    P(-3, 9, 2, 1, '#e8a33a'); P(1, 9, 2, 1, '#e8a33a'); // feet
+  }
 })();

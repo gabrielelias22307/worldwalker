@@ -44,7 +44,8 @@
     o: ramp(['#5c3a22', '#66412a', '#704830', '#7a5036']),
     f: ramp(['#3a3550', '#423c5b', '#4a4466', '#524c70']),
     '~': ramp(['#2a73c4', '#2f7fd1', '#3a8bd9', '#4a9be2', '#5aaee9', '#6cc2ef']),
-    '=': ramp(['#18487f', '#1c5592', '#21609f', '#2a6dac'])
+    '=': ramp(['#18487f', '#1c5592', '#21609f', '#2a6dac']),
+    water: ramp(['#174579', '#1b5290', '#205f9f', '#276caf', '#2f7cc4', '#3a8bd2', '#4a9bdd', '#5aace6', '#6cbdec'])
   };
   // the colour of one art pixel of a ground at world art-pixel (X, Y)
   function texel(f, X, Y, depth) {
@@ -67,7 +68,7 @@
       case 'i': { const crack = Math.abs(Math.sin(X * 0.21 + Y * 0.13 + fbm(X, Y, 9) * 5)) < 0.04; return crack ? hex('#ffffff') : pick(R_.i, v * 0.9 + j * 0.3); }
       case 'o': return pick(R_.o, (Y % 8 < 2 ? 0.1 : 0.55) + v * 0.4 + j);
       case 'f': { const ex = X % 16, ey = (Y + (Math.floor(X / 16) % 2) * 8) % 16; if (ex === 0 || ey === 0) return hex('#2b2740'); return pick(R_.f, v * 0.7 + h2(Math.floor(X / 16), Math.floor((Y + (Math.floor(X / 16) % 2) * 8) / 16), 4) * 0.3); }
-      case '~': case '=': { const d = Math.min(1, depth); return pick(R_[f], (f === '=' ? 0.9 : 1) - d * 0.75 + (v - 0.5) * 0.25 + j * 0.3); }
+      case '~': case '=': { const d = Math.min(1, depth + (f === '=' ? 0.12 : 0)); return pick(R_.water, 1 - d * 0.9 + (v - 0.5) * 0.18 + j * 0.2); } // one smooth ramp: darker the farther from shore
     }
     return [255, 0, 255];
   }
@@ -84,6 +85,8 @@
     return FAM[g] || '.';
   }
   // how far (in tiles, 0..3) a water square is from land: deeper water is darker
+  const landCache = new Map();
+  function landSet(gx, gy) { const k = gx + ',' + gy; if (landCache.has(k)) return landCache.get(k); const f = famAt(gx, gy); const v = !!f && f !== '~' && f !== '='; landCache.set(k, v); return v; }
   function depthAt(gx, gy) {
     const k = gx + ',' + gy;
     if (depthCache.has(k)) return depthCache.get(k);
@@ -127,11 +130,15 @@
       const corner = (k, cx, cy) => { const r = 3 + vnoise(cx + gx * A, cy + gy * A, 4, 29) * 5; tryCover(nb[k], r, Math.hypot(px - cx, py - cy)); };
       corner('-1,-1', 0, 0); corner('1,-1', A - 1, 0); corner('-1,1', 0, A - 1); corner('1,1', A - 1, A - 1);
       let depth = 0;
-      if (f === '~' || f === '=') { // smooth depth across the square from the four sides
-        const u = px / (A - 1), v = py / (A - 1);
-        const lerp = (a, b, t) => a + (b - a) * t;
-        depth = wet ? lerp(lerp(dHere, dN[3], Math.max(0, 0.5 - u)), lerp(dHere, dN[1], Math.max(0, u - 0.5)), 0.5) * 0.5 + lerp(lerp(dHere, dN[0], Math.max(0, 0.5 - v)), lerp(dHere, dN[2], Math.max(0, v - 0.5)), 0.5) * 0.5 : 0;
-        depth = depth / 2.2;
+      if (f === '~' || f === '=') { // how far this very pixel is from the shore (round, not square), with a little wobble
+        const fx = gx + (px + 0.5) / A, fy = gy + (py + 0.5) / A;
+        let dmin = 3.2;
+        for (let ty = gy - 3; ty <= gy + 3; ty++) for (let tx = gx - 3; tx <= gx + 3; tx++) {
+          if (!landSet(tx, ty)) continue;
+          const dx = Math.max(tx - fx, 0, fx - (tx + 1)), dy = Math.max(ty - fy, 0, fy - (ty + 1)), d = Math.hypot(dx, dy);
+          if (d < dmin) dmin = d;
+        }
+        depth = Math.min(1, (dmin + (vnoise(X, Y, 20, 61) - 0.5) * 0.7) / 2.6);
       }
       let col = texel(f, X, Y, depth);
       if (edge && EDGE_DARK[f]) col = hex(EDGE_DARK[f]);
@@ -568,7 +575,7 @@
     on: true,
     noGround: false,
     drawTiles(c, sx, sy, map, t, SW, SH) {
-      if (map !== MAP) { MAP = map; cache.clear(); bcache.clear(); depthCache = new Map(); }
+      if (map !== MAP) { MAP = map; cache.clear(); bcache.clear(); landCache.clear(); depthCache = new Map(); }
       const list = [];
       // 1 · every square's ground
       for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
@@ -626,6 +633,19 @@
   WW.hd.hero = (c, x, y, dir, moving, now) => {
     const frame = moving ? (Math.floor(now / 110) % 4) : 0, l = (WW.save && WW.save.look) || {};
     drawHDPerson(c, WW.heroPal(), { robe: false, hat: !!(l.hat), style: 'short' }, x, y, dir, frame, false);
+  };
+
+  // a reading stand: a carved wooden lectern with an open book; it glows softly until you have read it
+  WW.drawDoc = (c, x, y, t, read) => {
+    if (!read) { const a = calm ? 0.5 : (Math.sin(t / 300) + 1) / 2; const g = c.createRadialGradient(x + 8, y + 5, 1, x + 8, y + 5, 12); g.addColorStop(0, `rgba(255,236,160,${0.35 + a * 0.3})`); g.addColorStop(1, 'rgba(255,236,160,0)'); c.fillStyle = g; c.fillRect(x - 4, y - 7, 24, 24); }
+    c.fillStyle = 'rgba(20,20,30,.25)'; c.beginPath(); c.ellipse(x + 8, y + 15, 5, 1.5, 0, 0, 7); c.fill();
+    const P = (px, py, w, h, col) => { c.fillStyle = col; c.fillRect(x + px, y + py, w, h); };
+    P(6.5, 6, 3, 9, '#22202e'); P(7, 6, 2, 8.5, '#8a5a30'); P(7, 6, 0.5, 8.5, '#b98250'); P(4, 14, 8, 1.5, '#22202e'); P(4.5, 14, 7, 1, '#6e4425');
+    P(1.5, 2, 13, 5, '#22202e'); P(2, 2.5, 12, 4, '#5a3a20');
+    P(2.5, 1, 5.5, 4.5, '#fbf4e2'); P(8, 1, 5.5, 4.5, '#f4ead2'); P(7.75, 1, 0.5, 4.5, '#c9b48a');
+    for (let i = 0; i < 4; i++) { P(3.2, 1.8 + i, 4, 0.4, '#8a7a62'); P(8.8, 1.8 + i, 4, 0.4, '#8a7a62'); }
+    P(11.5, 0, 0.6, 3.5, '#c0392b'); // a ribbon bookmark
+    if (!read && !calm) { const k = Math.floor(t / 400) % 3; P(7.5 - 0.5, -3 - k * 0.6, 1, 1, '#fff6c0'); }
   };
 
   // the ground tiles: inside the HD tile loop the ground is already down (noGround); anywhere else (a house's yard

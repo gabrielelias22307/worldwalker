@@ -1,7 +1,7 @@
 /* HISTORYWALKER · Episode 1.7 · Comparison in the Period c. 1200–1450 (AP World Topic 1.7)
    Samarkand, Timur's capital in Central Asia, in 1400: travelers compare how their homelands' states were built and
    how rulers kept power (Song and Ming China, Dar al-Islam, the Delhi Sultanate, Mali and the Swahili coast, Europe;
-   the Americas are added by Tock, since no one in Samarkand knew of them before 1500).
+   the Americas are added by Quill, since no one in Samarkand knew of them before 1500).
    Content source: Khan Academy, AP World History (World History Project), Unit 1: "Comparison: States 1200–1450",
    "Unit 1 Introduction: The Global Tapestry, c. 1200 to 1450" (Trevor Getz), "East Asia 1200–1450" (Merry Wiesner-Hanks),
    "Dar al-Islam 1200–1450" (Bennett Sherry), "South and Southeast Asia 1200–1450" (Merry Wiesner-Hanks),
@@ -211,7 +211,7 @@ window.EPISODE = {
   challenge: {
     at: [8, 7], type: 'carry', stat: 'hei',
     title: { en: 'How did they hold power?' },
-    intro: { en: 'The Grump scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Tock adds cards from the Americas, unknown here before 1500.' },
+    intro: { en: 'The Grump scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Quill adds cards from the Americas, unknown here before 1500.' },
     zones: [
       { bin: 'faith', x: 2, y: 5, w: 3, h: 2 },
       { bin: 'trade', x: 11, y: 5, w: 3, h: 2 },

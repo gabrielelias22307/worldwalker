@@ -120,6 +120,8 @@
     busy: { en: 'Hello, traveler! I am busy right now. Maybe someone else here needs you first.', es: '¡Hola, viajero! Ahora estoy ocupado. Quizás alguien más aquí te necesita primero.', fa: 'سلام، مسافر! حالا مصروف هستم. شاید اول کس دیگری اینجا به تو نیاز دارد.' },
     goodLuck: { en: 'Thank you, traveler! Good luck on your journey.', es: '¡Gracias, viajero! Buena suerte en tu viaje.', fa: 'تشکر، مسافر! در سفرت موفق باشی.' },
     thanksAgain: { en: 'Thank you again for your help!', es: '¡Gracias otra vez por tu ayuda!', fa: 'باز هم از کمکت تشکر!' },
+    nsRead: { en: 'Read the source "{n}" ({r}).', es: 'Lee la fuente "{n}" ({r}).', fa: 'منبع «{n}» را بخوان ({r}).' },
+    talkToRead: { en: 'Talk to everyone and read every source', es: 'Habla con todos y lee cada fuente', fa: 'با همه گپ بزن و همهٔ منابع را بخوان' },
     talkTo: { en: 'Talk to everyone', es: 'Habla con todos', fa: 'با همه گپ بزن' },
     solve: { en: 'Solve the compass stone', es: 'Resuelve la piedra de la brújula', fa: 'سنگ قطب‌نما را حل کن' },
     face: { en: 'Face the Grump', es: 'Enfrenta al Gruñón', fa: 'با غرغرو روبه‌رو شو' },

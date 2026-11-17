@@ -146,6 +146,25 @@ window.EPISODE = {
           { t: { en: 'The Song government banned it for good' }, why: { en: 'No. Buddhism never disappeared in China. It was practiced alongside Daoism and Confucianism.' } }
         ]
       }
+    },
+    {
+      doc: true, x: 12, y: 9, icon: '📜',
+      name: { en: 'The Analects of Confucius' }, role: { en: 'Primary source' },
+      src: { en: 'Confucius, The Analects 1.6 and 1.9 (about 500 BCE); quoted in "Confucianism," World History Project' },
+      lines: [
+        { en: '"The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large, and should cleave to those who are ren [virtuous in all things]."' },
+        { en: '"Master Zeng said: Devote care to life\'s end and pursue respect for the distant dead; in this way, the virtue of the people will return to fullness."' },
+        { en: 'Song scholars studied these words for the exams. The family was seen as a small government: order at home made order in the state.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: why would the Song state want its officials to master these passages?' },
+        choices: [
+          { ok: true, t: { en: 'They taught duty, respect and order' }, why: { en: 'Yes. Filial piety at home was meant to become loyalty and order in the state. That served the government.' } },
+          { t: { en: 'They taught how to grow more rice' }, why: { en: 'No. The passages are about duty and virtue, not farming.' } },
+          { t: { en: 'They praised merchants over scholars' }, why: { en: 'No. Nothing here is about merchants. It is about family duty and virtue.' } }
+        ]
+      }
     }
   ],
   houses: [

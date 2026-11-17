@@ -111,7 +111,7 @@ function checkEpisode(file) {
   });
   if (!ep.memorial && ((ep.smudges || []).length < 1 || (ep.smudges || []).length > 3)) errs.push('need 1 to 3 bad guys (smudges)'); // memorial: true (Timewalker 2.3, 7.3): none
   if ((ep.scraps || []).length !== 3) errs.push('need exactly 3 scraps');
-  if ((ep.npcs || []).length < 3) errs.push('need at least 3 people (npcs)');
+  if ((ep.npcs || []).filter(n => !n.doc).length < 3) errs.push('need at least 3 people (npcs)');
   const qu = ep.quest, qa = qu && qu.action;
   if (!qu) errs.push('quest missing (giver -> contact -> action -> back to giver)');
   else {
@@ -325,7 +325,8 @@ function checkEpisode(file) {
       if (!['loc', 'pla', 'hei', 'mov', 'reg'].includes(n.ask.stat)) errs.push(`npc ${i} ask.stat must be loc/pla/hei/mov/reg`);
       n.ask.choices.forEach((c, k) => { if (!c.why) errs.push(`npc ${i} choice ${k} needs a why`); });
     }
-    if (!n.look) warns.push(`npc ${i} has no look`);
+    if (!n.look && !n.doc) warns.push(`npc ${i} has no look`);
+    if (n.doc && !n.src) errs.push(`reading ${i} needs src (the source)`);
   });
 
   /* ---- quest ---- */
@@ -377,7 +378,7 @@ function checkEpisode(file) {
     const box = (o, where, max = 15) => { max = Math.round(max * WORDK); if (o && o.en && nw(o) > max) warns.push(`reading: ${where} has ${nw(o)} words (at most ${max})`); };
     (ep.intro || []).forEach((o, i) => box(o, `intro[${i}]`));
     ((ep.christopher || {}).meet || []).forEach((o, i) => box(o, `christopher.meet[${i}]`));
-    (ep.npcs || []).forEach((n, i) => { (n.lines || []).forEach((o, k) => box(o, `${strip(n.name.en || n.name)} line ${k + 1}`)); if (n.ask) { box(n.ask.q, `${strip(n.name.en || n.name)} question`, 18); n.ask.choices.forEach((c, k) => box(c.why, `${strip(n.name.en || n.name)} answer ${k + 1} why`, 20)); } });
+    (ep.npcs || []).forEach((n, i) => { (n.lines || []).forEach((o, k) => box(o, `${strip(n.name.en || n.name)} line ${k + 1}`, n.doc ? 45 : 15)); if (n.ask) { box(n.ask.q, `${strip(n.name.en || n.name)} question`, 18); n.ask.choices.forEach((c, k) => box(c.why, `${strip(n.name.en || n.name)} answer ${k + 1} why`, 20)); } });
     if (qu) {
       ['giver', 'contact'].forEach(w => ((qu[w] || {}).lines || []).forEach((o, k) => box(o, `quest ${w} line ${k + 1}`)));
       ['wait', 'thanks'].forEach(w => box((qu.giver || {})[w], `quest giver ${w}`));

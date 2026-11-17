@@ -119,6 +119,65 @@
     const base = c.createLinearGradient(0, CY + 20, 0, CY + 26); base.addColorStop(0, '#ffe9a0'); base.addColorStop(1, '#8a5a1a');
     c.fillStyle = base; c.fillRect(CX - 19, CY + 20, 38, 5);
   }
+  /* Quill (HistoryWalker): a small, round scholar owl with ear tufts, big amber eyes that look about and blink, a beak
+     that opens when he talks, soft feathers that flap, and a little quill pen tucked under one wing */
+  function owlPortrait(c, t, o, col, calm) {
+    const mood = o.mood, droop = mood === 'droop', cheer = mood === 'cheer', talk = mood === 'talk' || o.talking;
+    const bob = calm ? 0 : Math.sin(t / 420) * 2 + (droop ? 3 : 0) - (cheer ? 2 : 0);
+    const tilt = calm ? 0 : Math.sin(t / 1300) * 0.08 + (mood === 'spin' ? Math.sin(t / 90) * 0.25 : 0);
+    const flap = calm ? 0 : cheer ? Math.sin(t / 70) * 0.5 : talk ? Math.sin(t / 140) * 0.18 : Math.max(0, Math.sin(t / 900)) * 0.12;
+    c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.ellipse(CX, 88, 14, 3, 0, 0, 7); c.fill();
+    c.save(); c.translate(CX, CY + 6 + bob); c.rotate(tilt);
+    const BR = ['#3e2a1c', '#5c3f29', '#7a5536', '#9a7048', '#c39a6a'];
+    // wings, behind the body; they lift when he flaps
+    [-1, 1].forEach(s => {
+      c.save(); c.translate(s * 15, -2); c.rotate(s * (0.15 + flap)); c.scale(s, 1);
+      c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(6, 8, 10, 17, 0.25, 0, 7); c.fill();
+      c.fillStyle = BR[1]; c.beginPath(); c.ellipse(6, 8, 8, 15, 0.25, 0, 7); c.fill();
+      c.fillStyle = BR[2]; for (let k = 0; k < 4; k++) { c.beginPath(); c.ellipse(5 + k * 1.2, 1 + k * 5, 5, 2.4, 0.4, 0, 7); c.fill(); }
+      c.fillStyle = BR[3]; for (let k = 0; k < 3; k++) c.fillRect(8 + k * 2, 14 + k * 3, 3, 1);
+      c.restore();
+    });
+    // the round body with a lighter, speckled chest
+    c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(0, 6, 21, 25, 0, 0, 7); c.fill();
+    const g = c.createRadialGradient(-6, -6, 3, 0, 4, 26); g.addColorStop(0, BR[4]); g.addColorStop(0.5, BR[3]); g.addColorStop(1, BR[1]);
+    c.fillStyle = g; c.beginPath(); c.ellipse(0, 6, 19, 23, 0, 0, 7); c.fill();
+    c.fillStyle = '#ead7b4'; c.beginPath(); c.ellipse(0, 15, 11, 12, 0, 0, 7); c.fill();
+    c.fillStyle = BR[2]; for (let r = 0; r < 3; r++) for (let k = -2; k <= 2; k++) { if ((k + r) % 2) continue; c.beginPath(); c.moveTo(k * 4 - 1.5, 9 + r * 5); c.lineTo(k * 4, 11 + r * 5); c.lineTo(k * 4 + 1.5, 9 + r * 5); c.fill(); }
+    // ear tufts that twitch now and then
+    const tw = calm ? 0 : ((t % 4200) < 180 ? 2 : 0);
+    [-1, 1].forEach(s => { c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(s * 9, -15); c.lineTo(s * (16 + tw), -27 - tw); c.lineTo(s * 17, -12); c.fill(); c.fillStyle = BR[2]; c.beginPath(); c.moveTo(s * 10, -15); c.lineTo(s * (15 + tw), -24 - tw); c.lineTo(s * 15, -13); c.fill(); });
+    // the face disc
+    c.fillStyle = '#f1e2c4'; [-1, 1].forEach(s => { c.beginPath(); c.arc(s * 8, -6, 10, 0, 7); c.fill(); });
+    c.strokeStyle = BR[2]; c.lineWidth = 1.2; [-1, 1].forEach(s => { c.beginPath(); c.arc(s * 8, -6, 10, s > 0 ? -1.2 : Math.PI - 1.9, s > 0 ? 1.9 : Math.PI + 1.2); c.stroke(); });
+    // big amber eyes: they look toward what he means, blink, squint when he cheers, droop when he is sad
+    const blink = !calm && (t % 3600) < 140, look = calm ? 0 : Math.sin(t / 1700) * 1.6;
+    [-1, 1].forEach(s => {
+      const ex = s * 8, ey = -6;
+      if (blink || cheer) { c.fillStyle = '#22202e'; c.beginPath(); c.ellipse(ex, ey + (cheer ? -1 : 0), 6, cheer ? 2.5 : 1.4, 0, cheer ? Math.PI : 0, cheer ? 0 : Math.PI * 2, cheer); c.fill(); return; }
+      c.fillStyle = '#22202e'; c.beginPath(); c.arc(ex, ey, 7, 0, 7); c.fill();
+      const eg = c.createRadialGradient(ex - 2, ey - 2, 1, ex, ey, 6.5); eg.addColorStop(0, '#fff3b0'); eg.addColorStop(0.6, col[1]); eg.addColorStop(1, col[2]);
+      c.fillStyle = eg; c.beginPath(); c.arc(ex, ey, 6, 0, 7); c.fill();
+      c.fillStyle = '#1a1420'; c.beginPath(); c.arc(ex + look, ey + (droop ? 1.5 : 0.5), 3.4, 0, 7); c.fill();
+      c.fillStyle = '#ffffff'; c.fillRect(ex + look - 2, ey - 2, 2, 2); c.fillRect(ex + look + 1.5, ey + 1.5, 1, 1);
+      if (droop) { c.fillStyle = BR[1]; c.fillRect(ex - 7, ey - 7, 14, 4); }
+    });
+    // the beak: it opens while words come
+    const open = talk && !calm ? Math.abs(Math.sin(t / 85)) * 2.5 : 0;
+    c.fillStyle = '#22202e'; c.beginPath(); c.moveTo(-4, 0); c.lineTo(4, 0); c.lineTo(0, 7 + open); c.fill();
+    c.fillStyle = '#e8a33a'; c.beginPath(); c.moveTo(-3, 0.5); c.lineTo(3, 0.5); c.lineTo(0, 5); c.fill();
+    if (open > 0.5) { c.fillStyle = '#c0603a'; c.fillRect(-1.5, 4, 3, open); }
+    // a quill pen tucked under his wing
+    c.save(); c.translate(15, 12); c.rotate(-0.7);
+    c.fillStyle = '#22202e'; c.fillRect(-1, -14, 3, 22); c.fillStyle = '#fbf4e2'; c.beginPath(); c.ellipse(0.5, -8, 3, 8, 0, 0, 7); c.fill();
+    c.fillStyle = '#d9cdb4'; c.fillRect(0, -15, 1, 16); c.fillStyle = '#2b2b3a'; c.fillRect(0, 6, 1, 3);
+    c.restore();
+    // little feet on a branch
+    c.fillStyle = '#6b4a2a'; c.fillRect(-22, 29, 44, 4); c.fillStyle = '#22202e'; c.fillRect(-22, 33, 44, 1);
+    c.fillStyle = '#e8a33a'; [-7, 5].forEach(x => { c.fillRect(x, 27, 2, 3); c.fillRect(x + 2.5, 27, 2, 3); c.fillRect(x - 2.5, 27, 2, 3); });
+    c.restore();
+    if (cheer && !calm) for (let i = 0; i < 8; i++) { const a = t / 400 + i * 0.785, r = 36 + Math.sin(t / 150 + i) * 3; c.fillStyle = i % 2 ? '#fff1a8' : col[1]; c.fillRect(Math.round(CX + Math.cos(a) * r), Math.round(CY + Math.sin(a) * r * 0.8), 2, 2); }
+  }
   /* draw him into c (a 96 × 96 canvas): kind = gold / green / blue / red, mood = null / talk / spin / droop / cheer */
   function draw(c, t, o = {}) {
     const col = COL[o.kind] || COL.gold, calm = WW.calm, mood = o.mood;
@@ -132,6 +191,7 @@
     const halo = c.createRadialGradient(CX, CY + bob, 6, CX, CY + bob, 40 + (talk && !calm ? Math.sin(t / 90) * 2 : 0));
     halo.addColorStop(0, col[0] + 'cc'); halo.addColorStop(0.5, col[1] + '55'); halo.addColorStop(1, col[1] + '00');
     c.fillStyle = halo; c.fillRect(0, 0, S, S);
+    if (WW.COURSE && WW.COURSE.guide === 'owl') return owlPortrait(c, t, o, col, calm); // HistoryWalker's guide, Quill
     // shadow on the ground far below
     c.fillStyle = 'rgba(0,0,0,.35)'; c.beginPath(); c.ellipse(CX, 88, 16 - bob, 3, 0, 0, 7); c.fill();
     c.save(); c.translate(0, bob);

@@ -59,6 +59,7 @@
     document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
+    if (WW.COURSE && WW.COURSE.guideSmall) root.classList.add('guide-small'); // HistoryWalker: a smaller guide card
     if (WW.LANGS.length < 2) root.querySelector('.langs').hidden = true; // one language: no language buttons
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
@@ -599,6 +600,7 @@
     WW.world.drawFog(c, sx, sy, t);
     ents.forEach(e => {
       if (e.gone || e.visible === false || !inScreen(e)) return;
+      if (e.kind === 'npc' && e.ref.doc) { WW.drawDoc(c, px(e), py(e), t, WW.run.talked.has(e.ref.id)); return; } // a reading stand
       if (e.kind === 'npc') {
         WW.drawPerson(c, e.ref, px(e), py(e) - 2, t, e.phase);
         if (!WW.run.talked.has(e.ref.id)) { // speech bubble
@@ -730,6 +732,11 @@
     ents.forEach(e => { if (e.kind === 'smudge') { e.next = now + 1500; e.nextRage = now + 8000 + Math.random() * 4000; WW.fx.burst(e.x, e.y, 'purple'); } });
     setTimeout(() => WW.chris.say(T('foesWake')), 600);
   }
+  WW.drawDoc = WW.drawDoc || ((c, x, y, t, read) => {
+    if (!read) { const a = (Math.sin(t / 300) + 1) / 2; c.fillStyle = `rgba(255,230,140,${0.2 + a * 0.3})`; c.beginPath(); c.arc(x + 8, y + 6, 9 + a * 2, 0, 7); c.fill(); }
+    c.fillStyle = '#22202e'; c.fillRect(x + 6, y + 7, 4, 8); c.fillRect(x + 2, y + 3, 12, 6); c.fillStyle = '#8a5a30'; c.fillRect(x + 7, y + 8, 2, 7);
+    c.fillStyle = '#fbf4e2'; c.fillRect(x + 3, y + 4, 5, 4); c.fillRect(x + 8, y + 4, 5, 4); c.fillStyle = '#8a7a62'; c.fillRect(x + 4, y + 5, 3, 1); c.fillRect(x + 9, y + 5, 3, 1);
+  });
   G.stoneReady = () => { const r = WW.run, ep = WW.ep; return !!r && ep.npcs.every(n => r.talked.has(n.id)) && (!WW.quest.on() || WW.quest.done()); };
   function drawGoal(c, sx, sy, hx, hy, now) {
     if (WW.paused || (WW.chris && WW.chris.scene)) return;
