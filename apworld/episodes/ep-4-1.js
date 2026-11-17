@@ -18,7 +18,7 @@ window.EPISODE = {
   place: { en: 'Lisbon, Portugal, 1480' },
   intro: [
     { en: 'The Grump blurred the page on sea technology. Lisbon\'s shipyards are forgetting where their tools came from!' },
-    { en: 'Talk to the 4 people here, help a shipowner arm her caravel, then wake the time stone.' }
+    { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a shipowner arm her caravel, then wake the time stone.' }
   ],
   scenes: {
     at: [-9.14, 38.71],
@@ -83,17 +83,18 @@ window.EPISODE = {
       x: 6, y: 8, name: { en: 'Rodrigo' }, role: { en: 'Compass maker' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#5a6a3a', pants: '#3a2a1a', style: 'short' },
       lines: [
-        { en: 'I fix a magnetic needle to a card in a wooden box. This [[magnetic compass|compass]] always points north.' },
-        { en: 'Early compasses came from China. They reached Europe through trade with Asia.' },
-        { en: 'Arab sailors made the [[kamal|kamal]]: wood on a knotted rope. Hold it to the North Star to check your [[latitude|latitude]].' }
+        { en: 'I fix a magnetic needle to a card in a wooden box. This [[magnetic compass|compass]] reliably points north, so you know your heading.' },
+        { en: 'The idea is not ours. Early compasses came from China, and they reached Europe through trade with Asia.' },
+        { en: 'Arab sailors made the [[kamal|kamal]]: wood on a knotted rope. At home port, tie a knot so the North Star sits atop the wood and the horizon at the knot.' },
+        { en: 'Sailing home, hold it the same way. It tells you whether to sail north or south to reach your home port\'s [[latitude|latitude]].' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'What does the compass\'s journey to Lisbon show?' },
+        q: { en: 'Which best explains how the compass and the kamal reached Lisbon\'s sailors?' },
         choices: [
-          { ok: true, t: { en: 'Ideas traveled along Afro-Eurasian routes' }, why: { en: 'Yes. A Chinese invention reached Europe through trade with Asia, and Arab sailors shared the kamal.' } },
-          { t: { en: 'Portugal invented all of its own sea tools' }, why: { en: 'No. The compass came from China and the kamal from Arab sailors. Europe gathered tools from many places.' } },
-          { t: { en: 'Compasses reached Europe from the Americas' }, why: { en: 'No. In this period Europeans did not yet know the Americas existed. The compass came from China.' } }
+          { ok: true, t: { en: 'Through Afro-Eurasian trade with China and Arab sailors' }, why: { en: 'Yes. The compass came from China through trade with Asia, and the kamal came from Arab sailors.' } },
+          { t: { en: 'Through old Roman designs that Europe\'s scholars had kept for centuries' }, why: { en: 'No. The astrolabe goes back to the Roman Empire, but the compass came from China and the kamal from Arab sailors.' } },
+          { t: { en: 'Through gifts that Ottoman sultans sent to Portugal\'s kings' }, why: { en: 'No. The Ottomans dominated trade routes; the compass came from China through trade with Asia.' } }
         ]
       }
     },
@@ -101,17 +102,18 @@ window.EPISODE = {
       x: 25, y: 8, name: { en: 'Leonor' }, role: { en: 'Merchant' },
       look: { skin: 1, hair: '#4a2a1a', shirt: '#7a2a4a', robe: true, style: 'bun' },
       lines: [
-        { en: 'The mighty Ottoman sultans dominate the trade between Europe and the lands of Africa and Asia.' },
-        { en: 'Our small states cannot match the size of those great Eurasian empires. But we can still trade with them, by sea!' },
-        { en: 'So we gather tools learned from that vast trading system: [[banking|banking]] and checks, gunpowder and better sails.' }
+        { en: 'In this century the mighty Ottoman sultans dominate trade between Europe and other regions, in Africa and in Asia.' },
+        { en: 'Our small states cannot match the size and productivity of great Eurasian empires like the Ottoman and Russian. But we can still trade with them, by sea!' },
+        { en: 'We use what we learned in that vast trading system: financial tools like [[banking|banking]] and checks, and physical ones like gunpowder and better sails.' },
+        { en: 'Our first voyages go south, toward West Africa. Some captains dream of rounding the southern tip of Africa to reach Asia.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why are some Europeans setting out to trade by sea?' },
+        q: { en: 'Which best explains why merchants like Leonor turned to the sea?' },
         choices: [
-          { ok: true, t: { en: 'The Ottomans dominated the trade routes' }, why: { en: 'Yes. With the Ottomans controlling trade to Africa and Asia, Europeans looked for a sea route of their own.' } },
-          { t: { en: 'Europe\'s states were the biggest on Earth' }, why: { en: 'No. Europe\'s rulers could not compete with the size and wealth of the great Eurasian states.' } },
-          { t: { en: 'Land trade with Asia had ended for good' }, why: { en: 'No. Trade by land went on. The problem was that the Ottomans dominated it.' } }
+          { ok: true, t: { en: 'Ottoman control of trade with Africa and Asia' }, why: { en: 'Yes. With the Ottoman sultans dominating that trade, Europeans used new tools to trade by sea.' } },
+          { t: { en: 'Europe out-produced the great Eurasian empires' }, why: { en: 'No. Europe\'s small states could not match the productivity and size of the great Eurasian states.' } },
+          { t: { en: 'The magnetic compass was just invented in Lisbon' }, why: { en: 'No. Early compasses came from China, through trade with Asia.' } }
         ]
       }
     },
@@ -119,17 +121,18 @@ window.EPISODE = {
       x: 11, y: 15, name: { en: 'Gonçalo' }, role: { en: 'Shipwright' },
       look: { skin: 1, hair: '#6e6e6e', shirt: '#8a5a2a', pants: '#3a3a2a', hat: '#5a3a1a', style: 'short' },
       lines: [
-        { en: 'We build [[caravel|caravels]] here for long-distance trade. Prince Henry the Navigator had them developed.' },
-        { en: 'Square sails catch the wind on the open sea. Near shore we switch to triangular [[lateen sail|lateen sails]].' },
-        { en: 'The big [[carrack|carrack]] mixes Mediterranean and Northern European ship styles. It has a forecastle in front and an aftcastle behind.' }
+        { en: 'We build [[caravel|caravels]] here, with two or three masts. Prince Henry the Navigator of Portugal had them developed for long-distance trade.' },
+        { en: 'Square sails catch the wind on open water. Near shore we switch to triangular [[lateen sail|lateen sails]]. The rounded bottom makes a caravel fast.' },
+        { en: 'The big [[carrack|carrack]] is a mash-up of Mediterranean and Northern European ship styles: a rounded stern, a forecastle in front and an aftcastle behind.' },
+        { en: 'A carrack has two to four masts, with lateen and square sails. The biggest can reach 2,000 tons.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'What does the carrack\'s design show?' },
+        q: { en: 'Compared with the caravel, what set the carrack apart?' },
         choices: [
-          { ok: true, t: { en: 'It mixed two regions\' ship styles' }, why: { en: 'Yes. The carrack was a mash-up of Mediterranean and Northern European styles of ships.' } },
-          { t: { en: 'It copied one Portuguese fishing boat' }, why: { en: 'No. Its design joined two different traditions, Mediterranean and Northern European.' } },
-          { t: { en: 'It moved by oars alone, with no sails' }, why: { en: 'No. A carrack had two to four masts with lateen and square sails.' } }
+          { ok: true, t: { en: 'Its great size and its mix of two regions\' styles' }, why: { en: 'Yes. The carrack blended Mediterranean and Northern European designs and could reach 2,000 tons.' } },
+          { t: { en: 'Its speed, from a rounded bottom that pirates liked' }, why: { en: 'No. That describes the caravel, the fast ship pirates liked to use.' } },
+          { t: { en: 'Its use of triangular lateen sails on every mast' }, why: { en: 'No. Carracks used both lateen and square sails, on two to four masts.' } }
         ]
       }
     },
@@ -137,17 +140,56 @@ window.EPISODE = {
       x: 27, y: 17, name: { en: 'Lopo' }, role: { en: 'Ship\'s pilot' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2a4a7a', pants: '#2a2a3a', hat: '#2a2a3a', style: 'short' },
       lines: [
-        { en: 'Out of sight of land, I steer by the North Star. Its height above the horizon tells me our [[latitude|latitude]].' },
-        { en: 'I measure that height with a [[quadrant|quadrant]]. On a clear day it works on the sun, too.' },
-        { en: 'An [[astrolabe|astrolabe]] does even more. The idea goes back to the Roman Empire. It finds latitude, the time, even the planets.' }
+        { en: 'North of the equator, on a clear night, I steer by the North Star, Polaris. Its height above the horizon tells me our [[latitude|latitude]].' },
+        { en: 'I measure that height with a [[quadrant|quadrant]]. It works on any star, even the sun. Know your latitude, and you can keep sailing in a straight line to your destination.' },
+        { en: 'An [[astrolabe|astrolabe]], a stack of marked disks, does even more: latitude, the time of day or night, and the positions of stars and planets.' },
+        { en: 'The astrolabe is not new. It goes back to the Roman Empire, and sailors still trust it.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did measuring the North Star matter so much on a long voyage?' },
+        q: { en: 'Why did tools that measure a star\'s height matter so much for long voyages?' },
         choices: [
-          { ok: true, t: { en: 'It showed how far north or south it was' }, why: { en: 'Yes. Knowing the latitude let a pilot hold a straight course and find the way home.' } },
-          { t: { en: 'It told how fast the ship was moving' }, why: { en: 'No. A star\'s height gives latitude. Speed and direction had to be recorded separately.' } },
-          { t: { en: 'It showed the safest harbor for the night' }, why: { en: 'No. The star\'s height above the horizon shows only how far north or south the ship is.' } }
+          { ok: true, t: { en: 'Latitude let pilots hold a course far from land' }, why: { en: 'Yes. Knowing the latitude let a pilot keep a straight course and find the way home.' } },
+          { t: { en: 'The quadrant measured how fast the ship was sailing' }, why: { en: 'No. A star\'s height gives latitude, not speed.' } },
+          { t: { en: 'The astrolabe was a brand-new Portuguese invention' }, why: { en: 'No. The astrolabe goes back to the Roman Empire.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 24, y: 15, icon: '📜',
+      name: { en: 'Ibn Majid\'s Book of Navigation' }, role: { en: 'Primary source' },
+      src: { en: 'Ahmad ibn Majid, The Book of the Benefits of the Principles and Foundations of Navigation, 1489; quoted in "Quick Sourcing: Trade and Technology," World History Project' },
+      lines: [
+        { en: '"If a man wishes to do anything [by methods] not connected with the [science] of navigation, then he can do so, but whenever he lacks the directions of towns and islands... then he must find them by means of our science."' },
+        { en: '"When you reach that place the island of al-Qumr falls away on your left, but the land comes to an end on your right and turns towards the west and north..."' },
+        { en: 'Ahmad ibn Majid, an Arab navigator, wrote this book in 1489, nine years after this day in Lisbon. He writes as a scientific navigator who values knowledge from experience at sea, for anyone who "lacks the directions of towns and islands." Arab navigational science like his became part of the sea knowledge that later European and Asian explorers used.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: which best describes Ibn Majid\'s point of view in this source?' },
+        choices: [
+          { ok: true, t: { en: 'An expert navigator who values knowledge from experience' }, why: { en: 'Yes. He calls navigation "our science" and gives exact directions by coasts and islands.' } },
+          { t: { en: 'A merchant focused mainly on the profits of coastal trade' }, why: { en: 'No. He writes about finding the way by the science of navigation, not about prices or profit.' } },
+          { t: { en: 'A religious leader explaining the natural world through faith' }, why: { en: 'No. His guide gives practical directions at sea; it is navigational science.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 12, y: 6, icon: '📖',
+      name: { en: 'Tools from Many Lands' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Technology in the Age of Exploration" by Malcolm F. Purinton, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'The fifteenth century saw a great growth in global networks. Dangerous, expensive ocean journeys became common because of technology. The tools traders and explorers used were based on innovations from many parts of Afro-Eurasia, brought together in Europe: the kamal from Arab sailors, the compass from China, and the astrolabe, used by Columbus and Magellan, from the Roman Empire.' },
+        { en: 'Tools kept changing. The cross staff, about three feet long, was inspired by the design of the kamal, but by day it forced navigators to stare at the sun. In the 1600s Captain John Davis made the back staff, or Davis Quadrant, which used the sun\'s shadow instead. The traverse board let sailors record direction and speed every half hour, for four hours.' },
+        { en: 'Long-distance trade was dangerous. Ship cannon fired round shot at hulls, chain shot at sails and rigging, and grapeshot at crews; superior ship cannon helped the English build a powerful navy. These were not the first ocean technologies: Polynesian people had crossed the vast Pacific for centuries. But the new tools quickly increased the number of voyages for exploration and trade.' }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'The cross staff was inspired by the kamal, and the back staff later fixed a flaw of the cross staff. This sequence best shows that...' },
+        choices: [
+          { ok: true, t: { en: 'new tools adapted older ideas from other regions' }, why: { en: 'Yes. An Arab design inspired the cross staff, and the back staff improved it: change built on continuity.' } },
+          { t: { en: 'Europe dropped its older tools for wholly new inventions' }, why: { en: 'No. Each tool built on an earlier one, starting from the Arab kamal.' } },
+          { t: { en: 'all of these tools were first made in China' }, why: { en: 'No. The compass came from China, but the kamal came from Arab sailors and the back staff from John Davis.' } }
         ]
       }
     }
@@ -267,55 +309,57 @@ window.EPISODE = {
       {
         stim: { text: { en: 'The tools that these traders and explorers used were based on innovations that developed in many parts of Afro-Eurasia and were brought together in Europe during this period.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },
         q: { en: 'The excerpt best supports which claim about European sea voyages after 1450?' },
-        choices: [{ en: 'They drew on many cultures\' knowledge' }, { en: 'They used only tools invented in Portugal' }, { en: 'They began because Europe had no trade' }, { en: 'They depended on tools from the Americas' }],
+        choices: [{ en: 'They drew on navigation knowledge from many cultures' }, { en: 'Europeans built their navigation alone and taught it to Arab pilots' }, { en: 'Overland routes like the Silk Road beat sea routes' }, { en: 'Their main tools reached Europe from the Americas' }],
         answer: 0,
         why: { en: 'The compass came from China, the kamal from Arab sailors and the astrolabe from Roman times. Europe brought them together.' }
       },
       {
-        stim: { title: { en: 'Where three navigation tools came from' }, rows: [[{ en: 'Tool' }, { en: 'Origin' }], [{ en: 'Magnetic compass' }, { en: 'China' }], [{ en: 'Kamal' }, { en: 'Arab sailors' }], [{ en: 'Astrolabe' }, { en: 'Roman Empire' }]], src: { en: 'From "Technology in the Age of Exploration," World History Project' } },
-        q: { en: 'Which best explains how the first tool in the table reached Lisbon?' },
-        choices: [{ en: 'Trade with Asia carried it west to Europe' }, { en: 'Portuguese sailors invented it far at sea' }, { en: 'Roman engineers left it behind in Lisbon' }, { en: 'Polynesian sailors brought it from the Pacific' }],
-        answer: 0,
-        why: { en: 'Early compasses came from China and were brought to Europe through trade with Asia.' }
-      },
-      {
         stim: { text: { en: '"If a man wishes to do anything [by methods] not connected with the [science] of navigation, then he can do so, but whenever he lacks the directions of towns and islands... then he must find them by means of our science."' }, src: { en: 'Ahmad ibn Majid, Arab navigator, The Book of the Benefits of the Principles and Foundations of Navigation, 1489' } },
-        q: { en: 'The excerpt best reflects which development?' },
-        choices: [{ en: 'Arab navigators built a science of finding the way' }, { en: 'European explorers taught navigation to Arab pilots' }, { en: 'Sailors refused to use any tools to find their way' }, { en: 'Overland caravans replaced all trade by sea' }],
+        q: { en: 'The excerpt most directly reflects which development of the period?' },
+        choices: [{ en: 'Arab sea science feeding the knowledge later explorers used' }, { en: 'European pilots training Arab sailors in the science of navigation' }, { en: 'Ottoman sultans closing the sea routes to Asia' }, { en: 'Polynesian voyagers bringing Pacific methods to Arabia' }],
         answer: 0,
-        why: { en: 'Ibn Majid writes as an expert navigator. Arab sailors, who made the kamal, built knowledge that sailors from many lands used.' }
+        why: { en: 'Ibn Majid writes as an expert in "our science" of navigation. Arab knowledge like his, and tools like the kamal, became part of what European and Asian explorers used.' }
       },
       {
-        stim: { text: { en: 'Chain shot, two smaller balls attached by a chain, could destroy sails and rigging, making it impossible for ships to maneuver away.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },
-        q: { en: 'Ship cannon like this mattered to traders mainly because...' },
-        choices: [{ en: 'long-distance trade was dangerous' }, { en: 'cannon made ships sail faster' }, { en: 'cannon replaced the need for sails' }, { en: 'pirates had all left the seas' }],
+        stim: { text: { en: 'The best-armed ships of the day had cannon that could fire several kinds of shot. One of the reasons the English developed such a powerful navy was their superior ship cannon.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },
+        q: { en: 'Which of the following best explains why traders armed their ships in this period?' },
+        choices: [{ en: 'Long voyages were dangerous, and guns gave traders an edge' }, { en: 'Cannon fire replaced sails as the main way ships moved forward' }, { en: 'Ottoman law required every European merchant ship to carry cannon' }, { en: 'Chain shot was the best way to smash through an enemy ship\'s hull' }],
         answer: 0,
-        why: { en: 'Long-distance trade was dangerous. Armed ships could defend cargo, force ports and ships to give way, or turn pirate.' }
+        why: { en: 'Long-distance trade was dangerous. Armed ships could defend cargo, make ports and ships give traders what they wanted, or turn pirate. (Round shot smashed hulls; chain shot wrecked sails.)' }
       },
       {
-        q: { en: 'Which best explains why some Europeans began to trade by sea in the 1400s?' },
-        choices: [{ en: 'Ottomans dominated trade with Africa and Asia' }, { en: 'Europe\'s states were larger than Eurasia\'s empires' }, { en: 'China had closed every road to the west' }, { en: 'Europeans had just discovered the magnetic compass' }],
+        stim: { title: { en: 'Three tools for finding latitude' }, rows: [[{ en: 'Tool' }, { en: 'What the reading says about it' }], [{ en: 'Kamal' }, { en: 'Made by Arab sailors; sight the North Star' }], [{ en: 'Cross staff' }, { en: 'Inspired by the kamal; navigators stared at the sun' }], [{ en: 'Back staff (Davis Quadrant)' }, { en: '1600s, Captain John Davis; uses the sun\'s shadow' }]], src: { en: 'From "Technology in the Age of Exploration," World History Project' } },
+        q: { en: 'Which of the following best describes the pattern shown in the table?' },
+        choices: [{ en: 'Later tools adapted earlier designs and fixed their flaws' }, { en: 'Each tool came separately from Chinese inventors' }, { en: 'Sailors stopped using the stars to find latitude' }, { en: 'Prince Henry the Navigator designed all three of these tools' }],
         answer: 0,
-        why: { en: 'With the Ottomans dominating trade between Europe and other regions, Europeans used new tools to trade by sea.' }
+        why: { en: 'The cross staff was inspired by the Arab kamal, and the back staff used a shadow so navigators no longer had to stare at the sun.' }
+      },
+      {
+        stim: { text: { en: 'In the fifteenth century, the mighty Ottoman sultans dominated trade between Europe and other regions, both in Africa and in Asia. So some Europeans put together a range of new technologies that they learned from being part of this vast trading system.' }, src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
+        q: { en: 'The passage best supports which claim about the causes of European sea voyages?' },
+        choices: [{ en: 'Others\' control of trade routes pushed Europeans to the sea' }, { en: 'Europe\'s states were larger and richer than the Eurasian empires' }, { en: 'Europeans sailed mainly to carry the compass to China' }, { en: 'Trade by land between Europe and Asia had stopped' }],
+        answer: 0,
+        why: { en: 'With the Ottomans dominating trade to Africa and Asia, Europeans used banking, checks, gunpowder and better sails to trade by sea.' }
       },
       {
         stim: { title: { en: 'Two ships of the age of exploration' }, rows: [[{ en: 'Ship' }, { en: 'Sails' }, { en: 'Known for' }], [{ en: 'Caravel' }, { en: 'Square at sea, lateen near shore' }, { en: 'Speed, from a rounded bottom' }], [{ en: 'Carrack' }, { en: 'Lateen and square, 2 to 4 masts' }, { en: 'Size, up to 2,000 tons' }]], src: { en: 'From "Technology in the Age of Exploration," World History Project' } },
-        q: { en: 'Compared with the caravel, the carrack was best known for...' },
-        choices: [{ en: 'its great size and cargo room' }, { en: 'speed that made pirates love it' }, { en: 'sailing with no sails at all' }, { en: 'being built only in China' }],
+        q: { en: 'Compared with the caravel, the carrack is best described as...' },
+        choices: [{ en: 'a big ship mixing two regions\' styles' }, { en: 'a fast ship whose rounded bottom drew pirates' }, { en: 'a Portuguese ship with only lateen sails' }, { en: 'a Chinese design that reached Europe by trade' }],
         answer: 0,
-        why: { en: 'Caravels were fast. Carracks, mixing Mediterranean and Northern European styles, were large ships of up to 2,000 tons.' }
+        why: { en: 'Caravels were fast. Carracks, a mash-up of Mediterranean and Northern European styles, could reach 2,000 tons.' }
       },
       {
-        q: { en: 'The astrolabe began in the Roman Empire and was still important in the 1700s. This best shows...' },
-        choices: [{ en: 'continuity across many centuries' }, { en: 'change: the tool was invented in the 1700s' }, { en: 'that Rome ruled Portugal in the 1400s' }, { en: 'that sailors stopped measuring latitude' }],
+        q: { en: 'Which of the following was a continuity in navigation from the Roman Empire to the 1700s?' },
+        choices: [{ en: 'Using the astrolabe for latitude, time and stars' }, { en: 'Sailing caravels with square and lateen sails' }, { en: 'Steering by magnetic compasses made in China' }, { en: 'Finding latitude with the Davis back staff' }],
         answer: 0,
-        why: { en: 'An idea from Roman times kept serving sailors for centuries because it measured latitude, time and the stars.' }
+        why: { en: 'The astrolabe began in the Roman Empire and stayed important through the 1700s. Caravels came with Prince Henry, the back staff in the 1600s, and the compass reached Europe through trade with Asia.' }
       },
       {
-        q: { en: 'Which statement best places European ocean voyages in a wider context?' },
-        choices: [{ en: 'Polynesians had long crossed the Pacific' }, { en: 'Europe built the first ships in history' }, { en: 'No one sailed the Indian Ocean before 1450' }, { en: 'The open ocean had never been crossed' }],
+        stim: { text: { en: 'Of course, they weren\'t the first oceanic technologies. Polynesian people had for centuries used their own technology to travel the vast Pacific Ocean, and trade along continental coasts was common.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },
+        q: { en: 'The passage would best be used to challenge which claim?' },
+        choices: [{ en: 'Ocean travel began with European voyages after 1450' }, { en: 'Tools from many regions came together in Europe' }, { en: 'Long-distance trade by sea was dangerous for merchants' }, { en: 'New tools increased the number of voyages' }],
         answer: 0,
-        why: { en: 'Polynesian people had used their own technology to travel the vast Pacific for centuries, and coastal trade was common.' }
+        why: { en: 'Polynesians had crossed the Pacific for centuries. The other claims are all true, and the passage does not argue against them.' }
       }
     ]
   },

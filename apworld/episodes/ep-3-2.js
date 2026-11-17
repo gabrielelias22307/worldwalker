@@ -3,8 +3,11 @@
    Content source: Khan Academy, AP World History (World History Project), Unit 3 Lesson "Empires: Administration":
    "Legitimizing and Consolidating Power" (Trevor Getz); Unit 3 overview "Unit 3 Introduction: Land-Based Empires
    1450 to 1750" (Trevor Getz); and from Lesson 3.1 "Empires Expand": "South Asia 1450–1750" (Hannah Archambault),
-   "Gunpowder Empires" (Trevor Getz). World History Project content is CC BY-NC 4.0. Facts here come from those
-   readings. English only, AP level.
+   "Gunpowder Empires" (Trevor Getz), "China Under Ming and Qing Rule" (Trevor Getz, source of the Qianlong quote).
+   World History Project content is CC BY-NC 4.0. Facts here come from those readings. English only, AP level.
+   Reading stands: the Qianlong Emperor to Lord Macartney, 1791 (primary source, by the east wall, 25,7);
+   "Funding and Legitimizing Empires" (reading adapted from "Legitimizing and Consolidating Power", by the
+   revenue office, 4,13).
    Map: the lake (x 1-5) in the north-west; the emperor's palace (D, door 11,3) and the great mosque (D, door 22,3)
    along the top; the plaza in the middle (the time stone); the city wall (W, x 28) with the east gate (28,6) and the
    road to Agra outside; the caravan camp on the sand (south-west); the revenue office (door 10,12); the bazaar
@@ -22,7 +25,8 @@ window.EPISODE = {
   place: { en: 'Fatehpur Sikri, Mughal Empire, 1580' },
   intro: [
     { en: 'The Grump blurred the page on running an empire. The Mughal capital is forgetting how its emperor holds power!' },
-    { en: 'Talk to the 4 people here, help a horse trader at the customs gate, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on the reading stands.' },
+    { en: 'Then help a horse trader at the customs gate and wake the time stone.' }
   ],
   scenes: {
     at: [77.66, 27.09],
@@ -86,17 +90,18 @@ window.EPISODE = {
       x: 10, y: 5, name: { en: 'Bhim' }, role: { en: 'Rajput commander' },
       look: { skin: 3, hair: '#1b1410', shirt: '#c0392b', pants: '#f2ead8', hat: '#e8a33a', style: 'short' },
       lines: [
-        { en: 'I am a Rajput, a Hindu. Daughters of Rajput houses have married into the emperor\'s family, so my clan has a stake in his rule.' },
-        { en: 'I am a [[mansabdar|mansabdar]], a military commander. Muslims, Hindus and Sikhs all serve as mansabdars, and we come to court often to prove our loyalty.' },
-        { en: 'Akbar pays us regularly, but only the emperor may own cannon. Cannon can turn a rebel noble\'s castle walls to rubble.' }
+        { en: 'I am a Rajput, a Hindu. By taking daughters of powerful Rajput houses as brides, Akbar gave my clan a stake in his empire and a reason to support it.' },
+        { en: 'I am a [[mansabdar|mansabdar]], a land-holding military commander, much like an Ottoman sipahi. Turks, Iranis, Afghans, Indian Muslims and Rajputs all serve, and we must come to court often.' },
+        { en: 'Akbar reformed military pay. Nobles like me get regular pay and posts, but are kept from growing powerful enough to challenge the emperor.' },
+        { en: 'And only the emperor may own cannon. Cannon can turn a rebel noble\'s castle walls to rubble. Still, most soldiers here fight with swords, spears and bows.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did Akbar call his mansabdars to court and keep all the cannon for himself?' },
+        q: { en: 'Which best explains the purpose of Akbar\'s policies toward nobles like Bhim?' },
         choices: [
-          { ok: true, t: { en: 'To keep powerful nobles loyal and dependent' }, why: { en: 'Yes. Nobles got regular pay and posts, but they could never grow strong enough to challenge the emperor.' } },
-          { t: { en: 'To train nobles for Confucian written exams' }, why: { en: 'No. Exam-trained officials ran Ming China. The Mughals relied on land-holding military commanders like Bhim.' } },
-          { t: { en: 'To hand his power back to local kings' }, why: { en: 'No. The gunpowder empires centralized power. Cannon took strength away from local nobles, not toward them.' } }
+          { ok: true, t: { en: 'To tie nobles to him while limiting their power' }, why: { en: 'Yes. Marriages, regular pay and court visits bound nobles to Akbar, and his monopoly on cannon meant no noble could defy him from a castle.' } },
+          { t: { en: 'To train nobles to pass Confucian written exams' }, why: { en: 'No. Exam-trained officials were the Ming way. The Mughals relied on land-holding military commanders like Bhim.' } },
+          { t: { en: 'To let nobles rule their lands as independent kings' }, why: { en: 'No. The gunpowder empires centralized power. Cannon took strength away from local nobles, not toward them.' } }
         ]
       }
     },
@@ -104,17 +109,18 @@ window.EPISODE = {
       x: 20, y: 5, name: { en: 'Qazi Nur' }, role: { en: 'Religious judge' },
       look: { skin: 3, hair: '#4a4a4a', shirt: '#f2f2f2', robe: true, hat: '#f2f2f2', style: 'short' },
       lines: [
-        { en: 'I am a qazi, a judge. Learned Muslim scholars, the [[ulama|ulama]], serve the empire as judges, because we can read and write the law.' },
-        { en: 'The emperor sponsors mosques like this one. He also supports the orders and buildings of other faiths.' },
-        { en: 'Akbar made [[sulh-i kul|sulh-i kul]], universal toleration, official: non-Muslim subjects have the same rights as Muslims.' }
+        { en: 'I am a qazi, a judge. The [[ulama|ulama]], learned Muslim scholars, serve as judges because we can read and write the law. Literate officials are useful to any state.' },
+        { en: 'The emperor sponsors mosques and Muslim judges. Yet most of his subjects are Hindu, so he also supports the orders and buildings of other faiths.' },
+        { en: 'Compare our neighbors. In the Ottoman Empire, Muslim clergy run the legal system. In Persia, the Safavid shahs work with Shi\'a clergy to impose one religious identity.' },
+        { en: 'Akbar has made [[sulh-i kul|sulh-i kul]], universal toleration, official. Non-Muslim subjects now have the same rights as Muslims under Mughal rule.' }
       ],
       ask: {
-        stat: 'reg',
-        q: { en: 'Why would a Muslim emperor make sulh-i kul an official policy?' },
+        stat: 'hei',
+        q: { en: 'Compared with the Safavid shahs, how did Akbar use religion to hold his empire together?' },
         choices: [
-          { ok: true, t: { en: 'Most of his subjects were not Muslim' }, why: { en: 'Yes. Ruling a mostly Hindu land with Hindu and Sikh nobles, the Mughals needed loyalty from every faith.' } },
-          { t: { en: 'No Muslims lived anywhere in India' }, why: { en: 'No. Muslims lived across India, and the emperor and his judges were Muslim themselves.' } },
-          { t: { en: 'He wanted all subjects to convert at once' }, why: { en: 'No. Toleration means the opposite: people kept their own faiths, with equal rights.' } }
+          { ok: true, t: { en: 'He protected many faiths instead of imposing one' }, why: { en: 'Yes. A Muslim ruler of a mostly Hindu land, Akbar gave non-Muslims equal rights. The Safavids imposed one Shi\'a identity.' } },
+          { t: { en: 'He made Shi\'a Islam the faith of every subject' }, why: { en: 'No. That was the Safavid strategy in Persia, working with Shi\'a clergy. Akbar\'s sulh-i kul did the opposite.' } },
+          { t: { en: 'He took the title caliph and guarded the city of Mecca' }, why: { en: 'No. That was the Ottomans: Sultan Selim I took the title caliph, and the Ottomans controlled Mecca.' } }
         ]
       }
     },
@@ -122,17 +128,17 @@ window.EPISODE = {
       x: 8, y: 13, name: { en: 'Kishan' }, role: { en: 'Revenue clerk' },
       look: { skin: 4, hair: '#1b1410', shirt: '#f2ead8', pants: '#3a5a8a', robe: true, style: 'short' },
       lines: [
-        { en: 'I keep tax records. Our main income is a tax on land, which really means a tax on each harvest. Foreign goods also pay a [[customs duty|customs duty]].' },
-        { en: 'I belong to the [[bureaucracy|bureaucracy]]. The central government pays me, so my loyalty is to the emperor, not to a local lord.' },
-        { en: 'Ming China relies most on officials who pass exams on Confucian books. Its great landowners are usually not soldiers, unlike our mansabdars.' }
+        { en: 'I keep tax records. Our main income is a tax on land, which means a tax on each harvest. Imported goods also pay a [[customs duty|customs duty]], often about 2.5 percent.' },
+        { en: 'I belong to the [[bureaucracy|bureaucracy]]. The central government pays me, so I am more loyal to the emperor than to any local noble. Our bureaucracy is still small, though.' },
+        { en: 'Ming China uses trained officials more than any other empire. They pass exams on Confucian texts. Its great landowners are usually not soldiers, unlike our mansabdars.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'The Ming also taxed farming. Compared with the Mughals, how did the Ming first collect farm taxes?' },
+        q: { en: 'The Ming also taxed farming. Compared with the Mughals, how did the early Ming state collect its farm taxes?' },
         choices: [
-          { ok: true, t: { en: 'A bureau counted farm families in a census' }, why: { en: 'Yes. A Ming bureau took a census and collected directly. Later, local landowners kept part of the taxes, and revenue fell.' } },
-          { t: { en: 'Ming emperors never taxed farm families' }, why: { en: 'No. Agriculture was the main thing early modern empires taxed, in China as in India.' } },
-          { t: { en: 'Villages sent soldiers instead of any money' }, why: { en: 'No. Some Ottoman communities paid taxes with soldiers. The Ming used a census bureau.' } }
+          { ok: true, t: { en: 'A bureau took a census and collected directly' }, why: { en: 'Yes. A special Ming bureau counted peasant families and collected for the central government. Later, local landowners helped collect and kept some.' } },
+          { t: { en: 'Landlords on timars paid part to the ruler' }, why: { en: 'No. Timars were Ottoman estates. Their peasants paid 15 to 25 percent of the harvest to the landlord.' } },
+          { t: { en: 'Tolls were put on caravans on imperial roads' }, why: { en: 'No. Later Safavid rulers tolled caravans to tax trade. The Ming taxed peasant families through a census bureau.' } }
         ]
       }
     },
@@ -140,17 +146,56 @@ window.EPISODE = {
       x: 21, y: 19, name: { en: 'Govind' }, role: { en: 'Court painter' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#2a8a6a', pants: '#e8dcc0', robe: true, style: 'short' },
       lines: [
-        { en: 'I paint pictures for the emperor\'s books. Each one shows a ruler with the right to rule. We call that [[legitimacy|legitimacy]].' },
-        { en: 'We show our emperors as "the Shadow of God on Earth." Their family also claims descent from the Mongols.' },
-        { en: 'Akbar asks his followers, whatever their faith, to pledge loyalty to him personally, not to the empire as a whole.' }
+        { en: 'I paint pictures for the emperor\'s books. Each one shows a ruler with the right to rule. We call that [[legitimacy|legitimacy]], and the court pays well for it.' },
+        { en: 'We show our emperors as "the Shadow of God on Earth." The dynasty also claims descent from the Mongols, through Babur, who invaded in 1526.' },
+        { en: 'Akbar\'s nobles are Muslim, Hindu and Sikh. So he asks them, whatever their faith, to pledge to support him personally, rather than the empire as a whole.' }
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'A painting made for the court shows the emperor beside his ancestors. What is it best evidence of?' },
+        q: { en: 'Sourcing: a painting made for the court shows the emperor beside his ancestors. What is it best evidence of?' },
         choices: [
           { ok: true, t: { en: 'How rulers used art to claim legitimacy' }, why: { en: 'Yes. Paid for by the court, it shows how emperors wanted to be seen: heirs to a great line.' } },
-          { t: { en: 'What ordinary farmers thought of the emperor' }, why: { en: 'No. Court artists painted for the emperor, so the picture shows his view, not the farmers\'.' } },
-          { t: { en: 'The exact faces of all the past emperors' }, why: { en: 'No. Its purpose was to show descent and glory, not to be an exact record of faces.' } }
+          { t: { en: 'What ordinary farmers thought of rulers' }, why: { en: 'No. Court artists painted for the emperor, so the picture shows his view, not the farmers\'.' } },
+          { t: { en: 'How the emperor collected his land tax' }, why: { en: 'No. Its purpose was to show descent and glory. Tax records like Kishan\'s show how the state was funded.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 25, y: 7, icon: '📜',
+      name: { en: 'The Qianlong Emperor to Lord Macartney' }, role: { en: 'Primary source' },
+      src: { en: 'The Qianlong Emperor of Qing China, to the British trade envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' },
+      lines: [
+        { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders."' },
+        { en: '"There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' },
+        { en: 'Who and when: a chronicle page from China, two centuries after Akbar. The Qianlong Emperor (r. 1735–1796) of the Qing dynasty said this in 1791 to Lord Macartney, a British trade envoy.' },
+        { en: 'Why: after 1433 the Ming ended Zheng He\'s ocean voyages and turned inland. China produced everything it needed, so foreign merchants could come to China. The Qing, Manchus from the north, kept this land-based mindset. By 1750 their empire was peaceful, prosperous and larger than ever.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: what does the emperor\'s message to a British envoy best show?' },
+        choices: [
+          { ok: true, t: { en: 'Confidence that his empire was self-sufficient' }, why: { en: 'Yes. A powerful, prosperous emperor told a foreign envoy that China lacked nothing and needed no foreign goods.' } },
+          { t: { en: 'A plan to rebuild Zheng He\'s ocean fleets' }, why: { en: 'No. The Ming ended those voyages in 1433 and turned inland. The Qing kept that land-based mindset.' } },
+          { t: { en: 'Worry that China needed British manufactures' }, why: { en: 'No. He says the opposite: there is "no need to import" foreign manufactures.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 4, y: 13, icon: '📖',
+      name: { en: 'Funding and Legitimizing Empires' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Legitimizing and Consolidating Power" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Emperors had to pay for armies, roads and palaces. Most taxed agriculture, and many taxed trade. The Ming had perhaps the most sophisticated farm tax: a special bureau took a census of peasant families and collected directly. Later the emperors relied on local landowners to collect, and they siphoned off some money. Taxes went up, but government revenues went down. This was a direct cause of Ming weakness.' },
+        { en: 'On Ottoman timars, estates granted by the sultans, peasants gave 15–25 percent of their harvest to the landlord, who paid a portion to the central government. Some communities paid in soldiers. The Mughals taxed land and charged about 2.5 percent customs on imports. The Safavids let local leaders collect taxes and keep a portion, so revenues fell further; later they tolled caravans. Russia\'s tsars allied with the Stroganov merchant family.' },
+        { en: 'Rulers also needed legitimacy. The Romanov tsars claimed a link to the Byzantine Empire ("Tsar" comes from Caesar) and the support of the Russian Orthodox Church. Ottoman Sultan Selim I took the title caliph. The Qing, outsiders from the north, still offered rituals at the tombs of the Ming emperors. Bureaucracies were still small, so rulers also made deals with religious, aristocratic and merchant groups.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'According to the reading, which best explains why Ming government revenue fell even as taxes on peasants went up?' },
+        choices: [
+          { ok: true, t: { en: 'Local landowners who collected taxes kept some' }, why: { en: 'Yes. Once local landowners helped collect, they siphoned off money. Peasants paid more, yet the state received less.' } },
+          { t: { en: 'Peasant communities paid in soldiers, not money' }, why: { en: 'No. Some Ottoman communities paid taxes with soldiers. The Ming problem was landowners keeping part of the taxes.' } },
+          { t: { en: 'The Ming stopped taxing farming to tax trade' }, why: { en: 'No. Agriculture stayed the Ming state\'s main tax base. The problem was who collected it.' } }
         ]
       }
     }
@@ -267,57 +312,59 @@ window.EPISODE = {
     win: { en: 'The dust settles over the palace. The page on Mughal rule floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'The Mughal Emperor Akbar asked his followers, no matter what their faith, to pledge to support him personally, rather than the empire as a whole.' }, src: { en: 'Adapted from "Legitimizing and Consolidating Power," World History Project' } },
-        q: { en: 'Which best explains why Akbar used the policy described above?' },
-        choices: [{ en: 'He relied on Hindu, Sikh and Muslim nobles' }, { en: 'He wanted every noble to become a Hindu' }, { en: 'He had no army of his own to command' }, { en: 'He planned to divide the empire among nobles' }],
+        stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor, to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
+        q: { en: 'The excerpt most directly reflects which feature of Chinese rule in this era?' },
+        choices: [{ en: 'A land-based mindset that China needed no imports' }, { en: 'A plan to rebuild Zheng He\'s ocean trade fleets' }, { en: 'Dependence on goods from British merchants' }, { en: 'An alliance with merchant families like the Stroganovs' }],
         answer: 0,
-        why: { en: 'A Muslim ruler of a diverse empire needed loyalty that did not depend on any one faith.' }
+        why: { en: 'After 1433 the Ming turned inland, and the Qing kept that mindset: China produced all it needed, so the emperor saw no need for imports.' }
       },
       {
-        stim: { title: { en: 'Mughal state income' }, rows: [[{ en: 'Source' }, { en: 'How it was taxed' }], [{ en: 'Land and farming' }, { en: 'A tax on land, and so on the harvest' }], [{ en: 'Imported goods' }, { en: 'A customs duty, often about 2.5 percent' }]], src: { en: 'From "Legitimizing and Consolidating Power," World History Project' } },
-        q: { en: 'The table best supports which claim about how the Mughals funded their state?' },
-        choices: [{ en: 'They taxed both agriculture and trade' }, { en: 'They lived only on taxes from merchants' }, { en: 'They charged no taxes on farming families' }, { en: 'They paid for the state with gifts alone' }],
+        stim: { title: { en: 'Collecting farm taxes' }, rows: [[{ en: 'Empire' }, { en: 'Who collected' }, { en: 'What happened' }], [{ en: 'Ming China' }, { en: 'A census bureau, later local landowners' }, { en: 'Taxes went up, revenues went down' }], [{ en: 'Ottoman Empire' }, { en: 'Timar landlords' }, { en: 'Landlords paid a portion to the sultan' }], [{ en: 'Safavid Empire' }, { en: 'Local leaders, who kept a portion' }, { en: 'Revenues decreased' }]], src: { en: 'From "Legitimizing and Consolidating Power," World History Project' } },
+        q: { en: 'The table best supports which claim about early modern empires?' },
+        choices: [{ en: 'Relying on local collectors could cut state revenue' }, { en: 'Taxes on trade fully replaced taxes on agriculture' }, { en: 'Ottoman sultans collected every farm tax directly' }, { en: 'Peasant taxes fell over time in every empire' }],
         answer: 0,
-        why: { en: 'Like most early modern empires, the Mughals taxed agriculture. Like many, they also taxed trade with customs duties.' }
+        why: { en: 'When landowners or local leaders collected, they kept part of the money. The Ming and Safavid states both lost revenue this way.' }
+      },
+      {
+        stim: { text: { en: 'The Mughal Emperor Akbar asked his followers, no matter what their faith, to pledge to support him personally, rather than the empire as a whole.' }, src: { en: 'Adapted from "Legitimizing and Consolidating Power," World History Project' } },
+        q: { en: 'Which of the following best explains why Akbar used the policy described above?' },
+        choices: [{ en: 'He relied on Hindu, Sikh and Muslim nobles' }, { en: 'He sought to impose one Shi\'a identity' }, { en: 'He claimed the title caliph of all of Islam' }, { en: 'He had just taken the holy city of Mecca' }],
+        answer: 0,
+        why: { en: 'A Muslim ruler with Hindu, Sikh and Muslim nobles needed loyalty that did not depend on one faith. One Shi\'a identity was the Safavid way; caliph and Mecca were Ottoman.' }
       },
       {
         stim: { text: { en: 'The Mughal Sultan Akbar (r. 1556–1605) forbade anyone but the emperor from owning cannon.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
-        q: { en: 'Which best explains the purpose of the rule described above?' },
-        choices: [{ en: 'To stop nobles defying him from castles' }, { en: 'To sell all cannon to foreign merchants' }, { en: 'To let every village defend itself alone' }, { en: 'To end the use of gunpowder in war' }],
+        q: { en: 'Which of the following best explains how the policy above helped consolidate Akbar\'s power?' },
+        choices: [{ en: 'Rebel nobles could not hold castles against him' }, { en: 'Nobles gained a stake through marriage alliances' }, { en: 'Firearms had replaced swords, spears and bows' }, { en: 'Cannon removed the need for any bureaucracy' }],
         answer: 0,
-        why: { en: 'Cannon could break castle walls. Keeping them for himself meant no noble could hold out against the emperor.' }
+        why: { en: 'Cannon could reduce castle walls to rubble, so only the emperor could break a rebel\'s defenses. Most soldiers still used swords, spears and bows.' }
       },
       {
         q: { en: 'Compared with Ming China, the Mughal Empire relied more heavily on which group to run its lands?' },
-        choices: [{ en: 'Land-holding military commanders' }, { en: 'Officials who passed Confucian exams' }, { en: 'Merchants who bought every office' }, { en: 'Buddhist monks who served as judges' }],
+        choices: [{ en: 'Land-holding military commanders' }, { en: 'Officials who passed Confucian exams' }, { en: 'Muslim clergy who ran every court' }, { en: 'Merchant families given trade rights' }],
         answer: 0,
-        why: { en: 'Mughal mansabdars were military commanders. The Ming relied most on exam-trained officials, and their landowners were usually not soldiers.' }
+        why: { en: 'Mughal mansabdars were land-holding military commanders. The Ming relied most on exam-trained officials, and their landowners were usually not soldiers.' }
       },
       {
         stim: { text: { en: 'Earlier Mughal emperors had represented themselves to their subjects as "the Shadow of God on Earth."' }, src: { en: 'Adapted from "South Asia 1450–1750," World History Project' } },
-        q: { en: 'The title in the excerpt best reflects which strategy of early modern rulers?' },
-        choices: [{ en: 'Using religion to show a right to rule' }, { en: 'Sharing power equally with subjects' }, { en: 'Raising money through customs duties' }, { en: 'Training officials with written exams' }],
+        q: { en: 'The title in the excerpt most directly reflects which strategy of early modern rulers?' },
+        choices: [{ en: 'Using religion to show a right to rule' }, { en: 'Claiming descent from Byzantine Caesars' }, { en: 'Restoring a dynasty the Mongols destroyed' }, { en: 'Winning loyalty through marriage alliances' }],
         answer: 0,
-        why: { en: 'Rulers needed legitimacy. Claiming a link to God, like claiming great ancestors, showed a right to rule.' }
+        why: { en: 'A link to God is a religious claim to legitimacy. Caesars were the Romanov claim, restoring the Song was the Ming claim, and marriages were a political tool.' }
       },
       {
         stim: { text: { en: 'Akbar also formalized sulh-i kul, or "universal toleration." This policy now mandated that non-Muslim subjects be accorded the same rights as Muslims.' }, src: { en: 'Adapted from "South Asia 1450–1750," World History Project' } },
-        q: { en: 'Which best explains how this policy helped the Mughal state?' },
-        choices: [{ en: 'It won support from a mostly Hindu people' }, { en: 'It made Hindu subjects convert to Islam' }, { en: 'It removed all Muslim judges from courts' }, { en: 'It ended the need for an imperial army' }],
+        q: { en: 'Compared with the religious policy of the Safavid shahs, Akbar\'s policy above was different because it' },
+        choices: [{ en: 'protected many faiths rather than imposing one' }, { en: 'made Shi\'a Islam the official faith of every subject' }, { en: 'gave Muslim clergy the whole legal system' }, { en: 'ended the use of Muslim judges in courts' }],
         answer: 0,
-        why: { en: 'Muslim rulers of a mostly Hindu land kept their subjects loyal by giving every faith equal rights.' }
+        why: { en: 'The Safavids worked with Shi\'a clergy to impose one identity. Akbar, ruling a mostly Hindu land, gave all faiths equal rights, yet still kept Muslim judges.' }
       },
       {
-        q: { en: 'Why were officials paid by the central government useful to an early modern emperor?' },
-        choices: [{ en: 'They were more loyal to him than nobles' }, { en: 'They owned the castles of local nobles' }, { en: 'They kept every tax for their families' }, { en: 'They chose who would be the next ruler' }],
+        stim: { title: { en: 'Claims to the right to rule' }, rows: [[{ en: 'Rulers' }, { en: 'Claim' }], [{ en: 'Romanov tsars' }, { en: 'Heirs of Byzantium; backed by the Orthodox Church' }], [{ en: 'Ottoman sultans' }, { en: 'Selim I takes the title caliph' }], [{ en: 'First Ming emperor' }, { en: 'Restoring the Song dynasty' }], [{ en: 'Qing emperors' }, { en: 'Rituals at the Ming emperors\' tombs' }]], src: { en: 'From "Legitimizing and Consolidating Power," World History Project' } },
+        q: { en: 'Which of the following was a continuity across the empires in the table?' },
+        choices: [{ en: 'Rulers tied themselves to past powers or faith' }, { en: 'Rulers relied mostly on exam-trained bureaucrats' }, { en: 'Rulers taxed trade more than agriculture' }, { en: 'Rulers gave power back to local nobles' }],
         answer: 0,
-        why: { en: 'A bureaucracy paid by the center owed its loyalty to the emperor, not to a local lord.' }
-      },
-      {
-        q: { en: 'Which development most helped the Mughals build one trusted currency across their empire?' },
-        choices: [{ en: 'Silver from South America reaching India' }, { en: 'Paper money first printed by the Mughals' }, { en: 'A ban on all trade with foreign merchants' }, { en: 'Gold dug from mines below the capital' }],
-        answer: 0,
-        why: { en: 'American silver reached India by merchant ship, and Akbar\'s pure silver rupee became a widely trusted shared currency.' }
+        why: { en: 'Each claim links the ruler to an older power or to religion. That is how early modern rulers sought legitimacy.' }
       }
     ]
   },
