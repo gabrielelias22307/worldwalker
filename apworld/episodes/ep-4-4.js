@@ -21,7 +21,7 @@ window.EPISODE = {
   place: { en: 'A fort town, Portuguese Gold Coast, West Africa, 1630' },
   intro: [
     { en: 'On this West African coast, the Grump wants people to forget the sea empires and the [[transatlantic slave trade|slave trade]].' },
-    { en: 'Listen with care to the 4 people here, help a pilot, then visit the time stone.' }
+    { en: 'Listen with care to the 4 people here and read the 2 sources on their stands. Help a pilot, then visit the time stone.' }
   ],
   scenes: {
     at: [-1.35, 5.1],
@@ -85,16 +85,17 @@ window.EPISODE = {
       x: 4, y: 17, name: { en: 'Esi' }, role: { en: 'Fish seller' },
       look: { skin: 5, hair: '#1b1410', shirt: '#d9822b', robe: true, style: 'bun' },
       lines: [
-        { en: 'I sell fish to the town and to the fort. The Portuguese built that fort as a fortified [[trade post|trade post]] on our coast.' },
-        { en: 'Portugal\'s [[maritime empire|maritime empire]] is a fort here, a city there, and a few ships in between, all linked by the sea.' },
-        { en: 'They do not rule the lands inland. To trade on this coast, they must work with our powerful rulers and follow their rules.' }
+        { en: 'I sell fish to the town and the fort. Across the 1400s, Portuguese navigators charted this long coast, seeking trade here and then a way to the Indian Ocean.' },
+        { en: 'They built fortified [[trade post|trade posts]] here, and later planted colonies in Brazil. Portugal\'s [[maritime empire|maritime empire]] is "a city here, a fort there, a few ships in between."' },
+        { en: 'Spain is different. By the 1550s, wars and epidemics had brought much of Mexico, Central America and the Andes under Spanish rule: wide lands, not just ports.' },
+        { en: 'But here the Portuguese rule nothing inland. In West Africa, Europeans came as traders who must work within our powerful states and follow their established rules.' }
       ],
       ask: {
-        stat: 'reg',
-        q: { en: 'Which best describes the Portuguese empire that Esi sees?' },
+        stat: 'hei',
+        q: { en: 'Compared with Spain in the Americas, which best describes the Portuguese empire that Esi sees?' },
         choices: [
-          { ok: true, t: { en: 'Forts and ports on coasts, linked by ships' }, why: { en: 'Yes. Portugal seized key points to control trade and waterways, not wide stretches of inland territory.' } },
-          { t: { en: 'Wide inland lands ruled from this one fort' }, why: { en: 'No. In West Africa, Europeans came as traders who had to work within powerful states that already existed.' } },
+          { ok: true, t: { en: 'Scattered forts and ports linked by ships' }, why: { en: 'Yes. Portugal seized crucial points to control trade and waterways, not wide stretches of inland territory.' } },
+          { t: { en: 'Wide inland lands won by wars and epidemics' }, why: { en: 'No. That was Spain in Mexico, Central America and the Andes. In West Africa, Europeans worked within powerful African states.' } },
           { t: { en: 'A land empire linked by roads and caravans' }, why: { en: 'No. A maritime empire relied on waterways to link the coasts, islands and port cities it held.' } }
         ]
       }
@@ -103,17 +104,18 @@ window.EPISODE = {
       x: 9, y: 18, name: { en: 'Kwame' }, role: { en: 'Canoe man' },
       look: { skin: 4, hair: '#1b1410', shirt: '#2a6a8a', pants: '#3a3a2a', style: 'short' },
       lines: [
-        { en: 'I paddle cargo between the ships and the shore. Europeans pay coastal rulers with guns, cotton cloth and glass. In return, they want captives.' },
-        { en: 'Their demand makes wars inland more frequent. Captives of war are marched to this coast, some from more than 1,000 miles away.' },
-        { en: 'They are held in the fort until a ship comes. Then they are forced across the ocean, on the [[middle passage|Middle Passage]].' }
+        { en: 'I paddle cargo between the ships and the shore. Coastal elites are paid in guns, cotton cloth, glass, even foods made from sugar grown by enslaved people in the Americas.' },
+        { en: 'European demand makes wars between African states more frequent. Rulers who win sell their captives, people they see as enemies, not as their own.' },
+        { en: 'Captives are marched to this coast, some from more than 1,000 miles away. They are held in castle-like prisons until a European ship comes.' },
+        { en: 'Then comes the [[middle passage|Middle Passage]]: two to three months, chained below deck. About 15 of every 100 people die on the way.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'What most drove the growth of the slave trade on this coast?' },
+        q: { en: 'Which best explains the growth of the slave trade on this coast?' },
         choices: [
-          { ok: true, t: { en: 'European demand for labor in the Americas' }, why: { en: 'Yes. Many of the people doing the capturing were African, but European demand and wealth drove the trade and its huge size.' } },
-          { t: { en: 'A shortage of food in West African towns' }, why: { en: 'No. Kwame names the cause: Europeans paid for captives, and that made wars inland more frequent.' } },
-          { t: { en: 'African rulers who wished to settle the Americas' }, why: { en: 'No. Captives were forced across the ocean. The rulers who sold them were paid in goods like guns and cloth.' } }
+          { ok: true, t: { en: 'European demand, supplied through African wars' }, why: { en: 'Yes. Many of those doing the capturing were African, but European demand and economic muscle drove the trade and its volume.' } },
+          { t: { en: 'Food shortages that pushed towns to sell people' }, why: { en: 'No. Kwame names the cause: European goods paid for captives, and that demand made wars more frequent.' } },
+          { t: { en: 'Trans-Saharan buyers seeking household servants' }, why: { en: 'No. That older trade sent captives across the Sahara to the Middle East. The Atlantic trade fed plantations in the Americas.' } }
         ]
       }
     },
@@ -121,17 +123,18 @@ window.EPISODE = {
       x: 19, y: 15, name: { en: 'Duarte' }, role: { en: 'Fort clerk' },
       look: { skin: 1, hair: '#3a2a1a', shirt: '#2a3a6a', pants: '#2a2a2a', hat: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'I keep the fort\'s ledgers. Ships from here sail to Brazil, where Portuguese planters grow sugar on [[plantation|plantations]].' },
-        { en: 'Disease has killed many Indigenous Americans. So planters look to Africa for forced labor. Sugar takes brutal work from sunup to sunset.' },
+        { en: 'I keep the fort\'s ledgers. The first Portuguese slaving voyage from Africa to the Americas most likely sailed in 1526. Now most ships from here go to Brazil.' },
+        { en: 'In Brazil, only 2 of the king\'s 15 captaincies prospered, thanks to sugar [[plantation|plantations]]. Disease has killed many Indigenous Americans, so planters buy Africans.' },
+        { en: 'The ledgers hide what sugar costs. Work runs from sunup to sunset. In Brazil an enslaved person lives only 23 years on average, so planters keep buying more.' },
         { en: 'My king follows [[mercantilism|mercantilist]] thinking: export more than you import, and gather gold and silver. So Portugal guards its African trade fiercely.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Why did European states guard their trading rights in Africa so fiercely?' },
         choices: [
-          { ok: true, t: { en: 'To export more and gather gold and silver' }, why: { en: 'Yes. Mercantilist states wanted to sell more than they bought. The slave trade brought them more gold and silver than ever.' } },
-          { t: { en: 'To settle and farm all of Africa\'s interior' }, why: { en: 'No. Europeans held points on the coast here. They did not rule or settle the lands inland.' } },
-          { t: { en: 'To stop other states from using slavery' }, why: { en: 'No. Portugal and its rivals competed to profit from the slave trade, not to end it.' } }
+          { ok: true, t: { en: 'To export more and gather gold and silver' }, why: { en: 'Yes. Mercantilist states wanted to export more than they imported. The slave trade brought them more gold and silver than ever.' } },
+          { t: { en: 'To open African trade to all European merchants' }, why: { en: 'No. Mercantilist states wanted trade for themselves. Portugal guarded this coast against Dutch, English and French rivals.' } },
+          { t: { en: 'To settle and farm the lands of Africa\'s interior' }, why: { en: 'No. Europeans held points on the coast here. They did not rule or settle the lands inland.' } }
         ]
       }
     },
@@ -139,17 +142,57 @@ window.EPISODE = {
       x: 8, y: 7, name: { en: 'Daud' }, role: { en: 'Malay sailor' },
       look: { skin: 3, hair: '#1b1410', shirt: '#8a2a2a', pants: '#3a3a4a', hat: '#c9a24a', style: 'short' },
       lines: [
-        { en: 'I am a Malay sailor. I came on a Portuguese ship from Goa, the center of Portugal\'s empire in Asia.' },
-        { en: 'In the [[cosmopolitan|cosmopolitan]] Indian Ocean, Portugal seized some ports and charged fees. But the sea is crowded with Gujarati, Chinese and Armenian traders.' },
-        { en: 'Now the Dutch seize ports there too, for the Dutch East India Company. In a [[joint-stock company|joint-stock company]], private investors pay the costs of empire.' }
+        { en: 'I am a Malay sailor on a Portuguese ship from Goa, the center of Portugal\'s empire in Asia. Malay sailors run many of its ships.' },
+        { en: 'When Vasco da Gama reached Calicut in 1498, the ruler\'s men laughed at his gift of wool, sugar, oil and honey. It was not fit for a king.' },
+        { en: 'In the [[cosmopolitan|cosmopolitan]] Indian Ocean, most goods still move on the old Asian routes, and China and India remain the greatest makers. Gujarati, Chinese and Armenian merchants fill the ports.' },
+        { en: 'Empire is costly. So the Dutch East India Company, a [[joint-stock company|joint-stock company]], now seizes ports there: private investors bear the costs, and the state gains trade and taxes.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Compared with the Americas, how strong were Europeans in the Indian Ocean around 1630?' },
         choices: [
           { ok: true, t: { en: 'They held small outposts in a busy ocean' }, why: { en: 'Yes. Europeans controlled only small outposts, and most goods still moved along the old Asian routes.' } },
-          { t: { en: 'They had conquered the great Asian empires' }, why: { en: 'No. The Ming, Mughal, Safavid and Ottoman empires stayed strong. The Ottomans even fought the Portuguese at sea.' } },
-          { t: { en: 'They had stopped all trade by Asian merchants' }, why: { en: 'No. Gujarati, Chinese, Armenian and other [[diaspora|diaspora]] merchants kept trading, and Europeans often hired them.' } }
+          { t: { en: 'They ruled the great ports and the Silk Road' }, why: { en: 'No. The Silk Road stayed outside European control, and the Ming, Mughal, Safavid and Ottoman empires stayed strong. The Ottomans fought Portugal at sea.' } },
+          { t: { en: 'They had pushed out the Asian merchants' }, why: { en: 'No. Gujarati, Chinese, Armenian and other [[diaspora|diaspora]] merchants kept trading, and Europeans often hired them.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 25, y: 15, icon: '📜',
+      name: { en: 'A Portuguese World Map, 1502' }, role: { en: 'Primary source' },
+      src: { en: 'The Cantino Planisphere, a Portuguese map, 1502; described in "European Colonies in the Americas" by William H. Beezley, World History Project' },
+      lines: [
+        { en: 'This source is a map, not a text: a Portuguese world map from 1502, called the Cantino Planisphere. The reading describes it: "On the left side of the map, a vertical line shows the border of the Treaty of Tordesillas."' },
+        { en: 'The reading adds: "The Portuguese got more from the treaty than they would have with the Pope\'s proposal, but either way Spain got a lot more of the Americas than did Portugal."' },
+        { en: 'Context: In 1493 Pope Alexander VI divided the Atlantic between Spain and Portugal at 100 leagues west of the Cape Verde islands. He told explorers to convert any pagans they met. King John II of Portugal rejected this, partly because the Pope was Spanish by birth. The 1494 Treaty of Tordesillas moved the line to 270 leagues west.' },
+        { en: 'Each kingdom was kept out of the other\'s lands. Spain got nearly all of the Americas. Portugal got a claim to north-eastern Brazil, control of West Africa, where the slave trade quickly developed, and the shortest route around the Cape of Good Hope to Asia. Portuguese mapmakers drew this map 8 years after the treaty.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: why might Portuguese mapmakers in 1502 draw the Tordesillas line on a world map?' },
+        choices: [
+          { ok: true, t: { en: 'To record the coasts and seas the treaty gave Portugal' }, why: { en: 'Yes. The line marked Portugal\'s claim to Brazil, West Africa and the route to Asia, and kept Spain out of them.' } },
+          { t: { en: 'To show the Pope\'s 1493 line, which Portugal accepted' }, why: { en: 'No. King John II rejected the Pope\'s line; the treaty moved it from 100 to 270 leagues west.' } },
+          { t: { en: 'To mark the lands that England and France would settle' }, why: { en: 'No. The treaty split the Atlantic only between Spain and Portugal. England, France and the Dutch later challenged that monopoly.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 14, y: 8, icon: '📖',
+      name: { en: 'The Transatlantic Slave Trade' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "The Transatlantic Slave Trade" by Jake Thurman, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Slavery is old: Athenians, Romans and early states in China and India had it, and so did parts of Africa, based in warfare, debt, religious obligation or punishment. There slaves were not property; their children were often free. In the medieval Muslim world, slaves came from East Africa and across the Sahara to serve in households, harems and armies, twice as many women as men. In the Americas that ratio was reversed.' },
+        { en: 'Plantations let Brazil and the Caribbean export sugar on a large scale, creating a demand for labor. Europeans wanted to own the fields, not work them, and European diseases had wiped out Indigenous populations. So Europeans looked to Africa. The trade most likely began with a Portuguese voyage in 1526. About 12.5 million Africans were taken to the Americas; about 2.5 million died on the voyage. More than 8 in 10 landed in Brazil or the Caribbean.' },
+        { en: 'Many of those doing the enslaving were Africans, but European demand and economic muscle drove the trade. When the Oyo Empire defeated rivals in the southern Yoruba states, it sold its captives, whom it saw as enemies, not its "own." Elites were paid in guns, cotton textiles and glass. Many African communities collapsed. In Brazil an enslaved person lived only 23 years on average. The wealth helped bring the Industrial Revolution, which began in Britain.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Causation: which chain of causes and effects best fits the reading?' },
+        choices: [
+          { ok: true, t: { en: 'Sugar and Native deaths made demand; demand spread war in Africa' }, why: { en: 'Yes. Sugar plantations needed labor, disease had killed Indigenous workers, and European demand increased warfare inside Africa.' } },
+          { t: { en: 'Wars in Africa made captives, so Europeans started sugar farms' }, why: { en: 'No. It ran the other way: plantations created the demand for labor, and that demand increased warfare in Africa.' } },
+          { t: { en: 'Muslim households\' demand for servants grew into the Atlantic trade' }, why: { en: 'No. That older system served households, harems and armies. The Atlantic trade was built to supply plantations.' } }
         ]
       }
     }
@@ -242,58 +285,59 @@ window.EPISODE = {
     win: { en: 'The fog lifts from the shore. Their story can be told again. The chronicle page returns.' },
     questions: [
       {
-        stim: { title: { en: 'The transatlantic slave trade (estimates)' }, rows: [[{ en: 'Measure' }, { en: 'Estimate' }], [{ en: 'Africans taken to the Americas' }, { en: 'about 12.5 million' }], [{ en: 'Died during the voyage' }, { en: 'about 2.5 million' }], [{ en: 'Landed in Brazil or the Caribbean' }, { en: 'more than 8 in 10' }]], src: { en: 'From "The Transatlantic Slave Trade," World History Project' } },
-        q: { en: 'Which development best explains where most captives were taken, as shown in the table?' },
-        choices: [{ en: 'Sugar plantations demanded huge numbers of workers' }, { en: 'Silver mines in Europe needed many thousands of new miners' }, { en: 'Brazil and the Caribbean had no Native peoples' }, { en: 'Ships could not sail any farther to the north' }],
-        answer: 0,
-        why: { en: 'Sugar ruled Brazil and the Caribbean. Its plantations needed so much labor that they drove the demand for enslaved Africans.' }
+        stim: { title: { en: 'The transatlantic slave trade (estimates)' }, rows: [[{ en: 'Measure' }, { en: 'Estimate' }], [{ en: 'Africans taken to the Americas' }, { en: 'about 12.5 million' }], [{ en: 'Died during the voyage' }, { en: 'about 2.5 million' }], [{ en: 'Landed in Brazil or the Caribbean' }, { en: 'more than 8 in 10' }], [{ en: 'Average life expectancy, enslaved in Brazil' }, { en: '23 years' }]], src: { en: 'From "The Transatlantic Slave Trade," World History Project' } },
+        q: { en: 'Which of the following best explains the pattern shown in the table?' },
+        choices: [{ en: 'Andean silver mines drew most captives to Peru' }, { en: 'Muslim households bought most captives as servants' }, { en: 'Sugar needed labor, and deaths renewed demand' }, { en: 'Tobacco farms in English colonies took most workers' }],
+        answer: 2,
+        why: { en: 'Sugar plantations in Brazil and the Caribbean demanded huge numbers of laborers, and the high death rate only led to even greater demand.' }
       },
       {
-        stim: { text: { en: 'In some earlier African societies, slaves were not considered property, and children of the enslaved were often considered free.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
-        q: { en: 'Compared with the system described above, the Atlantic slave trade...' },
-        choices: [{ en: 'treated people as property, in bondage without end' }, { en: 'let most enslaved people buy freedom in a year' }, { en: 'took mostly women to serve in rich households' }, { en: 'was smaller and much less violent than earlier slavery' }],
-        answer: 0,
-        why: { en: 'The Atlantic system made enslaved people property, in unending bondage. Its scale, purpose and violence set it apart.' }
+        stim: { text: { en: 'In some earlier African societies, slave trading was based in warfare, debt, religious obligation, or punishment for crimes. Slaves were not considered property, and children of the enslaved were often considered free.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
+        q: { en: 'Compared with the system described in the excerpt, the transatlantic system differed most directly in that it...' },
+        choices: [{ en: 'relied on captives taken in wars between states' }, { en: 'treated enslaved people as property, without end' }, { en: 'held about twice as many women as men in bondage' }, { en: 'moved captives across the Sahara to the Middle East' }],
+        answer: 1,
+        why: { en: 'The Atlantic system made people property in unending bondage. War captives were a continuity, and the other two describe the older trade to the Muslim world.' }
       },
       {
-        stim: { text: { en: 'The Portuguese seized crucial points to gain access to trade and control of waterways. The result was an empire of widely distant points: a city here, a fort there, a few ships in between.' }, src: { en: 'Adapted from "Survey of Transoceanic Empires, 1450 to 1750," World History Project' } },
-        q: { en: 'The excerpt best describes which kind of empire?' },
-        choices: [{ en: 'A maritime empire of coastal trade posts' }, { en: 'A land empire ruling wide inland territory' }, { en: 'A nomadic empire of mounted horse riders' }, { en: 'A tribute empire run from one inland capital' }],
-        answer: 0,
-        why: { en: 'Portugal\'s empire relied on the sea to link the forts, ports and cities it seized, like the fort on this coast.' }
+        stim: { title: { en: 'A Portuguese world map, 1502' }, text: { en: '"On the left side of the map, a vertical line shows the border of the Treaty of Tordesillas."' }, src: { en: 'The Cantino Planisphere, 1502; described in "European Colonies in the Americas," World History Project' } },
+        q: { en: 'The line on this map most directly reflects which development?' },
+        choices: [{ en: 'The Pope\'s 1493 line, which Portugal\'s king accepted' }, { en: 'A Dutch company\'s claim to the West African coast' }, { en: 'Spain\'s conquest of north-eastern Brazil' }, { en: 'Spain and Portugal dividing the Atlantic world' }],
+        answer: 3,
+        why: { en: 'The 1494 treaty moved the Pope\'s line to 270 leagues west. Spain got most of the Americas; Portugal got Brazil, West Africa and the route to Asia.' }
       },
       {
-        stim: { text: { en: 'When the Oyo Empire of West Africa defeated rivals in the southern Yoruba states, they profited by selling their captives into slavery.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
-        q: { en: 'Which best explains the development described above?' },
-        choices: [{ en: 'European demand made selling war captives profitable' }, { en: 'Europeans conquered the Oyo and fought all of its wars' }, { en: 'New crops caused farming in Africa to collapse' }, { en: 'The Ottomans closed all trade across the Sahara' }],
+        stim: { text: { en: 'When the Oyo Empire of West Africa defeated rivals in the southern Yoruba states, they profited by selling their captives into slavery. The Oyo would not have considered this selling their "own," for the Yoruba had been their enemy.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
+        q: { en: 'The excerpt best supports which claim about the slave trade in West Africa?' },
+        choices: [{ en: 'African elites took part, but European demand made it pay' }, { en: 'European armies fought the Oyo wars to take captives' }, { en: 'The Oyo sold their own subjects to pay European taxes' }, { en: 'Earlier slavery in Africa had treated captives as property' }],
         answer: 0,
-        why: { en: 'European demand for enslaved labor increased warfare in Africa. Rulers were paid in guns, cloth and glass for their captives.' }
+        why: { en: 'African elites did much of the capturing, but European demand made war captives profitable. Elites were paid in guns, cotton cloth and glass.' }
       },
       {
-        q: { en: 'Why did European states license joint-stock companies, such as the Dutch East India Company, in the 1600s?' },
-        choices: [{ en: 'To shift the costs of empire to private investors' }, { en: 'To let local rulers run all of their own ocean trade' }, { en: 'To end the slave trade across the Atlantic' }, { en: 'To hire Ottoman sailors for their own navies' }],
-        answer: 0,
-        why: { en: 'Empire was costly. In a joint-stock company, private investors paid for ships and forts, while the state gained trade and taxes.' }
+        stim: { text: { en: 'In the early 1500s, the Portuguese focused on seizing crucial points to gain access to trade and control of waterways. The result was an empire of widely distant points: a city here, a fort there, a few ships in between.' }, src: { en: 'Adapted from "Survey of Transoceanic Empires, 1450 to 1750," World History Project' } },
+        q: { en: 'Compared with Spain\'s empire in the Americas by the 1550s, the empire in the excerpt...' },
+        choices: [{ en: 'ruled more inland land than Spain held in Mexico' }, { en: 'was paid for from the start by joint-stock firms' }, { en: 'held scattered points, not wide territories' }, { en: 'had taken the main ports of the Mughals and Ming' }],
+        answer: 2,
+        why: { en: 'Portugal held forts and ports linked by ships. Spain, through wars and epidemics, ruled much of Mexico, Central America and the Andes.' }
       },
       {
-        stim: { text: { en: 'The treaty\'s imaginary line gave Spain all the Americas, except where it crossed the eastern hump of South America, giving the Portuguese a claim to Brazil.' }, src: { en: 'Adapted from "European Colonies in the Americas," World History Project' } },
-        q: { en: 'Which was a result of the 1494 agreement described above?' },
-        choices: [{ en: 'Portugal claimed Brazil and the West African trade' }, { en: 'Spain gave up all of its claims in the Americas' }, { en: 'England and France split North America in two' }, { en: 'Portugal ruled all the lands from Mexico to the Andes' }],
-        answer: 0,
-        why: { en: 'The Treaty of Tordesillas gave Portugal Brazil, West Africa and the sea road to Asia. Spain took most of the Americas.' }
+        q: { en: 'Which of the following best explains why European states licensed joint-stock companies such as the Dutch East India Company?' },
+        choices: [{ en: 'To end mercantilist control of overseas trade' }, { en: 'Empire was costly, so investors bore the cost' }, { en: 'To hand ocean trade to Armenian merchant networks' }, { en: 'To keep Asian merchants out of the Indian Ocean' }],
+        answer: 1,
+        why: { en: 'Conquering and defending a maritime empire was costly. Private investors paid for ships and forts, while the state gained trade and taxes.' }
       },
       {
-        q: { en: 'Which statement best compares European power in Asia and the Americas around 1630?' },
-        choices: [{ en: 'Small outposts in Asia, but large colonies in the Americas' }, { en: 'Large colonies in Asia, but small outposts in the Americas' }, { en: 'Full control of both the Atlantic and the Indian Oceans' }, { en: 'No European ships yet in either Asia or the Americas' }],
-        answer: 0,
-        why: { en: 'In the Indian Ocean, Europeans held a few ports among strong Asian empires. In the Americas, Spain ruled from Mexico to the Andes.' }
+        stim: { text: { en: 'After Europeans first arrived in the Indian Ocean, the bulk of trade goods continued to move along the same old routes in Asia and the Indian Ocean. Likewise, China and India remained the most productive manufacturers.' }, src: { en: 'Adapted from "The Cosmopolitan Indian Ocean," World History Project' } },
+        q: { en: 'Which of the following was a continuity in the Indian Ocean world after 1500, as the excerpt describes?' },
+        choices: [{ en: 'Europeans took over the overland Silk Road trade' }, { en: 'Portuguese gunboats ended Ottoman trade at sea' }, { en: 'Diaspora merchants were driven from the ports' }, { en: 'Asian routes and makers stayed central to trade' }],
+        answer: 3,
+        why: { en: 'Europeans held only small outposts. Most goods still moved on old Asian routes, China and India stayed the top makers, and diaspora merchants kept trading.' }
       },
       {
-        stim: { text: { en: 'Europeans fiercely protected their trading rights in Africa. They wanted to export more than they imported, and the slave trade brought them more gold and silver than ever before.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
-        q: { en: 'The excerpt best reflects which economic idea?' },
-        choices: [{ en: 'Mercantilism' }, { en: 'Free trade with no state limits' }, { en: 'Barter with no money at all' }, { en: 'Paper money issued by the state' }],
+        stim: { text: { en: 'Europeans fiercely protected their trading rights in Africa. They wanted to export more than they imported, and the slave trade brought them more gold and silver than ever before. This wealth would also help to bring about the Industrial Revolution.' }, src: { en: 'Adapted from "The Transatlantic Slave Trade," World History Project' } },
+        q: { en: 'The excerpt most directly reflects which economic idea, and which long-term effect?' },
+        choices: [{ en: 'Mercantilism; its wealth helped spur British industry' }, { en: 'Free trade; it ended state control of African trade' }, { en: 'Mercantilism; it made silver from the Americas unneeded' }, { en: 'Joint-stock investing; it brought the trade to an end' }],
         answer: 0,
-        why: { en: 'Mercantilist states aimed to sell more than they bought and to gather gold and silver, so they guarded their trade.' }
+        why: { en: 'Mercantilist states aimed to sell more than they bought and gather gold and silver. Wealth from the slave trade helped bring the Industrial Revolution in Britain.' }
       }
     ]
   },
