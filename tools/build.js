@@ -7,7 +7,7 @@ const GAME = process.argv[2] || 'game', G = path.join(ROOT, GAME), HIST = GAME !
 const NAME = require('./course-info.js')(GAME).name, DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas'); // the game's name comes from its course file
 const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
 if (HIST) require('./course-pages.js')(GAME); // the course's map page and teacher page, made from Worldwalker's
-const ENGINE = ['art.js', 'art2.js', 'art3.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'game.js'];
+const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'game.js'];
 const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');

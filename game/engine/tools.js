@@ -143,7 +143,7 @@
   // the thing you got flies to the bag
   function fly(x, y, item) {
     if (WW.calm || !bar) return;
-    const cv = $('ww-cv'), g = G(), [sx, sy] = g.screenOf(g.player.x, g.player.y), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const cv = $('ww-cv'), g = G(), [sx, sy] = g.screenOf(g.player.x, g.player.y), cr = cv.getBoundingClientRect(), k = cr.width / (cv.width / WW.HD);
     const target = bar.querySelector('.tbag') || bar; const tr = target.getBoundingClientRect();
     const ic = WW.spriteCanvas(ICON[item] || 'wood', TPAL, 2); ic.className = 'flyicon';
     ic.style.left = (cr.left + ((x - sx * 16) * 16) * k) + 'px'; ic.style.top = (cr.top + ((y - sy * 11) * 16) * k) + 'px';

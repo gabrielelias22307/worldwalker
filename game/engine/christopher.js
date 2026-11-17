@@ -82,7 +82,7 @@
     if (!C.showing() || C.inCorner()) return;
     const g = WW.game, cv = $('ww-cv'); if (!g.pip || !cv || !g.player) return;
     const [sx, sy] = g.screenOf(g.player.x, g.player.y), pip = g.pip;
-    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width, stR = $('ww-stage').getBoundingClientRect();
+    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / (cv.width / WW.HD), stR = $('ww-stage').getBoundingClientRect();
     const ox = cr.left - sr.left, oy = cr.top - sr.top, SW = sr.width, SH = sr.height, bx = sr.left - stR.left, by = sr.top - stR.top;
     const tile = (x, y, pad) => ({ x: ox + ((x - sx * 16) * 16 - pad) * k, y: oy + ((y - sy * 11) * 16 - pad - 3) * k, w: (16 + pad * 2) * k, h: (19 + pad * 2) * k });
     const dx = pip.dx ?? (pip.x - sx * 16) * 16, dy = pip.dy ?? (pip.y - sy * 11) * 16;

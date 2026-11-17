@@ -236,7 +236,7 @@
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     if (WW.chris && WW.chris.resetFlight) WW.chris.resetFlight();
-    const cv = $('ww-cv'); cv.width = SW * TS; cv.height = SH * TS;
+    const cv = $('ww-cv'); cv.width = SW * TS * WW.HD; cv.height = SH * TS * WW.HD;
     G.ctx = cv.getContext('2d'); G.ctx.imageSmoothingEnabled = false;
     G.wayUntil = 0; WW.chris.hide(); WW.tools.setup(ep); WW.farm.setup(ep); G.fit();
     WW.ui.hud(); WW.ui.quest();
@@ -572,7 +572,8 @@
   function drawScreen(c, sx, sy, ox, oy, t) {
     c.save(); c.translate(ox, oy);
     // tiles get their global position so edges and ground match the real map around them
-    for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
+    if (WW.hd) WW.hd.drawTiles(c, sx, sy, map, t, SW, SH); // HistoryWalker: finer ground, shadows, then things (hd.js)
+    else for (let y = 0; y < SH; y++) for (let x = 0; x < SW; x++) {
       const gx = sx * SW + x, gy = sy * SH + y, ch = tileAt(gx, gy);
       (WW.tiles[ch] || WW.tiles['.'])(c, x * TS, y * TS, gx, gy, t, map);
     }
@@ -637,6 +638,7 @@
   function frame(now) {
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
+    c.setTransform(WW.HD, 0, 0, WW.HD, 0, 0); c.imageSmoothingEnabled = false; // one art pixel = WW.HD canvas pixels
     if (WW.room.on) return WW.room.frame(c, now, held); // inside a house (rooms.js)
     // movement timing
     if (player.moving && now - player.moving >= stepMs()) {
@@ -710,6 +712,7 @@
       WW.fx.draw(c, sx, sy, { x: (fx - sx * SW) * TS, y: (fy - sy * SH) * TS }, now, dt);
       drawArrows(c, sx, sy, (fx - sx * SW) * TS, (fy - sy * SH) * TS, now);
     }
+    if (WW.hd) WW.hd.post(c, now, SW * TS, SH * TS); // warm light and a soft vignette (hd.js)
     if (!trans) WW.way.drawCompass(c, now); // N E S W in the corner, the way to go lit up
     WW.chris.place(); WW.tools.labels(trans ? null : [sx, sy]);
     if (now - (G.flashT || 0) < 300) { c.fillStyle = `rgba(200,30,30,${0.25 * (1 - (now - G.flashT) / 300)})`; c.fillRect(0, 0, SW * TS, SH * TS); }
@@ -793,14 +796,15 @@
     const walk = player.moving && Math.floor(now / 75) % 2;
     const d = player.dir;
     const name = d === 'up' ? (walk ? 'heroUpWalk' : 'heroUp') : d === 'down' ? (walk ? 'heroWalk' : 'hero') : (walk ? 'heroSideWalk' : 'heroSide');
-    WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
+    if (!WW.hd) WW.shadow(c, Math.round(x), Math.round(y) + 12, 10);
     WW.world.boat(c, Math.round(x), Math.round(y), tileAt(player.x, player.y));
     if (ride) { // a little train car under the hero
       const X = Math.round(x), Y = Math.round(y);
       c.fillStyle = '#22202e'; c.fillRect(X - 1, Y + 5, 18, 10); c.fillStyle = '#c0392b'; c.fillRect(X, Y + 6, 16, 6); c.fillStyle = '#f2c14e'; c.fillRect(X, Y + 8, 16, 1);
       c.fillStyle = '#22202e'; c.fillRect(X + 2, Y + 13, 3, 3); c.fillRect(X + 11, Y + 13, 3, 3);
     }
-    WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
+    if (WW.hd && WW.hd.hero) WW.hd.hero(c, x, y, d, !!player.moving, now); // HistoryWalker: the finer hero (hd.js)
+    else WW.sprite(c, name, Math.round(x), Math.round(y) - 3, { pal: WW.heroPal(), flip: d === 'left' });
   }
 
   /* ---------------- hooks for the automatic play-tests ---------------- */

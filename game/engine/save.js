@@ -421,6 +421,7 @@
      (eras), its five powers, its tools, its words (S) and a list of word swaps for the engine's own words
      ("atlas page" -> "chronicle page", "Christopher" -> "Tock"), in each language. Without one: Worldwalker. */
   WW.COURSE = window.WW_COURSE || null;
+  WW.HD = WW.COURSE && WW.COURSE.hd ? 4 : 1; // HistoryWalker: the map canvas has 4 real pixels for every art pixel (hd.js draws the finer art)
   WW.TITLE = (WW.COURSE && WW.COURSE.title) || 'WORLDWALKER';
   WW.SUB = (WW.COURSE && WW.COURSE.sub) || 'THE TORN ATLAS';
 WW.tune = () => (WW.ep && WW.ep.memorial ? 'quiet' : 'realm' + (WW.ep ? WW.ep.realm : 1)); // the episode's song

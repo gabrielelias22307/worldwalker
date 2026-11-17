@@ -428,7 +428,7 @@
     if (WW.chris.mood) WW.chris.mood('cheer');
     if (WW.calm || !cv || !pass) return done();
     WW.paused = true; WW.sfx('power');
-    const g = WW.game, [sx, sy] = g.screenOf(at[0], at[1]), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const g = WW.game, [sx, sy] = g.screenOf(at[0], at[1]), cr = cv.getBoundingClientRect(), k = cr.width / (cv.width / WW.HD);
     const pg = WW.spriteCanvas('page', null, 6); pg.className = 'pagefly';
     pg.style.left = (cr.left + ((at[0] - sx * 16) * 16 + 8) * k - 48) + 'px'; pg.style.top = (cr.top + ((at[1] - sy * 11) * 16) * k - 40) + 'px';
     document.body.appendChild(pg);
