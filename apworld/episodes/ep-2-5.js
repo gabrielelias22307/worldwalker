@@ -16,7 +16,7 @@ window.EPISODE = {
   place: { en: 'A caravan oasis on the pilgrim road, Arabia, 1325' },
   intro: [
     { en: 'The Grump blew dust over the page on cultural exchange. This oasis on the pilgrim road is forgetting how ideas travel with trade!' },
-    { en: 'Talk to the 4 people here, help a young traveler, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young traveler, then wake the time stone.' }
   ],
   scenes: {
     at: [38.5, 25.5],
@@ -82,17 +82,18 @@ window.EPISODE = {
       x: 10, y: 7, name: { en: 'Yusuf' }, role: { en: 'Mathematician' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2a6a8a', robe: true, hat: '#f2efe6', style: 'short' },
       lines: [
-        { en: 'The Islamic world stretches from North Africa to India, between Europe, Africa, Southeast Asia and China. Its merchants must calculate costs and profits.' },
-        { en: 'Islam also follows a strict calendar, and we pray facing Mecca. So we use astronomy, divide up the circle and work with fractions.' },
-        { en: 'Arab scholars wrote a book of calculations, [[al-jabr|al-Jabr]]. Its ideas are flowing out to neighboring regions, Europe too. That is [[diffusion|diffusion]].' }
+        { en: 'The Islamic world stretches from North Africa to India. It sits between Europe, sub-Saharan Africa, Southeast Asia and China, so our merchants must calculate costs and profits.' },
+        { en: 'Islam follows a strict calendar, so we understand dates mathematically. And we pray facing Mecca, which takes directional calculations.' },
+        { en: 'So Muslim mathematicians use astronomy, divide up the circle and work with fractions. Arab scholars wrote a book of calculations with the short name [[al-jabr|al-Jabr]].' },
+        { en: 'These ideas flow out to neighboring regions, Europe too. That is [[diffusion|diffusion]]. Europe\'s scientific revolution of the 1500s and 1600s will build on them.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did Muslim mathematicians develop astronomy, circle math and fractions?' },
+        q: { en: 'Which best explains why the Islamic world led in mathematics in this era?' },
         choices: [
-          { ok: true, t: { en: 'Trade, calendar and prayer direction required it' }, why: { en: 'Yes. Merchants counted profits, the calendar was mathematical, and facing Mecca took directional calculations.' } },
-          { t: { en: 'Chinese emperors ordered all Muslim scholars to study it' }, why: { en: 'No. The needs came from inside the Islamic world: trade, the calendar and the direction of prayer.' } },
-          { t: { en: 'They copied all of it from scholars in Europe' }, why: { en: 'No. The ideas flowed the other way: from the Islamic world out to Europe.' } }
+          { ok: true, t: { en: 'Trade, calendar and prayer all needed math' }, why: { en: 'Yes. Merchants counted costs and profits, the calendar was mathematical, and facing Mecca took directional calculations.' } },
+          { t: { en: 'Song exam reforms made many more people scholars' }, why: { en: 'No. That happened in China under the Song Dynasty, not in the Islamic world.' } },
+          { t: { en: 'Mongol routes carried China\'s mathematics west' }, why: { en: 'No. Mongol routes carried gunpowder and paper-making west. Muslim math grew from the Islamic world\'s own needs.' } }
         ]
       }
     },
@@ -100,17 +101,18 @@ window.EPISODE = {
       x: 22, y: 6, name: { en: 'Ismail' }, role: { en: 'Merchant from Southeast Asia' },
       look: { skin: 3, hair: '#1b1410', shirt: '#b8862b', pants: '#3a2a1a', hat: '#2a4a3a', style: 'short' },
       lines: [
-        { en: 'I come from a trading port on the islands of Southeast Asia. Islam reached us by sea, along trade routes from India.' },
-        { en: 'At first Islam was a merchants\' religion. Now many of our ports are mostly Muslim, but our streets still hold people of many faiths.' },
-        { en: 'Near us, Angkor Wat began as a temple to the Hindu god Vishnu, then became Buddhist. That blending is [[syncretism|syncretism]]. On Java, the two faiths\' temples stand near but apart.' }
+        { en: 'I trade from a port on the islands of Southeast Asia. Muslims reached our region by the eleventh century, sailing the trade routes from India.' },
+        { en: 'Islam was first a religion of merchants. By the 1200s many of our island ports had Muslim majorities, but our cities still hold people of many religions.' },
+        { en: 'Hinduism and Buddhism also came from India. The twelfth-century Khmer temple at Angkor Wat began as a temple to Vishnu and became Buddhist two centuries later. That is [[syncretism|syncretism]].' },
+        { en: 'On Java, Hindu and Buddhist temples stand near each other but apart. Our kings fund both faiths. And [[theravada|Theravada]] monasteries now carry real political weight.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compare the Hindu and Buddhist temples at Angkor Wat and on Java.' },
+        q: { en: 'Compare Angkor Wat with the temples on Java. Which statement is accurate?' },
         choices: [
-          { ok: true, t: { en: 'Angkor blended the faiths; Java kept them apart' }, why: { en: 'Right. Angkor Wat shows art and ideas from both religions. On Java the temples stood near each other but separate.' } },
-          { t: { en: 'Both places banned Buddhism completely' }, why: { en: 'No. Kings across Southeast Asia gave gifts and funding to both Hinduism and Buddhism.' } },
-          { t: { en: 'Muslim merchants built the temples in both places' }, why: { en: 'No. These were Hindu and Buddhist temples. Both religions first emerged in India.' } }
+          { ok: true, t: { en: 'Angkor blended both faiths; Java kept them apart' }, why: { en: 'Right. Angkor Wat\'s design shows art and ideas from both religions. On Java the temples stood near each other but separate.' } },
+          { t: { en: 'Java blended both faiths; Angkor kept them apart' }, why: { en: 'Reversed. Angkor Wat changed from a Hindu to a Buddhist temple and shows both; Java kept its temples separate.' } },
+          { t: { en: 'Muslim merchants from India built both of them' }, why: { en: 'No. These were Hindu and Buddhist temples. Both religions first emerged in India, but Muslims did not build them.' } }
         ]
       }
     },
@@ -118,17 +120,18 @@ window.EPISODE = {
       x: 6, y: 14, name: { en: 'Aminata' }, role: { en: 'Pilgrim from Mali' },
       look: { skin: 5, hair: '#1b1410', shirt: '#d9a21b', robe: true, hat: '#2a6a4a', style: 'long' },
       lines: [
-        { en: 'I came with Mansa Musa, the king of Mali. Around 1324 he left Mali with over 1,000 people, camels and gold.' },
-        { en: 'Why so far? The [[hajj|hajj]] is one of the Five Pillars of Islam. Every Muslim who is able should make it once.' },
-        { en: 'Islam reached West Africa over centuries along trade routes. Many of our elites converted and blended it with our own beliefs.' }
+        { en: 'Sundiata Keita founded our Mali Empire around 1230. I travel with Mansa Musa, who has ruled Mali since about 1312.' },
+        { en: 'Around 1324 he left Mali with over 1,000 people, camels and gold, for a journey of about 3,000 miles. Camels make such Sahara crossings possible.' },
+        { en: 'Why go? Islam was founded in Mecca in the seventh century by the prophet Muhammad. The [[hajj|hajj]] there is one of the Five Pillars of Islam.' },
+        { en: 'From the tenth century on, Islam traveled Africa\'s trade routes. Many of our elites converted and blended it with local beliefs.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: '[[broad context|Broad context]] is a long-term cause. Which is broad context for Mansa Musa\'s hajj?' },
         choices: [
-          { ok: true, t: { en: 'Islam spread along African trade routes for centuries' }, why: { en: 'Yes. A long-term trend over a wide region is broad context. It explains why a king of Mali was Muslim.' } },
-          { t: { en: 'Mansa Musa left Mali around 1324 with his gold caravan' }, why: { en: 'That is [[narrow context|narrow context]] or the event itself: closely tied in time and place, a short-term cause.' } },
-          { t: { en: 'Mansa Musa came to Mecca to conquer it for Mali' }, why: { en: 'No. He came as a pilgrim on the hajj, not as a conqueror.' } }
+          { ok: true, t: { en: 'Centuries of Islam spreading along trade routes' }, why: { en: 'Yes. A long-term trend over a wide region is broad context. It explains why a king of Mali was Muslim.' } },
+          { t: { en: 'Mansa Musa\'s rule over Mali, starting about 1312' }, why: { en: 'That is [[narrow context|narrow context]]: closely tied in time and place to the hajj, a short-term cause.' } },
+          { t: { en: 'His caravan of over 1,000 leaving Mali, c. 1324' }, why: { en: 'That is the event itself, not its context. Context is what surrounds and builds up to the event.' } }
         ]
       }
     },
@@ -136,17 +139,56 @@ window.EPISODE = {
       x: 25, y: 17, name: { en: 'Hasan' }, role: { en: 'Sufi pilgrim from Persia' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#4a3a6a', robe: true, hat: '#e8e2d0', style: 'short' },
       lines: [
-        { en: 'I came from Persia with other pilgrims. I belong to a [[sufi|Sufi]] brotherhood. Like the poet Rumi, we seek a close, mystical bond with God.' },
-        { en: 'Sufi brotherhoods spread Islam in West Africa. [[pastoral|Pastoral]] herders liked the mysticism, the brotherhoods helped them unite, and local customs could stay.' },
-        { en: 'In South Asia, Sufis drew many Hindus. But Islam also came there by conquest. In the [[delhi sultanate|Delhi Sultanate]] the two faiths stayed largely separate.' }
+        { en: 'I came from Persia. I belong to a [[sufi|Sufi]] brotherhood. Like the poet Rumi, a Muslim jurist, scholar and mystic, we seek a close, mystical bond with God.' },
+        { en: 'Sufi brotherhoods spread Islam in West Africa. Their mysticism suits nomadic, [[pastoral|pastoral]] herders, and they help herders come together for political strength.' },
+        { en: 'And Sufi ways are flexible: local culture and existing religious figures can remain. That is one reason so many West Africans accept Islam.' },
+        { en: 'In South Asia, Sufis drew many Hindus used to a mystical Hinduism. But conquest built the [[delhi sultanate|Delhi Sultanate]]. It tolerates both faiths, yet they stay largely separate.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'When Sufi brotherhoods brought Islam to West Africa, what stayed the same?' },
+        q: { en: 'When Sufi brotherhoods brought Islam to West Africa, what was a continuity?' },
         choices: [
           { ok: true, t: { en: 'Local culture and religious figures could remain' }, why: { en: 'Yes. Sufi beliefs were flexible enough that local culture continued alongside the new faith.' } },
-          { t: { en: 'Nothing changed: no one converted at all' }, why: { en: 'No. Many people did convert. Islam became important across the interior of West Africa.' } },
-          { t: { en: 'Herders had to give up every one of their old customs' }, why: { en: 'No. The brotherhoods allowed flexibility, which is one reason herders accepted Islam.' } }
+          { t: { en: 'Islam and local faiths stayed apart, as in Delhi' }, why: { en: 'No. That describes the Delhi Sultanate in South Asia. In West Africa, Islam blended with local culture.' } },
+          { t: { en: 'Herders gave up their old customs to join' }, why: { en: 'No. The brotherhoods allowed flexibility, which is one reason herders accepted Islam.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 12, y: 3, icon: '📜',
+      name: { en: 'A Painted Pilgrim Caravan' }, role: { en: 'Primary source' },
+      src: { en: 'Painting credited to Yahya ibn Mahmud al-Wasiti, in the Maqâmâ, a book of Arabic poetry (thirteenth century); shown and captioned in "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' },
+      lines: [
+        { en: 'This source is a picture, not a text: a thirteenth-century painting of Muslims on a pilgrimage, or hajj. It illustrates the Maqâmâ, a book of Arabic poetry, and is credited to the painter Yahya ibn Mahmud al-Wasiti.' },
+        { en: 'The World History Project explains it this way: "Pilgrimages were one of the major ways people moved around in this era. Based on clothing, these pilgrims were probably from Persia or Mesopotamia, headed for Mecca."' },
+        { en: 'Context: the painter made it for readers of a poetry book, not as a travel record, so it names no pilgrims and gives no route. Historians read its details, like clothing, as clues. In an age when most people never left home, it shows pilgrims who did.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: how do historians judge where these painted pilgrims came from?' },
+        choices: [
+          { ok: true, t: { en: 'From the clothing they wear' }, why: { en: 'Yes. The caption says that, based on clothing, they were probably from Persia or Mesopotamia.' } },
+          { t: { en: 'From the names of pilgrims it lists' }, why: { en: 'No. It illustrates a poetry book and lists no names. Historians use clues like clothing.' } },
+          { t: { en: 'From the poet\'s record of their route' }, why: { en: 'No. It is not a travel record and gives no route. The clue is the clothing.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 20, y: 9, icon: '📖',
+      name: { en: 'Ideas on the Move' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Trade, Technology, and Religion in Afro-Eurasia 1200–1450" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'In the thirteenth century, most people lived their whole lives within a few square miles. But the few who traveled far carried ideas, an intangible cargo moving through the same networks as goods. China and the Islamic world made especially dramatic contributions. Under China\'s Song Dynasty, reforms opened the education system and exams, many more people became scholars, and inventions followed: the magnifying glass, the compass and gunpowder.' },
+        { en: 'The Mongols conquered China and ruled it as the Yuan Dynasty. Across Central Asia they built a huge system of exchange. Goods moved west along it, and so did technologies: gunpowder, which was new, and paper-making, which was not new but had not gone far beyond China until now. By the 1380s gunpowder fired cannon. Cannon helped the Ottomans conquer Constantinople and brought down European castle walls, and with them the nobles\' power.' },
+        { en: 'Religions spread by trade and also by conquest. In the thirteenth and early fourteenth centuries, the Northern Crusades spread Christianity to the Baltic and slowly drove older beliefs out. Some agents of change were the few travelers, like Ibn Battuta and Marco Polo, and missionaries. Others were the many people they met, who had to decide: accept a new idea, reject it, or mix it with what they had.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Which best explains why gunpowder and paper-making spread west in this era?' },
+        choices: [
+          { ok: true, t: { en: 'The Mongols built a huge system of exchange' }, why: { en: 'Yes. Mongol control across Central Asia linked China to the west, and technologies moved along with goods.' } },
+          { t: { en: 'Song exam reforms sent scholars to Europe' }, why: { en: 'No. The reforms made more scholars inside China. The reading says nothing of them going to Europe.' } },
+          { t: { en: 'Ottoman cannon opened the roads from China' }, why: { en: 'No. That reverses cause and effect: cannon came only after gunpowder had already spread west.' } }
         ]
       }
     }
@@ -248,57 +290,59 @@ window.EPISODE = {
     win: { en: 'The dust settles over the oasis. Chronicle page 2.5 floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'Islam calls for its followers to pray facing the city of Mecca, requiring directional calculations.' }, src: { en: 'Adapted from "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best helps explain which development?' },
-        choices: [{ en: 'Muslim work in astronomy and circle math' }, { en: 'The use of gunpowder cannon in Europe' }, { en: 'Mali\'s gold caravans across the Sahara' }, { en: 'Angkor Wat changing from Hindu to Buddhist' }],
+        stim: { text: { en: '"Situated between Europe, sub-Saharan Africa, Southeast Asia, and China, the Islamic world was involved in a whole lot of trade. ... Islam is a religion that follows a strict calendar, so dates were understood mathematically. Finally, Islam calls for its followers to pray facing the city of Mecca, requiring directional calculations."' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'The passage best supports the claim that Muslim advances in mathematics were driven mainly by...' },
+        choices: [{ en: 'practical needs of commerce and religious practice' }, { en: 'Song Dynasty exam reforms that created more scholars' }, { en: 'Chinese learning carried west on the Mongol routes' }, { en: 'the demands of Europe\'s scientific revolution' }],
         answer: 0,
-        why: { en: 'Praying toward Mecca, a strict calendar and trade all pushed Muslim mathematicians to develop astronomy, circle math and fractions.' }
+        why: { en: 'Trade, a strict calendar and the direction of prayer all required calculation. The exam reforms were in China, and Europe\'s scientific revolution came centuries later, built on Muslim math.' }
       },
       {
-        stim: { text: { en: 'Mansa Musa departed Mali with a group of over 1,000 people, camels, and gold to travel to Mecca, c. 1324 CE.' }, src: { en: 'Adapted from "Contextualization: Mansa Musa," World History Project' } },
-        q: { en: 'Which of the following is BROAD context for the event above?' },
-        choices: [{ en: 'Centuries of Islam spreading along trade routes' }, { en: 'Mansa Musa was the ruler of Mali in the 1320s' }, { en: 'Musa\'s group carried huge amounts of gold to Mecca' }, { en: 'The trip from Mali covered about 3,000 miles' }],
+        stim: { text: { en: 'Mansa Musa departed Mali with a group of over 1,000 people, camels, and gold to travel to Mecca c. 1324 CE.' }, src: { en: 'From "Contextualization: Mansa Musa," World History Project' } },
+        q: { en: 'Which of the following is NARROW context for the event above?' },
+        choices: [{ en: 'Mansa Musa became the ruler of Mali around 1312' }, { en: 'Islam spread on African trade routes from the 900s on' }, { en: 'Islam was founded in Mecca in the seventh century' }, { en: 'Camels made trade across the Sahara possible' }],
         answer: 0,
-        why: { en: 'Broad context is a long-term trend over a wide region. Centuries of Islam spreading with trade explain why a Malian king went on hajj.' }
+        why: { en: 'Narrow context is closely tied in time and place: Musa\'s own reign. The other three are long-term trends or events over wide regions, so they are broad context.' }
       },
       {
-        stim: { text: { en: 'These brotherhoods emphasized mysticism ... and still allowed enough flexibility for local culture and existing religious figures to remain.' }, src: { en: 'Adapted from "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best explains why Islam...' },
-        choices: [{ en: 'spread among pastoral peoples of West Africa' }, { en: 'stayed separate from Hinduism in the Delhi Sultanate' }, { en: 'was rejected by West Africa\'s elites' }, { en: 'reached Southeast Asian ports by conquest' }],
+        stim: { text: { en: '"First, they emphasized ideas of mysticism and a relationship to God that were particularly suited to many of the nomadic, pastoral people of West Africa. Second, they helped those pastoralists come together to create political strength and solve problems."' }, src: { en: 'Trevor Getz, on Sufi brotherhoods, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'The features described in the excerpt best explain why Islam...' },
+        choices: [{ en: 'took root among herding peoples of West Africa' }, { en: 'drew Hindus used to a mystical Hinduism in India' }, { en: 'stayed separate from Hinduism in the Delhi Sultanate' }, { en: 'became the majority faith of Southeast Asian ports' }],
         answer: 0,
-        why: { en: 'Sufi brotherhoods offered mysticism, helped herders unite, and let local culture remain, so many West Africans accepted Islam.' }
+        why: { en: 'Sufi brotherhoods offered mysticism and helped pastoral herders unite for political strength, so Islam spread in West Africa. The other choices are real, but in other regions.' }
       },
       {
-        stim: { text: { en: 'The great twelfth-century Khmer temple at Angkor Wat began as a temple to the Hindu god Vishnu, then was transformed into a Buddhist temple two centuries later.' }, src: { en: 'Adapted from "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
-        q: { en: 'The development described above best illustrates...' },
-        choices: [{ en: 'syncretism, the blending of belief systems' }, { en: 'the spread of Islam through military conquest' }, { en: 'Muslim merchants rejecting Buddhist beliefs' }, { en: 'the diffusion of gunpowder weapons' }],
+        stim: { text: { en: '"The great twelfth century Khmer temple at Angkor Wat began as a temple to the Hindu god Vishnu, then was transformed into a Buddhist temple two centuries later. Its design shows the influence of art and ideas from both religions."' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'The development described most directly reflects which process?' },
+        choices: [{ en: 'syncretism, the blending of two belief systems' }, { en: 'Theravada monasteries gaining political power' }, { en: 'Islam spreading to ports along routes from India' }, { en: 'Hindu and Buddhist sites kept apart, as on Java' }],
         answer: 0,
-        why: { en: 'Angkor Wat\'s design shows art and ideas from both Hinduism and Buddhism. Blending traditions is syncretism.' }
+        why: { en: 'Angkor Wat\'s design shows art and ideas from both Hinduism and Buddhism. Blending traditions is syncretism. On Java, by contrast, the temples stayed separate.' }
       },
       {
-        q: { en: 'Which best describes an effect of gunpowder spreading west from China?' },
-        choices: [{ en: 'Cannon weakened the power of European nobles' }, { en: 'European castle walls became impossible to break' }, { en: 'Paper-making stopped spreading west' }, { en: 'The Mongols closed their trade routes' }],
+        stim: { text: { en: '"Trade goods moved along it from east to west, but so did technologies like gunpowder, which was new, and paper-making, which was not new but hadn\'t really gone far beyond China until now."' }, src: { en: 'Trevor Getz, on the Mongol system of exchange, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'Based on the excerpt, how did the spread of paper-making differ from that of gunpowder?' },
+        choices: [{ en: 'It was old in China but had not spread far' }, { en: 'It came from the Islamic world, not from China' }, { en: 'It moved from west to east, toward China' }, { en: 'It was first invented under the Mongol Yuan' }],
         answer: 0,
-        why: { en: 'By the 1380s gunpowder fired cannon. Cannon could bring down castle walls, and with them the nobles\' power.' }
+        why: { en: 'Gunpowder was new; paper-making was not new, but it had not gone far beyond China until the Mongol network carried it west.' }
       },
       {
-        q: { en: 'Compared with its spread to Southeast Asian trading ports, Islam in South Asia ALSO spread through...' },
-        choices: [{ en: 'conquest, which built the Delhi Sultanate' }, { en: 'the hajj caravan of Mansa Musa of Mali' }, { en: 'Theravada Buddhist monasteries and monks' }, { en: 'camel caravans crossing the Sahara Desert' }],
+        q: { en: 'Which of the following best describes an effect of gunpowder cannon, in use by the 1380s?' },
+        choices: [{ en: 'They broke castle walls and nobles\' power' }, { en: 'They let nobles hide safely behind stronger walls' }, { en: 'They spread Christianity to the Baltic peoples' }, { en: 'They let the Mongols conquer China as the Yuan' }],
         answer: 0,
-        why: { en: 'In Southeast Asia, Islam came with merchants. In South Asia, Sufis drew converts, but conquest also built the Delhi Sultanate.' }
+        why: { en: 'Before cannon, European nobles hid behind castle walls and stayed powerful. Cannon brought the walls down, and the nobles\' power with them. Cannon also helped the Ottomans conquer Constantinople.' }
       },
       {
-        stim: { text: { en: 'Those non-travelers still encountered new ideas and beliefs, and they had to decide what to do with them.' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best supports which claim about cultural exchange?' },
-        choices: [{ en: 'People chose to accept, reject or mix new ideas' }, { en: 'Only long-distance travelers were agents of change' }, { en: 'New ideas were always adopted without any change' }, { en: 'Trade networks carried goods but never any ideas' }],
+        stim: { title: { en: 'How beliefs spread, 1200–1450' }, rows: [[{ en: 'Region' }, { en: 'How the belief spread' }], [{ en: 'Southeast Asian ports' }, { en: 'Islam, by merchants on routes from India' }], [{ en: 'West African interior' }, { en: 'Islam, by trade and Sufi brotherhoods' }], [{ en: 'South Asia' }, { en: 'Islam, by Sufis and by conquest (Delhi Sultanate)' }], [{ en: 'Baltic Europe' }, { en: '?' }]], src: { en: 'From "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best completes the last row of the table?' },
+        choices: [{ en: 'Christianity, by conquest in the Northern Crusades' }, { en: 'Buddhism, by Theravada monks and monasteries' }, { en: 'Christianity, by merchants on Indian Ocean routes' }, { en: 'Islam, by caravans crossing from North Africa' }],
         answer: 0,
-        why: { en: 'Travelers like Ibn Battuta carried ideas, but the people they met decided whether to accept, reject or blend them.' }
+        why: { en: 'In the 1200s and early 1300s the Northern Crusades spread Christianity to the Baltic by conquest and slowly drove older beliefs out, much as conquest built the Delhi Sultanate.' }
       },
       {
-        q: { en: 'Which best describes a long-term effect of Muslim mathematics spreading to Europe?' },
-        choices: [{ en: 'It helped spark Europe\'s scientific revolution' }, { en: 'It ended all trade between Europe and Asia for good' }, { en: 'It caused Europe to adopt the hajj' }, { en: 'It replaced the Mongols\' system of exchange in Asia' }],
+        stim: { text: { en: '"Some of the agents of this change were the few individuals who made these voyages. ... Other agents of change, however, were many people they met along the way. Those non-travelers still encountered new ideas and beliefs, and they had to decide what to do with them."' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
+        q: { en: 'The author\'s main purpose in this passage is to argue that...' },
+        choices: [{ en: 'people who never traveled also shaped cultural exchange' }, { en: 'famous travelers were the most important agents of change' }, { en: 'trade networks carried goods but rarely carried new ideas' }, { en: 'most people of the 1200s journeyed far from their homes' }],
         answer: 0,
-        why: { en: 'Algebra, fractions and astronomy flowed into Europe. Without them, the later scientific revolution arguably would not have been possible.' }
+        why: { en: 'Travelers like Ibn Battuta and Marco Polo carried ideas, but Getz stresses the many people they met, who chose to accept, reject or mix those ideas.' }
       }
     ]
   },

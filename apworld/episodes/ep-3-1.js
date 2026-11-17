@@ -15,7 +15,7 @@ window.EPISODE = {
   place: { en: 'Istanbul, Ottoman Empire, 1550' },
   intro: [
     { en: 'The Grump blurred the page on the gunpowder empires. Istanbul is forgetting how the Ottomans rose and ruled!' },
-    { en: 'Talk to the 4 people here, help a young mapmaker, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young mapmaker, then wake the time stone.' }
   ],
   scenes: {
     at: [28.98, 41.01],
@@ -83,17 +83,18 @@ window.EPISODE = {
       x: 9, y: 6, name: { en: 'Yusuf' }, role: { en: 'Janissary soldier' },
       look: { skin: 1, hair: '#6b4a2b', shirt: '#2a4a8a', pants: '#e8e0d0', hat: '#f2ece0', style: 'short' },
       lines: [
-        { en: 'I am a [[janissary|janissary]], a soldier of the sultan\'s elite corps. Sultan Murad I first built our corps of enslaved soldiers.' },
-        { en: 'Under the [[devshirme|devshirme]], I was taken as a boy from my Christian family in the Balkans. I was made Muslim and trained for years.' },
-        { en: 'The best of us become janissaries or officials. Land granted for service goes back to the sultan when we die, not to our children.' }
+        { en: 'I am a [[janissary|janissary]], a soldier of the sultan\'s elite corps. Sultan Murad I (r. 1362–1389) first built our musket-armed corps of enslaved soldiers, loyal only to him.' },
+        { en: 'Under the [[devshirme|devshirme]], the state forced my Christian family in the Balkans to give me up as a boy. I was converted to Islam and trained for years.' },
+        { en: 'The best boys become government officials or janissaries. Trained so young, we are fiercely loyal to the sultan.' },
+        { en: 'Some of us are granted land for good service. When we die, it cannot pass to our children. It goes back to the sultan.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did the devshirme make janissaries so loyal to the sultan?' },
+        q: { en: 'Which feature of the devshirme system best explains why it kept power in the sultan\'s hands?' },
         choices: [
-          { ok: true, t: { en: 'They owed everything to the sultan alone' }, why: { en: 'Yes. Taken young and trained by the state, they had no noble family or inherited land to turn to.' } },
-          { t: { en: 'They were nobles who owned their castles' }, why: { en: 'No. The system was built to avoid a class of nobles who could challenge the sultan.' } },
-          { t: { en: 'They were paid by the Balkan churches' }, why: { en: 'No. They were converted to Islam and served the sultan, who rewarded them.' } }
+          { ok: true, t: { en: 'Land granted for service went back to the sultan' }, why: { en: 'Yes. With no land to pass on to their children, janissaries and officials could not grow into a hereditary nobility.' } },
+          { t: { en: 'Boys were taken from Christian families in the Balkans' }, why: { en: 'True, but where they came from is not why power stayed central. Their loyalty and their lack of inherited land were.' } },
+          { t: { en: 'Janissaries were armed with muskets and cannon' }, why: { en: 'Guns made them strong, but guns alone could make them a danger. Their training and the land rule kept them tied to the sultan.' } }
         ]
       }
     },
@@ -101,17 +102,18 @@ window.EPISODE = {
       x: 18, y: 6, name: { en: 'Mustafa' }, role: { en: 'Court clerk' },
       look: { skin: 3, hair: '#1b1410', shirt: '#7a2a2a', robe: true, hat: '#f2ece0', style: 'short' },
       lines: [
-        { en: 'I keep records for the [[qadi|qadi]], a religious judge. Our strong legal system helps the sultan tax and govern efficiently.' },
-        { en: 'Since Selim I took Egypt, Mecca and Medina in 1517, our sultan also claims the title [[caliph|caliph]], leader of [[sunni|Sunni]] Islam.' },
-        { en: 'Guns win battles. But paid officials like me, a [[bureaucracy|bureaucracy]], keep this huge, [[centralized|centralized]] empire running.' }
+        { en: 'I keep records for the [[qadi|qadi]], a religious judge. Our strong legal system helps the sultan\'s agents tax and govern efficiently.' },
+        { en: 'Unlike Europe, we have no permanent nobility that owns huge lands. Power is [[centralized|centralized]] in the sultan, and provincial governors manage his far-flung lands.' },
+        { en: 'Promotion here is mostly by merit. Many in the ruling class were once enslaved. Paid officials like me, a [[bureaucracy|bureaucracy]], keep this empire running.' },
+        { en: 'In 1517 Selim I took Egypt, Mecca and Medina. So our sultan claims to be [[caliph|caliph]], leader of [[sunni|Sunni]] Islam. That unites us against Christian states and the Shi\'a Safavids.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Besides guns, what helped the sultans rule such a huge empire?' },
+        q: { en: 'Compared with kings in Europe, why could Ottoman nobles rarely challenge the sultan?' },
         choices: [
-          { ok: true, t: { en: 'Paid officials and ties to religious leaders' }, why: { en: 'Yes. A bureaucracy and an alliance with religion, like the qadi judges, were "political technologies" that held the empire together.' } },
-          { t: { en: 'Powerful nobles who ruled in their own name' }, why: { en: 'No. The Ottoman system was designed to limit nobles. Power was centralized in the sultan.' } },
-          { t: { en: 'One faith that every subject had to follow' }, why: { en: 'No. Christians and Jews lived in the empire and kept their faith if they stayed loyal.' } }
+          { ok: true, t: { en: 'The empire lacked a permanent landed aristocracy' }, why: { en: 'Yes. In Europe nobles owned huge lands and their people\'s loyalty. Ottoman nobles could not raise armies of their own.' } },
+          { t: { en: 'The sultan was the caliph of Sunni Islam' }, why: { en: 'The title helped unite the empire behind the sultan in war, but the key limit on nobles was that they held no permanent lands.' } },
+          { t: { en: 'Provincial governors owned the lands they managed' }, why: { en: 'No. Governors managed the sultan\'s lands for him. They did not own them.' } }
         ]
       }
     },
@@ -119,17 +121,18 @@ window.EPISODE = {
       x: 3, y: 15, name: { en: 'Master Hasan' }, role: { en: 'Cannon founder' },
       look: { skin: 2, hair: '#3a2a1a', shirt: '#5a3a2a', pants: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'I cast cannon for the sultan. [[gunpowder empire|Gunpowder]] weapons cost so much that only rulers can buy many of them.' },
+        { en: 'I cast cannon for the sultan. [[gunpowder empire|Gunpowder]] weapons cost so much that local nobles usually cannot afford them. Only rulers can buy many.' },
         { en: 'In 1453, Sultan Mehmet II\'s great cannon broke the walls of Constantinople. Cannon turn any noble\'s castle walls to rubble.' },
-        { en: 'Traders say a ruler named Babur used cannon and muskets to beat the Sultan of Delhi in 1526. He founded the Mughal Empire in India.' }
+        { en: 'Some say a Hungarian, Master Orban, built those guns. But skilled Turkish cannon-makers worked beside him, and Orban was killed when his own cannon exploded.' },
+        { en: 'In 1526 Babur\'s muskets and cannon beat the Sultan of Delhi at Panipat; he founded the Mughal Empire. In 1532 the Russians used them against the Khanate of Crimea.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'How did gunpowder change the balance between rulers and local nobles?' },
+        q: { en: 'Which effect of costly gunpowder weapons is most directly shown by the fall of Constantinople\'s walls?' },
         choices: [
-          { ok: true, t: { en: 'Rulers bought cannon that broke nobles\' walls' }, why: { en: 'Yes. Costly cannon gave rulers an edge that nobles could not match, so power moved to the center.' } },
-          { t: { en: 'Nobles bought more guns than any ruler could' }, why: { en: 'No. Gunpowder weapons were so expensive that local nobles usually could not afford them.' } },
-          { t: { en: 'Castles grew stronger and harder to capture' }, why: { en: 'No. Cannon reduced castle walls to rubble, so nobles could no longer hide behind them.' } }
+          { ok: true, t: { en: 'Walls no longer shielded those who defied a ruler' }, why: { en: 'Yes. Cannon reduced walls to rubble, so nobles and rebels could no longer hide behind them. Power moved to the center.' } },
+          { t: { en: 'Ottoman guns depended on European engineers alone' }, why: { en: 'No. That story is doubted now. Skilled Turkish cannon-makers worked beside Orban, and the Ottomans were masters of gunpowder.' } },
+          { t: { en: 'Local nobles could now afford their own cannon' }, why: { en: 'No. Gunpowder weapons were so expensive that local nobles usually could not afford them. Rulers could.' } }
         ]
       }
     },
@@ -137,17 +140,56 @@ window.EPISODE = {
       x: 25, y: 15, name: { en: 'Rivka' }, role: { en: 'Cloth merchant' },
       look: { skin: 0, hair: '#4a2a1a', shirt: '#2a7a6a', robe: true, style: 'long' },
       lines: [
-        { en: 'My family fled persecution in Europe and found the sultan\'s protection here. Some of our people even serve as officials.' },
-        { en: 'Christian and Jewish communities, called [[millet|millets]], run many of their own affairs here, if we pay taxes and stay loyal.' },
-        { en: 'Persian traders say the [[safavid|Safavid]] shahs, rulers since 1501, force their people to become [[shia|Shi\'a]] Muslims. Here we keep our faith.' }
+        { en: 'My family fled persecution in Europe and found the sultan\'s protection. Many Jewish refugees came here, and some now serve as officials in the government.' },
+        { en: 'Christian and Jewish communities, called [[millet|millets]], keep a level of self-government if we pay taxes and stay loyal. This diversity makes the empire strong.' },
+        { en: 'To the east, Shah Ismail I founded the [[safavid|Safavid]] Empire in 1501. His judges made conquered people become [[shia|Shi\'a]]. In Tabriz, up to 20,000 Sunnis were killed for resisting.' },
+        { en: 'We are Sunni; they are Shi\'a. Rivals for land, tied to rival branches of Islam, and both armed with guns, our two empires clash again and again.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with the Safavid Empire, how did the Ottomans treat religious minorities?' },
+        q: { en: 'Compared with the early Safavid Empire, how did the Ottoman Empire treat religious minorities?' },
         choices: [
-          { ok: true, t: { en: 'They let loyal minorities keep their faith' }, why: { en: 'Yes. Ottoman millets kept their faith and some self-rule. The Safavids required conversion to Shi\'a Islam.' } },
-          { t: { en: 'They forced everyone to become Shi\'a Muslims' }, why: { en: 'No. That was Safavid policy. The Ottomans were Sunni and let minorities govern many of their own affairs.' } },
-          { t: { en: 'They banned Jews and Christians from the land' }, why: { en: 'No. Christians and Jews lived in the empire, and Jewish refugees came seeking the sultan\'s protection.' } }
+          { ok: true, t: { en: 'Loyal minorities kept their faith and some self-rule' }, why: { en: 'Yes. Ottoman millets kept their faith and some self-rule. Ismail I\'s Safavids required conquered people to become Shi\'a.' } },
+          { t: { en: 'Minorities were required to accept the ruler\'s own faith' }, why: { en: 'No. That was Safavid policy under Ismail I. The Ottomans let loyal Christians and Jews keep their faith.' } },
+          { t: { en: 'Minorities were kept out of every government post' }, why: { en: 'No. Many Jewish refugees became Ottoman officials, and many in the ruling class were once enslaved.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 17, y: 5, icon: '📖',
+      name: { en: 'Gunpowder Empires' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Gunpowder Empires" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Historians William H. McNeill and Marshall G.S. Hodgson saw three vast Islamic empires rise at about the same time: the Ottoman, the Safavid and the Mughal. Looking for a common cause, they named them "gunpowder empires." Before guns, most Eurasian rulers made deals with local nobles, who governed parts of the kingdom in the ruler\'s name. But the nobles built castles and trained soldiers. Safe behind their walls, they could do what they wanted.' },
+        { en: 'Gunpowder changed this. Muskets and cannon were so expensive that only sultans, kings and emperors could pay for many. Cannon reduced castle walls to rubble. Ottoman Sultan Murad I built the janissary corps; Babur used muskets and cannon to defeat the Sultan of Delhi in 1526; Safavid Shah Abbas the Great (r. 1588–1629) gathered 12,000 musketeers and 500 cannon. The Mughal emperor Akbar forbade anyone but the emperor to own cannon.' },
+        { en: 'Yet recent historians say the label may mislead. Most armies still relied mainly on swords, spears and bows. These empires rose in the vacuum left by the Mongol collapse in the 1300s and used Mongol tools of rule. Their "political technologies" were ideas and ways of organizing an empire, not physical things: bureaucracies of paid officials, more loyal to the ruler than local nobles were, and alliances with religious leaders, like the Ottoman qadi judges.' }
+      ],
+      ask: {
+        stat: 'reg',
+        q: { en: 'Which piece of evidence from the reading best supports the claim that "gunpowder empires" is a misleading label?' },
+        choices: [
+          { ok: true, t: { en: 'Most armies still relied on swords, spears and bows' }, why: { en: 'Yes. If guns were only part of the fighting, then guns alone cannot explain the empires. Bureaucracy and religion mattered too.' } },
+          { t: { en: 'Only rulers could pay for large numbers of muskets and cannon' }, why: { en: 'No. That supports the label: costly guns gave rulers power over nobles.' } },
+          { t: { en: 'Akbar forbade anyone else to own cannon' }, why: { en: 'No. That also supports the label: rulers tried to keep guns for themselves.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 23, y: 10, icon: '📜',
+      name: { en: 'A Qing Emperor on Trade' }, role: { en: 'Primary source' },
+      src: { en: 'The Qianlong Emperor of Qing China, to the British trade envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' },
+      lines: [
+        { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders."' },
+        { en: '"There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' },
+        { en: 'Far to the east and two centuries after this market\'s day, the Qianlong Emperor (ruled 1735–1796) gave this answer to Lord Macartney, a British envoy who wanted more trade. The Qing were Manchus who took power from the Ming. By 1750 their China was peaceful, fairly prosperous, and larger than ever. The emperor was writing to a foreign trader, as ruler of the "Celestial Empire."' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'The emperor\'s point of view in this source most directly reflects...' },
+        choices: [
+          { ok: true, t: { en: 'confidence that his empire needed nothing from outside' }, why: { en: 'Yes. He claims China "lacks no product," so it has no need to trade for foreign goods.' } },
+          { t: { en: 'eagerness to open Chinese markets to British goods' }, why: { en: 'No. He tells the British envoy there is "no need to import" their goods.' } },
+          { t: { en: 'worry that the empire was too poor to feed all its people' }, why: { en: 'No. He says the empire has "all things in prolific abundance."' } }
         ]
       }
     }
@@ -245,57 +287,59 @@ window.EPISODE = {
     win: { en: 'The smoke clears over Istanbul. The page on expanding empires floats into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'Gunpowder weapons were so expensive that local nobles usually could not afford them. Only sultans, kings and emperors could pay for large numbers of muskets and cannon.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
-        q: { en: 'The excerpt best explains which development of the 1400s and 1500s?' },
-        choices: [{ en: 'Rulers gained power over local nobles' }, { en: 'Nobles built stronger castles to resist' }, { en: 'Peasants overthrew the sultans\' armies' }, { en: 'Trade with Europe came to a halt' }],
+        stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor of Qing China to Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
+        q: { en: 'Compared with the Qing view of trade in the excerpt, the Ottoman Empire of the 1500s...' },
+        choices: [{ en: 'controlled trade routes from Europe to the Indian Ocean' }, { en: 'closed its ports to keep out all foreign merchant ships' }, { en: 'had to buy its spices from Portuguese traders' }, { en: 'banned Persian poetry from the sultan\'s palace' }],
         answer: 0,
-        why: { en: 'Only rulers could afford many cannon, and cannon broke nobles\' walls. Power became more centralized in the ruler\'s hands.' }
+        why: { en: 'The emperor saw no need for foreign goods. The Ottomans grew rich as a crossroads: Indian Ocean spices came to Istanbul along routes they controlled.' }
       },
       {
-        stim: { text: { en: 'The Ottomans forced Christian families in the Balkans to give up their sons. The boys were converted to Islam and trained; the best became officials or janissaries.' }, src: { en: 'Adapted from "A Sublime Empire: Ottoman Rule on Land and Sea," World History Project' } },
-        q: { en: 'The Ottoman state used the system described above mainly to...' },
-        choices: [{ en: 'build soldiers and officials loyal to the sultan' }, { en: 'train Christian priests for the Balkan churches' }, { en: 'create a noble class with inherited lands' }, { en: 'pay for the navy that fought Venice and Spain' }],
+        stim: { text: { en: 'Safavid Shah Abbas the Great assembled a force of 12,000 musketeers and 500 cannon. The Mughal ruler Akbar forbade anyone but the emperor from owning cannon.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
+        q: { en: 'The actions described in the excerpt most directly reflect which goal shared by these rulers?' },
+        choices: [{ en: 'Making Shi\'a Islam the faith of every subject' }, { en: 'Keeping gunpowder weapons in rulers\' hands' }, { en: 'Defending their lands against Mongol invaders' }, { en: 'Arming local nobles to guard the frontiers' }],
+        answer: 1,
+        why: { en: 'Rulers monopolized costly guns. Cannon broke nobles\' walls, so holding the guns kept power at the center.' }
+      },
+      {
+        stim: { text: { en: 'These new "political technologies" weren\'t physical things. Instead, they were ideas and ways of organizing the empire that allowed a central government to rule a big area.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
+        q: { en: 'Which Ottoman practice is the best example of a "political technology" as described in the excerpt?' },
+        choices: [{ en: 'Casting giant cannon to break city walls' }, { en: 'Building fleets to challenge Venice and Spain' }, { en: 'Relying on paid officials and qadi judges' }, { en: 'Letting nobles pass their castles to their sons' }],
+        answer: 2,
+        why: { en: 'A bureaucracy and an alliance with religious judges are ways of organizing rule, not things. Cannon and ships are physical; Ottoman land went back to the sultan.' }
+      },
+      {
+        stim: { text: { en: 'The Ottomans forced Christian families in the Balkans to give up their sons. The boys were converted to Islam and trained. Land granted to them for service returned to the sultan when they died.' }, src: { en: 'Adapted from "A Sublime Empire: Ottoman Rule on Land and Sea," World History Project' } },
+        q: { en: 'The system described was most directly intended to...' },
+        choices: [{ en: 'spread Christianity among Balkan villagers' }, { en: 'create a class of nobles with inherited estates' }, { en: 'replace the qadi judges with trained soldiers' }, { en: 'keep a hereditary nobility from rising' }],
+        answer: 3,
+        why: { en: 'The devshirme made servants loyal only to the sultan, and their land could not pass to their children, so no hereditary nobility could challenge him.' }
+      },
+      {
+        stim: { title: { en: 'Two rival empires' }, rows: [[{ en: 'Feature' }, { en: 'Ottoman Empire' }, { en: 'Safavid Empire' }], [{ en: 'Branch of Islam' }, { en: 'Sunni' }, { en: 'Shi\'a' }], [{ en: 'Rise' }, { en: 'From 1299, Osman\'s tribe' }, { en: 'From 1501, Ismail I' }], [{ en: 'Religious minorities' }, { en: 'Millets keep their faith if loyal' }, { en: 'Required to become Shi\'a' }]], src: { en: 'From "A Sublime Empire" and "Gunpowder Empires," World History Project' } },
+        q: { en: 'Which of the following best explains the frequent wars between these two empires?' },
+        choices: [{ en: 'Rivalry for land, joined to rival branches of Islam' }, { en: 'A shared plan to restore the Mongol Empire' }, { en: 'Safavid efforts to free the Christians of the Balkans' }, { en: 'A dispute over who would rule Mughal India' }],
         answer: 0,
-        why: { en: 'The devshirme gave the sultan servants with no noble family to turn to. Their lands went back to him, not to their children.' }
+        why: { en: 'The two states were rivals for territory and were tied to rival branches of Islam, Sunni and Shi\'a. Both had gunpowder weapons, so they clashed again and again.' }
+      },
+      {
+        stim: { text: { en: 'Each of these empires emerged in a vacuum left behind by the fourteenth-century collapse of the Mongol Empire. But they also relied on the tools of governance developed by the Mongols.' }, src: { en: 'Adapted from "Gunpowder Empires," World History Project' } },
+        q: { en: 'Which of the following was a continuity from the Mongol Empire to the empires that followed it?' },
+        choices: [{ en: 'Rule of all Eurasia by a single khan' }, { en: 'Bureaucracies of officials paid to rule' }, { en: 'Reliance on nobles safe in their castles' }, { en: 'A shared Shi\'a faith across the empires' }],
+        answer: 1,
+        why: { en: 'The new empires replaced the Mongols but kept Mongol tools of rule, starting with bureaucracy: officials paid by the central government.' }
       },
       {
         stim: { title: { en: 'Ottoman expansion' }, rows: [[{ en: 'Year' }, { en: 'Event' }], [{ en: '1453' }, { en: 'Mehmet II takes Constantinople' }], [{ en: '1517' }, { en: 'Selim I conquers Egypt, Mecca and Medina' }], [{ en: '1520–1566' }, { en: 'Suleiman conquers Mesopotamia and besieges Vienna' }]], src: { en: 'From "A Sublime Empire: Ottoman Rule on Land and Sea," World History Project' } },
-        q: { en: 'Which event in the table most strengthened the sultan\'s claim to be caliph?' },
-        choices: [{ en: 'Taking Mecca and Medina in 1517' }, { en: 'Taking Constantinople in 1453' }, { en: 'Besieging the Habsburg capital, Vienna' }, { en: 'Conquering Mesopotamia under Suleiman' }],
-        answer: 0,
-        why: { en: 'Holding the holy cities placed the sultan at the heart of Sunni Islam and backed his claim to be caliph.' }
+        q: { en: 'The 1517 conquest in the table best supports the claim that the sultan\'s power was...' },
+        choices: [{ en: 'inherited from the Byzantine emperors' }, { en: 'shared with Christian and Jewish millets' }, { en: 'religious as well as political' }, { en: 'limited by the Safavid shahs of Persia' }],
+        answer: 2,
+        why: { en: 'Holding Mecca and Medina backed the sultan\'s claim to be caliph, leader of Sunni Islam. His rule was spiritual as well as political.' }
       },
       {
-        stim: { text: { en: 'The many Christian and Jewish communities in the empire were permitted to maintain a level of self-governance if they paid taxes and remained loyal to the sultan.' }, src: { en: 'Adapted from "A Sublime Empire: Ottoman Rule on Land and Sea," World History Project' } },
-        q: { en: 'Compared with the Safavid Empire, the Ottoman policy above shows that...' },
-        choices: [{ en: 'the Ottomans allowed more religious diversity' }, { en: 'both empires forced conversion to Shi\'a Islam' }, { en: 'the Safavids gave minorities more self-rule' }, { en: 'neither empire had any religious minorities' }],
-        answer: 0,
-        why: { en: 'Ottoman millets kept their faith if loyal. The Safavid shahs required their people to become Shi\'a Muslims.' }
-      },
-      {
-        q: { en: 'Which best explains why the Ottoman, Safavid and Mughal empires all rose in the same era?' },
-        choices: [{ en: 'They filled the gap left by the Mongol collapse' }, { en: 'They shared one sultan who ruled all three lands' }, { en: 'They united to drive the Portuguese from Asia' }, { en: 'European kings helped them conquer their lands' }],
-        answer: 0,
-        why: { en: 'These empires grew in the space left when the Mongol Empire collapsed, and gunpowder helped them expand.' }
-      },
-      {
-        q: { en: 'Some historians say the label "gunpowder empires" can mislead. Which best explains why?' },
-        choices: [{ en: 'Officials and faith also held them together' }, { en: 'These empires never used cannon or muskets' }, { en: 'Gunpowder was invented in Europe after 1750' }, { en: 'Only small kingdoms used gunpowder weapons' }],
-        answer: 0,
-        why: { en: 'Guns mattered, but bureaucracies of paid officials and alliances with religious leaders were just as important.' }
-      },
-      {
-        stim: { text: { en: 'Merchants from the Indian Ocean carried valuable spices and luxury goods to the markets of Istanbul.' }, src: { en: 'Adapted from "A Sublime Empire: Ottoman Rule on Land and Sea," World History Project' } },
-        q: { en: 'Which best explains the trade described in the excerpt?' },
-        choices: [{ en: 'Ottomans held the Europe–Indian Ocean routes' }, { en: 'The Portuguese ruled the markets of Istanbul' }, { en: 'Chinese treasure fleets sailed to Istanbul' }, { en: 'The sultans banned all trade with outsiders' }],
-        answer: 0,
-        why: { en: 'With land on three continents, the Ottomans controlled the trade routes linking Europe to the Indian Ocean.' }
-      },
-      {
-        q: { en: 'Mehmet II at Constantinople (1453) and Babur in India (1526) were similar because both...' },
-        choices: [{ en: 'used cannon to defeat their rivals' }, { en: 'were Christian kings from Europe' }, { en: 'founded empires on the Pacific coast' }, { en: 'refused to use gunpowder weapons' }],
-        answer: 0,
-        why: { en: 'Mehmet II\'s cannon broke Constantinople\'s walls; Babur\'s cannon and muskets beat the Sultan of Delhi and began the Mughal Empire.' }
+        q: { en: 'Compared with Mehmet II\'s capture of Constantinople in 1453, Babur\'s victory over the Sultan of Delhi in 1526 was similar because both rulers...' },
+        choices: [{ en: 'ended a Christian empire in the Mediterranean' }, { en: 'used gunpowder weapons to build an empire' }, { en: 'were Safavid shahs who ruled from Persia' }, { en: 'won by hiring a Hungarian cannon-maker' }],
+        answer: 1,
+        why: { en: 'Mehmet II\'s cannon broke Constantinople\'s walls; Babur\'s muskets and cannon beat the Sultan of Delhi and founded the Mughal Empire.' }
       }
     ]
   },
