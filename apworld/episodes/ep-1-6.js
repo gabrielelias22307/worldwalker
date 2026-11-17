@@ -16,7 +16,7 @@ window.EPISODE = {
   place: { en: 'A manor near Paris, Kingdom of France, 1300' },
   intro: [
     { en: 'The Grump blurred the page on Europe. This manor near Paris is forgetting who owns the land, who rules and what it believes!' },
-    { en: 'Talk to the 4 people here, help a baker from Paris, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a baker from Paris, then wake the time stone.' }
   ],
   scenes: {
     at: [2.35, 48.85],
@@ -84,17 +84,18 @@ window.EPISODE = {
       x: 10, y: 14, name: { en: 'Jeanne' }, role: { en: 'Peasant farmer' },
       look: { skin: 2, hair: '#5a3a1e', shirt: '#8a6a3a', pants: '#4a3a2a', style: 'bun' },
       lines: [
-        { en: 'My family works fields that belong to the lord of the [[manor|manor]]. Most of us here are [[peasant|peasants]]: farmers who do not control their own land.' },
-        { en: 'In return for the land, we give the lord part of our harvest. We must grind grain at his mill, and we cannot leave the village without permission.' },
-        { en: 'Some families are bound to lord and land even more tightly. They are [[serf|serfs]], and many are very poor. People call this the [[manorial system|manorial system]].' }
+        { en: 'My family works fields owned by the lord of the [[manor|manor]]. Perhaps 80 to 90 percent of Europeans are farmers like us, and most do not own their land.' },
+        { en: 'For the right to farm, we give the lord part of our harvest, grind our grain at his mill, and never leave the village without permission. We are [[peasant|peasants]].' },
+        { en: 'Some households are bound to lord and land even more tightly, by law and in body. They are [[serf|serfs]], and many are deeply poor. This is the [[manorial system|manorial system]].' },
+        { en: 'Even in warm years, crops fail and famine comes. Few families grow enough to feed themselves. The only sure way to make more food is to farm more land.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'Why did peasants like Jeanne accept so many duties to the lord of the manor?' },
+        q: { en: 'Which of the following best explains why land was the most valuable resource in medieval Europe?' },
         choices: [
-          { ok: true, t: { en: 'The lord owned the land they farmed' }, why: { en: 'Yes. Peasants got access to the lord\'s fields in exchange for giving up rights and taking on duties.' } },
-          { t: { en: 'The king paid them wages to obey' }, why: { en: 'No. The king paid no wages. Peasants worked the lord\'s land and owed him part of the harvest.' } },
-          { t: { en: 'They grew rich selling grain abroad' }, why: { en: 'No. Few families grew enough to feed themselves, let alone sell much at market.' } }
+          { ok: true, t: { en: 'More land was the only sure way to more food' }, why: { en: 'Yes. Farming was not efficient, so working more land was the only reliable way to grow more. As people multiplied, land grew scarce.' } },
+          { t: { en: 'Lords sold their land to the king for silver' }, why: { en: 'No. Lords did not sell land to kings. Kings granted land to lords in return for loyalty and military support.' } },
+          { t: { en: 'Grain sold abroad paid for spices from Asia' }, why: { en: 'No. Few families grew enough to feed themselves, let alone sell to the market. Land mattered because it meant food.' } }
         ]
       }
     },
@@ -102,17 +103,18 @@ window.EPISODE = {
       x: 5, y: 6, name: { en: 'Sir Raoul' }, role: { en: 'Knight' },
       look: { skin: 1, hair: '#2b1d14', shirt: '#6a7a8a', pants: '#3a3a3a', style: 'short' },
       lines: [
-        { en: 'The king granted a great lord this province. In return, the lord promised the king military support and good government. This is [[feudalism|feudalism]].' },
-        { en: 'That lord granted this village to me, and I swore to support him. Everyone owes the person above and takes from the person below.' },
-        { en: 'So power is [[devolved|devolved]]. The King of France directly controls only a few provinces near Paris. Land is what we all fight over.' }
+        { en: 'The king granted a great lord this province: its taxes, land and laws. In return, the lord promised military support and good government. This is [[feudalism|feudalism]].' },
+        { en: 'That lord granted this village to me, and I swore to support him. The next village went to a monastery that prays for his soul. Each grant differs.' },
+        { en: 'So power is [[devolved|devolved]]. The King of France directly controls only a few provinces near Paris. In Germany, one state broke into hundreds of small units under a weak emperor.' },
+        { en: 'Now great lords demand a share of power. With church leaders, they sit in bodies like the Parliament in England, the Estates in France and the Cortes in Spain.' }
       ],
       ask: {
         stat: 'reg',
         q: { en: 'Why did local lords, not the king, hold most power in France around 1300?' },
         choices: [
-          { ok: true, t: { en: 'Kings traded land for military support' }, why: { en: 'Yes. Each grant gave a lord the land, taxes and laws of an area in return for loyalty and soldiers.' } },
-          { t: { en: 'The pope chose every lord in France' }, why: { en: 'No. The pope led the church\'s beliefs. Lords got their power through feudal grants of land.' } },
-          { t: { en: 'Peasants voted for their own lords' }, why: { en: 'No. Peasants had no vote. Power rested on land grants and, in the end, on force.' } }
+          { ok: true, t: { en: 'Kings traded land for military support' }, why: { en: 'Yes. Each grant gave a lord the taxes, land and laws of a province in return for loyalty and soldiers.' } },
+          { t: { en: 'The pope appointed every French lord' }, why: { en: 'No. The pope led the church\'s beliefs. Lords got their power through feudal grants of land.' } },
+          { t: { en: 'The Estates had stripped the king\'s power' }, why: { en: 'No. Bodies like the Estates sought to share power with the monarch, not remove it. Feudal grants made lords strong.' } }
         ]
       }
     },
@@ -120,17 +122,18 @@ window.EPISODE = {
       x: 23, y: 5, name: { en: 'Brother Anselm' }, role: { en: 'Monk' },
       look: { skin: 3, hair: '#1b1410', shirt: '#5a4632', robe: true, style: 'short' },
       lines: [
-        { en: 'Our church is part of [[latin christendom|Latin Christendom]]. We pray in Latin, our priests do not marry, and the pope, not a king, decides what we believe.' },
-        { en: 'In the east, [[byzantium|Byzantium]] stayed one unified empire. They pray in Greek, their priests may marry, and the emperor stands at the center of state and church.' },
-        { en: 'The two churches officially broke apart in 1054, in the [[great schism|Great Schism]]. Now there are Roman Catholics in the west and Eastern Orthodox in the east.' }
+        { en: 'Our church is part of [[latin christendom|Latin Christendom]]. We pray in Latin, our priests do not marry, and we use unleavened bread. Doctrine is the pope\'s job, not a king\'s.' },
+        { en: 'In the east, [[byzantium|Byzantium]] stayed one unified empire. They pray in Greek, their priests marry, and they use leavened bread. The emperor stands at the center of state and church.' },
+        { en: 'In the 700s, the Byzantine emperor Leo III banned images of Christ and Mary, and icons were smashed. This iconoclasm controversy deepened the tension between east and west.' },
+        { en: 'Then each side closed the other\'s churches, and pope and patriarch excommunicated each other. In 1054 the [[great schism|Great Schism]] split them: Roman Catholic and Eastern Orthodox.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with Latin Christendom, how was Byzantium different?' },
+        q: { en: 'Compared with Latin Christendom, Byzantium differed most in that...' },
         choices: [
-          { ok: true, t: { en: 'It stayed one empire under an emperor' }, why: { en: 'Right. Byzantium stayed unified, and its emperor led both state and church. The West was split into many states.' } },
-          { t: { en: 'It broke into hundreds of small states' }, why: { en: 'No. That describes the West, especially Germany. Byzantium remained one unified empire.' } },
-          { t: { en: 'Its pope crowned kings and set beliefs' }, why: { en: 'No. That was the pope in the Latin West. In Byzantium the emperor was at the center of church and state.' } }
+          { ok: true, t: { en: 'its emperor led both state and church' }, why: { en: 'Right. Byzantium stayed one empire, and its emperor stood at the center of state and church. In the West, doctrine was the pope\'s job.' } },
+          { t: { en: 'its pope crowned the western emperors' }, why: { en: 'No. That was the pope in Rome, in the Latin West. Byzantium had a patriarch, and the emperor stood over church and state.' } },
+          { t: { en: 'it split into hundreds of small states' }, why: { en: 'No. That describes the West, especially Germany. Byzantium remained one unified empire.' } }
         ]
       }
     },
@@ -138,17 +141,58 @@ window.EPISODE = {
       x: 21, y: 19, name: { en: 'Agnès' }, role: { en: 'Pilgrim' },
       look: { skin: 4, hair: '#1b1410', shirt: '#7a2a3a', pants: '#3a2a2a', hat: '#6a4a2a', style: 'long' },
       lines: [
-        { en: 'I walked many days to pray at a saint\'s shrine. Its [[relic|relics]], remains tied to the saint\'s life, draw pilgrims who seek salvation.' },
-        { en: 'The same religious passion sent armies on the [[crusades|Crusades]], to take Jerusalem from the Muslims. Thousands of ordinary people walked over 2,000 miles.' },
-        { en: 'Crusaders also attacked Jews, Muslims and other minorities. On the Fourth Crusade, Latin crusaders even sacked Constantinople, a Christian city.' }
+        { en: 'I walked many days to pray at a saint\'s shrine. Its [[relic|relics]], remains tied to the saint\'s life, draw pilgrims who seek personal salvation.' },
+        { en: 'About 40 years after the schism, Byzantium asked the Catholic Church for help against Muslims threatening Constantinople. Popes, patriarchs, emperors and kings promoted the [[crusades|Crusades]].' },
+        { en: 'Thousands of ordinary people walked over 2,000 miles to reclaim Jerusalem: a military pilgrimage driven by religious enthusiasm and the promise of new land.' },
+        { en: 'The Crusades united Latin Christendom and mended the rift with Byzantium for a time. But crusaders attacked Jews and Muslims, and the Fourth Crusade sacked Christian Constantinople.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'Which best explains why ordinary people joined the Crusades?' },
         choices: [
           { ok: true, t: { en: 'Religious passion and hope of new land' }, why: { en: 'Yes. The Crusades were military pilgrimages, driven by religious enthusiasm and the promise of new land.' } },
-          { t: { en: 'The Byzantine emperor paid every soldier' }, why: { en: 'No. Byzantium asked for help, but crusaders went out of faith and hope of land, not pay.' } },
-          { t: { en: 'Kings forced all serfs to leave the manor' }, why: { en: 'No. Serfs could not leave without permission. Crusaders were moved by religious enthusiasm.' } }
+          { t: { en: 'Wages paid by the Byzantine emperor' }, why: { en: 'No. Byzantium asked for help, but crusaders went out of faith and hope of land, not for pay.' } },
+          { t: { en: 'Orders to defend Paris from the Muslims' }, why: { en: 'No. The goal was far away: to reclaim the Holy Land, Jerusalem, from the Muslims.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 29, y: 4, icon: '📜',
+      name: { en: 'Words from Christendom' }, role: { en: 'Primary source' },
+      src: { en: 'Roman name for the Mediterranean; Pope Leo III\'s title for Charlemagne (800 CE); crusaders\' name for their targets (1100s–1200s); all quoted in "Christendom" by Jesse Lynch, World History Project' },
+      lines: [
+        { en: 'Three phrases from the past, as the reading "Christendom" quotes them. First, the Romans called the Mediterranean "mare nostrum," meaning "our sea." Through its networks of exchange, the Roman way of life spread. Few expected the empire to split into hostile parts.' },
+        { en: 'Second: on Christmas Day in the year 800 CE, Pope Leo III crowned the Carolingian ruler Charlemagne "emperor of the Romans." The crowning affirmed the pope\'s authority to crown emperors and declared a firm separation from Byzantine control.' },
+        { en: 'Third: by the 1100s, peaceful pilgrimages had turned into armed crusades against "enemies of Christ." These enemies often included Jews, Muslims, and even members of the Byzantine church.' },
+        { en: 'Who used these words, and why? Two Christian successors claimed Rome\'s legacy. Byzantines proudly called themselves Romans, and their emperor led state and church. In the Latin West, doctrine was the pope\'s job, so a pope naming an "emperor of the Romans" was a claim of power. Always ask: who spoke, for whom, and why?' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: what did Pope Leo III most likely mean to show by crowning Charlemagne "emperor of the Romans"?' },
+        choices: [
+          { ok: true, t: { en: 'Popes held the authority to crown emperors' }, why: { en: 'Yes. The crowning affirmed papal authority to crown emperors and declared a firm separation from Byzantine control.' } },
+          { t: { en: 'The Byzantine emperor now ruled the West' }, why: { en: 'No. It was the opposite: the crowning declared the West\'s separation from Byzantine control.' } },
+          { t: { en: 'Western kings would now set church doctrine' }, why: { en: 'No. In the Latin West, Christian rulers did not set doctrine. That was the pope\'s job, and the crowning showed his authority.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 3, y: 5, icon: '📖',
+      name: { en: 'Europe 1200–1450' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Europe 1200–1450" by Jack Bouchard, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'From the 900s to the 1300s, European communities grew. Populations rose rapidly, commerce grew in scale and complexity, and cities multiplied. Warm, stable weather, the Medieval Climate Anomaly, made farming easier and travel safer.' },
+        { en: 'In the 1300s, everything began to change. After crop failures and cattle epidemics, the Black Death struck in the late 1340s. Between 1300 and 1400, the population may have fallen by a third to half. New wars broke out too, like the Hundred Years\' War in France.' },
+        { en: 'Perhaps 80 to 90 percent of Europeans were farmers, yet most did not own their land. The lord of the manor owned it and claimed part of the village\'s labor and produce. Farming was not efficient: the only reliable way to make more food was to work more land. As the population grew, land became by far the most valuable resource. Control of land dominated politics for centuries.' },
+        { en: 'Just as the manorial system tied peasants to the land, feudalism organized the relationship between local leaders and kings. Power was devolved, partly because communication and travel were slow, so locals could more easily gather resources and answer threats. Kings were often weak. As local lords grew stronger, they demanded a share of power in bodies like the Parliament in England, the Estates in France and the Cortes in Spain.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Which of the following best explains why political power in Europe was devolved to local authorities?' },
+        choices: [
+          { ok: true, t: { en: 'Slow travel let locals act faster than kings' }, why: { en: 'Yes. With slow, uncertain communication, local lords could more easily gather resources and answer security threats.' } },
+          { t: { en: 'The Black Death killed most kings and nobles' }, why: { en: 'No. Power was already devolved by 1200, long before the plague of the late 1340s.' } },
+          { t: { en: 'The pope forbade kings to rule provinces' }, why: { en: 'No. In the Latin West the pope set belief, not who ruled provinces. Devolved power fit a time of slow, uncertain travel.' } }
         ]
       }
     }
@@ -246,57 +290,59 @@ window.EPISODE = {
     win: { en: 'The frost melts from the fields. The page on Europe floats down into your hands!' },
     questions: [
       {
+        stim: { text: { en: 'On Christmas Day in the year 800 CE, Pope Leo III crowned the Carolingian ruler Charlemagne "emperor of the Romans."' }, src: { en: 'Quoted in "Christendom," World History Project' } },
+        q: { en: 'The pope\'s choice of title in the excerpt most directly reflects...' },
+        choices: [{ en: 'a claim of papal authority apart from Byzantium' }, { en: 'the Byzantine emperor\'s rule over state and church' }, { en: 'a feudal grant of land in return for loyalty' }, { en: 'the excommunications that split the church in 1054' }],
+        answer: 0,
+        why: { en: 'Crowning Charlemagne "emperor of the Romans" affirmed the pope\'s authority to crown emperors and declared a firm separation from Byzantine control.' }
+      },
+      {
         stim: { text: { en: 'Peasants might be required to give a portion of their harvest to the lord, or to use the lord\'s flour mill, or be prevented from leaving the village without permission.' }, src: { en: 'Adapted from "Europe 1200–1450," World History Project' } },
-        q: { en: 'The obligations in the excerpt are best understood as part of...' },
-        choices: [{ en: 'the manorial system' }, { en: 'the Byzantine church' }, { en: 'the civil service exams' }, { en: 'the Great Schism' }],
+        q: { en: 'The obligations in the excerpt most directly reflect which of the following?' },
+        choices: [{ en: 'The manorial system tying peasants to land' }, { en: 'Feudal bonds between kings and great lords' }, { en: 'Deliberative bodies sharing power with kings' }, { en: 'Byzantine control of the church by emperors' }],
         answer: 0,
-        why: { en: 'Peasants farmed land owned by the lord of the manor and owed him part of the harvest, use of his mill and obedience.' }
+        why: { en: 'The manorial system tied peasants to the lord\'s land. Feudalism, by contrast, organized the relationship between local leaders and kings.' }
       },
       {
-        stim: { text: { en: 'A king might grant a powerful lord authority over a province. The lord gained its tax, land and laws; the king received promises of military support and good governance.' }, src: { en: 'Adapted from "Europe 1200–1450," World History Project' } },
-        q: { en: 'The arrangement in the excerpt shows that political power in Europe was...' },
-        choices: [{ en: 'decentralized, held by local lords' }, { en: 'centralized in one strong emperor' }, { en: 'given out by exams on old books' }, { en: 'held only by town merchants' }],
+        stim: { text: { en: 'A king might grant a powerful lord authority over a province. The lord gained control of its tax, land and laws; the king received promises of military support. The lord would then grant parts of the province to his followers in the same manner.' }, src: { en: 'Adapted from "Europe 1200–1450," World History Project' } },
+        q: { en: 'The process in the excerpt best supports the claim that political power in Europe was...' },
+        choices: [{ en: 'devolved to many local authorities' }, { en: 'centralized under the King of France' }, { en: 'controlled by the pope through monks' }, { en: 'shared equally with peasant villages' }],
         answer: 0,
-        why: { en: 'Under feudalism, kings handed power down to lords, and lords to knights and monasteries. Power was devolved and fragmented.' }
+        why: { en: 'Each grant passed taxes, land and laws downward, so power was devolved and fragmented. The King of France directly ruled only a few provinces near Paris.' }
       },
       {
-        q: { en: 'Which statement best describes the King of France around 1300?' },
-        choices: [{ en: 'He directly ruled only lands near Paris' }, { en: 'He chose the pope and set church beliefs' }, { en: 'He owned all land and paid every lord' }, { en: 'He ruled all of Europe north of the Alps' }],
+        q: { en: 'Which of the following best explains the rise of bodies such as the Parliament in England and the Cortes in Spain?' },
+        choices: [{ en: 'Stronger local lords demanded a share of power' }, { en: 'Kings created them to govern the Holy Land' }, { en: 'The pope ordered kings to obey their clergy' }, { en: 'Peasants won the right to elect their lords' }],
         answer: 0,
-        why: { en: 'Local lords held the land, taxes and laws of most provinces. The king directly controlled only a few provinces near Paris.' }
+        why: { en: 'As local lords grew more powerful, they demanded political participation. Elites and church leaders formed bodies to share power with the monarch.' }
       },
       {
         stim: { title: { en: 'Europe\'s climate (as scientists describe it)' }, rows: [[{ en: 'Period' }, { en: 'Weather' }], [{ en: 'Medieval Climate Anomaly (800s to early 1300s)' }, { en: 'warm and stable' }], [{ en: 'Little Ice Age (firmly by the 1400s)' }, { en: 'cold, wet and unstable' }]], src: { en: 'From "Europe 1200–1450," World History Project' } },
-        q: { en: 'Which development is best explained by the change shown in the table?' },
-        choices: [{ en: 'Crop failures and crisis in the 1300s' }, { en: 'The Great Schism of the churches in 1054' }, { en: 'Faster growth of farms and villages' }, { en: 'The first pilgrimages to saints\' shrines' }],
+        q: { en: 'The change shown in the table best helps explain which shift in European history?' },
+        choices: [{ en: 'From centuries of growth to crisis in the 1300s' }, { en: 'From one Christian church to the schism of 1054' }, { en: 'From devolved power to strong central kings' }, { en: 'From subsistence farming to selling at market' }],
         answer: 0,
-        why: { en: 'Warm, stable weather helped Europe grow. When the climate turned cold and wet in the 1300s, crops failed and crisis followed.' }
+        why: { en: 'Warm, stable weather helped populations and cities grow. When the climate turned cold and wet in the 1300s, crops failed and crisis followed.' }
       },
       {
         stim: { text: { en: 'The population of European communities may have fallen by a third to half between 1300 and 1400.' }, src: { en: 'Adapted from "Europe 1200–1450," World History Project' } },
-        q: { en: 'Which best explains the change described above?' },
-        choices: [{ en: 'Waves of plague from the late 1340s' }, { en: 'Crusaders leaving for the Holy Land' }, { en: 'Warmer weather that ruined harvests' }, { en: 'Lords freeing serfs from the land' }],
+        q: { en: 'Which of the following best explains the change described in the excerpt?' },
+        choices: [{ en: 'Waves of bubonic plague from the late 1340s' }, { en: 'Battles of the Hundred Years\' War in France' }, { en: 'Crusaders who walked 2,000 miles to Jerusalem' }, { en: 'Warm weather of the Medieval Climate Anomaly' }],
         answer: 0,
-        why: { en: 'The Black Death, bubonic plague, swept Europe in waves from the late 1340s, reversing centuries of population growth.' }
+        why: { en: 'After crop failures and cattle epidemics, the Black Death (bubonic plague) swept Europe in waves from the late 1340s. The Hundred Years\' War was real, but it was in France, not all of Europe.' }
       },
       {
-        q: { en: 'Which statement best compares Byzantium with Latin Christendom around 1200?' },
-        choices: [{ en: 'Byzantium was unified; the West was divided' }, { en: 'The West was unified; Byzantium was divided' }, { en: 'Both prayed in Greek and let priests marry' }, { en: 'Both were led in belief by the pope in Rome' }],
+        stim: { title: { en: 'Two Christian communities' }, rows: [[{ en: 'Feature' }, { en: 'Latin Christendom' }, { en: 'Byzantium' }], [{ en: 'Language of the church' }, { en: 'Latin' }, { en: 'Greek' }], [{ en: 'Priests' }, { en: 'do not marry' }, { en: 'may marry' }], [{ en: 'Bread used in worship' }, { en: 'unleavened' }, { en: 'leavened' }], [{ en: 'At the center of doctrine' }, { en: 'the pope' }, { en: 'the emperor' }]], src: { en: 'From "Christendom," World History Project' } },
+        q: { en: 'Differences like those in the table, deepened by the iconoclasm controversy, most directly led to...' },
+        choices: [{ en: 'the Great Schism of 1054' }, { en: 'the Fourth Crusade\'s sack of Constantinople' }, { en: 'the crowning of Charlemagne in 800' }, { en: 'the rise of feudalism in France' }],
         answer: 0,
-        why: { en: 'Byzantium stayed one empire with its emperor over state and church. The Latin West was split into many states.' }
+        why: { en: 'Tension grew until each side closed the other\'s churches and pope and patriarch excommunicated each other. In 1054 they split into Roman Catholic and Eastern Orthodox.' }
       },
       {
-        stim: { text: { en: 'The pope excommunicated the patriarch from the church, and the patriarch did the same to the pope. In 1054 the two sides officially broke apart.' }, src: { en: 'Adapted from "Christendom," World History Project' } },
-        q: { en: 'The split described in the excerpt led to...' },
-        choices: [{ en: 'separate Catholic and Orthodox churches' }, { en: 'one church led by the Byzantine emperor' }, { en: 'the end of Christianity in western Europe' }, { en: 'the conversion of Byzantium to Islam' }],
+        stim: { text: { en: 'This campaign was remarkably successful in uniting Latin Christendom and even mending the rift between eastern and western Christianity for a time, but the truce didn\'t last very long. By the fourth Crusade, Latin crusaders sacked the Christian city of Constantinople.' }, src: { en: 'Adapted from "Christendom," World History Project' } },
+        q: { en: 'The excerpt best supports which claim about the Crusades?' },
+        choices: [{ en: 'They united the West but did not heal the schism' }, { en: 'They ended the Great Schism and joined the churches' }, { en: 'They were planned by Byzantium to conquer Rome' }, { en: 'They turned Latin Christians against the pope' }],
         answer: 0,
-        why: { en: 'The Great Schism of 1054 created two Christian churches: Roman Catholic in the west and Eastern Orthodox in the east.' }
-      },
-      {
-        q: { en: 'Which statement best describes an effect of the Crusades?' },
-        choices: [{ en: 'Latin Christians united, but minorities suffered' }, { en: 'Jerusalem became the capital of France for good' }, { en: 'Jews and Muslims won equal rights across Europe' }, { en: 'East and West joined as one church forever' }],
-        answer: 0,
-        why: { en: 'The Crusades united Latin Christendom against a common enemy, but crusaders also attacked Jews, Muslims and even Christian Constantinople.' }
+        why: { en: 'The Crusades united Latin Christendom and mended the rift only for a time. The Fourth Crusade\'s sack of Constantinople showed the split remained.' }
       }
     ]
   },
