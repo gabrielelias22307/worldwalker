@@ -7,7 +7,7 @@
    "Dar al-Islam 1200–1450" (Bennett Sherry), "South and Southeast Asia 1200–1450" (Merry Wiesner-Hanks),
    "State and Religion in Afro-Eurasia, c. 1200–1450" (Trevor Getz), "The Americas 1200–1450" (William H. Beezley),
    "Africa 1200–1450" (Trevor Getz), "States and Empires of West Africa" (Trevor R. Getz), "Europe 1200–1450"
-   (Jack Bouchard); scenes.next from "Archipelago of Trade" (Unit 2). World History Project content is CC BY-NC 4.0.
+   (Jack Bouchard), "Confucianism" (Eman M. Elshaikh: the Analects passages on the reading stand); scenes.next from "Archipelago of Trade" (Unit 2). World History Project content is CC BY-NC 4.0.
    Facts here come from those readings. English only, AP level. */
 window.EPISODE = {
   id: '1.7',
@@ -19,7 +19,7 @@ window.EPISODE = {
   place: { en: 'Samarkand, Timur\'s empire, 1400' },
   intro: [
     { en: 'The Grump smudged the page that compares the world\'s states. In Samarkand, travelers are forgetting how their rulers hold power!' },
-    { en: 'Talk to the 4 travelers, help a merchant from Delhi, then wake the time stone.' }
+    { en: 'Talk to the 4 travelers, read the 2 sources on the stands, help a merchant from Delhi, then wake the time stone.' }
   ],
   scenes: {
     at: [66.97, 39.65],
@@ -88,17 +88,18 @@ window.EPISODE = {
       x: 8, y: 4, name: { en: 'Judge Hamid' }, role: { en: 'Qadi from Persia' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#2a6a5a', robe: true, hat: '#e8e2d0', style: 'short' },
       lines: [
-        { en: 'I am a [[qadi|qadi]], a judge of Islamic law. I keep order for a sultan, and in return rulers fund our schools.' },
-        { en: 'Once one [[caliphate|caliphate]] ruled most of [[dar al-islam|Dar al-Islam]]. By 1200 that unity was gone, and power was split among many states.' },
-        { en: 'Yet Ibn Battuta of Morocco felt at home from Mali to India, while Marco Polo of Venice was a stranger everywhere. Arabic and shared beliefs tied our world together.' }
+        { en: 'I am a [[qadi|qadi]], a judge of Islamic law. Sunni and Shi\'a scholars serve sultans as judges and keep order; in return, rulers fund our schools.' },
+        { en: 'The Abbasid [[caliphate|Caliphate]] (750–1258) once ruled from Baghdad. It declined after 900, and in 1258 the Mongols sacked Baghdad and killed the last caliph.' },
+        { en: 'Yet between 1000 and 1500 [[dar al-islam|Dar al-Islam]] nearly doubled in size, reaching sub-Saharan Africa, the East African coast, India and Southeast Asia.' },
+        { en: 'Ibn Battuta of Morocco felt at home from Mali to India, and even worked as a judge there. Marco Polo of Venice was a stranger everywhere. Arabic tied us together.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'How did Dar al-Islam in 1200–1450 compare with the age of the early caliphates?' },
+        q: { en: 'How did Dar al-Islam in 1200–1450 compare with the age of the Abbasid Caliphate?' },
         choices: [
-          { ok: true, t: { en: 'Divided politically, but united by culture' }, why: { en: 'Yes. The Abbasid Caliphate broke apart, but Islam, Arabic and shared values kept spreading and connecting people.' } },
-          { t: { en: 'Still ruled by one caliph in Baghdad, as before' }, why: { en: 'No. Abbasid power declined after 900, and the Mongols sacked Baghdad in 1258.' } },
-          { t: { en: 'Shrinking as Islam lost its followers' }, why: { en: 'No. Between 1000 and 1500, Dar al-Islam nearly doubled in size.' } }
+          { ok: true, t: { en: 'Divided in politics, but united by culture' }, why: { en: 'Yes. Power was split among many states, but Islam, Arabic and shared values kept spreading and connecting people.' } },
+          { t: { en: 'Politically united again under Turkic sultans' }, why: { en: 'No. Turkic dynasties founded several separate states. No single ruler united Dar al-Islam again.' } },
+          { t: { en: 'Shrinking, as Mongol conquests drove Islam back' }, why: { en: 'No. The Mongols sacked Baghdad, but their conquests helped Islam spread further than ever before.' } }
         ]
       }
     },
@@ -106,17 +107,18 @@ window.EPISODE = {
       x: 21, y: 7, name: { en: 'Zhang' }, role: { en: 'Silk merchant from Ming China' },
       look: { skin: 1, hair: '#1b1410', shirt: '#8a3a2a', robe: true, style: 'bun' },
       lines: [
-        { en: 'In China an emperor rules through a great [[bureaucracy|bureaucracy]]. His officials pass [[civil service exam|civil service exams]] on Confucian books.' },
-        { en: 'Under the Song, Zhu Xi\'s Confucian books taught loyalty: ruler over subject, like Heaven over Earth. The Song promoted these ideas to keep order.' },
-        { en: 'The Mongols ruled us as the Yuan dynasty. Then in 1368 the general Taizu drove them out and founded the Ming.' }
+        { en: 'In China an emperor rules through a [[bureaucracy|bureaucracy]]. Under the Song (960–1279), hundreds of thousands of young men took [[civil service exam|civil service exams]] after years of study.' },
+        { en: 'Zhu Xi (1130–1200) made Confucian writings the basis of the exams. They teach loyalty: ruler over subject, like Heaven over Earth. Women could not take the exams.' },
+        { en: 'Rulers live on taxes, so they want growth. Wet-field rice helped our people grow from about 50 million to 100 million, and in the 1120s the Song printed paper money.' },
+        { en: 'The Mongols conquered the Song in the 1270s and ruled as the Yuan. In 1368 Taizu, once a penniless orphan, drove them out and founded the Ming.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Compared with most states of this time, what made China\'s government stand out?' },
         choices: [
-          { ok: true, t: { en: 'Officials chosen by exams on Confucian books' }, why: { en: 'Yes. Few governments outside China were strong enough to rule daily local life. Exams built a trained bureaucracy.' } },
-          { t: { en: 'Merchant families ruled each one of its port cities' }, why: { en: 'No. That describes Swahili port cities in East Africa. In China an emperor and his officials ruled.' } },
-          { t: { en: 'A council of priests crowned each emperor' }, why: { en: 'No. The Song promoted Confucianism, a philosophy, and emperors came from the ruling dynasty.' } }
+          { ok: true, t: { en: 'Officials chosen by exams on Confucian writings' }, why: { en: 'Yes. Few governments outside China were strong enough to rule daily local life. Exams built a trained bureaucracy.' } },
+          { t: { en: 'Power devolved to nobles, knights and city councils' }, why: { en: 'No. That describes feudal Europe. In China an emperor ruled through a trained bureaucracy.' } },
+          { t: { en: 'Kings drawn from rich merchant families of the ports' }, why: { en: 'No. That describes the Swahili city-states of East Africa. China\'s emperors came from ruling dynasties.' } }
         ]
       }
     },
@@ -124,17 +126,18 @@ window.EPISODE = {
       x: 3, y: 14, name: { en: 'Bakary' }, role: { en: 'Gold trader from Mali' },
       look: { skin: 5, hair: '#140d08', shirt: '#d9a02b', robe: true, hat: '#f2ece0', style: 'short' },
       lines: [
-        { en: 'My ruler is the [[mansa|mansa]] of Mali. Mali grew rich by controlling much of the gold of western Afro-Eurasia.' },
-        { en: 'Sahel states share one model: control long-distance trade, rule the wet grain lands, and accept many faiths. That is [[religious pluralism|religious pluralism]].' },
-        { en: 'Our founder Sunjata may have been Muslim, yet he kept local beliefs and [[matrilineality|matrilineality]]. Much of his power came through his mother.' }
+        { en: 'My ruler is the [[mansa|mansa]] of Mali. Sunjata defeated Susu around 1240 and built Mali. It came to stretch more than a thousand miles from east to west.' },
+        { en: 'Sahel states share one model: control long-distance trade, rule the wet grain lands by the rivers, and accept many faiths. That is [[religious pluralism|religious pluralism]].' },
+        { en: 'Sunjata may have been Muslim, yet he kept [[matrilineality|matrilineality]]. "Sogolon," in his full name, was his mother\'s name, and much of his power came through her.' },
+        { en: 'Mansa Musa took power around 1312. Mali controlled much of the gold of western Afro-Eurasia, so a map-maker in Spain drew him holding a gold nugget.' }
       ],
       ask: {
         stat: 'loc',
         q: { en: 'How did rulers of Sahel states like Mali mostly pay for their states?' },
         choices: [
-          { ok: true, t: { en: 'By controlling and taxing the gold trade' }, why: { en: 'Yes. They also made cloth, but trade was easier to tax, so rulers focused on controlling it.' } },
-          { t: { en: 'By making nomadic herders farm for the king' }, why: { en: 'No. These states had little control over nomadic herders; at most they demanded some tribute.' } },
-          { t: { en: 'By banning every faith except Islam' }, why: { en: 'No. Most rulers were inclusive: Muslims and followers of local religions served at court.' } }
+          { ok: true, t: { en: 'By controlling and taxing long-distance trade' }, why: { en: 'Yes. Gold above all. They also made textiles, but trade was easier to tax, so rulers focused on controlling it.' } },
+          { t: { en: 'By taxing the cloth made in their workshops' }, why: { en: 'No. Sahel states did make textiles, but their governments focused on trade because it was easier to tax.' } },
+          { t: { en: 'By collecting tribute from nomadic herders' }, why: { en: 'No. These states had little control over nomadic herders; at most they sometimes demanded tribute.' } }
         ]
       }
     },
@@ -142,17 +145,57 @@ window.EPISODE = {
       x: 22, y: 19, name: { en: 'Pietro' }, role: { en: 'Merchant from Venice' },
       look: { skin: 0, hair: '#6b4a2a', shirt: '#3a4a8a', pants: '#2a2a3a', hat: '#7a2a2a', style: 'short' },
       lines: [
-        { en: 'In Europe power is split up. Kings grant lords land for military support, and lords grant land to knights. We call it [[feudalism|feudalism]].' },
-        { en: 'The king of France directly rules only a few provinces near Paris! Germany has broken into hundreds of small units under a weak emperor.' },
-        { en: 'Priests teach that kings rule with God\'s approval. But a pope can [[excommunicate|excommunicate]] even an emperor, as Innocent IV did to Frederick II in 1239.' }
+        { en: 'In Europe power is devolved. A king grants a lord a province for military support; the lord grants villages to knights and monasteries. We call it [[feudalism|feudalism]].' },
+        { en: 'Most of us farm a lord\'s manor without owning the land. Then in the late 1340s the Black Death struck, and Europe lost a third to half of its people.' },
+        { en: 'The king of France directly rules only a few provinces near Paris! Germany broke into hundreds of small units under a weak emperor.' },
+        { en: 'Priests teach that kings rule with God\'s approval. But Pope Innocent IV [[excommunicate|excommunicated]] Emperor Frederick II in 1239, and Frederick expelled many priests.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with China, how was power organized in Europe?' },
+        q: { en: 'Compared with China, how was political power organized in Europe?' },
         choices: [
           { ok: true, t: { en: 'Decentralized, with local lords holding power' }, why: { en: 'Yes. China\'s emperor ruled through trained officials, while Europe\'s kings were often weak and nobles ruled locally.' } },
-          { t: { en: 'More centralized, with exams for officials' }, why: { en: 'No. Europe had no civil service exams. Nobles, knights, church leaders and city councils held power.' } },
-          { t: { en: 'United under one strong emperor who ruled from Rome' }, why: { en: 'No. Europe was split into many kingdoms and principalities; Germany alone broke into hundreds.' } }
+          { t: { en: 'Centralized, with kings ruling through officials' }, why: { en: 'No. Europe had no civil service exams. Nobles, knights, church leaders and city councils held power.' } },
+          { t: { en: 'Unified under the pope, who ruled every kingdom' }, why: { en: 'No. Popes competed with kings and could excommunicate them, but Europe stayed split into many states.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 17, y: 9, icon: '📜',
+      name: { en: 'The Analects: How to Guide a State' }, role: { en: 'Primary source' },
+      src: { en: 'Confucius (551–479 BCE), The Analects, compiled by his followers after his death; quoted in "Confucianism," World History Project' },
+      lines: [
+        { en: '"The Master said: Guide them with policies and align them with punishments and the people will evade them and have no shame. Guide them with virtue and align them with li [traditions and virtues of the Zhou] and the people will have a sense of shame and fulfill their roles…"' },
+        { en: '"The Master said: To guide a state great enough to possess a thousand war chariots: be attentive to affairs and trustworthy; regulate expenditures and treat persons as valuable; employ the people according to the proper season."' },
+        { en: 'Context: Confucius (551–479 BCE) lived in the Eastern Zhou dynasty, when rival states fought frequent wars. Troubled by this turmoil, he taught that virtue and education, not harsh laws and punishments like those of Legalism, restore order. His followers compiled his teachings as The Analects after his death.' },
+        { en: 'Centuries later, the Song made Confucianism the philosophy of the state. Zhu Xi\'s collection of Confucian writings became the basis of the civil service exams, so every official studied them. In return for loyalty, the ruler was responsible for justice and care for his subjects.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Point of view: what most shaped Confucius\'s advice to rule by virtue instead of punishment?' },
+        choices: [
+          { ok: true, t: { en: 'The wars and turmoil of the Eastern Zhou' }, why: { en: 'Yes. Rival states fought often in his time. He looked for a moral way to restore order.' } },
+          { t: { en: 'The Mongol conquest of China in the 1270s' }, why: { en: 'No. Confucius died in 479 BCE, about 1,700 years before the Mongols conquered the Song.' } },
+          { t: { en: 'The Song exams on Zhu Xi\'s Confucian books' }, why: { en: 'No. The exams came long after Confucius. They were built on his teachings, not the cause of them.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 16, y: 14, icon: '📖',
+      name: { en: 'Worlds Apart, Worlds Together' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Unit 1 Introduction: The Global Tapestry, c. 1200 to 1450" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'Societies around the world from 1200 to 1450 were both together and apart. Travel and communication were slow and difficult, and the two hemispheres, Afro-Eurasia and the Americas, were not definitively connected until about 1500. In many cases, culture, politics and economics were unique from region to region, and even within regions.' },
+        { en: 'At the center of Afro-Eurasia, Islamic states connected the regions. Ruled by Muslims, they held many faiths, including Judaism and Christianity. In South and Southeast Asia, Islam mingled with Hinduism and Buddhism. Europe was fragmented and decentralized, but tied together by Christianity and elements left from Roman rule. In China, Confucianism and a long history of imperial bureaucracy sustained a unified government, the Song.' },
+        { en: 'The Sahara Desert partly separated sub-Saharan Africa, and oceans separated the Americas, yet both had long histories of state-building. Linked trading circuits carried goods like spices from China to northwest Europe. Then in the 1340s a plague spread along those same routes, killing tens of millions of people or more. The network only recovered in the 1400s, and the plague never touched the Americas at all.' }
+      ],
+      ask: {
+        stat: 'hei',
+        q: { en: 'According to the reading, how did Europe compare with China around 1200?' },
+        choices: [
+          { ok: true, t: { en: 'Europe was fragmented; China had one government' }, why: { en: 'Yes. Europe was decentralized but shared Christianity; China was unified by Confucianism and an imperial bureaucracy.' } },
+          { t: { en: 'Both were held together by Confucian exams' }, why: { en: 'No. Only China used Confucianism and exams. Europe was tied together by the Christian faith.' } },
+          { t: { en: 'Europe was united by Rome; China was split up' }, why: { en: 'No. It was the reverse: Rome left Europe only shared cultural elements, while the Song unified China.' } }
         ]
       }
     }
@@ -187,7 +230,7 @@ window.EPISODE = {
       x: 12, y: 11, name: { en: 'Devraj' }, role: { en: 'Cotton merchant from Delhi' },
       look: { skin: 4, hair: '#1b1410', shirt: '#e0e0d0', robe: true, hat: '#c0392b', style: 'short' },
       lines: [
-        { en: 'I come from the [[delhi sultanate|Delhi Sultanate]], founded in 1206 by a Turkic general. Its Muslim sultans held back the Mongols and generally tolerated Hindus like me.' },
+        { en: 'I come from the [[delhi sultanate|Delhi Sultanate]], founded in 1206 by a Turkic general. Its Muslim sultans defeated the Mongol armies and generally tolerated Hindus like me.' },
         { en: 'Hindu Rajput kings fund temples, and the [[brahmin|brahmins]] back them. But the Grump\'s helpers knocked my cotton off the cart! Ask the guard at the east gate.' }
       ],
       wait: { en: 'The guard stands just inside the east gate of the city wall.' },
@@ -197,7 +240,7 @@ window.EPISODE = {
       x: 25, y: 14, name: { en: 'Aybek' }, role: { en: 'Gate guard' },
       look: { skin: 2, hair: '#1b1410', shirt: '#7a3a2a', pants: '#3a2a2a', hat: '#5a4a3a', style: 'short' },
       lines: [
-        { en: 'I serve in Timur\'s army. He mixes Turkic and Mongol ways of war, and he built his empire by conquest.' },
+        { en: 'I serve in Timur\'s army. He is of Turkic and Mongol descent, mixes their ways of war, and has attacked Persia, Russia and north India.' },
         { en: 'A bale bounced off a cart bound for the bazaar. Go north up the road to the bazaar, then east to the corner, just southeast of the last tree.' }
       ]
     },
@@ -245,57 +288,59 @@ window.EPISODE = {
     win: { en: 'The sand settles over Samarkand. The page comparing the world\'s states floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'Priests generally called upon people to obey their kings and princes, who were believed to rule with God\'s approval.' }, src: { en: 'Adapted from "State and Religion in Afro-Eurasia, c. 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best reflects which way rulers in Catholic Europe legitimized their power?' },
-        choices: [{ en: 'Support from religious leaders' }, { en: 'Wealth from taxing gold mines' }, { en: 'Exams on Confucian books' }, { en: 'Election by all their subjects' }],
+        stim: { text: { en: '"Guide them with policies and align them with punishments and the people will evade them and have no shame. Guide them with virtue … and the people will have a sense of shame and fulfill their roles…"' }, src: { en: 'Confucius, The Analects (compiled after his death in 479 BCE); quoted in "Confucianism," World History Project' } },
+        q: { en: 'Song officials studied Confucian writings like this for the civil service exams. Which best explains why the state valued them?' },
+        choices: [{ en: 'They taught that virtue, not punishment, keeps order' }, { en: 'They set out harsh laws for punishing rebels' }, { en: 'They showed officials how to tax long-distance trade' }, { en: 'They proved the emperor was a sun god\'s son' }],
         answer: 0,
-        why: { en: 'Church support made European kings legitimate. Rulers also relied on priests as scribes, accountants and advisors.' }
+        why: { en: 'Confucius rejected harsh Legalist punishments. Moral training was meant to make subjects loyal and fulfill their roles, which served the Song state.' }
+      },
+      {
+        stim: { text: { en: '"To guide a state great enough to possess a thousand war chariots: be attentive to affairs and trustworthy; regulate expenditures and treat persons as valuable; employ the people according to the proper season."' }, src: { en: 'Confucius, The Analects; quoted in "Confucianism," World History Project' } },
+        q: { en: 'The excerpt most directly reflects which Confucian idea about rulers?' },
+        choices: [{ en: 'A ruler must care justly for his subjects' }, { en: 'A ruler must share power with a parliament' }, { en: 'A ruler wins legitimacy by funding temples' }, { en: 'A ruler should be chosen by written exams' }],
+        answer: 0,
+        why: { en: 'Confucian hierarchy put the ruler above his subjects, but made him responsible for justice and care: be trustworthy, spend wisely, value people.' }
+      },
+      {
+        stim: { title: { en: 'Three regions of Afro-Eurasia, c. 1200–1450' }, rows: [[{ en: 'Region' }, { en: 'Political unity' }, { en: 'What connected people' }], [{ en: 'Europe' }, { en: 'Fragmented, decentralized' }, { en: 'Christian faith; Roman legacy' }], [{ en: 'Dar al-Islam' }, { en: 'Split among many states' }, { en: 'Islam; Arabic language' }], [{ en: 'Song China' }, { en: 'One unified government' }, { en: 'Confucianism; bureaucracy' }]], src: { en: 'From "Unit 1 Introduction: The Global Tapestry" and "Dar al-Islam 1200–1450," World History Project' } },
+        q: { en: 'The table best supports which claim?' },
+        choices: [{ en: 'Shared culture could link divided states' }, { en: 'Political division destroyed each region\'s shared culture' }, { en: 'Only regions with bureaucracies had shared beliefs' }, { en: 'Europe and Dar al-Islam each had one religious ruler' }],
+        answer: 0,
+        why: { en: 'Europe and Dar al-Islam lacked political unity, yet Christianity, Islam and Arabic still connected their peoples. China was unified as well.' }
+      },
+      {
+        stim: { text: { en: 'In the 1340s, a plague spread along these same trade routes, in Europe, Asia, and North Africa, and brought down much of this network.' }, src: { en: 'Adapted from "Unit 1 Introduction: The Global Tapestry, c. 1200 to 1450," World History Project' } },
+        q: { en: 'Which best explains why the plague described did not reach the Americas?' },
+        choices: [{ en: 'The two hemispheres were not yet connected' }, { en: 'The Sahara Desert stopped the plague\'s spread' }, { en: 'Mongol armies kept the plague inside China' }, { en: 'Trade routes of the time ran only over land' }],
+        answer: 0,
+        why: { en: 'Oceans separated the Americas from Afro-Eurasia until about 1500. The plague moved along Afro-Eurasian trading circuits, by land and by sea.' }
+      },
+      {
+        stim: { text: { en: 'Unlike Marco Polo, Ibn Battuta found himself at home everywhere he traveled… he was able to work as a judge thousands of miles from home.' }, src: { en: 'Adapted from "Dar al-Islam 1200–1450," World History Project' } },
+        q: { en: 'Which best explains the experience described in the excerpt?' },
+        choices: [{ en: 'Arabic and shared beliefs linked separate states' }, { en: 'The Abbasid caliph still ruled from Mali to India' }, { en: 'Turkic sultans had united Dar al-Islam as one empire' }, { en: 'Mongol khans made every subject convert to Islam' }],
+        answer: 0,
+        why: { en: 'Political unity was gone after the Abbasids, but a shared language and faith made Dar al-Islam one cultural world.' }
+      },
+      {
+        stim: { text: { en: 'These states also manufactured goods, especially textiles, but their governments were more focused on trade because it was easier to tax.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
+        q: { en: 'The excerpt describes Sahel states such as Mali. Which was a similarity between them and the Swahili city-states?' },
+        choices: [{ en: 'Both drew their wealth mainly from trade' }, { en: 'Both were run by councils of merchant families' }, { en: 'Both banned local faiths in favor of Islam' }, { en: 'Both ruled through officials chosen by exams' }],
+        answer: 0,
+        why: { en: 'Mali taxed the gold trade; Swahili ports traded with Arab and Indian merchants. Merchant rule was Swahili only, and Mali accepted many faiths.' }
       },
       {
         stim: { title: { en: 'Rulers and religion, c. 1200–1450' }, rows: [[{ en: 'State' }, { en: 'Link between ruler and religion' }], [{ en: 'Inca Empire' }, { en: 'Sapa Inca is the sun god Inti\'s representative' }], [{ en: 'Catholic Europe' }, { en: 'Kings rule with God\'s approval' }], [{ en: 'Hindu kingdoms of India' }, { en: 'Kings fund temples; brahmins back them' }]], src: { en: 'From "The Americas 1200–1450" and "State and Religion in Afro-Eurasia," World History Project' } },
-        q: { en: 'The table best supports which comparison?' },
-        choices: [{ en: 'Many regions used religion to legitimize rulers' }, { en: 'Only Christian rulers tied their power to religion' }, { en: 'Religion and government were kept fully apart' }, { en: 'Religion shaped power only in the Americas' }],
+        q: { en: 'Which conclusion does the table best support?' },
+        choices: [{ en: 'Rulers in separate regions tied power to faith' }, { en: 'This practice spread from Europe to Asia and the Americas' }, { en: 'In each state, priests held more power than kings' }, { en: 'Only rulers of polytheistic faiths claimed divine support' }],
         answer: 0,
-        why: { en: 'In the Andes, in Europe and in India, rulers claimed divine support or allied with priests. It was a pattern across regions.' }
+        why: { en: 'The Andes, Europe and India reached the same pattern separately: the Americas were not yet connected to Afro-Eurasia. Catholic kings were not polytheists.' }
       },
       {
-        q: { en: 'Which best explains why Sahel states such as Mali focused on long-distance trade?' },
-        choices: [{ en: 'Trade was easier to tax than crafts' }, { en: 'Their kings were not allowed to own land' }, { en: 'Nomadic herders ran all of their farms' }, { en: 'European merchants forced them to trade' }],
+        q: { en: 'Which best explains why the Mongols never gained lasting power in India?' },
+        choices: [{ en: 'The Delhi sultans\' armies defeated them' }, { en: 'Hindu Rajput kings joined Timur against them' }, { en: 'Heat and humidity stopped them in Vietnam first' }, { en: 'The Ming general Taizu drove them out of India' }],
         answer: 0,
-        why: { en: 'Sahel states also made goods like cloth, but trade was easier to tax, so rulers worked to control it, above all gold.' }
-      },
-      {
-        stim: { text: { en: 'In Germany, an extreme case, a single state broke into hundreds of smaller political units, governed by a weak emperor.' }, src: { en: 'Adapted from "Europe 1200–1450," World History Project' } },
-        q: { en: 'Compared with Song China, the situation described shows that Europe was...' },
-        choices: [{ en: 'more fragmented and decentralized' }, { en: 'more centralized under trained officials' }, { en: 'united under one powerful caliph' }, { en: 'ruled by merchant families from ports' }],
-        answer: 0,
-        why: { en: 'Under feudalism, local lords held land and power. China\'s emperor ruled through a bureaucracy chosen by exams.' }
-      },
-      {
-        stim: { text: { en: 'Unlike Marco Polo, Ibn Battuta found himself at home everywhere he traveled.' }, src: { en: 'Adapted from "Dar al-Islam 1200–1450," World History Project' } },
-        q: { en: 'Which best explains the experience described in the excerpt?' },
-        choices: [{ en: 'Arabic and shared beliefs united Dar al-Islam' }, { en: 'One caliph still ruled every Muslim land' }, { en: 'The Mongols made everyone in Asia speak Persian' }, { en: 'Every city in Afro-Eurasia was Muslim' }],
-        answer: 0,
-        why: { en: 'Political unity was gone, but a shared language and shared beliefs made Dar al-Islam one cultural world.' }
-      },
-      {
-        q: { en: 'Which statement best compares the Aztec Empire with Timur\'s empire?' },
-        choices: [{ en: 'Both were built mainly by conquest' }, { en: 'Both were run by exam-trained officials' }, { en: 'Both were ruled by merchant families' }, { en: 'Both banned every religion of their time' }],
-        answer: 0,
-        why: { en: 'The Aztecs conquered neighbors for tribute and prisoners; Timur conquered lands from India to Anatolia.' }
-      },
-      {
-        stim: { text: { en: 'Zhu Xi\'s work emphasized social hierarchies and loyalty, including between ruler and subject, which reflected the relationship between Heaven and earth.' }, src: { en: 'Adapted from "State and Religion in Afro-Eurasia, c. 1200–1450," World History Project' } },
-        q: { en: 'A Song ruler would most likely promote these ideas in order to...' },
-        choices: [{ en: 'encourage loyalty and order in the state' }, { en: 'spread Buddhism to Korea and Japan' }, { en: 'let rich merchants choose the next emperor of China' }, { en: 'end the civil service exams for good' }],
-        answer: 0,
-        why: { en: 'Confucian hierarchy taught subjects to be loyal to their ruler, so the Song promoted it and built its exams on it.' }
-      },
-      {
-        q: { en: 'Which best describes the Delhi Sultanate in this period?' },
-        choices: [{ en: 'Turkic Muslim rulers who mostly tolerated Hindus' }, { en: 'A Hindu kingdom that conquered the Mongols\' homeland' }, { en: 'A Christian state allied with the pope' }, { en: 'A merchant city-state on the Swahili coast' }],
-        answer: 0,
-        why: { en: 'A Turkic general founded it in 1206. Its sultans held back the Mongols and generally tolerated Hindu subjects.' }
+        why: { en: 'The Delhi Sultanate, founded in 1206 by a Turkic general, defeated several Mongol campaigns. Taizu drove the Mongols out of China, not India.' }
       }
     ]
   },
