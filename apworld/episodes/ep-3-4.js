@@ -101,7 +101,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Costly guns and cannon undercut local nobles' }, why: { en: 'Yes. Only rulers could buy many guns, and cannon broke the castle walls nobles hid behind. Power moved to the center.' } },
           { t: { en: 'Muskets let each noble defend his own castle' }, why: { en: 'No. Guns were too costly for most nobles, and cannon made castles useless. The Mughal Akbar even banned anyone but himself from owning cannon.' } },
-          { t: { en: 'Guns let rulers stop relying on any allies' }, why: { en: 'No, an overstatement. Rulers still needed paid officials, nobles and religious leaders to hold a vast land.' } }
+          { t: { en: 'Guns let rulers stop relying on any allies' }, why: { en: 'No, an overstatement. Rulers still needed paid officials, nobles and religious leaders to hold a vast land.' } },
+          { t: { en: 'Firearms replaced swords, spears and bows' }, why: { en: 'No, an overstatement. Most armies still relied mainly on swords, spears and bows. Guns mattered because only rulers could buy many, and cannon broke nobles\' castle walls.' } }
         ]
       }
     },
@@ -120,7 +121,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'by examinations on Confucian texts' }, why: { en: 'Yes. China chose officials by exam; the Ottomans trained boys from the devshirme. Both wanted skilled officials loyal to the ruler.' } },
           { t: { en: 'by service as commanders under generals' }, why: { en: 'No. Qing officials did answer to generals tied to the emperor, but they won their posts by passing the exams.' } },
-          { t: { en: 'by birth into the most powerful families' }, why: { en: 'No. Many came from land-owning families, but not always the most powerful ones. They had to pass the exams.' } }
+          { t: { en: 'by birth into the most powerful families' }, why: { en: 'No. Many came from land-owning families, but not always the most powerful ones. They had to pass the exams.' } },
+          { t: { en: 'by yearly service in return for tax rights' }, why: { en: 'No. That describes the Ottoman sipahi, who gave yearly service in return for the right to tax an area. Qing officials won their posts by exam.' } }
         ]
       }
     },
@@ -139,7 +141,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A Muslim dynasty ruling a Hindu majority' }, why: { en: 'Yes. A Muslim emperor of a mostly Hindu land needed loyalty from every faith, so non-Muslims got the same rights.' } },
           { t: { en: 'A Shi\'a dynasty facing Sunni neighbors' }, why: { en: 'No. That was the Safavid context, and the Safavids forced conversion instead of tolerating other faiths.' } },
-          { t: { en: 'A Sunni caliph guarding Mecca and Medina' }, why: { en: 'No. That was the Ottoman sultan. Akbar\'s problem was ruling Hindus, Muslims, Sikhs and others in India.' } }
+          { t: { en: 'A Sunni caliph guarding Mecca and Medina' }, why: { en: 'No. That was the Ottoman sultan. Akbar\'s problem was ruling Hindus, Muslims, Sikhs and others in India.' } },
+          { t: { en: 'Self-ruling Christian and Jewish communities' }, why: { en: 'No. Christians and Jews who governed themselves, paid taxes and stayed loyal were the Ottoman way of ruling other faiths. Akbar\'s context was a mostly Hindu land.' } }
         ]
       }
     },
@@ -158,7 +161,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Crushing taxes gave way to frozen taxes' }, why: { en: 'Right. Heavy late-Ming taxes and the famines of 1628 weakened the Ming. Kangxi kept taxes from rising, a very popular move.' } },
           { t: { en: 'Landowners began to keep part of the tax' }, why: { en: 'No. That happened under the Ming and helped ruin it: taxes went up while the state got less.' } },
-          { t: { en: 'Farmers were bound to the land as serfs' }, why: { en: 'No. Serfdom was Russia\'s system under the Romanovs. Chinese farmers were not serfs.' } }
+          { t: { en: 'Farmers were bound to the land as serfs' }, why: { en: 'No. Serfdom was Russia\'s system under the Romanovs. Chinese farmers were not serfs.' } },
+          { t: { en: 'Taxes rose to pay for a larger Qing army' }, why: { en: 'No, the reverse. Once resistance ended, Kangxi made his army smaller to keep costs low, and that let him freeze taxes.' } }
         ]
       }
     },
@@ -177,7 +181,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'He ruled a rich empire that made all it needed' }, why: { en: 'Yes. China produced everything it needed at home, and inland expansion had brought new wealth and land.' } },
           { t: { en: 'His empire had lost its wealth to European traders' }, why: { en: 'No. China in this era was peaceful, prosperous and larger than ever. It was not a time of decline or European domination.' } },
-          { t: { en: 'The Ming had banned all trade with Asian neighbors' }, why: { en: 'No. Trade went on, mostly with neighbors in Southeast and Central Asia, and foreign merchants could come to China.' } }
+          { t: { en: 'The Ming had banned all trade with Asian neighbors' }, why: { en: 'No. Trade went on, mostly with neighbors in Southeast and Central Asia, and foreign merchants could come to China.' } },
+          { t: { en: 'He hoped to rebuild Zheng He\'s great fleets' }, why: { en: 'No. The Ming ended Zheng He\'s fleets in 1433 and turned China\'s resources inland. The Qing kept that inland focus.' } }
         ]
       }
     },
@@ -196,7 +201,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Rule rested on officials and religious allies' }, why: { en: 'Yes. Armies still used mostly swords, spears and bows. Bureaucracy and alliances with religious officials held the empires together.' } },
           { t: { en: 'Only the Ottomans ever used muskets or cannon' }, why: { en: 'No. Babur, Shah Abbas, the Russians and the Qing all used gunpowder weapons too.' } },
-          { t: { en: 'Local nobles, not rulers, owned most cannon' }, why: { en: 'No. Guns were too costly for nobles, and rulers kept them for themselves, as Akbar did with cannon.' } }
+          { t: { en: 'Local nobles, not rulers, owned most cannon' }, why: { en: 'No. Guns were too costly for nobles, and rulers kept them for themselves, as Akbar did with cannon.' } },
+          { t: { en: 'The three empires rose at very different times' }, why: { en: 'No. McNeill and Hodgson grouped them because they rose around the same time. The doubt is about guns: armies mostly used swords, spears and bows.' } }
         ]
       }
     }

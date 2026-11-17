@@ -100,8 +100,9 @@ window.EPISODE = {
         q: { en: 'Which best explains the purpose of Akbar\'s policies toward nobles like Bhim?' },
         choices: [
           { ok: true, t: { en: 'To tie nobles to him while limiting their power' }, why: { en: 'Yes. Marriages, regular pay and court visits bound nobles to Akbar, and his monopoly on cannon meant no noble could defy him from a castle.' } },
-          { t: { en: 'To train nobles to pass Confucian written exams' }, why: { en: 'No. Exam-trained officials were the Ming way. The Mughals relied on land-holding military commanders like Bhim.' } },
-          { t: { en: 'To let nobles rule their lands as independent kings' }, why: { en: 'No. The gunpowder empires centralized power. Cannon took strength away from local nobles, not toward them.' } }
+          { t: { en: 'To replace nobles with a large paid bureaucracy' }, why: { en: 'No, an overstatement. Akbar kept his nobles and gave them regular pay and posts. The Mughal bureaucracy was still small, so he bound nobles to him instead of replacing them.' } },
+          { t: { en: 'To let nobles rule their lands as independent kings' }, why: { en: 'No. The gunpowder empires centralized power. Cannon took strength away from local nobles, not toward them.' } },
+          { t: { en: 'To unite his nobles in a single Muslim faith' }, why: { en: 'No. Bhim is a Hindu Rajput. Akbar won Rajput clans through marriage alliances, not conversion, and his nobles stayed Muslim, Hindu and Sikh.' } }
         ]
       }
     },
@@ -120,7 +121,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'He protected many faiths instead of imposing one' }, why: { en: 'Yes. A Muslim ruler of a mostly Hindu land, Akbar gave non-Muslims equal rights. The Safavids imposed one Shi\'a identity.' } },
           { t: { en: 'He made Shi\'a Islam the faith of every subject' }, why: { en: 'No. That was the Safavid strategy in Persia, working with Shi\'a clergy. Akbar\'s sulh-i kul did the opposite.' } },
-          { t: { en: 'He took the title caliph and guarded the city of Mecca' }, why: { en: 'No. That was the Ottomans: Sultan Selim I took the title caliph, and the Ottomans controlled Mecca.' } }
+          { t: { en: 'He took the title caliph and guarded the city of Mecca' }, why: { en: 'No. That was the Ottomans: Sultan Selim I took the title caliph, and the Ottomans controlled Mecca.' } },
+          { t: { en: 'He let Muslim clergy run the entire legal system' }, why: { en: 'No. That was the Ottoman way. Akbar did use Muslim judges, but he also backed other faiths and gave non-Muslims the same rights as Muslims.' } }
         ]
       }
     },
@@ -138,7 +140,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A bureau took a census and collected directly' }, why: { en: 'Yes. A special Ming bureau counted peasant families and collected for the central government. Later, local landowners helped collect and kept some.' } },
           { t: { en: 'Landlords on timars paid part to the ruler' }, why: { en: 'No. Timars were Ottoman estates. Their peasants paid 15 to 25 percent of the harvest to the landlord.' } },
-          { t: { en: 'Tolls were put on caravans on imperial roads' }, why: { en: 'No. Later Safavid rulers tolled caravans to tax trade. The Ming taxed peasant families through a census bureau.' } }
+          { t: { en: 'Tolls were put on caravans on imperial roads' }, why: { en: 'No. Later Safavid rulers tolled caravans to tax trade. The Ming taxed peasant families through a census bureau.' } },
+          { t: { en: 'Local landowners collected and kept a share' }, why: { en: 'No. That came later in the Ming, when emperors relied on local landowners who siphoned off money. The early Ming bureau collected directly.' } }
         ]
       }
     },
@@ -156,7 +159,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'How rulers used art to claim legitimacy' }, why: { en: 'Yes. Paid for by the court, it shows how emperors wanted to be seen: heirs to a great line.' } },
           { t: { en: 'What ordinary farmers thought of rulers' }, why: { en: 'No. Court artists painted for the emperor, so the picture shows his view, not the farmers\'.' } },
-          { t: { en: 'How the emperor collected his land tax' }, why: { en: 'No. Its purpose was to show descent and glory. Tax records like Kishan\'s show how the state was funded.' } }
+          { t: { en: 'That Mughal rule rested only on Mongol descent' }, why: { en: 'No, an overstatement. Descent from the Mongols through Babur was one claim. Akbar also used religion and personal pledges of loyalty to hold power.' } },
+          { t: { en: 'That all his subjects accepted his rule' }, why: { en: 'No. A court painting shows how the emperor wanted to be seen, not whether his subjects truly accepted him.' } }
         ]
       }
     },
@@ -176,7 +180,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Confidence that his empire was self-sufficient' }, why: { en: 'Yes. A powerful, prosperous emperor told a foreign envoy that China lacked nothing and needed no foreign goods.' } },
           { t: { en: 'A plan to rebuild Zheng He\'s ocean fleets' }, why: { en: 'No. The Ming ended those voyages in 1433 and turned inland. The Qing kept that land-based mindset.' } },
-          { t: { en: 'Worry that China needed British manufactures' }, why: { en: 'No. He says the opposite: there is "no need to import" foreign manufactures.' } }
+          { t: { en: 'A ban on all foreign merchants coming to China' }, why: { en: 'No. Foreign merchants could come to China. The emperor rejected the need for foreign goods, not all contact with foreigners.' } },
+          { t: { en: 'Weakness after the Manchus took over China' }, why: { en: 'No. By 1750 the Qing empire was peaceful, prosperous and larger than ever. His message shows confidence, not weakness.' } }
         ]
       }
     },
@@ -195,7 +200,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Local landowners who collected taxes kept some' }, why: { en: 'Yes. Once local landowners helped collect, they siphoned off money. Peasants paid more, yet the state received less.' } },
           { t: { en: 'Peasant communities paid in soldiers, not money' }, why: { en: 'No. Some Ottoman communities paid taxes with soldiers. The Ming problem was landowners keeping part of the taxes.' } },
-          { t: { en: 'The Ming stopped taxing farming to tax trade' }, why: { en: 'No. Agriculture stayed the Ming state\'s main tax base. The problem was who collected it.' } }
+          { t: { en: 'The Ming stopped taxing farming to tax trade' }, why: { en: 'No. Agriculture stayed the Ming state\'s main tax base. The problem was who collected it.' } },
+          { t: { en: 'A census bureau failed to count peasant families' }, why: { en: 'No. The census bureau was the early Ming\'s sophisticated system. Revenue fell later, once local landowners collected and siphoned off money.' } }
         ]
       }
     }

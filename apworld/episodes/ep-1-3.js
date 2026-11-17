@@ -99,7 +99,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The Delhi sultan\'s armies defeated them' }, why: { en: 'Yes. The armies of the sultan of Delhi beat several huge Mongol campaigns, so the Mongols never gained permanent power in India.' } },
           { t: { en: 'Heat and humidity wore their armies down' }, why: { en: 'No. Heat, humidity and local forces stopped them in Vietnam and Myanmar. In north India, Delhi\'s armies defeated them.' } },
-          { t: { en: 'Rajput kings paid them tribute to leave' }, why: { en: 'No. Rajputs were Hindu warrior clans who ruled their own kingdoms. The sultan\'s armies are what turned the Mongols back.' } }
+          { t: { en: 'Rajput kings paid them tribute to leave' }, why: { en: 'No. Rajputs were Hindu warrior clans who ruled their own kingdoms. The sultan\'s armies are what turned the Mongols back.' } },
+          { t: { en: 'Timur\'s empire blocked their way into India' }, why: { en: 'No. Timur attacked north India himself, and only after the Mongols declined (he lived 1336–1405). Delhi\'s armies had already beaten the Mongols.' } }
         ]
       }
     },
@@ -117,7 +118,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Muslim rulers who mostly tolerated Hindus' }, why: { en: 'Right. The Turkic sultans brought Islam and generally tolerated Hindus. Many north Indians still chose to become Muslims.' } },
           { t: { en: 'Muslim rulers who forced Hindus to convert' }, why: { en: 'No. Many north Indians did convert, but the sultanate generally tolerated its Hindu subjects. Conversion was not forced on all.' } },
-          { t: { en: 'Hindu rulers allied with brahmin priests' }, why: { en: 'No. That describes Rajput kingdoms in central and south India. Delhi\'s sultans were Turkic Muslims.' } }
+          { t: { en: 'Hindu rulers allied with brahmin priests' }, why: { en: 'No. That describes Rajput kingdoms in central and south India. Delhi\'s sultans were Turkic Muslims.' } },
+          { t: { en: 'Muslim rulers who protected Buddhist monasteries' }, why: { en: 'No. Muslim rulers of north India were generally hostile to Buddhism. A Muslim army destroyed the Nalanda monastery in 1193, and Buddhism declined in India.' } }
         ]
       }
     },
@@ -136,7 +138,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Hinduism changing as it spread' }, why: { en: 'Yes. Bhakti was a Hindu devotional movement that stressed personal love of a god and downplayed social hierarchies.' } },
           { t: { en: 'Brahmins allying with Rajput kings' }, why: { en: 'No. That alliance was real, but it was about kings funding temples. Bhakti stressed personal devotion over rank.' } },
-          { t: { en: 'Islam blending with local beliefs' }, why: { en: 'No. Blending happened among Muslim converts, but bhakti grew inside Hinduism: love of Krishna, Vishnu or Rama.' } }
+          { t: { en: 'Islam blending with local beliefs' }, why: { en: 'No. Blending happened among Muslim converts, but bhakti grew inside Hinduism: love of Krishna, Vishnu or Rama.' } },
+          { t: { en: 'Sufism\'s stress on personal experience' }, why: { en: 'No. Sufism was also personal and egalitarian, but it was a mystical movement inside Islam. Bhakti was Hindu devotion to one god.' } }
         ]
       }
     },
@@ -155,7 +158,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'mixed with local rituals; purdah rare' }, why: { en: 'Yes. Converts kept older rituals, and Muslim women often worked and traveled in public. Islam was localized.' } },
           { t: { en: 'brought by conquest, as in Delhi' }, why: { en: 'No. Turkic armies brought Islam to north India, but merchants and teachers carried it to Southeast Asia.' } },
-          { t: { en: 'kept with strict purdah for women' }, why: { en: 'No. Purdah was rare in Southeast Asia. Wealthy city women in South Asia were the most secluded.' } }
+          { t: { en: 'kept with strict purdah for women' }, why: { en: 'No. Purdah was rare in Southeast Asia. Wealthy city women in South Asia were the most secluded.' } },
+          { t: { en: 'taken up by rulers but not by townspeople' }, why: { en: 'No. Malay rulers did convert, but many city people were drawn to Islam too, often through traders marrying local women.' } }
         ]
       }
     },
@@ -174,7 +178,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'To display the power of Muslim rule' }, why: { en: 'Yes. A victory tower built by several sultans showed their power and the arrival of Islam and its architecture in north India.' } },
           { t: { en: 'To honor the Hindu god Vishnu' }, why: { en: 'No. That was Angkor Wat, built by Khmer rulers in Cambodia. These were built by Muslim sultans.' } },
-          { t: { en: 'To house Buddhist monks and students' }, why: { en: 'No. That was Nalanda, a Buddhist monastery that a Muslim army destroyed in 1193.' } }
+          { t: { en: 'To house Buddhist monks and students' }, why: { en: 'No. That was Nalanda, a Buddhist monastery that a Muslim army destroyed in 1193.' } },
+          { t: { en: 'To honor Sufis who opposed the sultans' }, why: { en: 'No. The group does hold a Muslim cleric\'s tomb, but sultans built it. Many rulers saw Sufis as a threat; a victory tower celebrates the rulers.' } }
         ]
       }
     },
@@ -193,7 +198,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Rulers used them to build authority' }, why: { en: 'Yes. Rulers of states like Angkor promoted Indian writing, literature and art to build up their authority on the Indian model.' } },
           { t: { en: 'Delhi\'s sultans conquered the region' }, why: { en: 'No. The Delhi Sultanate held power mainly in north India. It never ruled Southeast Asia.' } },
-          { t: { en: 'Chinese officials carried them south' }, why: { en: 'No. China\'s model shaped Dai Viet\'s bureaucracy. Indian culture crossed the Bay of Bengal, promoted by local rulers.' } }
+          { t: { en: 'Chinese officials carried them south' }, why: { en: 'No. China\'s model shaped Dai Viet\'s bureaucracy. Indian culture crossed the Bay of Bengal, promoted by local rulers.' } },
+          { t: { en: 'Mongol armies brought them there' }, why: { en: 'No. The Mongols tried to rule Vietnam and Myanmar, but heat, humidity and local forces defeated them. Local rulers promoted Indian culture.' } }
         ]
       }
     }

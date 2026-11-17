@@ -101,9 +101,10 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'Under Spanish law, in which "republic" were enslaved Africans and mestizos placed?' },
         choices: [
-          { ok: true, t: { en: 'The republic of Spaniards, with all non-Indians' }, why: { en: 'Yes. "Republic" here meant a level of society with its own rules. Every non-Indian, even enslaved Africans, was placed with the Spaniards, though never as equals.' } },
-          { t: { en: 'The republic of Indians, with Native villagers' }, why: { en: 'No. That republic held indigenous people living outside the major Spanish towns.' } },
-          { t: { en: 'A third republic made only for mixed families' }, why: { en: 'No. The law had only two republics: one of Spaniards and one of Indians.' } }
+          { ok: true, t: { en: 'The republic of Spaniards, with all other non-Indians' }, why: { en: 'Yes. "Republic" here meant a level of society with its own rules. Every non-Indian, even enslaved Africans, was placed with the Spaniards, though never as equals.' } },
+          { t: { en: 'The republic of Indians, since none were born in Spain' }, why: { en: 'No. Birthplace did not decide it. The republic of Indians held only indigenous people living outside the major Spanish towns; every non-Indian went with the Spaniards.' } },
+          { t: { en: 'The republic of Spaniards, as full equals of criollos' }, why: { en: 'No. The republic is right, but not as equals. Only Spaniards and criollos carried the label "Spanish," and the casta system ranked everyone else below them.' } },
+          { t: { en: 'A separate casta rank outside both of the republics' }, why: { en: 'No. Casta labels ranked people by ancestry, but the law split society into only two republics. Mestizos and Africans were placed in the republic of Spaniards.' } }
         ]
       }
     },
@@ -118,11 +119,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with their share of Lima\'s people, how much power did Spaniards and criollos hold?' },
+        q: { en: 'Which best describes the power of Spaniards and criollos in Lima compared with their numbers?' },
         choices: [
-          { ok: true, t: { en: 'Far more power than their small numbers' }, why: { en: 'Right. A small minority identifying as Spanish dominated government, economy and society. Colonial laws, even dress codes, held that rank in place.' } },
-          { t: { en: 'About as much as their large majority' }, why: { en: 'No. They were not a majority: mestizos, Africans and indigenous peoples greatly outnumbered them.' } },
-          { t: { en: 'Power in Spain, but little in the colony' }, why: { en: 'No. In Lima itself, the small Spanish group ran government, trade and society.' } }
+          { ok: true, t: { en: 'They held far more power than their small numbers' }, why: { en: 'Right. A small minority identifying as Spanish dominated government, economy and society. Colonial laws, even dress codes, held that rank in place.' } },
+          { t: { en: 'They held power because they were the largest group' }, why: { en: 'No. They were few: mestizos, Africans and indigenous peoples greatly outnumbered them. Their power came from law and rank, not numbers.' } },
+          { t: { en: 'Only the Spain-born held power; criollos had little' }, why: { en: 'No. The label "Spanish" covered criollos born in the Americas too. Together, that small group calling itself Spanish dominated Lima.' } },
+          { t: { en: 'They shared power equally under the two republics' }, why: { en: 'No. The two republics split society apart; they did not share power. The plan rested on the false idea that Native people were inferior.' } }
         ]
       }
     },
@@ -137,11 +139,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'How did high death rates on sugar plantations affect the slave trade?' },
+        q: { en: 'Which best explains how high death rates on sugar plantations affected the slave trade?' },
         choices: [
-          { ok: true, t: { en: 'Owners replaced the dead with new captives' }, why: { en: 'Yes. Dangerous voyages and brutal work caused high death rates, which led to even greater demand for enslaved laborers.' } },
-          { t: { en: 'Planters switched to free European workers' }, why: { en: 'No. Planters turned to free migrants only after the slave trade was abolished in the 1800s. Before then, they demanded more captives.' } },
-          { t: { en: 'Native workers returned to the sugar fields' }, why: { en: 'No. Disease had killed millions of indigenous Americans. That loss is why planters turned to Africa in the first place.' } }
+          { ok: true, t: { en: 'They raised demand, so more captives were forced over' }, why: { en: 'Yes. Dangerous voyages and brutal work caused high death rates, which led to even greater demand for enslaved laborers.' } },
+          { t: { en: 'They pushed planters to hire free European migrants' }, why: { en: 'No. Planters turned to free migrants only after the slave trade was abolished in the 1800s. Before then, they demanded more captives.' } },
+          { t: { en: 'They led planters to rely on indentured servants' }, why: { en: 'No. Indentured servants were poor Europeans who agreed to sell years of labor. Sugar planters replaced the dead with more enslaved Africans.' } },
+          { t: { en: 'They shrank the trade, which faded after the 1580s' }, why: { en: 'No. The reverse: from 1580 on, enslaved Africans far outnumbered European migrants, and the trade kept growing.' } }
         ]
       }
     },
@@ -159,8 +162,9 @@ window.EPISODE = {
         q: { en: 'Which best describes the global silver trade that ran through Peru?' },
         choices: [
           { ok: true, t: { en: 'It linked Europe and China but rested on forced labor' }, why: { en: 'Yes. Silver drove global trade and benefited Spain, western Europe and China. It was made possible by forced indigenous labor in South American mines.' } },
-          { t: { en: 'It mainly enriched the Andean towns that mined it' }, why: { en: 'No. The profits went to Spain, western Europe and China. Andean miners were forced to work under the mita.' } },
-          { t: { en: 'It relied on enslaved Africans more than Native miners' }, why: { en: 'No. Most enslaved Africans were forced to farm sugar. The silver came from forced indigenous labor in the mines.' } }
+          { t: { en: 'It enriched Spain alone, which kept the silver at home' }, why: { en: 'No. Spain gained, but the silver fueled trade around the globe and enriched western Europe and China too.' } },
+          { t: { en: 'It relied on enslaved Africans more than Native miners' }, why: { en: 'No. Most enslaved Africans were forced to farm sugar. The silver came from forced indigenous labor in the mines.' } },
+          { t: { en: 'It paid mita workers, so the Andean towns grew rich' }, why: { en: 'No. The mita was forced labor, not paid work. The profits went to Spain, western Europe and China.' } }
         ]
       }
     },
@@ -179,8 +183,9 @@ window.EPISODE = {
         q: { en: 'Sourcing: what is the author\'s main purpose in this passage?' },
         choices: [
           { ok: true, t: { en: 'To show Europeans the human cost of their crops' }, why: { en: 'Yes. He sets Europe\'s "happiness" against the "unhappiness" of America and Africa: emptied land, and people forced to farm it.' } },
-          { t: { en: 'To urge Europeans to plant more sugar in Brazil' }, why: { en: 'No. Portugal did build sugar colonies in Brazil, but he questions whether these crops are worth their cost at all.' } },
-          { t: { en: 'To praise Africa for sending willing workers west' }, why: { en: 'No. He says Africa was "depopulated." The workers were captives, forced across the Atlantic.' } }
+          { t: { en: 'To celebrate cheap sugar for Europe\'s workers' }, why: { en: 'No. In 1773 sugar in coffee and tea was still a luxury mostly for the wealthy, and he questions whether it brings Europe happiness at all.' } },
+          { t: { en: 'To blame disease alone for emptying the Americas' }, why: { en: 'No. Disease did empty the land, but his point ties both regions to Europe\'s crops: America emptied for land, Africa emptied for laborers.' } },
+          { t: { en: 'To urge planters to replace captives with migrants' }, why: { en: 'No. He writes to European buyers and proposes no new labor system. Planters turned to free migrants only after the slave trade ended in the 1800s.' } }
         ]
       }
     },
@@ -198,8 +203,9 @@ window.EPISODE = {
         q: { en: 'Causation: which best explains why forced migrants outnumbered voluntary ones after 1580?' },
         choices: [
           { ok: true, t: { en: 'Disease killed Native workers, so sugar planters forced Africans over' }, why: { en: 'Yes. With the indigenous population decimated, plantation owners turned to enslaved Africans, and high death rates raised the demand even further.' } },
-          { t: { en: 'The Reformation sent so many Puritans west that Europe ran short' }, why: { en: 'No. The Reformation drove voluntary migration, like 20,000 Puritans, but after 1580 forced migrants far outnumbered those who chose to come.' } },
-          { t: { en: 'Africans crossed as indentured servants who sold four years of work' }, why: { en: 'No. Indentured servants were poor Europeans who agreed to the bargain. Captive Africans were enslaved and had no choice.' } }
+          { t: { en: 'The Reformation ended, so religious refugees stopped crossing' }, why: { en: 'No. Religious refugees kept coming: 20,000 Puritans fled in the 1630s and 1640s, after 1580. They chose to come, but captive Africans far outnumbered them.' } },
+          { t: { en: 'Africans crossed as indentured servants who sold four years of work' }, why: { en: 'No. Indentured servants were poor Europeans who agreed to the bargain. Captive Africans were enslaved and had no choice.' } },
+          { t: { en: 'European convicts and prisoners of war were shipped over in masses' }, why: { en: 'No. Convicts and prisoners of war were forced migrants, but few. Most forced migrants were enslaved Africans, brought to farm sugar cane.' } }
         ]
       }
     }

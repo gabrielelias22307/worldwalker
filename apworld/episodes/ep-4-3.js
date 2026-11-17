@@ -92,9 +92,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which best explains why Afro-Eurasian diseases killed so many Native people in Mexico?' },
         choices: [
-          { ok: true, t: { en: 'They had never met these germs before' }, why: { en: 'Yes. With few domesticated herd animals, the source of smallpox and measles, the Americas had never had these diseases. People had no immunity.' } },
-          { t: { en: 'The Spanish spread disease on purpose' }, why: { en: 'No. The readings call the epidemics an unintended result of contact. Europeans carried germs they had some resistance to.' } },
-          { t: { en: 'Famine had already weakened the cities' }, why: { en: 'No. Before contact, cities like Tenochtitlan and Cusco were among the largest in the world. Almost all the loss came from disease.' } }
+          { ok: true, t: { en: 'They had no immunity to diseases new to the Americas' }, why: { en: 'Yes. With few domesticated herd animals, the source of smallpox and measles, the Americas had never had these diseases. People had no immunity.' } },
+          { t: { en: 'War and forced labor caused most of the deaths' }, why: { en: 'No. War and forced labor did kill many, and that must be remembered. But Teresa says almost all of the loss came from disease, to which Native people had no immunity.' } },
+          { t: { en: 'The Spanish deliberately spread smallpox to conquer' }, why: { en: 'No. The readings call the epidemics an unintended result of contact. Europeans carried germs they had some resistance to; Native people had none.' } },
+          { t: { en: 'Famine had already weakened Mexico\'s crowded cities' }, why: { en: 'No. Before contact, cities like Tenochtitlan and Cusco were among the largest in the world. Almost all the loss came from disease.' } }
         ]
       }
     },
@@ -111,9 +112,10 @@ window.EPISODE = {
         stat: 'pla',
         q: { en: 'Which best describes a change the exchange brought to the land of Mexico?' },
         choices: [
-          { ok: true, t: { en: 'New animals and crops pushed out native plants' }, why: { en: 'Yes. Cattle destroyed indigenous plants, and the Spanish replaced native crops with wheat, barley and sorghum.' } },
-          { t: { en: 'Maize and potatoes replaced the native wheat' }, why: { en: 'No. Maize and potatoes are American crops. Wheat came from Afro-Eurasia with the Spanish.' } },
-          { t: { en: 'Llamas spread north and became the main herd' }, why: { en: 'No. Llamas and alpacas lived far to the south. The new herds in Mexico were Afro-Eurasian cattle, sheep, goats and pigs.' } }
+          { ok: true, t: { en: 'Afro-Eurasian animals and crops displaced native plants' }, why: { en: 'Yes. Cattle destroyed indigenous plants, and the Spanish replaced native crops with wheat, barley and sorghum.' } },
+          { t: { en: 'Maize and potatoes replaced the native wheat fields' }, why: { en: 'No. Maize and potatoes are American crops. Wheat came from Afro-Eurasia with the Spanish.' } },
+          { t: { en: 'Llamas and alpacas spread north to become the main herds' }, why: { en: 'No. Llamas and alpacas lived far to the south. The new herds in Mexico were Afro-Eurasian cattle, sheep, goats and pigs.' } },
+          { t: { en: 'Horses spread buffalo hunting across central Mexico' }, why: { en: 'No. Diego says people up north hunt buffalo on horseback. Around Mexico City, cattle trampled native plants, and wheat, barley and sorghum replaced native crops.' } }
         ]
       }
     },
@@ -130,9 +132,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Compared with its effect on the Americas, the exchange\'s effect on Afro-Eurasia\'s population was…' },
         choices: [
-          { ok: true, t: { en: 'growth, fed by American staple crops' }, why: { en: 'Right. Calorie-rich maize, potatoes and cassava fed growing populations, while epidemics killed millions of Native Americans.' } },
-          { t: { en: 'a sharp fall from new American diseases' }, why: { en: 'No. Very few diseases traveled west to east. Some historians argue syphilis did, but the evidence is not conclusive.' } },
-          { t: { en: 'little change, since few crops sailed east' }, why: { en: 'No. Many crops sailed east: maize, potatoes, tomatoes, chili peppers, cacao. They changed diets and populations.' } }
+          { ok: true, t: { en: 'growth, fed by calorie-rich American staple crops' }, why: { en: 'Right. Calorie-rich maize, potatoes and cassava fed growing populations, while epidemics killed millions of Native Americans.' } },
+          { t: { en: 'a sharp fall, from new diseases carried from America' }, why: { en: 'No. Very few diseases traveled west to east. Some historians argue syphilis did, but the evidence is not conclusive.' } },
+          { t: { en: 'little change, since few American crops sailed east' }, why: { en: 'No. Many crops sailed east: maize, potatoes, tomatoes, chili peppers, cacao. They changed diets and populations.' } },
+          { t: { en: 'growth, fed mainly by sugar from Caribbean plantations' }, why: { en: 'No. Sugar was the richest cash crop, grown for profit by enslaved Africans. Population growth came from calorie-rich staples like maize, potatoes and cassava.' } }
         ]
       }
     },
@@ -149,9 +152,10 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'The shrine at Tepeyac most directly reflects which development in New Spain?' },
         choices: [
-          { ok: true, t: { en: 'Native and Catholic beliefs blending' }, why: { en: 'Yes. Converts prayed at the same site, for the same reasons, to a figure who blended the Virgin Mary and Tonantzin.' } },
-          { t: { en: 'A full rejection of Catholic teaching' }, why: { en: 'No. Many converted. Missionaries, to their frustration, found images of Jesus and Mary beside statues of Aztec gods.' } },
-          { t: { en: 'Missionaries turning to Aztec gods' }, why: { en: 'No. Missionaries re-used some Native symbols, but they forced conversion to Catholicism and burned temples.' } }
+          { ok: true, t: { en: 'Native and Catholic beliefs blending into something new' }, why: { en: 'Yes. Converts prayed at the same site, for the same reasons, to a figure who blended the Virgin Mary and Tonantzin.' } },
+          { t: { en: 'Native people fully rejecting Catholic teaching' }, why: { en: 'No. Many converted. Missionaries, to their frustration, found images of Jesus and Mary beside statues of Aztec gods.' } },
+          { t: { en: 'Missionaries adopting the worship of Aztec gods' }, why: { en: 'No. Missionaries re-used some Native symbols, but they forced conversion to Catholicism and burned temples.' } },
+          { t: { en: 'Catholicism wholly replacing earlier Native beliefs' }, why: { en: 'No. Missionaries burned temples and built churches over them, yet many still call the Virgin Tonantzin. Old beliefs blended with the new rather than vanishing.' } }
         ]
       }
     },
@@ -169,9 +173,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: how does Bradford\'s point of view shape the value of this source?' },
         choices: [
-          { ok: true, t: { en: 'A close witness, but an outsider\'s view' }, why: { en: 'Yes. As governor he saw the epidemic up close, but he wrote as an English colonist. We do not hear the sick people\'s own voices.' } },
+          { ok: true, t: { en: 'A close witness, but an English colonist\'s outside view' }, why: { en: 'Yes. As governor he saw the epidemic up close, but he wrote as an English colonist. We do not hear the sick people\'s own voices.' } },
           { t: { en: 'It proves colonists spread smallpox on purpose' }, why: { en: 'No. The excerpt describes suffering, not how the disease came. The readings call the epidemics an unintended result of contact.' } },
-          { t: { en: 'It records the views of Native healers' }, why: { en: 'No. Bradford was an English colonial governor. The excerpt gives his observations, not the words of the Native people.' } }
+          { t: { en: 'It records the sick communities\' own accounts' }, why: { en: 'No. Bradford was an English colonial governor watching from outside. The excerpt gives his observations, not the words of the Native people.' } },
+          { t: { en: 'Fully objective, since a governor reported official facts' }, why: { en: 'No. His position gave him a close view, but not a neutral one. He wrote as an English colonist, and the sick people\'s own voices are missing.' } }
         ]
       }
     },
@@ -190,7 +195,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Epidemics, then a labor shortage, then the slave trade' }, why: { en: 'Yes. Disease killed millions, leaving too few workers, and that need for labor contributed to the rise of the Atlantic slave trade.' } },
           { t: { en: 'The slave trade, then smallpox, then a labor shortage' }, why: { en: 'No, the order is reversed. Smallpox came first; the slave trade it helped cause later brought even more diseases, like malaria.' } },
-          { t: { en: 'Wheat failed, so settlers turned to cash crops instead' }, why: { en: 'No. Wheat thrived in the Americas as a staple. Settlers grew cash crops like sugar because they sold for profit.' } }
+          { t: { en: 'Wheat failed, so settlers turned to cash crops instead' }, why: { en: 'No. Wheat thrived in the Americas as a staple. Settlers grew cash crops like sugar because they sold for profit.' } },
+          { t: { en: 'A labor shortage, then epidemics, then regrowing forests' }, why: { en: 'No, the order is wrong. Epidemics came first. With so few people left, forests regrew and a shortage of labor followed.' } }
         ]
       }
     }

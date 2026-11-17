@@ -102,7 +102,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'One chosen by scholars or by politics' }, why: { en: 'Yes. Twelver teaching excluded any leader chosen through a scholarly or political process, such as a sultan who simply proclaimed himself caliph.' } },
           { t: { en: 'One who claimed descent from Ali' }, why: { en: 'No. Shi\'a honor Ali as the first rightful successor to Muhammad, and Ismail himself claimed descent from him.' } },
-          { t: { en: 'One who served as a Muslim prayer leader' }, why: { en: 'No. That is just what Twelvers required: an imam, a Muslim prayer leader, chosen by God.' } }
+          { t: { en: 'One who served as a Muslim prayer leader' }, why: { en: 'No. That is just what Twelvers required: an imam, a Muslim prayer leader, chosen by God.' } },
+          { t: { en: 'One who was the hidden twelfth imam' }, why: { en: 'No. Twelvers believe the twelfth successor is alive but hidden, and they expect a true leader to emerge. He is the rightful leader they await, not one they rule out.' } }
         ]
       }
     },
@@ -121,7 +122,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Their loyalty might lie with the Safavids' }, why: { en: 'Yes. With the militant Safavids on the border, Selim treated loyalty to Shah Ismail or Twelver Shi\'ism as a threat to the Sunni Ottoman state.' } },
           { t: { en: 'They had secretly allied with Spain and Portugal' }, why: { en: 'No. Spain and Portugal threatened the Ottomans from the west, but the orders targeted loyalty to Shah Ismail.' } },
-          { t: { en: 'They had refused to pay imperial taxes' }, why: { en: 'No. The orders were about belief and loyalty to the Safavid shah, not about taxes.' } }
+          { t: { en: 'They were loyal to the Mamluk rulers of Egypt' }, why: { en: 'No. The Mamluks had ruled Egypt since 1250 as another Muslim dynasty, but the orders named loyalty to Shah Ismail or Twelver Shi\'ism.' } },
+          { t: { en: 'Sunni–Shi\'a marriage had been outlawed' }, why: { en: 'No, that reverses cause and effect. The marriage ban was one of the anti-Shi\'a measures, a result of the fear of Safavid loyalty, not its cause.' } }
         ]
       }
     },
@@ -139,6 +141,7 @@ window.EPISODE = {
         q: { en: 'Sikhism began in one merchant caste. Which change shows it broke with the caste order around it?' },
         choices: [
           { ok: true, t: { en: 'Converts came from every caste' }, why: { en: 'Yes. Converts came from all major castes, even "outcaste" communities seen as impure in Hinduism, and from Islam.' } },
+          { t: { en: 'Sufis and sadhus were both revered' }, why: { en: 'No. Revering both Sufi dervishes and Hindu sadhus shows the syncretism of the Punjab around Sikhism. It blends faiths but is not a break with caste.' } },
           { t: { en: 'Khatri merchants ruled the faith' }, why: { en: 'No. Sikhism did begin among Khatri merchants, but Sikhs rejected caste divisions instead of ranking their own caste first.' } },
           { t: { en: 'The Mughals made it a state faith' }, why: { en: 'No. Early Mughal rulers promoted [[sulh-i kull|sulh-i kull]], "peace with all": toleration of every faith. Later emperors insisted on Muslim dominance and executed several Sikh gurus in the 1600s.' } }
         ]
@@ -159,7 +162,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Defined heresy to defend one faith' }, why: { en: 'Yes. Trent decided what counted as heresy, and Ottoman Sunni scholars named the Shi\'a heretics. Both states then punished those outside the lines.' } },
           { t: { en: 'Tolerated all faiths to keep order' }, why: { en: 'No. That was the early Mughal policy of sulh-i kull. Trent and the Ottoman scholars drew hard lines instead.' } },
-          { t: { en: 'Ended the sale of indulgences' }, why: { en: 'No. Indulgences were Luther\'s target in Christian Europe. They had nothing to do with the Ottomans and the Safavids.' } }
+          { t: { en: 'Ended the sale of indulgences' }, why: { en: 'No. Indulgences were Luther\'s target in Christian Europe. They had nothing to do with the Ottomans and the Safavids.' } },
+          { t: { en: 'Sent Jesuit missionaries across the world' }, why: { en: 'No. The Jesuits, founded in 1540, were Catholic missionaries, another part of the Catholic Reformation. What Trent shared with the Ottoman scholars was defining heresy.' } }
         ]
       }
     },
@@ -178,7 +182,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Less war and more costly symbols' }, why: { en: 'Yes. Both empires relied less on warlike expansion and more on projects like Suleiman\'s rebuilding of Jerusalem and Shah Abbas\'s madrasas.' } },
           { t: { en: 'It ended as the Safavids became Sunni' }, why: { en: 'No. The Safavids stayed Shi\'a, and competing Sunni and Shi\'a claims to lead Islam continue today.' } },
-          { t: { en: 'Both grew richer and gained new lands' }, why: { en: 'No. Both empires lost territory and economic power by the mid-1700s.' } }
+          { t: { en: 'Both grew richer and gained new lands' }, why: { en: 'No. Both empires lost territory and economic power by the mid-1700s.' } },
+          { t: { en: 'Both stopped claiming to protect Islam' }, why: { en: 'No. Both kept claiming to protect Islam. Costly symbols like the rebuilt Jerusalem and new madrasas were ways of making that claim.' } }
         ]
       }
     },
@@ -198,7 +203,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'As peasants, they hoped to end serfdom' }, why: { en: 'Yes. Many peasants, artisans and craftspeople believed Protestantism offered a path toward social and economic change, such as freedom from bondage.' } },
           { t: { en: 'As princes, they wanted to escape Church power' }, why: { en: 'No. Many monarchs and princes did see Protestantism that way, but these were villagers, and bondage was their concern.' } },
-          { t: { en: 'As Catholics, they defended the Church\'s rule' }, why: { en: 'No. They used Protestant ideas to challenge the old order, not to defend it.' } }
+          { t: { en: 'Like Luther, they felt the end-times were near' }, why: { en: 'No. That fits Luther\'s 1530 words about the world crumbling. The villagers speak of bondage: they hoped for social and economic change.' } },
+          { t: { en: 'Like Montaigne, they condemned religious wars' }, why: { en: 'No. That was Montaigne, a French Catholic writer, as debate turned to war later in the century. The villagers of 1524 spoke about bondage.' } }
         ]
       }
     }

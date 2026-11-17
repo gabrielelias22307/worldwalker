@@ -96,9 +96,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Which best explains why Sahel rulers took only occasional tribute from the herders?' },
         choices: [
-          { ok: true, t: { en: 'Their power rested on wet grain lands' }, why: { en: 'Yes. Sahel states were built on dense, wet, grain-producing centers. Nomads moving through the drier lands around them were hard to rule.' } },
-          { t: { en: 'The herders had all converted to Islam early' }, why: { en: 'No. Islam came with traders and some merchants and rulers. Herders were hard to rule because they moved through the dry lands.' } },
-          { t: { en: 'The herders paid heavy taxes on cloth' }, why: { en: 'No. Cloth was not the key. Rulers taxed long-distance trade, and from nomads they could only demand occasional tribute.' } }
+          { t: { en: 'The herders ruled the river towns instead' }, why: { en: 'Overstated. Herders sometimes raided or even invaded the river and lake towns, but they did not rule them. They were hard to rule because they kept moving through the dry lands.' } },
+          { t: { en: 'The herders farmed the wet river valleys' }, why: { en: 'No. The wet river valleys were the farmers\' grain lands, the heart of the state. Herders moved through the drier grassland around them, where officials could not really rule.' } },
+          { ok: true, t: { en: 'Their power rested on the wet grain lands' }, why: { en: 'Yes. Sahel states were built on dense, wet, grain-producing centers. Nomads moving through the drier lands around them were hard to rule.' } },
+          { t: { en: 'Rulers taxed the herders\' cloth instead' }, why: { en: 'No. Sahel rulers taxed long-distance trade, not cloth, and Hamadi\'s people are herders, not weavers. From nomads, rulers could only demand occasional tribute.' } }
         ]
       }
     },
@@ -115,9 +116,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which best explains how Wagadu (Ghana) grew rich?' },
         choices: [
-          { ok: true, t: { en: 'It sat between the goldfields and northern buyers' }, why: { en: 'Yes. The gold was mined south of Wagadu. Wagadu controlled the route that carried it north, so it could profit from the trade.' } },
           { t: { en: 'It mined most of the gold inside its own capital city' }, why: { en: 'No. Most gold was mined a hundred miles or so south of Wagadu. Its power came from controlling the route north.' } },
-          { t: { en: 'It shipped kola nuts to Europe by sea' }, why: { en: 'No. Kanem and the Hausa states controlled kola nuts, sold to North Africa and the Middle East. Wagadu\'s wealth was the gold trade.' } }
+          { t: { en: 'It controlled the kola nut trade of the forests' }, why: { en: 'No. Kola nuts enriched Kanem and the Hausa states, and later the Susu. Wagadu\'s wealth came from the route that carried gold north.' } },
+          { ok: true, t: { en: 'It sat between the goldfields and northern buyers' }, why: { en: 'Yes. The gold was mined south of Wagadu. Wagadu controlled the route that carried it north, so it could profit from the trade.' } },
+          { t: { en: 'It taxed the fine cloth made by its own weavers' }, why: { en: 'No. Sahel states made fine cloth, but trade was easier to tax. Wagadu grew rich by controlling the route that carried gold north.' } }
         ]
       }
     },
@@ -134,9 +136,10 @@ window.EPISODE = {
         stat: 'pla',
         q: { en: 'Sunjata may have been Muslim, yet his name begins with his mother\'s. This best shows that...' },
         choices: [
-          { ok: true, t: { en: 'local customs continued alongside Islam' }, why: { en: 'Yes. Matrilineality and the power of royal queen mothers continued, though they were not normal features of Islam in many other regions.' } },
           { t: { en: 'Islam required tracing descent through mothers' }, why: { en: 'No. Political power for queen mothers was not a normal feature of Islam in many regions. Matrilineality was a local West African custom.' } },
-          { t: { en: 'Susu customs replaced Mali\'s after 1240' }, why: { en: 'No. Sunjata defeated the Susu around 1240. Matrilineality was a shared local custom that lived on in Mali.' } }
+          { t: { en: 'queen mothers chose each new mansa' }, why: { en: 'Overstated. Queen mothers held real power at court, but nothing here says they chose rulers. The name shows a local custom, matrilineality, lasting alongside Islam.' } },
+          { t: { en: 'Mali adopted Susu customs after 1240' }, why: { en: 'No. Sunjata defeated the Susu around 1240. His mother may have been related to Susu rulers, but matrilineality was a shared local custom that lived on in Mali.' } },
+          { ok: true, t: { en: 'local customs continued alongside Islam' }, why: { en: 'Yes. Matrilineality and the power of royal queen mothers continued, though they were not normal features of Islam in many other regions.' } }
         ]
       }
     },
@@ -151,10 +154,11 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did a few West African rulers, like the kings of Takrur and Kanem, convert to Islam?' },
+        q: { en: 'Which best explains why a few West African rulers, like the kings of Takrur and Kanem, converted to Islam?' },
         choices: [
-          { ok: true, t: { en: 'It aided trade and offered a written language' }, why: { en: 'Yes. Islam was the religion of the North African traders, and it came with a written language that was useful to rulers.' } },
           { t: { en: 'Most of their own farmers had already become Muslim' }, why: { en: 'No. Most farmers followed local, non-Muslim religions. Traders, some merchants and a few rulers were Muslim.' } },
+          { ok: true, t: { en: 'It aided trade and offered a written language' }, why: { en: 'Yes. Islam was the religion of the North African traders, and it came with a written language that was useful to rulers.' } },
+          { t: { en: 'They followed the example of Mansa Musa' }, why: { en: 'No. The kings of Takrur and Kanem were Muslim by the eleventh century, long before Mansa Musa ruled Mali in the 1300s.' } },
           { t: { en: 'Islam let them rule the nomads directly' }, why: { en: 'No. Sahel states could not really rule nomads in the dry lands, whatever their faith. They only took occasional tribute.' } }
         ]
       }
@@ -173,9 +177,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: why did Cresques show Mansa Musa with a crown and a scepter?' },
         choices: [
-          { ok: true, t: { en: 'He used European symbols for a great king' }, why: { en: 'Yes. Crowns and scepters were European symbols of kings. Cresques never met Mansa Musa, so he pictured him the European way.' } },
           { t: { en: 'He copied the royal regalia he saw at Niani' }, why: { en: 'No. Cresques lived in Mallorca, Spain, and never met or saw Mansa Musa.' } },
-          { t: { en: 'Mali\'s kings wore crowns sent from Europe' }, why: { en: 'No. Crowns and scepters were not West African symbols of kingship. Mansa Musa probably had neither.' } }
+          { t: { en: 'He meant to show Mansa Musa as a false king' }, why: { en: 'No. The map shows a great, rich king holding gold. Crowns and scepters were how Europeans pictured real, powerful kings; they simply were not West African symbols.' } },
+          { t: { en: 'Mali\'s kings wore crowns sent from Europe' }, why: { en: 'No. Crowns and scepters were not West African symbols of kingship. Mansa Musa probably had neither.' } },
+          { ok: true, t: { en: 'He used European symbols for a great king' }, why: { en: 'Yes. Crowns and scepters were European symbols of kings. Cresques never met Mansa Musa, so he pictured him the European way.' } }
         ]
       }
     },
@@ -192,9 +197,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which of the following best explains why Mali\'s rulers grew so rich in the early 1300s?' },
         choices: [
-          { ok: true, t: { en: 'Rising trade raised demand for Mali\'s gold' }, why: { en: 'Yes. Growing trade in North Africa and Europe created a demand for currency, especially gold, and Mali controlled much of it.' } },
           { t: { en: 'Mali taxed its weavers\' cloth above all else' }, why: { en: 'No. Sahel states made textiles, but rulers focused on long-distance trade, like gold, because it was easier to tax.' } },
-          { t: { en: 'Mali ruled the herders of the dry lands tightly' }, why: { en: 'No. Sahel states could not really rule nomadic herders. Their power rested on wet, grain-producing centers and on trade.' } }
+          { ok: true, t: { en: 'Rising trade raised demand for Mali\'s gold' }, why: { en: 'Yes. Growing trade in North Africa and Europe created a demand for currency, especially gold, and Mali controlled much of it.' } },
+          { t: { en: 'Mali ruled the herders of the dry lands tightly' }, why: { en: 'No. Sahel states could not really rule nomadic herders. Their power rested on wet, grain-producing centers and on trade.' } },
+          { t: { en: 'Mali conquered the Swahili gold ports' }, why: { en: 'No. The Swahili city-states lay on Africa\'s east coast, on the Indian Ocean, far from Mali. Mali\'s gold went north across the Sahara.' } }
         ]
       }
     }

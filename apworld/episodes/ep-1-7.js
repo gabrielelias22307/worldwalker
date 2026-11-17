@@ -95,11 +95,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'How did Dar al-Islam in 1200–1450 compare with the age of the Abbasid Caliphate?' },
+        q: { en: 'Which best describes how Dar al-Islam in 1200–1450 differed from the age of the Abbasid Caliphate?' },
         choices: [
           { ok: true, t: { en: 'Divided in politics, but united by culture' }, why: { en: 'Yes. Power was split among many states, but Islam, Arabic and shared values kept spreading and connecting people.' } },
           { t: { en: 'Politically united again under Turkic sultans' }, why: { en: 'No. Turkic dynasties founded several separate states. No single ruler united Dar al-Islam again.' } },
-          { t: { en: 'Shrinking, as Mongol conquests drove Islam back' }, why: { en: 'No. The Mongols sacked Baghdad, but their conquests helped Islam spread further than ever before.' } }
+          { t: { en: 'Shrinking, as Mongol conquests drove Islam back' }, why: { en: 'No. The Mongols sacked Baghdad, but their conquests helped Islam spread further than ever before.' } },
+          { t: { en: 'Cut off from Africa and India by Mongol rule' }, why: { en: 'No. Between 1000 and 1500 Dar al-Islam nearly doubled in size, reaching sub-Saharan Africa, the East African coast, India and Southeast Asia.' } }
         ]
       }
     },
@@ -118,7 +119,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Officials chosen by exams on Confucian writings' }, why: { en: 'Yes. Few governments outside China were strong enough to rule daily local life. Exams built a trained bureaucracy.' } },
           { t: { en: 'Power devolved to nobles, knights and city councils' }, why: { en: 'No. That describes feudal Europe. In China an emperor ruled through a trained bureaucracy.' } },
-          { t: { en: 'Kings drawn from rich merchant families of the ports' }, why: { en: 'No. That describes the Swahili city-states of East Africa. China\'s emperors came from ruling dynasties.' } }
+          { t: { en: 'Kings drawn from rich merchant families of the ports' }, why: { en: 'No. That describes the Swahili city-states of East Africa. China\'s emperors came from ruling dynasties.' } },
+          { t: { en: 'Rulers backed by qadis trained in Islamic law' }, why: { en: 'No. That describes Muslim sultans in Dar al-Islam. China\'s emperor ruled through scholar-officials who passed exams on Confucian writings.' } }
         ]
       }
     },
@@ -133,11 +135,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'How did rulers of Sahel states like Mali mostly pay for their states?' },
+        q: { en: 'Which best explains how rulers of Sahel states like Mali mostly paid for their states?' },
         choices: [
           { ok: true, t: { en: 'By controlling and taxing long-distance trade' }, why: { en: 'Yes. Gold above all. They also made textiles, but trade was easier to tax, so rulers focused on controlling it.' } },
           { t: { en: 'By taxing the cloth made in their workshops' }, why: { en: 'No. Sahel states did make textiles, but their governments focused on trade because it was easier to tax.' } },
-          { t: { en: 'By collecting tribute from nomadic herders' }, why: { en: 'No. These states had little control over nomadic herders; at most they sometimes demanded tribute.' } }
+          { t: { en: 'By collecting tribute from nomadic herders' }, why: { en: 'No. These states had little control over nomadic herders; at most they sometimes demanded tribute.' } },
+          { t: { en: 'By conquering neighbors and seizing their land' }, why: { en: 'No. Sunjata did defeat Susu to build Mali, but the Sahel model rested on controlling and taxing long-distance trade, gold above all.' } }
         ]
       }
     },
@@ -156,7 +159,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Decentralized, with local lords holding power' }, why: { en: 'Yes. China\'s emperor ruled through trained officials, while Europe\'s kings were often weak and nobles ruled locally.' } },
           { t: { en: 'Centralized, with kings ruling through officials' }, why: { en: 'No. Europe had no civil service exams. Nobles, knights, church leaders and city councils held power.' } },
-          { t: { en: 'Unified under the pope, who ruled every kingdom' }, why: { en: 'No. Popes competed with kings and could excommunicate them, but Europe stayed split into many states.' } }
+          { t: { en: 'Unified under the pope, who ruled every kingdom' }, why: { en: 'No. Popes competed with kings and could excommunicate them, but Europe stayed split into many states.' } },
+          { t: { en: 'Unified under one strong emperor in Germany' }, why: { en: 'No. Germany itself broke into hundreds of small units under a weak emperor, and France\'s king directly ruled only a few provinces.' } }
         ]
       }
     },
@@ -176,7 +180,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The wars and turmoil of the Eastern Zhou' }, why: { en: 'Yes. Rival states fought often in his time. He looked for a moral way to restore order.' } },
           { t: { en: 'The Mongol conquest of China in the 1270s' }, why: { en: 'No. Confucius died in 479 BCE, about 1,700 years before the Mongols conquered the Song.' } },
-          { t: { en: 'The Song exams on Zhu Xi\'s Confucian books' }, why: { en: 'No. The exams came long after Confucius. They were built on his teachings, not the cause of them.' } }
+          { t: { en: 'The Song exams on Zhu Xi\'s Confucian books' }, why: { en: 'No. The exams came long after Confucius. They were built on his teachings, not the cause of them.' } },
+          { t: { en: 'Life in a unified empire run by officials' }, why: { en: 'No. In his time China was split among rival states at war. A unified government run by Confucian officials came many centuries later.' } }
         ]
       }
     },
@@ -195,7 +200,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Europe was fragmented; China had one government' }, why: { en: 'Yes. Europe was decentralized but shared Christianity; China was unified by Confucianism and an imperial bureaucracy.' } },
           { t: { en: 'Both were held together by Confucian exams' }, why: { en: 'No. Only China used Confucianism and exams. Europe was tied together by the Christian faith.' } },
-          { t: { en: 'Europe was united by Rome; China was split up' }, why: { en: 'No. It was the reverse: Rome left Europe only shared cultural elements, while the Song unified China.' } }
+          { t: { en: 'Europe was united by Rome; China was split up' }, why: { en: 'No. It was the reverse: Rome left Europe only shared cultural elements, while the Song unified China.' } },
+          { t: { en: 'Both were fragmented but tied by trade routes' }, why: { en: 'No. Trading circuits linked many regions, but only Europe was fragmented. In China, Confucianism and an imperial bureaucracy sustained one government.' } }
         ]
       }
     }

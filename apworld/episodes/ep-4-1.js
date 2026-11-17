@@ -92,9 +92,10 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'Which best explains how the compass and the kamal reached Lisbon\'s sailors?' },
         choices: [
-          { ok: true, t: { en: 'Through Afro-Eurasian trade with China and Arab sailors' }, why: { en: 'Yes. The compass came from China through trade with Asia, and the kamal came from Arab sailors.' } },
-          { t: { en: 'Through old Roman designs that Europe\'s scholars had kept for centuries' }, why: { en: 'No. The astrolabe goes back to the Roman Empire, but the compass came from China and the kamal from Arab sailors.' } },
-          { t: { en: 'Through gifts that Ottoman sultans sent to Portugal\'s kings' }, why: { en: 'No. The Ottomans dominated trade routes; the compass came from China through trade with Asia.' } }
+          { ok: true, t: { en: 'Afro-Eurasian trade, from China and from Arab sailors' }, why: { en: 'Yes. The compass came from China through trade with Asia, and the kamal came from Arab sailors.' } },
+          { t: { en: 'Roman designs that Europe\'s scholars had kept for centuries' }, why: { en: 'No. That fits the astrolabe, which goes back to the Roman Empire. The compass came from China and the kamal from Arab sailors.' } },
+          { t: { en: 'Prince Henry the Navigator\'s workshops in Portugal' }, why: { en: 'No. Prince Henry had the caravel developed, but the compass and the kamal were not Portuguese ideas. They came from China and from Arab sailors.' } },
+          { t: { en: 'Ottoman sultans, who controlled Europe\'s trade with Asia' }, why: { en: 'No. The Ottomans dominated that trade, which pushed Europeans to the sea. But the compass came from China, and the kamal from Arab sailors.' } }
         ]
       }
     },
@@ -111,9 +112,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which best explains why merchants like Leonor turned to the sea?' },
         choices: [
-          { ok: true, t: { en: 'Ottoman control of trade with Africa and Asia' }, why: { en: 'Yes. With the Ottoman sultans dominating that trade, Europeans used new tools to trade by sea.' } },
-          { t: { en: 'Europe out-produced the great Eurasian empires' }, why: { en: 'No. Europe\'s small states could not match the productivity and size of the great Eurasian states.' } },
-          { t: { en: 'The magnetic compass was just invented in Lisbon' }, why: { en: 'No. Early compasses came from China, through trade with Asia.' } }
+          { ok: true, t: { en: 'Ottoman sultans dominated Europe\'s trade with Africa and Asia' }, why: { en: 'Yes. With the Ottoman sultans dominating that trade, Europeans used new tools to trade by sea.' } },
+          { t: { en: 'Europe\'s small states out-produced the great Eurasian empires' }, why: { en: 'No. Leonor says the reverse: Europe\'s small states could not match the size and productivity of empires like the Ottoman and Russian.' } },
+          { t: { en: 'Atlantic crossings had already opened the Columbian Exchange' }, why: { en: 'No. That reverses cause and effect. The first voyages went south toward West Africa; the Atlantic crossings and the Columbian Exchange came later.' } },
+          { t: { en: 'The Russian Empire had closed the land routes to Asia' }, why: { en: 'No. Leonor names Russia as a great Eurasian empire, but it is the Ottoman sultans who dominate trade between Europe, Africa and Asia.' } }
         ]
       }
     },
@@ -132,7 +134,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Its great size and its mix of two regions\' styles' }, why: { en: 'Yes. The carrack blended Mediterranean and Northern European designs and could reach 2,000 tons.' } },
           { t: { en: 'Its speed, from a rounded bottom that pirates liked' }, why: { en: 'No. That describes the caravel, the fast ship pirates liked to use.' } },
-          { t: { en: 'Its use of triangular lateen sails on every mast' }, why: { en: 'No. Carracks used both lateen and square sails, on two to four masts.' } }
+          { t: { en: 'Its use of triangular lateen sails on every mast' }, why: { en: 'No. Carracks used both lateen and square sails, on two to four masts.' } },
+          { t: { en: 'Its design by Prince Henry for long-distance trade' }, why: { en: 'No. Prince Henry the Navigator had the caravel developed for long-distance trade. The carrack mixed Mediterranean and Northern European styles.' } }
         ]
       }
     },
@@ -149,9 +152,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Why did tools that measure a star\'s height matter so much for long voyages?' },
         choices: [
-          { ok: true, t: { en: 'Latitude let pilots hold a course far from land' }, why: { en: 'Yes. Knowing the latitude let a pilot keep a straight course and find the way home.' } },
-          { t: { en: 'The quadrant measured how fast the ship was sailing' }, why: { en: 'No. A star\'s height gives latitude, not speed.' } },
-          { t: { en: 'The astrolabe was a brand-new Portuguese invention' }, why: { en: 'No. The astrolabe goes back to the Roman Empire.' } }
+          { ok: true, t: { en: 'Knowing latitude let pilots hold a course far from land' }, why: { en: 'Yes. Knowing the latitude let a pilot keep a straight course and find the way home.' } },
+          { t: { en: 'A star\'s height told pilots how fast the ship was sailing' }, why: { en: 'No. A star\'s height gives latitude, not speed. Sailors recorded speed and direction on a traverse board.' } },
+          { t: { en: 'The quadrant replaced the compass for finding north' }, why: { en: 'No. The compass gave the heading; the quadrant measured a star\'s height to find latitude. Pilots used both.' } },
+          { t: { en: 'Polaris guided pilots just as well south of the equator' }, why: { en: 'No. Lopo steers by Polaris north of the equator, on clear nights. The tools mattered because any star\'s height, even the sun\'s, gives latitude.' } }
         ]
       }
     },
@@ -170,6 +174,7 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'An expert navigator who values knowledge from experience' }, why: { en: 'Yes. He calls navigation "our science" and gives exact directions by coasts and islands.' } },
           { t: { en: 'A merchant focused mainly on the profits of coastal trade' }, why: { en: 'No. He writes about finding the way by the science of navigation, not about prices or profit.' } },
+          { t: { en: 'A scholar who prizes ancient Roman learning over experience' }, why: { en: 'No. The astrolabe goes back to Rome, but Ibn Majid praises "our science," built from experience at sea, and gives exact directions by coasts and islands.' } },
           { t: { en: 'A religious leader explaining the natural world through faith' }, why: { en: 'No. His guide gives practical directions at sea; it is navigational science.' } }
         ]
       }
@@ -189,7 +194,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'new tools adapted older ideas from other regions' }, why: { en: 'Yes. An Arab design inspired the cross staff, and the back staff improved it: change built on continuity.' } },
           { t: { en: 'Europe dropped its older tools for wholly new inventions' }, why: { en: 'No. Each tool built on an earlier one, starting from the Arab kamal.' } },
-          { t: { en: 'all of these tools were first made in China' }, why: { en: 'No. The compass came from China, but the kamal came from Arab sailors and the back staff from John Davis.' } }
+          { t: { en: 'all of these tools were first made in China' }, why: { en: 'No. The compass came from China, but the kamal came from Arab sailors and the back staff from John Davis.' } },
+          { t: { en: 'Europe\'s tools were the first ever to cross open oceans' }, why: { en: 'No. Polynesian people had crossed the vast Pacific for centuries with their own technology. The sequence shows new tools adapting older ideas.' } }
         ]
       }
     }

@@ -93,7 +93,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Trade, calendar and prayer all needed math' }, why: { en: 'Yes. Merchants counted costs and profits, the calendar was mathematical, and facing Mecca took directional calculations.' } },
           { t: { en: 'Song exam reforms made many more people scholars' }, why: { en: 'No. That happened in China under the Song Dynasty, not in the Islamic world.' } },
-          { t: { en: 'Mongol routes carried China\'s mathematics west' }, why: { en: 'No. Mongol routes carried gunpowder and paper-making west. Muslim math grew from the Islamic world\'s own needs.' } }
+          { t: { en: 'Mongol routes carried China\'s mathematics west' }, why: { en: 'No. Mongol routes carried gunpowder and paper-making west. Muslim math grew from the Islamic world\'s own needs.' } },
+          { t: { en: 'Europe\'s scientific revolution spread its math east' }, why: { en: 'No. That reverses the flow and the time. Islamic math diffused to Europe, and Europe\'s scientific revolution of the 1500s and 1600s later built on it.' } }
         ]
       }
     },
@@ -112,7 +113,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Angkor blended both faiths; Java kept them apart' }, why: { en: 'Right. Angkor Wat\'s design shows art and ideas from both religions. On Java the temples stood near each other but separate.' } },
           { t: { en: 'Java blended both faiths; Angkor kept them apart' }, why: { en: 'Reversed. Angkor Wat changed from a Hindu to a Buddhist temple and shows both; Java kept its temples separate.' } },
-          { t: { en: 'Muslim merchants from India built both of them' }, why: { en: 'No. These were Hindu and Buddhist temples. Both religions first emerged in India, but Muslims did not build them.' } }
+          { t: { en: 'Muslim merchants from India built both of them' }, why: { en: 'No. These were Hindu and Buddhist temples. Both religions first emerged in India, but Muslims did not build them.' } },
+          { t: { en: 'Both show Islam blending with Hindu beliefs' }, why: { en: 'No. Islam came to the island ports as a merchants\' faith. Angkor Wat blended Hindu and Buddhist ideas, and Java kept those two faiths apart.' } }
         ]
       }
     },
@@ -131,7 +133,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Centuries of Islam spreading along trade routes' }, why: { en: 'Yes. A long-term trend over a wide region is broad context. It explains why a king of Mali was Muslim.' } },
           { t: { en: 'Mansa Musa\'s rule over Mali, starting about 1312' }, why: { en: 'That is [[narrow context|narrow context]]: closely tied in time and place to the hajj, a short-term cause.' } },
-          { t: { en: 'His caravan of over 1,000 leaving Mali, c. 1324' }, why: { en: 'That is the event itself, not its context. Context is what surrounds and builds up to the event.' } }
+          { t: { en: 'His caravan of over 1,000 leaving Mali, c. 1324' }, why: { en: 'That is the event itself, not its context. Context is what surrounds and builds up to the event.' } },
+          { t: { en: 'His spending in Egypt that upset its economy' }, why: { en: 'No. That happened during the journey, so it is a result of the hajj, not a cause. Broad context is a long-term cause or trend.' } }
         ]
       }
     },
@@ -150,7 +153,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Local culture and religious figures could remain' }, why: { en: 'Yes. Sufi beliefs were flexible enough that local culture continued alongside the new faith.' } },
           { t: { en: 'Islam and local faiths stayed apart, as in Delhi' }, why: { en: 'No. That describes the Delhi Sultanate in South Asia. In West Africa, Islam blended with local culture.' } },
-          { t: { en: 'Herders gave up their old customs to join' }, why: { en: 'No. The brotherhoods allowed flexibility, which is one reason herders accepted Islam.' } }
+          { t: { en: 'Herders gave up their old customs to join' }, why: { en: 'No. The brotherhoods allowed flexibility, which is one reason herders accepted Islam.' } },
+          { t: { en: 'Herders stayed politically divided, as before' }, why: { en: 'No. The brotherhoods helped pastoral herders come together for political strength. That was a change, not a continuity.' } }
         ]
       }
     },
@@ -169,7 +173,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'From the clothing they wear' }, why: { en: 'Yes. The caption says that, based on clothing, they were probably from Persia or Mesopotamia.' } },
           { t: { en: 'From the names of pilgrims it lists' }, why: { en: 'No. It illustrates a poetry book and lists no names. Historians use clues like clothing.' } },
-          { t: { en: 'From the poet\'s record of their route' }, why: { en: 'No. It is not a travel record and gives no route. The clue is the clothing.' } }
+          { t: { en: 'From the poet\'s record of their route' }, why: { en: 'No. It is not a travel record and gives no route. The clue is the clothing.' } },
+          { t: { en: 'From the Arabic poems it illustrates' }, why: { en: 'No. The poetry book is why the picture was made, but the poems do not say where these pilgrims came from. The caption judges by clothing.' } }
         ]
       }
     },
@@ -188,7 +193,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The Mongols built a huge system of exchange' }, why: { en: 'Yes. Mongol control across Central Asia linked China to the west, and technologies moved along with goods.' } },
           { t: { en: 'Song exam reforms sent scholars to Europe' }, why: { en: 'No. The reforms made more scholars inside China. The reading says nothing of them going to Europe.' } },
-          { t: { en: 'Ottoman cannon opened the roads from China' }, why: { en: 'No. That reverses cause and effect: cannon came only after gunpowder had already spread west.' } }
+          { t: { en: 'Ottoman cannon opened the roads from China' }, why: { en: 'No. That reverses cause and effect: cannon came only after gunpowder had already spread west.' } },
+          { t: { en: 'Ibn Battuta and Marco Polo carried them west' }, why: { en: 'No. Travelers like them did carry ideas, but the reading ties gunpowder and paper-making moving west to the Mongols\' huge system of exchange.' } }
         ]
       }
     }

@@ -100,9 +100,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Between 1600 and 1800, 49 percent of the ships in the Eurasian trade were Dutch. Which best explains why?' },
         choices: [
-          { ok: true, t: { en: 'Shares limited each investor\'s risk' }, why: { en: 'Yes. Spreading the risk over many shareholders made people willing to trust their money to Dutch merchants, so a small republic could fund huge fleets.' } },
-          { t: { en: 'Dutch sailors invented the compass' }, why: { en: 'No. The magnetic compass was invented in China, and lateen sails came from the Indian Ocean. Europeans adopted these older technologies.' } },
-          { t: { en: 'The VOC conquered the Mughal Empire' }, why: { en: 'No. In Asia, Europeans held only small outposts: ports and islands. The great land-based empires stayed strong.' } }
+          { ok: true, t: { en: 'Shares spread each investor\'s risk' }, why: { en: 'Yes. Spreading the risk over many shareholders made people willing to trust their money to Dutch merchants, so a small republic could fund huge fleets.' } },
+          { t: { en: 'The VOC was the first joint-stock company' }, why: { en: 'No. Joint-stock companies were not new: Song China used them around 1000. What helped the Dutch was the Exchange, where many citizens could share the risk.' } },
+          { t: { en: 'VOC armies conquered India\'s land empires' }, why: { en: 'No. The Company had armies, but in Asia Europeans held only outposts: ports and islands. The Mughal and other land-based empires stayed strong.' } },
+          { t: { en: 'Dutch ships rarely sank on the Africa route' }, why: { en: 'No. Voyages stayed deadly; ships were still lost. Shares did not make sinkings rarer, they made each loss bearable.' } }
         ]
       }
     },
@@ -120,8 +121,9 @@ window.EPISODE = {
         q: { en: 'A 1600s painting of Amsterdam by Johannes Lingelbach shows Armenian merchants trading among the Dutch. It is best used as evidence of...' },
         choices: [
           { ok: true, t: { en: 'diaspora networks joining the new sea trade' }, why: { en: 'Yes. Diaspora merchants like the Armenians linked European companies with the land-based empires of Asia.' } },
-          { t: { en: 'an Armenian empire rivaling the Dutch at sea' }, why: { en: 'No. There was no Armenian state then. The 1688 treaty was made with a network of merchants, not an empire.' } },
-          { t: { en: 'Dutch laws that let only Dutch-born men trade' }, why: { en: 'No. The painting shows the opposite: foreign merchants at work in Amsterdam\'s busy commerce.' } }
+          { t: { en: 'an Armenian state allied with the Dutch Republic' }, why: { en: 'No. There was no Armenian state then. The 1688 treaty was between the British East India Company and a network of merchants.' } },
+          { t: { en: 'sea trade ending the old Silk Road routes' }, why: { en: 'No. Some Armenian goods moved to ships around Africa, but the old routes and the land-based empires went on. That is a continuity.' } },
+          { t: { en: 'European companies replacing Asian traders' }, why: { en: 'No. The companies hired diaspora merchants for their languages and contacts. They worked with these networks rather than replacing them.' } }
         ]
       }
     },
@@ -138,8 +140,9 @@ window.EPISODE = {
         stat: 'pla',
         q: { en: 'Slavery existed long before 1450. What was most new about the Atlantic slave trade?' },
         choices: [
-          { ok: true, t: { en: 'Its huge volume and violence, feeding cash crops' }, why: { en: 'Yes. Its sheer volume and violence set it apart from earlier slavery. It supplied forced labor for sugar and other cash crops.' } },
+          { ok: true, t: { en: 'Its huge volume and violence, for cash crops' }, why: { en: 'Yes. Its sheer volume and violence set it apart from earlier slavery. It supplied forced labor for sugar and other cash crops.' } },
           { t: { en: 'It was the first time any Africans were enslaved' }, why: { en: 'No. Slavery existed earlier in history, in Africa and elsewhere. What was new was the scale and violence of this trade.' } },
+          { t: { en: 'Its captives were carried only on Dutch ships' }, why: { en: 'No. Dutch ships carried captives, but so did others, such as British and Portuguese traders. Which flag a ship flew was not what made this trade new.' } },
           { t: { en: 'Its captives were mostly European convicts' }, why: { en: 'No. Some convicts were sent, but from 1580 enslaved Africans far outnumbered all European migrants.' } }
         ]
       }
@@ -157,9 +160,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Compare: what did Protestants in Europe and Sikhs in India have in common?' },
         choices: [
-          { ok: true, t: { en: 'Both challenged older religious hierarchies' }, why: { en: 'Yes. Protestants preached the "priesthood of all believers," and Sikhs rejected caste divisions. Both opened faith to ordinary people.' } },
+          { ok: true, t: { en: 'Both challenged old religious hierarchies' }, why: { en: 'Yes. Protestants preached the "priesthood of all believers," and Sikhs rejected caste divisions. Both opened faith to ordinary people.' } },
           { t: { en: 'Both grew out of the Sunni-Shi\'a split' }, why: { en: 'No. That split divided Islam: Sunni Ottomans against Shi\'a Safavids. Protestantism began with Luther, Sikhism with Guru Nanak.' } },
-          { t: { en: 'Both brought lasting religious peace' }, why: { en: 'No. Europe saw long religious wars, and Punjabi Sikhs were in open rebellion against the Mughal Empire by the early 1700s.' } }
+          { t: { en: 'Both were spread mainly by the Jesuits' }, why: { en: 'No. The Jesuits, founded in 1540, were part of the Catholic answer to the Protestants. Printing presses spread Protestant ideas.' } },
+          { t: { en: 'Both ended the religious wars in their lands' }, why: { en: 'No. Europe saw long religious wars after Luther, and Punjabi Sikhs were in open rebellion against the Mughal Empire by the early 1700s.' } }
         ]
       }
     },
@@ -177,9 +181,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: which historical situation best explains why Luther wrote that the world was "crackling" in 1530?' },
         choices: [
-          { ok: true, t: { en: 'Cold, hunger, rising prices and a split Church' }, why: { en: 'Yes. The Little Ice Age, hunger, inflation and the religious upheaval he helped start made it feel as if the world might crumble.' } },
+          { ok: true, t: { en: 'Cold, hunger, inflation and a split Church' }, why: { en: 'Yes. The Little Ice Age, hunger, inflation and the religious upheaval he helped start made it feel as if the world might crumble.' } },
           { t: { en: 'The Black Death sweeping through Europe' }, why: { en: 'No. The Black Death struck Afro-Eurasia in the 1300s, in the era before 1450. Luther wrote in 1530.' } },
-          { t: { en: 'A flood of Spanish silver into Ming China' }, why: { en: 'No. Spanish silver reached China by the 1570s, decades after Luther wrote.' } }
+          { t: { en: 'A flood of Spanish silver into Ming China' }, why: { en: 'No. Spanish silver reached China by the 1570s, decades after Luther wrote.' } },
+          { t: { en: 'The bloodshed of the long Thirty Years War' }, why: { en: 'No. That war began in 1618, almost ninety years after Luther wrote. It was a later result of the religious split he helped start.' } }
         ]
       }
     },
@@ -198,7 +203,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'It let Europe build colonies whose wealth reached Asia\'s trade' }, why: { en: 'Yes. With the Americas emptied by disease, Europeans built colonies; their resources enriched European empires and opened Indian Ocean trade routes to them.' } },
           { t: { en: 'It weakened the Ming and Mughal empires with American diseases' }, why: { en: 'No. The new diseases struck the Americas, where they were unknown. Afro-Eurasian diseases killed Indigenous Americans.' } },
-          { t: { en: 'It ended the need for forced labor in the American colonies' }, why: { en: 'No. The opposite: planters and mine owners turned to forced Indigenous labor and then to millions of enslaved Africans.' } }
+          { t: { en: 'It ended the need for forced labor in the American colonies' }, why: { en: 'No. The opposite: planters and mine owners turned to forced Indigenous labor and then to millions of enslaved Africans.' } },
+          { t: { en: 'It let Europeans conquer the great land-based empires of Asia' }, why: { en: 'No. Asia began to lose some influence, and Europeans gained access to Indian Ocean routes, but they held only outposts there. Asia\'s land empires stayed strong.' } }
         ]
       }
     }

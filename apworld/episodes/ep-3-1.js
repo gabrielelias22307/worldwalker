@@ -94,7 +94,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Land granted for service went back to the sultan' }, why: { en: 'Yes. With no land to pass on to their children, janissaries and officials could not grow into a hereditary nobility.' } },
           { t: { en: 'Boys were taken from Christian families in the Balkans' }, why: { en: 'True, but where they came from is not why power stayed central. Their loyalty and their lack of inherited land were.' } },
-          { t: { en: 'Janissaries were armed with muskets and cannon' }, why: { en: 'Guns made them strong, but guns alone could make them a danger. Their training and the land rule kept them tied to the sultan.' } }
+          { t: { en: 'Janissaries were armed with muskets and cannon' }, why: { en: 'Guns made them strong, but guns alone could make them a danger. Their training and the land rule kept them tied to the sultan.' } },
+          { t: { en: 'Sons of janissaries inherited their fathers\' posts' }, why: { en: 'No. That reverses the rule: land granted for service went back to the sultan at death, so no hereditary nobility could form.' } }
         ]
       }
     },
@@ -113,7 +114,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The empire lacked a permanent landed aristocracy' }, why: { en: 'Yes. In Europe nobles owned huge lands and their people\'s loyalty. Ottoman nobles could not raise armies of their own.' } },
           { t: { en: 'The sultan was the caliph of Sunni Islam' }, why: { en: 'The title helped unite the empire behind the sultan in war, but the key limit on nobles was that they held no permanent lands.' } },
-          { t: { en: 'Provincial governors owned the lands they managed' }, why: { en: 'No. Governors managed the sultan\'s lands for him. They did not own them.' } }
+          { t: { en: 'Provincial governors owned the lands they managed' }, why: { en: 'No. Governors managed the sultan\'s lands for him. They did not own them.' } },
+          { t: { en: 'High offices passed down through noble families' }, why: { en: 'No. That reverses it. Promotion was mostly by merit, and many in the ruling class were once enslaved, not born noble.' } }
         ]
       }
     },
@@ -132,7 +134,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Walls no longer shielded those who defied a ruler' }, why: { en: 'Yes. Cannon reduced walls to rubble, so nobles and rebels could no longer hide behind them. Power moved to the center.' } },
           { t: { en: 'Ottoman guns depended on European engineers alone' }, why: { en: 'No. That story is doubted now. Skilled Turkish cannon-makers worked beside Orban, and the Ottomans were masters of gunpowder.' } },
-          { t: { en: 'Local nobles could now afford their own cannon' }, why: { en: 'No. Gunpowder weapons were so expensive that local nobles usually could not afford them. Rulers could.' } }
+          { t: { en: 'Local nobles could now afford their own cannon' }, why: { en: 'No. Gunpowder weapons were so expensive that local nobles usually could not afford them. Rulers could.' } },
+          { t: { en: 'Guns let Babur found the Mughal Empire in India' }, why: { en: 'True, but that is a different event: Babur won at Panipat in 1526. Constantinople\'s broken walls show that walls no longer protected anyone from a ruler\'s cannon.' } }
         ]
       }
     },
@@ -151,7 +154,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Loyal minorities kept their faith and some self-rule' }, why: { en: 'Yes. Ottoman millets kept their faith and some self-rule. Ismail I\'s Safavids required conquered people to become Shi\'a.' } },
           { t: { en: 'Minorities were required to accept the ruler\'s own faith' }, why: { en: 'No. That was Safavid policy under Ismail I. The Ottomans let loyal Christians and Jews keep their faith.' } },
-          { t: { en: 'Minorities were kept out of every government post' }, why: { en: 'No. Many Jewish refugees became Ottoman officials, and many in the ruling class were once enslaved.' } }
+          { t: { en: 'Minorities were kept out of every government post' }, why: { en: 'No. Many Jewish refugees became Ottoman officials, and many in the ruling class were once enslaved.' } },
+          { t: { en: 'Minorities paid no taxes in return for their loyalty' }, why: { en: 'No. Millets kept their self-government only if they paid taxes and stayed loyal. Taxes were part of the deal.' } }
         ]
       }
     },
@@ -170,7 +174,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Most armies still relied on swords, spears and bows' }, why: { en: 'Yes. If guns were only part of the fighting, then guns alone cannot explain the empires. Bureaucracy and religion mattered too.' } },
           { t: { en: 'Only rulers could pay for large numbers of muskets and cannon' }, why: { en: 'No. That supports the label: costly guns gave rulers power over nobles.' } },
-          { t: { en: 'Akbar forbade anyone else to own cannon' }, why: { en: 'No. That also supports the label: rulers tried to keep guns for themselves.' } }
+          { t: { en: 'Akbar forbade anyone else to own cannon' }, why: { en: 'No. That also supports the label: rulers tried to keep guns for themselves.' } },
+          { t: { en: 'McNeill and Hodgson linked three empires to guns' }, why: { en: 'No. That only tells who made the label and why. It is not evidence that the label misleads.' } }
         ]
       }
     },
@@ -189,7 +194,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'confidence that his empire needed nothing from outside' }, why: { en: 'Yes. He claims China "lacks no product," so it has no need to trade for foreign goods.' } },
           { t: { en: 'eagerness to open Chinese markets to British goods' }, why: { en: 'No. He tells the British envoy there is "no need to import" their goods.' } },
-          { t: { en: 'worry that the empire was too poor to feed all its people' }, why: { en: 'No. He says the empire has "all things in prolific abundance."' } }
+          { t: { en: 'concern that China was weak after the Ming fell' }, why: { en: 'No. By 1750 Qing China was peaceful, fairly prosperous and larger than ever. He writes from strength: "all things in prolific abundance."' } },
+          { t: { en: 'pride in a Celestial Empire still ruled by the Ming dynasty' }, why: { en: 'No. The Qianlong Emperor was Qing; the Manchu Qing took power from the Ming. His point is that China needed nothing from outside.' } }
         ]
       }
     }

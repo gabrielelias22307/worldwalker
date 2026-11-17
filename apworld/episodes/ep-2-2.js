@@ -90,7 +90,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Drought that shriveled the steppe pastures' }, why: { en: 'Yes. Climate change in the late 1100s drove the herders south to raid farming societies. Cavalry and Genghis Khan were the weapons.' } },
           { t: { en: 'A growing population that needed new farmland' }, why: { en: 'No. Mongol populations were low, and they were herders, not farmers. Their small numbers make the conquests more surprising.' } },
-          { t: { en: 'The unity Genghis Khan created in 1206' }, why: { en: 'No. Uniting the tribes in 1206 was the opportunity he seized, and he was one of the weapons. The motive came first: drought.' } }
+          { t: { en: 'The unity Genghis Khan created in 1206' }, why: { en: 'No. Uniting the tribes in 1206 was the opportunity he seized, and he was one of the weapons. The motive came first: drought.' } },
+          { t: { en: 'Cavalry skills no farming people could match' }, why: { en: 'No. Cavalry warfare was a weapon, the means of conquest. The motive was what pushed the tribes south: drought on the steppe pastures.' } }
         ]
       }
     },
@@ -109,7 +110,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Taken by force, he sees conquest as a disaster' }, why: { en: 'Yes. For abducted experts and the enslaved, Mongol rule was a bad thing. Seen 800 years later, the trade and ideas it spread look different. It depends on perspective.' } },
           { t: { en: 'As a skilled artisan, he praises the high wages' }, why: { en: 'No. Yusuf did not choose to come. Many experts were claimed as the khans\' personal property and did not move willingly.' } },
-          { t: { en: 'As a Muslim, he welcomes the khans as liberators' }, why: { en: 'No. Cities surrendered out of fear, hoping for mercy, not to welcome liberators. Millions died in the invasions.' } }
+          { t: { en: 'As a Muslim, he welcomes the khans as liberators' }, why: { en: 'No. Cities surrendered out of fear, hoping for mercy, not to welcome liberators. Millions died in the invasions.' } },
+          { t: { en: 'He weighs the trade and ideas the empire spread' }, why: { en: 'No. That is how the empire can look 800 years later. Yusuf was taken by force, so he sees the invasions, the killing and the forced moves.' } }
         ]
       }
     },
@@ -128,7 +130,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Overland routes gained ground on the sea routes' }, why: { en: 'Yes. Safer, cheaper roads made the northern Silk Roads preferable to the Indian Ocean routes for a time. This [[pax mongolica|Pax Mongolica]] linked east and west.' } },
           { t: { en: 'Sea routes replaced the Silk Roads for good' }, why: { en: 'No. It went the other way: under the khans, the northern overland roads became preferable to the southern sea routes.' } },
-          { t: { en: 'War between the khanates shut the roads to traders' }, why: { en: 'No. The khanates did fight each other, but they kept guaranteeing the safety of travelers and merchants. That was a continuity.' } }
+          { t: { en: 'War between the khanates shut the roads to traders' }, why: { en: 'No. The khanates did fight each other, but they kept guaranteeing the safety of travelers and merchants. That was a continuity.' } },
+          { t: { en: 'Merchants lost the status they had in Song China' }, why: { en: 'No. It was the reverse: merchants under the khans enjoyed higher status than in China before the Mongols.' } }
         ]
       }
     },
@@ -147,7 +150,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'They could not rely on Chinese bureaucrats' }, why: { en: 'Yes. Mongol rule depended on a network of experts from across Eurasia, and Muslims held high status in Mongol China.' } },
           { t: { en: 'Islam was the official faith of the khans' }, why: { en: 'No. The Mongols\' own religion worshiped a sky god, and the khans were generally tolerant of many religions.' } },
-          { t: { en: 'The Song emperor had asked them to do so' }, why: { en: 'No. The Song were enemies in the south. In 1279 Kublai Khan defeated them and completed the conquest of China.' } }
+          { t: { en: 'The Song emperor had asked them to do so' }, why: { en: 'No. The Song were enemies in the south. In 1279 Kublai Khan defeated them and completed the conquest of China.' } },
+          { t: { en: 'They copied the Chinese way of running a state' }, why: { en: 'No. The khans did take up tools of conquered peoples, but they could not rely on Chinese bureaucrats, so they brought in Muslim experts.' } }
         ]
       }
     },
@@ -166,7 +170,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'An amazed European outsider who could misread things' }, why: { en: 'Yes. Polo marveled at things Europe lacked, like the yam and paper money. His "unicorns" show that an outsider could confuse what he saw.' } },
           { t: { en: 'A Mongol official proudly recording the empire he served' }, why: { en: 'No. Polo was a European visitor, not a Mongol. He writes for European readers about things they had never seen.' } },
-          { t: { en: 'A Muslim historian who saw the khans as a threat' }, why: { en: 'No. That fits other writers from the lands the Mongols invaded. Polo admires the Great Khan\'s order: "that is no small matter!"' } }
+          { t: { en: 'A Muslim historian who saw the khans as a threat' }, why: { en: 'No. That fits other writers from the lands the Mongols invaded. Polo admires the Great Khan\'s order: "that is no small matter!"' } },
+          { t: { en: 'An eyewitness, so every detail must be reliable' }, why: { en: 'No. Being there does not make every detail right. His "unicorns" show that an amazed outsider could misread an unfamiliar animal.' } }
         ]
       }
     },
@@ -185,7 +190,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Its busy trade routes spread the plague' }, why: { en: 'Yes. The same roads that carried goods and ideas carried the Black Death. Plague and civil war weakened the khanates, and the Yuan fell to the Ming in 1368.' } },
           { t: { en: 'Its merchants funded the Song resistance' }, why: { en: 'No. The Song did not outlast the Mongols: Kublai Khan defeated them in 1279. The Ming, not the Song, ended the Yuan in 1368.' } },
-          { t: { en: 'Its open roads let the Mamluks invade China' }, why: { en: 'No. The Mamluks of Egypt stopped the Mongol conquest of the Islamic world, far to the west. They never reached China.' } }
+          { t: { en: 'Its open roads let the Mamluks invade China' }, why: { en: 'No. The Mamluks of Egypt stopped the Mongol conquest of the Islamic world, far to the west. They never reached China.' } },
+          { t: { en: 'It shut the Silk Roads, cutting the khans\' income' }, why: { en: 'No. The Pax Mongolica did the opposite: it made overland trade cheaper and safer. Those busy routes then carried the Black Death.' } }
         ]
       }
     }

@@ -98,9 +98,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which of the following best explains why trade across Afro-Eurasia grew under Mongol rule?' },
         choices: [
-          { t: { en: 'Mongol conquests had never disrupted any route' }, why: { en: 'No. Earlier Mongol conquests did disrupt trade with their violence. Trade grew later, once the khans settled down to rule.' } },
-          { ok: true, t: { en: 'Trade taxes gave the khans a reason to protect it' }, why: { en: 'Yes. Trade was one of the best sources of taxes, so the khans made routes cheaper and safer and punished anyone who threatened them.' } },
-          { t: { en: 'Italian city-states took over the overland routes' }, why: { en: 'No. Venice and Genoa grew rich from this trade, but the Mongol Empire ruled the overland routes.' } }
+          { t: { en: 'The violence of Mongol conquest opened new routes' }, why: { en: 'No. Earlier Mongol conquests disrupted trade with their violence. Trade grew later, once the khans settled down to rule and protect it.' } },
+          { ok: true, t: { en: 'Khans protected trade because it was a key tax source' }, why: { en: 'Yes. Trade was one of the best sources of taxes, so the khans made routes cheaper and safer and punished anyone who threatened them.' } },
+          { t: { en: 'Venice and Genoa took control of the overland Silk Roads' }, why: { en: 'No. Venice and Genoa grew rich from this trade, buying in ports like Calicut, but the Mongol khans ruled the overland routes.' } },
+          { t: { en: 'Marco Polo\'s journey opened one road to China' }, why: { en: 'No. Marco Polo did cross the empire, but the Silk Road was a network of many routes. Mongol rule, not one traveler, made it safer.' } }
         ]
       }
     },
@@ -117,8 +118,9 @@ window.EPISODE = {
         stat: 'pla',
         q: { en: 'Which best describes an environmental consequence of the banana\'s spread to East Africa?' },
         choices: [
-          { t: { en: 'Bananas spread a disease along the Swahili Coast' }, why: { en: 'No. Disease did travel trade routes, but bananas did the opposite: they fed more people and supported new states.' } },
-          { t: { en: 'Bananas stayed a luxury sold only in the ports' }, why: { en: 'No. States in Africa\'s interior began cultivating bananas as a farm crop.' } },
+          { t: { en: 'Bananas carried a new disease down the Swahili Coast' }, why: { en: 'No. Disease did travel trade routes, but bananas did the opposite: they fed more people and supported new states.' } },
+          { t: { en: 'Bananas stayed a luxury sold only in coastal ports' }, why: { en: 'No. Bananas did not stay a trade good of the coast. States in Africa\'s interior began cultivating them as a farm crop.' } },
+          { t: { en: 'Asian plows came with them and Europe\'s population grew' }, why: { en: 'No. The moldboard plow was an Asian innovation that helped Europe\'s population grow. The banana story is about East Africa\'s interior states.' } },
           { ok: true, t: { en: 'Farming changed, and new states and populations grew' }, why: { en: 'Yes. Interior states began farming bananas. The crop altered the environment, helped support new states and led to population growth.' } }
         ]
       }
@@ -137,7 +139,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Its cities were crowded, damp and poorly sanitized' }, why: { en: 'Yes. Crowded, damp, poorly sanitized cities helped it spread. It killed about one-third of Europeans, and nearly 60 percent in some places.' } },
           { t: { en: 'It lay closest to the grasslands of Central Asia' }, why: { en: 'No. The plague began in Central Asia\'s grasslands, far from Europe. Caravans and ships carried it west.' } },
-          { t: { en: 'It was the only region the plague reached at all' }, why: { en: 'No. The plague struck across Afro-Eurasia, killing up to 100 million people. It was simply worst in Europe.' } }
+          { t: { en: 'Italian ships carried plague rats into its ports' }, why: { en: 'True, but that explains how the plague arrived, not why it was worse there. Ships reached ports in many regions; Europe\'s crowded, damp cities let it kill more.' } },
+          { t: { en: 'Its doctors had no medicines that stopped it' }, why: { en: 'No. Medicines failed in Europe, but nothing here says they worked elsewhere. The reason given for Europe is its crowded, damp, poorly sanitized cities.' } }
         ]
       }
     },
@@ -156,7 +159,8 @@ window.EPISODE = {
         choices: [
           { t: { en: 'The bacterium and fleas that caused the plague' }, why: { en: 'No. People in 1349 did not know the cause. Today we know the bacterium [[yersinia pestis|Yersinia pestis]], spread by fleas, caused it.' } },
           { ok: true, t: { en: 'How people at the time made sense of the plague' }, why: { en: 'Yes. A source like this shows the fears and beliefs of its time. Its author could not know about bacteria or fleas.' } },
-          { t: { en: 'How many people across Europe died of it' }, why: { en: 'No. A statement of belief gives no numbers. Historians use other evidence to estimate deaths.' } }
+          { t: { en: 'How many Europeans died from 1347 to 1351' }, why: { en: 'No. A statement of belief gives no numbers. Historians use other evidence to estimate deaths.' } },
+          { t: { en: 'That the plague made the Church\'s authority stronger' }, why: { en: 'No. Fear of the end of the world is not proof of a stronger Church. In fact, some began to question the Church\'s authority.' } }
         ]
       }
     },
@@ -173,9 +177,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: compared with the 1450 painting by Dieric Bouts, the 1353 Tournai image is more useful as evidence of what?' },
         choices: [
-          { t: { en: 'How European art changed a century later' }, why: { en: 'No. That is what the 1450 painting helps show: after the plague, art turned toward images of death.' } },
-          { t: { en: 'The flea bites that spread the disease' }, why: { en: 'No. No one in 1353 knew about fleas or bacteria. The image shows what people saw, not the cause.' } },
-          { ok: true, t: { en: 'Burials seen in the plague years' }, why: { en: 'Yes. It was made in 1353, right after the worst years, and shows a town far inland burying its dead.' } }
+          { t: { en: 'How European art turned toward death afterward' }, why: { en: 'No. That is what the 1450 painting helps show: after the plague, much of European art turned toward images of death.' } },
+          { t: { en: 'What caused the plague to spread inland' }, why: { en: 'No. No one in 1353 knew about fleas or bacteria. The image shows what people saw, not the cause.' } },
+          { ok: true, t: { en: 'How a town buried its dead in the plague years' }, why: { en: 'Yes. It was made in 1353, right after the worst years, and shows a town far inland burying its dead.' } },
+          { t: { en: 'How Italian ships carried the plague to Tournai' }, why: { en: 'No. Tournai lies far inland, in present-day Belgium. The image shows burials, not ships; the plague reached it by spreading inland from Mediterranean ports.' } }
         ]
       }
     },
@@ -192,9 +197,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'According to the reading, which best explains why the Black Death spread so far and so fast?' },
         choices: [
-          { t: { en: 'Mongol conquests cut the main trade routes' }, why: { en: 'No. Early conquests disrupted trade, but by the 1300s Mongol rule had made trade safer. The plague followed that busy trade.' } },
-          { ok: true, t: { en: 'Protected trade linked caravans and ports' }, why: { en: 'Yes. Mongol-protected trade linked Central Asia\'s caravans to Mediterranean ports, so fleas and rats traveled far and fast.' } },
-          { t: { en: 'It began in Genoa\'s crowded streets' }, why: { en: 'No. It began in Central Asia\'s grasslands. Crowded cities made it worse once it arrived.' } }
+          { t: { en: 'Mongol conquests broke up the main trade routes' }, why: { en: 'No. Early conquests disrupted trade, but by the 1300s Mongol rule had made trade safer. The plague followed that busy trade.' } },
+          { ok: true, t: { en: 'Mongol-protected trade linked caravans and ports' }, why: { en: 'Yes. Mongol-protected trade linked Central Asia\'s caravans to Mediterranean ports, so fleas and rats traveled far and fast.' } },
+          { t: { en: 'It began in Genoa\'s crowded, damp streets' }, why: { en: 'No. It began in Central Asia\'s grasslands. Crowded, damp cities made it worse once it arrived.' } },
+          { t: { en: 'A warmer climate alone carried it to Europe' }, why: { en: 'No. A warmer climate likely helped it spread out of Central Asia, but fleas still needed caravans and ships to reach Europe.' } }
         ]
       }
     }

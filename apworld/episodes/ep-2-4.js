@@ -97,7 +97,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Camels with improved Berber saddles' }, why: { en: 'Yes. The camel was by far the most important travel technology. Better saddles let it carry big loads over long distances, so crossing the desert paid.' } },
           { t: { en: 'New wells that Mali\'s emperors had dug' }, why: { en: 'No. Caravans did follow wells and oases, but the key technology was the camel, with the saddle the Berbers improved.' } },
-          { t: { en: 'Portuguese ships along the coast' }, why: { en: 'No. Portuguese sailors came in the 1400s, and their sea lanes bypassed the Saharan routes instead of building them.' } }
+          { t: { en: 'Portuguese ships along the coast' }, why: { en: 'No. Portuguese sailors came in the 1400s, and their sea lanes bypassed the Saharan routes instead of building them.' } },
+          { t: { en: 'Tribute paid to desert groups for safe passage' }, why: { en: 'No. Tribute to pastoralists kept caravans safer, but without camels carrying big loads over long distances, crossing the desert would not have paid.' } }
         ]
       }
     },
@@ -116,7 +117,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'To keep the gold mines secret' }, why: { en: 'Yes. Guarding the secret locations of the gold mines kept the gold trade in Mali\'s hands, and that control enriched and expanded the empire.' } },
           { t: { en: 'To collect tribute from herders' }, why: { en: 'No. It was states and merchants who paid tribute to desert pastoralists, to keep caravans safe. Mali\'s control guarded its gold mines.' } },
-          { t: { en: 'To stop Islam reaching the cities' }, why: { en: 'No. Islam spread with trade, and Mali\'s merchants and rulers became Muslims. Market cities were where Islam was strongest.' } }
+          { t: { en: 'To stop Islam reaching the cities' }, why: { en: 'No. Islam spread with trade, and Mali\'s merchants and rulers became Muslims. Market cities were where Islam was strongest.' } },
+          { t: { en: 'To keep Berber traders out of its cities' }, why: { en: 'No. Berber tribes came to Jenne and Timbuktu to buy gold with salt. Mali\'s control guarded the secret locations of its gold mines.' } }
         ]
       }
     },
@@ -135,7 +137,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'It gave merchants shared law and trust' }, why: { en: 'Yes. A common language and values, written Arabic records and Arabic legal codes made deals across the desert easier and safer.' } },
           { t: { en: 'It replaced Berber guides with Arabs' }, why: { en: 'No. The Berbers converted to Islam and went on guiding the caravans. Islam helped through language, writing and law.' } },
-          { t: { en: 'It made Arabic the speech of all Mali' }, why: { en: 'No. Islam and written Arabic reached merchants, scholars and rulers in the cities first. Most rural people kept local religions.' } }
+          { t: { en: 'It made Arabic the speech of all Mali' }, why: { en: 'No. Islam and written Arabic reached merchants, scholars and rulers in the cities first. Most rural people kept local religions.' } },
+          { t: { en: 'It united the region under one Islamic empire' }, why: { en: 'No. Islamic empires and Muslim merchants linked Afro-Eurasia, but no single empire ruled it. Islam helped trade through a shared faith, written Arabic and Arabic legal codes.' } }
         ]
       }
     },
@@ -153,7 +156,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Local religions stayed strong on the land' }, why: { en: 'Yes. Islam became the religion of urban elites, but most people were rural, and local religions stayed more important there long after Islam arrived.' } },
           { t: { en: 'Islam spread to farmers first, then to cities' }, why: { en: 'No. It was the other way round. Islam spread by trade, so it reached cities, merchants and rulers first.' } },
-          { t: { en: 'Merchants and rulers kept only local religions' }, why: { en: 'No. Merchants and rulers were the people most likely to convert. Most converts lived in the market cities.' } }
+          { t: { en: 'Merchants and rulers kept only local religions' }, why: { en: 'No. Merchants and rulers were the people most likely to convert. Most converts lived in the market cities.' } },
+          { t: { en: 'Timbuktu grew into a center of Islamic learning' }, why: { en: 'No. That is true, but it is a change Islam and trade brought to the city, not something that stayed the same.' } }
         ]
       }
     },
@@ -173,7 +177,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Mali\'s fame for gold had spread beyond Africa' }, why: { en: 'Yes. Mansa Musa\'s lavish hajj made Mali famous for gold in Egypt and far beyond. The map reflects that reputation, and the myths it fed.' } },
           { t: { en: 'Europeans already ran Mali\'s gold mines' }, why: { en: 'No. Mali\'s emperors guarded the locations of the gold mines as a secret. Europeans only began exploring the West African coast in the 1400s.' } },
-          { t: { en: 'The mapmaker had crossed with Mali\'s caravans' }, why: { en: 'No. Nothing says so. The map shows what Europeans had heard: stories of Mali\'s wealth, not first-hand travel.' } }
+          { t: { en: 'The mapmaker had crossed with Mali\'s caravans' }, why: { en: 'No. Nothing says so. The map shows what Europeans had heard: stories of Mali\'s wealth, not first-hand travel.' } },
+          { t: { en: 'Europeans knew Mali for its Islamic scholars' }, why: { en: 'No. Timbuktu did become a center of Islamic scholarship, but the map shows a ruler holding gold. What spread to Europe was Mali\'s fame for wealth.' } }
         ]
       }
     },
@@ -192,7 +197,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Strong states worked with Berbers to control trade' }, why: { en: 'Yes. States like Mali cooperated with the Berber tribes and asserted control over the routes. Their control made the trade safer and richer.' } },
           { t: { en: 'Camels were first brought to North Africa then' }, why: { en: 'No. The one-humped camel had returned to North Africa around 300 BCE, long before. The peak came when strong states controlled the trade.' } },
-          { t: { en: 'Portuguese sea lanes sent more gold north' }, why: { en: 'No. Portuguese sea lanes came in the 1400s and bypassed the Saharan routes, making them less important.' } }
+          { t: { en: 'Portuguese sea lanes sent more gold north' }, why: { en: 'No. Portuguese sea lanes came in the 1400s and bypassed the Saharan routes, making them less important.' } },
+          { t: { en: 'Arab conquests had just opened the routes then' }, why: { en: 'No. Trade across the Sahara began with the Arab conquests in the seventh century, centuries before the peak. The peak came with strong states.' } }
         ]
       }
     }

@@ -95,7 +95,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Too much land, revolts and Sunni–Shia disputes' }, why: { en: 'Yes. Far-flung lands, invasions, revolts and Sunni–Shia disputes wore the empire down from 900 on.' } },
           { t: { en: 'Mongol armies conquering Persia in the 1000s' }, why: { en: 'No. The Mongols came in the 1200s. In the 1000s it was Turkic peoples, like the Seljuks, who moved west.' } },
-          { t: { en: 'The loss of Greek books from the House of Wisdom' }, why: { en: 'No. The House of Wisdom was destroyed in 1258, at the very end, after centuries of decline.' } }
+          { t: { en: 'The loss of Greek books from the House of Wisdom' }, why: { en: 'No. The House of Wisdom was destroyed in 1258, at the very end, after centuries of decline.' } },
+          { t: { en: 'Turkic invaders who refused to convert to Islam' }, why: { en: 'No. Turkic peoples did move west in the 1000s and 1100s, but many converted to Islam. Overlarge lands, revolts and Sunni–Shia disputes wore the caliphate down.' } }
         ]
       }
     },
@@ -114,7 +115,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Conquests linked a web of scholars and merchants' }, why: { en: 'Yes. A huge empire tied Greek, Indian and Chinese ideas together, and scholars built on them.' } },
           { t: { en: 'Mongol rulers brought scholars there from China' }, why: { en: 'No. The Mongols destroyed the House of Wisdom in 1258. The network was built by the Abbasid conquests.' } },
-          { t: { en: 'European universities sent their Greek books east' }, why: { en: 'No. It went the other way: Greek works survived in Arabic, and Ibn Sina\'s Canon was later taught in Europe for over 600 years.' } }
+          { t: { en: 'European universities sent their Greek books east' }, why: { en: 'No. It went the other way: Greek works survived in Arabic, and Ibn Sina\'s Canon was later taught in Europe for over 600 years.' } },
+          { t: { en: 'Caliphs made all scholars convert to Islam first' }, why: { en: 'No. Many non-Muslims were allowed, even encouraged, to keep their own religions. Ideas met because conquests linked scholars and merchants.' } }
         ]
       }
     },
@@ -133,7 +135,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'steppe newcomers who converted and took on Persian ways' }, why: { en: 'Yes. They came as pastoralists, converted, and adopted the culture of the lands they conquered.' } },
           { t: { en: 'steppe herders who kept their old ways and their old faith' }, why: { en: 'No. Many Turks converted to Islam, and the Seljuks became more Persian than Turkic.' } },
-          { t: { en: 'Abbasid caliphs who ruled from Baghdad until 1258' }, why: { en: 'No. The Seljuk empire was centered in Persia. The Abbasid caliphs, often puppets, stayed in Baghdad.' } }
+          { t: { en: 'Abbasid caliphs who ruled from Baghdad until 1258' }, why: { en: 'No. The Seljuk empire was centered in Persia. The Abbasid caliphs, often puppets, stayed in Baghdad.' } },
+          { t: { en: 'Mongol conquerors who sacked Baghdad in 1258' }, why: { en: 'No. That was a Mongol army in the 1200s. The Seljuks were Turks who ruled an empire centered in Persia in the 1000s and 1100s.' } }
         ]
       }
     },
@@ -152,7 +155,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The caliphates\' vast lands and trade links' }, why: { en: 'Yes. A huge territory linked by trade moved crops and animals in all directions.' } },
           { t: { en: 'Mongol conquerors carrying them from China' }, why: { en: 'No. Rice, cotton and sugarcane came from India, carried along the early caliphates\' trade links.' } },
-          { t: { en: 'Turkic herders bringing them off the steppes' }, why: { en: 'No. The Turks were pastoralists who herded animals. These crops came from India and Africa.' } }
+          { t: { en: 'Turkic herders bringing them off the steppes' }, why: { en: 'No. The Turks were pastoralists who herded animals. These crops came from India and Africa.' } },
+          { t: { en: 'Irrigation pumps like the one al-Jazari drew' }, why: { en: 'No. New irrigation helped the Abbasids grow more, but it did not move crops. Rice and sugarcane came from India along the empire\'s trade links.' } }
         ]
       }
     },
@@ -167,11 +171,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'Sourcing: what is the purpose of Hodgson\'s "visitor from Mars"?' },
+        q: { en: 'Sourcing: which best describes the purpose of Hodgson\'s "visitor from Mars"?' },
         choices: [
           { ok: true, t: { en: 'To show Islam\'s strength c. 1500 to an outsider' }, why: { en: 'Yes. An outsider\'s eye lets him judge Islam\'s reach in 1500: political advantage AND a lively culture.' } },
           { t: { en: 'To argue Islam\'s power rested only on its armies' }, why: { en: 'No. He names two causes: political and strategic advantage, but also the vitality of Muslim culture.' } },
-          { t: { en: 'To record what a traveler saw in Baghdad in 1258' }, why: { en: 'No. Hodgson is a modern historian, and his Martian looks at the 1500s, long after Baghdad fell.' } }
+          { t: { en: 'To record what a traveler saw in Baghdad in 1258' }, why: { en: 'No. Hodgson is a modern historian, and his Martian looks at the 1500s, long after Baghdad fell.' } },
+          { t: { en: 'To show that Islam spread mainly through trade' }, why: { en: 'No. Hodgson does not single out trade. His Martian sees two things: the political and strategic advantage of Muslims, and the vitality of their culture.' } }
         ]
       }
     },
@@ -190,7 +195,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Power split among states; the faith kept spreading' }, why: { en: 'Yes. Political unity was lost, but Islam reached new peoples, from Africa to Southeast Asia.' } },
           { t: { en: 'A restored caliph reunited Muslims as the faith spread' }, why: { en: 'No. The last Abbasid caliph was killed in 1258. Turkic and other dynasties ruled separate states.' } },
-          { t: { en: 'Power split among many states as the faith declined' }, why: { en: 'No. Power did split, but Dar al-Islam nearly doubled in size between 1000 and 1500.' } }
+          { t: { en: 'Power split among many states as the faith declined' }, why: { en: 'No. Power did split, but Dar al-Islam nearly doubled in size between 1000 and 1500.' } },
+          { t: { en: 'Mongol conquest halted Islam\'s spread for a century' }, why: { en: 'No. The Mongols sacked Baghdad in 1258, but their conquests actually helped spread Islam further than ever.' } }
         ]
       }
     }

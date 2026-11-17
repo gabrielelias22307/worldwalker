@@ -88,11 +88,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'What did the civil service exams change in Song China?' },
+        q: { en: 'Which best describes the effect of the civil service exams in Song China?' },
         choices: [
-          { ok: true, t: { en: 'They gave able men another path to office' }, why: { en: 'Yes. Aristocratic family was still the easiest path, but the exams let many able, educated men gain influence.' } },
+          { ok: true, t: { en: 'They gave able men a second path to office' }, why: { en: 'Yes. Aristocratic family was still the easiest path, but the exams let many able, educated men gain influence.' } },
           { t: { en: 'They ended the power of aristocratic families' }, why: { en: 'No. That overstates it. Aristocratic lineage was still the easiest path to power. The exams added another path.' } },
-          { t: { en: 'They opened government posts to educated women' }, why: { en: 'No. The exams were not open to women. Confucian teaching said a woman\'s place was the household.' } }
+          { t: { en: 'They opened government posts to educated women' }, why: { en: 'No. The exams were not open to women. Confucian teaching said a woman\'s place was the household.' } },
+          { t: { en: 'They tested officials on Buddhist and Daoist texts' }, why: { en: 'No. Buddhism and Daoism were practiced in Song China, but the exams were based on Confucian writings, in the official version Zhu Xi gathered.' } }
         ]
       }
     },
@@ -107,11 +108,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'Confucian books say a woman\'s place is the household. What does Mei\'s work show about that?' },
+        q: { en: 'Confucian books placed women in the household. Mei\'s work best shows that...' },
         choices: [
-          { ok: true, t: { en: 'Work at home could earn the family money' }, why: { en: 'Right. Household silk making was real production: it paid rents and taxes and bought goods.' } },
+          { ok: true, t: { en: 'work at home could earn the family money' }, why: { en: 'Right. Household silk making was real production: it paid rents and taxes and bought goods.' } },
           { t: { en: 'Confucian ideas about women had lost their hold' }, why: { en: 'No. Mei still works inside the household, as Confucian teaching expected. Her work shows what that household role could include.' } },
-          { t: { en: 'Women\'s silk was made only for their own clothes' }, why: { en: 'No. Mei\'s silk is sold. The profits pay rents and taxes and buy other goods.' } }
+          { t: { en: 'women\'s silk was made only for the family\'s clothes' }, why: { en: 'No. Mei\'s silk is sold. The profits pay rents and taxes and buy other goods. It was production, not simply housework.' } },
+          { t: { en: 'women now had to leave home to work in city shops' }, why: { en: 'No. Some poor women did work outside the home, but Mei and her mother spin and weave at home. Her silk is household production.' } }
         ]
       }
     },
@@ -126,11 +128,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why could China\'s population grow from about 50 million to about 100 million by the 1100s?' },
+        q: { en: 'Which best explains why China\'s population grew from about 50 million to about 100 million by the 1100s?' },
         choices: [
           { ok: true, t: { en: 'Wet-field rice gave two harvests a year' }, why: { en: 'Yes. Irrigated paddies and transplanted seedlings expanded the food supply, so more people could be fed.' } },
           { t: { en: 'Cash crops like tea replaced rice paddies' }, why: { en: 'No. Villagers did grow tea and other cash crops, but rice paddies were what fed the growing population.' } },
-          { t: { en: 'The rains over China became more regular' }, why: { en: 'No. The rains stayed irregular. Paddies were irrigated so farmers depended less on rain.' } }
+          { t: { en: 'Iron output grew six-fold, giving better tools' }, why: { en: 'No. Iron output did grow six-fold, but most iron went to armor and weapons. Irrigated paddies with two harvests fed the new millions.' } },
+          { t: { en: 'Mongol rule united the north and the south' }, why: { en: 'No. The Mongols conquered southern China only in the 1270s, long after the population had doubled. Wet-field rice came first.' } }
         ]
       }
     },
@@ -145,11 +148,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'What happened to Buddhism after it reached China?' },
+        q: { en: 'Which best describes what happened to Buddhism after it reached China?' },
         choices: [
-          { ok: true, t: { en: 'It blended with Chinese beliefs' }, why: { en: 'Yes. Buddhism mixed with Daoism and Chinese customs. Belief systems often change as they spread.' } },
-          { t: { en: 'It kept every Indian belief unchanged' }, why: { en: 'No. The Chinese kept the sutras but changed ideas like nirvana and the Pure Land.' } },
-          { t: { en: 'The state wiped it out after the Tang' }, why: { en: 'No. Monasteries were destroyed in the 800s, but Buddhism never disappeared. It was practiced alongside Daoism and Confucianism.' } }
+          { ok: true, t: { en: 'It blended with Daoism and Chinese customs' }, why: { en: 'Yes. Buddhism mixed with Daoism and Chinese customs: it was Sinicized. Belief systems often change as they spread.' } },
+          { t: { en: 'It kept the Indian sutras and their meanings' }, why: { en: 'No. The Chinese kept the sutras, but changed what ideas like the Pure Land meant: an extension of earthly life, not a break from it.' } },
+          { t: { en: 'The state wiped it out after the Tang' }, why: { en: 'No. Monasteries were destroyed in the 800s, but Buddhism never disappeared. It was practiced alongside Daoism and Confucianism.' } },
+          { t: { en: 'It replaced Confucianism as the state\'s creed' }, why: { en: 'No. Buddhism\'s golden age was under the Tang, but the Song exams and officials were built on Confucian books, not Buddhist sutras.' } }
         ]
       }
     },
@@ -165,11 +169,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'Sourcing: why would the Song state want its officials to master these passages?' },
+        q: { en: 'Sourcing: which best explains why the Song state wanted its officials to master these passages?' },
         choices: [
           { ok: true, t: { en: 'They taught duty, respect and order' }, why: { en: 'Yes. Filial piety at home was meant to become loyalty and order in the state. That served the government.' } },
-          { t: { en: 'They taught harsh laws and punishments' }, why: { en: 'No. Confucianism aimed to make people want to be good through virtue, not to rule by punishment.' } },
-          { t: { en: 'They taught escape from earthly duties' }, why: { en: 'No. Confucius focused on practical, worldly duties: family, government and community.' } }
+          { t: { en: 'They taught harsh laws and punishments' }, why: { en: 'No. That is Legalism, another Chinese philosophy. Confucianism aimed to make people want to be good through virtue, not to rule by punishment.' } },
+          { t: { en: 'They taught escape from earthly duties' }, why: { en: 'No. That sounds more like Buddhism. Confucius focused on practical, worldly duties: family, government and community.' } },
+          { t: { en: 'They taught equal relationships for all' }, why: { en: 'No. Confucian relationships were mostly unequal: ruler over subject, father over son, husband over wife. Only friend to friend was equal.' } }
         ]
       }
     },
@@ -188,7 +193,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'More rice fed more people; trade drew many to cities' }, why: { en: 'Yes. Wet-field rice grew the food supply and the population; a commercial economy and the capital drew people into cities like Hangzhou.' } },
           { t: { en: 'Iron weapons won new lands that fed the growing cities' }, why: { en: 'No. Iron was mostly for armor and weapons, but Song lands shrank: the Jurchens conquered most of the north.' } },
-          { t: { en: 'Paper money let cities buy food, so farming declined' }, why: { en: 'No. Paper money helped trade, but farming grew: paddies and two harvests a year fed the cities.' } }
+          { t: { en: 'Paper money let cities buy food, so farming declined' }, why: { en: 'No. Paper money helped trade, but farming grew: paddies and two harvests a year fed the cities.' } },
+          { t: { en: 'Cities grew first, so farmers then built rice paddies' }, why: { en: 'No. That reverses the order. Paddies and two harvests a year grew the food supply first; that growth then fueled the cities.' } }
         ]
       }
     }

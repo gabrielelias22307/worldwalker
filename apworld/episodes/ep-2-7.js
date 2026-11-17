@@ -94,9 +94,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which best explains why Indian ports like Calicut became the busiest in the [[maritime|maritime]] network?' },
         choices: [
-          { t: { en: 'Ming fleets made every ship stop there to pay tribute' }, why: { en: 'No. Zheng He collected tribute from rulers, but China did not control the ports or force ships to stop.' } },
-          { ok: true, t: { en: 'Halfway across, they were a round trip of one monsoon year' }, why: { en: 'Yes. Calicut lay halfway between the two halves of the ocean, so the turning monsoon carried merchants there and back in one year.' } },
-          { t: { en: 'Only Indian makers could build the astrolabe and kamal' }, why: { en: 'No. Arab sailors improved the astrolabe and made the kamal. Tools spread; location made Calicut busy.' } }
+          { t: { en: 'Ming fleets forced every passing ship to stop and pay tribute' }, why: { en: 'No. Zheng He collected tribute from rulers, but China did not control the ports or force ships to stop.' } },
+          { ok: true, t: { en: 'Halfway across, they made a one-year monsoon round trip' }, why: { en: 'Yes. Calicut lay halfway between the two halves of the ocean, so the turning monsoon carried merchants there and back in one year.' } },
+          { t: { en: 'The monsoon blew toward India in every season of the year' }, why: { en: 'No. The monsoon turns: northeast in spring and summer, southwest in fall and winter. Calicut\'s halfway spot let merchants use both winds in one year.' } },
+          { t: { en: 'Mongol rule made the sea route to India safe and cheap' }, why: { en: 'No. The Mongol peace protected the overland Silk Roads. On the ocean, Calicut\'s halfway spot and the turning monsoon made it busy.' } }
         ]
       }
     },
@@ -115,7 +116,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Merchants shifted from risky land roads to sea routes' }, why: { en: 'Right. Sea routes recovered quickly from the Black Death, and the Mongol collapse made land roads risky again.' } },
           { t: { en: 'Overland trade grew as Mongol rule spread farther west' }, why: { en: 'No. That fits the 1200s. After the Black Death the Mongol Empire collapsed, and land roads grew risky.' } },
-          { t: { en: 'Ming fleets seized the spice ports and taxed the trade' }, why: { en: 'No. The Ming could have dominated the ocean but chose diplomacy. Zheng He collected tribute; he did not seize ports.' } }
+          { t: { en: 'Ming fleets seized the spice ports and taxed the trade' }, why: { en: 'No. The Ming could have dominated the ocean but chose diplomacy. Zheng He collected tribute; he did not seize ports.' } },
+          { t: { en: 'The Black Death ended long-distance trade for good' }, why: { en: 'No. The plague nearly wiped out Silk Road trade, but sea routes recovered quickly, and some land routes recovered in the early 1400s.' } }
         ]
       }
     },
@@ -133,8 +135,9 @@ window.EPISODE = {
         q: { en: 'Compared with Indian Ocean merchants, how did trans-Saharan merchants protect their trade?' },
         choices: [
           { t: { en: 'They rode Timur\'s relay horses between the oases' }, why: { en: 'No. Timur\'s post horses served envoys on the Silk Roads in Central Asia, not desert caravans.' } },
-          { t: { en: 'They sailed with the Ming navy for protection' }, why: { en: 'No. Zheng He\'s fleets sailed the Indian Ocean. The Sahara was crossed by camel caravan.' } },
-          { ok: true, t: { en: 'They paid tribute to the desert pastoralists' }, why: { en: 'Yes. Rather than invade the desert, states and merchants paid herders tribute so caravans could cross safely.' } }
+          { t: { en: 'Mali\'s armies conquered the desert herders' }, why: { en: 'No. States did not conquer the desert. Merchants paid the Berber herders tribute so they would not raid the caravans.' } },
+          { ok: true, t: { en: 'They paid tribute to the desert pastoralists' }, why: { en: 'Yes. Rather than invade the desert, states and merchants paid herders tribute so caravans could cross safely.' } },
+          { t: { en: 'They signed Arabic contracts so herders would not raid' }, why: { en: 'No. Arabic contracts built trust between merchants. To stop raids, merchants paid the Berber herders tribute.' } }
         ]
       }
     },
@@ -151,9 +154,10 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'Which best explains why the Black Death spread so far, so fast?' },
         choices: [
-          { t: { en: 'It began in Europe and moved east along the monsoon' }, why: { en: 'No. It began in China or Kyrgyzstan and moved west, reaching Kaffa in 1346.' } },
-          { ok: true, t: { en: 'Busy trade routes linked the regions of Afro-Eurasia' }, why: { en: 'Yes. The same connections that carried silk and spice carried germs thousands of miles.' } },
-          { t: { en: 'Caravans kept to the desert, far from any cities' }, why: { en: 'No. Trade linked cities and ports. That is how the plague reached so many people.' } }
+          { t: { en: 'It began in Kaffa and spread east to China' }, why: { en: 'No. That reverses its path. It began in China or Kyrgyzstan in the 1330s and moved west, reaching Kaffa by 1346.' } },
+          { ok: true, t: { en: 'Busy trade routes linked Afro-Eurasia\'s regions' }, why: { en: 'Yes. The same connections that carried silk and spice carried germs thousands of miles.' } },
+          { t: { en: 'The Mongol Empire\'s collapse made land roads risky' }, why: { en: 'No. That reverses cause and effect. The plague spread along busy, unified routes, and the collapse it helped cause came afterward.' } },
+          { t: { en: 'Zheng He\'s treasure fleets carried it to India' }, why: { en: 'No. Zheng He sailed from 1405 to 1433, long after the plague reached Kaffa in 1346.' } }
         ]
       }
     },
@@ -171,9 +175,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: why should a historian read Clavijo\'s praise of Timur\'s post system with care?' },
         choices: [
-          { t: { en: 'He was Timur\'s own official, writing orders for the stations' }, why: { en: 'No. Clavijo was an envoy from Spain, a visitor to Timur\'s court, not one of Timur\'s officials.' } },
-          { ok: true, t: { en: 'He wrote for European rulers and may exaggerate to impress them' }, why: { en: 'Yes. An envoy reports to his patrons. He may have made Timur\'s system sound grand to impress them.' } },
-          { t: { en: 'He was a merchant hoping to rent his horses to caravans' }, why: { en: 'No. He was an envoy, and he says the horses served Timur\'s messengers and envoys, not merchants.' } }
+          { t: { en: 'He was Timur\'s own official, writing orders for the post stations' }, why: { en: 'No. Clavijo was an envoy from Spain, a visitor to Timur\'s court, not one of Timur\'s officials.' } },
+          { ok: true, t: { en: 'He wrote for European rulers and may exaggerate to impress' }, why: { en: 'Yes. An envoy reports to his patrons. He may have made Timur\'s system sound grand to impress them.' } },
+          { t: { en: 'He was a merchant who hoped to profit from these roads' }, why: { en: 'No. He was an envoy, and he says the horses served Timur\'s messengers and envoys, not merchants.' } },
+          { t: { en: 'He wrote centuries later, long after Timur had died' }, why: { en: 'No. He rode the post horses himself on his way to Timur\'s court, and he died in 1412. His account is first-hand.' } }
         ]
       }
     },
@@ -192,6 +197,7 @@ window.EPISODE = {
         choices: [
           { t: { en: 'Mali traded its gold for grain from the Mediterranean' }, why: { en: 'No. Mali traded gold for salt and luxuries. The reading links African population growth to a new crop.' } },
           { t: { en: 'The Mongol peace carried new plows south across the Sahara' }, why: { en: 'No. The reading names no plows crossing the Sahara. It links growth in the interior to bananas, which came by sea.' } },
+          { t: { en: 'West African gold became currency in Islamic lands' }, why: { en: 'True, but it does not explain the growth. Gold enriched trade; the reading links more people in the interior to growing bananas.' } },
           { ok: true, t: { en: 'Indian Ocean traders brought bananas, a new food crop' }, why: { en: 'Yes. Southeast Asian traders carried bananas to East Africa. Growing them supported new states and more people.' } }
         ]
       }

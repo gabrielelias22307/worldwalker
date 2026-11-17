@@ -104,7 +104,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Epidemics killed millions and left a labor shortage' }, why: { en: 'Yes. Diseases new to the Americas killed 50 to 90 percent of Indigenous people. Europeans filled the labor shortage by forcing enslaved Africans across the ocean.' } },
           { t: { en: 'Spanish law forbade forcing Indigenous people to work' }, why: { en: 'No. Spanish law did the opposite: the encomienda and the mita forced Indigenous people to work. Disease, not law, caused the labor shortage.' } },
-          { t: { en: 'Indigenous Americans were immune to the new diseases' }, why: { en: 'No. Indigenous Americans had never met these diseases and had no resistance to them. That is why so many died.' } }
+          { t: { en: 'Wars of conquest, not disease, killed most workers' }, why: { en: 'No. Wars helped bring the Andes under Spanish rule, but Quispe names disease: smallpox, measles and influenza cut the Indigenous population by 50 to 90 percent.' } },
+          { t: { en: 'Indigenous Americans had resistance to the diseases' }, why: { en: 'No. Indigenous Americans had never met these diseases and had no resistance to them. That is why so many died and the labor shortage came.' } }
         ]
       }
     },
@@ -122,8 +123,9 @@ window.EPISODE = {
         q: { en: 'Which of the following best explains why silver from the Andes mattered far beyond Peru?' },
         choices: [
           { ok: true, t: { en: 'It was money that linked the Americas, Europe and Asia' }, why: { en: 'Right. Silver crossed the Atlantic to Europe and the Pacific to China and India. It became the great facilitator of global trade.' } },
-          { t: { en: 'It paid for Spain\'s trade with Africa and nowhere else' }, why: { en: 'No. Silver went to Spain and Europe, and on galleons through Manila to China and India. Rosa names Asia, not only Africa.' } },
-          { t: { en: 'It stayed in the Andes to build Spanish churches' }, why: { en: 'No. Most silver left Peru: across the Atlantic to Spain, and across the Pacific to Asia.' } }
+          { t: { en: 'It went only to Spain, which kept it from rivals' }, why: { en: 'No. Silver crossed to Seville, but it flowed on to the rest of Europe, and galleons carried it across the Pacific to China and India.' } },
+          { t: { en: 'Dutch company ships carried it to India and China' }, why: { en: 'No. Silver did reach China and India, but Rosa says Spanish galleons carried it, from Acapulco to Manila in the Philippines and on to Asia.' } },
+          { t: { en: 'It made prices across Europe fall as coins grew common' }, why: { en: 'No. It worked the other way: so much silver poured into Spain that each coin bought less, and prices rose. That is inflation.' } }
         ]
       }
     },
@@ -142,7 +144,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Colonies may trade only with the home country' }, why: { en: 'Yes. Colonies supply raw materials and buy finished goods inside one empire, so the home country sells more than it buys and grows more powerful.' } },
           { t: { en: 'Private firms trade with little control by the crown' }, why: { en: 'No. That is closer to the later "let it be" (laissez-faire) idea. Under mercantilism the government controlled much of the economy.' } },
-          { t: { en: 'The home country buys more goods than it sells' }, why: { en: 'No. That is the opposite of the goal. Mercantilists wanted to sell more than they bought.' } }
+          { t: { en: 'The home country buys more goods than it sells' }, why: { en: 'No. That is the opposite of the goal. Mercantilists wanted to sell more than they bought.' } },
+          { t: { en: 'Colonies make finished goods to sell to Spain' }, why: { en: 'No. It runs the other way: the colony sends raw materials like silver to Spain and buys Spain\'s finished goods.' } }
         ]
       }
     },
@@ -160,8 +163,9 @@ window.EPISODE = {
         q: { en: 'Which of the following best explains why European merchants formed joint-stock companies?' },
         choices: [
           { ok: true, t: { en: 'To spread the cost and risk of voyages among many' }, why: { en: 'Yes. Ocean trade was a costly gamble. Splitting costs among many investors kept each one\'s losses small.' } },
-          { t: { en: 'To let the king own and run all of the trade' }, why: { en: 'No. The king licensed (chartered) the East India Company, but many private investors owned it.' } },
-          { t: { en: 'Because new ships had made the voyages safe' }, why: { en: 'No. Ships still sank: half the Portuguese ships bound for the Indian Ocean were lost. Joint-stock companies spread those losses.' } }
+          { t: { en: 'So the king alone could own and run the trade' }, why: { en: 'No. The king licensed (chartered) the East India Company, but many private investors owned it.' } },
+          { t: { en: 'To trade freely, outside mercantilist rules' }, why: { en: 'No. These companies were licensed by their kings and served their states\' trade. Their purpose was to share the high costs and risks of voyages among many investors.' } },
+          { t: { en: 'Because voyages to Asia had become safe and sure' }, why: { en: 'No. Ships still sank: as many as half the Portuguese ships bound for the Indian Ocean were lost. Joint-stock companies spread those losses.' } }
         ]
       }
     },
@@ -179,9 +183,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Point of view: which best describes the author\'s point of view in this source?' },
         choices: [
-          { ok: true, t: { en: 'A European questioning the human cost of Europe\'s luxuries' }, why: { en: 'Yes. He doubts that sugar and coffee are essential to Europe\'s happiness and says they cost the Americas and Africa their people.' } },
+          { ok: true, t: { en: 'A European weighing the human cost of Europe\'s luxuries' }, why: { en: 'Yes. He doubts that sugar and coffee are essential to Europe\'s happiness and says they cost the Americas and Africa their people.' } },
           { t: { en: 'A planter arguing that sugar needs enslaved labor to grow' }, why: { en: 'No. He does not defend the plantations. He says sugar and coffee brought "unhappiness" to two great regions of the world.' } },
-          { t: { en: 'An African ruler praising the profits of the Atlantic trade' }, why: { en: 'No. He writes about "the happiness of Europe", and he condemns the trade: Africa was "depopulated".' } }
+          { t: { en: 'A European praising sugar as key to Europe\'s happiness' }, why: { en: 'No. He says he does not know if sugar and coffee are essential to Europe\'s happiness. He stresses the unhappiness they brought to the Americas and Africa.' } },
+          { t: { en: 'A Spanish official reporting on Potosí\'s mines' }, why: { en: 'No. He wrote in 1773, more than 170 years after this day in Potosí, and he writes about sugar and coffee plantations, not silver mines.' } }
         ]
       }
     },
@@ -198,9 +203,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'According to the reading, which best explains why joint-stock companies became key to building overseas empires?' },
         choices: [
-          { ok: true, t: { en: 'They spread empire\'s high costs and risks among many investors' }, why: { en: 'Yes. Empire was costly and voyages were risky. Shared ownership kept each investor\'s losses small, so companies could fund colonies better than governments.' } },
+          { ok: true, t: { en: 'They spread empire\'s costs and risks among many investors' }, why: { en: 'Yes. Empire was costly and voyages were risky. Shared ownership kept each investor\'s losses small, so companies could fund colonies better than governments.' } },
           { t: { en: 'They were a European invention no earlier state had used' }, why: { en: 'No. The Song dynasty in China used joint-stock companies around 1000 CE. What was new was their international scale.' } },
-          { t: { en: 'They let colonists trade freely with any country they chose' }, why: { en: 'No. Under mercantilism, colonies could not trade with other countries. Companies helped fund empire; they did not free colonial trade.' } }
+          { t: { en: 'They let colonists trade freely with any country they chose' }, why: { en: 'No. Under mercantilism, colonies could not trade with other countries. Companies helped fund empire; they did not free colonial trade.' } },
+          { t: { en: 'Governments ran them directly, as branches of the crown' }, why: { en: 'No. The British and Dutch East India Companies were companies, not governments, owned by investors, even though they performed colonial administration in India.' } }
         ]
       }
     }

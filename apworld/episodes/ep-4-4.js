@@ -96,7 +96,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Scattered forts and ports linked by ships' }, why: { en: 'Yes. Portugal seized crucial points to control trade and waterways, not wide stretches of inland territory.' } },
           { t: { en: 'Wide inland lands won by wars and epidemics' }, why: { en: 'No. That was Spain in Mexico, Central America and the Andes. In West Africa, Europeans worked within powerful African states.' } },
-          { t: { en: 'A land empire linked by roads and caravans' }, why: { en: 'No. A maritime empire relied on waterways to link the coasts, islands and port cities it held.' } }
+          { t: { en: 'Coastal forts that ruled the states inland' }, why: { en: 'No. Portugal did build forts on this coast, but it ruled nothing inland. Europeans here were traders who worked within powerful African states and followed their rules.' } },
+          { t: { en: 'Ports run from the start by joint-stock firms' }, why: { en: 'No. Joint-stock firms like the Dutch East India Company were how Portugal\'s rivals built empires later. Portugal had seized its forts and ports in the 1400s and early 1500s.' } }
         ]
       }
     },
@@ -114,8 +115,9 @@ window.EPISODE = {
         q: { en: 'Which best explains the growth of the slave trade on this coast?' },
         choices: [
           { ok: true, t: { en: 'European demand, supplied through African wars' }, why: { en: 'Yes. Many of those doing the capturing were African, but European demand and economic muscle drove the trade and its volume.' } },
-          { t: { en: 'Food shortages that pushed towns to sell people' }, why: { en: 'No. Kwame names the cause: European goods paid for captives, and that demand made wars more frequent.' } },
-          { t: { en: 'Trans-Saharan buyers seeking household servants' }, why: { en: 'No. That older trade sent captives across the Sahara to the Middle East. The Atlantic trade fed plantations in the Americas.' } }
+          { t: { en: 'European armies raiding deep into the interior' }, why: { en: 'No. Europeans ruled nothing inland. Many of those doing the capturing were African; captives were marched to the coast and sold to European ships.' } },
+          { t: { en: 'Rulers selling their own subjects to pay debts' }, why: { en: 'No. Debt was one basis of older slavery in Africa. Kwame says rulers who won wars sold their captives, people they saw as enemies, not as their own.' } },
+          { t: { en: 'Trans-Saharan buyers seeking household servants' }, why: { en: 'No. That older trade sent captives across the Sahara to the Muslim world. The Atlantic trade fed plantations in the Americas.' } }
         ]
       }
     },
@@ -133,8 +135,9 @@ window.EPISODE = {
         q: { en: 'Why did European states guard their trading rights in Africa so fiercely?' },
         choices: [
           { ok: true, t: { en: 'To export more and gather gold and silver' }, why: { en: 'Yes. Mercantilist states wanted to export more than they imported. The slave trade brought them more gold and silver than ever.' } },
-          { t: { en: 'To open African trade to all European merchants' }, why: { en: 'No. Mercantilist states wanted trade for themselves. Portugal guarded this coast against Dutch, English and French rivals.' } },
-          { t: { en: 'To settle and farm the lands of Africa\'s interior' }, why: { en: 'No. Europeans held points on the coast here. They did not rule or settle the lands inland.' } }
+          { t: { en: 'To uphold the Tordesillas line against Spain' }, why: { en: 'No. The 1494 treaty did keep Spain out of West Africa, but Duarte gives a mercantilist reason: export more than you import and gather gold and silver.' } },
+          { t: { en: 'To fund an industrial revolution at home' }, why: { en: 'No. That effect came later and in Britain: slave-trade wealth helped bring the Industrial Revolution. Around 1630 the aim was mercantilist: more exports, more gold and silver.' } },
+          { t: { en: 'To open African trade to all European merchants' }, why: { en: 'No. Mercantilist states wanted trade for themselves. Portugal guarded this coast against Dutch, English and French rivals.' } }
         ]
       }
     },
@@ -151,9 +154,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Compared with the Americas, how strong were Europeans in the Indian Ocean around 1630?' },
         choices: [
-          { ok: true, t: { en: 'They held small outposts in a busy ocean' }, why: { en: 'Yes. Europeans controlled only small outposts, and most goods still moved along the old Asian routes.' } },
-          { t: { en: 'They ruled the great ports and the Silk Road' }, why: { en: 'No. The Silk Road stayed outside European control, and the Ming, Mughal, Safavid and Ottoman empires stayed strong. The Ottomans fought Portugal at sea.' } },
-          { t: { en: 'They had pushed out the Asian merchants' }, why: { en: 'No. Gujarati, Chinese, Armenian and other [[diaspora|diaspora]] merchants kept trading, and Europeans often hired them.' } }
+          { ok: true, t: { en: 'They held small outposts in a busy ocean' }, why: { en: 'Yes. Europeans held only small outposts. Most goods still moved on the old Asian routes, and Gujarati, Chinese, Armenian and other [[diaspora|diaspora]] merchants kept trading.' } },
+          { t: { en: 'Joint-stock firms carried most Asian trade' }, why: { en: 'No. The Dutch East India Company was seizing ports, but most goods still moved on the old Asian routes, and the overland Silk Road stayed outside European control.' } },
+          { t: { en: 'Portugal ruled the ocean from its base at Goa' }, why: { en: 'No. Goa was the center of Portugal\'s empire in Asia, but the Ming, Mughal, Safavid and Ottoman empires stayed strong, and the Ottomans fought Portugal at sea.' } },
+          { t: { en: 'Their goods were prized at Asian courts' }, why: { en: 'No. At Calicut in 1498, the ruler\'s men laughed at Vasco da Gama\'s gift of wool, sugar, oil and honey. China and India remained the greatest makers.' } }
         ]
       }
     },
@@ -171,9 +175,10 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Sourcing: why might Portuguese mapmakers in 1502 draw the Tordesillas line on a world map?' },
         choices: [
-          { ok: true, t: { en: 'To record the coasts and seas the treaty gave Portugal' }, why: { en: 'Yes. The line marked Portugal\'s claim to Brazil, West Africa and the route to Asia, and kept Spain out of them.' } },
+          { ok: true, t: { en: 'To record the claims the treaty gave Portugal' }, why: { en: 'Yes. The line marked Portugal\'s claim to Brazil, West Africa and the route to Asia, and kept Spain out of them.' } },
           { t: { en: 'To show the Pope\'s 1493 line, which Portugal accepted' }, why: { en: 'No. King John II rejected the Pope\'s line; the treaty moved it from 100 to 270 leagues west.' } },
-          { t: { en: 'To mark the lands that England and France would settle' }, why: { en: 'No. The treaty split the Atlantic only between Spain and Portugal. England, France and the Dutch later challenged that monopoly.' } }
+          { t: { en: 'To show that Spain\'s half took in all of Brazil' }, why: { en: 'No. Spain got nearly all of the Americas, but the line gave Portugal a claim to north-eastern Brazil.' } },
+          { t: { en: 'To show that Portugal won most of the Americas' }, why: { en: 'No. Portugal got more than under the Pope\'s line, but "Spain got a lot more of the Americas than did Portugal."' } }
         ]
       }
     },
@@ -192,7 +197,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Sugar and Native deaths made demand; demand spread war in Africa' }, why: { en: 'Yes. Sugar plantations needed labor, disease had killed Indigenous workers, and European demand increased warfare inside Africa.' } },
           { t: { en: 'Wars in Africa made captives, so Europeans started sugar farms' }, why: { en: 'No. It ran the other way: plantations created the demand for labor, and that demand increased warfare in Africa.' } },
-          { t: { en: 'Muslim households\' demand for servants grew into the Atlantic trade' }, why: { en: 'No. That older system served households, harems and armies. The Atlantic trade was built to supply plantations.' } }
+          { t: { en: 'Muslim households\' demand for servants grew into the Atlantic trade' }, why: { en: 'No. That older system served households, harems and armies. The Atlantic trade was built to supply plantations.' } },
+          { t: { en: 'British industry made the demand that started sugar farms' }, why: { en: 'No. That reverses it. Sugar plantations came first; the wealth of the slave trade later helped bring the Industrial Revolution, which began in Britain.' } }
         ]
       }
     }

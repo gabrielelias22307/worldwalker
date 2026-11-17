@@ -95,8 +95,9 @@ window.EPISODE = {
         q: { en: 'Compared with the Pueblo Revolt, the Fronde was led by whom, and against what?' },
         choices: [
           { ok: true, t: { en: 'Nobles, against their own centralizing crown' }, why: { en: 'Yes. The Pueblos resisted colonizers. In France, land-owning lords resisted their own king\'s government, which sold titles to new aristocrats and cut their tax income.' } },
-          { t: { en: 'Peasants, against a foreign colonial army' }, why: { en: 'No. The Fronde was a civil war between the crown and much of the French nobility, not peasants against colonizers.' } },
-          { t: { en: 'Priests, against a crown that sold church lands' }, why: { en: 'No. The crown sold government positions and noble titles. Land-owning lords, not priests, wanted the old system back.' } }
+          { t: { en: 'Merchants, against a king who sold noble titles' }, why: { en: 'No. Antonio says wealthy merchants could lose out too, but the Fronde was a civil war between the crown and much of the French nobility.' } },
+          { t: { en: 'Peasants, against the crown\'s new war taxes' }, why: { en: 'No. Centralizing states did bring more taxes, but the Fronde was led by land-owning lords, who lost power when the crown sold offices and titles.' } },
+          { t: { en: 'Aristocrats, against an invading foreign dynasty' }, why: { en: 'No. That fits Joseon nobles in Korea, loyal to the Ming as the Qing rose. French lords revolted against their own king\'s government.' } }
         ]
       }
     },
@@ -114,7 +115,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A return to traditional Pueblo religion' }, why: { en: 'Yes. Popé ordered everyone to return to their traditional religion and abandon any Spanish culture. Fighting went on, and Spanish troops later recaptured the region.' } },
           { t: { en: 'A blend of Pueblo and Catholic practice' }, why: { en: 'No. Popé ordered people to abandon any Spanish culture, not to mix it with their own.' } },
-          { t: { en: 'A march south to conquer New Spain' }, why: { en: 'No. The goal was to expel the Spanish from Pueblo lands and restore the old order, not to conquer New Spain.' } }
+          { t: { en: 'An alliance with the Dutch against Spain' }, why: { en: 'No. That was Palmares, the maroon town in Brazil, which allied with the Dutch against the Portuguese. Popé\'s goal was to restore the old Pueblo order.' } },
+          { t: { en: 'Pueblo rule over its Apache and Navajo allies' }, why: { en: 'No. Popé recruited Apache and Navajo neighbors as allies. His goal was to expel the Spanish and restore the old order, not to rule his allies.' } }
         ]
       }
     },
@@ -133,7 +135,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'They took the land families lived on' }, why: { en: 'Yes. Without their land, Pueblo families could not live independently, so settlers could force them to work. That was one cause of the revolt.' } },
           { t: { en: 'They paid wages in silver from the mines' }, why: { en: 'No. Settlers did not hire Pueblo workers for wages. They took land and forced people to work.' } },
-          { t: { en: 'Priests ordered work as a religious duty' }, why: { en: 'No. Priests pressed the Pueblo to abandon their religion. Labor was forced by settlers who seized the land.' } }
+          { t: { en: 'Priests ordered work as a religious duty' }, why: { en: 'No. Priests pressed the Pueblo to abandon their religion. Labor was forced by settlers who seized the land.' } },
+          { t: { en: 'Disease left them too weak to refuse the work' }, why: { en: 'No. New diseases made resistance harder, but Blue Corn names the method: settlers took the land, so families could not live on their own.' } }
         ]
       }
     },
@@ -152,7 +155,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'It denied slavers the labor they relied on' }, why: { en: 'Yes. Plantations depended on enslaved labor. Marronage denied it, and maroon towns could attack plantations and free others.' } },
           { t: { en: 'It forced the Portuguese crown to end slavery' }, why: { en: 'No. Running away did not end slavery. It hurt slavers by taking away the labor they relied on.' } },
-          { t: { en: 'It let runaways join the Dutch army in Brazil' }, why: { en: 'No. Palmares as a community allied with the Dutch, but maroons ran away to be free and built their own towns.' } }
+          { t: { en: 'It let runaways join the Dutch army in Brazil' }, why: { en: 'No. Palmares as a community allied with the Dutch, but maroons ran away to be free and built their own towns.' } },
+          { t: { en: 'It made colonists recognize runaways as free' }, why: { en: 'No. Only some won that: Jamaica\'s maroons fought the British to a draw in the 1730s, and the promise was not always honored. Running away hurt slavers by taking their labor.' } }
         ]
       }
     },
@@ -172,7 +176,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'To show that powerless people resisted in daily ways' }, why: { en: 'Yes. Scott points past wars and big revolts to the constant, quiet struggle of peasants against those who took their labor, food and taxes.' } },
           { t: { en: 'To argue that peasants seldom resisted their rulers' }, why: { en: 'No. Scott calls the struggle constant. It simply stopped short of outright collective defiance.' } },
-          { t: { en: 'To explain how nobles fought kings in civil wars' }, why: { en: 'No. That was the Fronde. Scott writes about relatively powerless groups, not elites like nobles.' } }
+          { t: { en: 'To show peasants mostly resisted by open revolt' }, why: { en: 'No. Scott says most of this struggle stopped well short of outright collective defiance. He points past big revolts to quiet, everyday acts.' } },
+          { t: { en: 'To give an eyewitness account of peasant life' }, why: { en: 'No. Scott is a historian, not a person of this era or a witness. He offers a way to see the everyday struggles of relatively powerless groups.' } }
         ]
       }
     },
@@ -191,7 +196,8 @@ window.EPISODE = {
         q: { en: 'Comparison: which of the following best describes a pattern across the cases in the reading?' },
         choices: [
           { ok: true, t: { en: 'Groups resisted different things in different ways' }, why: { en: 'Yes. Invasion, forced cultural change, a centralizing king, enslavement: people resisted with wars, flight and even hairstyles.' } },
-          { t: { en: 'Only enslaved people resisted growing states' }, why: { en: 'No. Pueblo towns, French nobles and Joseon aristocrats resisted too, not only the enslaved.' } },
+          { t: { en: 'Elites backed the state; only commoners resisted' }, why: { en: 'No. Elites resisted too: French nobles fought their crown in the Fronde, and Joseon aristocrats refused the queue the Qing demanded.' } },
+          { t: { en: 'Most resisters aimed to overthrow the whole system' }, why: { en: 'No. The reading says most resistance targeted a particular policy. Only resistance to regimes that supported plantation slavery aimed at the entire system.' } },
           { t: { en: 'Each resistance movement won lasting victory' }, why: { en: 'No. The Fronde lost by 1653, Takyi\'s rebellion was crushed, and Spain later retook Pueblo lands.' } }
         ]
       }

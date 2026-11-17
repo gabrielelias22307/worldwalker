@@ -93,9 +93,10 @@ window.EPISODE = {
         stat: 'pla',
         q: { en: 'Which of the following best explains why land was the most valuable resource in medieval Europe?' },
         choices: [
-          { ok: true, t: { en: 'More land was the only sure way to more food' }, why: { en: 'Yes. Farming was not efficient, so working more land was the only reliable way to grow more. As people multiplied, land grew scarce.' } },
+          { t: { en: 'The Black Death left too few hands to farm it' }, why: { en: 'No. Land grew scarce and precious as the population rose before 1300. The Black Death came later, in the late 1340s, and cut the population.' } },
           { t: { en: 'Lords sold their land to the king for silver' }, why: { en: 'No. Lords did not sell land to kings. Kings granted land to lords in return for loyalty and military support.' } },
-          { t: { en: 'Grain sold abroad paid for spices from Asia' }, why: { en: 'No. Few families grew enough to feed themselves, let alone sell to the market. Land mattered because it meant food.' } }
+          { ok: true, t: { en: 'More land was the only sure way to more food' }, why: { en: 'Yes. Farming was not efficient, so working more land was the only reliable way to grow more. As people multiplied, land grew scarce.' } },
+          { t: { en: 'Rich harvests let villages sell grain to market' }, why: { en: 'No. Few families grew enough to feed themselves, let alone sell to the market. Land mattered because more land meant more food.' } }
         ]
       }
     },
@@ -110,11 +111,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Why did local lords, not the king, hold most power in France around 1300?' },
+        q: { en: 'Which best explains why local lords, not the king, held most power in France around 1300?' },
         choices: [
+          { t: { en: 'The Estates had stripped the king\'s power' }, why: { en: 'No. Bodies like the Estates sought to share power with the monarch, not remove it. Feudal grants made lords strong.' } },
           { ok: true, t: { en: 'Kings traded land for military support' }, why: { en: 'Yes. Each grant gave a lord the taxes, land and laws of a province in return for loyalty and soldiers.' } },
           { t: { en: 'The pope appointed every French lord' }, why: { en: 'No. The pope led the church\'s beliefs. Lords got their power through feudal grants of land.' } },
-          { t: { en: 'The Estates had stripped the king\'s power' }, why: { en: 'No. Bodies like the Estates sought to share power with the monarch, not remove it. Feudal grants made lords strong.' } }
+          { t: { en: 'The Little Ice Age had ruined royal lands' }, why: { en: 'No. Around 1300 the warm Medieval Climate Anomaly was just ending; the Little Ice Age gripped Europe by the 1400s. Lords were strong because of feudal grants.' } }
         ]
       }
     },
@@ -131,9 +133,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Compared with Latin Christendom, Byzantium differed most in that...' },
         choices: [
-          { ok: true, t: { en: 'its emperor led both state and church' }, why: { en: 'Right. Byzantium stayed one empire, and its emperor stood at the center of state and church. In the West, doctrine was the pope\'s job.' } },
+          { t: { en: 'its priests did not marry and prayed in Latin' }, why: { en: 'No. That describes Latin Christendom. Byzantine priests could marry, and Byzantines prayed in Greek.' } },
           { t: { en: 'its pope crowned the western emperors' }, why: { en: 'No. That was the pope in Rome, in the Latin West. Byzantium had a patriarch, and the emperor stood over church and state.' } },
-          { t: { en: 'it split into hundreds of small states' }, why: { en: 'No. That describes the West, especially Germany. Byzantium remained one unified empire.' } }
+          { t: { en: 'it split into hundreds of small states' }, why: { en: 'No. That describes the West, especially Germany. Byzantium remained one unified empire.' } },
+          { ok: true, t: { en: 'its emperor led both state and church' }, why: { en: 'Right. Byzantium stayed one empire, and its emperor stood at the center of state and church. In the West, doctrine was the pope\'s job.' } }
         ]
       }
     },
@@ -150,9 +153,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which best explains why ordinary people joined the Crusades?' },
         choices: [
+          { t: { en: 'A plan to end the Great Schism for good' }, why: { en: 'Overstated. The Crusades mended the rift with Byzantium only for a time, and the Fourth Crusade sacked Constantinople. Ordinary crusaders went out of faith and hope of land.' } },
           { ok: true, t: { en: 'Religious passion and hope of new land' }, why: { en: 'Yes. The Crusades were military pilgrimages, driven by religious enthusiasm and the promise of new land.' } },
-          { t: { en: 'Wages paid by the Byzantine emperor' }, why: { en: 'No. Byzantium asked for help, but crusaders went out of faith and hope of land, not for pay.' } },
-          { t: { en: 'Orders to defend Paris from the Muslims' }, why: { en: 'No. The goal was far away: to reclaim the Holy Land, Jerusalem, from the Muslims.' } }
+          { t: { en: 'A papal order to capture Constantinople' }, why: { en: 'No. The goal was to reclaim Jerusalem from the Muslims. The Fourth Crusade did sack Christian Constantinople, but that was not why ordinary people joined.' } },
+          { t: { en: 'Wages paid by the Byzantine emperor' }, why: { en: 'No. Byzantium asked for help, but crusaders went out of faith and hope of land, not for pay.' } }
         ]
       }
     },
@@ -170,8 +174,9 @@ window.EPISODE = {
         stat: 'mov',
         q: { en: 'Point of view: what did Pope Leo III most likely mean to show by crowning Charlemagne "emperor of the Romans"?' },
         choices: [
-          { ok: true, t: { en: 'Popes held the authority to crown emperors' }, why: { en: 'Yes. The crowning affirmed papal authority to crown emperors and declared a firm separation from Byzantine control.' } },
           { t: { en: 'The Byzantine emperor now ruled the West' }, why: { en: 'No. It was the opposite: the crowning declared the West\'s separation from Byzantine control.' } },
+          { t: { en: 'Charlemagne had rebuilt the whole Roman Empire' }, why: { en: 'Overstated, and the wrong point of view. The words are the pope\'s: by crowning an "emperor of the Romans," he claimed the papal right to crown emperors.' } },
+          { ok: true, t: { en: 'Popes held the authority to crown emperors' }, why: { en: 'Yes. The crowning affirmed papal authority to crown emperors and declared a firm separation from Byzantine control.' } },
           { t: { en: 'Western kings would now set church doctrine' }, why: { en: 'No. In the Latin West, Christian rulers did not set doctrine. That was the pope\'s job, and the crowning showed his authority.' } }
         ]
       }
@@ -190,9 +195,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which of the following best explains why political power in Europe was devolved to local authorities?' },
         choices: [
-          { ok: true, t: { en: 'Slow travel let locals act faster than kings' }, why: { en: 'Yes. With slow, uncertain communication, local lords could more easily gather resources and answer security threats.' } },
+          { t: { en: 'Parliaments and Estates took power from kings' }, why: { en: 'No. That reverses cause and effect. Lords grew strong first, then demanded a share of power in bodies like the Parliament and the Estates.' } },
           { t: { en: 'The Black Death killed most kings and nobles' }, why: { en: 'No. Power was already devolved by 1200, long before the plague of the late 1340s.' } },
-          { t: { en: 'The pope forbade kings to rule provinces' }, why: { en: 'No. In the Latin West the pope set belief, not who ruled provinces. Devolved power fit a time of slow, uncertain travel.' } }
+          { t: { en: 'The pope forbade kings to rule provinces' }, why: { en: 'No. In the Latin West the pope set belief, not who ruled provinces. Devolved power fit a time of slow, uncertain travel.' } },
+          { ok: true, t: { en: 'Slow travel let locals act faster than kings' }, why: { en: 'Yes. With slow, uncertain communication, local lords could more easily gather resources and answer security threats.' } }
         ]
       }
     }

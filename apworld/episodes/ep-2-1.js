@@ -96,7 +96,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Mongol rule unified and secured the road' }, why: { en: 'Yes. Chinggis Khan\'s conquest put the road under one rule and made it safe, so friars and merchants followed.' } },
           { t: { en: 'The Crusades won the Holy Land for Europe' }, why: { en: 'No. The Crusades failed. They only helped reopen a limited trade with the Muslim world through Genoa and Venice.' } },
-          { t: { en: 'Rival kingdoms competed for their trade' }, why: { en: 'No. Rival kingdoms at war were the problem before the Mongols: they made the road perilous.' } }
+          { t: { en: 'Rival kingdoms competed for their trade' }, why: { en: 'No. Rival kingdoms at war were the problem before the Mongols: they made the road perilous.' } },
+          { t: { en: 'The Black Death had weakened rival kingdoms' }, why: { en: 'No. The Black Death began in the 1330s, almost a century after the friars set out in 1245 and 1253. Mongol conquest had made the road safe.' } }
         ]
       }
     },
@@ -111,11 +112,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with the villages around it, how did Samarkand take part in trade around 1300?' },
+        q: { en: 'Which best describes how Samarkand, unlike the villages around it, took part in trade around 1300?' },
         choices: [
           { ok: true, t: { en: 'It joined the long-distance luxury trade' }, why: { en: 'Right. Silk, spices and glass gathered in trading cities. That is why they are called islands of trade.' } },
           { t: { en: 'It sold mostly grain at local markets' }, why: { en: 'No. That describes the villages. The countryside mostly kept relying on local markets.' } },
-          { t: { en: 'It controlled the network as its hegemon' }, why: { en: 'No. The network had no clear hegemon. Everyone used it on pretty much equal terms.' } }
+          { t: { en: 'It controlled the network as its hegemon' }, why: { en: 'No. The network had no clear hegemon. Everyone used it on pretty much equal terms.' } },
+          { t: { en: 'It wove most of the silk sold in the west' }, why: { en: 'No. Silk came from China. Samarkand was famous for its glass, and it joined the trade in many luxury goods, not silk alone.' } }
         ]
       }
     },
@@ -134,7 +136,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Context of the source' }, why: { en: 'Yes. She explains the source by the wider world its author lived in: busy, many-cultured trade hubs.' } },
           { t: { en: 'Audience of the source' }, why: { en: 'No. Audience asks who the readers were. She is asking about the world that shaped the author.' } },
-          { t: { en: 'Purpose of the source' }, why: { en: 'No. Purpose asks why the author wrote. She is describing the setting where he met the ideas.' } }
+          { t: { en: 'Purpose of the source' }, why: { en: 'No. Purpose asks why the author wrote. She is describing the setting where he met the ideas.' } },
+          { t: { en: 'Point of view of the author' }, why: { en: 'No. Point of view asks who the author was. She explains his ideas by the wider world he lived in: busy, many-cultured trade hubs.' } }
         ]
       }
     },
@@ -153,7 +156,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Stability brought more travelers' }, why: { en: 'Yes. Under the Pax Mongolica more merchants traveled, and they all needed safe places to stop and rest.' } },
           { t: { en: 'Caravans began to avoid the deserts' }, why: { en: 'No. Caravans still crossed deserts and long roads. That is exactly why they needed caravanserai.' } },
-          { t: { en: 'Silk became the only good carried' }, why: { en: 'No. The network carried hundreds of goods: spices, glass, gold, horses and more.' } }
+          { t: { en: 'Silk became the only good carried' }, why: { en: 'No. The network carried hundreds of goods: spices, glass, gold, horses and more.' } },
+          { t: { en: 'The plague drove travelers out of cities' }, why: { en: 'No. The Black Death came in the 1330s and 1340s, and it shrank trade. Around 1300 the system was healthy and strong.' } }
         ]
       }
     },
@@ -168,11 +172,12 @@ window.EPISODE = {
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'Why is Polo\'s account most useful to a historian of the Silk Roads?' },
+        q: { en: 'Which best explains why Polo\'s account is useful to a historian of the Silk Roads?' },
         choices: [
           { ok: true, t: { en: 'It shows ideas reaching Europe by trade' }, why: { en: 'Yes. Ideas about government and economy, like paper money, traveled back to Europe along the trade routes.' } },
           { t: { en: 'It proves Europeans ran China\'s economy' }, why: { en: 'No. Polo was a visitor describing an unfamiliar Chinese system, not a European who controlled it.' } },
-          { t: { en: 'It records how the Black Death spread' }, why: { en: 'No. Polo traveled in the 1270s. The Black Death began in the 1330s, long after his journey.' } }
+          { t: { en: 'It records how the Black Death spread' }, why: { en: 'No. Polo traveled in the 1270s. The Black Death began in the 1330s, long after his journey.' } },
+          { t: { en: 'It shows Europe\'s ideas spreading to China' }, why: { en: 'No. The ideas moved the other way: Polo met unfamiliar Chinese paper money, and ideas about it traveled back to Europe.' } }
         ]
       }
     },
@@ -191,7 +196,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A strong system fell apart after the plague' }, why: { en: 'Yes. Healthy and strong in the early 1300s, the system was falling apart thirty years later, as ports closed and trade decreased.' } },
           { t: { en: 'Trade moved from cities into the villages' }, why: { en: 'No. Trade stayed concentrated in cities. What changed was that the plague shrank trade everywhere.' } },
-          { t: { en: 'One hegemon took control of the network' }, why: { en: 'No. The reading says the network had no clear hegemon. The big change was its collapse after the Black Death.' } }
+          { t: { en: 'One hegemon took control of the network' }, why: { en: 'No. The reading says the network had no clear hegemon. The big change was its collapse after the Black Death.' } },
+          { t: { en: 'Trade grew as new ports opened to caravans' }, why: { en: 'No. It was the reverse: as the plague spread, ports closed and trade decreased. About 200 million people died.' } }
         ]
       }
     }

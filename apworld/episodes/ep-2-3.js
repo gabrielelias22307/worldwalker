@@ -90,7 +90,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The winds turned at set times every year' }, why: { en: 'Yes. Because the monsoon changed direction at the same times every year, merchants could plan voyages and know when they would arrive.' } },
           { t: { en: 'The astrolabe let pilots forecast each storm' }, why: { en: 'No. The astrolabe and kamal found latitude from the stars. The guides rested on the yearly pattern of the winds.' } },
-          { t: { en: 'Ming fleets set a timetable for every port' }, why: { en: 'No. The Ming did not try to control the ocean\'s trade. The timing came from the monsoon, and merchants sailed freely.' } }
+          { t: { en: 'Ming fleets set a timetable for every port' }, why: { en: 'No. The Ming did not try to control the ocean\'s trade. The timing came from the monsoon, and merchants sailed freely.' } },
+          { t: { en: 'The magnetic compass let ships sail against the wind' }, why: { en: 'No. Chinese mariners improved the compass to find direction, but it could not change the winds. Ships still waited for the monsoon to turn at its set times.' } }
         ]
       }
     },
@@ -109,7 +110,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Showing Ming might and collecting tribute' }, why: { en: 'Right. The voyages were diplomatic. The Ming did not try to conquer or even control the Indian Ocean trade.' } },
           { t: { en: 'Seizing control of the ocean\'s spice trade' }, why: { en: 'No. China had the strongest fleet and dozens of cannons per ship, but it chose not to control the trade. No state in this period did.' } },
-          { t: { en: 'Founding Chinese trading colonies in Africa' }, why: { en: 'No. The fleets showed China\'s might and brought back tribute, even exotic animals, for the emperor. They did not found colonies.' } }
+          { t: { en: 'Founding Chinese trading colonies in Africa' }, why: { en: 'No. The fleets showed China\'s might and brought back tribute, even exotic animals, for the emperor. They did not found colonies.' } },
+          { t: { en: 'Spreading Islam to the ports along the way' }, why: { en: 'No. Zheng He was a Muslim, but his voyages served the Ming emperor: they showed China\'s might and gathered tribute. Muslim merchants, not the treasure fleets, spread Islam.' } }
         ]
       }
     },
@@ -128,7 +130,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A shared language, home or faith built trust' }, why: { en: 'Yes. Trust let them hand goods and money to people in faraway ports.' } },
           { t: { en: 'Islamic courts enforced all of their contracts' }, why: { en: 'No. Islamic courts helped Muslim merchants. Jewish, Armenian or Gujarati networks built trust through their own shared language, home and beliefs.' } },
-          { t: { en: 'One empire protected every one of their ports' }, why: { en: 'No. Many states ringed the ocean, and none tried to control its trade. Trust came from the community.' } }
+          { t: { en: 'One empire protected every one of their ports' }, why: { en: 'No. Many states ringed the ocean, and none tried to control its trade. Trust came from the community.' } },
+          { t: { en: 'Lower taxes in Muslim-ruled states drew them together' }, why: { en: 'No. Lower taxes helped Muslims in Muslim-ruled states. Jewish, Armenian and Gujarati networks built trust on a shared language, home and faith.' } }
         ]
       }
     },
@@ -147,7 +150,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Many converted, and Swahili took in Arabic words' }, why: { en: 'Yes. Islam spread with trade, and the Bantu language Swahili adopted Arabic words and often Arabic script.' } },
           { t: { en: 'Arabic replaced Swahili in everyday speech on the coast' }, why: { en: 'No. Arabic became the common language of commerce, but Swahili stayed a Bantu language that borrowed Arabic words.' } },
-          { t: { en: 'Arab shippers took over its sea trade' }, why: { en: 'No. Swahili merchants kept trading gold and ivory themselves, and Islam made their ties to other ports stronger.' } }
+          { t: { en: 'Arab shippers took over its sea trade' }, why: { en: 'No. Swahili merchants kept trading gold and ivory themselves, and Islam made their ties to other ports stronger.' } },
+          { t: { en: 'Islam came mainly through conquest from Arabia' }, why: { en: 'No. Islam reached the Swahili coast with Muslim merchants, who won many converts through trade, not through conquest.' } }
         ]
       }
     },
@@ -166,7 +170,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'The winds turn at the same times every year' }, why: { en: 'Yes. The monsoon is a continuity: it changed direction predictably then and later, so a later map shows the pattern merchants used in 1420.' } },
           { t: { en: 'It was copied from Zheng He\'s own charts' }, why: { en: 'No. Nothing ties this map to Zheng He. Its value is that the yearly wind pattern did not change.' } },
-          { t: { en: 'It lists every voyage that left Calicut in 1420' }, why: { en: 'No. It shows the winds in February and August, not ships or voyages.' } }
+          { t: { en: 'It shows the routes merchants sailed in 1420' }, why: { en: 'No. It shows wind directions in February and August, not ships or routes, and it was drawn centuries after 1420.' } },
+          { t: { en: 'The Library of Congress keeps only reliable maps' }, why: { en: 'No. Where a source is kept does not prove it is accurate for 1420. Its value comes from a continuity: the yearly wind pattern did not change.' } }
         ]
       }
     },
@@ -185,7 +190,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'Islam linked its ports more than any empire' }, why: { en: 'Yes. The reading calls the spread of Islam the most important factor: a cultural force, not a political or economic one.' } },
           { t: { en: 'Song tax reforms placed its ports under China' }, why: { en: 'No. Song reforms freed merchants and monetized taxes inside China. They did not put other ports under Chinese rule.' } },
-          { t: { en: 'Mongol rule kept every coast safe after 1350' }, why: { en: 'No. The Mongol Empire collapsed in the 1300s, and that made overland trade risky. The reading names Islam as the key link.' } }
+          { t: { en: 'Mongol rule kept every coast safe after 1350' }, why: { en: 'No. The Mongol Empire collapsed in the 1300s, and that made overland trade risky. The reading names Islam as the key link.' } },
+          { t: { en: 'Monsoon timing mattered more than any belief' }, why: { en: 'No. The monsoon made voyages predictable, but the reading says the most important factor was cultural, not natural: the spread of Islam.' } }
         ]
       }
     }

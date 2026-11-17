@@ -94,9 +94,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'Which of the following best explains why Iberian monarchs, not Venetian merchants, pushed for a sea route?' },
         choices: [
-          { ok: true, t: { en: 'They refused Ottoman control of trade' }, why: { en: 'Yes. Catholic Iberian rulers who had fought Muslim powers refused to pay Ottoman taxes. Venice kept trading with the Ottomans.' } },
-          { t: { en: 'Venice had been ruined by the Black Death' }, why: { en: 'No. By the 1400s Europe\'s economies had recovered from the Black Death, and Venice still traded with the Ottomans.' } },
-          { t: { en: 'They were following the routes of Zheng He' }, why: { en: 'No. Zheng He sailed for the Ming decades earlier, for diplomacy. Iberians wanted their own route around the Ottomans.' } }
+          { ok: true, t: { en: 'They had fought Muslim powers and refused Ottoman control' }, why: { en: 'Yes. Catholic Iberian rulers who had fought Muslim powers refused to pay Ottoman taxes. Venice kept trading with the Ottomans.' } },
+          { t: { en: 'Venice\'s economy had never recovered from the Black Death' }, why: { en: 'No. By the 1400s Europe\'s economies had recovered from the Black Death, and Venice still traded with the Ottomans.' } },
+          { t: { en: 'They cared more about spreading Christianity than trade' }, why: { en: 'No. Spreading Christianity and winning glory were motives, but Diogo says that above all they wanted a sea route to Asia, around Ottoman control.' } },
+          { t: { en: 'The Ottomans had closed the Mediterranean to all Europeans' }, why: { en: 'No. The Ottomans controlled and taxed that trade, but did not close it: Venice still traded with them. Iberian rulers refused to accept that control.' } }
         ]
       }
     },
@@ -113,9 +114,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'If so many ships sank, why could the route around Africa still pay off?' },
         choices: [
-          { ok: true, t: { en: 'It cut out the middlemen and their taxes' }, why: { en: 'Yes. With fewer merchants each taking a profit, the Portuguese could undersell Italian merchants, even after losses at sea.' } },
-          { t: { en: 'It was shorter and safer than the caravan roads' }, why: { en: 'No. The voyage around Africa was long and deadly; up to half the ships were lost. The gain was skipping the middlemen.' } },
-          { t: { en: 'The Ottomans gave Portugal lower spice taxes' }, why: { en: 'No. The sea route\'s whole point was to avoid the Ottomans and their taxes altogether.' } }
+          { ok: true, t: { en: 'It skipped many middlemen and the Ottoman taxes' }, why: { en: 'Yes. With fewer merchants each taking a profit, the Portuguese could undersell Italian merchants, even after losses at sea.' } },
+          { t: { en: 'It was shorter and safer than the old caravan roads' }, why: { en: 'No. The voyage around Africa was long and deadly; up to half the ships were lost. The gain was skipping the middlemen.' } },
+          { t: { en: 'Fortified trading posts made the voyage itself safe' }, why: { en: 'No. Portugal built fortified posts in West Africa, but up to half its ships bound for the Indian Ocean were still lost. The profit came from skipping middlemen.' } },
+          { t: { en: 'West African gold covered the cost of every lost ship' }, why: { en: 'No. Buying gold directly was a real gain, but Halima says investors still lost ship and cargo. The route paid because skipping middlemen let Portugal undersell Italian rivals.' } }
         ]
       }
     },
@@ -132,9 +134,10 @@ window.EPISODE = {
         stat: 'reg',
         q: { en: 'Why did a fifteenth-century Indian Ocean sailor need to study astronomy and mathematics?' },
         choices: [
-          { ok: true, t: { en: 'To find latitude by the Sun and stars' }, why: { en: 'Yes. The astrolabe and the kamal measure the Sun or the polestar. Turning that into latitude takes math and astronomy.' } },
-          { t: { en: 'To read the sea charts of the Portuguese' }, why: { en: 'No. Indian Ocean sailors had their own books and knowledge. The Portuguese had only the compass and dead reckoning.' } },
-          { t: { en: 'To build the lateen sails of their dhows' }, why: { en: 'No. Lateen sails are shipbuilding. Astronomy and math were for finding latitude at sea.' } }
+          { ok: true, t: { en: 'To find latitude from the Sun and the polestar' }, why: { en: 'Yes. The astrolabe and the kamal measure the Sun or the polestar. Turning that into latitude takes math and astronomy.' } },
+          { t: { en: 'To steer by the Chinese compass, easy to use at sea' }, why: { en: 'No. Yusuf says the compass, a Chinese invention, is hard to use at sea. So Indian Ocean sailors found latitude by the sky instead.' } },
+          { t: { en: 'To read the sea charts the Portuguese brought' }, why: { en: 'No. Indian Ocean sailors already had their own books, like Ibn Majid\'s, built from centuries of collective learning.' } },
+          { t: { en: 'To chart the monsoon winds instead of the stars' }, why: { en: 'No. Ibn Majid\'s book does record monsoon winds, but Yusuf studies astronomy and math to read the sky: the astrolabe and the kamal give latitude.' } }
         ]
       }
     },
@@ -151,9 +154,10 @@ window.EPISODE = {
         stat: 'hei',
         q: { en: 'Compared with Zheng He\'s Ming fleets, how did Iberian voyages differ?' },
         choices: [
-          { ok: true, t: { en: 'Their rulers expected routes and conquest' }, why: { en: 'Yes. Both were state-funded, but the Ming sent Zheng He for diplomacy. Iberian monarchs expected new routes and territory.' } },
-          { t: { en: 'They sailed without any state support' }, why: { en: 'No. European explorers had the power and wealth of their states behind them, just as Zheng He had the Ming.' } },
-          { t: { en: 'They were sent only for gifts and diplomacy' }, why: { en: 'No. That describes Zheng He\'s mission. Iberian monarchs wanted new routes and conquered lands.' } }
+          { ok: true, t: { en: 'Their rulers expected new routes and new lands' }, why: { en: 'Yes. Both were state-funded, but the Ming sent Zheng He for diplomacy. Iberian monarchs expected new routes and territory.' } },
+          { t: { en: 'They sailed without any support from their states' }, why: { en: 'No. European explorers had the power and wealth of their states behind them, just as Zheng He had the Ming.' } },
+          { t: { en: 'They were sent mainly for gifts and diplomacy' }, why: { en: 'No. That describes Zheng He\'s mission. Iberian monarchs wanted new routes and conquered lands.' } },
+          { t: { en: 'Only they steered with rear rudders, an Iberian idea' }, why: { en: 'No. Iberian ships did use rear rudders, but Baraka says those were first used in ancient China. The key difference is purpose: diplomacy versus routes and lands.' } }
         ]
       }
     },
@@ -173,7 +177,8 @@ window.EPISODE = {
         choices: [
           { ok: true, t: { en: 'A proud master of Indian Ocean navigation' }, why: { en: 'Yes. As the "Lion of the Sea," he defends the star science and books of Indian Ocean sailors against the newcomers.' } },
           { t: { en: 'A pilot who had guided da Gama\'s ship to India' }, why: { en: 'No. He never writes about meeting the Portuguese, and he was probably not da Gama\'s pilot.' } },
-          { t: { en: 'A Portuguese ally praising European sea skill' }, why: { en: 'No. He says the Portuguese have only the compass and dead reckoning, and look up to Indian Ocean sailors.' } }
+          { t: { en: 'A Portuguese ally praising European sea skill' }, why: { en: 'No. He says the Portuguese have only the compass and dead reckoning, and look up to Indian Ocean sailors.' } },
+          { t: { en: 'A navigator who rates the compass above the stars' }, why: { en: 'No. He says the newcomers have "only the compass and dead reckoning," while his people have star science and books. He rates the stars higher.' } }
         ]
       }
     },
@@ -191,9 +196,10 @@ window.EPISODE = {
         stat: 'loc',
         q: { en: 'According to the reading, which development really launched oceanic connections?' },
         choices: [
-          { ok: true, t: { en: 'Iberian colonies on Atlantic islands' }, why: { en: 'Yes. In the 1400s the Canaries and Madeira became waypoints and the first large sugar plantations worked by enslaved people.' } },
-          { t: { en: 'Dutch joint-stock trading companies' }, why: { en: 'No. Dutch joint-stock companies came after 1600, long after oceanic connections had begun.' } },
-          { t: { en: 'Venetian trade with the Ottoman Empire' }, why: { en: 'No. Venice traded through the Ottomans. Iberian rulers refused Ottoman control and sought a sea route.' } }
+          { ok: true, t: { en: 'Iberian colonies on Atlantic islands like Madeira' }, why: { en: 'Yes. In the 1400s the Canaries and Madeira became waypoints and the first large sugar plantations worked by enslaved people.' } },
+          { t: { en: 'Dutch joint-stock companies that limited investors\' risk' }, why: { en: 'No. Dutch joint-stock companies came after 1600, long after oceanic connections had begun.' } },
+          { t: { en: 'Venetian merchants\' trade with the Ottoman Empire' }, why: { en: 'No. Venice traded through the Ottomans. Iberian rulers refused Ottoman control and sought a sea route.' } },
+          { t: { en: 'Magellan\'s voyage around the globe in the 1520s' }, why: { en: 'No. Magellan sailed in the 1520s, about a century after Iberians colonized the Canaries and Madeira in the 1400s. Those islands launched oceanic connections.' } }
         ]
       }
     }
