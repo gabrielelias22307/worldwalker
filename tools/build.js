@@ -11,7 +11,7 @@ const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'save.js', 'ui.js', 'ch
 // hd.js (the HD look) and hub.js (the one-file world map) only matter to a course with `hd: true` (HistoryWalker): the
 // other games leave them out and stay under the Canvas limit
 if (!(require('./course-info.js')(GAME).course || {}).hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => f !== 'hd.js' && f !== 'hub.js'));
-const LIMIT = 430000; // Canvas stops running JavaScript in files over ~450 KB
+const LIMIT = (require('./course-info.js')(GAME).course || {}).hd ? Infinity : 430000; // HistoryWalker ships as one file with no size limit // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');
 const { slimCss } = require('./slim.js'); // the Canvas file has no comments or indentation, to stay under the limit
