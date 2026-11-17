@@ -11,6 +11,9 @@
    "Oceanic Empires, 1450 to 1750" (Jack Bouchard, 4.4), "The Cosmopolitan Indian Ocean, c. 1450–1700"
    (Bennett Sherry, 4.4), "The Transatlantic Slave Trade" (4.4), "Overview of New Economic Systems"
    (Eman M. Elshaikh, 4.5). World History Project content is CC BY-NC 4.0. Facts here come from those readings.
+   Reading stands: Martin Luther's words of 1530 as quoted in "Transformations in Eurasian Belief Systems" (3.3), and
+   an adapted reading from "Unit 4 Introduction" (Trevor Getz). The 1773 Bernardin de Saint-Pierre quote in the Grump's
+   questions is the one printed in "Transatlantic Migration Patterns" (4.7).
    English only, AP level. Hard history (the Atlantic slave trade, forced labor in the silver mines) is told
    plainly and with care. */
 window.EPISODE = {
@@ -23,7 +26,7 @@ window.EPISODE = {
   place: { en: 'Amsterdam, Dutch Republic, 1700' },
   intro: [
     { en: 'The Grump blurred the last chronicle page: 1450 to 1750. Amsterdam is forgetting what changed and what stayed the same!' },
-    { en: 'Talk to the 4 people here, help a cook get pepper, then wake the time stone.' }
+    { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a cook get pepper, then wake the time stone.' }
   ],
   scenes: {
     at: [4.90, 52.37],
@@ -88,17 +91,18 @@ window.EPISODE = {
       x: 13, y: 4, name: { en: 'Jan' }, role: { en: 'Company sailor' },
       look: { skin: 1, hair: '#c9a24a', shirt: '#2a4a7a', pants: '#3a3a2a', hat: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'I sail for the [[east india company|Dutch East India Company]], around Africa to the Indian Ocean. In 1450, no ships linked all the oceans. Now they do.' },
-        { en: 'The Company is a [[joint-stock company|joint-stock company]]. Many shareholders split its costs and profits, so one sunken ship ruins no one.' },
-        { en: 'It acts like a state: it has armies, mints coins and rules colonies in the East Indies. Yet joint-stock companies are not new. Song China used them around 1000.' }
+        { en: 'I sail for the [[east india company|Dutch East India Company]], the VOC, around Africa to the Indian Ocean. In 1600 we were a small republic, just free of Spain.' },
+        { en: 'Voyages are deadly. In the early 1500s, up to half of Portuguese ships bound for the Indian Ocean were lost. Investors lost ship and cargo.' },
+        { en: 'So the VOC is a [[joint-stock company|joint-stock company]]. Since the Amsterdam Stock Exchange opened in 1602, citizens buy small shares in many businesses. One sinking ruins no one.' },
+        { en: 'The Company acts like a state: armies, coins, cities, wars. Yet the idea is old. Song China used joint-stock companies around 1000; the Muslim world had another form.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why could the small Dutch Republic build a trading empire across the oceans?' },
+        q: { en: 'Between 1600 and 1800, 49 percent of the ships in the Eurasian trade were Dutch. Which best explains why?' },
         choices: [
-          { ok: true, t: { en: 'Shareholders split the risk of voyages' }, why: { en: 'Yes. The Netherlands was a small republic, newly free of Spain. Sharing risk made people willing to trust their money to Dutch merchants.' } },
-          { t: { en: 'It had the largest army in Eurasia' }, why: { en: 'No. Its strength was ships and finance. Big land empires like the Ottomans had far larger armies.' } },
-          { t: { en: 'The Asian empires handed it their lands' }, why: { en: 'No. In Asia, Europeans held only small outposts: ports and islands. The great land empires stayed strong.' } }
+          { ok: true, t: { en: 'Shares limited each investor\'s risk' }, why: { en: 'Yes. Spreading the risk over many shareholders made people willing to trust their money to Dutch merchants, so a small republic could fund huge fleets.' } },
+          { t: { en: 'Dutch sailors invented the compass' }, why: { en: 'No. The magnetic compass was invented in China, and lateen sails came from the Indian Ocean. Europeans adopted these older technologies.' } },
+          { t: { en: 'The VOC conquered the Mughal Empire' }, why: { en: 'No. In Asia, Europeans held only small outposts: ports and islands. The great land-based empires stayed strong.' } }
         ]
       }
     },
@@ -106,17 +110,18 @@ window.EPISODE = {
       x: 25, y: 15, name: { en: 'Sarkis' }, role: { en: 'Armenian merchant' },
       look: { skin: 2, hair: '#1b1410', shirt: '#7a2a2a', robe: true, hat: '#3a2a4a', style: 'short' },
       lines: [
-        { en: 'My people trade from Manila to London. Couriers carry our letters about prices and who can be trusted. We are a [[diaspora|diaspora]] network.' },
-        { en: 'Europeans reached the Indian Ocean, but most goods still move on the old routes. China and India still make more goods than anyone.' },
-        { en: 'The great [[land-based empire|land-based empires]], Ottoman, Safavid and Mughal, still rule. Europeans hold only ports and islands, and the Silk Road is beyond their control.' }
+        { en: 'My people trade from Manila to London. Couriers carry our letters about prices, contracts and who can be trusted. We are a [[diaspora|diaspora]] network.' },
+        { en: 'We speak Turkish, Persian, Arabic, Armenian and European tongues, so the companies hire us. In 1688 the British East India Company signed a treaty with the "Armenian Nation."' },
+        { en: 'There is no Armenian state. It was a treaty between a state and a network, to put our goods on company ships around Africa instead of the Silk Roads.' },
+        { en: 'Yet the Ottoman, Safavid and Mughal [[land-based empire|land-based empires]] still rule. Europeans hold only outposts in the Philippines, eastern India and Southeast Asian islands.' }
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'A 1600s painting of Amsterdam shows Armenian merchants trading among the Dutch. It is best used as evidence of...' },
+        q: { en: 'A 1600s painting of Amsterdam by Johannes Lingelbach shows Armenian merchants trading among the Dutch. It is best used as evidence of...' },
         choices: [
-          { ok: true, t: { en: 'old merchant networks joining the new sea trade' }, why: { en: 'Yes. Diaspora networks like the Armenians linked European companies with the land-based empires of Asia.' } },
-          { t: { en: 'Armenians ruling a great state of their own' }, why: { en: 'No. There was no Armenian state then. The Armenians were a network of merchants, not an empire.' } },
-          { t: { en: 'Dutch cities closing their ports to foreign traders' }, why: { en: 'No. The painting shows the opposite: foreign merchants at work in Amsterdam\'s busy commerce.' } }
+          { ok: true, t: { en: 'diaspora networks joining the new sea trade' }, why: { en: 'Yes. Diaspora merchants like the Armenians linked European companies with the land-based empires of Asia.' } },
+          { t: { en: 'an Armenian empire rivaling the Dutch at sea' }, why: { en: 'No. There was no Armenian state then. The 1688 treaty was made with a network of merchants, not an empire.' } },
+          { t: { en: 'Dutch laws that let only Dutch-born men trade' }, why: { en: 'No. The painting shows the opposite: foreign merchants at work in Amsterdam\'s busy commerce.' } }
         ]
       }
     },
@@ -124,17 +129,18 @@ window.EPISODE = {
       x: 11, y: 17, name: { en: 'Neeltje' }, role: { en: 'Grocer' },
       look: { skin: 0, hair: '#8a5a2a', shirt: '#3a7a5a', robe: true, style: 'bun' },
       lines: [
-        { en: 'My shop sells sugar, pepper, coffee and potatoes. Potatoes came from the Americas in the [[columbian exchange|Columbian Exchange]]. They grow even in our cold north.' },
-        { en: 'Sugar grows on [[plantation|plantations]] in the Americas. After disease killed millions of Native people, planters forced enslaved Africans to do the work.' },
+        { en: 'I sell sugar, pepper, coffee and potatoes. Before 1492 potatoes grew only in the Americas. The [[columbian exchange|Columbian Exchange]] brought them here, and they grow even in our cold north.' },
+        { en: 'Europeans first tried large-scale sugar on Atlantic islands like Madeira. Columbus carried cane to the Caribbean. Now Brazil, Cuba and Jamaica grow it on [[plantation|plantations]].' },
+        { en: 'Disease wiped out or displaced most Native workers, so planters turned to enslaved Africans. From 1580, enslaved Africans far outnumbered the Europeans who crossed the Atlantic.' },
         { en: 'Dutch ships carry captives too. In the [[atlantic slave trade|Atlantic slave trade]], about 12.5 million Africans were taken. About 2.5 million died on the voyage.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'Slavery existed long before 1450. What was new about the Atlantic slave trade?' },
+        q: { en: 'Slavery existed long before 1450. What was most new about the Atlantic slave trade?' },
         choices: [
-          { ok: true, t: { en: 'Its huge scale and its violence' }, why: { en: 'Yes. Its sheer volume and violence set it apart from earlier slavery. It supplied forced labor for sugar and other cash crops.' } },
-          { t: { en: 'It was the first slavery in history' }, why: { en: 'No. Slavery existed earlier in history. What changed was the scale and violence of this trade across the Atlantic.' } },
-          { t: { en: 'Enslaved people were now paid' }, why: { en: 'No. Enslaved Africans were forced to work without pay, in brutal conditions, and many died.' } }
+          { ok: true, t: { en: 'Its huge volume and violence, feeding cash crops' }, why: { en: 'Yes. Its sheer volume and violence set it apart from earlier slavery. It supplied forced labor for sugar and other cash crops.' } },
+          { t: { en: 'It was the first time any Africans were enslaved' }, why: { en: 'No. Slavery existed earlier in history, in Africa and elsewhere. What was new was the scale and violence of this trade.' } },
+          { t: { en: 'Its captives were mostly European convicts' }, why: { en: 'No. Some convicts were sent, but from 1580 enslaved Africans far outnumbered all European migrants.' } }
         ]
       }
     },
@@ -142,17 +148,57 @@ window.EPISODE = {
       x: 17, y: 9, name: { en: 'Elisabeth' }, role: { en: 'Printer' },
       look: { skin: 1, hair: '#5a3a1a', shirt: '#4a4a6a', robe: true, style: 'long' },
       lines: [
-        { en: 'Our presses print ideas of the [[protestant reformation|Protestant Reformation]]. Martin Luther challenged the Catholic Church in 1517, preaching the "priesthood of all believers."' },
-        { en: 'Faith split Europe into long religious wars, and the Dutch revolted against the Spanish king. Yet many still lived beside neighbors of other faiths.' },
-        { en: 'In India, Guru Nanak founded [[sikhism|Sikhism]], which rejected caste. Some people reached for new faiths; others held tighter to old ones. Beliefs changed, but endured.' }
+        { en: 'In 1517 Martin Luther\'s Ninety-Five Theses challenged the Church\'s sale of indulgences. The [[protestant reformation|Protestant Reformation]] preached the "priesthood of all believers," and printing presses spread it.' },
+        { en: 'Catholics answered with the Jesuits, founded in 1540, and the Council of Trent. Then came the French Wars of Religion and the Thirty Years War, 1618 to 1648.' },
+        { en: 'Islam split too. In 1501 Shah Ismail founded the Shi\'a Safavid Empire, and the Sunni Ottomans declared Shi\'a Muslims heretics.' },
+        { en: 'In the Punjab, Guru Nanak said "There is no Hindu, there is no Muslim" and founded [[sikhism|Sikhism]]. It rejected caste. Its scriptures were written in everyday languages.' }
       ],
       ask: {
         stat: 'hei',
         q: { en: 'Compare: what did Protestants in Europe and Sikhs in India have in common?' },
         choices: [
-          { ok: true, t: { en: 'Both challenged religious hierarchies' }, why: { en: 'Yes. Protestants preached the "priesthood of all believers," and Sikhs rejected caste divisions. Both opened faith to ordinary people.' } },
-          { t: { en: 'Both were spread by the Ottoman sultans' }, why: { en: 'No. The Ottomans were Sunni Muslims. Protestantism began with Luther in Germany, Sikhism with Guru Nanak in the Punjab.' } },
-          { t: { en: 'Both ended religious conflict right away' }, why: { en: 'No. Europe saw long religious wars, and Sikhs later rose in rebellion against the Mughal Empire.' } }
+          { ok: true, t: { en: 'Both challenged older religious hierarchies' }, why: { en: 'Yes. Protestants preached the "priesthood of all believers," and Sikhs rejected caste divisions. Both opened faith to ordinary people.' } },
+          { t: { en: 'Both grew out of the Sunni-Shi\'a split' }, why: { en: 'No. That split divided Islam: Sunni Ottomans against Shi\'a Safavids. Protestantism began with Luther, Sikhism with Guru Nanak.' } },
+          { t: { en: 'Both brought lasting religious peace' }, why: { en: 'No. Europe saw long religious wars, and Punjabi Sikhs were in open rebellion against the Mughal Empire by the early 1700s.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 16, y: 7, icon: '📜',
+      name: { en: 'Luther: "The World Is Crackling"' }, role: { en: 'Primary source' },
+      src: { en: 'Martin Luther, writing in 1530; quoted in "Transformations in Eurasian Belief Systems, 1450–1750" by Amy Elizabeth Robinson, World History Project' },
+      lines: [
+        { en: '"Everything has come to pass and is fulfilled: ... the world is crackling in all places, as if it is going break apart and crumble."' },
+        { en: 'Context: Martin Luther, a German priest, wrote this in 1530. In 1517 his Ninety-Five Theses had challenged the Catholic Church\'s sale of "indulgences," payments to reduce punishment for sins. He is known as the founder of Protestantism, and the printing press carried his ideas across Europe.' },
+        { en: 'Why did the world feel like it was breaking? The Little Ice Age, from about 1500 to 1800, made the world colder. People were hungry and prices were rising. New absolutist rulers used gunpowder to defend territory and taxes to pay for their courts. By the 1500s some people felt the "end-times" were near, and many felt they needed new forms of worship.' },
+        { en: 'What came next: the next two hundred years felt, in historian Christopher Hill\'s words, like a "world turned upside down." Europe saw the French Wars of Religion (1562–1598), the Thirty Years War (1618–1648) and its deadliest witch-hunts. Yet many Europeans went on living and working beside people of other beliefs.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: which historical situation best explains why Luther wrote that the world was "crackling" in 1530?' },
+        choices: [
+          { ok: true, t: { en: 'Cold, hunger, rising prices and a split Church' }, why: { en: 'Yes. The Little Ice Age, hunger, inflation and the religious upheaval he helped start made it feel as if the world might crumble.' } },
+          { t: { en: 'The Black Death sweeping through Europe' }, why: { en: 'No. The Black Death struck Afro-Eurasia in the 1300s, in the era before 1450. Luther wrote in 1530.' } },
+          { t: { en: 'A flood of Spanish silver into Ming China' }, why: { en: 'No. Spanish silver reached China by the 1570s, decades after Luther wrote.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 15, y: 12, icon: '📖',
+      name: { en: 'A World System' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'After 1492 the two hemispheres had a sustained connection, the start of what historian Alfred Crosby named the "Columbian Exchange." Crops, animals, people and diseases moved. In 1491 there were no horses or cows in the Americas, and potatoes, tomatoes and cassava grew only there. Smallpox, malaria, typhoid and cholera were all new to the Americas.' },
+        { en: 'The result was the "Great Dying." When Hernán Cortés invaded present-day Mexico, its Indigenous population was probably 25 to 30 million. Fifty years later it was three million, almost all because of disease. For Europeans, this disaster opened the way to transoceanic empires. The resources of their American colonies enriched them and eventually let them access and control trade routes in the Indian Ocean.' },
+        { en: 'The first global system of production and distribution was fueled by silver, "the great facilitator of global trade." It benefited Spain, Western Europe and China, but rested on the forced labor of Indigenous people in South American mines. Plantations grew sugar and cotton with enslaved labor, first Indigenous, then African. Asia, long the center of growth, began to lose some influence, and the Atlantic slaving system devastated whole regions of Africa.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Causation: according to the reading, how did the Great Dying help shift global power toward Western Europe?' },
+        choices: [
+          { ok: true, t: { en: 'It let Europe build colonies whose wealth reached Asia\'s trade' }, why: { en: 'Yes. With the Americas emptied by disease, Europeans built colonies; their resources enriched European empires and opened Indian Ocean trade routes to them.' } },
+          { t: { en: 'It weakened the Ming and Mughal empires with American diseases' }, why: { en: 'No. The new diseases struck the Americas, where they were unknown. Afro-Eurasian diseases killed Indigenous Americans.' } },
+          { t: { en: 'It ended the need for forced labor in the American colonies' }, why: { en: 'No. The opposite: planters and mine owners turned to forced Indigenous labor and then to millions of enslaved Africans.' } }
         ]
       }
     }
@@ -195,8 +241,8 @@ window.EPISODE = {
       x: 12, y: 15, name: { en: 'Grietje' }, role: { en: 'Cook' },
       look: { skin: 2, hair: '#2b1d14', shirt: '#c0392b', pants: '#4a3a2a', style: 'bun' },
       lines: [
-        { en: 'Pepper once reached Europe through many middlemen: Silk Road caravans, Ottoman ports, Italian traders. Each one added a profit, so it was costly.' },
-        { en: 'Now ships bring it straight around Africa. But the Grump spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
+        { en: 'Pepper once came through many middlemen: Silk Road caravans, then the Ottomans, who taxed it, then Italian traders. Each one took a profit, so pepper was costly.' },
+        { en: 'Since da Gama, ships bring it straight around Africa. But the Grump spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
       ],
       wait: { en: 'Cross the canal bridge north, then walk west along the harbor quay to the docks.' },
       thanks: { en: 'Pepper! An old Asian spice, on a new ocean route, paid for with American silver. Old and new, all in one sack. Thank you!' }
@@ -215,7 +261,7 @@ window.EPISODE = {
         x: 23, y: 7, name: { en: 'Willem' }, role: { en: 'Company clerk' },
         look: { skin: 1, hair: '#4a3020', shirt: '#2a2a3a', pants: '#2a2a2a', hat: '#1a1a1a', style: 'short' },
         lines: [
-          { en: 'Our ships pay Asian sellers with silver. Silver from Spanish mines in the Americas, dug by the forced labor of Native people, flows to China and India.' }
+          { en: 'We pay Asian sellers in silver. Spanish mines in the Americas, worked by forced Native labor, send it on galleons via the Philippines to China and India.' }
         ]
       },
       q: { en: 'I will trade a sack of pepper for what Asian markets want most. Bring it to me.' },
@@ -263,57 +309,60 @@ window.EPISODE = {
     win: { en: 'The tide turns. The last chronicle page, 1450 to 1750, floats down into your hands.' },
     questions: [
       {
-        stim: { title: { en: 'The Dutch Republic' }, rows: [[{ en: 'Time' }, { en: 'Fact' }], [{ en: '1600' }, { en: 'A small republic, newly independent from Spain' }], [{ en: '1600–1800' }, { en: '49 percent of all ships in the Eurasian trade were Dutch' }]], src: { en: 'From "Origins of Oceanic Connections," World History Project' } },
-        q: { en: 'Which development best explains the change shown in the table?' },
-        choices: [{ en: 'Joint-stock companies spreading the risk of voyages' }, { en: 'A Dutch conquest of the Mughal and the Ottoman empires' }, { en: 'The end of the silver trade with China and India' }, { en: 'A Dutch ban on trading with any Asian merchants' }],
+        stim: { title: { en: 'The Dutch Republic' }, rows: [[{ en: 'Time' }, { en: 'Fact' }], [{ en: '1600' }, { en: 'A small republic, only recently independent from Spain' }], [{ en: '1602' }, { en: 'The Amsterdam Stock Exchange opens' }], [{ en: '1600–1800' }, { en: '49 percent of all ships in the Eurasian trade were Dutch' }]], src: { en: 'From "Origins of Oceanic Connections," World History Project' } },
+        q: { en: 'Which of the following best explains the change shown in the table?' },
+        choices: [{ en: 'Shareholders spread the risk of each voyage' }, { en: 'Dutch control of the overland Silk Road' }, { en: 'A Dutch conquest of Mughal and Safavid lands' }, { en: 'Dutch inventions of the compass and lateen sail' }],
         answer: 0,
-        why: { en: 'Shareholders split the costs and risks of voyages, so people trusted their money to Dutch merchants. That let a small republic lead the sea trade.' }
+        why: { en: 'In joint-stock companies many shareholders split the costs and risks, so one sinking ruined no one. People trusted their money to Dutch merchants, and a small republic led the sea trade.' }
       },
       {
         stim: { text: { en: 'After Europeans first arrived in the Indian Ocean, the bulk of trade goods continued to move along the same old routes in Asia and the Indian Ocean. China and India remained the most productive manufacturers.' }, src: { en: 'Adapted from "The Cosmopolitan Indian Ocean, c. 1450–1700," World History Project' } },
-        q: { en: 'The excerpt best supports which claim about the period 1450–1750?' },
-        choices: [{ en: 'Older Asian trade networks continued after 1500' }, { en: 'Europeans took control of all Asian trade at once' }, { en: 'The Indian Ocean trade ended after da Gama' }, { en: 'China and India stopped making goods to sell' }],
+        q: { en: 'The excerpt best supports which claim about continuity from 1450 to 1750?' },
+        choices: [{ en: 'Asian routes and workshops stayed at the center of trade' }, { en: 'European companies ruled most of India by about 1600' }, { en: 'Diaspora merchants were driven out of Indian Ocean ports' }, { en: 'American silver ended China\'s role as a manufacturer' }],
         answer: 0,
-        why: { en: 'Europeans changed how some business was done, but slowly. The old routes and Asia\'s great workshops went on: a continuity.' }
+        why: { en: 'Europeans arrived, but slowly changed how business was done. The old routes and Asia\'s great manufacturers went on: a continuity. Diaspora merchants thrived, and Europeans held only outposts.' }
       },
       {
-        stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, French writer, 1773' } },
-        q: { en: 'The author is criticizing which development of the period 1450–1750?' },
-        choices: [{ en: 'Plantations in the Americas using enslaved Africans' }, { en: 'Potatoes from the Americas feeding Europe\'s poorest families' }, { en: 'Joint-stock companies sharing the risk of voyages' }, { en: 'Armenian merchants linking Europe with Asia' }],
+        stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, French writer, 1773; quoted in "Transatlantic Migration Patterns," World History Project' } },
+        q: { en: 'The author is most directly criticizing which development of the period 1450–1750?' },
+        choices: [{ en: 'Plantations that forced enslaved Africans to work' }, { en: 'The spread of American potatoes to feed Europe' }, { en: 'Joint-stock companies trading pepper in Asia' }, { en: 'Ottoman taxes on luxury goods bound for Europe' }],
         answer: 0,
-        why: { en: 'Disease emptied land in the Americas, and planters forced enslaved Africans to grow sugar and coffee there for European buyers.' }
+        why: { en: 'Disease emptied land in the Americas, and planters forced enslaved Africans to grow sugar and coffee there for European buyers. That is the "unhappiness" of two regions.' }
       },
       {
-        stim: { text: { en: 'The economic, social and political changes of these centuries produced tremendous stress. Some people reached for new forms of worship and understanding, while others held more tightly to their existing beliefs.' }, src: { en: 'Adapted from "Transformations in Eurasian Belief Systems, 1450–1750," World History Project' } },
-        q: { en: 'The excerpt best supports which claim about belief systems from 1450 to 1750?' },
-        choices: [{ en: 'They showed both change and continuity' }, { en: 'They all disappeared under new empires' }, { en: 'They stayed exactly as they were in 1450' }, { en: 'Only belief in Europe changed at all' }],
+        stim: { text: { en: '"Everything has come to pass and is fulfilled: ... the world is crackling in all places, as if it is going break apart and crumble."' }, src: { en: 'Martin Luther, 1530; quoted in "Transformations in Eurasian Belief Systems, 1450–1750," World History Project' } },
+        q: { en: 'Luther\'s words most directly reflect which historical context?' },
+        choices: [{ en: 'Famine, rising prices and religious upheaval' }, { en: 'The Black Death spreading across Europe' }, { en: 'The Ottoman sultans\' control of Asian trade' }, { en: 'Spanish silver flowing into the Ming Empire' }],
         answer: 0,
-        why: { en: 'New faiths and branches appeared, like Protestantism and Sikhism, while older faiths endured. Belief systems changed and continued at once.' }
+        why: { en: 'The Little Ice Age, hunger, rising prices and the split in the Church after 1517 made many feel the world was breaking apart and that they needed new forms of worship.' }
       },
       {
-        q: { en: 'Which is the best example of a continuity from 1450 to 1750?' },
-        choices: [{ en: 'Land-based empires like the Ottomans and Mughals still ruled' }, { en: 'Ships linked all of the world\'s major oceans for the first time' }, { en: 'Potatoes from the Americas became a staple food in Europe' }, { en: 'Joint-stock companies with armies ruled colonies in Asia' }],
+        stim: { title: { en: 'Indigenous population of present-day Mexico' }, rows: [[{ en: 'When' }, { en: 'Population' }], [{ en: 'When Cortés invaded' }, { en: 'about 25 to 30 million' }], [{ en: 'Fifty years later' }, { en: 'about 3 million' }]], src: { en: 'Figures from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
+        q: { en: 'Which of the following best explains the change shown in the table?' },
+        choices: [{ en: 'Smallpox and other Afro-Eurasian diseases' }, { en: 'Battles between the Spanish and the Aztecs' }, { en: 'Forced labor in the silver mines of Mexico' }, { en: 'Hunger caused by the cold Little Ice Age' }],
         answer: 0,
-        why: { en: 'Large land-based empires went on ruling in Asia. The other three were new in this era: changes.' }
-      },
-      {
-        q: { en: 'Joint-stock companies were used in Song China around 1000. Which best describes the Dutch East India Company?' },
-        choices: [{ en: 'An older idea used on a new, global scale' }, { en: 'A brand-new idea the Dutch invented alone' }, { en: 'A company owned by one rich Dutch family' }, { en: 'A small shop that never left the Netherlands' }],
-        answer: 0,
-        why: { en: 'The idea was old, but after 1600 it took off on an international scale, with armies, colonies and many shareholders: change built on continuity.' }
-      },
-      {
-        q: { en: 'Which statement best compares Protestantism in Europe and Sikhism in India?' },
-        choices: [{ en: 'Both challenged older religious hierarchies' }, { en: 'Both were spread by the Ottoman sultans' }, { en: 'Both ended all religious conflict in their lands' }, { en: 'Both were founded by Catholic missionaries' }],
-        answer: 0,
-        why: { en: 'Protestants preached the "priesthood of all believers"; Sikhs rejected caste. Both opened faith to ordinary people.' }
+        why: { en: 'Almost all of this "Great Dying" was caused by diseases new to the Americas, such as smallpox. War and forced labor killed many too, but disease killed by far the most.' }
       },
       {
         stim: { text: { en: 'The global silver trade, which benefited Spain, Western Europe, and China, was made possible by the forced labor of indigenous people in South American mines.' }, src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
         q: { en: 'The excerpt best supports which claim about the new global economy?' },
-        choices: [{ en: 'It depended on forced labor in the Americas' }, { en: 'It was run mainly by the sultans of the Ottoman Empire' }, { en: 'It used only barter and needed no money' }, { en: 'It mostly made the Native miners rich' }],
+        choices: [{ en: 'It rested on forced labor in the Americas' }, { en: 'It drew wealth away from Ming China' }, { en: 'It was run mainly by the Ottoman sultans' }, { en: 'It mostly enriched the Native miners' }],
         answer: 0,
-        why: { en: 'American silver, dug by forced Native labor, paid for goods from China and India. The new global trade rested on that suffering.' }
+        why: { en: 'American silver, dug by forced Indigenous labor, paid for goods from China and India. China benefited; the miners did not. The new global trade rested on their suffering.' }
+      },
+      {
+        stim: { title: { en: 'Two new movements' }, rows: [[{ en: 'Movement' }, { en: 'Teaching' }], [{ en: 'Protestantism (Europe, 1517)' }, { en: '"Priesthood of all believers"' }], [{ en: 'Sikhism (Punjab, 1520s)' }, { en: '"There is no Hindu, there is no Muslim"; caste rejected' }]], src: { en: 'From "Transformations in Eurasian Belief Systems, 1450–1750," World History Project' } },
+        q: { en: 'Compared with the older faiths around them, both movements in the table...' },
+        choices: [{ en: 'challenged religious hierarchies' }, { en: 'grew out of the Sunni-Shi\'a split' }, { en: 'brought lasting religious peace' }, { en: 'spread with the Ottoman sultans' }],
+        answer: 0,
+        why: { en: 'Protestants preached the "priesthood of all believers"; Sikhs rejected caste. Both opened faith to ordinary people. Both also met conflict: wars in Europe, rebellion against the Mughals.' }
+      },
+      {
+        stim: { text: { en: 'Strictly speaking, joint-stock companies were not new, since they were used in the Song Dynasty in China around 1000 CE. But in the sixteenth and seventeenth centuries, the joint-stock model really took off on a more international scale, starting in Europe.' }, src: { en: 'Adapted from "Overview of New Economic Systems" by Eman M. Elshaikh, World History Project' } },
+        q: { en: 'The excerpt best supports which description of the Dutch East India Company?' },
+        choices: [{ en: 'An old idea used on a new, global scale' }, { en: 'A Dutch invention with no earlier model' }, { en: 'A state office run by the Dutch rulers' }, { en: 'A copy of the Ming Empire\'s armadas' }],
+        answer: 0,
+        why: { en: 'The idea was old, but after 1600 it took off worldwide, with shareholders, armies and colonies: change built on continuity. The VOC was a company, owned by shareholders, not a government.' }
       }
     ]
   },
@@ -323,7 +372,7 @@ window.EPISODE = {
     { en: '[[continuity|Continuity]]: [[land-based empire|land-based empires]], old Asian trade routes, elites and the great faiths endured, even as beliefs split and changed.' }
   ],
   reflect: {
-    q: { en: 'AP practice: Explain one change and one continuity in global trade networks from 1450 to 1750.' },
-    starter: { en: 'One change in global trade networks was' }
+    q: { en: 'AP practice (the Unit 4 LEQ question): Explain one way that economic changes from 1450 to 1750 affected social structures.' },
+    starter: { en: 'One economic change that affected social structures was' }
   }
 };
