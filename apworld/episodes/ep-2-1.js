@@ -19,7 +19,7 @@ window.EPISODE = {
   place: { en: 'Samarkand, Mongol Central Asia, 1300' },
   intro: [
     { en: 'The Grump blurred the page on the Silk Roads. Samarkand\'s merchants are forgetting why goods and ideas travel!' },
-    { en: 'Talk to the 4 people here, help a young merchant make a trade, then wake the time stone.' }
+    { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a young merchant make a trade, then wake the time stone.' }
   ],
   scenes: {
     at: [66.97, 39.65],
@@ -72,6 +72,7 @@ window.EPISODE = {
     'caravan': { en: 'a group of traders or travelers moving together, often across deserts or long trade routes' },
     'caravanserai': { en: 'a safe stopping place along trade routes where merchants could stop, rest and refuel' },
     'pax mongolica': { en: '"the Mongol peace": the stability of Mongol rule over Central Asia, which made trade routes safer' },
+    'hegemon': { en: 'a dominant society or power that controls a region or system' },
     'luxury goods': { en: 'costly goods that people want but do not need to live, like silk, spices and fine glass' },
     'archipelago of trade': { en: 'a picture of the Afro-Eurasian trade system: trading cities like islands in a sea of countryside' },
     'merchant': { en: 'a person who buys goods in one place and sells them in another' },
@@ -84,17 +85,18 @@ window.EPISODE = {
       x: 6, y: 10, name: { en: 'Toghon' }, role: { en: 'Mongol guard' },
       look: { skin: 2, hair: '#1b1410', shirt: '#7a3a2a', pants: '#3a2a1a', hat: '#5a3a1a', style: 'short' },
       lines: [
-        { en: 'Before Chinggis Khan, this road was perilous. Independent kingdoms controlled it, and they were often at war with each other.' },
-        { en: 'Early in the 1200s his cavalry conquered all of Central Asia. His armies were savage: they slaughtered the soldiers and rulers of cities they conquered.' },
-        { en: 'But he protected scholars, artisans and officials. Mongol rule turned most of the [[silk roads|Silk Road]] into one safe, unified trade system: the [[pax mongolica|Pax Mongolica]].' }
+        { en: 'Before Chinggis Khan, the northern passage from China to the Black Sea was perilous. Independent kingdoms controlled it, often at war with each other.' },
+        { en: 'Early in the 1200s his nomadic cavalry conquered Central Asia and the Persian Gulf region. His armies were savage: they slaughtered the soldiers and rulers of conquered cities.' },
+        { en: 'Yet he protected scholars, artisans and administrators. Mongol rule turned most of the [[silk roads|Silk Road]] into one safe, unified trade system: the [[pax mongolica|Pax Mongolica]].' },
+        { en: 'Europeans soon traveled this road: Friar John of Plano Carpini in 1245, Friar William of Rubruck in 1253, and Marco Polo in 1271.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Which best explains why trade on the Silk Roads grew in the 1200s?' },
+        q: { en: 'Which best explains why European travelers began crossing Central Asia in the mid-1200s?' },
         choices: [
-          { ok: true, t: { en: 'Mongol rule made the routes safe' }, why: { en: 'Yes. One empire over Central Asia gave travelers safety, so more merchants took to the roads.' } },
-          { t: { en: 'Small kingdoms fought over the road' }, why: { en: 'No. That was the problem before the Mongols: wars between kingdoms made the road perilous.' } },
-          { t: { en: 'Merchants stopped traveling in groups' }, why: { en: 'No. Merchants kept traveling together in caravans. What changed was the safety of the road.' } }
+          { ok: true, t: { en: 'Mongol rule unified and secured the road' }, why: { en: 'Yes. Chinggis Khan\'s conquest put the road under one rule and made it safe, so friars and merchants followed.' } },
+          { t: { en: 'The Crusades won the Holy Land for Europe' }, why: { en: 'No. The Crusades failed. They only helped reopen a limited trade with the Muslim world through Genoa and Venice.' } },
+          { t: { en: 'Rival kingdoms competed for their trade' }, why: { en: 'No. Rival kingdoms at war were the problem before the Mongols: they made the road perilous.' } }
         ]
       }
     },
@@ -102,17 +104,18 @@ window.EPISODE = {
       x: 6, y: 14, name: { en: 'Farida' }, role: { en: 'Spice seller' },
       look: { skin: 3, hair: '#2b1d14', shirt: '#b5432a', robe: true, style: 'long' },
       lines: [
-        { en: 'Pepper, cloves, cinnamon and nutmeg come from Southeast Asia. Silk comes from China. And fine glass is made right here in Samarkand.' },
-        { en: 'Most goods on these roads are [[luxury goods|luxury goods]]. So long-distance trade gathers in the cities, not in the countryside.' },
-        { en: 'The villages outside our walls mostly use local markets. Historians call the trading cities an [[archipelago of trade|archipelago of trade]]: islands in a sea of farmland.' }
+        { en: 'The whole system rests on two very profitable trades: silk from China, and spices from Southeast Asia: pepper, clove, cinnamon, camphor and nutmeg.' },
+        { en: 'Hundreds of other goods move too: gold, ivory, horses, wool, iron tools. And if you want glass, Samarkand is your stop on the Silk Road.' },
+        { en: 'Most are [[luxury goods|luxury goods]], so long-distance trade gathers in cities. The villages outside our walls mostly rely on local markets.' },
+        { en: 'Historians call it an [[archipelago of trade|archipelago of trade]]: cities like islands in a sea of farmland. No one society rules it; there is no clear [[hegemon|hegemon]].' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with the villages around it, how did Samarkand take part in trade?' },
+        q: { en: 'Compared with the villages around it, how did Samarkand take part in trade around 1300?' },
         choices: [
-          { ok: true, t: { en: 'In long-distance luxury trade' }, why: { en: 'Right. Silk, spices and glass gathered in trading cities. That is why they are called islands of trade.' } },
-          { t: { en: 'Only at small local markets' }, why: { en: 'No. That describes the villages. The countryside mostly kept to local markets.' } },
-          { t: { en: 'It refused goods from far away' }, why: { en: 'No. Farida sells spices from Southeast Asia and silk from China in Samarkand\'s bazaar.' } }
+          { ok: true, t: { en: 'It joined the long-distance luxury trade' }, why: { en: 'Right. Silk, spices and glass gathered in trading cities. That is why they are called islands of trade.' } },
+          { t: { en: 'It sold mostly grain at local markets' }, why: { en: 'No. That describes the villages. The countryside mostly kept relying on local markets.' } },
+          { t: { en: 'It controlled the network as its hegemon' }, why: { en: 'No. The network had no clear hegemon. Everyone used it on pretty much equal terms.' } }
         ]
       }
     },
@@ -120,18 +123,18 @@ window.EPISODE = {
       x: 20, y: 10, name: { en: 'Ilyas' }, role: { en: 'Translator and copyist' },
       look: { skin: 1, hair: '#3a2a1a', shirt: '#2a5a8a', robe: true, hat: '#e8e0d0', style: 'short' },
       lines: [
-        { en: 'Ideas ride with the caravans. We call it [[diffusion|diffusion]]. The Mongols destroyed Baghdad in 1258, but its scholars\' knowledge had already spread along the trade routes.' },
-        { en: 'Merchant travelers carry learning too. Fibonacci, a European, learned Indian and Arabic math on his trading travels and brought it back to Europe.' },
-        { en: 'Europeans travel these roads now, like Marco Polo. He wrote about the paper money of Yuan China for readers in Europe.' },
-        { en: 'When I read a source, I ask two things. Its [[audience|audience]]: who was it written for? Its [[purpose|purpose]]: why was it written?' }
+        { en: 'Ideas ride with caravans: [[diffusion|diffusion]]. The Mongols destroyed Baghdad, the world\'s great center of learning, in 1258. But trade had already spread its knowledge along the routes.' },
+        { en: 'Fibonacci learned Indian and Arabic math on his trading travels and brought it to Europe. Chinese technology reached Europe too: Gutenberg used it for his printing press in 1439.' },
+        { en: 'I read sources with four questions. Context: what world made it? [[audience|Audience]]: who was it for? Point of view: who wrote it? [[purpose|Purpose]]: why was it written?' },
+        { en: 'Take Marco Polo on paper money. If we ask what he hoped to do, like impress Europeans, that is purpose. If we ask who his readers were, that is audience.' }
       ],
       ask: {
         stat: 'mov',
-        q: { en: 'A historian notes that Marco Polo wrote for Europeans. Which sourcing question is she asking?' },
+        q: { en: 'A historian says Fibonacci valued Indian-Arabic numerals because he met them in trade hubs where merchants and scholars of many cultures mixed. Which skill is she using?' },
         choices: [
-          { ok: true, t: { en: 'Who was the audience?' }, why: { en: 'Yes. Audience means the readers a source was written for. Here, Europeans who had never used paper money.' } },
-          { t: { en: 'When was money first used?' }, why: { en: 'No. That is a question about money, not about the source and who it was written for.' } },
-          { t: { en: 'What did silk cost then?' }, why: { en: 'No. Prices are a fact about trade. Asking who the readers were is about the source\'s audience.' } }
+          { ok: true, t: { en: 'Context of the source' }, why: { en: 'Yes. She explains the source by the wider world its author lived in: busy, many-cultured trade hubs.' } },
+          { t: { en: 'Audience of the source' }, why: { en: 'No. Audience asks who the readers were. She is asking about the world that shaped the author.' } },
+          { t: { en: 'Purpose of the source' }, why: { en: 'No. Purpose asks why the author wrote. She is describing the setting where he met the ideas.' } }
         ]
       }
     },
@@ -139,17 +142,56 @@ window.EPISODE = {
       x: 25, y: 16, name: { en: 'Bolat' }, role: { en: 'Camel driver' },
       look: { skin: 2, hair: '#1b1410', shirt: '#8a6a3a', pants: '#3a3020', hat: '#6a4a2a', style: 'short' },
       lines: [
-        { en: 'I drive camels in a [[caravan|caravan]]. Traders travel together across the deserts and long roads. It is safer that way.' },
-        { en: 'Each night we stop at a [[caravanserai|caravanserai]]: a safe place to stop, rest and refuel for the road.' },
-        { en: 'People say "the Silk Road," but it is a [[network|network]] of many routes, and it carries many goods besides silk. In peaceful times like these, caravanserai flourish.' }
+        { en: 'I drive camels in a [[caravan|caravan]]. Traders cross the deserts and long roads together, because it is safer that way.' },
+        { en: 'Each night we stop at a [[caravanserai|caravanserai]], a safe place to rest and refuel. Under the Pax Mongolica more merchants travel, so caravanserai flourish.' },
+        { en: 'The "Silk Road" is really a [[network|network]] of land and water routes linking eight regions, from the China Sea to Western Europe. It carries far more than silk.' },
+        { en: 'Demand for Chinese, Persian and Indian goods keeps rising in the west. Tabriz links our road to the Persian Gulf; Bukhara links it south to India.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Why did caravanserai flourish along the Silk Roads around 1300?' },
+        q: { en: 'Which best explains why caravanserai flourished along the Silk Roads around 1300?' },
         choices: [
           { ok: true, t: { en: 'Stability brought more travelers' }, why: { en: 'Yes. Under the Pax Mongolica more merchants traveled, and they all needed safe places to stop and rest.' } },
-          { t: { en: 'Caravans stopped crossing deserts' }, why: { en: 'No. Caravans still crossed deserts and long roads. That is exactly why they needed caravanserai.' } },
-          { t: { en: 'Silk was the only good carried' }, why: { en: 'No. Bolat says the routes carried many goods besides silk: spices, glass, horses and more.' } }
+          { t: { en: 'Caravans began to avoid the deserts' }, why: { en: 'No. Caravans still crossed deserts and long roads. That is exactly why they needed caravanserai.' } },
+          { t: { en: 'Silk became the only good carried' }, why: { en: 'No. The network carried hundreds of goods: spices, glass, gold, horses and more.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 18, y: 10, icon: '📜',
+      name: { en: 'Marco Polo on Paper Money' }, role: { en: 'Primary source' },
+      src: { en: 'Marco Polo, account of paper money in Yuan China (after 1271); described in "Quick Sourcing: Networks of Exchange," World History Project' },
+      lines: [
+        { en: 'Marco Polo was one of the Europeans who traveled the Silk Road after the Mongol conquest, setting out in 1271. In Yuan China, which Kublai Khan founded that same year, he wrote a detailed description of the paper money the Chinese used.' },
+        { en: 'The World History Project\'s source collection sums up what his account shows: "when Europeans traveled along trade routes like the Silk Road, they encountered unfamiliar systems like Chinese paper money, which helped spread new ideas about government and economy back to Europe."' },
+        { en: 'Context, in our own words: Polo was a European writing for European readers. Some historians argue his goal was not just to report what he saw, but to impress that audience with how sophisticated China\'s economic system was.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Why is Polo\'s account most useful to a historian of the Silk Roads?' },
+        choices: [
+          { ok: true, t: { en: 'It shows ideas reaching Europe by trade' }, why: { en: 'Yes. Ideas about government and economy, like paper money, traveled back to Europe along the trade routes.' } },
+          { t: { en: 'It proves Europeans ran China\'s economy' }, why: { en: 'No. Polo was a visitor describing an unfamiliar Chinese system, not a European who controlled it.' } },
+          { t: { en: 'It records how the Black Death spread' }, why: { en: 'No. Polo traveled in the 1270s. The Black Death began in the 1330s, long after his journey.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 27, y: 11, icon: '📖',
+      name: { en: 'Archipelago of Trade' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Archipelago of Trade" by Alejandro Quintana, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'In the 1200s and 1300s the Afro-Eurasian trade system was the biggest integrated commercial network in the world. It had no clear hegemon (dominant society). It depended on the highly profitable trades of silk from China and spices from Southeast Asia. Since most goods were luxury items, trade gathered in strategic cities, while vast rural areas mostly relied on local markets: an "archipelago of trade."' },
+        { en: 'The road through Central Asia had been perilous, controlled by independent kingdoms often at war. In the early 1200s Chinggis Khan conquered Central Asia and the Persian Gulf region and turned most of the Silk Road into a safe, unified trade system. Knowledge moved with goods: Baghdad\'s learning had already spread before the Mongols destroyed the city in 1258, and Chinese technologies reached Europe.' },
+        { en: 'Not everything carried was beneficial. In the early 1300s the system was healthy and strong; thirty years later it was falling apart. The Black Death began in China or Kyrgyzstan in the 1330s, and its germs "hitchhiked" along the Silk Road, reaching Europe through Kaffa by 1346. It was so lethal because Afro-Eurasia was so connected. About 200 million died, regions lost 30 to 50 percent of their people, and trade decreased as ports closed.' }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'Which change in the trade network does the reading describe between the early 1300s and the 1350s?' },
+        choices: [
+          { ok: true, t: { en: 'A strong system fell apart after the plague' }, why: { en: 'Yes. Healthy and strong in the early 1300s, the system was falling apart thirty years later, as ports closed and trade decreased.' } },
+          { t: { en: 'Trade moved from cities into the villages' }, why: { en: 'No. Trade stayed concentrated in cities. What changed was that the plague shrank trade everywhere.' } },
+          { t: { en: 'One hegemon took control of the network' }, why: { en: 'No. The reading says the network had no clear hegemon. The big change was its collapse after the Black Death.' } }
         ]
       }
     }
@@ -183,6 +225,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#3a7a4a', pants: '#3a2a1a', style: 'short' },
       lines: [
         { en: 'I am a [[merchant|merchant]]. I buy goods where they are plentiful and cheap, and sell them where they are scarce and dear.' },
+        { en: 'Skills are hard to learn: you must study under a master. So glassmaking stays in few places, and Samarkand glass is rare far away.' },
         { en: 'A merchant from China has silk, but he will not take my coins. Ask the gatekeeper at the north gate. She knows every caravan.' }
       ],
       wait: { en: 'The gatekeeper stands outside the north gate. Walk north up the main street.' },
@@ -244,63 +287,65 @@ window.EPISODE = {
     questions: [
       {
         stim: { text: { en: 'The road had been a perilous one, controlled by independent kingdoms, often at war with each other.' }, src: { en: 'Adapted from "Archipelago of Trade," World History Project' } },
-        q: { en: 'Which development most directly changed the situation described in the excerpt?' },
-        choices: [{ en: 'The Mongol conquest of Central Asia' }, { en: 'The fall of the Han dynasty in China' }, { en: 'The building of Samarkand\'s walls' }, { en: 'The spread of wheat farming nearby' }],
+        q: { en: 'Which of the following most directly changed the situation described in the excerpt?' },
+        choices: [{ en: 'The Mongol conquest of Central Asia' }, { en: 'The rise of the Abbasid Caliphate' }, { en: 'The Crusades launched by Pope Urban II' }, { en: 'The golden age of the Tang dynasty' }],
         answer: 0,
-        why: { en: 'Chinggis Khan\'s conquest put Central Asia under one rule and turned most of the Silk Road into a safe, unified trade system.' }
+        why: { en: 'In the early 1200s Chinggis Khan conquered Central Asia and turned most of the Silk Road into a safe, unified trade system.' }
       },
       {
-        stim: { title: { en: 'Some goods on the Silk Roads, about 1300' }, rows: [[{ en: 'Where it came from' }, { en: 'Good' }], [{ en: 'China' }, { en: 'Silk and porcelain' }], [{ en: 'Southeast Asia' }, { en: 'Pepper, cloves, nutmeg' }], [{ en: 'Samarkand' }, { en: 'Glass' }]], src: { en: 'From "Archipelago of Trade," World History Project' } },
-        q: { en: 'The goods in the table best support which claim about Silk Roads trade?' },
-        choices: [{ en: 'Most of it was in luxury goods' }, { en: 'Most of it was grain for cities' }, { en: 'Every region made the same goods' }, { en: 'Goods moved only from west to east' }],
+        stim: { title: { en: 'Some goods on the Silk Roads, about 1300' }, rows: [[{ en: 'Where it came from' }, { en: 'Good' }], [{ en: 'China' }, { en: 'Silk' }], [{ en: 'Southeast Asia' }, { en: 'Pepper, clove, cinnamon, camphor, nutmeg' }], [{ en: 'Samarkand' }, { en: 'Glass' }]], src: { en: 'From "Archipelago of Trade," World History Project' } },
+        q: { en: 'The goods in the table best support which claim about Afro-Eurasian trade c. 1300?' },
+        choices: [{ en: 'Long-distance trade centered on luxuries' }, { en: 'China ruled the network as its hegemon' }, { en: 'Villages were the main buyers of imports' }, { en: 'Caravans mostly carried grain to cities' }],
         answer: 0,
-        why: { en: 'Silk, spices, porcelain and glass were costly luxury goods, made in a few places and wanted far away.' }
+        why: { en: 'Silk, spices and glass were costly luxury goods, made in a few places and wanted far away. The network had no clear hegemon.' }
       },
       {
-        q: { en: 'Historians call the Afro-Eurasian trade system an "archipelago of trade" because...' },
-        choices: [{ en: 'its cities were like islands among farmland' }, { en: 'it was carried only by ships between islands' }, { en: 'one island kingdom ruled all of the trade' }, { en: 'Pacific islands were the center of its trade' }],
+        stim: { text: { en: 'Since most of its products were luxury items, this trade network was concentrated on strategic urban centers. The system ignored vast rural areas, which mostly continued to rely on local markets.' }, src: { en: 'Adapted from "Archipelago of Trade," World History Project' } },
+        q: { en: 'The metaphor "archipelago of trade" most directly reflects which feature of the network in the excerpt?' },
+        choices: [{ en: 'Trade clustered in cities amid farmland' }, { en: 'Ships carried most goods between islands' }, { en: 'Island states of Southeast Asia ruled it' }, { en: 'Villages made most of the luxury goods' }],
         answer: 0,
-        why: { en: 'Long-distance trade gathered in cities, while the rural areas around them mostly kept to local markets.' }
+        why: { en: 'Cities were like islands of production in a sea of rural areas, which mostly kept relying on local markets.' }
       },
       {
-        stim: { text: { en: 'This author explains that he learned Indian and Arabic math during his travels for trade, and brought those ideas back to Europe.' }, src: { en: 'Adapted from "Quick Sourcing: Networks of Exchange," World History Project (about Fibonacci)' } },
-        q: { en: 'The source described above best illustrates which effect of trade networks?' },
-        choices: [{ en: 'Ideas spread along with goods' }, { en: 'Europe stopped trading with Asia' }, { en: 'Merchants hid all their knowledge' }, { en: 'Math was first invented in Europe' }],
+        stim: { text: { en: 'A student claims that Marco Polo\'s goal in describing the paper money of Yuan China was not just to report what he saw, but to impress his European readers with the sophistication of Chinese economic systems.' }, src: { en: 'Adapted from "Quick Sourcing: Networks of Exchange," World History Project' } },
+        q: { en: 'The student\'s claim is mainly an analysis of the source\'s...' },
+        choices: [{ en: 'purpose: why the author wrote it' }, { en: 'audience: who its readers were' }, { en: 'point of view: who the author was' }, { en: 'context: the world it came from' }],
         answer: 0,
-        why: { en: 'This is diffusion: Indian and Arabic math traveled to Europe with a merchant traveler, along the same routes as goods.' }
+        why: { en: 'The claim is about Polo\'s goal, what he hoped to do by writing. That is purpose. His European readers are only part of the goal.' }
       },
       {
-        stim: { text: { en: 'A student claims Marco Polo described the paper money of Yuan China to impress his European readers with China\'s economic system.' }, src: { en: 'Adapted from "Quick Sourcing: Networks of Exchange," World History Project' } },
-        q: { en: 'The student\'s claim is mainly about the source\'s...' },
-        choices: [{ en: 'purpose: why it was written' }, { en: 'subject: what money looked like' }, { en: 'date: the year it was copied' }, { en: 'length: how long the book is' }],
+        stim: { text: { en: '"This author explains that he learned Indian and Arabic math during his travels for trade, and brought those ideas back to Europe."' }, src: { en: 'Description of Fibonacci\'s Book of Calculation, "Quick Sourcing: Networks of Exchange," World History Project' } },
+        q: { en: 'The source described most directly reflects which development of c. 1200 to 1450?' },
+        choices: [{ en: 'Intellectual traditions moved with merchants' }, { en: 'Abbasid learning was lost when Baghdad fell' }, { en: 'Europe adopted China\'s paper money system' }, { en: 'Mongol rulers spread their own math west' }],
         answer: 0,
-        why: { en: 'A goal, like impressing readers, is the purpose of a source: the reason the author wrote it.' }
+        why: { en: 'This is diffusion: Indian and Arabic math reached Europe with a merchant traveler, along the same routes as goods.' }
       },
       {
-        stim: { text: { en: 'Merchants who traveled the Silk Roads needed safe places to stop, rest, and refuel during their journey.' }, src: { en: 'Adapted from "Unit 2 Overview: Networks of Exchange," World History Project' } },
-        q: { en: 'Which places met the need described in the excerpt?' },
-        choices: [{ en: 'Caravanserai along trade routes' }, { en: 'Wheat fields outside the towns' }, { en: 'Glass workshops in the cities' }, { en: 'Watchtowers left from old wars' }],
+        stim: { text: { en: 'The Black Death began somewhere in China or Kyrgyzstan in the 1330s. By 1346 the disease reached Europe through Kaffa and the Middle East through Baghdad. A year later people were dying of it in Egypt.' }, src: { en: 'Adapted from "Archipelago of Trade," World History Project' } },
+        q: { en: 'Which of the following best explains the spread described in the excerpt?' },
+        choices: [{ en: 'Close trade links let germs travel with goods' }, { en: 'Crusaders carried it home from the Holy Land' }, { en: 'Mongol armies slaughtered conquered cities' }, { en: 'Portugal\'s sea route brought it from India' }],
         answer: 0,
-        why: { en: 'Caravanserai were safe stopping places along the routes. They flourished when stability brought more travelers.' }
+        why: { en: 'The plague was so lethal because Afro-Eurasia was so efficiently connected: its germs hitchhiked along the Silk Road.' }
       },
       {
-        q: { en: 'The Mongols destroyed Baghdad in 1258. Why did much of its scholars\' knowledge survive?' },
-        choices: [{ en: 'Trade had already spread it widely' }, { en: 'The Mongols carried it all to Beijing' }, { en: 'Baghdad was rebuilt the next year' }, { en: 'It had never been written down' }],
+        stim: { title: { en: 'Central Asia\'s northern passage' }, rows: [[{ en: 'When' }, { en: 'What happened' }], [{ en: 'Before 1200' }, { en: 'Independent kingdoms, often at war, control the road' }], [{ en: 'Early 1200s' }, { en: 'Chinggis Khan conquers Central Asia' }], [{ en: '1245 and 1253' }, { en: 'Friars Plano Carpini and Rubruck travel east' }], [{ en: '1271' }, { en: 'Marco Polo sets out; Kublai Khan founds the Yuan' }]], src: { en: 'From "Archipelago of Trade," World History Project' } },
+        q: { en: 'The timeline best supports which claim?' },
+        choices: [{ en: 'Mongol unification opened the road to Europeans' }, { en: 'Europeans crossed Central Asia before the Mongols' }, { en: 'The Yuan dynasty ruled the road before 1200' }, { en: 'The Crusades opened Central Asia to the friars' }],
         answer: 0,
-        why: { en: 'Thanks to the trade network, Baghdad\'s learning had already reached scholars and libraries along the Silk Road.' }
+        why: { en: 'Europeans began traveling the road soon after Chinggis Khan made it safe and unified, not before.' }
       },
       {
-        q: { en: 'Which best explains how a Silk Roads merchant made a profit?' },
-        choices: [{ en: 'Selling goods where they were scarce' }, { en: 'Buying goods where they cost the most' }, { en: 'Trading only inside his home city' }, { en: 'Carrying goods back to where they were made' }],
+        q: { en: 'Which of the following best explains why Samarkand glass could sell for a high price far from Samarkand?' },
+        choices: [{ en: 'Skills stayed in few places, so it was rare' }, { en: 'Mongol rulers set one high price across Eurasia' }, { en: 'Village markets competed to buy luxury glass' }, { en: 'Glass was made in nearly every Silk Road city' }],
         answer: 0,
-        why: { en: 'A merchant bought where a good was plentiful and cheap, then sold it where it was scarce and its price was high.' }
+        why: { en: 'Skills were learned only from a master, so they stayed in few places. Goods were cheap where made and scarce, so dear, far away.' }
       }
     ]
   },
   learned: [
     { en: 'Mongol rule brought stability, the [[pax mongolica|Pax Mongolica]], that made the [[silk roads|Silk Roads]] safer, so trade grew and [[caravanserai|caravanserai]] flourished.' },
     { en: 'Most long-distance trade was in [[luxury goods|luxury goods]] like silk, spices and glass, gathered in trading cities: an [[archipelago of trade|archipelago of trade]].' },
-    { en: 'Ideas and technologies traveled with goods ([[diffusion|diffusion]]), like Indian and Arabic math to Europe and Baghdad\'s learning across Eurasia.' }
+    { en: 'Ideas, technologies and germs traveled with goods ([[diffusion|diffusion]]): Indian and Arabic math reached Europe, and in the 1340s the Black Death spread along the same routes.' }
   ],
   reflect: {
     q: { en: 'AP practice: Explain one way the Mongol Empire affected trade on the Silk Roads, c. 1200–1450.' },
