@@ -2,7 +2,8 @@
    Malacca, the Sultanate of Malacca, in 1450: a port where the goods and travelers of the Silk Roads, the Indian Ocean
    and the trans-Saharan routes meet. The student compares the three networks.
    Content source: Khan Academy, AP World History (World History Project), Unit 2 "Networks of Exchange":
-   2.7 "Unit 2 LEQ", "Unit 2 DBQ" (Clavijo, Document 3), "Writing: Thesis and Contextualization Part 1";
+   2.7 "Unit 2 LEQ", "Unit 2 DBQ" (Clavijo, Document 3: the primary-source lectern), "Writing: Thesis and
+   Contextualization Part 1"; the reading lectern is adapted from "Unit 2 Introduction" (Trevor Getz);
    unit overview "Unit 2 Introduction: Networks of Exchange 1200 to 1450" (Trevor Getz), "Unit 2 Overview: Networks of
    Exchange", "Vocabulary Match-Up"; 2.1 "Archipelago of Trade" (Alejandro Quintana); 2.3 "Indian Ocean Trade Routes"
    (Bennett Sherry); 2.4 "Across an Ocean of Sand: Trans-Saharan Trade Routes" (Bennett Sherry), "Comparison: Networks
@@ -17,7 +18,7 @@ window.EPISODE = {
   place: { en: 'Malacca, Sultanate of Malacca, 1450' },
   intro: [
     { en: 'The Grump tangled the page on trade. In Malacca, people are mixing up the Silk Roads, the Indian Ocean and the [[trans-saharan|trans-Saharan]] routes!' },
-    { en: 'Talk to the 4 travelers here, help a Gujarati merchant load his ship, then wake the time stone.' }
+    { en: 'Talk to the 4 travelers, read the 2 sources on the lecterns, help a Gujarati merchant load his ship, then wake the time stone.' }
   ],
   scenes: {
     at: [102.25, 2.2],
@@ -84,17 +85,18 @@ window.EPISODE = {
       x: 6, y: 6, name: { en: 'Awang' }, role: { en: 'Malay sailor' },
       look: { skin: 4, hair: '#120c08', shirt: '#2a7a8a', pants: '#e0d2b0', hat: '#c9a24a', style: 'short' },
       lines: [
-        { en: 'Twice a year the [[monsoon|monsoon]] winds turn around. We sail out with one wind and come home with the other.' },
-        { en: 'Arab merchants wrote travel guides that list the best week, even the best day, to leave each port.' },
-        { en: 'Arab sailors improved the astrolabe and the kamal. Chinese sailors improved the compass. Our ships grow bigger and carry more.' }
+        { en: 'Twice a year the [[monsoon|monsoon]] turns. In spring and summer it blows northeast; in fall and winter, southwest. We sail out on one wind and home on the other.' },
+        { en: 'Arab merchants wrote travel guides that list the best week, even the best day, to leave each port and to return.' },
+        { en: 'Calicut, on India\'s Malabar Coast, sits halfway across the ocean. Merchants ride the monsoon there and back in a single year, so it is the busiest port of all.' },
+        { en: 'Arab sailors improved the astrolabe and made the kamal. Chinese sailors improved the compass. Indian, Chinese and Muslim shipbuilders made bigger ships that carry more.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did the monsoon winds help the [[maritime|maritime]] trade of the Indian Ocean grow?' },
+        q: { en: 'Which best explains why Indian ports like Calicut became the busiest in the [[maritime|maritime]] network?' },
         choices: [
-          { ok: true, t: { en: 'They changed on schedule, so trips could be planned' }, why: { en: 'Yes. The winds turned at the same time every year, so merchants knew when to leave and when they would arrive.' } },
-          { t: { en: 'They blew one way all year, so ships never turned back' }, why: { en: 'No. The monsoon changes direction twice a year. That is what made round trips possible.' } },
-          { t: { en: 'Their storms kept pirates and rival empires away' }, why: { en: 'No. Pirates and rival empires were real. The winds helped because they were predictable.' } }
+          { t: { en: 'Ming fleets made every ship stop there to pay tribute' }, why: { en: 'No. Zheng He collected tribute from rulers, but China did not control the ports or force ships to stop.' } },
+          { ok: true, t: { en: 'Halfway across, they were a round trip of one monsoon year' }, why: { en: 'Yes. Calicut lay halfway between the two halves of the ocean, so the turning monsoon carried merchants there and back in one year.' } },
+          { t: { en: 'Only Indian makers could build the astrolabe and kamal' }, why: { en: 'No. Arab sailors improved the astrolabe and made the kamal. Tools spread; location made Calicut busy.' } }
         ]
       }
     },
@@ -102,17 +104,18 @@ window.EPISODE = {
       x: 26, y: 5, name: { en: 'Old Lin' }, role: { en: 'Fujianese merchant' },
       look: { skin: 1, hair: '#8a8a8a', shirt: '#7a2a2a', robe: true, style: 'bun' },
       lines: [
-        { en: 'When I was young, Malacca was a quiet fishing village. Then Admiral [[zheng he|Zheng He]]\'s huge treasure fleets stopped here.' },
-        { en: 'He sailed seven times, from 1405 to 1433, to show China\'s might and collect [[tribute|tribute]]. He did not come to conquer.' },
-        { en: 'The [[black death|Black Death]] and the fall of the Mongol Empire made land roads risky. Sea trade recovered quickly, so merchants came to the sea.' }
+        { en: 'When I was young, Malacca was a quiet fishing village. Then the treasure fleets of Admiral [[zheng he|Zheng He]] used it as a stopping place, and old Palembang declined.' },
+        { en: 'From 1405 to 1433 he led seven voyages: hundreds of ships, some 200 to 400 feet long, with up to 30,000 sailors. Ming China could have ruled this ocean.' },
+        { en: 'But the Ming chose a different route. Zheng He sailed to display China\'s might and to collect [[tribute|tribute]] from rulers, not to conquer or control the trade.' },
+        { en: 'The [[black death|Black Death]] wrecked land trade, and the Mongol Empire collapsed, so land roads were risky again. Sea routes recovered quickly, and merchants came to the sea.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'How did long-distance trade change after the mid-1300s?' },
+        q: { en: 'Which best describes a change in long-distance trade after the mid-1300s?' },
         choices: [
-          { ok: true, t: { en: 'More merchants left the land roads for sea routes' }, why: { en: 'Right. Sea routes recovered quickly from the Black Death, and the Mongol collapse made land roads risky again.' } },
-          { t: { en: 'Merchants gave up trading over long distances for good' }, why: { en: 'No. Trade fell for a time, but sea networks recovered quickly and kept growing.' } },
-          { t: { en: 'China conquered the ocean\'s ports by force' }, why: { en: 'No. Zheng He\'s voyages were diplomatic. He collected tribute, and no state tried to dominate the ocean.' } }
+          { ok: true, t: { en: 'Merchants shifted from risky land roads to sea routes' }, why: { en: 'Right. Sea routes recovered quickly from the Black Death, and the Mongol collapse made land roads risky again.' } },
+          { t: { en: 'Overland trade grew as Mongol rule spread farther west' }, why: { en: 'No. That fits the 1200s. After the Black Death the Mongol Empire collapsed, and land roads grew risky.' } },
+          { t: { en: 'Ming fleets seized the spice ports and taxed the trade' }, why: { en: 'No. The Ming could have dominated the ocean but chose diplomacy. Zheng He collected tribute; he did not seize ports.' } }
         ]
       }
     },
@@ -120,17 +123,18 @@ window.EPISODE = {
       x: 9, y: 16, name: { en: 'Idris' }, role: { en: 'Merchant from Sijilmasa' },
       look: { skin: 3, hair: '#2a1a10', shirt: '#e8dcc0', pants: '#5a4a3a', robe: true, hat: '#2a4a8a', style: 'short' },
       lines: [
-        { en: 'I come from Sijilmasa, a desert port in Morocco. The Sahara is our sea. Its edge is the Sahel, Arabic for "shores."' },
-        { en: 'Our ships are camels. [[pastoralist|Berber herders]] guide [[caravan|caravans]] of thousands of camels from well to oasis, in the cool months.' },
-        { en: 'Salt from desert mines buys West African gold. Enslaved people were forced across the desert too. Islam spread with merchants, and Arabic contracts built trust.' }
+        { en: 'I come from Sijilmasa in Morocco. The Sahara is our sea, and camels are its ships: they go ten days without water and carry about 400 pounds each.' },
+        { en: '[[pastoralist|Berber herders]] rent out camels and guide [[caravan|caravans]] of 5,000 to 10,000, October to March, 70 days across. Merchants pay herders tribute so they do not raid.' },
+        { en: 'Berber salt buys Mali\'s gold; its emperors guard the secret of their gold mines. Enslaved people were forced north too: as many as 9.3 million between 800 and 1800.' },
+        { en: 'Islam spread with merchants, so it took root first in market cities and among the rich. Most country people kept local religions. Arabic contracts built trust.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with Indian Ocean ships, what carried goods across the Sahara?' },
+        q: { en: 'Compared with Indian Ocean merchants, how did trans-Saharan merchants protect their trade?' },
         choices: [
-          { ok: true, t: { en: 'Camel caravans led by Berber guides' }, why: { en: 'Yes. Camels can go up to ten days without water, and Berber guides led caravans from well to oasis.' } },
-          { t: { en: 'River boats sailing on the monsoon' }, why: { en: 'No. The monsoon blows over the Indian Ocean. The Sahara was crossed over land.' } },
-          { t: { en: 'Relay horses from Timur\'s post stations' }, why: { en: 'No. Timur\'s relay horses served the Silk Roads in Central Asia. Camels suit the desert far better than horses.' } }
+          { t: { en: 'They rode Timur\'s relay horses between the oases' }, why: { en: 'No. Timur\'s post horses served envoys on the Silk Roads in Central Asia, not desert caravans.' } },
+          { t: { en: 'They sailed with the Ming navy for protection' }, why: { en: 'No. Zheng He\'s fleets sailed the Indian Ocean. The Sahara was crossed by camel caravan.' } },
+          { ok: true, t: { en: 'They paid tribute to the desert pastoralists' }, why: { en: 'Yes. Rather than invade the desert, states and merchants paid herders tribute so caravans could cross safely.' } }
         ]
       }
     },
@@ -138,17 +142,57 @@ window.EPISODE = {
       x: 18, y: 15, name: { en: 'Farrukh' }, role: { en: 'Merchant from Samarkand' },
       look: { skin: 2, hair: '#3a2416', shirt: '#4a6a3a', pants: '#3a2a20', robe: true, hat: '#d9c38a', style: 'short' },
       lines: [
-        { en: 'I come from Samarkand, famous for its glass, on the [[silk roads|Silk Roads]]. Caravans carry Chinese silk west over land.' },
-        { en: 'Under Mongol rule those roads were safe. Some call it the [[pax mongolica|Pax Mongolica]]. Goods, people and ideas moved across Eurasia.' },
-        { en: 'Timur kept post horses and [[caravanserai|caravanserais]] all the way to Samarkand. A Spanish envoy, Clavijo, described them for his rulers back home.' }
+        { en: 'I come from Samarkand, famous for its glass. The [[silk roads|Silk Roads]] are named for Chinese silk, and demand for Chinese, Persian and Indian goods kept rising in the west.' },
+        { en: 'Chinggis Khan conquered Central Asia and made the road safe and unified. Some call it the [[pax mongolica|Pax Mongolica]]. Goods, technologies and ideas crossed Eurasia.' },
+        { en: 'Germs traveled too. The [[black death|Black Death]] began in China or Kyrgyzstan in the 1330s and reached Kaffa by 1346. Regions lost 30 to 50 percent of their people.' },
+        { en: 'Timur kept post horses and [[caravanserai|caravanserais]] all the way to Samarkand. Read what the Spanish envoy Clavijo wrote about them, on the lectern by the mosque road.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'What helped trade on the Silk Roads grow?' },
+        q: { en: 'Which best explains why the Black Death spread so far, so fast?' },
         choices: [
-          { ok: true, t: { en: 'Rulers who kept the roads safe and built stops' }, why: { en: 'Yes. Mongol rule, and later Timur\'s post horses and caravanserais, made long trips over land safer.' } },
-          { t: { en: 'Monsoon winds that pushed the caravans across Asia' }, why: { en: 'No. Monsoon winds drive ships on the Indian Ocean, not caravans over land.' } },
-          { t: { en: 'The Black Death, which emptied the roads' }, why: { en: 'No. The Black Death nearly wiped out Silk Road trade beginning in the 1340s.' } }
+          { t: { en: 'It began in Europe and moved east along the monsoon' }, why: { en: 'No. It began in China or Kyrgyzstan and moved west, reaching Kaffa in 1346.' } },
+          { ok: true, t: { en: 'Busy trade routes linked the regions of Afro-Eurasia' }, why: { en: 'Yes. The same connections that carried silk and spice carried germs thousands of miles.' } },
+          { t: { en: 'Caravans kept to the desert, far from any cities' }, why: { en: 'No. Trade linked cities and ports. That is how the plague reached so many people.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 20, y: 13, icon: '📜',
+      name: { en: 'Clavijo on Timur\'s Roads' }, role: { en: 'Primary source' },
+      src: { en: 'Ruy Gonzalez de Clavijo (d. 1412), envoy from Spain to the court of Timur at Samarkand; quoted in "Unit 2 DBQ," Document 3, World History Project' },
+      lines: [
+        { en: '"It was too through [Timur\'s] orders that daily along the way we were provided stage by stage with fresh mounts from the government studs as we passed by, and thus they hastened our going. All along this route Timur causes horses to be kept stationed ready for use at post-stages, in one place there may be a hundred in another two hundred horses, and this is the case right up to Samarkand."' },
+        { en: '"These are kept for the service of the special messengers or envoys sent to distant places by Timur, or for the use of such envoys as may be coming to him, and such as come and such as go may ride these horses day and night without halt."' },
+        { en: '"These government studs are stationed both in those desert or uninhabited regions along the route, and in places where there is a settled population, further for this service there have been built caravanserais at diverse intervals, where there are stables for the horses ..."' },
+        { en: 'Ruy Gonzalez de Clavijo (died 1412) was an envoy sent by Spain over the Silk Roads to Samarkand and the court of Timur. He wrote his account for the European rulers who sent him. An envoy might make a foreign ruler\'s system sound grand to impress his patrons.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: why should a historian read Clavijo\'s praise of Timur\'s post system with care?' },
+        choices: [
+          { t: { en: 'He was Timur\'s own official, writing orders for the stations' }, why: { en: 'No. Clavijo was an envoy from Spain, a visitor to Timur\'s court, not one of Timur\'s officials.' } },
+          { ok: true, t: { en: 'He wrote for European rulers and may exaggerate to impress them' }, why: { en: 'Yes. An envoy reports to his patrons. He may have made Timur\'s system sound grand to impress them.' } },
+          { t: { en: 'He was a merchant hoping to rent his horses to caravans' }, why: { en: 'No. He was an envoy, and he says the horses served Timur\'s messengers and envoys, not merchants.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 11, y: 5, icon: '📖',
+      name: { en: 'Networks of Exchange, 1200–1450' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "Unit 2 Introduction: Networks of Exchange 1200 to 1450" by Trevor Getz, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'By 1200, the largest centers of artisan production were in East and South Asia. Goods were cheap where they were made, but rare and costly far away. "The trick for the merchant was to carry goods from a place where prices were low to another place where prices were high due to that product\'s scarcity."' },
+        { en: 'The Silk Roads, named for East Asian silk, linked Eurasia from east to west, and Mongol rule kept travelers safe. Better ships and predictable winds let Indian Ocean merchants move in an annual cycle. Across the Sahara, Mali and later Songhai helped merchants ship gold in carefully organized caravans. West African gold became currency for Christian and Islamic economies.' },
+        { en: 'Technologies and crops traveled with goods. Indian Ocean traders from Southeast Asia carried bananas to East Africa; growing them helped support new states and more people in the interior. But the Black Death nearly wiped out Silk Road trade beginning in the 1340s. Some routes recovered only in the early 1400s, and the collapse helped bring down the Mongol Empire.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'According to the reading, which best explains population growth in parts of interior Africa?' },
+        choices: [
+          { t: { en: 'Mali traded its gold for grain from the Mediterranean' }, why: { en: 'No. Mali traded gold for salt and luxuries. The reading links African population growth to a new crop.' } },
+          { t: { en: 'The Mongol peace carried new plows south across the Sahara' }, why: { en: 'No. The reading names no plows crossing the Sahara. It links growth in the interior to bananas, which came by sea.' } },
+          { ok: true, t: { en: 'Indian Ocean traders brought bananas, a new food crop' }, why: { en: 'Yes. Southeast Asian traders carried bananas to East Africa. Growing them supported new states and more people.' } }
         ]
       }
     }
@@ -255,57 +299,60 @@ window.EPISODE = {
     win: { en: 'The knot comes loose over the strait. The page on trade networks floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: '"All along this route Timur causes horses to be kept stationed ready for use at post-stages... further for this service there have been built caravanserais at diverse intervals, where there are stables for the horses."' }, src: { en: 'Ruy Gonzalez de Clavijo, envoy from Spain to the court of Timur at Samarkand (died 1412)' } },
-        q: { en: 'The excerpt best illustrates which feature of the Silk Roads?' },
-        choices: [{ en: 'A ruler supporting overland travel with stops' }, { en: 'Monsoon winds setting the season for travel' }, { en: 'Camels carrying salt across a great desert' }, { en: 'Merchants escaping every kind of state control' }],
-        answer: 0,
-        why: { en: 'Timur\'s post horses and caravanserais made long journeys over land faster and safer.' }
+        stim: { text: { en: '"All along this route Timur causes horses to be kept stationed ready for use at post-stages... further for this service there have been built caravanserais at diverse intervals, where there are stables for the horses ..."' }, src: { en: 'Ruy Gonzalez de Clavijo (d. 1412), envoy from Spain to the court of Timur at Samarkand' } },
+        q: { en: 'The excerpt most directly reflects which feature of the Silk Roads?' },
+        choices: [{ en: 'Arabic contracts and Islamic courts that built trust' }, { en: 'Tribute paid to pastoralists to keep caravans safe' }, { en: 'A ruler building stations to speed travel over land' }, { en: 'Merchant guilds funding roads beyond state control' }],
+        answer: 2,
+        why: { en: 'Timur\'s post horses and caravanserais made long journeys over land faster. Tribute to pastoralists belongs to the Sahara; Arabic contracts to the Islamic networks.' }
       },
       {
-        q: { en: 'Clavijo was an envoy sent by Spain to Timur\'s court. His account was most likely written for which audience?' },
-        choices: [{ en: 'Rulers and diplomats in Europe' }, { en: 'Timur\'s own government officials' }, { en: 'Herders living in Central Asia' }, { en: 'Merchants on the Indian Ocean' }],
-        answer: 0,
-        why: { en: 'An envoy reports to the rulers who sent him. He may even have made Timur\'s system sound grand to impress them.' }
+        stim: { text: { en: '"These are kept for the service of the special messengers or envoys sent to distant places by Timur, or for the use of such envoys as may be coming to him..."' }, src: { en: 'Ruy Gonzalez de Clavijo (d. 1412), envoy from Spain to Timur\'s court' } },
+        q: { en: 'Clavijo\'s point of view as an envoy most likely affected his account in which way?' },
+        choices: [{ en: 'He wrote as Timur\'s official, to give orders to the stations' }, { en: 'He may have made Timur\'s system sound grand to his patrons' }, { en: 'He wanted to prove that merchants used the horses most' }, { en: 'He wrote to warn Indian Ocean traders off the land roads' }],
+        answer: 1,
+        why: { en: 'An envoy reports to the European rulers who sent him and may exaggerate to impress them. He says the horses served envoys and messengers, not merchants.' }
       },
       {
-        stim: { title: { en: 'A trans-Saharan caravan' }, rows: [[{ en: 'Feature' }, { en: 'About' }], [{ en: 'Travel season' }, { en: 'October to March' }], [{ en: 'Distance per day' }, { en: '20 miles' }], [{ en: 'Days to cross' }, { en: '70' }], [{ en: 'Camels per caravan' }, { en: '5,000–10,000' }]], src: { en: 'From "Across an Ocean of Sand: Trans-Saharan Trade Routes," World History Project' } },
-        q: { en: 'The data best support which conclusion about trans-Saharan trade?' },
-        choices: [{ en: 'It needed large, well-organized caravans' }, { en: 'It was carried mostly by river boats' }, { en: 'It went on all year, even in the hottest summers' }, { en: 'It moved only tiny amounts of goods' }],
-        answer: 0,
-        why: { en: 'Thousands of camels on a 70-day trip, timed for the cool months, took careful organization.' }
+        stim: { title: { en: 'Two networks of exchange, c. 1200–1450' }, rows: [[{ en: 'Feature' }, { en: 'Trans-Saharan' }, { en: 'Indian Ocean' }], [{ en: 'Moved by' }, { en: 'Camels, about 400 lb each' }, { en: 'Ships riding the monsoon' }], [{ en: 'Timing' }, { en: 'October to March only' }, { en: 'Out on one monsoon, home on the next' }], [{ en: 'Trip' }, { en: '70 days to cross' }, { en: 'Calicut and back in one year' }], [{ en: 'Know-how' }, { en: 'Berber guides, wells, oases' }, { en: 'Astrolabe, kamal, compass' }]], src: { en: 'From "Across an Ocean of Sand" and "Indian Ocean Trade Routes," World History Project' } },
+        q: { en: 'The table best supports which claim about the two networks?' },
+        choices: [{ en: 'Both depended on herders who rented out their animals' }, { en: 'Only ocean trade needed experts or special tools' }, { en: 'Saharan trade ran all year, but ocean trade was seasonal' }, { en: 'Both timed travel to predictable seasons in nature' }],
+        answer: 3,
+        why: { en: 'Caravans crossed in the cool months; ships waited for the monsoon to turn. Berber guides were experts too, and only the Sahara relied on rented animals.' }
       },
       {
-        stim: { text: { en: 'The monsoon winds allowed merchants to plan voyages and to know when they would arrive at a distant port.' }, src: { en: 'Adapted from "Indian Ocean Trade Routes," World History Project' } },
-        q: { en: 'Compared with trans-Saharan caravans, Indian Ocean trade depended most on...' },
-        choices: [{ en: 'seasonal winds that changed direction' }, { en: 'camels that could go ten days without water' }, { en: 'relay horses kept at post stations' }, { en: 'Berber guides who knew the oases' }],
+        stim: { text: { en: '"The trick for the merchant was to carry goods from a place where prices were low to another place where prices were high due to that product\'s scarcity."' }, src: { en: 'Trevor Getz, "Unit 2 Introduction: Networks of Exchange 1200 to 1450," World History Project' } },
+        q: { en: 'Which of the following best explains why luxury goods filled all three networks?' },
+        choices: [{ en: 'Rulers banned long-distance trade in everyday goods' }, { en: 'Their scarcity far away made long, costly trips pay' }, { en: 'Luxuries were lighter than salt, so camels preferred them' }, { en: 'Rural villages along the routes bought the most silk' }],
+        answer: 1,
+        why: { en: 'Silk, spice and gold were cheap where they were made and rare far away, so carrying them across land, sea or sand paid. Heavy salt was traded too.' }
+      },
+      {
+        stim: { text: { en: 'Merchants traveling to Muslim ports often converted to avoid taxes. Even some Buddhist rulers in Southeast Asia adopted Muslim names to improve relations with Muslim states and merchants.' }, src: { en: 'Adapted from "Indian Ocean Trade Routes," World History Project' } },
+        q: { en: 'Compared with this process, the spread of Islam across the Sahara was similar in that Islam...' },
+        choices: [{ en: 'spread mainly through merchants and trading cities' }, { en: 'quickly replaced local religions among rural farmers' }, { en: 'was carried mostly by Mongol rulers of Central Asia' }, { en: 'arrived mainly with Chinese treasure fleets' }],
         answer: 0,
-        why: { en: 'Ships rode the monsoon, which turned twice a year. Camels and Berber guides belonged to the Sahara.' }
+        why: { en: 'On both networks Islam spread with merchants. In West Africa it took root in market cities and among the rich; most country people kept local religions.' }
+      },
+      {
+        stim: { text: { en: 'In the 1300s and 1400s, Ming China had the most impressive maritime technology the world had ever seen. Its wealth and naval mastery gave it the opportunity to dominate the Indian Ocean. But it chose a different route.' }, src: { en: 'Adapted from "Indian Ocean Trade Routes," World History Project' } },
+        q: { en: 'Which of the following best describes the "different route" the Ming chose?' },
+        choices: [{ en: 'Seizing Malacca and Calicut to control the spice trade' }, { en: 'Closing Chinese ports to Arab and Persian merchants' }, { en: 'Voyages to display Chinese power and collect tribute' }, { en: 'Building post stations and caravanserais in Central Asia' }],
+        answer: 2,
+        why: { en: 'Zheng He\'s seven voyages (1405–1433) were diplomatic. No state tried to dominate the ocean, and merchants kept trading freely.' }
+      },
+      {
+        stim: { text: { en: 'The Black Death nearly wiped out trade along the Silk Roads beginning in the 1340s. Some routes recovered only in the early fifteenth century, and the collapse helped bring down the Mongol Empire.' }, src: { en: 'Adapted from "Unit 2 Introduction: Networks of Exchange 1200 to 1450" by Trevor Getz, World History Project' } },
+        q: { en: 'Which of the following best describes a change that followed the developments in the passage?' },
+        choices: [{ en: 'Mongol rule grew stronger by controlling plague ports' }, { en: 'Merchants turned to sea routes as land roads grew risky' }, { en: 'Long-distance trade stopped and never recovered' }, { en: 'Camel caravans replaced ships in the Indian Ocean' }],
+        answer: 1,
+        why: { en: 'Sea routes recovered quickly from the plague, and with the Mongol Empire gone, land roads were risky again. More merchants went by sea.' }
       },
       {
         stim: { text: { en: 'Develop an argument that analyzes the similarities and differences between various networks of exchange from c. 1200 to 1450 CE.' }, src: { en: 'Unit 2 long essay prompt, World History Project' } },
         q: { en: 'Which thesis best responds to this prompt?' },
-        choices: [{ en: 'All spread goods and ideas but differed in goods and transport' }, { en: 'The Silk Roads were the only network that carried luxury goods' }, { en: 'Every network of exchange collapsed for good after the Black Death' }, { en: 'Merchants on every network traded only inside their own empire' }],
-        answer: 0,
-        why: { en: 'A thesis must answer both parts: a similarity (goods and ideas spread) and a difference (what was traded, and by horse, ship or camel).' }
-      },
-      {
-        stim: { text: { en: 'Merchants traveling to Muslim ports often converted to avoid taxes. Even some Buddhist rulers adopted Muslim names to improve relations with Muslim states and merchants.' }, src: { en: 'Adapted from "Indian Ocean Trade Routes," World History Project' } },
-        q: { en: 'The excerpt best explains which development in the Indian Ocean?' },
-        choices: [{ en: 'Islam spreading through trade, for faith and profit' }, { en: 'Chinese fleets forcing every port to accept Islam' }, { en: 'Merchants giving up trade to become religious scholars' }, { en: 'Hindu and Buddhist merchants leaving the ocean trade' }],
-        answer: 0,
-        why: { en: 'Conversion had spiritual and economic benefits, like lower taxes. Malacca\'s own ruler became Muslim around 1400.' }
-      },
-      {
-        q: { en: 'Which statement best describes a similarity between Indian Ocean and trans-Saharan trade?' },
-        choices: [{ en: 'Islam gave merchants a shared language and trust' }, { en: 'Both depended on the monsoon winds to move goods' }, { en: 'Both were controlled by one single great empire' }, { en: 'Both used camels as their main way to move goods' }],
-        answer: 0,
-        why: { en: 'On both networks, Islam spread with merchants. Arabic and Islamic contracts and courts helped strangers trust each other.' }
-      },
-      {
-        q: { en: 'Which best describes the purpose of Zheng He\'s voyages (1405–1433)?' },
-        choices: [{ en: 'To show China\'s might and collect tribute' }, { en: 'To conquer the ports of the Indian Ocean' }, { en: 'To end all trade between China and Arabia' }, { en: 'To close the Strait of Malacca to merchants' }],
-        answer: 0,
-        why: { en: 'The voyages were diplomatic. China could have dominated the ocean but chose not to, and merchants kept trading freely.' }
+        choices: [{ en: 'Trade grew from 1200 to 1450 because elites wanted luxury goods' }, { en: 'All spread goods and ideas but differed in goods and transport' }, { en: 'Mongol and Malian rulers both kept roads safe for merchants' }, { en: 'The Black Death changed every network of exchange after 1340' }],
+        answer: 1,
+        why: { en: 'A comparison thesis names both a similarity (goods and ideas spread) and a difference (what was traded, and by horse, ship or camel). The others explain causes or one point.' }
       }
     ]
   },
