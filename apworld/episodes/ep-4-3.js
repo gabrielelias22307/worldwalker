@@ -16,7 +16,7 @@ window.EPISODE = {
   title: { en: 'The Columbian Exchange' },
   place: { en: 'Mexico City, New Spain, 1570' },
   intro: [
-    { en: 'The Grump blurred the page on the Columbian Exchange. Mexico City is forgetting what crossed the ocean, and what it cost.' },
+    { en: 'The Void blurred the page on the Columbian Exchange. Mexico City is forgetting what crossed the ocean, and what it cost.' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a cook find flour, then wake the time stone.' }
   ],
   scenes: {
@@ -266,7 +266,7 @@ window.EPISODE = {
   challenge: {
     at: [23, 7], type: 'carry', stat: 'hei',
     title: { en: 'What crossed the ocean?' },
-    intro: { en: 'The Grump mixed up the record of the [[columbian exchange|Columbian Exchange]]. Carry each card to the way it crossed the Atlantic: east to Afro-Eurasia, or west to the Americas.' },
+    intro: { en: 'The Void mixed up the record of the [[columbian exchange|Columbian Exchange]]. Carry each card to the way it crossed the Atlantic: east to Afro-Eurasia, or west to the Americas.' },
     zones: [
       { bin: 'toae', x: 26, y: 5, w: 3, h: 4 },
       { bin: 'toam', x: 17, y: 5, w: 3, h: 4 }
@@ -289,10 +289,10 @@ window.EPISODE = {
   },
   boss: {
     at: [12, 2], stat: 'mov', need: 3,
-    name: { en: 'The Hollow Grump' },
-    appear: { en: 'The Hollow Grump waits quietly on the hill of Tepeyac.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly on the hill of Tepeyac.' },
     taunt: { en: 'So many died here. Let the city forget their names, and forget how it happened.' },
-    win: { en: 'The Grump fades. The page on the Columbian Exchange returns, and with it the memory of the people who lived it.' },
+    win: { en: 'The Void closes. The page on the Columbian Exchange returns, and with it the memory of the people who lived it.' },
     questions: [
       {
         stim: { text: { en: '"The condition of this people was so lamentable [sad] and they fell down so generally of this disease as they were in the end not able to help one another, no not to make a fire nor to fetch a little water to drink, nor any to bury the dead."' }, src: { en: 'William Bradford, governor of the Plymouth colony, describing smallpox about 1634; quoted in "The Columbian Exchange," World History Project' } },

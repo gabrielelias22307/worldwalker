@@ -335,7 +335,8 @@
         // the Grump gets FURIOUS once half its shield is cracked, and roars at every wrong answer
         const furious = !boss.minor && broken >= need / 2 && broken < need;
         const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '') + (furious ? ' furious' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
+        if (WW.bossFace) WW.bossFace(cv, furious, last); // HistoryWalker: the Void's face (hd.js)
+        else WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
         if (!boss.minor) box.classList.toggle('roar', last === 'hit');
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}${furious ? ` <span class="furious-tag">${esc(T('furious'))}</span>` : ''}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;

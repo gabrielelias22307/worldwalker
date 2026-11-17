@@ -15,7 +15,7 @@ window.EPISODE = {
   title: { en: 'Developments in Europe' },
   place: { en: 'A manor near Paris, Kingdom of France, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on Europe. This manor near Paris is forgetting who owns the land, who rules and what it believes!' },
+    { en: 'The Void blurred the page on Europe. This manor near Paris is forgetting who owns the land, who rules and what it believes!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a baker from Paris, then wake the time stone.' }
   ],
   scenes: {
@@ -233,7 +233,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#2b1d14', shirt: '#b98250', pants: '#4a3a2a', style: 'bun' },
       lines: [
         { en: 'I bake bread in Paris. Our city keeps growing, and it eats the grain of villages like this one.' },
-        { en: 'The Grump fogged my order with this manor! Ask Thibaut, the lord\'s steward. He keeps the manor\'s accounts.' }
+        { en: 'The Void fogged my order with this manor! Ask Thibaut, the lord\'s steward. He keeps the manor\'s accounts.' }
       ],
       wait: { en: 'Thibaut stands west along the road, between the manor house and the lord\'s barn.' },
       thanks: { en: 'Wheat from the lord\'s fields! Cities can grow only when the countryside sends them food. Paris thanks you.' }
@@ -270,7 +270,7 @@ window.EPISODE = {
   challenge: {
     at: [28, 16], type: 'order', stat: 'loc',
     title: { en: 'From growth to crisis' },
-    intro: { en: 'The Grump scrambled the chronicle of Europe from the 800s to 1400. Put the causes and effects in order, from first to last.' },
+    intro: { en: 'The Void scrambled the chronicle of Europe from the 800s to 1400. Put the causes and effects in order, from first to last.' },
     items: [
       { icon: '🌤️', t: { en: 'From the 800s: warm, stable weather, the Medieval Climate Anomaly, makes farming easier and travel safer.' } },
       { icon: '👪', t: { en: 'Populations rise fast, and villages turn uncultivated land into new farms.' } },
@@ -284,10 +284,10 @@ window.EPISODE = {
   },
   boss: {
     at: [22, 2], stat: 'hei', need: 3,
-    name: { en: 'The Frost Grump' },
-    appear: { en: 'The Frost Grump is hiding in the cold fog beside the monastery.' },
-    taunt: { en: 'Lords, peasants, popes and emperors... let them all fade into the cold.' },
-    win: { en: 'The frost melts from the fields. The page on Europe floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the cold beside the monastery. Frost creeps toward it.' },
+    taunt: { en: 'Lords, peasants, popes, emperors. The cold took a third of them. I will take the rest.' },
+    win: { en: 'The Void closes and the frost melts from the fields. The page on Europe floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'On Christmas Day in the year 800 CE, Pope Leo III crowned the Carolingian ruler Charlemagne "emperor of the Romans."' }, src: { en: 'Quoted in "Christendom," World History Project' } },

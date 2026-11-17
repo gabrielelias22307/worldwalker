@@ -16,7 +16,7 @@ window.EPISODE = {
   title: { en: 'Exploration: Causes and Events' },
   place: { en: 'Malindi, East African coast, 1498' },
   intro: [
-    { en: 'The Grump blurred the page on exploration. Malindi is forgetting why strange ships just sailed in from Portugal!' },
+    { en: 'The Void blurred the page on exploration. Malindi is forgetting why strange ships just sailed in from Portugal!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a pilgrim, then wake the time stone.' }
   ],
   scenes: {
@@ -232,7 +232,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sail to Mecca for the [[hajj|hajj]]. Pilgrims from Africa to Indonesia cross this ocean to make it.' },
         { en: 'In the 1300s the traveler Ibn Battuta was welcomed in ports like ours. One faith, Islam, and one language, Arabic, link people from Africa to India and Indonesia.' },
-        { en: 'The Grump\'s helpers stole our navigator\'s [[kamal|kamal]]! Without it he cannot find latitude. Ask the fisherman on the north jetty.' }
+        { en: 'The Void\'s helpers stole our navigator\'s [[kamal|kamal]]! Without it he cannot find latitude. Ask the fisherman on the north jetty.' }
       ],
       wait: { en: 'The fisherman works on the north jetty, at the beach in the north-east.' },
       thanks: { en: 'Our kamal! Now our navigator can find our way, and point us toward Mecca at prayer time.' }
@@ -258,7 +258,7 @@ window.EPISODE = {
     // -> the south-west palms (Magellan) -> the market (silver) -> the north-west street (the Dutch companies)
     spots: [[23, 18], [2, 9], [23, 3], [8, 19], [16, 13], [10, 4]],
     title: { en: 'The chain of exploration' },
-    intro: { en: 'The Grump scrambled the timeline of exploration. Walk to each stop in order, from first to last, and see how each step led to the next.' },
+    intro: { en: 'The Void scrambled the timeline of exploration. Walk to each stop in order, from first to last, and see how each step led to the next.' },
     items: [
       { icon: '🏝️', t: { en: '1400s: Spain and Portugal colonize Madeira and the Canary Islands, with sugar plantations worked by enslaved people' } },
       { icon: '⛵', t: { en: '1492: Columbus, sailing for Spain, reaches the Bahamas, home of the Taino people' } },
@@ -272,10 +272,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 14], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding on the south jetty!' },
-    taunt: { en: 'Routes, sails, stars... I will fog up every sea chart in Malindi.' },
-    win: { en: 'The fog lifts over the Indian Ocean. The page on exploration floats into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened on the south jetty. The sea charts curl toward it.' },
+    taunt: { en: 'Every voyage loses ships. Every ship that sinks comes to me.' },
+    win: { en: 'The Void closes over the Indian Ocean. The page on exploration floats into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The Ottoman Empire controlled trade between the Mediterranean and Asia. That meant they could tax these luxuries and use the profits to fund wars against the Hapsburg monarchs. . . . Italian merchants, especially from Venice, continued to trade with the Ottomans.' }, src: { en: 'Adapted from "Origins of Oceanic Connections," World History Project' } },

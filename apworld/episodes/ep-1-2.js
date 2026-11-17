@@ -18,7 +18,7 @@ window.EPISODE = {
   title: { en: 'Developments in Dar al-Islam' },
   place: { en: 'Cairo, Mamluk Sultanate, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on Dar al-Islam. Cairo is forgetting how Islam kept growing after Baghdad fell!' },
+    { en: 'The Void blurred the page on Dar al-Islam. Cairo is forgetting how Islam kept growing after Baghdad fell!' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a pilgrim from Morocco, then wake the time stone.' }
   ],
   scenes: {
@@ -274,7 +274,7 @@ window.EPISODE = {
   challenge: {
     at: [21, 14], type: 'claim', stat: 'loc',
     title: { en: 'Did Dar al-Islam fall apart?' },
-    intro: { en: 'The Grump claims Islam ended when Baghdad fell. Pick the claim the evidence best supports, then back it up with one piece of evidence about rulers and one about belief and culture.' },
+    intro: { en: 'The Void claims Islam ended when Baghdad fell. Pick the claim the evidence best supports, then back it up with one piece of evidence about rulers and one about belief and culture.' },
     options: [
       { icon: '🧩', name: { en: 'Power split apart, but Islam spread' }, desc: { en: 'Many rulers after 1258, yet Dar al-Islam kept growing' },
         result: { en: 'Strong claim! Political fragmentation and religious expansion happened at the same time, 1200–1450.' } },
@@ -306,10 +306,10 @@ window.EPISODE = {
   },
   boss: {
     at: [27, 8], stat: 'hei', need: 3,
-    name: { en: 'The Sandstorm Grump' },
-    appear: { en: 'The Sandstorm Grump is hiding in the dust by the barracks!' },
-    taunt: { en: 'No caliph, no empire... so no Dar al-Islam! Prove me wrong.' },
-    win: { en: 'The dust settles over Cairo. The page on Dar al-Islam floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the barracks. The dust is flowing into it.' },
+    taunt: { en: 'Caliphs fall, cities burn, books drown in rivers. I am what remains. Prove the faith outlived them.' },
+    win: { en: 'The Void closes over Cairo. The page on Dar al-Islam floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"In the sixteenth century of our era, a visitor from Mars might well have supposed that the world was on the verge of becoming Muslim."' }, src: { en: 'Marshall Hodgson, historian; quoted in "Dar al-Islam," World History Project' } },

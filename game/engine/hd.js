@@ -623,6 +623,76 @@
     }
   };
 
+
+  /* ---------------- the Void (HistoryWalker's villain) and its shades ----------------
+     A hole in the world: a black core with a thin ring of violet light, dust and leaves spiralling into it, dark
+     tendrils reaching out, and two narrow eyes that open in the dark. When it roars the ring burns red and the eyes
+     widen. Its shades are wisps of the same darkness with two cold eyes. */
+  WW.hd.drawBoss = (c, x, y, t, roar) => {
+    const cx = x + 8, cy = y + 4, T0 = calm ? 0 : t, pulse = (Math.sin(T0 / 380) + 1) / 2;
+    // the ground darkens around it
+    let g = c.createRadialGradient(cx, cy + 6, 2, cx, cy + 6, 34);
+    g.addColorStop(0, 'rgba(10,0,20,.55)'); g.addColorStop(1, 'rgba(10,0,20,0)'); c.fillStyle = g; c.fillRect(cx - 34, cy - 28, 68, 68);
+    // dust and light being pulled in, spiralling
+    for (let i = 0; i < 36; i++) {
+      const life = ((T0 / (900 + (i % 5) * 120)) + i * 0.137) % 1, r = 26 * (1 - life) + 6, a = i * 2.4 + life * 5.5;
+      c.fillStyle = i % 4 ? `rgba(150,120,200,${0.15 + life * 0.5})` : `rgba(255,230,200,${0.2 + life * 0.5})`;
+      c.fillRect(cx + Math.cos(a) * r, cy + Math.sin(a) * r * 0.6, 0.6, 0.6);
+    }
+    // tendrils reaching out
+    c.lineCap = 'round';
+    for (let k = 0; k < 7; k++) {
+      const base = k / 7 * Math.PI * 2 + T0 / 2600, len = 15 + Math.sin(T0 / 500 + k * 1.7) * 5 + (roar ? 6 : 0);
+      c.strokeStyle = 'rgba(8,0,16,.85)'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(cx, cy);
+      for (let s = 1; s <= 6; s++) { const f = s / 6, wob = Math.sin(T0 / 300 + k + f * 4) * 2.5 * f; c.lineTo(cx + Math.cos(base) * len * f + Math.cos(base + 1.57) * wob, cy + Math.sin(base) * len * f * 0.7 + Math.sin(base + 1.57) * wob); }
+      c.stroke(); c.lineWidth = 0.7; c.strokeStyle = roar ? 'rgba(200,40,60,.5)' : 'rgba(120,80,190,.35)'; c.stroke();
+    }
+    // the ring of light at its edge
+    c.save(); c.translate(cx, cy);
+    const R = 9 + pulse * 1.2 + (roar ? 2 : 0);
+    g = c.createRadialGradient(0, 0, R - 3, 0, 0, R + 4); g.addColorStop(0, roar ? 'rgba(255,60,60,.9)' : 'rgba(170,120,255,.85)'); g.addColorStop(0.4, roar ? 'rgba(160,20,40,.5)' : 'rgba(90,40,170,.45)'); g.addColorStop(1, 'rgba(40,0,60,0)');
+    c.fillStyle = g; c.beginPath(); c.arc(0, 0, R + 4, 0, 7); c.fill();
+    for (let i = 0; i < 18; i++) { const a = i / 18 * Math.PI * 2 + T0 / 700; c.fillStyle = `rgba(230,210,255,${0.3 + 0.4 * ((i + Math.floor(T0 / 120)) % 3 === 0)})`; c.fillRect(Math.cos(a) * (R + 0.5), Math.sin(a) * (R + 0.5) * 0.92, 0.7, 0.7); }
+    // the black core
+    c.fillStyle = '#030006'; c.beginPath(); c.arc(0, 0, R - 0.5, 0, 7); c.fill();
+    g = c.createRadialGradient(0, 0, 0, 0, 0, R); g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(0.8, 'rgba(20,0,35,1)'); g.addColorStop(1, 'rgba(60,10,90,1)');
+    c.fillStyle = g; c.beginPath(); c.arc(0, 0, R - 0.5, 0, 7); c.fill();
+    // the eyes: narrow, slowly opening and closing; wide and red when it roars
+    const open = roar ? 1 : Math.max(0.15, (Math.sin(T0 / 1500) + 1) / 2), ey = -1;
+    [-1, 1].forEach(s => { // narrow, slanted, angry eyes: a sharp sliver of light, darker at the inner corner
+      const ex = s * 3.4, h = 0.35 + open * (roar ? 1.3 : 0.9), w = 2.9;
+      c.save(); c.translate(ex, ey); c.rotate(s * -0.38);
+      c.fillStyle = roar ? 'rgba(255,40,40,.35)' : 'rgba(190,150,255,.22)'; c.beginPath(); c.ellipse(0, 0, w + 1.1, h + 0.9, 0, 0, 7); c.fill();
+      c.fillStyle = roar ? '#ff3030' : '#efe6ff';
+      c.beginPath(); c.moveTo(-w, 0); c.quadraticCurveTo(0, -h * 1.6, w, -h * 0.2); c.quadraticCurveTo(0, h * 1.2, -w, 0); c.fill();
+      c.fillStyle = '#030006'; c.fillRect(-0.3, -h, 0.6, h * 1.8); // a thin slit pupil
+      c.restore();
+    });
+    // a jagged mouth that opens when it roars
+    if (roar) { c.fillStyle = '#ff3030'; c.beginPath(); c.moveTo(-4, 3); for (let i = 0; i <= 8; i++) c.lineTo(-4 + i, 3 + (i % 2 ? 1.6 : 0)); c.lineTo(4, 4.5); c.lineTo(-4, 4.5); c.fill(); }
+    c.restore();
+  };
+  // its portrait in the trial panel (80 x 80): the same void, still, with the eyes open
+  WW.bossFace = (cv, furious, last) => {
+    const c = cv.getContext('2d'), S = cv.width / 16; c.save(); c.clearRect(0, 0, cv.width, cv.height); c.fillStyle = '#0a0612'; c.fillRect(0, 0, cv.width, cv.height);
+    c.scale(S * 0.8, S * 0.8); c.translate(2, 5); WW.hd.drawBoss(c, 0, 0, performance.now(), furious || last === 'hit'); c.restore();
+  };
+  // the shades: wisps of darkness with cold eyes (they sway, trail smoke, and flash white when hit)
+  WW.hd.drawFoe = (c, e, x, y, t, rage) => {
+    const T0 = calm ? 0 : t + (e.phase || 0) * 700, hurt = e.hurtT && t - e.hurtT < 200, bob = Math.sin(T0 / 300) * 1.2;
+    c.fillStyle = 'rgba(10,0,20,.3)'; c.beginPath(); c.ellipse(x + 8, y + 14.5, 5, 1.5, 0, 0, 7); c.fill();
+    const body = hurt ? 'rgba(255,255,255,.9)' : 'rgba(14,6,26,.88)', edge = rage ? 'rgba(200,40,60,.6)' : 'rgba(120,80,190,.5)';
+    // a trailing tail of smoke
+    for (let i = 0; i < 6; i++) { const f = i / 6; c.fillStyle = hurt ? 'rgba(255,255,255,.4)' : `rgba(14,6,26,${0.6 - f * 0.45})`; c.beginPath(); c.arc(x + 8 + Math.sin(T0 / 200 + i) * 2.2 * f, y + 9 + bob + i * 1.1, 3.6 - f * 2.4, 0, 7); c.fill(); }
+    // the hooded head and shoulders
+    c.fillStyle = edge; c.beginPath(); c.ellipse(x + 8, y + 5 + bob, 5.6, 6.4, 0, 0, 7); c.fill();
+    c.fillStyle = body; c.beginPath(); c.ellipse(x + 8, y + 5 + bob, 5, 5.8, 0, 0, 7); c.fill();
+    if (e.type === 'bat') { [-1, 1].forEach(s => { c.beginPath(); c.moveTo(x + 8 + s * 3, y + 4 + bob); c.lineTo(x + 8 + s * 9, y + 1 + bob + Math.sin(T0 / 90) * 2); c.lineTo(x + 8 + s * 6, y + 7 + bob); c.fill(); }); }
+    // two cold eyes
+    const eyeCol = rage ? '#ff4040' : '#d8ccff';
+    c.fillStyle = rage ? 'rgba(255,40,40,.35)' : 'rgba(200,180,255,.3)'; c.fillRect(x + 4.6, y + 3.6 + bob, 2.8, 2); c.fillRect(x + 8.6, y + 3.6 + bob, 2.8, 2);
+    c.fillStyle = eyeCol; c.fillRect(x + 5, y + 4 + bob, 2, 1.1); c.fillRect(x + 9, y + 4 + bob, 2, 1.1);
+  };
   // people on the map stand facing you and blink now and then; the hero walks in four frames
   const oldPerson = WW.drawPerson;
   WW.drawPerson = (c, p, x, y, t, phase = 0) => {

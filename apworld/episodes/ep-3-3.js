@@ -15,7 +15,7 @@ window.EPISODE = {
   title: { en: 'Empires: Belief Systems' },
   place: { en: 'Isfahan, Safavid Empire, 1600' },
   intro: [
-    { en: 'The Grump blurred this page! From 1450 to 1750, the [[little ice age|Little Ice Age]], hunger, rising prices and new [[absolutist|absolutist]] states stressed people. Many sought new ways to worship.' },
+    { en: 'The Void blurred this page! From 1450 to 1750, the [[little ice age|Little Ice Age]], hunger, rising prices and new [[absolutist|absolutist]] states stressed people. Many sought new ways to worship.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns (📜 and 📖). Help a merchant from the German lands, then wake the time stone.' }
   ],
   scenes: {
@@ -234,7 +234,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#c9a24a', shirt: '#3a4a7a', pants: '#2a2a2a', hat: '#3a2a1a', style: 'short' },
       lines: [
         { en: 'In 1517, the year Selim I proclaimed himself caliph, a German priest, Martin Luther, attacked the Church\'s sale of [[indulgences|indulgences]] in his [[ninety-five theses|Ninety-Five Theses]]. He only wanted a debate.' },
-        { en: 'That year Erasmus attacked the Church\'s wealth and power. But Luther lit the [[protestant reformation|Protestant Reformation]]. The Grump\'s wind stole my printed copy! Ask the caravan guard by the west wall.' }
+        { en: 'That year Erasmus attacked the Church\'s wealth and power. But Luther lit the [[protestant reformation|Protestant Reformation]]. The Void\'s wind stole my printed copy! Ask the caravan guard by the west wall.' }
       ],
       wait: { en: 'The caravan guard stands by the west wall, south of the main street.' },
       thanks: { en: 'My Theses! The printing press spread the [[priesthood of all believers|priesthood of all believers]], taught by Luther and Calvin. Merchants felt newly independent; princes challenged the Church. Henry VIII of England left it.' }
@@ -257,7 +257,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 14], type: 'sort', stat: 'reg',
     title: { en: 'Three regions, three changes' },
-    intro: { en: 'The Grump scrambled the chronicle of belief, 1450–1750. Sort each card: the Sunni–Shi\'a rift, Europe\'s Reformations, or the rise of Sikhism in India.' },
+    intro: { en: 'The Void scrambled the chronicle of belief, 1450–1750. Sort each card: the Sunni–Shi\'a rift, Europe\'s Reformations, or the rise of Sikhism in India.' },
     bins: [
       { id: 'islam', icon: '🕌', label: { en: 'Islam: the Sunni–Shi\'a rift' }, sub: { en: 'Ottomans and Safavids' } },
       { id: 'europe', icon: '⛪', label: { en: 'Christianity: the Reformations' }, sub: { en: 'Protestant and Catholic Europe' } },
@@ -278,10 +278,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 19], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding in the gardens across the river.' },
-    taunt: { en: 'Splits, reforms, new faiths. Let the fog hide how and why belief changed.' },
-    win: { en: 'The fog lifts from the river. The page on belief systems floats down into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the gardens across the river. The prayers go quiet.' },
+    taunt: { en: 'Faiths split. Wars follow. Let the dark hide how and why belief changed.' },
+    win: { en: 'The Void closes over the river. The page on belief systems floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Everything has come to pass and is fulfilled: ... the world is crackling in all places, as if it is going break apart and crumble."' }, src: { en: 'Martin Luther, 1530; quoted in "Transformations in Eurasian Belief Systems, 1450–1750," World History Project' } },

@@ -606,3 +606,13 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 #ww .docpage { text-align: right; font-size: 0.8em; color: #8a7a62; margin-top: 4px; }
 #ww.guide-small .cpanel.side canvas { max-width: 108px; }
 #ww.guide-small .cpanel.dock canvas { width: 60px; height: 60px; }
+/* HistoryWalker: the Void's trial is fought in the dark */
+#ww.void-dark .bossov .ov-box { background: #130e20; color: #e9e2f7; border-color: #3a2a5a; box-shadow: 0 0 40px rgba(120,60,200,.45); }
+#ww.void-dark .bossov .bname { color: #c9b6ff; }
+#ww.void-dark .bossov .say.q, #ww.void-dark .bossov .klabel { color: #e9e2f7; }
+#ww.void-dark .bossov .choices button { background: #1f1830; color: #f2ecff; border-color: #4a3a72; }
+#ww.void-dark .bossov .choices button:hover { border-color: #b89cff; }
+#ww.void-dark .bossov .bossface { background: #050208; border-color: #4a3a72; }
+#ww.void-dark .bossov .stim { background: #ece4d6; }
+#ww.void-dark .bossov .say.taunt { color: #c8b4ff; font-style: italic; text-shadow: 0 0 8px rgba(150,90,255,.5); }
+#ww.void-dark .bossov .fb.wrong, #ww.void-dark .bossov .fb.right { color: #22202e; }

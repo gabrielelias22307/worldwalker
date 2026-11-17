@@ -18,7 +18,7 @@ window.EPISODE = {
   title: { en: 'Comparing States, 1200–1450' },
   place: { en: 'Samarkand, Timur\'s empire, 1400' },
   intro: [
-    { en: 'The Grump smudged the page that compares the world\'s states. In Samarkand, travelers are forgetting how their rulers hold power!' },
+    { en: 'The Void smudged the page that compares the world\'s states. In Samarkand, travelers are forgetting how their rulers hold power!' },
     { en: 'Talk to the 4 travelers, read the 2 sources on the stands, help a merchant from Delhi, then wake the time stone.' }
   ],
   scenes: {
@@ -231,7 +231,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#1b1410', shirt: '#e0e0d0', robe: true, hat: '#c0392b', style: 'short' },
       lines: [
         { en: 'I come from the [[delhi sultanate|Delhi Sultanate]], founded in 1206 by a Turkic general. Its Muslim sultans defeated the Mongol armies and generally tolerated Hindus like me.' },
-        { en: 'Hindu Rajput kings fund temples, and the [[brahmin|brahmins]] back them. But the Grump\'s helpers knocked my cotton off the cart! Ask the guard at the east gate.' }
+        { en: 'Hindu Rajput kings fund temples, and the [[brahmin|brahmins]] back them. But the Void\'s helpers knocked my cotton off the cart! Ask the guard at the east gate.' }
       ],
       wait: { en: 'The guard stands just inside the east gate of the city wall.' },
       thanks: { en: 'My cotton! Merchants have carried India\'s cotton across Dar al-Islam for centuries. Thank you, friend.' }
@@ -254,7 +254,7 @@ window.EPISODE = {
   challenge: {
     at: [8, 7], type: 'carry', stat: 'hei',
     title: { en: 'How did they hold power?' },
-    intro: { en: 'The Grump scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Quill adds cards from the Americas, unknown here before 1500.' },
+    intro: { en: 'The Void scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Quill adds cards from the Americas, unknown here before 1500.' },
     zones: [
       { bin: 'faith', x: 2, y: 5, w: 3, h: 2 },
       { bin: 'trade', x: 11, y: 5, w: 3, h: 2 },
@@ -282,10 +282,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'hei', need: 3,
-    name: { en: 'The Sandstorm Grump' },
-    appear: { en: 'The Sandstorm Grump is hiding outside the east gate!' },
-    taunt: { en: 'Gold, priests, exams, armies... all the same! I will blow sand over every state in the world!' },
-    win: { en: 'The sand settles over Samarkand. The page comparing the world\'s states floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened outside the east gate. The road is being pulled into it.' },
+    taunt: { en: 'Gold, priests, exams, armies. Different on the surface. In the dark, every state looks the same.' },
+    win: { en: 'The Void closes over Samarkand. The page comparing the world\'s states floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Guide them with policies and align them with punishments and the people will evade them and have no shame. Guide them with virtue … and the people will have a sense of shame and fulfill their roles…"' }, src: { en: 'Confucius, The Analects (compiled after his death in 479 BCE); quoted in "Confucianism," World History Project' } },

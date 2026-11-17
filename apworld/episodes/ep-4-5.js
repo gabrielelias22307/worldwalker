@@ -14,7 +14,7 @@
    source, by the merchants' houses) and "The New Economics of Empire," adapted from "Overview of New Economic Systems"
    (by the treasury). World History Project content is CC BY-NC 4.0. Facts here come from those
    readings. English only, AP level. Hard history (forced labor, slavery, epidemics) is told plainly and with care:
-   nothing about suffering is a prize, and the Grump is quiet and serious.
+   nothing about suffering is a prize, and the Void is quiet and serious.
    Map: the plaza with the church and the royal treasury (north-west), the market and merchants' houses (north-east),
    the road across the town (row 10), Andean workers' houses (south-west), the llama corral (south-east), and the
    mountain of the mines along the south. The four levers: the labor lever by the mine, the Atlantic lever at the east
@@ -28,7 +28,7 @@ window.EPISODE = {
   title: { en: 'Maritime Empires Maintained' },
   place: { en: 'Potosí, Spanish Peru, 1600' },
   intro: [
-    { en: 'The Grump blurred the page on maritime empires. Potosí is forgetting how silver, forced labor and new kinds of business remade the world.' },
+    { en: 'The Void blurred the page on maritime empires. Potosí is forgetting how silver, forced labor and new kinds of business remade the world.' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a seamstress, then wake the time stone.' }
   ],
   scenes: {
@@ -282,7 +282,7 @@ window.EPISODE = {
     spots: [[14, 16], [30, 11], [1, 11], [13, 6]],
     stat: 'loc',
     title: { en: 'Follow the silver' },
-    intro: { en: 'The Grump scrambled how American silver moved the world. Set the four levers: who dug the silver, what a flood of silver did to prices in Spain, where the Pacific galleons went, and Spain\'s trade policy. Then test them at the stone.' },
+    intro: { en: 'The Void scrambled how American silver moved the world. Set the four levers: who dug the silver, what a flood of silver did to prices in Spain, where the Pacific galleons went, and Spain\'s trade policy. Then test them at the stone.' },
     switches: [
       { name: { en: 'Labor: who dug the silver?' }, icon: '⛏️', start: 0,
         states: [{ en: 'Settlers from Spain' }, { en: 'Indigenous people, by force' }, { en: 'Machines, with few workers' }] },
@@ -372,10 +372,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 19], stat: 'hei', need: 3,
-    name: { en: 'The Cold Grump' },
-    appear: { en: 'The Cold Grump waits in the mist below the mountain.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits in the cold mist below the mountain.' },
     taunt: { en: 'Silver, ships and profits are what people remember. Who dug the silver? Let that be forgotten.' },
-    win: { en: 'The mist lifts from the mountain. The page on maritime empires returns, and so does the memory of those who carried its weight.' },
+    win: { en: 'The Void closes. The page on maritime empires returns, and so does the memory of those who carried its weight.' },
     questions: [
       {
         stim: { text: { en: 'The global silver trade, which benefited Spain, Western Europe, and China, was made possible by the forced labor of indigenous people in South American mines.' }, src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },

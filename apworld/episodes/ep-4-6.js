@@ -19,7 +19,7 @@ window.EPISODE = {
   title: { en: 'Challenges to State Power' },
   place: { en: 'Santa Fe, Nuevo México, New Spain, 1680' },
   intro: [
-    { en: 'The Grump smeared the page on [[resistance|resistance]]. In Santa Fe, people are forgetting why they push back against growing states.' },
+    { en: 'The Void smeared the page on [[resistance|resistance]]. In Santa Fe, people are forgetting why they push back against growing states.' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a trader find his book of news, then wake the time stone.' }
   ],
   scenes: {
@@ -235,7 +235,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#2b1d14', shirt: '#8a5a2a', pants: '#3a3a4a', hat: '#c9a24a', style: 'short' },
       lines: [
         { en: 'I bring goods up the long road from New Spain. I collect news too: how people across the world push back against growing states.' },
-        { en: 'The Grump\'s Ink Thief tore my book of news into three pieces! Ask Grandmother Willow, the potter. She lives across the river, by the Pueblo houses.' }
+        { en: 'The Void\'s Ink Thief tore my book of news into three pieces! Ask Grandmother Willow, the potter. She lives across the river, by the Pueblo houses.' }
       ],
       wait: { en: 'Grandmother Willow works south of the river. Cross the west bridge and look by the Pueblo houses.' },
       thanks: { en: 'My book is whole! Pueblo towns, French lords, Korean nobles loyal to the Ming, Brazilian maroons: all resisted growing states, in different ways.' }
@@ -275,7 +275,7 @@ window.EPISODE = {
   challenge: {
     at: [15, 7], type: 'claim', stat: 'hei',
     title: { en: 'Who resisted, and how?' },
-    intro: { en: 'The Grump says no one ever pushed back against powerful states. Pick one movement. Back it up with what it resisted and how it resisted.' },
+    intro: { en: 'The Void says no one ever pushed back against powerful states. Pick one movement. Back it up with what it resisted and how it resisted.' },
     options: [
       { icon: '🌽', name: { en: 'The Pueblo Revolt, 1680' }, desc: { en: 'Nuevo México, against Spanish colonial rule' },
         result: { en: 'Yes! The revolt drove the Spanish off most Pueblo land. Fighting went on, and Spanish troops later retook the region.' } },
@@ -317,10 +317,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 19], stat: 'mov', need: 3,
-    name: { en: 'The Silent Grump' },
-    appear: { en: 'The Silent Grump waits at the edge of the cornfields.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits at the edge of the cornfields. Nothing moves.' },
     taunt: { en: 'Powerful states write the history. Why remember the people who resisted them?' },
-    win: { en: 'The dust settles over the river valley. Chronicle page 4.6 floats down into your hands.' },
+    win: { en: 'The Void closes over the river valley. Chronicle page 4.6 floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Most forms of this struggle stop well short of outright collective defiance. Here I have in mind the ordinary weapons of relatively powerless groups: foot dragging, dissimulation, desertion, false compliance, pilfering, feigned ignorance..."' }, src: { en: 'Historian James Scott, quoted in "State Centralization and Resistance," World History Project' } },

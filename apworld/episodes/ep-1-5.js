@@ -19,7 +19,7 @@ window.EPISODE = {
   title: { en: 'State Building in Africa' },
   place: { en: 'Niani, Mali, 1330' },
   intro: [
-    { en: 'The Grump blurred the page on Mali. Niani is forgetting how its rulers built and ran a great Sahel state!' },
+    { en: 'The Void blurred the page on Mali. Niani is forgetting how its rulers built and ran a great Sahel state!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands: a European map of Mansa Musa and a reading on West African states.' },
     { en: 'Then help Awa the scribe\'s apprentice and wake the time stone.' }
   ],
@@ -279,7 +279,7 @@ window.EPISODE = {
     spots: [[13, 14], [6, 8], [27, 5], [30, 9]],
     stat: 'loc',
     title: { en: 'Run a Sahel state' },
-    intro: { en: 'The Grump jumbled how Mali is run. Set the four levers the way Sahel rulers really governed, then test them at the stone.' },
+    intro: { en: 'The Void jumbled how Mali is run. Set the four levers the way Sahel rulers really governed, then test them at the stone.' },
     switches: [
       { name: { en: 'Royal income' }, icon: '💰', start: 0,
         states: [{ en: 'Tax mainly the weavers\' cloth' }, { en: 'Tax the gold and trade routes' }] },
@@ -315,10 +315,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'mov', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the heat haze by the river!' },
-    taunt: { en: 'Gold, trade, mansas... I will cover all of Mali in dust!' },
-    win: { en: 'The dust settles over the river. The page on African states floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the heat haze by the river. The air shimmers into it.' },
+    taunt: { en: 'Gold, trade, mansas... all of it goes dark in me. Who will tell this story when I have it?' },
+    win: { en: 'The Void closes over the river. The page on African states floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'Wagadu controlled a large portion of the gold trade because it sat in the middle of the trade route that sent the gold north. Most West African gold in this period was mined a hundred miles or so south of Wagadu, and it was in great demand in North Africa and Europe.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },

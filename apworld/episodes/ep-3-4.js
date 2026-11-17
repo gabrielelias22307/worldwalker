@@ -16,7 +16,7 @@ window.EPISODE = {
   title: { en: 'Comparison in Land-Based Empires' },
   place: { en: 'Beijing, Qing China, 1700' },
   intro: [
-    { en: 'The Grump blurred the page on the great land empires. In Beijing, people forget how empires win and keep power!' },
+    { en: 'The Void blurred the page on the great land empires. In Beijing, people forget how empires win and keep power!' },
     { en: 'After the Mongol Empire fell, [[land-based empire|land-based empires]] filled the gap: Ottoman, Safavid, Mughal, Russian, and in China the Ming, then the Qing.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a tutor, then wake the time stone and compare the empires.' }
   ],
@@ -235,7 +235,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#1b1410', shirt: '#c0392b', robe: true, style: 'bun' },
       lines: [
         { en: 'I tutor young men for the exams. I drew a chart comparing the great empires: how each rules, fights, prays and pays.' },
-        { en: 'The Grump\'s Ink Thief tore it into three pieces! Zhao the water carrier saw it run. He works at the well by the palace.' }
+        { en: 'The Void\'s Ink Thief tore it into three pieces! Zhao the water carrier saw it run. He works at the well by the palace.' }
       ],
       wait: { en: 'Zhao fills his buckets at the well in the palace square. Walk north up the main avenue.' },
       thanks: { en: 'My chart is whole! Empires shared tools of rule, but each used them its own way. Thank you!' }
@@ -302,10 +302,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 1], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding beside the palace wall!' },
-    taunt: { en: 'Sultans, shahs, tsars, emperors... they are all the same! I will blur every difference away.' },
-    win: { en: 'The dust settles over Beijing. The page on land-based empires floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened beside the palace wall. The guards do not see it.' },
+    taunt: { en: 'Sultans, shahs, tsars, emperors. Compare them all you like. In the end I hold every one of them.' },
+    win: { en: 'The Void closes over Beijing. The page on land-based empires floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },

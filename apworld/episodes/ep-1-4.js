@@ -13,7 +13,7 @@ window.EPISODE = {
   title: { en: 'State Building in the Americas' },
   place: { en: 'Tenochtitlan, Mexica (Aztec) state, 1450' },
   intro: [
-    { en: 'The Grump blurred the page on the Americas. Tenochtitlan is forgetting how it conquers, trades and feeds itself!' },
+    { en: 'The Void blurred the page on the Americas. Tenochtitlan is forgetting how it conquers, trades and feeds itself!' },
     { en: 'Talk to the 4 people, read the 2 sources on the wooden stands, help a featherworker, then wake the time stone.' }
   ],
   scenes: {
@@ -220,7 +220,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#120c08', shirt: '#2a8a6a', robe: true, style: 'long' },
       lines: [
         { en: 'I make feathered art for nobles and priests. Quetzal feathers are light and costly, so pochteca carry them from far away.' },
-        { en: 'The Grump\'s helpers blew my bundle of feathers away! Ask the porter by the west shore. She watches everything that moves.' }
+        { en: 'The Void\'s helpers blew my bundle of feathers away! Ask the porter by the west shore. She watches everything that moves.' }
       ],
       wait: { en: 'The porter rests on the west shore of the island, south of the big avenue, by the dock.' },
       thanks: { en: 'My feathers! Feathered art is also tribute that conquered towns must send. Thank you.' }
@@ -243,7 +243,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 10], type: 'sort', stat: 'hei',
     title: { en: 'Compare the Americas' },
-    intro: { en: 'The Grump scrambled the record of the Americas, 1200–1450. Sort each card: the Mexica, the Inca, or another American society.' },
+    intro: { en: 'The Void scrambled the record of the Americas, 1200–1450. Sort each card: the Mexica, the Inca, or another American society.' },
     bins: [
       { id: 'mex', icon: '🦅', label: { en: 'Mexica (Aztec)' }, sub: { en: 'Valley of Mexico' } },
       { id: 'inca', icon: '☀️', label: { en: 'Inca' }, sub: { en: 'Andes Mountains, capital Cusco' } },
@@ -264,10 +264,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 15], stat: 'loc', need: 3,
-    name: { en: 'The Lake Fog Grump' },
-    appear: { en: 'The Lake Fog Grump is hiding beyond the chinampas, out over the water.' },
-    taunt: { en: 'Conquest, tribute, gardens on a lake. Let it all sink quietly into the fog.' },
-    win: { en: 'The fog lifts off the lake. The page on the Americas floats down into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened out over the lake, beyond the chinampas. The water goes still.' },
+    taunt: { en: 'An empire built on a lake. Water forgets faster than stone. Soon the lake will forget you.' },
+    win: { en: 'The Void closes over the lake. The page on the Americas floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The need for food and bodies for sacrifices pushed the Aztecs on campaigns to conquer neighboring peoples. ... The Aztecs made little attempt to integrate these people into their culture beyond demanding tribute.' }, src: { en: 'Adapted from "The Americas 1200–1450" by William H. Beezley, World History Project' } },

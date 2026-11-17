@@ -17,7 +17,7 @@ window.EPISODE = {
   title: { en: 'Technological Innovations' },
   place: { en: 'Lisbon, Portugal, 1480' },
   intro: [
-    { en: 'The Grump blurred the page on sea technology. Lisbon\'s shipyards are forgetting where their tools came from!' },
+    { en: 'The Void blurred the page on sea technology. Lisbon\'s shipyards are forgetting where their tools came from!' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a shipowner arm her caravel, then wake the time stone.' }
   ],
   scenes: {
@@ -251,7 +251,7 @@ window.EPISODE = {
         x: 22, y: 9, name: { en: 'Afonso' }, role: { en: 'Gunner' },
         look: { skin: 1, hair: '#5a3a1a', shirt: '#4a4a4a', pants: '#2a2a2a', hat: '#7a2a2a', style: 'short' },
         lines: [
-          { en: 'The Grump\'s helpers scattered my crates of shot all over town! Round shot smashes hulls. Grapeshot is small balls aimed at the crew.' }
+          { en: 'The Void\'s helpers scattered my crates of shot all over town! Round shot smashes hulls. Grapeshot is small balls aimed at the crew.' }
         ]
       },
       q: { en: 'Pirate ships escape before we can catch them. Bring me the shot that wrecks sails and rigging, and the cannon is yours.' },
@@ -272,7 +272,7 @@ window.EPISODE = {
     // the kamal on the harbor front, the carrack at the shipyard
     spots: [[2, 8], [7, 2], [24, 12], [13, 14]],
     title: { en: 'Where did the tools come from?' },
-    intro: { en: 'The Grump erased where Lisbon\'s sea tools came from! Read the 4 posts in town. Then answer at the time stone.' },
+    intro: { en: 'The Void erased where Lisbon\'s sea tools came from! Read the 4 posts in town. Then answer at the time stone.' },
     table: {
       head: [{ en: 'Tool' }, { en: 'Where it came from' }, { en: 'What it did' }],
       rows: [
@@ -301,10 +301,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 13], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding by the harbor!' },
-    taunt: { en: 'Compass, kamal, astrolabe... I will fog every star so no ship finds its way!' },
-    win: { en: 'The fog lifts off the river. The page on sea technology floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the harbor. The stars above it go out one by one.' },
+    taunt: { en: 'Compass, kamal, astrolabe. No tool can find a star I have swallowed.' },
+    win: { en: 'The Void closes over the river. The page on sea technology floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The tools that these traders and explorers used were based on innovations that developed in many parts of Afro-Eurasia and were brought together in Europe during this period.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },

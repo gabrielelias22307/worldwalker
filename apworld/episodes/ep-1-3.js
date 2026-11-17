@@ -14,7 +14,7 @@ window.EPISODE = {
   title: { en: 'Developments in South and Southeast Asia' },
   place: { en: 'Delhi, Delhi Sultanate, 1312' },
   intro: [
-    { en: 'The Grump blurred the page on South and Southeast Asia. Delhi is forgetting its sultans, its faiths and its villages!' },
+    { en: 'The Void blurred the page on South and Southeast Asia. Delhi is forgetting its sultans, its faiths and its villages!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a grain seller, then wake the time stone.' }
   ],
   scenes: {
@@ -235,7 +235,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sell grain with my husband. In South Asia, both Islam and a stricter Hinduism favor [[purdah|purdah]], the seclusion of women.' },
         { en: 'Wealthy city women are the most secluded. Poor rural women, the vast majority, work beside the men of their families, like me.' },
-        { en: 'The Grump spoiled my grain! Villages outside the wall grow it. Ask the boatman at the river landing. He knows every village.' }
+        { en: 'The Void spoiled my grain! Villages outside the wall grow it. Ask the boatman at the river landing. He knows every village.' }
       ],
       wait: { en: 'The boatman waits at the river landing: out the south gate, then southeast by the river.' },
       thanks: { en: 'Fresh grain! The sultan rules Delhi, but out there village councils run daily life. Thank you!' }
@@ -258,7 +258,7 @@ window.EPISODE = {
         lines: [
           { en: 'Our [[village council|village council]] of male household heads sets planting times, rotates crops and shares the common pasture.' },
           { en: 'Landowners take rent and rulers take taxes, but day to day, local authority matters more. In much of Southeast Asia, women even have significant legal rights.' },
-          { en: 'The Grump broke our irrigation channel! Bring what the council needs to mend it, and my grain is yours.' }
+          { en: 'The Void broke our irrigation channel! Bring what the council needs to mend it, and my grain is yours.' }
         ]
       },
       q: { en: 'What does the village council need to mend its irrigation channel?' },
@@ -281,7 +281,7 @@ window.EPISODE = {
     spots: [[9, 4], [19, 14], [22, 16], [28, 8], [5, 6]],
     stat: 'hei',
     title: { en: 'Survey the states' },
-    intro: { en: 'The Grump scrambled the record of the region. Read the 5 survey posts, one state on each. Then compare them at the time stone.' },
+    intro: { en: 'The Void scrambled the record of the region. Read the 5 survey posts, one state on each. Then compare them at the time stone.' },
     table: {
       head: [{ en: 'State' }, { en: 'Rulers\' faith or model' }, { en: 'Key fact' }],
       rows: [
@@ -311,10 +311,10 @@ window.EPISODE = {
   },
   boss: {
     at: [21, 19], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the fields by the river!' },
-    taunt: { en: 'Sultans, temples, monks, villages... it is all one blur. I will bury it in dust!' },
-    win: { en: 'The dust settles over Delhi. The page on South and Southeast Asia floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the fields by the river. The crops lean toward it.' },
+    taunt: { en: 'Towers, temples, kingdoms. Stone crumbles, and everything that crumbles comes to me.' },
+    win: { en: 'The Void closes over Delhi. The page on South and Southeast Asia floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"The Qutb Minar, a sandstone and marble victory tower, constructed by several different sultans, the Alai Darwaza, a gateway with intricate carvings built in 1312, and the tomb of a Muslim cleric."' }, src: { en: 'Description of monuments in Delhi, "South and Southeast Asia 1200–1450," World History Project' } },

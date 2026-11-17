@@ -5,7 +5,7 @@
    South-west: the warehouses and the harbor docks (the sailor). South-east: the market by the quay (the merchant from
    North Africa, the farm worker), the time stone with its three levers: the long-term, intermediate and short-term
    causes that brought the plague to the port.
-   A hard topic: told plainly and with care. The Grump is quiet and serious here, and no suffering is a prize.
+   A hard topic: told plainly and with care. The Void is quiet and serious here, and no suffering is a prize.
    Content source: Khan Academy, AP World History (World History Project), Unit 2 Lesson "Environmental Consequences
    of Connectivity | 2.6": "Trade Networks and the Black Death" (Bennett Sherry), "Opener: Contagion!", "Causation:
    Introduction", "Causation: The Black Death", "Quick Sourcing: The Black Death"; and the unit overview
@@ -23,7 +23,7 @@ window.EPISODE = {
   title: { en: 'Environmental Consequences of Connectivity' },
   place: { en: 'Genoa, an Italian city-state, 1349' },
   intro: [
-    { en: 'The Grump blurred the page on the Black Death. Genoa is forgetting how a deadly plague traveled the trade routes, and how crops traveled too.' },
+    { en: 'The Void blurred the page on the Black Death. Genoa is forgetting how a deadly plague traveled the trade routes, and how crops traveled too.' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a farm worker, then wake the time stone.' }
   ],
   scenes: {
@@ -230,7 +230,7 @@ window.EPISODE = {
       look: { skin: 0, hair: '#3a2a1a', shirt: '#6a7a4a', pants: '#3a3a2a', style: 'long' },
       lines: [
         { en: 'I came down from the hill farms. So many workers have died that landowners cannot find hands for the fields. Fewer peasants means more power for those who live.' },
-        { en: 'Now we ask for higher wages. The old order of lords and peasants, [[feudalism|feudalism]], is cracking. But the Grump\'s helpers took my contract! Ask the shepherd on the hill road.' }
+        { en: 'Now we ask for higher wages. The old order of lords and peasants, [[feudalism|feudalism]], is cracking. But the Void\'s helpers took my contract! Ask the shepherd on the hill road.' }
       ],
       wait: { en: 'The shepherd keeps his sheep in the north-west, up the hill road above the city.' },
       thanks: { en: 'My contract, with a higher wage! With better pay, workers can buy goods once called luxuries. A new [[middle class|middle class]] may grow from this. Thank you.' }
@@ -325,10 +325,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 10], stat: 'hei', need: 3,
-    name: { en: 'The Grey Grump' },
-    appear: { en: 'The Grey Grump waits quietly above the harbor.' },
-    taunt: { en: 'So many were lost. Blur the page, and no one will ask how it spread.' },
-    win: { en: 'The fog lifts from the harbor. The page returns, so the losses and the lessons are remembered.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly above the harbor. It is very still.' },
+    taunt: { en: 'So many were lost. If the page stays dark, no one will ask how the sickness traveled.' },
+    win: { en: 'The Void closes over the harbor. The page returns, so the losses and the lessons are remembered.' },
     questions: [
       {
         stim: { title: { en: 'A primary source' }, text: { en: '"The people of Tournai (a city in present-day Belgium) bury plague victims, 1353."' }, src: { en: 'Caption of an image credited to Pierart dou Tielt, 1353; in "Trade Networks and the Black Death," World History Project' } },

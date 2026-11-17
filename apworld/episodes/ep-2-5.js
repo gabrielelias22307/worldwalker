@@ -15,7 +15,7 @@ window.EPISODE = {
   title: { en: 'Cultural Consequences of Connectivity' },
   place: { en: 'A caravan oasis on the pilgrim road, Arabia, 1325' },
   intro: [
-    { en: 'The Grump blew dust over the page on cultural exchange. This oasis on the pilgrim road is forgetting how ideas travel with trade!' },
+    { en: 'The Void blew dust over the page on cultural exchange. This oasis on the pilgrim road is forgetting how ideas travel with trade!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young traveler, then wake the time stone.' }
   ],
   scenes: {
@@ -225,7 +225,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#3a5a8a', pants: '#2a2a3a', hat: '#e8e2d0', style: 'short' },
       lines: [
         { en: 'I want to travel the world and write down what I see, like the Muslim trader Ibn Battuta or the Christian merchant Marco Polo.' },
-        { en: 'But the Grump\'s wind stole my travel journal! Ask Idris the camel driver in the caravan camp, southwest of here. Drivers see everything.' }
+        { en: 'But the Void\'s wind stole my travel journal! Ask Idris the camel driver in the caravan camp, southwest of here. Drivers see everything.' }
       ],
       wait: { en: 'Idris waits with his camels in the caravan camp, by the well in the southwest.' },
       thanks: { en: 'My journal! A traveler\'s account shows what one person saw. But the people we meet decide: accept a new idea, reject it, or mix it.' }
@@ -248,7 +248,7 @@ window.EPISODE = {
   challenge: {
     at: [18, 11], type: 'claim', stat: 'loc',
     title: { en: 'How did ideas travel?' },
-    intro: { en: 'The Grump says ideas never leave home! Pick one idea that traveled. Back it up with how it traveled and what it changed.' },
+    intro: { en: 'The Void says ideas never leave home! Pick one idea that traveled. Back it up with how it traveled and what it changed.' },
     options: [
       { icon: '🕌', name: { en: 'Islam in West Africa' }, desc: { en: 'From North Africa, across the Sahara' },
         result: { en: 'Yes! Trade and Sufi brotherhoods carried Islam south. West African elites blended it with local beliefs.' } },
@@ -284,10 +284,10 @@ window.EPISODE = {
   },
   boss: {
     at: [5, 18], stat: 'mov', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the caravan camp!' },
-    taunt: { en: 'Ideas should stay where they started. I will blow every traveler\'s story away!' },
-    win: { en: 'The dust settles over the oasis. Chronicle page 2.5 floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the caravan camp. Lamps flicker toward it.' },
+    taunt: { en: 'Ideas travel, and I follow them. Every story told on this road ends in my silence.' },
+    win: { en: 'The Void closes over the oasis. Chronicle page 2.5 floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Situated between Europe, sub-Saharan Africa, Southeast Asia, and China, the Islamic world was involved in a whole lot of trade. ... Islam is a religion that follows a strict calendar, so dates were understood mathematically. Finally, Islam calls for its followers to pray facing the city of Mecca, requiring directional calculations."' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },

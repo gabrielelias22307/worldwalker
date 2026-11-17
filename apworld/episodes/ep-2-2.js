@@ -14,7 +14,7 @@ window.EPISODE = {
   title: { en: 'The Mongol Empire' },
   place: { en: 'Karakorum, Mongol Empire, 1250' },
   intro: [
-    { en: 'The Grump blurred the page on the Mongols. Karakorum is forgetting how a steppe people built the largest empire in history!' },
+    { en: 'The Void blurred the page on the Mongols. Karakorum is forgetting how a steppe people built the largest empire in history!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help an astronomer, then wake the time stone.' }
   ],
   scenes: {
@@ -222,7 +222,7 @@ window.EPISODE = {
       lines: [
         { en: 'The Mongols worship a sky god, and their shamans read the heavens. So the khans keep astronomers from China and the Muslim world.' },
         { en: 'The khans are tolerant of foreign religions. They honor some religious leaders with respect and tax benefits. This empire is a religious melting pot!' },
-        { en: 'But the Grump\'s Ink Thief tore up my star chart! Ask the [[yam|yam]] rider at the post station outside the west gate.' }
+        { en: 'But the Void\'s Ink Thief tore up my star chart! Ask the [[yam|yam]] rider at the post station outside the west gate.' }
       ],
       wait: { en: 'The yam rider waits by the post station, outside the city\'s west gate, in the south.' },
       thanks: { en: 'My chart! Here Chinese and Muslim astronomers share what they know. Networks help science grow.' }
@@ -241,7 +241,7 @@ window.EPISODE = {
       at: [4, 9],
       hops: [[13, 19], [8, 16]],
       name: { en: 'The Ink Thief' },
-      taunt: { en: 'The Grump sent me. No chart, no shared knowledge!' },
+      taunt: { en: 'The Void sent me. No chart, no shared knowledge!' },
       win: { en: 'Caught on the open steppe! The thief drops the last scrap. The star chart is whole.' },
       clues: [
         { t: { en: 'Piece 1 lies where Chinese silk is sold to traders from the west. Look in the market, in the south-east.' },
@@ -267,7 +267,7 @@ window.EPISODE = {
     spots: [[11, 12], [14, 12], [17, 12]],
     stat: 'loc',
     title: { en: 'Cause, means, effect' },
-    intro: { en: 'The Grump scrambled why the Mongol Empire rose and lasted. Set each lever: the motive that pushed the tribes south, the means that won their wars, and the way the khans ran their lands. Then test them at the stone.' },
+    intro: { en: 'The Void scrambled why the Mongol Empire rose and lasted. Set each lever: the motive that pushed the tribes south, the means that won their wars, and the way the khans ran their lands. Then test them at the stone.' },
     switches: [
       { name: { en: 'Motive: what pushed the tribes south' }, icon: '🌵', start: 0,
         states: [{ en: 'Rich grass, fat herds' }, { en: 'Drought dries the pastures' }, { en: 'Silver found on the steppe' }] },
@@ -337,10 +337,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 20], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump rises from the steppe behind the caravanserai.' },
-    taunt: { en: 'Conquest, trade, plague... let the dust bury all of it. Who will remember?' },
-    win: { en: 'The dust settles over Karakorum. The page on the Mongol Empire drifts into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void rises from the steppe behind the caravanserai. The wind falls silent.' },
+    taunt: { en: 'The largest empire the world had seen, and still it split apart. Everything splits. Everything falls to me.' },
+    win: { en: 'The Void closes over Karakorum. The page on the Mongol Empire drifts into your hands.' },
     questions: [
       {
         stim: { text: { en: '"All these pieces of paper are issued with as much solemnity and authority as if they were of pure gold or silver.... wheresoever a person may go throughout the Great Khan\'s dominions he shall find these pieces of paper current, and shall be able to transact all sales and purchases of goods by means of them...."' }, src: { en: 'Marco Polo, The Travels, describing the Great Khan\'s China; quoted in "Opener: World Travelers," World History Project' } },

@@ -1,7 +1,7 @@
 /* HISTORYWALKER · Episode 4.4 · Maritime Empires Established (AP World Topic 4.4, c. 1450–1750)
    A QUIET episode (memorial: true): a town beside a Portuguese fort on the Gold Coast of West Africa, in 1630.
    The Atlantic slave trade is told plainly and with care: no jokes, no smudges, nothing about suffering is a prize,
-   and the Grump is "The Forgetting". The people are ordinary townspeople, a fort clerk and sailors (all invented).
+   and the Void is "The Forgetting". The people are ordinary townspeople, a fort clerk and sailors (all invented).
    Content source: Khan Academy, AP World History (World History Project), Unit 4 Lesson "Maritime Empires Established":
    "Survey of Transoceanic Empires, 1450 to 1750" (Jack Bouchard), "The Cosmopolitan Indian Ocean" (Bennett Sherry),
    "European Colonies in the Americas" (William H. Beezley), "The Transatlantic Slave Trade" (Jake Thurman); and the unit
@@ -20,7 +20,7 @@ window.EPISODE = {
   title: { en: 'Maritime Empires Established' },
   place: { en: 'A fort town, Portuguese Gold Coast, West Africa, 1630' },
   intro: [
-    { en: 'On this West African coast, the Grump wants people to forget the sea empires and the [[transatlantic slave trade|slave trade]].' },
+    { en: 'On this West African coast, the Void wants people to forget the sea empires and the [[transatlantic slave trade|slave trade]].' },
     { en: 'Listen with care to the 4 people here and read the 2 sources on their stands. Help a pilot, then visit the time stone.' }
   ],
   scenes: {

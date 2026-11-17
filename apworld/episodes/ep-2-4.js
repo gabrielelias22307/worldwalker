@@ -19,7 +19,7 @@ window.EPISODE = {
   title: { en: 'Trans-Saharan Trade Routes' },
   place: { en: 'Timbuktu, Mali Empire, 1350' },
   intro: [
-    { en: 'The Grump buried the page on the Sahara in sand. Timbuktu is forgetting why caravans cross the desert!' },
+    { en: 'The Void buried the page on the Sahara in sand. Timbuktu is forgetting why caravans cross the desert!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a cook get salt, then wake the time stone.' }
   ],
   scenes: {
@@ -270,7 +270,7 @@ window.EPISODE = {
     // the east road toward Egypt and Mecca (Indian Ocean)
     spots: [[4, 2], [20, 1], [13, 12], [29, 10]],
     title: { en: 'Compare the networks' },
-    intro: { en: 'The Grump mixed up the trade networks of 1200–1450! Read the post for each network, then come back and compare them.' },
+    intro: { en: 'The Void mixed up the trade networks of 1200–1450! Read the post for each network, then come back and compare them.' },
     table: {
       head: [{ en: 'Network' }, { en: 'How goods moved' }, { en: 'Main goods' }, { en: 'What helped it grow' }],
       rows: [
@@ -299,10 +299,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'hei', need: 3,
-    name: { en: 'The Sand Grump' },
-    appear: { en: 'The Sand Grump is hiding in a dust cloud by the river!' },
-    taunt: { en: 'Gold, salt, camels... who needs them? I will bury every route in sand!' },
-    win: { en: 'The dust settles over the Niger. The page on the trans-Saharan trade floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in a dust cloud by the river. The caravan bells stop.' },
+    taunt: { en: 'Gold and salt crossed this desert for centuries. I can swallow the desert, and every road across it.' },
+    win: { en: 'The Void closes over the Niger. The page on the trans-Saharan trade floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'Pastoralists in the Sahara were essential for the trans-Saharan trade, but they were also a threat to it. Rather than invade the desert, states and merchants paid tribute to pastoralists in order to ensure the safety of their caravans.' }, src: { en: 'Adapted from "Across an Ocean of Sand: Trans-Saharan Trade Routes," World History Project' } },

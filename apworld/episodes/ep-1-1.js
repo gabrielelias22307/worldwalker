@@ -12,7 +12,7 @@ window.EPISODE = {
   title: { en: 'Developments in East Asia' },
   place: { en: 'Hangzhou, Song China, 1200' },
   intro: [
-    { en: 'The Grump blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
+    { en: 'The Void blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a traveler from Japan, then wake the time stone.' }
   ],
   scenes: {
@@ -226,7 +226,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sailed from Japan to study Buddhism here. Japanese monks bring Chinese teachings home, like Chan, which we call Zen, and Pure Land.' },
         { en: 'At home, ordinary people blend Pure Land with our own Shinto. Since our civil war, a [[shogun|shogun]], our top general, heads a military government.' },
-        { en: 'The Grump\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
+        { en: 'The Void\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
       ],
       wait: { en: 'The printer works on the east side, by the canal dock, south of the bridge.' },
       thanks: { en: 'My sutras! Chinese writing and Buddhist teachings, carried home, will shape Japan in its own way. Thank you.' }
@@ -249,7 +249,7 @@ window.EPISODE = {
   challenge: {
     at: [19, 13], type: 'carry', stat: 'pla',
     title: { en: 'Sort the Song world' },
-    intro: { en: 'The Grump scrambled the record of Song China. Carry each card to its AP theme: government, economy, or belief and culture.' },
+    intro: { en: 'The Void scrambled the record of Song China. Carry each card to its AP theme: government, economy, or belief and culture.' },
     zones: [
       { bin: 'gov', x: 17, y: 11, w: 3, h: 2 },
       { bin: 'ecn', x: 20, y: 11, w: 3, h: 2 },
@@ -272,10 +272,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 3], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding behind the teahouse!' },
-    taunt: { en: 'Exams, rice, paper money... who cares? I will fog up all of Song China!' },
-    win: { en: 'The fog lifts over West Lake. The page on East Asia floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the teahouse. The lake light bends toward it.' },
+    taunt: { en: 'Every exam, every harvest, every coin. I swallow them all, and Hangzhou will not remember it ever was.' },
+    win: { en: 'The Void closes over West Lake. The page on East Asia floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large..."' }, src: { en: 'Confucius, The Analects, 1.6 (about 500 BCE)' } },

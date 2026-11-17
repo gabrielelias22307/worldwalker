@@ -12,7 +12,7 @@
    (Bennett Sherry, 4.4), "The Transatlantic Slave Trade" (4.4), "Overview of New Economic Systems"
    (Eman M. Elshaikh, 4.5). World History Project content is CC BY-NC 4.0. Facts here come from those readings.
    Reading stands: Martin Luther's words of 1530 as quoted in "Transformations in Eurasian Belief Systems" (3.3), and
-   an adapted reading from "Unit 4 Introduction" (Trevor Getz). The 1773 Bernardin de Saint-Pierre quote in the Grump's
+   an adapted reading from "Unit 4 Introduction" (Trevor Getz). The 1773 Bernardin de Saint-Pierre quote in the Void's
    questions is the one printed in "Transatlantic Migration Patterns" (4.7).
    English only, AP level. Hard history (the Atlantic slave trade, forced labor in the silver mines) is told
    plainly and with care. */
@@ -25,7 +25,7 @@ window.EPISODE = {
   title: { en: 'Continuity and Change, 1450–1750' },
   place: { en: 'Amsterdam, Dutch Republic, 1700' },
   intro: [
-    { en: 'The Grump blurred the last chronicle page: 1450 to 1750. Amsterdam is forgetting what changed and what stayed the same!' },
+    { en: 'The Void blurred the last chronicle page: 1450 to 1750. Amsterdam is forgetting what changed and what stayed the same!' },
     { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a cook get pepper, then wake the time stone.' }
   ],
   scenes: {
@@ -242,7 +242,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#2b1d14', shirt: '#c0392b', pants: '#4a3a2a', style: 'bun' },
       lines: [
         { en: 'Pepper once came through many middlemen: Silk Road caravans, then the Ottomans, who taxed it, then Italian traders. Each one took a profit, so pepper was costly.' },
-        { en: 'Since da Gama, ships bring it straight around Africa. But the Grump spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
+        { en: 'Since da Gama, ships bring it straight around Africa. But the Void spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
       ],
       wait: { en: 'Cross the canal bridge north, then walk west along the harbor quay to the docks.' },
       thanks: { en: 'Pepper! An old Asian spice, on a new ocean route, paid for with American silver. Old and new, all in one sack. Thank you!' }
@@ -279,7 +279,7 @@ window.EPISODE = {
   challenge: {
     at: [23, 18], type: 'carry', stat: 'pla',
     title: { en: 'What changed, what stayed?' },
-    intro: { en: 'The Grump scrambled the chronicle of 1450–1750. Carry each card to CHANGE (something new in this era) or [[continuity|CONTINUITY]] (something that went on as before).' },
+    intro: { en: 'The Void scrambled the chronicle of 1450–1750. Carry each card to CHANGE (something new in this era) or [[continuity|CONTINUITY]] (something that went on as before).' },
     zones: [
       { bin: 'chg', x: 17, y: 18, w: 3, h: 3 },
       { bin: 'cnt', x: 27, y: 18, w: 3, h: 3 }
@@ -303,10 +303,10 @@ window.EPISODE = {
   },
   boss: {
     at: [30, 9], stat: 'hei', need: 3,
-    name: { en: 'The Tide Grump' },
-    appear: { en: 'The Tide Grump waits quietly behind the canal houses.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits behind the canal houses. The water runs toward it.' },
     taunt: { en: 'Everything changed, or nothing did. Why remember which, or who paid the price?' },
-    win: { en: 'The tide turns. The last chronicle page, 1450 to 1750, floats down into your hands.' },
+    win: { en: 'The Void closes. The last chronicle page, 1450 to 1750, floats down into your hands.' },
     questions: [
       {
         stim: { title: { en: 'The Dutch Republic' }, rows: [[{ en: 'Time' }, { en: 'Fact' }], [{ en: '1600' }, { en: 'A small republic, only recently independent from Spain' }], [{ en: '1602' }, { en: 'The Amsterdam Stock Exchange opens' }], [{ en: '1600–1800' }, { en: '49 percent of all ships in the Eurasian trade were Dutch' }]], src: { en: 'From "Origins of Oceanic Connections," World History Project' } },

@@ -23,7 +23,7 @@ window.EPISODE = {
   title: { en: 'Changing Social Hierarchies' },
   place: { en: 'Lima, Viceroyalty of Peru, 1650' },
   intro: [
-    { en: 'The Grump blurred the page on social hierarchies. Lima is forgetting who ranked its people, why, and who paid the cost.' },
+    { en: 'The Void blurred the page on social hierarchies. Lima is forgetting who ranked its people, why, and who paid the cost.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a court scribe, then wake the time stone.' }
   ],
   scenes: {
@@ -236,7 +236,7 @@ window.EPISODE = {
       look: { skin: 0, hair: '#2b1d14', shirt: '#4a4a6a', robe: true, style: 'short' },
       lines: [
         { en: 'I copy laws for the [[audiencia|audiencia]], the judges who help the viceroy rule the [[viceroyalty|Viceroyalty]] of Peru. These laws decide who stands where in Lima.' },
-        { en: 'The Grump\'s Ink Thief tore my copy into three pieces! Rosa the water seller sees everything. She works at the fountain in the plaza.' }
+        { en: 'The Void\'s Ink Thief tore my copy into three pieces! Rosa the water seller sees everything. She works at the fountain in the plaza.' }
       ],
       wait: { en: 'Rosa sells water at the fountain in the middle of the plaza. Walk north up the main street.' },
       thanks: { en: 'My copy is whole! Law, dress codes and the church all helped a few rulers keep their place above the many.' }
@@ -276,7 +276,7 @@ window.EPISODE = {
   challenge: {
     at: [22, 19], type: 'carry', stat: 'loc',
     title: { en: 'Who chose the crossing?' },
-    intro: { en: 'The Grump mixed up the record of [[transatlantic migration|transatlantic migration]]. Carry each card to how these people crossed the Atlantic: by choice, or by force. Voluntary migrants were always treated far better than captive Africans.' },
+    intro: { en: 'The Void mixed up the record of [[transatlantic migration|transatlantic migration]]. Carry each card to how these people crossed the Atlantic: by choice, or by force. Voluntary migrants were always treated far better than captive Africans.' },
     zones: [
       { bin: 'chose', x: 18, y: 17, w: 3, h: 3 },
       { bin: 'forced', x: 26, y: 17, w: 3, h: 3 }
@@ -299,10 +299,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 1], stat: 'hei', need: 3,
-    name: { en: 'The Gray Grump' },
-    appear: { en: 'The Gray Grump waits quietly on the far bank of the river.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly on the far bank of the river.' },
     taunt: { en: 'Let the city forget who made these rankings, and who paid for them.' },
-    win: { en: 'The Grump fades. The page on social hierarchies returns, and with it the truth: rulers made these rankings to keep power.' },
+    win: { en: 'The Void closes. The page on social hierarchies returns, and with it the truth: rulers made these rankings to keep power.' },
     questions: [
       {
         stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, 1773; quoted in "Transatlantic Migration Patterns," World History Project' } },

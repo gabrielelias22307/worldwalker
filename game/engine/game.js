@@ -59,7 +59,8 @@
     document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
-    if (WW.COURSE && WW.COURSE.guideSmall) root.classList.add('guide-small'); // HistoryWalker: a smaller guide card
+    if (WW.COURSE && WW.COURSE.guideSmall) root.classList.add('guide-small');
+    if (WW.COURSE && WW.COURSE.hd) root.classList.add('void-dark'); // HistoryWalker: the Void's trial panel is dark // HistoryWalker: a smaller guide card
     if (WW.LANGS.length < 2) root.querySelector('.langs').hidden = true; // one language: no language buttons
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
@@ -620,9 +621,10 @@
         const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
         if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
         const zz = G.foesAsleep(); if (zz) c.globalAlpha = 0.6;
-        WW.drawFoe(c, e, px(e) + j, py(e), zz ? 0 : t, rage);
+        ((WW.hd && WW.hd.drawFoe) || WW.drawFoe)(c, e, px(e) + j, py(e), zz ? 0 : t, rage); // HistoryWalker: shades (hd.js)
         if (zz) { c.globalAlpha = 1; const k = Math.floor(t / 600) % 3; c.fillStyle = '#fffbe8'; c.font = 'bold 8px monospace'; c.fillText('z', px(e) + 12, py(e) - 2 - k * 3); if (k > 0) c.fillText('z', px(e) + 15, py(e) - 7 - k * 2); }
       }
+      if (e.kind === 'boss' && WW.hd && WW.hd.drawBoss) { WW.hd.drawBoss(c, px(e), py(e), t, t - (e.roarT || 0) < 700); return; } // HistoryWalker: the Void (hd.js)
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;
         // a dark, spiky cloud around the Grump

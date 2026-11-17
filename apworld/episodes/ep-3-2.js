@@ -24,7 +24,7 @@ window.EPISODE = {
   title: { en: 'Empires: Administration' },
   place: { en: 'Fatehpur Sikri, Mughal Empire, 1580' },
   intro: [
-    { en: 'The Grump blurred the page on running an empire. The Mughal capital is forgetting how its emperor holds power!' },
+    { en: 'The Void blurred the page on running an empire. The Mughal capital is forgetting how its emperor holds power!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands.' },
     { en: 'Then help a horse trader at the customs gate and wake the time stone.' }
   ],
@@ -270,7 +270,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 9], type: 'claim', stat: 'hei',
     title: { en: 'How did empires hold power?' },
-    intro: { en: 'The Grump says emperors ruled by force alone! Pick one empire. Back it up with one way it funded the state and one way it claimed [[legitimacy|legitimacy]].' },
+    intro: { en: 'The Void says emperors ruled by force alone! Pick one empire. Back it up with one way it funded the state and one way it claimed [[legitimacy|legitimacy]].' },
     options: [
       { icon: '🐘', name: { en: 'The Mughal Empire' }, desc: { en: 'Northern India. Emperor Akbar, r. 1556–1605' },
         result: { en: 'Yes! The Mughals taxed land and trade, and won loyalty from every faith.' } },
@@ -306,10 +306,10 @@ window.EPISODE = {
   },
   boss: {
     at: [5, 10], stat: 'reg', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding by the lake!' },
-    taunt: { en: 'Taxes, judges, paintings... who cares? An emperor only needs a big army!' },
-    win: { en: 'The dust settles over the palace. The page on Mughal rule floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the lake. The palace lamps dim.' },
+    taunt: { en: 'Taxes, judges, pledges, paintings. A throne is only a shadow, and shadows belong to me.' },
+    win: { en: 'The Void closes over the palace. The page on Mughal rule floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor, to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },

@@ -17,7 +17,7 @@ window.EPISODE = {
   title: { en: 'Comparison of Economic Exchange' },
   place: { en: 'Malacca, Sultanate of Malacca, 1450' },
   intro: [
-    { en: 'The Grump tangled the page on trade. In Malacca, people are mixing up the Silk Roads, the Indian Ocean and the [[trans-saharan|trans-Saharan]] routes!' },
+    { en: 'The Void tangled the page on trade. In Malacca, people are mixing up the Silk Roads, the Indian Ocean and the [[trans-saharan|trans-Saharan]] routes!' },
     { en: 'Talk to the 4 travelers, read the 2 sources on the lecterns, help a Gujarati merchant load his ship, then wake the time stone.' }
   ],
   scenes: {
@@ -266,7 +266,7 @@ window.EPISODE = {
   challenge: {
     at: [16, 16], type: 'carry', stat: 'hei',
     title: { en: 'Sort the three networks' },
-    intro: { en: 'The Grump mixed up the [[network of exchange|networks of exchange]]. Carry each card to its network, or to "All three" if it is a similarity.' },
+    intro: { en: 'The Void mixed up the [[network of exchange|networks of exchange]]. Carry each card to its network, or to "All three" if it is a similarity.' },
     zones: [
       { bin: 'silk', x: 16, y: 13, w: 3, h: 2 },
       { bin: 'ocean', x: 12, y: 16, w: 3, h: 2 },
@@ -293,10 +293,10 @@ window.EPISODE = {
   },
   boss: {
     at: [30, 7], stat: 'hei', need: 3,
-    name: { en: 'The Knot Grump' },
-    appear: { en: 'The Knot Grump is hiding behind the Chinese quarter!' },
-    taunt: { en: 'Silk, spice, salt... it is all the same to me! I will tie every route into one big knot!' },
-    win: { en: 'The knot comes loose over the strait. The page on trade networks floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the Chinese quarter. The routes on every map bend toward it.' },
+    taunt: { en: 'Silk Roads, ocean, desert. Three networks, one ending. Every route leads into me.' },
+    win: { en: 'The Void closes over the strait. The page on trade networks floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"All along this route Timur causes horses to be kept stationed ready for use at post-stages... further for this service there have been built caravanserais at diverse intervals, where there are stables for the horses ..."' }, src: { en: 'Ruy Gonzalez de Clavijo (d. 1412), envoy from Spain to the court of Timur at Samarkand' } },

@@ -18,7 +18,7 @@ window.EPISODE = {
   title: { en: 'The Silk Roads' },
   place: { en: 'Samarkand, Mongol Central Asia, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on the Silk Roads. Samarkand\'s merchants are forgetting why goods and ideas travel!' },
+    { en: 'The Void blurred the page on the Silk Roads. Samarkand\'s merchants are forgetting why goods and ideas travel!' },
     { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a young merchant make a trade, then wake the time stone.' }
   ],
   scenes: {
@@ -267,7 +267,7 @@ window.EPISODE = {
     // -> the crossroads in the heart of the city -> the caravanserai yard -> the copyist's house
     spots: [[3, 18], [4, 10], [13, 10], [26, 10], [20, 8]],
     title: { en: 'From war to a web of trade' },
-    intro: { en: 'The Grump scrambled the chronicle of the Silk Roads. Walk to each stop on the map in order, from cause to effect.' },
+    intro: { en: 'The Void scrambled the chronicle of the Silk Roads. Walk to each stop on the map in order, from cause to effect.' },
     items: [
       { icon: '⚔️', t: { en: 'Before 1200: rival kingdoms at war make the road perilous' } },
       { icon: '🐎', t: { en: 'Chinggis Khan\'s cavalry conquers Central Asia' } },
@@ -280,10 +280,10 @@ window.EPISODE = {
   },
   boss: {
     at: [24, 19], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the dunes south of the caravanserai!' },
-    taunt: { en: 'Silk, glass, ideas... let them all get lost in the sand! No caravan will find its way.' },
-    win: { en: 'The dust settles over Samarkand. The page on the Silk Roads floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the dunes south of the caravanserai. Sand pours into it.' },
+    taunt: { en: 'Silk, glass, ideas. Every road ends somewhere. All of them end in me.' },
+    win: { en: 'The Void closes over Samarkand. The page on the Silk Roads floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The road had been a perilous one, controlled by independent kingdoms, often at war with each other.' }, src: { en: 'Adapted from "Archipelago of Trade," World History Project' } },

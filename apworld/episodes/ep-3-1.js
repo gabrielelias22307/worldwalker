@@ -14,7 +14,7 @@ window.EPISODE = {
   title: { en: 'Empires Expand' },
   place: { en: 'Istanbul, Ottoman Empire, 1550' },
   intro: [
-    { en: 'The Grump blurred the page on the gunpowder empires. Istanbul is forgetting how the Ottomans rose and ruled!' },
+    { en: 'The Void blurred the page on the gunpowder empires. Istanbul is forgetting how the Ottomans rose and ruled!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young mapmaker, then wake the time stone.' }
   ],
   scenes: {
@@ -227,7 +227,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1b1410', shirt: '#3a6a5a', pants: '#e8e0d0', style: 'short' },
       lines: [
         { en: 'I copy sea charts for the navy. Our fleets challenge Spain and Venice in the Mediterranean, and the Portuguese in the Indian Ocean.' },
-        { en: 'The Grump\'s Ink Thief tore my copy of Piri Reis\'s 1513 world map! Ask the ferryman at the east dock. He sees everything.' }
+        { en: 'The Void\'s Ink Thief tore my copy of Piri Reis\'s 1513 world map! Ask the ferryman at the east dock. He sees everything.' }
       ],
       wait: { en: 'The ferryman works at the dock on the east shore, just south of the main street.' },
       thanks: { en: 'My map is whole! Piri Reis made the first Ottoman map to show the Americas. Thank you.' }
@@ -245,7 +245,7 @@ window.EPISODE = {
       at: [9, 18],
       hops: [[24, 17], [16, 18]],
       name: { en: 'The Ink Thief' },
-      taunt: { en: 'The Grump wants this map gone. Without maps, who remembers how far the empire reached?' },
+      taunt: { en: 'The Void wants this map gone. Without maps, who remembers how far the empire reached?' },
       clues: [
         { t: { en: 'Spices from the Indian Ocean are sold in Istanbul. Piece 1 is between the market stalls, south of the main street.' },
           zones: [{ x: 18, y: 12, w: 5, h: 1 }, { x: 18, y: 14, w: 5, h: 1 }],
@@ -267,7 +267,7 @@ window.EPISODE = {
   challenge: {
     at: [19, 10], type: 'order', stat: 'pla',
     title: { en: 'Rebuild the rise' },
-    intro: { en: 'Empires like this one grew in the space left when the Mongol Empire collapsed. The Grump scrambled the Ottoman rise. Put it in order, oldest first.' },
+    intro: { en: 'Empires like this one grew in the space left when the Mongol Empire collapsed. The Void scrambled the Ottoman rise. Put it in order, oldest first.' },
     items: [
       { icon: '🏕️', t: { en: '1299: Osman\'s Turkish tribe begins to expand in Anatolia' } },
       { icon: '⚔️', t: { en: '1362–1389: Sultan Murad I builds the janissaries, enslaved soldiers loyal only to him' } },
@@ -281,10 +281,10 @@ window.EPISODE = {
   },
   boss: {
     at: [27, 5], stat: 'hei', need: 3,
-    name: { en: 'The Smoke Grump' },
-    appear: { en: 'The Smoke Grump is hiding by the palace walls!' },
-    taunt: { en: 'Cannon, sultans, caliphs... I will blow smoke over the whole empire.' },
-    win: { en: 'The smoke clears over Istanbul. The page on expanding empires floats into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the palace walls. The cannon smoke drifts into it.' },
+    taunt: { en: 'Walls fell to cannon. Empires will fall to me. Every sultan ends in the dark.' },
+    win: { en: 'The Void closes over Istanbul. The page on expanding empires floats into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor of Qing China to Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },

@@ -13,7 +13,7 @@ window.EPISODE = {
   title: { en: 'Exchange in the Indian Ocean' },
   place: { en: 'Calicut, Malabar Coast of India, 1420' },
   intro: [
-    { en: 'The Grump blurred the page on the Indian Ocean. Calicut is forgetting how its winds, ships and merchants work!' },
+    { en: 'The Void blurred the page on the Indian Ocean. Calicut is forgetting how its winds, ships and merchants work!' },
     { en: 'Talk to the 4 travelers AND read the 2 sources on their stands, help a merchant from Malacca, then wake the time stone.' }
   ],
   scenes: {
@@ -225,7 +225,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#1f6a5a', pants: '#2a2a3a', hat: '#c9a24a', style: 'short' },
       lines: [
         { en: 'Malacca\'s strait is the fastest sea route between China and the Indian Ocean. Around 1400 our ruler Parameswara became a Muslim, taking the name Iskandar Shah.' },
-        { en: 'The Grump\'s helpers stole my Arab sailing guide! It lists the best day to leave each port. Ask the boat builder at the shipyard, by the south pier.' }
+        { en: 'The Void\'s helpers stole my Arab sailing guide! It lists the best day to leave each port. Ask the boat builder at the shipyard, by the south pier.' }
       ],
       wait: { en: 'The boat builder works southwest of the market, at the shipyard by the south pier.' },
       thanks: { en: 'My guide! Hinduism, Buddhism and Islam all reached Southeast Asia with merchants. Some Buddhist rulers even took Muslim names to improve relations with Muslim merchants.' }
@@ -252,7 +252,7 @@ window.EPISODE = {
     spots: [[1, 17], [8, 14], [24, 14], [27, 10], [1, 13]],
     stat: 'loc',
     title: { en: 'One year on the monsoon' },
-    intro: { en: 'Calicut sits halfway across the ocean, so a ship can come and go in one year. The Grump scrambled the voyage of Zuhura\'s ship from the Swahili coast. Walk to each stop, in order.' },
+    intro: { en: 'Calicut sits halfway across the ocean, so a ship can come and go in one year. The Void scrambled the voyage of Zuhura\'s ship from the Swahili coast. Walk to each stop, in order.' },
     items: [
       { icon: '⛵', t: { en: 'Spring and summer: ride the winds blowing northeast, and reach Calicut\'s pier' } },
       { icon: '📦', t: { en: 'Unload East African gold and ivory at the warehouse' } },
@@ -265,10 +265,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 2], stat: 'mov', need: 3,
-    name: { en: 'The Doldrums Grump' },
-    appear: { en: 'The Doldrums Grump is hiding behind the mosque!' },
-    taunt: { en: 'No wind, no trade! I will make every sail on this ocean go slack!' },
-    win: { en: 'A fresh monsoon wind blows over Calicut. The page on the Indian Ocean floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the mosque. Every sail in the harbor goes slack.' },
+    taunt: { en: 'No wind. No trade. No ports. I am the calm where every voyage dies.' },
+    win: { en: 'The Void closes, and a fresh monsoon wind blows over Calicut. The page on the Indian Ocean floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"On the left is a map of the winds in February (blowing toward the southwest). On the right is a map of the winds in August (blowing toward the northeast)."' }, src: { en: 'Caption of a nineteenth-century map of the monsoon winds (Library of Congress), quoted in "Indian Ocean Trade Routes," World History Project' } },
