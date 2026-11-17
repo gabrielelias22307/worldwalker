@@ -613,6 +613,16 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 #ww .docpage { text-align: right; font-size: 0.8em; color: #8a7a62; margin-top: 4px; }
 #ww.guide-small .cpanel.side canvas { max-width: 108px; }
 #ww.guide-small .cpanel.dock canvas { width: 60px; height: 60px; }
+/* HistoryWalker: the Void's trial is fought in the dark */
+#ww.void-dark .bossov .ov-box { background: #130e20; color: #e9e2f7; border-color: #3a2a5a; box-shadow: 0 0 40px rgba(120,60,200,.45); }
+#ww.void-dark .bossov .bname { color: #c9b6ff; }
+#ww.void-dark .bossov .say.q, #ww.void-dark .bossov .klabel { color: #e9e2f7; }
+#ww.void-dark .bossov .choices button { background: #1f1830; color: #f2ecff; border-color: #4a3a72; }
+#ww.void-dark .bossov .choices button:hover { border-color: #b89cff; }
+#ww.void-dark .bossov .bossface { background: #050208; border-color: #4a3a72; }
+#ww.void-dark .bossov .stim { background: #ece4d6; }
+#ww.void-dark .bossov .say.taunt { color: #c8b4ff; font-style: italic; text-shadow: 0 0 8px rgba(150,90,255,.5); }
+#ww.void-dark .bossov .fb.wrong, #ww.void-dark .bossov .fb.right { color: #22202e; }
 
 </style>
 </head>
@@ -643,7 +653,7 @@ window.WW_COURSE = {
   // 2.3 (the Atlantic slave trade) and 7.3 (the Holocaust) give no tool: nothing there is a prize
   tools: [], // no tools to earn: every episode stands on its own
   swaps: {
-    en: [['Christopher', 'Quill'], ['living compass', 'scholar owl'], ['compass stone', 'time stone'], ['Compass arrow', 'Time arrow'],
+    en: [['Grumplings', 'shades'], ['Grumpling', 'shade'], ["Grump's helpers", "Void's shades"], ['The Grump is FURIOUS!', 'The Void is ENRAGED!'], ['Grump', 'Void'], ['Christopher', 'Quill'], ['living compass', 'scholar owl'], ['compass stone', 'time stone'], ['Compass arrow', 'Time arrow'],
       ['Great Atlas', 'Great Chronicle'], ['Atlas pages', 'Chronicle pages'], ['atlas pages', 'chronicle pages'], ['Atlas page', 'Chronicle page'], ['atlas page', 'chronicle page'],
       ['Atlas scraps', 'Chronicle scraps'], ['atlas scraps', 'chronicle scraps'], ['atlas scrap', 'chronicle scrap'], ['the atlas', 'the chronicle'], ['Worldwalker', 'HistoryWalker'],
       ['Region sense', 'Big-picture sense'], ['Region master', 'Big-picture master']],
@@ -653,8 +663,8 @@ window.WW_COURSE = {
     fa: [['کریستوفر', 'تاک'], ['قطب‌نمای زنده', 'ساعت ریگی زنده'], ['سنگ قطب‌نما', 'سنگ زمان'], ['اطلس بزرگ', 'تاریخ‌نامهٔ بزرگ'], ['اطلس', 'تاریخ‌نامه'], ['جهان‌گرد', 'زمان‌گرد']]
   },
   S: {
-    story: { en: 'The Grump tore the Great Chronicle into 26 pages and scattered them across the world, from 1200 to 1750. People are forgetting how their states rose, traded and believed. You are a HistoryWalker. With Quill, your scholar owl, win the pages back by learning each place and time.' },
-    storyOne: { en: 'The Grump tore the Great Chronicle. Win back its pages, one place and time at a time!' },
+    story: { en: 'The Void tore the Great Chronicle into 26 pages and scattered them across the world, from 1200 to 1750. People are forgetting how their states rose, traded and believed. You are a HistoryWalker. With Quill, your scholar owl, win the pages back by learning each place and time.' },
+    storyOne: { en: 'The Void tore the Great Chronicle. Win back its pages, one place and time at a time!' },
     map: { en: 'World map', es: 'Mapa', fa: 'نقشه' },
     powers: { en: 'Five history powers', es: 'Cinco poderes de historia', fa: 'پنج نیروی تاریخ' },
     bag: { en: 'Bag · one tool from each era', es: 'Bolsa · una herramienta de cada época', fa: 'کوله · یک ابزار از هر دوره' },
@@ -2259,6 +2269,76 @@ window.WW_CONFIG.MODE = 'one';
     }
   };
 
+
+  /* ---------------- the Void (HistoryWalker's villain) and its shades ----------------
+     A hole in the world: a black core with a thin ring of violet light, dust and leaves spiralling into it, dark
+     tendrils reaching out, and two narrow eyes that open in the dark. When it roars the ring burns red and the eyes
+     widen. Its shades are wisps of the same darkness with two cold eyes. */
+  WW.hd.drawBoss = (c, x, y, t, roar) => {
+    const cx = x + 8, cy = y + 4, T0 = calm ? 0 : t, pulse = (Math.sin(T0 / 380) + 1) / 2;
+    // the ground darkens around it
+    let g = c.createRadialGradient(cx, cy + 6, 2, cx, cy + 6, 34);
+    g.addColorStop(0, 'rgba(10,0,20,.55)'); g.addColorStop(1, 'rgba(10,0,20,0)'); c.fillStyle = g; c.fillRect(cx - 34, cy - 28, 68, 68);
+    // dust and light being pulled in, spiralling
+    for (let i = 0; i < 36; i++) {
+      const life = ((T0 / (900 + (i % 5) * 120)) + i * 0.137) % 1, r = 26 * (1 - life) + 6, a = i * 2.4 + life * 5.5;
+      c.fillStyle = i % 4 ? `rgba(150,120,200,${0.15 + life * 0.5})` : `rgba(255,230,200,${0.2 + life * 0.5})`;
+      c.fillRect(cx + Math.cos(a) * r, cy + Math.sin(a) * r * 0.6, 0.6, 0.6);
+    }
+    // tendrils reaching out
+    c.lineCap = 'round';
+    for (let k = 0; k < 7; k++) {
+      const base = k / 7 * Math.PI * 2 + T0 / 2600, len = 15 + Math.sin(T0 / 500 + k * 1.7) * 5 + (roar ? 6 : 0);
+      c.strokeStyle = 'rgba(8,0,16,.85)'; c.lineWidth = 2.2; c.beginPath(); c.moveTo(cx, cy);
+      for (let s = 1; s <= 6; s++) { const f = s / 6, wob = Math.sin(T0 / 300 + k + f * 4) * 2.5 * f; c.lineTo(cx + Math.cos(base) * len * f + Math.cos(base + 1.57) * wob, cy + Math.sin(base) * len * f * 0.7 + Math.sin(base + 1.57) * wob); }
+      c.stroke(); c.lineWidth = 0.7; c.strokeStyle = roar ? 'rgba(200,40,60,.5)' : 'rgba(120,80,190,.35)'; c.stroke();
+    }
+    // the ring of light at its edge
+    c.save(); c.translate(cx, cy);
+    const R = 9 + pulse * 1.2 + (roar ? 2 : 0);
+    g = c.createRadialGradient(0, 0, R - 3, 0, 0, R + 4); g.addColorStop(0, roar ? 'rgba(255,60,60,.9)' : 'rgba(170,120,255,.85)'); g.addColorStop(0.4, roar ? 'rgba(160,20,40,.5)' : 'rgba(90,40,170,.45)'); g.addColorStop(1, 'rgba(40,0,60,0)');
+    c.fillStyle = g; c.beginPath(); c.arc(0, 0, R + 4, 0, 7); c.fill();
+    for (let i = 0; i < 18; i++) { const a = i / 18 * Math.PI * 2 + T0 / 700; c.fillStyle = `rgba(230,210,255,${0.3 + 0.4 * ((i + Math.floor(T0 / 120)) % 3 === 0)})`; c.fillRect(Math.cos(a) * (R + 0.5), Math.sin(a) * (R + 0.5) * 0.92, 0.7, 0.7); }
+    // the black core
+    c.fillStyle = '#030006'; c.beginPath(); c.arc(0, 0, R - 0.5, 0, 7); c.fill();
+    g = c.createRadialGradient(0, 0, 0, 0, 0, R); g.addColorStop(0, 'rgba(0,0,0,1)'); g.addColorStop(0.8, 'rgba(20,0,35,1)'); g.addColorStop(1, 'rgba(60,10,90,1)');
+    c.fillStyle = g; c.beginPath(); c.arc(0, 0, R - 0.5, 0, 7); c.fill();
+    // the eyes: narrow, slowly opening and closing; wide and red when it roars
+    const open = roar ? 1 : Math.max(0.15, (Math.sin(T0 / 1500) + 1) / 2), ey = -1;
+    [-1, 1].forEach(s => { // narrow, slanted, angry eyes: a sharp sliver of light, darker at the inner corner
+      const ex = s * 3.4, h = 0.35 + open * (roar ? 1.3 : 0.9), w = 2.9;
+      c.save(); c.translate(ex, ey); c.rotate(s * -0.38);
+      c.fillStyle = roar ? 'rgba(255,40,40,.35)' : 'rgba(190,150,255,.22)'; c.beginPath(); c.ellipse(0, 0, w + 1.1, h + 0.9, 0, 0, 7); c.fill();
+      c.fillStyle = roar ? '#ff3030' : '#efe6ff';
+      c.beginPath(); c.moveTo(-w, 0); c.quadraticCurveTo(0, -h * 1.6, w, -h * 0.2); c.quadraticCurveTo(0, h * 1.2, -w, 0); c.fill();
+      c.fillStyle = '#030006'; c.fillRect(-0.3, -h, 0.6, h * 1.8); // a thin slit pupil
+      c.restore();
+    });
+    // a jagged mouth that opens when it roars
+    if (roar) { c.fillStyle = '#ff3030'; c.beginPath(); c.moveTo(-4, 3); for (let i = 0; i <= 8; i++) c.lineTo(-4 + i, 3 + (i % 2 ? 1.6 : 0)); c.lineTo(4, 4.5); c.lineTo(-4, 4.5); c.fill(); }
+    c.restore();
+  };
+  // its portrait in the trial panel (80 x 80): the same void, still, with the eyes open
+  WW.bossFace = (cv, furious, last) => {
+    const c = cv.getContext('2d'), S = cv.width / 16; c.save(); c.clearRect(0, 0, cv.width, cv.height); c.fillStyle = '#0a0612'; c.fillRect(0, 0, cv.width, cv.height);
+    c.scale(S * 0.8, S * 0.8); c.translate(2, 5); WW.hd.drawBoss(c, 0, 0, performance.now(), furious || last === 'hit'); c.restore();
+  };
+  // the shades: wisps of darkness with cold eyes (they sway, trail smoke, and flash white when hit)
+  WW.hd.drawFoe = (c, e, x, y, t, rage) => {
+    const T0 = calm ? 0 : t + (e.phase || 0) * 700, hurt = e.hurtT && t - e.hurtT < 200, bob = Math.sin(T0 / 300) * 1.2;
+    c.fillStyle = 'rgba(10,0,20,.3)'; c.beginPath(); c.ellipse(x + 8, y + 14.5, 5, 1.5, 0, 0, 7); c.fill();
+    const body = hurt ? 'rgba(255,255,255,.9)' : 'rgba(14,6,26,.88)', edge = rage ? 'rgba(200,40,60,.6)' : 'rgba(120,80,190,.5)';
+    // a trailing tail of smoke
+    for (let i = 0; i < 6; i++) { const f = i / 6; c.fillStyle = hurt ? 'rgba(255,255,255,.4)' : `rgba(14,6,26,${0.6 - f * 0.45})`; c.beginPath(); c.arc(x + 8 + Math.sin(T0 / 200 + i) * 2.2 * f, y + 9 + bob + i * 1.1, 3.6 - f * 2.4, 0, 7); c.fill(); }
+    // the hooded head and shoulders
+    c.fillStyle = edge; c.beginPath(); c.ellipse(x + 8, y + 5 + bob, 5.6, 6.4, 0, 0, 7); c.fill();
+    c.fillStyle = body; c.beginPath(); c.ellipse(x + 8, y + 5 + bob, 5, 5.8, 0, 0, 7); c.fill();
+    if (e.type === 'bat') { [-1, 1].forEach(s => { c.beginPath(); c.moveTo(x + 8 + s * 3, y + 4 + bob); c.lineTo(x + 8 + s * 9, y + 1 + bob + Math.sin(T0 / 90) * 2); c.lineTo(x + 8 + s * 6, y + 7 + bob); c.fill(); }); }
+    // two cold eyes
+    const eyeCol = rage ? '#ff4040' : '#d8ccff';
+    c.fillStyle = rage ? 'rgba(255,40,40,.35)' : 'rgba(200,180,255,.3)'; c.fillRect(x + 4.6, y + 3.6 + bob, 2.8, 2); c.fillRect(x + 8.6, y + 3.6 + bob, 2.8, 2);
+    c.fillStyle = eyeCol; c.fillRect(x + 5, y + 4 + bob, 2, 1.1); c.fillRect(x + 9, y + 4 + bob, 2, 1.1);
+  };
   // people on the map stand facing you and blink now and then; the hero walks in four frames
   const oldPerson = WW.drawPerson;
   WW.drawPerson = (c, p, x, y, t, phase = 0) => {
@@ -3854,7 +3934,8 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
         // the Grump gets FURIOUS once half its shield is cracked, and roars at every wrong answer
         const furious = !boss.minor && broken >= need / 2 && broken < need;
         const cv = document.createElement('canvas'); cv.width = 16 * 5; cv.height = 16 * 5; cv.className = 'bossface' + (last === 'hit' ? ' hit' : last === 'crack' ? ' crack' : '') + (furious ? ' furious' : '');
-        WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
+        if (WW.bossFace) WW.bossFace(cv, furious, last); // HistoryWalker: the Void's face (hd.js)
+        else WW.sprite(cv.getContext('2d'), 'smudge', 0, 0, { scale: 5, pal: boss.pal || (furious ? { g: '#8a2836', G: '#561722', e: '#fff070' } : null) });
         if (!boss.minor) box.classList.toggle('roar', last === 'hit');
         top.appendChild(cv);
         let shield = `<div><div class="bname">${esc(L(boss.name))}${furious ? ` <span class="furious-tag">${esc(T('furious'))}</span>` : ''}</div><div class="klabel">${esc(T('shield'))}</div><div class="shield">`;
@@ -7302,7 +7383,8 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     document.documentElement.classList.add('ww-game'); // an episode page: no page scrolling (style.css)
     if ('ontouchstart' in window || navigator.maxTouchPoints > 0) root.classList.add('touch');
     root.querySelectorAll('[data-lang]').forEach(b => (b.onclick = () => WW.setLang(b.dataset.lang)));
-    if (WW.COURSE && WW.COURSE.guideSmall) root.classList.add('guide-small'); // HistoryWalker: a smaller guide card
+    if (WW.COURSE && WW.COURSE.guideSmall) root.classList.add('guide-small');
+    if (WW.COURSE && WW.COURSE.hd) root.classList.add('void-dark'); // HistoryWalker: the Void's trial panel is dark // HistoryWalker: a smaller guide card
     if (WW.LANGS.length < 2) root.querySelector('.langs').hidden = true; // one language: no language buttons
     $('ww-b-chris').onclick = () => { WW.audioInit(); WW.chris.talk(); $('ww-screen').focus(); };
     $('ww-b-pass').onclick = () => { if (!WW.ui.stack.length || WW.ui.top().opts.cls !== 'passov') WW.ui.passport(); };
@@ -7863,9 +7945,10 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
         const rage = t < (e.rageUntil || 0), j = rage ? Math.round(Math.sin(t / 30)) : 0;
         if (rage) { c.fillStyle = 'rgba(255,60,40,.35)'; c.beginPath(); c.arc(px(e) + 8, py(e) + 8, 10, 0, 7); c.fill(); }
         const zz = G.foesAsleep(); if (zz) c.globalAlpha = 0.6;
-        WW.drawFoe(c, e, px(e) + j, py(e), zz ? 0 : t, rage);
+        ((WW.hd && WW.hd.drawFoe) || WW.drawFoe)(c, e, px(e) + j, py(e), zz ? 0 : t, rage); // HistoryWalker: shades (hd.js)
         if (zz) { c.globalAlpha = 1; const k = Math.floor(t / 600) % 3; c.fillStyle = '#fffbe8'; c.font = 'bold 8px monospace'; c.fillText('z', px(e) + 12, py(e) - 2 - k * 3); if (k > 0) c.fillText('z', px(e) + 15, py(e) - 7 - k * 2); }
       }
+      if (e.kind === 'boss' && WW.hd && WW.hd.drawBoss) { WW.hd.drawBoss(c, px(e), py(e), t, t - (e.roarT || 0) < 700); return; } // HistoryWalker: the Void (hd.js)
       if (e.kind === 'boss') {
         const a = (Math.sin(t / 200) + 1) / 2, roar = t - (e.roarT || 0) < 700;
         // a dark, spiky cloud around the Grump
@@ -8113,7 +8196,7 @@ window.EPISODE = {
   title: { en: 'Developments in East Asia' },
   place: { en: 'Hangzhou, Song China, 1200' },
   intro: [
-    { en: 'The Grump blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
+    { en: 'The Void blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a traveler from Japan, then wake the time stone.' }
   ],
   scenes: {
@@ -8327,7 +8410,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sailed from Japan to study Buddhism here. Japanese monks bring Chinese teachings home, like Chan, which we call Zen, and Pure Land.' },
         { en: 'At home, ordinary people blend Pure Land with our own Shinto. Since our civil war, a [[shogun|shogun]], our top general, heads a military government.' },
-        { en: 'The Grump\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
+        { en: 'The Void\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
       ],
       wait: { en: 'The printer works on the east side, by the canal dock, south of the bridge.' },
       thanks: { en: 'My sutras! Chinese writing and Buddhist teachings, carried home, will shape Japan in its own way. Thank you.' }
@@ -8350,7 +8433,7 @@ window.EPISODE = {
   challenge: {
     at: [19, 13], type: 'carry', stat: 'pla',
     title: { en: 'Sort the Song world' },
-    intro: { en: 'The Grump scrambled the record of Song China. Carry each card to its AP theme: government, economy, or belief and culture.' },
+    intro: { en: 'The Void scrambled the record of Song China. Carry each card to its AP theme: government, economy, or belief and culture.' },
     zones: [
       { bin: 'gov', x: 17, y: 11, w: 3, h: 2 },
       { bin: 'ecn', x: 20, y: 11, w: 3, h: 2 },
@@ -8373,10 +8456,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 3], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding behind the teahouse!' },
-    taunt: { en: 'Exams, rice, paper money... who cares? I will fog up all of Song China!' },
-    win: { en: 'The fog lifts over West Lake. The page on East Asia floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the teahouse. The lake light bends toward it.' },
+    taunt: { en: 'Every exam, every harvest, every coin. I swallow them all, and Hangzhou will not remember it ever was.' },
+    win: { en: 'The Void closes over West Lake. The page on East Asia floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"The Master said: A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy, broadly caring of people at large..."' }, src: { en: 'Confucius, The Analects, 1.6 (about 500 BCE)' } },
@@ -8468,7 +8551,7 @@ window.EPISODE = {
   title: { en: 'Developments in Dar al-Islam' },
   place: { en: 'Cairo, Mamluk Sultanate, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on Dar al-Islam. Cairo is forgetting how Islam kept growing after Baghdad fell!' },
+    { en: 'The Void blurred the page on Dar al-Islam. Cairo is forgetting how Islam kept growing after Baghdad fell!' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a pilgrim from Morocco, then wake the time stone.' }
   ],
   scenes: {
@@ -8724,7 +8807,7 @@ window.EPISODE = {
   challenge: {
     at: [21, 14], type: 'claim', stat: 'loc',
     title: { en: 'Did Dar al-Islam fall apart?' },
-    intro: { en: 'The Grump claims Islam ended when Baghdad fell. Pick the claim the evidence best supports, then back it up with one piece of evidence about rulers and one about belief and culture.' },
+    intro: { en: 'The Void claims Islam ended when Baghdad fell. Pick the claim the evidence best supports, then back it up with one piece of evidence about rulers and one about belief and culture.' },
     options: [
       { icon: '🧩', name: { en: 'Power split apart, but Islam spread' }, desc: { en: 'Many rulers after 1258, yet Dar al-Islam kept growing' },
         result: { en: 'Strong claim! Political fragmentation and religious expansion happened at the same time, 1200–1450.' } },
@@ -8756,10 +8839,10 @@ window.EPISODE = {
   },
   boss: {
     at: [27, 8], stat: 'hei', need: 3,
-    name: { en: 'The Sandstorm Grump' },
-    appear: { en: 'The Sandstorm Grump is hiding in the dust by the barracks!' },
-    taunt: { en: 'No caliph, no empire... so no Dar al-Islam! Prove me wrong.' },
-    win: { en: 'The dust settles over Cairo. The page on Dar al-Islam floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the barracks. The dust is flowing into it.' },
+    taunt: { en: 'Caliphs fall, cities burn, books drown in rivers. I am what remains. Prove the faith outlived them.' },
+    win: { en: 'The Void closes over Cairo. The page on Dar al-Islam floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"In the sixteenth century of our era, a visitor from Mars might well have supposed that the world was on the verge of becoming Muslim."' }, src: { en: 'Marshall Hodgson, historian; quoted in "Dar al-Islam," World History Project' } },
@@ -8848,7 +8931,7 @@ window.EPISODE = {
   title: { en: 'Developments in South and Southeast Asia' },
   place: { en: 'Delhi, Delhi Sultanate, 1312' },
   intro: [
-    { en: 'The Grump blurred the page on South and Southeast Asia. Delhi is forgetting its sultans, its faiths and its villages!' },
+    { en: 'The Void blurred the page on South and Southeast Asia. Delhi is forgetting its sultans, its faiths and its villages!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a grain seller, then wake the time stone.' }
   ],
   scenes: {
@@ -9069,7 +9152,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sell grain with my husband. In South Asia, both Islam and a stricter Hinduism favor [[purdah|purdah]], the seclusion of women.' },
         { en: 'Wealthy city women are the most secluded. Poor rural women, the vast majority, work beside the men of their families, like me.' },
-        { en: 'The Grump spoiled my grain! Villages outside the wall grow it. Ask the boatman at the river landing. He knows every village.' }
+        { en: 'The Void spoiled my grain! Villages outside the wall grow it. Ask the boatman at the river landing. He knows every village.' }
       ],
       wait: { en: 'The boatman waits at the river landing: out the south gate, then southeast by the river.' },
       thanks: { en: 'Fresh grain! The sultan rules Delhi, but out there village councils run daily life. Thank you!' }
@@ -9092,7 +9175,7 @@ window.EPISODE = {
         lines: [
           { en: 'Our [[village council|village council]] of male household heads sets planting times, rotates crops and shares the common pasture.' },
           { en: 'Landowners take rent and rulers take taxes, but day to day, local authority matters more. In much of Southeast Asia, women even have significant legal rights.' },
-          { en: 'The Grump broke our irrigation channel! Bring what the council needs to mend it, and my grain is yours.' }
+          { en: 'The Void broke our irrigation channel! Bring what the council needs to mend it, and my grain is yours.' }
         ]
       },
       q: { en: 'What does the village council need to mend its irrigation channel?' },
@@ -9115,7 +9198,7 @@ window.EPISODE = {
     spots: [[9, 4], [19, 14], [22, 16], [28, 8], [5, 6]],
     stat: 'hei',
     title: { en: 'Survey the states' },
-    intro: { en: 'The Grump scrambled the record of the region. Read the 5 survey posts, one state on each. Then compare them at the time stone.' },
+    intro: { en: 'The Void scrambled the record of the region. Read the 5 survey posts, one state on each. Then compare them at the time stone.' },
     table: {
       head: [{ en: 'State' }, { en: 'Rulers\' faith or model' }, { en: 'Key fact' }],
       rows: [
@@ -9145,10 +9228,10 @@ window.EPISODE = {
   },
   boss: {
     at: [21, 19], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the fields by the river!' },
-    taunt: { en: 'Sultans, temples, monks, villages... it is all one blur. I will bury it in dust!' },
-    win: { en: 'The dust settles over Delhi. The page on South and Southeast Asia floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the fields by the river. The crops lean toward it.' },
+    taunt: { en: 'Towers, temples, kingdoms. Stone crumbles, and everything that crumbles comes to me.' },
+    win: { en: 'The Void closes over Delhi. The page on South and Southeast Asia floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"The Qutb Minar, a sandstone and marble victory tower, constructed by several different sultans, the Alai Darwaza, a gateway with intricate carvings built in 1312, and the tomb of a Muslim cleric."' }, src: { en: 'Description of monuments in Delhi, "South and Southeast Asia 1200–1450," World History Project' } },
@@ -9236,7 +9319,7 @@ window.EPISODE = {
   title: { en: 'State Building in the Americas' },
   place: { en: 'Tenochtitlan, Mexica (Aztec) state, 1450' },
   intro: [
-    { en: 'The Grump blurred the page on the Americas. Tenochtitlan is forgetting how it conquers, trades and feeds itself!' },
+    { en: 'The Void blurred the page on the Americas. Tenochtitlan is forgetting how it conquers, trades and feeds itself!' },
     { en: 'Talk to the 4 people, read the 2 sources on the wooden stands, help a featherworker, then wake the time stone.' }
   ],
   scenes: {
@@ -9443,7 +9526,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#120c08', shirt: '#2a8a6a', robe: true, style: 'long' },
       lines: [
         { en: 'I make feathered art for nobles and priests. Quetzal feathers are light and costly, so pochteca carry them from far away.' },
-        { en: 'The Grump\'s helpers blew my bundle of feathers away! Ask the porter by the west shore. She watches everything that moves.' }
+        { en: 'The Void\'s helpers blew my bundle of feathers away! Ask the porter by the west shore. She watches everything that moves.' }
       ],
       wait: { en: 'The porter rests on the west shore of the island, south of the big avenue, by the dock.' },
       thanks: { en: 'My feathers! Feathered art is also tribute that conquered towns must send. Thank you.' }
@@ -9466,7 +9549,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 10], type: 'sort', stat: 'hei',
     title: { en: 'Compare the Americas' },
-    intro: { en: 'The Grump scrambled the record of the Americas, 1200–1450. Sort each card: the Mexica, the Inca, or another American society.' },
+    intro: { en: 'The Void scrambled the record of the Americas, 1200–1450. Sort each card: the Mexica, the Inca, or another American society.' },
     bins: [
       { id: 'mex', icon: '🦅', label: { en: 'Mexica (Aztec)' }, sub: { en: 'Valley of Mexico' } },
       { id: 'inca', icon: '☀️', label: { en: 'Inca' }, sub: { en: 'Andes Mountains, capital Cusco' } },
@@ -9487,10 +9570,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 15], stat: 'loc', need: 3,
-    name: { en: 'The Lake Fog Grump' },
-    appear: { en: 'The Lake Fog Grump is hiding beyond the chinampas, out over the water.' },
-    taunt: { en: 'Conquest, tribute, gardens on a lake. Let it all sink quietly into the fog.' },
-    win: { en: 'The fog lifts off the lake. The page on the Americas floats down into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened out over the lake, beyond the chinampas. The water goes still.' },
+    taunt: { en: 'An empire built on a lake. Water forgets faster than stone. Soon the lake will forget you.' },
+    win: { en: 'The Void closes over the lake. The page on the Americas floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The need for food and bodies for sacrifices pushed the Aztecs on campaigns to conquer neighboring peoples. ... The Aztecs made little attempt to integrate these people into their culture beyond demanding tribute.' }, src: { en: 'Adapted from "The Americas 1200–1450" by William H. Beezley, World History Project' } },
@@ -9583,7 +9666,7 @@ window.EPISODE = {
   title: { en: 'State Building in Africa' },
   place: { en: 'Niani, Mali, 1330' },
   intro: [
-    { en: 'The Grump blurred the page on Mali. Niani is forgetting how its rulers built and ran a great Sahel state!' },
+    { en: 'The Void blurred the page on Mali. Niani is forgetting how its rulers built and ran a great Sahel state!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands: a European map of Mansa Musa and a reading on West African states.' },
     { en: 'Then help Awa the scribe\'s apprentice and wake the time stone.' }
   ],
@@ -9843,7 +9926,7 @@ window.EPISODE = {
     spots: [[13, 14], [6, 8], [27, 5], [30, 9]],
     stat: 'loc',
     title: { en: 'Run a Sahel state' },
-    intro: { en: 'The Grump jumbled how Mali is run. Set the four levers the way Sahel rulers really governed, then test them at the stone.' },
+    intro: { en: 'The Void jumbled how Mali is run. Set the four levers the way Sahel rulers really governed, then test them at the stone.' },
     switches: [
       { name: { en: 'Royal income' }, icon: '💰', start: 0,
         states: [{ en: 'Tax mainly the weavers\' cloth' }, { en: 'Tax the gold and trade routes' }] },
@@ -9879,10 +9962,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'mov', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the heat haze by the river!' },
-    taunt: { en: 'Gold, trade, mansas... I will cover all of Mali in dust!' },
-    win: { en: 'The dust settles over the river. The page on African states floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the heat haze by the river. The air shimmers into it.' },
+    taunt: { en: 'Gold, trade, mansas... all of it goes dark in me. Who will tell this story when I have it?' },
+    win: { en: 'The Void closes over the river. The page on African states floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'Wagadu controlled a large portion of the gold trade because it sat in the middle of the trade route that sent the gold north. Most West African gold in this period was mined a hundred miles or so south of Wagadu, and it was in great demand in North Africa and Europe.' }, src: { en: 'Adapted from "States and Empires of West Africa," World History Project' } },
@@ -9971,7 +10054,7 @@ window.EPISODE = {
   title: { en: 'Developments in Europe' },
   place: { en: 'A manor near Paris, Kingdom of France, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on Europe. This manor near Paris is forgetting who owns the land, who rules and what it believes!' },
+    { en: 'The Void blurred the page on Europe. This manor near Paris is forgetting who owns the land, who rules and what it believes!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a baker from Paris, then wake the time stone.' }
   ],
   scenes: {
@@ -10189,7 +10272,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#2b1d14', shirt: '#b98250', pants: '#4a3a2a', style: 'bun' },
       lines: [
         { en: 'I bake bread in Paris. Our city keeps growing, and it eats the grain of villages like this one.' },
-        { en: 'The Grump fogged my order with this manor! Ask Thibaut, the lord\'s steward. He keeps the manor\'s accounts.' }
+        { en: 'The Void fogged my order with this manor! Ask Thibaut, the lord\'s steward. He keeps the manor\'s accounts.' }
       ],
       wait: { en: 'Thibaut stands west along the road, between the manor house and the lord\'s barn.' },
       thanks: { en: 'Wheat from the lord\'s fields! Cities can grow only when the countryside sends them food. Paris thanks you.' }
@@ -10226,7 +10309,7 @@ window.EPISODE = {
   challenge: {
     at: [28, 16], type: 'order', stat: 'loc',
     title: { en: 'From growth to crisis' },
-    intro: { en: 'The Grump scrambled the chronicle of Europe from the 800s to 1400. Put the causes and effects in order, from first to last.' },
+    intro: { en: 'The Void scrambled the chronicle of Europe from the 800s to 1400. Put the causes and effects in order, from first to last.' },
     items: [
       { icon: '🌤️', t: { en: 'From the 800s: warm, stable weather, the Medieval Climate Anomaly, makes farming easier and travel safer.' } },
       { icon: '👪', t: { en: 'Populations rise fast, and villages turn uncultivated land into new farms.' } },
@@ -10240,10 +10323,10 @@ window.EPISODE = {
   },
   boss: {
     at: [22, 2], stat: 'hei', need: 3,
-    name: { en: 'The Frost Grump' },
-    appear: { en: 'The Frost Grump is hiding in the cold fog beside the monastery.' },
-    taunt: { en: 'Lords, peasants, popes and emperors... let them all fade into the cold.' },
-    win: { en: 'The frost melts from the fields. The page on Europe floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the cold beside the monastery. Frost creeps toward it.' },
+    taunt: { en: 'Lords, peasants, popes, emperors. The cold took a third of them. I will take the rest.' },
+    win: { en: 'The Void closes and the frost melts from the fields. The page on Europe floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'On Christmas Day in the year 800 CE, Pope Leo III crowned the Carolingian ruler Charlemagne "emperor of the Romans."' }, src: { en: 'Quoted in "Christendom," World History Project' } },
@@ -10335,7 +10418,7 @@ window.EPISODE = {
   title: { en: 'Comparing States, 1200–1450' },
   place: { en: 'Samarkand, Timur\'s empire, 1400' },
   intro: [
-    { en: 'The Grump smudged the page that compares the world\'s states. In Samarkand, travelers are forgetting how their rulers hold power!' },
+    { en: 'The Void smudged the page that compares the world\'s states. In Samarkand, travelers are forgetting how their rulers hold power!' },
     { en: 'Talk to the 4 travelers, read the 2 sources on the stands, help a merchant from Delhi, then wake the time stone.' }
   ],
   scenes: {
@@ -10548,7 +10631,7 @@ window.EPISODE = {
       look: { skin: 4, hair: '#1b1410', shirt: '#e0e0d0', robe: true, hat: '#c0392b', style: 'short' },
       lines: [
         { en: 'I come from the [[delhi sultanate|Delhi Sultanate]], founded in 1206 by a Turkic general. Its Muslim sultans defeated the Mongol armies and generally tolerated Hindus like me.' },
-        { en: 'Hindu Rajput kings fund temples, and the [[brahmin|brahmins]] back them. But the Grump\'s helpers knocked my cotton off the cart! Ask the guard at the east gate.' }
+        { en: 'Hindu Rajput kings fund temples, and the [[brahmin|brahmins]] back them. But the Void\'s helpers knocked my cotton off the cart! Ask the guard at the east gate.' }
       ],
       wait: { en: 'The guard stands just inside the east gate of the city wall.' },
       thanks: { en: 'My cotton! Merchants have carried India\'s cotton across Dar al-Islam for centuries. Thank you, friend.' }
@@ -10571,7 +10654,7 @@ window.EPISODE = {
   challenge: {
     at: [8, 7], type: 'carry', stat: 'hei',
     title: { en: 'How did they hold power?' },
-    intro: { en: 'The Grump scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Quill adds cards from the Americas, unknown here before 1500.' },
+    intro: { en: 'The Void scrambled how states built and [[legitimize|legitimized]] power. Carry each card to its method. Quill adds cards from the Americas, unknown here before 1500.' },
     zones: [
       { bin: 'faith', x: 2, y: 5, w: 3, h: 2 },
       { bin: 'trade', x: 11, y: 5, w: 3, h: 2 },
@@ -10599,10 +10682,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'hei', need: 3,
-    name: { en: 'The Sandstorm Grump' },
-    appear: { en: 'The Sandstorm Grump is hiding outside the east gate!' },
-    taunt: { en: 'Gold, priests, exams, armies... all the same! I will blow sand over every state in the world!' },
-    win: { en: 'The sand settles over Samarkand. The page comparing the world\'s states floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened outside the east gate. The road is being pulled into it.' },
+    taunt: { en: 'Gold, priests, exams, armies. Different on the surface. In the dark, every state looks the same.' },
+    win: { en: 'The Void closes over Samarkand. The page comparing the world\'s states floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Guide them with policies and align them with punishments and the people will evade them and have no shame. Guide them with virtue … and the people will have a sense of shame and fulfill their roles…"' }, src: { en: 'Confucius, The Analects (compiled after his death in 479 BCE); quoted in "Confucianism," World History Project' } },
@@ -10694,7 +10777,7 @@ window.EPISODE = {
   title: { en: 'The Silk Roads' },
   place: { en: 'Samarkand, Mongol Central Asia, 1300' },
   intro: [
-    { en: 'The Grump blurred the page on the Silk Roads. Samarkand\'s merchants are forgetting why goods and ideas travel!' },
+    { en: 'The Void blurred the page on the Silk Roads. Samarkand\'s merchants are forgetting why goods and ideas travel!' },
     { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a young merchant make a trade, then wake the time stone.' }
   ],
   scenes: {
@@ -10943,7 +11026,7 @@ window.EPISODE = {
     // -> the crossroads in the heart of the city -> the caravanserai yard -> the copyist's house
     spots: [[3, 18], [4, 10], [13, 10], [26, 10], [20, 8]],
     title: { en: 'From war to a web of trade' },
-    intro: { en: 'The Grump scrambled the chronicle of the Silk Roads. Walk to each stop on the map in order, from cause to effect.' },
+    intro: { en: 'The Void scrambled the chronicle of the Silk Roads. Walk to each stop on the map in order, from cause to effect.' },
     items: [
       { icon: '⚔️', t: { en: 'Before 1200: rival kingdoms at war make the road perilous' } },
       { icon: '🐎', t: { en: 'Chinggis Khan\'s cavalry conquers Central Asia' } },
@@ -10956,10 +11039,10 @@ window.EPISODE = {
   },
   boss: {
     at: [24, 19], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the dunes south of the caravanserai!' },
-    taunt: { en: 'Silk, glass, ideas... let them all get lost in the sand! No caravan will find its way.' },
-    win: { en: 'The dust settles over Samarkand. The page on the Silk Roads floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the dunes south of the caravanserai. Sand pours into it.' },
+    taunt: { en: 'Silk, glass, ideas. Every road ends somewhere. All of them end in me.' },
+    win: { en: 'The Void closes over Samarkand. The page on the Silk Roads floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The road had been a perilous one, controlled by independent kingdoms, often at war with each other.' }, src: { en: 'Adapted from "Archipelago of Trade," World History Project' } },
@@ -11047,7 +11130,7 @@ window.EPISODE = {
   title: { en: 'The Mongol Empire' },
   place: { en: 'Karakorum, Mongol Empire, 1250' },
   intro: [
-    { en: 'The Grump blurred the page on the Mongols. Karakorum is forgetting how a steppe people built the largest empire in history!' },
+    { en: 'The Void blurred the page on the Mongols. Karakorum is forgetting how a steppe people built the largest empire in history!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help an astronomer, then wake the time stone.' }
   ],
   scenes: {
@@ -11255,7 +11338,7 @@ window.EPISODE = {
       lines: [
         { en: 'The Mongols worship a sky god, and their shamans read the heavens. So the khans keep astronomers from China and the Muslim world.' },
         { en: 'The khans are tolerant of foreign religions. They honor some religious leaders with respect and tax benefits. This empire is a religious melting pot!' },
-        { en: 'But the Grump\'s Ink Thief tore up my star chart! Ask the [[yam|yam]] rider at the post station outside the west gate.' }
+        { en: 'But the Void\'s Ink Thief tore up my star chart! Ask the [[yam|yam]] rider at the post station outside the west gate.' }
       ],
       wait: { en: 'The yam rider waits by the post station, outside the city\'s west gate, in the south.' },
       thanks: { en: 'My chart! Here Chinese and Muslim astronomers share what they know. Networks help science grow.' }
@@ -11274,7 +11357,7 @@ window.EPISODE = {
       at: [4, 9],
       hops: [[13, 19], [8, 16]],
       name: { en: 'The Ink Thief' },
-      taunt: { en: 'The Grump sent me. No chart, no shared knowledge!' },
+      taunt: { en: 'The Void sent me. No chart, no shared knowledge!' },
       win: { en: 'Caught on the open steppe! The thief drops the last scrap. The star chart is whole.' },
       clues: [
         { t: { en: 'Piece 1 lies where Chinese silk is sold to traders from the west. Look in the market, in the south-east.' },
@@ -11300,7 +11383,7 @@ window.EPISODE = {
     spots: [[11, 12], [14, 12], [17, 12]],
     stat: 'loc',
     title: { en: 'Cause, means, effect' },
-    intro: { en: 'The Grump scrambled why the Mongol Empire rose and lasted. Set each lever: the motive that pushed the tribes south, the means that won their wars, and the way the khans ran their lands. Then test them at the stone.' },
+    intro: { en: 'The Void scrambled why the Mongol Empire rose and lasted. Set each lever: the motive that pushed the tribes south, the means that won their wars, and the way the khans ran their lands. Then test them at the stone.' },
     switches: [
       { name: { en: 'Motive: what pushed the tribes south' }, icon: '🌵', start: 0,
         states: [{ en: 'Rich grass, fat herds' }, { en: 'Drought dries the pastures' }, { en: 'Silver found on the steppe' }] },
@@ -11370,10 +11453,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 20], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump rises from the steppe behind the caravanserai.' },
-    taunt: { en: 'Conquest, trade, plague... let the dust bury all of it. Who will remember?' },
-    win: { en: 'The dust settles over Karakorum. The page on the Mongol Empire drifts into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void rises from the steppe behind the caravanserai. The wind falls silent.' },
+    taunt: { en: 'The largest empire the world had seen, and still it split apart. Everything splits. Everything falls to me.' },
+    win: { en: 'The Void closes over Karakorum. The page on the Mongol Empire drifts into your hands.' },
     questions: [
       {
         stim: { text: { en: '"All these pieces of paper are issued with as much solemnity and authority as if they were of pure gold or silver.... wheresoever a person may go throughout the Great Khan\'s dominions he shall find these pieces of paper current, and shall be able to transact all sales and purchases of goods by means of them...."' }, src: { en: 'Marco Polo, The Travels, describing the Great Khan\'s China; quoted in "Opener: World Travelers," World History Project' } },
@@ -11461,7 +11544,7 @@ window.EPISODE = {
   title: { en: 'Exchange in the Indian Ocean' },
   place: { en: 'Calicut, Malabar Coast of India, 1420' },
   intro: [
-    { en: 'The Grump blurred the page on the Indian Ocean. Calicut is forgetting how its winds, ships and merchants work!' },
+    { en: 'The Void blurred the page on the Indian Ocean. Calicut is forgetting how its winds, ships and merchants work!' },
     { en: 'Talk to the 4 travelers AND read the 2 sources on their stands, help a merchant from Malacca, then wake the time stone.' }
   ],
   scenes: {
@@ -11673,7 +11756,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#1f6a5a', pants: '#2a2a3a', hat: '#c9a24a', style: 'short' },
       lines: [
         { en: 'Malacca\'s strait is the fastest sea route between China and the Indian Ocean. Around 1400 our ruler Parameswara became a Muslim, taking the name Iskandar Shah.' },
-        { en: 'The Grump\'s helpers stole my Arab sailing guide! It lists the best day to leave each port. Ask the boat builder at the shipyard, by the south pier.' }
+        { en: 'The Void\'s helpers stole my Arab sailing guide! It lists the best day to leave each port. Ask the boat builder at the shipyard, by the south pier.' }
       ],
       wait: { en: 'The boat builder works southwest of the market, at the shipyard by the south pier.' },
       thanks: { en: 'My guide! Hinduism, Buddhism and Islam all reached Southeast Asia with merchants. Some Buddhist rulers even took Muslim names to improve relations with Muslim merchants.' }
@@ -11700,7 +11783,7 @@ window.EPISODE = {
     spots: [[1, 17], [8, 14], [24, 14], [27, 10], [1, 13]],
     stat: 'loc',
     title: { en: 'One year on the monsoon' },
-    intro: { en: 'Calicut sits halfway across the ocean, so a ship can come and go in one year. The Grump scrambled the voyage of Zuhura\'s ship from the Swahili coast. Walk to each stop, in order.' },
+    intro: { en: 'Calicut sits halfway across the ocean, so a ship can come and go in one year. The Void scrambled the voyage of Zuhura\'s ship from the Swahili coast. Walk to each stop, in order.' },
     items: [
       { icon: '⛵', t: { en: 'Spring and summer: ride the winds blowing northeast, and reach Calicut\'s pier' } },
       { icon: '📦', t: { en: 'Unload East African gold and ivory at the warehouse' } },
@@ -11713,10 +11796,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 2], stat: 'mov', need: 3,
-    name: { en: 'The Doldrums Grump' },
-    appear: { en: 'The Doldrums Grump is hiding behind the mosque!' },
-    taunt: { en: 'No wind, no trade! I will make every sail on this ocean go slack!' },
-    win: { en: 'A fresh monsoon wind blows over Calicut. The page on the Indian Ocean floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the mosque. Every sail in the harbor goes slack.' },
+    taunt: { en: 'No wind. No trade. No ports. I am the calm where every voyage dies.' },
+    win: { en: 'The Void closes, and a fresh monsoon wind blows over Calicut. The page on the Indian Ocean floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"On the left is a map of the winds in February (blowing toward the southwest). On the right is a map of the winds in August (blowing toward the northeast)."' }, src: { en: 'Caption of a nineteenth-century map of the monsoon winds (Library of Congress), quoted in "Indian Ocean Trade Routes," World History Project' } },
@@ -11810,7 +11893,7 @@ window.EPISODE = {
   title: { en: 'Trans-Saharan Trade Routes' },
   place: { en: 'Timbuktu, Mali Empire, 1350' },
   intro: [
-    { en: 'The Grump buried the page on the Sahara in sand. Timbuktu is forgetting why caravans cross the desert!' },
+    { en: 'The Void buried the page on the Sahara in sand. Timbuktu is forgetting why caravans cross the desert!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a cook get salt, then wake the time stone.' }
   ],
   scenes: {
@@ -12061,7 +12144,7 @@ window.EPISODE = {
     // the east road toward Egypt and Mecca (Indian Ocean)
     spots: [[4, 2], [20, 1], [13, 12], [29, 10]],
     title: { en: 'Compare the networks' },
-    intro: { en: 'The Grump mixed up the trade networks of 1200–1450! Read the post for each network, then come back and compare them.' },
+    intro: { en: 'The Void mixed up the trade networks of 1200–1450! Read the post for each network, then come back and compare them.' },
     table: {
       head: [{ en: 'Network' }, { en: 'How goods moved' }, { en: 'Main goods' }, { en: 'What helped it grow' }],
       rows: [
@@ -12090,10 +12173,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 18], stat: 'hei', need: 3,
-    name: { en: 'The Sand Grump' },
-    appear: { en: 'The Sand Grump is hiding in a dust cloud by the river!' },
-    taunt: { en: 'Gold, salt, camels... who needs them? I will bury every route in sand!' },
-    win: { en: 'The dust settles over the Niger. The page on the trans-Saharan trade floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in a dust cloud by the river. The caravan bells stop.' },
+    taunt: { en: 'Gold and salt crossed this desert for centuries. I can swallow the desert, and every road across it.' },
+    win: { en: 'The Void closes over the Niger. The page on the trans-Saharan trade floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'Pastoralists in the Sahara were essential for the trans-Saharan trade, but they were also a threat to it. Rather than invade the desert, states and merchants paid tribute to pastoralists in order to ensure the safety of their caravans.' }, src: { en: 'Adapted from "Across an Ocean of Sand: Trans-Saharan Trade Routes," World History Project' } },
@@ -12183,7 +12266,7 @@ window.EPISODE = {
   title: { en: 'Cultural Consequences of Connectivity' },
   place: { en: 'A caravan oasis on the pilgrim road, Arabia, 1325' },
   intro: [
-    { en: 'The Grump blew dust over the page on cultural exchange. This oasis on the pilgrim road is forgetting how ideas travel with trade!' },
+    { en: 'The Void blew dust over the page on cultural exchange. This oasis on the pilgrim road is forgetting how ideas travel with trade!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young traveler, then wake the time stone.' }
   ],
   scenes: {
@@ -12393,7 +12476,7 @@ window.EPISODE = {
       look: { skin: 3, hair: '#1b1410', shirt: '#3a5a8a', pants: '#2a2a3a', hat: '#e8e2d0', style: 'short' },
       lines: [
         { en: 'I want to travel the world and write down what I see, like the Muslim trader Ibn Battuta or the Christian merchant Marco Polo.' },
-        { en: 'But the Grump\'s wind stole my travel journal! Ask Idris the camel driver in the caravan camp, southwest of here. Drivers see everything.' }
+        { en: 'But the Void\'s wind stole my travel journal! Ask Idris the camel driver in the caravan camp, southwest of here. Drivers see everything.' }
       ],
       wait: { en: 'Idris waits with his camels in the caravan camp, by the well in the southwest.' },
       thanks: { en: 'My journal! A traveler\'s account shows what one person saw. But the people we meet decide: accept a new idea, reject it, or mix it.' }
@@ -12416,7 +12499,7 @@ window.EPISODE = {
   challenge: {
     at: [18, 11], type: 'claim', stat: 'loc',
     title: { en: 'How did ideas travel?' },
-    intro: { en: 'The Grump says ideas never leave home! Pick one idea that traveled. Back it up with how it traveled and what it changed.' },
+    intro: { en: 'The Void says ideas never leave home! Pick one idea that traveled. Back it up with how it traveled and what it changed.' },
     options: [
       { icon: '🕌', name: { en: 'Islam in West Africa' }, desc: { en: 'From North Africa, across the Sahara' },
         result: { en: 'Yes! Trade and Sufi brotherhoods carried Islam south. West African elites blended it with local beliefs.' } },
@@ -12452,10 +12535,10 @@ window.EPISODE = {
   },
   boss: {
     at: [5, 18], stat: 'mov', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding in the caravan camp!' },
-    taunt: { en: 'Ideas should stay where they started. I will blow every traveler\'s story away!' },
-    win: { en: 'The dust settles over the oasis. Chronicle page 2.5 floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the caravan camp. Lamps flicker toward it.' },
+    taunt: { en: 'Ideas travel, and I follow them. Every story told on this road ends in my silence.' },
+    win: { en: 'The Void closes over the oasis. Chronicle page 2.5 floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Situated between Europe, sub-Saharan Africa, Southeast Asia, and China, the Islamic world was involved in a whole lot of trade. ... Islam is a religion that follows a strict calendar, so dates were understood mathematically. Finally, Islam calls for its followers to pray facing the city of Mecca, requiring directional calculations."' }, src: { en: 'Trevor Getz, "Trade, Technology, and Religion in Afro-Eurasia 1200–1450," World History Project' } },
@@ -12534,7 +12617,7 @@ WW_EPS["2.6"] = function () {
    South-west: the warehouses and the harbor docks (the sailor). South-east: the market by the quay (the merchant from
    North Africa, the farm worker), the time stone with its three levers: the long-term, intermediate and short-term
    causes that brought the plague to the port.
-   A hard topic: told plainly and with care. The Grump is quiet and serious here, and no suffering is a prize.
+   A hard topic: told plainly and with care. The Void is quiet and serious here, and no suffering is a prize.
    Content source: Khan Academy, AP World History (World History Project), Unit 2 Lesson "Environmental Consequences
    of Connectivity | 2.6": "Trade Networks and the Black Death" (Bennett Sherry), "Opener: Contagion!", "Causation:
    Introduction", "Causation: The Black Death", "Quick Sourcing: The Black Death"; and the unit overview
@@ -12552,7 +12635,7 @@ window.EPISODE = {
   title: { en: 'Environmental Consequences of Connectivity' },
   place: { en: 'Genoa, an Italian city-state, 1349' },
   intro: [
-    { en: 'The Grump blurred the page on the Black Death. Genoa is forgetting how a deadly plague traveled the trade routes, and how crops traveled too.' },
+    { en: 'The Void blurred the page on the Black Death. Genoa is forgetting how a deadly plague traveled the trade routes, and how crops traveled too.' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a farm worker, then wake the time stone.' }
   ],
   scenes: {
@@ -12759,7 +12842,7 @@ window.EPISODE = {
       look: { skin: 0, hair: '#3a2a1a', shirt: '#6a7a4a', pants: '#3a3a2a', style: 'long' },
       lines: [
         { en: 'I came down from the hill farms. So many workers have died that landowners cannot find hands for the fields. Fewer peasants means more power for those who live.' },
-        { en: 'Now we ask for higher wages. The old order of lords and peasants, [[feudalism|feudalism]], is cracking. But the Grump\'s helpers took my contract! Ask the shepherd on the hill road.' }
+        { en: 'Now we ask for higher wages. The old order of lords and peasants, [[feudalism|feudalism]], is cracking. But the Void\'s helpers took my contract! Ask the shepherd on the hill road.' }
       ],
       wait: { en: 'The shepherd keeps his sheep in the north-west, up the hill road above the city.' },
       thanks: { en: 'My contract, with a higher wage! With better pay, workers can buy goods once called luxuries. A new [[middle class|middle class]] may grow from this. Thank you.' }
@@ -12854,10 +12937,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 10], stat: 'hei', need: 3,
-    name: { en: 'The Grey Grump' },
-    appear: { en: 'The Grey Grump waits quietly above the harbor.' },
-    taunt: { en: 'So many were lost. Blur the page, and no one will ask how it spread.' },
-    win: { en: 'The fog lifts from the harbor. The page returns, so the losses and the lessons are remembered.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly above the harbor. It is very still.' },
+    taunt: { en: 'So many were lost. If the page stays dark, no one will ask how the sickness traveled.' },
+    win: { en: 'The Void closes over the harbor. The page returns, so the losses and the lessons are remembered.' },
     questions: [
       {
         stim: { title: { en: 'A primary source' }, text: { en: '"The people of Tournai (a city in present-day Belgium) bury plague victims, 1353."' }, src: { en: 'Caption of an image credited to Pierart dou Tielt, 1353; in "Trade Networks and the Black Death," World History Project' } },
@@ -12948,7 +13031,7 @@ window.EPISODE = {
   title: { en: 'Comparison of Economic Exchange' },
   place: { en: 'Malacca, Sultanate of Malacca, 1450' },
   intro: [
-    { en: 'The Grump tangled the page on trade. In Malacca, people are mixing up the Silk Roads, the Indian Ocean and the [[trans-saharan|trans-Saharan]] routes!' },
+    { en: 'The Void tangled the page on trade. In Malacca, people are mixing up the Silk Roads, the Indian Ocean and the [[trans-saharan|trans-Saharan]] routes!' },
     { en: 'Talk to the 4 travelers, read the 2 sources on the lecterns, help a Gujarati merchant load his ship, then wake the time stone.' }
   ],
   scenes: {
@@ -13197,7 +13280,7 @@ window.EPISODE = {
   challenge: {
     at: [16, 16], type: 'carry', stat: 'hei',
     title: { en: 'Sort the three networks' },
-    intro: { en: 'The Grump mixed up the [[network of exchange|networks of exchange]]. Carry each card to its network, or to "All three" if it is a similarity.' },
+    intro: { en: 'The Void mixed up the [[network of exchange|networks of exchange]]. Carry each card to its network, or to "All three" if it is a similarity.' },
     zones: [
       { bin: 'silk', x: 16, y: 13, w: 3, h: 2 },
       { bin: 'ocean', x: 12, y: 16, w: 3, h: 2 },
@@ -13224,10 +13307,10 @@ window.EPISODE = {
   },
   boss: {
     at: [30, 7], stat: 'hei', need: 3,
-    name: { en: 'The Knot Grump' },
-    appear: { en: 'The Knot Grump is hiding behind the Chinese quarter!' },
-    taunt: { en: 'Silk, spice, salt... it is all the same to me! I will tie every route into one big knot!' },
-    win: { en: 'The knot comes loose over the strait. The page on trade networks floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened behind the Chinese quarter. The routes on every map bend toward it.' },
+    taunt: { en: 'Silk Roads, ocean, desert. Three networks, one ending. Every route leads into me.' },
+    win: { en: 'The Void closes over the strait. The page on trade networks floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"All along this route Timur causes horses to be kept stationed ready for use at post-stages... further for this service there have been built caravanserais at diverse intervals, where there are stables for the horses ..."' }, src: { en: 'Ruy Gonzalez de Clavijo (d. 1412), envoy from Spain to the court of Timur at Samarkand' } },
@@ -13316,7 +13399,7 @@ window.EPISODE = {
   title: { en: 'Empires Expand' },
   place: { en: 'Istanbul, Ottoman Empire, 1550' },
   intro: [
-    { en: 'The Grump blurred the page on the gunpowder empires. Istanbul is forgetting how the Ottomans rose and ruled!' },
+    { en: 'The Void blurred the page on the gunpowder empires. Istanbul is forgetting how the Ottomans rose and ruled!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a young mapmaker, then wake the time stone.' }
   ],
   scenes: {
@@ -13529,7 +13612,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#1b1410', shirt: '#3a6a5a', pants: '#e8e0d0', style: 'short' },
       lines: [
         { en: 'I copy sea charts for the navy. Our fleets challenge Spain and Venice in the Mediterranean, and the Portuguese in the Indian Ocean.' },
-        { en: 'The Grump\'s Ink Thief tore my copy of Piri Reis\'s 1513 world map! Ask the ferryman at the east dock. He sees everything.' }
+        { en: 'The Void\'s Ink Thief tore my copy of Piri Reis\'s 1513 world map! Ask the ferryman at the east dock. He sees everything.' }
       ],
       wait: { en: 'The ferryman works at the dock on the east shore, just south of the main street.' },
       thanks: { en: 'My map is whole! Piri Reis made the first Ottoman map to show the Americas. Thank you.' }
@@ -13547,7 +13630,7 @@ window.EPISODE = {
       at: [9, 18],
       hops: [[24, 17], [16, 18]],
       name: { en: 'The Ink Thief' },
-      taunt: { en: 'The Grump wants this map gone. Without maps, who remembers how far the empire reached?' },
+      taunt: { en: 'The Void wants this map gone. Without maps, who remembers how far the empire reached?' },
       clues: [
         { t: { en: 'Spices from the Indian Ocean are sold in Istanbul. Piece 1 is between the market stalls, south of the main street.' },
           zones: [{ x: 18, y: 12, w: 5, h: 1 }, { x: 18, y: 14, w: 5, h: 1 }],
@@ -13569,7 +13652,7 @@ window.EPISODE = {
   challenge: {
     at: [19, 10], type: 'order', stat: 'pla',
     title: { en: 'Rebuild the rise' },
-    intro: { en: 'Empires like this one grew in the space left when the Mongol Empire collapsed. The Grump scrambled the Ottoman rise. Put it in order, oldest first.' },
+    intro: { en: 'Empires like this one grew in the space left when the Mongol Empire collapsed. The Void scrambled the Ottoman rise. Put it in order, oldest first.' },
     items: [
       { icon: '🏕️', t: { en: '1299: Osman\'s Turkish tribe begins to expand in Anatolia' } },
       { icon: '⚔️', t: { en: '1362–1389: Sultan Murad I builds the janissaries, enslaved soldiers loyal only to him' } },
@@ -13583,10 +13666,10 @@ window.EPISODE = {
   },
   boss: {
     at: [27, 5], stat: 'hei', need: 3,
-    name: { en: 'The Smoke Grump' },
-    appear: { en: 'The Smoke Grump is hiding by the palace walls!' },
-    taunt: { en: 'Cannon, sultans, caliphs... I will blow smoke over the whole empire.' },
-    win: { en: 'The smoke clears over Istanbul. The page on expanding empires floats into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the palace walls. The cannon smoke drifts into it.' },
+    taunt: { en: 'Walls fell to cannon. Empires will fall to me. Every sultan ends in the dark.' },
+    win: { en: 'The Void closes over Istanbul. The page on expanding empires floats into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor of Qing China to Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
@@ -13684,7 +13767,7 @@ window.EPISODE = {
   title: { en: 'Empires: Administration' },
   place: { en: 'Fatehpur Sikri, Mughal Empire, 1580' },
   intro: [
-    { en: 'The Grump blurred the page on running an empire. The Mughal capital is forgetting how its emperor holds power!' },
+    { en: 'The Void blurred the page on running an empire. The Mughal capital is forgetting how its emperor holds power!' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands.' },
     { en: 'Then help a horse trader at the customs gate and wake the time stone.' }
   ],
@@ -13930,7 +14013,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 9], type: 'claim', stat: 'hei',
     title: { en: 'How did empires hold power?' },
-    intro: { en: 'The Grump says emperors ruled by force alone! Pick one empire. Back it up with one way it funded the state and one way it claimed [[legitimacy|legitimacy]].' },
+    intro: { en: 'The Void says emperors ruled by force alone! Pick one empire. Back it up with one way it funded the state and one way it claimed [[legitimacy|legitimacy]].' },
     options: [
       { icon: '🐘', name: { en: 'The Mughal Empire' }, desc: { en: 'Northern India. Emperor Akbar, r. 1556–1605' },
         result: { en: 'Yes! The Mughals taxed land and trade, and won loyalty from every faith.' } },
@@ -13966,10 +14049,10 @@ window.EPISODE = {
   },
   boss: {
     at: [5, 10], stat: 'reg', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding by the lake!' },
-    taunt: { en: 'Taxes, judges, paintings... who cares? An emperor only needs a big army!' },
-    win: { en: 'The dust settles over the palace. The page on Mughal rule floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the lake. The palace lamps dim.' },
+    taunt: { en: 'Taxes, judges, pledges, paintings. A throne is only a shadow, and shadows belong to me.' },
+    win: { en: 'The Void closes over the palace. The page on Mughal rule floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor, to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
@@ -14058,7 +14141,7 @@ window.EPISODE = {
   title: { en: 'Empires: Belief Systems' },
   place: { en: 'Isfahan, Safavid Empire, 1600' },
   intro: [
-    { en: 'The Grump blurred this page! From 1450 to 1750, the [[little ice age|Little Ice Age]], hunger, rising prices and new [[absolutist|absolutist]] states stressed people. Many sought new ways to worship.' },
+    { en: 'The Void blurred this page! From 1450 to 1750, the [[little ice age|Little Ice Age]], hunger, rising prices and new [[absolutist|absolutist]] states stressed people. Many sought new ways to worship.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns (📜 and 📖). Help a merchant from the German lands, then wake the time stone.' }
   ],
   scenes: {
@@ -14277,7 +14360,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#c9a24a', shirt: '#3a4a7a', pants: '#2a2a2a', hat: '#3a2a1a', style: 'short' },
       lines: [
         { en: 'In 1517, the year Selim I proclaimed himself caliph, a German priest, Martin Luther, attacked the Church\'s sale of [[indulgences|indulgences]] in his [[ninety-five theses|Ninety-Five Theses]]. He only wanted a debate.' },
-        { en: 'That year Erasmus attacked the Church\'s wealth and power. But Luther lit the [[protestant reformation|Protestant Reformation]]. The Grump\'s wind stole my printed copy! Ask the caravan guard by the west wall.' }
+        { en: 'That year Erasmus attacked the Church\'s wealth and power. But Luther lit the [[protestant reformation|Protestant Reformation]]. The Void\'s wind stole my printed copy! Ask the caravan guard by the west wall.' }
       ],
       wait: { en: 'The caravan guard stands by the west wall, south of the main street.' },
       thanks: { en: 'My Theses! The printing press spread the [[priesthood of all believers|priesthood of all believers]], taught by Luther and Calvin. Merchants felt newly independent; princes challenged the Church. Henry VIII of England left it.' }
@@ -14300,7 +14383,7 @@ window.EPISODE = {
   challenge: {
     at: [14, 14], type: 'sort', stat: 'reg',
     title: { en: 'Three regions, three changes' },
-    intro: { en: 'The Grump scrambled the chronicle of belief, 1450–1750. Sort each card: the Sunni–Shi\'a rift, Europe\'s Reformations, or the rise of Sikhism in India.' },
+    intro: { en: 'The Void scrambled the chronicle of belief, 1450–1750. Sort each card: the Sunni–Shi\'a rift, Europe\'s Reformations, or the rise of Sikhism in India.' },
     bins: [
       { id: 'islam', icon: '🕌', label: { en: 'Islam: the Sunni–Shi\'a rift' }, sub: { en: 'Ottomans and Safavids' } },
       { id: 'europe', icon: '⛪', label: { en: 'Christianity: the Reformations' }, sub: { en: 'Protestant and Catholic Europe' } },
@@ -14321,10 +14404,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 19], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding in the gardens across the river.' },
-    taunt: { en: 'Splits, reforms, new faiths. Let the fog hide how and why belief changed.' },
-    win: { en: 'The fog lifts from the river. The page on belief systems floats down into your hands.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened in the gardens across the river. The prayers go quiet.' },
+    taunt: { en: 'Faiths split. Wars follow. Let the dark hide how and why belief changed.' },
+    win: { en: 'The Void closes over the river. The page on belief systems floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Everything has come to pass and is fulfilled: ... the world is crackling in all places, as if it is going break apart and crumble."' }, src: { en: 'Martin Luther, 1530; quoted in "Transformations in Eurasian Belief Systems, 1450–1750," World History Project' } },
@@ -14414,7 +14497,7 @@ window.EPISODE = {
   title: { en: 'Comparison in Land-Based Empires' },
   place: { en: 'Beijing, Qing China, 1700' },
   intro: [
-    { en: 'The Grump blurred the page on the great land empires. In Beijing, people forget how empires win and keep power!' },
+    { en: 'The Void blurred the page on the great land empires. In Beijing, people forget how empires win and keep power!' },
     { en: 'After the Mongol Empire fell, [[land-based empire|land-based empires]] filled the gap: Ottoman, Safavid, Mughal, Russian, and in China the Ming, then the Qing.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a tutor, then wake the time stone and compare the empires.' }
   ],
@@ -14633,7 +14716,7 @@ window.EPISODE = {
       look: { skin: 1, hair: '#1b1410', shirt: '#c0392b', robe: true, style: 'bun' },
       lines: [
         { en: 'I tutor young men for the exams. I drew a chart comparing the great empires: how each rules, fights, prays and pays.' },
-        { en: 'The Grump\'s Ink Thief tore it into three pieces! Zhao the water carrier saw it run. He works at the well by the palace.' }
+        { en: 'The Void\'s Ink Thief tore it into three pieces! Zhao the water carrier saw it run. He works at the well by the palace.' }
       ],
       wait: { en: 'Zhao fills his buckets at the well in the palace square. Walk north up the main avenue.' },
       thanks: { en: 'My chart is whole! Empires shared tools of rule, but each used them its own way. Thank you!' }
@@ -14700,10 +14783,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 1], stat: 'hei', need: 3,
-    name: { en: 'The Dust Grump' },
-    appear: { en: 'The Dust Grump is hiding beside the palace wall!' },
-    taunt: { en: 'Sultans, shahs, tsars, emperors... they are all the same! I will blur every difference away.' },
-    win: { en: 'The dust settles over Beijing. The page on land-based empires floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened beside the palace wall. The guards do not see it.' },
+    taunt: { en: 'Sultans, shahs, tsars, emperors. Compare them all you like. In the end I hold every one of them.' },
+    win: { en: 'The Void closes over Beijing. The page on land-based empires floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Our Celestial Empire possesses all things in prolific abundance and lacks no product within its borders. There is therefore no need to import the manufactures of outside barbarians in exchange for our own produce."' }, src: { en: 'The Qianlong Emperor to the British envoy Lord Macartney, 1791; quoted in "China Under Ming and Qing Rule," World History Project' } },
@@ -14794,7 +14877,7 @@ window.EPISODE = {
   title: { en: 'Technological Innovations' },
   place: { en: 'Lisbon, Portugal, 1480' },
   intro: [
-    { en: 'The Grump blurred the page on sea technology. Lisbon\'s shipyards are forgetting where their tools came from!' },
+    { en: 'The Void blurred the page on sea technology. Lisbon\'s shipyards are forgetting where their tools came from!' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a shipowner arm her caravel, then wake the time stone.' }
   ],
   scenes: {
@@ -15028,7 +15111,7 @@ window.EPISODE = {
         x: 22, y: 9, name: { en: 'Afonso' }, role: { en: 'Gunner' },
         look: { skin: 1, hair: '#5a3a1a', shirt: '#4a4a4a', pants: '#2a2a2a', hat: '#7a2a2a', style: 'short' },
         lines: [
-          { en: 'The Grump\'s helpers scattered my crates of shot all over town! Round shot smashes hulls. Grapeshot is small balls aimed at the crew.' }
+          { en: 'The Void\'s helpers scattered my crates of shot all over town! Round shot smashes hulls. Grapeshot is small balls aimed at the crew.' }
         ]
       },
       q: { en: 'Pirate ships escape before we can catch them. Bring me the shot that wrecks sails and rigging, and the cannon is yours.' },
@@ -15049,7 +15132,7 @@ window.EPISODE = {
     // the kamal on the harbor front, the carrack at the shipyard
     spots: [[2, 8], [7, 2], [24, 12], [13, 14]],
     title: { en: 'Where did the tools come from?' },
-    intro: { en: 'The Grump erased where Lisbon\'s sea tools came from! Read the 4 posts in town. Then answer at the time stone.' },
+    intro: { en: 'The Void erased where Lisbon\'s sea tools came from! Read the 4 posts in town. Then answer at the time stone.' },
     table: {
       head: [{ en: 'Tool' }, { en: 'Where it came from' }, { en: 'What it did' }],
       rows: [
@@ -15078,10 +15161,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 13], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding by the harbor!' },
-    taunt: { en: 'Compass, kamal, astrolabe... I will fog every star so no ship finds its way!' },
-    win: { en: 'The fog lifts off the river. The page on sea technology floats down into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened by the harbor. The stars above it go out one by one.' },
+    taunt: { en: 'Compass, kamal, astrolabe. No tool can find a star I have swallowed.' },
+    win: { en: 'The Void closes over the river. The page on sea technology floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The tools that these traders and explorers used were based on innovations that developed in many parts of Afro-Eurasia and were brought together in Europe during this period.' }, src: { en: 'Adapted from "Technology in the Age of Exploration," World History Project' } },
@@ -15171,7 +15254,7 @@ window.EPISODE = {
   title: { en: 'Exploration: Causes and Events' },
   place: { en: 'Malindi, East African coast, 1498' },
   intro: [
-    { en: 'The Grump blurred the page on exploration. Malindi is forgetting why strange ships just sailed in from Portugal!' },
+    { en: 'The Void blurred the page on exploration. Malindi is forgetting why strange ships just sailed in from Portugal!' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a pilgrim, then wake the time stone.' }
   ],
   scenes: {
@@ -15387,7 +15470,7 @@ window.EPISODE = {
       lines: [
         { en: 'I sail to Mecca for the [[hajj|hajj]]. Pilgrims from Africa to Indonesia cross this ocean to make it.' },
         { en: 'In the 1300s the traveler Ibn Battuta was welcomed in ports like ours. One faith, Islam, and one language, Arabic, link people from Africa to India and Indonesia.' },
-        { en: 'The Grump\'s helpers stole our navigator\'s [[kamal|kamal]]! Without it he cannot find latitude. Ask the fisherman on the north jetty.' }
+        { en: 'The Void\'s helpers stole our navigator\'s [[kamal|kamal]]! Without it he cannot find latitude. Ask the fisherman on the north jetty.' }
       ],
       wait: { en: 'The fisherman works on the north jetty, at the beach in the north-east.' },
       thanks: { en: 'Our kamal! Now our navigator can find our way, and point us toward Mecca at prayer time.' }
@@ -15413,7 +15496,7 @@ window.EPISODE = {
     // -> the south-west palms (Magellan) -> the market (silver) -> the north-west street (the Dutch companies)
     spots: [[23, 18], [2, 9], [23, 3], [8, 19], [16, 13], [10, 4]],
     title: { en: 'The chain of exploration' },
-    intro: { en: 'The Grump scrambled the timeline of exploration. Walk to each stop in order, from first to last, and see how each step led to the next.' },
+    intro: { en: 'The Void scrambled the timeline of exploration. Walk to each stop in order, from first to last, and see how each step led to the next.' },
     items: [
       { icon: '🏝️', t: { en: '1400s: Spain and Portugal colonize Madeira and the Canary Islands, with sugar plantations worked by enslaved people' } },
       { icon: '⛵', t: { en: '1492: Columbus, sailing for Spain, reaches the Bahamas, home of the Taino people' } },
@@ -15427,10 +15510,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 14], stat: 'hei', need: 3,
-    name: { en: 'The Fog Grump' },
-    appear: { en: 'The Fog Grump is hiding on the south jetty!' },
-    taunt: { en: 'Routes, sails, stars... I will fog up every sea chart in Malindi.' },
-    win: { en: 'The fog lifts over the Indian Ocean. The page on exploration floats into your hands!' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void has opened on the south jetty. The sea charts curl toward it.' },
+    taunt: { en: 'Every voyage loses ships. Every ship that sinks comes to me.' },
+    win: { en: 'The Void closes over the Indian Ocean. The page on exploration floats into your hands.' },
     questions: [
       {
         stim: { text: { en: 'The Ottoman Empire controlled trade between the Mediterranean and Asia. That meant they could tax these luxuries and use the profits to fund wars against the Hapsburg monarchs. . . . Italian merchants, especially from Venice, continued to trade with the Ottomans.' }, src: { en: 'Adapted from "Origins of Oceanic Connections," World History Project' } },
@@ -15520,7 +15603,7 @@ window.EPISODE = {
   title: { en: 'The Columbian Exchange' },
   place: { en: 'Mexico City, New Spain, 1570' },
   intro: [
-    { en: 'The Grump blurred the page on the Columbian Exchange. Mexico City is forgetting what crossed the ocean, and what it cost.' },
+    { en: 'The Void blurred the page on the Columbian Exchange. Mexico City is forgetting what crossed the ocean, and what it cost.' },
     { en: 'Talk to the 4 people here and read the 2 sources on their stands. Help a cook find flour, then wake the time stone.' }
   ],
   scenes: {
@@ -15770,7 +15853,7 @@ window.EPISODE = {
   challenge: {
     at: [23, 7], type: 'carry', stat: 'hei',
     title: { en: 'What crossed the ocean?' },
-    intro: { en: 'The Grump mixed up the record of the [[columbian exchange|Columbian Exchange]]. Carry each card to the way it crossed the Atlantic: east to Afro-Eurasia, or west to the Americas.' },
+    intro: { en: 'The Void mixed up the record of the [[columbian exchange|Columbian Exchange]]. Carry each card to the way it crossed the Atlantic: east to Afro-Eurasia, or west to the Americas.' },
     zones: [
       { bin: 'toae', x: 26, y: 5, w: 3, h: 4 },
       { bin: 'toam', x: 17, y: 5, w: 3, h: 4 }
@@ -15793,10 +15876,10 @@ window.EPISODE = {
   },
   boss: {
     at: [12, 2], stat: 'mov', need: 3,
-    name: { en: 'The Hollow Grump' },
-    appear: { en: 'The Hollow Grump waits quietly on the hill of Tepeyac.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly on the hill of Tepeyac.' },
     taunt: { en: 'So many died here. Let the city forget their names, and forget how it happened.' },
-    win: { en: 'The Grump fades. The page on the Columbian Exchange returns, and with it the memory of the people who lived it.' },
+    win: { en: 'The Void closes. The page on the Columbian Exchange returns, and with it the memory of the people who lived it.' },
     questions: [
       {
         stim: { text: { en: '"The condition of this people was so lamentable [sad] and they fell down so generally of this disease as they were in the end not able to help one another, no not to make a fire nor to fetch a little water to drink, nor any to bury the dead."' }, src: { en: 'William Bradford, governor of the Plymouth colony, describing smallpox about 1634; quoted in "The Columbian Exchange," World History Project' } },
@@ -15872,7 +15955,7 @@ WW_EPS["4.4"] = function () {
 /* HISTORYWALKER · Episode 4.4 · Maritime Empires Established (AP World Topic 4.4, c. 1450–1750)
    A QUIET episode (memorial: true): a town beside a Portuguese fort on the Gold Coast of West Africa, in 1630.
    The Atlantic slave trade is told plainly and with care: no jokes, no smudges, nothing about suffering is a prize,
-   and the Grump is "The Forgetting". The people are ordinary townspeople, a fort clerk and sailors (all invented).
+   and the Void is "The Forgetting". The people are ordinary townspeople, a fort clerk and sailors (all invented).
    Content source: Khan Academy, AP World History (World History Project), Unit 4 Lesson "Maritime Empires Established":
    "Survey of Transoceanic Empires, 1450 to 1750" (Jack Bouchard), "The Cosmopolitan Indian Ocean" (Bennett Sherry),
    "European Colonies in the Americas" (William H. Beezley), "The Transatlantic Slave Trade" (Jake Thurman); and the unit
@@ -15891,7 +15974,7 @@ window.EPISODE = {
   title: { en: 'Maritime Empires Established' },
   place: { en: 'A fort town, Portuguese Gold Coast, West Africa, 1630' },
   intro: [
-    { en: 'On this West African coast, the Grump wants people to forget the sea empires and the [[transatlantic slave trade|slave trade]].' },
+    { en: 'On this West African coast, the Void wants people to forget the sea empires and the [[transatlantic slave trade|slave trade]].' },
     { en: 'Listen with care to the 4 people here and read the 2 sources on their stands. Help a pilot, then visit the time stone.' }
   ],
   scenes: {
@@ -16241,7 +16324,7 @@ WW_EPS["4.5"] = function () {
    source, by the merchants' houses) and "The New Economics of Empire," adapted from "Overview of New Economic Systems"
    (by the treasury). World History Project content is CC BY-NC 4.0. Facts here come from those
    readings. English only, AP level. Hard history (forced labor, slavery, epidemics) is told plainly and with care:
-   nothing about suffering is a prize, and the Grump is quiet and serious.
+   nothing about suffering is a prize, and the Void is quiet and serious.
    Map: the plaza with the church and the royal treasury (north-west), the market and merchants' houses (north-east),
    the road across the town (row 10), Andean workers' houses (south-west), the llama corral (south-east), and the
    mountain of the mines along the south. The four levers: the labor lever by the mine, the Atlantic lever at the east
@@ -16255,7 +16338,7 @@ window.EPISODE = {
   title: { en: 'Maritime Empires Maintained' },
   place: { en: 'Potosí, Spanish Peru, 1600' },
   intro: [
-    { en: 'The Grump blurred the page on maritime empires. Potosí is forgetting how silver, forced labor and new kinds of business remade the world.' },
+    { en: 'The Void blurred the page on maritime empires. Potosí is forgetting how silver, forced labor and new kinds of business remade the world.' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a seamstress, then wake the time stone.' }
   ],
   scenes: {
@@ -16509,7 +16592,7 @@ window.EPISODE = {
     spots: [[14, 16], [30, 11], [1, 11], [13, 6]],
     stat: 'loc',
     title: { en: 'Follow the silver' },
-    intro: { en: 'The Grump scrambled how American silver moved the world. Set the four levers: who dug the silver, what a flood of silver did to prices in Spain, where the Pacific galleons went, and Spain\'s trade policy. Then test them at the stone.' },
+    intro: { en: 'The Void scrambled how American silver moved the world. Set the four levers: who dug the silver, what a flood of silver did to prices in Spain, where the Pacific galleons went, and Spain\'s trade policy. Then test them at the stone.' },
     switches: [
       { name: { en: 'Labor: who dug the silver?' }, icon: '⛏️', start: 0,
         states: [{ en: 'Settlers from Spain' }, { en: 'Indigenous people, by force' }, { en: 'Machines, with few workers' }] },
@@ -16599,10 +16682,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 19], stat: 'hei', need: 3,
-    name: { en: 'The Cold Grump' },
-    appear: { en: 'The Cold Grump waits in the mist below the mountain.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits in the cold mist below the mountain.' },
     taunt: { en: 'Silver, ships and profits are what people remember. Who dug the silver? Let that be forgotten.' },
-    win: { en: 'The mist lifts from the mountain. The page on maritime empires returns, and so does the memory of those who carried its weight.' },
+    win: { en: 'The Void closes. The page on maritime empires returns, and so does the memory of those who carried its weight.' },
     questions: [
       {
         stim: { text: { en: 'The global silver trade, which benefited Spain, Western Europe, and China, was made possible by the forced labor of indigenous people in South American mines.' }, src: { en: 'Adapted from "Unit 4 Introduction: Transoceanic Interconnections 1450 to 1750," World History Project' } },
@@ -16695,7 +16778,7 @@ window.EPISODE = {
   title: { en: 'Challenges to State Power' },
   place: { en: 'Santa Fe, Nuevo México, New Spain, 1680' },
   intro: [
-    { en: 'The Grump smeared the page on [[resistance|resistance]]. In Santa Fe, people are forgetting why they push back against growing states.' },
+    { en: 'The Void smeared the page on [[resistance|resistance]]. In Santa Fe, people are forgetting why they push back against growing states.' },
     { en: 'Talk to the 4 people here, read the 2 sources on the lecterns, help a trader find his book of news, then wake the time stone.' }
   ],
   scenes: {
@@ -16911,7 +16994,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#2b1d14', shirt: '#8a5a2a', pants: '#3a3a4a', hat: '#c9a24a', style: 'short' },
       lines: [
         { en: 'I bring goods up the long road from New Spain. I collect news too: how people across the world push back against growing states.' },
-        { en: 'The Grump\'s Ink Thief tore my book of news into three pieces! Ask Grandmother Willow, the potter. She lives across the river, by the Pueblo houses.' }
+        { en: 'The Void\'s Ink Thief tore my book of news into three pieces! Ask Grandmother Willow, the potter. She lives across the river, by the Pueblo houses.' }
       ],
       wait: { en: 'Grandmother Willow works south of the river. Cross the west bridge and look by the Pueblo houses.' },
       thanks: { en: 'My book is whole! Pueblo towns, French lords, Korean nobles loyal to the Ming, Brazilian maroons: all resisted growing states, in different ways.' }
@@ -16951,7 +17034,7 @@ window.EPISODE = {
   challenge: {
     at: [15, 7], type: 'claim', stat: 'hei',
     title: { en: 'Who resisted, and how?' },
-    intro: { en: 'The Grump says no one ever pushed back against powerful states. Pick one movement. Back it up with what it resisted and how it resisted.' },
+    intro: { en: 'The Void says no one ever pushed back against powerful states. Pick one movement. Back it up with what it resisted and how it resisted.' },
     options: [
       { icon: '🌽', name: { en: 'The Pueblo Revolt, 1680' }, desc: { en: 'Nuevo México, against Spanish colonial rule' },
         result: { en: 'Yes! The revolt drove the Spanish off most Pueblo land. Fighting went on, and Spanish troops later retook the region.' } },
@@ -16993,10 +17076,10 @@ window.EPISODE = {
   },
   boss: {
     at: [28, 19], stat: 'mov', need: 3,
-    name: { en: 'The Silent Grump' },
-    appear: { en: 'The Silent Grump waits at the edge of the cornfields.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits at the edge of the cornfields. Nothing moves.' },
     taunt: { en: 'Powerful states write the history. Why remember the people who resisted them?' },
-    win: { en: 'The dust settles over the river valley. Chronicle page 4.6 floats down into your hands.' },
+    win: { en: 'The Void closes over the river valley. Chronicle page 4.6 floats down into your hands.' },
     questions: [
       {
         stim: { text: { en: '"Most forms of this struggle stop well short of outright collective defiance. Here I have in mind the ordinary weapons of relatively powerless groups: foot dragging, dissimulation, desertion, false compliance, pilfering, feigned ignorance..."' }, src: { en: 'Historian James Scott, quoted in "State Centralization and Resistance," World History Project' } },
@@ -17093,7 +17176,7 @@ window.EPISODE = {
   title: { en: 'Changing Social Hierarchies' },
   place: { en: 'Lima, Viceroyalty of Peru, 1650' },
   intro: [
-    { en: 'The Grump blurred the page on social hierarchies. Lima is forgetting who ranked its people, why, and who paid the cost.' },
+    { en: 'The Void blurred the page on social hierarchies. Lima is forgetting who ranked its people, why, and who paid the cost.' },
     { en: 'Talk to the 4 people here and read the 2 sources on the lecterns. Help a court scribe, then wake the time stone.' }
   ],
   scenes: {
@@ -17306,7 +17389,7 @@ window.EPISODE = {
       look: { skin: 0, hair: '#2b1d14', shirt: '#4a4a6a', robe: true, style: 'short' },
       lines: [
         { en: 'I copy laws for the [[audiencia|audiencia]], the judges who help the viceroy rule the [[viceroyalty|Viceroyalty]] of Peru. These laws decide who stands where in Lima.' },
-        { en: 'The Grump\'s Ink Thief tore my copy into three pieces! Rosa the water seller sees everything. She works at the fountain in the plaza.' }
+        { en: 'The Void\'s Ink Thief tore my copy into three pieces! Rosa the water seller sees everything. She works at the fountain in the plaza.' }
       ],
       wait: { en: 'Rosa sells water at the fountain in the middle of the plaza. Walk north up the main street.' },
       thanks: { en: 'My copy is whole! Law, dress codes and the church all helped a few rulers keep their place above the many.' }
@@ -17346,7 +17429,7 @@ window.EPISODE = {
   challenge: {
     at: [22, 19], type: 'carry', stat: 'loc',
     title: { en: 'Who chose the crossing?' },
-    intro: { en: 'The Grump mixed up the record of [[transatlantic migration|transatlantic migration]]. Carry each card to how these people crossed the Atlantic: by choice, or by force. Voluntary migrants were always treated far better than captive Africans.' },
+    intro: { en: 'The Void mixed up the record of [[transatlantic migration|transatlantic migration]]. Carry each card to how these people crossed the Atlantic: by choice, or by force. Voluntary migrants were always treated far better than captive Africans.' },
     zones: [
       { bin: 'chose', x: 18, y: 17, w: 3, h: 3 },
       { bin: 'forced', x: 26, y: 17, w: 3, h: 3 }
@@ -17369,10 +17452,10 @@ window.EPISODE = {
   },
   boss: {
     at: [29, 1], stat: 'hei', need: 3,
-    name: { en: 'The Gray Grump' },
-    appear: { en: 'The Gray Grump waits quietly on the far bank of the river.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits quietly on the far bank of the river.' },
     taunt: { en: 'Let the city forget who made these rankings, and who paid for them.' },
-    win: { en: 'The Grump fades. The page on social hierarchies returns, and with it the truth: rulers made these rankings to keep power.' },
+    win: { en: 'The Void closes. The page on social hierarchies returns, and with it the truth: rulers made these rankings to keep power.' },
     questions: [
       {
         stim: { text: { en: '"I do not know if coffee and sugar are essential to the happiness of Europe, but I know well that these two products have accounted for the unhappiness of two great regions of the world: America has been depopulated to have land on which to plant them; Africa has been depopulated so as to have the people to cultivate them."' }, src: { en: 'J.H. Bernardin de Saint-Pierre, 1773; quoted in "Transatlantic Migration Patterns," World History Project' } },
@@ -17458,7 +17541,7 @@ WW_EPS["4.8"] = function () {
    (Bennett Sherry, 4.4), "The Transatlantic Slave Trade" (4.4), "Overview of New Economic Systems"
    (Eman M. Elshaikh, 4.5). World History Project content is CC BY-NC 4.0. Facts here come from those readings.
    Reading stands: Martin Luther's words of 1530 as quoted in "Transformations in Eurasian Belief Systems" (3.3), and
-   an adapted reading from "Unit 4 Introduction" (Trevor Getz). The 1773 Bernardin de Saint-Pierre quote in the Grump's
+   an adapted reading from "Unit 4 Introduction" (Trevor Getz). The 1773 Bernardin de Saint-Pierre quote in the Void's
    questions is the one printed in "Transatlantic Migration Patterns" (4.7).
    English only, AP level. Hard history (the Atlantic slave trade, forced labor in the silver mines) is told
    plainly and with care. */
@@ -17471,7 +17554,7 @@ window.EPISODE = {
   title: { en: 'Continuity and Change, 1450–1750' },
   place: { en: 'Amsterdam, Dutch Republic, 1700' },
   intro: [
-    { en: 'The Grump blurred the last chronicle page: 1450 to 1750. Amsterdam is forgetting what changed and what stayed the same!' },
+    { en: 'The Void blurred the last chronicle page: 1450 to 1750. Amsterdam is forgetting what changed and what stayed the same!' },
     { en: 'Talk to the 4 people, read the 2 sources on the lecterns, help a cook get pepper, then wake the time stone.' }
   ],
   scenes: {
@@ -17688,7 +17771,7 @@ window.EPISODE = {
       look: { skin: 2, hair: '#2b1d14', shirt: '#c0392b', pants: '#4a3a2a', style: 'bun' },
       lines: [
         { en: 'Pepper once came through many middlemen: Silk Road caravans, then the Ottomans, who taxed it, then Italian traders. Each one took a profit, so pepper was costly.' },
-        { en: 'Since da Gama, ships bring it straight around Africa. But the Grump spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
+        { en: 'Since da Gama, ships bring it straight around Africa. But the Void spoiled my pepper! Ask the boatman at the harbor docks. Boatmen know every cargo.' }
       ],
       wait: { en: 'Cross the canal bridge north, then walk west along the harbor quay to the docks.' },
       thanks: { en: 'Pepper! An old Asian spice, on a new ocean route, paid for with American silver. Old and new, all in one sack. Thank you!' }
@@ -17725,7 +17808,7 @@ window.EPISODE = {
   challenge: {
     at: [23, 18], type: 'carry', stat: 'pla',
     title: { en: 'What changed, what stayed?' },
-    intro: { en: 'The Grump scrambled the chronicle of 1450–1750. Carry each card to CHANGE (something new in this era) or [[continuity|CONTINUITY]] (something that went on as before).' },
+    intro: { en: 'The Void scrambled the chronicle of 1450–1750. Carry each card to CHANGE (something new in this era) or [[continuity|CONTINUITY]] (something that went on as before).' },
     zones: [
       { bin: 'chg', x: 17, y: 18, w: 3, h: 3 },
       { bin: 'cnt', x: 27, y: 18, w: 3, h: 3 }
@@ -17749,10 +17832,10 @@ window.EPISODE = {
   },
   boss: {
     at: [30, 9], stat: 'hei', need: 3,
-    name: { en: 'The Tide Grump' },
-    appear: { en: 'The Tide Grump waits quietly behind the canal houses.' },
+    name: { en: 'The Void' },
+    appear: { en: 'The Void waits behind the canal houses. The water runs toward it.' },
     taunt: { en: 'Everything changed, or nothing did. Why remember which, or who paid the price?' },
-    win: { en: 'The tide turns. The last chronicle page, 1450 to 1750, floats down into your hands.' },
+    win: { en: 'The Void closes. The last chronicle page, 1450 to 1750, floats down into your hands.' },
     questions: [
       {
         stim: { title: { en: 'The Dutch Republic' }, rows: [[{ en: 'Time' }, { en: 'Fact' }], [{ en: '1600' }, { en: 'A small republic, only recently independent from Spain' }], [{ en: '1602' }, { en: 'The Amsterdam Stock Exchange opens' }], [{ en: '1600–1800' }, { en: '49 percent of all ships in the Eurasian trade were Dutch' }]], src: { en: 'From "Origins of Oceanic Connections," World History Project' } },
