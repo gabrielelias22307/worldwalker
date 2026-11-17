@@ -464,7 +464,7 @@
         const hero = WW.spriteCanvas('hero', WW.heroPal(), 5); hero.className = 'pp-hero';
         top.appendChild(hero);
         top.insertAdjacentHTML('beforeend', `<div><div class="pp-name">${esc(s.name || '—')}</div><div class="small">${esc(s.cls || '')}</div>
-          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / 24</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
+          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / ${WW.EPISODES.length}</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
         box.appendChild(top);
         let pw = `<h3>${esc(T('powers'))}</h3><div class="powers">`;
         WW.THEMES.forEach(th => {
@@ -568,7 +568,7 @@
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
         const acts = document.createElement('div'); acts.className = 'acts';
         acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
-        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`Worldwalker ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
+        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`${(WW.COURSE && WW.COURSE.name) || 'Worldwalker'} ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
         box.appendChild(acts);
         box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
         const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
@@ -611,7 +611,7 @@
     const lines = [];
     lines.push(`${WW.TITLE} — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
     lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
-    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
+    lines.push(`Stars: ${r.stars} of 3   ${WW.plain(T('scraps'))}: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
     lines.push('');
     lines.push('TALKS (question — my answer — tries)');
     r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));

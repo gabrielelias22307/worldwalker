@@ -378,7 +378,7 @@
     const need = boss.need || 3;
     if (st && !st.queue) Object.assign(st, { queue: shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1), broken: 0, freeHints: WW.tier('reg'), hidden: {} });
     let queue = st ? st.queue : shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = st ? st.broken : 0, picked = null, last = null, grr = '';
+    let broken = st ? st.broken : 0, picked = null, last = null, grr = '', ordSeed = 0;
     let freeHints = st ? st.freeHints : WW.tier('reg'); const hidden = st ? st.hidden : {}; // Region power: free hints. A hint hides one wrong answer.
     const keep = () => { if (st) Object.assign(st, { broken, freeHints }); };
     WW.music.play(WW.ep && WW.ep.memorial ? 'quiet' : 'boss'); // a quiet episode keeps its soft song
@@ -412,7 +412,8 @@
         if (q.stim) box.insertAdjacentHTML('beforeend', WW.stimHTML(q.stim)); // AP style: a source, a table or a quote to read first
         box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
         const list = document.createElement('div'); list.className = 'choices two';
-        const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
+        if (picked == null) ordSeed = qi * 5 + WW.run.bossMisses + 3; // a new order only for a new question, never while the feedback shows
+        const ord = shuffle(q.choices.map((_, i) => i), ordSeed);
         let pos = 0;
         ord.forEach(i => {
           if (picked == null && (hidden[qi] || []).includes(i)) return;

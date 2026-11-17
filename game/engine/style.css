@@ -628,3 +628,4 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 #ww .recallov .fb { color: #22202e; }
 #ww .recallov .choices button.right { background: #1d4a32; border-color: #5fd36a; }
 #ww .recallov .choices button.wrong { background: #4a1d2a; border-color: #ff6b5e; }
+#ww.guide-small #ww-now { max-height: calc(100vh - 300px) !important; overflow-y: auto; }

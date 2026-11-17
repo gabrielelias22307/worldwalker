@@ -395,6 +395,12 @@
     labKey = key;
     const L0 = cr.left - sr.left, T0 = cr.top - sr.top;
     labs.innerHTML = list.map(o => `<span class="gl ${o.cls}" style="left:${L0 + o.px * k + (o.cls === 'row' ? -3 : 0)}px;top:${T0 + o.py * k - (o.cls === 'row' ? 0 : 2)}px">${esc(o.t)}</span>`).join('');
+    // a label never runs off the edge of the map (a lever or a zone by the border): nudge it back inside
+    labs.querySelectorAll('.gl.col').forEach(sp => {
+      const w = sp.offsetWidth, h = sp.offsetHeight, x = parseFloat(sp.style.left), y = parseFloat(sp.style.top);
+      sp.style.left = Math.max(L0 + w / 2 + 2, Math.min(L0 + cr.width - w / 2 - 2, x)) + 'px';
+      if (y - h < T0 + 2) sp.style.top = (T0 + h + 2) + 'px';
+    });
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {

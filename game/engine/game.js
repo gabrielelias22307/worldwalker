@@ -236,6 +236,7 @@
     WW.farm.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
+    if (WW.COURSE && WW.COURSE.bossNeed && ep.boss && !ep.memorial) ep.boss.need = Math.min(WW.COURSE.bossNeed, ep.boss.questions.length - 1); // HistoryWalker: the Void takes 5 right answers
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     if (WW.chris && WW.chris.resetFlight) WW.chris.resetFlight();
@@ -351,7 +352,7 @@
     if (WW.COURSE && WW.COURSE.recall && WW.recall && !G.recalling) { // HistoryWalker: a flash-recall question instead of a plain hit
       G.recalling = true; inv = performance.now() + 1e9;
       return WW.recall(ok => {
-        G.recalling = false; inv = performance.now() + 1500; G.graceUntil = performance.now() + 1500;
+        G.recalling = false; inv = performance.now() + 1500; G.graceUntil = performance.now() + 1500; try { $('ww-screen').focus(); } catch (e) { }
         if (ok) { WW.fx.burst(sm.x, sm.y, 'gold'); sm.stunUntil = performance.now() + 9000; sm.visible = false; WW.toast('⚡ Shade dissolved!', '#7a5ad8'); return; }
         if (ok === false) { WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple'); }
         else { WW.sfx('hurt'); WW.hurt(false); } // nothing taught yet to ask about: a plain hit
