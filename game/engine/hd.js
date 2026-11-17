@@ -453,6 +453,24 @@
       P(12, 6, 8, 20, D); P(13, 6, 6, 19, W); P(13, 6, 2, 19, L); P(12, 26, 8, 2, 'rgba(0,0,0,.25)');
     });
   }
+  // a flooded rice paddy: muddy water with the sky in it, and rows of young rice
+  function paddyPic(gx, gy) {
+    return pic(['paddy', gx % 4, gy % 4, at(gx, gy - 1) === 'q', at(gx, gy + 1) === 'q', at(gx - 1, gy) === 'q', at(gx + 1, gy) === 'q'].join(), c => {
+      const P = PX(c);
+      for (let py = 0; py < A; py++) for (let px = 0; px < A; px++) {
+        const X = gx * A + px, Y = gy * A + py, v = vnoise(X, Y, 10, 41);
+        P(px, py, 1, 1, shade(hex('#6f8f7a'), 0.85 + v * 0.3 + ((X + Y) % 19 === 0 ? 0.25 : 0)));
+      }
+      for (let r = 3; r < A; r += 6) for (let k = 2; k < A; k += 5) { // seedlings in neat rows, as they were transplanted
+        const o = (r / 6) % 2 ? 2 : 0; P(k + o, r, 1, 3, '#3f7a30'); P(k + o + 1, r - 1, 1, 4, '#6cbf4a'); P(k + o + 2, r, 1, 3, '#4f9a3a');
+      }
+      const D = '#7a5a36', L = '#a07a4e'; // little earth banks round each field
+      if (at(gx, gy - 1) !== 'q') { P(0, 0, A, 2, L); P(0, 2, A, 1, D); }
+      if (at(gx, gy + 1) !== 'q') { P(0, A - 2, A, 2, D); }
+      if (at(gx - 1, gy) !== 'q') { P(0, 0, 2, A, L); }
+      if (at(gx + 1, gy) !== 'q') { P(A - 2, 0, 2, A, D); }
+    });
+  }
   const HDB = {
     R: (c, x, y, gx, gy) => c.drawImage(roofPic('R', gx, gy), x, y, T, T),
     Q: (c, x, y, gx, gy) => c.drawImage(roofPic('Q', gx, gy), x, y, T, T),
@@ -464,7 +482,8 @@
     E: (c, x, y, gx, gy) => c.drawImage(flatPic('E', gx, gy), x, y, T, T),
     W: (c, x, y, gx, gy) => c.drawImage(stonePic('W', gx, gy), x, y, T, T),
     D: (c, x, y, gx, gy) => c.drawImage(stonePic('D', gx, gy), x, y, T, T),
-    F: (c, x, y, gx, gy) => c.drawImage(fencePic(gx, gy), x, y, T, T)
+    F: (c, x, y, gx, gy) => c.drawImage(fencePic(gx, gy), x, y, T, T),
+    q: (c, x, y, gx, gy) => c.drawImage(paddyPic(gx, gy), x, y, T, T)
   };
 
   /* ---------------- people, twice as fine: 32 x 40 art pixels (16 x 20 map units), four walking frames ---------------- */

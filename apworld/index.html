@@ -606,6 +606,7 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 .hw-ep small { display: block; color: #b9b2c8; font-size: 12px; }
 .hw-ep .st { color: #f2c14e; }
 #ww [hidden] { display: none !important; }
+.hw-credit { margin-top: 18px; font-size: 12px; color: #9a92ad; text-align: center; }
 
 </style>
 </head>
@@ -616,7 +617,8 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
    with the HD look (hd: true, game/engine/hd.js) and the whole game in one file (tools/build-one.js).
    English only, at AP level. Episodes live in apworld/episodes/ (one per AP topic: 1.1 ... 4.8). */
 window.WW_COURSE = {
-  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'hourglass', hd: true, langs: ['en'],
+  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'hourglass', hd: true, langs: ['en'], readingScale: 2,
+  credit: 'Lessons adapted from the World History Project (OER Project) AP World History course on Khan Academy, CC BY-NC 4.0. Game by Gabriel Elias, Alexandria City High School.',
   episodes: [['1.1', 1], ['1.2', 1], ['1.3', 1], ['1.4', 1], ['1.5', 1], ['1.6', 1], ['1.7', 1], ['2.1', 2], ['2.2', 2], ['2.3', 2], ['2.4', 2], ['2.5', 2], ['2.6', 2], ['2.7', 2],
     ['3.1', 3], ['3.2', 3], ['3.3', 3], ['3.4', 3], ['4.1', 4], ['4.2', 4], ['4.3', 4], ['4.4', 4], ['4.5', 4], ['4.6', 4], ['4.7', 4], ['4.8', 4]],
   realms: [
@@ -626,23 +628,14 @@ window.WW_COURSE = {
     { en: 'Unit 4 · Transoceanic Interconnections' }],
   // the five powers: history thinking skills (same keys as Worldwalker, so saves and the Sheet work the same)
   themes: [
-    { icon: '🔗', name: { en: 'Cause & effect', es: 'Causa y efecto', fa: 'علت و نتیجه' }, full: { en: 'Cause and Effect', es: 'Causa y efecto', fa: 'علت و نتیجه' } },
-    { icon: '⏳', name: { en: 'Change', es: 'Cambio', fa: 'تغییر' }, full: { en: 'Change Over Time', es: 'Cambio en el tiempo', fa: 'تغییر در طول زمان' } },
-    { icon: '📜', name: { en: 'Sources', es: 'Fuentes', fa: 'منابع' }, full: { en: 'Primary Sources', es: 'Fuentes primarias', fa: 'منابع اصلی' } },
-    { icon: '👥', name: { en: 'Points of view', es: 'Puntos de vista', fa: 'دیدگاه‌ها' }, full: { en: 'Perspectives', es: 'Perspectivas', fa: 'دیدگاه‌ها' } },
-    { icon: '🌐', name: { en: 'Connections', es: 'Conexiones', fa: 'پیوندها' }, full: { en: 'Connections', es: 'Conexiones', fa: 'پیوندها' } }],
+    { icon: '🔗', name: { en: 'Causation' }, full: { en: 'Causation' } },
+    { icon: '⏳', name: { en: 'Continuity & change' }, full: { en: 'Continuity and Change' } },
+    { icon: '⚖️', name: { en: 'Comparison' }, full: { en: 'Comparison' } },
+    { icon: '📜', name: { en: 'Sourcing' }, full: { en: 'Sourcing and Situation' } },
+    { icon: '🌐', name: { en: 'Context' }, full: { en: 'Contextualization' } }],
   // the tools you earn (same ids as Worldwalker, so their secrets work the same: the sail crosses deep water, and so on).
   // 2.3 (the Atlantic slave trade) and 7.3 (the Holocaust) give no tool: nothing there is a prize
-  tools: [
-    { id: 'compass', ep: '1.3', icon: '🗺️', name: { en: 'Sea Chart', es: 'Carta de navegar', fa: 'نقشهٔ دریایی' } },
-    { id: 'sail', ep: '2.1', icon: '⛵', name: { en: 'Ship Sail', es: 'Vela de barco', fa: 'بادبان کشتی' } },
-    { id: 'canoe', ep: '1.2', icon: '🛶', name: { en: 'Canoe', es: 'Canoa', fa: 'قایق کوچک' } },
-    { id: 'key', ep: '3.3', icon: '🗝️', name: { en: 'Library Key', es: 'Llave de la biblioteca', fa: 'کلید کتابخانه' } },
-    { id: 'gourd', ep: '4.3', icon: '🫙', name: { en: 'Water Flask', es: 'Cantimplora', fa: 'قمقمهٔ آب' } },
-    { id: 'rail', ep: '5.3', icon: '🎫', name: { en: 'Railway Ticket', es: 'Boleto de tren', fa: 'تکت قطار' } },
-    { id: 'cloak', ep: '6.3', icon: '🧥', name: { en: 'Wool Coat', es: 'Abrigo de lana', fa: 'کرتی پشمی' } },
-    { id: 'seal', ep: '8.1', icon: '📜', name: { en: 'Peace Seal', es: 'Sello de la paz', fa: 'مهر صلح' } }],
-  // the engine's own words, swapped in order (longer ones first)
+  tools: [], // no tools to earn: every episode stands on its own
   swaps: {
     en: [['Christopher', 'Tock'], ['living compass', 'living hourglass'], ['compass stone', 'time stone'], ['Compass arrow', 'Time arrow'],
       ['Great Atlas', 'Great Chronicle'], ['Atlas pages', 'Chronicle pages'], ['atlas pages', 'chronicle pages'], ['Atlas page', 'Chronicle page'], ['atlas page', 'chronicle page'],
@@ -2092,6 +2085,24 @@ window.WW_CONFIG.MODE = 'one';
       P(12, 6, 8, 20, D); P(13, 6, 6, 19, W); P(13, 6, 2, 19, L); P(12, 26, 8, 2, 'rgba(0,0,0,.25)');
     });
   }
+  // a flooded rice paddy: muddy water with the sky in it, and rows of young rice
+  function paddyPic(gx, gy) {
+    return pic(['paddy', gx % 4, gy % 4, at(gx, gy - 1) === 'q', at(gx, gy + 1) === 'q', at(gx - 1, gy) === 'q', at(gx + 1, gy) === 'q'].join(), c => {
+      const P = PX(c);
+      for (let py = 0; py < A; py++) for (let px = 0; px < A; px++) {
+        const X = gx * A + px, Y = gy * A + py, v = vnoise(X, Y, 10, 41);
+        P(px, py, 1, 1, shade(hex('#6f8f7a'), 0.85 + v * 0.3 + ((X + Y) % 19 === 0 ? 0.25 : 0)));
+      }
+      for (let r = 3; r < A; r += 6) for (let k = 2; k < A; k += 5) { // seedlings in neat rows, as they were transplanted
+        const o = (r / 6) % 2 ? 2 : 0; P(k + o, r, 1, 3, '#3f7a30'); P(k + o + 1, r - 1, 1, 4, '#6cbf4a'); P(k + o + 2, r, 1, 3, '#4f9a3a');
+      }
+      const D = '#7a5a36', L = '#a07a4e'; // little earth banks round each field
+      if (at(gx, gy - 1) !== 'q') { P(0, 0, A, 2, L); P(0, 2, A, 1, D); }
+      if (at(gx, gy + 1) !== 'q') { P(0, A - 2, A, 2, D); }
+      if (at(gx - 1, gy) !== 'q') { P(0, 0, 2, A, L); }
+      if (at(gx + 1, gy) !== 'q') { P(A - 2, 0, 2, A, D); }
+    });
+  }
   const HDB = {
     R: (c, x, y, gx, gy) => c.drawImage(roofPic('R', gx, gy), x, y, T, T),
     Q: (c, x, y, gx, gy) => c.drawImage(roofPic('Q', gx, gy), x, y, T, T),
@@ -2103,7 +2114,8 @@ window.WW_CONFIG.MODE = 'one';
     E: (c, x, y, gx, gy) => c.drawImage(flatPic('E', gx, gy), x, y, T, T),
     W: (c, x, y, gx, gy) => c.drawImage(stonePic('W', gx, gy), x, y, T, T),
     D: (c, x, y, gx, gy) => c.drawImage(stonePic('D', gx, gy), x, y, T, T),
-    F: (c, x, y, gx, gy) => c.drawImage(fencePic(gx, gy), x, y, T, T)
+    F: (c, x, y, gx, gy) => c.drawImage(fencePic(gx, gy), x, y, T, T),
+    q: (c, x, y, gx, gy) => c.drawImage(paddyPic(gx, gy), x, y, T, T)
   };
 
   /* ---------------- people, twice as fine: 32 x 40 art pixels (16 x 20 map units), four walking frames ---------------- */
@@ -7094,7 +7106,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
       <div class="hw-units">${WW.REALMS.slice(1).map((r, ui) => `<section class="hw-unit" style="--uc:${UNITC[ui + 1]}"><h2>${esc(L(r))}</h2>${cat.filter(e => e.realm === ui + 1).map(e => {
         const st = s.episodes[e.id] || {};
         return `<button class="hw-ep${st.done ? ' done' : ''}" data-ep="${esc(e.id)}"><span class="id">${esc(e.id)}</span><span class="t">${esc(L(e.title))}<small>${esc(L(e.place))}</small></span><span class="st">${st.done ? '★'.repeat(st.stars || 1) : ''}</span></button>`;
-      }).join('')}</section>`).join('')}</div></div>`;
+      }).join('')}</section>`).join('')}</div>${WW.COURSE && WW.COURSE.credit ? `<p class="hw-credit">${esc(WW.COURSE.credit)}</p>` : ''}</div>`;
     const cv = document.getElementById('hw-map'); paint(cv);
     const pins = document.getElementById('hw-pins'), tip = document.getElementById('hw-tip');
     cat.forEach(e => {
@@ -7962,372 +7974,306 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
 <script>
 window.WW_EPS = {};
 WW_EPS["1.1"] = function () {
-/* TIMEWALKER · Episode 1.1 · The Renaissance (WHII)
-   Florence, Italy, in the year 1500. The first episode a student plays: a gentle walk, kind people, a simple quest.
-   North half: the cathedral with its great dome (D), workshops and a silk weaver's house, the market (m).
-   Row 10 is the main street. South half: Piazza della Signoria (l, with the sign about David), a baker's house and
-   the Palazzo Vecchio (J, the city hall). Rows 16-17: the Arno river, crossed by the Old Bridge (B, the Ponte Vecchio).
-   Rows 18-20: the south bank, with gardens on the hill. */
+/* HISTORYWALKER · Episode 1.1 · Developments in East Asia (AP World Topic 1.1, c. 1200–1450)
+   The model HistoryWalker episode: Hangzhou, capital of Song China, in 1200.
+   Content source: Khan Academy, AP World History (World History Project), Unit 1 Lesson "Developments in East Asia":
+   "East Asia 1200–1450" (Merry Wiesner-Hanks), "Confucianism", "Why do Belief Systems Spread? How China Made Buddhism
+   its Own". World History Project content is CC BY-NC 4.0. Facts here come from those readings. English only, AP level. */
 window.EPISODE = {
-  id: '1.1', style: 'china',
+  id: '1.1',
   realm: 1,
-  sol: 'WHII',
-  title: { en: 'The Renaissance', es: 'El Renacimiento', fa: 'رنسانس' },
-  place: { en: 'Florence, 1500', es: 'Florencia, 1500', fa: 'فلورانس، ۱۵۰۰' },
+  sol: 'AP 1.1',
+  style: 'china',
+  weather: { sky: 'petals', time: 'day' },
+  title: { en: 'Developments in East Asia' },
+  place: { en: 'Hangzhou, Song China, 1200' },
   intro: [
-    { en: 'The Grump blurred the [[renaissance|Renaissance]] page. Florence is forgetting its art and ideas!',
-      es: 'El Gruñón borró la página del [[renaissance|Renacimiento]]. ¡Florencia está olvidando su arte y sus ideas!',
-      fa: 'غرغرو صفحهٔ [[renaissance|رنسانس]] را تار کرد. فلورانس هنر و اندیشه‌هایش را فراموش می‌کند!' },
-    { en: 'Welcome, Timewalker! Talk to the 3 people here, then fix the time stone.',
-      es: '¡Bienvenido, Caminante del Tiempo! Habla con las 3 personas de aquí y luego arregla la piedra del tiempo.',
-      fa: 'خوش آمدی، زمان‌گرد! با ۳ نفر اینجا گپ بزن، بعد سنگ زمان را درست کن.' }
+    { en: 'The Grump blurred the page on Song China. Hangzhou is forgetting how it rules, grows and believes!' },
+    { en: 'Talk to the 4 people here, help a traveler from Japan, then wake the time stone.' }
   ],
-  /* cut scenes: Florence on the world map, 1500 on the timeline */
   scenes: {
-    at: [11.25, 43.77],
-    year: 1500,
+    at: [120.15, 30.25],
+    year: 1200,
     start: [
-      { en: 'Around 1500, Florence was a rich city in Italy.',
-        es: 'Hacia 1500, Florencia era una ciudad rica de Italia.',
-        fa: 'در حدود سال ۱۵۰۰، فلورانس یک شهر ثروتمند در ایتالیا بود.' },
-      { en: 'Artists and thinkers there studied old Greek and Roman ideas again.',
-        es: 'Sus artistas y pensadores estudiaron otra vez las viejas ideas de Grecia y Roma.',
-        fa: 'هنرمندان و اندیشمندان آنجا دوباره اندیشه‌های کهن یونان و روم را خواندند.' },
-      { en: 'Historians call this time the Renaissance.',
-        es: 'Los historiadores llaman a esta época el Renacimiento.',
-        fa: 'تاریخ‌دانان این زمان را رنسانس می‌نامند.' }
+      { en: 'In 1200, the Song dynasty ruled southern China. Its capital was Hangzhou.' },
+      { en: 'Eastern China was the most urbanized part of the world, with at least six cities over 100,000 people.' },
+      { en: 'Hangzhou grew from a rice-growing village into perhaps the largest city on Earth.' }
     ],
-    page: { en: 'Michelangelo\'s statue David is still in Florence, more than 500 years later.',
-      es: 'La estatua David de Miguel Ángel sigue en Florencia, más de 500 años después.',
-      fa: 'مجسمهٔ داوود از میکل‌آنژ بعد از بیش از ۵۰۰ سال هنوز در فلورانس است.' },
     guess: {
-      q: { en: 'Renaissance means "rebirth." What came back to life?', es: 'Renacimiento quiere decir "volver a nacer". ¿Qué volvió a la vida?', fa: 'رنسانس یعنی «دوباره زاده شدن». چه چیزی دوباره زنده شد؟' },
-      choices: [
-        { t: { en: '📚 Old Greek and Roman ideas', es: '📚 Las viejas ideas griegas y romanas', fa: '📚 اندیشه‌های کهن یونان و روم' }, ok: true },
-        { t: { en: '🦖 The dinosaurs', es: '🦖 Los dinosaurios', fa: '🦖 دایناسورها' } }
-      ],
-      why: { en: 'People read old Greek and Roman books again. Those ideas led to new art and science.', es: 'La gente volvió a leer libros griegos y romanos. Esas ideas trajeron arte y ciencia nuevos.', fa: 'مردم دوباره کتاب‌های کهن یونان و روم را خواندند. این اندیشه‌ها هنر و دانش نو آوردند.' }
+      q: { en: 'Song China had about 100 million people by the 1100s. What do you think fed them?' },
+      choices: [{ t: { en: '🌾 More rice' }, ok: true }, { t: { en: '🐟 Only fish' } }],
+      why: { en: 'Farmers turned forests and swamps into rice paddies and grew two harvests a year.' }
     },
+    page: { en: 'Song China printed the world\'s first government-issued paper money, in the 1120s.' },
     next: {
-      q: { en: 'Next: trade around 1500. Did spices from India reach Europe?', es: 'Ahora: el comercio hacia 1500. ¿Las especias de la India llegaban a Europa?', fa: 'بعدی: تجارت در حدود ۱۵۰۰. آیا مصاله‌های هند به اروپا می‌رسید؟' },
-      choices: [
-        { t: { en: 'Yes, by long trade routes', es: 'Sí, por rutas largas', fa: 'بله، از راه‌های دراز تجارتی' }, ok: true },
-        { t: { en: 'No, never', es: 'No, nunca', fa: 'نه، هرگز' } }
-      ],
-      why: { en: 'Ships and camels carried spices from India to Europe. Next, you visit a port in India.', es: 'Barcos y camellos llevaban especias de la India a Europa. Ahora visitarás un puerto de la India.', fa: 'کشتی‌ها و شترها مصاله را از هند به اروپا می‌بردند. حالا به یک بندر هند می‌روی.' }
+      q: { en: 'Next: Dar al-Islam. Did Muslim scholars keep and build on Greek learning?' },
+      choices: [{ t: { en: 'Yes, they did' }, ok: true }, { t: { en: 'No, it was lost' } }],
+      why: { en: 'Scholars in Muslim cities translated and added to Greek, Persian and Indian knowledge. You go there next.' }
     }
   },
-  /* houses: who lives behind each door; walk in and talk */
-  houses: [
-    { at: [5, 2], name: { en: 'Maestro Nico', es: 'Maestro Nico', fa: 'استاد نیکو' },
-      look: { skin: 1, hair: '#8a8a8a', shirt: '#7a3a2a', pants: '#3a2a1a', style: 'short' },
-      lines: [
-        { en: 'Come in! This is my workshop. Young artists learn here.', es: '¡Pasa! Este es mi taller. Aquí aprenden los artistas jóvenes.', fa: 'بیا داخل! این کارگاه من است. هنرمندان جوان اینجا یاد می‌گیرند.' },
-        { en: 'Apprentices start at about age 12. First they sweep and grind colors.', es: 'Los aprendices empiezan a los 12 años más o menos. Primero barren y muelen colores.', fa: 'شاگردها در حدود ۱۲ سالگی شروع می‌کنند. اول جارو می‌کنند و رنگ می‌سایند.' }
-      ] },
-    { at: [22, 2], name: { en: 'Signora Alessandra', es: 'Señora Alessandra', fa: 'خانم الساندرا' },
-      look: { skin: 2, hair: '#3a2416', shirt: '#2f6f8f', pants: '#4a2a3a', style: 'bun' },
-      lines: [
-        { en: 'Welcome! I weave silk cloth. Florence is famous for wool and silk.', es: '¡Bienvenido! Tejo tela de seda. Florencia es famosa por su lana y su seda.', fa: 'خوش آمدی! من تکهٔ ابریشمی می‌بافم. فلورانس به پشم و ابریشم مشهور است.' },
-        { en: 'Our cloth is sold in many lands. That money pays for art.', es: 'Nuestra tela se vende en muchas tierras. Ese dinero paga el arte.', fa: 'تکهٔ ما در سرزمین‌های زیادی فروخته می‌شود. آن پول خرج هنر می‌شود.' }
-      ] },
-    { at: [13, 3], name: { en: 'Fra Paolo', es: 'Fray Paolo', fa: 'برادر پائولو' },
-      look: { skin: 2, hair: '#2a1a10', shirt: '#5a4a3a', pants: '#5a4a3a', robe: true, style: 'short' },
-      lines: [
-        { en: 'Look up! Brunelleschi finished this great dome in 1436.', es: '¡Mira arriba! Brunelleschi terminó esta gran cúpula en 1436.', fa: 'بالا را ببین! برونلسکی این گنبد بزرگ را در سال ۱۴۳۶ تمام کرد.' },
-        { en: 'He studied old Roman buildings to learn how to build it.', es: 'Estudió edificios romanos antiguos para aprender a construirla.', fa: 'او ساختمان‌های کهن روم را مطالعه کرد تا ساختن آن را یاد بگیرد.' },
-        { en: 'It is still the biggest brick dome in the world.', es: 'Todavía es la cúpula de ladrillo más grande del mundo.', fa: 'هنوز هم بزرگ‌ترین گنبد خشتی پخته در جهان است.' }
-      ] },
-    { at: [3, 13], name: { en: 'Rosa', es: 'Rosa', fa: 'روزا' },
-      look: { skin: 3, hair: '#1a1208', shirt: '#e8dcc0', pants: '#6a3a2a', style: 'long' },
-      lines: [
-        { en: 'Fresh bread! Have a piece. Not everyone in Florence is rich, you know.', es: '¡Pan fresco! Toma un pedazo. No todos en Florencia son ricos, ¿sabes?', fa: 'نان تازه! یک تکه بگیر. می‌دانی، همه در فلورانس ثروتمند نیستند.' },
-        { en: 'Most people work hard all day: bakers, weavers, builders and boatmen.', es: 'La mayoría trabaja duro todo el día: panaderos, tejedores, albañiles y barqueros.', fa: 'بیشتر مردم تمام روز سخت کار می‌کنند: نانواها، بافنده‌ها، بناها و قایق‌ران‌ها.' }
-      ] },
-    { at: [27, 13], name: { en: 'Captain Guido', es: 'Capitán Guido', fa: 'کپتان گوئیدو' },
-      look: { skin: 1, hair: '#4a2a1a', shirt: '#8a2a2a', pants: '#2a2a3a', style: 'short', hat: '#2a2a2a' },
-      lines: [
-        { en: 'This is the city hall. Florence\'s leaders meet here.', es: 'Este es el palacio de gobierno. Aquí se reúnen los líderes de Florencia.', fa: 'این ساختمان شهرداری است. رهبران فلورانس اینجا جمع می‌شوند.' },
-        { en: 'Florence rules itself, like a small country. It is a [[city-state|city-state]].', es: 'Florencia se gobierna sola, como un país pequeño. Es una [[city-state|ciudad-estado]].', fa: 'فلورانس خودش بر خود حکومت می‌کند، مثل یک کشور کوچک. یک [[city-state|دولت‌شهر]] است.' }
-      ] }
-  ],
-
-  /* 32 x 22 = 2 x 2 screens.
-     North (rows 1-9): workshop (R/h), the cathedral (D, door at 13,3), a silk weaver's house (Q/h), the market (m).
-     Row 10: the main street. South: the baker (R/h), the piazza (l) with the David sign, the city hall (J).
-     Row 15: the north bank path. Rows 16-17: the Arno, Old Bridge at x 12. Rows 18-20: the south bank. */
+  start: [16, 9],
   map: [
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT',
-    'T,..RRR....DDDDD.....QQQ....,..T',
-    'T...hdh...lDDDDDl....hdh...TT..T',
-    'T....l....lDDdDDl.....l...TTT..T',
-    'T....l....llllllll....l........T',
-    'Tx...lllllllllllllllllllll..mm.T',
-    'T....l.......l........l.....mm.T',
-    'T....l.......l........l........T',
-    'T.TT.l..,....l..,.....l...,....T',
-    'T....l.......l........l........T',
-    'TllllllllllllllllllllllllllllllT',
-    'T....l.......l........l........T',
-    'T.RRR.......lllllll...l..JJJJ..T',
-    'T.hdh.......lllllll...l..JJdJ..T',
-    'T...........lllllllx...........T',
-    'T::::::::::::::::::::::::::::::T',
-    '~~~~~~~~~~~~B~~~~~~~~~~~~~~~~~~~',
-    '~~~~~~~~~~~~B~~~~~~~~~~~~~~~~~~~',
-    'T::::::::::::::::::::::::::::::T',
-    'T.TT...,...TT..,.....,...TT..,.T',
-    'T..,.....,.......,......,......T',
+    'T~~~~~~~~T.DDDDDl.RRR..RRRR....T',
+    'T~~~~~~~~..DDDDDl.hdh..hhdh....T',
+    'T~~====~~..DDdDDlx.l.....l.....T',
+    'T~~====~~k.llllll..l.....l.....T',
+    'T~~====~~llllllllllllllllllllllT',
+    'T~~====~~......xl.lllllllll....T',
+    'T~~~~~~~~...,...l.lmlmlmlml..T.T',
+    'T~~~~~~~~TTT....l.lllllllll...TT',
+    'T~~~~~~~~.....T.l..........~~..T',
+    'TT..T...T.......l..T..,..T.~~..T',
+    'T.RRR...........lllllll....~~.,T',
+    'T.hdh.....,.....lllllll....~~..T',
+    'T::::x::::::::::lllllll....~~..T',
+    'T.qqqqq:qqqqq...lllllllllllbb::T',
+    'T.qqqqq:qqqqq...l..........~~x.T',
+    'T.qqqqq:qqqqq...l.........k~~..T',
+    'T.:::::::::::...l...QQQQ..k~~..T',
+    'T.qqqqq:qqqqq.T.l...hhdh...~~T.T',
+    'T.qqqqq:qqqqqT..llllllll...~~.TT',
+    'T..,.......,....l........,.~~..T',
     'TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT'
   ],
-  start: [13, 6],
-
-  /* finds: a clue note on the map leads to a hidden spot (+3 coins and a decoration for the camp) */
-  finds: [
-    { clueAt: [24, 6], at: [30, 4], decor: 'coinold',
-      clue: { en: 'From this note, walk 6 steps east, then 2 steps north. Look behind the market.', es: 'Desde esta nota, camina 6 pasos al este y luego 2 pasos al norte. Busca detrás del mercado.', fa: 'از این یادداشت، ۶ قدم به شرق برو، بعد ۲ قدم به شمال. پشت بازار را ببین.' },
-      text: { en: 'Florence made a gold coin called the florin. Traders all over Europe trusted it.', es: 'Florencia hacía una moneda de oro llamada florín. Los comerciantes de toda Europa confiaban en ella.', fa: 'فلورانس یک سکهٔ طلایی به نام فلورین می‌ساخت. تاجران سراسر اروپا به آن اعتماد داشتند.' } },
-    { clueAt: [16, 20], at: [23, 20], decor: 'flower',
-      clue: { en: 'From this note, walk 7 steps east along the garden. Look among the flowers.', es: 'Desde esta nota, camina 7 pasos al este por el jardín. Busca entre las flores.', fa: 'از این یادداشت، ۷ قدم در باغ به شرق برو. میان گل‌ها را ببین.' },
-      text: { en: 'Florence\'s old Roman name was Florentia. It means "flowering." Here is a flower.', es: 'El viejo nombre romano de Florencia era Florentia. Quiere decir "floreciente". Aquí tienes una flor.', fa: 'نام کهن رومی فلورانس «فلورنتیا» بود. یعنی «شکوفا». این یک گل است.' } }
-  ],
-
   words: {
-    renaissance: { en: 'a "rebirth" of art and learning in Europe, from about 1350 to 1600', es: 'un "renacer" del arte y del saber en Europa, de 1350 a 1600 más o menos', fa: '«دوباره زاده شدن» هنر و دانش در اروپا، از حدود ۱۳۵۰ تا ۱۶۰۰' },
-    humanism: { en: 'studying old Greek and Roman books, and the power of people to learn and create', es: 'estudiar libros griegos y romanos antiguos, y la capacidad de las personas para aprender y crear', fa: 'خواندن کتاب‌های کهن یونان و روم، و باور به توان انسان برای یاد گرفتن و ساختن' },
-    patron: { en: 'a rich person who pays an artist to make art', es: 'una persona rica que paga a un artista para que haga arte', fa: 'شخص ثروتمندی که به هنرمند پول می‌دهد تا هنر بسازد' },
-    perspective: { en: 'a way to paint so that some things look near and others look far', es: 'una forma de pintar para que unas cosas se vean cerca y otras lejos', fa: 'روشی در نقاشی که بعضی چیزها نزدیک و بعضی دور دیده شوند' },
-    'city-state': { en: 'a city that rules itself and the land around it, like a small country', es: 'una ciudad que se gobierna sola, con la tierra de alrededor, como un país pequeño', fa: 'شهری که بر خود و زمین‌های اطرافش حکومت می‌کند، مثل یک کشور کوچک' },
-    'printing press': { en: 'a machine that prints many copies of a page with metal letters', es: 'una máquina que imprime muchas copias de una página con letras de metal', fa: 'ماشینی که با حروف فلزی از یک صفحه نسخه‌های زیاد چاپ می‌کند' }
+    'dynasty': { en: 'a family that rules a state for many generations, like the Song (960–1279)' },
+    'civil service exam': { en: 'a hard written test on Confucian books; passing it could win a man a government job' },
+    'scholar-official': { en: 'an educated man who passed the exams and worked for the government' },
+    'confucianism': { en: 'the ideas of the thinker Confucius: proper relationships, respect for elders and good government' },
+    'filial piety': { en: 'respect and honor for parents and elder family members' },
+    'social hierarchy': { en: 'a ranking of people from higher to lower, like ruler over subject or father over son' },
+    'wet-field rice': { en: 'rice grown in flooded, leveled fields called paddies' },
+    'paper money': { en: 'printed paper used in place of coins; the Song government issued it from the 1120s' },
+    'buddhism': { en: 'a belief system that began in India with the teachings of Siddhartha Gautama, the Buddha' },
+    'pure land': { en: 'a popular form of Buddhism: simple devotion to the Buddha Amitabha can bring rebirth in paradise' },
+    'sinicized': { en: 'changed by Chinese influence to fit Chinese ideas and customs' },
+    'shogun': { en: 'the top general who ran Japan\'s military government' }
   },
-
   npcs: [
     {
-      x: 7, y: 8,
-      name: { en: 'Lucia', es: 'Lucía', fa: 'لوچیا' },
-      role: { en: 'Painter\'s helper', es: 'Ayudante de pintor', fa: 'شاگرد نقاش' },
-      look: { skin: 2, hair: '#6a3a1a', shirt: '#d9a02b', pants: '#3a4a6a', style: 'long' },
+      x: 14, y: 6, name: { en: 'Wen' }, role: { en: 'Exam student' },
+      look: { skin: 1, hair: '#1b1410', shirt: '#3a5a8a', robe: true, style: 'bun' },
       lines: [
-        { en: 'Hi! I am Lucia. I mix paints in a painter\'s workshop.', es: '¡Hola! Soy Lucía. Mezclo pinturas en el taller de un pintor.', fa: 'سلام! من لوچیا هستم. در کارگاه یک نقاش رنگ مخلوط می‌کنم.' },
-        { en: 'Old paintings looked flat. Now we use [[perspective|perspective]] to show near and far.', es: 'Las pinturas viejas se veían planas. Ahora usamos la [[perspective|perspectiva]] para mostrar lo cerca y lo lejos.', fa: 'نقاشی‌های کهنه هموار دیده می‌شدند. حالا با [[perspective|دورنمایی]] نزدیک و دور را نشان می‌دهیم.' },
-        { en: 'Artists like Leonardo da Vinci study real bodies, plants and light.', es: 'Artistas como Leonardo da Vinci estudian cuerpos, plantas y luz de verdad.', fa: 'هنرمندانی مثل لئوناردو داوینچی بدن، نبات و روشنی واقعی را مطالعه می‌کنند.' }
-      ],
-      ask: {
-        stat: 'pla',
-        q: { en: 'How did Renaissance paintings change?', es: '¿Cómo cambiaron las pinturas en el Renacimiento?', fa: 'نقاشی‌ها در رنسانس چطور تغییر کردند؟' },
-        choices: [
-          { ok: true, t: { en: 'They looked more real and deep', es: 'Se veían más reales y profundas', fa: 'واقعی‌تر و عمیق‌تر دیده می‌شدند' },
-            why: { en: 'Yes! With perspective, things in the back look far away, like in real life.', es: '¡Sí! Con la perspectiva, las cosas del fondo se ven lejos, como en la vida real.', fa: 'بله! با دورنمایی، چیزهای عقب دور دیده می‌شوند، مثل زندگی واقعی.' } },
-          { t: { en: 'They used only gold and no people', es: 'Usaban solo oro y ninguna persona', fa: 'فقط طلا داشتند و هیچ آدمی نداشتند' },
-            why: { en: 'Renaissance paintings were full of people. Painters studied real bodies to draw them well.', es: 'Las pinturas del Renacimiento estaban llenas de personas. Los pintores estudiaban cuerpos reales.', fa: 'نقاشی‌های رنسانس پر از آدم بودند. نقاشان بدن واقعی را مطالعه می‌کردند.' } },
-          { t: { en: 'They stopped showing any faces', es: 'Dejaron de mostrar caras', fa: 'دیگر هیچ چهره‌ای نشان ندادند' },
-            why: { en: 'Faces became more real, not fewer. Painters showed feelings on people\'s faces.', es: 'Las caras se volvieron más reales, no desaparecieron. Los pintores mostraban sentimientos en ellas.', fa: 'چهره‌ها واقعی‌تر شدند، نه کمتر. نقاشان احساس را در چهرهٔ مردم نشان دادند.' } }
-        ]
-      }
-    },
-    {
-      x: 20, y: 12,
-      name: { en: 'Marco', es: 'Marco', fa: 'مارکو' },
-      role: { en: 'Bank clerk', es: 'Empleado de banco', fa: 'کارمند بانک' },
-      look: { skin: 1, hair: '#2a1a10', shirt: '#2a4a2a', pants: '#3a3a3a', style: 'short', hat: '#5a1a2a' },
-      lines: [
-        { en: 'Good day! I count coins and keep the books at a bank.', es: '¡Buen día! Cuento monedas y llevo las cuentas en un banco.', fa: 'روز خوش! من در یک بانک سکه می‌شمارم و حساب‌ها را می‌نویسم.' },
-        { en: 'Florence grew rich from banking and from trade in wool cloth.', es: 'Florencia se hizo rica con los bancos y con el comercio de tela de lana.', fa: 'فلورانس از بانکداری و تجارت تکهٔ پشمی ثروتمند شد.' },
-        { en: 'Rich families, like the Medici, were [[patron|patrons]]. They paid artists to make art.', es: 'Las familias ricas, como los Médici, eran [[patron|mecenas]]. Pagaban a artistas para hacer arte.', fa: 'خانواده‌های ثروتمند، مثل مدیچی، [[patron|حامی]] بودند. به هنرمندان پول می‌دادند تا هنر بسازند.' }
+        { en: 'I have studied for years to take the [[civil service exam|civil service exams]]. Hundreds of thousands of young men try.' },
+        { en: 'Family name is still the easiest path to power. But passing the exams can make even a poor man a [[scholar-official|scholar-official]].' },
+        { en: 'We study [[confucianism|Confucian]] books gathered by Zhu Xi. They teach a [[social hierarchy|hierarchy]]: ruler over subject, father over son, husband over wife.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why could Florence pay for so much art?', es: '¿Por qué Florencia podía pagar tanto arte?', fa: 'چرا فلورانس می‌توانست پول این‌قدر هنر را بدهد؟' },
+        q: { en: 'What did the civil service exams change in Song China?' },
         choices: [
-          { ok: true, t: { en: 'Banks and trade made it rich', es: 'Los bancos y el comercio la hicieron rica', fa: 'بانک‌ها و تجارت آن را ثروتمند کردند' },
-            why: { en: 'Yes! Money from banks and cloth trade let patrons pay many artists.', es: '¡Sí! El dinero de los bancos y de la tela dejó que los mecenas pagaran a muchos artistas.', fa: 'بله! پول بانک‌ها و تجارت تکه به حامیان اجازه داد به هنرمندان زیادی پول بدهند.' } },
-          { t: { en: 'It found gold in its hills', es: 'Encontró oro en sus cerros', fa: 'در تپه‌هایش طلا پیدا کرد' },
-            why: { en: 'Florence had no big gold mines. Its money came from banking and trade.', es: 'Florencia no tenía grandes minas de oro. Su dinero venía de los bancos y el comercio.', fa: 'فلورانس معدن بزرگ طلا نداشت. پولش از بانکداری و تجارت می‌آمد.' } },
-          { t: { en: 'Artists there worked for free', es: 'Allí los artistas trabajaban gratis', fa: 'هنرمندان آنجا مفت کار می‌کردند' },
-            why: { en: 'Artists were paid for their work. Patrons paid them to paint and build.', es: 'A los artistas les pagaban por su trabajo. Los mecenas les pagaban por pintar y construir.', fa: 'به هنرمندان مزد داده می‌شد. حامیان برای نقاشی و ساختمان به آن‌ها پول می‌دادند.' } }
+          { ok: true, t: { en: 'More able men could win government jobs' }, why: { en: 'Yes. Aristocratic family was still the easiest path, but the exams opened a second path to power for educated men.' } },
+          { t: { en: 'Women could now take and pass the exams' }, why: { en: 'No. The exams were not open to women. Confucian teaching said a woman\'s place was the household.' } },
+          { t: { en: 'The exams now chose who became emperor' }, why: { en: 'No. The emperor came from the ruling dynasty. The exams chose officials who served him.' } }
         ]
       }
     },
     {
-      x: 6, y: 19,
-      name: { en: 'Demetrios', es: 'Demetrio', fa: 'دیمیتریوس' },
-      role: { en: 'Greek teacher', es: 'Maestro de griego', fa: 'معلم یونانی' },
-      look: { skin: 2, hair: '#d8d8d8', shirt: '#2a3a6a', pants: '#3a2a1a', robe: true, style: 'short' },
+      x: 22, y: 9, name: { en: 'Mei' }, role: { en: 'Silk weaver' },
+      look: { skin: 1, hair: '#1b1410', shirt: '#c0392b', robe: true, style: 'long' },
       lines: [
-        { en: 'Kalimera! That means good morning in Greek. I teach Greek here.', es: '¡Kalimera! Así se dice buenos días en griego. Aquí enseño griego.', fa: 'کالیمرا! این در یونانی یعنی صبح بخیر. من اینجا یونانی درس می‌دهم.' },
-        { en: 'Greek and Arab scholars kept old books safe for hundreds of years.', es: 'Sabios griegos y árabes cuidaron los libros antiguos por cientos de años.', fa: 'دانشمندان یونانی و عرب صدها سال کتاب‌های کهن را حفظ کردند.' },
-        { en: 'Now Florence studies them again. We call this [[humanism|humanism]].', es: 'Ahora Florencia los estudia otra vez. A esto lo llamamos [[humanism|humanismo]].', fa: 'حالا فلورانس دوباره آن‌ها را می‌خواند. این را [[humanism|انسان‌گرایی]] می‌گوییم.' }
+        { en: 'My mother and I raise silkworms, spin the thread and weave cloth at home. Our silk pays our rent and taxes.' },
+        { en: 'We trade with coins or [[paper money|paper money]]. Merchants invented it, and since the 1120s our government prints it too.' },
+        { en: 'Hangzhou became the Song capital in 1132. People pour in from the countryside and the lost north. Soon we may be a million!' }
+      ],
+      ask: {
+        stat: 'pla',
+        q: { en: 'Confucian books say a woman\'s place is the household. What does Mei\'s work show about that?' },
+        choices: [
+          { ok: true, t: { en: 'Work at home could earn the family money' }, why: { en: 'Right. Household silk making was real production: it paid rents and taxes and bought goods.' } },
+          { t: { en: 'Women never worked in Song China' }, why: { en: 'No. Village women raised silkworms, spun thread and wove cloth that supported the family.' } },
+          { t: { en: 'Women ran the silk trade with Europe' }, why: { en: 'No. Mei weaves at home and sells in Hangzhou. Nothing here says women ran trade with Europe.' } }
+        ]
+      }
+    },
+    {
+      x: 6, y: 16, name: { en: 'Old Lu' }, role: { en: 'Rice farmer' },
+      look: { skin: 2, hair: '#8a8a8a', shirt: '#6a7a4a', pants: '#3a3a2a', hat: '#c9a24a', style: 'short' },
+      lines: [
+        { en: 'My grandfather\'s village turned this swamp into flooded paddies. Now rain does not decide if we eat.' },
+        { en: 'We grow seedlings in a seed bed, then every family member helps move them into the flooded field. It is hard work!' },
+        { en: 'That way we reap two harvests a year. More rice means more people: China has doubled since the old days.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Why could China\'s population grow from about 50 million to about 100 million by the 1100s?' },
+        choices: [
+          { ok: true, t: { en: 'Wet-field rice gave two harvests a year' }, why: { en: 'Yes. Irrigated paddies and transplanted seedlings expanded the food supply, so more people could be fed.' } },
+          { t: { en: 'Farmers stopped growing rice for cash crops' }, why: { en: 'No. Villagers grew cash crops like tea and mulberry, but rice paddies were what fed the growing population.' } },
+          { t: { en: 'The rains in China became regular' }, why: { en: 'No. Paddies were irrigated so farmers depended less on irregular rain.' } }
+        ]
+      }
+    },
+    {
+      x: 24, y: 20, name: { en: 'Brother Jun' }, role: { en: 'Buddhist monk' },
+      look: { skin: 1, hair: '#2b1d14', shirt: '#d9822b', robe: true, style: 'short' },
+      lines: [
+        { en: '[[buddhism|Buddhism]] began in India. Merchants on the Silk Roads carried it here long ago, with their goods.' },
+        { en: 'The Chinese made it their own. They mixed it with Daoist ideas and Chinese customs. We say it became [[sinicized|Sinicized]].' },
+        { en: 'Many ordinary people love [[pure land|Pure Land]] Buddhism. Monks from Japan study it here and carry it home.' }
       ],
       ask: {
         stat: 'reg',
-        q: { en: 'Who kept many old Greek books safe for hundreds of years?', es: '¿Quiénes cuidaron muchos libros griegos antiguos por cientos de años?', fa: 'چه کسانی صدها سال کتاب‌های کهن یونانی را حفظ کردند؟' },
+        q: { en: 'What happened to Buddhism after it reached China?' },
         choices: [
-          { ok: true, t: { en: 'Greek and Arab scholars', es: 'Sabios griegos y árabes', fa: 'دانشمندان یونانی و عرب' },
-            why: { en: 'Yes! Scholars in Constantinople and Baghdad copied and studied them. Then Italy read them.', es: '¡Sí! Sabios de Constantinopla y Bagdad los copiaron y estudiaron. Luego Italia los leyó.', fa: 'بله! دانشمندان قسطنطنیه و بغداد آن‌ها را نقل و مطالعه کردند. بعد ایتالیا آن‌ها را خواند.' } },
-          { t: { en: 'Viking sailors in the north', es: 'Marineros vikingos del norte', fa: 'ملاحان وایکینگ در شمال' },
-            why: { en: 'Vikings were sailors and traders. Greek and Arab scholars kept the old books.', es: 'Los vikingos eran marineros y comerciantes. Los sabios griegos y árabes cuidaron los libros.', fa: 'وایکینگ‌ها ملاح و تاجر بودند. دانشمندان یونانی و عرب کتاب‌ها را حفظ کردند.' } },
-          { t: { en: 'Farmers in the Americas', es: 'Agricultores de América', fa: 'دهقانان قارهٔ امریکا' },
-            why: { en: 'In 1500, people in the Americas did not have Greek books. Greek and Arab scholars did.', es: 'En 1500, en América no tenían libros griegos. Los sabios griegos y árabes sí.', fa: 'در سال ۱۵۰۰، مردم امریکا کتاب یونانی نداشتند. دانشمندان یونانی و عرب داشتند.' } }
+          { ok: true, t: { en: 'It blended with Chinese beliefs' }, why: { en: 'Yes. Buddhism mixed with Daoism and Chinese customs. Belief systems often change as they spread.' } },
+          { t: { en: 'It stayed exactly as it was in India' }, why: { en: 'No. The Chinese changed it, for example in how they understood the Pure Land and nirvana.' } },
+          { t: { en: 'The Song government banned it for good' }, why: { en: 'No. Buddhism never disappeared in China. It was practiced alongside Daoism and Confucianism.' } }
         ]
       }
     }
   ],
-
-  signs: [
-    { x: 1, y: 5, text: { en: 'FLORENCE · 1500 · A rich [[city-state|city-state]] in Italy, famous for art, cloth and banks.', es: 'FLORENCIA · 1500 · Una rica [[city-state|ciudad-estado]] de Italia, famosa por su arte, su tela y sus bancos.', fa: 'فلورانس · ۱۵۰۰ · یک [[city-state|دولت‌شهر]] ثروتمند در ایتالیا، مشهور به هنر، تکه و بانک.' } },
-    { x: 19, y: 14, text: { en: 'THE CITY SQUARE · In 1504, Michelangelo\'s statue David will stand here.', es: 'LA PLAZA DE LA CIUDAD · En 1504, la estatua David de Miguel Ángel estará aquí.', fa: 'میدان شهر · در سال ۱۵۰۴، مجسمهٔ داوود از میکل‌آنژ اینجا گذاشته می‌شود.' } }
+  houses: [
+    { at: [13, 3], name: { en: 'Examiner Gao' }, look: { skin: 1, hair: '#6e6e6e', shirt: '#7a2a2a', robe: true, style: 'bun' },
+      lines: [{ en: 'This is the examination hall. Candidates write for days in tiny rooms.' }, { en: 'Success brings an important post. Failure brings shame to the whole family.' }] },
+    { at: [19, 2], name: { en: 'Silk merchant Pan' }, look: { skin: 1, hair: '#1b1410', shirt: '#8e5bd6', robe: true, style: 'short' },
+      lines: [{ en: 'Silk from village homes fills my shelves. Buyers come from all over the empire.' }, { en: 'We also sell porcelain cups. Everyone wants them for drinking tea!' }] },
+    { at: [25, 2], name: { en: 'Teahouse keeper Bai' }, look: { skin: 0, hair: '#2b1d14', shirt: '#2a8a6a', robe: true, style: 'long' },
+      lines: [{ en: 'Welcome! Tea is one of China\'s most important trade goods.' }, { en: 'Hangzhou has markets, bathhouses, silk shops and painted ships. Visitors are amazed.' }] },
+    { at: [3, 12], name: { en: 'Lu\'s daughter-in-law' }, look: { skin: 2, hair: '#1b1410', shirt: '#4a7aa8', style: 'long' },
+      lines: [{ en: 'In transplanting season, even the children wade into the paddies.' }, { en: 'Our family also grows mulberry leaves to feed silkworms.' }] },
+    { at: [22, 18], name: { en: 'Abbess Hui' }, look: { skin: 1, hair: '#2b1d14', shirt: '#b98250', robe: true, style: 'bun' },
+      lines: [{ en: 'Here people chant the name of the Buddha Amitabha and hope for rebirth in the Pure Land.' }, { en: 'Some people here follow Buddhist, Daoist and Confucian ways all at once.' }] }
   ],
-
-  /* the quest (simple, for a first episode): Giulia (gold !) on the north side -> Beppe the boatman on the
-     north bank -> walk over the Old Bridge and 7 steps east on the south bank -> back to Giulia */
+  signs: [
+    { x: 17, y: 3, text: { en: 'EXAMINATION HALL · Pass the Confucian exams, become a scholar-official.' } },
+    { x: 15, y: 6, text: { en: 'HANGZHOU · Capital of the Song dynasty since 1132. Maybe the largest city in the world.' } },
+    { x: 5, y: 13, text: { en: 'RICE PADDIES · Seedlings are moved by hand into flooded fields. Two harvests a year.' } },
+    { x: 29, y: 15, text: { en: 'TO THE YANGZI DELTA · Canals carry rice, silk and tea to the capital.' } }
+  ],
+  finds: [
+    { clueAt: [18, 3], at: [20, 4], decor: 'coinold', clue: { en: 'From this note, walk 2 steps east and 1 step south. Look below the silk shop.' },
+      text: { en: 'A string of Song copper coins! Paper money was easier to carry than heavy strings like this.' } }
+  ],
+  scraps: [[10, 2], [30, 1], [1, 20]],
+  smudges: [[24, 12], [10, 19]],
   quest: {
-    stat: 'hei',
-    title: { en: 'Giulia\'s Lost Book', es: 'El libro perdido de Giulia', fa: 'کتاب گمشدهٔ جولیا' },
+    stat: 'reg',
+    title: { en: 'The Monk from Japan' },
     giver: {
-      x: 20, y: 7,
-      name: { en: 'Giulia', es: 'Giulia', fa: 'جولیا' },
-      role: { en: 'Student', es: 'Estudiante', fa: 'شاگرد مکتب' },
-      look: { skin: 3, hair: '#2a1a10', shirt: '#8a4ab0', pants: '#3a3a5a', style: 'long' },
+      x: 11, y: 10, name: { en: 'Kenji' }, role: { en: 'Monk from Japan' },
+      look: { skin: 0, hair: '#1b1410', shirt: '#4a4a5a', robe: true, style: 'short' },
       lines: [
-        { en: 'Hello! Welcome to Florence. I am Giulia. I am glad you came!', es: '¡Hola! Bienvenido a Florencia. Soy Giulia. ¡Qué bueno que viniste!', fa: 'سلام! به فلورانس خوش آمدی. من جولیا هستم. خوشحالم که آمدی!' },
-        { en: 'I lost my new printed book near the river. Can you help me?', es: 'Perdí mi libro impreso nuevo cerca del río. ¿Me ayudas?', fa: 'کتاب چاپی نوی خود را نزدیک دریا گم کردم. کمکم می‌کنی؟' },
-        { en: 'Beppe the boatman works by the river. He sees everything!', es: 'Beppe el barquero trabaja junto al río. ¡Él lo ve todo!', fa: 'بپه قایق‌ران کنار دریا کار می‌کند. او همه چیز را می‌بیند!' }
+        { en: 'I sailed from Japan to study Buddhism here. Japanese monks bring Chinese teachings home, like Zen and Pure Land.' },
+        { en: 'The Grump\'s helpers scattered my printed sutras! Ask the printer by the canal. Printers know every book in this city.' }
       ],
-      wait: { en: 'Beppe is on the north bank of the river, to the southwest.', es: 'Beppe está en la orilla norte del río, hacia el suroeste.', fa: 'بپه در کنار شمالی دریا است، به طرف جنوب غرب.' },
-      thanks: { en: 'My book! Printed books cost less, so more people can read. Thank you!', es: '¡Mi libro! Los libros impresos cuestan menos y más gente puede leer. ¡Gracias!', fa: 'کتابم! کتاب چاپی ارزان‌تر است، پس مردم بیشتری می‌توانند بخوانند. تشکر!' }
+      wait: { en: 'The printer works on the east side, by the canal dock, south of the bridge.' },
+      thanks: { en: 'My sutras! Chinese writing and Buddhist teachings, carried home, will shape Japan in its own way. Thank you.' }
     },
     contact: {
-      x: 8, y: 14,
-      name: { en: 'Beppe', es: 'Beppe', fa: 'بپه' },
-      role: { en: 'Boatman', es: 'Barquero', fa: 'قایق‌ران' },
-      look: { skin: 3, hair: '#3a2a1a', shirt: '#e8e0d0', pants: '#2a3a5a', hat: '#6a4a2a', style: 'short' },
+      x: 25, y: 16, name: { en: 'Printer Shen' }, role: { en: 'Book printer' },
+      look: { skin: 1, hair: '#2b1d14', shirt: '#5a3a2a', pants: '#2a2a3a', style: 'short' },
       lines: [
-        { en: 'Hello, friend! Yes, I saw a book fall from the Old Bridge.', es: '¡Hola, amigo! Sí, vi caer un libro desde el Puente Viejo.', fa: 'سلام، دوست! بله، دیدم یک کتاب از پل کهنه افتاد.' },
-        { en: 'Cross the Old Bridge to the south bank. Then walk 7 steps east.', es: 'Cruza el Puente Viejo hasta la orilla sur. Luego camina 7 pasos al este.', fa: 'از پل کهنه به کنار جنوبی برو. بعد ۷ قدم به شرق برو.' }
+        { en: 'We carve whole pages on wood blocks and print many copies. Exam students buy our Confucian manuals.' },
+        { en: 'A bundle of sutras blew across the bridge. Cross it, then walk 2 steps east along the path.' }
       ]
     },
     action: {
-      type: 'find',
-      at: [19, 18],
-      hint: { en: 'south bank: cross the Old Bridge, then 7 steps east', es: 'orilla sur: cruza el Puente Viejo y camina 7 pasos al este', fa: 'کنار جنوبی: از پل کهنه بگذر، بعد ۷ قدم به شرق' },
-      found: { en: 'There it is, on the south bank! A printed book of old Greek stories.', es: '¡Ahí está, en la orilla sur! Un libro impreso de viejas historias griegas.', fa: 'آنجاست، در کنار جنوبی! یک کتاب چاپی از داستان‌های کهن یونانی.' },
-      item: { icon: '📕', name: { en: 'Giulia\'s printed book', es: 'El libro impreso de Giulia', fa: 'کتاب چاپی جولیا' } }
+      type: 'find', at: [30, 14],
+      hint: { en: 'Cross the canal bridge, then 2 steps east' },
+      found: { en: 'There they are, against the far wall: Kenji\'s printed sutras, safe and dry.' },
+      item: { icon: '📜', name: { en: 'Kenji\'s printed sutras' } }
     }
   },
-
-  scraps: [[1, 1], [30, 1], [1, 20]],
-  smudges: [[24, 9], [5, 20]],
-
   challenge: {
-    at: [28, 19],
-    type: 'order',
-    stat: 'pla',
-    title: { en: 'Fix the timeline', es: 'Arregla la línea del tiempo', fa: 'خط زمان را درست کن' },
-    intro: { en: 'The Grump mixed up the timeline! Put the events in order, from oldest to newest.',
-      es: '¡El Gruñón revolvió la línea del tiempo! Pon los hechos en orden, del más antiguo al más nuevo.',
-      fa: 'غرغرو خط زمان را به هم زد! رویدادها را به ترتیب بگذار، از کهنه‌ترین تا تازه‌ترین.' },
-    items: [
-      { icon: '🏛️', t: { en: 'Long ago: Greeks and Romans write books and build temples', es: 'Hace mucho: griegos y romanos escriben libros y construyen templos', fa: 'خیلی پیش: یونانی‌ها و رومی‌ها کتاب می‌نویسند و معبد می‌سازند' } },
-      { icon: '⛪', t: { en: '1436: Florence finishes the great dome of its cathedral', es: '1436: Florencia termina la gran cúpula de su catedral', fa: '۱۴۳۶: فلورانس گنبد بزرگ کلیسای خود را تمام می‌کند' } },
-      { icon: '📖', t: { en: 'About 1450: Gutenberg builds a printing press in Germany', es: 'Hacia 1450: Gutenberg construye una imprenta en Alemania', fa: 'حدود ۱۴۵۰: گوتنبرگ در آلمان ماشین چاپ می‌سازد' } },
-      { icon: '🗽', t: { en: '1504: Michelangelo\'s statue David goes up in Florence', es: '1504: ponen la estatua David de Miguel Ángel en Florencia', fa: '۱۵۰۴: مجسمهٔ داوود از میکل‌آنژ در فلورانس گذاشته می‌شود' } },
-      { icon: '🎨', t: { en: '1512: Michelangelo finishes painting a chapel ceiling in Rome', es: '1512: Miguel Ángel termina de pintar el techo de una capilla en Roma', fa: '۱۵۱۲: میکل‌آنژ نقاشی سقف یک کلیسای کوچک را در روم تمام می‌کند' } }
+    at: [19, 13], type: 'carry', stat: 'pla',
+    title: { en: 'Sort the Song world' },
+    intro: { en: 'The Grump scrambled the record of Song China. Carry each card to its AP theme: government, economy, or belief and culture.' },
+    zones: [
+      { bin: 'gov', x: 17, y: 11, w: 3, h: 2 },
+      { bin: 'ecn', x: 20, y: 11, w: 3, h: 2 },
+      { bin: 'cdi', x: 18, y: 15, w: 4, h: 2 }
     ],
-    why: { en: 'First the old Greeks and Romans. Then the dome (1436), printing (1450), David (1504) and the ceiling (1512).',
-      es: 'Primero los griegos y romanos. Luego la cúpula (1436), la imprenta (1450), el David (1504) y el techo (1512).',
-      fa: 'اول یونانی‌ها و رومی‌های کهن. بعد گنبد (۱۴۳۶)، چاپ (۱۴۵۰)، داوود (۱۵۰۴) و سقف (۱۵۱۲).' },
-    success: { en: 'The timeline is right again! Old ideas came back, and new art followed.', es: '¡La línea del tiempo está bien otra vez! Volvieron las ideas antiguas y llegó arte nuevo.', fa: 'خط زمان دوباره درست شد! اندیشه‌های کهن برگشتند و هنر نو پیدا شد.' }
+    bins: [
+      { id: 'gov', icon: '🏛️', label: { en: 'Government' }, sub: { en: 'who rules, and how' } },
+      { id: 'ecn', icon: '💰', label: { en: 'Economy' }, sub: { en: 'farming, making, trading' } },
+      { id: 'cdi', icon: '🙏', label: { en: 'Belief and culture' }, sub: { en: 'religions and ideas' } }
+    ],
+    items: [
+      { bin: 'gov', t: { en: 'Young men pass civil service exams and become officials.' }, why: { en: 'Choosing officials by exam is how the Song state was run: government.' } },
+      { bin: 'gov', t: { en: 'Korea\'s Koryŏ rulers model their government and capital on China.' }, why: { en: 'Copying a way to rule and build a capital is about government. China influenced its neighbors.' } },
+      { bin: 'ecn', t: { en: 'Villagers transplant rice seedlings and reap two harvests a year.' }, why: { en: 'Growing more food is the economy, and it let China\'s population double.' } },
+      { bin: 'ecn', t: { en: 'The Song government issues paper money in the 1120s.' }, why: { en: 'Money is how people trade: the economy. This was the world\'s first government paper money.' } },
+      { bin: 'cdi', t: { en: 'Zhu Xi gathers Confucian writings into one official version.' }, why: { en: 'Confucian ideas about hierarchy and family are beliefs. Zhu Xi\'s version became the basis of the exams.' } },
+      { bin: 'cdi', t: { en: 'Pure Land Buddhism promises paradise through simple devotion.' }, why: { en: 'A form of Buddhism is a belief system. It spread from China to Japan.' } }
+    ],
+    success: { en: 'Every card is home! Government, economy and belief were tied together in Song China: the exams ran on Confucian books.' }
   },
-
   boss: {
-    at: [27, 4],
-    stat: 'pla',
-    need: 3,
-    name: { en: 'The Gray Grump', es: 'El Gruñón Gris', fa: 'غرغروی خاکستری' },
-    appear: { en: 'The Gray Grump is hiding in the fog by the market!', es: '¡El Gruñón Gris se esconde en la niebla junto al mercado!', fa: 'غرغروی خاکستری در مه کنار بازار پنهان است!' },
-    taunt: { en: 'Art? Books? Boring! I will paint the whole city gray!', es: '¿Arte? ¿Libros? ¡Qué aburrido! ¡Voy a pintar toda la ciudad de gris!', fa: 'هنر؟ کتاب؟ خسته‌کننده! تمام شهر را خاکستری رنگ می‌کنم!' },
-    win: { en: 'Color comes back to Florence. Chronicle page 1.1 floats down into your hands!', es: 'El color vuelve a Florencia. ¡La página 1.1 de la crónica cae en tus manos!', fa: 'رنگ به فلورانس برمی‌گردد. صفحهٔ ۱.۱ تاریخ‌نامه به دستت می‌افتد!' },
+    at: [29, 3], stat: 'hei', need: 3,
+    name: { en: 'The Fog Grump' },
+    appear: { en: 'The Fog Grump is hiding behind the teahouse!' },
+    taunt: { en: 'Exams, rice, paper money... who cares? I will fog up all of Song China!' },
+    win: { en: 'The fog lifts over West Lake. The page on East Asia floats down into your hands!' },
     questions: [
-      { q: { en: 'What does the word Renaissance mean?', es: '¿Qué quiere decir la palabra Renacimiento?', fa: 'کلمهٔ رنسانس چه معنی دارد؟' },
-        choices: [
-          { en: 'Rebirth', es: 'Volver a nacer', fa: 'دوباره زاده شدن' },
-          { en: 'A great war', es: 'Una gran guerra', fa: 'یک جنگ بزرگ' },
-          { en: 'A new king', es: 'Un rey nuevo', fa: 'یک پادشاه نو' },
-          { en: 'A long trip', es: 'Un viaje largo', fa: 'یک سفر دراز' }],
+      {
+        stim: { text: { en: '"A young man should be filial within his home and respectful of elders when outside, should be careful and trustworthy..."' }, src: { en: 'Confucius, The Analects, 1.6 (about 500 BCE)' } },
+        q: { en: 'Song scholars studied passages like this one. Which value does the passage teach?' },
+        choices: [{ en: 'Respect for elders and family duty' }, { en: 'Equality between rulers and subjects' }, { en: 'Escape from all earthly duties' }, { en: 'Trade as the surest path to success' }],
         answer: 0,
-        why: { en: 'Renaissance means rebirth. Old Greek and Roman ideas came back to life.', es: 'Renacimiento quiere decir volver a nacer. Las ideas griegas y romanas volvieron a la vida.', fa: 'رنسانس یعنی دوباره زاده شدن. اندیشه‌های کهن یونان و روم دوباره زنده شدند.' } },
-      { q: { en: 'Where did the Renaissance begin?', es: '¿Dónde empezó el Renacimiento?', fa: 'رنسانس از کجا شروع شد؟' },
-        choices: [
-          { en: 'In Italian city-states', es: 'En las ciudades-estado de Italia', fa: 'در دولت‌شهرهای ایتالیا' },
-          { en: 'In the forests of Germany', es: 'En los bosques de Alemania', fa: 'در جنگل‌های آلمان' },
-          { en: 'In the villages of Norway', es: 'En las aldeas de Noruega', fa: 'در قریه‌های ناروی' },
-          { en: 'In the deserts of Arabia', es: 'En los desiertos de Arabia', fa: 'در صحراهای عربستان' }],
+        why: { en: 'Being filial means honoring parents and elders. Confucian teaching built society on respect inside the family and a hierarchy outside it.' }
+      },
+      {
+        stim: { title: { en: 'Population of China (estimates)' }, rows: [[{ en: 'Time' }, { en: 'People' }], [{ en: '700s CE' }, { en: 'about 50 million' }], [{ en: '1100s CE' }, { en: 'about 100 million' }]], src: { en: 'From "East Asia 1200–1450," World History Project' } },
+        q: { en: 'Which development best explains the change shown in the table?' },
+        choices: [{ en: 'Wet-field rice and two harvests a year' }, { en: 'The Mongol conquest of southern China' }, { en: 'Buddhism arriving from India' }, { en: 'The end of the civil service exams' }],
         answer: 0,
-        why: { en: 'It began in rich Italian cities like Florence. Later it spread to the rest of Europe.', es: 'Empezó en ciudades ricas de Italia, como Florencia. Después pasó al resto de Europa.', fa: 'در شهرهای ثروتمند ایتالیا مثل فلورانس شروع شد. بعد به باقی اروپا رسید.' } },
-      { q: { en: 'What was a patron?', es: '¿Qué era un mecenas?', fa: 'حامی چه کسی بود؟' },
-        choices: [
-          { en: 'A rich person who paid artists', es: 'Una persona rica que pagaba a artistas', fa: 'شخص ثروتمندی که به هنرمندان پول می‌داد' },
-          { en: 'A student who mixed the paints', es: 'Un estudiante que mezclaba pinturas', fa: 'شاگردی که رنگ‌ها را مخلوط می‌کرد' },
-          { en: 'A soldier who guarded the city', es: 'Un soldado que cuidaba la ciudad', fa: 'سربازی که از شهر نگهبانی می‌کرد' },
-          { en: 'A sailor who brought silk', es: 'Un marinero que traía seda', fa: 'ملاحی که ابریشم می‌آورد' }],
+        why: { en: 'Turning forests and swamps into irrigated paddies expanded the food supply, which let the population grow.' }
+      },
+      {
+        q: { en: 'Which statement best describes how a man gained power in the Song government?' },
+        choices: [{ en: 'Family helped most, but exams offered another path' }, { en: 'Only soldiers who won battles could hold any office' }, { en: 'Rich merchants bought every post in the government' }, { en: 'Buddhist monks chose all the officials of the state' }],
         answer: 0,
-        why: { en: 'Patrons, like the Medici family, paid artists to paint, carve and build.', es: 'Los mecenas, como la familia Médici, pagaban a artistas para pintar, tallar y construir.', fa: 'حامیان، مثل خانوادهٔ مدیچی، به هنرمندان برای نقاشی، تراش و ساختمان پول می‌دادند.' } },
-      { q: { en: 'What is humanism?', es: '¿Qué es el humanismo?', fa: 'انسان‌گرایی چیست؟' },
-        choices: [
-          { en: 'Studying old Greek and Roman ideas', es: 'Estudiar las ideas griegas y romanas antiguas', fa: 'خواندن اندیشه‌های کهن یونان و روم' },
-          { en: 'Building ships for long ocean trips', es: 'Construir barcos para viajes largos por el mar', fa: 'ساختن کشتی برای سفرهای دراز در بحر' },
-          { en: 'Painting only pictures of animals', es: 'Pintar solo cuadros de animales', fa: 'فقط کشیدن تصویر حیوان‌ها' },
-          { en: 'Farming with new tools and seeds', es: 'Cultivar con herramientas y semillas nuevas', fa: 'دهقانی با افزار و تخم‌های نو' }],
+        why: { en: 'Aristocratic family was still the easiest path, but passing the civil service exams let many able men gain influence.' }
+      },
+      {
+        stim: { text: { en: 'In the 1120s the Song government itself began issuing money, producing the world\'s first government-issued paper money.' }, src: { en: 'Adapted from "East Asia 1200–1450," World History Project' } },
+        q: { en: 'The development described above shows that Song China\'s economy was...' },
+        choices: [{ en: 'growing more commercial, with new ways to trade' }, { en: 'shrinking because farmers stopped selling goods' }, { en: 'run only by barter, with no money' }, { en: 'controlled by merchants from Europe' }],
         answer: 0,
-        why: { en: 'Humanists read old Greek and Roman books. They believed people can learn and create great things.', es: 'Los humanistas leían libros griegos y romanos. Creían que las personas pueden aprender y crear grandes cosas.', fa: 'انسان‌گرایان کتاب‌های کهن یونان و روم را می‌خواندند. باور داشتند انسان می‌تواند یاد بگیرد و چیزهای بزرگ بسازد.' } },
-      { q: { en: 'How did perspective change paintings?', es: '¿Cómo cambió la perspectiva las pinturas?', fa: 'دورنمایی نقاشی‌ها را چطور تغییر داد؟' },
-        choices: [
-          { en: 'Things looked near and far', es: 'Las cosas se veían cerca y lejos', fa: 'چیزها نزدیک و دور دیده می‌شدند' },
-          { en: 'Paintings became the size of coins', es: 'Las pinturas se volvieron del tamaño de monedas', fa: 'نقاشی‌ها به اندازهٔ سکه شدند' },
-          { en: 'Painters used only one color', es: 'Los pintores usaban un solo color', fa: 'نقاشان فقط یک رنگ به کار بردند' },
-          { en: 'Paintings had words, not pictures', es: 'Las pinturas tenían palabras, no imágenes', fa: 'نقاشی‌ها کلمه داشتند، نه تصویر' }],
+        why: { en: 'Coins, merchant paper money and then government paper money all show a busy, commercial economy that traded silk, tea and porcelain.' }
+      },
+      {
+        q: { en: 'Confucian writings said a woman\'s proper realm was the household. Which evidence from this episode complicates that idea?' },
+        choices: [{ en: 'Women\'s silk work at home paid rents and taxes' }, { en: 'Women wrote and graded the civil service exams' }, { en: 'Women served as generals in the Song army' }, { en: 'Women were barred from making any goods' }],
         answer: 0,
-        why: { en: 'With perspective, a flat painting seems deep, like a window into real life.', es: 'Con la perspectiva, una pintura plana parece profunda, como una ventana a la vida real.', fa: 'با دورنمایی، یک نقاشی هموار عمیق دیده می‌شود، مثل کلکینی به زندگی واقعی.' } },
-      { q: { en: 'What did the printing press do?', es: '¿Qué hizo la imprenta?', fa: 'ماشین چاپ چه کرد؟' },
-        choices: [
-          { en: 'Made books faster and cheaper', es: 'Hizo libros más rápido y más baratos', fa: 'کتاب‌ها را تیزتر و ارزان‌تر ساخت' },
-          { en: 'Made paintings bigger and brighter', es: 'Hizo pinturas más grandes y brillantes', fa: 'نقاشی‌ها را بزرگ‌تر و روشن‌تر ساخت' },
-          { en: 'Made ships sail much faster', es: 'Hizo que los barcos navegaran más rápido', fa: 'کشتی‌ها را خیلی تیزتر ساخت' },
-          { en: 'Made new coins out of gold', es: 'Hizo monedas nuevas de oro', fa: 'از طلا سکه‌های نو ساخت' }],
+        why: { en: 'Even inside the household, village women produced silk thread and cloth that supported the family\'s income.' }
+      },
+      {
+        stim: { text: { en: 'As Buddhist ideas spread from Indian merchants throughout China, some became mixed with similar beliefs that already existed, like Daoism.' }, src: { en: 'Adapted from "How China Made Buddhism its Own," World History Project' } },
+        q: { en: 'The process described above is best explained as...' },
+        choices: [{ en: 'a belief system changing as it spread to a new place' }, { en: 'a government forcing everyone to give up their faith' }, { en: 'a religion that stayed the same everywhere it went' }, { en: 'Confucian officials inventing Buddhism' }],
         answer: 0,
-        why: { en: 'Before, people copied books by hand. Printing made many copies fast, so ideas spread.', es: 'Antes, los libros se copiaban a mano. La imprenta hizo muchas copias rápido y las ideas se esparcieron.', fa: 'پیش از آن، کتاب‌ها با دست نقل می‌شدند. چاپ زود نسخه‌های زیاد ساخت و اندیشه‌ها پخش شدند.' } },
-      { q: { en: 'Who made the famous statue David in Florence?', es: '¿Quién hizo la famosa estatua David de Florencia?', fa: 'چه کسی مجسمهٔ مشهور داوود را در فلورانس ساخت؟' },
-        choices: [
-          { en: 'Michelangelo', es: 'Miguel Ángel', fa: 'میکل‌آنژ' },
-          { en: 'Johannes Gutenberg', es: 'Johannes Gutenberg', fa: 'یوهانس گوتنبرگ' },
-          { en: 'Vasco da Gama', es: 'Vasco da Gama', fa: 'واسکو دا گاما' },
-          { en: 'Marco Polo', es: 'Marco Polo', fa: 'مارکوپولو' }],
+        why: { en: 'Carried by merchants along trade routes, Buddhism blended with Daoism and Chinese customs. It became Sinicized.' }
+      },
+      {
+        q: { en: 'Which statement best compares Chinese influence on Korea and Japan in this period?' },
+        choices: [{ en: 'Both adopted Chinese ideas but adapted them' }, { en: 'Both rejected everything that came from China' }, { en: 'Both were ruled directly by Song officials' }, { en: 'Only Japan ever used Chinese writing' }],
         answer: 0,
-        why: { en: 'Michelangelo carved David from one huge block of marble. It was finished in 1504.', es: 'Miguel Ángel talló el David en un solo bloque enorme de mármol. Lo terminó en 1504.', fa: 'میکل‌آنژ داوود را از یک تکهٔ بسیار بزرگ مرمر تراشید. در سال ۱۵۰۴ تمام شد.' } },
-      { q: { en: 'Florence grew rich from banking and from what else?', es: 'Florencia se hizo rica con los bancos y ¿con qué más?', fa: 'فلورانس از بانکداری و دیگر از چه چیزی ثروتمند شد؟' },
-        choices: [
-          { en: 'Trade in wool and silk cloth', es: 'El comercio de tela de lana y seda', fa: 'تجارت تکهٔ پشمی و ابریشمی' },
-          { en: 'Gold mines under the city', es: 'Minas de oro bajo la ciudad', fa: 'معدن‌های طلا زیر شهر' },
-          { en: 'Selling horses to China', es: 'Vender caballos a China', fa: 'فروش اسپ به چین' },
-          { en: 'Catching fish in the ocean', es: 'Pescar en el océano', fa: 'گرفتن ماهی در بحر' }],
+        why: { en: 'Korea\'s Koryŏ copied China\'s government and capital; Japanese monks brought home Chinese Buddhism. Each fit these ideas to its own traditions.' }
+      },
+      {
+        q: { en: 'Why did Hangzhou grow into perhaps the largest city in the world by the 1200s?' },
+        choices: [{ en: 'It was the Song capital and a trade center' }, { en: 'It was the only city left in all of China' }, { en: 'The Mongols moved their capital there first' }, { en: 'Its people moved north to farm new lands' }],
         answer: 0,
-        why: { en: 'Florence made fine wool and silk cloth. It sold the cloth across Europe and beyond.', es: 'Florencia hacía tela fina de lana y seda. La vendía en toda Europa y más allá.', fa: 'فلورانس تکهٔ خوب پشمی و ابریشمی می‌ساخت. آن را در سراسر اروپا و دورتر می‌فروخت.' } }
+        why: { en: 'After 1132 Hangzhou was the Song capital. Trade, production and newcomers from the countryside and the north made it huge.' }
+      }
     ]
   },
-
   learned: [
-    { en: 'The [[renaissance|Renaissance]] was a rebirth of old Greek and Roman ideas. It began in Italy.', es: 'El [[renaissance|Renacimiento]] fue un renacer de las ideas griegas y romanas. Empezó en Italia.', fa: '[[renaissance|رنسانس]] دوباره زنده شدن اندیشه‌های کهن یونان و روم بود. در ایتالیا شروع شد.' },
-    { en: 'Rich [[patron|patrons]] paid artists. Painters used [[perspective|perspective]] to make art look real.', es: 'Los [[patron|mecenas]] ricos pagaban a los artistas. Los pintores usaron la [[perspective|perspectiva]] para que el arte se viera real.', fa: '[[patron|حامیان]] ثروتمند به هنرمندان پول می‌دادند. نقاشان با [[perspective|دورنمایی]] هنر را واقعی نشان دادند.' },
-    { en: 'The [[printing press|printing press]] made books cheaper, so new ideas spread fast.', es: 'La [[printing press|imprenta]] hizo los libros más baratos, y las ideas nuevas se esparcieron rápido.', fa: '[[printing press|ماشین چاپ]] کتاب‌ها را ارزان‌تر ساخت، پس اندیشه‌های نو زود پخش شدند.' }
+    { en: 'Song China chose many officials by [[civil service exam|civil service exams]] based on [[confucianism|Confucian]] books, which taught [[filial piety|filial piety]] and hierarchy.' },
+    { en: '[[wet-field rice|Wet-field rice]], cash crops, silk, porcelain and [[paper money|paper money]] made Song China\'s economy grow, and its cities with it.' },
+    { en: 'Buddhism came from India and was [[sinicized|Sinicized]]; Korea and Japan adapted Chinese government, writing and Buddhism in their own ways.' }
   ],
   reflect: {
-    q: { en: 'Renaissance people learned from old ideas. What old idea or skill from your family would you keep alive?', es: 'La gente del Renacimiento aprendió de ideas antiguas. ¿Qué idea o habilidad antigua de tu familia mantendrías viva?', fa: 'مردم رنسانس از اندیشه‌های کهن یاد گرفتند. کدام اندیشه یا مهارت کهن خانواده‌ات را زنده نگه می‌داری؟' },
-    starter: { en: 'One old skill from my family is', es: 'Una habilidad antigua de mi familia es', fa: 'یک مهارت کهن خانوادهٔ من' }
+    q: { en: 'AP practice: Explain one way the Song dynasty used Confucian ideas to rule China.' },
+    starter: { en: 'The Song dynasty used Confucian ideas when' }
   }
 };
 
 };
-window.WW_CATALOG = [{"id":"1.1","realm":1,"title":{"en":"The Renaissance","es":"El Renacimiento","fa":"رنسانس"},"place":{"en":"Florence, 1500","es":"Florencia, 1500","fa":"فلورانس، ۱۵۰۰"},"at":[11.25,43.77]}];
+window.WW_CATALOG = [{"id":"1.1","realm":1,"title":{"en":"Developments in East Asia"},"place":{"en":"Hangzhou, Song China, 1200"},"at":[120.15,30.25]}];
 </script>
 <script>
 (function () { // #ep=1.2 opens that episode; anything else shows the world map

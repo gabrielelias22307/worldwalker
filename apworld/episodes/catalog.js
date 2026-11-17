@@ -4,15 +4,11 @@ window.WW_CATALOG = [
   "id": "1.1",
   "realm": 1,
   "title": {
-   "en": "The Renaissance",
-   "es": "El Renacimiento",
-   "fa": "رنسانس"
+   "en": "Developments in East Asia"
   },
   "place": {
-   "en": "Florence, 1500",
-   "es": "Florencia, 1500",
-   "fa": "فلورانس، ۱۵۰۰"
+   "en": "Hangzhou, Song China, 1200"
   },
-  "sol": "WHII"
+  "sol": "AP 1.1"
  }
 ];

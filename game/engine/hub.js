@@ -72,7 +72,7 @@
       <div class="hw-units">${WW.REALMS.slice(1).map((r, ui) => `<section class="hw-unit" style="--uc:${UNITC[ui + 1]}"><h2>${esc(L(r))}</h2>${cat.filter(e => e.realm === ui + 1).map(e => {
         const st = s.episodes[e.id] || {};
         return `<button class="hw-ep${st.done ? ' done' : ''}" data-ep="${esc(e.id)}"><span class="id">${esc(e.id)}</span><span class="t">${esc(L(e.title))}<small>${esc(L(e.place))}</small></span><span class="st">${st.done ? '★'.repeat(st.stars || 1) : ''}</span></button>`;
-      }).join('')}</section>`).join('')}</div></div>`;
+      }).join('')}</section>`).join('')}</div>${WW.COURSE && WW.COURSE.credit ? `<p class="hw-credit">${esc(WW.COURSE.credit)}</p>` : ''}</div>`;
     const cv = document.getElementById('hw-map'); paint(cv);
     const pins = document.getElementById('hw-pins'), tip = document.getElementById('hw-tip');
     cat.forEach(e => {

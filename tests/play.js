@@ -261,11 +261,12 @@ const CANVAS = process.argv.includes('--canvas');
             if (await page.locator('.talkov').count()) throw new Error('Escape did not leave the talk');
             await page.evaluate(([x, y]) => WW.dbg.bumpInto(x, y), [n.x, n.y]); await page.waitForSelector('.talkov');
             // the 3 languages
-            await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('3-talk-fa');
-            await page.click('[data-lang=es]'); await page.waitForTimeout(100); await shot('3-talk-es');
+            const multi = await page.evaluate(() => WW.LANGS.length > 1); // HistoryWalker is English only
+            if (multi) { await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('3-talk-fa');
+              await page.click('[data-lang=es]'); await page.waitForTimeout(100); await shot('3-talk-es'); }
             const raw = await page.textContent('#ww-ov');
             if (/\[\[|\]\]|undefined/.test(raw)) throw new Error('raw markup or undefined in talk box');
-            await page.click('[data-lang=en]');
+            if (multi) await page.click('[data-lang=en]');
           }
           for (let k = 0; k < 8; k++) {
             if (await page.locator('#ww-ov .choices').count()) break;
@@ -669,7 +670,7 @@ const CANVAS = process.argv.includes('--canvas');
         if (!/PASSPORT CODE: WW-/.test(s.text) || !/mental map is my school|my school/.test(s.text + 'my school')) throw new Error('work text missing parts');
         const back = await page.evaluate(code => { const d = WW.readCode(code); return d && d.episodes[WW.ep.id] && d.episodes[WW.ep.id].done; }, s.code);
         if (!back) throw new Error('passport code does not read back');
-        await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('9-finish-fa'); await page.click('[data-lang=en]');
+        if (await page.evaluate(() => WW.LANGS.length > 1)) { await page.click('[data-lang=fa]'); await page.waitForTimeout(100); await shot('9-finish-fa'); await page.click('[data-lang=en]'); }
         await page.click('#ww-b-pass'); await page.waitForSelector('.passov'); await shot('10-passport');
         const tq = await page.evaluate(() => window.__toast);
         if (tq.most > 1) throw new Error(tq.most + ' reward pop-ups showed at once');

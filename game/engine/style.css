@@ -599,3 +599,4 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 .hw-ep small { display: block; color: #b9b2c8; font-size: 12px; }
 .hw-ep .st { color: #f2c14e; }
 #ww [hidden] { display: none !important; }
+.hw-credit { margin-top: 18px; font-size: 12px; color: #9a92ad; text-align: center; }

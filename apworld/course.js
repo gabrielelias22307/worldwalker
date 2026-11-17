@@ -2,7 +2,8 @@
    with the HD look (hd: true, game/engine/hd.js) and the whole game in one file (tools/build-one.js).
    English only, at AP level. Episodes live in apworld/episodes/ (one per AP topic: 1.1 ... 4.8). */
 window.WW_COURSE = {
-  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'hourglass', hd: true, langs: ['en'],
+  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'hourglass', hd: true, langs: ['en'], readingScale: 2,
+  credit: 'Lessons adapted from the World History Project (OER Project) AP World History course on Khan Academy, CC BY-NC 4.0. Game by Gabriel Elias, Alexandria City High School.',
   episodes: [['1.1', 1], ['1.2', 1], ['1.3', 1], ['1.4', 1], ['1.5', 1], ['1.6', 1], ['1.7', 1], ['2.1', 2], ['2.2', 2], ['2.3', 2], ['2.4', 2], ['2.5', 2], ['2.6', 2], ['2.7', 2],
     ['3.1', 3], ['3.2', 3], ['3.3', 3], ['3.4', 3], ['4.1', 4], ['4.2', 4], ['4.3', 4], ['4.4', 4], ['4.5', 4], ['4.6', 4], ['4.7', 4], ['4.8', 4]],
   realms: [
@@ -12,23 +13,14 @@ window.WW_COURSE = {
     { en: 'Unit 4 · Transoceanic Interconnections' }],
   // the five powers: history thinking skills (same keys as Worldwalker, so saves and the Sheet work the same)
   themes: [
-    { icon: '🔗', name: { en: 'Cause & effect', es: 'Causa y efecto', fa: 'علت و نتیجه' }, full: { en: 'Cause and Effect', es: 'Causa y efecto', fa: 'علت و نتیجه' } },
-    { icon: '⏳', name: { en: 'Change', es: 'Cambio', fa: 'تغییر' }, full: { en: 'Change Over Time', es: 'Cambio en el tiempo', fa: 'تغییر در طول زمان' } },
-    { icon: '📜', name: { en: 'Sources', es: 'Fuentes', fa: 'منابع' }, full: { en: 'Primary Sources', es: 'Fuentes primarias', fa: 'منابع اصلی' } },
-    { icon: '👥', name: { en: 'Points of view', es: 'Puntos de vista', fa: 'دیدگاه‌ها' }, full: { en: 'Perspectives', es: 'Perspectivas', fa: 'دیدگاه‌ها' } },
-    { icon: '🌐', name: { en: 'Connections', es: 'Conexiones', fa: 'پیوندها' }, full: { en: 'Connections', es: 'Conexiones', fa: 'پیوندها' } }],
+    { icon: '🔗', name: { en: 'Causation' }, full: { en: 'Causation' } },
+    { icon: '⏳', name: { en: 'Continuity & change' }, full: { en: 'Continuity and Change' } },
+    { icon: '⚖️', name: { en: 'Comparison' }, full: { en: 'Comparison' } },
+    { icon: '📜', name: { en: 'Sourcing' }, full: { en: 'Sourcing and Situation' } },
+    { icon: '🌐', name: { en: 'Context' }, full: { en: 'Contextualization' } }],
   // the tools you earn (same ids as Worldwalker, so their secrets work the same: the sail crosses deep water, and so on).
   // 2.3 (the Atlantic slave trade) and 7.3 (the Holocaust) give no tool: nothing there is a prize
-  tools: [
-    { id: 'compass', ep: '1.3', icon: '🗺️', name: { en: 'Sea Chart', es: 'Carta de navegar', fa: 'نقشهٔ دریایی' } },
-    { id: 'sail', ep: '2.1', icon: '⛵', name: { en: 'Ship Sail', es: 'Vela de barco', fa: 'بادبان کشتی' } },
-    { id: 'canoe', ep: '1.2', icon: '🛶', name: { en: 'Canoe', es: 'Canoa', fa: 'قایق کوچک' } },
-    { id: 'key', ep: '3.3', icon: '🗝️', name: { en: 'Library Key', es: 'Llave de la biblioteca', fa: 'کلید کتابخانه' } },
-    { id: 'gourd', ep: '4.3', icon: '🫙', name: { en: 'Water Flask', es: 'Cantimplora', fa: 'قمقمهٔ آب' } },
-    { id: 'rail', ep: '5.3', icon: '🎫', name: { en: 'Railway Ticket', es: 'Boleto de tren', fa: 'تکت قطار' } },
-    { id: 'cloak', ep: '6.3', icon: '🧥', name: { en: 'Wool Coat', es: 'Abrigo de lana', fa: 'کرتی پشمی' } },
-    { id: 'seal', ep: '8.1', icon: '📜', name: { en: 'Peace Seal', es: 'Sello de la paz', fa: 'مهر صلح' } }],
-  // the engine's own words, swapped in order (longer ones first)
+  tools: [], // no tools to earn: every episode stands on its own
   swaps: {
     en: [['Christopher', 'Tock'], ['living compass', 'living hourglass'], ['compass stone', 'time stone'], ['Compass arrow', 'Time arrow'],
       ['Great Atlas', 'Great Chronicle'], ['Atlas pages', 'Chronicle pages'], ['atlas pages', 'chronicle pages'], ['Atlas page', 'Chronicle page'], ['atlas page', 'chronicle page'],

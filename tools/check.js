@@ -19,6 +19,9 @@ function checkEpisode(file) {
   const ep = box.window.EPISODE;
   if (!ep) return { errs: ['window.EPISODE is missing'], warns };
   const want = path.basename(file).slice(3, 6).replace('-', '.');
+  // the game this episode belongs to (its folder): its languages and how long a box may be (HistoryWalker: English, AP level)
+  const CO = require('./course-info.js')(path.basename(path.dirname(path.dirname(path.resolve(file))))).course || {};
+  const LANGS = CO.langs || ['en', 'es', 'fa'], WORDK = CO.readingScale || 1;
   if (ep.id !== want) errs.push(`id is "${ep.id}", file name says ${want}`);
   if (ep.realm !== +want[0]) errs.push('realm should be ' + want[0]);
 
@@ -28,10 +31,10 @@ function checkEpisode(file) {
     if (Array.isArray(o)) return o.forEach((v, i) => walk(v, where + '[' + i + ']'));
     if (!o || typeof o !== 'object') return;
     if ('en' in o) {
-      for (const l of ['en', 'es', 'fa']) if (typeof o[l] !== 'string' || !o[l].trim()) errs.push(`${where}: missing ${l}`);
+      for (const l of LANGS) if (typeof o[l] !== 'string' || !o[l].trim()) errs.push(`${where}: missing ${l}`);
       if (typeof o.fa === 'string' && !/[؀-ۿ]/.test(o.fa)) errs.push(`${where}: fa is not in Dari script`);
       if (typeof o.es === 'string' && o.es === o.en && o.en.length > 24) warns.push(`${where}: es same as en`);
-      for (const l of ['en', 'es', 'fa']) {
+      for (const l of LANGS) {
         const s = o[l] || '';
         (s.match(/\[\[([^\]|]+)(\|[^\]]+)?\]\]/g) || []).forEach(m => {
           const k = m.slice(2, -2).split('|')[0].trim().toLowerCase();
@@ -276,7 +279,7 @@ function checkEpisode(file) {
         else if (solid(p[0], p[1])) errs.push(`${w}: piece spot (${k}) is not open ground${b.over ? ' or ' + b.over : ''}`);
         else if (!seen.has(k)) errs.push(`${w}: piece spot (${k}) cannot be reached`);
       });
-      (b.wrongBy || []).forEach((z, j) => { if (!z.t || !z.t.en || !z.t.es || !z.t.fa) errs.push(`${w}: wrongBy ${j} needs t in 3 languages`); if ((b.ok || []).some(p => p[0] >= z.x && p[1] >= z.y && p[0] < z.x + z.w && p[1] < z.y + z.h)) errs.push(`${w}: wrongBy ${j} covers a right spot`); });
+      (b.wrongBy || []).forEach((z, j) => { if (!z.t || LANGS.some(l => !z.t[l])) errs.push(`${w}: wrongBy ${j} needs t in every language`); if ((b.ok || []).some(p => p[0] >= z.x && p[1] >= z.y && p[0] < z.x + z.w && p[1] < z.y + z.h)) errs.push(`${w}: wrongBy ${j} covers a right spot`); });
       if (!b.board) errs.push(`${w}: a place build needs board: [x, y]`); else if (!nextTo(b.board)) errs.push(`${w}: the build board cannot be reached`);
       // once it is built, everything a student needs must still be reachable (a fence must never wall anyone in)
       if ((b.ok || []).some(p => WW.solid(p[2] || b.tile))) {
@@ -371,7 +374,7 @@ function checkEpisode(file) {
   if (READING) {
     const strip = s => String(s || '').replace(/\[\[[^|\]]*\|([^\]]*)\]\]/g, '$1').replace(/\[\[([^\]]*)\]\]/g, '$1');
     const nw = o => strip(o && o.en).split(/\s+/).filter(w => /[A-Za-z0-9]/.test(w)).length;
-    const box = (o, where, max = 15) => { if (o && o.en && nw(o) > max) warns.push(`reading: ${where} has ${nw(o)} words (at most ${max})`); };
+    const box = (o, where, max = 15) => { max = Math.round(max * WORDK); if (o && o.en && nw(o) > max) warns.push(`reading: ${where} has ${nw(o)} words (at most ${max})`); };
     (ep.intro || []).forEach((o, i) => box(o, `intro[${i}]`));
     ((ep.christopher || {}).meet || []).forEach((o, i) => box(o, `christopher.meet[${i}]`));
     (ep.npcs || []).forEach((n, i) => { (n.lines || []).forEach((o, k) => box(o, `${strip(n.name.en || n.name)} line ${k + 1}`)); if (n.ask) { box(n.ask.q, `${strip(n.name.en || n.name)} question`, 18); n.ask.choices.forEach((c, k) => box(c.why, `${strip(n.name.en || n.name)} answer ${k + 1} why`, 20)); } });
