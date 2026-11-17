@@ -616,3 +616,15 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 #ww.void-dark .bossov .stim { background: #ece4d6; }
 #ww.void-dark .bossov .say.taunt { color: #c8b4ff; font-style: italic; text-shadow: 0 0 8px rgba(150,90,255,.5); }
 #ww.void-dark .bossov .fb.wrong, #ww.void-dark .bossov .fb.right { color: #22202e; }
+/* flash recall (HistoryWalker): a shade caught you */
+#ww .recallov .ov-box { background: #160f26; color: #efe8ff; border-color: #4a3a72; box-shadow: 0 0 36px rgba(120,60,200,.5); }
+#ww .recallov .recall-head { display: flex; gap: 12px; align-items: center; margin-bottom: 8px; }
+#ww .recallov .recall-shade { width: 44px; height: 44px; border-radius: 50%; flex: none; background: radial-gradient(circle at 50% 55%, #030006 45%, #5a2aa0 70%, rgba(90,40,170,0) 72%); box-shadow: 0 0 18px #7a4ad8; position: relative; }
+#ww .recallov .recall-shade::before, #ww .recallov .recall-shade::after { content: ''; position: absolute; top: 18px; width: 9px; height: 3px; background: #e8dcff; border-radius: 50%; }
+#ww .recallov .recall-shade::before { left: 11px; transform: rotate(18deg); } #ww .recallov .recall-shade::after { right: 11px; transform: rotate(-18deg); }
+#ww .recallov .recall-t { font-weight: 800; font-size: 1.15em; color: #c9b6ff; }
+#ww .recallov .say.q { color: #f4efff; }
+#ww .recallov .choices button { background: #231a38; color: #f2ecff; border-color: #4a3a72; }
+#ww .recallov .fb { color: #22202e; }
+#ww .recallov .choices button.right { background: #1d4a32; border-color: #5fd36a; }
+#ww .recallov .choices button.wrong { background: #4a1d2a; border-color: #ff6b5e; }

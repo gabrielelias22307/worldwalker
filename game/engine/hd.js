@@ -693,6 +693,125 @@
     c.fillStyle = rage ? 'rgba(255,40,40,.35)' : 'rgba(200,180,255,.3)'; c.fillRect(x + 4.6, y + 3.6 + bob, 2.8, 2); c.fillRect(x + 8.6, y + 3.6 + bob, 2.8, 2);
     c.fillStyle = eyeCol; c.fillRect(x + 5, y + 4 + bob, 2, 1.1); c.fillRect(x + 9, y + 4 + bob, 2, 1.1);
   };
+  /* ---------------- inside the houses, HD (rooms.js asks for these) ----------------
+     A room seen from the side, drawn twice as fine, styled by the place (ep.style): its walls, floor, window, the light
+     that falls through it, and the things people kept at home there. The still parts are drawn once and kept. */
+  const RW = 256, RH = 176, FL = 132, RA = 2; // the room in map units; RA art pixels per unit
+  const rcache = new Map(), SLOTS = [96, 150, 212, 232, 232];
+  const ROOMS = {
+    china:   { wall: '#efe3c8', wall2: '#d8c6a2', trim: '#8c2f22', floor: 'wood', fc: ['#7a4e2a', '#8a5a33', '#946038'], win: 'lattice', items: ['teatable', 'scroll', 'vase', 'lanternR'] },
+    japan:   { wall: '#efe6cf', wall2: '#c9bd9c', trim: '#5a4030', floor: 'tatami', fc: ['#c9b77c', '#d6c48c', '#b6a36a'], win: 'lattice', items: ['teatable', 'scroll', 'plant', 'lanternR'] },
+    islam:   { wall: '#f3efe6', wall2: '#ddd6c6', trim: '#2a7f9a', floor: 'tile', fc: ['#b8433a', '#8f2f28', '#d9a65a'], win: 'arch', items: ['cushions', 'niche', 'books', 'lampH', 'carpet'] },
+    ottoman: { wall: '#f1ebe0', wall2: '#dcd3c2', trim: '#2a7f9a', floor: 'tile', fc: ['#b8433a', '#8f2f28', '#d9a65a'], win: 'arch', items: ['cushions', 'niche', 'books', 'lampH', 'carpet'] },
+    india:   { wall: '#e8c49a', wall2: '#d4a878', trim: '#8a3a2a', floor: 'stone', fc: ['#c9a27a', '#b88f68', '#d6b48c'], win: 'jali', items: ['charpai', 'textile', 'brass'] },
+    sahel:   { wall: '#c98a55', wall2: '#b07445', trim: '#5a3418', floor: 'earth', fc: ['#9c6a3b', '#8a5a30', '#a8784a'], win: 'hole', items: ['pots', 'mudniche', 'baskets', 'mat'] },
+    swahili: { wall: '#ece4d2', wall2: '#d4c8ae', trim: '#4a2e18', floor: 'stone', fc: ['#d9cdb4', '#c9bd9f', '#e6dcc6'], win: 'hole', items: ['chest', 'coralniches', 'pots', 'mat'] },
+    andes:   { wall: '#9a9a90', wall2: '#83837a', trim: '#5a4a3a', floor: 'earth', fc: ['#8a6a4a', '#7a5c3e', '#9a7858'], win: 'trap', items: ['pots', 'weaving', 'quipu', 'mat'] },
+    mesoamerica: { wall: '#f1ece0', wall2: '#d9d0bd', trim: '#b8452f', floor: 'earth', fc: ['#b8956a', '#a8855c', '#c4a278'], win: 'hole', items: ['metate', 'codex', 'pots', 'maize'] },
+    steppe:  { wall: '#d9c7a4', wall2: '#c4b088', trim: '#b04a2a', floor: 'carpetfull', fc: ['#8f2f28', '#b8433a', '#d9a65a'], win: 'none', items: ['stove', 'lattice', 'chest'] },
+    europe:  { wall: '#e9dcc0', wall2: '#d9c9a6', trim: '#5a3d24', floor: 'wood', fc: ['#7a4e2a', '#8a5a33', '#6e4425'], win: 'mullion', items: ['fireplace', 'shelf', 'table', 'tapestry'] }
+  };
+  function roomBg(styleName) {
+    const key = styleName; let cv = rcache.get(key); if (cv) return cv;
+    const S = ROOMS[styleName] || ROOMS.europe;
+    cv = document.createElement('canvas'); cv.width = RW * RA; cv.height = RH * RA; const c = cv.getContext('2d');
+    const P = (x, y, w, h, col) => { c.fillStyle = col; c.fillRect(Math.round(x * RA), Math.round(y * RA), Math.round(w * RA), Math.round(h * RA)); };
+    const W = hex(S.wall), W2 = hex(S.wall2), F = FL * RA;
+    // the back wall: plaster, mud, stone or felt, with soft noise and darker toward the corners
+    for (let y = 0; y < F; y++) for (let x = 0; x < RW * RA; x++) {
+      let l = 0.94 + (vnoise(x, y, 14, 71) - 0.5) * 0.14 + (h2(x, y, 3) - 0.5) * 0.05 - Math.abs(x / (RW * RA) - 0.5) * 0.18 - (y < 40 ? (40 - y) / 300 : 0);
+      if (styleName === 'andes') { const bx = Math.floor((x + (Math.floor(y / 26) % 2) * 20) / 40), by = Math.floor(y / 26), ex = (x + (Math.floor(y / 26) % 2) * 20) % 40, ey = y % 26; l = 0.8 + h2(bx, by, 7) * 0.25 - (ex < 2 || ey < 2 ? 0.4 : 0) - Math.abs(x / (RW * RA) - 0.5) * 0.15; }
+      c.fillStyle = shade(y > F - 70 ? W2 : W, l); c.fillRect(x, y, 1, 1);
+    }
+    // ceiling beams and a skirting line
+    P(0, 0, RW, 12, S.trim); P(0, 12, RW, 1.5, 'rgba(0,0,0,.35)');
+    for (let x = 18; x < RW; x += 48) { P(x, 0, 8, 13, shade(hex(S.trim), 0.7)); P(x, 0, 2, 13, shade(hex(S.trim), 1.15)); }
+    P(0, FL - 5, RW, 5, S.trim); P(0, FL - 5, RW, 1, shade(hex(S.trim), 1.3));
+    if (styleName === 'islam' || styleName === 'ottoman') for (let x = 0; x < RW; x += 12) { P(x, FL - 30, 12, 12, '#1d5a6e'); P(x + 2, FL - 28, 8, 8, '#2a8fa8'); P(x + 4, FL - 26, 4, 4, '#f2c14e'); P(x + 5, FL - 25, 2, 2, '#2a8fa8'); }
+    if (styleName === 'china' || styleName === 'japan') for (let x = 0; x < RW; x += 64) { P(x, 13, 5, FL - 18, S.trim); P(x + 1, 13, 1.5, FL - 18, shade(hex(S.trim), 1.3)); }
+    if (styleName === 'mesoamerica') for (let x = 0; x < RW; x += 16) { P(x, 16, 8, 5, '#b8452f'); P(x + 8, 21, 8, 5, '#b8452f'); }
+    if (styleName === 'steppe') for (let x = -40; x < RW + 40; x += 10) for (let k = 0; k < 9; k++) { P(x + k * 5, 20 + k * 11, 2, 2, '#8a6a3a'); P(x + 40 - k * 5, 20 + k * 11, 2, 2, '#8a6a3a'); }
+    // the floor
+    for (let y = F; y < RH * RA; y++) for (let x = 0; x < RW * RA; x++) {
+      const fy = y - F, fc = S.fc.map(hex); let col = fc[0], l = 0.95 + (h2(x, y, 9) - 0.5) * 0.08 - fy / 400;
+      if (S.floor === 'wood') { const plank = Math.floor(fy / 9), off = (plank % 3) * 37; col = fc[(plank % 3)]; if (fy % 9 === 0) l -= 0.35; if ((x + off) % 74 === 0) l -= 0.3; l += (vnoise(x * 0.3, y * 3, 8, 5) - 0.5) * 0.18; }
+      else if (S.floor === 'tile') { const tx = Math.floor(x / 22), ty = Math.floor(fy / 11); col = (tx + ty) % 2 ? fc[0] : fc[2]; if (x % 22 === 0 || fy % 11 === 0) l -= 0.35; }
+      else if (S.floor === 'tatami') { col = fc[Math.floor(x / 90) % 2]; if (x % 90 < 2 || fy % 44 === 0) col = hex('#3a5a3a'); l += Math.sin(x * 1.3) * 0.04; }
+      else if (S.floor === 'stone') { const tx = Math.floor((x + (Math.floor(fy / 16) % 2) * 15) / 30), ty = Math.floor(fy / 16); col = fc[(tx * 7 + ty) % 3]; if ((x + (Math.floor(fy / 16) % 2) * 15) % 30 === 0 || fy % 16 === 0) l -= 0.3; }
+      else if (S.floor === 'carpetfull') { const d = Math.abs(x / (RW * RA) - 0.5) * 8 + fy / 22; col = fc[Math.floor(d) % 3]; if (Math.floor(d * 4) % 4 === 0) l -= 0.2; }
+      else { l += (vnoise(x, y, 10, 13) - 0.5) * 0.2; }
+      c.fillStyle = shade(col, l); c.fillRect(x, y, 1, 1);
+    }
+    c.fillStyle = 'rgba(0,0,0,.25)'; c.fillRect(0, F, RW * RA, 3);
+    // the door out, on the left, open to daylight
+    P(4, 58, 32, FL - 58, '#22202e'); P(6, 60, 28, FL - 60, '#bfe3ff'); P(6, 96, 28, FL - 96, '#7cc451'); P(6, 96, 28, 2, '#5aa548');
+    P(6, 60, 28, 3, 'rgba(255,255,255,.4)'); P(36, 58, 3, FL - 58, S.trim); P(1, 58, 3, FL - 58, S.trim);
+    // the window
+    const wx = 58;
+    if (S.win === 'lattice') { P(wx, 36, 40, 34, '#22202e'); P(wx + 2, 38, 36, 30, '#f8efd6'); for (let i = 1; i < 6; i++) P(wx + 2 + i * 6, 38, 1, 30, S.trim); for (let j = 1; j < 5; j++) P(wx + 2, 38 + j * 6, 36, 1, S.trim); }
+    else if (S.win === 'arch' || S.win === 'jali') { for (let y = 30; y < 74; y++) { const w = y < 44 ? Math.sqrt(Math.max(0, 196 - (44 - y) * (44 - y))) : 14; P(wx + 20 - w - 1, y, w * 2 + 2, 1, '#22202e'); P(wx + 20 - w + 1, y, w * 2 - 2, 1, S.win === 'jali' ? '#c98a5a' : '#bfe3ff'); } if (S.win === 'jali') for (let y = 36; y < 72; y += 4) for (let x = wx + 9; x < wx + 32; x += 4) P(x, y, 2, 2, '#f8e8c8'); else { P(wx + 19, 32, 2, 42, '#1d5a6e'); P(wx + 6, 52, 28, 2, '#1d5a6e'); } }
+    else if (S.win === 'mullion') { P(wx, 36, 40, 34, '#22202e'); P(wx + 2, 38, 36, 30, '#bfe3ff'); P(wx + 19, 38, 2, 30, '#5a3d24'); P(wx + 2, 52, 36, 2, '#5a3d24'); P(wx - 4, 70, 48, 3, '#5a3d24'); }
+    else if (S.win === 'trap') { for (let y = 40; y < 72; y++) { const w = 10 + (y - 40) * 0.25; P(wx + 20 - w, y, w * 2, 1, '#22202e'); P(wx + 21 - w, y, w * 2 - 2, 1, '#bfe3ff'); } }
+    else if (S.win === 'hole') { P(wx + 6, 40, 26, 22, '#22202e'); P(wx + 8, 42, 22, 18, '#bfe3ff'); P(wx + 6, 62, 26, 3, shade(W, 0.75)); }
+    // things in the room
+    S.items.forEach((k, i) => { const x = k === 'carpet' || k === 'mat' ? 120 : SLOTS[i]; ITEM[k] && ITEM[k](P, x, S); }); // slot 2 is on the wall behind the person, so nobody stands in front of a pot
+    rcache.set(key, cv); return cv;
+  }
+  const ITEM = {
+    scroll(P, x) { P(x + 4, 22, 30, 3, '#5a4030'); P(x + 6, 25, 26, 56, '#f8f1dc'); P(x + 10, 34, 18, 22, '#cfe0c8'); P(x + 12, 46, 14, 8, '#5f8a5a'); P(x + 16, 38, 4, 6, '#2a4a3a'); P(x + 22, 62, 5, 5, '#c0392b'); P(x + 13, 66, 1.5, 9, '#22202e'); P(x + 16, 68, 1.5, 7, '#22202e'); P(x + 4, 81, 30, 3, '#5a4030'); },
+    vase(P, x) { P(x + 8, 96, 22, 36, '#22202e'); P(x + 10, 98, 18, 33, '#f4f6fb'); P(x + 13, 92, 12, 6, '#22202e'); P(x + 14, 93, 10, 5, '#f4f6fb'); for (let i = 0; i < 4; i++) P(x + 11 + i * 4, 104 + (i % 2) * 6, 3, 10, '#2f5fa8'); P(x + 11, 120, 16, 2, '#2f5fa8'); P(x + 11, 99, 4, 20, 'rgba(255,255,255,.6)'); },
+    teatable(P, x) { P(x, 112, 52, 6, '#5a2a1e'); P(x, 112, 52, 1.5, '#8c4a32'); P(x + 4, 118, 5, 14, '#4a2018'); P(x + 43, 118, 5, 14, '#4a2018'); P(x + 14, 104, 12, 8, '#22202e'); P(x + 15, 105, 10, 6, '#e8eef6'); P(x + 25, 106, 4, 2, '#e8eef6'); P(x + 32, 107, 6, 5, '#e8eef6'); P(x + 40, 107, 6, 5, '#e8eef6'); P(x + 33, 108, 4, 1, '#7a9a5a'); },
+    lanternR(P, x) { P(x + 14, 13, 1, 16, '#3d2a18'); P(x + 6, 29, 18, 24, '#22202e'); P(x + 7, 30, 16, 22, '#d9402f'); P(x + 7, 33, 16, 1, '#a02a1e'); P(x + 7, 47, 16, 1, '#a02a1e'); P(x + 11, 35, 8, 10, '#ffcf6a'); P(x + 12, 53, 6, 5, '#f2c14e'); },
+    plant(P, x) { P(x + 6, 112, 18, 20, '#22202e'); P(x + 7, 113, 16, 18, '#a8583a'); for (let i = 0; i < 7; i++) { const lx = x + 4 + i * 3.5, h = 14 + (i % 3) * 8; P(lx, 112 - h, 3, h, i % 2 ? '#3f8a3a' : '#5aa548'); } },
+    niche(P, x) { for (let y = 20; y < 92; y++) { const w = y < 36 ? Math.sqrt(Math.max(0, 256 - (36 - y) * (36 - y))) : 16; P(x + 20 - w - 1, y, w * 2 + 2, 1, '#22202e'); P(x + 20 - w + 1, y, w * 2 - 2, 1, '#2a7f9a'); } for (let y = 40; y < 88; y += 8) for (let i = 0; i < 4; i++) P(x + 8 + i * 7, y + (i % 2) * 4, 3, 3, '#f2c14e'); P(x + 14, 70, 12, 18, '#d9a640'); P(x + 16, 66, 8, 4, '#b8862a'); },
+    carpet(P, x) { P(x - 60, FL + 12, 150, 28, '#5a1828'); P(x - 57, FL + 14, 144, 24, '#a8303a'); P(x - 52, FL + 17, 134, 18, '#7a1f2e'); for (let i = 0; i < 9; i++) { P(x - 44 + i * 15, FL + 22, 8, 8, '#d9a640'); P(x - 42 + i * 15, FL + 24, 4, 4, '#1d5a6e'); } for (let i = 0; i < 37; i++) { P(x - 60 + i * 4, FL + 40, 1.5, 3, '#e8d8b8'); } },
+    lampH(P, x) { P(x + 14, 13, 1, 22, '#3d2a18'); P(x + 6, 35, 18, 6, '#22202e'); P(x + 7, 36, 16, 4, '#d9a640'); P(x + 4, 41, 22, 10, '#22202e'); P(x + 5, 42, 20, 8, '#c9902a'); for (let i = 0; i < 5; i++) P(x + 7 + i * 4, 44, 2, 3, '#ffe9a0'); P(x + 11, 51, 8, 4, '#b8862a'); },
+    cushions(P, x) { P(x, 116, 24, 16, '#22202e'); P(x + 1, 117, 22, 14, '#2a8fa8'); P(x + 4, 121, 16, 2, '#f2c14e'); P(x + 22, 119, 22, 13, '#22202e'); P(x + 23, 120, 20, 11, '#8e3a5a'); P(x + 26, 124, 14, 2, '#f2c14e'); },
+    books(P, x) { P(x, 46, 40, 3, '#5a3a20'); P(x, 76, 40, 3, '#5a3a20'); [['#7a2a2a', 0], ['#2a4a7a', 6], ['#5a6a2a', 11], ['#8a6a2a', 17], ['#3a2a5a', 24]].forEach(([c2, dx], i) => P(x + 2 + dx, 32 + (i % 2) * 3, 5, 14 - (i % 2) * 3, c2)); P(x + 6, 64, 14, 12, '#d9a640'); P(x + 8, 66, 10, 8, '#22202e'); P(x + 12, 68, 2, 4, '#d9a640'); },
+    textile(P, x) { P(x, 24, 40, 50, '#22202e'); for (let i = 0; i < 12; i++) P(x + 1, 25 + i * 4, 38, 4, ['#d9402f', '#f2c14e', '#2a8a6a', '#8e3a8a'][i % 4]); for (let i = 0; i < 9; i++) P(x + 1 + i * 4.3, 74, 1.5, 6, '#f2c14e'); },
+    brass(P, x) { P(x + 4, 112, 22, 20, '#22202e'); P(x + 5, 113, 20, 18, '#c9902a'); P(x + 8, 108, 14, 5, '#a87020'); P(x + 6, 115, 4, 12, 'rgba(255,240,180,.6)'); P(x + 28, 120, 14, 12, '#22202e'); P(x + 29, 121, 12, 10, '#d9a640'); },
+    charpai(P, x) { P(x - 10, 110, 60, 4, '#7a4a2a'); for (let i = 0; i < 12; i++) P(x - 8 + i * 5, 106, 3, 4, '#e8d8b8'); P(x - 10, 114, 4, 18, '#5a3418'); P(x + 46, 114, 4, 18, '#5a3418'); },
+    mudniche(P, x) { P(x + 4, 40, 30, 28, '#22202e'); P(x + 6, 42, 26, 26, '#8a5a30'); P(x + 9, 54, 8, 14, '#c9692f'); P(x + 20, 58, 9, 10, '#e8d8b8'); },
+    mat(P, x) { P(x - 40, FL + 14, 110, 22, '#c9a45a'); for (let i = 0; i < 22; i++) P(x - 40 + i * 5, FL + 14, 1.5, 22, '#a8843a'); P(x - 40, FL + 20, 110, 1.5, '#8a6a2a'); P(x - 40, FL + 30, 110, 1.5, '#8a6a2a'); },
+    pots(P, x) { P(x, 108, 20, 24, '#22202e'); P(x + 1, 109, 18, 22, '#b8582f'); P(x + 4, 104, 12, 5, '#8a3e1e'); P(x + 2, 114, 16, 2, '#e8d8b8'); P(x + 24, 116, 16, 16, '#22202e'); P(x + 25, 117, 14, 14, '#c9792f'); P(x + 27, 113, 10, 4, '#8a3e1e'); },
+    baskets(P, x) { P(x, 114, 22, 18, '#22202e'); P(x + 1, 115, 20, 16, '#d9a65a'); for (let y = 117; y < 131; y += 3) P(x + 1, y, 20, 1, '#a8783a'); P(x + 4, 110, 14, 5, '#e04848'); },
+    coralniches(P, x) { for (let k = 0; k < 2; k++) for (let j = 0; j < 2; j++) { const nx = x + k * 22, ny = 26 + j * 30; P(nx, ny, 18, 24, '#22202e'); P(nx + 1, ny + 1, 16, 22, '#c9bd9f'); P(nx + 4, ny + 12, 10, 8, '#f4f6fb'); P(nx + 6, ny + 14, 6, 2, '#2f5fa8'); } },
+    chest(P, x) { P(x, 104, 40, 28, '#22202e'); P(x + 1, 105, 38, 26, '#6a4426'); for (let i = 0; i < 6; i++) P(x + 4 + i * 6, 108, 2, 20, '#d9a640'); P(x + 1, 112, 38, 2, '#4a2e18'); },
+    weaving(P, x) { P(x, 26, 40, 50, '#22202e'); for (let i = 0; i < 10; i++) P(x + 1, 27 + i * 5, 38, 5, ['#d9402f', '#2a2a6a', '#f2c14e', '#2a8a6a', '#ffffff'][i % 5]); for (let i = 0; i < 4; i++) { P(x + 6 + i * 9, 40, 4, 4, '#22202e'); P(x + 6 + i * 9, 62, 4, 4, '#22202e'); } },
+    quipu(P, x) { P(x + 2, 30, 34, 3, '#6a4a2a'); for (let i = 0; i < 9; i++) { const c2 = ['#d9402f', '#f2c14e', '#e8d8b8', '#2a8a6a'][i % 4]; P(x + 4 + i * 3.5, 33, 1.2, 30 + (i % 3) * 8, c2); P(x + 3.5 + i * 3.5, 42 + (i % 4) * 5, 2.2, 2.2, c2); } },
+    codex(P, x) { P(x, 40, 44, 26, '#22202e'); P(x + 1, 41, 42, 24, '#f6efdc'); for (let i = 0; i < 4; i++) P(x + 1 + i * 10.5, 41, 0.8, 24, '#c9b48a'); P(x + 4, 45, 6, 8, '#d9402f'); P(x + 15, 47, 7, 6, '#2a8a9a'); P(x + 26, 44, 6, 10, '#f2c14e'); P(x + 34, 48, 5, 7, '#3a7a3a'); P(x + 6, 56, 30, 2, '#22202e'); },
+    metate(P, x) { P(x, 120, 40, 8, '#22202e'); P(x + 1, 121, 38, 6, '#7a7a72'); P(x + 4, 127, 4, 5, '#5a5a52'); P(x + 32, 127, 4, 5, '#5a5a52'); P(x + 12, 116, 18, 5, '#9a9a90'); P(x + 6, 118, 6, 2, '#f2c14e'); },
+    maize(P, x) { P(x + 14, 13, 2, 26, '#8a6a3a'); for (let i = 0; i < 4; i++) { P(x + 8 + i * 4, 38 + (i % 2) * 3, 4, 14, '#f2c14e'); P(x + 8 + i * 4, 38 + (i % 2) * 3, 4, 3, '#a8843a'); } },
+    lattice(P, x) { },
+    stove(P, x) { P(x + 10, 13, 6, 76, '#3a3a40'); P(x, 88, 26, 44, '#22202e'); P(x + 1, 89, 24, 42, '#5a5a62'); P(x + 6, 104, 14, 12, '#22202e'); },
+    fireplace(P, x) { P(x - 4, 64, 54, 68, '#22202e'); P(x - 3, 65, 52, 67, '#8d8d96'); for (let y = 66; y < 132; y += 7) for (let k = ((y / 7) % 2) * 6; k < 50; k += 12) P(x - 2 + k, y, 11, 6, '#9d9da6'); P(x + 8, 94, 30, 38, '#1a1418'); P(x - 8, 60, 62, 5, '#5a3d24'); },
+    shelf(P, x) { P(x, 48, 40, 3, '#5a3d24'); P(x, 78, 40, 3, '#5a3d24'); P(x + 3, 38, 7, 10, '#b8582f'); P(x + 13, 40, 6, 8, '#e8d8b8'); P(x + 22, 36, 8, 12, '#4a6a8a'); P(x + 5, 68, 12, 10, '#c9a45a'); P(x + 22, 70, 10, 8, '#7a4a2a'); },
+    table(P, x) { P(x - 4, 106, 50, 6, '#5a3418'); P(x - 4, 106, 50, 1.5, '#8a5a30'); P(x, 112, 4, 20, '#4a2a12'); P(x + 38, 112, 4, 20, '#4a2a12'); P(x + 8, 99, 16, 7, '#c99a5a'); P(x + 10, 98, 12, 2, '#e0b878'); P(x + 30, 100, 7, 6, '#7a8a9a'); },
+    tapestry(P, x) { P(x, 22, 36, 52, '#22202e'); P(x + 1, 23, 34, 50, '#2a4a6a'); P(x + 4, 26, 28, 44, '#3a6a4a'); P(x + 10, 34, 16, 18, '#d9a640'); P(x + 14, 30, 8, 6, '#f8f1dc'); for (let i = 0; i < 8; i++) P(x + 2 + i * 4.3, 73, 1.5, 5, '#d9a640'); }
+  };
+  WW.hd.roomDraw = (c, t) => {
+    const name = (WW.ep && WW.ep.style) || 'europe', S = ROOMS[name] || ROOMS.europe;
+    c.drawImage(roomBg(name), 0, 0, RW, RH);
+    const T0 = calm ? 0 : t;
+    // light falling through the window onto the floor, with dust drifting in it
+    c.save(); c.globalCompositeOperation = 'lighter';
+    if (S.win !== 'none') { const g = c.createLinearGradient(60, 40, 120, FL + 30); g.addColorStop(0, 'rgba(255,240,200,.22)'); g.addColorStop(1, 'rgba(255,240,200,0)'); c.fillStyle = g; c.beginPath(); c.moveTo(60, 40); c.lineTo(98, 40); c.lineTo(150, FL + 40); c.lineTo(96, FL + 40); c.closePath(); c.fill();
+      for (let i = 0; i < 16; i++) { const k = ((T0 / 9000) + i * 0.0625) % 1, px = 68 + i * 4.3 + k * 38, py = 46 + ((i * 37) % 70) + Math.sin(T0 / 900 + i) * 3; c.fillStyle = `rgba(255,245,210,${0.25 + 0.3 * Math.sin(T0 / 600 + i) ** 2})`; c.fillRect(px, py, 0.6, 0.6); } }
+    // a warm glow from fire or lamp
+    const fireX = S.items.indexOf('fireplace'), lampX = S.items.findIndex(k => k === 'lampH' || k === 'lanternR' || k === 'stove');
+    if (fireX >= 0 || lampX >= 0) { const x = SLOTS[fireX >= 0 ? fireX : lampX] + 20, y = fireX >= 0 ? 116 : (S.items[lampX] === 'stove' ? 110 : 44), f = 1 + Math.sin(T0 / 110) * 0.06 + Math.sin(T0 / 47) * 0.04; const g = c.createRadialGradient(x, y, 2, x, y, 60 * f); g.addColorStop(0, 'rgba(255,170,80,.30)'); g.addColorStop(1, 'rgba(255,170,80,0)'); c.fillStyle = g; c.fillRect(x - 70, y - 70, 140, 140); }
+    c.restore();
+    if (fireX >= 0) { const x = SLOTS[fireX] + 8, f = calm ? 0 : Math.floor(T0 / 120) % 3; c.fillStyle = '#d9402f'; c.fillRect(x + 6, 114 - f, 18, 18 + f); c.fillStyle = '#f2a03a'; c.fillRect(x + 9, 118 - f * 2, 12, 14 + f * 2); c.fillStyle = '#ffe08a'; c.fillRect(x + 12, 123 - f, 6, 9 + f); c.fillStyle = '#4a2e18'; c.fillRect(x + 4, 129, 22, 3); }
+    // a soft vignette
+    const v = c.createRadialGradient(RW / 2, RH / 2, RH * 0.4, RW / 2, RH / 2, RW * 0.7); v.addColorStop(0, 'rgba(20,10,30,0)'); v.addColorStop(1, 'rgba(20,10,30,.35)'); c.fillStyle = v; c.fillRect(0, 0, RW, RH);
+  };
+  // people inside: the finer people, twice their map size (feet on the floor at y)
+  WW.hd.roomPerson = (c, pal, kind, x, y, dir, frame) => {
+    c.fillStyle = 'rgba(0,0,0,.22)'; c.beginPath(); c.ellipse(x + 16, y + 39, 13, 3, 0, 0, 7); c.fill();
+    c.drawImage(personPic(pal, kind, dir, frame, false), 0, 0, 32, 40, x, y, 32, 40);
+  };
+  WW.hd.kindOf = p => kindOf(p);
+
   // people on the map stand facing you and blink now and then; the hero walks in four frames
   const oldPerson = WW.drawPerson;
   WW.drawPerson = (c, p, x, y, t, phase = 0) => {

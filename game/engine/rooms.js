@@ -71,6 +71,7 @@
   const room = WW.room = {
     STYLE, RW, RH, FLOOR, on: false,
     draw(c, realm, t) {
+      if (WW.hd && WW.hd.roomDraw) return WW.hd.roomDraw(c, t); // HistoryWalker: a finer room in the style of the place (hd.js)
       const s = STYLE[realm] || STYLE[1];
       wall(c, s); floor(c, s);
       door(c, s, true);
@@ -160,7 +161,8 @@
     }
     room.draw(c, st.realm, now);
     // the person: faces you, and a small talk sign when you are close and have not talked yet
-    drawBig(c, WW.personSprite(st.who), WW.lookPal(st.who.look), PERSON_X, FLOOR - 24, st.hx < PERSON_X);
+    if (WW.hd && WW.hd.roomPerson) WW.hd.roomPerson(c, WW.lookPal(st.who.look), WW.hd.kindOf(st.who), PERSON_X - 2, FLOOR - 34, st.hx < PERSON_X ? 'left' : 'right', 0);
+    else drawBig(c, WW.personSprite(st.who), WW.lookPal(st.who.look), PERSON_X, FLOOR - 24, st.hx < PERSON_X);
     const near = Math.abs(st.hx - PERSON_X) < 44;
     if (near || !st.talked) {
       const by = FLOOR - 40 + (WW.calm ? 0 : Math.round(Math.sin(now / 250) * 2));
@@ -168,7 +170,8 @@
       R(c, PERSON_X + 11, by + 4, 2, 2, '#22202e'); R(c, PERSON_X + 15, by + 4, 2, 2, '#22202e'); R(c, PERSON_X + 19, by + 4, 2, 2, '#22202e');
     }
     const walk = dir && !WW.calm && Math.floor(st.walkT / 140) % 2;
-    drawBig(c, walk ? 'heroSideWalk' : 'heroSide', WW.heroPal(), Math.round(st.hx), FLOOR - 24, st.face < 0);
+    if (WW.hd && WW.hd.roomPerson) { const l = (WW.save && WW.save.look) || {}; WW.hd.roomPerson(c, WW.heroPal(), { robe: false, hat: !!l.hat, style: 'short' }, st.hx, FLOOR - 34, st.face < 0 ? 'left' : 'right', dir && !WW.calm ? Math.floor(st.walkT / 120) % 4 : 0); }
+    else drawBig(c, walk ? 'heroSideWalk' : 'heroSide', WW.heroPal(), Math.round(st.hx), FLOOR - 24, st.face < 0);
     // coming in: a short fade from dark
     const k = 1 - (now - st.t0) / 260; if (k > 0 && !WW.calm) { c.fillStyle = `rgba(10,9,20,${k})`; c.fillRect(0, 0, RW, RH); }
   };

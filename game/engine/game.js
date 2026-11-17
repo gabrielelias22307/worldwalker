@@ -348,6 +348,17 @@
   }
   function touchSmudge(sm) {
     if (performance.now() < inv) return;
+    if (WW.COURSE && WW.COURSE.recall && WW.recall && !G.recalling) { // HistoryWalker: a flash-recall question instead of a plain hit
+      G.recalling = true; inv = performance.now() + 1e9;
+      return WW.recall(ok => {
+        G.recalling = false; inv = performance.now() + 1500; G.graceUntil = performance.now() + 1500;
+        if (ok) { WW.fx.burst(sm.x, sm.y, 'gold'); sm.stunUntil = performance.now() + 9000; sm.visible = false; WW.toast('⚡ Shade dissolved!', '#7a5ad8'); return; }
+        if (ok === false) { WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple'); }
+        else { WW.sfx('hurt'); WW.hurt(false); } // nothing taught yet to ask about: a plain hit
+        const o2 = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2, sm.y + dy * 2]).filter(([x, y]) => walkable(x, y) && screenOf(x, y)[0] === sm.home[0] && screenOf(x, y)[1] === sm.home[1]);
+        if (o2.length) [sm.x, sm.y] = o2[0];
+      });
+    }
     inv = performance.now() + 1200; WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple');
     // push the smudge away one tile
     const opts = [[1, 0], [-1, 0], [0, 1], [0, -1]].map(([dx, dy]) => [sm.x + dx * 2, sm.y + dy * 2]).filter(([x, y]) => walkable(x, y) && screenOf(x, y)[0] === sm.home[0] && screenOf(x, y)[1] === sm.home[1]);
