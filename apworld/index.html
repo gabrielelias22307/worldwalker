@@ -635,6 +635,7 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 #ww .recallov .fb { color: #22202e; }
 #ww .recallov .choices button.right { background: #1d4a32; border-color: #5fd36a; }
 #ww .recallov .choices button.wrong { background: #4a1d2a; border-color: #ff6b5e; }
+#ww.guide-small #ww-now { max-height: calc(100vh - 300px) !important; overflow-y: auto; }
 
 </style>
 </head>
@@ -645,7 +646,7 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
    with the HD look (hd: true, game/engine/hd.js) and the whole game in one file (tools/build-one.js).
    English only, at AP level. Episodes live in apworld/episodes/ (one per AP topic: 1.1 ... 4.8). */
 window.WW_COURSE = {
-  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'owl', guideSmall: true, icon: '🦉', hd: true, recall: true, langs: ['en'], readingScale: 2,
+  id: 'historywalker', title: 'HISTORYWALKER', name: 'HistoryWalker', sub: 'AP WORLD · 1200–1750', saveKey: 'historywalker.save.v1', guide: 'owl', guideSmall: true, icon: '🦉', hd: true, recall: true, bossNeed: 5, langs: ['en'], readingScale: 2,
   credit: 'Lessons adapted from the World History Project (OER Project) AP World History course on Khan Academy, CC BY-NC 4.0. Game by Gabriel Elias, Alexandria City High School.',
   episodes: [['1.1', 1], ['1.2', 1], ['1.3', 1], ['1.4', 1], ['1.5', 1], ['1.6', 1], ['1.7', 1], ['2.1', 2], ['2.2', 2], ['2.3', 2], ['2.4', 2], ['2.5', 2], ['2.6', 2], ['2.7', 2],
     ['3.1', 3], ['3.2', 3], ['3.3', 3], ['3.4', 3], ['4.1', 4], ['4.2', 4], ['4.3', 4], ['4.4', 4], ['4.5', 4], ['4.6', 4], ['4.7', 4], ['4.8', 4]],
@@ -3556,7 +3557,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
         const hero = WW.spriteCanvas('hero', WW.heroPal(), 5); hero.className = 'pp-hero';
         top.appendChild(hero);
         top.insertAdjacentHTML('beforeend', `<div><div class="pp-name">${esc(s.name || '—')}</div><div class="small">${esc(s.cls || '')}</div>
-          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / 24</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
+          <div class="pp-nums"><span>📄 ${esc(T('pages'))}: <b>${WW.doneCount()} / ${WW.EPISODES.length}</b></span><span>● ${esc(T('coins'))}: <b>${s.coins || 0}</b></span></div></div>`);
         box.appendChild(top);
         let pw = `<h3>${esc(T('powers'))}</h3><div class="powers">`;
         WW.THEMES.forEach(th => {
@@ -3660,7 +3661,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
         box.insertAdjacentHTML('beforeend', `<h3>${esc(T('turnIn'))}</h3>`);
         const acts = document.createElement('div'); acts.className = 'acts';
         acts.appendChild(btn('📋 ' + T('copyWork'), 'gold', () => { WW.copy(workText()).then(() => { note = T('copied'); h.render(); }); }));
-        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`Worldwalker ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
+        acts.appendChild(btn('⬇ ' + T('download'), 'teal', () => WW.download(`${(WW.COURSE && WW.COURSE.name) || 'Worldwalker'} ${ep.id} - ${WW.save.name || 'student'}.txt`, workText())));
         box.appendChild(acts);
         box.insertAdjacentHTML('beforeend', `<p class="small">${esc(note || T('turnInNote'))}</p>`);
         const nx = WW.EPISODES[WW.epIndex(ep.id) + 1];
@@ -3703,7 +3704,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     const lines = [];
     lines.push(`${WW.TITLE} — Episode ${ep.id}: ${WW.plain({ en: en(ep.title) })}`);
     lines.push(`Name: ${s.name || ''}   Class: ${s.cls || ''}   Date: ${new Date().toLocaleDateString()}`);
-    lines.push(`Stars: ${r.stars} of 3   Atlas scraps: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
+    lines.push(`Stars: ${r.stars} of 3   ${WW.plain(T('scraps'))}: ${r.scraps.size}/${ep.scraps.length}   Hearts lost: ${r.heartsLost}   Hints used: ${r.hints || 0}   Minutes: ${Math.round((Date.now() - r.t0) / 60000)}`);
     lines.push('');
     lines.push('TALKS (question — my answer — tries)');
     r.log.forEach(l => lines.push(`- ${l.who}: ${l.q} — ${l.a} (${l.tries} ${l.tries === 1 ? 'try' : 'tries'})`));
@@ -4108,7 +4109,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     const need = boss.need || 3;
     if (st && !st.queue) Object.assign(st, { queue: shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1), broken: 0, freeHints: WW.tier('reg'), hidden: {} });
     let queue = st ? st.queue : shuffle(boss.questions.map((_, i) => i), boss.questions.length * 11 + 1);
-    let broken = st ? st.broken : 0, picked = null, last = null, grr = '';
+    let broken = st ? st.broken : 0, picked = null, last = null, grr = '', ordSeed = 0;
     let freeHints = st ? st.freeHints : WW.tier('reg'); const hidden = st ? st.hidden : {}; // Region power: free hints. A hint hides one wrong answer.
     const keep = () => { if (st) Object.assign(st, { broken, freeHints }); };
     WW.music.play(WW.ep && WW.ep.memorial ? 'quiet' : 'boss'); // a quiet episode keeps its soft song
@@ -4142,7 +4143,8 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
         if (q.stim) box.insertAdjacentHTML('beforeend', WW.stimHTML(q.stim)); // AP style: a source, a table or a quote to read first
         box.insertAdjacentHTML('beforeend', `<p class="say q">${WW.rich(q.q)}</p>`);
         const list = document.createElement('div'); list.className = 'choices two';
-        const ord = shuffle(q.choices.map((_, i) => i), qi * 5 + WW.run.bossMisses + 3);
+        if (picked == null) ordSeed = qi * 5 + WW.run.bossMisses + 3; // a new order only for a new question, never while the feedback shows
+        const ord = shuffle(q.choices.map((_, i) => i), ordSeed);
         let pos = 0;
         ord.forEach(i => {
           if (picked == null && (hidden[qi] || []).includes(i)) return;
@@ -6678,6 +6680,12 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     labKey = key;
     const L0 = cr.left - sr.left, T0 = cr.top - sr.top;
     labs.innerHTML = list.map(o => `<span class="gl ${o.cls}" style="left:${L0 + o.px * k + (o.cls === 'row' ? -3 : 0)}px;top:${T0 + o.py * k - (o.cls === 'row' ? 0 : 2)}px">${esc(o.t)}</span>`).join('');
+    // a label never runs off the edge of the map (a lever or a zone by the border): nudge it back inside
+    labs.querySelectorAll('.gl.col').forEach(sp => {
+      const w = sp.offsetWidth, h = sp.offsetHeight, x = parseFloat(sp.style.left), y = parseFloat(sp.style.top);
+      sp.style.left = Math.max(L0 + w / 2 + 2, Math.min(L0 + cr.width - w / 2 - 2, x)) + 'px';
+      if (y - h < T0 + 2) sp.style.top = (T0 + h + 2) + 'px';
+    });
   };
   WW.onLang && WW.onLang(() => { labKey = ''; X.render(); });
   X.drawEnt = (c, e, x, y, t) => {
@@ -7748,6 +7756,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     WW.farm.ents(ep).forEach(e => ents.push(e));
     ents.push({ kind: 'stone', x: ep.challenge.at[0], y: ep.challenge.at[1] });
     ents.push({ kind: 'boss', x: ep.boss.at[0], y: ep.boss.at[1], visible: false });
+    if (WW.COURSE && WW.COURSE.bossNeed && ep.boss && !ep.memorial) ep.boss.need = Math.min(WW.COURSE.bossNeed, ep.boss.questions.length - 1); // HistoryWalker: the Void takes 5 right answers
     player = { x: ep.start[0], y: ep.start[1], fx: ep.start[0], fy: ep.start[1], dir: 'down', moving: 0, from: null };
     pip = { x: player.x, y: player.y, fx: player.x, fy: player.y };
     if (WW.chris && WW.chris.resetFlight) WW.chris.resetFlight();
@@ -7863,7 +7872,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     if (WW.COURSE && WW.COURSE.recall && WW.recall && !G.recalling) { // HistoryWalker: a flash-recall question instead of a plain hit
       G.recalling = true; inv = performance.now() + 1e9;
       return WW.recall(ok => {
-        G.recalling = false; inv = performance.now() + 1500; G.graceUntil = performance.now() + 1500;
+        G.recalling = false; inv = performance.now() + 1500; G.graceUntil = performance.now() + 1500; try { $('ww-screen').focus(); } catch (e) { }
         if (ok) { WW.fx.burst(sm.x, sm.y, 'gold'); sm.stunUntil = performance.now() + 9000; sm.visible = false; WW.toast('⚡ Shade dissolved!', '#7a5ad8'); return; }
         if (ok === false) { WW.sfx('hurt'); WW.hurt(false); WW.fx.burst(sm.x, sm.y, 'purple'); }
         else { WW.sfx('hurt'); WW.hurt(false); } // nothing taught yet to ask about: a plain hit
