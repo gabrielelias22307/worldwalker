@@ -15,7 +15,7 @@ window.EPISODE = {
   place: { en: 'Delhi, Delhi Sultanate, 1312' },
   intro: [
     { en: 'The Grump blurred the page on South and Southeast Asia. Delhi is forgetting its sultans, its faiths and its villages!' },
-    { en: 'Talk to the 4 people here, help a grain seller, then wake the time stone.' }
+    { en: 'Talk to the 4 people here and read the 2 sources on the reading stands. Help a grain seller, then wake the time stone.' }
   ],
   scenes: {
     at: [77.21, 28.61],
@@ -77,24 +77,29 @@ window.EPISODE = {
     'nalanda': { en: 'a great Buddhist monastery in north India, a center of learning; destroyed in 1193' },
     'village council': { en: 'a local government of male household heads that ran farming, irrigation and common land' },
     'qadi': { en: 'a Muslim judge' },
-    'sufism': { en: 'a mystical movement in Islam that stresses personal spiritual experience' }
+    'sufism': { en: 'a mystical movement in Islam that stresses personal spiritual experience' },
+    'dar al-islam': { en: 'the Muslim world; by 1200 it stretched from West Africa to India' },
+    'theravada': { en: 'a form of Buddhism from Sri Lanka; by the 1300s the most prominent kind in Southeast Asia' },
+    'pluralistic': { en: 'having people of many faiths living in one state' },
+    'dai viet': { en: 'the kingdom in Vietnam created after regional overlords threw out the Chinese in the 1000s' }
   },
   npcs: [
     {
       x: 18, y: 10, name: { en: 'Altun' }, role: { en: 'Gate guard' },
       look: { skin: 2, hair: '#1b1410', shirt: '#7a2a2a', pants: '#3a2a1a', hat: '#d8d0c0', style: 'short' },
       lines: [
-        { en: 'My people are Turks. In the 1000s, Muslim Turkic armies from what is now Afghanistan conquered much of northwest India.' },
-        { en: 'In 1206 one of their generals made Delhi an independent state: the [[delhi sultanate|Delhi Sultanate]]. It holds most of north India.' },
-        { en: 'The [[mongols|Mongols]] have invaded north India again and again, sometimes with huge armies. Our sultan\'s armies drive them back.' }
+        { en: 'My people are Turks. In the 1000s, Muslim Turkic armies based in what is now Afghanistan conquered much of northwest India.' },
+        { en: 'In 1206 one of their generals set up an independent government here: the [[delhi sultanate|Delhi Sultanate]]. It once pushed briefly into the south, but it holds the north.' },
+        { en: 'After conquering China, the [[mongols|Mongols]] tried to rule Vietnam and Myanmar. Heat, humidity and local forces beat them there.' },
+        { en: 'Here they marched into north India again and again, sometimes with hundreds of thousands of men. But our sultan\'s armies defeated them.' }
       ],
       ask: {
         stat: 'loc',
-        q: { en: 'Why did the Mongols never gain lasting power in India?' },
+        q: { en: 'The Mongols failed both in Vietnam and in north India. Which best explains their failure in north India?' },
         choices: [
-          { ok: true, t: { en: 'Delhi\'s armies defeated their invasions' }, why: { en: 'Yes. The armies of the sultan of Delhi defeated several Mongol campaigns, so the Mongols never held India for good.' } },
-          { t: { en: 'The Mongols never tried to invade India' }, why: { en: 'No. The Mongols launched several campaigns into north India, sometimes with hundreds of thousands of men.' } },
-          { t: { en: 'Hindu kings gave them the whole south' }, why: { en: 'No. Hindu kings ruled much of the south themselves. The Mongols never won lasting power anywhere in India.' } }
+          { ok: true, t: { en: 'The Delhi sultan\'s armies defeated them' }, why: { en: 'Yes. The armies of the sultan of Delhi beat several huge Mongol campaigns, so the Mongols never gained permanent power in India.' } },
+          { t: { en: 'Heat and humidity wore their armies down' }, why: { en: 'No. Heat, humidity and local forces stopped them in Vietnam and Myanmar. In north India, Delhi\'s armies defeated them.' } },
+          { t: { en: 'Rajput kings paid them tribute to leave' }, why: { en: 'No. Rajputs were Hindu warrior clans who ruled their own kingdoms. The sultan\'s armies are what turned the Mongols back.' } }
         ]
       }
     },
@@ -102,17 +107,17 @@ window.EPISODE = {
       x: 11, y: 4, name: { en: 'Yusuf' }, role: { en: 'Stone carver' },
       look: { skin: 3, hair: '#2b1d14', shirt: '#c9a24a', pants: '#4a3a2a', style: 'short' },
       lines: [
-        { en: 'I carve stone for the new gateway beside the Qutb Minar, a victory tower that several sultans have built.' },
-        { en: 'The sultans brought Islam and Islamic architecture to India. Many north Indians, like my grandfather, became Muslims.' },
-        { en: 'Still, the sultans generally [[toleration|tolerate]] their Hindu subjects. And Hindu kings rule much of central and southern India.' }
+        { en: 'I carve the Alai Darwaza, the new gateway finished this year, 1312. It stands by the Qutb Minar, a sandstone and marble victory tower.' },
+        { en: 'By 1200, [[dar al-islam|Dar al-Islam]] stretched from West Africa to India. The Turks brought Islam and Islamic architecture with them. My grandfather became a Muslim.' },
+        { en: 'Still, the sultans generally [[toleration|tolerate]] their Hindu subjects. And Hindu kings rule central and southern India, and parts of the north.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'How did the Delhi Sultanate generally treat its Hindu subjects?' },
+        q: { en: 'Which best describes religion under the Delhi Sultanate?' },
         choices: [
-          { ok: true, t: { en: 'It tolerated them; many still converted' }, why: { en: 'Right. The sultans were Muslim, but they generally tolerated Hindus. Many north Indians still chose to become Muslims.' } },
-          { t: { en: 'It forced all of them to become Muslims' }, why: { en: 'No. The sultanate generally tolerated its Hindu subjects. Conversion happened, but not by forcing everyone.' } },
-          { t: { en: 'It made Hinduism the faith of the state' }, why: { en: 'No. Delhi\'s sultans were Muslims who brought Islam with them. They ruled over Hindus, not as Hindus.' } }
+          { ok: true, t: { en: 'Muslim rulers who mostly tolerated Hindus' }, why: { en: 'Right. The Turkic sultans brought Islam and generally tolerated Hindus. Many north Indians still chose to become Muslims.' } },
+          { t: { en: 'Muslim rulers who forced Hindus to convert' }, why: { en: 'No. Many north Indians did convert, but the sultanate generally tolerated its Hindu subjects. Conversion was not forced on all.' } },
+          { t: { en: 'Hindu rulers allied with brahmin priests' }, why: { en: 'No. That describes Rajput kingdoms in central and south India. Delhi\'s sultans were Turkic Muslims.' } }
         ]
       }
     },
@@ -120,17 +125,18 @@ window.EPISODE = {
       x: 23, y: 14, name: { en: 'Savitri' }, role: { en: 'Devotional singer' },
       look: { skin: 4, hair: '#120c08', shirt: '#d9822b', robe: true, style: 'long' },
       lines: [
-        { en: 'I sing [[bhakti|bhakti]] songs about my personal love for God, for Krishna above all.' },
-        { en: 'Bhakti teachers say any believer can be spiritually worthy through devotion. They play down [[social hierarchy|social rank]].' },
-        { en: '[[hinduism|Hinduism]] changes as it spreads. Hindu kings, some of them [[rajput|Rajputs]], fund temples, and [[brahmin|brahmin]] priests support those kings.' }
+        { en: '[[hinduism|Hinduism]] is polytheistic: we worship many gods. It grew from older practices of north India and reached Southeast Asia by about 200 CE.' },
+        { en: 'As it spreads, it changes. I sing [[bhakti|bhakti]] songs: personal love of God in one form, such as Krishna, Vishnu or Rama.' },
+        { en: 'Bhakti teachers say every believer can be spiritually worthy through devotion. They play down [[social hierarchy|social rank]].' },
+        { en: '[[rajput|Rajput]] kings fund temples, so [[brahmin|brahmin]] priests and kings are allies. But our states are [[pluralistic|pluralistic]], so rulers also tolerate Muslims, Zoroastrians and Buddhists.' }
       ],
       ask: {
         stat: 'pla',
-        q: { en: 'What did bhakti teachers stress?' },
+        q: { en: 'The bhakti movement most directly reflects which development?' },
         choices: [
-          { ok: true, t: { en: 'Personal devotion over social rank' }, why: { en: 'Yes. Bhakti said every believer could be worthy through love of God, and it downplayed social hierarchies.' } },
-          { t: { en: 'Strict rules that only priests keep' }, why: { en: 'No. Bhakti put personal devotion first, open to all believers, not rules for a priestly class alone.' } },
-          { t: { en: 'Giving up the gods to obey the sultan' }, why: { en: 'No. Bhakti was love for a god such as Krishna, Vishnu or Rama. It was not about obeying a ruler.' } }
+          { ok: true, t: { en: 'Hinduism changing as it spread' }, why: { en: 'Yes. Bhakti was a Hindu devotional movement that stressed personal love of a god and downplayed social hierarchies.' } },
+          { t: { en: 'Brahmins allying with Rajput kings' }, why: { en: 'No. That alliance was real, but it was about kings funding temples. Bhakti stressed personal devotion over rank.' } },
+          { t: { en: 'Islam blending with local beliefs' }, why: { en: 'No. Blending happened among Muslim converts, but bhakti grew inside Hinduism: love of Krishna, Vishnu or Rama.' } }
         ]
       }
     },
@@ -138,17 +144,56 @@ window.EPISODE = {
       x: 5, y: 9, name: { en: 'Hasan' }, role: { en: 'Muslim merchant' },
       look: { skin: 3, hair: '#1b1410', shirt: '#2a6a5a', robe: true, hat: '#f0ece0', style: 'short' },
       lines: [
-        { en: 'I trade across the Bay of Bengal. Merchants and teachers like me have carried Islam to the ports of Southeast Asia.' },
-        { en: 'Rulers on the Malay peninsula convert for faith, power and trade, and take the title [[sultan|sultan]]. Many traders marry local women, whose families link them to power.' },
-        { en: 'New Muslims there still honor local spirits and ancestors. And Muslim women work and travel in public: [[purdah|purdah]] is rare.' }
+        { en: 'I trade across the Bay of Bengal. Merchants and teachers like me carried Islam to the ports of Southeast Asia.' },
+        { en: 'Malay rulers convert for religious, political and commercial reasons, and take the title [[sultan|sultan]]. Islam links them to a global trade network.' },
+        { en: 'Traders marry local women, whose families connect them to wealth and power. New Muslims still honor local spirits, ancestors and even Hindu gods.' },
+        { en: 'And there, Muslim women work and travel in public. [[purdah|Purdah]] is rare. Outside ideas are fitted to local traditions.' }
       ],
       ask: {
         stat: 'hei',
-        q: { en: 'Compared with Delhi, how was Islam practiced in Southeast Asian ports?' },
+        q: { en: 'Compared with Islam in north India, Islam in Southeast Asian ports was...' },
         choices: [
-          { ok: true, t: { en: 'Mixed with local ways; purdah was rare' }, why: { en: 'Yes. Converts mixed Islam with older rituals, and Muslim women there often worked and traveled in public.' } },
-          { t: { en: 'Just as in Delhi, with strict purdah' }, why: { en: 'No. Purdah was rare in Southeast Asia. Outside ideas were changed to fit local traditions.' } },
-          { t: { en: 'Only foreign traders were Muslims there' }, why: { en: 'No. Many local rulers and city people converted, and traders married local women.' } }
+          { ok: true, t: { en: 'mixed with local rituals; purdah rare' }, why: { en: 'Yes. Converts kept older rituals, and Muslim women often worked and traveled in public. Islam was localized.' } },
+          { t: { en: 'brought by conquest, as in Delhi' }, why: { en: 'No. Turkic armies brought Islam to north India, but merchants and teachers carried it to Southeast Asia.' } },
+          { t: { en: 'kept with strict purdah for women' }, why: { en: 'No. Purdah was rare in Southeast Asia. Wealthy city women in South Asia were the most secluded.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 16, y: 2, icon: '📜',
+      name: { en: 'The Qutb Minar and Alai Darwaza' }, role: { en: 'Primary source' },
+      src: { en: 'The Qutb Minar and the Alai Darwaza (gateway built 1312), Delhi; shown and described in "South and Southeast Asia 1200–1450," World History Project' },
+      lines: [
+        { en: 'Buildings are sources too. Look at this monument group in Delhi. The reading names three parts: "the Qutb Minar, a sandstone and marble victory tower, constructed by several different sultans," "the Alai Darwaza, a gateway with intricate carvings built in 1312," and "the tomb of a Muslim cleric."' },
+        { en: 'Who made it: the sultans of Delhi, Turkic Muslim rulers whose state began in 1206. Several sultans added to the tower, so it was built over many reigns. "The sultans of Delhi brought Islamic architecture to India."' },
+        { en: 'For whom and why: a victory tower stands where everyone can see it. Rulers in this age often funded religious buildings and claimed the support of God. These stones announced that Muslim sultans now ruled north India.' }
+      ],
+      ask: {
+        stat: 'mov',
+        q: { en: 'Sourcing: what was the most likely purpose of a victory tower and a carved gateway built by Delhi\'s sultans?' },
+        choices: [
+          { ok: true, t: { en: 'To display the power of Muslim rule' }, why: { en: 'Yes. A victory tower built by several sultans showed their power and the arrival of Islam and its architecture in north India.' } },
+          { t: { en: 'To honor the Hindu god Vishnu' }, why: { en: 'No. That was Angkor Wat, built by Khmer rulers in Cambodia. These were built by Muslim sultans.' } },
+          { t: { en: 'To house Buddhist monks and students' }, why: { en: 'No. That was Nalanda, a Buddhist monastery that a Muslim army destroyed in 1193.' } }
+        ]
+      }
+    },
+    {
+      doc: true, x: 12, y: 9, icon: '📖',
+      name: { en: 'South and Southeast Asia, 1200–1450' }, role: { en: 'Reading' },
+      src: { en: 'Adapted from "South and Southeast Asia 1200–1450" by Merry Wiesner-Hanks, World History Project (Khan Academy)' },
+      lines: [
+        { en: 'From 1200 to 1450, South and Southeast Asia were extremely diverse. Most people lived in villages, but some lived in trading cities. Regional states sometimes grew into kingdoms, but no single empire stretched across the region. In north India, the Delhi Sultanate, founded in 1206, was ruled by various dynasties for 300 years. Its armies defeated several Mongol campaigns, so the Mongols never gained permanent power in India.' },
+        { en: 'In Southeast Asia, about 900 to 1400 is called the era of "classical states," because later rulers copied their models. In Vietnam, regional overlords threw out the Chinese in the 1000s and created Dai Viet, ruled by the Tran dynasty (1225–1400). They modeled their bureaucracy on China\'s, and Confucian values shaped society. Yet a strong Vietnamese identity also grew.' },
+        { en: 'Pagan (Myanmar) and Angkor (Cambodia) organized strong armies and built huge buildings. Angkor Wat was first dedicated to the Hindu god Vishnu. Indian writing, literature and art crossed the Bay of Bengal, promoted by rulers building their authority on the Indian model. Theravada Buddhism and Islam also spread there. Everywhere, outside ideas were localized to fit local traditions.' }
+      ],
+      ask: {
+        stat: 'loc',
+        q: { en: 'Based on the reading, which best explains why Indian writing and art spread to Southeast Asian kingdoms?' },
+        choices: [
+          { ok: true, t: { en: 'Rulers used them to build authority' }, why: { en: 'Yes. Rulers of states like Angkor promoted Indian writing, literature and art to build up their authority on the Indian model.' } },
+          { t: { en: 'Delhi\'s sultans conquered the region' }, why: { en: 'No. The Delhi Sultanate held power mainly in north India. It never ruled Southeast Asia.' } },
+          { t: { en: 'Chinese officials carried them south' }, why: { en: 'No. China\'s model shaped Dai Viet\'s bureaucracy. Indian culture crossed the Bay of Bengal, promoted by local rulers.' } }
         ]
       }
     }
@@ -188,7 +233,8 @@ window.EPISODE = {
       x: 23, y: 6, name: { en: 'Gauri' }, role: { en: 'Grain seller' },
       look: { skin: 4, hair: '#1b1410', shirt: '#c0392b', robe: true, style: 'long' },
       lines: [
-        { en: 'I sell grain with my husband. Rich women in Delhi keep [[purdah|purdah]], but poor women like me work beside our families.' },
+        { en: 'I sell grain with my husband. In South Asia, both Islam and a stricter Hinduism favor [[purdah|purdah]], the seclusion of women.' },
+        { en: 'Wealthy city women are the most secluded. Poor rural women, the vast majority, work beside the men of their families, like me.' },
         { en: 'The Grump spoiled my grain! Villages outside the wall grow it. Ask the boatman at the river landing. He knows every village.' }
       ],
       wait: { en: 'The boatman waits at the river landing: out the south gate, then southeast by the river.' },
@@ -198,8 +244,9 @@ window.EPISODE = {
       x: 25, y: 16, name: { en: 'Madho' }, role: { en: 'Boatman' },
       look: { skin: 5, hair: '#1b1410', shirt: '#4a6a3a', pants: '#2a2a2a', style: 'short' },
       lines: [
-        { en: 'Monks and merchants ride my boat. Buddhism is [[polycentric|polycentric]]: it has many centers, from Sri Lanka to Japan.' },
-        { en: 'In India it faded after a Muslim army destroyed the monastery of [[nalanda|Nalanda]] in 1193. Hinduism flourishes, above all in the south.' },
+        { en: 'Monks and merchants ride my boat with Buddhist texts and relics. Buddhism is [[polycentric|polycentric]]: it has many centers, from Sri Lanka to Japan.' },
+        { en: 'In India it declined after a Muslim army destroyed [[nalanda|Nalanda]], the leading center of Buddhist learning, in 1193. Hinduism flourishes, above all in the south.' },
+        { en: 'But the many centers kept Buddhism alive. In Southeast Asia, [[theravada|Theravada]] Buddhism from Sri Lanka now leads. It teaches that even small acts of devotion can win a better rebirth.' },
         { en: 'Headman Devraj sells grain. Follow the dirt path west from here, past the shrine and the gate road, to the village huts.' }
       ]
     },
@@ -209,7 +256,8 @@ window.EPISODE = {
         x: 9, y: 16, name: { en: 'Devraj' }, role: { en: 'Village headman' },
         look: { skin: 3, hair: '#4a4a4a', shirt: '#e0d8c0', pants: '#5a4a3a', hat: '#b03a2a', style: 'short' },
         lines: [
-          { en: 'Our [[village council|village council]] of household heads sets planting times, rotates crops and shares the common pasture.' },
+          { en: 'Our [[village council|village council]] of male household heads sets planting times, rotates crops and shares the common pasture.' },
+          { en: 'Landowners take rent and rulers take taxes, but day to day, local authority matters more. In much of Southeast Asia, women even have significant legal rights.' },
           { en: 'The Grump broke our irrigation channel! Bring what the council needs to mend it, and my grain is yours.' }
         ]
       },
@@ -269,57 +317,60 @@ window.EPISODE = {
     win: { en: 'The dust settles over Delhi. The page on South and Southeast Asia floats down into your hands!' },
     questions: [
       {
-        stim: { text: { en: 'During the eleventh century, Muslim Turkic armies based in what is now Afghanistan conquered much of northwest India, and in 1206 one of their generals established an independent government at Delhi.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
-        q: { en: 'The excerpt best explains how...' },
-        choices: [{ en: 'Islam came to rule in north India' }, { en: 'Buddhism spread from India to China' }, { en: 'Hindu kings united all of India' }, { en: 'the Mongols took power in north India' }],
-        answer: 0,
-        why: { en: 'Turkic conquerors brought Islam with them, and their general founded the Delhi Sultanate in 1206.' }
+        stim: { text: { en: '"The Qutb Minar, a sandstone and marble victory tower, constructed by several different sultans, the Alai Darwaza, a gateway with intricate carvings built in 1312, and the tomb of a Muslim cleric."' }, src: { en: 'Description of monuments in Delhi, "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'The structures described in the excerpt most directly reflect which of the following?' },
+        choices: [{ en: 'Hindu kings funding temples and brahmins' }, { en: 'Islam arriving with Turkic conquerors' }, { en: 'Mongol khans sponsoring many faiths' }, { en: 'Malay rulers adopting the title sultan' }],
+        answer: 1,
+        why: { en: 'Turkic Muslim armies conquered north India and founded the Delhi Sultanate in 1206. Its sultans brought Islamic architecture, like the Qutb Minar, to India.' }
       },
       {
-        q: { en: 'Which best explains why the Mongols never gained permanent power in India?' },
-        choices: [{ en: 'The Delhi sultans\' armies defeated them' }, { en: 'The Mongols never marched into India' }, { en: 'Hindu kings paid them to stay away' }, { en: 'Buddhist monks turned their armies back' }],
-        answer: 0,
-        why: { en: 'The Mongols launched several large campaigns into north India, but the armies of the sultan of Delhi beat them.' }
+        stim: { text: { en: 'After conquering China, the Mongols tried to extend their authority over what are now Vietnam and Myanmar. However, challenged by the heat and humidity, they were defeated by local forces.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'Compared with the defeat described in the excerpt, the Mongols failed to gain permanent power in India mainly because...' },
+        choices: [{ en: 'heat and humidity weakened their armies' }, { en: 'Rajput kings paid them tribute to leave' }, { en: 'the Delhi sultan\'s armies defeated them' }, { en: 'they converted to Islam and made peace' }],
+        answer: 2,
+        why: { en: 'Heat and local forces stopped the Mongols in Southeast Asia. In north India, the armies of the sultan of Delhi defeated campaigns of sometimes hundreds of thousands of men.' }
       },
       {
         stim: { text: { en: 'Bhakti teachers asserted that all believers could be spiritually worthy through individual devotion, and they downplayed social hierarchies.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
-        q: { en: 'The movement described in the excerpt best reflects...' },
-        choices: [{ en: 'a change within Hinduism as it spread' }, { en: 'the arrival of Islam in Southeast Asia' }, { en: 'a Confucian stress on social rank' }, { en: 'the rule of brahmins over the sultans' }],
-        answer: 0,
-        why: { en: 'Bhakti was a Hindu devotional movement: personal love of a god such as Krishna, open to every believer.' }
+        q: { en: 'The movement described in the excerpt most directly reflects which of the following?' },
+        choices: [{ en: 'Brahmins allying with Rajput kings' }, { en: 'Islam blending with local beliefs' }, { en: 'Hinduism changing as it spread' }, { en: 'Theravada teaching on rebirth' }],
+        answer: 2,
+        why: { en: 'Bhakti was a Hindu devotional movement: personal love of a god such as Krishna, Vishnu or Rama, open to every believer whatever their rank.' }
       },
       {
-        stim: { title: { en: 'Angkor Wat, Khmer Empire' }, rows: [[{ en: 'Time' }, { en: 'Use' }], [{ en: '1100s' }, { en: 'Built as a Hindu temple to Vishnu' }], [{ en: 'Later' }, { en: 'Became a Buddhist holy site' }]], src: { en: 'From "South and Southeast Asia 1200–1450," World History Project' } },
-        q: { en: 'Which best explains the change shown in the table?' },
-        choices: [{ en: 'Khmer rulers converted to Buddhism' }, { en: 'The Delhi Sultanate conquered Angkor' }, { en: 'Mongol armies destroyed the temple' }, { en: 'Chinese officials banned Hinduism' }],
+        stim: { title: { en: 'Angkor Wat, Khmer Empire' }, rows: [[{ en: 'Time' }, { en: 'Use' }], [{ en: '1100s' }, { en: 'Built by Khmer rulers as a Hindu temple to Vishnu' }], [{ en: 'Later' }, { en: 'Became a Buddhist holy site' }], [{ en: 'By the 1300s' }, { en: 'Theravada, from Sri Lanka, the leading Buddhism in Southeast Asia' }]], src: { en: 'From "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best explains the change in use shown in the table?' },
+        choices: [{ en: 'Khmer rulers became Buddhist' }, { en: 'Delhi\'s sultans conquered the Khmer' }, { en: 'Dai Viet imposed its Confucian model' }, { en: 'Mongol khans sponsored Buddhist monks' }],
         answer: 0,
-        why: { en: 'When Angkor\'s rulers became Buddhist, the Hindu temple was turned into a Buddhist holy site.' }
+        why: { en: 'Not only ordinary people converted to Buddhism; rulers did too. When Angkor\'s rulers became Buddhist, the Hindu temple became a Buddhist holy site.' }
       },
       {
-        q: { en: 'Which best explains why many rulers on the Malay peninsula converted to Islam?' },
-        choices: [{ en: 'Faith, politics and trade together' }, { en: 'The Delhi sultans conquered them' }, { en: 'Mongol khans ordered them to convert' }, { en: 'Their brahmin priests demanded it' }],
-        answer: 0,
-        why: { en: 'Merchants and teachers brought Islam. Rulers converted for faith, for power and for trade ties, and took the title sultan.' }
+        stim: { text: { en: 'Many rulers of the states on the Malay peninsula and islands of Southeast Asia converted to Islam for a combination of religious, political, and commercial reasons. These rulers adopted the Muslim title of sultan.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best supports the claim that commercial reasons shaped these conversions?' },
+        choices: [{ en: 'Delhi\'s armies conquered the Malay ports' }, { en: 'Islam offered ties to a global trade network' }, { en: 'Mongol khans ordered their vassals to convert' }, { en: 'Brahmin priests lost their royal patrons' }],
+        answer: 1,
+        why: { en: 'Islam spread to Southeast Asia through merchants and teachers, not conquest. Its trade connections across Dar al-Islam attracted rulers and city people.' }
       },
       {
         stim: { text: { en: 'In Southeast Asia, purdah was rare. Muslim women often worked, socialized, and traveled independently and in public view.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
-        q: { en: 'Compared with South Asia, the excerpt best shows that in Southeast Asia...' },
-        choices: [{ en: 'Islam was fitted to local customs' }, { en: 'women were secluded more strictly' }, { en: 'Islam was not practiced by anyone' }, { en: 'only wealthy women could go outside' }],
-        answer: 0,
-        why: { en: 'In South Asia, wealthy women often kept purdah. In Southeast Asia, Islam was fitted to local ways, and women stayed in public life.' }
+        q: { en: 'Compared with South Asia, the excerpt best supports the claim that in Southeast Asia...' },
+        choices: [{ en: 'wealthy women were secluded more strictly' }, { en: 'Islam spread mainly by military conquest' }, { en: 'Muslim converts gave up older rituals' }, { en: 'outside ideas were fitted to local ways' }],
+        answer: 3,
+        why: { en: 'In South Asia, wealthy city women were often secluded. In Southeast Asia, Islam was localized: converts kept older rituals and women stayed in public life.' }
       },
       {
-        q: { en: 'Which statement best describes religion under the Delhi Sultanate?' },
-        choices: [{ en: 'Muslim rule that tolerated Hindus' }, { en: 'Every Hindu subject forced to convert' }, { en: 'A Hindu state led by brahmin priests' }, { en: 'Buddhist rule backed by monasteries' }],
+        stim: { text: { en: 'In Vietnam, powerful regional overlords threw out the Chinese in the eleventh century and created the kingdom of Dai Viet. Rulers modeled their bureaucracy on the Chinese system.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following was a continuity in Dai Viet despite the change described in the excerpt?' },
+        choices: [{ en: 'A Chinese-style state, Confucian values' }, { en: 'Rule by officials sent from China itself' }, { en: 'Hindu kingship on the Indian model' }, { en: 'Theravada Buddhism as the faith of rulers' }],
         answer: 0,
-        why: { en: 'The sultans were Muslims and generally tolerated their Hindu subjects, though many north Indians converted to Islam.' }
+        why: { en: 'Dai Viet threw out Chinese rule but kept a bureaucracy on the Chinese system, and Confucianism shaped its values, alongside a strong Vietnamese identity.' }
       },
       {
-        stim: { text: { en: 'Muslim rulers of north India were generally hostile to Buddhism, and in 1193 a Muslim army destroyed Nalanda.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
-        q: { en: 'Which best explains why Buddhism survived after the event described?' },
-        choices: [{ en: 'It had many centers across Asia' }, { en: 'The sultans soon rebuilt Nalanda' }, { en: 'It became the faith of Delhi\'s sultans' }, { en: 'Hindu kings banned all other faiths' }],
-        answer: 0,
-        why: { en: 'Buddhism was polycentric. It faded in India but lived on from Sri Lanka and Southeast Asia to Japan.' }
+        stim: { text: { en: 'Muslim rulers of north India were generally hostile to Buddhism, and in 1193 a Muslim army destroyed Nalanda. After that, Buddhism declined in India.' }, src: { en: 'Adapted from "South and Southeast Asia 1200–1450," World History Project' } },
+        q: { en: 'Which of the following best explains why Buddhism survived as a major faith after the event described?' },
+        choices: [{ en: 'Delhi\'s sultans protected its monasteries' }, { en: 'It had many centers across Asia' }, { en: 'Rajput kings made it their state faith' }, { en: 'Bhakti teachers carried it into Hinduism' }],
+        answer: 1,
+        why: { en: 'Buddhism was polycentric. It declined in India, but it lived on from Sri Lanka and Southeast Asia to Japan.' }
       }
     ]
   },
