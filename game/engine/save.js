@@ -466,7 +466,9 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
   const ALPH = '0123456789ABCDEFGHJKMNPQRSTVWXYZ';
   function check15(n) { let h = 0x2a1; let x = n; for (let i = 0; i < 12; i++) { h = (h * 31 + Number(x & 31n)) & 0x7fff; x >>= 5n; } return BigInt(h); }
   // the layout grows with the number of episodes (24 in the first games: 15 letters; HistoryWalker's 26: 16 letters)
-  const NE = () => BigInt(WW.EPISODES.length), LEN = () => Math.ceil((WW.EPISODES.length + 35 + 15) / 5);
+  // the Village of Ages (HistoryWalker) adds one bit per tech-tree box after the version bit
+  const VT = () => (window.WW_VILLAGE && window.WW_VILLAGE.tech) || [];
+  const NE = () => BigInt(WW.EPISODES.length), LEN = (x = VT().length) => Math.ceil((WW.EPISODES.length + 35 + x + 15) / 5);
   WW.passportCode = (s = WW.save) => {
     let n = 0n; const E = NE();
     WW.EPISODES.forEach((e, i) => { if (s.episodes[e.id] && s.episodes[e.id].done) n |= 1n << BigInt(i); });
@@ -475,6 +477,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     const l = s.look || {};
     n |= BigInt((l.skin ?? 1) & 7) << (E + 25n); n |= BigInt((l.hair || 0) & 7) << (E + 28n); n |= BigInt((l.hat || 0) & 7) << (E + 31n);
     n |= 1n << (E + 34n); // version 1
+    const vt = (s.village && s.village.tech) || []; VT().forEach((t, i) => { if (vt.includes(t.id)) n |= 1n << (E + 35n + BigInt(i)); });
     const full = (n << 15n) | check15(n), len = LEN();
     let out = '';
     for (let i = 0; i < len; i++) out = ALPH[Number((full >> BigInt(i * 5)) & 31n)] + out;
@@ -482,7 +485,8 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
   };
   WW.readCode = code => {
     const c = String(code || '').toUpperCase().replace(/^WW/, '').replace(/[^0-9A-Z]/g, '').replace(/O/g, '0').replace(/[IL]/g, '1');
-    if (c.length !== LEN()) return null;
+    const old = c.length === LEN(0) && LEN(0) !== LEN(); // a code made before the village existed still reads
+    if (c.length !== LEN() && !old) return null;
     let full = 0n; const E = NE();
     for (const ch of c) { const v = ALPH.indexOf(ch); if (v < 0) return null; full = (full << 5n) | BigInt(v); }
     const n = full >> 15n;
@@ -492,6 +496,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     let shift = E;
     WW.THEMES.forEach(t => { out.stats[t.k] = Number((n >> shift) & 31n); shift += 5n; });
     out.look = { skin: Number((n >> (E + 25n)) & 7n), hair: Number((n >> (E + 28n)) & 7n), hat: Number((n >> (E + 31n)) & 7n) };
+    if (VT().length && !old) out.village = { tech: VT().filter((t, i) => (n >> (E + 35n + BigInt(i))) & 1n).map(t => t.id) };
     return out;
   };
   // never lose progress: keep the best of both
@@ -507,6 +512,7 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     for (const k in other.bag || {}) { const a = (s.bag = s.bag || {})[k] || { got: 0, used: 0 }, b = other.bag[k]; s.bag[k] = { got: Math.max(a.got || 0, b.got || 0), used: Math.max(a.used || 0, b.used || 0) }; }
     for (const id in other.built || {}) { s.built = s.built || {}; s.built[id] = Array.from(new Set([...(s.built[id] || []), ...other.built[id]])); }
     if (other.metChris) s.metChris = true;
+    if (other.village && other.village.tech) { s.village = s.village || { tech: [], plots: {}, food: 0, goods: 0, gifts: [] }; s.village.tech = Array.from(new Set([...(s.village.tech || []), ...other.village.tech])); }
     if (other.secrets) s.secrets = Array.from(new Set([...(s.secrets || []), ...other.secrets]));
     if (other.finds) s.finds = Array.from(new Set([...(s.finds || []), ...other.finds]));
     if (other.camp) { // camp: everything ever owned stays owned; keep this computer's layout unless it is empty

@@ -68,7 +68,7 @@
       <header class="hw-top"><div><div class="hw-logo">${esc(WW.TITLE)}</div><div class="hw-sub">${esc(WW.SUB)}</div></div>
         <div class="hw-me">${s.name ? `<b>${esc(s.name)}</b> · ${done} / ${cat.length} pages${done ? `<div class="hw-code">${esc(WW.passportCode())}</div>` : ''}` : 'Pick a stop on the map to begin.'}</div></header>
       <div class="hw-mapbox"><canvas id="hw-map"></canvas><div id="hw-pins"></div><div id="hw-tip" hidden></div></div>
-      ${next ? `<div class="hw-next"><button class="hw-go" data-ep="${esc(next.id)}">▶ ${done ? 'Continue' : 'Start'} · ${esc(next.id)} ${esc(L(next.title))}</button></div>` : ''}
+      ${next || WW.village ? `<div class="hw-next">${next ? `<button class="hw-go" data-ep="${esc(next.id)}">▶ ${done ? 'Continue' : 'Start'} · ${esc(next.id)} ${esc(L(next.title))}</button>` : ''}${WW.village && window.WW_VILLAGE ? ` <button class="hw-go vil" id="hw-vil">🏡 Your village</button>` : ''}</div>` : ''}
       <div class="hw-units">${WW.REALMS.slice(1).map((r, ui) => `<section class="hw-unit" style="--uc:${UNITC[ui + 1]}"><h2>${esc(L(r))}</h2>${cat.filter(e => e.realm === ui + 1).map(e => {
         const st = s.episodes[e.id] || {};
         return `<button class="hw-ep${st.done ? ' done' : ''}" data-ep="${esc(e.id)}"><span class="id">${esc(e.id)}</span><span class="t">${esc(L(e.title))}<small>${esc(L(e.place))}</small></span><span class="st">${st.done ? '★'.repeat(st.stars || 1) : ''}</span></button>`;
@@ -104,5 +104,6 @@
       pins.appendChild(b);
     });
     root.querySelectorAll('[data-ep]').forEach(b => (b.onclick = () => WW.goEp(b.dataset.ep)));
+    { const vb = document.getElementById('hw-vil'); if (vb) vb.onclick = () => { location.hash = 'village'; location.reload(); }; }
   };
 })();

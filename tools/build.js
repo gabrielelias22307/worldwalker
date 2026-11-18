@@ -6,12 +6,13 @@ const ROOT = path.join(__dirname, '..'), E = path.join(ROOT, 'game'); // the eng
 const GAME = process.argv[2] || 'game', G = path.join(ROOT, GAME), HIST = GAME !== 'game';
 const NAME = require('./course-info.js')(GAME).name, DIST = path.join(ROOT, 'dist', HIST ? 'canvas-' + GAME : 'canvas'); // the game's name comes from its course file
 const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
-const IMG = HIST && fs.existsSync(path.join(G, 'images.js')), images = IMG ? fs.readFileSync(path.join(G, 'images.js'), 'utf8') : ''; // public-domain pictures (HistoryWalker)
+const IMG = HIST && fs.existsSync(path.join(G, 'images.js')), images = IMG ? fs.readFileSync(path.join(G, 'images.js'), 'utf8') : '';
+const VIL = HIST && fs.existsSync(path.join(G, 'village.js')), village = VIL ? fs.readFileSync(path.join(G, 'village.js'), 'utf8') : ''; // the Village of Ages (its tech list is part of the Passport Code) // public-domain pictures (HistoryWalker)
 if (HIST) require('./course-pages.js')(GAME); // the course's map page and teacher page, made from Worldwalker's
-const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'hub.js', 'game.js'];
+const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'hub.js', 'village.js', 'game.js'];
 // hd.js (the HD look) and hub.js (the one-file world map) only matter to a course with `hd: true` (HistoryWalker): the
 // other games leave them out and stay under the Canvas limit
-if (!(require('./course-info.js')(GAME).course || {}).hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => f !== 'hd.js' && f !== 'hub.js'));
+if (!(require('./course-info.js')(GAME).course || {}).hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => !['hd.js', 'hub.js', 'village.js'].includes(f)));
 const LIMIT = (require('./course-info.js')(GAME).course || {}).hd ? Infinity : 430000; // HistoryWalker ships as one file with no size limit // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');
@@ -36,12 +37,12 @@ for (const f of built) {
   // GitHub Pages version: shares the engine files
   const pages = tpl.replace('{{ID}}', id)
     .replace('{{STYLE}}', `<link rel="stylesheet" href="${HIST ? '../game/' : ''}engine/style.css">`)
-    .replace('{{SCRIPTS}}', [...(HIST ? ['course.js'] : []), ...(IMG ? ['images.js'] : []), 'config.js', ...ENGINE.map(e => (HIST ? '../game/' : '') + 'engine/' + e), 'episodes/' + f].map(s => `<script src="${s}"></script>`).join('\n'));
+    .replace('{{SCRIPTS}}', [...(HIST ? ['course.js'] : []), ...(IMG ? ['images.js'] : []), ...(VIL ? ['village.js'] : []), 'config.js', ...ENGINE.map(e => (HIST ? '../game/' : '') + 'engine/' + e), 'episodes/' + f].map(s => `<script src="${s}"></script>`).join('\n'));
   fs.writeFileSync(path.join(G, f.replace('.js', '.html')), pages);
   // Canvas version: everything inside one file
   const one = tpl.replace('{{ID}}', id)
     .replace('{{STYLE}}', `<style>\n${css}\n</style>`)
-    .replace('{{SCRIPTS}}', `<script>\n${HIST ? inline(course) + '\n' : ''}${IMG ? inline(images) + '\n' : ''}${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(epJs[f])}\n</script>`);
+    .replace('{{SCRIPTS}}', `<script>\n${HIST ? inline(course) + '\n' : ''}${IMG ? inline(images) + '\n' : ''}${VIL ? inline(village) + '\n' : ''}${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(epJs[f])}\n</script>`);
   const out = path.join(DIST, `${NAME} ${id}.html`);
   fs.writeFileSync(out, one);
   const size = Buffer.byteLength(one);

@@ -34,6 +34,7 @@ ${css}
 <script>
 ${inline(read(path.join(G, 'course.js')))}
 ${fs.existsSync(path.join(G, 'images.js')) ? inline(read(path.join(G, 'images.js'))) : ''}
+${fs.existsSync(path.join(G, 'village.js')) ? inline(read(path.join(G, 'village.js'))) : ''}
 ${inline(read(path.join(G, 'config.js')))}
 window.WW_CONFIG.MODE = 'one';
 </script>
@@ -46,9 +47,10 @@ ${parts.map(inline).join('\n')}
 window.WW_CATALOG = ${JSON.stringify(catalog)};
 </script>
 <script>
-(function () { // #ep=1.2 opens that episode; anything else shows the world map
+(function () { // #ep=1.2 opens that episode; #village the Village of Ages; anything else shows the world map
   var m = /ep=([0-9.]+)/.exec(location.hash);
   if (m && WW_EPS[m[1]]) { WW_EPS[m[1]](); WW.start(window.EPISODE); }
+  else if (/village/.test(location.hash) && WW.village) WW.village();
   else WW.hub();
 })();
 </script>

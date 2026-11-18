@@ -578,6 +578,7 @@
           nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => WW.goMap()));
           if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => WW.goEp(nx.id)));
         } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
+        if (WW.village && WW.CONFIG.MODE === 'one') nav.appendChild(btn('🏡 Your village', 'ghost', () => { location.hash = 'village'; location.reload(); })); // HistoryWalker: this episode left a gift there
         nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
         box.appendChild(nav);
         const sv = document.createElement('div'); sv.className = 'savebox';
