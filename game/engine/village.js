@@ -20,6 +20,13 @@
 .vil-r b { color: #f2c14e; } .vil-r.era { color: #c9bfa6; font-size: 13px; }
 .vil-board { position: relative; max-width: calc((100vh - 270px) * 18 / 11); min-width: min(100%, 560px); margin: 0 auto; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; }
 #vil-cv { display: block; width: 100%; height: auto; cursor: pointer; touch-action: manipulation; }
+@media (max-width: 700px) { /* a phone: bigger squares; swipe sideways to see the whole valley */
+  .vil-board { max-width: none; min-width: 0; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+  #vil-cv { width: 720px; max-width: none; touch-action: pan-x pan-y; }
+  #vil-pops { width: 720px; }
+  .vil-swipe { display: block !important; }
+}
+.vil-swipe { display: none; text-align: center; font-size: 12px; color: #c9bfa6; margin-top: 4px; }
 #vil-pops { position: absolute; inset: 0; pointer-events: none; }
 .vil-pop { position: absolute; transform: translate(-50%, 0); font: bold 16px system-ui, sans-serif; color: #fffbe8; text-shadow: 0 2px 0 #000, 0 0 6px #000; animation: vilup 1.3s ease-out forwards; }
 @keyframes vilup { to { transform: translate(-50%, -40px); opacity: 0; } }
@@ -249,7 +256,7 @@
       <header class="hw-top"><div><div class="hw-logo">🏡 YOUR VILLAGE</div><div class="hw-sub">THE VILLAGE OF AGES · PLANT · BUILD · RESEARCH</div></div>
         <div class="vil-top-acts"><button class="hw-go ghost" id="vil-map">🗺️ World map</button><button class="hw-go ghost" id="vil-music"></button></div></header>
       <div class="vil-res" id="vil-res"></div>
-      <div class="vil-board"><canvas id="vil-cv"></canvas><div id="vil-pops"></div></div>
+      <div class="vil-board"><canvas id="vil-cv"></canvas><div id="vil-pops"></div></div><div class="vil-swipe">↔ Swipe the map to see the whole valley</div>
       <div class="vil-note" id="vil-note"></div>
       <div class="vil-pal" id="vil-pal"></div>
       <h2 class="vil-h">📜 Tech tree</h2>
@@ -400,6 +407,7 @@
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
     setInterval(() => { if (document.getElementById('vil-res')) render(); }, 5000); // counts stay fresh
     render();
+    { const bd = document.querySelector('.vil-board'); if (bd && bd.scrollWidth > bd.clientWidth) bd.scrollLeft = (bd.scrollWidth - bd.clientWidth) / 2; } // a phone: start on the village
     const gifts = fresh.length ? `🎁 ${fresh.length === 1 ? 'Episode ' + fresh[0] + ' left' : fresh.length + ' finished episodes left'} a gift: +${d.gift.food * fresh.length} 🌾 +${d.gift.goods * fresh.length} 🧱. ` : ''; fresh = [];
     say(gifts + (v.tech.length ? 'Tap a ripe field or a building with a bubble to collect. Open a box in the tech tree to research.' :
       'Welcome home! Tap your ripe grain fields and the workshop to collect. Then open a box in the tech tree below. Finished episodes leave gifts here.'));

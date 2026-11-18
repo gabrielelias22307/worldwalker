@@ -653,6 +653,21 @@
     c.restore();
   }
 
+  /* phone camera: on a small touch screen the map is shown closer (about 10 x 7 squares instead of 16 x 11) and follows
+     the hero, so people and places are big enough to see and tap. Only the picture is moved and scaled (CSS), so every
+     tap, bubble and pointer that reads the canvas's place on the page still lines up. */
+  const cam = { z: 1, x: 0, y: 0, key: '' };
+  G.view = [0, 0, SW * TS, SH * TS]; // the part of the screen in view, in map units
+  G.zoomOn = () => !!($('ww-stage') && $('ww-stage').closest('.touch') && Math.min(innerWidth, innerHeight) < 600 && WW.save.zoom !== false);
+  function camera(hx, hy, snap) {
+    const cv = $('ww-cv'); if (!cv) return;
+    const z = G.zoomOn() && !WW.room.on ? 1.6 : 1, W = SW * TS, H = SH * TS, vw = W / z, vh = H / z;
+    const tx = Math.max(0, Math.min(W - vw, hx + 8 - vw / 2)), ty = Math.max(0, Math.min(H - vh, hy + 8 - vh / 2));
+    if (snap || z !== cam.z) { cam.x = tx; cam.y = ty; } else { cam.x += (tx - cam.x) * 0.18; cam.y += (ty - cam.y) * 0.18; }
+    cam.z = z; G.view = [cam.x, cam.y, cam.x + vw, cam.y + vh];
+    const key = z === 1 ? '' : `scale(${z}) translate(${(-cam.x / W * 100).toFixed(2)}%, ${(-cam.y / H * 100).toFixed(2)}%)`;
+    if (key !== cam.key) { cam.key = key; cv.style.transformOrigin = '0 0'; cv.style.transform = key; }
+  }
   function frame(now) {
     requestAnimationFrame(frame);
     const c = G.ctx; if (!c || !WW.run) return;
@@ -711,7 +726,7 @@
       const hx = (fx - trans.from[0] * SW) * TS + offX, hy = (fy - trans.from[1] * SH) * TS + offY;
       drawHero(c, hx, hy, now);
       WW.fx.draw(c, trans.to[0], trans.to[1], null, now, dt);
-      if (p >= 1) trans = null;
+      if (p >= 1) { trans = null; camera((fx - sx * SW) * TS, (fy - sy * SH) * TS, true); } else camera(Math.max(0, Math.min(SW * TS - 16, hx)), Math.max(0, Math.min(SH * TS - 16, hy)), false);
     } else {
       drawScreen(c, sx, sy, 0, 0, now);
       // Christopher: a little flying spirit beside the hero who flies to what matters (christopher.js, C.step)
@@ -722,6 +737,7 @@
         WW.way.drawTrail(c, sx, sy, now); // footprints on the real path (way.js)
         G.drawTap(c, sx, sy, now);
         WW.chris.drawMark(c, sx, sy, now);
+        { const scr = sx + ',' + sy; camera(hx, hy, cam.scr !== scr); cam.scr = scr; } // the phone camera follows the hero (a new screen: it jumps)
         drawGoal(c, sx, sy, hx, hy, now);
         WW.chris.draw(c, Math.round(p.x - 8), Math.round(p.y - 8), now);
       }
@@ -763,16 +779,22 @@
       c.fillStyle = '#f2c14e'; c.beginPath(); c.moveTo(x + dx * 4, y + dy * 4); c.lineTo(x - dx * 2 + px * 4, y - dy * 2 + py * 4); c.lineTo(x - dx * 2 - px * 4, y - dy * 2 - py * 4); c.fill();
     };
     const [gsx, gsy] = screenOf(g[0], g[1]);
+    const [vx0, vy0, vx1, vy1] = G.view;
     if (gsx === sx && gsy === sy) {
       const x = (g[0] - sx * SW) * TS + 8, y = (g[1] - sy * SH) * TS - 9 + b;
       if (Math.abs(g[0] - player.x) + Math.abs(g[1] - player.y) <= 1) return; // right there: no arrow needed
-      tri(x, Math.max(6, y), 0, 1);
+      const ix = x >= vx0 + 4 && x <= vx1 - 4, iy = y + 9 >= vy0 + 4 && y <= vy1 - 4;
+      if (ix && iy) tri(x, Math.max(vy0 + 6, y), 0, 1);
+      else { // the phone camera: the goal is on this screen but out of view, so the arrow waits at the edge of the view
+        const ex = Math.max(vx0 + 9, Math.min(vx1 - 9, x)), ey = Math.max(vy0 + 9, Math.min(vy1 - 9, y + 9)), dx = x - ex, dy = y + 9 - ey, l = Math.hypot(dx, dy) || 1;
+        tri(ex + (WW.calm ? 0 : b * dx / l), ey + (WW.calm ? 0 : b * dy / l), dx / l, dy / l);
+      }
     } else { // on another screen: an arrow at the edge, pointing the way the real path leaves this screen (way.js)
       let dx = Math.sign(gsx - sx), dy = Math.sign(gsy - sy); const cx = hx + 8, cy = hy + 8;
       const wp = WW.way.path([player.x, player.y], g), out = wp && wp.find(([x, y]) => screenOf(x, y).join() !== [sx, sy].join());
       if (out) { const [osx, osy] = screenOf(out[0], out[1]); dx = Math.sign(osx - sx); dy = Math.sign(osy - sy); }
-      const x = dx > 0 ? SW * TS - 9 : dx < 0 ? 9 : Math.max(12, Math.min(SW * TS - 12, (g[0] - sx * SW) * TS + 8));
-      const y = dy > 0 ? SH * TS - 9 : dy < 0 ? 9 : Math.max(12, Math.min(SH * TS - 12, (g[1] - sy * SH) * TS + 8));
+      const x = dx > 0 ? vx1 - 9 : dx < 0 ? vx0 + 9 : Math.max(vx0 + 12, Math.min(vx1 - 12, (g[0] - sx * SW) * TS + 8));
+      const y = dy > 0 ? vy1 - 9 : dy < 0 ? vy0 + 9 : Math.max(vy0 + 12, Math.min(vy1 - 12, (g[1] - sy * SH) * TS + 8));
       const l = Math.hypot(dx, dy) || 1; tri(x + (WW.calm ? 0 : b * dx), y + (WW.calm ? 0 : b * dy), dx / l, dy / l);
     }
   }

@@ -58,7 +58,12 @@
     for (let la = -40; la <= 60; la += 20) c.fillRect(0, Math.round(py(la)), PW, 1);
   }
 
+  // a phone: the map is drawn wider and swipes sideways, so the stops sit on their own cities and are easy to tap
+  const PHONE_CSS = `@media (max-width: 700px) { .hw-mapscroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 0 -8px; padding: 0 8px; }
+    .hw-mapscroll .hw-mapbox { width: 860px; } .hw-swipe { display: block !important; } }
+    .hw-swipe { display: none; text-align: center; font-size: 12px; color: #c9bfa6; margin-top: 4px; }`;
   WW.hub = () => {
+    if (!document.getElementById('hw-phone-css')) { const st = document.createElement('style'); st.id = 'hw-phone-css'; st.textContent = PHONE_CSS; document.head.appendChild(st); }
     const cat = window.WW_CATALOG || [], s = WW.save || { episodes: {} };
     document.title = (WW.COURSE && WW.COURSE.name) || WW.TITLE;
     const root = document.getElementById('ww'); root.className = 'hw-hub';
@@ -67,7 +72,7 @@
     root.innerHTML = `<div class="hw-wrap">
       <header class="hw-top"><div><div class="hw-logo">${esc(WW.TITLE)}</div><div class="hw-sub">${esc(WW.SUB)}</div></div>
         <div class="hw-me">${s.name ? `<b>${esc(s.name)}</b> · ${done} / ${cat.length} pages${done ? `<div class="hw-code">${esc(WW.passportCode())}</div>` : ''}` : 'Pick a stop on the map to begin.'}</div></header>
-      <div class="hw-mapbox"><canvas id="hw-map"></canvas><div id="hw-pins"></div><div id="hw-tip" hidden></div></div>
+      <div class="hw-mapscroll"><div class="hw-mapbox"><canvas id="hw-map"></canvas><div id="hw-pins"></div><div id="hw-tip" hidden></div></div></div><div class="hw-swipe">↔ Swipe the map to see the whole world</div>
       ${next || WW.village ? `<div class="hw-next">${next ? `<button class="hw-go" data-ep="${esc(next.id)}">▶ ${done ? 'Continue' : 'Start'} · ${esc(next.id)} ${esc(L(next.title))}</button>` : ''}${WW.village && window.WW_VILLAGE ? ` <button class="hw-go vil" id="hw-vil">🏡 Your village</button>` : ''}</div>` : ''}
       <div class="hw-units">${WW.REALMS.slice(1).map((r, ui) => `<section class="hw-unit" style="--uc:${UNITC[ui + 1]}"><h2>${esc(L(r))}</h2>${cat.filter(e => e.realm === ui + 1).map(e => {
         const st = s.episodes[e.id] || {};
@@ -104,6 +109,8 @@
       pins.appendChild(b);
     });
     root.querySelectorAll('[data-ep]').forEach(b => (b.onclick = () => WW.goEp(b.dataset.ep)));
+    { const sc = root.querySelector('.hw-mapscroll'), nb = next && pins.querySelector(`[data-ep="${next.id}"]`); // a phone: start on the next stop
+      if (sc && nb && sc.scrollWidth > sc.clientWidth) sc.scrollLeft = Math.max(0, nb.offsetLeft - sc.clientWidth / 2); }
     { const vb = document.getElementById('hw-vil'); if (vb) vb.onclick = () => { location.hash = 'village'; location.reload(); }; }
   };
 })();

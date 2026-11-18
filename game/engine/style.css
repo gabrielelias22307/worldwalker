@@ -563,3 +563,12 @@ canvas.minimap{display:block;width:100%;max-width:240px;height:auto;image-render
 .stage>.ov.wide{z-index:8}
 
 #ww [hidden] { display: none !important; }
+/* a phone turned sideways: the buttons, hearts and quest share ONE thin row, so the map gets the height */
+.ww-frame.side{flex-direction:row;flex-wrap:wrap;align-content:flex-start;align-items:stretch;column-gap:5px;padding:4px 6px}
+.ww-frame.side>.ww-bar,.ww-frame.side>.hud,.ww-frame.side>.quest{width:auto;max-width:none;margin:0 0 4px;flex:none}
+.ww-frame.side>.ww-bar{order:3;padding:0;gap:3px}
+.ww-frame.side>.ww-bar button{padding:2px 6px;font-size:13px;min-height:30px}
+.ww-frame.side>.hud{order:1;border-bottom:3px solid #000;border-radius:6px;padding:2px 8px}
+.ww-frame.side>.hud .hud-mid,.ww-frame.side>.hud .hud-right{display:none}
+.ww-frame.side>.quest{order:2;flex:1 1 0;min-width:0;border:3px solid #000;border-radius:6px;padding:1px 8px;font-size:13px}
+.ww-frame.side>.stage{order:4;flex:1 1 100%;height:calc(100% - 42px)}
