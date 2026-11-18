@@ -740,13 +740,13 @@ window.WW_VILLAGE = {
   items: [
     { id: 'field', kind: 'crop', icon: '🌾', name: 'Grain field', on: ['g'], limit: 4, every: 90, give: { food: 2 },
       wrong: 'A grain field needs open grassland.', game: 'Gives 2 food each harvest.' },
-    { id: 'workshop', kind: 'building', icon: '🔨', name: 'Village workshop', on: ['g'], limit: 1, every: 60, cap: 5, give: { goods: 1 },
+    { id: 'workshop', kind: 'building', icon: '🔨', name: 'Village workshop', on: ['g'], limit: 1, every: 60, cap: 8, give: { goods: 1 },
       wrong: 'The workshop needs open grassland.', game: 'Makes 1 goods every minute.' }
   ],
   eras: ['Era 1 · 1200–1450', 'Era 2 · Networks of exchange', 'Era 3 · Land-based empires', 'Era 4 · 1450–1750'],
   tech: [
     // ---------------- Era 1 ----------------
-    { id: 'paddy', ep: '1.1', era: 1, branch: 'land', pos: [0, 1], needs: [], cost: { food: 4, goods: 3 },
+    { id: 'paddy', ep: '1.1', era: 1, branch: 'land', pos: [0, 1], needs: [], cost: { food: 6, goods: 6 },
       kind: 'crop', icon: '🌱', name: 'Rice paddies', on: ['w'], limit: 4, every: 45, give: { food: 2 },
       wrong: 'Paddies are flooded fields: they need the wet ground by the river.',
       game: 'Paddies ripen twice as fast as grain: two harvests a year.',
@@ -758,7 +758,7 @@ window.WW_VILLAGE = {
           { t: 'Paper money let cities buy grain from abroad, so farming mattered less.', why: 'No. Paper money helped trade, but farming grew: paddies and two harvests a year fed the cities.' },
           { t: 'Iron output grew six-fold, and iron plows fed the new millions.', why: 'No. Iron output did grow six-fold, but most iron went to armor and weapons.' },
           { t: 'New crops from the Americas, like maize, fed the new millions.', why: 'No. Crops from the Americas reached Asia only after 1492. Song China grew on wet-field rice.' }] } },
-    { id: 'chinampa', ep: '1.4', era: 1, branch: 'land', pos: [0, 0], needs: ['paddy'], cost: { food: 5, goods: 4 },
+    { id: 'chinampa', ep: '1.4', era: 1, branch: 'land', pos: [0, 0], needs: ['paddy'], cost: { food: 15, goods: 25 },
       kind: 'crop', icon: '🪴', name: 'Chinampas', on: ['l'], limit: 3, every: 80, give: { food: 3 },
       wrong: 'Chinampas are gardens built up in shallow lake water.',
       game: 'Gives 3 food each harvest, from the lake.',
@@ -770,7 +770,7 @@ window.WW_VILLAGE = {
           { t: 'They cut farming terraces into the hillsides around the lake.', why: 'No. Terraces belonged to the Andes, far to the south.' },
           { t: 'They brought grain on camel caravans from distant farms.', why: 'No. There were no camels or pack animals in Mesoamerica. Most goods were carried on people\'s backs.' },
           { t: 'They grew irrigated rice paddies, as in Song China.', why: 'No. Wet-field rice was Song China\'s answer. Tenochtitlan\'s was the chinampa.' }] } },
-    { id: 'terrace', ep: '1.4', era: 1, branch: 'land', pos: [0, 2], needs: ['paddy'], cost: { food: 5, goods: 4 },
+    { id: 'terrace', ep: '1.4', era: 1, branch: 'land', pos: [0, 2], needs: ['paddy'], cost: { food: 15, goods: 25 },
       kind: 'crop', icon: '⛰️', name: 'Andean terraces', on: ['h'], limit: 4, every: 80, give: { food: 3 },
       wrong: 'Terraces are cut into hillsides.',
       game: 'Gives 3 food each harvest, from the hills.',
@@ -782,8 +782,8 @@ window.WW_VILLAGE = {
           { t: 'Chinampas and canoe trade', why: 'No. Chinampas were in the lake around Tenochtitlan, in Mesoamerica; Maya canoes carried luxuries.' },
           { t: 'Camel caravans and caravanserai', why: 'No. Those crossed the Silk Roads and the Sahara. The Americas had no camels.' },
           { t: 'Rice paddies with two harvests a year', why: 'No. That was Song China.' }] } },
-    { id: 'kiln', ep: '1.1', era: 1, branch: 'make', pos: [0, 3], needs: [], cost: { food: 4, goods: 3 },
-      kind: 'building', icon: '🏺', name: 'Porcelain kiln', on: ['g'], near: 'rw', limit: 1, every: 45, cap: 5, give: { goods: 2 },
+    { id: 'kiln', ep: '1.1', era: 1, branch: 'make', pos: [0, 3], needs: [], cost: { food: 6, goods: 6 },
+      kind: 'building', icon: '🏺', name: 'Porcelain kiln', on: ['g'], near: 'rw', limit: 1, every: 45, cap: 8, give: { goods: 2 },
       wrong: 'In your village, the kiln needs clay: build it on grass right next to the river or its wet banks.',
       game: 'Makes 2 goods every 45 seconds.',
       fact: 'Wet-field rice, cash crops, silk, porcelain and paper money made Song China rich. Merchants sold porcelain cups everywhere for drinking tea.',
@@ -794,8 +794,8 @@ window.WW_VILLAGE = {
           { t: 'Pepper and cloves', why: 'No. Spices like pepper and cloves came from Southeast Asia.' },
           { t: 'Gold and salt', why: 'No. Gold and salt were the trans-Saharan trade of West Africa.' },
           { t: 'Potatoes and maize', why: 'No. Those came from the Americas, after 1492.' }] } },
-    { id: 'press', ep: '1.7', era: 1, branch: 'make', pos: [0, 4], needs: ['kiln'], cost: { food: 5, goods: 5 },
-      kind: 'building', icon: '📜', name: 'Paper money press', on: ['g'], limit: 1, every: 90, cap: 5, give: { coins: 1 },
+    { id: 'press', ep: '1.7', era: 1, branch: 'make', pos: [0, 4], needs: ['kiln'], cost: { food: 25, goods: 40, coins: 15 },
+      kind: 'building', icon: '📜', name: 'Paper money press', on: ['g'], limit: 1, every: 90, cap: 8, give: { coins: 1 },
       wrong: 'The press needs open grassland.',
       game: 'Prints 1 coin every 90 seconds.',
       fact: 'In the 1120s, the Song printed paper money.',
@@ -807,8 +807,8 @@ window.WW_VILLAGE = {
           { t: 'It sent caravels to Africa.', why: 'No. Caravels were European ships of the 1400s.' },
           { t: 'It founded an East India Company.', why: 'No. London merchants founded an East India Company in 1600.' }] } },
     // ---------------- Era 2 ----------------
-    { id: 'caravanserai', ep: '2.1', era: 2, branch: 'make', pos: [1, 4], needs: ['kiln'], cost: { food: 10, goods: 8, coins: 10 },
-      kind: 'building', icon: '🐫', name: 'Caravanserai', on: ['g'], near: 'db', limit: 1, every: 40, cap: 5, give: { goods: 3 },
+    { id: 'caravanserai', ep: '2.1', era: 2, branch: 'make', pos: [1, 4], needs: ['kiln'], cost: { food: 40, goods: 70, coins: 30 },
+      kind: 'building', icon: '🐫', name: 'Caravanserai', on: ['g'], near: 'db', limit: 1, every: 40, cap: 8, give: { goods: 3 },
       wrong: 'A caravanserai stands beside the road, where the caravans pass.',
       game: 'Merchants rest here: 3 goods every 40 seconds.',
       fact: 'Each night, caravans on the Silk Roads stopped at a caravanserai, a safe place to rest and refuel.',
@@ -819,8 +819,8 @@ window.WW_VILLAGE = {
           { t: 'The monsoon winds made travel over land faster.', why: 'No. The monsoon drove ships on the Indian Ocean, not caravans on land.' },
           { t: 'Caravels carried merchants across the Atlantic to them.', why: 'No. Caravels sailed the oceans later, in the 1400s.' },
           { t: 'Paper money ended the need to carry goods.', why: 'No. Goods still moved by caravan; caravanserai gave the caravans a safe place to rest.' }] } },
-    { id: 'harbor', ep: '2.3', era: 2, branch: 'make', pos: [1, 3], needs: ['caravanserai'], cost: { food: 12, goods: 10, coins: 10 },
-      kind: 'building', icon: '⚓', name: 'Monsoon harbor', on: ['c'], limit: 1, every: 40, cap: 5, give: { goods: 4 },
+    { id: 'harbor', ep: '2.3', era: 2, branch: 'make', pos: [1, 3], needs: ['caravanserai'], cost: { food: 55, goods: 100, coins: 30 },
+      kind: 'building', icon: '⚓', name: 'Monsoon harbor', on: ['c'], limit: 1, every: 40, cap: 8, give: { goods: 4 },
       wrong: 'A harbor is built on the beach, at the edge of the sea.',
       game: 'Ships come and go with the winds: 4 goods every 40 seconds.',
       fact: 'In the Indian Ocean, the monsoon winds turned at the same times every year. Arab merchants improved the astrolabe and developed the kamal to find latitude.',
@@ -831,7 +831,7 @@ window.WW_VILLAGE = {
           { t: 'The astrolabe told sailors when the winds would change.', why: 'No. The astrolabe and the kamal found latitude. The timing came from the monsoon\'s yearly pattern.' },
           { t: 'The Pax Mongolica made the seas safe.', why: 'No. The Pax Mongolica made the land routes, the Silk Roads, safer.' },
           { t: 'Caravanserai along the coast gave sailors safe rest.', why: 'No. Caravanserai served caravans on land. At sea, timing the monsoon mattered.' }] } },
-    { id: 'spice', ep: '2.7', era: 2, branch: 'land', pos: [1, 1], needs: ['paddy'], cost: { food: 10, goods: 8, coins: 10 },
+    { id: 'spice', ep: '2.7', era: 2, branch: 'land', pos: [1, 1], needs: ['paddy'], cost: { food: 60, goods: 100, coins: 30 },
       kind: 'crop', icon: '🌶️', name: 'Spice garden', on: ['g'], limit: 3, every: 90, give: { goods: 3 },
       wrong: 'The spice garden needs open grassland.',
       game: 'Spices are for trade: each harvest gives 3 goods.',
@@ -844,8 +844,8 @@ window.WW_VILLAGE = {
           { t: 'Rulers ordered merchants to pay their taxes in spices.', why: 'No. Merchants traded spices for profit: the price rose with every port.' },
           { t: 'Spices grew everywhere, so trade spread them evenly.', why: 'No. Spices came from Southeast Asia and were rare far away; that is why their prices rose.' }] } },
     // ---------------- Era 3 ----------------
-    { id: 'gunpowder', ep: '3.1', era: 3, branch: 'make', pos: [2, 4], needs: ['caravanserai'], cost: { food: 18, goods: 14, coins: 20 },
-      kind: 'building', icon: '💥', name: 'Gunpowder workshop', on: ['g', 'h'], limit: 1, every: 40, cap: 5, give: { goods: 5 },
+    { id: 'gunpowder', ep: '3.1', era: 3, branch: 'make', pos: [2, 4], needs: ['caravanserai'], cost: { food: 80, goods: 180, coins: 50 },
+      kind: 'building', icon: '💥', name: 'Gunpowder workshop', on: ['g', 'h'], limit: 1, every: 40, cap: 8, give: { goods: 5 },
       wrong: 'The workshop needs grass or a hillside, away from the water.',
       game: 'Makes 5 goods every 40 seconds.',
       fact: 'Cannon were so expensive that only sultans, kings and emperors could pay for many. In 1453, Sultan Mehmet II\'s giant cannon broke the walls of Constantinople.',
@@ -856,8 +856,8 @@ window.WW_VILLAGE = {
           { t: 'Gunpowder was cheap, so every noble could build his own army.', why: 'No. Cannon were so expensive that only sultans, kings and emperors could pay for many.' },
           { t: 'Guns let pilots find latitude on long sea voyages.', why: 'No. Pilots found latitude from the North Star or the sun, with tools like the astrolabe.' },
           { t: 'Gunpowder made the Silk Roads safe, so trade grew.', why: 'No. That was the Pax Mongolica. Gunpowder changed war and power inside empires.' }] } },
-    { id: 'census', ep: '3.2', era: 3, branch: 'land', pos: [2, 1], needs: ['spice'], cost: { food: 18, goods: 14, coins: 20 },
-      kind: 'building', icon: '📋', name: 'Census and tax office', on: ['g'], limit: 1, every: 60, cap: 5, give: { coins: 2 },
+    { id: 'census', ep: '3.2', era: 3, branch: 'land', pos: [2, 1], needs: ['spice'], cost: { food: 90, goods: 180, coins: 50 },
+      kind: 'building', icon: '📋', name: 'Census and tax office', on: ['g'], limit: 1, every: 60, cap: 8, give: { coins: 2 },
       wrong: 'The office needs open grassland.',
       game: 'Collects 2 coins every minute.',
       fact: 'Early Ming emperors had a special bureau take a census of farm families and collect taxes directly. Later, local landowners collected, kept some of the money, and revenue fell.',
@@ -869,8 +869,8 @@ window.WW_VILLAGE = {
           { t: 'Paper money replaced all taxes.', why: 'No. Taxes were still collected. Local collectors kept part of them.' },
           { t: 'Wars against the Ottomans emptied the treasury.', why: 'No. The reading ties the fall to how taxes were collected, through local landowners.' }] } },
     // ---------------- Era 4 ----------------
-    { id: 'shipyard', ep: '4.1', era: 4, branch: 'make', pos: [3, 3], needs: ['harbor'], cost: { food: 26, goods: 20, coins: 30 },
-      kind: 'building', icon: '⛵', name: 'Caravel shipyard', on: ['c'], limit: 1, every: 40, cap: 5, give: { goods: 6 },
+    { id: 'shipyard', ep: '4.1', era: 4, branch: 'make', pos: [3, 3], needs: ['harbor'], cost: { food: 120, goods: 280, coins: 70 },
+      kind: 'building', icon: '⛵', name: 'Caravel shipyard', on: ['c'], limit: 1, every: 40, cap: 8, give: { goods: 6 },
       wrong: 'A shipyard is built on the beach, at the edge of the sea.',
       game: 'Builds ships for long voyages: 6 goods every 40 seconds.',
       fact: 'Caravels and carracks used square sails for open water and triangular lateen sails for the coast. Pilots found latitude from the height of the North Star or the sun.',
@@ -881,7 +881,7 @@ window.WW_VILLAGE = {
           { t: 'Square sails for battle, lateen sails for trade', why: 'No. The sails were about where the ship sailed: open water or the coast.' },
           { t: 'Lateen sails found latitude from the North Star', why: 'No. Pilots found latitude from the height of the North Star or the sun, not with sails.' },
           { t: 'Only carracks had lateen sails; caravels copied them later', why: 'No. Caravels and carracks both used square and lateen sails.' }] } },
-    { id: 'newcrops', ep: '4.3', era: 4, branch: 'land', pos: [3, 1], needs: ['census', 'shipyard'], cost: { food: 26, goods: 20, coins: 30 },
+    { id: 'newcrops', ep: '4.3', era: 4, branch: 'land', pos: [3, 1], needs: ['census', 'shipyard'], cost: { food: 130, goods: 300, coins: 70 },
       kind: 'crop', icon: '🥔', name: 'Maize and potatoes', on: ['g', 'h'], limit: 4, every: 90, give: { food: 6 },
       wrong: 'Maize and potatoes grow on grassland or hillsides.',
       game: 'Gives 6 food each harvest: three times a grain field.',
@@ -893,7 +893,7 @@ window.WW_VILLAGE = {
           { t: 'They carried the diseases that caused the Great Dying.', why: 'No. Diseases from Afro-Eurasia caused the Great Dying in the Americas. The crops fed people.' },
           { t: 'They grew only in the Americas, so Europe had to buy them.', why: 'No. They spread and became part of Italian and Indian cooking.' },
           { t: 'They fed Song China\'s growth in the 1200s.', why: 'No. They reached Afro-Eurasia only after 1492.' }] } },
-    { id: 'cotton', ep: '4.5', era: 4, branch: 'make', pos: [3, 4], needs: ['shipyard'], cost: { food: 30, goods: 24, coins: 30 },
+    { id: 'cotton', ep: '4.5', era: 4, branch: 'make', pos: [3, 4], needs: ['shipyard'], cost: { food: 150, goods: 360, coins: 90 },
       kind: 'building', icon: '🧵', name: 'Cotton workshop', on: ['g'], limit: 1, every: 30, cap: 6, give: { goods: 6 },
       wrong: 'The cotton workshop needs open grassland.',
       game: 'Spinners and weavers: 6 goods every 30 seconds. (Next, in Unit 5: machines in factories.)',
@@ -7908,16 +7908,16 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
 .hw-go.vil { background: #8fd16a; margin-left: 6px; }
 .hw-vil .vil-top-acts { display: flex; gap: 8px; flex-wrap: wrap; }
 .hw-vil .hw-go.ghost { background: #2b2a4a; color: #f4ecd8; border-color: #000; font-size: 14px; padding: 8px 12px; }
-.vil-res { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+.vil-res { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; justify-content: center; }
 .vil-r { background: #22203c; border: 2px solid #000; border-radius: 6px; padding: 6px 10px; font-size: 15px; }
 .vil-r b { color: #f2c14e; } .vil-r.era { color: #c9bfa6; font-size: 13px; }
-.vil-board { position: relative; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; }
+.vil-board { position: relative; max-width: calc((100vh - 270px) * 18 / 11); min-width: min(100%, 560px); margin: 0 auto; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; }
 #vil-cv { display: block; width: 100%; height: auto; cursor: pointer; touch-action: manipulation; }
 #vil-pops { position: absolute; inset: 0; pointer-events: none; }
 .vil-pop { position: absolute; transform: translate(-50%, 0); font: bold 16px system-ui, sans-serif; color: #fffbe8; text-shadow: 0 2px 0 #000, 0 0 6px #000; animation: vilup 1.3s ease-out forwards; }
 @keyframes vilup { to { transform: translate(-50%, -40px); opacity: 0; } }
-.vil-note { min-height: 1.4em; margin: 8px 2px; font-size: 15px; color: #f4ecd8; }
-.vil-pal { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.vil-note { min-height: 1.4em; margin: 8px auto; max-width: 1100px; text-align: center; font-size: 15px; color: #f4ecd8; }
+.vil-pal { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; justify-content: center; }
 .vil-pl { font-weight: 700; color: #c9bfa6; }
 .vil-it { font: 14px system-ui, sans-serif; background: #fffbe8; color: #22202e; border: 2px solid #000; border-radius: 6px; padding: 6px 9px; cursor: pointer; }
 .vil-it small { color: #6a5a48; } .vil-it.on { background: #f2c14e; outline: 3px solid #fff; } .vil-it:disabled { opacity: .45; cursor: default; }
@@ -7956,13 +7956,14 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
 `; document.head.appendChild(st); }
 
   /* ---------------- the save ---------------- */
+  let fresh = []; // episodes whose gift arrived on this visit
   function V() {
     const s = WW.save, d = D();
     const v = s.village = s.village || { tech: [], plots: {}, food: 0, goods: 0, gifts: [] };
     v.tech = v.tech || []; v.plots = v.plots || {}; v.gifts = v.gifts || [];
-    if (!v.seeded) { v.seeded = true; d.start.forEach(p => { v.plots[p.at.join(',')] = { id: p.id, t: now() - 60000 }; }); }
+    if (!v.seeded) { v.seeded = true; d.start.forEach(p => { v.plots[p.at.join(',')] = { id: p.id, t: now() - 600000 }; }); } // the first fields are ripe: something to tap at once
     // every finished episode leaves a gift in the village, once
-    WW.EPISODES.forEach(e => { if (s.episodes[e.id] && s.episodes[e.id].done && !v.gifts.includes(e.id)) { v.gifts.push(e.id); v.food += d.gift.food; v.goods += d.gift.goods; } });
+    WW.EPISODES.forEach(e => { if (s.episodes[e.id] && s.episodes[e.id].done && !v.gifts.includes(e.id)) { v.gifts.push(e.id); v.food += d.gift.food; v.goods += d.gift.goods; fresh.push(e.id); } });
     return v;
   }
   const have = (v, k) => k === 'coins' ? (WW.save.coins || 0) : (v[k] || 0);
@@ -8292,8 +8293,9 @@ WW.GICON = (WW.COURSE && WW.COURSE.icon) || '🧭'; // the guide's button and na
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
     setInterval(() => { if (document.getElementById('vil-res')) render(); }, 5000); // counts stay fresh
     render();
-    say(v.tech.length ? 'Tap a ripe field or a building with a bubble to collect. Open a box in the tech tree to research.' :
-      'Welcome home! Tap your ripe grain fields and the workshop to collect. Then open a box in the tech tree below. Finished episodes leave gifts here.');
+    const gifts = fresh.length ? `🎁 ${fresh.length === 1 ? 'Episode ' + fresh[0] + ' left' : fresh.length + ' finished episodes left'} a gift: +${d.gift.food * fresh.length} 🌾 +${d.gift.goods * fresh.length} 🧱. ` : ''; fresh = [];
+    say(gifts + (v.tech.length ? 'Tap a ripe field or a building with a bubble to collect. Open a box in the tech tree to research.' :
+      'Welcome home! Tap your ripe grain fields and the workshop to collect. Then open a box in the tech tree below. Finished episodes leave gifts here.'));
   };
   WW.village.V = V; // for tests
 })();

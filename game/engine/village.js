@@ -15,16 +15,16 @@
 .hw-go.vil { background: #8fd16a; margin-left: 6px; }
 .hw-vil .vil-top-acts { display: flex; gap: 8px; flex-wrap: wrap; }
 .hw-vil .hw-go.ghost { background: #2b2a4a; color: #f4ecd8; border-color: #000; font-size: 14px; padding: 8px 12px; }
-.vil-res { display: flex; gap: 8px; flex-wrap: wrap; margin: 6px 0 10px; }
+.vil-res { display: flex; gap: 8px; flex-wrap: wrap; margin: 4px 0 8px; justify-content: center; }
 .vil-r { background: #22203c; border: 2px solid #000; border-radius: 6px; padding: 6px 10px; font-size: 15px; }
 .vil-r b { color: #f2c14e; } .vil-r.era { color: #c9bfa6; font-size: 13px; }
-.vil-board { position: relative; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; }
+.vil-board { position: relative; max-width: calc((100vh - 270px) * 18 / 11); min-width: min(100%, 560px); margin: 0 auto; border: 4px solid #000; outline: 3px solid #6a5a3a; border-radius: 8px; overflow: hidden; }
 #vil-cv { display: block; width: 100%; height: auto; cursor: pointer; touch-action: manipulation; }
 #vil-pops { position: absolute; inset: 0; pointer-events: none; }
 .vil-pop { position: absolute; transform: translate(-50%, 0); font: bold 16px system-ui, sans-serif; color: #fffbe8; text-shadow: 0 2px 0 #000, 0 0 6px #000; animation: vilup 1.3s ease-out forwards; }
 @keyframes vilup { to { transform: translate(-50%, -40px); opacity: 0; } }
-.vil-note { min-height: 1.4em; margin: 8px 2px; font-size: 15px; color: #f4ecd8; }
-.vil-pal { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+.vil-note { min-height: 1.4em; margin: 8px auto; max-width: 1100px; text-align: center; font-size: 15px; color: #f4ecd8; }
+.vil-pal { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; justify-content: center; }
 .vil-pl { font-weight: 700; color: #c9bfa6; }
 .vil-it { font: 14px system-ui, sans-serif; background: #fffbe8; color: #22202e; border: 2px solid #000; border-radius: 6px; padding: 6px 9px; cursor: pointer; }
 .vil-it small { color: #6a5a48; } .vil-it.on { background: #f2c14e; outline: 3px solid #fff; } .vil-it:disabled { opacity: .45; cursor: default; }
@@ -63,13 +63,14 @@
 `; document.head.appendChild(st); }
 
   /* ---------------- the save ---------------- */
+  let fresh = []; // episodes whose gift arrived on this visit
   function V() {
     const s = WW.save, d = D();
     const v = s.village = s.village || { tech: [], plots: {}, food: 0, goods: 0, gifts: [] };
     v.tech = v.tech || []; v.plots = v.plots || {}; v.gifts = v.gifts || [];
-    if (!v.seeded) { v.seeded = true; d.start.forEach(p => { v.plots[p.at.join(',')] = { id: p.id, t: now() - 60000 }; }); }
+    if (!v.seeded) { v.seeded = true; d.start.forEach(p => { v.plots[p.at.join(',')] = { id: p.id, t: now() - 600000 }; }); } // the first fields are ripe: something to tap at once
     // every finished episode leaves a gift in the village, once
-    WW.EPISODES.forEach(e => { if (s.episodes[e.id] && s.episodes[e.id].done && !v.gifts.includes(e.id)) { v.gifts.push(e.id); v.food += d.gift.food; v.goods += d.gift.goods; } });
+    WW.EPISODES.forEach(e => { if (s.episodes[e.id] && s.episodes[e.id].done && !v.gifts.includes(e.id)) { v.gifts.push(e.id); v.food += d.gift.food; v.goods += d.gift.goods; fresh.push(e.id); } });
     return v;
   }
   const have = (v, k) => k === 'coins' ? (WW.save.coins || 0) : (v[k] || 0);
@@ -399,8 +400,9 @@
     cancelAnimationFrame(raf); raf = requestAnimationFrame(frame);
     setInterval(() => { if (document.getElementById('vil-res')) render(); }, 5000); // counts stay fresh
     render();
-    say(v.tech.length ? 'Tap a ripe field or a building with a bubble to collect. Open a box in the tech tree to research.' :
-      'Welcome home! Tap your ripe grain fields and the workshop to collect. Then open a box in the tech tree below. Finished episodes leave gifts here.');
+    const gifts = fresh.length ? `🎁 ${fresh.length === 1 ? 'Episode ' + fresh[0] + ' left' : fresh.length + ' finished episodes left'} a gift: +${d.gift.food * fresh.length} 🌾 +${d.gift.goods * fresh.length} 🧱. ` : ''; fresh = [];
+    say(gifts + (v.tech.length ? 'Tap a ripe field or a building with a bubble to collect. Open a box in the tech tree to research.' :
+      'Welcome home! Tap your ripe grain fields and the workshop to collect. Then open a box in the tech tree below. Finished episodes leave gifts here.'));
   };
   WW.village.V = V; // for tests
 })();
