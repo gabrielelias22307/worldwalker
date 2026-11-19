@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its realms, its five powers and its tools, and swaps the engine's own
    geography words for government words in each language. Episodes live in gov/episodes/. */
 window.WW_COURSE = {
-  id: 'civicwalker', name: 'Civicwalker', title: 'CIVICWALKER', sub: 'THE TORN CHARTER', saveKey: 'civicwalker.save.v1', guide: 'bell', icon: '🔔',
+  id: 'civicwalker', look: 'hd', name: 'Civicwalker', title: 'CIVICWALKER', sub: 'THE TORN CHARTER', saveKey: 'civicwalker.save.v1', guide: 'bell', icon: '🔔',
   realms: [
     { en: 'The Old Lands', es: 'Las Tierras Antiguas', fa: 'سرزمین‌های کهن' },
     { en: 'Charter Hall', es: 'La Sala de la Carta', fa: 'تالار منشور' },

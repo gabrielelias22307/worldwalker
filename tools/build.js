@@ -9,10 +9,16 @@ const course = HIST ? fs.readFileSync(path.join(G, 'course.js'), 'utf8') : '';
 const IMG = HIST && fs.existsSync(path.join(G, 'images.js')), images = IMG ? fs.readFileSync(path.join(G, 'images.js'), 'utf8') : '';
 const VIL = HIST && fs.existsSync(path.join(G, 'village.js')), village = VIL ? fs.readFileSync(path.join(G, 'village.js'), 'utf8') : ''; // the Village of Ages (its tech list is part of the Passport Code) // public-domain pictures (HistoryWalker)
 if (HIST) require('./course-pages.js')(GAME); // the course's map page and teacher page, made from Worldwalker's
-const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'hub.js', 'village.js', 'game.js'];
+const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'hw.js', 'save.js', 'ui.js', 'challenges.js', 'music.js', 'fx.js', 'quest.js', 'foes.js', 'christopher.js', 'chrisface.js', 'way.js', 'scene.js', 'rooms.js', 'tools.js', 'world.js', 'camp.js', 'farm.js', 'hub.js', 'village.js', 'game.js'];
 // hd.js (the HD look) and hub.js (the one-file world map) only matter to a course with `hd: true` (HistoryWalker): the
 // other games leave them out and stay under the Canvas limit
-if (!(require('./course-info.js')(GAME).course || {}).hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => !['hd.js', 'hub.js', 'village.js'].includes(f)));
+const CO_ = require('./course-info.js')(GAME).course || {};
+// hd.js (the HD look) ships with `hd: true` (HistoryWalker) and `look: 'hd'` (a Canvas game with the HD look); hw.js
+// (HistoryWalker's extras), hub.js (the one-file world map) and village.js only with `hd: true`
+if (!CO_.hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => !['hw.js', 'hub.js', 'village.js'].includes(f) && (f !== 'hd.js' || CO_.look === 'hd')));
+// farm.js (planting, building in place, seasons) only when some episode uses them; otherwise a tiny stand-in
+if (!CO_.hd && !fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).some(f => /\bplant\s*:|kind\s*:\s*'place'|\bseasons\s*:/.test(fs.readFileSync(path.join(G, 'episodes', f), 'utf8'))))
+  ENGINE.splice(ENGINE.indexOf('farm.js'), 1, 'farm-none.js');
 const LIMIT = (require('./course-info.js')(GAME).course || {}).hd ? Infinity : 430000; // HistoryWalker ships as one file with no size limit // Canvas stops running JavaScript in files over ~450 KB
 const tpl = fs.readFileSync(path.join(__dirname, 'template.html'), 'utf8');
 const read = p => fs.readFileSync(p, 'utf8');
@@ -20,6 +26,8 @@ const { slimCss } = require('./slim.js'); // the Canvas file has no comments or 
 let terser; // shortens the engine code's inside names too (run "npm install" once to get it)
 try { terser = require('terser'); } catch (e) { console.log('terser is missing: run "npm install" once, then build again'); process.exit(1); }
 const shorten = async js => (await terser.minify(js, { compress: false, mangle: true, format: { ascii_only: false, comments: false } })).code + '\n';
+// the engine (and the course file) for a Canvas file: also folds and drops what it can (the size limit); episodes stay as before
+const squeeze = async js => (await terser.minify(js, { compress: { passes: 2, keep_fnames: false, keep_infinity: true }, mangle: true, format: { ascii_only: false, comments: false } })).code + '\n';
 const inline = js => js.replace(/<\/script/gi, '<\\/script');
 const eps = fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).sort();
 const only = process.argv.slice(3).map(id => 'ep-' + id.replace('.', '-') + '.js'); // node tools/build.js history 3.1 3.2: build only these (the catalog still lists all)
@@ -27,7 +35,11 @@ const built = only.length ? eps.filter(f => only.includes(f)) : eps;
 fs.mkdirSync(DIST, { recursive: true });
 const css = slimCss(read(path.join(E, 'engine', 'style.css')));
 (async () => {
-const engineJs = (await Promise.all(ENGINE.map(f => shorten(read(path.join(E, 'engine', f)))))).join(';\n');
+// each game draws only its own guide (compass, hourglass, bell, pig, lantern, owl): the checks for the others become
+// false here, and the squeeze drops the drawings they guarded
+const ownGuide = js => js.replace(/WW\.COURSE && WW\.COURSE\.guide === '(\w+)'/g, (m, g) => (CO_.guide || '') === g ? 'true' : 'false');
+const engineJs = (await Promise.all(ENGINE.map(f => squeeze(ownGuide(read(path.join(E, 'engine', f))))))).join(';\n');
+const courseJs = HIST ? await squeeze(course) : '';
 const cfg = read(path.join(G, 'config.js'));
 const report = [];
 const epJs = {};
@@ -36,13 +48,13 @@ for (const f of built) {
   const id = f.slice(3, 6).replace('-', '.');
   // GitHub Pages version: shares the engine files
   const pages = tpl.replace('{{ID}}', id)
-    .replace('{{STYLE}}', `<link rel="stylesheet" href="${HIST ? '../game/' : ''}engine/style.css">`)
-    .replace('{{SCRIPTS}}', [...(HIST ? ['course.js'] : []), ...(IMG ? ['images.js'] : []), ...(VIL ? ['village.js'] : []), 'config.js', ...ENGINE.map(e => (HIST ? '../game/' : '') + 'engine/' + e), 'episodes/' + f].map(s => `<script src="${s}"></script>`).join('\n'));
+    .replace('{{STYLE}}', () => `<link rel="stylesheet" href="${HIST ? '../game/' : ''}engine/style.css">`)
+    .replace('{{SCRIPTS}}', () => [...(HIST ? ['course.js'] : []), ...(IMG ? ['images.js'] : []), ...(VIL ? ['village.js'] : []), 'config.js', ...ENGINE.map(e => (HIST ? '../game/' : '') + 'engine/' + e), 'episodes/' + f].map(s => `<script src="${s}"></script>`).join('\n'));
   fs.writeFileSync(path.join(G, f.replace('.js', '.html')), pages);
   // Canvas version: everything inside one file
   const one = tpl.replace('{{ID}}', id)
-    .replace('{{STYLE}}', `<style>\n${css}\n</style>`)
-    .replace('{{SCRIPTS}}', `<script>\n${HIST ? inline(course) + '\n' : ''}${IMG ? inline(images) + '\n' : ''}${VIL ? inline(village) + '\n' : ''}${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(epJs[f])}\n</script>`);
+    .replace('{{STYLE}}', () => `<style>\n${css}\n</style>`)
+    .replace('{{SCRIPTS}}', () => `<script>\n${HIST ? inline(courseJs) + '\n' : ''}${IMG ? inline(images) + '\n' : ''}${VIL ? inline(village) + '\n' : ''}${inline(cfg)}\nwindow.WW_CONFIG.MODE = 'canvas';\n</script>\n<script>\n${inline(engineJs)}\n</script>\n<script>\n${inline(epJs[f])}\n</script>`);
   const out = path.join(DIST, `${NAME} ${id}.html`);
   fs.writeFileSync(out, one);
   const size = Buffer.byteLength(one);

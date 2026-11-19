@@ -1889,7 +1889,7 @@ window.WW_CONFIG.MODE = 'one';
   };
 })();
 ;
-/* WORLDWALKER engine · the HD look (HistoryWalker turns it on with `hd: true` in its course file).
+/* WORLDWALKER engine · the HD look (on with `hd: true` (HistoryWalker) or `look: 'hd'` (a Canvas game) in the course file).
    The map canvas has 4 real pixels for every old art pixel (WW.HD), so the ground can be drawn twice as fine:
    - every ground is a texture worked out pixel by pixel from smooth noise (grass, sand, dirt paths, paving, snow…),
      and where two grounds meet, the higher one spills over the edge in a soft, ragged line (grass over sand, sand
@@ -1900,7 +1900,7 @@ window.WW_CONFIG.MODE = 'one';
    Each ground tile is worked out once and kept (per map square), so a frame only copies small pictures.
    Without `hd`, nothing here runs and the other games look exactly as before. */
 (function () {
-  if (!(window.WW_COURSE && window.WW_COURSE.hd)) return;
+  if (!(window.WW_COURSE && (window.WW_COURSE.hd || window.WW_COURSE.look === 'hd'))) return;
   const { tiles, hash } = WW;
   const T = 16, A = 32; // a tile is 16 map units and 32 art pixels
   const calm = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -2515,6 +2515,39 @@ window.WW_CONFIG.MODE = 'one';
   };
 
 
+  // the ground tiles: inside the HD tile loop the ground is already down (noGround); anywhere else (a house's yard
+  // drawn by an old tile, the map page, challenge pictures) they draw the HD square for that spot
+  ['.', ',', '"', 's', ':', 'l', 'g', 'z', 'n', 'i', 'o', 'f', '~', '='].forEach(k => {
+    const old = tiles[k];
+    tiles[k] = (c, x, y, gx, gy, t, m) => {
+      if (WW.hd.noGround) return;
+      if (!MAP || gx == null) return old(c, x, y, gx, gy, t, m);
+      c.drawImage(groundSquare(gx, gy), x, y, T, T);
+    };
+  });
+  // people on the map stand facing you and blink now and then; the hero walks in four frames
+  const oldPerson = WW.drawPerson;
+  WW.drawPerson = (c, p, x, y, t, phase = 0) => {
+    const pal = WW.lookPal(p.look), blink = !calm && (((t || 0) + phase * 977) % 3700) < 130;
+    drawHDPerson(c, pal, kindOf(p), x, y + 2, 'down', 0, blink);
+  };
+  void oldPerson;
+  WW.hd.hero = (c, x, y, dir, moving, now) => {
+    const frame = moving ? (Math.floor(now / 110) % 4) : 0, l = (WW.save && WW.save.look) || {};
+    drawHDPerson(c, WW.heroPal(), { robe: false, hat: !!(l.hat), style: 'short' }, x, y, dir, frame, false);
+  };
+
+  // what the HistoryWalker extras (hw.js) borrow from the HD look
+  WW.hd._ = { h2, hex, vnoise, shade, personPic, drawHDPerson, kindOf, calm };
+})();;
+/* WORLDWALKER engine · HistoryWalker's extras on top of the HD look (hd.js): the Void and its shades, HD rooms, and
+   (below) the source pictures, reflection checklist, scraps tip, flash recall, Quill's portrait and HistoryWalker's
+   styles. Only `hd: true` courses ship this file, so the Canvas games stay small. */
+(function () {
+  if (!(window.WW_COURSE && window.WW_COURSE.hd)) return;
+  const { tiles, hash } = WW;
+  const T = 16, A = 32;
+  const { h2, hex, vnoise, shade, personPic, drawHDPerson, kindOf, calm } = WW.hd._;
   /* ---------------- the Void (HistoryWalker's villain) and its shades ----------------
      A hole in the world: a black core with a thin ring of violet light, dust and leaves spiralling into it, dark
      tendrils reaching out, and two narrow eyes that open in the dark. When it roars the ring burns red and the eyes
@@ -2703,18 +2736,6 @@ window.WW_CONFIG.MODE = 'one';
   };
   WW.hd.kindOf = p => kindOf(p);
 
-  // people on the map stand facing you and blink now and then; the hero walks in four frames
-  const oldPerson = WW.drawPerson;
-  WW.drawPerson = (c, p, x, y, t, phase = 0) => {
-    const pal = WW.lookPal(p.look), blink = !calm && (((t || 0) + phase * 977) % 3700) < 130;
-    drawHDPerson(c, pal, kindOf(p), x, y + 2, 'down', 0, blink);
-  };
-  void oldPerson;
-  WW.hd.hero = (c, x, y, dir, moving, now) => {
-    const frame = moving ? (Math.floor(now / 110) % 4) : 0, l = (WW.save && WW.save.look) || {};
-    drawHDPerson(c, WW.heroPal(), { robe: false, hat: !!(l.hat), style: 'short' }, x, y, dir, frame, false);
-  };
-
   // a reading stand: a carved wooden lectern with an open book; it glows softly until you have read it
   WW.drawDoc = (c, x, y, t, read) => {
     if (!read) { const a = calm ? 0.5 : (Math.sin(t / 300) + 1) / 2; const g = c.createRadialGradient(x + 8, y + 5, 1, x + 8, y + 5, 12); g.addColorStop(0, `rgba(255,236,160,${0.35 + a * 0.3})`); g.addColorStop(1, 'rgba(255,236,160,0)'); c.fillStyle = g; c.fillRect(x - 4, y - 7, 24, 24); }
@@ -2728,16 +2749,6 @@ window.WW_CONFIG.MODE = 'one';
     if (!read && !calm) { const k = Math.floor(t / 400) % 3; P(7.5 - 0.5, -3 - k * 0.6, 1, 1, '#fff6c0'); }
   };
 
-  // the ground tiles: inside the HD tile loop the ground is already down (noGround); anywhere else (a house's yard
-  // drawn by an old tile, the map page, challenge pictures) they draw the HD square for that spot
-  ['.', ',', '"', 's', ':', 'l', 'g', 'z', 'n', 'i', 'o', 'f', '~', '='].forEach(k => {
-    const old = tiles[k];
-    tiles[k] = (c, x, y, gx, gy, t, m) => {
-      if (WW.hd.noGround) return;
-      if (!MAP || gx == null) return old(c, x, y, gx, gy, t, m);
-      c.drawImage(groundSquare(gx, gy), x, y, T, T);
-    };
-  });
 })();
 
 /* HistoryWalker extras (only HD courses ship hd.js, so the Canvas games stay small):
@@ -3407,7 +3418,7 @@ window.WW_CONFIG.MODE = 'one';
      (eras), its five powers, its tools, its words (S) and a list of word swaps for the engine's own words
      ("atlas page" -> "chronicle page", "Christopher" -> "Tock"), in each language. Without one: Worldwalker. */
   WW.COURSE = window.WW_COURSE || null;
-  WW.HD = WW.COURSE && WW.COURSE.hd ? 4 : 1; // HistoryWalker: the map canvas has 4 real pixels for every art pixel (hd.js draws the finer art)
+  WW.HD = WW.COURSE && (WW.COURSE.hd || WW.COURSE.look === 'hd') ? 4 : 1; // HistoryWalker: the map canvas has 4 real pixels for every art pixel (hd.js draws the finer art)
   WW.TITLE = (WW.COURSE && WW.COURSE.title) || 'WORLDWALKER';
   WW.SUB = (WW.COURSE && WW.COURSE.sub) || 'THE TORN ATLAS';
 WW.tune = () => (WW.ep && WW.ep.memorial ? 'quiet' : 'realm' + (WW.ep ? WW.ep.realm : 1)); // the episode's song
