@@ -9,7 +9,7 @@
    Each ground tile is worked out once and kept (per map square), so a frame only copies small pictures.
    Without `hd`, nothing here runs and the other games look exactly as before. */
 (function () {
-  if (!(window.WW_COURSE && (window.WW_COURSE.hd || window.WW_COURSE.look === 'hd'))) return;
+  if (!WW.lookHD()) return;
   const { tiles, hash } = WW;
   const T = 16, A = 32; // a tile is 16 map units and 32 art pixels
   const calm = !!(window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches);

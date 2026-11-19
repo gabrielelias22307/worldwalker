@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its realms, its five powers and its tools, and swaps the engine's own
    geography words for history words in each language. Episodes live in usva/episodes/. */
 window.WW_COURSE = {
-  id: 'trailwalker', name: 'Trailwalker', title: 'TRAILWALKER', sub: 'THE TORN JOURNAL', saveKey: 'trailwalker.save.v1', guide: 'lantern', icon: '🏮',
+  id: 'trailwalker', look: 'hd', name: 'Trailwalker', title: 'TRAILWALKER', sub: 'THE TORN JOURNAL', saveKey: 'trailwalker.save.v1', guide: 'lantern', icon: '🏮',
   realms: [
     { en: 'New World Shores', es: 'Las Costas del Nuevo Mundo', fa: 'سواحل دنیای نو' },
     { en: 'Liberty Road', es: 'El Camino de la Libertad', fa: 'راه آزادی' },

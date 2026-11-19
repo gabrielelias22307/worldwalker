@@ -15,7 +15,7 @@ const ENGINE = ['art.js', 'art2.js', 'art3.js', 'hd.js', 'hw.js', 'save.js', 'ui
 const CO_ = require('./course-info.js')(GAME).course || {};
 // hd.js (the HD look) ships with `hd: true` (HistoryWalker) and `look: 'hd'` (a Canvas game with the HD look); hw.js
 // (HistoryWalker's extras), hub.js (the one-file world map) and village.js only with `hd: true`
-if (!CO_.hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => !['hw.js', 'hub.js', 'village.js'].includes(f) && (f !== 'hd.js' || CO_.look === 'hd')));
+if (!CO_.hd) ENGINE.splice(0, ENGINE.length, ...ENGINE.filter(f => !['hw.js', 'hub.js', 'village.js'].includes(f) && (f !== 'hd.js' || CO_.look === 'hd' || require('./course-info.js')(GAME).config.LOOK === 'hd')));
 // farm.js (planting, building in place, seasons) only when some episode uses them; otherwise a tiny stand-in
 if (!CO_.hd && !fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).some(f => /\bplant\s*:|kind\s*:\s*'place'|\bseasons\s*:/.test(fs.readFileSync(path.join(G, 'episodes', f), 'utf8'))))
   ENGINE.splice(ENGINE.indexOf('farm.js'), 1, 'farm-none.js');
@@ -33,12 +33,24 @@ const eps = fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$
 const only = process.argv.slice(3).map(id => 'ep-' + id.replace('.', '-') + '.js'); // node tools/build.js history 3.1 3.2: build only these (the catalog still lists all)
 const built = only.length ? eps.filter(f => only.includes(f)) : eps;
 fs.mkdirSync(DIST, { recursive: true });
-const css = slimCss(read(path.join(E, 'engine', 'style.css')));
+// the CSS packed tight: no line breaks, no spaces around { } ; , and no last ; before } (quoted text is kept as is)
+const tightCss = css => css.split(/('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*")/).map((part, i) => i % 2 ? part : part
+  .replace(/\s+/g, ' ').replace(/\s*([{};,])\s*/g, '$1').replace(/;}/g, '}')).join('').trim();
+const css = tightCss(slimCss(read(path.join(E, 'engine', 'style.css'))));
 (async () => {
 // each game draws only its own guide (compass, hourglass, bell, pig, lantern, owl): the checks for the others become
 // false here, and the squeeze drops the drawings they guarded
-const ownGuide = js => js.replace(/WW\.COURSE && WW\.COURSE\.guide === '(\w+)'/g, (m, g) => (CO_.guide || '') === g ? 'true' : 'false');
-const engineJs = (await Promise.all(ENGINE.map(f => squeeze(ownGuide(read(path.join(E, 'engine', f))))))).join(';\n');
+const ownGuide = js => js.replace(/WW\.COURSE && WW\.COURSE\.guide === '(\w+)'/g, (m, g) => (CO_.guide || '') === g ? 'true' : 'false')
+  .replace(/\(?WW\.COURSE && WW\.COURSE\.(recall|hd|guideSmall|bossNeed|reflectCheck|village)\b(?![\w(])/g, (m, k) => CO_[k] ? m : (m[0] === '(' ? '(false' : 'false')); // HistoryWalker-only switches
+// the HD look in a Canvas game: its episodes have no ep.style, so every house is the default (europe) style. The other
+// places' roofs, walls, windows and doors (HistoryWalker's) become false here and the squeeze drops their drawing code.
+const REGION = ['china', 'chinaGreen', 'japan', 'islam', 'ottoman', 'india', 'sahel', 'swahili', 'andes', 'mesoamerica', 'steppe', 'lead', 'dome', 'felt', 'flat', 'mudflat',
+  'wood', 'white', 'sandstone', 'mud', 'coral', 'inca', 'stucco', 'lattice', 'arch', 'jali', 'hole', 'trap', 'red', 'carved', 'brick', 'sand', 'mudwall', 'redwall', 'tilework'];
+const usesStyle = !CO_.hd && fs.readdirSync(path.join(G, 'episodes')).filter(f => /^ep-\d-\d\.js$/.test(f)).some(f => /^\s{2}style\s*:/m.test(fs.readFileSync(path.join(G, 'episodes', f), 'utf8')));
+const europeOnly = (f, js) => f !== 'hd.js' || CO_.hd || usesStyle ? js : js
+  .replace(/\bkind === '(\w+)'/g, (m, k) => REGION.includes(k) ? 'false' : m)
+  .replace(/^ {4}(\w+): \{ roof:[^\n]*\n/gm, (m, k) => k === 'europe' ? m : '');
+const engineJs = (await Promise.all(ENGINE.map(f => squeeze(europeOnly(f, ownGuide(read(path.join(E, 'engine', f)))))))).join(';\n');
 const courseJs = HIST ? await squeeze(course) : '';
 const cfg = read(path.join(G, 'config.js'));
 const report = [];

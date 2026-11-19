@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its realms, its five powers and its tools, and swaps the engine's own
    geography words for money words in each language. Episodes live in econ/episodes/. */
 window.WW_COURSE = {
-  id: 'coinwalker', name: 'Coinwalker', title: 'COINWALKER', sub: 'THE TORN LEDGER', saveKey: 'coinwalker.save.v1', guide: 'pig', icon: '🐷',
+  id: 'coinwalker', look: 'hd', name: 'Coinwalker', title: 'COINWALKER', sub: 'THE TORN LEDGER', saveKey: 'coinwalker.save.v1', guide: 'pig', icon: '🐷',
   realms: [
     { en: 'Market Valley', es: 'El Valle del Mercado', fa: 'درهٔ بازار' },
     { en: 'Mint Town', es: 'La Ciudad de la Moneda', fa: 'شهر ضرابخانه' },

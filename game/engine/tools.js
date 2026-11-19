@@ -388,7 +388,7 @@
     }
     if (!list.length) { if (labs) labs.style.display = 'none'; return; }
     if (!labs || !labs.isConnected) { labs = document.createElement('div'); labs.className = 'gridlabs'; $('ww-screen').appendChild(labs); labKey = ''; }
-    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / cv.width;
+    const sr = $('ww-screen').getBoundingClientRect(), cr = cv.getBoundingClientRect(), k = cr.width / (cv.width / WW.HD); // map units → page pixels (the HD canvas has WW.HD pixels per unit)
     const key = [k, cr.left - sr.left, cr.top - sr.top, WW.lang, ...list.map(o => o.t + o.px + o.py)].join();
     labs.style.display = 'block';
     if (key === labKey) return;

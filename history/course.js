@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its eras, its five powers and its tools, and swaps the engine's own
    geography words for history words in each language. Episodes live in history/episodes/. */
 window.WW_COURSE = {
-  id: 'timewalker', title: 'TIMEWALKER', sub: 'THE TORN CHRONICLE', saveKey: 'timewalker.save.v1', guide: 'hourglass',
+  id: 'timewalker', look: 'hd', title: 'TIMEWALKER', sub: 'THE TORN CHRONICLE', saveKey: 'timewalker.save.v1', guide: 'hourglass',
   realms: [
     { en: 'The World Around 1500', es: 'El mundo hacia 1500', fa: 'جهان در حدود سال ۱۵۰۰' },
     { en: 'Exploration and Exchange', es: 'Exploración e intercambio', fa: 'کشف و داد و ستد' },

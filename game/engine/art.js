@@ -338,4 +338,6 @@
   }
 
   window.WW = Object.assign(window.WW || {}, { T, P, tiles, SPR, SPAL, sprite, coin, chest, drawMap, stage, loop, hash, R });
+  // the HD look (hd.js) is on for HistoryWalker (hd: true), a course with look: 'hd', or Worldwalker's config LOOK: 'hd'
+  WW.lookHD = () => !!((window.WW_COURSE && (window.WW_COURSE.hd || window.WW_COURSE.look === 'hd')) || (window.WW_CONFIG && window.WW_CONFIG.LOOK === 'hd'));
 })();
