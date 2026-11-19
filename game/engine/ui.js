@@ -578,6 +578,10 @@
           nav.appendChild(btn('🗺️ ' + T('map'), 'ghost', () => WW.goMap()));
           if (nx) nav.appendChild(btn(T('nextEp') + ' ' + nx.id + ' ▶', 'teal', () => WW.goEp(nx.id)));
         } else if (nx) nav.insertAdjacentHTML('beforeend', `<p class="small"><b>${esc(T('nextEp'))} ${nx.id}:</b> ${esc(T('nextCanvas'))}</p>`);
+        if (WW.COURSE && WW.COURSE.portfolio) { // Coinwalker: this episode's year and paycheck wait at Bradlee
+          if (WW.CONFIG.MODE === 'pages') nav.appendChild(btn('🏬 ' + T('pfGo'), 'teal', () => { location.href = 'portfolio.html'; }));
+          else nav.insertAdjacentHTML('beforeend', `<p class="small">🏬 ${esc(T('pfCanvas'))}</p>`);
+        }
         if (WW.village && WW.CONFIG.MODE === 'one') nav.appendChild(btn('🏡 Your village', 'ghost', () => { location.hash = 'village'; location.reload(); })); // HistoryWalker: this episode left a gift there
         nav.appendChild(btn('📘 ' + T('passport'), 'ghost', () => ui.passport()));
         box.appendChild(nav);

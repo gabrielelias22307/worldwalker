@@ -2,7 +2,7 @@
    Loaded before the engine. It names the game, its realms, its five powers and its tools, and swaps the engine's own
    geography words for money words in each language. Episodes live in econ/episodes/. */
 window.WW_COURSE = {
-  id: 'coinwalker', look: 'hd', name: 'Coinwalker', title: 'COINWALKER', sub: 'THE TORN LEDGER', saveKey: 'coinwalker.save.v1', guide: 'pig', icon: '🐷',
+  id: 'coinwalker', look: 'hd', name: 'Coinwalker', title: 'COINWALKER', sub: 'THE TORN LEDGER', saveKey: 'coinwalker.save.v1', guide: 'pig', icon: '🐷', portfolio: true,
   realms: [
     { en: 'Market Valley', es: 'El Valle del Mercado', fa: 'درهٔ بازار' },
     { en: 'Mint Town', es: 'La Ciudad de la Moneda', fa: 'شهر ضرابخانه' },
@@ -84,6 +84,8 @@ window.WW_COURSE = {
     fa: [['🧭', '🐷'], ['کریستوفر', 'کاپر'], ['قطب‌نمای زنده', 'قلک پرنده'], ['سنگ قطب‌نما', 'سنگ دفتر حساب'], ['اطلس بزرگ', 'دفتر حساب بزرگ'], ['اطلس', 'دفتر حساب'], ['جهان‌گرد', 'رهرو سکه']]
   },
   S: {
+    pfGo: { en: 'Bradlee Portfolio: your new year and paycheck', es: 'Portafolio Bradlee: tu nuevo año y tu sueldo', fa: 'سبد سرمایهٔ بردلی: سال تازه و حقوق تو' },
+    pfCanvas: { en: 'A new year and a $100 paycheck are waiting at Bradlee: open the Bradlee Portfolio file in Canvas.', es: 'Un año nuevo y un sueldo de $100 te esperan en Bradlee: abre el archivo Portafolio Bradlee en Canvas.', fa: 'یک سال تازه و حقوق ۱۰۰ دلاری در بردلی منتظر توست: فایل سبد سرمایهٔ بردلی را در Canvas باز کن.' },
     story: { en: 'The Grump tore the Great Ledger into 24 pages and scattered them. People are forgetting how money works. You are a Coinwalker apprentice. With Copper, your flying piggy bank, win the pages back by learning each idea.',
       es: 'El Gruñón rompió el Gran Libro de Cuentas en 24 páginas y las esparció. La gente está olvidando cómo funciona el dinero. Eres aprendiz de Caminante de la Moneda. Con Copper, tu alcancía voladora, recupera las páginas aprendiendo cada idea.',
       fa: 'غرغرو دفتر حساب بزرگ را به ۲۴ صفحه پاره کرد و پراکنده ساخت. مردم فراموش می‌کنند پول چطور کار می‌کند. تو شاگرد رهرو سکه هستی. با کاپر، قلک پرنده‌ات، با یاد گرفتن هر اندیشه صفحه‌ها را پس بگیر.' },
